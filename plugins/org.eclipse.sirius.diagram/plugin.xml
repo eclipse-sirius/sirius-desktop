@@ -568,5 +568,12 @@
            id="org.eclipse.sirius.diagram.tools.internal.actions.pinning.unpinElementsActionId">
      </javaActions>
   </extension>
+  <extension
+        point="org.eclipse.sirius.migrationParticipant">
+     <participant
+           class="org.eclipse.sirius.diagram.business.internal.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipant"
+           kind="RepresentationsFile">
+     </participant>
+  </extension>
   
 </plugin>

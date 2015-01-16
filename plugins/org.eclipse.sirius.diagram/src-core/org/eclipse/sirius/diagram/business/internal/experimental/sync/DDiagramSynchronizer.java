@@ -40,6 +40,7 @@ import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -67,6 +68,7 @@ import org.eclipse.sirius.diagram.business.api.refresh.RefreshExtensionService;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
@@ -98,6 +100,7 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -386,16 +389,12 @@ public class DDiagramSynchronizer {
 
                 final Set<AbstractDNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<AbstractDNodeCandidate>();
 
-                /*
-                 * let's refresh the node mappings.
-                 */
+                /* Let's refresh the node mappings. */
                 for (final NodeMapping mapping : nodeMappings) {
                     refreshNodeMapping(mappingsToEdgeTargets, this.diagram, mapping, elementsCreated, new SubProgressMonitor(monitor, 1));
                 }
 
-                /*
-                 * let's refresh the container mappings
-                 */
+                /* Let's refresh the container mappings */
                 if (elementsCreated != null) {
                     elementsCreated.clear();
                 }
@@ -404,21 +403,16 @@ public class DDiagramSynchronizer {
                     refreshContainerMapping(mappingsToEdgeTargets, this.diagram, mapping, elementsCreated, false, false, new SubProgressMonitor(monitor, 1));
                 }
 
-                /*
-                 * handle multiple importers
-                 */
+                /* handle multiple importers . */
                 handleImportersIssues();
 
-                /*
-                 * Compute the decorations
-                 */
+                /* Compute the decorations. */
                 computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
 
                 /*
                  * now all the nodes/containers are done and ready in the
                  * mappintToEdgeTarget map.
                  */
-
                 edgesDones = new HashSet<DDiagramElement>();
 
                 processEdgeMappingsRefresh(edgeMappings, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, monitor);
@@ -427,10 +421,11 @@ public class DDiagramSynchronizer {
 
                 deleteIgnoredElementsAndDuplicates();
 
+                /* Garbage collect orphan computed StyleDescription. */
+                removeOrphanComputedStyleDescriptions();
+
                 RefreshExtensionService.getInstance().postRefresh(this.diagram);
-                /*
-                 * We can now clear the cache.
-                 */
+                /* We can now clear the cache. */
                 clearCache();
             }
             KeyCache.DEFAULT.clear();
@@ -537,6 +532,15 @@ public class DDiagramSynchronizer {
      */
     private void clearCache() {
         previousCandidatesCache = null;
+    }
+
+    private void removeOrphanComputedStyleDescriptions() {
+        DDiagramInternalQuery dDiagramInternalQuery = new DDiagramInternalQuery(diagram);
+        ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = dDiagramInternalQuery.getComputedStyleDescriptionRegistry(false);
+        if (computedStyleDescriptionRegistry != null) {
+            Collection<StyleDescription> usedComputedStyleDescritions = dDiagramInternalQuery.getUsedComputedStyleDescritions();
+            computedStyleDescriptionRegistry.getComputedStyleDescriptions().retainAll(usedComputedStyleDescritions);
+        }
     }
 
     private void handleImportersIssues() {

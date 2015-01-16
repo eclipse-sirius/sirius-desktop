@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="custostorage" nsURI="http://www.eclipse.org/sirius/tests/custostorage"
+    nsPrefix="custostorage">
+  <eClassifiers xsi:type="ecore:EClass" name="A"/>
+  <eClassifiers xsi:type="ecore:EClass" name="B"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C"/>
+  <eClassifiers xsi:type="ecore:EClass" name="D"/>
+  <eClassifiers xsi:type="ecore:EClass" name="E"/>
+  <eClassifiers xsi:type="ecore:EClass" name="F"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AAbstract" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BAbstract" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CAbstract" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DAbstract" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EAbstract" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FAbstract" abstract="true"/>
+</ecore:EPackage>

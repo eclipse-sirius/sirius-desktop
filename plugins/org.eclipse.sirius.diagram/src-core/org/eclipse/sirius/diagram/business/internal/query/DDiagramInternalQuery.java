@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -23,15 +25,20 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.BestStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DDiagram} as
  * a starting point.
  * 
  * @author mporhel
- * 
  */
 public class DDiagramInternalQuery {
 
@@ -243,5 +250,75 @@ public class DDiagramInternalQuery {
         // return new EcoreEList.UnmodifiableEList(eInternalContainer(),
         // ViewpointPackage.eINSTANCE.getSirius_Containers(), result.size(),
         // result.toArray());
+    }
+
+    /**
+     * return the collection {@link Style} instances currently in the diagram.
+     * 
+     * @return the collection {@link Style} instances currently in the diagram.
+     */
+    public Collection<Style> getAllStyles() {
+        Collection<Style> result = new ArrayList<Style>();
+        for (DDiagramElement dDiagramElement : getDiagramElements()) {
+            Style style = dDiagramElement.getStyle();
+            if (style != null) {
+                result.add(style);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Get the {@link ComputedStyleDescriptionRegistry} of the specified
+     * {@link DDiagram}.
+     * 
+     * @param createIfNotExists
+     *            true if we want to create a
+     *            {@link ComputedStyleDescriptionRegistry} for the specified
+     *            {@link DDiagram} if there is not one, false otherwise
+     * @return the {@link ComputedStyleDescriptionRegistry} of the
+     *         {@link DDiagram} or null if this last has not one
+     */
+    public ComputedStyleDescriptionRegistry getComputedStyleDescriptionRegistry(boolean createIfNotExists) {
+        ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = null;
+        AnnotationEntry annotationEntry = null;
+        Collection<AnnotationEntry> annotationEntries = new DRepresentationQuery(dDiagram).getAnnotation(BestStyleDescriptionRegistry.DANNOTATION_CUSTOMIZATION_KEY);
+        if (annotationEntries == null || annotationEntries.isEmpty()) {
+            annotationEntry = DescriptionFactory.eINSTANCE.createAnnotationEntry();
+            annotationEntry.setSource(BestStyleDescriptionRegistry.DANNOTATION_CUSTOMIZATION_KEY);
+            dDiagram.getOwnedAnnotationEntries().add(annotationEntry);
+        } else {
+            annotationEntry = annotationEntries.iterator().next();
+        }
+        if (annotationEntry.getData() == null || !(annotationEntry.getData() instanceof ComputedStyleDescriptionRegistry)) {
+            computedStyleDescriptionRegistry = DiagramFactory.eINSTANCE.createComputedStyleDescriptionRegistry();
+            annotationEntry.setData(computedStyleDescriptionRegistry);
+        } else {
+            computedStyleDescriptionRegistry = (ComputedStyleDescriptionRegistry) annotationEntry.getData();
+        }
+        return computedStyleDescriptionRegistry;
+    }
+
+    /**
+     * Get computed {@link StyleDescription} really used by the specified
+     * {@link DDiagram}.
+     * 
+     * @return the computed {@link StyleDescription} really used
+     */
+    public Collection<StyleDescription> getUsedComputedStyleDescritions() {
+        Collection<StyleDescription> usedComputedStyleDescriptions = new ArrayList<StyleDescription>();
+        ComputedStyleDescriptionRegistry registry = getComputedStyleDescriptionRegistry(false);
+        if (registry != null) {
+            Collection<StyleDescription> computedStyleDescriptions = registry.getComputedStyleDescriptions();
+            if (!computedStyleDescriptions.isEmpty()) {
+                for (Style style : getAllStyles()) {
+                    StyleDescription usedDescription = style.getDescription();
+                    if (usedDescription != null) {
+                        usedComputedStyleDescriptions.add(usedDescription);
+                    }
+                }
+            }
+        }
+        return usedComputedStyleDescriptions;
     }
 }

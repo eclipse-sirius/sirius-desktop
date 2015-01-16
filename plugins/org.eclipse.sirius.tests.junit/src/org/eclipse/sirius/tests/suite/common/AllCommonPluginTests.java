@@ -106,6 +106,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.MigrationLabelBoundsToLoc
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfCollapsedBorderedNodeTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfHideLabelFilterInconsistencyTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationRoutingStyleEndUserOverrideTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipantTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RemoveAcceleoReferencesMigrationTest;
@@ -183,6 +184,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(OperationCanceledExceptionSessionTest.class);
         suite.addTestSuite(MigrationFromSirius0_9Test.class);
         suite.addTestSuite(MigrationFromSirius1_0_0_M5Test.class);
+        suite.addTestSuite(ComputedStyleDescriptionCachePackingFileMigrationParticipantTests.class);
         suite.addTestSuite(ConvertViewpointModelingProjectToSiriusModelingProjectTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));

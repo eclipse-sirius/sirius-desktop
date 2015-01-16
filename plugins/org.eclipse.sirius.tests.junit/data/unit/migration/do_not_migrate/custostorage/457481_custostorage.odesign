@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="457481_custostorage" version="10.0.0.201411061000">
+  <ownedViewpoints name="CustoStorage" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="CustoStorage EPackage" domainClass="ecore.EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="CustoStorage Node" domainClass="ecore.EClass">
+          <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="CustoStorage Edge" sourceMapping="//@ownedViewpoints[name='CustoStorage']/@ownedRepresentations[name='CustoStorage%20EPackage']/@defaultLayer/@nodeMappings[name='CustoStorage%20Node']" targetMapping="//@ownedViewpoints[name='CustoStorage']/@ownedRepresentations[name='CustoStorage%20EPackage']/@defaultLayer/@containerMappings[name='CustoStorage%20Container']" targetFinderExpression="var:self">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CustoStorage Container" domainClass="ecore.EClass">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="CustoStorage List" domainClass="ecore.EClass" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="feature:abstract">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='CustoStorage']/@ownedRepresentations[name='CustoStorage%20EPackage']/@defaultLayer/@nodeMappings[name='CustoStorage%20Node']/@style //@ownedViewpoints[name='CustoStorage']/@ownedRepresentations[name='CustoStorage%20EPackage']/@defaultLayer/@edgeMappings[name='CustoStorage%20Edge']/@style/@centerLabelStyleDescription //@ownedViewpoints[name='CustoStorage']/@ownedRepresentations[name='CustoStorage%20EPackage']/@defaultLayer/@containerMappings[name='CustoStorage%20Container']/@style //@ownedViewpoints[name='CustoStorage']/@ownedRepresentations[name='CustoStorage%20EPackage']/@defaultLayer/@containerMappings[name='CustoStorage%20List']/@style" referenceName="labelColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='CustoStorage']/@ownedRepresentations[name='CustoStorage%20EPackage']/@defaultLayer/@edgeMappings[name='CustoStorage%20Edge']/@style" referenceName="strokeColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+        </customization>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -18,8 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.BasicEMap;
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
@@ -27,18 +24,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.ConditionalStyleSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.EAttributeCustomizationQuery;
 import org.eclipse.sirius.diagram.business.internal.query.StyleDescriptionQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
@@ -152,135 +146,27 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
                 }
             }
             customizedStyleDescription = storeInDDiagram(customizedStyleDescription, bestStyleDescriptionKey);
-        } else {
-            removeComputedStyleDescriptionFromCache(bestStyleDescriptionKey);
+            // Computed StyleDescription no more used will be garbage collected
+            // by the DDiagramSynchronizer
         }
         return customizedStyleDescription;
     }
 
     private StyleDescription storeInDDiagram(StyleDescription customizedStyleDescription, BestStyleDescriptionKey bestStyleDescriptionKey) {
         DDiagram dDiagram = bestStyleDescriptionKey.getDDiagram();
-        ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = getComputedStyleDescriptionRegistry(dDiagram, true);
-        EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>> modelElementsMap = computedStyleDescriptionRegistry.getCache().get(bestStyleDescriptionKey.getDiagramElementMapping());
-        if (modelElementsMap == null) {
-            // modelElementsMap = new EcoreEMap<EObject, EMap<EObject,
-            // EMap<EObject,
-            // StyleDescription>>>(ComputedStyleDescriptionPackage.Literals.MODEL_ELEMENT2_VIEW_VARIABLE,
-            // ModelElement2ViewVariableImpl.class, (InternalEObject)
-            // bestStyleDescriptionKey.getDiagramElementMapping(),
-            // ComputedStyleDescriptionPackage.DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT);
-            modelElementsMap = new BasicEMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>();
-            computedStyleDescriptionRegistry.getCache().put(bestStyleDescriptionKey.getDiagramElementMapping(), modelElementsMap);
-            modelElementsMap = computedStyleDescriptionRegistry.getCache().get(bestStyleDescriptionKey.getDiagramElementMapping());
+        ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = new DDiagramInternalQuery(dDiagram).getComputedStyleDescriptionRegistry(true);
+        StyleDescription found = null;
+        for (StyleDescription computedStyleDescription : computedStyleDescriptionRegistry.getComputedStyleDescriptions()) {
+            if (EcoreUtil.equals(customizedStyleDescription, computedStyleDescription)) {
+                found = computedStyleDescription;
+                break;
+            }
         }
-        EMap<EObject, EMap<EObject, StyleDescription>> viewVariablesMap = modelElementsMap.get(bestStyleDescriptionKey.getModelElement());
-        if (viewVariablesMap == null) {
-            // viewVariablesMap = new EcoreEMap<EObject, EMap<EObject,
-            // StyleDescription>>(ComputedStyleDescriptionPackage.Literals.VIEW_VARIABLE2_CONTAINER_VARIABLE,
-            // ViewVariable2ContainerVariableImpl.class, (InternalEObject)
-            // bestStyleDescriptionKey.getModelElement(),
-            // ComputedStyleDescriptionPackage.MODEL_ELEMENT2_VIEW_VARIABLE);
-            viewVariablesMap = new BasicEMap<EObject, EMap<EObject, StyleDescription>>();
-            modelElementsMap.put(bestStyleDescriptionKey.getModelElement(), viewVariablesMap);
-            viewVariablesMap = modelElementsMap.get(bestStyleDescriptionKey.getModelElement());
-        }
-        EMap<EObject, StyleDescription> containerVariablesMap = viewVariablesMap.get(bestStyleDescriptionKey.getViewVariable());
-        if (containerVariablesMap == null) {
-            // containerVariablesMap = new EcoreEMap<EObject,
-            // StyleDescription>(ComputedStyleDescriptionPackage.Literals.CONTAINER_VARIABLE2_STYLE_DESCRIPTION,
-            // ContainerVariable2StyleDescriptionImpl.class, (InternalEObject)
-            // bestStyleDescriptionKey.getViewVariable(),
-            // ComputedStyleDescriptionPackage.VIEW_VARIABLE2_CONTAINER_VARIABLE);
-            containerVariablesMap = new BasicEMap<EObject, StyleDescription>();
-            viewVariablesMap.put(bestStyleDescriptionKey.getViewVariable(), containerVariablesMap);
-            containerVariablesMap = viewVariablesMap.get(bestStyleDescriptionKey.getViewVariable());
-        }
-        StyleDescription computedStyleDescriptionFromCache = containerVariablesMap.get(bestStyleDescriptionKey.getContainerVariable());
-
-        if (computedStyleDescriptionFromCache == null) {
+        if (found == null) {
             computedStyleDescriptionRegistry.getComputedStyleDescriptions().add(customizedStyleDescription);
-            containerVariablesMap.put(bestStyleDescriptionKey.getContainerVariable(), customizedStyleDescription);
-        } else {
-            if (!EcoreUtil.equals(computedStyleDescriptionFromCache, customizedStyleDescription)) {
-                computedStyleDescriptionRegistry.getComputedStyleDescriptions().remove(computedStyleDescriptionFromCache);
-                computedStyleDescriptionRegistry.getComputedStyleDescriptions().add(customizedStyleDescription);
-                containerVariablesMap.put(bestStyleDescriptionKey.getContainerVariable(), customizedStyleDescription);
-            } else {
-                return computedStyleDescriptionFromCache;
-            }
+            found = customizedStyleDescription;
         }
-        return customizedStyleDescription;
-    }
-
-    /**
-     * Get the {@link ComputedStyleDescriptionRegistry} of the specified
-     * {@link DDiagram}.
-     * 
-     * @param dDiagram
-     *            the {@link DDiagram} for which we want
-     *            {@link ComputedStyleDescriptionRegistry}
-     * @param createIfNotExists
-     *            true if we want to create a
-     *            {@link ComputedStyleDescriptionRegistry} for the specified
-     *            {@link DDiagram} if there is not one, false otherwise
-     * @return the {@link ComputedStyleDescriptionRegistry} of the
-     *         {@link DDiagram} or null if this last has not one
-     */
-    public static ComputedStyleDescriptionRegistry getComputedStyleDescriptionRegistry(DDiagram dDiagram, boolean createIfNotExists) {
-        ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = null;
-        AnnotationEntry annotationEntry = null;
-        Collection<AnnotationEntry> annotationEntries = new DRepresentationQuery(dDiagram).getAnnotation(DANNOTATION_CUSTOMIZATION_KEY);
-        if (annotationEntries == null || annotationEntries.isEmpty()) {
-            annotationEntry = DescriptionFactory.eINSTANCE.createAnnotationEntry();
-            annotationEntry.setSource(DANNOTATION_CUSTOMIZATION_KEY);
-            dDiagram.getOwnedAnnotationEntries().add(annotationEntry);
-        } else {
-            annotationEntry = annotationEntries.iterator().next();
-        }
-        if (annotationEntry.getData() == null || !(annotationEntry.getData() instanceof ComputedStyleDescriptionRegistry)) {
-            computedStyleDescriptionRegistry = DiagramFactory.eINSTANCE.createComputedStyleDescriptionRegistry();
-            annotationEntry.setData(computedStyleDescriptionRegistry);
-        } else {
-            computedStyleDescriptionRegistry = (ComputedStyleDescriptionRegistry) annotationEntry.getData();
-        }
-        return computedStyleDescriptionRegistry;
-    }
-
-    private void removeComputedStyleDescriptionFromCache(BestStyleDescriptionKey bestStyleDescriptionKey) {
-        StyleDescription styleDescription = null;
-        DDiagram dDiagram = bestStyleDescriptionKey.getDDiagram();
-        Collection<AnnotationEntry> annotationEntries = new DRepresentationQuery(dDiagram).getAnnotation(DANNOTATION_CUSTOMIZATION_KEY);
-        if (annotationEntries != null && !annotationEntries.isEmpty()) {
-            AnnotationEntry annotationEntry = annotationEntries.iterator().next();
-            if (annotationEntry.getData() instanceof ComputedStyleDescriptionRegistry) {
-                ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = (ComputedStyleDescriptionRegistry) annotationEntry.getData();
-                EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>> modelElementsMap = computedStyleDescriptionRegistry.getCache().get(bestStyleDescriptionKey.getDiagramElementMapping());
-                if (modelElementsMap != null) {
-                    EMap<EObject, EMap<EObject, StyleDescription>> viewVariablesMap = modelElementsMap.get(bestStyleDescriptionKey.getModelElement());
-                    if (viewVariablesMap != null) {
-                        EMap<EObject, StyleDescription> containerVariablesMap = viewVariablesMap.get(bestStyleDescriptionKey.getViewVariable());
-                        // CHECKSTYLE:OFF
-                        if (containerVariablesMap != null) {
-                            styleDescription = containerVariablesMap.get(bestStyleDescriptionKey.getContainerVariable());
-                            containerVariablesMap.remove(bestStyleDescriptionKey.getContainerVariable());
-                            if (containerVariablesMap.isEmpty()) {
-                                viewVariablesMap.remove(bestStyleDescriptionKey.getViewVariable());
-                            }
-                        }
-                        if (viewVariablesMap.isEmpty()) {
-                            modelElementsMap.remove(bestStyleDescriptionKey.getModelElement());
-                        }
-                        // CHECKSTYLE:ON
-                    }
-                    if (modelElementsMap.isEmpty()) {
-                        computedStyleDescriptionRegistry.getCache().remove(bestStyleDescriptionKey.getDiagramElementMapping());
-                    }
-                }
-                if (styleDescription != null) {
-                    computedStyleDescriptionRegistry.getComputedStyleDescriptions().remove(styleDescription);
-                }
-            }
-        }
+        return found;
     }
 
     private void applyEAttributeCustomization(EAttributeCustomization eAttributeCustomization, StyleDescription styleDescription, StyleDescription customizedStyleDescription, Set<EObject> appliedOn,
