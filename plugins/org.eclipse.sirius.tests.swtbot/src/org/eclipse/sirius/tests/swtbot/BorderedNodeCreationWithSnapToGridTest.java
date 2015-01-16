@@ -57,7 +57,8 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
         // location is not the same (in draw2d and GMF coordinates).
         // Get the location of the class (relative the part visible on the
         // screen)
-
+        // Go to the origin to avoid scroll bar
+        editor.scrollTo(0, 0);
         SWTBotGefEditPart firstNewNode = editor.getEditPart(getNewBorderedNodeOnClassName(), AbstractDiagramBorderNodeEditPart.class);
         Rectangle firstNewNodeAbsoluteBounds = editor.getAbsoluteBounds(firstNewNode);
 
