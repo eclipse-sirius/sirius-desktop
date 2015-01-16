@@ -617,8 +617,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     private void valideExportResult(String imageExtension, final String... expectedFileNames) throws Exception {
+        SWTBotUtils.waitProgressMonitorClose("Progress Information");
+        SWTBotUtils.waitAllUiEvents();
         SWTBotTree tree = bot.viewByTitle("Model Explorer").bot().tree();
-
         List<String> nodes = tree.expandNode(designerProject.getName()).getNodes();
         for (String filename : expectedFileNames) {
             assertTrue("The project " + designerProject.getName() + " does not contain " + filename + "." + imageExtension + " in treeViewer : " + nodes,
