@@ -13,7 +13,7 @@ Both kinds of table share a lot of elements. This document will focus on "editio
   !./images/table_description_editor.png!
 <em>
 <ul>
-!images/tricks.png! _use the !images/questionMarque.png! icon to access the available fields tooltips:_
+<img src="images/tricks.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> _use the <img src="images/questionMarque.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> icon to access the available fields tooltips:_
 <ul>
 	<li> **Id** field: The identifier of this element. Must be unique. Changing this identifier will break existing user models which reference the old identifier.</li>
 	<li> **Label** field: The label used to display this to the end-user.</li>
