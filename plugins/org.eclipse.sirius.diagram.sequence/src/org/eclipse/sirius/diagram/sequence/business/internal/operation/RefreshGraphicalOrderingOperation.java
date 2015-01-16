@@ -98,7 +98,7 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
                 }
             }
         };
-        List<EventEnd> allEnds = Lists.newArrayList(Iterables.filter(RefreshOrderingHelper.getAllEventEnds(sequenceDiagram), isValidEnd));
+        List<EventEnd> allEnds = Lists.newArrayList(Iterables.filter(getAllEventEnds(), isValidEnd));
         Collections.sort(allEnds, Ordering.natural().onResultOf(new Function<EventEnd, Integer>() {
             @Override
             public Integer apply(EventEnd input) {
@@ -110,6 +110,17 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
             }
         }));
         return RefreshOrderingHelper.updateIfNeeded(graphicalOrdering.getEventEnds(), allEnds);
+    }
+
+    /**
+     * Returns all the event ends of the current Sequence diagram. 
+     * 
+     * The default implementation does the computation on each call, subclasses may override this method to change this behavior.
+     * 
+     * @return an Iterable with all event ends.
+     */
+    protected Iterable<? extends EventEnd> getAllEventEnds() {
+        return RefreshOrderingHelper.getAllEventEnds(sequenceDiagram);
     }
 
     /**

@@ -95,10 +95,21 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
      * @return true if there is changes during this refresh, false otherwise.
      */
     private boolean refreshGlobalOrdering(EventEndsOrdering semanticOrdering) {
-        Iterable<? extends EventEnd> allEnds = RefreshOrderingHelper.getAllEventEnds(sequenceDDiagram);
+        Iterable<? extends EventEnd> allEnds = getAllEventEnds();
         return RefreshOrderingHelper.updateIfNeeded(semanticOrdering.getEventEnds(), computeEventEndsOrdering(semanticOrdering, allEnds));
     }
 
+    /**
+     * Returns all the event ends of the current Sequence diagram. 
+     * 
+     * The default implementation does the computation on each call, subclasses may override this method to change this behavior.
+     * 
+     * @return an Iterable with all event ends.
+     */
+    protected Iterable<? extends EventEnd> getAllEventEnds() {
+        return RefreshOrderingHelper.getAllEventEnds(sequenceDDiagram);
+    }
+    
     private List<EventEnd> computeEventEndsOrdering(EventEndsOrdering semanticOrdering, Iterable<? extends EventEnd> allEnds) {
         Map<EObject, EventEnd> index = Maps.newHashMap();
         for (EventEnd eventEnd : allEnds) {
