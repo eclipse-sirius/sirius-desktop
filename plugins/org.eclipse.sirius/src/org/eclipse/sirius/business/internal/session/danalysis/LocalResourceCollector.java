@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,15 +25,15 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
 
 /**
  * A {@link IResourceCollector} for local {@link Resource}.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class LocalResourceCollector extends ECrossReferenceAdapter implements IResourceCollector {
+public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl implements IResourceCollector {
 
     private ResourceSet resourceSet;
 
@@ -106,6 +106,7 @@ public class LocalResourceCollector extends ECrossReferenceAdapter implements IR
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<Resource> getAllReferencedResources(Resource resource) {
         if (!initialized) {
             resourceSet.eAdapters().add(this);
@@ -118,6 +119,7 @@ public class LocalResourceCollector extends ECrossReferenceAdapter implements IR
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<Resource> getAllReferencingResources(Resource resource) {
         if (!initialized) {
             resourceSet.eAdapters().add(this);
@@ -144,6 +146,7 @@ public class LocalResourceCollector extends ECrossReferenceAdapter implements IR
     /**
      * {@inheritDoc}
      */
+    @Override
     public void dispose() {
         if (initialized) {
             resourceSet.eAdapters().remove(this);

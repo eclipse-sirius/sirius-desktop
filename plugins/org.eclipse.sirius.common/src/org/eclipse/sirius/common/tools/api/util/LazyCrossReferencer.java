@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,8 +40,6 @@ import com.google.common.collect.Iterables;
  * @author mchauvin
  */
 public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapability {
-    private boolean resolveEnabled = true;
-
     private boolean initialized;
 
     private ECrossReferenceAdapterWithUnproxyCapability adapter = new InternalCrossReferencer();
@@ -185,19 +183,7 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
         adapter.unsetTarget(target);
     }
 
-    /**
-     * Disable the resolution of the proxy.
-     */
-    public void disableResolve() {
-        resolveEnabled = false;
-    }
 
-    /**
-     * Enable the resolution of the proxy.
-     */
-    public void enableResolve() {
-        resolveEnabled = true;
-    }
 
     /**
      * Look at all EObjects of this resource and resolve proxy cross reference
@@ -207,6 +193,7 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
      *            Each cross reference pointing to a proxy of this
      *            <code>resource</code> will be resolved.
      */
+    @Override
     public void resolveProxyCrossReferences(Resource resource) {
         if (initialized) {
             // The resolution of proxy is called only is the cross-referencer
@@ -223,16 +210,7 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
         /**
          * {@inheritDoc}
          */
-        protected boolean resolve() {
-            if (resolveEnabled) {
-                return super.resolve();
-            }
-            return false;
-        };
-
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         protected void handleContainment(Notification notification) {
             deregisterDeletedElements(notification);
 

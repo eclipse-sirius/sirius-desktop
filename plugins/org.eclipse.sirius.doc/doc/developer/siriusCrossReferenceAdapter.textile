@@ -1,0 +1,11 @@
+
+h1. SiriusCrossReferenceAdapter
+
+The @org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter@ interface is designed to disable the proxy resolution of the InverseCrossReferencer.
+
+This capability is typically used to prevent loading a resource during its unloading.
+
+Furthermore, it is not recommended to add other ECrossReferenceAdapter additionally to those created by Sirius. Note that you can get the semantic CrossReferencer with @org.eclipse.sirius.business.api.session.Session.getSemanticCrossReferencer()@.
+
+However, in the case where an additional custom ECrossReferenceAdapter is needed, it should extend @org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl@ or at least implement @SiriusCrossReferenceAdapter@ with the same implementation as @SiriusCrossReferenceAdapterImpl@.
+Otherwise, there is no guarantee that load during unload won't come up.

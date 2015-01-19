@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.common.collect.Lists;
@@ -32,7 +31,7 @@ import com.google.common.collect.Maps;
  * @noextend This class is not intended to be subclassed by clients.
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class ECrossReferenceAdapterWithUnproxyCapability extends ECrossReferenceAdapter {
+public class ECrossReferenceAdapterWithUnproxyCapability extends SiriusCrossReferenceAdapterImpl {
     /**
      * InverseCrossReferencer to allow access to {@link #removeProxies(URI)} in
      * '@link InternalCrossReferencer}.

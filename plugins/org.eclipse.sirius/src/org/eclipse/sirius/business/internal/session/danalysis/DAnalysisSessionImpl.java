@@ -1,6 +1,6 @@
 //CHECKSTYLE:OFF
 /*******************************************************************************
- * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -111,6 +112,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -1729,7 +1731,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         RunnableWithResult<?> reload = new RunnableWithResult.Impl<Object>() {
             @Override
             public void run() {
+                disableCrossReferencerResolve(resource);
+                
                 resource.unload();
+                
+                enableCrossReferencerResolve(resource);
                 try {
                     resource.load(Collections.EMPTY_MAP);
                     EcoreUtil.resolveAll(resource);
@@ -1768,6 +1774,26 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
+    private void disableCrossReferencerResolve(Notifier notifier) {
+        // Disable resolve for CrossreferencerAdapter
+        for (Iterator<Adapter> iterator = notifier.eAdapters().iterator(); iterator.hasNext(); ) {
+            Adapter next = iterator.next();
+            if (next instanceof SiriusCrossReferenceAdapter) {
+                ((SiriusCrossReferenceAdapter) next).disableResolve();
+            }
+        }
+    }
+    
+    private void enableCrossReferencerResolve(Notifier notifier) {
+        // Disable resolve for CrossreferencerAdapter
+        for (Iterator<Adapter> iterator = notifier.eAdapters().iterator(); iterator.hasNext(); ) {
+            Adapter next = iterator.next();
+            if (next instanceof SiriusCrossReferenceAdapter) {
+                ((SiriusCrossReferenceAdapter) next).enableResolve();
+            }
+        }
+    }
+
     @Override
     public void setReloadingPolicy(ReloadingPolicy reloadingPolicy) {
         this.reloadingPolicy = reloadingPolicy;
@@ -1791,6 +1817,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return the custom saving policy the session should use
      */
+    @Override
     public SavingPolicy getSavingPolicy() {
         return savingPolicy != null ? savingPolicy : new SavingPolicyImpl(transactionalEditingDomain);
     }
@@ -1955,18 +1982,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void disableAndRemoveECrossReferenceAdapters() {
         ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
-        // Disable resolution of proxy for AirDCrossReferenceAdapter of
-        // session and for semanticCrossReferencer during the closing
-        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
-        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
-        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
-            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
-            airDCrossReferenceAdapter.disableResolve();
-            resourceSet.eAdapters().remove(airDCrossReferenceAdapter);
-        }
-        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
-            ((LazyCrossReferencer) getSemanticCrossReferencer()).disableResolve();
-        }
+
+        disableCrossReferencerResolve(resourceSet);
+
         // Let's clear the cross referencer if it's still there.
         for (final Resource res : getSemanticResources()) {
             unregisterResourceInCrossReferencer(res);
@@ -1992,13 +2010,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         // Enable resolution for AirdCrossReferenceAdapter of session at the end
         // of closing
         Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
-        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
-        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
-            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
-            airDCrossReferenceAdapter.enableResolve();
+        if (existingAirDCrossReferenceAdapter instanceof SiriusCrossReferenceAdapter) {
+            ((SiriusCrossReferenceAdapter) existingAirDCrossReferenceAdapter).enableResolve();
         }
         if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
-            ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
+            getSemanticCrossReferencer().enableResolve();
         }
     }
 

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>siriusCrossReferenceAdapter</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusCrossReferenceAdapter">SiriusCrossReferenceAdapter</h1>
+		<p>The 
+			<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter</code> interface is designed to disable the proxy resolution of the InverseCrossReferencer.
+		</p>
+		<p>This capability is typically used to prevent loading a resource during its unloading.</p>
+		<p>Furthermore, it is not recommended to add other ECrossReferenceAdapter additionally to those created by Sirius. Note that you can get the semantic CrossReferencer with 
+			<code>org.eclipse.sirius.business.api.session.Session.getSemanticCrossReferencer()</code>.
+		</p>
+		<p>However, in the case where an additional custom ECrossReferenceAdapter is needed, it should extend 
+			<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl</code> or at least implement 
+			<code>SiriusCrossReferenceAdapter</code> with the same implementation as 
+			<code>SiriusCrossReferenceAdapterImpl</code>.
+			<br/>Otherwise, there is no guarantee that load during unload won&#8217;t come up.
+		</p>
+	</body>
+</html>

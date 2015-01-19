@@ -23,7 +23,7 @@ import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
  * @author smonnier
  */
 public class AirDCrossReferenceAdapterImpl extends CrossReferenceAdapter implements AirDCrossReferenceAdapter {
-    boolean resolve = true;
+    boolean resolveProxy = true;
 
     /**
      * Overridden to have this {@link AirDCrossReferenceAdapter} installed only
@@ -48,35 +48,21 @@ public class AirDCrossReferenceAdapterImpl extends CrossReferenceAdapter impleme
         return type == AirDCrossReferenceAdapter.class;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter#resolve()
-     */
     @Override
     protected boolean resolve() {
-        if (resolve) {
+        if (resolveProxy) {
             return super.resolve();
         }
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter#disableResolve()
-     */
+    @Override
     public void disableResolve() {
-        resolve = false;
-
+        resolveProxy = false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter#enableResolve()
-     */
+    @Override
     public void enableResolve() {
-        resolve = true;
+        resolveProxy = true;
     }
 }
