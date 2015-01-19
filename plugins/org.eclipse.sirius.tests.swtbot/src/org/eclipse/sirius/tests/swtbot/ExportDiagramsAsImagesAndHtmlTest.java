@@ -551,6 +551,8 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     private void valideExportResult(final String imageExtension, final String... expectedFileNames) throws Exception {
+        SWTBotUtils.waitProgressMonitorClose("Progress Information");
+        SWTBotUtils.waitAllUiEvents();
         valideExportResultWithFolder(imageExtension, null, expectedFileNames);
     }
 
