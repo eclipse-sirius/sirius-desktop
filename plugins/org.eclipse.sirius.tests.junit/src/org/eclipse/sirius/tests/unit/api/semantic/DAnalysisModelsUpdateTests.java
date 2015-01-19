@@ -45,6 +45,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
 import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
@@ -178,7 +179,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
         p2FragmentedSessionResourceURI = URI.createURI(mainSessionResourceURI.trimFileExtension() + "_p2.aird");
         p22FragmentedSessionResourceURI = URI.createURI(mainSessionResourceURI.trimFileExtension() + "_p2_p22.aird");
 
-        changeSiriusPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
     }
 
     @Override
@@ -488,6 +489,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
 
     /**
      * Do a fragmentation.
+     * 
      * @throws InterruptedException
      * @throws OperationCanceledException
      */
@@ -546,11 +548,12 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
         checkAfterP22Fragmentation();
 
         assertTrue("The session must be open", session.isOpen());
-
+        session.save(new NullProgressMonitor());
+        assertEquals(SessionStatus.SYNC, session.getStatus());
+        
         URI mainAnalysisURI = session.getSessionResource().getURI();
         if (closeSession) {
             // Close session
-            session.save(new NullProgressMonitor());
             session.close(new NullProgressMonitor());
             assertFalse("The session must be closed", session.isOpen());
         }
