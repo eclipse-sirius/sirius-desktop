@@ -93,8 +93,18 @@
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter</code> interface and the 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl</code> have been added to have the capability to disable the proxy resolution. This feature is typically used to prevent loading a resource during its unloading. 
+				<strong>Warning</strong> : 
+				<em>Every additional custom CrossReferenceAdapter</em>  should extend 
+				<code>SiriusCrossReferenceAdapterImpl</code> or at least implement 
+				<code>SiriusCrossReferenceAdapter</code> with the same implementation as 
+				<code>SiriusCrossReferenceAdapterImpl</code>.
+			</li>
 			<li>
-				<code>org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability</code> is a specific kind of ECrossReferenceAdapter. It provides the capability to resolve all proxy cross references to a given resource. It is now used by the Session as semantic cross referencer. This type is exposed as API but it is not intended to be used/referenced/extended by user code (as the below 
+				<code>org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability</code> is a specific kind of 
+				<code>SiriusCrossReferenceAdapter</code>. It provides the capability to resolve all proxy cross references to a given resource. It is now used by the Session as semantic cross referencer. This type is exposed as API but it is not intended to be used/referenced/extended by user code (as the below 
 				<code>LazyCrossReferencer</code> type).
 			</li>
 			<li>
@@ -108,6 +118,12 @@
 			<li>
 				<code>org.eclipse.sirius.common.tools.api.resource.ResourceSetSync</code> has a new state 
 				<code>CHANGES_CANCELED</code> used to define the state where the user canceled its changes.
+			</li>
+			<li>The 
+				<code>org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer.enableResolve()</code>  and 
+				<code>disableResolve()</code>  methods has been moved to 
+				<code>SiriusCrossReferenceAdapter.enableResolveProxy()</code>  and 
+				<code>disableResolveProxy()</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 

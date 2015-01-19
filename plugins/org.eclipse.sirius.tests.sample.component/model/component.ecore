@@ -10,5 +10,6 @@
         eType="#//Component" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
         eType="#//Component"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Component"/>
   </eClassifiers>
 </ecore:EPackage>

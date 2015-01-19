@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -66,6 +67,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(Notification input) {
             boolean potentialExplicitDetachment = input.getEventType() == Notification.REMOVE || input.getEventType() == Notification.REMOVE_MANY || input.getEventType() == Notification.UNSET;
             boolean potentialImplicitDetachment = input.getEventType() == Notification.SET && input.getNewValue() == null;
@@ -86,6 +88,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(Notification input) {
             if (input.getEventType() == Notification.ADD || input.getEventType() == Notification.ADD_MANY || input.getEventType() == Notification.SET) {
                 // The input.getNewValue() check required to make IS_ATTACHMENT
@@ -107,6 +110,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(EReference reference) {
             // We should ignore any EReference which container is a
             // DSemanticDecorator (or any subclass)
@@ -123,6 +127,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(EReference eReference) {
             // We should ignore View.element reference because not doing
             // that have the effect to have the EditParts having
@@ -147,6 +152,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(EReference eReference) {
             // ignoring the EPackage.eFactoryInstance reference
             return EcorePackage.eINSTANCE.getEPackage_EFactoryInstance().equals(eReference);
@@ -324,7 +330,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
                 // trigger a second refresh by the
                 // RefreshEditorsPrecommitListener only when the command removed
                 // some dangling reference.
-                ECrossReferenceAdapter filteredCrossReferencer = new ECrossReferenceAdapter() {
+                ECrossReferenceAdapter filteredCrossReferencer = new SiriusCrossReferenceAdapterImpl() {
                     @Override
                     public Collection<Setting> getInverseReferences(EObject eObject, boolean resolve) {
                         Collection<Setting> settings = xReferencer.getInverseReferences(eObject, resolve);

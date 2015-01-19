@@ -38,6 +38,7 @@ import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter;
  *   <li>{@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl#isPayload <em>Payload</em>}</li>
  *   <li>{@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl#getReferences <em>References</em>}</li>
+ *   <li>{@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl#getReference <em>Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,113 +46,123 @@ import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter;
  */
 public class ComponentImpl extends MinimalEObjectImpl.Container implements Component {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getName()
-     * @generated
-     * @ordered
-     */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getName()
-     * @generated
-     * @ordered
-     */
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
     protected String name = NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isPayload() <em>Payload</em>}' attribute.
-     * <!-- begin-user-doc -->
+   * The default value of the '{@link #isPayload() <em>Payload</em>}' attribute.
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #isPayload()
-     * @generated
-     * @ordered
-     */
+   * @see #isPayload()
+   * @generated
+   * @ordered
+   */
     protected static final boolean PAYLOAD_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isPayload() <em>Payload</em>}' attribute.
-     * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isPayload() <em>Payload</em>}' attribute.
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #isPayload()
-     * @generated
-     * @ordered
-     */
+   * @see #isPayload()
+   * @generated
+   * @ordered
+   */
     protected boolean payload = PAYLOAD_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getChildren()
-     * @generated
-     * @ordered
-     */
+   * @see #getChildren()
+   * @generated
+   * @ordered
+   */
     protected EList<Component> children;
 
     /**
-     * The cached value of the '{@link #getReferences() <em>References</em>}' reference list.
-     * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReferences() <em>References</em>}' reference list.
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getReferences()
-     * @generated
-     * @ordered
-     */
+   * @see #getReferences()
+   * @generated
+   * @ordered
+   */
     protected EList<Component> references;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected ComponentImpl() {
-        super();
-    }
+   * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReference()
+   * @generated
+   * @ordered
+   */
+  protected Component reference;
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
+    protected ComponentImpl() {
+    super();
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+   * @generated
+   */
     @Override
     protected EClass eStaticClass() {
-        return ComponentPackage.Literals.COMPONENT;
-    }
+    return ComponentPackage.Literals.COMPONENT;
+  }
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
     public String getName() {
-        return name;
-    }
+    return name;
+  }
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
     public void setName(String newName) {
-        String oldName = name;
-        name = newName;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT__NAME, oldName, name));
-    }
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT__NAME, oldName, name));
+  }
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
     public boolean isPayload() {
-        return payload;
-    }
+    return payload;
+  }
 
     /**
      * <!-- begin-user-doc -->
@@ -201,126 +212,175 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
     }
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Component getReference() {
+    if (reference != null && reference.eIsProxy()) {
+      InternalEObject oldReference = (InternalEObject)reference;
+      reference = (Component)eResolveProxy(oldReference);
+      if (reference != oldReference) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ComponentPackage.COMPONENT__REFERENCE, oldReference, reference));
+      }
+    }
+    return reference;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Component basicGetReference() {
+    return reference;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReference(Component newReference) {
+    Component oldReference = reference;
+    reference = newReference;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT__REFERENCE, oldReference, reference));
+  }
+
+    /**
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case ComponentPackage.COMPONENT__CHILDREN:
-                return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
+    switch (featureID) {
+      case ComponentPackage.COMPONENT__CHILDREN:
+        return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
     }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case ComponentPackage.COMPONENT__NAME:
-                return getName();
-            case ComponentPackage.COMPONENT__PAYLOAD:
-                return isPayload();
-            case ComponentPackage.COMPONENT__CHILDREN:
-                return getChildren();
-            case ComponentPackage.COMPONENT__REFERENCES:
-                return getReferences();
-        }
-        return super.eGet(featureID, resolve, coreType);
+    switch (featureID) {
+      case ComponentPackage.COMPONENT__NAME:
+        return getName();
+      case ComponentPackage.COMPONENT__PAYLOAD:
+        return isPayload();
+      case ComponentPackage.COMPONENT__CHILDREN:
+        return getChildren();
+      case ComponentPackage.COMPONENT__REFERENCES:
+        return getReferences();
+      case ComponentPackage.COMPONENT__REFERENCE:
+        if (resolve) return getReference();
+        return basicGetReference();
     }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case ComponentPackage.COMPONENT__NAME:
-                setName((String)newValue);
-                return;
-            case ComponentPackage.COMPONENT__PAYLOAD:
-                setPayload((Boolean)newValue);
-                return;
-            case ComponentPackage.COMPONENT__CHILDREN:
-                getChildren().clear();
-                getChildren().addAll((Collection<? extends Component>)newValue);
-                return;
-            case ComponentPackage.COMPONENT__REFERENCES:
-                getReferences().clear();
-                getReferences().addAll((Collection<? extends Component>)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
+    switch (featureID) {
+      case ComponentPackage.COMPONENT__NAME:
+        setName((String)newValue);
+        return;
+      case ComponentPackage.COMPONENT__PAYLOAD:
+        setPayload((Boolean)newValue);
+        return;
+      case ComponentPackage.COMPONENT__CHILDREN:
+        getChildren().clear();
+        getChildren().addAll((Collection<? extends Component>)newValue);
+        return;
+      case ComponentPackage.COMPONENT__REFERENCES:
+        getReferences().clear();
+        getReferences().addAll((Collection<? extends Component>)newValue);
+        return;
+      case ComponentPackage.COMPONENT__REFERENCE:
+        setReference((Component)newValue);
+        return;
     }
+    super.eSet(featureID, newValue);
+  }
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
     @Override
     public void eUnset(int featureID) {
-        switch (featureID) {
-            case ComponentPackage.COMPONENT__NAME:
-                setName(NAME_EDEFAULT);
-                return;
-            case ComponentPackage.COMPONENT__PAYLOAD:
-                setPayload(PAYLOAD_EDEFAULT);
-                return;
-            case ComponentPackage.COMPONENT__CHILDREN:
-                getChildren().clear();
-                return;
-            case ComponentPackage.COMPONENT__REFERENCES:
-                getReferences().clear();
-                return;
-        }
-        super.eUnset(featureID);
+    switch (featureID) {
+      case ComponentPackage.COMPONENT__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case ComponentPackage.COMPONENT__PAYLOAD:
+        setPayload(PAYLOAD_EDEFAULT);
+        return;
+      case ComponentPackage.COMPONENT__CHILDREN:
+        getChildren().clear();
+        return;
+      case ComponentPackage.COMPONENT__REFERENCES:
+        getReferences().clear();
+        return;
+      case ComponentPackage.COMPONENT__REFERENCE:
+        setReference((Component)null);
+        return;
     }
+    super.eUnset(featureID);
+  }
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
     @Override
     public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case ComponentPackage.COMPONENT__NAME:
-                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-            case ComponentPackage.COMPONENT__PAYLOAD:
-                return payload != PAYLOAD_EDEFAULT;
-            case ComponentPackage.COMPONENT__CHILDREN:
-                return children != null && !children.isEmpty();
-            case ComponentPackage.COMPONENT__REFERENCES:
-                return references != null && !references.isEmpty();
-        }
-        return super.eIsSet(featureID);
+    switch (featureID) {
+      case ComponentPackage.COMPONENT__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ComponentPackage.COMPONENT__PAYLOAD:
+        return payload != PAYLOAD_EDEFAULT;
+      case ComponentPackage.COMPONENT__CHILDREN:
+        return children != null && !children.isEmpty();
+      case ComponentPackage.COMPONENT__REFERENCES:
+        return references != null && !references.isEmpty();
+      case ComponentPackage.COMPONENT__REFERENCE:
+        return reference != null;
     }
+    return super.eIsSet(featureID);
+  }
 
     /**
-     * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+   * @generated
+   */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
-        result.append(name);
-        result.append(", payload: ");
-        result.append(payload);
-        result.append(')');
-        return result.toString();
-    }
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", payload: ");
+    result.append(payload);
+    result.append(')');
+    return result.toString();
+  }
 
 } //ComponentImpl

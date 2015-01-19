@@ -15,17 +15,22 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Component</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Component</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.sirius.tests.sample.component.Component#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.sirius.tests.sample.component.Component#isPayload <em>Payload</em>}</li>
- *   <li>{@link org.eclipse.sirius.tests.sample.component.Component#getChildren <em>Children</em>}</li>
- *   <li>{@link org.eclipse.sirius.tests.sample.component.Component#getReferences <em>References</em>}</li>
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getName <em>
+ * Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#isPayload <em>
+ * Payload</em>}</li>
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getChildren
+ * <em>Children</em>}</li>
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getReferences
+ * <em>References</em>}</li>
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getReference
+ * <em>Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,13 +40,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Component extends EObject {
     /**
-     * Returns the value of the '<em><b>Name</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.tests.sample.component.ComponentPackage#getComponent_Name()
@@ -51,23 +57,26 @@ public interface Component extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tests.sample.component.Component#getName <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getName
+     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */
     void setName(String value);
 
     /**
-     * Returns the value of the '<em><b>Payload</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Payload</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Payload</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Payload</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Payload</em>' attribute.
      * @see #setPayload(boolean)
      * @see org.eclipse.sirius.tests.sample.component.ComponentPackage#getComponent_Payload()
@@ -77,45 +86,82 @@ public interface Component extends EObject {
     boolean isPayload();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tests.sample.component.Component#isPayload <em>Payload</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Payload</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#isPayload
+     * <em>Payload</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Payload</em>' attribute.
      * @see #isPayload()
      * @generated
      */
     void setPayload(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Children</b></em>' containment reference list.
-     * The list contents are of type {@link org.eclipse.sirius.tests.sample.component.Component}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Children</b></em>' containment reference
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.tests.sample.component.Component}. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Children</em>' containment reference list
+     * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Children</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.component.ComponentPackage#getComponent_Children()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<Component> getChildren();
 
     /**
-     * Returns the value of the '<em><b>References</b></em>' reference list.
-     * The list contents are of type {@link org.eclipse.sirius.tests.sample.component.Component}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>References</b></em>' reference list. The
+     * list contents are of type
+     * {@link org.eclipse.sirius.tests.sample.component.Component}. <!--
+     * begin-user-doc -->
      * <p>
      * If the meaning of the '<em>References</em>' reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>References</em>' reference list.
      * @see org.eclipse.sirius.tests.sample.component.ComponentPackage#getComponent_References()
      * @model
      * @generated
      */
     EList<Component> getReferences();
+
+    /**
+     * Returns the value of the '<em><b>Reference</b></em>' reference. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Reference</em>' reference isn't clear, there
+     * really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Reference</em>' reference.
+     * @see #setReference(Component)
+     * @see org.eclipse.sirius.tests.sample.component.ComponentPackage#getComponent_Reference()
+     * @model
+     * @generated
+     */
+    Component getReference();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getReference
+     * <em>Reference</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Reference</em>' reference.
+     * @see #getReference()
+     * @generated
+     */
+    void setReference(Component value);
 
 } // Component

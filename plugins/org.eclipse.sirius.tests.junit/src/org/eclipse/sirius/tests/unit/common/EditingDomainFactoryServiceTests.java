@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
-import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
+import org.eclipse.sirius.business.internal.resource.parser.AirDCrossReferenceAdapterImpl;
 import org.eclipse.sirius.common.tools.api.editing.DefaultEditingDomainFactory;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryDescriptor;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryRegistry;
@@ -137,7 +137,7 @@ public class EditingDomainFactoryServiceTests {
     }
 
     private void assertExpectedAirdCrossReferencerAdapterNumber(SharedTestEditingDomainFactory sharedEditingDomainFactory, int expected) {
-        assertEquals(expected, Iterables.size(Iterables.filter(sharedEditingDomainFactory.sharedDomain.getResourceSet().eAdapters(), AirDCrossReferenceAdapter.class)));
+    assertEquals(expected, Iterables.size(Iterables.filter(sharedEditingDomainFactory.sharedDomain.getResourceSet().eAdapters(), AirDCrossReferenceAdapterImpl.class)));
     }
 
     @After

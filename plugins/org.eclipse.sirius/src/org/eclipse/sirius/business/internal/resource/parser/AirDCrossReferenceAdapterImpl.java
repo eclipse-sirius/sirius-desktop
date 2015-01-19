@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 
 /**
  * This class overrides CrossReferenceAdapter to have it installed only on the
@@ -22,12 +23,12 @@ import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
  * 
  * @author smonnier
  */
-public class AirDCrossReferenceAdapterImpl extends CrossReferenceAdapter implements AirDCrossReferenceAdapter {
-    boolean resolve = true;
+public class AirDCrossReferenceAdapterImpl extends CrossReferenceAdapter implements SiriusCrossReferenceAdapter, AirDCrossReferenceAdapter {
+    boolean resolveProxy = true;
 
     /**
-     * Overridden to have this {@link AirDCrossReferenceAdapter} installed only
-     * on aird resource.
+     * Overridden to have this {@link SiriusCrossReferenceAdapter} installed
+     * only on aird resource.
      * 
      * @param notifier
      *            a model element of the ResourceSet
@@ -44,39 +45,20 @@ public class AirDCrossReferenceAdapterImpl extends CrossReferenceAdapter impleme
     }
 
     @Override
-    public boolean isAdapterForType(Object type) {
-        return type == AirDCrossReferenceAdapter.class;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter#resolve()
-     */
-    @Override
     protected boolean resolve() {
-        if (resolve) {
+        if (resolveProxy) {
             return super.resolve();
         }
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter#disableResolve()
-     */
-    public void disableResolve() {
-        resolve = false;
-
+    @Override
+    public void disableResolveProxy() {
+        resolveProxy = false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter#enableResolve()
-     */
-    public void enableResolve() {
-        resolve = true;
+    @Override
+    public void enableResolveProxy() {
+        resolveProxy = true;
     }
 }

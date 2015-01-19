@@ -192,7 +192,9 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
         RunnableWithResult<?> reload = new RunnableWithResult.Impl<Object>() {
             @Override
             public void run() {
+                session.disableCrossReferencerResolve(resource);
                 resource.unload();
+                session.enableCrossReferencerResolve(resource);
                 try {
                     resource.load(Collections.EMPTY_MAP);
                     EcoreUtil.resolveAll(resource);

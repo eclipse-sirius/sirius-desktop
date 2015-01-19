@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -47,7 +47,6 @@ import org.eclipse.emf.transaction.util.ValidateEditSupport;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -66,9 +65,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelectorServic
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
-import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
-import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater;
 import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
@@ -81,7 +78,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStat
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -304,48 +301,22 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void disableAndRemoveECrossReferenceAdapters() {
         ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
-        // Disable resolution of proxy for AirDCrossReferenceAdapter of
-        // session and for semanticCrossReferencer during the closing
-        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
-        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
-        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
-            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
-            airDCrossReferenceAdapter.disableResolve();
-            resourceSet.eAdapters().remove(airDCrossReferenceAdapter);
+
+        // disable ResolveProxy capability
+        for (Resource resource : resourceSet.getResources()) {
+            disableCrossReferencerResolve(resource);
         }
-        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
-            ((LazyCrossReferencer) getSemanticCrossReferencer()).disableResolve();
+
+        // clear adapters on resourceSet and contained resources
+        resourceSet.eAdapters().clear();
+        for (Resource resource : resourceSet.getResources()) {
+            resource.eAdapters().clear();
         }
-        // Let's clear the cross referencer if it's still there.
-        for (final Resource res : getSemanticResources()) {
-            unregisterResourceInCrossReferencer(res);
-        }
+
         for (final DAnalysis analysis : Iterables.filter(allAnalyses(), Predicates.notNull())) {
             removeAdaptersOnAnalysis(analysis);
-            Resource analysisResource = analysis.eResource();
-            if (analysisResource != null) {
-                unregisterResourceInCrossReferencer(analysisResource);
             }
         }
-        Iterable<Resource> resources = Lists.newArrayList(resourceSet.getResources());
-        for (Resource resource : Iterables.filter(resources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, false))) {
-            unregisterResourceInCrossReferencer(resource);
-        }
-    }
-
-    /**
-     * Enable all ECrossReferencerAdapter adapters before the end of closing.
-     */
-    protected void reenableECrossReferenceAdaptersBeforeEndOfClosing() {
-        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
-        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
-        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
-            ((AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter).enableResolve();
-        }
-        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
-            ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
-        }
-    }
 
     // *******************
     // Analyses
@@ -684,7 +655,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         unregisterResourceInCrossReferencer(res);
         if (!isFromPackageRegistry(set, res)) {
+            disableCrossReferencerResolve(res);
             res.unload();
+            enableCrossReferencerResolve(res);
         }
         set.getResources().remove(res);
     }
@@ -912,6 +885,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return the custom saving policy the session should use
      */
+    @Override
     public SavingPolicy getSavingPolicy() {
         return savingPolicy != null ? savingPolicy : new IsModifiedSavingPolicy(transactionalEditingDomain);
     }
@@ -1350,7 +1324,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (semanticResources != null) {
             semanticResources.clear();
         }
-        reenableECrossReferenceAdaptersBeforeEndOfClosing();
         crossReferencer = null;
         saver.dispose();
 
@@ -1363,6 +1336,44 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         services = null;
         sessionResource = null;
         mainDAnalysis = null;
+    }
+
+    /**
+     * Disable {@link SiriusCrossReferenceAdapter} resolveProxy capability on
+     * resource and all its contents
+     * 
+     * @param resource
+     *            the resource
+     */
+    void disableCrossReferencerResolve(Resource resource) {
+        // Disable resolveProxy for SiriusCrossreferencerAdapter.
+        // SiriusCrossreferencerAdapter on EObject are also on resource,
+        // consequently we manage only the resource itself.
+        for (Iterator<Adapter> iterator = resource.eAdapters().iterator(); iterator.hasNext(); ) {
+            Adapter next = iterator.next();
+            if (next instanceof SiriusCrossReferenceAdapter) {
+                ((SiriusCrossReferenceAdapter) next).disableResolveProxy();
+            }
+        }
+    }
+
+    /**
+     * Enable {@link SiriusCrossReferenceAdapter} resolveProxy capability on
+     * resource and all its contents
+     * 
+     * @param resource
+     *            the resource
+     */
+    void enableCrossReferencerResolve(Resource resource) {
+        // Enable resolveProxy for SiriusCrossreferencerAdapter.
+        // SiriusCrossreferencerAdapter on EObject are also on resource,
+        // consequently we manage only the resource itself.
+        for (Iterator<Adapter> iterator = resource.eAdapters().iterator(); iterator.hasNext(); ) {
+            Adapter next = iterator.next();
+            if (next instanceof SiriusCrossReferenceAdapter) {
+                ((SiriusCrossReferenceAdapter) next).enableResolveProxy();
+            }
+        }
     }
 
     private static void flushOperations(TransactionalEditingDomain ted) {

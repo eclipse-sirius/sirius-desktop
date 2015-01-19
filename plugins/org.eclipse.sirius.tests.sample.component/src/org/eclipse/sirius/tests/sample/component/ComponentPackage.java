@@ -16,58 +16,56 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Package</b> for the model.
- * It contains accessors for the meta objects to represent
+ * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
+ * accessors for the meta objects to represent
  * <ul>
- *   <li>each class,</li>
- *   <li>each feature of each class,</li>
- *   <li>each operation of each class,</li>
- *   <li>each enum,</li>
- *   <li>and each data type</li>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each operation of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ * 
  * @see org.eclipse.sirius.tests.sample.component.ComponentFactory
  * @model kind="package"
  * @generated
  */
 public interface ComponentPackage extends EPackage {
     /**
-     * The package name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     String eNAME = "component";
 
     /**
-     * The package namespace URI.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/sample/component";
 
     /**
-     * The package namespace name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     String eNS_PREFIX = "component";
 
     /**
-     * The singleton instance of the package.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The singleton instance of the package. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     ComponentPackage eINSTANCE = org.eclipse.sirius.tests.sample.component.impl.ComponentPackageImpl.init();
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl <em>Component</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl
+     * <em>Component</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.tests.sample.component.impl.ComponentImpl
      * @see org.eclipse.sirius.tests.sample.component.impl.ComponentPackageImpl#getComponent()
      * @generated
@@ -75,64 +73,73 @@ public interface ComponentPackage extends EPackage {
     int COMPONENT = 0;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int COMPONENT__NAME = 0;
 
     /**
-     * The feature id for the '<em><b>Payload</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The feature id for the '<em><b>Payload</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int COMPONENT__PAYLOAD = 1;
 
     /**
-     * The feature id for the '<em><b>Children</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The feature id for the '<em><b>Children</b></em>' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int COMPONENT__CHILDREN = 2;
 
     /**
-     * The feature id for the '<em><b>References</b></em>' reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The feature id for the '<em><b>References</b></em>' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int COMPONENT__REFERENCES = 3;
 
     /**
-     * The number of structural features of the '<em>Component</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The feature id for the '<em><b>Reference</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
-    int COMPONENT_FEATURE_COUNT = 4;
+    int COMPONENT__REFERENCE = 4;
 
     /**
-     * The number of operations of the '<em>Component</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The number of structural features of the '<em>Component</em>' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int COMPONENT_FEATURE_COUNT = 5;
+
+    /**
+     * The number of operations of the '<em>Component</em>' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int COMPONENT_OPERATION_COUNT = 0;
 
-
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.tests.sample.component.Component <em>Component</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.tests.sample.component.Component
+     * <em>Component</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Component</em>'.
      * @see org.eclipse.sirius.tests.sample.component.Component
      * @generated
@@ -140,9 +147,10 @@ public interface ComponentPackage extends EPackage {
     EClass getComponent();
 
     /**
-     * Returns the meta object for the attribute '{@link org.eclipse.sirius.tests.sample.component.Component#getName <em>Name</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getName
+     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.tests.sample.component.Component#getName()
      * @see #getComponent()
@@ -151,9 +159,10 @@ public interface ComponentPackage extends EPackage {
     EAttribute getComponent_Name();
 
     /**
-     * Returns the meta object for the attribute '{@link org.eclipse.sirius.tests.sample.component.Component#isPayload <em>Payload</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#isPayload
+     * <em>Payload</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the attribute '<em>Payload</em>'.
      * @see org.eclipse.sirius.tests.sample.component.Component#isPayload()
      * @see #getComponent()
@@ -162,10 +171,12 @@ public interface ComponentPackage extends EPackage {
     EAttribute getComponent_Payload();
 
     /**
-     * Returns the meta object for the containment reference list '{@link org.eclipse.sirius.tests.sample.component.Component#getChildren <em>Children</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the containment reference list '<em>Children</em>'.
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getChildren
+     * <em>Children</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference list '
+     *         <em>Children</em>'.
      * @see org.eclipse.sirius.tests.sample.component.Component#getChildren()
      * @see #getComponent()
      * @generated
@@ -173,9 +184,10 @@ public interface ComponentPackage extends EPackage {
     EReference getComponent_Children();
 
     /**
-     * Returns the meta object for the reference list '{@link org.eclipse.sirius.tests.sample.component.Component#getReferences <em>References</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getReferences
+     * <em>References</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the reference list '<em>References</em>'.
      * @see org.eclipse.sirius.tests.sample.component.Component#getReferences()
      * @see #getComponent()
@@ -184,32 +196,47 @@ public interface ComponentPackage extends EPackage {
     EReference getComponent_References();
 
     /**
-     * Returns the factory that creates the instances of the model.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getReference
+     * <em>Reference</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Reference</em>'.
+     * @see org.eclipse.sirius.tests.sample.component.Component#getReference()
+     * @see #getComponent()
+     * @generated
+     */
+    EReference getComponent_Reference();
+
+    /**
+     * Returns the factory that creates the instances of the model. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the factory that creates the instances of the model.
      * @generated
      */
     ComponentFactory getComponentFactory();
 
     /**
-     * <!-- begin-user-doc -->
-     * Defines literals for the meta objects that represent
+     * <!-- begin-user-doc --> Defines literals for the meta objects that
+     * represent
      * <ul>
-     *   <li>each class,</li>
-     *   <li>each feature of each class,</li>
-     *   <li>each operation of each class,</li>
-     *   <li>each enum,</li>
-     *   <li>and each data type</li>
+     * <li>each class,</li>
+     * <li>each feature of each class,</li>
+     * <li>each operation of each class,</li>
+     * <li>each enum,</li>
+     * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     interface Literals {
         /**
-         * The meta object literal for the '{@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl <em>Component</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl
+         * <em>Component</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+         * -->
+         * 
          * @see org.eclipse.sirius.tests.sample.component.impl.ComponentImpl
          * @see org.eclipse.sirius.tests.sample.component.impl.ComponentPackageImpl#getComponent()
          * @generated
@@ -217,37 +244,46 @@ public interface ComponentPackage extends EPackage {
         EClass COMPONENT = eINSTANCE.getComponent();
 
         /**
-         * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Name</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EAttribute COMPONENT__NAME = eINSTANCE.getComponent_Name();
 
         /**
-         * The meta object literal for the '<em><b>Payload</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Payload</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EAttribute COMPONENT__PAYLOAD = eINSTANCE.getComponent_Payload();
 
         /**
-         * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Children</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EReference COMPONENT__CHILDREN = eINSTANCE.getComponent_Children();
 
         /**
-         * The meta object literal for the '<em><b>References</b></em>' reference list feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>References</b></em>'
+         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference COMPONENT__REFERENCES = eINSTANCE.getComponent_References();
 
+        /**
+         * The meta object literal for the '<em><b>Reference</b></em>' reference
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference COMPONENT__REFERENCE = eINSTANCE.getComponent_Reference();
+
     }
 
-} //ComponentPackage
+} // ComponentPackage

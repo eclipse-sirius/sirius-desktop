@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,11 +40,10 @@ import com.google.common.collect.Iterables;
  * @author mchauvin
  */
 public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapability {
-    private boolean resolveEnabled = true;
-
-    private boolean initialized;
-
-    private ECrossReferenceAdapterWithUnproxyCapability adapter = new InternalCrossReferencer();
+    /**
+     * Flag to know if the LazyCrossReferencer has been initialized.
+     */
+    protected boolean initialized;
 
     /**
      * Subclasses should override, and call super.initialize().
@@ -53,151 +52,87 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
         initialized = true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#dump()
-     */
     @Override
     public void dump() {
         if (!initialized) {
             initialize();
         }
-        adapter.dump();
+        super.dump();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#getInverseReferences(org.eclipse.emf.ecore.EObject,
-     *      boolean)
-     */
     @Override
     public Collection<Setting> getInverseReferences(final EObject object, final boolean resolve) {
         if (!initialized) {
             initialize();
         }
-        return adapter.getInverseReferences(object, resolve);
+        return super.getInverseReferences(object, resolve);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#getInverseReferences(org.eclipse.emf.ecore.EObject)
-     */
     @Override
     public Collection<Setting> getInverseReferences(final EObject object) {
         if (!initialized) {
             initialize();
         }
-        return adapter.getInverseReferences(object);
+        return super.getInverseReferences(object);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#getNonNavigableInverseReferences(org.eclipse.emf.ecore.EObject,
-     *      boolean)
-     */
     @Override
     public Collection<Setting> getNonNavigableInverseReferences(final EObject object, final boolean resolve) {
         if (!initialized) {
             initialize();
         }
-        return adapter.getNonNavigableInverseReferences(object, resolve);
+        return super.getNonNavigableInverseReferences(object, resolve);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#getNonNavigableInverseReferences(org.eclipse.emf.ecore.EObject)
-     */
     @Override
     public Collection<Setting> getNonNavigableInverseReferences(final EObject object) {
         if (!initialized) {
             initialize();
         }
-        return adapter.getNonNavigableInverseReferences(object);
+        return super.getNonNavigableInverseReferences(object);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#getTarget()
-     */
     @Override
     public Notifier getTarget() {
         if (!initialized) {
             initialize();
         }
-        return adapter.getTarget();
+        return super.getTarget();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#isAdapterForType(java.lang.Object)
-     */
     @Override
     public boolean isAdapterForType(final Object type) {
         if (!initialized) {
             initialize();
         }
-        return adapter.isAdapterForType(type);
+        return super.isAdapterForType(type);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
-     */
     @Override
     public void notifyChanged(final Notification notification) {
         if (!initialized) {
             initialize();
         }
-        adapter.notifyChanged(notification);
+        super.notifyChanged(notification);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#setTarget(org.eclipse.emf.common.notify.Notifier)
-     */
     @Override
     public void setTarget(final Notifier target) {
         if (!initialized) {
             initialize();
         }
-        adapter.setTarget(target);
+        super.setTarget(target);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#unsetTarget(org.eclipse.emf.common.notify.Notifier)
-     */
     @Override
     public void unsetTarget(final Notifier target) {
         if (!initialized) {
             initialize();
         }
-        adapter.unsetTarget(target);
+        super.unsetTarget(target);
     }
 
-    /**
-     * Disable the resolution of the proxy.
-     */
-    public void disableResolve() {
-        resolveEnabled = false;
-    }
 
-    /**
-     * Enable the resolution of the proxy.
-     */
-    public void enableResolve() {
-        resolveEnabled = true;
-    }
 
     /**
      * Look at all EObjects of this resource and resolve proxy cross reference
@@ -207,67 +142,50 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
      *            Each cross reference pointing to a proxy of this
      *            <code>resource</code> will be resolved.
      */
+    @Override
     public void resolveProxyCrossReferences(Resource resource) {
         if (initialized) {
             // The resolution of proxy is called only is the cross-referencer
             // has already been initialized.
-            adapter.resolveProxyCrossReferences(resource);
+            super.resolveProxyCrossReferences(resource);
         }
     }
 
+    @Override
+    protected void handleContainment(Notification notification) {
+        deregisterDeletedElements(notification);
+
+        super.handleContainment(notification);
+    }
+
     /**
-     * @see LazyCrossReferencer. This class is the delegated adapter.
+     * This method removes the current cross referencer adapter from adapters of
+     * removed elements. The removeAdapter method propagate the removal to all
+     * contents of its parameter.
+     * 
+     * @param notification
+     *            a containment notification
      */
-    private class InternalCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapability {
+    protected void deregisterDeletedElements(Notification notification) {
+        switch (notification.getEventType()) {
 
-        /**
-         * {@inheritDoc}
-         */
-        protected boolean resolve() {
-            if (resolveEnabled) {
-                return super.resolve();
+        case Notification.UNSET:
+        case Notification.SET:
+        case Notification.REMOVE:
+            Object oldValue = notification.getOldValue();
+            if (oldValue instanceof Notifier) {
+                removeAdapter((Notifier) oldValue);
             }
-            return false;
-        };
+            break;
 
-        /**
-         * {@inheritDoc}
-         */
-        protected void handleContainment(Notification notification) {
-            deregisterDeletedElements(notification);
-
-            super.handleContainment(notification);
-        }
-
-        /**
-         * This method removes the current cross referencer adapter from
-         * adapters of removed elements. The removeAdapter method propagate the
-         * removal to all contents of its parameter.
-         * 
-         * @param notification
-         *            a containment notification
-         */
-        private void deregisterDeletedElements(Notification notification) {
-            switch (notification.getEventType()) {
-
-            case Notification.UNSET:
-            case Notification.SET:
-            case Notification.REMOVE:
-                Object oldValue = notification.getOldValue();
-                if (oldValue instanceof Notifier) {
-                    removeAdapter((Notifier) oldValue);
-                }
-                break;
-
-            case Notification.REMOVE_MANY:
-                for (Notifier oldVal : Iterables.filter((Collection<?>) notification.getOldValue(), Notifier.class)) {
-                    removeAdapter(oldVal);
-                }
-                break;
-
-            default:
-                break;
+        case Notification.REMOVE_MANY:
+            for (Notifier oldVal : Iterables.filter((Collection<?>) notification.getOldValue(), Notifier.class)) {
+                removeAdapter(oldVal);
             }
+            break;
+
+        default:
+            break;
         }
-    };
+    }
 }

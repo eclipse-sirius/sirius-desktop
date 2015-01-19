@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
+import org.eclipse.sirius.business.internal.resource.parser.AirDCrossReferenceAdapterImpl;
 import org.eclipse.sirius.business.internal.resource.parser.AirDResourceImpl;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -80,8 +80,9 @@ public class AirDCrossReferenceAdapterTest extends SiriusDiagramTestCase impleme
     private boolean shouldContainAirDCrossReferencer(Resource resource) {
         return Iterables.any(resource.eAdapters(), new Predicate<Adapter>() {
 
+            @Override
             public boolean apply(Adapter input) {
-                return input instanceof AirDCrossReferenceAdapter;
+        return input instanceof AirDCrossReferenceAdapterImpl;
             }
         });
     }
