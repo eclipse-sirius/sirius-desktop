@@ -42,7 +42,7 @@ The _Ordered Tree Layout_ enables one to lay out nodes as an ordered tree. The m
 
 NOTE: these layout algorithms manage only nodes connected by edges, other nodes are layouted from left to right as usual.
 
-If you need to go beyond that, you can provide your own layout algorithm programmatically (see the "developer documentation":../../developer/Sirius20Developer%20Manual.html for details).
+If you need to go beyond that, you can provide your own layout algorithm programmatically (see the "developer documentation":../../developer/Sirius%20Developer%20Manual.html for details).
 
 h2(#layers_graphical_elements). Layers and Graphical Elements
 
