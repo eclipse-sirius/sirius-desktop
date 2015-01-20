@@ -143,6 +143,9 @@ public class DNodeListCreationTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void testDNodeListCreationInDiagramWithoutScroll(ZoomLevel zoomLevel) {
         editor.zoom(zoomLevel);
+        // Go to the origin to avoid scroll bar
+        editor.scrollTo(0, 0);
+        SWTBotUtils.waitAllUiEvents();
         // Get the insertion location for the DNodeList to create
         Point location = new Point(2, 2);
         createDNodeList(location.getScaled(zoomLevel.getAmount()).x, location.getScaled(zoomLevel.getAmount()).y);

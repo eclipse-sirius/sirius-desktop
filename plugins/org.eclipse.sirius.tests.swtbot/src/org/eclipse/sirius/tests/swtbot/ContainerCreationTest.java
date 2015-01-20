@@ -139,6 +139,9 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void testContainerCreationInDiagramWithoutScroll(ZoomLevel zoomLevel) {
         editor.zoom(zoomLevel);
+        // Go to the origin to avoid scroll bar
+        editor.scrollTo(0, 0);
+        SWTBotUtils.waitAllUiEvents();
         // Get the insertion location for the Container to create
         Point location = new Point(2, 2);
         createContainer(location.getScaled(zoomLevel.getAmount()).x, location.getScaled(zoomLevel.getAmount()).y);
