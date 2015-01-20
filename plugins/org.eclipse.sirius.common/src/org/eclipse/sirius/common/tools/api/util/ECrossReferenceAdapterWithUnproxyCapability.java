@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.tools.api.util;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -19,6 +20,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * {@link ECrossReferenceAdapter} that provides the capability to resolve all
@@ -40,6 +45,49 @@ public class ECrossReferenceAdapterWithUnproxyCapability extends ECrossReference
         @Override
         protected List<EObject> removeProxies(URI uri) {
             return super.removeProxies(uri);
+        }
+
+        /**
+         * Check if the proxyMap is null or not. Since change in
+         * ECrossReferenceAdapter (bugzilla 400891), the proxyMap is no longer
+         * used if the resolve() method returns true. In this case, we must
+         * iterate on all crossReferences to retrieve corresponding proxies.
+         * 
+         * @return
+         */
+        public boolean isNullMapProxy() {
+            return proxyMap == null;
+        }
+
+        /**
+         * Get all proxy {@link EObject EObjects} that have URI corresponding to
+         * the <code>resourceURI</code>. Warning: this map is computed at each
+         * call and can be costly.
+         * 
+         * @param resourceURI
+         *            The URI of the resource for which we want to get the proxy
+         *            EObjects.
+         * @return map of proxies with the URI as key.
+         */
+        public Map<URI, List<EObject>> getProxiesOf(URI resourceURI) {
+            Map<URI, List<EObject>> result = Maps.newHashMap();
+            if (resourceURI != null) {
+                for (Iterator<EObject> iterator = keySet().iterator(); iterator.hasNext(); /* */) {
+                    EObject eObject = iterator.next();
+                    if (eObject.eIsProxy()) {
+                        URI keyURI = EcoreUtil.getURI(eObject);
+                        if (resourceURI.equals(keyURI.trimFragment())) {
+                            List<EObject> correspondingEObjects = result.get(keyURI);
+                            if (correspondingEObjects == null) {
+                                correspondingEObjects = Lists.newArrayList();
+                            }
+                            correspondingEObjects.add(eObject);
+                            result.put(keyURI, correspondingEObjects);
+                        }
+                    }
+                }
+            }
+            return result;
         }
     }
 
@@ -71,24 +119,73 @@ public class ECrossReferenceAdapterWithUnproxyCapability extends ECrossReference
                 }
             }
             final Iterator<EObject> it = resource.getAllContents();
-            while (it.hasNext()) {
-                EObject eObject = it.next();
-                URI eObjectURI;
-                if (resourceURI != null) {
-                    eObjectURI = resourceURI.appendFragment(resource.getURIFragment(eObject));
-                } else {
-                    eObjectURI = URI.createHierarchicalURI(null, null, resource.getURIFragment(eObject));
+            // Since change in ECrossReferenceAdapter (bugzilla 400891),
+            // the proxyMap is no longer used if the resolve() method
+            // returns true. In this case, we must iterate on all
+            // crossReferences to retrieve corresponding proxies.
+            if (((LocalInverseCrossReferencer) inverseCrossReferencer).isNullMapProxy()) {
+                // Get proxies of this resource
+                Map<URI, List<EObject>> proxies = ((LocalInverseCrossReferencer) inverseCrossReferencer).getProxiesOf(resourceURI);
+                // Iterate on all EObject of the resource to find proxy cross
+                // references and resolve them.
+                while (it.hasNext()) {
+                    EObject eObject = it.next();
+                    URI eObjectURI = getURI(eObject, resource, resourceURI);
+                    resolveProxyCrossReferences(eObject, resource, proxies.get(eObjectURI));
                 }
-                List<EObject> proxies = ((LocalInverseCrossReferencer) inverseCrossReferencer).removeProxies(eObjectURI);
-                if (proxies != null) {
-                    for (int i = 0, size = proxies.size(); i < size; ++i) {
-                        EObject proxy = proxies.get(i);
-                        for (EStructuralFeature.Setting setting : getInverseReferences(proxy, false)) {
-                            resolveProxy(resource, eObject, proxy, setting);
-                        }
-                    }
+            } else {
+                // Code used for Juno
+                while (it.hasNext()) {
+                    EObject eObject = it.next();
+                    URI eObjectURI = getURI(eObject, resource, resourceURI);
+                    List<EObject> proxies = ((LocalInverseCrossReferencer) inverseCrossReferencer).removeProxies(eObjectURI);
+                    resolveProxyCrossReferences(eObject, resource, proxies);
                 }
             }
         }
     }
+
+    /**
+     * Get URI of this <code>eObject</code>.
+     * 
+     * @param eObject
+     *            Concerned {@link EObject}
+     * @param resource
+     *            Resource containing the <code>eObject</code>
+     * @param resourceURI
+     *            URI of <code>resource</code>
+     * 
+     * @return the URI of this <code>eObject</code>.
+     */
+    private URI getURI(EObject eObject, Resource resource, URI resourceURI) {
+        URI eObjectURI;
+        if (resourceURI != null) {
+            eObjectURI = resourceURI.appendFragment(resource.getURIFragment(eObject));
+        } else {
+            eObjectURI = URI.createHierarchicalURI(null, null, resource.getURIFragment(eObject));
+        }
+        return eObjectURI;
+    }
+
+    /**
+     * Resolve the proxy cross references of the current <code>eObject</code>.
+     * 
+     * @param eObject
+     *            Current EObject (not a proxy)
+     * @param resource
+     *            Resource containing the <code>eObject</code>
+     * @param proxies
+     *            Corresponding proxies of eObject
+     */
+    private void resolveProxyCrossReferences(EObject eObject, Resource resource, List<EObject> proxies) {
+        if (proxies != null) {
+            for (int i = 0, size = proxies.size(); i < size; ++i) {
+                EObject proxy = proxies.get(i);
+                for (EStructuralFeature.Setting setting : getInverseReferences(proxy, false)) {
+                    resolveProxy(resource, eObject, proxy, setting);
+                }
+            }
+        }
+    }
+
 }
