@@ -29,6 +29,7 @@ h4. Changes in @org.eclipse.sirius.common@
 
 * @org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability@ is a specific kind of ECrossReferenceAdapter. It provides the capability to resolve all proxy cross references to a given resource. It is now used by the Session as semantic cross referencer. This type is exposed as API but it is not intended to be used/referenced/extended by user code (as the below @LazyCrossReferencer@ type).
 * @org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer@ now extends @ECrossReferenceAdapterWithUnproxyCapability@ and implements @resolveProxyCrossReferences(Resource)@.
+* The static method @org.eclipse.sirius.common.tools.api.util.ReflectionHelper.getFieldValueWithoutException(Class<?>, String)@ has been added to return an internal static value of a class.   
 
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 

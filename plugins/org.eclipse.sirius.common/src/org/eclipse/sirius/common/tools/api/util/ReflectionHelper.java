@@ -347,19 +347,45 @@ public final class ReflectionHelper {
     }
 
     /**
-     * Get the value of a field of a class (even if this field is protected).
+     * Get the instance value of a field of a class (even if this field is
+     * protected).
      * 
      * @param instance
      *            The instance class.
      * @param fieldName
      *            The name of the field
-     * @return true if the field is set, false otherwise
+     * @return instance value of the field or an empty option if the field does
+     *         not exist.
      */
     public static Option<Object> getFieldValueWithoutException(Object instance, String fieldName) {
         Option<Field> field = ReflectionHelper.setFieldVisibleWithoutException(instance.getClass(), fieldName);
         if (field.some()) {
             try {
                 return Options.newSome(field.get().get(instance));
+            } catch (IllegalArgumentException e) {
+                // Do nothing
+            } catch (IllegalAccessException e) {
+                // Do nothing
+            }
+        }
+        return Options.newNone();
+    }
+
+    /**
+     * Get the value of a field of a class (even if this field is protected).
+     * 
+     * @param klass
+     *            The class.
+     * @param fieldName
+     *            The name of the field
+     * @return class static value of the field or an empty option if the field
+     *         does not exist.
+     */
+    public static Option<Object> getFieldValueWithoutException(Class<? extends Object> klass, String fieldName) {
+        Option<Field> field = ReflectionHelper.setFieldVisibleWithoutException(klass, fieldName);
+        if (field.some()) {
+            try {
+                return Options.newSome(field.get().get(null));
             } catch (IllegalArgumentException e) {
                 // Do nothing
             } catch (IllegalAccessException e) {
