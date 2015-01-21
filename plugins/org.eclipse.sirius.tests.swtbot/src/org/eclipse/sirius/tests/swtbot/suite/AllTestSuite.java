@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -125,6 +125,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LayoutingModeTest.class);
         suite.addTestSuite(LabelSelectionTest.class);
         suite.addTestSuite(KeyboardDeleteFromDiagramTests.class);
+        suite.addTestSuite(CustomClipboardSupportTest.class);
+        suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
     }
 
     /**
@@ -165,6 +167,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(PopupMenuTest.class);
         suite.addTestSuite(NodeCreationTest.class);
         suite.addTestSuite(NodeCreationWithSnapToGridTest.class);
+        suite.addTestSuite(GenericClipboardSupportTest.class);
+        suite.addTestSuite(MultiSessionCopyPasteTest.class);
     }
 
     /**
@@ -214,7 +218,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(HideRevealDiagramElementsLabelsTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTestWithOldUI.class);
         suite.addTestSuite(HideLabelIconsWithPreferencesTest.class);
-        suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
         suite.addTestSuite(LabelFontModificationsTest.class);
         suite.addTestSuite(MultiLineLabelDiagramTest.class);
         suite.addTestSuite(NodeCreationPositionTest.class);
@@ -290,9 +293,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RemovedDefaultColorMenuTest.class);
         suite.addTestSuite(DuplicationCausedBySelectionTest.class);
         suite.addTestSuite(EdgeWithMultipleLabelsTest.class);
-        suite.addTestSuite(GenericClipboardSupportTest.class);
-        suite.addTestSuite(CustomClipboardSupportTest.class);
-        suite.addTestSuite(MultiSessionCopyPasteTest.class);
         // This test is KO if the cdonative plugins are active (VP-4101), so
         // launch it only when cdonative plugins are not active.
         try {
