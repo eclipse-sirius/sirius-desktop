@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.common.proposalProvider">
+      <proposalProvider
+            class="org.eclipse.sirius.common.acceleo.aql.ide.proposal.AQLProposalProvider"
+            interpreter="org.eclipse.sirius.common.acceleo.aql.AcceleoAQLInterpreter">
+      </proposalProvider>
+   </extension>
+
+</plugin>
