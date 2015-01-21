@@ -17,7 +17,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  *
  * @generated
  */
-public class LabelBorderStylesImpl extends EObjectImpl implements LabelBorderStyles {
+public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implements LabelBorderStyles {
     /**
      * The cached value of the '{@link #getLabelBorderStyleDescriptions()
      * <em>Label Border Style Descriptions</em>}' containment reference list.

@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
  *
  * @generated
  */
-public class UserColorsPaletteImpl extends EObjectImpl implements UserColorsPalette {
+public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implements UserColorsPalette {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

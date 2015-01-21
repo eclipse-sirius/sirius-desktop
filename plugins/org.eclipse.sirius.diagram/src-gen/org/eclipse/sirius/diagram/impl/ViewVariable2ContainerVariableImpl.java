@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * @generated
  */
-public class ViewVariable2ContainerVariableImpl extends EObjectImpl implements BasicEMap.Entry<EObject, EMap<EObject, StyleDescription>> {
+public class ViewVariable2ContainerVariableImpl extends MinimalEObjectImpl.Container implements BasicEMap.Entry<EObject, EMap<EObject, StyleDescription>> {
     /**
      * The cached value of the '{@link #getTypedKey() <em>Key</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

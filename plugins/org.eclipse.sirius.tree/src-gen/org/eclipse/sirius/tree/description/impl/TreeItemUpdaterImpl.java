@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
@@ -35,7 +35,7 @@ import org.eclipse.sirius.tree.description.TreeItemUpdater;
  *
  * @generated
  */
-public class TreeItemUpdaterImpl extends EObjectImpl implements TreeItemUpdater {
+public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements TreeItemUpdater {
     /**
      * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->

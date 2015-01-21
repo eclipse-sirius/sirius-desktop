@@ -17,7 +17,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.Customization;
@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
  *
  * @generated
  */
-public class CustomizationImpl extends EObjectImpl implements Customization {
+public class CustomizationImpl extends MinimalEObjectImpl.Container implements Customization {
     /**
      * The cached value of the '{@link #getVsmElementCustomizations()
      * <em>Vsm Element Customizations</em>}' containment reference list. <!--

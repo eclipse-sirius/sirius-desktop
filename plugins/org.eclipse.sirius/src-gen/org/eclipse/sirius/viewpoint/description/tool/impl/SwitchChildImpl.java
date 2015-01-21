@@ -17,7 +17,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public abstract class SwitchChildImpl extends EObjectImpl implements SwitchChild {
+public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container implements SwitchChild {
     /**
      * The cached value of the '{@link #getSubModelOperations()
      * <em>Sub Model Operations</em>}' containment reference list. <!--

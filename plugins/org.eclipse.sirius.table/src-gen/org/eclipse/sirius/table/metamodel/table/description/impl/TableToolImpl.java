@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  *
  * @generated
  */
-public class TableToolImpl extends EObjectImpl implements TableTool {
+public class TableToolImpl extends MinimalEObjectImpl.Container implements TableTool {
     /**
      * The cached value of the '{@link #getVariables() <em>Variables</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->

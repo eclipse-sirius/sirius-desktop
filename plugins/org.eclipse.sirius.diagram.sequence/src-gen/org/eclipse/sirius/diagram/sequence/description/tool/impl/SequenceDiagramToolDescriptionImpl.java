@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.description.tool.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 
@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  *
  * @generated
  */
-public class SequenceDiagramToolDescriptionImpl extends EObjectImpl implements SequenceDiagramToolDescription {
+public class SequenceDiagramToolDescriptionImpl extends MinimalEObjectImpl.Container implements SequenceDiagramToolDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

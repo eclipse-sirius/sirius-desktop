@@ -11,7 +11,7 @@
 package org.eclipse.sirius.tree.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreePackage;
@@ -24,7 +24,7 @@ import org.eclipse.sirius.tree.TreePackage;
  *
  * @generated
  */
-public class DTreeElementSynchronizerImpl extends EObjectImpl implements DTreeElementSynchronizer {
+public class DTreeElementSynchronizerImpl extends MinimalEObjectImpl.Container implements DTreeElementSynchronizer {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

@@ -16,7 +16,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class InitialOperationImpl extends EObjectImpl implements InitialOperation {
+public class InitialOperationImpl extends MinimalEObjectImpl.Container implements InitialOperation {
     /**
      * The cached value of the '{@link #getFirstModelOperations()
      * <em>First Model Operations</em>}' containment reference. <!--

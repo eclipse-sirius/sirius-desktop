@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 
@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
  *
  * @generated
  */
-public abstract class EndUserDocumentedElementImpl extends EObjectImpl implements EndUserDocumentedElement {
+public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Container implements EndUserDocumentedElement {
     /**
      * The default value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--

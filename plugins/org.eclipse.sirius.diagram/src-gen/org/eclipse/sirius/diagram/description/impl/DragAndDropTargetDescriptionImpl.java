@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  *
  * @generated
  */
-public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl implements DragAndDropTargetDescription {
+public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImpl.Container implements DragAndDropTargetDescription {
     /**
      * The cached value of the '{@link #getDropDescriptions()
      * <em>Drop Descriptions</em>}' reference list. <!-- begin-user-doc --> <!--

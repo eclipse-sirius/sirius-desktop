@@ -13,7 +13,7 @@ package org.eclipse.sirius.viewpoint.description.audit.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
 import org.eclipse.sirius.viewpoint.description.audit.InformationSection;
 
@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.audit.InformationSection;
  *
  * @generated
  */
-public abstract class InformationSectionImpl extends EObjectImpl implements InformationSection {
+public abstract class InformationSectionImpl extends MinimalEObjectImpl.Container implements InformationSection {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

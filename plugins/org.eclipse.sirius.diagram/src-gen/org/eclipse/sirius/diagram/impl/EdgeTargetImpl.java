@@ -17,7 +17,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.DEdge;
@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.EdgeTarget;
  *
  * @generated
  */
-public abstract class EdgeTargetImpl extends EObjectImpl implements EdgeTarget {
+public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implements EdgeTarget {
     /**
      * The cached value of the '{@link #getOutgoingEdges()
      * <em>Outgoing Edges</em>}' reference list. <!-- begin-user-doc --> <!--

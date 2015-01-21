@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  *
  * @generated
  */
-public abstract class AbstractMappingImportImpl extends EObjectImpl implements AbstractMappingImport {
+public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Container implements AbstractMappingImport {
     /**
      * The default value of the '{@link #isHideSubMappings()
      * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--

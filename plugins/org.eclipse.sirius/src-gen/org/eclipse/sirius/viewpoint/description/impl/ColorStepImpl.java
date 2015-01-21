@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.ColorStep;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
  *
  * @generated
  */
-public class ColorStepImpl extends EObjectImpl implements ColorStep {
+public class ColorStepImpl extends MinimalEObjectImpl.Container implements ColorStep {
     /**
      * The default value of the '{@link #getAssociatedValue()
      * <em>Associated Value</em>}' attribute. <!-- begin-user-doc --> <!--

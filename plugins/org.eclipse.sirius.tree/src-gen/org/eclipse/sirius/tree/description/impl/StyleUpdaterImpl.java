@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription;
@@ -43,7 +43,7 @@ import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
  *
  * @generated
  */
-public class StyleUpdaterImpl extends EObjectImpl implements StyleUpdater {
+public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements StyleUpdater {
     /**
      * The cached value of the '{@link #getDefaultStyle()
      * <em>Default Style</em>}' containment reference. <!-- begin-user-doc -->

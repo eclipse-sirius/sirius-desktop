@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  *
  * @generated
  */
-public class AnnotationEntryImpl extends EObjectImpl implements AnnotationEntry {
+public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements AnnotationEntry {
     /**
      * The default value of the '{@link #getSource() <em>Source</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

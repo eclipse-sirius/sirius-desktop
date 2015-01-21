@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 
@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.JavaExtension;
  *
  * @generated
  */
-public class JavaExtensionImpl extends EObjectImpl implements JavaExtension {
+public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements JavaExtension {
     /**
      * The default value of the '{@link #getQualifiedClassName()
      * <em>Qualified Class Name</em>}' attribute. <!-- begin-user-doc --> <!--

@@ -14,7 +14,7 @@ package org.eclipse.sirius.diagram.description.style.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 
@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  *
  * @generated
  */
-public abstract class RoundedCornerStyleDescriptionImpl extends EObjectImpl implements RoundedCornerStyleDescription {
+public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectImpl.Container implements RoundedCornerStyleDescription {
     /**
      * The default value of the '{@link #getArcWidth() <em>Arc Width</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

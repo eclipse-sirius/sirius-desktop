@@ -16,7 +16,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
  *
  * @generated
  */
-public class VSMElementCustomizationReuseImpl extends EObjectImpl implements VSMElementCustomizationReuse {
+public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Container implements VSMElementCustomizationReuse {
     /**
      * The cached value of the '{@link #getReuse() <em>Reuse</em>}' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -17,7 +17,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -38,7 +38,7 @@ import org.eclipse.sirius.diagram.FilterVariableValue;
  *
  * @generated
  */
-public class FilterVariableHistoryImpl extends EObjectImpl implements FilterVariableHistory {
+public class FilterVariableHistoryImpl extends MinimalEObjectImpl.Container implements FilterVariableHistory {
     /**
      * The cached value of the '{@link #getOwnedValues() <em>Owned Values</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->

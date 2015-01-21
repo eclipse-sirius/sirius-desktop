@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Position;
@@ -42,7 +42,7 @@ import org.eclipse.sirius.viewpoint.description.Position;
  *
  * @generated
  */
-public abstract class DecorationDescriptionImpl extends EObjectImpl implements DecorationDescription {
+public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Container implements DecorationDescription {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

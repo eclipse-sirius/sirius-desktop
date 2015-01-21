@@ -16,7 +16,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  *
  * @generated
  */
-public class ValidationFixImpl extends EObjectImpl implements ValidationFix {
+public class ValidationFixImpl extends MinimalEObjectImpl.Container implements ValidationFix {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

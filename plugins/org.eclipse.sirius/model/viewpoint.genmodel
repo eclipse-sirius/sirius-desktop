@@ -4,8 +4,9 @@
     modelDirectory="/org.eclipse.sirius/src-gen" creationIcons="false" editDirectory="/org.eclipse.sirius.ui/src-gen"
     editorDirectory="" modelPluginID="org.eclipse.sirius" templateDirectory="" redirection=""
     modelName="Viewpoint" editPluginClass="org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin"
-    codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
-    containmentProxies="true" complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sirius.ui"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    testsDirectory="" importerID="org.eclipse.emf.importer.ecore" containmentProxies="true"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sirius.ui"
     testsPluginID="org.eclipse.sirius.editor" runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>viewpoint.ecore</foreignModel>
   <genPackages prefix="Viewpoint" basePackage="org.eclipse.sirius" disposableProviderFactory="true"

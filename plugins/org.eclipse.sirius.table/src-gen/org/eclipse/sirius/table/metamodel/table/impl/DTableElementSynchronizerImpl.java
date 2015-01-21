@@ -11,7 +11,7 @@
 package org.eclipse.sirius.table.metamodel.table.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -26,7 +26,7 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
  *
  * @generated
  */
-public abstract class DTableElementSynchronizerImpl extends EObjectImpl implements DTableElementSynchronizer {
+public abstract class DTableElementSynchronizerImpl extends MinimalEObjectImpl.Container implements DTableElementSynchronizer {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

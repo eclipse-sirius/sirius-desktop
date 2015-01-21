@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EModelElementImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  *
  * @generated
  */
-public abstract class DModelElementImpl extends EObjectImpl implements DModelElement {
+public abstract class DModelElementImpl extends MinimalEObjectImpl.Container implements DModelElement {
     /**
      * The cached value of the '{@link #getEAnnotations() <em>EAnnotations</em>}
      * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc

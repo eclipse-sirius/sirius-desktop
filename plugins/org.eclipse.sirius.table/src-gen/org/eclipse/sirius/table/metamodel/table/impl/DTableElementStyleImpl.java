@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -50,7 +50,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  *
  * @generated
  */
-public class DTableElementStyleImpl extends EObjectImpl implements DTableElementStyle {
+public class DTableElementStyleImpl extends MinimalEObjectImpl.Container implements DTableElementStyle {
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

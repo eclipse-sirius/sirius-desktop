@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.style.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  *
  * @generated
  */
-public class LabelBorderStyleDescriptionImpl extends EObjectImpl implements LabelBorderStyleDescription {
+public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Container implements LabelBorderStyleDescription {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->

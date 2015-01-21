@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DRefreshable;
@@ -50,7 +50,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  *
  * @generated
  */
-public abstract class DRepresentationElementImpl extends EObjectImpl implements DRepresentationElement {
+public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Container implements DRepresentationElement {
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

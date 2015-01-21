@@ -12,7 +12,7 @@
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public abstract class ModelOperationImpl extends EObjectImpl implements ModelOperation {
+public abstract class ModelOperationImpl extends MinimalEObjectImpl.Container implements ModelOperation {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

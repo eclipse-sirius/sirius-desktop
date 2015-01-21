@@ -14,7 +14,7 @@ package org.eclipse.sirius.diagram.description.filter.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterKind;
@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterPackage;
  *
  * @generated
  */
-public abstract class FilterImpl extends EObjectImpl implements Filter {
+public abstract class FilterImpl extends MinimalEObjectImpl.Container implements Filter {
     /**
      * The default value of the '{@link #getFilterKind() <em>Filter Kind</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

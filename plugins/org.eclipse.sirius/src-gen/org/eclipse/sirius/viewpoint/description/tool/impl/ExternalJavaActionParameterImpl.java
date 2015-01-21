@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.tool.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class ExternalJavaActionParameterImpl extends EObjectImpl implements ExternalJavaActionParameter {
+public class ExternalJavaActionParameterImpl extends MinimalEObjectImpl.Container implements ExternalJavaActionParameter {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

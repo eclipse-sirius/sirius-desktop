@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
  *
  * @generated
  */
-public abstract class PasteTargetDescriptionImpl extends EObjectImpl implements PasteTargetDescription {
+public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Container implements PasteTargetDescription {
     /**
      * The cached value of the '{@link #getPasteDescriptions()
      * <em>Paste Descriptions</em>}' reference list. <!-- begin-user-doc -->

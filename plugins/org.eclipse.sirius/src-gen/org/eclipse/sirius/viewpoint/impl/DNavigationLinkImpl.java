@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.DNavigationLink;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.NavigationTargetType;
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.NavigationTargetType;
  *
  * @generated
  */
-public abstract class DNavigationLinkImpl extends EObjectImpl implements DNavigationLink {
+public abstract class DNavigationLinkImpl extends MinimalEObjectImpl.Container implements DNavigationLink {
     /**
      * The default value of the '{@link #getTargetType() <em>Target Type</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

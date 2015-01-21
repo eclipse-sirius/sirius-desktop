@@ -15,7 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
  *
  * @generated
  */
-public class InstanceRolesOrderingImpl extends EObjectImpl implements InstanceRolesOrdering {
+public class InstanceRolesOrderingImpl extends MinimalEObjectImpl.Container implements InstanceRolesOrdering {
     /**
      * The cached value of the '{@link #getSemanticInstanceRoles()
      * <em>Semantic Instance Roles</em>}' reference list. <!-- begin-user-doc

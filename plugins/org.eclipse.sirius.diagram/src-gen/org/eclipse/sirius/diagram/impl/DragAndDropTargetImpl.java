@@ -12,7 +12,7 @@
 package org.eclipse.sirius.diagram.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
@@ -25,7 +25,7 @@ import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
  *
  * @generated
  */
-public class DragAndDropTargetImpl extends EObjectImpl implements DragAndDropTarget {
+public class DragAndDropTargetImpl extends MinimalEObjectImpl.Container implements DragAndDropTarget {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

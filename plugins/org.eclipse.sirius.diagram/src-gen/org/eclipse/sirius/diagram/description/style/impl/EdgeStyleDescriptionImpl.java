@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeRouting;
@@ -84,7 +84,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * @generated
  */
-public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDescription {
+public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container implements EdgeStyleDescription {
     /**
      * The cached value of the '{@link #getStrokeColor() <em>Stroke Color</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->

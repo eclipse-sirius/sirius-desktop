@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 
@@ -33,7 +33,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
  *
  * @generated
  */
-public abstract class EventEndImpl extends EObjectImpl implements EventEnd {
+public abstract class EventEndImpl extends MinimalEObjectImpl.Container implements EventEnd {
     /**
      * The cached value of the '{@link #getSemanticEnd() <em>Semantic End</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->

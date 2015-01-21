@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  *
  * @generated
  */
-public abstract class ConditionalStyleDescriptionImpl extends EObjectImpl implements ConditionalStyleDescription {
+public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl.Container implements ConditionalStyleDescription {
     /**
      * The default value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--

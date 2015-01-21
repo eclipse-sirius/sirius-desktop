@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
@@ -81,7 +81,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  *
  * @generated
  */
-public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements NodeStyleDescription {
+public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Container implements NodeStyleDescription {
     /**
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--

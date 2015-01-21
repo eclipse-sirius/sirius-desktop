@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.template.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.sequence.template.TMessageExtremity;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  *
  * @generated
  */
-public abstract class TMessageExtremityImpl extends EObjectImpl implements TMessageExtremity {
+public abstract class TMessageExtremityImpl extends MinimalEObjectImpl.Container implements TMessageExtremity {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

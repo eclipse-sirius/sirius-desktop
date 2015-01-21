@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.description.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 
@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.EventMapping;
  *
  * @generated
  */
-public abstract class EventMappingImpl extends EObjectImpl implements EventMapping {
+public abstract class EventMappingImpl extends MinimalEObjectImpl.Container implements EventMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

@@ -17,7 +17,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  *
  * @generated
  */
-public class DecorationDescriptionsSetImpl extends EObjectImpl implements DecorationDescriptionsSet {
+public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container implements DecorationDescriptionsSet {
     /**
      * The cached value of the '{@link #getDecorationDescriptions()
      * <em>Decoration Descriptions</em>}' containment reference list. <!--

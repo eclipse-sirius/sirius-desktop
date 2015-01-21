@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -48,7 +48,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  *
  * @generated
  */
-public class EnvironmentImpl extends EObjectImpl implements Environment {
+public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Environment {
     /**
      * The cached value of the '{@link #getSystemColors()
      * <em>System Colors</em>}' containment reference. <!-- begin-user-doc -->

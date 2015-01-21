@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * @generated
  */
-public class GaugeSectionDescriptionImpl extends EObjectImpl implements GaugeSectionDescription {
+public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container implements GaugeSectionDescription {
     /**
      * The default value of the '{@link #getMinValueExpression()
      * <em>Min Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--

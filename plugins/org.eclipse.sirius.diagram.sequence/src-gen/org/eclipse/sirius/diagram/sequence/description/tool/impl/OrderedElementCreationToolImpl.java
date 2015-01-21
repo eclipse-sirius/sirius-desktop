@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
@@ -37,7 +37,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  *
  * @generated
  */
-public abstract class OrderedElementCreationToolImpl extends EObjectImpl implements OrderedElementCreationTool {
+public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.Container implements OrderedElementCreationTool {
     /**
      * The cached value of the '{@link #getStartingEndPredecessor()
      * <em>Starting End Predecessor</em>}' containment reference. <!--

@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
@@ -41,7 +41,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
  *
  * @generated
  */
-public class EventEndsOrderingImpl extends EObjectImpl implements EventEndsOrdering {
+public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implements EventEndsOrdering {
     /**
      * The cached value of the '{@link #getSequenceDiagram()
      * <em>Sequence Diagram</em>}' reference. <!-- begin-user-doc --> <!--

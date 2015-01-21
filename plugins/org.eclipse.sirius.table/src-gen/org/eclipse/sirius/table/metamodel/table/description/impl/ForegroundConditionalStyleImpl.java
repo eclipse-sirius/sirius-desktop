@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
@@ -37,7 +37,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescr
  *
  * @generated
  */
-public class ForegroundConditionalStyleImpl extends EObjectImpl implements ForegroundConditionalStyle {
+public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container implements ForegroundConditionalStyle {
     /**
      * The default value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--

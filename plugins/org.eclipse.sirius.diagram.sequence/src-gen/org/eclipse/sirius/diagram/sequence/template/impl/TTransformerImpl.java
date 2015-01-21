@@ -15,7 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.sequence.template.TTransformer;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  *
  * @generated
  */
-public class TTransformerImpl extends EObjectImpl implements TTransformer {
+public class TTransformerImpl extends MinimalEObjectImpl.Container implements TTransformer {
     /**
      * The cached value of the '{@link #getOutputs() <em>Outputs</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->

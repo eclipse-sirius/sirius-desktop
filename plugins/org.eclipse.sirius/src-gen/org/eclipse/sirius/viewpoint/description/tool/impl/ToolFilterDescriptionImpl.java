@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
@@ -46,7 +46,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class ToolFilterDescriptionImpl extends EObjectImpl implements ToolFilterDescription {
+public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container implements ToolFilterDescription {
     /**
      * The default value of the '{@link #getPrecondition()
      * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--

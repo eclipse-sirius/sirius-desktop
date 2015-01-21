@@ -14,7 +14,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * @generated
  */
-public class ForegroundStyleDescriptionImpl extends EObjectImpl implements ForegroundStyleDescription {
+public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container implements ForegroundStyleDescription {
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

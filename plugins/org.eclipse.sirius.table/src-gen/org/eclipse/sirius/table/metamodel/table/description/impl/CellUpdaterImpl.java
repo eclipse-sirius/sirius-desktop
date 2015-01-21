@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
@@ -38,7 +38,7 @@ import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
  *
  * @generated
  */
-public class CellUpdaterImpl extends EObjectImpl implements CellUpdater {
+public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements CellUpdater {
     /**
      * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->

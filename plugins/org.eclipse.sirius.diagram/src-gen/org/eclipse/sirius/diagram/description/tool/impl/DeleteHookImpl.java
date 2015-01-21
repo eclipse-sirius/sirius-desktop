@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.description.tool.DeleteHook;
@@ -43,7 +43,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
  *
  * @generated
  */
-public class DeleteHookImpl extends EObjectImpl implements DeleteHook {
+public class DeleteHookImpl extends MinimalEObjectImpl.Container implements DeleteHook {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->

@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  *
  * @generated
  */
-public abstract class DocumentedElementImpl extends EObjectImpl implements DocumentedElement {
+public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container implements DocumentedElement {
     /**
      * The default value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--

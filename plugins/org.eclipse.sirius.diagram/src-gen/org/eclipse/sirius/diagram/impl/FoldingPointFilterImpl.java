@@ -12,7 +12,7 @@
 package org.eclipse.sirius.diagram.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.FoldingPointFilter;
 
@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.FoldingPointFilter;
  *
  * @generated
  */
-public class FoldingPointFilterImpl extends EObjectImpl implements FoldingPointFilter {
+public class FoldingPointFilterImpl extends MinimalEObjectImpl.Container implements FoldingPointFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

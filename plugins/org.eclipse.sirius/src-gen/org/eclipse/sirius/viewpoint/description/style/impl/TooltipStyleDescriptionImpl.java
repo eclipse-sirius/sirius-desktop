@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.style.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 
@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  *
  * @generated
  */
-public class TooltipStyleDescriptionImpl extends EObjectImpl implements TooltipStyleDescription {
+public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container implements TooltipStyleDescription {
     /**
      * The default value of the '{@link #getTooltipExpression()
      * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--

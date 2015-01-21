@@ -17,7 +17,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  *
  * @generated
  */
-public class SessionManagerEObjectImpl extends EObjectImpl implements SessionManagerEObject {
+public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container implements SessionManagerEObject {
     /**
      * The cached value of the '{@link #getOwnedSessions()
      * <em>Owned Sessions</em>}' containment reference list. <!-- begin-user-doc

@@ -12,7 +12,7 @@
 package org.eclipse.sirius.viewpoint.description.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  *
  * @generated
  */
-public abstract class ColorDescriptionImpl extends EObjectImpl implements ColorDescription {
+public abstract class ColorDescriptionImpl extends MinimalEObjectImpl.Container implements ColorDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

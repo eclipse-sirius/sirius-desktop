@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
@@ -50,7 +50,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  *
  * @generated
  */
-public class BasicLabelStyleDescriptionImpl extends EObjectImpl implements BasicLabelStyleDescription {
+public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container implements BasicLabelStyleDescription {
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

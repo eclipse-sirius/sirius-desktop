@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.tool.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class EditMaskVariablesImpl extends EObjectImpl implements EditMaskVariables {
+public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implements EditMaskVariables {
     /**
      * The default value of the '{@link #getMask() <em>Mask</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -46,7 +46,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * @generated
  */
-public class ComputedStyleDescriptionRegistryImpl extends EObjectImpl implements ComputedStyleDescriptionRegistry {
+public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Container implements ComputedStyleDescriptionRegistry {
     /**
      * The cached value of the '{@link #getComputedStyleDescriptions()
      * <em>Computed Style Descriptions</em>}' containment reference list. <!--

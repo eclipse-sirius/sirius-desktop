@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.UserColor;
 
@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.UserColor;
  *
  * @generated
  */
-public abstract class UserColorImpl extends EObjectImpl implements UserColor {
+public abstract class UserColorImpl extends MinimalEObjectImpl.Container implements UserColor {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

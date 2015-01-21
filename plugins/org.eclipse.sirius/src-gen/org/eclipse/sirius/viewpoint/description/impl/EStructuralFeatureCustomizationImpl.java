@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
  *
  * @generated
  */
-public abstract class EStructuralFeatureCustomizationImpl extends EObjectImpl implements EStructuralFeatureCustomization {
+public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObjectImpl.Container implements EStructuralFeatureCustomization {
     /**
      * The cached value of the '{@link #getAppliedOn() <em>Applied On</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->

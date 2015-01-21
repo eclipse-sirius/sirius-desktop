@@ -14,7 +14,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * @generated
  */
-public class BackgroundStyleDescriptionImpl extends EObjectImpl implements BackgroundStyleDescription {
+public class BackgroundStyleDescriptionImpl extends MinimalEObjectImpl.Container implements BackgroundStyleDescription {
     /**
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--

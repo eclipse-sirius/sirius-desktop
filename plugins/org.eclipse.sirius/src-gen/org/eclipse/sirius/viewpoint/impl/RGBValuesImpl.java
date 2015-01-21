@@ -14,7 +14,7 @@ package org.eclipse.sirius.viewpoint.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  *
  * @generated
  */
-public class RGBValuesImpl extends EObjectImpl implements RGBValues {
+public class RGBValuesImpl extends MinimalEObjectImpl.Container implements RGBValues {
     /**
      * The default value of the '{@link #getRed() <em>Red</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->

@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class MenuItemDescriptionReferenceImpl extends EObjectImpl implements MenuItemDescriptionReference {
+public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Container implements MenuItemDescriptionReference {
     /**
      * The cached value of the '{@link #getItem() <em>Item</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
