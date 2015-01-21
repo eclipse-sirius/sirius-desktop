@@ -846,7 +846,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                         // CHECKSTYLE:OFF
                     } catch (Throwable e) {
                         // CHECKSTYLE:ON
-                        SiriusPlugin.getDefault().error("Save failed", new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while saving the session", e)));
+                        Status status = new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while saving the session", e);
+                        setStatus(status);
+                        SiriusPlugin.getDefault().error("Save failed", new CoreException(status));
                     }
                 }
             };
@@ -865,7 +867,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             if (savedResources == null) {
                 // If the savedResources list is null, something went wrong and
                 // has already been logged.
-                status = new Status(IStatus.ERROR, SiriusPlugin.ID, "An error occurred while saving the session. Please check the error log for more details.");
+                status = save.getStatus();
             } else {
                 boolean semanticSave = false;
                 for (final Resource resource : savedResources) {
