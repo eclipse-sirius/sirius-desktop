@@ -69,7 +69,7 @@ public class NodeDeletionEditPolicy extends ComponentEditPolicy {
         // Delete from model.
         final CompoundCommand cc = new CompoundCommand();
         final View view = (View) getHost().getModel();
-        if (view.getElement() instanceof DDiagramElement) {
+        if (getHost().isActive() && view.getElement() instanceof DDiagramElement) {
             final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(view);
             final IAdaptable editor = (IAdaptable) this.getHost().getViewer().getProperty(DDiagramEditor.EDITOR_ID);
             final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
