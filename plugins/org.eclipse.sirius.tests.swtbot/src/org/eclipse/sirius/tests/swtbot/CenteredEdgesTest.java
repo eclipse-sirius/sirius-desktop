@@ -41,6 +41,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
@@ -502,10 +503,13 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testArrangeAllOnStraightEdges() {
         openDiagram(REPRESENTATION_NAME_MOVING);
-        editor.clickContextMenu("Arrange All");
-        SWTBotUtils.waitAllUiEvents();
 
         SWTBotGefConnectionEditPart edge3BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
+        CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(edge3BotGefConnectionEditPart);
+        editor.clickContextMenu("Arrange All");
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(checkEditPartMoved);
+        edge3BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
         assertEdgeHasExpectedSrcAnchor(edge3BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
 
         SWTBotGefConnectionEditPart edge1BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
