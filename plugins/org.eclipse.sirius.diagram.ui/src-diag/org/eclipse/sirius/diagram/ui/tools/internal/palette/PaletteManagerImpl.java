@@ -627,10 +627,10 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     private static List<ToolEntry> getDefaultTools(final ResourceSet context) {
-        final Resource coreEnvResource = context.getResource(URI.createPlatformPluginURI("/org.eclipse.sirius/model/Environment.xmi", true), true);
+        final Resource coreEnvResource = context.getResource(URI.createURI("environment:/viewpoint", true), true);
         final Environment coreEnv = (Environment) coreEnvResource.getContents().get(0);
 
-        final Resource diagramEnvResource = context.getResource(URI.createPlatformPluginURI("/org.eclipse.sirius.diagram.ui/model/DiagramEnvironment.xmi", true), true);
+        final Resource diagramEnvResource = context.getResource(URI.createURI("environment:/diagram", true), true);
         final Environment diagramEnv = (Environment) diagramEnvResource.getContents().get(0);
 
         List<ToolEntry> defaultTools = Lists.newArrayList();
