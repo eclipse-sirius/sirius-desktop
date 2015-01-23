@@ -1985,6 +1985,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
         disableCrossReferencerResolve(resourceSet);
 
+        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
+        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
+            resourceSet.eAdapters().remove(existingAirDCrossReferenceAdapter);
+        }
+
         // Let's clear the cross referencer if it's still there.
         for (final Resource res : getSemanticResources()) {
             unregisterResourceInCrossReferencer(res);
