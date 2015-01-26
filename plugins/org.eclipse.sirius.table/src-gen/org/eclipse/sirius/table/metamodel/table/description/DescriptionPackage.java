@@ -4340,11 +4340,11 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getForegroundStyleDescription_LabelSize();
 
     /**
-     * Returns the meta object for the attribute '
+     * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelFormat
      * <em>Label Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return the meta object for the attribute '<em>Label Format</em>'.
+     * @return the meta object for the attribute list '<em>Label Format</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelFormat()
      * @see #getForegroundStyleDescription()
      * @generated
@@ -5411,7 +5411,7 @@ public interface DescriptionPackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Label Format</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */

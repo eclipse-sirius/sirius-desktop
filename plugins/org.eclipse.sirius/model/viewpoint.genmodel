@@ -13,10 +13,10 @@
   <genPackages prefix="Viewpoint" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
       ecorePackage="viewpoint.ecore#/">
     <genEnums ecoreEnum="viewpoint.ecore#//FontFormat">
-      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/normal"/>
       <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/italic"/>
       <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/bold"/>
-      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/bold_italic"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/underline"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/strike_through"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="viewpoint.ecore#//LabelAlignment">
       <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LabelAlignment/CENTER"/>

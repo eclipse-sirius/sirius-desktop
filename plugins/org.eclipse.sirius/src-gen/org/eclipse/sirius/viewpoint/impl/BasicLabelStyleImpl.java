@@ -11,9 +11,13 @@
  */
 package org.eclipse.sirius.viewpoint.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -45,6 +49,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * @generated
  */
 public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelStyle {
+
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -66,24 +71,14 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     protected int labelSize = BasicLabelStyleImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getLabelFormat()
-     * @generated
-     * @ordered
-     */
-    protected static final FontFormat LABEL_FORMAT_EDEFAULT = FontFormat.NORMAL_LITERAL;
-
-    /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = BasicLabelStyleImpl.LABEL_FORMAT_EDEFAULT;
+    protected EList<FontFormat> labelFormat;
 
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
@@ -194,22 +189,11 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
      * @generated
      */
     @Override
-    public FontFormat getLabelFormat() {
-        return labelFormat;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setLabelFormat(FontFormat newLabelFormat) {
-        FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? BasicLabelStyleImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT, oldLabelFormat, labelFormat));
+    public EList<FontFormat> getLabelFormat() {
+        if (labelFormat == null) {
+            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT);
         }
+        return labelFormat;
     }
 
     /**
@@ -233,30 +217,6 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
         showIcon = newShowIcon;
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON, oldShowIcon, showIcon));
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public RGBValues getLabelColor() {
-        return labelColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setLabelColor(RGBValues newLabelColor) {
-        RGBValues oldLabelColor = labelColor;
-        labelColor = newLabelColor;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, oldLabelColor, labelColor));
         }
     }
 
@@ -290,6 +250,30 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
      * @generated
      */
     @Override
+    public RGBValues getLabelColor() {
+        return labelColor;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setLabelColor(RGBValues newLabelColor) {
+        RGBValues oldLabelColor = labelColor;
+        labelColor = newLabelColor;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, oldLabelColor, labelColor));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_SIZE:
@@ -311,6 +295,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
      * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -318,7 +303,8 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
             setLabelSize((Integer) newValue);
             return;
         case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT:
-            setLabelFormat((FontFormat) newValue);
+            getLabelFormat().clear();
+            getLabelFormat().addAll((Collection<? extends FontFormat>) newValue);
             return;
         case ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON:
             setShowIcon((Boolean) newValue);
@@ -345,7 +331,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
             setLabelSize(BasicLabelStyleImpl.LABEL_SIZE_EDEFAULT);
             return;
         case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT:
-            setLabelFormat(BasicLabelStyleImpl.LABEL_FORMAT_EDEFAULT);
+            getLabelFormat().clear();
             return;
         case ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON:
             setShowIcon(BasicLabelStyleImpl.SHOW_ICON_EDEFAULT);
@@ -371,7 +357,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
         case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_SIZE:
             return labelSize != BasicLabelStyleImpl.LABEL_SIZE_EDEFAULT;
         case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT:
-            return labelFormat != BasicLabelStyleImpl.LABEL_FORMAT_EDEFAULT;
+            return labelFormat != null && !labelFormat.isEmpty();
         case ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON:
             return showIcon != BasicLabelStyleImpl.SHOW_ICON_EDEFAULT;
         case ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH:
@@ -407,5 +393,4 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
         result.append(')');
         return result.toString();
     }
-
 } // BasicLabelStyleImpl

@@ -10,9 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
@@ -50,6 +54,7 @@ import org.eclipse.sirius.viewpoint.impl.StyleImpl;
  * @generated
  */
 public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
+
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -71,24 +76,14 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     protected int labelSize = TreeItemStyleImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getLabelFormat()
-     * @generated
-     * @ordered
-     */
-    protected static final FontFormat LABEL_FORMAT_EDEFAULT = FontFormat.NORMAL_LITERAL;
-
-    /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = TreeItemStyleImpl.LABEL_FORMAT_EDEFAULT;
+    protected EList<FontFormat> labelFormat;
 
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
@@ -243,22 +238,11 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      */
     @Override
-    public FontFormat getLabelFormat() {
-        return labelFormat;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setLabelFormat(FontFormat newLabelFormat) {
-        FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? TreeItemStyleImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT, oldLabelFormat, labelFormat));
+    public EList<FontFormat> getLabelFormat() {
+        if (labelFormat == null) {
+            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT);
         }
+        return labelFormat;
     }
 
     /**
@@ -291,8 +275,8 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      */
     @Override
-    public LabelAlignment getLabelAlignment() {
-        return labelAlignment;
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**
@@ -301,11 +285,11 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      */
     @Override
-    public void setLabelAlignment(LabelAlignment newLabelAlignment) {
-        LabelAlignment oldLabelAlignment = labelAlignment;
-        labelAlignment = newLabelAlignment == null ? TreeItemStyleImpl.LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
+    public void setIconPath(String newIconPath) {
+        String oldIconPath = iconPath;
+        iconPath = newIconPath;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
+            eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__ICON_PATH, oldIconPath, iconPath));
         }
     }
 
@@ -339,8 +323,8 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      */
     @Override
-    public String getIconPath() {
-        return iconPath;
+    public LabelAlignment getLabelAlignment() {
+        return labelAlignment;
     }
 
     /**
@@ -349,11 +333,11 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      */
     @Override
-    public void setIconPath(String newIconPath) {
-        String oldIconPath = iconPath;
-        iconPath = newIconPath;
+    public void setLabelAlignment(LabelAlignment newLabelAlignment) {
+        LabelAlignment oldLabelAlignment = labelAlignment;
+        labelAlignment = newLabelAlignment == null ? TreeItemStyleImpl.LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__ICON_PATH, oldIconPath, iconPath));
+            eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
         }
     }
 
@@ -412,6 +396,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -419,7 +404,8 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
             setLabelSize((Integer) newValue);
             return;
         case TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT:
-            setLabelFormat((FontFormat) newValue);
+            getLabelFormat().clear();
+            getLabelFormat().addAll((Collection<? extends FontFormat>) newValue);
             return;
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
             setShowIcon((Boolean) newValue);
@@ -452,7 +438,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
             setLabelSize(TreeItemStyleImpl.LABEL_SIZE_EDEFAULT);
             return;
         case TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT:
-            setLabelFormat(TreeItemStyleImpl.LABEL_FORMAT_EDEFAULT);
+            getLabelFormat().clear();
             return;
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
             setShowIcon(TreeItemStyleImpl.SHOW_ICON_EDEFAULT);
@@ -484,7 +470,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
         case TreePackage.TREE_ITEM_STYLE__LABEL_SIZE:
             return labelSize != TreeItemStyleImpl.LABEL_SIZE_EDEFAULT;
         case TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT:
-            return labelFormat != TreeItemStyleImpl.LABEL_FORMAT_EDEFAULT;
+            return labelFormat != null && !labelFormat.isEmpty();
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
             return showIcon != TreeItemStyleImpl.SHOW_ICON_EDEFAULT;
         case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
@@ -596,5 +582,4 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
         result.append(')');
         return result.toString();
     }
-
 } // TreeItemStyleImpl

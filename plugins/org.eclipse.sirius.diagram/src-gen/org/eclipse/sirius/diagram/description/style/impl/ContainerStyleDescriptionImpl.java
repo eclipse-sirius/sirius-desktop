@@ -11,10 +11,14 @@
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
@@ -74,11 +78,12 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * @generated
  */
 public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDescriptionImpl implements ContainerStyleDescription {
+
     /**
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -89,7 +94,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * The cached value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -127,24 +132,14 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected int labelSize = ContainerStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getLabelFormat()
-     * @generated
-     * @ordered
-     */
-    protected static final FontFormat LABEL_FORMAT_EDEFAULT = FontFormat.NORMAL_LITERAL;
-
-    /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = ContainerStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
+    protected EList<FontFormat> labelFormat;
 
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
@@ -422,22 +417,11 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      */
     @Override
-    public FontFormat getLabelFormat() {
-        return labelFormat;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setLabelFormat(FontFormat newLabelFormat) {
-        FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? ContainerStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
+    public EList<FontFormat> getLabelFormat() {
+        if (labelFormat == null) {
+            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT);
         }
+        return labelFormat;
     }
 
     /**
@@ -697,6 +681,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -710,7 +695,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
             setLabelSize((Integer) newValue);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat((FontFormat) newValue);
+            getLabelFormat().clear();
+            getLabelFormat().addAll((Collection<? extends FontFormat>) newValue);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
             setShowIcon((Boolean) newValue);
@@ -758,7 +744,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
             setLabelSize(ContainerStyleDescriptionImpl.LABEL_SIZE_EDEFAULT);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat(ContainerStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT);
+            getLabelFormat().clear();
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
             setShowIcon(ContainerStyleDescriptionImpl.SHOW_ICON_EDEFAULT);
@@ -804,7 +790,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             return labelSize != ContainerStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
-            return labelFormat != ContainerStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
+            return labelFormat != null && !labelFormat.isEmpty();
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
             return showIcon != ContainerStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
@@ -984,5 +970,4 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         result.append(')');
         return result.toString();
     }
-
 } // ContainerStyleDescriptionImpl

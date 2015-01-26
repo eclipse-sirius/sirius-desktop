@@ -49,6 +49,10 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySectionSpec extends Ab
 
     private static final String ITALIC = "Italic";
 
+    private static final String UNDERLINE = "Underline";
+
+    private static final String STRIKE_THROUGH = "Strike through";
+
     private static final String TOOL_TIP = "The font formatting style to use for the label";
 
     public BasicLabelStyleDescriptionLabelFormatPropertySectionSpec() {
@@ -78,29 +82,36 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySectionSpec extends Ab
         List<String> values = new ArrayList<String>();
         values.add(BOLD);
         values.add(ITALIC);
+        values.add(UNDERLINE);
+        values.add(STRIKE_THROUGH);
         return values;
     }
 
-    protected FontFormat getSelectedValue() {
+    protected List<FontFormat> getSelectedValue() {
         List<?> possibleValues = getChoiceOfValues();
         List<Object> selectedValues = new ArrayList<Object>();
-        FontFormat fontFormat;
+        List<FontFormat> fontFormat = new ArrayList<FontFormat>();
 
         for (int i = 0; i < button.length; i++) {
             if (button[i].getSelection())
                 selectedValues.add(possibleValues.get(i));
         }
 
-        if (selectedValues.isEmpty()) {
-            fontFormat = FontFormat.NORMAL_LITERAL;
-        } else if (selectedValues.size() == 1) {
-            if (selectedValues.get(0).equals(ITALIC)) {
-                fontFormat = FontFormat.ITALIC_LITERAL;
-            } else {
-                fontFormat = FontFormat.BOLD_LITERAL;
+        if (selectedValues.size() > 0) {
+            for (Object selectedValue : selectedValues) {
+                if (selectedValue.equals(ITALIC)) {
+                    fontFormat.add(FontFormat.ITALIC_LITERAL);
+                }
+                if (selectedValue.equals(BOLD)) {
+                    fontFormat.add(FontFormat.BOLD_LITERAL);
+                }
+                if (selectedValue.equals(UNDERLINE)) {
+                    fontFormat.add(FontFormat.UNDERLINE_LITERAL);
+                }
+                if (selectedValue.equals(STRIKE_THROUGH)) {
+                    fontFormat.add(FontFormat.STRIKE_THROUGH_LITERAL);
+                }
             }
-        } else {
-            fontFormat = FontFormat.BOLD_ITALIC_LITERAL;
         }
 
         return fontFormat;
@@ -138,7 +149,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySectionSpec extends Ab
         final EStructuralFeature eFeature = getFeature();
         final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
         if (propertyDescriptor != null) {
-            featureText = propertyDescriptor.getLabelProvider(eObject).getText(eObject.eGet(eFeature)).replace(" ", ", ");
+            featureText = propertyDescriptor.getLabelProvider(eObject).getText(eObject.eGet(eFeature));
             return featureText;
         }
         return getDefaultFeatureAsText();
@@ -267,16 +278,20 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySectionSpec extends Ab
         return attribute;
     }
 
-    public static List<String> convertPropertiesToUI(FontFormat font) {
+    public static List<String> convertPropertiesToUI(List<FontFormat> font) {
         List<String> formats = new ArrayList<String>();
-        if (font.getValue() == 1) {
-            formats.add(ITALIC);
-        } else if (font.getValue() == 2) {
-            formats.add(BOLD);
-        } else if (font.getValue() == 3) {
-            formats.add(ITALIC);
-            formats.add(BOLD);
+        for (FontFormat format : font) {
+            if (format.getValue() == 1) {
+                formats.add(ITALIC);
+            } else if (format.getValue() == 2) {
+                formats.add(BOLD);
+            } else if (format.getValue() == 3) {
+                formats.add(UNDERLINE);
+            } else if (format.getValue() == 4) {
+                formats.add(STRIKE_THROUGH);
+            }
         }
+
         return formats;
     }
 

@@ -69,6 +69,7 @@ import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackag
  * @generated
  */
 public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPackage {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -288,7 +289,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#eNS_URI
      * @see #init()
@@ -314,7 +315,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -396,6 +397,16 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
+    public EAttribute getDAnalysis_SemanticResources() {
+        return (EAttribute) dAnalysisEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EReference getDAnalysis_Models() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(2);
     }
@@ -448,16 +459,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     @Override
     public EAttribute getDAnalysis_Version() {
         return (EAttribute) dAnalysisEClass.getEStructuralFeatures().get(7);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EAttribute getDAnalysis_SemanticResources() {
-        return (EAttribute) dAnalysisEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -786,26 +787,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EDataType getRGBValues() {
-        return rgbValuesEDataType;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EDataType getResourceDescriptor() {
-        return resourceDescriptorEDataType;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EClass getDAnalysisSessionEObject() {
         return dAnalysisSessionEObjectEClass;
     }
@@ -1026,8 +1007,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EAttribute getBasicLabelStyle_LabelColor() {
-        return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(4);
+    public EAttribute getBasicLabelStyle_IconPath() {
+        return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1036,8 +1017,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EAttribute getBasicLabelStyle_IconPath() {
-        return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(3);
+    public EAttribute getBasicLabelStyle_LabelColor() {
+        return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1088,6 +1069,26 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     @Override
     public EEnum getSyncStatus() {
         return syncStatusEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EDataType getRGBValues() {
+        return rgbValuesEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EDataType getResourceDescriptor() {
+        return resourceDescriptorEDataType;
     }
 
     /**
@@ -1234,7 +1235,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public void initializePackageContents() {
@@ -1433,7 +1434,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEClass(basicLabelStyleEClass, BasicLabelStyle.class, "BasicLabelStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getBasicLabelStyle_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getBasicLabelStyle_LabelFormat(), this.getFontFormat(), "labelFormat", "normal", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+        initEAttribute(getBasicLabelStyle_LabelFormat(), this.getFontFormat(), "labelFormat", null, 0, 4, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getBasicLabelStyle_ShowIcon(), theEcorePackage.getEBoolean(), "showIcon", "true", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -1448,10 +1449,10 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Initialize enums and add enum literals
         initEEnum(fontFormatEEnum, FontFormat.class, "FontFormat");
-        addEEnumLiteral(fontFormatEEnum, FontFormat.NORMAL_LITERAL);
         addEEnumLiteral(fontFormatEEnum, FontFormat.ITALIC_LITERAL);
         addEEnumLiteral(fontFormatEEnum, FontFormat.BOLD_LITERAL);
-        addEEnumLiteral(fontFormatEEnum, FontFormat.BOLD_ITALIC_LITERAL);
+        addEEnumLiteral(fontFormatEEnum, FontFormat.UNDERLINE_LITERAL);
+        addEEnumLiteral(fontFormatEEnum, FontFormat.STRIKE_THROUGH_LITERAL);
 
         initEEnum(labelAlignmentEEnum, LabelAlignment.class, "LabelAlignment");
         addEEnumLiteral(labelAlignmentEEnum, LabelAlignment.CENTER);
@@ -1485,5 +1486,4 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         addAnnotation(this, source, new String[] { "deprecated", "Anything tagged as deprecated will disappear quite soon.\n\n", "to be renamed",
         "Anything tagged \"to be renamed\" will be renamed, at least in the UI\n" });
     }
-
 } // ViewpointPackageImpl

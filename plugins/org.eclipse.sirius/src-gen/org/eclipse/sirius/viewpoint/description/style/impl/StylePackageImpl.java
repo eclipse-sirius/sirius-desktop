@@ -43,6 +43,7 @@ import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
  * @generated
  */
 public class StylePackageImpl extends EPackageImpl implements StylePackage {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -94,7 +95,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#eNS_URI
      * @see #init()
@@ -120,7 +121,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -434,7 +435,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public void initializePackageContents() {
@@ -467,7 +468,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getBasicLabelStyleDescription_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, BasicLabelStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getBasicLabelStyleDescription_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", "normal", 0, 1, BasicLabelStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
+        initEAttribute(getBasicLabelStyleDescription_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", null, 0, 4, BasicLabelStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getBasicLabelStyleDescription_ShowIcon(), theEcorePackage.getEBoolean(), "showIcon", "true", 0, 1, BasicLabelStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -539,5 +540,4 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         "diagram.DDiagramElement | the current view for which the label is calculated." });
         addAnnotation(getTooltipStyleDescription_TooltipExpression(), source, new String[] { "view", "viewpoint.DSemanticDecorator | the current view." });
     }
-
 } // StylePackageImpl

@@ -41,6 +41,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * @generated
  */
 public class TablePackageImpl extends EPackageImpl implements TablePackage {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -127,7 +128,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#eNS_URI
      * @see #init()
@@ -153,7 +154,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -219,8 +220,8 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * @generated
      */
     @Override
-    public EReference getDTable_Description() {
-        return (EReference) dTableEClass.getEStructuralFeatures().get(2);
+    public EAttribute getDTable_HeaderColumnWidth() {
+        return (EAttribute) dTableEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -229,8 +230,8 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * @generated
      */
     @Override
-    public EAttribute getDTable_HeaderColumnWidth() {
-        return (EAttribute) dTableEClass.getEStructuralFeatures().get(1);
+    public EReference getDTable_Description() {
+        return (EReference) dTableEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -629,26 +630,6 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * @generated
      */
     @Override
-    public EAttribute getDTableElementStyle_ForegroundColor() {
-        return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(4);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EAttribute getDTableElementStyle_BackgroundColor() {
-        return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(5);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EAttribute getDTableElementStyle_DefaultForegroundStyle() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(2);
     }
@@ -661,6 +642,26 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
     @Override
     public EAttribute getDTableElementStyle_DefaultBackgroundStyle() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getDTableElementStyle_ForegroundColor() {
+        return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getDTableElementStyle_BackgroundColor() {
+        return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -764,7 +765,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public void initializePackageContents() {
@@ -915,7 +916,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         initEClass(dTableElementStyleEClass, DTableElementStyle.class, "DTableElementStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDTableElementStyle_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getDTableElementStyle_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", "normal", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT,
+        initEAttribute(getDTableElementStyle_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", null, 0, 4, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getDTableElementStyle_DefaultForegroundStyle(), theEcorePackage.getEBoolean(), "defaultForegroundStyle", "false", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -929,5 +930,4 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         // Create resource
         createResource(TablePackage.eNS_URI);
     }
-
 } // TablePackageImpl

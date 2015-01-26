@@ -60,6 +60,7 @@ h4. Changes in @org.eclipse.sirius@
 * @org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()@ methods are deprecated because they are useless since undo/redo is managed by EMF Transaction.
 * @org.eclipse.sirius.tools.api.command.IUndoableCommand@ interface are deprecated because it is useless since undo/redo is managed by EMF Transaction.
 * @org.eclipse.sirius.business.api.helper.task.TaskExecutor.undo()/redo()@ methods are deprecated because they are useless since undo/redo is managed by EMF Transaction.
+* The API @org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper@ has been added. It helps to update label format multi valued features.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

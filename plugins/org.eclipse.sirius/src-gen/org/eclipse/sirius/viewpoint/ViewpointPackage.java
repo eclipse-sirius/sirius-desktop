@@ -2024,11 +2024,11 @@ public interface ViewpointPackage extends EPackage {
     EAttribute getBasicLabelStyle_LabelSize();
 
     /**
-     * Returns the meta object for the attribute '
+     * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelFormat
      * <em>Label Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return the meta object for the attribute '<em>Label Format</em>'.
+     * @return the meta object for the attribute list '<em>Label Format</em>'.
      * @see org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelFormat()
      * @see #getBasicLabelStyle()
      * @generated
@@ -2763,7 +2763,7 @@ public interface ViewpointPackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Label Format</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */

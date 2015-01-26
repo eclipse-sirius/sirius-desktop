@@ -11,6 +11,8 @@
  */
 package org.eclipse.sirius.viewpoint;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Basic Label Style</b></em>'. <!-- end-user-doc -->
@@ -79,21 +81,7 @@ public interface BasicLabelStyle extends Customizable {
      * @model default="normal"
      * @generated
      */
-    FontFormat getLabelFormat();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelFormat
-     * <em>Label Format</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Label Format</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.FontFormat
-     * @see #getLabelFormat()
-     * @generated
-     */
-    void setLabelFormat(FontFormat value);
+    EList<FontFormat> getLabelFormat();
 
     /**
      * Returns the value of the '<em><b>Show Icon</b></em>' attribute. The

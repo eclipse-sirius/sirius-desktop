@@ -16,11 +16,13 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -38,7 +40,6 @@ import org.eclipse.sirius.tree.impl.DTreeElementSynchronizerImpl;
 import org.eclipse.sirius.tree.tools.api.interpreter.IInterpreterSiriusTreeVariables;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.FontFormat;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * Tree element synchronizer.
@@ -192,7 +193,7 @@ public class DTreeElementSynchronizerSpec extends DTreeElementSynchronizerImpl {
             colorUpdater.updateBackgroundColor(style, bestTreeItemStyle.getBackgroundColor(), treeItem.getTarget());
             colorUpdater.updateLabelColor(style, bestTreeItemStyle.getLabelColor(), treeItem.getTarget());
             if (bestTreeItemStyle.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestTreeItemStyle.getLabelFormat())) {
-                style.setLabelFormat(bestTreeItemStyle.getLabelFormat());
+                FontFormatHelper.setFontFormat(style.getLabelFormat(), bestTreeItemStyle.getLabelFormat());
             }
             if (bestTreeItemStyle.getLabelSize() != -1 && style.getLabelSize() != bestTreeItemStyle.getLabelSize()) {
                 style.setLabelSize(bestTreeItemStyle.getLabelSize());

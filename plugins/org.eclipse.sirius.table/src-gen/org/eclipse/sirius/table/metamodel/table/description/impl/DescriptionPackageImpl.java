@@ -58,6 +58,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * @generated
  */
 public class DescriptionPackageImpl extends EPackageImpl implements DescriptionPackage {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -263,7 +264,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#eNS_URI
      * @see #init()
@@ -289,7 +290,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * when that field is accessed. Clients should not invoke it directly.
      * Instead, they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -635,6 +636,26 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EReference getLineMapping_AllSubLines() {
+        return (EReference) lineMappingEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EReference getLineMapping_ReusedInMappings() {
+        return (EReference) lineMappingEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EAttribute getLineMapping_DomainClass() {
         return (EAttribute) lineMappingEClass.getEStructuralFeatures().get(4);
     }
@@ -677,26 +698,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     @Override
     public EAttribute getLineMapping_HeaderLabelExpression() {
         return (EAttribute) lineMappingEClass.getEStructuralFeatures().get(8);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EReference getLineMapping_AllSubLines() {
-        return (EReference) lineMappingEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EReference getLineMapping_ReusedInMappings() {
-        return (EReference) lineMappingEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1566,7 +1567,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public void initializePackageContents() {
@@ -1882,7 +1883,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getForegroundStyleDescription_LabelSize(), theEcorePackage.getEInt(), "labelSize", "12", 0, 1, ForegroundStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getForegroundStyleDescription_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", "normal", 0, 1, ForegroundStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
+        initEAttribute(getForegroundStyleDescription_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", null, 0, 4, ForegroundStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getForegroundStyleDescription_ForeGroundColor(), theDescriptionPackage_1.getColorDescription(), null, "foreGroundColor", null, 1, 1, ForegroundStyleDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
@@ -2000,5 +2001,4 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getForegroundConditionalStyle_PredicateExpression(), source, new String[] {});
         addAnnotation(getBackgroundConditionalStyle_PredicateExpression(), source, new String[] {});
     }
-
 } // DescriptionPackageImpl

@@ -172,10 +172,10 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The format of the font."/>
     </eAnnotations>
-    <eLiterals name="normal"/>
-    <eLiterals name="italic" value="1"/>
-    <eLiterals name="bold" value="2"/>
-    <eLiterals name="bold_italic" value="3"/>
+    <eLiterals name="italic"/>
+    <eLiterals name="bold" value="1"/>
+    <eLiterals name="underline" value="2"/>
+    <eLiterals name="strike_through" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Style" abstract="true" eSuperTypes="#//DRefreshable #//Customizable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -234,8 +234,8 @@
         <details key="documentation" value="The font size."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" eType="#//FontFormat"
-        defaultValueLiteral="normal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" upperBound="4"
+        eType="#//FontFormat">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The font format."/>
       </eAnnotations>
@@ -856,8 +856,8 @@
             <details key="documentation" value="The font size."/>
           </eAnnotations>
         </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" eType="#//FontFormat"
-            defaultValueLiteral="normal">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" upperBound="4"
+            eType="#//FontFormat">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="The font format."/>
           </eAnnotations>

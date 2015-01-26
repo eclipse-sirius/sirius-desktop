@@ -10,11 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.metamodel.table.description.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -41,6 +45,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * @generated
  */
 public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container implements ForegroundStyleDescription {
+
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -62,24 +67,14 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
     protected int labelSize = ForegroundStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getLabelFormat()
-     * @generated
-     * @ordered
-     */
-    protected static final FontFormat LABEL_FORMAT_EDEFAULT = FontFormat.NORMAL_LITERAL;
-
-    /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = ForegroundStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
+    protected EList<FontFormat> labelFormat;
 
     /**
      * The cached value of the '{@link #getForeGroundColor()
@@ -141,22 +136,11 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * @generated
      */
     @Override
-    public FontFormat getLabelFormat() {
-        return labelFormat;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setLabelFormat(FontFormat newLabelFormat) {
-        FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? ForegroundStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
+    public EList<FontFormat> getLabelFormat() {
+        if (labelFormat == null) {
+            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT);
         }
+        return labelFormat;
     }
 
     /**
@@ -227,6 +211,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -234,7 +219,8 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
             setLabelSize((Integer) newValue);
             return;
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat((FontFormat) newValue);
+            getLabelFormat().clear();
+            getLabelFormat().addAll((Collection<? extends FontFormat>) newValue);
             return;
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR:
             setForeGroundColor((ColorDescription) newValue);
@@ -255,7 +241,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
             setLabelSize(ForegroundStyleDescriptionImpl.LABEL_SIZE_EDEFAULT);
             return;
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat(ForegroundStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT);
+            getLabelFormat().clear();
             return;
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR:
             setForeGroundColor((ColorDescription) null);
@@ -275,7 +261,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_SIZE:
             return labelSize != ForegroundStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT:
-            return labelFormat != ForegroundStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
+            return labelFormat != null && !labelFormat.isEmpty();
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR:
             return foreGroundColor != null;
         }
@@ -301,5 +287,4 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
         result.append(')');
         return result.toString();
     }
-
 } // ForegroundStyleDescriptionImpl

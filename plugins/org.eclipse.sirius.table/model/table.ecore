@@ -132,8 +132,8 @@
         <details key="documentation" value="The font size."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"
-        defaultValueLiteral="normal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" upperBound="4"
+        eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The font format."/>
       </eAnnotations>
@@ -519,8 +519,8 @@
           <details key="documentation" value="The font size."/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"
-          defaultValueLiteral="normal">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" upperBound="4"
+          eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The font format."/>
         </eAnnotations>

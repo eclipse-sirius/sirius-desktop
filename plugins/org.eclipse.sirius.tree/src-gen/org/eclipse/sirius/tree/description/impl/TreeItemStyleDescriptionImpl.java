@@ -10,11 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.description.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -60,6 +64,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * @generated
  */
 public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container implements TreeItemStyleDescription {
+
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -81,24 +86,14 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected int labelSize = TreeItemStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getLabelFormat()
-     * @generated
-     * @ordered
-     */
-    protected static final FontFormat LABEL_FORMAT_EDEFAULT = FontFormat.NORMAL_LITERAL;
-
-    /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = TreeItemStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
+    protected EList<FontFormat> labelFormat;
 
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
@@ -230,6 +225,67 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * @generated
      */
     @Override
+    public int getLabelSize() {
+        return labelSize;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setLabelSize(int newLabelSize) {
+        int oldLabelSize = labelSize;
+        labelSize = newLabelSize;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EList<FontFormat> getLabelFormat() {
+        if (labelFormat == null) {
+            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_FORMAT);
+        }
+        return labelFormat;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public boolean isShowIcon() {
+        return showIcon;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setShowIcon(boolean newShowIcon) {
+        boolean oldShowIcon = showIcon;
+        showIcon = newShowIcon;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__SHOW_ICON, oldShowIcon, showIcon));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
@@ -245,30 +301,6 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         labelExpression = newLabelExpression;
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public LabelAlignment getLabelAlignment() {
-        return labelAlignment;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setLabelAlignment(LabelAlignment newLabelAlignment) {
-        LabelAlignment oldLabelAlignment = labelAlignment;
-        labelAlignment = newLabelAlignment == null ? TreeItemStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
         }
     }
 
@@ -344,8 +376,8 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * @generated
      */
     @Override
-    public int getLabelSize() {
-        return labelSize;
+    public LabelAlignment getLabelAlignment() {
+        return labelAlignment;
     }
 
     /**
@@ -354,59 +386,11 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * @generated
      */
     @Override
-    public void setLabelSize(int newLabelSize) {
-        int oldLabelSize = labelSize;
-        labelSize = newLabelSize;
+    public void setLabelAlignment(LabelAlignment newLabelAlignment) {
+        LabelAlignment oldLabelAlignment = labelAlignment;
+        labelAlignment = newLabelAlignment == null ? TreeItemStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public FontFormat getLabelFormat() {
-        return labelFormat;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setLabelFormat(FontFormat newLabelFormat) {
-        FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? TreeItemStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public boolean isShowIcon() {
-        return showIcon;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setShowIcon(boolean newShowIcon) {
-        boolean oldShowIcon = showIcon;
-        showIcon = newShowIcon;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__SHOW_ICON, oldShowIcon, showIcon));
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
         }
     }
 
@@ -491,6 +475,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -498,7 +483,8 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
             setLabelSize((Integer) newValue);
             return;
         case DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat((FontFormat) newValue);
+            getLabelFormat().clear();
+            getLabelFormat().addAll((Collection<? extends FontFormat>) newValue);
             return;
         case DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__SHOW_ICON:
             setShowIcon((Boolean) newValue);
@@ -534,7 +520,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
             setLabelSize(TreeItemStyleDescriptionImpl.LABEL_SIZE_EDEFAULT);
             return;
         case DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat(TreeItemStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT);
+            getLabelFormat().clear();
             return;
         case DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__SHOW_ICON:
             setShowIcon(TreeItemStyleDescriptionImpl.SHOW_ICON_EDEFAULT);
@@ -569,7 +555,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         case DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_SIZE:
             return labelSize != TreeItemStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
         case DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_FORMAT:
-            return labelFormat != TreeItemStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
+            return labelFormat != null && !labelFormat.isEmpty();
         case DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__SHOW_ICON:
             return showIcon != TreeItemStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
         case DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_EXPRESSION:
@@ -685,5 +671,4 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         result.append(')');
         return result.toString();
     }
-
 } // TreeItemStyleDescriptionImpl

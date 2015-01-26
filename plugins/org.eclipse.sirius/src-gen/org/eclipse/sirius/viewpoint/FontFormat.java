@@ -29,16 +29,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum FontFormat implements Enumerator {
     /**
-     * The '<em><b>Normal</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see #NORMAL
-     * @generated
-     * @ordered
-     */
-    NORMAL_LITERAL(0, "normal", "normal"),
-
-    /**
      * The '<em><b>Italic</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -46,7 +36,7 @@ public enum FontFormat implements Enumerator {
      * @generated
      * @ordered
      */
-    ITALIC_LITERAL(1, "italic", "italic"),
+    ITALIC_LITERAL(0, "italic", "italic"),
 
     /**
      * The '<em><b>Bold</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -56,32 +46,27 @@ public enum FontFormat implements Enumerator {
      * @generated
      * @ordered
      */
-    BOLD_LITERAL(2, "bold", "bold"),
+    BOLD_LITERAL(1, "bold", "bold"),
 
     /**
-     * The '<em><b>Bold italic</b></em>' literal object. <!-- begin-user-doc -->
+     * The '<em><b>Underline</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
-     * @see #BOLD_ITALIC
+     * @see #UNDERLINE
      * @generated
      * @ordered
      */
-    BOLD_ITALIC_LITERAL(3, "bold_italic", "bold_italic");
+    UNDERLINE_LITERAL(2, "underline", "underline"),
 
     /**
-     * The '<em><b>Normal</b></em>' literal value. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>Normal</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * The '<em><b>Strike through</b></em>' literal object. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
-     * @see #NORMAL_LITERAL
-     * @model name="normal"
+     * @see #STRIKE_THROUGH
      * @generated
      * @ordered
      */
-    public static final int NORMAL = 0;
+    STRIKE_THROUGH_LITERAL(3, "strike_through", "strike_through");
 
     /**
      * The '<em><b>Italic</b></em>' literal value. <!-- begin-user-doc -->
@@ -96,7 +81,7 @@ public enum FontFormat implements Enumerator {
      * @generated
      * @ordered
      */
-    public static final int ITALIC = 1;
+    public static final int ITALIC = 0;
 
     /**
      * The '<em><b>Bold</b></em>' literal value. <!-- begin-user-doc -->
@@ -111,22 +96,38 @@ public enum FontFormat implements Enumerator {
      * @generated
      * @ordered
      */
-    public static final int BOLD = 2;
+    public static final int BOLD = 1;
 
     /**
-     * The '<em><b>Bold italic</b></em>' literal value. <!-- begin-user-doc -->
+     * The '<em><b>Underline</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Bold italic</b></em>' literal object isn't
+     * If the meaning of '<em><b>Underline</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @see #UNDERLINE_LITERAL
+     * @model name="underline"
+     * @generated
+     * @ordered
+     */
+    public static final int UNDERLINE = 2;
+
+    /**
+     * The '<em><b>Strike through</b></em>' literal value. <!-- begin-user-doc
+     * -->
+     * <p>
+     * If the meaning of '<em><b>Strike through</b></em>' literal object isn't
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
-     * @see #BOLD_ITALIC_LITERAL
-     * @model name="bold_italic"
+     * @see #STRIKE_THROUGH_LITERAL
+     * @model name="strike_through"
      * @generated
      * @ordered
      */
-    public static final int BOLD_ITALIC = 3;
+    public static final int STRIKE_THROUGH = 3;
 
     /**
      * An array of all the '<em><b>Font Format</b></em>' enumerators. <!--
@@ -134,7 +135,7 @@ public enum FontFormat implements Enumerator {
      *
      * @generated
      */
-    private static final FontFormat[] VALUES_ARRAY = new FontFormat[] { NORMAL_LITERAL, ITALIC_LITERAL, BOLD_LITERAL, BOLD_ITALIC_LITERAL, };
+    private static final FontFormat[] VALUES_ARRAY = new FontFormat[] { ITALIC_LITERAL, BOLD_LITERAL, UNDERLINE_LITERAL, STRIKE_THROUGH_LITERAL, };
 
     /**
      * A public read-only list of all the '<em><b>Font Format</b></em>'
@@ -182,14 +183,14 @@ public enum FontFormat implements Enumerator {
      */
     public static FontFormat get(int value) {
         switch (value) {
-        case NORMAL:
-            return NORMAL_LITERAL;
         case ITALIC:
             return ITALIC_LITERAL;
         case BOLD:
             return BOLD_LITERAL;
-        case BOLD_ITALIC:
-            return BOLD_ITALIC_LITERAL;
+        case UNDERLINE:
+            return UNDERLINE_LITERAL;
+        case STRIKE_THROUGH:
+            return STRIKE_THROUGH_LITERAL;
         }
         return null;
     }

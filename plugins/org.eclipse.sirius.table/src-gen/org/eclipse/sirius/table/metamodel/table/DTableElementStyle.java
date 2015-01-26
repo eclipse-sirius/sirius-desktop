@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.metamodel.table;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -88,21 +89,7 @@ public interface DTableElementStyle extends EObject {
      * @model default="normal"
      * @generated
      */
-    FontFormat getLabelFormat();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelFormat
-     * <em>Label Format</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Label Format</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.FontFormat
-     * @see #getLabelFormat()
-     * @generated
-     */
-    void setLabelFormat(FontFormat value);
+    EList<FontFormat> getLabelFormat();
 
     /**
      * Returns the value of the '<em><b>Foreground Color</b></em>' attribute.

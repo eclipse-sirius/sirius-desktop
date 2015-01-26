@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -580,7 +581,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 style.setForegroundStyleOrigin(cell.getColumn().getOriginMapping());
             }
             if (bestForegroundStyleDesc.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat())) {
-                style.setLabelFormat(bestForegroundStyleDesc.getLabelFormat());
+                FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat());
             }
             if (bestForegroundStyleDesc.getLabelSize() != -1 && style.getLabelSize() != bestForegroundStyleDesc.getLabelSize()) {
                 style.setLabelSize(bestForegroundStyleDesc.getLabelSize());
@@ -642,7 +643,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             boolean defaultStyleDescription = new StyleUpdaterQuery(line.getOriginMapping()).isDefaultForegroundColor(bestForegroundStyle.getForeGroundColor());
             colorUpdater.updateForegroundColor(style, bestForegroundStyle.getForeGroundColor(), defaultStyleDescription, line.getTarget());
             if (bestForegroundStyle.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
-                style.setLabelFormat(bestForegroundStyle.getLabelFormat());
+                FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyle.getLabelFormat());
             }
             if (bestForegroundStyle.getLabelSize() != -1 && style.getLabelSize() != bestForegroundStyle.getLabelSize()) {
                 style.setLabelSize(bestForegroundStyle.getLabelSize());
@@ -653,7 +654,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
             }
             if (style.getLabelFormat() != null) {
-                style.setLabelFormat(null);
+                style.getLabelFormat().clear();
             }
             if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize())) {
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize());
@@ -717,7 +718,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             boolean defaultStyleDescription = new StyleUpdaterQuery(styleUpdater).isDefaultForegroundColor(bestForegroundStyle.getForeGroundColor());
             colorUpdater.updateForegroundColor(style, bestForegroundStyle.getForeGroundColor(), defaultStyleDescription, column.getTarget());
             if (bestForegroundStyle.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
-                style.setLabelFormat(bestForegroundStyle.getLabelFormat());
+                FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyle.getLabelFormat());
             }
             if (bestForegroundStyle.getLabelSize() != -1 && style.getLabelSize() != bestForegroundStyle.getLabelSize()) {
                 style.setLabelSize(bestForegroundStyle.getLabelSize());
