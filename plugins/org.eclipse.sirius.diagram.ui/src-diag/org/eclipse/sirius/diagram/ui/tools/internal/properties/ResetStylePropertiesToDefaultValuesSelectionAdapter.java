@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ColorsA
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
@@ -74,6 +75,23 @@ public class ResetStylePropertiesToDefaultValuesSelectionAdapter extends Selecti
                         if (new DDiagramElementQuery(dDiagramElement).isCustomized() || new ViewQuery(notationView).isCustomized()) {
                             customizedViews.put(notationView, dDiagramElement);
                             oldStyles.put(graphicalEditPart, dDiagramElement.getStyle());
+                        }
+                    } else if (semanticElement instanceof DSemanticDiagram) {
+                        // If a diagram is selected, reset all the children
+                        for (Object graphicalEditParChild : graphicalEditPart.getChildren()) {
+                            if (!(graphicalEditParChild instanceof IGraphicalEditPart)) {
+                                continue;
+                            }
+                            IGraphicalEditPart subGraphicalEditPart = (IGraphicalEditPart) graphicalEditParChild;
+                            View subNotationView = subGraphicalEditPart.getNotationView();
+                            EObject subSemanticElement = subGraphicalEditPart.resolveSemanticElement();
+                            if (subSemanticElement instanceof DDiagramElement
+                                    && (new DDiagramElementQuery((DDiagramElement) subSemanticElement).isCustomized() || new ViewQuery(subNotationView).isCustomized())) {
+                                customizedViews.put(subNotationView, (DDiagramElement) subSemanticElement);
+                                oldStyles.put(subGraphicalEditPart, ((DDiagramElement) subSemanticElement).getStyle());
+                            } else if (dDiagramElement == null && new ViewQuery(subNotationView).isCustomized()) {
+                                customizedViews.put(subNotationView, dDiagramElement);
+                            }
                         }
                     } else if (dDiagramElement == null && new ViewQuery(notationView).isCustomized()) {
                         customizedViews.put(notationView, dDiagramElement);

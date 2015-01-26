@@ -22,21 +22,32 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.UserFixedColor;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.accessibility.AccessibleAdapter;
+import org.eclipse.swt.accessibility.AccessibleEvent;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 
 /**
  * Class necessary to remove default color option.
@@ -46,6 +57,25 @@ import org.eclipse.swt.widgets.Button;
  */
 @SuppressWarnings("restriction")
 public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPropertySection {
+
+    /** button to set back the view to default color. */
+    protected Button resetStylePropertiesToDefaultValuesButton;
+
+    /**
+     * button to allow user to select an image in the workspace and set the
+     * selected image as view background image.
+     */
+    protected Button setStyleToWorkspaceImageButton;
+
+    /**
+     * button to set the font underlined.
+     */
+    private Button fontUnderlineButton;
+
+    /**
+     * button to set the font struck through.
+     */
+    private Button fontStrikeThroughButton;
 
     /**
      * {@inheritDoc}
@@ -135,4 +165,147 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
 
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection#createFontsGroup(org.eclipse.swt.widgets.Composite)
+     */
+    @Override
+    protected Composite createFontsGroup(final Composite parent) {
+        final Composite toolBar = super.createFontsGroup(parent);
+
+        final Image imageUndo = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNDO_ICON);
+        final Image imageImage = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.IMAGE_ICON);
+        final Image imageUnderline = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNDERLINE_ICON);
+        final Image imageStrikeThrough = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.STRIKE_THROUGH_ICON);
+
+        boolean isReadOnly = isReadOnly();
+
+        fontUnderlineButton = new Button(toolBar, SWT.TOGGLE);
+        fontUnderlineButton.setImage(imageUnderline);
+        fontUnderlineButton.setEnabled(!isReadOnly);
+        fontUnderlineButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
+            @Override
+            public void getName(final AccessibleEvent e) {
+                e.result = "Underline";
+            }
+        });
+
+        fontStrikeThroughButton = new Button(toolBar, SWT.TOGGLE);
+        fontStrikeThroughButton.setImage(imageStrikeThrough);
+        fontStrikeThroughButton.setEnabled(!isReadOnly);
+        fontStrikeThroughButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
+            @Override
+            public void getName(final AccessibleEvent e) {
+                e.result = "StrikeThrough";
+            }
+        });
+
+        new Label(toolBar, SWT.LEFT);
+        new Label(toolBar, SWT.LEFT);
+        new Label(toolBar, SWT.LEFT);
+
+        setStyleToWorkspaceImageButton = new Button(toolBar, SWT.PUSH);
+        setStyleToWorkspaceImageButton.setToolTipText(SetStyleToWorkspaceImageAction.SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_NAME);
+        setStyleToWorkspaceImageButton.setImage(imageImage);
+        setStyleToWorkspaceImageButton.setEnabled(false);
+
+        resetStylePropertiesToDefaultValuesButton = new Button(toolBar, SWT.PUSH);
+        resetStylePropertiesToDefaultValuesButton.setToolTipText(ResetStylePropertiesToDefaultValuesAction.ACTION_NAME);
+        resetStylePropertiesToDefaultValuesButton.setImage(imageUndo);
+        resetStylePropertiesToDefaultValuesButton.addSelectionListener(new ResetStylePropertiesToDefaultValuesSelectionAdapter(this));
+        resetStylePropertiesToDefaultValuesButton.setEnabled(!isReadOnly);
+
+        fontUnderlineButton.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(final SelectionEvent event) {
+                updateFontUnderline();
+            }
+        });
+
+        fontStrikeThroughButton.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(final SelectionEvent event) {
+                updateFontStrikeThrough();
+            }
+        });
+        return toolBar;
+    }
+
+    private void updateFontUnderline() {
+        // Update model in response to user
+        final List<ICommand> commands = new ArrayList<ICommand>();
+        final Iterator<?> it = getInputIterator();
+
+        while (it.hasNext()) {
+            final IGraphicalEditPart ep = (IGraphicalEditPart) it.next();
+            commands.add(createCommand(FONT_COMMAND_NAME, ((View) ep.getModel()).eResource(), new Runnable() {
+
+                @Override
+                public void run() {
+                    ep.setStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_Underline(), Boolean.valueOf(fontUnderlineButton.getSelection()));
+                }
+            }));
+        }
+
+        executeAsCompositeCommand(FONT_COMMAND_NAME, commands);
+    }
+
+    private void updateFontStrikeThrough() {
+        // Update model in response to user
+        final List<ICommand> commands = new ArrayList<ICommand>();
+        final Iterator<?> it = getInputIterator();
+
+        while (it.hasNext()) {
+            final IGraphicalEditPart ep = (IGraphicalEditPart) it.next();
+            commands.add(createCommand(FONT_COMMAND_NAME, ((View) ep.getModel()).eResource(), new Runnable() {
+
+                @Override
+                public void run() {
+                    ep.setStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_StrikeThrough(), Boolean.valueOf(fontStrikeThroughButton.getSelection()));
+                }
+            }));
+        }
+
+        executeAsCompositeCommand(FONT_COMMAND_NAME, commands);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection#refresh()
+     */
+    @Override
+    public void refresh() {
+        if (!isDisposed()) {
+            super.refresh();
+            executeAsReadAction(new Runnable() {
+
+                @Override
+                public void run() {
+                    final IGraphicalEditPart ep = getSingleInput();
+                    if (ep != null) {
+                        final View view = (View) ep.getModel();
+                        boolean isCustomizedView = ResetStylePropertiesToDefaultValuesSelectionAdapter.isCustomizedView(view);
+                        final boolean isReadOnly = isReadOnly();
+                        if (resetStylePropertiesToDefaultValuesButton != null) {
+                            resetStylePropertiesToDefaultValuesButton.setEnabled(!isReadOnly && isCustomizedView);
+                        }
+                        if (fontUnderlineButton != null) {
+                            boolean underlined = (Boolean) ep.getStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_Underline());
+                            fontUnderlineButton.setSelection(underlined);
+                            fontUnderlineButton.setEnabled(!isReadOnly);
+                        }
+                        if (fontStrikeThroughButton != null) {
+                            boolean striked = (Boolean) ep.getStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_StrikeThrough());
+                            fontStrikeThroughButton.setSelection(striked);
+                            fontStrikeThroughButton.setEnabled(!isReadOnly);
+                        }
+                    }
+                }
+            });
+        }
+    }
 }
