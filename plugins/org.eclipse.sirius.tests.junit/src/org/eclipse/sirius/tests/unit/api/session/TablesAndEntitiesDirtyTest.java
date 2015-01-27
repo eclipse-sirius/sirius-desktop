@@ -14,10 +14,10 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
-import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -67,7 +67,6 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
     @Override
     protected void tearDown() throws Exception {
         TestsUtil.synchronizationWithUIThread();
-
         super.tearDown();
     }
 
@@ -96,9 +95,9 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
              */
             return;
         }
-        ((DAnalysisSessionImpl) session).setDisposeEditingDomainOnClose(false);
 
         assertsSessionIsSyncAndReload(session);
+        loadModeler(URI.createPlatformPluginURI(MODELER_PATH, true), session.getTransactionalEditingDomain());
 
         rootEPackage = (EPackage) semanticModel;
         childEPackage = rootEPackage.getESubpackages().get(0);
@@ -136,14 +135,12 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      * @throws Exception
      */
     public void testCreateAndOpenTableRepresentationInEditor() throws Exception {
-
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
 
-        ((DAnalysisSessionImpl) session).setDisposeEditingDomainOnClose(false);
-
         assertsSessionIsSyncAndReload(session);
+        loadModeler(URI.createPlatformPluginURI(MODELER_PATH, true), session.getTransactionalEditingDomain());
 
         rootEPackage = (EPackage) semanticModel;
         childEPackage = rootEPackage.getESubpackages().get(0);
@@ -292,11 +289,9 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      * @throws Exception
      */
     public void assertsSessionIsSyncAndReload(Session session) throws Exception {
-
         assertEquals(SessionStatus.SYNC, session.getStatus());
         closeAndReloadSession();
         TestsUtil.synchronizationWithUIThread();
-
         assertEquals(SessionStatus.SYNC, session.getStatus());
     }
 

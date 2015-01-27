@@ -158,6 +158,7 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 * The method @org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase.setReadOnly(IFile)@ has been deprecated, @org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)@ can be used instead.
 
 * The @warnings@ member variable has been added to @org.eclipse.sirius.tests.support.api.SiriusTestCase@ to allow the recording of warning logs. Methods @doesAWarningOccurs()@, @clearWarnings()@, @setWarningCatchActive(boolean)@, @isWarningCatchActive()@ and @getWarningLoggersMessage()@ have also been added to manage the @warnings@ member variable in the same way as the existing @errors@ member variable.
+* The method @org.eclipse.sirius.tests.support.api.SiriusTestCase.loadModeler(URI, EditingDomain)@ has been added to load a VSM resource and make the @Viewpoints@ it defines accessible via the @SiriusTestsCase.viewpoints@ field.
 
 * @org.eclipse.sirius.tests.support.api.ImageComposer@ has been added to the test API to do assertions on image decorators. 
 

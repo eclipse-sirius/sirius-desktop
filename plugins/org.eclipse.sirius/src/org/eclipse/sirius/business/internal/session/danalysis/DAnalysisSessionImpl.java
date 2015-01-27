@@ -140,8 +140,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private ReloadingPolicy reloadingPolicy;
 
-    private boolean disposeEditingDomainOnClose = true;
-
     private IResourceCollector currentResourceCollector;
 
     private SessionVSMUpdater vsmUpdater = new SessionVSMUpdater(this);
@@ -1145,33 +1143,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // Session Configuration
     // *******************
 
-    /**
-     * Configure this session so that when it is closed, it disposes the
-     * associated editing domain or not. Normally, each session has its own
-     * editing domain, which is disposed when the session is closed, but the
-     * historical behavior was to share the same editing domain for all session.
-     * Applications which have not been updated and still used shared editing
-     * domains should set this flag to <code>false</code> to avoid problems.
-     * 
-     * @param disposeOnClose
-     *            whether or not the editing domain used by this session should
-     *            be disposed when the session is closed.
-     */
-    public void setDisposeEditingDomainOnClose(boolean disposeOnClose) {
-        this.disposeEditingDomainOnClose = disposeOnClose;
-    }
-
-    /**
-     * Tests whether this session will dispose its editing domain when it is
-     * closed.
-     * 
-     * @return <code>true</code> if this session will dispose its editing domain
-     *         when closed.
-     */
-    public boolean getDisposeEditingDomainOnClose() {
-        return disposeEditingDomainOnClose;
-    }
-
     @Override
     public void setAnalysisSelector(final DAnalysisSelector selector) {
         if (this.getServices() instanceof DAnalysisSessionService) {
@@ -1341,12 +1312,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         flushOperations(transactionalEditingDomain);
         // Unload all referenced resources
         unloadAllResources();
-        if (disposeEditingDomainOnClose) {
-            // To remove remaining resource like environment:/viewpoint
-            for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
-                resource.unload();
-                resourceSet.getResources().remove(resource);
-            }
+        // To remove remaining resource like environment:/viewpoint
+        for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
+            resource.unload();
+            resourceSet.getResources().remove(resource);
         }
         // Notify that the session is closed.
         notifyListeners(SessionListener.CLOSED);
@@ -1358,11 +1327,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         crossReferencer = null;
         saver.dispose();
 
-        if (disposeEditingDomainOnClose) {
-            transactionalEditingDomain.dispose();
-            doDisposePermissionAuthority(resourceSet);
-            transactionalEditingDomain = null;
-        }
+        transactionalEditingDomain.dispose();
+        doDisposePermissionAuthority(resourceSet);
+        transactionalEditingDomain = null;
         getActivatedViewpoints().clear();
         services = null;
         sessionResource = null;

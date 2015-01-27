@@ -151,9 +151,6 @@ public class ProfiledCommandFactory {
         } catch (CoreException e) {
             TestCase.fail("Problem during Session creation:" + e.getMessage());
         }
-        if (session instanceof DAnalysisSessionImpl) {
-            ((DAnalysisSessionImpl) session).setDisposeEditingDomainOnClose(false);
-        }
         session.open(new NullProgressMonitor());
 
         URI semanticResourceURI = model.eResource().getURI();

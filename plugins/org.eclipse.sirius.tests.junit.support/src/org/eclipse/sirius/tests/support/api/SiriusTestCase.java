@@ -514,7 +514,18 @@ public abstract class SiriusTestCase extends TestCase {
         }
     }
 
-    private void loadModeler(final URI modelerResourceURI, EditingDomain domain) throws Exception {
+    /**
+     * Load the VSM at the specified URI and registers all its Viewpoints in the
+     * testcase.
+     * 
+     * @param modelerResourceURI
+     *            the URI of the VSM.
+     * @param domain
+     *            the editing domain into which the VSM should be loaded.
+     * @throws Exception
+     *             if an error occurs while trying to load the VSM.
+     */
+    protected void loadModeler(final URI modelerResourceURI, EditingDomain domain) throws Exception {
         Group group = null;
         try {
             group = (Group) ModelUtils.load(modelerResourceURI, domain.getResourceSet());
@@ -1128,7 +1139,7 @@ public abstract class SiriusTestCase extends TestCase {
     public Viewpoint getViewpointFromName(String viewpointName, Session sessionToUse) {
         Viewpoint localViewpoint = null;
         for (Viewpoint viewpoint : viewpoints) {
-            if (viewpoint.getName() != null && viewpoint.getName().equals(viewpointName)) {
+            if (viewpoint.eResource() != null && viewpoint.getName() != null && viewpoint.getName().equals(viewpointName)) {
                 URI viewpointResourceURI = viewpoint.eResource().getURI();
                 Resource newViewpointResource = sessionToUse.getTransactionalEditingDomain().getResourceSet().getResource(viewpointResourceURI, true);
                 if (!newViewpointResource.getContents().isEmpty() && newViewpointResource.getContents().get(0) instanceof Group) {
