@@ -105,7 +105,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
         if (path != null) {
             final File imageFile = WorkspaceFileResourceChangeListener.getInstance().getFileFromURI(path);
             ImageDescriptor desc = null;
-            if (WorkspaceFileResourceChangeListener.getInstance().getReadStatusOfFile(imageFile)) {
+            if (imageFile != null && WorkspaceFileResourceChangeListener.getInstance().getReadStatusOfFile(imageFile)) {
                 try {
                     desc = WorkspaceFileResourceChangeListener.getInstance().findImageDescriptor(imageFile);
                 } catch (MalformedURLException e) {
