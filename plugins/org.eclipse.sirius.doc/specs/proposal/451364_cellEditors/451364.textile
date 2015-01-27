@@ -1,0 +1,58 @@
+h1. Sirius Evolution Specification:  Have the possibility to customize property cell editors in Sirius
+
+h2. Preamble
+
+_Summary_: This enhancement aims to offer the possibility to customize the default cell editors of the semantic properties view.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2015-01-27 | fbarbin    | Initial version. |
+
+_Relevant tickets_:
+* "Bug 451364 - It should be possible to customize property cell editors in Sirius ":https://bugs.eclipse.org/bugs/show_bug.cgi?id=451364
+
+h2. Introduction
+
+It should be possible to customize property cell editors in Sirius as it is possible with a standard EMF Tree Viewer. This could allow Sirius users to provide customized cell editors with syntax coloring, completion etc.
+
+h2. Detailed Specification
+
+Currently, the properties view cell editors cannot be customized. This enhancement will offer the possibility for clients to provide their own @CellEditor@.
+A new extension point will be added:
+* It will take a cell editor provider that will indicate if it provides a @CellEditor@ for a given @EObject@ and @IItemPropertyDescriptor@.
+
+!properties.png!
+
+The customization will be available on every Sirius editors (Diagram, Table and Tree).
+If several providers override a same property, we choose the first one we met.
+
+h3. Technical details
+
+The extension point will be added in a new @SiriusPropertyDescriptor@, created by a new @SiriusPropertySource@. That means other editors properties view could also be extended if the developer choose to use the @SiriusPropertySource@ instead of the default EMF one (@PropertySource@)
+
+h2. Backward Compatibility and Migration Paths
+
+There is no migration or any compatibility issues identified with this enhancement.
+
+h3. Metamodel Changes
+
+There is no meta-model changes.
+  
+h3. API Changes
+
+A new Interface that clients should implements to provide their own cell editors will be added.
+
+h3. User Interface Changes
+
+There is no user interfaces changes.
+
+h3. Documentation Changes
+
+The new extension point will be documented within the developer manual.
+
+h2. Tests and Non-regression strategy
+
+A SWTBot test will be added to check that an example of cellEditor provider is properly installed.
+
+h2. Implementation choices and tradeoffs
+
+A future enhancement of this feature could be to let the user customizing the label provider too. By proving a customized image or text.

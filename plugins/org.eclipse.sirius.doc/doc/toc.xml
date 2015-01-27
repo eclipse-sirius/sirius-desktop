@@ -145,6 +145,7 @@
       <topic href="doc/developer/extensions-provide_tabbar_extensions.html" label="Provide tab-bar extensions"/>
       <topic href="doc/developer/extensions-provide_migrate_contribution.html" label="Provide custom representation files migration"/>
       <topic href="doc/developer/extensions-provide_repair_contribution.html" label="Provide custom repair participant"/>
+      <topic href="doc/developer/extensions-provide_celleditor.html" label="Provide custom cell editor"/>
       <anchor id="moreExtensionPointsRefs"/>
     </topic>
     <anchor id="moreDeveloperRefs"/>

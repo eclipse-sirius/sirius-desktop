@@ -24,6 +24,7 @@ import org.eclipse.sirius.tree.ui.properties.propertysource.TreeCompositeEObject
 import org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractCompositeEObjectPropertySource;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractEObjectPropertySource;
+import org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -119,7 +120,7 @@ public class SemanticPropertySection extends AbstractDTreePropertySection {
             if (af != null) {
                 final IItemPropertySource ips = (IItemPropertySource) af.adapt(semanticElement, IItemPropertySource.class);
                 if (ips != null) {
-                    final IPropertySource targetPropertySource = new PropertySource(semanticElement, ips);
+                    final IPropertySource targetPropertySource = new SiriusExtensiblePropertySource(semanticElement, ips);
                     propertySource.addPropertySource(semanticElement, targetPropertySource);
                 }
             }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_ZyUjMKrkEeSgN9e5vHfJpw" selectedViews="_aTevgKrkEeSgN9e5vHfJpw" version="10.0.0.201412231738">
+  <models xmi:type="ecore:EPackage" href="cellEditor.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_aTevgKrkEeSgN9e5vHfJpw" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_bMvSwKrkEeSgN9e5vHfJpw" name="new Table" headerColumnWidth="144">
+      <target xmi:type="ecore:EPackage" href="cellEditor.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_bMvSwarkEeSgN9e5vHfJpw" label="NewEClass1">
+        <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass1"/>
+        <originMapping xmi:type="description:LineMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='EClass']"/>
+        <cells xmi:type="table:DCell" xmi:id="_bMvSwqrkEeSgN9e5vHfJpw" label="NewEClass1" column="_bMvSx6rkEeSgN9e5vHfJpw">
+          <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass1"/>
+          <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass1"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_bMvSw6rkEeSgN9e5vHfJpw" label="NewEClass2">
+        <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass2"/>
+        <originMapping xmi:type="description:LineMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='EClass']"/>
+        <cells xmi:type="table:DCell" xmi:id="_bMvSxKrkEeSgN9e5vHfJpw" label="NewEClass2" column="_bMvSx6rkEeSgN9e5vHfJpw">
+          <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass2"/>
+          <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass2"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_bMvSxarkEeSgN9e5vHfJpw" label="NewEClass3">
+        <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass3"/>
+        <originMapping xmi:type="description:LineMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='EClass']"/>
+        <cells xmi:type="table:DCell" xmi:id="_bMvSxqrkEeSgN9e5vHfJpw" label="NewEClass3" column="_bMvSx6rkEeSgN9e5vHfJpw">
+          <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass3"/>
+          <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass3"/>
+        </cells>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_bMvSx6rkEeSgN9e5vHfJpw" cells="_bMvSwqrkEeSgN9e5vHfJpw _bMvSxKrkEeSgN9e5vHfJpw _bMvSxqrkEeSgN9e5vHfJpw" featureName="name">
+        <originMapping xmi:type="description:FeatureColumnMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Table']/@ownedColumnMappings[name='name']"/>
+      </columns>
+      <description xmi:type="description:EditionTableDescription" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Table']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_jOY1AKrkEeSgN9e5vHfJpw" name="new Diagram">
+      <ownedAnnotationEntries xmi:type="description_1:AnnotationEntry" xmi:id="_jOaDIKrkEeSgN9e5vHfJpw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_jOaDIarkEeSgN9e5vHfJpw" type="Sirius" element="_jOY1AKrkEeSgN9e5vHfJpw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_jOgJwKrkEeSgN9e5vHfJpw" type="2002" element="_jOY1AarkEeSgN9e5vHfJpw">
+            <children xmi:type="notation:Node" xmi:id="_jOhX4KrkEeSgN9e5vHfJpw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_jOimAKrkEeSgN9e5vHfJpw" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_jOimAarkEeSgN9e5vHfJpw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_jOimAqrkEeSgN9e5vHfJpw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_jOgJwarkEeSgN9e5vHfJpw" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jOgJwqrkEeSgN9e5vHfJpw"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_jOjNEKrkEeSgN9e5vHfJpw" type="2002" element="_jOY1B6rkEeSgN9e5vHfJpw">
+            <children xmi:type="notation:Node" xmi:id="_jOj0IKrkEeSgN9e5vHfJpw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_jOkbMKrkEeSgN9e5vHfJpw" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_jOkbMarkEeSgN9e5vHfJpw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_jOkbMqrkEeSgN9e5vHfJpw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_jOjNEarkEeSgN9e5vHfJpw" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jOjNEqrkEeSgN9e5vHfJpw" x="216"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_jOmQYKrkEeSgN9e5vHfJpw" type="2002" element="_jOY1DarkEeSgN9e5vHfJpw">
+            <children xmi:type="notation:Node" xmi:id="_jOnegKrkEeSgN9e5vHfJpw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_jOoFkKrkEeSgN9e5vHfJpw" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_jOoFkarkEeSgN9e5vHfJpw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_jOoFkqrkEeSgN9e5vHfJpw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_jOmQYarkEeSgN9e5vHfJpw" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jOmQYqrkEeSgN9e5vHfJpw" x="420"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_jOaDIqrkEeSgN9e5vHfJpw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_jOY1AarkEeSgN9e5vHfJpw" name="NewEClass1">
+        <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_jOY1AqrkEeSgN9e5vHfJpw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1A6rkEeSgN9e5vHfJpw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1BKrkEeSgN9e5vHfJpw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1BarkEeSgN9e5vHfJpw" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1BqrkEeSgN9e5vHfJpw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_2:ContainerMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_jOY1B6rkEeSgN9e5vHfJpw" name="NewEClass2">
+        <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_jOY1CKrkEeSgN9e5vHfJpw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1CarkEeSgN9e5vHfJpw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1CqrkEeSgN9e5vHfJpw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1C6rkEeSgN9e5vHfJpw" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1DKrkEeSgN9e5vHfJpw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_2:ContainerMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_jOY1DarkEeSgN9e5vHfJpw" name="NewEClass3">
+        <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass3"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_jOY1DqrkEeSgN9e5vHfJpw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1D6rkEeSgN9e5vHfJpw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1EKrkEeSgN9e5vHfJpw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1EarkEeSgN9e5vHfJpw" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_jOY1EqrkEeSgN9e5vHfJpw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_2:ContainerMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_2:DiagramDescription" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_jOY1E6rkEeSgN9e5vHfJpw"/>
+      <activatedLayers xmi:type="description_2:Layer" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="cellEditor.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_ppsrkKrkEeSgN9e5vHfJpw" name="new Tree">
+      <target xmi:type="ecore:EPackage" href="cellEditor.ecore#/"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_pptSoKrkEeSgN9e5vHfJpw" name="NewEClass1">
+        <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass1"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_pptSoarkEeSgN9e5vHfJpw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pptSoqrkEeSgN9e5vHfJpw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_pptSo6rkEeSgN9e5vHfJpw" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:TreeItemMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Tree']/@subItemMappings[name='EClass']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_pptSpKrkEeSgN9e5vHfJpw" name="NewEClass2">
+        <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass2"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_pptSparkEeSgN9e5vHfJpw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pptSpqrkEeSgN9e5vHfJpw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_pptSp6rkEeSgN9e5vHfJpw" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:TreeItemMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Tree']/@subItemMappings[name='EClass']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_pptSqKrkEeSgN9e5vHfJpw" name="NewEClass3">
+        <target xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="cellEditor.ecore#//NewEClass3"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_pptSqarkEeSgN9e5vHfJpw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pptSqqrkEeSgN9e5vHfJpw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_pptSq6rkEeSgN9e5vHfJpw" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:TreeItemMapping" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Tree']/@subItemMappings[name='EClass']"/>
+      </ownedTreeItems>
+      <description xmi:type="description_3:TreeDescription" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']/@ownedRepresentations[name='Tree']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="cellEditor.odesign#//@ownedViewpoints[name='cellEditor']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

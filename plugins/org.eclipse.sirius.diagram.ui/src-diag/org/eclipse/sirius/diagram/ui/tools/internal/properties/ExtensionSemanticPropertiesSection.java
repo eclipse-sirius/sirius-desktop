@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.properties.sections.AdvancedPropertySection;
 import org.eclipse.gmf.runtime.notation.View;
@@ -27,6 +26,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -61,7 +61,7 @@ public class ExtensionSemanticPropertiesSection extends AdvancedPropertySection 
             if (adapterFactory != null) {
                 final IItemPropertySource ips = (IItemPropertySource) adapterFactory.adapt(object, IItemPropertySource.class);
                 if (ips != null) {
-                    propertySrc = new PropertySource(object, ips);
+                    propertySrc = new SiriusExtensiblePropertySource(object, ips);
                 }
             }
             if (propertySrc == null && object instanceof IAdaptable) {

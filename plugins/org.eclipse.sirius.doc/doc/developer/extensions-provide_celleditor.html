@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-provide_celleditor</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvideCustomCellEditors">Sirius &#8211; Provide Custom Cell Editors</h1>
+		<h2 id="SiriusSemanticPropertiesView">Sirius Semantic Properties View</h2>
+		<p>You can override the default CellEditors in the Sirius semantic properties views by implementing 
+			<code>org.eclipse.sirius.ext.emf.ui.ICellEditorProvider</code> and provide it through the 
+			<code>org.eclipse.sirius.ui.siriuspropertiescelleditor</code> extension point.
+		</p>
+		<p>
+			<img border="0" src="images/propertiesView.png"/>
+			<br/>
+			<em>The semantic properties view</em>
+		</p>
+		<h2 id="OtherEditorsPropertiesView">Other Editors Properties View</h2>
+		<p>This extension mechanism can also be used for other editors properties view. That can be done by providing the 
+			<code>org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource</code> instead of the default EMF one by replacing the 
+			<code>propertySourceProvider</code> in the generated editor.
+		</p>
+	</body>
+</html>

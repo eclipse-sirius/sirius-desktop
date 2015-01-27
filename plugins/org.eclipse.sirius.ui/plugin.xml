@@ -22,6 +22,7 @@
    <extension-point id="uiSessionFactory" name="UI Session Factory" schema="schema/uiSessionFactory.exsd"/>
    <extension-point id="newmodeldependencywizard" name="newmodeldependencywizard" schema="schema/newmodeldependencywizard.exsd"/>
    <extension-point id="modelingprojectresourcelistener" name="org.eclipse.sirius.ui.resourcelistener" schema="schema/modelingprojectresourcelistener.exsd"/>
+   <extension-point id="siriuspropertiescelleditor" name="org.eclipse.sirius.ui.siriuspropertiescelleditor" schema="schema/siriuspropertiescelleditor.exsd"/>
 
     <extension
          point="org.eclipse.ui.views">

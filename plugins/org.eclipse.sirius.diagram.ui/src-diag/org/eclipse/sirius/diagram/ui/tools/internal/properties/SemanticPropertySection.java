@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
@@ -29,6 +28,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.AbstractPropertySection;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.ui.IWorkbenchPart;
@@ -71,7 +71,7 @@ public class SemanticPropertySection extends AbstractPropertySection implements 
                     if (af != null) {
                         final IItemPropertySource ips = (IItemPropertySource) af.adapt(semanticElement, IItemPropertySource.class);
                         if (ips != null) {
-                            final IPropertySource targetPropertySource = new PropertySource(semanticElement, ips);
+                            final IPropertySource targetPropertySource = new SiriusExtensiblePropertySource(semanticElement, ips);
                             propertySource.addPropertySource(semanticElement, targetPropertySource);
                         }
                     }
@@ -87,7 +87,7 @@ public class SemanticPropertySection extends AbstractPropertySection implements 
                 if (af != null) {
                     final IItemPropertySource ips = (IItemPropertySource) af.adapt(semanticElement, IItemPropertySource.class);
                     if (ips != null) {
-                        final IPropertySource targetPropertySource = new PropertySource(semanticElement, ips);
+                        final IPropertySource targetPropertySource = new SiriusExtensiblePropertySource(semanticElement, ips);
                         propertySource.addPropertySource(semanticElement, targetPropertySource);
                     }
                 }
@@ -98,7 +98,7 @@ public class SemanticPropertySection extends AbstractPropertySection implements 
             if (af != null) {
                 final IItemPropertySource ips = (IItemPropertySource) af.adapt(object, IItemPropertySource.class);
                 if (ips != null) {
-                    return new PropertySource(object, ips);
+                    return new SiriusExtensiblePropertySource(object, ips);
                 }
             }
             if (object instanceof IAdaptable) {
