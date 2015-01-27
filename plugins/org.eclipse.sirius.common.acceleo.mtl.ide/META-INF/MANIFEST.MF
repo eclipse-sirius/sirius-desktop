@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.common.acceleo.mtl.ide;singleton:=true
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 1.0.2.qualifier
 Bundle-Activator: org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoMTLInterpreterIDEPlugin
-Require-Bundle: org.eclipse.sirius.common.acceleo.mtl;bundle-version="1.0.1",
+Require-Bundle: org.eclipse.sirius.common.acceleo.mtl;bundle-version="1.0.2",
  org.eclipse.core.resources;bundle-version="3.5.0",
  org.eclipse.core.runtime;bundle-version="3.5.0",
  org.eclipse.acceleo.model;bundle-version="3.4.1",
  org.eclipse.jdt.core;bundle-version="3.5.0",
- org.eclipse.sirius.common;bundle-version="1.0.1",
+ org.eclipse.sirius.common;bundle-version="1.0.2",
  org.eclipse.acceleo.common;bundle-version="3.4.1",
  org.eclipse.acceleo.parser;bundle-version="3.4.1",
  org.eclipse.jface.text;bundle-version="3.5.0",
@@ -20,5 +20,5 @@ Require-Bundle: org.eclipse.sirius.common.acceleo.mtl;bundle-version="1.0.1",
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %providerName
-Export-Package: org.eclipse.sirius.common.acceleo.mtl.ide;x-internal:=true;version="1.0.1"
+Export-Package: org.eclipse.sirius.common.acceleo.mtl.ide;x-internal:=true;version="1.0.2"
 Bundle-Localization: plugin
