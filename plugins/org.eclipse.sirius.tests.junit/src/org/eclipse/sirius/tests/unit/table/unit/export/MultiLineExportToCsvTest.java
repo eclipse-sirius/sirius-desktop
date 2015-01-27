@@ -31,8 +31,6 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.ui.IEditorPart;
 
-
-
 /**
  * Tests the export of edition/cross tables as CSV asserting a proper content
  * export and the creation of the CSV file
@@ -57,6 +55,8 @@ public class MultiLineExportToCsvTest extends SiriusDiagramTestCase {
     private static final String REPRESENTATION_DESC_NAME_TABLE = "Test Table";
 
     private static final String CSV_FILE_NAME = REPRESENTATION_DESC_NAME_TABLE + ".csv";
+
+    private static final String EOL = "\r\n";
 
     @Override
     protected void setUp() throws Exception {
@@ -112,7 +112,7 @@ public class MultiLineExportToCsvTest extends SiriusDiagramTestCase {
         assertTrue("Review the test data.", cell.some());
         assertTrue("Review the test data.", cell.get().getTableElementMapping() instanceof FeatureColumnMapping);
         assertTrue("Review the test data.", StringUtil.isEmpty(((FeatureColumnMapping) cell.get().getTableElementMapping()).getLabelComputationExpression()));
-        assertEquals("The table should contain a cropped multi line label.", "multi ...", cell.get().getLabel());
+        assertEquals("The table should contain a multi line label.", "multi " + EOL + "line", cell.get().getLabel());
 
         String content = TableExportHelper.INSTANCE.exportToCsv(dTable);
         assertEquals(";name;\np1;single Line;\np2;'multi \nline';\n", content);

@@ -164,9 +164,10 @@ public class ModifyHeaderLabelExpressionTest extends SiriusTestCase {
 
     private String getExpectedDefaultHtml() {
         List<List<String>> expected = new ArrayList<List<String>>();
-        TableUIHelper.addLineToTable(expected, new String[] { "", "NameModify" });
-        TableUIHelper.addLineToTable(expected, new String[] { "E221", "E221" });
-        TableUIHelper.addLineToTable(expected, new String[] { "E2", "E2" });
+        TableUIHelper.addLineToTable(expected, new String[] { "", "NameModify", "Super types" });
+        TableUIHelper.addLineToTable(expected, new String[] { "E221", "E221", "[]" });
+        TableUIHelper.addLineToTable(expected, new String[] { "E2", "E2", "[]" });
+        TableUIHelper.addLineToTable(expected, new String[] { "E1 -> E2, E221", "E1", "[E2, E221]" });
         return TableUIHelper.toHTML(expected);
     }
 

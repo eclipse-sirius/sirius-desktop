@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -21,8 +22,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
@@ -120,7 +121,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             } else {
                 // If there is no headerLabelExpression, we use the label
                 // provider
-                // to get label to diplay
+                // to get label to display
                 final String label = getText(line.getTarget());
                 // We change the value only if it's different
                 if (isDifferent(line.getLabel(), label)) {
@@ -489,12 +490,24 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     }
 
     private boolean setLabelWithFeatureValue(final DCell cell, final ColumnMapping columnMapping, final String featureName) {
-        final IItemPropertyDescriptor itemPropertyDescriptor = getPropertyDescriptor(cell.getTarget(), featureName);
         boolean init = false;
+        String label = "";
         try {
             final Object featureObject = accessor.eGet(cell.getTarget(), featureName);
-            if (itemPropertyDescriptor != null && itemPropertyDescriptor.getLabelProvider(featureObject) != null) {
-                final String label = itemPropertyDescriptor.getLabelProvider(featureObject).getText(featureObject);
+            if (featureObject != null) {
+                // if featureObject is multivalue, return the label of all its
+                // objects
+                if (featureObject instanceof EList<?>) {
+                    List<String> texts = Lists.newArrayList();
+                    for (EObject obj : (EList<EObject>) featureObject) {
+                        texts.add(getText(obj));
+                    }
+                    label = texts.toString();
+                } else if (featureObject instanceof EObject) {
+                    label = getText(featureObject);
+                } else {
+                    label = featureObject.toString();
+                }
                 init = true;
                 // We change the value only if it's different
                 if (isDifferent(cell.getLabel(), label)) {
@@ -1117,47 +1130,22 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
         }
     }
 
-    private String getText(final EObject element) {
+    private String getText(final Object element) {
         String text = null;
         ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
         AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
+        IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(element, IItemLabelProvider.class);
+        ReflectiveItemProvider reflectiveItemProvider = new ReflectiveItemProvider(adapterFactory);
         try {
-            text = adapterFactoryItemDelegator.getText(element);
-        } finally {
-            adapterFactory.dispose();
-        }
-        return text;
-    }
-
-    /**
-     * Return the propertyDescriptor corresponding to the feature of this column
-     * for the instance
-     * 
-     * @param instance
-     *            the instance.
-     * @return the propertyDescriptor corresponding to the feature of this
-     *         column for the instance
-     */
-    private IItemPropertyDescriptor getPropertyDescriptor(final EObject instance, final String featureName) {
-        IItemPropertyDescriptor propertyDescriptor = null;
-        final EStructuralFeature structuralFeature = instance.eClass().getEStructuralFeature(featureName);
-        ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-        try {
-            final IItemPropertySource propertySource = (IItemPropertySource) adapterFactory.adapt(instance, IItemPropertySource.class);
-            if (propertySource != null) {
-                final Iterator<?> iterDescriptors = propertySource.getPropertyDescriptors(instance).iterator();
-                while (iterDescriptors.hasNext() && propertyDescriptor == null) {
-                    final IItemPropertyDescriptor currentPropertyDescriptor = (IItemPropertyDescriptor) iterDescriptors.next();
-                    final Object currentFeature = currentPropertyDescriptor.getFeature(instance);
-                    if (currentFeature != null && currentFeature.equals(structuralFeature)) {
-                        propertyDescriptor = currentPropertyDescriptor;
-                    }
-                }
+            if (itemLabelProvider != null) {
+                text = adapterFactoryItemDelegator.getText(element);
+            } else {
+                text = reflectiveItemProvider.getText(element);
             }
         } finally {
             adapterFactory.dispose();
         }
-        return propertyDescriptor;
+        return text;
     }
 
     private void reset(EObject target, EStructuralFeature feature) {
