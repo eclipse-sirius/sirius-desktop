@@ -180,7 +180,6 @@ import org.eclipse.sirius.ui.tools.internal.editor.SelectCreatedDRepresentationE
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
@@ -631,8 +630,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // project explorer (=> a GMF Diagram associated to no semantic element
         // is created)
         if (semantic != null) {
-            final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
-            InterpreterRegistry.prepareImportsFromSession(interpreter, SessionManager.INSTANCE.getSession(semantic));
+            final IInterpreter interpreter = getSession().getInterpreter();
+            InterpreterRegistry.prepareImportsFromSession(interpreter, getSession());
         }
 
         // Add a listener to selection
