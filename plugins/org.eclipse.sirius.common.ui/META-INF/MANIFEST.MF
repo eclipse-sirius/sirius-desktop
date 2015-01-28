@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.common.ui;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.0.3.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.emf.edit.ui;bundle-version="2.8.0",
  org.eclipse.sirius.common;bundle-version="2.0.0",
@@ -11,29 +11,29 @@ Require-Bundle: org.eclipse.emf.edit.ui;bundle-version="2.8.0",
  com.google.guava;bundle-version="[11.0.2,16.0)",
  org.eclipse.core.expressions;bundle-version="3.3.0",
  org.eclipse.sirius.ecore.extender;bundle-version="2.0.0"
-Export-Package: org.eclipse.sirius.common.ui;version="2.0.0",
- org.eclipse.sirius.common.ui.business.api.views.properties.tabbed;version="2.0.0",
- org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed;x-internal:=true;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.contentassist;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.dialog;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.editor;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.find;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.navigator;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.plugin;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.profiler;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.profiler.view;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.resource;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.selection;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.selection.page;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.util;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.view;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.view.common.item;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.api.wizard;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.internal.contentassist;x-internal:=true;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.internal.interpreter;x-internal:=true;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.internal.preference;x-internal:=true;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.internal.resource;x-internal:=true;version="2.0.0",
- org.eclipse.sirius.common.ui.tools.internal.util;x-internal:=true;version="2.0.0"
+Export-Package: org.eclipse.sirius.common.ui;version="2.0.3",
+ org.eclipse.sirius.common.ui.business.api.views.properties.tabbed;version="2.0.3",
+ org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed;x-internal:=true;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.contentassist;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.dialog;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.editor;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.find;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.navigator;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.plugin;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.profiler;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.profiler.view;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.resource;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.selection;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.selection.page;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.util;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.view;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.view.common.item;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.api.wizard;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.internal.contentassist;x-internal:=true;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.internal.interpreter;x-internal:=true;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.internal.preference;x-internal:=true;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.internal.resource;x-internal:=true;version="2.0.3",
+ org.eclipse.sirius.common.ui.tools.internal.util;x-internal:=true;version="2.0.3"
 Bundle-Activator: org.eclipse.sirius.common.ui.SiriusTransPlugin$Implementation
 Eclipse-LazyStart: true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -20,8 +20,8 @@ Require-Bundle: org.junit;bundle-version="[4.0.0,5.0.0)",
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.sirius.tests.support.api,
- org.eclipse.sirius.tests.support.command,
- org.eclipse.sirius.tests.support.internal;x-internal:=true,
- org.eclipse.sirius.tests.support.internal.helper;x-friends:="org.eclipse.sirius.tree.tests"
+Export-Package: org.eclipse.sirius.tests.support.api;version="1.0.0",
+ org.eclipse.sirius.tests.support.command;version="2.0.0",
+ org.eclipse.sirius.tests.support.internal;x-internal:=true;version="2.0.0",
+ org.eclipse.sirius.tests.support.internal.helper;x-friends:=org.eclipse.sirius.tree.tests;version="0.1.0"
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0"
