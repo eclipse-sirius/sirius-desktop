@@ -15,6 +15,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.unit.api.interpreter.ContentHelperTests;
 import org.eclipse.sirius.tests.unit.api.refresh.GSetIntersectionTest;
 import org.eclipse.sirius.tests.unit.api.refresh.SetIntersectionTest;

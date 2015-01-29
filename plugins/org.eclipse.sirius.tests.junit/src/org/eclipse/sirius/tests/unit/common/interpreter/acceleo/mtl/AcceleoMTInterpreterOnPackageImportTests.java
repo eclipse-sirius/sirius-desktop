@@ -15,11 +15,10 @@ import java.util.Collections;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A test ensuring that the Acceleo MTL interpreter is able to compile

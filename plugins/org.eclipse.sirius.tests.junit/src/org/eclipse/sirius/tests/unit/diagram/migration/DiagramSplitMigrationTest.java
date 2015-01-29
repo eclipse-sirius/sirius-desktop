@@ -21,12 +21,11 @@ import org.eclipse.sirius.business.internal.migration.description.VSMMigrationSe
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramSplitMigrationParticipant;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.osgi.framework.Version;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Ensures that version attributes are set during save. Migration occurs during

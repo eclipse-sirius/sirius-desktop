@@ -28,13 +28,13 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
+import org.eclipse.sirius.tests.unit.diagram.modelers.uml.UML2ModelerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
-import org.eclipse.sirius.tests.unit.diagram.modelers.uml.UML2ModelerConstants;
 
 /**
  * Tests for the copy functionality.

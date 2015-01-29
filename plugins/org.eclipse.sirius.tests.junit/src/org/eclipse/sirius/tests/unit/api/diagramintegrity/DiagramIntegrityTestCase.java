@@ -11,9 +11,8 @@
 package org.eclipse.sirius.tests.unit.api.diagramintegrity;
 
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
-import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
-
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 
 /**
  * Diagram integrity tests base class.

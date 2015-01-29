@@ -14,11 +14,10 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
+import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.sample.interactions.Participant;
 
 public class SiriusSequenceDiagramTests extends AbstractSequenceSiriusDiagramTests {
 

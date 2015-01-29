@@ -15,12 +15,11 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test refresh after unsynchronized diagram.

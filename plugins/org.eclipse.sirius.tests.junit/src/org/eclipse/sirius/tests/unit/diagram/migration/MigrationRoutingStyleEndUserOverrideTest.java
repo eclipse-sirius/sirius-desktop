@@ -28,13 +28,12 @@ import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramRepresentationsFileMigrationParticipantV690;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test that egde style and customFeatures are as expected after migration.

@@ -29,15 +29,14 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.WorkbenchPlugin;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 
 /**
  * Tests that refresh occurs in UI thread and does not throw SWTException based

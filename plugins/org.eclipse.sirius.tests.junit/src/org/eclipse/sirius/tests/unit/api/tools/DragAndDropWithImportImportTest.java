@@ -19,9 +19,8 @@ import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**

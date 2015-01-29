@@ -24,13 +24,12 @@ import java.util.Collection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingItem;
+import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
-import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesHelper;
 
 /**
  * This class tests the GroupingContentProvider. We take care about preference

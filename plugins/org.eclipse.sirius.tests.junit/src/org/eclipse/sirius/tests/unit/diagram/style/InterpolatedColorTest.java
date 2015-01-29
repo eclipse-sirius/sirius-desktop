@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart.SquareFigure;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -29,8 +30,6 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * 

@@ -18,14 +18,13 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.ui.business.api.helper.TableUIHelper;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableEditionEditor;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Checks that the labels visible by the users in the tree is displayed

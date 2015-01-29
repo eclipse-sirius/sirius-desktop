@@ -18,11 +18,10 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * This test is about issue #1989.

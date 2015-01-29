@@ -29,6 +29,7 @@ import org.eclipse.sirius.business.internal.contribution.IdentifierBasedMatcher;
 import org.eclipse.sirius.business.internal.contribution.Updater;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.emf.AllContents;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.junit.After;
 import org.junit.Before;
@@ -40,8 +41,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Unit tests for the in-place model {@link Updater}.

@@ -17,6 +17,7 @@ import java.util.Collections;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -24,8 +25,6 @@ import org.eclipse.sirius.ui.business.api.session.SessionHelper;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class StartupRepresentationsRegardingSelectedVpTests extends SiriusDiagramTestCase {
 

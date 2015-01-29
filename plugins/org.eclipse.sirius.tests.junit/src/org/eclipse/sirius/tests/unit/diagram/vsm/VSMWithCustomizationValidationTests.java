@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tools.internal.validation.description.constraints.EmptyAppliedOnListConstraint;
 import org.eclipse.sirius.viewpoint.description.Customization;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
@@ -35,8 +36,6 @@ import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A {@link TestCase} to test VSM with Customization validation.

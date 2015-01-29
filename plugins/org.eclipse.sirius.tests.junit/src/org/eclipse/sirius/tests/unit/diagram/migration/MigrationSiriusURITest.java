@@ -17,13 +17,12 @@ import java.util.Set;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test that the viewpoint URI was migrated during the migration.

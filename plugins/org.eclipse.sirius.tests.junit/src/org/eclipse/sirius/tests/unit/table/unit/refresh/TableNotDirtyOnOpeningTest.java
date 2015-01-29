@@ -14,13 +14,12 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 
 /**
  * Test that on opening a table with feature parent expression informed is not

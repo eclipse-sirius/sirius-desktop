@@ -23,14 +23,13 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.unit.diagram.session.SessionTest;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import org.eclipse.sirius.tests.unit.diagram.session.SessionTest;
 
 /**
  * @author fmorel

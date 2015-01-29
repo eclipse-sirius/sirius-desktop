@@ -38,8 +38,10 @@ import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.tools.api.command.TableCommandFactoryService;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.DeleteLinesAction;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
@@ -48,9 +50,6 @@ import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.DeleteTreeItemsAction;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Abstract class for {@link RefreshOnDeletionInManualRefreshTests} and

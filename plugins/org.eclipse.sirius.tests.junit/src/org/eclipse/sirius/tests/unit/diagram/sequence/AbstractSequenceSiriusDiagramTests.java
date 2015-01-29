@@ -47,6 +47,9 @@ import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.sample.interactions.Model;
+import org.eclipse.sirius.sample.interactions.Participant;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -55,10 +58,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.junit.Assert;
 
 import com.google.common.base.Objects;
-
-import org.eclipse.sirius.sample.interactions.Interaction;
-import org.eclipse.sirius.sample.interactions.Model;
-import org.eclipse.sirius.sample.interactions.Participant;
 
 public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTestCase {
 

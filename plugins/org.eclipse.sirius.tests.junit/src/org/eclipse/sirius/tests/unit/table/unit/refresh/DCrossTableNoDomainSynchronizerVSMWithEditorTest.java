@@ -24,16 +24,15 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.ui.business.api.helper.TableUIHelper;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 
 /**
  * Test synchronization between modeler and editor on Cross table with no domain

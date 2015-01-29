@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.EdgeTarget;
-
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 
 /**

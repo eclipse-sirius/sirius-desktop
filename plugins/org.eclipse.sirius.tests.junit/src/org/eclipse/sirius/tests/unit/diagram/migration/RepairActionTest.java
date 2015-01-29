@@ -25,16 +25,15 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.sample.migration.design.LayoutHelper;
+import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container;
+import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Node;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swt.graphics.Color;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.sample.migration.design.LayoutHelper;
-import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container;
-import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Node;
 
 /**
  * Repair action test suite.

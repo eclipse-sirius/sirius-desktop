@@ -22,14 +22,13 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DLabelled;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * <p>

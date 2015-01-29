@@ -32,16 +32,15 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.control.AbstractControlTest;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.control.AbstractControlTest;
 
 public class SiriusControlTest extends AbstractControlTest {
 

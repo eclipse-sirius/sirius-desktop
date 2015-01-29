@@ -18,11 +18,10 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
-import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.common.AbstractEcoreSynchronizerTest;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Styles customizations tests for Entities diagram of ecore modeler.

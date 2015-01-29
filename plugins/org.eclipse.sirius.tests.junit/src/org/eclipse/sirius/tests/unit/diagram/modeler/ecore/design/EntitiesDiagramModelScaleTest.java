@@ -17,9 +17,8 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
 import org.eclipse.sirius.tests.unit.common.AbstractEcoreSynchronizerTest;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 public class EntitiesDiagramModelScaleTest extends AbstractEcoreSynchronizerTest {
 

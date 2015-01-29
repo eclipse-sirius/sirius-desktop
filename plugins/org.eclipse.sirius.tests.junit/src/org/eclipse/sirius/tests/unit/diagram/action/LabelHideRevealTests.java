@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceMana
 import org.eclipse.sirius.diagram.tools.api.command.view.RevealDDiagramElementsLabel;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealAllElementsAction;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -44,8 +45,6 @@ import org.eclipse.ui.IEditorPart;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Ensures that Hide/Reveal actions on Label have the expected behavior.

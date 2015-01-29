@@ -15,11 +15,10 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Tools tests for Entities diagram of ecore modeler.

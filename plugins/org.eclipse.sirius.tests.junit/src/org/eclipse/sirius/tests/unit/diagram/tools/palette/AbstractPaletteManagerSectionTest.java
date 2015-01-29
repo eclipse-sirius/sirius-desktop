@@ -15,12 +15,11 @@ import java.util.Collection;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Comon code for palette tests

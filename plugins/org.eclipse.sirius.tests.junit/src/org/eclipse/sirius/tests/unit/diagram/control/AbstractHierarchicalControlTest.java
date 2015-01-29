@@ -15,9 +15,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 
 /**
  * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>

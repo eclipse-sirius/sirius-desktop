@@ -15,9 +15,8 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 
 /**
  * Tools tests for Entities diagram of ecore modeler : for operation testing.

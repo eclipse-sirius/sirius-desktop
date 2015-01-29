@@ -27,9 +27,8 @@ import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * Tests on editing domain based on entities diagram of ecore modeler.

@@ -20,10 +20,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceMessa
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.sample.interactions.Message;
 import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test CreateMessage.

@@ -33,18 +33,17 @@ import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescriptio
 import org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusAssert;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.junit.Assert;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Refresh style tests for Entities diagram of ecore modeler.

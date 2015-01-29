@@ -26,12 +26,11 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.migration.SequenceDiagramRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Ensures that Sequence Message flag reset migration is correctly done for

@@ -17,10 +17,9 @@ import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test that the initial Header Height is not equal to 1 on Sequence Diagram

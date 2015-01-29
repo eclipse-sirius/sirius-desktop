@@ -17,14 +17,13 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Layers tests for Entities diagram of ecore modeler.

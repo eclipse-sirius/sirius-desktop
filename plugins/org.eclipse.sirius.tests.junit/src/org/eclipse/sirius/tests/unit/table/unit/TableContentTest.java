@@ -21,12 +21,11 @@ import org.eclipse.sirius.table.business.internal.refresh.DTableSynchronizerImpl
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class TableContentTest extends SiriusTestCase {
     public static final String PATH = "/data/table/unit/contents/";

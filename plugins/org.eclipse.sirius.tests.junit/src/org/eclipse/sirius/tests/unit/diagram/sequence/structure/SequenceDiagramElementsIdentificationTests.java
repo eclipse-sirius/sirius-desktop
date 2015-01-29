@@ -29,14 +29,13 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.unit.diagram.sequence.AbstractSequenceSiriusDiagramTests;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.sequence.AbstractSequenceSiriusDiagramTests;
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
 /**
  * Test for the various basic identification and structural navigation methods

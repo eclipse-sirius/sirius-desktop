@@ -25,9 +25,8 @@ import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-import org.eclipse.sirius.viewpoint.FontFormat;
-
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
+import org.eclipse.sirius.viewpoint.FontFormat;
 
 /**
  * Tools tests for Entities diagram of ecore modeler.

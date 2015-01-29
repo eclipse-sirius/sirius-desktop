@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -32,8 +33,6 @@ import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class StartupRepresentationsTests extends SiriusDiagramTestCase {
     /**

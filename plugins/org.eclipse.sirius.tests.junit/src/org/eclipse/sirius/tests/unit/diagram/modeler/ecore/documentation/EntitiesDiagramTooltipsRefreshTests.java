@@ -20,7 +20,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 public class EntitiesDiagramTooltipsRefreshTests extends SiriusDiagramTestCase implements EcoreModeler {

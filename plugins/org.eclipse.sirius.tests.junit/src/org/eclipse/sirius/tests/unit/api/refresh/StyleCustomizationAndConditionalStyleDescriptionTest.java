@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -33,8 +34,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests the style customization on a {@link WorkspaceImage} coming from a

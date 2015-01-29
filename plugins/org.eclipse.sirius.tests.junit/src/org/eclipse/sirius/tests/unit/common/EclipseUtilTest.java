@@ -14,10 +14,9 @@ import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test the behavior of {@link EclipseUtil}.

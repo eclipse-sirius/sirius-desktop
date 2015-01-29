@@ -22,7 +22,6 @@ import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.ui.business.api.helper.TableUIHelper;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.SortColumnsByLineAction;
-
 import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 
 /**

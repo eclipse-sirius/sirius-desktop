@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -59,8 +60,6 @@ import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A test case to test style description customization.

@@ -14,7 +14,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-
 import org.eclipse.sirius.tests.unit.common.AbstractEcoreSynchronizerTest;
 
 /**

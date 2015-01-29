@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.DoubleClickCommandBuilder;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
@@ -29,8 +30,6 @@ import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDes
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * PaneBasedSelectionWizard tests.

@@ -16,12 +16,11 @@ import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescriptio
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.tools.api.command.TableCommandFactoryService;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>

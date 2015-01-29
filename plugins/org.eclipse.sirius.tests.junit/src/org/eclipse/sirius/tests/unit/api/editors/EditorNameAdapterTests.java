@@ -15,13 +15,12 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.EditorNameAdapter;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Tests on editing domain based on entities diagram of ecore modeler.

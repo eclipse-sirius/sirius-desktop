@@ -46,7 +46,9 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.DescribedDecorator;
 import org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.DescribedDecoratorProvider;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.DiagramComponentizationTestSupport;
+import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
@@ -59,9 +61,6 @@ import org.eclipse.swt.widgets.Shell;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 
 /**
  * Test creation od decorators via Designer Decorations.

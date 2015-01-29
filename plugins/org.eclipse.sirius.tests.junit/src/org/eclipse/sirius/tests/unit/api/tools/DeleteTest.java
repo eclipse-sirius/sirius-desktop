@@ -19,7 +19,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 
 /**

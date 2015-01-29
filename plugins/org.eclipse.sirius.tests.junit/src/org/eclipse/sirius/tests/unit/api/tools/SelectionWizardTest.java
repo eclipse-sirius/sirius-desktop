@@ -17,9 +17,8 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 public class SelectionWizardTest extends DocbookTestCase {
 

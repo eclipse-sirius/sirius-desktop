@@ -22,16 +22,15 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.sample.interactions.InteractionsPackage;
+import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.sample.interactions.Interaction;
-import org.eclipse.sirius.sample.interactions.InteractionsPackage;
-import org.eclipse.sirius.sample.interactions.Participant;
 
 /**
  * Check VP-3257 Replacing a node style by a smaller or greater on a model

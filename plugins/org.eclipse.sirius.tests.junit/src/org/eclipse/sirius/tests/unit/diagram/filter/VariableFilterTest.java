@@ -22,13 +22,12 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class VariableFilterTest extends SiriusDiagramTestCase {
     private static final String GMF_NODE = "The GMF Node ";

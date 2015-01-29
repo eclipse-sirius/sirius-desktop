@@ -21,9 +21,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
 /**
  * Layers tests for Entities diagram of ecore modeler.

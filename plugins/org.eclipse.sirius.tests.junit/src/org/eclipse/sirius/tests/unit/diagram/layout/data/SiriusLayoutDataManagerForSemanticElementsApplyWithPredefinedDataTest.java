@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.Config
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.ConfigurationFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.AdvancedSiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SiriusLayoutDataManagerForSemanticElements;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.junit.After;
 import org.junit.Before;
@@ -36,8 +37,6 @@ import org.junit.runners.Parameterized.Parameters;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test class for {@link SiriusLayoutDataManagerForSemanticElements}.

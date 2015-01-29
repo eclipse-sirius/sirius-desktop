@@ -20,10 +20,9 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Create view tool tests for Entities diagram of ecore modeler.

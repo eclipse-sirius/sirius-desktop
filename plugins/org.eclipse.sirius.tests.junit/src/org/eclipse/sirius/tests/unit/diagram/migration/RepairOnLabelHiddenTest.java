@@ -22,11 +22,10 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 
 import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test that the repair process restore only customizations and leave the

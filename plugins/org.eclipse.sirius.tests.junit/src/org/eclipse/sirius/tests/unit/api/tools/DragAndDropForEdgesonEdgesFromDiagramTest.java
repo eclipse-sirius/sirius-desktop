@@ -24,11 +24,10 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
 import com.google.common.base.Predicate;
-
-import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
 
 /**
  * Ensures that DnD tools works correctly when creating Edges on Edges.

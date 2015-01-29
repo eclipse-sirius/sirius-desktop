@@ -17,11 +17,10 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramRepresentationsFileMigrationParticipantV801;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test if the migration of VP-4650 is correctly launched. This migration add a

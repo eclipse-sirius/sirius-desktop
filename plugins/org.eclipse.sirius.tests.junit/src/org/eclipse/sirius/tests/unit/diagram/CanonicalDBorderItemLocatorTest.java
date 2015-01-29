@@ -29,13 +29,12 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBor
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A Test class to test the {@link CanonicalDBorderItemLocator}.

@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common.migration;
 
-import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 
 /**
  * <pre>

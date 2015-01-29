@@ -16,9 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
-import org.eclipse.sirius.tools.api.command.DCommand;
-
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
+import org.eclipse.sirius.tools.api.command.DCommand;
 
 /**
  * Test drag and drop.

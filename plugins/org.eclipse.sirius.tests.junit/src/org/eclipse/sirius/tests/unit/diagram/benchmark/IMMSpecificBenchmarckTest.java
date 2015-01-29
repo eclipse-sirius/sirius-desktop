@@ -14,9 +14,8 @@ import java.io.File;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
 import org.eclipse.sirius.tests.sample.benchmark.InputData;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Contract of a class that tests performance.

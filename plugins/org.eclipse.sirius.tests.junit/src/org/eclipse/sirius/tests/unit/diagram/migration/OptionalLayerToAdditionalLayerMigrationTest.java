@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramRepresentationsFileMigrationParticipantV690;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.description.OptionalLayersVSMMigrationParticipant;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -36,8 +37,6 @@ import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class OptionalLayerToAdditionalLayerMigrationTest extends SiriusTestCase {
 

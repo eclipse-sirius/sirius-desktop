@@ -13,9 +13,8 @@ package org.eclipse.sirius.tests.unit.diagram.modeler.ecore.documentation;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
 import org.eclipse.sirius.tests.unit.common.AbstractEcoreSynchronizerTest;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 public class EntitiesDiagramTooltipsTests extends AbstractEcoreSynchronizerTest {
 

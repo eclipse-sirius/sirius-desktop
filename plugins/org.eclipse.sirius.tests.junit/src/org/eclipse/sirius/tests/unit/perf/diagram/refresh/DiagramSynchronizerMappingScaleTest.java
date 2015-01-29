@@ -15,7 +15,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-
 import org.eclipse.sirius.tests.unit.diagram.refresh.AbstractSynchronizerTest;
 
 public class DiagramSynchronizerMappingScaleTest extends AbstractSynchronizerTest {

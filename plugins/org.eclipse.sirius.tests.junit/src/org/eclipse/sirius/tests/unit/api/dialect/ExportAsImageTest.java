@@ -32,9 +32,11 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.ext.swt.ImageFileFormat;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusAssert;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.migration.AbstractRepairMigrateTest;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.internal.resource.InMemoryResourceImpl;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -42,9 +44,6 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.migration.AbstractRepairMigrateTest;
 
 /**
  * Tests the export of diagrams as image after the migration of the session

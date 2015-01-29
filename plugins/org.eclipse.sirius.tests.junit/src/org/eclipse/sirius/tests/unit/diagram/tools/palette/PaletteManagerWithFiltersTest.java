@@ -22,14 +22,13 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test class for {@link PaletteManagerImpl}.

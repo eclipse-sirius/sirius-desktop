@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery.FoldingState;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ToggleFoldingStateCommand;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -31,8 +32,6 @@ import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Abstract base class for folding-related tests with some utility methods.

@@ -36,13 +36,12 @@ import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.ui.business.api.helper.TableUIHelper;
+import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
 
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 
 /**
  * Test the table synchronizer.

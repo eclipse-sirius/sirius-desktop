@@ -39,6 +39,7 @@ import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -47,8 +48,6 @@ import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
 import org.osgi.framework.Version;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Ensures that version attributes are set during save. Migration occurs during

@@ -13,16 +13,15 @@ package org.eclipse.sirius.tests.unit.common.migration;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation;
+import org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation;
-import org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase;
 
 /**
  * <pre>

@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrati
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramRepresentationsFileMigrationParticipantV801;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -33,8 +34,6 @@ import org.osgi.framework.Version;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test class to test removal of DDiagramSet during repair/migrate action of

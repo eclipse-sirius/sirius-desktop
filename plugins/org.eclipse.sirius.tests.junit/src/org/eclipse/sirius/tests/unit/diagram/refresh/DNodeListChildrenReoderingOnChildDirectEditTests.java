@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -31,8 +32,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test that the DDiagramSynchronizer is called after a direct edit of

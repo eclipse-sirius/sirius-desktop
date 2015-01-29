@@ -36,14 +36,13 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiag
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealAllElementsAction;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Hide/Reveal tests for Entities diagram of ecore modeler.

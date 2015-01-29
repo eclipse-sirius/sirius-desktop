@@ -16,10 +16,9 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.sample.interactions.Execution;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 
 /**
  * Ensures that an arrangeAll performed at diagram creation works as expected,

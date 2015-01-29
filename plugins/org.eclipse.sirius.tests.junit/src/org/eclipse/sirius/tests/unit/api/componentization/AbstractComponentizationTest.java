@@ -19,6 +19,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolGroup;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.DiagramComponentizationTestSupport;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -27,8 +28,6 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public abstract class AbstractComponentizationTest extends SiriusDiagramTestCase {
 

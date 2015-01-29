@@ -19,9 +19,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 
 public class GenericToolTest extends SiriusDiagramTestCase {
     

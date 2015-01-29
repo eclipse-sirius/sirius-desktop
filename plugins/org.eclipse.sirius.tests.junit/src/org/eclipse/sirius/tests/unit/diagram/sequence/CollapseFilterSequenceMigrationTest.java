@@ -29,14 +29,13 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.migration.SequenceDiagramRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Ensures that collapse filter migration is correctly done for sequence

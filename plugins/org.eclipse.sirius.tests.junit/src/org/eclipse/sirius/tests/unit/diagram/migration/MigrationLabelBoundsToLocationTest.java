@@ -26,12 +26,11 @@ import org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramRepresen
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * That test aims to check that label nodes with Bounds as layout constraint are

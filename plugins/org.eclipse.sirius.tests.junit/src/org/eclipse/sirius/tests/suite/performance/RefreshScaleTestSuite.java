@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.DiagramSynchronizerMappingScaleTest;
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.DiagramSynchronizerModelScaleTest;
 

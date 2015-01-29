@@ -26,12 +26,11 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
+import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
-
-import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 
 /**
  * Test the different styles applicable for a cell :

@@ -16,13 +16,12 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Tests for for the dialect UI manager.

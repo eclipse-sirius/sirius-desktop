@@ -22,13 +22,12 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests for VP-3818 to check contract of

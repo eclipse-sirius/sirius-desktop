@@ -26,7 +26,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDes
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
-
 import org.eclipse.sirius.tests.unit.contribution.Freezer;
 
 /**

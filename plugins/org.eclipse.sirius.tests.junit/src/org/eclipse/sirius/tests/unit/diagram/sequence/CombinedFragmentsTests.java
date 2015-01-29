@@ -20,13 +20,12 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.sample.interactions.CombinedFragment;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.Operand;
 import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test CombinedFragment and its Operand for move and resize commands.

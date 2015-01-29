@@ -14,6 +14,7 @@ import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -25,8 +26,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.NavigationHistoryAction;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A test ensuring that restoring editors from memento work as expected

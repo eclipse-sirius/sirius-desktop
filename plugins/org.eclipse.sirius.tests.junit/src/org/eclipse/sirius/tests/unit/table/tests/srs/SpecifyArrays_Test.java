@@ -36,9 +36,8 @@ import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.ui.business.api.helper.TableUIHelper;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-
 import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>

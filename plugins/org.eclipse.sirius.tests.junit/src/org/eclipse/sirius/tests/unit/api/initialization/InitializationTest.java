@@ -16,10 +16,9 @@ import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCom
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests the initialization.

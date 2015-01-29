@@ -16,10 +16,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests that the Operation Canceled Exception is correctly managed at the

@@ -13,10 +13,9 @@ package org.eclipse.sirius.tests.unit.diagram.control;
 import java.io.IOException;
 import java.util.Collections;
 
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class ControlDetectorTest extends SiriusDiagramTestCase {
 

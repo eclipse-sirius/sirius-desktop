@@ -26,11 +26,10 @@ import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.AbstractDiagramCommandBuilder;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 
 /**
  * Test object creation.

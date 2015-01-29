@@ -23,11 +23,10 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
 import org.junit.Assert;
 
 import com.google.common.base.Predicate;
-
-import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
 
 /**
  * Ensures that edition tool works correctly when edit label of Edges on Edges.

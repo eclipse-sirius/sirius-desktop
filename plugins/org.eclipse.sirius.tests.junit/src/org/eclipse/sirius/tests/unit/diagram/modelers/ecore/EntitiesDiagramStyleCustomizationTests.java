@@ -31,13 +31,12 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.tests.unit.common.AbstractEcoreSynchronizerTest;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-
-import org.eclipse.sirius.tests.unit.common.AbstractEcoreSynchronizerTest;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Styles customizations tests for Entities diagram of ecore modeler.

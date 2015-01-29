@@ -25,11 +25,10 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.base.Option;
-import org.junit.Assert;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.diagram.sequence.AbstractSequenceSiriusDiagramTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
+import org.junit.Assert;
 
 /**
  * Test for the various basic identification and structural navigation methods

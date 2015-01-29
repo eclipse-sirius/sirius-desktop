@@ -25,6 +25,7 @@ import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -34,8 +35,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Test about automatic session saving when no editor is opened.

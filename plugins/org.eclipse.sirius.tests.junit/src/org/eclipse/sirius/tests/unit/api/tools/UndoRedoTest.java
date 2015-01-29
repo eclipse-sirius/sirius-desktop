@@ -23,10 +23,9 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.viewpoint.DLabelled;
-
-import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 
 public class UndoRedoTest extends DocbookTestCase {
 

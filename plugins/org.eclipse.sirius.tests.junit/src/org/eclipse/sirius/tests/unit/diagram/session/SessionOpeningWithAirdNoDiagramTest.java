@@ -17,6 +17,7 @@ import org.eclipse.jdt.ui.actions.NavigateActionGroup;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.ui.IViewPart;
@@ -25,8 +26,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Validation tests.

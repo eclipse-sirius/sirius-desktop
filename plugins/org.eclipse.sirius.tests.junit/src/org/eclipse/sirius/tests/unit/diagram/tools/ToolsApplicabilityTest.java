@@ -27,9 +27,8 @@ import org.eclipse.sirius.diagram.business.api.query.EdgeCreationDescriptionQuer
 import org.eclipse.sirius.diagram.business.api.query.NodeCreationDescriptionQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.Group;
-
 import org.eclipse.sirius.tests.unit.diagram.tools.data.GroupToolsApplicability;
+import org.eclipse.sirius.viewpoint.description.Group;
 
 public class ToolsApplicabilityTest extends TestCase {
 

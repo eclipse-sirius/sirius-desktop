@@ -36,14 +36,13 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test that {@link RefreshEditorsPrecommitListener} return a {@link Command} to

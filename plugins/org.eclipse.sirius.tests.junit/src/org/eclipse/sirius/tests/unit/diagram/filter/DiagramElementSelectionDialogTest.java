@@ -30,8 +30,10 @@ import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.DiagramElementsSelec
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.DiagramElementsSelectionDialogPatternMatcher;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Item;
@@ -45,9 +47,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Ensures that the {@link DiagramElementsSelectionDialog} works correctly, i.e.

@@ -31,6 +31,7 @@ import org.eclipse.sirius.business.api.session.SessionCreationOperation;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -45,8 +46,6 @@ import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class SampleSessionTest extends SiriusDiagramTestCase {
 

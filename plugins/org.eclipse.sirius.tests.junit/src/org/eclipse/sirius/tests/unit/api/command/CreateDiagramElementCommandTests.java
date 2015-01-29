@@ -29,13 +29,12 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.tools.api.command.view.CreateDDiagramElementCommand;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.ui.IEditorPart;
-
 import org.eclipse.sirius.tests.unit.common.command.EClassEStructuralFeaturesAppenderRecordingCommand;
 import org.eclipse.sirius.tests.unit.common.command.EClassSuperTypesAppenderRecordingCommand;
 import org.eclipse.sirius.tests.unit.common.command.EPackageEClassifiersAppenderRecordingCommand;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * Tests creation command based on entities diagram of ecore modeler.

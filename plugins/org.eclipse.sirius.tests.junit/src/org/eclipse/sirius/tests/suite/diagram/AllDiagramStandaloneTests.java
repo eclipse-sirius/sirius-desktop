@@ -14,6 +14,7 @@ import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsStandaloneTests;
 import org.eclipse.sirius.tests.unit.diagram.DDiagramDAnnotationTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.EdgeMappingImportTests;

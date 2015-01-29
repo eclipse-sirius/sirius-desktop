@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.suite.table;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.unit.table.unit.vsm.color.TableColorTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.interpreted.expression.variables.TableVariablesTest;
 

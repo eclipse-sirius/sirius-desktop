@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.unit.api.componentization.DiagramComponentizationManagerTest;
 import org.eclipse.sirius.tests.unit.api.convert.ConvertProjectToModelingProjectTest;
 import org.eclipse.sirius.tests.unit.api.modelingproject.SaveWhenNoEditorsTests;

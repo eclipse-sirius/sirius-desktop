@@ -16,7 +16,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**

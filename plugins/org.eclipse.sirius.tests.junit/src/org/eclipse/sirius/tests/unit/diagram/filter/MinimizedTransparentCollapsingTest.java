@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOp
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -36,8 +37,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests to check the behavior of transparent minimization of border node on

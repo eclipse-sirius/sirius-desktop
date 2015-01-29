@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -38,8 +39,6 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests for reuse mappings usage with filters

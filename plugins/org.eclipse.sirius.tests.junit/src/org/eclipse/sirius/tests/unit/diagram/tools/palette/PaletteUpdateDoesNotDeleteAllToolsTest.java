@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -33,8 +34,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A test ensuring that when the palette gets updated (e.g. when a filter has

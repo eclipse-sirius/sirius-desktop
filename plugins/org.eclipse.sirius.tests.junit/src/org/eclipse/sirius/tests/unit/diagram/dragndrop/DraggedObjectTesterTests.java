@@ -14,12 +14,11 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.business.internal.resource.DraggedObjectTester;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-import org.junit.Assert;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
+import org.junit.Assert;
 
 /**
  * Test the {@link DraggedObjectTester}. Especially according to the VP-2210.

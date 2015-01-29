@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.SectionPaletteDrawer;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -35,8 +36,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A test ensuring that when the VSM changes, the palette gets updated.

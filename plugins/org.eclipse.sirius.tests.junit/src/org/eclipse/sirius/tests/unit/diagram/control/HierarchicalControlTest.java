@@ -27,14 +27,13 @@ import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests ensuring that Hierarchical Control/Uncontrol operations works as

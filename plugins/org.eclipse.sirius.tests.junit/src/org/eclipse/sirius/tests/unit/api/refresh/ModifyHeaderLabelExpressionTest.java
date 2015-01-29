@@ -30,6 +30,7 @@ import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescript
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.ui.business.api.helper.TableUIHelper;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -40,8 +41,6 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test modification of header Label expression in VSM when table representation

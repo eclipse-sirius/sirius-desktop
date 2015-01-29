@@ -19,14 +19,13 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.util.SessionCallBackWithUI;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PartInitException;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * <p>

@@ -14,9 +14,8 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 
 /**
  * Test class to test recreation of lost diagram elements during repair/migrate

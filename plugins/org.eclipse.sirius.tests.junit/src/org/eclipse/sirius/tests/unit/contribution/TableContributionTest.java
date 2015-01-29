@@ -34,6 +34,7 @@ import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.junit.Before;
@@ -43,8 +44,6 @@ import org.junit.Test;
 import com.google.common.base.Objects;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Unit tests for the use of the contribution mechanism on table descriptions.

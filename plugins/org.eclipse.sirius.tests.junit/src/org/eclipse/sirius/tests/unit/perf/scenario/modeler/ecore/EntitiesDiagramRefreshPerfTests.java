@@ -11,7 +11,6 @@
 package org.eclipse.sirius.tests.unit.perf.scenario.modeler.ecore;
 
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramRefreshTests;
 
 /**

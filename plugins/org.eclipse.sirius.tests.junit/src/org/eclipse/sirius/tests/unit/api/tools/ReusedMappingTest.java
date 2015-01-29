@@ -13,7 +13,6 @@ package org.eclipse.sirius.tests.unit.api.tools;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.DNodeContainer;
-
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 
 /**

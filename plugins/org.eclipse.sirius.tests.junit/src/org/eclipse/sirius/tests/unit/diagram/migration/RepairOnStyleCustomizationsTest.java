@@ -31,8 +31,10 @@ import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -42,9 +44,6 @@ import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Test that the repair process restore only customizations and leave the

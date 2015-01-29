@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.suite.common.AllCommonStandaloneTests;
 import org.eclipse.sirius.tests.suite.diagram.AllDiagramStandaloneTests;
 import org.eclipse.sirius.tests.suite.table.AllTableStandaloneTests;

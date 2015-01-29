@@ -15,10 +15,9 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.tests.unit.diagram.refresh.AbstractSynchronizerTest;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
-
-import org.eclipse.sirius.tests.unit.diagram.refresh.AbstractSynchronizerTest;
 
 public class DiagramSynchronizerModelScaleTest extends AbstractSynchronizerTest {
 

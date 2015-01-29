@@ -12,9 +12,8 @@ package org.eclipse.sirius.tests.unit.api.tools;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.viewpoint.DLabelled;
-
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
+import org.eclipse.sirius.viewpoint.DLabelled;
 
 public class DirectEditTest extends DocbookTestCase {
 

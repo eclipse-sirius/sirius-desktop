@@ -40,14 +40,6 @@ import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
-import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.operations.IWorkbenchOperationSupport;
-
-import com.google.common.collect.Maps;
-
 import org.eclipse.sirius.tests.sample.benchmark.BenchmarkFactory;
 import org.eclipse.sirius.tests.sample.benchmark.InputData;
 import org.eclipse.sirius.tests.sample.benchmark.Property;
@@ -55,6 +47,13 @@ import org.eclipse.sirius.tests.sample.benchmark.Scenario;
 import org.eclipse.sirius.tests.sample.benchmark.TestCase;
 import org.eclipse.sirius.tests.sample.benchmark.TimeResult;
 import org.eclipse.sirius.tests.sample.benchmark.Variant;
+import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.operations.IWorkbenchOperationSupport;
+
+import com.google.common.collect.Maps;
 
 /**
  * This class launch the scenario of the benchmark.

@@ -34,6 +34,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.description.contribution.Contribution;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ext.emf.AllContents;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.junit.After;
 import org.junit.Before;
@@ -44,8 +45,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Unit tests for the application of full contributions on models.

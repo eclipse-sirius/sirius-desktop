@@ -16,13 +16,12 @@ import org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tree.description.TreeCreationDescription;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test some override of the MetaModel :

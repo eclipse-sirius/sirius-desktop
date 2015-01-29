@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeC
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
@@ -32,8 +33,6 @@ import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test that compartments do not have layout constraints after the migration.

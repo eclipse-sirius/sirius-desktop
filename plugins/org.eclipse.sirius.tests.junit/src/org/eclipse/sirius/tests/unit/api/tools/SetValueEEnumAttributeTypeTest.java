@@ -15,12 +15,11 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.sirius.business.internal.helper.task.operations.SetValueTask;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-import org.eclipse.sirius.viewpoint.description.tool.SetValue;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelAlignment;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelStyle;
+import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
+import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 
 /**
  * Test case for {@link SetValue} and {@link SetValueTask} when setting an

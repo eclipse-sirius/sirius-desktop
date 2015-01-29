@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
@@ -52,8 +53,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test if the migration of VP-3833 is correctly launched. This migration

@@ -34,6 +34,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
 import org.eclipse.sirius.viewpoint.DModel;
@@ -42,8 +43,6 @@ import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.junit.Assert;
 
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Tests on workspace drag and drop support based on entities diagram of ecore

@@ -18,13 +18,12 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.ext.base.Option;
-import org.junit.Assert;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.diagram.sequence.AbstractSequenceSiriusDiagramTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
+import org.junit.Assert;
+
+import com.google.common.collect.Lists;
 
 /**
  * Test for the various basic identification and structural navigation methods

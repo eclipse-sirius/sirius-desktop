@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 public class ExtensionPaletteToolTest extends SiriusDiagramTestCase implements EcoreModeler {

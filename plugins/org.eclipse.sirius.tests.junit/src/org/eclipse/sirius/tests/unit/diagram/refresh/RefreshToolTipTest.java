@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -27,8 +28,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A test ensuring that the DDiagramElement synchronizer correctly refreshes

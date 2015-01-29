@@ -56,6 +56,14 @@ import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
+import org.eclipse.sirius.sample.interactions.CombinedFragment;
+import org.eclipse.sirius.sample.interactions.Execution;
+import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.sample.interactions.InteractionUse;
+import org.eclipse.sirius.sample.interactions.Model;
+import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.sample.interactions.State;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -76,15 +84,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.sample.interactions.CombinedFragment;
-import org.eclipse.sirius.sample.interactions.Execution;
-import org.eclipse.sirius.sample.interactions.Interaction;
-import org.eclipse.sirius.sample.interactions.InteractionUse;
-import org.eclipse.sirius.sample.interactions.Model;
-import org.eclipse.sirius.sample.interactions.Participant;
-import org.eclipse.sirius.sample.interactions.State;
 
 /**
  * Test Sequence specific AbstractVariable access/renaming.

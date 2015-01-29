@@ -26,15 +26,14 @@ import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.AbstractSiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
+import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.keys.AbstractSampleLayouDataKey;
+import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.keys.SampleEdgeLayouDataKey;
+import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.keys.SampleNodeLayouDataKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.keys.AbstractSampleLayouDataKey;
-import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.keys.SampleEdgeLayouDataKey;
-import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.keys.SampleNodeLayouDataKey;
 
 /**
  * Sample {@link SiriusLayoutDataManager} to able to copy/paste layout regarding

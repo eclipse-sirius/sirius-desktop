@@ -18,12 +18,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry.ViewpointComparator;
 import org.eclipse.sirius.business.internal.movida.Movida;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class SiriusComparatorTests extends TestCase {
 

@@ -13,7 +13,6 @@ package org.eclipse.sirius.tests.unit.diagram.modeler.ecore.documentation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**

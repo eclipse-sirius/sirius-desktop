@@ -24,11 +24,10 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Verify that all mapping object (container, node, listElement, begin, center
