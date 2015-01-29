@@ -55,6 +55,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
@@ -428,7 +429,7 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected URI getDefaultRepresentationsFileURI() {
         return URI.createPlatformResourceURI(
-                File.separator + SiriusTestCase.TEMPORARY_PROJECT_NAME + File.separator + this.getClass().getSimpleName() + "_" + getName() + SiriusTestCase.DOT + ".aird", true);
+                File.separator + SiriusTestCase.TEMPORARY_PROJECT_NAME + File.separator + this.getClass().getSimpleName() + "_" + getName() + SiriusTestCase.DOT + SiriusUtil.SESSION_RESOURCE_EXTENSION, true);
     }
 
     /**
