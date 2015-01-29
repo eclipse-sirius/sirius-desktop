@@ -1164,7 +1164,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     @Override
     public void createView(final Viewpoint viewpoint, final Collection<EObject> semantics, final boolean createNewRepresentations, IProgressMonitor monitor) {
         DViewOperations.on(this).createView(viewpoint, semantics, createNewRepresentations, monitor);
-            final ModelAccessor accessor = getModelAccessor();
     }
 
     // *******************
