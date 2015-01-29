@@ -128,12 +128,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /** The {@link DAnalysis} of the main session resource (*.aird). */
     private DAnalysis mainDAnalysis;
+    
+    private SessionResourcesTracker tracker = new SessionResourcesTracker(this);
 
     /** The semantic resources collection. */
     private Collection<Resource> semanticResources;
-
-    /** The semantic resources collection updater. */
-    private SemanticResourcesUpdater semanticResourcesUpdater;
 
     private ControlledResourcesDetector controlledResourcesDetector;
 
@@ -424,9 +423,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.registerAnalysis(analysis);
         }
-        if (semanticResourcesUpdater != null && !analysis.eAdapters().contains(semanticResourcesUpdater)) {
-            analysis.eAdapters().add(semanticResourcesUpdater);
-        }
+        tracker.addAdaptersOnAnalysis(analysis);
     }
 
     @Override
@@ -434,9 +431,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.unregisterAnalysis(analysis);
         }
-        if (semanticResourcesUpdater != null && analysis.eAdapters().contains(semanticResourcesUpdater)) {
-            analysis.eAdapters().remove(semanticResourcesUpdater);
-        }
+        tracker.removeAdaptersOnAnalysis(analysis);
     }
 
     @Override
@@ -666,7 +661,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public Collection<Resource> getSemanticResources() {
         if (semanticResources == null) {
             semanticResources = new CopyOnWriteArrayList<Resource>();
-            semanticResourcesUpdater = new SemanticResourcesUpdater(this, semanticResources);
+            tracker.initSemanticResourcesUpdater(semanticResources);
             RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(this);
             try {
                 TransactionUtil.runExclusive(getTransactionalEditingDomain(), semanticResourcesGetter);
@@ -1295,12 +1290,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (controlledResourcesDetector != null) {
             controlledResourcesDetector.init();
         }
-        // Reset semanticResources to have getSemanticResources() ignores
-        // controlledResources which are computed only at this step
-        if (semanticResourcesUpdater != null) {
-            semanticResourcesUpdater.dispose();
-            semanticResourcesUpdater = null;
-        }
+        tracker.handlePossibleControlledResources();
         semanticResources = null;
     }
 
@@ -1368,9 +1358,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         // Notify that the session is closed.
         notifyListeners(SessionListener.CLOSED);
         SessionManager.INSTANCE.remove(this);
-        if (semanticResourcesUpdater != null) {
-            semanticResourcesUpdater.dispose();
-            semanticResourcesUpdater = null;
+        if (tracker != null) {
+            tracker.dispose();
+            tracker = null;
         }
         if (semanticResources != null) {
             semanticResources.clear();
