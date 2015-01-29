@@ -14,13 +14,12 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.junit.Assert;
-
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 
 /**
  * Test class validating that states can not have message.

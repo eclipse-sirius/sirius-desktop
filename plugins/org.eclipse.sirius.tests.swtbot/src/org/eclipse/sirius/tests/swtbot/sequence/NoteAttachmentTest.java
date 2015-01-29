@@ -16,16 +16,14 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditP
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckLifelineResize;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNoteAttachement;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.ConnectionEditPartChangedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckLifelineResize;
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNoteAttachement;
-import org.eclipse.sirius.tests.swtbot.sequence.condition.ConnectionEditPartChangedCondition;
 
 /**
  * Test note attachment to sequence nodes.

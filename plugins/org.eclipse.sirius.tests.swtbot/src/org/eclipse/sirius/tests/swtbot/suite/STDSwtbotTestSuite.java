@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.swtbot.std.STD001;
 import org.eclipse.sirius.tests.swtbot.std.STD002;
 import org.eclipse.sirius.tests.swtbot.std.STD004;

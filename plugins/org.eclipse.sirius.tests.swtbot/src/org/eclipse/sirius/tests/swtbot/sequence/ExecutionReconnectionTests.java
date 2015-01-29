@@ -15,7 +15,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPar
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
-
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
 /**

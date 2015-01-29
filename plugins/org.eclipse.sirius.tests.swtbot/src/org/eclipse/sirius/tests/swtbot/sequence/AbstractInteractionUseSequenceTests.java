@@ -17,15 +17,14 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRo
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.sample.interactions.InteractionUse;
+import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.junit.Assert;
-
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
-import org.eclipse.sirius.sample.interactions.Interaction;
-import org.eclipse.sirius.sample.interactions.InteractionUse;
-import org.eclipse.sirius.sample.interactions.Participant;
 
 /**
  * Abstract test class for combinedfragments.

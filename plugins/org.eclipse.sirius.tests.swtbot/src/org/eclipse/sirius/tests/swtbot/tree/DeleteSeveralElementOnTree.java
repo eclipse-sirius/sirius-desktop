@@ -10,12 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.tree;
 
+import org.eclipse.sirius.tests.swtbot.AbstractDeleteHideSeveralElements;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
-
-import org.eclipse.sirius.tests.swtbot.AbstractDeleteHideSeveralElements;
 
 /**
  * Test delete and hide several elements on table. Test VP-2272.

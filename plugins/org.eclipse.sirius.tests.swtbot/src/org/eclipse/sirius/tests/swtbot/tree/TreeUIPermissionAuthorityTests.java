@@ -18,18 +18,17 @@ import org.eclipse.sirius.ecore.extender.business.internal.permission.Permission
 import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionService;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors.StandalonePermissionProviderDescriptor;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.utils.tree.TreeUtils;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Tests on ui (swt {@link TreeItem}) to see if widget behaves according to

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.modelexplorer;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -18,8 +19,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Test class for context menu computation in Model Explorer (See VP-3485).

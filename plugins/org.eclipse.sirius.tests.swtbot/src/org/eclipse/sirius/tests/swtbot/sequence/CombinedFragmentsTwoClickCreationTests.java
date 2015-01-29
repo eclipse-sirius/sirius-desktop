@@ -16,14 +16,12 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.sample.interactions.CombinedFragment;
+import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.junit.Assert;
-
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
-import org.eclipse.sirius.sample.interactions.CombinedFragment;
-import org.eclipse.sirius.sample.interactions.Interaction;
 
 /**
  * Tests only zoom and creation with single/double click, others features to

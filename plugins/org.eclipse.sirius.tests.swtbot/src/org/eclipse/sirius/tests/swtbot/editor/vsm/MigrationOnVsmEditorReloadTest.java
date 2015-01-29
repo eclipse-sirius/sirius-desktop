@@ -25,11 +25,10 @@ import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXP
 import org.eclipse.sirius.editor.tools.internal.presentation.CustomSiriusEditor;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.osgi.framework.Version;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Tests VSM migration activation on VSM editor reload after an external change

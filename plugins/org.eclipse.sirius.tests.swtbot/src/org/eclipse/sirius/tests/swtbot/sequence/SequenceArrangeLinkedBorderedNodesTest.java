@@ -10,12 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
-
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
 /**
  * Test class to validate "Arrange Linked Bordered Nodes" does not throw NPE

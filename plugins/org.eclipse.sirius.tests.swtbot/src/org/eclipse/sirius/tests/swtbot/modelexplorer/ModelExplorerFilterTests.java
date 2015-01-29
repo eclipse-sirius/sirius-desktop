@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.modelexplorer;
 
 import org.eclipse.sirius.tests.support.api.PluginVersionCompatibility;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckNbVisibleElementsInTree;
@@ -19,8 +20,6 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.osgi.framework.Version;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * A SWTBot test for checking the filter section of the Model Explorer view (See

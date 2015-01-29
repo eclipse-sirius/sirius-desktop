@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.std;
 
-import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-
 import org.eclipse.sirius.tests.swtbot.Activator;
+import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 
 /**
  * 

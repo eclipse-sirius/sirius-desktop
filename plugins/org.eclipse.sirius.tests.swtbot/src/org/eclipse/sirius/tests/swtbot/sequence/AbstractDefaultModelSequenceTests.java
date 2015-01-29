@@ -12,7 +12,6 @@ package org.eclipse.sirius.tests.swtbot.sequence;
 
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
 /**

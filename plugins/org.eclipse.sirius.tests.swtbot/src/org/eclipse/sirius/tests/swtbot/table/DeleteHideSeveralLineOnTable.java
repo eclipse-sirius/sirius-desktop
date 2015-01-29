@@ -10,12 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.table;
 
+import org.eclipse.sirius.tests.swtbot.AbstractDeleteHideSeveralElements;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
-
-import org.eclipse.sirius.tests.swtbot.AbstractDeleteHideSeveralElements;
 
 /**
  * Test delete and hide several lines on table. Test VP-2272.

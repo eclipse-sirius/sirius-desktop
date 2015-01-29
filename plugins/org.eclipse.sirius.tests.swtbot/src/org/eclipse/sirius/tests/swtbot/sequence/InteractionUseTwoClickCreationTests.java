@@ -17,9 +17,13 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
+import org.eclipse.sirius.sample.interactions.CombinedFragment;
+import org.eclipse.sirius.sample.interactions.InteractionUse;
+import org.eclipse.sirius.sample.interactions.Participant;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartIsNotDisplayed;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
@@ -27,11 +31,6 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.junit.Assert;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
-import org.eclipse.sirius.sample.interactions.CombinedFragment;
-import org.eclipse.sirius.sample.interactions.InteractionUse;
-import org.eclipse.sirius.sample.interactions.Participant;
 
 /**
  * Tests only zoom and creation with single/double click, others features to

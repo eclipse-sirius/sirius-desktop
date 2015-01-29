@@ -10,12 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.std;
 
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.test.AbstractScenarioTestCase;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * 

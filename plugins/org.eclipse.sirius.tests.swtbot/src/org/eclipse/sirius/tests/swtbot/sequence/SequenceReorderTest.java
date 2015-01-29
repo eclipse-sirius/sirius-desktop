@@ -17,9 +17,8 @@ import org.eclipse.gef.SnapToGrid;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
-
 import org.eclipse.sirius.tests.swtbot.Activator;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 
 /**
  * Tests reorder tool

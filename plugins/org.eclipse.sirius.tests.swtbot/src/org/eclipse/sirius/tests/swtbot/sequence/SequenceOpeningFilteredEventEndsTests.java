@@ -22,15 +22,14 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceE
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
-import org.eclipse.sirius.sample.interactions.Interaction;
 
 /**
  * Test class for VP-1546. Test open diagram without refresh.

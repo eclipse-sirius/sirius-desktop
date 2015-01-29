@@ -40,7 +40,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMe
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
 import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketConnectionQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.bracket.Direction;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckToolIsActivated;

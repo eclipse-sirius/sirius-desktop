@@ -18,14 +18,13 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionE
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
+import org.eclipse.sirius.sample.interactions.CombinedFragment;
+import org.eclipse.sirius.sample.interactions.InteractionUse;
+import org.eclipse.sirius.sample.interactions.Participant;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.junit.Assert;
-
-import org.eclipse.sirius.sample.interactions.CombinedFragment;
-import org.eclipse.sirius.sample.interactions.InteractionUse;
-import org.eclipse.sirius.sample.interactions.Participant;
 
 /**
  * Tests only zoom and creation with single/double click, others features to

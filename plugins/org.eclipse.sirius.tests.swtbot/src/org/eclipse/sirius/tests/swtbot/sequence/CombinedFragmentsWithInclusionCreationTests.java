@@ -15,10 +15,9 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.junit.Assert;
-
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 
 /**
  * Tests only zoom and creation with single/double click, others features to

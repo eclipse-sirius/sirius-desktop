@@ -29,17 +29,15 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.sample.interactions.Participant;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
-import org.eclipse.sirius.sample.interactions.Interaction;
-import org.eclipse.sirius.sample.interactions.Participant;
 
 /**
  * Test InstanceRole orderings in different cases. - Reordering instance role in

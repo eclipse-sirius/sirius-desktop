@@ -21,12 +21,11 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionE
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
-
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
 /**
  * Test ExecutionSelectionEditPolicy for move and resize commands.

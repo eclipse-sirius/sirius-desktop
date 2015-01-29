@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
@@ -29,8 +30,6 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Tests reorder tool

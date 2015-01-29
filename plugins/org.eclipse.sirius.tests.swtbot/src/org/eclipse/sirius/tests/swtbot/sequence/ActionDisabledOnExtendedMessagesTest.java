@@ -13,11 +13,10 @@ package org.eclipse.sirius.tests.swtbot.sequence;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Tests Pin/Unpin, Show/Hide and Copy/Paste Layout actions are disabled on

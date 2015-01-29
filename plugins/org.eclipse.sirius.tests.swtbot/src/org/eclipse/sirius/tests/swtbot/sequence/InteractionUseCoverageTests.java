@@ -21,16 +21,14 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.api.SequenceDiagramLayout;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.junit.Assert;
-
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
-import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 
 /**
  * Tests only zoom and creation with single/double click, others features to

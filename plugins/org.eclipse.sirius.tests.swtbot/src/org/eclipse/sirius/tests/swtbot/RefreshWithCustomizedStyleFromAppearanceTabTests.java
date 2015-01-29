@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import static org.eclipse.sirius.tests.swtbot.AbstractRefreshWithCustomizedStyleTest.CUSTOMIZED_PREDICATE;
-import static org.eclipse.sirius.tests.swtbot.AbstractRefreshWithCustomizedStyleTest.NOT_CUSTOMIZED_PREDICATE;
-
 import org.eclipse.gmf.runtime.notation.JumpLinkStatus;
 import org.eclipse.gmf.runtime.notation.JumpLinkType;
 import org.eclipse.gmf.runtime.notation.Routing;

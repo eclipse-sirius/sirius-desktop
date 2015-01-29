@@ -14,7 +14,6 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
-
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNotEmptySelection;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckReturnMessageNumber;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;

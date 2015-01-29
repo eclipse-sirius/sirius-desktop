@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.swtbot.table.CellEditionTest;
 import org.eclipse.sirius.tests.swtbot.table.ContextMenuTableTest;
 import org.eclipse.sirius.tests.swtbot.table.DeleteHideSeveralLineOnTable;
