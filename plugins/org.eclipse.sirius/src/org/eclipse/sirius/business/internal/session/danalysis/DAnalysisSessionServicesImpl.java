@@ -69,18 +69,12 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         this.allAnalysis = allAnalysis;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public void clearCustomData(final EObject associatedInstance) {
-
+        // Do nothing.
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public void clearCustomData(final String key, final EObject associatedInstance) {
         final Collection<DAnalysis> analysisAndReferenced = getAnalysisAndReferenced();
         final Collection<Resource> resources = getResources(analysisAndReferenced);
