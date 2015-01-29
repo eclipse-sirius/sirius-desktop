@@ -1,0 +1,20 @@
+target "baseline" 
+
+location Sirius-Latest-Release "http://download.eclipse.org/sirius/updates/releases/2.0.3/luna" {
+	org.eclipse.sirius.runtime.acceleo.feature.group
+	org.eclipse.sirius.runtime.feature.group
+	org.eclipse.sirius.runtime.ide.ui.feature.group
+	org.eclipse.sirius.runtime.ide.eef.feature.group
+	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group
+	org.eclipse.sirius.runtime.ide.xtext.feature.group
+	org.eclipse.sirius.runtime.ocl.feature.group
+	org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group
+	org.eclipse.sirius.specifier.ide.ui.feature.group
+	org.eclipse.sirius.tests.support.feature.group
+	
+}
+
+
+location Sirius-legacy "http://download.eclipse.org/sirius/updates/legacy" {
+	org.eclipse.sirius.query.legacy.feature.feature.group
+}
