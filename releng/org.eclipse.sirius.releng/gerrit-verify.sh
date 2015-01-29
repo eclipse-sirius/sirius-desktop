@@ -16,7 +16,7 @@ wait_for_xvnc() {
     local readonly message="Listening for VNC connections on TCP port"
     local readonly logFileURL="https://hudson.eclipse.org/sirius/job/sirius.gerrit/$BUILD_NUMBER/PLATFORM=$PLATFORM,SUITE=$SUITE/consoleText"
 
-    sleep 10
+    sleep 5
 
     local attempt=1
     while ! ( curl -s "$logFileURL" | grep -q " $message " ); do
@@ -68,27 +68,31 @@ invoke_maven() {
     /shared/common/apache-maven-latest/bin/mvn -V -B -DBUILD_SIGN=false -Dmaven.repo.local="$WORKSPACE/.maven/repo" -DPLATFORM="$PLATFORM" -Dplatform-version-name="$PLATFORM" "$@"
 }
 
+remove_cached_sirius_bundles() {
+    find "$WORKSPACE/.maven/repo/p2/osgi/bundle" -type d -name "org.eclipse.sirius.*" -print0 | xargs -0 rm -rf
+}
+
 readonly REFERENCE_PLATFORM="luna"
 if [ "$PLATFORM" = "$REFERENCE_PLATFORM" -o "$SUITE" = "gerrit-junit" ]; then
-    wait_for_xvnc
-    start_window_manager
-
+    remove_cached_sirius_bundles
     # Build Sirius core
     invoke_maven -f packaging/org.eclipse.sirius.parent/pom.xml clean package
 
     # Build the tests, and run them on the reference platform
     if [ "$GERRIT_BRANCH" = "master" -a "$PLATFORM" = "$REFERENCE_PLATFORM" ]; then
         # Build and run Sirius tests
+        wait_for_xvnc
+        start_window_manager
         adjust_tests_target_platform
         invoke_maven -f packaging/org.eclipse.sirius.tests.parent/pom.xml -P"$SUITE" clean integration-test
+        kill_window_manager
     else
         # Build Sirius tests but do not execute them
         adjust_tests_target_platform
         invoke_maven -f packaging/org.eclipse.sirius.tests.parent/pom.xml clean package
         create_dummy_test_report
     fi
-
-    kill_window_manager
 else
     create_dummy_test_report
 fi
+
