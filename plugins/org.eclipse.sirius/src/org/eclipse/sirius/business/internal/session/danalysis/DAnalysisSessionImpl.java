@@ -43,6 +43,7 @@ import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -1774,7 +1775,17 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    private void disableCrossReferencerResolve(Notifier notifier) {
+    private void disableCrossReferencerResolve(Resource resource) {
+        disableCrossReferencerResolveOnNotifer(resource);
+        
+        //disable on all contents of the resource(crossRef on any EObject in the resource is also set on root EObject)
+        EList<EObject> contents = resource.getContents();
+        if (contents.size() > 0 && contents.get(0) != null) {
+            disableCrossReferencerResolveOnNotifer(contents.get(0));
+        }
+    }
+ 
+    private void disableCrossReferencerResolveOnNotifer(Notifier notifier) {
         // Disable resolve for CrossreferencerAdapter
         for (Iterator<Adapter> iterator = notifier.eAdapters().iterator(); iterator.hasNext(); ) {
             Adapter next = iterator.next();
@@ -1783,9 +1794,20 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
         }
     }
+   
+    private void enableCrossReferencerResolve(Resource resource) {
+        //enable on ressource itself
+        enableCrossReferencerResolveOnNotifer(resource);
+        
+        //enable on all contents of the resource(crossRef on any EObject in the resource is also set on root EObject)
+        EList<EObject> contents = resource.getContents();
+        if (contents.size() > 0 && contents.get(0) != null) {
+            enableCrossReferencerResolveOnNotifer(contents.get(0));
+        }
+    }
     
-    private void enableCrossReferencerResolve(Notifier notifier) {
-        // Disable resolve for CrossreferencerAdapter
+    private void enableCrossReferencerResolveOnNotifer(Notifier notifier) {
+        // Disable resolve for SiriusCrossReferenceAdapter
         for (Iterator<Adapter> iterator = notifier.eAdapters().iterator(); iterator.hasNext(); ) {
             Adapter next = iterator.next();
             if (next instanceof SiriusCrossReferenceAdapter) {
@@ -1983,7 +2005,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     protected void disableAndRemoveECrossReferenceAdapters() {
         ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
 
-        disableCrossReferencerResolve(resourceSet);
+        for (Resource resource : resourceSet.getResources()) {
+            disableCrossReferencerResolve(resource);
+        }
 
         Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
         if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
