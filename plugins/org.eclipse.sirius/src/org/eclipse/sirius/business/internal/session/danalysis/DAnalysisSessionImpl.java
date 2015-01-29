@@ -119,17 +119,10 @@ import com.google.common.collect.Sets;
  */
 public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient {
     /** The custom saving policy the session should use. */
-    protected SavingPolicy savingPolicy;
+    private SavingPolicy savingPolicy;
 
     /** The {@link TransactionalEditingDomain} associated to this Session. */
     private TransactionalEditingDomain transactionalEditingDomain;
-
-    // Session's state and helpers for its maintenance.
-    // See also the following fields inherited from DAnalysisSessionEObject:
-    // - resources: all the @*.aird@ resources in the session.
-    // - controlledResources: all the semantic resources in the session which
-    // are not in DASI.semanticResources and which are
-    // contained/controled, directly or indirectly, by a semanticResource
 
     /** The main Session Resource. */
     private Resource sessionResource;
