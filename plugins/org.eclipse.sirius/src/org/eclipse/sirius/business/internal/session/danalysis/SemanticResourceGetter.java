@@ -17,9 +17,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Preconditions;
 
@@ -57,15 +59,17 @@ public class SemanticResourceGetter extends RunnableWithResult.Impl<Collection<R
      * determine if a resources is known to be controlled.
      * <p>
      * Performs a full walk on all referenced DAnalysis to identify their
-     * models. Will load both the analysis and models if they are not already.
+     * models. Will load the analysis if needed, but not the semantic models.
      */
     private Collection<Resource> collectTopLevelSemanticResources() {
         Collection<Resource> semanticResources = new LinkedHashSet<Resource>();
         for (DAnalysis analysis : session.allAnalyses()) {
-            for (EObject model : analysis.getModels()) {
-                if (model != null) {
+            @SuppressWarnings("unchecked")
+            InternalEList<EObject> semanticRoots = (InternalEList<EObject>) analysis.eGet(ViewpointPackage.Literals.DANALYSIS__MODELS, false);
+            for (EObject semanticRoot : semanticRoots.basicList()) {
+                if (semanticRoot != null) {
                     try {
-                        Resource resource = model.eResource();
+                        Resource resource = semanticRoot.eResource();
                         if (resource != null) {
                             semanticResources.add(resource);
                         }
