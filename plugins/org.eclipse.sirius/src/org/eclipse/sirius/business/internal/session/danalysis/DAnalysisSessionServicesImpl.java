@@ -30,7 +30,6 @@ import org.eclipse.sirius.business.api.session.SessionService;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
-import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
@@ -45,6 +44,7 @@ import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
@@ -55,18 +55,18 @@ import com.google.common.collect.Lists;
  */
 public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSessionService {
 
-    private final Collection<DAnalysis> allAnalysis;
+    private final DAnalysisSessionImpl session;
 
     private DAnalysisSelector analysisSelector;
 
     /**
      * Create the services for analysis based session.
      * 
-     * @param allAnalysis
-     *            the session analysis.
+     * @param session
+     *            the session.
      */
-    public DAnalysisSessionServicesImpl(Collection<DAnalysis> allAnalysis) {
-        this.allAnalysis = allAnalysis;
+    public DAnalysisSessionServicesImpl(DAnalysisSessionImpl session) {
+        this.session = Preconditions.checkNotNull(session);
     }
 
     @Override
@@ -76,7 +76,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
 
     @Override
     public void clearCustomData(final String key, final EObject associatedInstance) {
-        final Collection<DAnalysis> analysisAndReferenced = getAnalysisAndReferenced();
+        final Collection<DAnalysis> analysisAndReferenced = session.allAnalyses();
         final Collection<Resource> resources = getResources(analysisAndReferenced);
         if (CustomDataConstants.DREPRESENTATION.equals(key)) {
             clearRepresentationData(associatedInstance, analysisAndReferenced);
@@ -124,7 +124,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     @Override
     public Collection<EObject> getCustomData(final String key, final EObject associatedInstance) {
 
-        final Collection<DAnalysis> analysisAndReferenced = getAnalysisAndReferenced();
+        final Collection<DAnalysis> analysisAndReferenced = session.allAnalyses();
         final Collection<Resource> resources = getResources(analysisAndReferenced);
 
         Collection<EObject> datas = Collections.emptySet();
@@ -315,17 +315,13 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         return false;
     }
 
-    private Collection<DAnalysis> getAnalysisAndReferenced() {
-        return new DAnalysisesInternalQuery(allAnalysis).getAllAnalyses();
-    }
-
     private void addRepresentationToContainer(final DRepresentation representation, final Resource res) {
         final EObject semanticRoot = res.getContents().iterator().next();
         final Viewpoint viewpoint = new RepresentationDescriptionQuery(DialectManager.INSTANCE.getDescription(representation)).getParentViewpoint();
-        DRepresentationContainer existingContainer = DAnalysisSessionHelper.findContainerForAddedRepresentation(semanticRoot, viewpoint, getAnalysisAndReferenced(), analysisSelector, representation);
+        DRepresentationContainer existingContainer = DAnalysisSessionHelper.findContainerForAddedRepresentation(semanticRoot, viewpoint, session.allAnalyses(), analysisSelector, representation);
 
         if (existingContainer == null) {
-            existingContainer = DAnalysisSessionHelper.findFreeContainerForAddedRepresentation(viewpoint, semanticRoot, allAnalysis, analysisSelector, representation);
+            existingContainer = DAnalysisSessionHelper.findFreeContainerForAddedRepresentation(viewpoint, semanticRoot, session.getAnalyses(), analysisSelector, representation);
             if (existingContainer != null) {
                 existingContainer.setViewpoint(viewpoint);
             }
@@ -333,7 +329,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         if (existingContainer == null) {
             existingContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
             existingContainer.setViewpoint(viewpoint);
-            final DAnalysis analysis = DAnalysisSessionHelper.selectAnalysis(viewpoint, getAnalysisAndReferenced(), analysisSelector, representation);
+            final DAnalysis analysis = DAnalysisSessionHelper.selectAnalysis(viewpoint, session.allAnalyses(), analysisSelector, representation);
             analysis.getOwnedViews().add(existingContainer);
         }
 

@@ -67,7 +67,6 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelectorServic
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
-import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater;
 import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
@@ -402,9 +401,26 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @return all valid(i.e. not null) owned and referenced analyses.
      */
     public Collection<DAnalysis> allAnalyses() {
-        return new DAnalysisesInternalQuery(super.getAnalyses()).getAllAnalyses();
+        Collection<DAnalysis> analysisAndReferenced = Sets.newLinkedHashSet();
+        for (DAnalysis analysis : Lists.newArrayList(super.getAnalyses())) {
+            /* analysis could be null */
+            if (analysis != null) {
+                analysisAndReferenced.add(analysis);
+                addAllReferencedAnalyses(analysisAndReferenced, analysis);
+            }
+        }
+        return analysisAndReferenced;
     }
 
+    private void addAllReferencedAnalyses(final Collection<DAnalysis> analysisAndReferenced, final DAnalysis analysis) {
+        for (DAnalysis referenced : Sets.newLinkedHashSet(analysis.getReferencedAnalysis())) {
+            if (!analysisAndReferenced.contains(referenced) && referenced.eResource() != null) {
+                analysisAndReferenced.add(referenced);
+                addAllReferencedAnalyses(analysisAndReferenced, referenced);
+            }
+        }
+    }
+    
     DAnalysis getMainAnalysis() {
         return this.mainDAnalysis;
     }
@@ -1418,7 +1434,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     @Override
     public SessionService getServices() {
         if (services == null) {
-            services = new DAnalysisSessionServicesImpl(super.getAnalyses());
+            services = new DAnalysisSessionServicesImpl(this);
         }
         return services;
     }
