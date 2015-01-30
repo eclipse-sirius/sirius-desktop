@@ -919,6 +919,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 analysis.getModels().add(root);
             }
         }
+
+        controlledResourcesDetector.detectControlledResources();
+
         registerResourceInCrossReferencer(newResource);
     }
 

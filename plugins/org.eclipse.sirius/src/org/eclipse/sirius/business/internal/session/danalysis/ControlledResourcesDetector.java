@@ -82,7 +82,11 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
         session = null;
     }
 
-    private void detectControlledResources() {
+    /**
+     * Detects controlled resources and update controlledResourcesList in
+     * {@link DAnalysisSessionImpl}.
+     */
+    public void detectControlledResources() {
         final Collection<Resource> semantics = session.getSemanticResources();
         final Collection<Resource> resourcesToCheck = new ArrayList<Resource>(session.getTransactionalEditingDomain().getResourceSet().getResources());
         Collection<Resource> newControlledResources = new LinkedHashSet<Resource>();
@@ -102,6 +106,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
 
     private boolean hasControlledRootInSemantics(Resource resource, Collection<Resource> semantics) {
         Predicate<EObject> isControlled = new Predicate<EObject>() {
+            @Override
             public boolean apply(EObject input) {
                 return AdapterFactoryEditingDomain.isControlled(input);
             }
