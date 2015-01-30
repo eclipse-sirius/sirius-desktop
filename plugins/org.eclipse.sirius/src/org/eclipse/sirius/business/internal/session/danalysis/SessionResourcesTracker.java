@@ -164,4 +164,8 @@ class SessionResourcesTracker {
             semanticResources.clear();
         }
     }
+
+    void detectControlledResources() {
+        controlledResourcesDetector.detectControlledResources();
+    }
 }

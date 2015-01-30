@@ -603,6 +603,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 analysis.getModels().add(root);
             }
         }
+
+        tracker.detectControlledResources();
+
         registerResourceInCrossReferencer(newResource);
     }
 
