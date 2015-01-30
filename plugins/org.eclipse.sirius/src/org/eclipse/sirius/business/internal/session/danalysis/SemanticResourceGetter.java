@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
@@ -19,9 +18,10 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RunnableWithResult;
-import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+
+import com.google.common.base.Preconditions;
 
 /**
  * A {@link RunnableWithResult} to get semantic resources in a read transaction.
@@ -30,53 +30,54 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  */
 public class SemanticResourceGetter extends RunnableWithResult.Impl<Collection<Resource>> {
 
-    private DAnalysisSessionImpl dAnalysisSessionImpl;
+    private final DAnalysisSessionImpl session;
 
     /**
      * Default constructor.
      * 
-     * @param dAnalysisSessionImpl
+     * @param session
      *            the {@link DAnalysisSessionImpl} referencing the semantic
      *            resources
      */
-    public SemanticResourceGetter(DAnalysisSessionImpl dAnalysisSessionImpl) {
-        super();
-        this.dAnalysisSessionImpl = dAnalysisSessionImpl;
+    public SemanticResourceGetter(DAnalysisSessionImpl session) {
+        this.session = Preconditions.checkNotNull(session);
+    }
+
+    @Override
+    public void run() {
+        setResult(collectTopLevelSemanticResources());
     }
 
     /**
-     * {@inheritDoc}
+     * Finds all the resources referenced as semantic models by any of the
+     * analysis in the session which are not known to be controlled semantic
+     * resources.
+     * <p>
+     * Uses {@code DAnalysisSessionEObjectImpl.getControlledResources()} to
+     * determine if a resources is known to be controlled.
+     * <p>
+     * Performs a full walk on all referenced DAnalysis to identify their
+     * models. Will load both the analysis and models if they are not already.
      */
-    public void run() {
+    private Collection<Resource> collectTopLevelSemanticResources() {
         Collection<Resource> semanticResources = new LinkedHashSet<Resource>();
-        Collection<DAnalysis> allAnalyses = new DAnalysisesInternalQuery(dAnalysisSessionImpl.getAnalyses()).getAllAnalyses();
-        for (DAnalysis analysis : allAnalyses) {
-            if (analysis != null) {
-                for (EObject model : new ArrayList<EObject>(analysis.getModels())) {
-                    if (model != null) {
-                        // TODO remove this try/catch once the offline mode will be supported
-                        try {
-                            final Resource resource = model.eResource();
-                            if (resource != null) {
-                                // CHECKSTYLE:OFF
-                                if (!dAnalysisSessionImpl.getControlledResources().contains(resource)) {
-                                    semanticResources.add(resource);
-                                }
-                                // CHECKSTYLE:ON
-                            }
-                        } catch (IllegalStateException e) {
-                            // An issue has been encountered while
-                            // connecting to
-                            // remote CDO server
-                            if (SiriusPlugin.getDefault().isDebugging()) {
-                                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while connecting to remote CDO server"));
-                            }
+        for (DAnalysis analysis : session.allAnalyses()) {
+            for (EObject model : analysis.getModels()) {
+                if (model != null) {
+                    try {
+                        Resource resource = model.eResource();
+                        if (resource != null) {
+                            semanticResources.add(resource);
+                        }
+                    } catch (IllegalStateException e) {
+                        if (SiriusPlugin.getDefault().isDebugging()) {
+                            SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, e.getMessage(), e));
                         }
                     }
                 }
             }
         }
-        setResult(semanticResources);
+        semanticResources.removeAll(session.getControlledResources());
+        return semanticResources;
     }
-
 }
