@@ -12,8 +12,10 @@ package org.eclipse.sirius.tools.internal.resource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ContentHandler;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -70,7 +72,9 @@ public final class ResourceSetUtil {
         platformResourceURIHandlerWithProgressMonitorImpl.setProgressMonitor(monitor);
         // Set a new ExtensibleURIConverterImpl with the 2 handlers (with new
         // progress monitor)
+        Map<URI, URI> existingURIMap = resourceSet.getURIConverter().getURIMap();
         resourceSet.setURIConverter(new ExtensibleURIConverterImpl(handlers, ContentHandler.Registry.INSTANCE.contentHandlers()));
+        resourceSet.getURIConverter().getURIMap().putAll(existingURIMap);
     }
 
     /**
