@@ -183,7 +183,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
         ResourceQuery resourceQuery = new ResourceQuery(resource);
         boolean representationsResource = resourceQuery.isRepresentationsResource();
         if (representationsResource) {
-            reloadingAnalysisCmd = new ReloadRepresentationsFileCmd(session, ted, "Reload " + resource.getURI() + "file", resource);
+            reloadingAnalysisCmd = new AnalysisResourceReloadedCommand(session, ted, resource);
         }
         List<Resource> resourcesBeforeReload = Lists.newArrayList(ted.getResourceSet().getResources());
         /* execute the reload operation as a read-only transaction */
