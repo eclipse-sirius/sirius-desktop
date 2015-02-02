@@ -63,7 +63,8 @@ Require-Bundle: org.eclipse.sirius.tests.sample.benchmark,
  org.eclipse.acceleo.common;bundle-version="3.4.1",
  org.eclipse.sirius.diagram.ui;bundle-version="1.0.0",
  org.eclipse.sdk,
- org.eclipse.platform
+ org.eclipse.platform,
+ org.eclipse.sirius.tests.sample.component
 Bundle-Activator: org.eclipse.sirius.tests.SiriusTestsPlugin
 Eclipse-LazyStart: true
 Bundle-Localization: plugin

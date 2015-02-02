@@ -59,6 +59,7 @@ import org.eclipse.sirius.tests.unit.common.OperationCanceledExceptionSessionTes
 import org.eclipse.sirius.tests.unit.common.PreferencesTests;
 import org.eclipse.sirius.tests.unit.common.RefreshEditorsPrecommitListenerTests;
 import org.eclipse.sirius.tests.unit.common.RestoreSessionFromEditorInputTests;
+import org.eclipse.sirius.tests.unit.common.SiriusCrossReferenceAdapterTests;
 import org.eclipse.sirius.tests.unit.common.TransientSessionTests;
 import org.eclipse.sirius.tests.unit.common.WorkspaceResourceSyncTestCase;
 import org.eclipse.sirius.tests.unit.common.interpreter.CompoundInterpreterTestCase;
@@ -259,6 +260,7 @@ public class AllCommonPluginTests extends TestCase {
 
         suite.addTestSuite(TransientSessionTests.class);
         suite.addTestSuite(RestoreSessionFromEditorInputTests.class);
+        suite.addTestSuite(SiriusCrossReferenceAdapterTests.class);
         return suite;
     }
 
