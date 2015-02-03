@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -25,6 +26,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.internal.EMFTransactionStatusCodes;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
+import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.tests.sample.component.Component;
 import org.eclipse.sirius.tests.sample.component.ComponentFactory;
@@ -91,12 +93,23 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
 
         initSemanticResource();
 
+        // check that semantic crossRefAdapter is set on fragmented resource
+        Resource fragmentedResource = editingDomain.getResourceSet().getResources().get(2);
+        boolean found = false;
+        for (Adapter adapter : fragmentedResource.eAdapters()) {
+            if (adapter instanceof LazyCrossReferencer) {
+                found = true;
+                break;
+            }
+        }
+        assertTrue("The LazyCrossReferencer adapter is not set on fragmented resource", found);
+
         // simulation an EXTERNAL CHANGE of fragmentResource
         File fragFile = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).getFile(fragmentFileName).getLocation().toFile();
         fragFile.setLastModified(System.currentTimeMillis());
 
         ResourceSetSync resourceSetSync = ResourceSetSync.getResourceSetSync(editingDomain).get();
-        resourceSetSync.statusChanged(editingDomain.getResourceSet().getResources().get(2), ResourceSetSync.ResourceStatus.SYNC, ResourceSetSync.ResourceStatus.EXTERNAL_CHANGED);
+        resourceSetSync.statusChanged(fragmentedResource, ResourceSetSync.ResourceStatus.SYNC, ResourceSetSync.ResourceStatus.EXTERNAL_CHANGED);
 
         // check that no warning "loading resource while unloading it" has been
         // dispatched
@@ -148,7 +161,6 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
 
                 // add resources to session
                 session.addSemanticResource(fileMainComponentUri, new NullProgressMonitor());
-                session.addSemanticResource(fileFragComponentUri, new NullProgressMonitor());
 
                 // save session
                 session.save(new NullProgressMonitor());
