@@ -53,6 +53,7 @@ import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractToolAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.CreateLineAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.CreateTargetColumnAction;
+import org.eclipse.sirius.table.ui.tools.internal.editor.action.DeleteLinesAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.DeleteTargetColumnAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateLineMenuAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateTargetColumnMenuAction;
@@ -280,7 +281,6 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
         treeViewer.getTree().setLinesVisible(true);
         treeViewer.getTree().setHeaderVisible(true);
-
         fillMenu();
         triggerColumnSelectedColumn();
 
@@ -307,6 +307,24 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         // Set after the setInput to avoid layout call it several time for
         // nothing at opening
         headerTreeColumn.getColumn().addControlListener(tableViewerListener);
+        initializeKeyBindingSupport();
+    }
+
+    private void initializeKeyBindingSupport() {
+        treeViewer.getTree().addKeyListener(new KeyListener() {
+            public void keyPressed(final KeyEvent e) {
+                if (e.keyCode == SWT.DEL) {
+                    DeleteLinesAction deleteLinesAction = new DeleteLinesAction(getEditingDomain(), getTableCommandFactory());
+                    deleteLinesAction.setLines(getSelectedLines());
+                    if (deleteLinesAction.canExecute()) {
+                        deleteLinesAction.run();
+                    }
+                }
+            }
+
+            public void keyReleased(final KeyEvent e) {
+            };
+        });
     }
 
     /**

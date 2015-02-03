@@ -18,6 +18,7 @@ import junit.textui.TestRunner;
 import org.eclipse.sirius.tests.swtbot.table.CellEditionTest;
 import org.eclipse.sirius.tests.swtbot.table.ContextMenuTableTest;
 import org.eclipse.sirius.tests.swtbot.table.DeleteHideSeveralLineOnTable;
+import org.eclipse.sirius.tests.swtbot.table.DeleteLineWithDELShortcutTest;
 import org.eclipse.sirius.tests.swtbot.table.HideRevealTableColumnsTest;
 import org.eclipse.sirius.tests.swtbot.table.HideRevealTableLinesTest;
 import org.eclipse.sirius.tests.swtbot.table.NavigationDescriptionFromTableAndTreeTest;
@@ -56,6 +57,7 @@ public class TableSwtbotTestSuite extends TestCase {
         suite.addTestSuite(ContextMenuTableTest.class);
         suite.addTestSuite(TableUIPermissionAuthorityTests.class);
         suite.addTestSuite(TableUIRefreshTests.class);
+        suite.addTestSuite(DeleteLineWithDELShortcutTest.class);
         suite.addTestSuite(NavigationDescriptionFromTableAndTreeTest.class);
         suite.addTestSuite(CellEditionTest.class);
         suite.addTestSuite(ReadOnlyColumnTest.class);
