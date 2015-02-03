@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.tests.junit.support;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: org.eclipse.sirius.tests.support.internal.SiriusTestsSupportPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.junit;bundle-version="[4.0.0,5.0.0)",
@@ -21,7 +21,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.sirius.tests.support.api;version="1.0.0",
- org.eclipse.sirius.tests.support.command;version="2.0.0",
- org.eclipse.sirius.tests.support.internal;x-internal:=true;version="2.0.0",
- org.eclipse.sirius.tests.support.internal.helper;x-friends:=org.eclipse.sirius.tree.tests;version="0.1.0"
+ org.eclipse.sirius.tests.support.command;version="3.0.0",
+ org.eclipse.sirius.tests.support.internal;version="3.0.0";x-internal:="true",
+ org.eclipse.sirius.tests.support.internal.helper;version="0.1.0";x-friends:="org.eclipse.sirius.tree.tests"
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0"

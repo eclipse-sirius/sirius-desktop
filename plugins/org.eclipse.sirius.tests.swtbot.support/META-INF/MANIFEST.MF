@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.tests.swtbot.support;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: org.eclipse.sirius.tests.swtbot.support.internal.DesignerSWTBotTestsSupportPlugin
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
@@ -38,27 +38,27 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.diagram.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.sirius.tests.swtbot.support.api;uses:="org.eclipse.sirius.tests.swtbot.support.api.business,org.eclipse.sirius.tests.swtbot.support.api.perspective,org.eclipse.swtbot.eclipse.gef.finder";version="1.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.bot;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.bot.description;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.business;uses:="org.eclipse.emf.ecore.resource,  org.eclipse.emf.common.util,  org.eclipse.swtbot.swt.finder.widgets,  org.eclipse.swtbot.eclipse.finder";version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.condition;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.dialog;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.editor;uses:="org.eclipse.swtbot.eclipse.gef.finder.widgets,org.eclipse.ui,org.eclipse.swtbot.eclipse.finder";version="0.1.0",
- org.eclipse.sirius.tests.swtbot.support.api.matcher;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.perspective;uses:=org.eclipse.swtbot.eclipse.finder;version="2.0.0",
+Export-Package: org.eclipse.sirius.tests.swtbot.support.api;version="1.0.0";uses:="org.eclipse.sirius.tests.swtbot.support.api.business,org.eclipse.sirius.tests.swtbot.support.api.perspective,org.eclipse.swtbot.eclipse.gef.finder",
+ org.eclipse.sirius.tests.swtbot.support.api.bot;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.api.bot.description;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.api.business;version="3.0.0";uses:="org.eclipse.emf.ecore.resource,  org.eclipse.emf.common.util,  org.eclipse.swtbot.swt.finder.widgets,  org.eclipse.swtbot.eclipse.finder",
+ org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.api.condition;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.api.dialog;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.api.editor;version="0.1.0";uses:="org.eclipse.swtbot.eclipse.gef.finder.widgets,org.eclipse.ui,org.eclipse.swtbot.eclipse.finder",
+ org.eclipse.sirius.tests.swtbot.support.api.matcher;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.api.perspective;version="3.0.0";uses:="org.eclipse.swtbot.eclipse.finder",
  org.eclipse.sirius.tests.swtbot.support.api.test;version="1.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.view;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.api.widget;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.internal;x-internal:=true;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.internal.business;x-internal:=true;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.utils;uses:="org.eclipse.swtbot.swt.finder.widgets,org.eclipse.swt.widgets";version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.utils.business;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.utils.dnd;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.utils.menu;version="2.0.0",
- org.eclipse.sirius.tests.swtbot.support.utils.tree;version="2.0.0"
+ org.eclipse.sirius.tests.swtbot.support.api.view;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.api.widget;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.internal;version="3.0.0";x-internal:="true",
+ org.eclipse.sirius.tests.swtbot.support.internal.business;version="3.0.0";x-internal:="true",
+ org.eclipse.sirius.tests.swtbot.support.utils;version="3.0.0";uses:="org.eclipse.swtbot.swt.finder.widgets,org.eclipse.swt.widgets",
+ org.eclipse.sirius.tests.swtbot.support.utils.business;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.utils.dnd;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.utils.menu;version="3.0.0",
+ org.eclipse.sirius.tests.swtbot.support.utils.tree;version="3.0.0"
 Bundle-Vendor: %providerName
 Import-Package: org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n,
  org.eclipse.sirius.ext.base;version="2.0.0",
