@@ -62,13 +62,13 @@
       id=""
       name="sirius.target.platform"
       defaultValue="sirius_tests_luna"
-      label="Target Platform">
+      label="Target Platform - Sirius">
     <choice
         value="sirius_juno"
-        label="Eclipse Juno - 4.2"/>
+        label="Eclipse Juno - 3.8"/>
     <choice
         value="sirius_tests_juno"
-        label="Eclipse Juno - 4.2 (with tests dependencies)"/>
+        label="Eclipse Juno - 3.8 (with tests dependencies)"/>
     <choice
         value="sirius_kepler"
         label="Eclipse Kepler - 4.3"/>
@@ -87,6 +87,9 @@
     <choice
         value="sirius_tests_mars"
         label="Eclipse Mars - 4.5 (with tests dependencies)"/>
+    <choice
+        value="No"
+        label="No target plaform"/>
     <description>Target Platform used for new install. You can then use another sirius_* predefined target platform existing in org.eclipse.sirius.targets project.</description>
   </setupTask>
   <setupTask
@@ -137,16 +140,19 @@
     <workingSet
         name="Sirius">
       <predicate
-          xsi:type="workingsets:ExclusionPredicate"
-          excludedWorkingSet="//@setupTasks.9/@workingSets.1 //@setupTasks.9/@workingSets.3 //@setupTasks.9/@workingSets.2"/>
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="workingsets:ExclusionPredicate"
+            excludedWorkingSet="//@setupTasks.9/@workingSets.1 //@setupTasks.9/@workingSets.3 //@setupTasks.9/@workingSets.2"/>
+        <operand
+            xsi:type="predicates:RepositoryPredicate"
+            project="org.eclipse.sirius.settings"/>
+      </predicate>
     </workingSet>
     <workingSet
         name="Sirius Tests">
       <predicate
           xsi:type="predicates:AndPredicate">
-        <operand
-            xsi:type="predicates:NamePredicate"
-            pattern=".*tests.*"/>
         <operand
             xsi:type="predicates:NotPredicate">
           <operand
@@ -159,6 +165,12 @@
                 pattern="org.eclipse.sirius.tests.parent"/>
           </operand>
         </operand>
+        <operand
+            xsi:type="predicates:RepositoryPredicate"
+            project="org.eclipse.sirius.settings"/>
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern=".*tests.*"/>
       </predicate>
     </workingSet>
     <workingSet
@@ -188,19 +200,25 @@
     <workingSet
         name="Sirius Releng">
       <predicate
-          xsi:type="predicates:OrPredicate">
+          xsi:type="predicates:AndPredicate">
         <operand
-            xsi:type="predicates:LocationPredicate"
-            pattern=".*packaging.*"/>
+            xsi:type="predicates:OrPredicate">
+          <operand
+              xsi:type="predicates:LocationPredicate"
+              pattern=".*packaging.*"/>
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org.eclipse.sirius.settings"/>
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org.eclipse.sirius.targets"/>
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org.eclipse.sirius.releng"/>
+        </operand>
         <operand
-            xsi:type="predicates:NamePredicate"
-            pattern="org.eclipse.sirius.settings"/>
-        <operand
-            xsi:type="predicates:NamePredicate"
-            pattern="org.eclipse.sirius.targets"/>
-        <operand
-            xsi:type="predicates:NamePredicate"
-            pattern="org.eclipse.sirius.releng"/>
+            xsi:type="predicates:RepositoryPredicate"
+            project="org.eclipse.sirius.settings"/>
       </predicate>
     </workingSet>
     <description>The dynamic working sets for ${scope.project.label}</description>
@@ -223,7 +241,7 @@
   </setupTask>
   <setupTask
       xsi:type="pde:TargetPlatformTask"
-      id="Target Platform"
+      id="Target Platform - Sirius"
       name="${sirius.target.platform}">
     <description>Target Platform used for the new install. It should be one of the available predefined TP in project org.eclipse.sirius.targets.</description>
   </setupTask>
