@@ -308,7 +308,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
 
         // clear adapters on resourceSet and contained resources
-        resourceSet.eAdapters().clear();
         for (Resource resource : resourceSet.getResources()) {
             resource.eAdapters().clear();
         }
