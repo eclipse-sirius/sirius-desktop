@@ -1426,8 +1426,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         for (Resource res : Iterables.concat(super.getResources(), getSemanticResources(), super.getControlledResources())) {
             // Don't try to unload metamodel resources.
-            if (!isFromPackageRegistry(rs, res)) {
-                res.unload();
+            try {
+                if (!isFromPackageRegistry(rs, res)) {
+                    res.unload();
+                }
+            } catch (final IllegalStateException e) {
+                // we might have an exception unloading a resource already
+                // unaccessible
+                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while unloading an unaccessible resource:\n" + e.getMessage(), e));
             }
             rs.getResources().remove(res);
         }
