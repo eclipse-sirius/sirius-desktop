@@ -278,6 +278,9 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void testContainerCreationInContainer(ZoomLevel zoomLevel, String packageNameToReveal, String newContainerName) {
         editor.zoom(zoomLevel);
+        // Go to the origin to avoid scroll bar
+        editor.scrollTo(0, 0);
+        SWTBotUtils.waitAllUiEvents();
         // Reveal the package (and eventually scroll in the diagram)
         editor.reveal(packageNameToReveal);
         // Get the location of the package (relative the part visible on the
