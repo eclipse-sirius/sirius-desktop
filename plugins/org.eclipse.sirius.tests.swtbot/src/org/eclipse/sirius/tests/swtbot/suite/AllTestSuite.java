@@ -143,6 +143,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(VSMFieldTest.class);
         suite.addTestSuite(VSMAndDiagramEditorSynchronisationTest.class);
         suite.addTestSuite(SVGImageBundleTest.class);
+        suite.addTestSuite(SVGZImageTest.class);
         suite.addTestSuite(RoutingStyleTest.class);
         suite.addTestSuite(RepresentationGroupWithoutRepresentationInstanceTest.class);
         suite.addTestSuite(RenameProjectWithSessionTest.class);

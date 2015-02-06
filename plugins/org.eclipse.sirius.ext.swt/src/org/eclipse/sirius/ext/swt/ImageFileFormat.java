@@ -56,6 +56,11 @@ public final class ImageFileFormat {
     public static final ImageFileFormat SVG = new ImageFileFormat("SVG", 100); //$NON-NLS-1$
 
     /**
+     * supported format Scalable Vector Graphics compressed (SVGZ).
+     */
+    public static final ImageFileFormat SVGZ = new ImageFileFormat("SVGZ", 101); //$NON-NLS-1$
+
+    /**
      * supported format PNG.
      */
     public static final ImageFileFormat PNG = new ImageFileFormat("PNG", SWT.IMAGE_PNG); //$NON-NLS-1$
@@ -63,7 +68,7 @@ public final class ImageFileFormat {
     /**
      * The list of values for this enumerated type.
      */
-    public static final ImageFileFormat[] VALUES = { GIF, BMP, JPEG, JPG, SVG, PNG };
+    public static final ImageFileFormat[] VALUES = { GIF, BMP, JPEG, JPG, SVG, SVGZ, PNG };
 
     private String name;
 

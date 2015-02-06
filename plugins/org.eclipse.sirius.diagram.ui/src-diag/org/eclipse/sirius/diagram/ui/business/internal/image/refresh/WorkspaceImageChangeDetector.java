@@ -23,6 +23,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.swt.ImageFileFormat;
 
@@ -115,7 +116,8 @@ public class WorkspaceImageChangeDetector implements IResourceDeltaVisitor {
      */
     private boolean needClearCache(IResource resource) {
         boolean cacheUpdated = false;
-        if (resource.getFileExtension().toUpperCase().endsWith(ImageFileFormat.SVG.getName())) {
+        String resourceExtension = resource.getFileExtension();
+        if (WorkspaceImageFigure.isSvgImage(resourceExtension)) {
             String svgUri = resource.getFullPath().toString();
             Option<String> removed = SVGWorkspaceImageFigure.removeFromCache(svgUri);
             if (removed.some()) {

@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -200,5 +201,34 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
             WorkspaceImage workspaceImage = (WorkspaceImage) containerStyle;
             refreshFigure(workspaceImage);
         }
+    }
+
+    /**
+     * Extract image from path.
+     * 
+     * @param path
+     *            the path of the image
+     * @return the image
+     */
+    public static Image getImageInstanceFromPath(final String path) {
+        final Image image;
+        if (path != null && isSvgImage(path)) {
+            image = SVGWorkspaceImageFigure.flyWeightImage(path);
+        } else {
+            image = WorkspaceImageFigure.flyWeightImage(path);
+        }
+        return image;
+    }
+
+    /**
+     * Check svg format from the path of an image.
+     * 
+     * @param path
+     *            the path of the image to check
+     * @return true for svg or svgz image format.
+     */
+    public static boolean isSvgImage(String path) {
+        String pathToUpperCase = path.toUpperCase();
+        return pathToUpperCase.endsWith(ImageFileFormat.SVG.getName()) || pathToUpperCase.endsWith(ImageFileFormat.SVGZ.getName());
     }
 }

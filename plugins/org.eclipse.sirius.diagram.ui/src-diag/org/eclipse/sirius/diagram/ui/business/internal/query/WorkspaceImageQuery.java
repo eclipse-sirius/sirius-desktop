@@ -12,9 +12,7 @@ package org.eclipse.sirius.diagram.ui.business.internal.query;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
-import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Preconditions;
@@ -49,12 +47,7 @@ public class WorkspaceImageQuery {
         final Dimension result = DEFAULT_WORKSPACE_DIMENSION.getCopy();
         final String path = workspaceImage.getWorkspacePath();
         final Image image;
-        if (path != null && path.toUpperCase().endsWith(ImageFileFormat.SVG.getName())) {
-            image = SVGWorkspaceImageFigure.flyWeightImage(path);
-        } else {
-            image = WorkspaceImageFigure.flyWeightImage(path);
-        }
-
+        image = WorkspaceImageFigure.getImageInstanceFromPath(path);
         if (image != null) {
             // Use default image size
             result.width = image.getBounds().width;

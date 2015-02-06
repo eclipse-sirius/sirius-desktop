@@ -34,7 +34,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
@@ -42,7 +41,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItem
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.swt.graphics.Font;
@@ -178,13 +176,7 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         if (width == -1 && node.getOwnedStyle() instanceof WorkspaceImage) {
             WorkspaceImage workspaceImage = (WorkspaceImage) node.getStyle();
             final String path = workspaceImage.getWorkspacePath();
-            final Image image;
-            if (path != null && path.toUpperCase().endsWith(ImageFileFormat.SVG.getName())) {
-                image = SVGWorkspaceImageFigure.flyWeightImage(path);
-            } else {
-                image = WorkspaceImageFigure.flyWeightImage(path);
-            }
-
+            final Image image = WorkspaceImageFigure.getImageInstanceFromPath(path);
             width = image.getBounds().width;
         } else {
             width = width * LayoutUtils.SCALE;

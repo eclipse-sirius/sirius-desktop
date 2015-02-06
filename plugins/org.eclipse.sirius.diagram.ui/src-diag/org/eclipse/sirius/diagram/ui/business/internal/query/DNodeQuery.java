@@ -13,10 +13,8 @@ package org.eclipse.sirius.diagram.ui.business.internal.query;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Preconditions;
@@ -54,12 +52,7 @@ public class DNodeQuery {
             final WorkspaceImage workspaceImage = (WorkspaceImage) node.getStyle();
             final String path = workspaceImage.getWorkspacePath();
             final Image image;
-            if (path != null && path.toUpperCase().endsWith(ImageFileFormat.SVG.getName())) {
-                image = SVGWorkspaceImageFigure.flyWeightImage(path);
-            } else {
-                image = WorkspaceImageFigure.flyWeightImage(path);
-            }
-
+            image = WorkspaceImageFigure.getImageInstanceFromPath(path);
             if (image != null) {
                 // Use default image size
                 if (node.getWidth() == null || Integer.valueOf(node.getWidth()) == -1) {

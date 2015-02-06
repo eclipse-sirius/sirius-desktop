@@ -39,7 +39,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
-import org.eclipse.sirius.ext.swt.ImageFileFormat;
 
 /**
  * @was-generated
@@ -114,7 +113,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
             String workspacePath = wkImage.getWorkspacePath();
             if (StringUtil.isEmpty(workspacePath)) {
                 wif = WorkspaceImageFigure.createImageFigure(DiagramImagesPath.IMAGE_NOT_FOUND);
-            } else if (workspacePath.toUpperCase().endsWith(ImageFileFormat.SVG.getName())) {
+            } else if (WorkspaceImageFigure.isSvgImage(workspacePath)) {
                 wif = SVGWorkspaceImageFigure.createImageFigure(wkImage);
             } else {
                 wif = WorkspaceImageFigure.createImageFigure(wkImage);

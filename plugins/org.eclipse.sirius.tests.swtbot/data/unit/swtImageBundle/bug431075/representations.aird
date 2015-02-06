@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_-IQxUK3gEeSzKfVZiZPh4g" selectedViews="_e3luQK3hEeSzKfVZiZPh4g" version="10.0.0.201412231738">
+  <models xmi:type="ecore:EPackage" href="Bug431075.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_e3luQK3hEeSzKfVZiZPh4g" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_bmdp0K3jEeSNLLExbwZ-hQ" name="new Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_bm-nMK3jEeSNLLExbwZ-hQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_bm-nMa3jEeSNLLExbwZ-hQ" type="Sirius" element="_bmdp0K3jEeSNLLExbwZ-hQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_bnQ7EK3jEeSNLLExbwZ-hQ" type="2001" element="_bmdp0a3jEeSNLLExbwZ-hQ">
+            <children xmi:type="notation:Node" xmi:id="_bnp8oK3jEeSNLLExbwZ-hQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_bnp8oa3jEeSNLLExbwZ-hQ" y="-21"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_bu0UkK3jEeSNLLExbwZ-hQ" type="3005" element="_bmdp0q3jEeSNLLExbwZ-hQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_bu0Uka3jEeSNLLExbwZ-hQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bu0Ukq3jEeSNLLExbwZ-hQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bnQ7Ea3jEeSNLLExbwZ-hQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bnQ7Eq3jEeSNLLExbwZ-hQ" width="400" height="400"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_bm-nMq3jEeSNLLExbwZ-hQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_bmdp0a3jEeSNLLExbwZ-hQ" name="C1" width="-1" height="-1" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="Bug431075.ecore#//C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="Bug431075.ecore#//C1"/>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_bmdp0q3jEeSNLLExbwZ-hQ" workspacePath="/DesignerTestProject/tiger.svgz">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_bmdp063jEeSNLLExbwZ-hQ"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="Bug431075.odesign#//@ownedViewpoints[name='bug431075']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_bmdp1K3jEeSNLLExbwZ-hQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="Bug431075.odesign#//@ownedViewpoints[name='bug431075']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="Bug431075.odesign#//@ownedViewpoints[name='bug431075']/@ownedRepresentations[name='Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_bmdp1a3jEeSNLLExbwZ-hQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="Bug431075.odesign#//@ownedViewpoints[name='bug431075']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="Bug431075.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="Bug431075.odesign#//@ownedViewpoints[name='bug431075']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
