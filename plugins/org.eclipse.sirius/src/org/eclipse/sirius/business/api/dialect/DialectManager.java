@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.dialect;
 
-import org.eclipse.sirius.business.internal.dialect.DialectManagerImpl;
+import org.eclipse.sirius.business.internal.dialect.DialectManagerImpl2;
 
 /**
  * Instance managing the dialects.
@@ -22,7 +22,7 @@ public interface DialectManager extends DialectServices {
     /**
      * Singleton instance of the dialect manager.
      */
-    DialectManager INSTANCE = DialectManagerImpl.init();
+    DialectManager INSTANCE = DialectManagerImpl2.init();
 
     /**
      * Dialect manager extension point ID.

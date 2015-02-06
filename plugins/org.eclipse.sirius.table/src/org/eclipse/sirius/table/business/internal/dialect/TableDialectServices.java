@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,19 +10,26 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.dialect;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
+import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
@@ -33,6 +40,7 @@ import org.eclipse.sirius.business.internal.contribution.IntrinsicPathIdentifier
 import org.eclipse.sirius.business.internal.contribution.ModelContributorAdapter;
 import org.eclipse.sirius.business.internal.contribution.RepresentationExtensionsFinder;
 import org.eclipse.sirius.business.internal.contribution.SiriusReferenceResolver;
+import org.eclipse.sirius.business.internal.dialect.DialectServices2;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -42,8 +50,13 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
 import org.eclipse.sirius.table.business.internal.dialect.description.TableInterpretedExpressionQuery;
+import org.eclipse.sirius.table.business.internal.refresh.DTableElementSynchronizerSpec;
 import org.eclipse.sirius.table.business.internal.refresh.DTableSynchronizerImpl;
+import org.eclipse.sirius.table.metamodel.table.DCell;
+import org.eclipse.sirius.table.metamodel.table.DColumn;
+import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
@@ -54,6 +67,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -62,13 +76,14 @@ import com.google.common.base.Function;
 import com.google.common.base.Supplier;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * Services for the table dialect.
  * 
  * @author cbrun
  */
-public class TableDialectServices extends AbstractRepresentationDialectServices {
+public class TableDialectServices extends AbstractRepresentationDialectServices implements DialectServices2 {
 
     /**
      * Tests whether a representation should be handled by the Movida-specific
@@ -250,6 +265,66 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     }
 
     @Override
+    public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
+        DTable table = (DTable) representation;
+        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(table.getTarget());
+        ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
+
+        List<DTableElement> dTableElements = getTableElementsToRefresh(notifications, table);
+        DTableElementSynchronizerSpec synchronizer = new DTableElementSynchronizerSpec(accessor, interpreter);
+        for (DTableElement dTableElement : dTableElements) {
+            if (dTableElement instanceof DCell) {
+                synchronizer.refresh((DCell) dTableElement);
+            } else if (dTableElement instanceof DLine) {
+                synchronizer.refresh((DLine) dTableElement);
+            } else if (dTableElement instanceof DColumn) {
+                synchronizer.refresh((DColumn) dTableElement);
+            }
+        }
+
+    }
+
+    private List<DTableElement> getTableElementsToRefresh(Collection<Notification> notifications, DTable table) {
+        ECrossReferenceAdapter xref = ECrossReferenceAdapter.getCrossReferenceAdapter(table.getTarget());
+        List<DTableElement> tableElementsToRefresh = new ArrayList<DTableElement>();
+        // Get all unique notifiers.
+        Set<EObject> notifiers = Sets.newHashSet();
+        for (Notification notification : notifications) {
+            Object notifier = notification.getNotifier();
+            if (notifier instanceof EObject) {
+                notifiers.add((EObject) notifier);
+            }
+        }
+        // Get corresponding table elements
+        for (EObject notifier : notifiers) {
+            Collection<Setting> inverseReferences = xref.getInverseReferences(notifier, false);
+            tableElementsToRefresh.addAll(getTableElementsFromInverseReferences(inverseReferences, table));
+        }
+        return tableElementsToRefresh;
+    }
+
+    private Collection<DTableElement> getTableElementsFromInverseReferences(Collection<Setting> inverseReferences, DTable table) {
+        Set<DTableElement> tableElementsToRefresh = Sets.newHashSet();
+        for (Setting ref : inverseReferences) {
+            if (ref.getEStructuralFeature() == ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target()
+                    || ref.getEStructuralFeature() == ViewpointPackage.eINSTANCE.getDRepresentationElement_SemanticElements()) {
+                EObject eObject = ref.getEObject();
+                if (eObject instanceof DTableElement && isContainedWithinCurrentTable((DTableElement) eObject, table)) {
+                    tableElementsToRefresh.add((DTableElement) eObject);
+                }
+            }
+        }
+        return tableElementsToRefresh;
+
+    }
+
+    private boolean isContainedWithinCurrentTable(DTableElement tableElement, DTable table) {
+        return table == new DRepresentationElementQuery(tableElement).getParentRepresentation();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public RepresentationDescription getDescription(DRepresentation representation) {
         if (isSupported(representation)) {
             return ((DTable) representation).getDescription();
@@ -257,7 +332,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
             return null;
         }
     }
-    
+
     @Override
     public void initRepresentations(Viewpoint vp, EObject semantic, IProgressMonitor monitor) {
         super.initRepresentations(semantic, vp, TableDescription.class, monitor);

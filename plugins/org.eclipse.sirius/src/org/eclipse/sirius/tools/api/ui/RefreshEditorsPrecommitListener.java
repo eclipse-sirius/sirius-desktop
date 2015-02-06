@@ -13,6 +13,7 @@ package org.eclipse.sirius.tools.api.ui;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
@@ -29,6 +30,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.internal.dialect.command.RefreshImpactedElementsCommand;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -38,6 +40,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * A listener to refresh all Sirius opened editors. It is used as :
@@ -122,19 +125,25 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
      */
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
         Command result = null;
-        if (!disabled && needsRefresh()) {
-
-            boolean impactingNotification = isImpactingNotification(notifications);
-            // Do nothing if the notification concern only elements of aird
-            // resource and that the representationsToForceRefresh is empty.
-            if (impactingNotification || !representationsToForceRefresh.isEmpty()) {
-                Option<? extends Command> optionCommand = getRefreshOpenedRepresentationsCommand(impactingNotification);
+        if (!disabled) {
+            if (needsRefresh()) {
+                boolean impactingNotification = isImpactingNotification(notifications);
+                // Do nothing if the notification concern only elements of aird
+                // resource and that the representationsToForceRefresh is empty.
+                if (impactingNotification || !representationsToForceRefresh.isEmpty()) {
+                    Option<? extends Command> optionCommand = getRefreshOpenedRepresentationsCommand(impactingNotification);
+                    if (optionCommand.some()) {
+                        result = optionCommand.get();
+                    }
+                }
+                setForceRefresh(false);
+                representationsToForceRefresh.clear();
+            } else if (isImpactingNotification(notifications)) {
+                Option<? extends Command> optionCommand = getRefreshImpactedElementsCommandForOpenedRepresentations(notifications);
                 if (optionCommand.some()) {
                     result = optionCommand.get();
                 }
             }
-            setForceRefresh(false);
-            representationsToForceRefresh.clear();
         }
         disabled = false;
         return Options.newSome(result);
@@ -142,14 +151,18 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
 
     private boolean isImpactingNotification(final Collection<Notification> notifications) {
         boolean isImpactingNotification = false;
+        Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
         for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
-            if (notifier instanceof EObject) {
+            if (!notification.isTouch() && notifier instanceof EObject) {
                 EObject eObjectNotifier = (EObject) notifier;
-                Resource notifierResource = eObjectNotifier.eResource();
-                if (notifierResource != null && !new ResourceQuery(notifierResource).isRepresentationsResource()) {
-                    isImpactingNotification = true;
-                    break;
+                if (!alreadyDoneNotifiers.contains(eObjectNotifier)) {
+                    alreadyDoneNotifiers.add(eObjectNotifier);
+                    Resource notifierResource = eObjectNotifier.eResource();
+                    if (notifierResource != null && !new ResourceQuery(notifierResource).isRepresentationsResource()) {
+                        isImpactingNotification = true;
+                        break;
+                    }
                 }
             }
         }
@@ -200,6 +213,21 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
                 representationsToRefresh.remove(rep);
             }
         }
+    }
+
+    private Option<? extends Command> getRefreshImpactedElementsCommandForOpenedRepresentations(Collection<Notification> notifications) {
+        Option<? extends Command> result = Options.newNone();
+        Collection<DRepresentation> representationsToRefresh = new LinkedHashSet<DRepresentation>();
+        representationsToRefresh.addAll(RefreshFilterManager.INSTANCE.getOpenedRepresantationsToRefresh());
+
+        restrictRepresentationWithinCurrentEditingDomain(representationsToRefresh);
+
+        if (!representationsToRefresh.isEmpty()) {
+            CompoundCommand cc = new CompoundCommand();
+            cc.append(new RefreshImpactedElementsCommand(transactionalEditingDomain, new NullProgressMonitor(), representationsToRefresh, notifications));
+            result = Options.newSome(cc);
+        }
+        return result;
     }
 
     /**

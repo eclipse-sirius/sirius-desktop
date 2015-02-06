@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,20 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.metamodel.spec;
 
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.impl.DCellImpl;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
@@ -33,46 +26,12 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  */
 public class DCellSpec extends DCellImpl {
 
-    private Adapter targetListener;
-
     /**
      * {@inheritDoc}
      */
     @Override
     public void activate(DTableElementSynchronizer sync) {
-        for (final EObject semantic : getSemanticElements()) {
-            semantic.eAdapters().add(getOrCreateListener(sync));
-        }
-        if (getTarget() != null && !getSemanticElements().contains(getTarget())) {
-            getTarget().eAdapters().add(getOrCreateListener(sync));
-        }
-    }
-
-    private Adapter getOrCreateListener(final DTableElementSynchronizer sync) {
-        if (targetListener == null) {
-            targetListener = new AdapterImpl() {
-                /**
-                 * 
-                 * {@inheritDoc}
-                 */
-                @Override
-                public void notifyChanged(final Notification msg) {
-                    if (msg.getEventType() != Notification.REMOVING_ADAPTER
-                            && !Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
-                        // ISSUE on tree/table : when having local tree/table
-                        // rep
-                        // with shared semantic, receiving a remote semantic
-                        // change has the effect to calls this in manual/auto
-                        // refresh then the CDOTransactionChangeRecorder is
-                        // notifier => IllegalStateException cannot modify
-                        // resource without transaction
-                        // TODO : we could do like diagram using task
-                        sync.refresh(DCellSpec.this);
-                    }
-                }
-            };
-        }
-        return targetListener;
+        // do nothing
     }
 
     /**
@@ -80,15 +39,7 @@ public class DCellSpec extends DCellImpl {
      */
     @Override
     public void deactivate() {
-        if (targetListener != null) {
-            for (final EObject semantic : getSemanticElements()) {
-                semantic.eAdapters().remove(targetListener);
-            }
-            if (getTarget() != null && !getSemanticElements().contains(getTarget())) {
-                getTarget().eAdapters().remove(targetListener);
-            }
-        }
-        targetListener = null;
+        // do nothing
     }
 
     /**
