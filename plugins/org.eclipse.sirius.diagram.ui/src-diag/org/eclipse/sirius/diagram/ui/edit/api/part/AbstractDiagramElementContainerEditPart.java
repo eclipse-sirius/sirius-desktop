@@ -59,6 +59,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
@@ -399,8 +400,17 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             if (firstRegion && primaryShape.getBorder() instanceof LineBorder || !firstRegion && primaryShape.getBorder() instanceof MarginBorder) {
                 configureBorder(primaryShape);
             }
+            /* Update background for containers */
+            final DDiagramElement diagElement = this.resolveDiagramElement();
+            if (diagElement instanceof DNodeContainer) {
+                final DNodeContainer container = (DNodeContainer) diagElement;
+                if (primaryShape instanceof GradientRoundedRectangle && container.getOwnedStyle() instanceof FlatContainerStyle) {
+                    if (((GradientRoundedRectangle) primaryShape).getBackgroundStyle() != ((FlatContainerStyle) container.getOwnedStyle()).getBackgroundStyle()) {
+                        ((AbstractDiagramContainerEditPart) this).reInitFigure();
+                    }
+                }
+            }
         }
-
         super.refreshVisuals();
         DiagramContainerEditPartOperation.refreshVisuals(this);
     }

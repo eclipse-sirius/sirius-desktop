@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:dynamic_background="http://www.example.org/dynamic_background" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.example.org/dynamic_background dynamic_background.ecore http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="__raZ4KU_EeSTCqckavf3og" selectedViews="_AR-DkKVAEeSTCqckavf3og" version="10.0.0.201412231738">
+  <models xmi:type="dynamic_background:TestDiagram" href="TestDiagram.xmi#/"/>
+  <models xmi:type="ecore:EPackage" href="dynamic_background.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_AR-DkKVAEeSTCqckavf3og" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_oKi9kLg4EeSKZ-6R3paZnA" name="new Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_oKi9kbg4EeSKZ-6R3paZnA" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_oKi9krg4EeSKZ-6R3paZnA">
+          <computedStyleDescriptions xmi:type="style:FlatContainerStyleDescription" xmi:id="_aamMwLjdEeSDytFHpsTBMA" labelExpression="['I am a test'/]" backgroundStyle="GradientTopToBottom">
+            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+          </computedStyleDescriptions>
+          <cache xmi:type="diagram:DiagramElementMapping2ModelElement" xmi:id="_ZhKDULjdEeSDytFHpsTBMA">
+            <key xmi:type="description_1:ContainerMapping" href="background.odesign#//@ownedViewpoints[name='BackgroundTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Test']"/>
+            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_ZhKDUbjdEeSDytFHpsTBMA">
+              <key xmi:type="dynamic_background:Test" href="TestDiagram.xmi#//@test.0"/>
+              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_ZhKDUrjdEeSDytFHpsTBMA" key="_oKi9nLg4EeSKZ-6R3paZnA">
+                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_ZhKDVLjdEeSDytFHpsTBMA" value="_aamMwLjdEeSDytFHpsTBMA">
+                  <key xmi:type="dynamic_background:TestDiagram" href="TestDiagram.xmi#/"/>
+                </value>
+              </value>
+            </value>
+          </cache>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_oKjkoLg4EeSKZ-6R3paZnA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_oKjkobg4EeSKZ-6R3paZnA" type="Sirius" element="_oKi9kLg4EeSKZ-6R3paZnA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_oKjko7g4EeSKZ-6R3paZnA" type="2002" element="_oKi9nLg4EeSKZ-6R3paZnA">
+            <children xmi:type="notation:Node" xmi:id="_oKjkprg4EeSKZ-6R3paZnA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_oKjkp7g4EeSKZ-6R3paZnA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_oKjkqLg4EeSKZ-6R3paZnA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_oKjkqbg4EeSKZ-6R3paZnA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_oKjkpLg4EeSKZ-6R3paZnA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oKjkpbg4EeSKZ-6R3paZnA" x="315" y="120"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_oKjkorg4EeSKZ-6R3paZnA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_oKi9nLg4EeSKZ-6R3paZnA" name="I am a test">
+        <target xmi:type="dynamic_background:Test" href="TestDiagram.xmi#//@test.0"/>
+        <semanticElements xmi:type="dynamic_background:Test" href="TestDiagram.xmi#//@test.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_aamz0LjdEeSDytFHpsTBMA" description="_aamMwLjdEeSDytFHpsTBMA" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aamz0bjdEeSDytFHpsTBMA"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_aamz0rjdEeSDytFHpsTBMA"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_aamz07jdEeSDytFHpsTBMA" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_aamz1LjdEeSDytFHpsTBMA" red="156" green="12" blue="12"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="background.odesign#//@ownedViewpoints[name='BackgroundTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Test']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="background.odesign#//@ownedViewpoints[name='BackgroundTest']/@ownedRepresentations[name='Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_oKi9qLg4EeSKZ-6R3paZnA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="background.odesign#//@ownedViewpoints[name='BackgroundTest']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
+      <target xmi:type="dynamic_background:TestDiagram" href="TestDiagram.xmi#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="background.odesign#//@ownedViewpoints[name='BackgroundTest']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -250,6 +250,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(TreeFoldingTest.class);
         suite.addTestSuite(DoubleClickToolNavigationOperationTest.class);
         suite.addTestSuite(BackgroundColorFigureUpdateTests.class);
+        suite.addTestSuite(BackgroundStyleUpdateTest.class);
         suite.addTestSuite(EdgeMappingTestCase.class);
         suite.addTestSuite(InvalidMetamodelRessourceTest.class);
         suite.addTestSuite(ExtensionActivationOrderTest.class);

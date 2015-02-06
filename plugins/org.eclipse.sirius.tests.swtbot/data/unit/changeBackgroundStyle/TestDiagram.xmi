@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dynamic_background:TestDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dynamic_background="http://www.example.org/dynamic_background" xsi:schemaLocation="http://www.example.org/dynamic_background dynamic_background.ecore">
+  <test/>
+</dynamic_background:TestDiagram>

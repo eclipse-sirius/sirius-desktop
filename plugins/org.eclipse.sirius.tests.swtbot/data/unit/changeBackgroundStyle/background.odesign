@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="background" version="10.0.0.201411061000">
+  <ownedViewpoints name="BackgroundTest" label="Background Test">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" label="Diagram" domainClass="TestDiagram">
+      <metamodel href="dynamic_background.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="Test" label="Test" semanticCandidatesExpression="feature:test" domainClass="Test">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="['I am a test'/]" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+          </style>
+        </containerMappings>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsTypeOf(Test) and self.oclAsType(Test).liquid/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='BackgroundTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Test']/@style" attributeName="backgroundStyle" value="[BackgroundStyle::Liquid/]"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='BackgroundTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Test']/@style" referenceName="foregroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsTypeOf(Test) and not self.oclAsType(Test).liquid/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='BackgroundTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Test']/@style" attributeName="backgroundStyle" value="[BackgroundStyle::GradientTopToBottom/]"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='BackgroundTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Test']/@style" referenceName="foregroundColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+        </customization>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
