@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_tests_mars" sequenceNumber="1420449693">
+<target name="sirius_tests_mars" sequenceNumber="1423469916">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
@@ -47,30 +47,30 @@
       <unit id="org.eclipse.uml2.sdk.feature.group" version="0.0.0"/>
       <unit id="com.google.guava" version="15.0.0.v201403281430"/>
       <unit id="com.ibm.icu" version="52.1.0.v201404241930"/>
-      <unit id="org.eclipse.acceleo.feature.group" version="3.6.0.201408190816"/>
-      <unit id="org.eclipse.acceleo.ide.ui" version="3.6.0.201408190816"/>
-      <unit id="org.eclipse.draw2d.sdk.feature.group" version="3.10.0.201412150306"/>
-      <unit id="org.eclipse.emf.common.feature.group" version="2.11.0.v20141209-0341"/>
-      <unit id="org.eclipse.emf.compare.feature.group" version="3.1.0.201412161011"/>
-      <unit id="org.eclipse.emf.ecore.feature.group" version="2.11.0.v20141209-0341"/>
-      <unit id="org.eclipse.emf.edit.feature.group" version="2.11.0.v20141215-0350"/>
-      <unit id="org.eclipse.emf.eef.runtime" version="1.3.0.201311221533"/>
-      <unit id="org.eclipse.emf.feature.group" version="2.11.0.v20141215-0350"/>
-      <unit id="org.eclipse.emf.sdk.feature.group" version="2.11.0.v20141215-0350"/>
-      <unit id="org.eclipse.emf.transaction.feature.group" version="1.9.0.201412161904"/>
-      <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.9.0.201412161904"/>
-      <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.9.0.201412161741"/>
-      <unit id="org.eclipse.emf.workspace.feature.group" version="1.9.0.201412161904"/>
-      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.11.0.v20141210-0918"/>
-      <unit id="org.eclipse.gef.feature.group" version="3.10.0.201412150306"/>
-      <unit id="org.eclipse.gef.sdk.feature.group" version="3.10.0.201412150306"/>
-      <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.9.0.201412161742"/>
-      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.9.0.201412162002"/>
-      <unit id="org.eclipse.ocl.all.feature.group" version="5.1.0.v20141108-1946"/>
-      <unit id="org.eclipse.ocl.core.sdk.feature.group" version="5.1.0.v20141108-1946"/>
-      <unit id="org.eclipse.platform.feature.group" version="4.5.0.v20141210-2000"/>
-      <unit id="org.eclipse.sdk.feature.group" version="4.5.0.v20141210-2000"/>
-      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.8.0.v201412160421"/>
+      <unit id="org.eclipse.acceleo.feature.group" version="3.6.0.201502030917"/>
+      <unit id="org.eclipse.acceleo.ide.ui" version="3.6.0.201502030917"/>
+      <unit id="org.eclipse.draw2d.sdk.feature.group" version="3.10.0.201502020307"/>
+      <unit id="org.eclipse.emf.common.feature.group" version="2.11.0.v20150123-0347"/>
+      <unit id="org.eclipse.emf.compare.feature.group" version="3.1.0.201502031424"/>
+      <unit id="org.eclipse.emf.ecore.feature.group" version="2.11.0.v20150123-0347"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.11.0.v20150123-0357"/>
+      <unit id="org.eclipse.emf.eef.runtime" version="1.5.0.201412231052"/>
+      <unit id="org.eclipse.emf.feature.group" version="2.11.0.v20150123-0357"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.11.0.v20150123-0357"/>
+      <unit id="org.eclipse.emf.transaction.feature.group" version="1.9.0.201502040445"/>
+      <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.9.0.201502040445"/>
+      <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.9.0.201502040400"/>
+      <unit id="org.eclipse.emf.workspace.feature.group" version="1.9.0.201502040445"/>
+      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.11.0.v20150129-2253"/>
+      <unit id="org.eclipse.gef.feature.group" version="3.10.0.201502020307"/>
+      <unit id="org.eclipse.gef.sdk.feature.group" version="3.10.0.201502020307"/>
+      <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.9.0.201502040339"/>
+      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.9.0.201502040533"/>
+      <unit id="org.eclipse.ocl.all.feature.group" version="5.1.0.v20150120-1323"/>
+      <unit id="org.eclipse.ocl.core.sdk.feature.group" version="5.1.0.v20150120-1323"/>
+      <unit id="org.eclipse.platform.feature.group" version="4.5.0.v20150203-2243"/>
+      <unit id="org.eclipse.sdk.feature.group" version="4.5.0.v20150203-2243"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.8.0.v201502030924"/>
       <repository id="Eclipse-Mars" location="http://download.eclipse.org/releases/mars"/>
     </location>
   </locations>
