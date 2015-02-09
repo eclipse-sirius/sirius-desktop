@@ -197,57 +197,46 @@ public final class LayerHelper {
             }
 
             boolean visible = false;
+            if (diagram != null && session.getActiveParentLayers(mapping).size() > 0) {
+                /*
+                 * We are visible in the following cases:
+                 * 
+                 * 1. the mapping is in active layer and not hidden by owner
+                 * mapping in an active layer and container is diagram
+                 * 
+                 * 2- the mapping is in active layer and not hidden by owner
+                 * mapping in an active layer and container is element and
+                 * element.mapping contains mapping and element is
+                 * visible
+                 */
 
-            if (diagram != null) {
+                /*
+                 * Check that mapping is not hidden by an importer mapping
+                 */
 
-                final Collection<Layer> layers = session.getActiveParentLayers(mapping);
-                for (final Layer layer : layers) {
+                final EObject registryMappingInstance = ViewpointRegistry.getInstance().find(mapping);
+                final Collection<Setting> settings = ViewpointRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance, true);
+
+                if (!LayerHelper.hideSubMappingsInImporters(session, diagram, settings, mapping)) {
+                    final EObject container = element.eContainer();
+
                     /*
-                     * We are visible in the following cases :
-                     * 
-                     * 1- the mapping is in active layer and not hidden by owner
-                     * mapping in an active layer and container is diagram
-                     * 
-                     * 2- the mapping is in active layer and not hidden by owner
-                     * mapping in an active layer and container is element and
-                     * element.mapping contains mapping and is element is
-                     * visible
+                     * Case 2 The mapping should be imported by another mapping
+                     * owned by a visible element.
                      */
-
-                    /*
-                     * Check that mapping is not hidden by an importer mapping
-                     */
-
-                    final EObject registryMappingInstance = ViewpointRegistry.getInstance().find(mapping);
-                    final Collection<Setting> settings = ViewpointRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance, true);
-
-                    if (!LayerHelper.hideSubMappingsInImporters(session, diagram, settings, mapping)) {
-                        final EObject container = element.eContainer();
-
-                        /*
-                         * Case 2 The mapping should be imported by another
-                         * mapping owned by a visible element.
-                         */
-                        if (container instanceof DDiagramElement && LayerHelper.isInActivatedLayer(session, (DDiagramElement) container, parentDiagram)) {
-                            visible = LayerHelper.caseDiagramElementContainer((DDiagramElement) container, mapping);
-                        }
-                        /*
-                         * Case 1 The mapping should be in visible mappings set
-                         */
-                        else if (container instanceof DDiagram) {
-                            visible = LayerHelper.caseDiagramContainer(diagram, mapping);
-                        } else if (container == null) {
-                            // We consider the diagram as future container.
-                            visible = LayerHelper.caseDiagramContainer(parentDiagram, mapping);
-                        }
+                    if (container instanceof DDiagramElement && LayerHelper.isInActivatedLayer(session, (DDiagramElement) container, parentDiagram)) {
+                        visible = LayerHelper.caseDiagramElementContainer((DDiagramElement) container, mapping);
                     }
-
-                    /* if we are visible in one layer then return true */
-                    if (visible) {
-                        break;
+                    /*
+                     * Case 1 The mapping should be in visible mappings set
+                     */
+                    else if (container instanceof DDiagram) {
+                        visible = LayerHelper.caseDiagramContainer(diagram, mapping);
+                    } else if (container == null) {
+                        // We consider the diagram as future container.
+                        visible = LayerHelper.caseDiagramContainer(parentDiagram, mapping);
                     }
                 }
-
             }
 
             return visible;
