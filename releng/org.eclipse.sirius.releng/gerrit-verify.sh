@@ -84,6 +84,11 @@ if [ "$PLATFORM" = "$REFERENCE_PLATFORM" -o "$SUITE" = "gerrit-junit" ]; then
         wait_for_xvnc
         start_window_manager
         adjust_tests_target_platform
+        if [ "$PLATFORM" = "luna" ]; then
+            # Gtk3 support under Luna can lead to crashes (looks like resource leaks inside the X server),
+            # so for the use of Gtk2 in this case.
+            export SWT_GTK3=0
+        fi
         invoke_maven -f packaging/org.eclipse.sirius.tests.parent/pom.xml -P"$SUITE" clean integration-test
         kill_window_manager
     else
