@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,16 +18,20 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 
 /**
  * Tests for VP-3818 to check contract of
@@ -70,6 +74,8 @@ public class SessionSemanticResourceTests extends SiriusDiagramTestCase {
 
     private String SEMANTIC_RESOURCE_9_NAME = "r9.ecore";
 
+    private String AIRD_RESOURCE_NAME = "representation.aird";
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -87,6 +93,15 @@ public class SessionSemanticResourceTests extends SiriusDiagramTestCase {
         assertEquals("The created session should not have semantic resources", 0, session.getSemanticResources().size());
 
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        // Ensure that for each test, the cross referencer is on all semantic
+        // resources.
+        checkCrossReferencer();
+
+        super.tearDown();
     }
 
     /**
@@ -258,6 +273,31 @@ public class SessionSemanticResourceTests extends SiriusDiagramTestCase {
         assertEquals("The session shouldn't have semantic resource now", 0, session.getSemanticResources().size());
     }
 
+    /**
+     * Test the DAnalysis addition referencing all other semantic resources.
+     */
+    public void testReferencedAnalysisAddition() {
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + AIRD_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + AIRD_RESOURCE_NAME);
+
+        TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        URI airdResourceURI = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + AIRD_RESOURCE_NAME, true);
+
+        Resource airdResource = domain.getResourceSet().getResource(airdResourceURI, true);
+        final DAnalysis dAnalysis = (DAnalysis) airdResource.getContents().get(0);
+
+        Command addDAnalysisCmd = new RecordingCommand(domain) {
+
+            @Override
+            protected void doExecute() {
+                ((DAnalysisSession) session).addReferencedAnalysis(dAnalysis);
+            }
+        };
+
+        domain.getCommandStack().execute(addDAnalysisCmd);
+
+        assertEquals("The session should have 9 semantic resources", 9, session.getSemanticResources().size());
+    }
+
     private Resource getSemanticResourceFromSession(URI semanticResourceURI) {
         Resource semanticResourceFromSession = null;
         for (Resource semanticResource : session.getSemanticResources()) {
@@ -269,4 +309,13 @@ public class SessionSemanticResourceTests extends SiriusDiagramTestCase {
         return semanticResourceFromSession;
     }
 
+    /**
+     * Ensure that the cross referencer is on all semantic resources.
+     */
+    private void checkCrossReferencer() {
+        ECrossReferenceAdapter crossReferencer = session.getSemanticCrossReferencer();
+        for (Resource semanticResource : session.getSemanticResources()) {
+            assertTrue("The resource '" + semanticResource.getURI() + "' should have the cross referencer", semanticResource.eAdapters().contains(crossReferencer));
+        }
+    }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,10 +62,25 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
             // CHECKSTYLE:ON
             RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(dAnalysisSessionImpl);
             semanticResourcesGetter.run();
-            boolean hasNbOfSemanticResourcesChanged = semanticResources.size() != semanticResourcesGetter.getResult().size();
-            semanticResources.clear();
-            semanticResources.addAll(semanticResourcesGetter.getResult());
-            if (hasNbOfSemanticResourcesChanged) {
+            Collection<Resource> updatedSemanticResources = semanticResourcesGetter.getResult();
+
+            boolean newSemanticResourceAdded = false;
+            for (Resource semanticResource : updatedSemanticResources) {
+                if (!semanticResources.contains(semanticResource)) {
+                    newSemanticResourceAdded = true;
+
+                    // Ensure that the cross referencer adapter is on the
+                    // semantic resource.
+                    dAnalysisSessionImpl.registerResourceInCrossReferencer(semanticResource);
+                }
+            }
+
+            // The size comparison is useful when a semantic resource is removed
+            // (newSemanticResourceAdded is false but the size has changed)
+            if (newSemanticResourceAdded || semanticResources.size() != updatedSemanticResources.size()) {
+                semanticResources.clear();
+                semanticResources.addAll(updatedSemanticResources);
+
                 dAnalysisSessionImpl.notifyListeners(SessionListener.SEMANTIC_CHANGE);
             }
         }
