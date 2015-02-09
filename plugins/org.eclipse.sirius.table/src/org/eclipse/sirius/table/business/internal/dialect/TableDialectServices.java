@@ -85,25 +85,17 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         return Movida.isEnabled() && (representation instanceof DTable) && (((DTable) representation).getDescription() instanceof EditionTableDescription);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean isSupported(DRepresentation representation) {
         return representation instanceof DTable;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean isSupported(RepresentationDescription description) {
         return description instanceof TableDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canCreate(final EObject semantic, final RepresentationDescription desc) {
         boolean result = false;
         if (semantic != null && isSupported(desc)) {
@@ -117,9 +109,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public DRepresentation createRepresentation(String name, EObject semantic, RepresentationDescription description, IProgressMonitor monitor) {
         DTable table = null;
         try {
@@ -141,13 +131,6 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         return table;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices#updateRepresentationsExtendedBy(org.eclipse.sirius.business.api.session.Session,
-     *      org.eclipse.sirius.viewpoint.description.Viewpoint, boolean)
-     */
     @Override
     public void updateRepresentationsExtendedBy(Session session, Viewpoint viewpoint, boolean activated) {
         if (Movida.isEnabled()) {
@@ -166,9 +149,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor) {
         if (!(isHandledByMovida(representation))) {
             return;
@@ -176,20 +157,15 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         DTable table = (DTable) representation;
         Session session = SessionManager.INSTANCE.getSession(table.getTarget());
         IncrementalModelContributor imc = getModelContributor(session, table);
-        EObject result = imc.apply(table.getDescription(), new RepresentationExtensionsFinder(table.getDescription()).findAllRelevantViewpoints(session));
-        // if (table.getEffectiveDescription() == null) {
-        // table.setEffectiveDescription((TableDescription) result);
-        // }
+        imc.apply(table.getDescription(), new RepresentationExtensionsFinder(table.getDescription()).findAllRelevantViewpoints(session));
 
         Supplier<EObject> efSupplier = new Supplier<EObject>() {
             public EObject get() {
-                // return table.getEffectiveDescription();
                 return null;
             }
         };
         Supplier<EList<ContributionPoint>> cpSupplier = new Supplier<EList<ContributionPoint>>() {
             public EList<ContributionPoint> get() {
-                // return table.getContributionPoints();
                 return null;
             }
         };
@@ -207,13 +183,11 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     private IncrementalModelContributor createModelContributor(Session session, final DTable table) {
         Supplier<EObject> efSupplier = new Supplier<EObject>() {
             public EObject get() {
-                // return table.getEffectiveDescription();
                 return null;
             }
         };
         Supplier<Iterable<ContributionPoint>> cpSupplier = new Supplier<Iterable<ContributionPoint>>() {
             public Iterable<ContributionPoint> get() {
-                // return table.getContributionPoints();
                 return null;
             }
         };
@@ -275,9 +249,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public RepresentationDescription getDescription(DRepresentation representation) {
         if (isSupported(representation)) {
             return ((DTable) representation).getDescription();
@@ -285,24 +257,13 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
             return null;
         }
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void initRepresentations(Viewpoint vp, EObject semantic) {
-        super.initRepresentations(semantic, vp, TableDescription.class);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
+    
+    @Override
     public void initRepresentations(Viewpoint vp, EObject semantic, IProgressMonitor monitor) {
         super.initRepresentations(semantic, vp, TableDescription.class, monitor);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     protected <T extends RepresentationDescription> void initRepresentationForElement(T representationDescription, EObject semanticElement, IProgressMonitor monitor) {
         if (representationDescription instanceof TableDescription) {
             TableDescription tableDescription = (TableDescription) representationDescription;
@@ -336,9 +297,6 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DRepresentation copyRepresentation(DRepresentation representation, String name, Session session, IProgressMonitor monitor) {
         DRepresentation newRepresentation = super.copyRepresentation(representation, name, session, monitor);
@@ -347,28 +305,16 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         return newRepresentation;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         return new TableInterpretedExpressionQuery(target, feature);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
-     */
     @Override
     public boolean handles(RepresentationDescription representationDescription) {
         return representationDescription instanceof TableDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
-     */
     @Override
     public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
         return false;

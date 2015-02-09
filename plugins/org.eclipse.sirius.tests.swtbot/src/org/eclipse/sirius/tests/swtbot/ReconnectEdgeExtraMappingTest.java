@@ -129,7 +129,6 @@ public class ReconnectEdgeExtraMappingTest extends AbstractSiriusSwtBotGefTestCa
 
         ConnectionEditPart connectionEditPart = getConnectionEditPart(sourceEditPartName, targetEditPartName);
         assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
-        PointList pointList = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
         assertTrue(connectionEditPart.getModel() instanceof Edge);
         EObject element = ((Edge) connectionEditPart.getModel()).getElement();
         assertTrue(element instanceof DEdge);

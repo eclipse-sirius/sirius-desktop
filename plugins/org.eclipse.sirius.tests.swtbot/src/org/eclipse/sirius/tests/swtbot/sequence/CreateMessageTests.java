@@ -56,9 +56,6 @@ public class CreateMessageTests extends AbstractDefaultModelSequenceTests {
 
     private Rectangle instanceRoleCBounds;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
@@ -210,9 +207,6 @@ public class CreateMessageTests extends AbstractDefaultModelSequenceTests {
         Point endOfFirstReadMessage = instanceRoleBBounds.getCenter().translate(0, 200);
         createMessage(InteractionsConstants.READ_TOOL_ID, startOfFirstReadMessage, endOfFirstReadMessage);
 
-        SWTBotGefEditPart lifelineABot = instanceRoleABot.parent().descendants(IsInstanceOf.instanceOf(LifelineEditPart.class)).get(0);
-        SWTBotGefConnectionEditPart readMessageBot = lifelineABot.sourceConnections().get(0);
-
         // Validates the position
         assertMessageVerticalPosition(FIRST_MESSAGE, startOfFirstReadMessage.y);
 
@@ -224,10 +218,6 @@ public class CreateMessageTests extends AbstractDefaultModelSequenceTests {
         Point startOfFirstCreateMessage = instanceRoleABounds.getCenter().translate(0, 100);
         createMessage(InteractionsConstants.CREATE_TOOL_ID, startOfFirstCreateMessage, instanceRoleBBounds.getCenter());
         bot.waitUntil(new CheckMessageEditPartIsDisplayed(SECOND_CREATE_MESSAGE, editor));
-
-        SWTBotGefConnectionEditPart createMessageOfBBot = instanceRoleBBot.parent().targetConnections().get(0);
-        Rectangle createMessageOfBBounds = editor.getBounds(createMessageOfBBot);
-        Rectangle newInstanceRoleBBounds = editor.getBounds(instanceRoleCBot);
 
         // Validates the position of the return message
         assertMessageVerticalPosition(FIRST_MESSAGE, startOfFirstReadMessage.y);
@@ -566,9 +556,6 @@ public class CreateMessageTests extends AbstractDefaultModelSequenceTests {
         validateOrdering(6);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         instanceRoleABot = null;

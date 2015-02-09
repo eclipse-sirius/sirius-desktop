@@ -71,17 +71,7 @@ public class ExecutionSelectionEditPolicyTests extends AbstractDefaultModelSeque
         SWTBotGefEditPart executionEditPartOfDBot = instanceRoleEditPartDBot.descendants(IsInstanceOf.instanceOf(ExecutionEditPart.class)).get(0);
 
         SWTBotGefConnectionEditPart callMessageOfExecBBot = executionEditPartOfBBot.targetConnections().get(0);
-        // SWTBotGefConnectionEditPart returnMessageOfExecBBot =
-        // executionEditPartOfBBot.sourceConnections().get(0);
-
-        // SWTBotGefConnectionEditPart callMessageOfExecCBot =
-        // executionEditPartOfCBot.targetConnections().get(0);
-        // SWTBotGefConnectionEditPart returnMessageOfExecCBot =
-        // executionEditPartOfCBot.sourceConnections().get(0);
-
         SWTBotGefConnectionEditPart callMessageOfExecDBot = executionEditPartOfDBot.targetConnections().get(0);
-        // SWTBotGefConnectionEditPart returnMessageOfExecDBot =
-        // executionEditPartOfDBot.sourceConnections().get(0);
 
         int diff = editor.getBounds(callMessageOfExecDBot).getBottom().y - editor.getBounds(callMessageOfExecBBot).getBottom().y;
 
@@ -114,8 +104,6 @@ public class ExecutionSelectionEditPolicyTests extends AbstractDefaultModelSeque
         arrangeAll();
         maximizeEditor(editor);
 
-        // SWTBotGefEditPart instanceRoleEditPartABot =
-        // editor.getEditPart(LIFELINE_A).parent();
         SWTBotGefEditPart instanceRoleEditPartBBot = editor.getEditPart(LIFELINE_B).parent();
 
         // Calculate the X position of the center of lifelines A and B
@@ -139,10 +127,7 @@ public class ExecutionSelectionEditPolicyTests extends AbstractDefaultModelSeque
         SWTBotGefEditPart reflexiveExecutionEditPartOfBBot = executionEditPartOfBBots.get(1);
         Rectangle reflexiveExecutionEditPartOfBBounds = editor.getBounds(reflexiveExecutionEditPartOfBBot);
 
-        // ICondition condition = new
-        // CheckEditPartMoved(reflexiveExecutionEditPartOfBBot);
         editor.drag(reflexiveExecutionEditPartOfBBot, lifelineBPosition, 400);
-        // bot.waitUntil(condition);
 
         Rectangle newExecutionEditPartOfBBounds = editor.getBounds(executionEditPartOfBBot);
         Rectangle newReflexiveExecutionEditPartOfBBounds = editor.getBounds(reflexiveExecutionEditPartOfBBot);
@@ -162,14 +147,11 @@ public class ExecutionSelectionEditPolicyTests extends AbstractDefaultModelSeque
         // Arrange All
         arrangeAll();
 
-        SWTBotGefEditPart instanceRoleEditPartABot = editor.getEditPart(LIFELINE_A).parent();
         SWTBotGefEditPart instanceRoleEditPartBBot = editor.getEditPart(LIFELINE_B).parent();
-        SWTBotGefEditPart instanceRoleEditPartCBot = editor.getEditPart(LIFELINE_C).parent();
 
         // Calculate the X position of the center of lifelines A and B
         int lifelineAPosition = getLifelineScreenX(LIFELINE_A);
         int lifelineBPosition = getLifelineScreenX(LIFELINE_B);
-        int lifelineCPosition = getLifelineScreenX(LIFELINE_C);
 
         // Creation of a Sync Call between LIFELINE_A and LIFELINE_B
         createMessage(InteractionsConstants.SYNC_CALL_TOOL_ID, lifelineAPosition, 200, lifelineBPosition, 200);
@@ -184,34 +166,14 @@ public class ExecutionSelectionEditPolicyTests extends AbstractDefaultModelSeque
         Rectangle firstExecutionBounds = editor.getBounds(firstExecutionEditPartOfBBot);
         Rectangle reflexiveExecutionBounds = editor.getBounds(reflexiveExecutionEditPartOfBBot);
 
-        SWTBotGefConnectionEditPart callMessageNonReflexifBot = firstExecutionEditPartOfBBot.targetConnections().get(0);
-        SWTBotGefConnectionEditPart returnMessageNonReflexifBot = firstExecutionEditPartOfBBot.sourceConnections().get(0);
-
-        Rectangle callMessageNonReflexifBounds = editor.getBounds(callMessageNonReflexifBot);
-        Rectangle returnMessageNonReflexifBounds = editor.getBounds(returnMessageNonReflexifBot);
-
         SWTBotGefConnectionEditPart callMessageReflexifBot = reflexiveExecutionEditPartOfBBot.targetConnections().get(0);
         SWTBotGefConnectionEditPart returnMessageReflexifBot = reflexiveExecutionEditPartOfBBot.sourceConnections().get(0);
-
-        Rectangle callMessageReflexifBounds = editor.getBounds(callMessageReflexifBot);
-        Rectangle returnMessageReflexifBounds = editor.getBounds(returnMessageReflexifBot);
-
-        SequenceMessageEditPart returnMessageNonReflexifEditPart = (SequenceMessageEditPart) returnMessageNonReflexifBot.part();
-        SequenceMessageEditPart callMessageNonReflexifEditPart = (SequenceMessageEditPart) callMessageNonReflexifBot.part();
-
-        Point callMessageNonReflexifFirstPoint = callMessageNonReflexifEditPart.getConnectionFigure().getPoints().getFirstPoint();
-        Point callMessageNonReflexifLastPoint = callMessageNonReflexifEditPart.getConnectionFigure().getPoints().getLastPoint();
-
-        Point returnMessageNonReflexifFirstPoint = returnMessageNonReflexifEditPart.getConnectionFigure().getPoints().getFirstPoint();
-        Point returnMessageNonReflexifLastPoint = returnMessageNonReflexifEditPart.getConnectionFigure().getPoints().getLastPoint();
 
         SequenceMessageEditPart returnMessageReflexifEditPart = (SequenceMessageEditPart) returnMessageReflexifBot.part();
         SequenceMessageEditPart callMessageReflexifEditPart = (SequenceMessageEditPart) callMessageReflexifBot.part();
 
-        Point callMessageReflexifFirstPoint = callMessageReflexifEditPart.getConnectionFigure().getPoints().getFirstPoint();
         Point callMessageReflexifLastPoint = callMessageReflexifEditPart.getConnectionFigure().getPoints().getLastPoint();
 
-        Point returnMessageReflexifFirstPoint = returnMessageReflexifEditPart.getConnectionFigure().getPoints().getFirstPoint();
         Point returnMessageReflexifLastPoint = returnMessageReflexifEditPart.getConnectionFigure().getPoints().getLastPoint();
 
         // Resize a sub execution of a reflexive message (Sync Call) upper to
@@ -223,9 +185,6 @@ public class ExecutionSelectionEditPolicyTests extends AbstractDefaultModelSeque
         // lastPoint is on parent execution bottom limit : normally not allowed
         int delta = firstExecutionBounds.getBottom().y - returnMessageReflexifLastPoint.y;
         reflexiveExecutionEditPartOfBBot.select();
-        // reflexiveExecutionEditPartOfBBot.resize(PositionConstants.SOUTH,
-        // reflexiveExecutionBounds.width, reflexiveExecutionBounds.height +
-        // delta);
 
         firstExecutionBounds = editor.getBounds(firstExecutionEditPartOfBBot);
         returnMessageReflexifLastPoint = returnMessageReflexifEditPart.getConnectionFigure().getPoints().getLastPoint();

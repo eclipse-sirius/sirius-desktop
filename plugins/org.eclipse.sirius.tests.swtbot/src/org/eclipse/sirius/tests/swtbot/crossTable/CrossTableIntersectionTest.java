@@ -16,7 +16,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
  * Test that the default value of the Label Expression for Intersection in cross
@@ -72,7 +71,7 @@ public class CrossTableIntersectionTest extends AbstractSiriusSwtBotGefTestCase 
         SWTBotVSMEditor odesignEditor = openViewpointSpecificationModel(VSM);
         // expand the tree : Node Mapping
         SWTBotTree tree = odesignEditor.bot().tree();
-        SWTBotTreeItem nodeMappingClass = tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("testLabelDefaultValue").expandNode("Cross Table Description").select();
+        tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("testLabelDefaultValue").expandNode("Cross Table Description").select();
         SWTBotUtils.clickContextMenu(tree, "Intersection");
         // check label Expression value
         checkLabelDefaultValue();

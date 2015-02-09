@@ -1229,9 +1229,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
      * 
      * @generated
      */
-    @SuppressWarnings("unchecked")
     @Override
-    public Object getAdapter(Class key) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") Class key) {
         if (key.equals(IContentOutlinePage.class)) {
             return showOutlineView() ? getContentOutlinePage() : null;
         } else if (key.equals(IPropertySheetPage.class)) {

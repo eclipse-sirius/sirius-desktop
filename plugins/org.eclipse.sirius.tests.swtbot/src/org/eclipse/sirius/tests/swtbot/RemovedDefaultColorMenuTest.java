@@ -475,7 +475,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromRelationBaseEdgeMappingLineColor() {
         selectAndCheckEditPart(REF, DEdgeEditPart.class);
-        SWTBotToolbarDropDownButton lineColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR).click();
+        editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR).click();
         try {
             editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click().menuItem(DEFAULT_COLOR).click();
             fail();

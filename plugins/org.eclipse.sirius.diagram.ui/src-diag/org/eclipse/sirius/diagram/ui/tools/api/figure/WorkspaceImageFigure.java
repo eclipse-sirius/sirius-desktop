@@ -26,9 +26,9 @@ import org.eclipse.swt.graphics.Image;
  * The {@link WorkspaceImageFigure} is useful to load images using a cache. The
  * image can be in the workspace, or if it's not found in the workspace it will
  * be looked up in the plug-ins.
- * 
+ *
  * @author cbrun
- * 
+ *
  */
 public class WorkspaceImageFigure extends AbstractTransparentImage implements IWorkspaceImageFigure {
 
@@ -38,7 +38,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * Create a new {@link WorkspaceImageFigure}.
-     * 
+     *
      * @param flyWeightImage
      *            an image instance.
      */
@@ -50,7 +50,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.draw2d.Figure#setSize(int, int)
      */
     @Override
@@ -65,7 +65,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.draw2d.Figure#setMaximumSize(org.eclipse.draw2d.geometry.Dimension)
      */
     @Override
@@ -75,7 +75,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.draw2d.Figure#setMinimumSize(org.eclipse.draw2d.geometry.Dimension)
      */
     @Override
@@ -85,7 +85,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.draw2d.Figure#setPreferredSize(org.eclipse.draw2d.geometry.Dimension)
      */
     @Override
@@ -95,7 +95,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * Get an {@link Image} instance. The image will be stored in a cache.
-     * 
+     *
      * @param path
      *            the path is a "/project/file" path, if it's not found in the
      *            workspace, the class will look for the file in the plug-ins.
@@ -119,7 +119,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * Get an {@link Image} instance. The image will be stored in a cache.
-     * 
+     *
      * @param desc
      *            the image descriptor
      * @return an image instance given the image descriptor.
@@ -133,12 +133,12 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
     }
 
     private static Image getImageNotFound() {
-        return DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.getPlugin().findImageWithDimensionDescriptor(DiagramImagesPath.IMAGE_NOT_FOUND));
+        return DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.findImageWithDimensionDescriptor(DiagramImagesPath.IMAGE_NOT_FOUND));
     }
 
     /**
      * Create an {@link WorkspaceImageFigure} instance from an image path.
-     * 
+     *
      * @param path
      *            the path is a "/project/file" path, if it's not found in the
      *            workspace, the class will look for the file in the plug-ins.
@@ -151,7 +151,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * Create an {@link WorkspaceImageFigure} instance from a workspace image.
-     * 
+     *
      * @param wksImage
      *            : an instance of {@link WorkspaceImage}.
      * @return the image figure built using the {@link WorkspaceImage} object.
@@ -164,19 +164,21 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * Get the image aspect ratio.
-     * 
+     *
      * @return the image aspect ratio
      */
+    @Override
     public double getImageAspectRatio() {
         return imageAspectRatio;
     }
 
     /**
      * Refresh the figure.
-     * 
+     *
      * @param bundledImage
      *            the image associated to the figure
      */
+    @Override
     public void refreshFigure(final WorkspaceImage bundledImage) {
         final String path = bundledImage.getWorkspacePath();
         final Image image = WorkspaceImageFigure.flyWeightImage(path);
@@ -188,10 +190,11 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
 
     /**
      * Refresh the figure.
-     * 
+     *
      * @param containerStyle
      *            the style of the container
      */
+    @Override
     public void refreshFigure(final ContainerStyle containerStyle) {
         if (containerStyle instanceof WorkspaceImage) {
             WorkspaceImage workspaceImage = (WorkspaceImage) containerStyle;

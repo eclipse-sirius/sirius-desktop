@@ -223,9 +223,9 @@ public class WorkspaceFileResourceChangeListener implements IResourceChangeListe
      */
     public ImageDescriptor findImageDescriptor(File file) throws MalformedURLException {
         if (fileURLMap.containsKey(file)) {
-            return DiagramUIPlugin.getPlugin().getURLImageDescriptor(fileURLMap.get(file));
+            return DiagramUIPlugin.Implementation.getURLImageDescriptor(fileURLMap.get(file));
         }
-        return DiagramUIPlugin.getPlugin().getURLImageDescriptor(file.toURI().toURL());
+        return DiagramUIPlugin.Implementation.getURLImageDescriptor(file.toURI().toURL());
     }
 
 }

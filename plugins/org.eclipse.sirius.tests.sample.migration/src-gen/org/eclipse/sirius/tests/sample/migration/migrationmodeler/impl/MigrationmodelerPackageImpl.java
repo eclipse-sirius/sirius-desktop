@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl;
 
-import static org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage.CONTAINER;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;

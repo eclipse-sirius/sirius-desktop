@@ -45,9 +45,6 @@ public class ExecutionMove5Tests extends AbstractDefaultModelSequenceTests {
 
     private static final String SESSION_FILE = "sync-messages.aird";
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getPath() {
         return PATH;
@@ -61,9 +58,6 @@ public class ExecutionMove5Tests extends AbstractDefaultModelSequenceTests {
         return SESSION_FILE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Option<String> getDRepresentationName() {
         return Options.newSome(REPRESENTATION_NAME);
@@ -447,9 +441,6 @@ public class ExecutionMove5Tests extends AbstractDefaultModelSequenceTests {
         assertMessageHasValidScreenBounds((SequenceMessageEditPart) returnMessageOfE6Bot.part(), returnMessageOfE6Bounds, true, false);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         sequenceDiagramBot = null;
