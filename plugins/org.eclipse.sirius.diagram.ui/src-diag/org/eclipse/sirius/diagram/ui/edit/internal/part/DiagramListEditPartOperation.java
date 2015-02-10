@@ -16,7 +16,6 @@ import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -25,7 +24,6 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
@@ -62,6 +60,21 @@ public final class DiagramListEditPartOperation {
         // empty nothing to do.
     }
 
+    /**
+     * Refreshes the font of the list.
+     * 
+     * @param self
+     *            the edit part.
+     */
+    public static void refreshFont(final IDiagramListEditPart self) {
+        if (!self.getChildren().isEmpty()) {
+            Object firstChild = self.getChildren().get(0);
+            if (firstChild instanceof IDiagramNameEditPart) {
+                DiagramNameEditPartOperation.refreshFont((IDiagramNameEditPart) firstChild);
+            }
+        }
+    }
+    
     /**
      * Refreshes the visuals of the list.
      * 
@@ -191,26 +204,4 @@ public final class DiagramListEditPartOperation {
         }
     }
 
-    /**
-     * Refreshes the font of the list.
-     * 
-     * @param self
-     *            the edit part.
-     */
-    public static void refreshFont(final IDiagramListEditPart self) {
-        if (!self.getChildren().isEmpty()) {
-            Object firstChild = self.getChildren().get(0);
-            if (firstChild instanceof IDiagramNameEditPart) {
-                DiagramNameEditPartOperation.refreshFont((IDiagramNameEditPart) firstChild);
-            }
-            Object secondChild = self.getChildren().get(1);
-            if (secondChild instanceof CompartmentEditPart) {
-                for (Object listEP : ((CompartmentEditPart) secondChild).getChildren()) {
-                    if (listEP instanceof AbstractDiagramNameEditPart) {
-                        DiagramNameEditPartOperation.refreshFont((AbstractDiagramNameEditPart) listEP);
-                    }
-                }
-            }
-        }
-    }
 }

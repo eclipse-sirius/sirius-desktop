@@ -166,16 +166,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
      */
     @Override
     protected void refreshFont() {
-        // ViewNodeEditPartOperations.refreshFont(resolveSemanticElement(),
-        // getFigure());
-        /*
-         * FontStyle style = (FontStyle)
-         * getFontStyleOwnerView().getStyle(NotationPackage
-         * .eINSTANCE.getFontStyle()); if (style != null) { FontData fontData =
-         * new FontData(style.getFontName(), style.getFontHeight(),
-         * (style.isBold() ? SWT.BOLD : SWT.NORMAL) | (style.isItalic() ?
-         * SWT.ITALIC : SWT.NORMAL)); setFont(fontData); }
-         */
+        DiagramNameEditPartOperation.refreshFont(this);
     }
 
     /**
