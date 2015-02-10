@@ -59,7 +59,7 @@ import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactoryProvider;
 import org.eclipse.sirius.table.tools.api.command.TableCommandFactoryService;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
-import org.eclipse.sirius.table.ui.tools.internal.command.EMFCommandFactoryUI;
+import org.eclipse.sirius.table.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;

@@ -35,7 +35,7 @@ import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
-import org.eclipse.sirius.tree.ui.tools.internal.command.CreateLineCommandFromToolRecordingCommand;
+import org.eclipse.sirius.tree.ui.tools.internal.commands.CreateLineCommandFromToolRecordingCommand;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;

@@ -14,11 +14,10 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.swt.SWT;
-
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.ui.tools.internal.command.SortDLinesCommand;
+import org.eclipse.sirius.table.ui.tools.internal.commands.SortDLinesCommand;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 
 /**

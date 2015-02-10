@@ -44,7 +44,7 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
-import org.eclipse.sirius.table.ui.tools.internal.command.EMFCommandFactoryUI;
+import org.eclipse.sirius.table.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractLineAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractTargetColumnAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractToolAction;

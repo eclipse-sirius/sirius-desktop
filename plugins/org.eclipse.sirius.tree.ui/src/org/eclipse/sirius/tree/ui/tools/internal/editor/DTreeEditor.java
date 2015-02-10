@@ -54,7 +54,7 @@ import org.eclipse.sirius.tree.business.api.command.TreeCommandFactoryService;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
-import org.eclipse.sirius.tree.ui.tools.internal.command.EMFCommandFactoryUI;
+import org.eclipse.sirius.tree.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;

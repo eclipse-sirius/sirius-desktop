@@ -35,7 +35,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.description.TreeMapping;
-import org.eclipse.sirius.tree.ui.tools.internal.command.EMFCommandFactoryUI;
+import org.eclipse.sirius.tree.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.AbstractToolAction;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.AbstractToolItemAction;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.CreateRepresentationFromRepresentationCreationDescription;

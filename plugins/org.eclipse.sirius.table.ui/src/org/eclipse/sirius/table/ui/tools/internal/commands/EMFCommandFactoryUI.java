@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.table.ui.tools.internal.command;
+package org.eclipse.sirius.table.ui.tools.internal.commands;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback;

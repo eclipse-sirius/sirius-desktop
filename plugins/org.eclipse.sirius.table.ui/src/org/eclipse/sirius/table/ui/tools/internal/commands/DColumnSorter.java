@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.table.ui.tools.internal.command;
+package org.eclipse.sirius.table.ui.tools.internal.commands;
 
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
@@ -17,41 +17,37 @@ import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 
 /**
- * A {@link java.util.Comparator} for {@link DLine}s.
+ * A {@link java.util.Comparator} for {@link DColumn}s.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class DLineSorter extends DTableElementSorter<DLine> {
+public class DColumnSorter extends DTableElementSorter<DColumn> {
 
-    private DColumn dColumn;
+    private DLine dLine;
 
     /**
      * Default constructor.
      * 
-     * @param dColumn
-     *            the {@link DColumn} from which sort
+     * @param dLine
+     *            the {@link DLine} from which sort
      * @param sortDirection
      *            the sort direction
      */
-    public DLineSorter(DColumn dColumn, int sortDirection) {
+    public DColumnSorter(DLine dLine, int sortDirection) {
         super(sortDirection);
-        this.dColumn = dColumn;
+        this.dLine = dLine;
     }
 
     /**
      * {@inheritDoc}
      */
-    protected String getSortLabel(final DLine line) {
-        String result = "";
-        if (dColumn == null) {
-            // The sorted column is the header
-            result = line.getLabel();
+    protected String getSortLabel(final DColumn column) {
+        Option<DCell> optionalCell = TableHelper.getCell(dLine, column);
+        if (optionalCell.some()) {
+            return optionalCell.get().getLabel();
         } else {
-            Option<DCell> optionalCell = TableHelper.getCell(line, dColumn);
-            if (optionalCell.some()) {
-                result = optionalCell.get().getLabel();
-            }
+            return "";
         }
-        return result;
     }
+
 }

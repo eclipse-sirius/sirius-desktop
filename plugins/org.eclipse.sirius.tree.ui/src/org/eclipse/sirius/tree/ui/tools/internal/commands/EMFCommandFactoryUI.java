@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tree.ui.tools.internal.command;
+package org.eclipse.sirius.tree.ui.tools.internal.commands;
 
 import org.eclipse.sirius.tree.tools.api.interpreter.IInterpreterSiriusTreeVariables;
 import org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback;
