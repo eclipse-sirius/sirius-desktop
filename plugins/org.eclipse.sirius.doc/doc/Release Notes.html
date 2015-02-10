@@ -622,6 +622,20 @@
 				<code>org.eclipse.sirius.diagram.ui.business.api.view.ValidateAction.getDSemanticDecorator()</code> for an example. 
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
+			<code>org.eclipse.sirius.synchronizer</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator.hasFastResult(EObject, SemanticPartition, CreatedOutput)</code> now takes a 
+				<code>CreatedOutput</code> as additional parameter element to allow to have the parent output element.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.synchronizer.SemanticPartition.evaluate(EObject, CreatedOutput)</code> now takes a 
+				<code>CreatedOutput</code> as additional parameter. This 
+				<code>CreatedOutput</code> represents the output model element which will become the parent of the elements created from the evaluation result.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>

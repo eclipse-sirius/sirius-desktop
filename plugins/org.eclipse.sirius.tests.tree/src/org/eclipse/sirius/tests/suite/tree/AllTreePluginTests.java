@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.api.tools.RefreshWhenSeveralEditorsOpenTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemCreationToolsTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemDeletionToolsTest;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.tests.api.tools.TreeItemRefreshWithToolsTest;
 import org.eclipse.sirius.tests.unit.tree.MappingHierarchyTableTest;
 import org.eclipse.sirius.tests.unit.tree.TreeItemOrderTests;
 import org.eclipse.sirius.tests.unit.tree.TreeRefreshTests;
+import org.eclipse.sirius.tests.unit.tree.TreeVariablesTest;
 
 /**
  * The designer main test suite for the tree component.
@@ -59,6 +61,7 @@ public class AllTreePluginTests extends TestCase {
         suite.addTestSuite(MappingHierarchyTableTest.class);
         suite.addTestSuite(TreeItemEditionToolTest.class);
         suite.addTestSuite(TreeRefreshTests.class);
+        suite.addTestSuite(TreeVariablesTest.class);
         suite.addTestSuite(TreeItemDragAndDropToolTest.class);
         suite.addTestSuite(TreeItemDragAndDropToolUsingRecordingCommandCompositionTest.class);
         suite.addTestSuite(RefreshWhenSeveralEditorsOpenTest.class);

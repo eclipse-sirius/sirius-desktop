@@ -177,6 +177,11 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * @org.eclipse.sirius.diagram.ui.business.api.provider.DDiagramElementContainerLabelItemProvider@ has been added to represent container and list labels as virtual nodes in the Show/Hide wizards.
 * The method @org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil.findView()@ has been deleted in flavor of @SiriusGMFHelper.getGmfView()@. If you was using @SiriusDiagramEditorUtil.findView()@ with a semantic element in parameter, retrieve before the corresponding @DDiagram@ or @DDiagramElement@ and use @SiriusGMFHelper.getGmfView(DSemanticDecorator)@ from this last to get the corresponding GMF View. To get a @DDiagram@ or @DDiagramElement@ from a semantic element, you can use @EObjectQuery.getInverseReferences(EReference)@ API, see @org.eclipse.sirius.diagram.ui.business.api.view.ValidateAction.getDSemanticDecorator()@ for an example. 
 
+h4. Changes in @org.eclipse.sirius.synchronizer@
+
+* The method @org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator.hasFastResult(EObject, SemanticPartition, CreatedOutput)@ now takes a @CreatedOutput@ as additional parameter element to allow to have the parent output element.
+* The method @org.eclipse.sirius.synchronizer.SemanticPartition.evaluate(EObject, CreatedOutput)@ now takes a @CreatedOutput@ as additional parameter. This @CreatedOutput@ represents the output model element which will become the parent of the elements created from the evaluation result.
+
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * The method @org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)@ has been added to change the read only status of the given resources.

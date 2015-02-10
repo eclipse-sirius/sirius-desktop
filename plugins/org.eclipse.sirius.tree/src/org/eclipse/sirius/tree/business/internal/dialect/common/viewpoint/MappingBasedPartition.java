@@ -17,10 +17,14 @@ import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.synchronizer.CreatedOutput;
 import org.eclipse.sirius.synchronizer.EvaluatedSemanticPartition;
+import org.eclipse.sirius.synchronizer.OutputDescriptor;
 import org.eclipse.sirius.synchronizer.SemanticPartition;
 import org.eclipse.sirius.synchronizer.SemanticPartitions;
+import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
@@ -34,6 +38,8 @@ import com.google.common.collect.Lists;
  * @author cbrun
  */
 public class MappingBasedPartition implements SemanticPartition {
+
+    private static final String TREE = "tree";
 
     private String domainClass;
 
@@ -62,12 +68,9 @@ public class MappingBasedPartition implements SemanticPartition {
         this.specificationAttachment = specificationAttachment;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.internal.business.dialect.common.SemanticPartition#evaluate(org.eclipse.emf.ecore.EObject)
-     */
-    public EvaluatedSemanticPartition evaluate(EObject root) {
+    @Override
+    public EvaluatedSemanticPartition evaluate(EObject root, CreatedOutput parentElement) {
+        setTreeElementVariables(parentElement);
         Iterator<EObject> elements = Collections.<EObject> emptyList().iterator();
         if (semanticCandidate.some()) {
             try {
@@ -78,6 +81,7 @@ public class MappingBasedPartition implements SemanticPartition {
         } else {
             elements = allEObjectsOfTheSession();
         }
+        unSetTreeElementVariables();
         return SemanticPartitions.eObjectList(ImmutableList.copyOf(Iterators.filter(elements, new Predicate<EObject>() {
 
             public boolean apply(EObject input) {
@@ -105,5 +109,25 @@ public class MappingBasedPartition implements SemanticPartition {
             semanticRoots.addAll(semanticResource.getContents());
         }
         return semanticRoots;
+    }
+
+    private void setTreeElementVariables(CreatedOutput element) {
+        if (element != null) {
+            OutputDescriptor descriptor = element.getDescriptor();
+            if (descriptor != null && descriptor.getSourceElement() != null) {
+                ctx.getInterpreter().setVariable(IInterpreterSiriusVariables.CONTAINER, descriptor.getSourceElement());
+            }
+            EObject createdElement = element.getCreatedElement();
+            if (createdElement != null) {
+                ctx.getInterpreter().setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, createdElement);
+                ctx.getInterpreter().setVariable(TREE, TreeHelper.getTree(createdElement));
+            }
+        }
+    }
+
+    private void unSetTreeElementVariables() {
+        ctx.getInterpreter().unSetVariable(IInterpreterSiriusVariables.CONTAINER);
+        ctx.getInterpreter().unSetVariable(IInterpreterSiriusVariables.CONTAINER_VIEW);
+        ctx.getInterpreter().unSetVariable(TREE);
     }
 }

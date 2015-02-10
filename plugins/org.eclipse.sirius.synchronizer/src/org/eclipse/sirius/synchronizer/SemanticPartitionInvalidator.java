@@ -23,7 +23,7 @@ import org.eclipse.sirius.ext.base.Options;
  */
 public class SemanticPartitionInvalidator {
 
-    public Option<EvaluatedSemanticPartition> hasFastResult(EObject sourceElement, SemanticPartition semanticPartition) {
+    public Option<EvaluatedSemanticPartition> hasFastResult(EObject sourceElement, SemanticPartition semanticPartition, CreatedOutput parentElement) {
         return Options.newNone();
     }
 

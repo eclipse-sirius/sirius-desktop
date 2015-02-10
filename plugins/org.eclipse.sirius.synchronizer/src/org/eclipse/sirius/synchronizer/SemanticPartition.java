@@ -29,7 +29,7 @@ public interface SemanticPartition {
      */
     SemanticPartition NONE = new SemanticPartition() {
 
-        public EvaluatedSemanticPartition evaluate(EObject context) {
+        public EvaluatedSemanticPartition evaluate(EObject context, CreatedOutput parentElement) {
             return new EvaluatedSemanticPartition() {
 
                 public boolean isElementOf(EObject sem) {
@@ -43,6 +43,17 @@ public interface SemanticPartition {
         }
     };
 
-    EvaluatedSemanticPartition evaluate(EObject context);
+    /**
+     * Evaluate the semantic partition on the given context for the given parent
+     * output.
+     * 
+     * @param context
+     *            the EObject instance to evaluate on.
+     * @param parentElement
+     *            the output element which will become the parent of output
+     *            elements created from the evaluation result.
+     * @return the semantic partition evaluation result.
+     */
+    EvaluatedSemanticPartition evaluate(EObject context, CreatedOutput parentElement);
 
 }

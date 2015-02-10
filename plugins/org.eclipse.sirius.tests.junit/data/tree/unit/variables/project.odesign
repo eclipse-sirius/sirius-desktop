@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" name="project" version="10.0.0.201411061000">
+  <ownedViewpoints name="Tree">
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="Tree" domainClass="ecore.EPackage">
+      <subItemMappings name="p1" domainClass="ecore.EPackage" semanticCandidatesExpression="var:self">
+        <defaultStyle labelExpression="[name + '1'/]">
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <subItemMappings name="p1.1-reuse-p1.2" domainClass="ecore.EPackage" semanticCandidatesExpression="var:container" reusedTreeItemMappings="//@ownedViewpoints[name='Tree']/@ownedRepresentations[name='Tree']/@subItemMappings[name='p1']/@subItemMappings[name='p1.2']">
+          <defaultStyle labelExpression="[name + '2'/]">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+        <subItemMappings name="p1.2" domainClass="ecore.EPackage" semanticCandidatesExpression="[container/]">
+          <defaultStyle labelExpression="[name + '3'/]">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+        <subItemMappings name="p1.3-reuse-p1.2" domainClass="ecore.EPackage" semanticCandidatesExpression="var:container" reusedTreeItemMappings="//@ownedViewpoints[name='Tree']/@ownedRepresentations[name='Tree']/@subItemMappings[name='p1']/@subItemMappings[name='p1.1-reuse-p1.2']">
+          <defaultStyle labelExpression="[name + '4'/]">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+      </subItemMappings>
+      <subItemMappings name="p2" domainClass="ecore.EPackage" semanticCandidatesExpression="var:self">
+        <defaultStyle labelExpression="[name + '5'/]">
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <subItemMappings name="p2.1-reuse-p2.2" domainClass="ecore.EPackage" semanticCandidatesExpression="var:container" reusedTreeItemMappings="//@ownedViewpoints[name='Tree']/@ownedRepresentations[name='Tree']/@subItemMappings[name='p2']/@subItemMappings[name='p2.2']">
+          <defaultStyle labelExpression="[name + '6'/]">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+        <subItemMappings name="p2.2" domainClass="ecore.EPackage" semanticCandidatesExpression="[container/]">
+          <defaultStyle labelExpression="[name + '7'/]">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+        <subItemMappings name="p2.3-reuse-p2.1" domainClass="ecore.EPackage" semanticCandidatesExpression="var:container" reusedTreeItemMappings="//@ownedViewpoints[name='Tree']/@ownedRepresentations[name='Tree']/@subItemMappings[name='p2']/@subItemMappings[name='p2.1-reuse-p2.2']">
+          <defaultStyle labelExpression="[name + '8'/]">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+        <subItemMappings name="p3" domainClass="ecore.EPackage" semanticCandidatesExpression="var:self">
+          <defaultStyle labelExpression="[name + '9'/]">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+          <subItemMappings name="p3.1-reuse-p3.2" domainClass="ecore.EPackage" semanticCandidatesExpression="var:container" reusedTreeItemMappings="//@ownedViewpoints[name='Tree']/@ownedRepresentations[name='Tree']/@subItemMappings[name='p2']/@subItemMappings[name='p3']/@subItemMappings[name='p3.2']">
+            <defaultStyle labelExpression="[name + '10'/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </defaultStyle>
+          </subItemMappings>
+          <subItemMappings name="p3.2" domainClass="ecore.EPackage" semanticCandidatesExpression="[container/]">
+            <defaultStyle labelExpression="[name + '11'/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </defaultStyle>
+          </subItemMappings>
+          <subItemMappings name="p3.3-reuse-p2" domainClass="ecore.EPackage" semanticCandidatesExpression="var:container" reusedTreeItemMappings="//@ownedViewpoints[name='Tree']/@ownedRepresentations[name='Tree']/@subItemMappings[name='p2']/@subItemMappings[name='p3']/@subItemMappings[name='p3.1-reuse-p3.2']">
+            <defaultStyle labelExpression="[name + '12'/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </defaultStyle>
+          </subItemMappings>
+        </subItemMappings>
+      </subItemMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

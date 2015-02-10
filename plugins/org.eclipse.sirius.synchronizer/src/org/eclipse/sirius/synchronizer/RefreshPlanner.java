@@ -98,9 +98,9 @@ public class RefreshPlanner {
             while (it.hasNext()) {
                 Mapping cur = it.next();
                 if (cur.isEnabled() && cur.getCreator().some()) {
-                    Option<EvaluatedSemanticPartition> par = invalidator.hasFastResult(container.getDescriptor().getSourceElement(), cur.getSemanticPartition());
+                    Option<EvaluatedSemanticPartition> par = invalidator.hasFastResult(container.getDescriptor().getSourceElement(), cur.getSemanticPartition(), container);
                     if (!par.some()) {
-                        par = Options.newSome(cur.getSemanticPartition().evaluate(container.getDescriptor().getSourceElement()));
+                        par = Options.newSome(cur.getSemanticPartition().evaluate(container.getDescriptor().getSourceElement(), container));
                     }
                     Collection<? extends OutputDescriptor> allCandidateDescriptors = cur.getCreator().get().computeDescriptors(container, par.get().elements());
                     post.appendOutputDescritorsKeepingTheMostSpecific(allCandidateDescriptors);

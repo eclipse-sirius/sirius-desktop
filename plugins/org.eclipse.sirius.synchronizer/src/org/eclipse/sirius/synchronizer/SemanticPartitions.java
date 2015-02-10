@@ -42,7 +42,7 @@ public class SemanticPartitions {
 
 class EAllContentsPartition implements SemanticPartition {
 
-    public EvaluatedSemanticPartition evaluate(EObject root) {
+    public EvaluatedSemanticPartition evaluate(EObject root, CreatedOutput parentElement) {
         return new EObjectList(Lists.newArrayList(root.eAllContents()));
     }
 

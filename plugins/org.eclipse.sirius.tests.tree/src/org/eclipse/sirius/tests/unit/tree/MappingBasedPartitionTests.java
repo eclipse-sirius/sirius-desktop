@@ -56,7 +56,7 @@ public class MappingBasedPartitionTests {
         MappingBasedPartition partition = new MappingBasedPartition(ctx, "EObject", Options.newSome("<%eClassifiers%>"), Options.<EObject> newNone());
         EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
 
-        Iterator<EObject> itTree = partition.evaluate(semanticModel).elements();
+        Iterator<EObject> itTree = partition.evaluate(semanticModel, null).elements();
         Iterator<EClassifier> itSemContent = semanticModel.getEClassifiers().iterator();
 
         Assert.assertTrue(itTree.hasNext());
@@ -73,7 +73,7 @@ public class MappingBasedPartitionTests {
         MappingBasedPartition partition = new MappingBasedPartition(ctx, "EClass", Options.newSome("<%eClassifiers%>"), Options.<EObject> newNone());
         EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
 
-        Iterator<EObject> itTree = partition.evaluate(semanticModel).elements();
+        Iterator<EObject> itTree = partition.evaluate(semanticModel, null).elements();
         Iterator<EClassifier> itSemContent = semanticModel.getEClassifiers().iterator();
 
         Assert.assertTrue(itTree.hasNext());
