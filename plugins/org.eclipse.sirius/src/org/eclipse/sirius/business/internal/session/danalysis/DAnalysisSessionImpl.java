@@ -32,10 +32,14 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RunnableWithResult;
@@ -314,7 +318,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
         }
         resourceSet.eAdapters().removeAll(adaptersToRemove);
-        
+
         // disable resolveProxy capability before clearing adapters on resources
         for (Resource resource : resourceSet.getResources()) {
             disableCrossReferencerResolve(resource);
@@ -323,8 +327,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
         for (final DAnalysis analysis : Iterables.filter(allAnalyses(), Predicates.notNull())) {
             removeAdaptersOnAnalysis(analysis);
-            }
         }
+    }
 
     // *******************
     // Analyses
@@ -590,12 +594,58 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         if (newResource.getContents().size() > 0) {
             notifyNewMetamodels(newResource);
-            final EObject root = newResource.getContents().get(0);
+            final EObject root = findSemanticRoot(newResource);
             for (final DAnalysis analysis : this.allAnalyses()) {
                 analysis.getModels().add(root);
             }
         }
         registerResourceInCrossReferencer(newResource);
+    }
+
+    private EObject findSemanticRoot(final Resource res) {
+        EObject root = res.getContents().get(0);
+        /*
+         * Attempt to determine if the eCore model was generated from XSD by
+         * inspecting the annotation on the root. XSD->ECore will use the
+         * ExtendedMetaData as the annotation source, set the 'name' to an empty
+         * string (since the generated DocumentRoot doesn't have an underlying
+         * Element name), and have a 'kind' of 'mixed'.
+         */
+        EClass eCls = root.eClass();
+        for (EAnnotation annotation : eCls.getEAnnotations()) {
+            boolean isExtMetadata = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData".equals(annotation.getSource());
+            if (isExtMetadata) {
+                EMap<String, String> details = annotation.getDetails();
+                if (details.containsKey("name") && details.get("name").length() == 0 && details.containsKey("kind") && "mixed".equals(details.get("kind"))) {
+                    /*
+                     * Step over the "mixed", "xMLNSPrefixMap", and
+                     * "xSISchemaLocation" features of the injected DocumentRoot
+                     * found in an XSD generated ECore model Excerpts from
+                     * https://www .eclipse.org/modeling/emf/docs/overviews/
+                     * XMLSchemaToEcoreMapping .pdf (section 1.5) ... The
+                     * document root EClass looks like one corresponding to a
+                     * mixed complex type (see section 3.4) including a "mixed"
+                     * feature, and derived implementations for the other
+                     * features in the class. This allows it to maintain
+                     * comments and white space that appears in the document,
+                     * before the root element. A document root class contains
+                     * two more EMap features, both String to String, to record
+                     * the namespace to prefix mappings (xMLNSPrefixMap) and
+                     * xsi:schemaLocation mappings (xSISchemaLocation) of an XML
+                     * instance document.
+                     */
+                    for (int featureID = 0; featureID < eCls.getFeatureCount(); featureID++) {
+                        EStructuralFeature eFeature = eCls.getEStructuralFeature(featureID);
+                        String name = eFeature.getName();
+                        if (!"mixed".equals(name) && !"xMLNSPrefixMap".equals(name) && !"xSISchemaLocation".equals(name)) {
+                            root = (EObject) root.eGet(eFeature);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return root;
     }
 
     private void notifyNewMetamodels(final Resource newResource) {
@@ -656,7 +706,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
         if (res.getContents().size() > 0) {
-            final EObject root = res.getContents().get(0);
+            final EObject root = findSemanticRoot(res);
             for (final DAnalysis analysis : this.allAnalyses()) {
                 analysis.getModels().remove(root);
             }
