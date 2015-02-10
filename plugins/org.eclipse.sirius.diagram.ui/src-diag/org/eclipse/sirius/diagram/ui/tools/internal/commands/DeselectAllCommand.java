@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.DeselectAllAction;
+import org.eclipse.sirius.ui.tools.internal.commands.AbstractActionWrapperHandler;
 
 /**
  * Deselect all the selected elements.

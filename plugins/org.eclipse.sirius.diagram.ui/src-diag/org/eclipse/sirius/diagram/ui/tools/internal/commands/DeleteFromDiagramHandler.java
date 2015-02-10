@@ -11,12 +11,12 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
+import org.eclipse.sirius.ui.tools.internal.commands.AbstractActionWrapperHandler;
 
 /**
  * Handles the delete from diagram action (Ctrl + Shift + D).
  * 
  * @author fbarbin
- * 
  */
 public class DeleteFromDiagramHandler extends AbstractActionWrapperHandler {
     /**

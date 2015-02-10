@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealOutlineLabelsAction;
+import org.eclipse.sirius.ui.tools.internal.commands.AbstractActionWrapperHandler;
 
 /**
  * A command to show the label of a DNode.

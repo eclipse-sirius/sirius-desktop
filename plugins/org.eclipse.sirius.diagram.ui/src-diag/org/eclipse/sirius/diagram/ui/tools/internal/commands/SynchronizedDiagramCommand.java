@@ -15,6 +15,7 @@ import java.util.Map;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SynchronizedDiagramAction;
+import org.eclipse.sirius.ui.tools.internal.commands.AbstractActionWrapperHandler;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -25,7 +26,6 @@ import org.eclipse.ui.menus.UIElement;
  * Toggle between synchronized and unsynchronized diagram modes.
  * 
  * @author smonnier
- * 
  */
 public class SynchronizedDiagramCommand extends AbstractActionWrapperHandler implements IElementUpdater {
 
@@ -42,7 +42,7 @@ public class SynchronizedDiagramCommand extends AbstractActionWrapperHandler imp
      * @see org.eclipse.ui.commands.IElementUpdater#updateElement(org.eclipse.ui.menus.UIElement,
      *      java.util.Map)
      */
-    public void updateElement(final UIElement element, final Map parameters) {
+    public void updateElement(final UIElement element, @SuppressWarnings("rawtypes") final Map parameters) {
         final IWorkbenchWindow window = (IWorkbenchWindow) element.getServiceLocator().getService(IWorkbenchWindow.class);
         if (window == null) {
             return;

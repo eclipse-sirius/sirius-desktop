@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealAllElementsAction;
+import org.eclipse.sirius.ui.tools.internal.commands.AbstractActionWrapperHandler;
 
 /**
  * Command to wrap reveal all elements action.
