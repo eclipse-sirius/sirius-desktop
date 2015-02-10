@@ -17,9 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DiagramFactory;
@@ -54,21 +52,8 @@ public class DNodeListItemProvider extends DDiagramElementContainerItemProvider 
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addLineWidthPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
-    }
-
-    /**
-     * This adds a property descriptor for the Line Width feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addLineWidthPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DNodeList_lineWidth_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DNodeList_lineWidth_feature", "_UI_DNodeList_type"),
-                DiagramPackage.Literals.DNODE_LIST__LINE_WIDTH, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -139,9 +124,6 @@ public class DNodeListItemProvider extends DDiagramElementContainerItemProvider 
         updateChildren(notification);
 
         switch (notification.getFeatureID(DNodeList.class)) {
-        case DiagramPackage.DNODE_LIST__LINE_WIDTH:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
         case DiagramPackage.DNODE_LIST__OWNED_ELEMENTS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;

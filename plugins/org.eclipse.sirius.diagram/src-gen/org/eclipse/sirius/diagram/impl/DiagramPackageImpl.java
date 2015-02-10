@@ -1200,15 +1200,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EAttribute getDNodeList_LineWidth() {
-        return (EAttribute) dNodeListEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getDNodeListElement() {
         return dNodeListElementEClass;
     }
@@ -2420,7 +2411,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
         dNodeListEClass = createEClass(DNODE_LIST);
         createEReference(dNodeListEClass, DNODE_LIST__OWNED_ELEMENTS);
-        createEAttribute(dNodeListEClass, DNODE_LIST__LINE_WIDTH);
 
         dNodeListElementEClass = createEClass(DNODE_LIST_ELEMENT);
         createEReference(dNodeListElementEClass, DNODE_LIST_ELEMENT__OWNED_STYLE);
@@ -2832,8 +2822,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEClass(dNodeListEClass, DNodeList.class, "DNodeList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDNodeList_OwnedElements(), this.getDNodeListElement(), null, "ownedElements", null, 0, -1, DNodeList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDNodeList_LineWidth(), theEcorePackage.getEInt(), "lineWidth", "1", 0, 1, DNodeList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
 
         initEClass(dNodeListElementEClass, DNodeListElement.class, "DNodeListElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDNodeListElement_OwnedStyle(), this.getNodeStyle(), null, "ownedStyle", null, 0, 1, DNodeListElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,

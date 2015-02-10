@@ -1898,22 +1898,13 @@ public interface DiagramPackage extends EPackage {
     int DNODE_LIST__OWNED_ELEMENTS = DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Line Width</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DNODE_LIST__LINE_WIDTH = DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 1;
-
-    /**
      * The number of structural features of the '<em>DNode List</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DNODE_LIST_FEATURE_COUNT = DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 2;
+    int DNODE_LIST_FEATURE_COUNT = DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -6291,18 +6282,6 @@ public interface DiagramPackage extends EPackage {
     EReference getDNodeList_OwnedElements();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.DNodeList#getLineWidth
-     * <em>Line Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Line Width</em>'.
-     * @see org.eclipse.sirius.diagram.DNodeList#getLineWidth()
-     * @see #getDNodeList()
-     * @generated
-     */
-    EAttribute getDNodeList_LineWidth();
-
-    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.DNodeListElement
      * <em>DNode List Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -8419,14 +8398,6 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EReference DNODE_LIST__OWNED_ELEMENTS = eINSTANCE.getDNodeList_OwnedElements();
-
-        /**
-         * The meta object literal for the '<em><b>Line Width</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute DNODE_LIST__LINE_WIDTH = eINSTANCE.getDNodeList_LineWidth();
 
         /**
          * The meta object literal for the '

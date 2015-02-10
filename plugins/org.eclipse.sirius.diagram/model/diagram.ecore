@@ -363,12 +363,6 @@
         <details key="documentation" value="elements owned by this list."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineWidth" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"
-        defaultValueLiteral="1">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The width of the line."/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DNodeListElement" eSuperTypes="#//AbstractDNode">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -147,12 +147,6 @@ public final class DiagramContainerEditPartOperation {
                 }
             } else if (self instanceof IDiagramListEditPart && ddec instanceof DNodeList) {
                 final DNodeList list = (DNodeList) ddec;
-
-                ((Shape) self.getPrimaryShape()).setLineWidth(list.getLineWidth());
-                if (list.getLineWidth() == 0) {
-                    ((Shape) self.getPrimaryShape()).setOutline(false);
-                }
-
                 /*
                  * The figure.
                  */

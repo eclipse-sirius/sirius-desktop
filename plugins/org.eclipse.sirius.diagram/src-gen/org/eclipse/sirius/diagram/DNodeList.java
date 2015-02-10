@@ -25,8 +25,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.DNodeList#getOwnedElements <em>Owned
  * Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNodeList#getLineWidth <em>Line Width
- * </em>}</li>
  * </ul>
  * </p>
  *
@@ -49,32 +47,5 @@ public interface DNodeList extends DDiagramElementContainer {
      * @generated
      */
     EList<DNodeListElement> getOwnedElements();
-
-    /**
-     * Returns the value of the '<em><b>Line Width</b></em>' attribute. The
-     * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The width of the line. <!--
-     * end-model-doc -->
-     * 
-     * @return the value of the '<em>Line Width</em>' attribute.
-     * @see #setLineWidth(int)
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeList_LineWidth()
-     * @model default="1"
-     * @generated
-     */
-    int getLineWidth();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.DNodeList#getLineWidth
-     * <em>Line Width</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Line Width</em>' attribute.
-     * @see #getLineWidth()
-     * @generated
-     */
-    void setLineWidth(int value);
 
 } // DNodeList

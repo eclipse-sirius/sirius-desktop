@@ -54,6 +54,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 * The @org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand@ has been added. This command was previously internal.
 * Constant @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil.DIAGRAM_ENVIRONMENT_RESOURCE_URI@ declares "environment:/diagram" resource uri.
 * The method @org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider.completeToolTipText(String, EObject, EStructuralFeature)@ has been added to customize the tooltip displayed in the VSM editor by using the feature of the current object. The old method @org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider.completeToolTipText(String, EObject)@ has been deprecated.
+* The @DNodeList.lineWidth@ attribute has been removed from the metamodel, the corresponding generated elements do not exist anymore:  @org.eclipse.sirius.diagram.DNodeList.getLineWidth()@,  @org.eclipse.sirius.diagram.DNodeList.setLineWidth()@,  @org.eclipse.sirius.diagram.DiagramPackage.DNODE_LIST__LINE_WIDTH@, @org.eclipse.sirius.diagram.DiagramPackage.getDNodeList_LineWidth()@, @org.eclipse.sirius.diagram.DiagramPackage.Literals.DNODE_LIST__LINE_WIDTH()@.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 

@@ -13,12 +13,10 @@ package org.eclipse.sirius.diagram.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.DNodeList;
@@ -33,8 +31,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListImpl#getOwnedElements
  * <em>Owned Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListImpl#getLineWidth <em>
- * Line Width</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,26 +47,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * @ordered
      */
     protected EList<DNodeListElement> ownedElements;
-
-    /**
-     * The default value of the '{@link #getLineWidth() <em>Line Width</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getLineWidth()
-     * @generated
-     * @ordered
-     */
-    protected static final int LINE_WIDTH_EDEFAULT = 1;
-
-    /**
-     * The cached value of the '{@link #getLineWidth() <em>Line Width</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getLineWidth()
-     * @generated
-     * @ordered
-     */
-    protected int lineWidth = LINE_WIDTH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -108,27 +84,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * 
      * @generated
      */
-    public int getLineWidth() {
-        return lineWidth;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setLineWidth(int newLineWidth) {
-        int oldLineWidth = lineWidth;
-        lineWidth = newLineWidth;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE_LIST__LINE_WIDTH, oldLineWidth, lineWidth));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -148,8 +103,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
         switch (featureID) {
         case DiagramPackage.DNODE_LIST__OWNED_ELEMENTS:
             return getOwnedElements();
-        case DiagramPackage.DNODE_LIST__LINE_WIDTH:
-            return getLineWidth();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -167,9 +120,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
             getOwnedElements().clear();
             getOwnedElements().addAll((Collection<? extends DNodeListElement>) newValue);
             return;
-        case DiagramPackage.DNODE_LIST__LINE_WIDTH:
-            setLineWidth((Integer) newValue);
-            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -185,9 +135,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
         case DiagramPackage.DNODE_LIST__OWNED_ELEMENTS:
             getOwnedElements().clear();
             return;
-        case DiagramPackage.DNODE_LIST__LINE_WIDTH:
-            setLineWidth(LINE_WIDTH_EDEFAULT);
-            return;
         }
         super.eUnset(featureID);
     }
@@ -202,27 +149,8 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
         switch (featureID) {
         case DiagramPackage.DNODE_LIST__OWNED_ELEMENTS:
             return ownedElements != null && !ownedElements.isEmpty();
-        case DiagramPackage.DNODE_LIST__LINE_WIDTH:
-            return lineWidth != LINE_WIDTH_EDEFAULT;
         }
         return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (eIsProxy())
-            return super.toString();
-
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (lineWidth: ");
-        result.append(lineWidth);
-        result.append(')');
-        return result.toString();
     }
 
 } // DNodeListImpl
