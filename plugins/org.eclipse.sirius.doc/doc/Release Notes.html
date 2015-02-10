@@ -140,7 +140,20 @@
 				<code>org.eclipse.sirius.ecore.extender.business.api.accessor.CompositeMetamodelExtender.eRemoveInverseCrossReferences()</code> has been changed to return the list of changed objects by the inverse cross references removal.
 			</li>
 			<li>The exception 
-				<code>org.eclipse.sirius.ecore.extender.IllegalURIException</code> has beed removed. It was not actually thrown anywhere in the code.
+				<code>org.eclipse.sirius.ecore.extender.IllegalURIException</code> has been removed. It was not actually thrown anywhere in the code.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
+			<code>org.eclipse.sirius.tree</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.refreshContent(boolean fullRefresh)</code> has been added to allow full refresh from a specified 
+				<code>DTreeItem</code>.
+			</li>
+			<li>The EMF Command 
+				<code>org.eclipse.sirius.tree.business.api.command.DTreeItemLocalRefreshCommand</code> has been added to call 
+				<code>DTreeItemUserInteraction.refreshContent(boolean fullRefresh)</code> in an EMF Command. 
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
@@ -570,7 +583,7 @@
 				<code>TreeUIHelper.toContentHTMl()</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tree2">Changes in 
 			<code>org.eclipse.sirius.tree</code>
 		</h4>
 		<ul>
@@ -1460,7 +1473,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.setAutoRefreshDTable()</code> method was removed. It had no effect, any code which called it can simply be removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tree2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tree3">Changes in 
 			<code>org.eclipse.sirius.tree</code>
 		</h4>
 		<ul>
@@ -1896,7 +1909,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>TableHelper.getCell(DLine, String)</code> has been removed. Use the variant which take a DLine and a DColumn as parameters.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tree3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tree4">Changes in 
 			<code>org.eclipse.sirius.tree</code>
 		</h4>
 		<ul>

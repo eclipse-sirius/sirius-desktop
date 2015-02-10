@@ -58,7 +58,7 @@ public class DTreeViewerListener implements ITreeViewerListener {
                 expandDTreeItemCmd.append(new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, true));
                 if (!Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
                     SiriusCommand result = new SiriusCommand(domain);
-                    result.getTasks().add(new RefreshTreeElementTask((DTreeItem) event.getElement(), domain));
+                    result.getTasks().add(new RefreshTreeElementTask((DTreeItem) event.getElement()));
                     expandDTreeItemCmd.append(result);
                 }
                 commandStack.execute(expandDTreeItemCmd);

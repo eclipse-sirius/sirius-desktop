@@ -15,25 +15,33 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.swt.widgets.Shell;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IObjectActionDelegate;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * This action refresh the content of the table.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class RefreshAction extends Action {
+public class RefreshAction extends Action implements IObjectActionDelegate {
+
     private static final String DEFAULT_NAME = "Refresh table";
 
-    AbstractDTableEditor tableEditor;
+    private AbstractDTableEditor tableEditor;
 
     /**
      * Default constructor.
@@ -46,33 +54,49 @@ public class RefreshAction extends Action {
         this.tableEditor = tableEditor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
-        final IRunnableWithProgress op = new IRunnableWithProgress() {
-            public void run(final IProgressMonitor monitor) {
-                TransactionalEditingDomain domain = tableEditor.getEditingDomain();
-                domain.getCommandStack().execute(new RefreshRepresentationsCommand(domain, monitor, tableEditor.getTableModel()));
+        IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+        if (activePage != null) {
+            IEditorPart activeEditor = activePage.getActiveEditor();
+            if (activeEditor instanceof AbstractDTableEditor) {
+                tableEditor = (AbstractDTableEditor) activeEditor;
+                final IRunnableWithProgress op = new IRunnableWithProgress() {
+                    public void run(final IProgressMonitor monitor) {
+                        TransactionalEditingDomain domain = tableEditor.getEditingDomain();
+                        domain.getCommandStack().execute(new RefreshRepresentationsCommand(domain, monitor, tableEditor.getTableModel()));
+                    }
+                };
+                final Shell activeShell = tableEditor.getSite().getShell();
+                final ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(activeShell);
+                try {
+                    tableEditor.enablePropertiesUpdate(false);
+                    RefreshActionListenerRegistry.INSTANCE.notifyRepresentationIsAboutToBeRefreshed(tableEditor.getTableModel());
+                    monitorDialog.run(true, false, op);
+                } catch (final InvocationTargetException e) {
+                    MessageDialog.openError(activeShell, "Error", e.getTargetException().getMessage());
+                    SiriusPlugin.getDefault().error("Error while refreshing table", e);
+                } catch (final InterruptedException e) {
+                    MessageDialog.openInformation(activeShell, "Cancelled", e.getMessage());
+                } finally {
+                    tableEditor.enablePropertiesUpdate(true);
+                }
             }
-        };
-        final Shell activeShell = tableEditor.getSite().getShell();
-        final ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(activeShell);
-        try {
-            tableEditor.enablePropertiesUpdate(false);
-            RefreshActionListenerRegistry.INSTANCE.notifyRepresentationIsAboutToBeRefreshed(tableEditor.getTableModel());
-            monitorDialog.run(true, false, op);
-        } catch (final InvocationTargetException e) {
-            MessageDialog.openError(activeShell, "Error", e.getTargetException().getMessage());
-            SiriusPlugin.getDefault().error("Error while refreshing table", e);
-        } catch (final InterruptedException e) {
-            MessageDialog.openInformation(activeShell, "Cancelled", e.getMessage());
-        } finally {
-            tableEditor.enablePropertiesUpdate(true);
         }
+    }
+
+    @Override
+    public void run(IAction action) {
+        run();
+    }
+
+    @Override
+    public void selectionChanged(IAction action, ISelection selection) {
+
+    }
+
+    @Override
+    public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 
     }
 }

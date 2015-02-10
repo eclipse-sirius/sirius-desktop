@@ -12,9 +12,11 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
@@ -23,22 +25,25 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tree.DTreeItem;
+import org.eclipse.sirius.tree.business.api.command.DTreeItemLocalRefreshCommand;
+import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
+import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
+import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IObjectActionDelegate;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.tools.api.command.SiriusCommand;
-import org.eclipse.sirius.tree.DTreeElement;
-import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
-import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
-import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
-import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * This action refresh the entire tree or the tree items elements selected.
@@ -46,9 +51,10 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * @author nlepine
  */
 public class RefreshAction extends Action implements IObjectActionDelegate {
+
     private static final String DEFAULT_NAME = "Refresh Tree Element";
 
-    DTreeEditor treeEditor;
+    private DTreeEditor treeEditor;
 
     private ISelection selection;
 
@@ -66,53 +72,63 @@ public class RefreshAction extends Action implements IObjectActionDelegate {
         minimizedSelection = new LinkedList<Object>();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
-        this.selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getSelection();
-        if (this.selection instanceof IStructuredSelection) {
-            final IStructuredSelection structuredSelection = (IStructuredSelection) this.selection;
-            minimizedSelection = new LinkedList<Object>(Arrays.asList(structuredSelection.toArray()));
-
-        }
-        final IRunnableWithProgress op = new IRunnableWithProgress() {
-            public void run(final IProgressMonitor monitor) {
-                final SiriusCommand result = new SiriusCommand(treeEditor.getEditingDomain());
-                Iterable<DTreeElement> elements = Iterables.filter(minimizedSelection, DTreeElement.class);
-                result.getTasks().add(new RefreshTreeElementTask(Lists.newArrayList(elements), treeEditor.getEditingDomain(), monitor));
-                treeEditor.getEditingDomain().getCommandStack().execute(result);
+        IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+        if (activePage != null) {
+            IEditorPart activeEditor = activePage.getActiveEditor();
+            if (activeEditor instanceof DTreeEditor) {
+                treeEditor = (DTreeEditor) activeEditor;
+                this.selection = activePage.getSelection();
+                if (this.selection instanceof IStructuredSelection) {
+                    final IStructuredSelection structuredSelection = (IStructuredSelection) this.selection;
+                    minimizedSelection = new LinkedList<Object>(Arrays.asList(structuredSelection.toArray()));
+                }
+                IRunnableWithProgress op = getRunnable();
+                if (op != null) {
+                    run(op);
+                }
             }
-        };
-        run(op);
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
-     *      org.eclipse.ui.IWorkbenchPart)
-     */
+    private IRunnableWithProgress getRunnable() {
+        IRunnableWithProgress op = null;
+        if (minimizedSelection.isEmpty()) {
+            op = new IRunnableWithProgress() {
+                public void run(final IProgressMonitor monitor) {
+                    TransactionalEditingDomain domain = treeEditor.getEditingDomain();
+                    domain.getCommandStack().execute(new RefreshRepresentationsCommand(domain, monitor, treeEditor.getTreeModel()));
+                }
+            };
+            RefreshActionListenerRegistry.INSTANCE.notifyRepresentationIsAboutToBeRefreshed(treeEditor.getTreeModel());
+        } else {
+            Iterable<DTreeItem> elements = Iterables.filter(minimizedSelection, DTreeItem.class);
+            final Collection<DTreeItem> dTreeItems = Lists.newArrayList(elements);
+            if (!dTreeItems.isEmpty()) {
+                op = new IRunnableWithProgress() {
+                    public void run(final IProgressMonitor monitor) {
+                        Session session = new EObjectQuery(treeEditor.getRepresentation()).getSession();
+                        if (session != null) {
+                            GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
+                            TransactionalEditingDomain domain = treeEditor.getEditingDomain();
+                            Command localRefreshCmd = new DTreeItemLocalRefreshCommand(domain, globalContext, dTreeItems, false);
+                            domain.getCommandStack().execute(localRefreshCmd);
+                        }
+                    }
+                };
+            }
+        }
+        return op;
+    }
+
+    @Override
     public void setActivePart(IAction action, IWorkbenchPart targetPart) {
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
-     */
+    @Override
     public void run(IAction action) {
-        IRunnableWithProgress op = new IRunnableWithProgress() {
-            public void run(final IProgressMonitor monitor) {
-                TransactionalEditingDomain domain = treeEditor.getEditingDomain();
-                domain.getCommandStack().execute(new RefreshRepresentationsCommand(domain, monitor, treeEditor.getTreeModel()));
-            }
-        };
-        RefreshActionListenerRegistry.INSTANCE.notifyRepresentationIsAboutToBeRefreshed(treeEditor.getTreeModel());
-        run(op);
+        run();
     }
 
     private void run(final IRunnableWithProgress op) {
@@ -131,9 +147,7 @@ public class RefreshAction extends Action implements IObjectActionDelegate {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void selectionChanged(IAction action, ISelection sel) {
         this.selection = sel;
     }

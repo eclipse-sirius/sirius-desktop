@@ -16,26 +16,24 @@ import java.util.Iterator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeItem;
-import org.eclipse.sirius.tree.tools.internal.command.RefreshTreeElementCommand;
+import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Task for refresh tree item elements.
  * 
  * @author nlepine
- * 
  */
 public class RefreshTreeElementTask extends AbstractCommandTask {
 
     private EObject uniqueRefreshable;
-
-    private final TransactionalEditingDomain editingDomain;
 
     private Collection<DTreeElement> refreshablesList;
 
@@ -47,11 +45,9 @@ public class RefreshTreeElementTask extends AbstractCommandTask {
      * 
      * @param objectToRefresh
      *            the object to refresh
-     * @param editingDomain
-     *            the transactional editing domain
      */
-    public RefreshTreeElementTask(final EObject objectToRefresh, final TransactionalEditingDomain editingDomain) {
-        this(objectToRefresh, editingDomain, new NullProgressMonitor());
+    public RefreshTreeElementTask(final EObject objectToRefresh) {
+        this(objectToRefresh, new NullProgressMonitor());
     }
 
     /**
@@ -59,14 +55,11 @@ public class RefreshTreeElementTask extends AbstractCommandTask {
      * 
      * @param objectToRefresh
      *            the object to refresh
-     * @param editingDomain
-     *            the transactional editing domain
      * @param monitor
      *            The monitor for the execution of this task
      */
-    public RefreshTreeElementTask(final EObject objectToRefresh, final TransactionalEditingDomain editingDomain, final IProgressMonitor monitor) {
+    public RefreshTreeElementTask(final EObject objectToRefresh, final IProgressMonitor monitor) {
         this.uniqueRefreshable = objectToRefresh;
-        this.editingDomain = editingDomain;
         this.monitor = monitor;
     }
 
@@ -75,11 +68,9 @@ public class RefreshTreeElementTask extends AbstractCommandTask {
      * 
      * @param objectsToRefresh
      *            the object to refresh
-     * @param editingDomain
-     *            the transactional editing domain
      */
-    public RefreshTreeElementTask(Collection<DTreeElement> objectsToRefresh, TransactionalEditingDomain editingDomain) {
-        this(objectsToRefresh, editingDomain, new NullProgressMonitor());
+    public RefreshTreeElementTask(Collection<DTreeElement> objectsToRefresh) {
+        this(objectsToRefresh, new NullProgressMonitor());
     }
 
     /**
@@ -87,45 +78,44 @@ public class RefreshTreeElementTask extends AbstractCommandTask {
      * 
      * @param objectsToRefresh
      *            the object to refresh
-     * @param editingDomain
-     *            the transactional editing domain
      * @param monitor
      *            The monitor for the execution of this task
      */
-    public RefreshTreeElementTask(Collection<DTreeElement> objectsToRefresh, TransactionalEditingDomain editingDomain, IProgressMonitor monitor) {
+    public RefreshTreeElementTask(Collection<DTreeElement> objectsToRefresh, IProgressMonitor monitor) {
         this.refreshablesList = objectsToRefresh;
-        this.editingDomain = editingDomain;
         this.monitor = monitor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
+    @Override
     public void execute() {
         if (uniqueRefreshable instanceof DTree) {
-            editingDomain.getCommandStack().execute(new RefreshRepresentationsCommand(editingDomain, monitor, (DTree) uniqueRefreshable));
+            DialectManager.INSTANCE.refresh((DTree) uniqueRefreshable, monitor);
         }
         if (uniqueRefreshable instanceof DTreeElement) {
-            editingDomain.getCommandStack().execute(new RefreshTreeElementCommand(editingDomain, (DTreeItem) uniqueRefreshable, monitor));
+            refreshTreeElement((DTreeItem) uniqueRefreshable);
         }
         if (refreshablesList != null) {
             final Iterator<DTreeElement> it = refreshablesList.iterator();
             while (it.hasNext()) {
                 final Object obj = it.next();
                 if (obj instanceof DTree) {
-                    editingDomain.getCommandStack().execute(new RefreshRepresentationsCommand(editingDomain, monitor, (DTree) obj));
+                    DialectManager.INSTANCE.refresh((DTree) obj, monitor);
                 } else if (obj instanceof DTreeElement) {
-                    editingDomain.getCommandStack().execute(new RefreshTreeElementCommand(editingDomain, (DTreeItem) obj, monitor));
+                    refreshTreeElement((DTreeItem) obj);
                 }
             }
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    private void refreshTreeElement(DTreeItem treeElement) {
+        DTree tree = TreeHelper.getTree(treeElement);
+        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(tree.getTarget());
+        ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(tree);
+        DTreeElementSynchronizerSpec synchronizer = new DTreeElementSynchronizerSpec(interpreter, accessor);
+        synchronizer.refreshItemAndChildren(treeElement);
+    }
+
+    @Override
     public String getLabel() {
         return "Refresh element task";
     }

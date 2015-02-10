@@ -348,7 +348,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
 
                     // Add a RefreshTreeElementTask to have DTreeItem refreshed
                     // on direct edit even in REFRESH_AUTO mode at false
-                    ICommandTask refreshTreeElementTask = new RefreshTreeElementTask(editedTreeItem, domain);
+                    ICommandTask refreshTreeElementTask = new RefreshTreeElementTask(editedTreeItem);
                     result.getTasks().add(refreshTreeElementTask);
                 }
             }

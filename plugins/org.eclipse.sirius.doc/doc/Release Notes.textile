@@ -42,7 +42,12 @@ h4. Changes in @org.eclipse.sirius.ecore.extender@
 * The method @org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor.eRemoveInverseCrossReferences()@ has been changed to return the list of changed objects by the inverse cross references removal.
 * The method @org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender.eRemoveInverseCrossReferences()@ has been changed to return the list of changed objects by the inverse cross references removal.
 * The method @org.eclipse.sirius.ecore.extender.business.api.accessor.CompositeMetamodelExtender.eRemoveInverseCrossReferences()@ has been changed to return the list of changed objects by the inverse cross references removal.
-* The exception @org.eclipse.sirius.ecore.extender.IllegalURIException@ has beed removed. It was not actually thrown anywhere in the code.
+* The exception @org.eclipse.sirius.ecore.extender.IllegalURIException@ has been removed. It was not actually thrown anywhere in the code.
+
+h4. Changes in @org.eclipse.sirius.tree@
+
+* The method @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.refreshContent(boolean fullRefresh)@ has been added to allow full refresh from a specified @DTreeItem@.
+* The EMF Command @org.eclipse.sirius.tree.business.api.command.DTreeItemLocalRefreshCommand@ has been added to call @DTreeItemUserInteraction.refreshContent(boolean fullRefresh)@ in an EMF Command. 
 
 h4. Changes in @org.eclipse.sirius.diagram@
 

@@ -67,11 +67,22 @@ public class DTreeItemUserInteraction {
      * Refresh the content of the TreeItem.
      */
     public void refreshContent() {
+        refreshContent(false);
+    }
+
+    /**
+     * Refresh the content of the TreeItem.
+     * 
+     * @param fullRefresh
+     *            true to do a full refresh of the {@link DTreeItem} and its
+     *            children recursively
+     */
+    public void refreshContent(boolean fullRefresh) {
         SemanticPartitionInvalidator invalidator = new SemanticPartitionInvalidator();
         Option<DTree> parentTree = new DTreeItemQuery(item).getParentTree();
         if (parentTree.some()) {
             DTreeRefresh refresher = new DTreeRefresh(item, new TreeDescriptionQuery(parentTree.get().getDescription()).getAllDescendantMappings(), invalidator, ctx);
-            refresher.refresh(false, new NullProgressMonitor());
+            refresher.refresh(fullRefresh, new NullProgressMonitor());
         }
     }
 
