@@ -24,6 +24,7 @@ import org.eclipse.sirius.tests.swtbot.table.HideRevealTableLinesTest;
 import org.eclipse.sirius.tests.swtbot.table.NavigationDescriptionFromTableAndTreeTest;
 import org.eclipse.sirius.tests.swtbot.table.ReadOnlyColumnTest;
 import org.eclipse.sirius.tests.swtbot.table.RenameTableRepresentationTest;
+import org.eclipse.sirius.tests.swtbot.table.TableRefreshWithF5ShortcutTests;
 import org.eclipse.sirius.tests.swtbot.table.TableUIPermissionAuthorityTests;
 import org.eclipse.sirius.tests.swtbot.table.TableUIRefreshTests;
 
@@ -58,6 +59,7 @@ public class TableSwtbotTestSuite extends TestCase {
         suite.addTestSuite(TableUIPermissionAuthorityTests.class);
         suite.addTestSuite(TableUIRefreshTests.class);
         suite.addTestSuite(DeleteLineWithDELShortcutTest.class);
+        suite.addTestSuite(TableRefreshWithF5ShortcutTests.class);
         suite.addTestSuite(NavigationDescriptionFromTableAndTreeTest.class);
         suite.addTestSuite(CellEditionTest.class);
         suite.addTestSuite(ReadOnlyColumnTest.class);

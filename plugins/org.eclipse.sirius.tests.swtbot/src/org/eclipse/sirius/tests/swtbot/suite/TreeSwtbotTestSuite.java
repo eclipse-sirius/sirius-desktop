@@ -28,6 +28,7 @@ import org.eclipse.sirius.tests.swtbot.tree.TreeItemMappingTest;
 import org.eclipse.sirius.tests.swtbot.tree.TreeItemPopupMenusTest;
 import org.eclipse.sirius.tests.swtbot.tree.TreeItemPopupMenusWithJavaActionTest;
 import org.eclipse.sirius.tests.swtbot.tree.TreeItemStyleDescriptionTest;
+import org.eclipse.sirius.tests.swtbot.tree.TreeRefreshWithF5ShortcutTests;
 import org.eclipse.sirius.tests.swtbot.tree.TreeUIPermissionAuthorityTests;
 import org.eclipse.sirius.tests.swtbot.tree.TreeUIRefreshTests;
 
@@ -67,6 +68,7 @@ public class TreeSwtbotTestSuite extends TestCase {
         suite.addTestSuite(ContextMenuTreeTest.class);
         suite.addTestSuite(TreeUIPermissionAuthorityTests.class);
         suite.addTestSuite(TreeUIRefreshTests.class);
+        suite.addTestSuite(TreeRefreshWithF5ShortcutTests.class);
         suite.addTestSuite(DisplayLabelOnNodeTest.class);
         return suite;
     }

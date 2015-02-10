@@ -45,7 +45,9 @@ import org.hamcrest.Matchers;
  */
 public final class SWTBotUtils {
 
-    /** 60 seconds of timeout (long timeout but big session can be long to open). */
+    /**
+     * 60 seconds of timeout (long timeout but big session can be long to open).
+     */
     public static final long CLOSE_PROGRESS_MONITOR_TIMEOUT = TimeUnit.SECONDS.toSeconds(60);
 
     /**
@@ -85,12 +87,13 @@ public final class SWTBotUtils {
      * @param key
      *            the key to press
      */
-    public static void pressKeyboardKey(final Widget widget, final char key) {
+    public static void pressKeyboardKey(final Widget widget, final int key) {
         UIThreadRunnable.asyncExec(new VoidResult() {
             @Override
             public void run() {
-                widget.notifyListeners(SWT.KeyDown, SWTBotUtils.keyEvent(SWT.NONE, key, key, widget));
-                widget.notifyListeners(SWT.KeyUp, SWTBotUtils.keyEvent(SWT.NONE, key, key, widget));
+                Event event = SWTBotUtils.keyEvent(SWT.NONE, (char) key, key, widget);
+                widget.notifyListeners(SWT.KeyDown, event);
+                widget.notifyListeners(SWT.KeyUp, event);
             }
         });
     }
