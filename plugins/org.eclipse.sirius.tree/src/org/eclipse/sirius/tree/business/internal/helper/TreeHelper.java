@@ -15,11 +15,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
-import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.description.TreeVariable;
 
@@ -33,17 +30,6 @@ public final class TreeHelper {
 
     private TreeHelper() {
 
-    }
-
-    /**
-     * Tell whether the mapping has a candidate expression or not.
-     * 
-     * @param mapping
-     *            mapping to check.
-     * @return true if the mapping has a candidate expression.
-     */
-    public static boolean hasSemanticCandidatesExpression(final TreeItemMapping mapping) {
-        return !StringUtil.isEmpty(mapping.getSemanticCandidatesExpression());
     }
 
     /**

@@ -148,6 +148,37 @@
 				<code>org.eclipse.sirius.ecore.extender.IllegalURIException</code> has been removed. It was not actually thrown anywhere in the code.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+			<code>org.eclipse.sirius.table</code>
+		</h4>
+		<ul>
+			<li>The methods 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getColumn()</code> has been removed because they are not useful, 
+				<code>TableHelper.getColumn(line, columnIndex)</code> can be replaced by 
+				<code>DTable.getColumns().get(columnIndex)</code> and 
+				<code>TableHelper.getColumn(table, featureName)</code> should not be used as we can have several columns with a same featureName.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getEClassifier(line, columnIndex)</code> has been removed because it is not useful, use 
+				<code>TableHelper.getEClassifier(line, column)</code> instead.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getTableElement(tableElementStyle)</code> has been removed because it is not useful, 
+				<code>DTableElementStyle.eContainer()</code> can be used instead.
+			</li>
+			<li>The methods 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getCell()</code> has been removed because they are not useful, use 
+				<code>DCellStyle.eContainer</code> instead.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getCreateCellTool()</code> has been removed because it is not useful, use 
+				<code>TableHelper.getCreateCellTool(line, column)</code> instead.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getCellDefaultForegroundColor()</code> has been removed because it is not useful, use 
+				<code>EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("gray")</code> instead.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
 			<code>org.eclipse.sirius.tree</code>
 		</h4>
@@ -1488,7 +1519,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.sirius.diagram.graphicalou .edit.policies.AirNoteAttachmentEditPolicyProvider</code> and declaration in plugin.xml have been removed too.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.table2">Changes in 
 			<code>org.eclipse.sirius.table</code>
 		</h4>
 		<ul>
@@ -1613,7 +1644,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>setTile()</code> method is still available but must be called before Dialog.create().
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.table2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.table3">Changes in 
 			<code>org.eclipse.sirius.table</code>
 		</h4>
 		<ul>
@@ -1924,7 +1955,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>CreateRepresentationFromRepresentationCreationDescription</code> classes (iof plug-ins sirius.diagram, sirius.table.ui, sirius.tree.ui).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.table3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.table4">Changes in 
 			<code>org.eclipse.sirius.table</code>
 		</h4>
 		<ul>

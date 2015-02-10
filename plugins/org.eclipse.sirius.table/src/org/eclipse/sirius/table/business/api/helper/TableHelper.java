@@ -25,7 +25,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.metamodel.table.DCell;
-import org.eclipse.sirius.table.metamodel.table.DCellStyle;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -44,9 +43,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
-import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
-import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.description.SystemColor;
 
 import com.google.common.collect.Maps;
 
@@ -210,58 +206,6 @@ public final class TableHelper {
     }
 
     /**
-     * Get the {@link DColumn} with a mapping on featureName attribute.
-     * 
-     * @param table
-     *            The table in which seek
-     * @param featureName
-     *            The featureName
-     * @return The corresponding column
-     */
-    protected static DColumn getColumn(final DTable table, final String featureName) {
-        DColumn result = null;
-        for (final DColumn column : table.getColumns()) {
-            if (column instanceof DFeatureColumn && featureName.equals(((DFeatureColumn) column).getFeatureName())) {
-                result = column;
-            }
-        }
-        return result;
-    }
-
-    /**
-     * Get the {@link DColumn} at the columnIndex index in the table of the
-     * line.
-     * 
-     * @param line
-     *            The line for getting the table
-     * @param columnIndex
-     *            The index of the search column
-     * @return A column corresponding to the index
-     */
-    protected static DColumn getColumn(final DLine line, final int columnIndex) {
-        // Get the table of this line
-        final DTable table = TableHelper.getTable(line);
-        // Get the column for the corresponding index
-        return table.getColumns().get(columnIndex);
-    }
-
-    /**
-     * Get the classifier of the attribute of the column. The column must be a
-     * DFeatureColumn
-     * 
-     * @param line
-     *            The line for getting the column of the table
-     * @param columnIndex
-     *            The index of the search column
-     * @return the classifier of the attribute or null if not found or wrong
-     *         column type
-     */
-    public static EClassifier getEClassifier(final DLine line, final int columnIndex) {
-        final DColumn column = TableHelper.getColumn(line, columnIndex);
-        return TableHelper.getEClassifier(line, column);
-    }
-
-    /**
      * Get the classifier of the attribute of the column. The column must be a
      * DFeatureColumn
      * 
@@ -319,56 +263,6 @@ public final class TableHelper {
                 result.add(line);
             }
             result.addAll(TableHelper.getExpandedLines(line));
-        }
-        return result;
-    }
-
-    /**
-     * Return the parent DCell of this {@link DCellStyle cellStyle}.
-     * 
-     * @param cellStyle
-     *            The cellStyle
-     * @return the parent {@link DCell}
-     */
-    public static DCell getCell(final DCellStyle cellStyle) {
-        DCell result = null;
-        if (cellStyle.eContainer() instanceof DCell) {
-            result = (DCell) cellStyle.eContainer();
-        }
-        return result;
-    }
-
-    /**
-     * Return the parent DTableElement of this {@link DTableElementStyle
-     * cellStyle}.
-     * 
-     * @param tableElementStyle
-     *            The tableElementStyle
-     * @return the parent {@link DTableElement}
-     */
-    public static DTableElement getTableElement(DTableElementStyle tableElementStyle) {
-        DTableElement result = null;
-        if (tableElementStyle.eContainer() instanceof DCell) {
-            result = (DCell) tableElementStyle.eContainer();
-        } else if (tableElementStyle.eContainer() instanceof DLine) {
-            result = (DLine) tableElementStyle.eContainer();
-        } else if (tableElementStyle.eContainer() instanceof DColumn) {
-            result = (DColumn) tableElementStyle.eContainer();
-        }
-        return result;
-    }
-
-    /**
-     * Return the parent DCell of this {@link ColorMapping colorMapping}.
-     * 
-     * @param color
-     *            The colorMapping
-     * @return the parent {@link DCell} or null if there is no DCell parent
-     */
-    public static DCell getCell(final RGBValues color) {
-        DCell result = null;
-        if (color.eContainer() instanceof DCellStyle) {
-            result = TableHelper.getCell((DCellStyle) color.eContainer());
         }
         return result;
     }
@@ -451,18 +345,6 @@ public final class TableHelper {
     }
 
     /**
-     * Return the first CreateCellTool corresponding to the cell or null.
-     * 
-     * @param cell
-     *            The cell
-     * @return Return an optional (the first) CreateCellTool corresponding to
-     *         the cell
-     */
-    public static Option<CreateCellTool> getCreateCellTool(final DCell cell) {
-        return getCreateCellTool(cell.getLine(), cell.getColumn());
-    }
-
-    /**
      * Return the first CreateCellTool corresponding to the intersection of this
      * line and column.
      * 
@@ -488,15 +370,6 @@ public final class TableHelper {
             }
         }
         return Options.newNone();
-    }
-
-    /**
-     * Return The default background color for the cell of the table.
-     * 
-     * @return The default background color for the cell of the table
-     */
-    public static SystemColor getCellDefaultForegroundColor() {
-        return EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("gray");
     }
 
     /**
