@@ -24,7 +24,6 @@ import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
@@ -34,7 +33,6 @@ import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignme
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
@@ -51,7 +49,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
- * Implementation of {@link IDiagramContainerEditPart}.
+ * Common operations for container and list edit parts.
  * 
  * @author ymortier
  */
@@ -133,28 +131,17 @@ public final class DiagramContainerEditPartOperation {
         if (diagElement instanceof DDiagramElementContainer) {
             final DDiagramElementContainer ddec = (DDiagramElementContainer) diagElement;
 
-            if (self instanceof IDiagramContainerEditPart && ddec instanceof DNodeContainer) {
-                final DNodeContainer container = (DNodeContainer) ddec;
-
-                /* The background figure */
-                if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && container.getOwnedStyle() != null) {
-                    ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(container.getOwnedStyle());
-                } else if (self.getBackgroundFigure() == null && container.getOwnedStyle() != null) {
-                    self.createBackgroundFigure();
-                    if (self.getBackgroundFigure() != null) {
-                        self.getFigure().add(self.getBackgroundFigure(), 0);
-                    }
+            /* The background figure */
+            if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && ddec.getOwnedStyle() != null) {
+                if (!(ddec instanceof DNodeList)) {
+                    ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(ddec.getOwnedStyle());
                 }
-            } else if (self instanceof IDiagramListEditPart && ddec instanceof DNodeList) {
-                final DNodeList list = (DNodeList) ddec;
-                /*
-                 * The figure.
-                 */
-                if (self.getBackgroundFigure() == null && list.getOwnedStyle() != null) {
-                    // self.createBackgroundFigure();
-                    if (self.getBackgroundFigure() != null) {
-                        self.getFigure().add(self.getBackgroundFigure(), 0);
-                    }
+            } else if (self.getBackgroundFigure() == null && ddec.getOwnedStyle() != null) {
+                if (!(ddec instanceof DNodeList)) {
+                    self.createBackgroundFigure();
+                }
+                if (self.getBackgroundFigure() != null) {
+                    self.getFigure().add(self.getBackgroundFigure(), 0);
                 }
             }
 
