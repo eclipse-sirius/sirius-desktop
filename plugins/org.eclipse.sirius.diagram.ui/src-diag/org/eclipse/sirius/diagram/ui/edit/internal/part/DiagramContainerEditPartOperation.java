@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,14 +25,16 @@ import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
@@ -68,10 +70,10 @@ public final class DiagramContainerEditPartOperation {
      * @param self
      *            the edit part.
      */
-    public static void refreshForegroundColor(final IDiagramContainerEditPart self) {
+    public static void refreshForegroundColor(final AbstractDiagramElementContainerEditPart self) {
         final EObject eObj = self.resolveSemanticElement();
-        if (eObj instanceof DNodeContainer) {
-            final DNodeContainer container = (DNodeContainer) eObj;
+        if (eObj instanceof DDiagramElementContainer) {
+            final DDiagramElementContainer container = (DDiagramElementContainer) eObj;
             ContainerStyle style = container.getOwnedStyle();
             if (style != null) {
                 RGBValues rgb = style.getBorderColor();
@@ -88,10 +90,10 @@ public final class DiagramContainerEditPartOperation {
      * @param self
      *            the edit part.
      */
-    public static void refreshBackgroundColor(final IDiagramContainerEditPart self) {
+    public static void refreshBackgroundColor(final AbstractDiagramElementContainerEditPart self) {
         final EObject eObj = self.resolveSemanticElement();
-        if (eObj instanceof DNodeContainer) {
-            final DNodeContainer container = (DNodeContainer) eObj;
+        if (eObj instanceof DDiagramElementContainer) {
+            final DDiagramElementContainer container = (DDiagramElementContainer) eObj;
             RGBValues rgb = null;
             ContainerStyle style = container.getOwnedStyle();
             if (style instanceof FlatContainerStyle) {
@@ -111,7 +113,7 @@ public final class DiagramContainerEditPartOperation {
      * @param self
      *            the edit part.
      */
-    public static void refreshFont(final IDiagramContainerEditPart self) {
+    public static void refreshFont(final AbstractDiagramElementContainerEditPart self) {
         if (!self.getChildren().isEmpty()) {
             Object firstChild = self.getChildren().get(0);
             if (firstChild instanceof IDiagramNameEditPart) {
@@ -126,24 +128,45 @@ public final class DiagramContainerEditPartOperation {
      * @param self
      *            the edit part.
      */
-    public static void refreshVisuals(final IDiagramContainerEditPart self) {
+    public static void refreshVisuals(final AbstractDiagramElementContainerEditPart self) {
         final DDiagramElement diagElement = self.resolveDiagramElement();
-        if (diagElement instanceof DNodeContainer) {
-            final DNodeContainer container = (DNodeContainer) diagElement;
+        if (diagElement instanceof DDiagramElementContainer) {
+            final DDiagramElementContainer ddec = (DDiagramElementContainer) diagElement;
 
-            /* The background figure */
-            if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && container.getOwnedStyle() != null) {
-                ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(container.getOwnedStyle());
-            } else if (self.getBackgroundFigure() == null && container.getOwnedStyle() != null) {
-                self.createBackgroundFigure();
-                if (self.getBackgroundFigure() != null) {
-                    self.getFigure().add(self.getBackgroundFigure(), 0);
+            if (self instanceof IDiagramContainerEditPart && ddec instanceof DNodeContainer) {
+                final DNodeContainer container = (DNodeContainer) ddec;
+
+                /* The background figure */
+                if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && container.getOwnedStyle() != null) {
+                    ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(container.getOwnedStyle());
+                } else if (self.getBackgroundFigure() == null && container.getOwnedStyle() != null) {
+                    self.createBackgroundFigure();
+                    if (self.getBackgroundFigure() != null) {
+                        self.getFigure().add(self.getBackgroundFigure(), 0);
+                    }
+                }
+            } else if (self instanceof IDiagramListEditPart && ddec instanceof DNodeList) {
+                final DNodeList list = (DNodeList) ddec;
+
+                ((Shape) self.getPrimaryShape()).setLineWidth(list.getLineWidth());
+                if (list.getLineWidth() == 0) {
+                    ((Shape) self.getPrimaryShape()).setOutline(false);
+                }
+
+                /*
+                 * The figure.
+                 */
+                if (self.getBackgroundFigure() == null && list.getOwnedStyle() != null) {
+                    // self.createBackgroundFigure();
+                    if (self.getBackgroundFigure() != null) {
+                        self.getFigure().add(self.getBackgroundFigure(), 0);
+                    }
                 }
             }
 
-            final ContainerStyle style = container.getOwnedStyle();
-            if (self instanceof AbstractDiagramContainerEditPart && DiagramContainerEditPartOperation.isPrimaryShapeChanging(self, style)) {
-                ((AbstractDiagramContainerEditPart) self).reInitFigure();
+            final ContainerStyle style = ddec.getOwnedStyle();
+            if (DiagramContainerEditPartOperation.isPrimaryShapeChanging(self, style)) {
+                self.reInitFigure();
             }
             int borderSize = 0;
             if (style != null && style.getBorderSize() != null) {
@@ -190,21 +213,26 @@ public final class DiagramContainerEditPartOperation {
      * @param style
      * @return if the shape has changed with the style
      */
-    private static boolean isPrimaryShapeChanging(final IDiagramContainerEditPart self, final Style style) {
-        // Test changed from ShapeContainerStyle
-        boolean result = self.getPrimaryShape() instanceof ViewNodeContainerParallelogram && (style instanceof FlatContainerStyle || style instanceof WorkspaceImage);
-        if (!result) {
-            // Test changed from FlatContainerStyle
-            result = self.getPrimaryShape() instanceof GradientRoundedRectangle && (style instanceof ShapeContainerStyle || style instanceof WorkspaceImage);
+    private static boolean isPrimaryShapeChanging(final AbstractDiagramElementContainerEditPart self, final Style style) {
+        boolean result = false;
+        
+        // This is not yet supported by IDiagramListEditPart but only by IDiagramListEditPart
+        if (self instanceof IDiagramContainerEditPart) {
+            // Test changed from ShapeContainerStyle
+            result = self.getPrimaryShape() instanceof ViewNodeContainerParallelogram && (style instanceof FlatContainerStyle || style instanceof WorkspaceImage);
             if (!result) {
-                // Test changed from WorkspaceImage
-                result = self.getPrimaryShape() instanceof ViewNodeContainerRectangleFigureDesc && (style instanceof FlatContainerStyle || style instanceof ShapeContainerStyle);
+                // Test changed from FlatContainerStyle
+                result = self.getPrimaryShape() instanceof GradientRoundedRectangle && (style instanceof ShapeContainerStyle || style instanceof WorkspaceImage);
+                if (!result) {
+                    // Test changed from WorkspaceImage
+                    result = self.getPrimaryShape() instanceof ViewNodeContainerRectangleFigureDesc && (style instanceof FlatContainerStyle || style instanceof ShapeContainerStyle);
+                }
             }
         }
         return result;
     }
 
-    private static void refreshLabelAlignment(final IDiagramContainerEditPart self, final DDiagramElement diagElement) {
+    private static void refreshLabelAlignment(final AbstractDiagramElementContainerEditPart self, final DDiagramElement diagElement) {
         final LabelAlignment alignment = LabelAlignmentHelper.getLabelAlignementFor(diagElement);
         if (alignment != null) {
             final IFigure fig = self.getFigure();

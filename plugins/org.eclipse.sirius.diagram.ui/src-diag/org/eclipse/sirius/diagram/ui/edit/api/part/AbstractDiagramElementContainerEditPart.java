@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.api.part;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -41,6 +42,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
+import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
@@ -74,7 +76,10 @@ import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 
@@ -392,6 +397,25 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         }
 
         super.refreshVisuals();
+        DiagramContainerEditPartOperation.refreshVisuals(this);
+    }
+
+    @Override
+    protected void refreshForegroundColor() {
+        super.refreshForegroundColor();
+        DiagramContainerEditPartOperation.refreshForegroundColor(this);
+    }
+
+    @Override
+    protected void refreshBackgroundColor() {
+        super.refreshBackgroundColor();
+        DiagramContainerEditPartOperation.refreshBackgroundColor(this);
+    }
+
+    @Override
+    protected void refreshFont() {
+        super.refreshFont();
+        DiagramContainerEditPartOperation.refreshFont(this);
     }
 
     /**
@@ -712,5 +736,71 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             }
         }
         return cmd;
+    }
+
+    /**
+     * Returns the figure of the container.
+     * 
+     * @return the figure of the container.
+     * @was-generated
+     */
+    public ViewNodeContainerFigureDesc getPrimaryShape() {
+        if (primaryShape instanceof ViewNodeContainerFigureDesc) {
+            return (ViewNodeContainerFigureDesc) primaryShape;
+        }
+        return null;
+    }
+
+    /**
+     * Reinit the figure. It removes the current children of the main figure
+     * (created with a previous style) and replace them with those created with
+     * the current style.
+     */
+    public void reInitFigure() {
+        final IFigure mainFigure = ((BorderedNodeFigure) getFigure()).getMainFigure();
+        final List<IFigure> prevChildren = new ArrayList(mainFigure.getChildren());
+        InvisibleResizableCompartmentFigure containerCompartment = null;
+        ResizableCompartmentFigure listCompartment = null;
+        SiriusWrapLabel wrapLabel = null;
+        final IFigure tmpFigure = createMainFigure();
+
+        for (IFigure object : prevChildren) {
+            if (object instanceof InvisibleResizableCompartmentFigure) {
+                containerCompartment = (InvisibleResizableCompartmentFigure) object;
+            } else if (object instanceof ViewNodeContainerFigureDesc) {
+                for (Object object2 : ((ViewNodeContainerFigureDesc) object).getChildren()) {
+                    if (object2 instanceof SiriusWrapLabel) {
+                        wrapLabel = (SiriusWrapLabel) object2;
+                    } else if (object2 instanceof ResizableCompartmentFigure) {
+                        listCompartment = (ResizableCompartmentFigure) object2;
+                    }
+                }
+            }
+            mainFigure.remove(object);
+        }
+
+        // Add figures from new style
+        final Object[] tmpChildren = tmpFigure.getChildren().toArray();
+        for (int i = 0; i < tmpChildren.length; i++) {
+            if (tmpChildren[i] instanceof ViewNodeContainerFigureDesc) {
+                final ViewNodeContainerFigureDesc figure = (ViewNodeContainerFigureDesc) tmpChildren[i];
+                if (wrapLabel != null) {
+                    for (IFigure child : new ArrayList<IFigure>(figure.getChildren())) {
+                        if (child instanceof SiriusWrapLabel) {
+                            figure.remove(child);
+                        }
+                    }
+                    figure.add(wrapLabel);
+                }
+                if (listCompartment != null) {
+                    figure.add(listCompartment);
+                }
+            }
+
+            mainFigure.add((IFigure) tmpChildren[i], i);
+        }
+        if (containerCompartment != null) {
+            mainFigure.add(containerCompartment);
+        }
     }
 }

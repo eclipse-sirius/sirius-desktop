@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.api.part;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
@@ -32,7 +30,6 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.tools.RubberbandDragTracker;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
@@ -58,9 +55,6 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResetOriginEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
@@ -96,37 +90,6 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshForegroundColor()
-     */
-    @Override
-    protected void refreshForegroundColor() {
-        super.refreshForegroundColor();
-        DiagramContainerEditPartOperation.refreshForegroundColor(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshForegroundColor()
-     */
-    @Override
-    protected void refreshBackgroundColor() {
-        super.refreshBackgroundColor();
-        DiagramContainerEditPartOperation.refreshBackgroundColor(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void refreshFont() {
-        super.refreshFont();
-        DiagramContainerEditPartOperation.refreshFont(this);
-    }
-
-    /**
      * Indicates if the current edit part is a region of its parent.
      * 
      * @return true if this part is a region.
@@ -138,17 +101,6 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
             return new DNodeContainerExperimentalQuery(ddec).isRegionContainer();
         }
         return false;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart#refreshVisuals()
-     */
-    @Override
-    protected void refreshVisuals() {
-        super.refreshVisuals();
-        DiagramContainerEditPartOperation.refreshVisuals(this);
     }
 
     /**
@@ -209,53 +161,6 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
         }
         LayoutUtils.releaseDummys(this.getBorderedFigure().getBorderItemContainer());
         return new ICommandProxy(compositeCommand.reduce());
-    }
-
-    /**
-     * Reinit the figure. It removes the current children of the main figure
-     * (created with a previous style) and replace them with those created with
-     * the current style.
-     */
-    public void reInitFigure() {
-        final IFigure mainFigure = ((BorderedNodeFigure) getFigure()).getMainFigure();
-        final List<IFigure> prevChildren = new ArrayList(mainFigure.getChildren());
-        InvisibleResizableCompartmentFigure compartment = null;
-        SiriusWrapLabel wrapLabel = null;
-        final IFigure tmpFigure = createMainFigure();
-
-        for (IFigure object : prevChildren) {
-            if (object instanceof InvisibleResizableCompartmentFigure) {
-                compartment = (InvisibleResizableCompartmentFigure) object;
-            } else if (object instanceof ViewNodeContainerFigureDesc) {
-                for (Object object2 : ((ViewNodeContainerFigureDesc) object).getChildren()) {
-                    if (object2 instanceof SiriusWrapLabel) {
-                        wrapLabel = (SiriusWrapLabel) object2;
-                    }
-                }
-            }
-            mainFigure.remove(object);
-        }
-
-        // Add figures from new style
-        final Object[] tmpChildren = tmpFigure.getChildren().toArray();
-        for (int i = 0; i < tmpChildren.length; i++) {
-            if (tmpChildren[i] instanceof ViewNodeContainerFigureDesc) {
-                final ViewNodeContainerFigureDesc figure = (ViewNodeContainerFigureDesc) tmpChildren[i];
-                if (wrapLabel != null) {
-                    for (IFigure child : new ArrayList<IFigure>(figure.getChildren())) {
-                        if (child instanceof SiriusWrapLabel) {
-                            figure.remove(child);
-                        }
-                    }
-                    figure.add(wrapLabel);
-                }
-            }
-
-            mainFigure.add((IFigure) tmpChildren[i], i);
-        }
-        if (compartment != null) {
-            mainFigure.add(compartment);
-        }
     }
 
     /**
@@ -323,15 +228,6 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
             compoundEditPolicy.addEditPolicy(new ResetOriginEditPolicy());
             installEditPolicy(EditPolicy.COMPONENT_ROLE, compoundEditPolicy);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @was-generated
-     */
-    public ViewNodeContainerFigureDesc getPrimaryShape() {
-        return (ViewNodeContainerFigureDesc) primaryShape;
     }
 
     /**
