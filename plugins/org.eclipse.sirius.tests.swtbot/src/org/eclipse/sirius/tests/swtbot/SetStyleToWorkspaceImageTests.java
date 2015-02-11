@@ -20,12 +20,15 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.support.api.PluginVersionCompatibility;
@@ -144,17 +147,36 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     public void testSetWkpImageStyleCancelFromAppearanceSection() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-                org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find widget.
-                at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntilWidgetAppears(SWTBotFactory.java:357)
-                at org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.widget(SWTBotSiriusHelper.java:126)
-                at org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.selectPropertyTabItem(SWTBotSiriusHelper.java:99)
-                at org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.getSectionButton(AbstractSiriusSwtBotGefTestCase.java:1232)
-                at org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.getSetStyleToWorkspaceImageButtonFromAppearanceTab(AbstractSiriusSwtBotGefTestCase.java:1178)
-                at org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.getSetStyleToWorkspaceImageButton(AbstractSiriusSwtBotGefTestCase.java:1126)
-                at org.eclipse.sirius.tests.swtbot.SetStyleToWorkspaceImageTests.testSetWkpImageStyleCancel(SetStyleToWorkspaceImageTests.java:404)
-                at org.eclipse.sirius.tests.swtbot.SetStyleToWorkspaceImageTests.testSetWkpImageStyleCancelFromAppearanceSection(SetStyleToWorkspaceImageTests.java:147)
-                
-                Caused by: org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout after: 10000 ms.: Could not find widget matching: (of type 'TabbedPropertyList')
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
+             * Could not find widget. at
+             * org.eclipse.swtbot.swt.finder.SWTBotFactory
+             * .waitUntilWidgetAppears(SWTBotFactory.java:357) at
+             * org.eclipse.sirius
+             * .tests.swtbot.support.api.editor.SWTBotSiriusHelper
+             * .widget(SWTBotSiriusHelper.java:126) at
+             * org.eclipse.sirius.tests.swtbot
+             * .support.api.editor.SWTBotSiriusHelper
+             * .selectPropertyTabItem(SWTBotSiriusHelper.java:99) at
+             * org.eclipse.
+             * sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase
+             * .getSectionButton(AbstractSiriusSwtBotGefTestCase.java:1232) at
+             * org.eclipse.sirius.tests.swtbot.support.api.
+             * AbstractSiriusSwtBotGefTestCase
+             * .getSetStyleToWorkspaceImageButtonFromAppearanceTab
+             * (AbstractSiriusSwtBotGefTestCase.java:1178) at
+             * org.eclipse.sirius.
+             * tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase
+             * .getSetStyleToWorkspaceImageButton
+             * (AbstractSiriusSwtBotGefTestCase.java:1126) at
+             * org.eclipse.sirius.
+             * tests.swtbot.SetStyleToWorkspaceImageTests.testSetWkpImageStyleCancel
+             * (SetStyleToWorkspaceImageTests.java:404) at
+             * org.eclipse.sirius.tests.swtbot.SetStyleToWorkspaceImageTests.
+             * testSetWkpImageStyleCancelFromAppearanceSection
+             * (SetStyleToWorkspaceImageTests.java:147) Caused by:
+             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout
+             * after: 10000 ms.: Could not find widget matching: (of type
+             * 'TabbedPropertyList')
              */
             return;
         }
@@ -495,17 +517,14 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         assertEquals(-1, newGMFSize.height);
         assertEquals(oldGMFSize.width, newGMFSize.width);
 
-        if (part instanceof IDiagramContainerEditPart) {
+        if (part instanceof IDiagramContainerEditPart || part instanceof IDiagramListEditPart) {
             // Auto-sized container are resized on set wkp image to get the
             // image size.
             assertEquals(-1, oldGMFSize.width);
             assertEquals(image.getBounds().width, newD2DSize.width, 2);
             assertEquals(image.getBounds().height, newD2DSize.height, 2);
-        } else if (part instanceof IDiagramListEditPart) {
-            // Lists do no not display their workspace image figure, and their
-            // size is not modified.
-            assertEquals(oldD2DSize.width, newD2DSize.width);
-            assertEquals(oldD2DSize.height, newD2DSize.height, 2);
+            assertTrue(((AbstractDiagramElementContainerEditPart) part).getPrimaryShape() instanceof ViewNodeContainerRectangleFigureDesc);
+            assertTrue(((AbstractDiagramElementContainerEditPart) part).getBackgroundFigure() instanceof IWorkspaceImageFigure);
         } else {
             // Nodes keep their size and the height is modified to keep the
             // image ratio

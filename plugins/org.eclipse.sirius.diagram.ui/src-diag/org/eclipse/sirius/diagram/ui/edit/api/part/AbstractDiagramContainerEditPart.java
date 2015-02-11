@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.edit.api.part;
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -43,20 +42,14 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
-import org.eclipse.sirius.diagram.ShapeContainerStyle;
-import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
-import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResetOriginEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
@@ -228,33 +221,6 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
             compoundEditPolicy.addEditPolicy(new ResetOriginEditPolicy());
             installEditPolicy(EditPolicy.COMPONENT_ROLE, compoundEditPolicy);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @was-generated : handle shape container style.
-     */
-    protected IFigure createNodeShape() {
-        final EObject eObj = resolveSemanticElement();
-        IFigure shapeFigure = null;
-        if (eObj instanceof DDiagramElementContainer) {
-            final DDiagramElementContainer container = (DDiagramElementContainer) eObj;
-            if (container.getOwnedStyle() != null) {
-                if (container.getOwnedStyle() instanceof ShapeContainerStyle) {
-                    shapeFigure = new ViewNodeContainerParallelogram();
-                } else if (container.getOwnedStyle() instanceof WorkspaceImage) {
-                    shapeFigure = new ViewNodeContainerRectangleFigureDesc();
-                }
-            }
-        } else {
-            deactivate();
-        }
-        if (shapeFigure == null) {
-            shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
-        }
-
-        return shapeFigure;
     }
 
     /**

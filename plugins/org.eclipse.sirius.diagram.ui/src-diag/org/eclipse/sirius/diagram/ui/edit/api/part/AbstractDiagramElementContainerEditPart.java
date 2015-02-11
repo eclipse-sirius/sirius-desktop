@@ -53,12 +53,14 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ResizeKind;
+import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
@@ -76,10 +78,13 @@ import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 
@@ -431,7 +436,26 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * 
      * @return a shape figure for this edit part.
      */
-    protected abstract IFigure createNodeShape();
+    protected IFigure createNodeShape() {
+        final EObject eObj = resolveSemanticElement();
+        IFigure shapeFigure = null;
+        if (eObj instanceof DDiagramElementContainer) {
+            final DDiagramElementContainer container = (DDiagramElementContainer) eObj;
+            ContainerStyle ownedStyle = container.getOwnedStyle();
+            if (ownedStyle instanceof ShapeContainerStyle) {
+                shapeFigure = new ViewNodeContainerParallelogram();
+            } else if (ownedStyle instanceof WorkspaceImage) {
+                shapeFigure = new ViewNodeContainerRectangleFigureDesc();
+            }
+        } else {
+            deactivate();
+        }
+        if (shapeFigure == null) {
+            shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+        }
+
+        return shapeFigure;
+    }
 
     /**
      * {@inheritDoc}

@@ -24,7 +24,6 @@ import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
@@ -32,7 +31,6 @@ import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
@@ -133,13 +131,9 @@ public final class DiagramContainerEditPartOperation {
 
             /* The background figure */
             if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && ddec.getOwnedStyle() != null) {
-                if (!(ddec instanceof DNodeList)) {
-                    ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(ddec.getOwnedStyle());
-                }
+                ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(ddec.getOwnedStyle());
             } else if (self.getBackgroundFigure() == null && ddec.getOwnedStyle() != null) {
-                if (!(ddec instanceof DNodeList)) {
-                    self.createBackgroundFigure();
-                }
+                self.createBackgroundFigure();
                 if (self.getBackgroundFigure() != null) {
                     self.getFigure().add(self.getBackgroundFigure(), 0);
                 }
@@ -196,18 +190,15 @@ public final class DiagramContainerEditPartOperation {
      */
     private static boolean isPrimaryShapeChanging(final AbstractDiagramElementContainerEditPart self, final Style style) {
         boolean result = false;
-        
-        // This is not yet supported by IDiagramListEditPart but only by IDiagramListEditPart
-        if (self instanceof IDiagramContainerEditPart) {
-            // Test changed from ShapeContainerStyle
-            result = self.getPrimaryShape() instanceof ViewNodeContainerParallelogram && (style instanceof FlatContainerStyle || style instanceof WorkspaceImage);
+
+        // Test changed from ShapeContainerStyle
+        result = self.getPrimaryShape() instanceof ViewNodeContainerParallelogram && (style instanceof FlatContainerStyle || style instanceof WorkspaceImage);
+        if (!result) {
+            // Test changed from FlatContainerStyle
+            result = self.getPrimaryShape() instanceof GradientRoundedRectangle && (style instanceof ShapeContainerStyle || style instanceof WorkspaceImage);
             if (!result) {
-                // Test changed from FlatContainerStyle
-                result = self.getPrimaryShape() instanceof GradientRoundedRectangle && (style instanceof ShapeContainerStyle || style instanceof WorkspaceImage);
-                if (!result) {
-                    // Test changed from WorkspaceImage
-                    result = self.getPrimaryShape() instanceof ViewNodeContainerRectangleFigureDesc && (style instanceof FlatContainerStyle || style instanceof ShapeContainerStyle);
-                }
+                // Test changed from WorkspaceImage
+                result = self.getPrimaryShape() instanceof ViewNodeContainerRectangleFigureDesc && (style instanceof FlatContainerStyle || style instanceof ShapeContainerStyle);
             }
         }
         return result;
