@@ -136,8 +136,23 @@
                   Invalid variable
                </description>
                <message>
-                  The expression {0} of {1} doesn&apos;t accept the {2} variable.
+                  The expression {0} of {1} does not accept the {2} variable.
                </message>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.tools.internal.validation.description.constraints.ValidImagePathConstraint"
+                  id="org.eclipse.sirius.constraints.ValidImagePathConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="Invalid Image Path"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  Validates that image paths are valid
+               </description>
             </constraint>
             <constraint
                   class="org.eclipse.sirius.tools.internal.validation.description.constraints.ValidInterpretedExpressionConstraint"

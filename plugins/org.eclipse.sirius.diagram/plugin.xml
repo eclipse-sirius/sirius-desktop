@@ -398,7 +398,22 @@
                   Invalid Class
                </description>
                <message>
-                  The Class {0} doesn&apos;t exist.
+                  The Class {0} does not exist.
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ValidDiagramImageConstraint"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Valid Diagram Images"
+                  id="org.eclipse.sirius.diagram.constraints.ValidDiagramImage"
+                  statusCode="1">
+               <description>
+                  Invalid Diagram Image
+               </description>
+               <message>
+                  {0}
                </message>
             </constraint>
             <constraint
@@ -410,7 +425,7 @@
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The SemanticCandidatesExpression field of {0} doesn''t accept a blank value because it's recursively imported by another ContainerMapping ({1}). This can cause infinite loop, StackOverflowError (except in case of not synchronized mapping).
+                  The SemanticCandidatesExpression field of {0} does not accept a blank value because it is recursively imported by another ContainerMapping ({1}). This can cause infinite loop, StackOverflowError (except in case of not synchronized mapping).
                </message>
                <description>
                   Validates that there is no blank SemanticCandidatesExpression for a recursive ContainerMapping
@@ -425,7 +440,7 @@
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The SizeComputationExpression field of {0} doesn&apos;&apos;t accept a blank value.
+                  The SizeComputationExpression field of {0} does not accept a blank value.
                </message>
                <description>
                   Validates that the size computation expression of an EdgeStyleDecription is set
@@ -458,7 +473,7 @@
                   Invalid variable
                </description>
                <message>
-                  The expression {0} of {1} doesn&apos;t accept the {2} variable.
+                  The expression {0} of {1} does not accept the {2} variable.
                </message>
             </constraint>
             <constraint

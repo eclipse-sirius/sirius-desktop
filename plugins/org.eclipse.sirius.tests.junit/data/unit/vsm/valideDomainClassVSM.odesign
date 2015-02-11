@@ -52,7 +52,7 @@
           </style>
         </containerMappings>
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="Deco" decoratorPath="\platform" domainClass="EClass"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="Deco" decoratorPath="" domainClass="EClass"/>
         </decorationDescriptionsSet>
       </defaultLayer>
     </ownedRepresentations>

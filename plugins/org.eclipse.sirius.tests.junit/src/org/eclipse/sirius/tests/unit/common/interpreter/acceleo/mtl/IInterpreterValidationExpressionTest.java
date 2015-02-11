@@ -178,10 +178,10 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
         ContainerMapping nodeMapping = getContainerMapping(acceleo3Layer, "EC EClass");
         // invalidFeature ECLass : a validation error should be raised, but not
         // InterpreterException
-        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "Nothing", "The Class Nothing doesn't exist.");
+        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "Nothing", "The Class Nothing does not exist.");
         // invalidFeature ECLass : a validation error should be raised
         ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "semanticElements", "[self.invalidFeature/]", "Invalid Type: Nothing", "Unrecognized variable: (invalidFeature)",
-                "The Class Nothing doesn't exist.");
+                "The Class Nothing does not exist.");
         // valid EClass : interpreter exceptions should now be raised
         ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "EClass", "Unrecognized variable: (invalidFeature)");
     }

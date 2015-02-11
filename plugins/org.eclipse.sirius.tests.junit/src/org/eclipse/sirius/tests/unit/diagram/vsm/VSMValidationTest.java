@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.vsm;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -19,6 +21,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.description.Group;
 
@@ -39,13 +43,18 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
 
     private Group modelerForVariableNameValidation;
 
+    private Group modelerForImagePathValidation;
+
     public void setUp() throws Exception {
         ResourceSet set = new ResourceSetImpl();
+        EclipseTestsSupportHelper.INSTANCE.createProject("Project");
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, "/images/es.png", "/Project/es.png");
         modeler = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVSM.odesign", true), set);
         modelerWithNoStyle = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateVSMWithNoStyle.odesign", true), set);
         modelerWithDiagramExtension = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVSMWithDiagramExtension.odesign", true), set);
         modelerForDomainClassValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideDomainClassVSM.odesign", true), set);
         modelerForVariableNameValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVariableNameVSM.odesign", true), set);
+        modelerForImagePathValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateImagePathVSM.odesign", true), set);
     }
 
     /**
@@ -86,9 +95,9 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         // with conditional style without style, a element based edge without
         // style with conditional style without style and node,container and
         // edge import without style (this 3 items with no style are valid)
-        assertEquals("The diagnostic must be contains 6 elements no validate", 6, diagnostic.getChildren().size());
+        assertEquals("The diagnostic must contain 6 elements invalidated", 6, diagnostic.getChildren().size());
         for (Diagnostic diag : diagnostic.getChildren()) {
-            assertEquals("The list of no validate element must be 'A style is missing for' and not other", "A style is missing for", diag.getMessage().substring(0, 22));
+            assertEquals("The list of invalidated elements must start by 'A style is missing for' and nothing else", "A style is missing for", diag.getMessage().substring(0, 22));
         }
     }
 
@@ -163,6 +172,30 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         Diagnostician diagnostician = new Diagnostician();
         Diagnostic diagnostic = diagnostician.validate(modelerForVariableNameValidation);
         assertEquals("The VSM is valid, it should not have popup error message", Diagnostic.OK, diagnostic.getSeverity());
+    }
+
+    /**
+     * Test VSM validation with diferent paths for images (there are valid and
+     * invalid paths).
+     */
+    public void testValidationImagePathVSM() {
+        Diagnostician diagnostician = new Diagnostician();
+        Diagnostic diagnostic = diagnostician.validate(modelerForImagePathValidation);
+        // Check that there is a pop up for validation problems
+        assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
+        List<Diagnostic> children = diagnostic.getChildren();
+        // test if there is 7 errors and if each one corresponds to the awaited
+        // one
+        assertEquals("The diagnostic must contain 7 elements invalidated", 7, children.size());
+        assertEquals("The first error do not match the awaited one", "The path '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not correspond to an image.", children.get(0).getMessage());
+        assertEquals("The second error do not match the awaited one", "The image '/test/noimage.gif' does not exist.", children.get(1).getMessage());
+        assertEquals("The third error do not match the awaited one", "The path 'icon' does not correspond to an image.", children.get(2).getMessage());
+        assertEquals("The fourth error do not match the awaited one", "The path '/org.eclipse.sirius.tests.junit/plugin.xml' does not correspond to an image.", children.get(3).getMessage());
+        assertEquals("The fifth error do not match the awaited one", "The image 'C:\\images\\image.png' does not exist.", children.get(4).getMessage());
+        assertEquals("The sixth error do not match the awaited one", "The image '/org.eclipse.sirius.tests.junit/images/notexisting.png' does not exist.", children.get(5).getMessage());
+        // partial assert because the full message references the object with by
+        // its toString(), so it contains the its instance id, which is variable
+        assertEquals("The seventh error do not match the awaited one", "The required feature 'decoratorPath' of", children.get(6).getMessage().substring(0, 39));
     }
 
     private void addSpaceInDomainClassValue(EObject current, EAttribute attribute, int iterate) {
