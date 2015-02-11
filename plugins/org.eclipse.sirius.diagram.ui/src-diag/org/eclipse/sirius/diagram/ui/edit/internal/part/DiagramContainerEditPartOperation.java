@@ -132,11 +132,6 @@ public final class DiagramContainerEditPartOperation {
             /* The background figure */
             if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && ddec.getOwnedStyle() != null) {
                 ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(ddec.getOwnedStyle());
-            } else if (self.getBackgroundFigure() == null && ddec.getOwnedStyle() != null) {
-                self.createBackgroundFigure();
-                if (self.getBackgroundFigure() != null) {
-                    self.getFigure().add(self.getBackgroundFigure(), 0);
-                }
             }
 
             final ContainerStyle style = ddec.getOwnedStyle();
