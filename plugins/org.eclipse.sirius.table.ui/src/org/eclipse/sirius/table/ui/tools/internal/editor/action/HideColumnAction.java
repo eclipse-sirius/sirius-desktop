@@ -10,14 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-import org.eclipse.sirius.table.ui.tools.internal.editor.command.TableCommandFactorySetValueRecordingCommand;
 
 /**
  * Hide the column.
@@ -25,9 +25,8 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.command.TableCommandFac
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class HideColumnAction extends AbstractTransactionalTableAction {
-    /**
-     * The column concerned with this action
-     */
+
+    /** The column concerned with this action. */
     private DColumn column;
 
     /**
@@ -54,16 +53,12 @@ public class HideColumnAction extends AbstractTransactionalTableAction {
         this.column = column;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
-        getEditingDomain().getCommandStack().execute(
-                new TableCommandFactorySetValueRecordingCommand(getEditingDomain(), "Set " + TablePackage.eINSTANCE.getDColumn_Visible().getName() + " value", getTableCommandFactory(), column,
-                        TablePackage.eINSTANCE.getDColumn_Visible().getName(), false));
+        String label = "Set " + TablePackage.eINSTANCE.getDColumn_Visible().getName() + " value";
+        Command cmd = getTableCommandFactory().buildSetValue(column, TablePackage.eINSTANCE.getDColumn_Visible().getName(), false);
+        cmd = new CommandWrapper(label, label, cmd);
+        getEditingDomain().getCommandStack().execute(cmd);
     }
 }

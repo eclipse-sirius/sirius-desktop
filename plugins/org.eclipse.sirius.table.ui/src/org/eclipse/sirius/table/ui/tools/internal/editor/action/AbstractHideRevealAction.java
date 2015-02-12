@@ -13,17 +13,16 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.ui.dialogs.SelectionDialog;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 
 /**
  * Common behaviors for hide/reveal actions. It opens a selection dialog.
@@ -55,9 +54,6 @@ public abstract class AbstractHideRevealAction<T extends EObject> extends Abstra
         super(dTable, text, image, editingDomain, tableCommandFactory);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void run() {
         final Collection<T> visibleElements = getInitialVisibleElements();
@@ -72,8 +68,21 @@ public abstract class AbstractHideRevealAction<T extends EObject> extends Abstra
 
         // User wants to continue his action
         if (Window.OK == dlg.getReturnCode() && dlg.getResult() != null) {
-            final List<Object> newVisibles = Lists.newArrayList(dlg.getResult());
-            getEditingDomain().getCommandStack().execute(new VisibilityChangeRecordingCommand(getEditingDomain(), "Set " + getSetVisibleMethodName() + " values", newVisibles));
+            List<Object> newVisibles = Lists.newArrayList(dlg.getResult());
+            CompoundCommand compoundCommand = new CompoundCommand("Set " + getSetVisibleMethodName() + " values");
+            for (T element : getAllElements()) {
+                boolean visible = newVisibles.contains(element);
+                // XOR operator
+                // a ^ b => true if a and b are true or false
+                // simultaneously
+
+                // Here, we want to update visibility only if it has
+                // changed
+                if (visible ^ isVisibleElement(element)) {
+                    compoundCommand.append(getTableCommandFactory().buildSetValue(element, getSetVisibleMethodName(), visible));
+                }
+            }
+            getEditingDomain().getCommandStack().execute(compoundCommand);
         }
     }
 
@@ -129,30 +138,4 @@ public abstract class AbstractHideRevealAction<T extends EObject> extends Abstra
      */
     protected abstract boolean isVisibleElement(T element);
 
-    private class VisibilityChangeRecordingCommand extends RecordingCommand {
-
-        private List<Object> newVisibles;
-
-        public VisibilityChangeRecordingCommand(TransactionalEditingDomain domain, String label, List<Object> newVisibles) {
-            super(domain, label);
-            this.newVisibles = newVisibles;
-        }
-
-        @Override
-        protected void doExecute() {
-            for (final T element : getAllElements()) {
-                final boolean visible = newVisibles.contains(element);
-                // XOR operator
-                // a ^ b => true if a and b are true or false
-                // simultanously
-
-                // Here, we want to update visibility only if it has
-                // changed
-                if (visible ^ isVisibleElement(element)) {
-                    getTableCommandFactory().buildSetValue(element, getSetVisibleMethodName(), visible).execute();
-                }
-            }
-        }
-
-    }
 }

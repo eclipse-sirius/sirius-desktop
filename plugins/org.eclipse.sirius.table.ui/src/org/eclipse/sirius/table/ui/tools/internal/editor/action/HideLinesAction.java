@@ -12,16 +12,16 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-import org.eclipse.sirius.table.ui.tools.internal.editor.command.TableCommandFactorySetValueRecordingCommand;
+
+import com.google.common.collect.Lists;
 
 /**
  * Hide the line.
@@ -29,6 +29,7 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.command.TableCommandFac
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class HideLinesAction extends AbstractTransactionalTableAction {
+
     private static final String HIDE_LINE = "Hide line";
 
     private static final String HIDE_LINES = "Hide lines";
@@ -69,17 +70,16 @@ public class HideLinesAction extends AbstractTransactionalTableAction {
         setText(this.lines.size() <= 1 ? HIDE_LINE : HIDE_LINES);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
-        getEditingDomain().getCommandStack().execute(
-                new TableCommandFactorySetValueRecordingCommand(getEditingDomain(), "Set " + TablePackage.eINSTANCE.getDLine_Visible().getName() + " value", getTableCommandFactory(), lines,
-                        TablePackage.eINSTANCE.getDLine_Visible().getName(), false));
+        String commandLabel = "Set " + TablePackage.eINSTANCE.getDLine_Visible().getName() + " value";
+        String name = TablePackage.eINSTANCE.getDLine_Visible().getName();
+        CompoundCommand compoundCommand = new CompoundCommand(commandLabel);
+        for (EObject instance : lines) {
+            compoundCommand.append(getTableCommandFactory().buildSetValue(instance, name, false));
+        }
+        getEditingDomain().getCommandStack().execute(compoundCommand);
     }
 
     @Override

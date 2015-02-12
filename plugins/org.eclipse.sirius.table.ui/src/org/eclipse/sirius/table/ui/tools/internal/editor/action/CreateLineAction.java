@@ -10,21 +10,24 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandWrapper;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
+import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.description.CreateTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-import org.eclipse.sirius.table.ui.tools.internal.editor.command.CreateLineCommandFromToolRecordingCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -34,7 +37,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * @author lredor
  */
 public class CreateLineAction extends AbstractLineAction {
-    DTable table;
+
+    private DTable table;
 
     /**
      * Constructor.
@@ -50,15 +54,23 @@ public class CreateLineAction extends AbstractLineAction {
         super(new IdentifiedElementQuery(createTool).getLabel(), DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.CREATE_LINE), editingDomain, tableCommandFactory, createTool);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
-        getEditingDomain().getCommandStack().execute(new CreateLineCommandFromToolRecordingCommand(getEditingDomain(), getText(), getLine(), table, tableCommandFactory, getCreateTool()));
+        EObject target;
+        LineContainer lineContainer;
+        DLine dLine = getLine();
+        if (dLine != null) {
+            target = dLine.getTarget();
+            lineContainer = (LineContainer) dLine.eContainer();
+        } else {
+            target = table.getTarget();
+            lineContainer = table;
+        }
+        Command cmd = tableCommandFactory.buildCreateLineCommandFromTool(lineContainer, target, getCreateTool());
+        String label = getText();
+        cmd = new CommandWrapper(label, label, cmd);
+        getEditingDomain().getCommandStack().execute(cmd);
     }
 
     private CreateTool getCreateTool() {
@@ -70,11 +82,6 @@ public class CreateLineAction extends AbstractLineAction {
         return tool;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractToolAction#canExecute()
-     */
     @Override
     public boolean canExecute() {
         boolean canExecute = true;

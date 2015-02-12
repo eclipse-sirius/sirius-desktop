@@ -10,20 +10,21 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-import org.eclipse.sirius.table.ui.tools.internal.editor.command.DeleteElementRecordingCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -33,11 +34,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * @author lredor
  */
 public class DeleteTargetColumnAction extends AbstractTargetColumnAction {
+
     private static final String DEFAULT_NAME = "Delete column";
 
     /**
      * Constructor. The deleteTool can be null if there is nothing specific to
-     * do
+     * do.
      * 
      * @param deleteTool
      *            The tool to do some other actions
@@ -55,22 +57,15 @@ public class DeleteTargetColumnAction extends AbstractTargetColumnAction {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
-        getEditingDomain().getCommandStack().execute(new DeleteElementRecordingCommand(getEditingDomain(), getText(), tableCommandFactory, getColumn()));
+        Command cmd = tableCommandFactory.buildDeleteTableElement(getColumn());
+        String label = getText();
+        cmd = new CommandWrapper(label, label, cmd);
+        getEditingDomain().getCommandStack().execute(cmd);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractToolAction#canExecute()
-     */
     @Override
     public boolean canExecute() {
         boolean canExecute = true;

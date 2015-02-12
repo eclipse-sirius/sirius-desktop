@@ -145,9 +145,6 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
         return new DTableLineLabelProvider(decorator);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected SelectionDialog createSelectionDialog() {
         final CheckedTreeSelectionDialog dlg = new CheckedTreeSelectionDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), getLabelProvider(), getContentProvider());
@@ -159,9 +156,6 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
         return dlg;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected List<DLine> getAllElements() {
         final List<DLine> result = getAllLines(getTable().getLines());
@@ -178,9 +172,6 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Collection<DLine> getInitialVisibleElements() {
         return Collections2.filter(getAllElements(), new Predicate<DLine>() {
@@ -191,33 +182,21 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
         });
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getSetVisibleMethodName() {
         return TablePackage.eINSTANCE.getDLine_Visible().getName();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getMessage() {
         return DIALOG_MESSAGE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getTitle() {
         return DIALOG_TITLE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean isVisibleElement(final DLine element) {
         return element.isVisible();

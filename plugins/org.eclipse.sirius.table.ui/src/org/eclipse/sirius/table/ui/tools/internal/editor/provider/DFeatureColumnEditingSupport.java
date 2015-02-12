@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.celleditor.ExtendedComboBoxCellEditor;
 import org.eclipse.emf.common.ui.celleditor.ExtendedDialogCellEditor;
@@ -44,14 +45,15 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Tree;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
@@ -61,16 +63,14 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableTreeViewer;
-import org.eclipse.sirius.table.ui.tools.internal.editor.command.SetCellValueRecordingCommand;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
-import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Tree;
 
 /**
  * Support for the cells editing of a Edition DTable (with
@@ -306,7 +306,10 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
      */
     private void specificSetValue(final DCell editedCell, final Object value) {
         tableEditor.enablePropertiesUpdate(false);
-        getEditingDomain().getCommandStack().execute(new SetCellValueRecordingCommand(getEditingDomain(), "Set cell content", tableCommandFactory, editedCell, value));
+        Command command = tableCommandFactory.buildSetCellValueFromTool(editedCell, value);
+        if (command.canExecute()) {
+            getEditingDomain().getCommandStack().execute(command);
+        }
         tableEditor.enablePropertiesUpdate(true);
         tableEditor.forceRefreshProperties();
     }
@@ -346,11 +349,6 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                     }
 
                     if (valid) {
-                        try {
-                            final Object featureObject = accessor.eGet(element, getFeatureName());
-                        } catch (final FeatureNotFoundException e) {
-                            RuntimeLoggerManager.INSTANCE.error(this.featureColumn, DescriptionPackage.eINSTANCE.getFeatureColumnMapping_FeatureName(), e);
-                        }
                         result = new ExtendedDialogCellEditor(tree, getLabelProvider(element)) {
                             @Override
                             protected Object openDialogBox(final Control cellEditorWindow) {

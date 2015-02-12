@@ -16,11 +16,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.transaction.NotificationFilter;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
@@ -194,11 +194,23 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
 
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+        CompoundCommand compoundCommand = new CompoundCommand();
         final Multimap<ModelChangeTrigger, Notification> listenersToNotify = collectListenersToNotify(event.getNotifications());
         if (listenersToNotify != null && !listenersToNotify.isEmpty()) {
-            return new PreCommitPriorityNotifyListenersCommand(domain, listenersToNotify);
+            Ordering<ModelChangeTrigger> priorityOrdering = Ordering.natural().onResultOf(SessionEventBrokerImpl.getPriorityFunction);
+            List<ModelChangeTrigger> sortedKeys = priorityOrdering.sortedCopy(listenersToNotify.keySet());
+            for (ModelChangeTrigger key : sortedKeys) {
+                Collection<Notification> notif = listenersToNotify.get(key);
+                if (notif != null && notif.size() > 0) {
+                    Option<Command> triggerCmd = key.localChangesAboutToCommit(notif);
+                    if (triggerCmd.some() && triggerCmd.get().canExecute()) {
+                        compoundCommand.append(triggerCmd.get());
+                    }
+
+                }
+            }
         }
-        return null;
+        return compoundCommand;
     }
 
     @Override
@@ -207,52 +219,6 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
         eObjectsToListeners.clear();
         featuresToListeners.clear();
         scopedTriggers.clear();
-    }
-
-    /**
-     * Specific command to notify listeners, regarding their priority and local
-     * changes.
-     * 
-     * @author mporhel
-     */
-    private static final class PreCommitPriorityNotifyListenersCommand extends RecordingCommand {
-        private final Multimap<ModelChangeTrigger, Notification> listenersToNotify;
-
-        /**
-         * Constructor.
-         * 
-         * @param domain
-         *            the editing domain.
-         * @param listenersToNotify
-         *            the listeners to notify.
-         */
-        public PreCommitPriorityNotifyListenersCommand(TransactionalEditingDomain domain, Multimap<ModelChangeTrigger, Notification> listenersToNotify) {
-            super(domain, "Notify listerners from SessionEventBroker");
-            this.listenersToNotify = listenersToNotify;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void doExecute() {
-            Ordering<ModelChangeTrigger> priorityOrdering = Ordering.natural().onResultOf(SessionEventBrokerImpl.getPriorityFunction);
-            List<ModelChangeTrigger> sortedKeys = priorityOrdering.sortedCopy(listenersToNotify.keySet());
-            for (ModelChangeTrigger key : sortedKeys) {
-                launchCommands(key);
-            }
-        }
-
-        private void launchCommands(ModelChangeTrigger key) {
-            Collection<Notification> notif = listenersToNotify.get(key);
-            if (notif != null && notif.size() > 0) {
-                Option<Command> triggerCmd = key.localChangesAboutToCommit(notif);
-                if (triggerCmd.some() && triggerCmd.get().canExecute()) {
-                    triggerCmd.get().execute();
-                }
-
-            }
-        }
     }
 
 }

@@ -316,7 +316,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @return a command able to execute the direct Edit Tool.
      */
     private SiriusCommand buildCommandFromCell(final DCell currentCell, final TableTool tool, final Object newValue) {
-        SiriusCommand result = new SiriusCommand(domain);
+        SiriusCommand result = new SiriusCommand(domain, "Set cell content");
         if (!getPermissionAuthority().canEditInstance(currentCell)) {
             result = new InvalidPermissionCommand(domain, currentCell);
         } else {
@@ -381,7 +381,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @return a command able to execute the create Tool.
      */
     private SiriusCommand buildCommandFromIntersection(final DLine currentLine, final DTargetColumn currentColumn, final CreateCellTool tool, final Object newValue) {
-        SiriusCommand result = new SiriusCommand(domain);
+        SiriusCommand result = new SiriusCommand(domain, "Set cell content");
         if (!getPermissionAuthority().canEditInstance(currentLine)) {
             result = new InvalidPermissionCommand(domain, currentLine);
         } else {

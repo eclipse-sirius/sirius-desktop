@@ -10,19 +10,19 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-import org.eclipse.sirius.table.ui.tools.internal.editor.command.TableCommandFactorySetValueRecordingCommand;
 
 /**
  * Action to show all the columns of the tables.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
  */
 public class ShowAllColumnsAction extends AbstractTransactionalTableAction {
 
@@ -40,20 +40,16 @@ public class ShowAllColumnsAction extends AbstractTransactionalTableAction {
         super(dTable, "Show hidden columns", DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.REVEAL_IMG), editingDomain, tableCommandFactory);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
-        // new NotificationTask(getTable(), Notification.Kind.START,
-        // Notification.USER_OPERATION_ON_MANY_ELEMENTS).execute();
-        getEditingDomain().getCommandStack().execute(
-                new TableCommandFactorySetValueRecordingCommand(getEditingDomain(), "Set " + TablePackage.eINSTANCE.getDColumn_Visible().getName() + " values", getTableCommandFactory(), getTable()
-                        .getColumns(), TablePackage.eINSTANCE.getDColumn_Visible().getName(), true));
-        // new NotificationTask(getTable(), Notification.Kind.STOP,
-        // Notification.USER_OPERATION_ON_MANY_ELEMENTS).execute();
+        String commandLabel = "Set " + TablePackage.eINSTANCE.getDColumn_Visible().getName() + " values";
+        String name = TablePackage.eINSTANCE.getDColumn_Visible().getName();
+        CompoundCommand compoundCommand = new CompoundCommand(commandLabel);
+        for (EObject instance : getTable().getColumns()) {
+            Command cmd = getTableCommandFactory().buildSetValue(instance, name, true);
+            compoundCommand.append(cmd);
+        }
+        getEditingDomain().getCommandStack().execute(compoundCommand);
     }
 }

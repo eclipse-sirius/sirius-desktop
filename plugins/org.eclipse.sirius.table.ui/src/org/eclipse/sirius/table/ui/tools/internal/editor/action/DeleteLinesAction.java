@@ -15,16 +15,14 @@ import java.util.Collection;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.table.business.api.query.DLineQuery;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-import org.eclipse.sirius.table.ui.tools.internal.editor.command.DeleteElementRecordingCommand;
+
+import com.google.common.collect.Lists;
 
 /**
  * This action delete the lines (the corresponding semantic element).
@@ -32,6 +30,7 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.command.DeleteElementRe
  * @author mporhel
  */
 public class DeleteLinesAction extends Action {
+
     private static final String DELETE_LINE = "Delete line";
 
     private static final String DELETE_LINES = DELETE_LINE + "s";
@@ -63,22 +62,14 @@ public class DeleteLinesAction extends Action {
         this.tableCommandFactory = tableCommandFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
-
-        CompoundCommand cc = new CompoundCommand();
+        CompoundCommand cc = new CompoundCommand(getText());
         for (DLine line : lines) {
-            cc.append(new DeleteElementRecordingCommand(getEditingDomain(), getText(), tableCommandFactory, line));
+            cc.append(tableCommandFactory.buildDeleteTableElement(line));
         }
-
         getEditingDomain().getCommandStack().execute(cc);
-
         lines.clear();
     }
 
@@ -100,7 +91,7 @@ public class DeleteLinesAction extends Action {
             if (linesToDelete.size() == 1) {
                 setText(DELETE_LINE);
                 setToolTipText(TOOLTIP_LINE);
-        
+
                 DeleteTool deleteTool = getDeleteTool(linesToDelete.iterator().next());
                 if (deleteTool != null) {
                     setText(new IdentifiedElementQuery(deleteTool).getLabel());
@@ -114,9 +105,9 @@ public class DeleteLinesAction extends Action {
     }
 
     /**
-     * {@inheritDoc}
+     * Tell if the action can do something.
      * 
-     * @see org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractToolAction#canExecute()
+     * @return true if the action can do something
      */
     public boolean canExecute() {
         boolean canExecute = !lines.isEmpty();

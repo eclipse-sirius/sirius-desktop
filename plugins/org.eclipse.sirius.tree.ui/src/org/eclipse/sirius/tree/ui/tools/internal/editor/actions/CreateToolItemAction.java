@@ -12,22 +12,23 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.actions;
 
 import java.util.Iterator;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
-
-import com.google.common.collect.Iterators;
-
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tree.DTree;
+import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
@@ -35,12 +36,12 @@ import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
-import org.eclipse.sirius.tree.ui.tools.internal.commands.CreateLineCommandFromToolRecordingCommand;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+
+import com.google.common.collect.Iterators;
 
 /**
  * Action to launch the createTool of the treeItemContainer (tree or tree item).
@@ -48,7 +49,8 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaCla
  * @author nlepine
  */
 public class CreateToolItemAction extends AbstractToolItemAction {
-    DTree tree;
+
+    private DTree tree;
 
     /**
      * Constructor.
@@ -112,15 +114,24 @@ public class CreateToolItemAction extends AbstractToolItemAction {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
-        getEditingDomain().getCommandStack().execute(new CreateLineCommandFromToolRecordingCommand(getEditingDomain(), getText(), getTreeItem(), tree, treeCommandFactory, getCreationTool()));
+        EObject target;
+        DTreeItemContainer lineContainer;
+        DTreeItem dTreeItem = getTreeItem();
+        if (dTreeItem != null) {
+            target = dTreeItem.getTarget();
+            lineContainer = (DTreeItemContainer) dTreeItem.eContainer();
+        } else {
+            target = tree.getTarget();
+            lineContainer = tree;
+        }
+
+        Command cmd = treeCommandFactory.buildCreateLineCommandFromTool(lineContainer, target, getCreationTool());
+        String label = getText();
+        cmd = new CommandWrapper(label, label, cmd);
+        getEditingDomain().getCommandStack().execute(cmd);
     }
 
     private TreeItemCreationTool getCreationTool() {
@@ -132,11 +143,6 @@ public class CreateToolItemAction extends AbstractToolItemAction {
         return tool;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractToolAction#canExecute()
-     */
     @Override
     public boolean canExecute() {
         boolean canExecute = true;

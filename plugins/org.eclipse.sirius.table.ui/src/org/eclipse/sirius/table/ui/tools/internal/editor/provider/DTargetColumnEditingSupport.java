@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.CellEditor;
@@ -18,7 +19,9 @@ import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
-import org.eclipse.swt.widgets.Tree;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -26,11 +29,7 @@ import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableTreeViewer;
-import org.eclipse.sirius.table.ui.tools.internal.editor.command.CreateCellRecordingCommand;
-import org.eclipse.sirius.table.ui.tools.internal.editor.command.SetCellValueRecordingCommand;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.swt.widgets.Tree;
 
 /**
  * Support for the cells editing of a Cross DTable (with {@link DTarget}).
@@ -76,11 +75,6 @@ public class DTargetColumnEditingSupport extends EditingSupport {
         this.tableEditor = tableEditor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.EditingSupport#canEdit(java.lang.Object)
-     */
     @Override
     protected boolean canEdit(final Object element) {
         boolean canEdit = false;
@@ -96,11 +90,6 @@ public class DTargetColumnEditingSupport extends EditingSupport {
         return canEdit;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.EditingSupport#getCellEditor(java.lang.Object)
-     */
     @Override
     protected CellEditor getCellEditor(final Object element) {
         if (element instanceof DLine) {
@@ -109,11 +98,6 @@ public class DTargetColumnEditingSupport extends EditingSupport {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.EditingSupport#getValue(java.lang.Object)
-     */
     @Override
     protected Object getValue(final Object element) {
         Object result = null;
@@ -150,20 +134,23 @@ public class DTargetColumnEditingSupport extends EditingSupport {
             if (optionnalEditedCell.some()) {
                 if (!value.equals(optionnalEditedCell.get().getLabel())) {
                     tableEditor.enablePropertiesUpdate(false);
-                    getEditingDomain().getCommandStack().execute(new SetCellValueRecordingCommand(getEditingDomain(), "Set cell content", tableCommandFactory, optionnalEditedCell.get(), value));
+                    Command command = tableCommandFactory.buildSetCellValueFromTool(optionnalEditedCell.get(), value);
+                    if (command.canExecute()) {
+                        getEditingDomain().getCommandStack().execute(command);
+                    }
                     tableEditor.enablePropertiesUpdate(true);
                     tableEditor.forceRefreshProperties();
                 }
             } else if (value != null) {
                 tableEditor.enablePropertiesUpdate(false);
-                getEditingDomain().getCommandStack().execute(new CreateCellRecordingCommand(getEditingDomain(), "Set cell content", tableCommandFactory, line, targetColumn, value));
+                Command command = tableCommandFactory.buildCreateCellFromTool(line, targetColumn, value);
+                if (command.canExecute()) {
+                    getEditingDomain().getCommandStack().execute(command);
+                }
                 tableEditor.enablePropertiesUpdate(true);
                 tableEditor.forceRefreshProperties();
             }
         }
-        // This update is not needed because there is a full refresh done before
-        // (see eventually to improve perf)
-        // getViewer().update(element, null);
     }
 
     /**
@@ -226,12 +213,6 @@ public class DTargetColumnEditingSupport extends EditingSupport {
         return accessor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.EditingSupport#initializeCellEditorValue(org.eclipse.jface.viewers.CellEditor,
-     *      org.eclipse.jface.viewers.ViewerCell)
-     */
     @Override
     protected void initializeCellEditorValue(final CellEditor cellEditor, final ViewerCell cell) {
         if (((DTableTreeViewer) getViewer()).getFirstEditionCharacter() != null) {

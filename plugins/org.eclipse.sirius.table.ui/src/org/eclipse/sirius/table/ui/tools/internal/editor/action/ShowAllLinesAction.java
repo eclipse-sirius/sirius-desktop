@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
-import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
@@ -24,9 +24,9 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
  * Action to show all the lines of the tables.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
  */
 public class ShowAllLinesAction extends AbstractTransactionalTableAction {
+
     /**
      * Creates a new action.
      * 
@@ -41,47 +41,35 @@ public class ShowAllLinesAction extends AbstractTransactionalTableAction {
         super(dTable, "Show hidden lines", DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.REVEAL_IMG), editingDomain, tableCommandFactory);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
-        getEditingDomain().getCommandStack().execute(new ShowLineRecordingCommand(getEditingDomain(), "Set " + TablePackage.eINSTANCE.getDLine_Visible().getName() + " values"));
+        CompoundCommand compoundCommand = new CompoundCommand("Set " + TablePackage.eINSTANCE.getDLine_Visible().getName() + " values");
+        showLines(compoundCommand);
+        getEditingDomain().getCommandStack().execute(compoundCommand);
     }
 
     /**
      * Show all the lines of the table.
      */
-    private void showLines() {
-        showLines(getTable());
+    private void showLines(CompoundCommand compoundCommand) {
+        showLines(compoundCommand, getTable());
     }
 
     /**
      * Show all the lines of this line container.
      * 
+     * @param compoundCommand
+     * 
      * @param lineContainer
      *            The line container
      */
-    private void showLines(final LineContainer lineContainer) {
+    private void showLines(CompoundCommand compoundCommand, final LineContainer lineContainer) {
         for (final DLine line : lineContainer.getLines()) {
-            getTableCommandFactory().buildSetValue(line, TablePackage.eINSTANCE.getDLine_Visible().getName(), true).execute();
-            showLines(line);
+            Command cmd = getTableCommandFactory().buildSetValue(line, TablePackage.eINSTANCE.getDLine_Visible().getName(), true);
+            compoundCommand.append(cmd);
+            showLines(compoundCommand, line);
         }
     }
 
-    private class ShowLineRecordingCommand extends RecordingCommand {
-
-        public ShowLineRecordingCommand(TransactionalEditingDomain domain, String label) {
-            super(domain, label);
-        }
-
-        @Override
-        protected void doExecute() {
-            showLines();
-        }
-
-    }
 }

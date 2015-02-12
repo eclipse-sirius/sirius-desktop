@@ -13,18 +13,16 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.actions;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.business.internal.metamodel.query.DTreeItemInternalQuery;
 import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
+
+import com.google.common.collect.Lists;
 
 /**
  * This action delete the line (the corresponding semantic element).
@@ -63,20 +61,14 @@ public class DeleteTreeItemsAction extends Action {
         this.treeCommandFactory = treeCommandFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
 
-        CompoundCommand cc = new CompoundCommand();
+        CompoundCommand cc = new CompoundCommand(getText());
         for (DTreeItem item : items) {
-            cc.append(new DeleteTreeElementRecordingCommand(getEditingDomain(), getText(), item));
+            cc.append(treeCommandFactory.buildDeleteTreeElement(item));
         }
-
         getEditingDomain().getCommandStack().execute(cc);
 
         items.clear();
@@ -140,19 +132,4 @@ public class DeleteTreeItemsAction extends Action {
         return canExecute;
     }
 
-    private class DeleteTreeElementRecordingCommand extends RecordingCommand {
-
-        private final DTreeItem item;
-
-        public DeleteTreeElementRecordingCommand(TransactionalEditingDomain domain, String label, DTreeItem item) {
-            super(domain, label);
-            this.item = item;
-        }
-
-        @Override
-        protected void doExecute() {
-            treeCommandFactory.buildDeleteTreeElement(item).execute();
-        }
-
-    }
 }
