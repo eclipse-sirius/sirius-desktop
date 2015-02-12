@@ -166,7 +166,6 @@
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//DNodeList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DNodeList/ownedElements"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DNodeList/lineWidth"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//DNodeListElement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DNodeListElement/ownedStyle"/>
