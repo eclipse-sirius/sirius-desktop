@@ -182,6 +182,8 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -1476,6 +1478,14 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                 }
                 request.setEditParts(list);
                 return request;
+            }
+            
+            @Override
+            public void setCurrentEvent(DropTargetEvent currentEvent) {
+                if (currentEvent!=null) {
+                    currentEvent.detail = DND.DROP_COPY;
+                }
+                super.setCurrentEvent(currentEvent);
             }
 
             @Override
