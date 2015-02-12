@@ -245,7 +245,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RefreshWithCustomizedStyleFromTabbarTests.class);
         suite.addTestSuite(ResizeKindRefreshTests.class);
         suite.addTestSuite(SpecificLayoutBendpointsOnReopeningTest.class);
-        suite.addTestSuite(WorkspaceImageTest.class);
         suite.addTestSuite(TreeFoldingTest.class);
         suite.addTestSuite(DoubleClickToolNavigationOperationTest.class);
         suite.addTestSuite(BackgroundColorFigureUpdateTests.class);

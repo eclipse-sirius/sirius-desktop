@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_BjGrwJ7XEd-_KuSX82kl6A" selectedViews="_CFDiQJ7XEd-_KuSX82kl6A" version="8.0.0">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_BjGrwJ7XEd-_KuSX82kl6A" selectedViews="_CFDiQJ7XEd-_KuSX82kl6A" version="10.0.0.201412231738">
   <models xmi:type="ecore:EPackage" href="tc2262.ecore#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_CFDiQJ7XEd-_KuSX82kl6A" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_YjaB0J7bEd-_KuSX82kl6A" name="tc2262">
@@ -168,6 +168,60 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_HomYUXzNEeKdyPf9rHMGEw" fontName="Comic Sans MS" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HomYUnzNEeKdyPf9rHMGEw" x="180" y="276" width="100" height="70"/>
           </children>
+          <children xmi:type="notation:Node" xmi:id="_9E7SkLKiEeSI84JZFmnEHw" type="2002" element="_9ExhkLKiEeSI84JZFmnEHw">
+            <children xmi:type="notation:Node" xmi:id="_9FAyILKiEeSI84JZFmnEHw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_9FBZMLKiEeSI84JZFmnEHw" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_9FBZMbKiEeSI84JZFmnEHw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_9FBZMrKiEeSI84JZFmnEHw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_9E7SkbKiEeSI84JZFmnEHw" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9E7SkrKiEeSI84JZFmnEHw" x="468" y="316"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_D__nQLKjEeSI84JZFmnEHw" type="2003" element="_D_mlsLKjEeSI84JZFmnEHw">
+            <children xmi:type="notation:Node" xmi:id="_EAAOULKjEeSI84JZFmnEHw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_EAA1YLKjEeSI84JZFmnEHw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_EAA1YbKjEeSI84JZFmnEHw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_EAA1YrKjEeSI84JZFmnEHw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_D__nQbKjEeSI84JZFmnEHw" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D__nQrKjEeSI84JZFmnEHw" x="680" y="316"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_asB6ULKjEeSI84JZFmnEHw" type="2002" element="_ar7MoLKjEeSI84JZFmnEHw">
+            <children xmi:type="notation:Node" xmi:id="_asChYLKjEeSI84JZFmnEHw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_asChYbKjEeSI84JZFmnEHw" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_asChYrKjEeSI84JZFmnEHw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_asChY7KjEeSI84JZFmnEHw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_asB6UbKjEeSI84JZFmnEHw" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_asB6UrKjEeSI84JZFmnEHw" x="468" y="384"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_asDIcLKjEeSI84JZFmnEHw" type="2003" element="_ar7zsLKjEeSI84JZFmnEHw">
+            <children xmi:type="notation:Node" xmi:id="_asDvgLKjEeSI84JZFmnEHw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_asDvgbKjEeSI84JZFmnEHw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_asDvgrKjEeSI84JZFmnEHw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_asDvg7KjEeSI84JZFmnEHw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_asDIcbKjEeSI84JZFmnEHw" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_asDIcrKjEeSI84JZFmnEHw" x="672" y="384"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CqO4wLKkEeSI84JZFmnEHw" type="2002" element="_CqILELKkEeSI84JZFmnEHw">
+            <children xmi:type="notation:Node" xmi:id="_CqPf0LKkEeSI84JZFmnEHw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_CqPf0bKkEeSI84JZFmnEHw" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_CqPf0rKkEeSI84JZFmnEHw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_CqPf07KkEeSI84JZFmnEHw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CqO4wbKkEeSI84JZFmnEHw" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CqO4wrKkEeSI84JZFmnEHw" x="468" y="400"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CqQG4LKkEeSI84JZFmnEHw" type="2003" element="_CqJZMLKkEeSI84JZFmnEHw">
+            <children xmi:type="notation:Node" xmi:id="_CqQG47KkEeSI84JZFmnEHw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_CqQG5LKkEeSI84JZFmnEHw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_CqQG5bKkEeSI84JZFmnEHw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_CqQG5rKkEeSI84JZFmnEHw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CqQG4bKkEeSI84JZFmnEHw" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CqQG4rKkEeSI84JZFmnEHw" x="680" y="400"/>
+          </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_Yjao4p7bEd-_KuSX82kl6A"/>
         </data>
       </ownedAnnotationEntries>
@@ -326,6 +380,84 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_HoPzAnzNEeKdyPf9rHMGEw"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EPackageMapping']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_9ExhkLKiEeSI84JZFmnEHw" name="container_image">
+        <target xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_9EyIoLKiEeSI84JZFmnEHw" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_9EyIobKiEeSI84JZFmnEHw"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_img']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9EyIorKiEeSI84JZFmnEHw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_img']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_D_mlsLKjEeSI84JZFmnEHw" name="list_image">
+        <target xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_D_mlsbKjEeSI84JZFmnEHw" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_D_mlsrKjEeSI84JZFmnEHw"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_D_mls7KjEeSI84JZFmnEHw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_ar7MoLKjEeSI84JZFmnEHw" name="Class1" visible="false">
+        <target xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ar7MobKjEeSI84JZFmnEHw" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ar7MorKjEeSI84JZFmnEHw"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_img_fixed_size']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ar7Mo7KjEeSI84JZFmnEHw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_img_fixed_size']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ar7zsLKjEeSI84JZFmnEHw" name="Class1" visible="false">
+        <target xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ar8awLKjEeSI84JZFmnEHw" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ar8awbKjEeSI84JZFmnEHw"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img_fixed_size']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ar8awrKjEeSI84JZFmnEHw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img_fixed_size']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_CqILELKkEeSI84JZFmnEHw" name="container_image_not_found">
+        <target xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_CqILEbKkEeSI84JZFmnEHw" workspacePath="/org.eclipse.sirius.tests.junit/images/nonexistingimage.png">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_CqILErKkEeSI84JZFmnEHw"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_img_not_found']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CqILE7KkEeSI84JZFmnEHw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_img_not_found']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_CqJZMLKkEeSI84JZFmnEHw" name="list_image_not_found">
+        <target xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc2262.ecore#//Class1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_CqJZMbKkEeSI84JZFmnEHw" workspacePath="/org.eclipse.sirius.tests.junit/nonexistingimage.png">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_CqJZMrKkEeSI84JZFmnEHw"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img_not_found']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CqJZM7KkEeSI84JZFmnEHw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img_not_found']"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_YjaB0Z7bEd-_KuSX82kl6A"/>

@@ -60,6 +60,10 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
 
     private double imageRatio = (double) realImageSize.width / realImageSize.height;
 
+    private Dimension realContainerImageSize = new Dimension(160, 48);
+
+    private double imageContainerRatio = (double) realContainerImageSize.width / realContainerImageSize.height;
+
     private int defaultWidth = 30;
 
     @Override
@@ -85,7 +89,22 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
         assertNotNull(diagram);
 
-        validateSize(EcorePackage.eINSTANCE.getEAttribute(), realImageSize);
+        validateNodeSize(EcorePackage.eINSTANCE.getEAttribute(), realImageSize);
+
+        // Test here the size of container/list as there is no possibility to
+        // compute/define the size of containers in the VSM (See
+        // ContainerStyleDescription): the initial GMF bounds will (-1,-1),
+        // equivalent to -1 case for nodes. The sizeComputationExpression
+        // attribute on WorkspaceImageDescription comes from the inheritance to
+        // NodeStyleDescription and is not used in the context of a container
+        // mapping.
+        List<DDiagramElement> containers = getDiagramElementsFromLabel(diagram, "container_image");
+        assertEquals(1, containers.size());
+        List<DDiagramElement> lists = getDiagramElementsFromLabel(diagram, "list_image");
+        assertEquals(1, lists.size());
+
+        containers.addAll(lists);
+        validateSize(realContainerImageSize, imageContainerRatio, lists);
     }
 
     /**
@@ -101,7 +120,7 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
         assertNotNull(diagram);
 
-        validateSize(EcorePackage.eINSTANCE.getEOperation(), new Dimension(defaultWidth, new Double(defaultWidth / imageRatio).intValue()));
+        validateNodeSize(EcorePackage.eINSTANCE.getEOperation(), new Dimension(defaultWidth, new Double(defaultWidth / imageRatio).intValue()));
     }
 
     /**
@@ -117,7 +136,7 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
         assertNotNull(diagram);
 
-        validateSize(EcorePackage.eINSTANCE.getEReference(), realImageSize);
+        validateNodeSize(EcorePackage.eINSTANCE.getEReference(), realImageSize);
     }
 
     /**
@@ -133,9 +152,17 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
         assertNotNull(diagram);
 
-        validateSize(EcorePackage.eINSTANCE.getEAttribute(), realImageSize);
-        validateSize(EcorePackage.eINSTANCE.getEReference(), realImageSize);
-        validateSize(EcorePackage.eINSTANCE.getEOperation(), new Dimension(defaultWidth, new Double(defaultWidth / imageRatio).intValue()));
+        validateNodeSize(EcorePackage.eINSTANCE.getEAttribute(), realImageSize);
+        validateNodeSize(EcorePackage.eINSTANCE.getEReference(), realImageSize);
+        validateNodeSize(EcorePackage.eINSTANCE.getEOperation(), new Dimension(defaultWidth, new Double(defaultWidth / imageRatio).intValue()));
+
+        List<DDiagramElement> containers = getDiagramElementsFromLabel(diagram, "container_image");
+        assertEquals(1, containers.size());
+        List<DDiagramElement> lists = getDiagramElementsFromLabel(diagram, "list_image");
+        assertEquals(1, lists.size());
+
+        containers.addAll(lists);
+        validateSize(realContainerImageSize, imageContainerRatio, lists);
     }
 
     /**
@@ -145,7 +172,6 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
     public void testEmptyWorkspaceImagePath() {
         diagram = (DDiagram) getRepresentations(REPRESENTATION_DESC_NAME).toArray()[0];
         assertNotNull(diagram);
-        query = new DDiagramInternalQuery(diagram);
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
         List<DDiagramElement> diagramElements = getDiagramElementsFromLabel(diagram, "P1");
@@ -155,7 +181,31 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
         assertNotNull("The node 'P1' should have a WorkspaceImageFigure 'not found' event without workspace image path specified.", figure);
     }
 
-    private void validateSize(final EClass type, Dimension expectedSize) {
+    /**
+     * Makes sure that the container and list has a workspace image when the
+     * description references a non existing image.
+     */
+    public void testNotFoundImage() {
+        diagram = (DDiagram) getRepresentations(REPRESENTATION_DESC_NAME).toArray()[0];
+        assertNotNull(diagram);
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        List<DDiagramElement> diagramElements = getDiagramElementsFromLabel(diagram, "container_image_not_found");
+        assertEquals("We should have one package named \"container_image_not_found\"", 1, diagramElements.size());
+        IGraphicalEditPart editPart = getEditPart(diagramElements.get(0));
+        WorkspaceImageFigure figure = getWorkspaceImageFigure(editPart.getFigure());
+        assertNotNull("The container 'container_image_not_found' should have a WorkspaceImageFigure 'not found' even with.", figure);
+
+        diagramElements = getDiagramElementsFromLabel(diagram, "list_image_not_found");
+        assertEquals("We should have one package named \"list_image_not_found\"", 1, diagramElements.size());
+        editPart = getEditPart(diagramElements.get(0));
+        figure = getWorkspaceImageFigure(editPart.getFigure());
+        assertNotNull("The container 'list_image_not_found' should have a WorkspaceImageFigure 'not found' even with.", figure);
+
+    }
+
+    private void validateNodeSize(final EClass type, Dimension expectedSize) {
 
         Predicate<DNode> expectedType = new Predicate<DNode>() {
             public boolean apply(DNode input) {
@@ -168,7 +218,11 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
         // one nodes per node edit part type.
         assertEquals(4, nodesFromType.size());
 
-        for (DNode node : nodesFromType) {
+        validateSize(expectedSize, imageRatio, nodesFromType);
+    }
+
+    private void validateSize(Dimension expectedSize, double expectedRatio, List<? extends DDiagramElement> nodesFromType) {
+        for (DDiagramElement dde : nodesFromType) {
 
             Integer expectedDWidth;
             Integer expectedDHeight;
@@ -180,10 +234,13 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
                 expectedDHeight = expectedDWidth;
             }
 
-            assertEquals(expectedDWidth, node.getWidth());
-            assertEquals(expectedDHeight, node.getHeight());
+            if (dde instanceof DNode) {
+                DNode node = (DNode) dde;
+                assertEquals(expectedDWidth, node.getWidth());
+                assertEquals(expectedDHeight, node.getHeight());
+            }
 
-            IGraphicalEditPart editPart = getEditPart(node);
+            IGraphicalEditPart editPart = getEditPart(dde);
             Node gmfNode = (Node) editPart.getNotationView();
             assertNotNull(gmfNode);
             Size layoutConstraint = (Size) gmfNode.getLayoutConstraint();
@@ -199,7 +256,7 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
             WorkspaceImageFigure figure = getWorkspaceImageFigure(editPart.getFigure());
             assertNotNull(figure);
 
-            assertEquals("Figure bounds: " + figure.getBounds() + ", GMF bounds: " + gmfNode.getLayoutConstraint(), imageRatio, figure.getImageAspectRatio());
+            assertEquals("Figure bounds: " + figure.getBounds() + ", GMF bounds: " + gmfNode.getLayoutConstraint(), expectedRatio, figure.getImageAspectRatio());
             assertEquals(expectedSize, figure.getBounds().getSize());
         }
     }
