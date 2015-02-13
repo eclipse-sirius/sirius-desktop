@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.business.internal.query;
 
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.swt.graphics.Image;

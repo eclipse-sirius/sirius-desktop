@@ -37,6 +37,7 @@ h4. Changes in @org.eclipse.sirius.common@
 * The static method @org.eclipse.sirius.common.tools.api.util.ReflectionHelper.getFieldValueWithoutException(Class<?>, String)@ has been added to return an internal static value of a class.   
 * @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync@ has a new state @CHANGES_CANCELED@ used to define the state where the user canceled its changes.
 * The @org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer.enableResolve()@  and @disableResolve()@  methods has been moved to @SiriusCrossReferenceAdapter.enableResolveProxy()@  and @disableResolveProxy()@.
+* The @org.eclipse.sirius.common.tools.api.resource.ImageFileFormat@ class has been added (it was in @org.eclipse.sirius.ext.swt@ before).
 
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 
@@ -90,6 +91,10 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 h4. Changes in @org.eclipse.sirius.ui.business.api@
 
 * The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject, EStructuralFeature)@ has been added to customize the tooltip displayed in the VSM editor by using the feature of the current object. The old method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject)@ has been deprecated.
+
+h4. Changes in @org.eclipse.sirius.ext.swt@
+
+* The @org.eclipse.sirius.ext.swt.ImageFileFormat@ class has been moved in @org.eclipse.sirius.common.tools.api.resource@ (in the @org.eclipse.sirius.common@ plugin).
 
 h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
 

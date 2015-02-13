@@ -9,13 +9,12 @@
  *    IBM Corporation - initial API and implementation 
  ****************************************************************************/
 
-package org.eclipse.sirius.ext.swt;
+package org.eclipse.sirius.common.tools.api.resource;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.swt.SWT;
 
 /**
  * An enumeration of image formats supported by the copy diagram to image file
@@ -33,27 +32,27 @@ public final class ImageFileFormat {
     /**
      * supported format Graphics Interchange Format (GIF).
      */
-    public static final ImageFileFormat GIF = new ImageFileFormat("GIF", SWT.IMAGE_GIF); //$NON-NLS-1$
+    public static final ImageFileFormat GIF = new ImageFileFormat("GIF"); //$NON-NLS-1$
 
     /**
      * supported format Joint Photographic Experts Group format (JPEG).
      */
-    public static final ImageFileFormat JPEG = new ImageFileFormat("JPEG", SWT.IMAGE_JPEG); //$NON-NLS-1$
+    public static final ImageFileFormat JPEG = new ImageFileFormat("JPEG"); //$NON-NLS-1$
 
     /**
      * supported format Joint Photographic Experts Group format (JPG).
      */
-    public static final ImageFileFormat JPG = new ImageFileFormat("JPG", SWT.IMAGE_JPEG); //$NON-NLS-1$
+    public static final ImageFileFormat JPG = new ImageFileFormat("JPG"); //$NON-NLS-1$
 
     /**
      * supported format Windows Bitmap format (BMP).
      */
-    public static final ImageFileFormat BMP = new ImageFileFormat("BMP", SWT.IMAGE_BMP); //$NON-NLS-1$
+    public static final ImageFileFormat BMP = new ImageFileFormat("BMP"); //$NON-NLS-1$
 
     /**
      * supported format Scalable Vector Graphics (SVG).
      */
-    public static final ImageFileFormat SVG = new ImageFileFormat("SVG", 100); //$NON-NLS-1$
+    public static final ImageFileFormat SVG = new ImageFileFormat("SVG"); //$NON-NLS-1$
 
     /**
      * supported format Scalable Vector Graphics compressed (SVGZ).
@@ -63,7 +62,7 @@ public final class ImageFileFormat {
     /**
      * supported format PNG.
      */
-    public static final ImageFileFormat PNG = new ImageFileFormat("PNG", SWT.IMAGE_PNG); //$NON-NLS-1$
+    public static final ImageFileFormat PNG = new ImageFileFormat("PNG"); //$NON-NLS-1$
 
     /**
      * The list of values for this enumerated type.
@@ -77,10 +76,8 @@ public final class ImageFileFormat {
      * 
      * @param name
      *            The name of the new type.
-     * @param ordinal
-     *            The ordinal for the new type.
      */
-    private ImageFileFormat(final String name, final int ordinal) {
+    private ImageFileFormat(final String name) {
         this.name = name;
     }
 
