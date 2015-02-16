@@ -296,8 +296,8 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
 
         checkTreeItemStyle(widgetNewEclass1);
 
-        // Manual refreh with click context menu
-        editor.bot().tree().getTreeItem(NEWECLASS1).contextMenu(REFRESH_TREE).click();
+        // Manual refresh with click context menu
+        editor.bot().tree().contextMenu(REFRESH_TREE).click();
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
 
         refreshEditorTest();
