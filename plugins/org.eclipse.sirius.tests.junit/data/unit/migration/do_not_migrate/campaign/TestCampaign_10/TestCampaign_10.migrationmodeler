@@ -29,13 +29,13 @@
       <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerListWithShapeContainerStyle']" displayed="false">
         <layout x="1505" y="90" width="248" height="89"/>
         <ownedStyle iconPath="/DesignerTestProject/image.bmp">
-          <labelColor red="176" green="176" blue="176"/>
+          <labelColor/>
         </ownedStyle>
       </containerRepresentations>
       <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerListWithWorkspaceImageDescription']" displayed="false">
         <layout x="1520" y="260" width="254" height="87"/>
         <ownedStyle labelSize="11" labelFormat="bold_italic" iconPath="/DesignerTestProject/image.bmp">
-          <labelColor red="184" green="151" blue="192"/>
+          <labelColor/>
         </ownedStyle>
       </containerRepresentations>
     </containers>
