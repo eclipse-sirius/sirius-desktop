@@ -224,12 +224,6 @@
     <module name="ParameterAssignment">
       <property name="severity" value="error"/>
     </module>
-    <module name="RedundantThrows">
-      <property name="severity" value="error"/>
-      <property name="allowUnchecked" value="true"/>
-      <property name="allowSubclasses" value="true"/>
-      <property name="suppressLoadErrors" value="true"/>
-    </module>
     <module name="ReturnCount">
       <property name="severity" value="error"/>
       <property name="format" value="^insertionIndexFor$"/>
