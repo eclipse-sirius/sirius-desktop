@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -367,7 +367,8 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
             }
             newCell.setTarget(featureParent);
-            if (newCell.getTarget() == null || !accessor.eValid(newCell.getTarget(), cMapping.getFeatureName())) {
+            String featureName = cMapping.getFeatureName();
+            if (newCell.getTarget() == null || !(DTableElementSynchronizerSpec.SKIP_FEATURENAME_VALIDATION.equals(featureName) || accessor.eValid(newCell.getTarget(), featureName))) {
                 // We don't create a cell in this case.
                 newCell = null;
             }

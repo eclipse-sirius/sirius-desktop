@@ -82,7 +82,7 @@ A _Feature Column_ mapping is defined by its _Feature Name_, which should normal
 
 You can associate more semantic elements to the mapping using the _Associated elements expression_ in the _Advanced_ category. The expression will be evaluated in the context of the target semantic element of the cell.
 
-The _Label Expression_ is used to compute the text to show in each cell. It is evaluated for each cell in the context of its target semantic element.
+The _Label Expression_ is used to compute the text to show in each cell. It is evaluated for each cell in the context of its target semantic element. If you compute text for elements whose EClass have no common EStructuralFeatures (inherited or with same name), you can use @*@ as _Feature Name_ to skip the feature name validation during the cell creation. 
 
 In tables, the contents of the cell is editable by default. Even with no direct edit tool specified, Sirius will try to interpret the text entered by the user according to the type of the feature the column represents (as defined by the _Feature Name_. For example if a column represents a boolean attribute, Sirius will correctly interpret the strings @"true"@ and @"false"@ and set the value accordingly when the user edits a cell. You can disable this behavior by giving a _Can Edit_ expression, which is evaluated in the context of the semantic element of each individual cell. It should return @false@ if that cell should not be editable.
 

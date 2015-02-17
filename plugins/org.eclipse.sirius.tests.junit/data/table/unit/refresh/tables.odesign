@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="UML2 Tables tests" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="UML2 Tables tests" version="10.0.0.201411061000">
   <ownedViewpoints documentation="Sample of some UML tables " name="UML2 tables for tests" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Colored Classes Table" domainClass="Model">
       <ownedLineMappings name="Model Classes" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Class%20and%20subClass%20with%20some%20attributes']/@ownedRepresentationCreationDescriptions[name='To%20Class%20and%20subClass%20with%20some%20attributes']" domainClass="Class" semanticCandidatesExpression="" headerLabelExpression="Class : &lt;%name%>">
@@ -486,6 +486,12 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Virtual columns" domainClass="Model">
+      <ownedLineMappings name="Model Classes" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Class%20and%20subClass%20with%20some%20attributes']/@ownedRepresentationCreationDescriptions[name='To%20Class%20and%20subClass%20with%20some%20attributes']" domainClass="Class" semanticCandidatesExpression="" headerLabelExpression="feature:name"/>
+      <ownedColumnMappings name="name" headerLabelExpression="name" featureName="name"/>
+      <ownedColumnMappings name="computedColumn" headerLabelExpression="ComputedLabel_featureName*" featureName="*" labelExpression="ComputedLabel"/>
+      <ownedColumnMappings name="colWithInvalidFeatureName" headerLabelExpression="NonExistingFeature" featureName="invalidFeatureName" labelExpression="ComputedLabel"/>
     </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>

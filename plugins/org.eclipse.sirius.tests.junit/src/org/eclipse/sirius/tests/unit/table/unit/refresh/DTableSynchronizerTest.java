@@ -75,6 +75,36 @@ public class DTableSynchronizerTest extends TableTestCase {
             final String newInverseHTML = TableUIHelper.toContentHTMl(newTable, true);
             assertEquals("A refresh without semantic changes modified the table.", expectedInverseHtml, newInverseHTML);
         }
+    }
+    
+    public void testVirtualFeatureColumns() throws Exception {
+        final TableDescription desc = find("Virtual columns");
+        assertNotNull("Unit test data is not correct", desc);
+
+        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+
+        final DTable newTable = TableFactory.eINSTANCE.createDTable();
+        newTable.setDescription(desc);
+        newTable.setTarget(semanticModel);
+        sync.setTable(newTable);
+        sync.refresh(new NullProgressMonitor());
+
+        final List<List<String>> expected = new ArrayList<List<String>>();
+        TableUIHelper.addLineToTable(expected, new String[] { "", "name", "ComputedLabel_featureName*", "NonExistingFeature" });
+        TableUIHelper.addLineToTable(expected, new String[] { "Class1", "Class1", "ComputedLabel", "_" });
+        TableUIHelper.addLineToTable(expected, new String[] { "Class2", "Class2", "ComputedLabel", "_" });
+        TableUIHelper.addLineToTable(expected, new String[] { "Class3", "Class3", "ComputedLabel", "_" });
+        TableUIHelper.addLineToTable(expected, new String[] { "AbstractClass1", "AbstractClass1", "ComputedLabel", "_" });
+        TableUIHelper.addLineToTable(expected, new String[] { "AbstractClass2", "AbstractClass2", "ComputedLabel", "_" });
+        TableUIHelper.addLineToTable(expected, new String[] { "Class4", "Class4", "ComputedLabel", "_" });
+        String expectedHtml = TableUIHelper.toHTML(expected);
+        
+        for (int i = 0; i < 10; i++) {
+            sync.refresh(new NullProgressMonitor());
+            assertEquals("We have 6 classes so we should get 6 lines", 6, newTable.getLines().size());
+            assertEquals("We have 3 features columns so we should get 3 columns", 3, newTable.getColumns().size());
+            assertEquals(expectedHtml, TableUIHelper.toContentHTMl(newTable, false));
+        }
 
     }
 

@@ -245,7 +245,9 @@
 			<em>Advanced</em> category. The expression will be evaluated in the context of the target semantic element of the cell.
 		</p>
 		<p>The 
-			<em>Label Expression</em> is used to compute the text to show in each cell. It is evaluated for each cell in the context of its target semantic element.
+			<em>Label Expression</em> is used to compute the text to show in each cell. It is evaluated for each cell in the context of its target semantic element. If you compute text for elements whose EClass have no common EStructuralFeatures (inherited or with same name), you can use 
+			<code>*</code> as 
+			<em>Feature Name</em> to skip the feature name validation during the cell creation. 
 		</p>
 		<p>In tables, the contents of the cell is editable by default. Even with no direct edit tool specified, Sirius will try to interpret the text entered by the user according to the type of the feature the column represents (as defined by the 
 			<em>Feature Name</em>. For example if a column represents a boolean attribute, Sirius will correctly interpret the strings 

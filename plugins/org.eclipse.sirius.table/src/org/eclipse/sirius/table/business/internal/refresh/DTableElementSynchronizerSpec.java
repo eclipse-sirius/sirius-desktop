@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,6 +81,11 @@ import com.google.common.collect.Lists;
  * 
  */
 public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl {
+
+    /**
+     * '*' as feature name allows to skip the feature name validation for cell creation.
+     */
+    protected static final String SKIP_FEATURENAME_VALIDATION = "*";
 
     private final ModelAccessor accessor;
 
@@ -274,7 +279,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                     removeUneededCell(cell);
                     deletedCell = true;
                 } else if (!featureParent.equals(cell.getTarget())) {
-                    if (accessor.eValid(featureParent, featureColumnMapping.getFeatureName())) {
+                    String featureName = featureColumnMapping.getFeatureName();
+                    if (SKIP_FEATURENAME_VALIDATION.equals(featureName) || accessor.eValid(featureParent, featureName)) {
                         cell.setTarget(featureParent);
                     } else {
                         removeUneededCell(cell);
