@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2009 IBM Corporation and others.
+ * Copyright (c) 2004, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,10 +22,12 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.TooltipAwareNavigatorDecoratingLabelProvider;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.accessibility.ACC;
@@ -335,6 +337,8 @@ public class FilteredCommonTree extends Composite {
         GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
         treeComposite.setLayoutData(data);
         createTreeControl(treeComposite, treeStyle);
+        // Enable tooltip
+        ColumnViewerToolTipSupport.enableFor(getViewer());
     }
 
     /**
@@ -383,11 +387,11 @@ public class FilteredCommonTree extends Composite {
         commonTreeViewer.getControl().addDisposeListener(new DisposeListener() {
             /*
              * (non-Javadoc)
-             * 
              * @see
              * org.eclipse.swt.events.DisposeListener#widgetDisposed(org.eclipse
              * .swt.events.DisposeEvent)
              */
+            @Override
             public void widgetDisposed(DisposeEvent e) {
                 refreshJob.cancel();
             }
@@ -456,6 +460,7 @@ public class FilteredCommonTree extends Composite {
     // CHECKSTYLE:OFF Original method
     protected WorkbenchJob doCreateRefreshJob() {
         return new WorkbenchJob("Refresh Filter") { //$NON-NLS-1$
+            @Override
             public IStatus runInUIThread(IProgressMonitor monitor) {
                 IStatus result = null;
                 if (commonTreeViewer.getControl().isDisposed()) {
@@ -606,6 +611,7 @@ public class FilteredCommonTree extends Composite {
     protected void createFilterText(Composite aParent) {
         filterText = doCreateFilterText(aParent);
         filterText.getAccessible().addAccessibleListener(new AccessibleAdapter() {
+            @Override
             public void getName(AccessibleEvent e) {
                 String filterTextString = filterText.getText();
                 if (filterTextString.length() == 0 || filterTextString.equals(initialText)) {
@@ -646,6 +652,7 @@ public class FilteredCommonTree extends Composite {
         });
 
         filterText.addFocusListener(new FocusAdapter() {
+            @Override
             public void focusGained(FocusEvent e) {
                 if (!useNewLook) {
                     /*
@@ -654,6 +661,7 @@ public class FilteredCommonTree extends Composite {
                      */
                     Display display = filterText.getDisplay();
                     display.asyncExec(new Runnable() {
+                        @Override
                         public void run() {
                             if (!filterText.isDisposed()) {
                                 if (getInitialText().equals(filterText.getText().trim())) {
@@ -666,6 +674,7 @@ public class FilteredCommonTree extends Composite {
                 }
             }
 
+            @Override
             public void focusLost(FocusEvent e) {
                 if (!useNewLook) {
                     return;
@@ -679,6 +688,7 @@ public class FilteredCommonTree extends Composite {
 
         if (useNewLook) {
             filterText.addMouseListener(new MouseAdapter() {
+                @Override
                 public void mouseDown(MouseEvent e) {
                     if (filterText.getText().equals(initialText)) {
                         // XXX: We cannot call clearText() due to
@@ -691,6 +701,7 @@ public class FilteredCommonTree extends Composite {
         }
 
         filterText.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 // on a CR we want to transfer focus to the list
                 boolean hasItems = getViewer().getTree().getItemCount() > 0;
@@ -703,6 +714,7 @@ public class FilteredCommonTree extends Composite {
 
         // enter key set focus to tree
         filterText.addTraverseListener(new TraverseListener() {
+            @Override
             public void keyTraversed(TraverseEvent e) {
                 if (e.detail == SWT.TRAVERSE_RETURN) {
                     e.doit = false;
@@ -732,6 +744,7 @@ public class FilteredCommonTree extends Composite {
         });
 
         filterText.addModifyListener(new ModifyListener() {
+            @Override
             public void modifyText(ModifyEvent e) {
                 textChanged();
             }
@@ -742,6 +755,7 @@ public class FilteredCommonTree extends Composite {
         // pressed)
         if ((filterText.getStyle() & SWT.ICON_CANCEL) != 0) {
             filterText.addSelectionListener(new SelectionAdapter() {
+                @Override
                 public void widgetDefaultSelected(SelectionEvent e) {
                     if (e.detail == SWT.ICON_CANCEL)
                         clearText();
@@ -808,6 +822,7 @@ public class FilteredCommonTree extends Composite {
      * @param background
      *            background <code>Color</code> to set
      */
+    @Override
     public void setBackground(Color background) {
         super.setBackground(background);
         if (filterComposite != null && (!useNewLook || useNativeSearchField(filterComposite))) {
@@ -834,9 +849,9 @@ public class FilteredCommonTree extends Composite {
             IAction clearTextAction = new Action("", IAction.AS_PUSH_BUTTON) { //$NON-NLS-1$
                 /*
                  * (non-Javadoc)
-                 * 
                  * @see org.eclipse.jface.action.Action#run()
                  */
+                @Override
                 public void run() {
                     clearText();
                 }
@@ -872,11 +887,13 @@ public class FilteredCommonTree extends Composite {
             clearButton.addMouseListener(new MouseAdapter() {
                 private MouseMoveListener fMoveListener;
 
+                @Override
                 public void mouseDown(MouseEvent e) {
                     clearButton.setImage(pressedImage);
                     fMoveListener = new MouseMoveListener() {
                         private boolean fMouseInButton = true;
 
+                        @Override
                         public void mouseMove(MouseEvent e) {
                             boolean mouseInButton = isMouseInButton(e);
                             if (mouseInButton != fMouseInButton) {
@@ -888,6 +905,7 @@ public class FilteredCommonTree extends Composite {
                     clearButton.addMouseMoveListener(fMoveListener);
                 }
 
+                @Override
                 public void mouseUp(MouseEvent e) {
                     if (fMoveListener != null) {
                         clearButton.removeMouseMoveListener(fMoveListener);
@@ -907,18 +925,22 @@ public class FilteredCommonTree extends Composite {
                 }
             });
             clearButton.addMouseTrackListener(new MouseTrackListener() {
+                @Override
                 public void mouseEnter(MouseEvent e) {
                     clearButton.setImage(activeImage);
                 }
 
+                @Override
                 public void mouseExit(MouseEvent e) {
                     clearButton.setImage(inactiveImage);
                 }
 
+                @Override
                 public void mouseHover(MouseEvent e) {
                 }
             });
             clearButton.addDisposeListener(new DisposeListener() {
+                @Override
                 public void widgetDisposed(DisposeEvent e) {
                     inactiveImage.dispose();
                     activeImage.dispose();
@@ -926,11 +948,13 @@ public class FilteredCommonTree extends Composite {
                 }
             });
             clearButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
+                @Override
                 public void getName(AccessibleEvent e) {
                     e.result = WorkbenchMessages.FilteredTree_AccessibleListenerClearButton;
                 }
             });
             clearButton.getAccessible().addAccessibleControlListener(new AccessibleControlAdapter() {
+                @Override
                 public void getRole(AccessibleControlEvent e) {
                     e.detail = ACC.ROLE_PUSHBUTTON;
                 }
@@ -1015,6 +1039,7 @@ public class FilteredCommonTree extends Composite {
                 textChanged();
             } else {
                 getDisplay().asyncExec(new Runnable() {
+                    @Override
                     public void run() {
                         if (!filterText.isDisposed() && filterText.isFocusControl()) {
                             setFilterText(initialText);
@@ -1128,85 +1153,98 @@ public class FilteredCommonTree extends Composite {
                 }
             }
             if (patternFilter == null) {
-                SiriusEditPlugin
-                        .getPlugin()
-                        .getLog()
-                        .log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "Required filter " + PatternFilter.ID
-                                + " is not present. Filter support of Model Explorer view will not function correctly.")); //$NON-NLS-1$  //$NON-NLS-1$
+                SiriusEditPlugin.getPlugin().getLog().log(
+                        new Status(IStatus.ERROR, SiriusEditPlugin.ID, "Required filter " + PatternFilter.ID + " is not present. Filter support of Model Explorer view will not function correctly.")); //$NON-NLS-2$
             }
             super.init();
+            setLabelProvider(new TooltipAwareNavigatorDecoratingLabelProvider(getNavigatorContentService().createCommonLabelProvider()));
         }
 
+        @Override
         public void add(Object parentElementOrTreePath, Object childElement) {
             getPatternFilter().clearCaches();
             super.add(parentElementOrTreePath, childElement);
         }
 
+        @Override
         public void add(Object parentElementOrTreePath, Object[] childElements) {
             getPatternFilter().clearCaches();
             super.add(parentElementOrTreePath, childElements);
         }
 
+        @Override
         protected void inputChanged(Object input, Object oldInput) {
             getPatternFilter().clearCaches();
             super.inputChanged(input, oldInput);
         }
 
+        @Override
         public void insert(Object parentElementOrTreePath, Object element, int position) {
             getPatternFilter().clearCaches();
             super.insert(parentElementOrTreePath, element, position);
         }
 
+        @Override
         public void refresh() {
             getPatternFilter().clearCaches();
             super.refresh();
         }
 
+        @Override
         public void refresh(boolean updateLabels) {
             getPatternFilter().clearCaches();
             super.refresh(updateLabels);
         }
 
+        @Override
         public void refresh(Object element) {
             getPatternFilter().clearCaches();
             super.refresh(element);
         }
 
+        @Override
         public void refresh(Object element, boolean updateLabels) {
             getPatternFilter().clearCaches();
             super.refresh(element, updateLabels);
         }
 
+        @Override
         public void remove(Object elementsOrTreePaths) {
             getPatternFilter().clearCaches();
             super.remove(elementsOrTreePaths);
         }
 
+        @Override
         public void remove(Object aParent, Object[] elements) {
             getPatternFilter().clearCaches();
             super.remove(aParent, elements);
         }
 
+        @Override
         public void remove(Object[] elementsOrTreePaths) {
             getPatternFilter().clearCaches();
             super.remove(elementsOrTreePaths);
         }
 
+        @Override
         public void replace(Object parentElementOrTreePath, int index, Object element) {
             getPatternFilter().clearCaches();
             super.replace(parentElementOrTreePath, index, element);
         }
 
+        @Override
         public void setChildCount(Object elementOrTreePath, int count) {
             getPatternFilter().clearCaches();
             super.setChildCount(elementOrTreePath, count);
         }
 
+        @Override
         public void setContentProvider(IContentProvider provider) {
             getPatternFilter().clearCaches();
             super.setContentProvider(provider);
         }
 
+        @Override
         public void setHasChildren(Object elementOrTreePath, boolean hasChildren) {
             getPatternFilter().clearCaches();
             super.setHasChildren(elementOrTreePath, hasChildren);

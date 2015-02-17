@@ -16,12 +16,14 @@ import java.text.MessageFormat;
 import java.util.List;
 
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.ui.provider.Messages;
@@ -185,5 +187,15 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider im
             }
         }
         return false;
+    }
+
+    @Override
+    public String getToolTipText(Object element) {
+        String tooltip = null;
+        IToolTipProvider tooltipProvider = (IToolTipProvider) Platform.getAdapterManager().getAdapter(element, IToolTipProvider.class);
+        if (tooltipProvider != null) {
+            tooltip = tooltipProvider.getToolTipText(element);
+        }
+        return tooltip;
     }
 }

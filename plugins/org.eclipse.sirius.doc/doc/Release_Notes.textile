@@ -89,6 +89,10 @@ h4. Changes in @org.eclipse.sirius.ext.gef@
 
 * <span class="label label-success">Added</span> The new class @org.eclipse.sirius.ext.gef.query.EditPartQuery@ has been added. It allows to retrieve all children of the current part.
 
+h4. Changes in @org.eclipse.sirius.ext.jface@
+
+* <span class="label label-success">Added</span> The new class @org.eclipse.sirius.ext.jface.viewers.IToolTipProvider@ has been copied from JFace 3.10 from Luna, so that we can use it with Juno and Kepler too.
+
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 
 * <span class="label label-success">Added</span> 2 new @getIntersection@ methods have been added in org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper. They are similar to the existing @getIntersection@ methods, but they consider the nearest point on the figure if there is no intersection.

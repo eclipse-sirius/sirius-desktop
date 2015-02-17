@@ -25,6 +25,7 @@ import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
+import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
@@ -247,7 +248,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         treeViewer.setContentProvider(dTableContentProvider);
         // The input for the table viewer is the instance of DTable
         treeViewer.setInput(dRepresentation);
-
+        ColumnViewerToolTipSupport.enableFor(treeViewer);
         treeViewer.getTree().setLinesVisible(true);
         treeViewer.getTree().setHeaderVisible(true);
         fillMenu();
@@ -271,8 +272,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         // Create a new CellFocusManager
         final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
         // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
-                | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
+                ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
         // Set after the setInput to avoid layout call it several time for
         // nothing at opening
         headerTreeColumn.getColumn().addControlListener(tableViewerListener);
@@ -355,7 +356,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Initialize a cache and add, if needed, the contextual menu for the table. <BR>
+     * Initialize a cache and add, if needed, the contextual menu for the table.
+     * <BR>
      * Cached the actions of creation and deletion in order to increase
      * performance and not calculate it on each contextual menu.<BR>
      * Problem for action on column header :
@@ -667,11 +669,11 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         treeViewerColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
 
         if (newColumn instanceof DFeatureColumn) {
-            treeViewerColumn.setEditingSupport(new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(),
-                    (AbstractDTableEditor) treeEditor));
+            treeViewerColumn.setEditingSupport(
+                    new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(), (AbstractDTableEditor) treeEditor));
         } else if (newColumn instanceof DTargetColumn) {
-            treeViewerColumn.setEditingSupport(new DTargetColumnEditingSupport(treeViewer, (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory,
-                    (AbstractDTableEditor) treeEditor));
+            treeViewerColumn.setEditingSupport(
+                    new DTargetColumnEditingSupport(treeViewer, (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory, (AbstractDTableEditor) treeEditor));
         }
         treeViewerColumn.getColumn().setData(TABLE_COLUMN_DATA, newColumn);
         treeViewerColumn.getColumn().addControlListener(tableViewerListener);

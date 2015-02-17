@@ -196,4 +196,5 @@ Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
  org.eclipse.sirius.ext.gef.editpolicies;version="2.0.0",
  org.eclipse.sirius.ext.gef.query;version="3.1.0",
  org.eclipse.sirius.ext.gmf.runtime.editparts;version="2.0.0",
+ org.eclipse.sirius.ext.jface.viewers;version="3.1.0",
  org.eclipse.sirius.ext.swt;version="2.0.0"

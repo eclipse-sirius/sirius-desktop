@@ -10,17 +10,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.swt.graphics.Image;
-
+import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.ui.tools.api.provider.DSemanticTargetBasedLabelProvider;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Label provider for lines.
- * 
  * 
  * @author dlecan
  */
@@ -31,18 +31,14 @@ public class DTableLineLabelProvider extends DSemanticTargetBasedLabelProvider i
     /**
      * Constructor.
      * 
-     * @param decorator the decorator to use.
+     * @param decorator
+     *            the decorator to use.
      */
     public DTableLineLabelProvider(ILabelDecorator decorator) {
         super(ViewHelper.INSTANCE.createAdapterFactory());
         this.decorator = decorator;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.provider.DSemanticTargetBasedLabelProvider#getText(java.lang.Object)
-     */
     @Override
     public String getText(final Object element) {
         if (element instanceof DLine) {
@@ -52,11 +48,7 @@ public class DTableLineLabelProvider extends DSemanticTargetBasedLabelProvider i
         return ""; //$NON-NLS-1$
     }
 
-    /**
-     * Overridden to decorate the returned Image.
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public Image getImage(Object element) {
         Image image = super.getImage(element);
         if (decorator != null && element instanceof DLine) {
@@ -66,6 +58,16 @@ public class DTableLineLabelProvider extends DSemanticTargetBasedLabelProvider i
             }
         }
         return image;
+    }
+
+    @Override
+    public String getToolTipText(Object element) {
+        String tooltip = null;
+        IToolTipProvider tooltipProvider = (IToolTipProvider) Platform.getAdapterManager().getAdapter(element, IToolTipProvider.class);
+        if (tooltipProvider != null) {
+            tooltip = tooltipProvider.getToolTipText(element);
+        }
+        return tooltip;
     }
 
 }

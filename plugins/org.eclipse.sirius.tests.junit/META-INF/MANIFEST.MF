@@ -73,7 +73,8 @@ Require-Bundle: org.eclipse.sirius.tests.sample.benchmark,
  org.eclipse.sirius.tests.sample.scxml,
  org.eclipse.sirius.tests.sample.component.design,
  org.eclipse.sirius.common.acceleo.aql;bundle-version="3.1.0",
- org.eclipse.sirius.common.acceleo.aql.ide;bundle-version="3.1.0"
+ org.eclipse.sirius.common.acceleo.aql.ide;bundle-version="3.1.0",
+ org.eclipse.ui.navigator;bundle-version="3.5.200"
 Bundle-Activator: org.eclipse.sirius.tests.SiriusTestsPlugin
 Eclipse-LazyStart: true
 Bundle-Localization: plugin
@@ -206,4 +207,5 @@ Import-Package: org.eclipse.sirius.ext.base;version="1.0.0",
  org.eclipse.sirius.ext.base.collect;version="1.0.0",
  org.eclipse.sirius.ext.base.relations;version="1.0.0",
  org.eclipse.sirius.ext.emf;version="1.0.0",
+ org.eclipse.sirius.ext.jface.viewers;version="3.1.0",
  org.eclipse.sirius.ext.swt;version="1.0.0"

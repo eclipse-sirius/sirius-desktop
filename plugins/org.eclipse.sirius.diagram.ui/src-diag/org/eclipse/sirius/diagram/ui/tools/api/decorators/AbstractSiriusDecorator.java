@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -26,6 +29,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Direction;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
@@ -33,6 +37,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
+import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -69,25 +74,46 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
         final View view = (View) getDecoratorTarget().getAdapter(View.class);
         if (view != null && (shouldConsiderDetachedViews() || view.eResource() != null)) {
             final EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(EditPart.class);
-            if (!shouldBeDecorated(editPart)) {
-                return;
-            }
-            // Get margin
-            int margin = MARGIN;
-            if (editPart instanceof org.eclipse.gef.GraphicalEditPart) {
-                margin = MapModeUtil.getMapMode(((org.eclipse.gef.GraphicalEditPart) editPart).getFigure()).DPtoLP(margin);
-            }
+            if (shouldBeDecorated(editPart)) {
+                // Get margin
+                int margin = MARGIN;
+                if (editPart instanceof org.eclipse.gef.GraphicalEditPart) {
+                    margin = MapModeUtil.getMapMode(((org.eclipse.gef.GraphicalEditPart) editPart).getFigure()).DPtoLP(margin);
+                }
 
-            Image decorationImage = getDecorationImage(editPart);
-            if (null != decorationImage) {
-                boolean isVolatile = !shouldBeVisibleAtPrint();
-                if (editPart instanceof AbstractConnectionEditPart) {
-                    addDecoration(getDecoratorTarget().addConnectionDecoration(decorationImage, 50, isVolatile));
-                } else {
-                    addDecoration(getDecoratorTarget().addShapeDecoration(decorationImage, getDirection(editPart), margin, isVolatile));
+                Image decorationImage = getDecorationImage(editPart);
+                if (null != decorationImage) {
+                    boolean isVolatile = !shouldBeVisibleAtPrint();
+                    if (editPart instanceof AbstractConnectionEditPart) {
+                        addDecoration(getDecoratorTarget().addConnectionDecoration(decorationImage, 50, isVolatile));
+                    } else {
+                        addDecoration(getDecoratorTarget().addShapeDecoration(decorationImage, getDirection(editPart), margin, isVolatile));
+                    }
                 }
             }
         }
+    }
+
+    private void refreshTooltip(IDecoration decoration) {
+        EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(EditPart.class);
+        if (editPart instanceof IDiagramElementEditPart) {
+            DDiagramElement dDiagramElement = ((IDiagramElementEditPart) editPart).resolveDiagramElement();
+            String tooltip = getToolTipText(dDiagramElement);
+            if (tooltip != null) {
+                if (decoration instanceof Figure) {
+                    ((Figure) decoration).setToolTip(new Label(tooltip));
+                }
+            }
+        }
+    }
+
+    private String getToolTipText(Object element) {
+        String tooltip = null;
+        IToolTipProvider tooltipProvider = (IToolTipProvider) Platform.getAdapterManager().getAdapter(element, IToolTipProvider.class);
+        if (tooltipProvider != null) {
+            tooltip = tooltipProvider.getToolTipText(element);
+        }
+        return tooltip;
     }
 
     /**
@@ -210,6 +236,7 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
      */
     public void addDecoration(final IDecoration decoration) {
         decorations.add(decoration);
+        refreshTooltip(decoration);
     }
 
     /**

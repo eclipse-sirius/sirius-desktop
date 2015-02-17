@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.common;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
 import org.eclipse.sirius.tests.unit.api.componentization.DiagramComponentizationManagerTest;
 import org.eclipse.sirius.tests.unit.api.componentization.DiagramExtensionDescriptionTest;
 import org.eclipse.sirius.tests.unit.api.componentization.MetamodelSpecificationInRepresentationExtensionDescriptionTest;
@@ -61,6 +64,7 @@ import org.eclipse.sirius.tests.unit.common.RestoreSessionFromEditorInputTests;
 import org.eclipse.sirius.tests.unit.common.SaverTest;
 import org.eclipse.sirius.tests.unit.common.SiriusCrossReferenceAdapterTests;
 import org.eclipse.sirius.tests.unit.common.SubMenusPrioritiesTest;
+import org.eclipse.sirius.tests.unit.common.TooltipProviderTests;
 import org.eclipse.sirius.tests.unit.common.TransientSessionTests;
 import org.eclipse.sirius.tests.unit.common.WorkspaceResourceSyncTestCase;
 import org.eclipse.sirius.tests.unit.common.ZombieViewpointsTest;
@@ -275,7 +279,11 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ReloadSessionTest.class);
         suite.addTestSuite(EclipseUtilTest.class);
         suite.addTestSuite(CompoundInterpreterTestCase.class);
-
+        // TooltipProviderTests must be executed with the inner IAdapterFactory
+        // not with another one
+        if (Platform.getAdapterManager().hasAdapter(EcorePackage.eINSTANCE, IToolTipProvider.class.getName())) {
+            suite.addTestSuite(TooltipProviderTests.class);
+        }
         suite.addTestSuite(TransientSessionTests.class);
         suite.addTestSuite(RestoreSessionFromEditorInputTests.class);
         suite.addTestSuite(SiriusCrossReferenceAdapterTests.class);

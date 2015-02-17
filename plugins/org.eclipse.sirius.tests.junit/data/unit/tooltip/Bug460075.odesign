@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Bug460075" version="10.1.0.201507271600">
+  <ownedViewpoints name="Bug460075Viewpoint">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Bug460075DiagramDef" domainClass="ecore.EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="EClassMapping" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EClass">
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="EPackageMapping" semanticCandidatesExpression="feature:eSubpackages" domainClass="ecore.EPackage" reusedNodeMappings="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075DiagramDef']/@defaultLayer/@nodeMappings[name='EClassMapping']" reusedContainerMappings="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075DiagramDef']/@defaultLayer/@containerMappings[name='EPackageMapping']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="decorator" decoratorPath="/DesignerTestProject/decorator_lock.png" mappings="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075DiagramDef']/@defaultLayer/@containerMappings[name='EPackageMapping']"/>
+        </decorationDescriptionsSet>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Bug460075EditionTableDef" domainClass="ecore.EPackage">
+      <ownedLineMappings name="EPackageLineMapping" reusedSubLines="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075EditionTableDef']/@ownedLineMappings[name='EClassLineMapping'] //@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075EditionTableDef']/@ownedLineMappings[name='EPackageLineMapping']" reusedInMappings="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075EditionTableDef']/@ownedLineMappings[name='EPackageLineMapping']" domainClass="ecore.EPackage" semanticCandidatesExpression="feature:eSubpackages"/>
+      <ownedLineMappings name="EClassLineMapping" reusedInMappings="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075EditionTableDef']/@ownedLineMappings[name='EPackageLineMapping']" domainClass="ecore.EClass" semanticCandidatesExpression="feature:eClassifiers">
+        <ownedSubLines name="EAttributeLineMapping" domainClass="ecore.EAttribute" semanticCandidatesExpression="feature:eAttributes"/>
+      </ownedLineMappings>
+      <ownedColumnMappings name="NameMapping" featureName="name"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Bug460075CrossTableDef" domainClass="ecore.EPackage">
+      <ownedLineMappings name="EPackageLineMapping" reusedSubLines="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075CrossTableDef']/@ownedLineMappings[name='EClassLineMapping'] //@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075CrossTableDef']/@ownedLineMappings[name='EPackageLineMapping']" reusedInMappings="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075CrossTableDef']/@ownedLineMappings[name='EPackageLineMapping']" domainClass="ecore.EPackage" semanticCandidatesExpression="feature:eSubpackages"/>
+      <ownedLineMappings name="EClassLineMapping" reusedInMappings="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075CrossTableDef']/@ownedLineMappings[name='EPackageLineMapping']" domainClass="ecore.EClass" semanticCandidatesExpression="feature:eClassifiers">
+        <ownedSubLines name="EAttributeLineMapping" domainClass="ecore.EAttribute" semanticCandidatesExpression="feature:eAttributes"/>
+        <ownedSubLines name="EReferenceLineMapping" domainClass="ecore.EReference" semanticCandidatesExpression="feature:eReferences"/>
+      </ownedLineMappings>
+      <ownedColumnMappings name="EClassColumnMapping" domainClass="ecore.EClass"/>
+      <intersection name="IntersectionMapping" lineMapping="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075CrossTableDef']/@ownedLineMappings[name='EClassLineMapping']/@ownedSubLines[name='EReferenceLineMapping']" columnMapping="//@ownedViewpoints[name='Bug460075Viewpoint']/@ownedRepresentations[name='Bug460075CrossTableDef']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="feature:eType"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Bug460075TreeDef" domainClass="ecore.EPackage">
+      <subItemMappings name="EPackageTreeItemMapping" domainClass="ecore.EPackage" semanticCandidatesExpression="feature:eSubpackages">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
