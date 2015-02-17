@@ -243,6 +243,44 @@
       name="${sirius.target.platform}">
     <description>Target Platform used for the new install. It should be one of the available predefined TP in project org.eclipse.sirius.targets.</description>
   </setupTask>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup"
+      value="true"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/sp_cleanup.add_missing_annotations"
+      value="true"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/sp_cleanup.add_missing_deprecated_annotations"
+      value="true"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/sp_cleanup.add_missing_override_annotations"
+      value="true"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/sp_cleanup.add_missing_override_annotations_interface_methods"
+      value="true"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/sp_cleanup.format_source_code"
+      value="true"/>
+  <setupTask xsi:type="setup:PreferenceTask" key="/instance/org.eclipse.jdt.ui/sp_cleanup.format_source_code_changes_only" value="false"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/sp_cleanup.on_save_use_additional_actions"
+      value="true"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/sp_cleanup.organize_imports"
+      value="true"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/sp_cleanup.remove_unnecessary_casts"
+      value="true"/>
+  
   <stream name="master"/>
   <stream name="v2.0.x"/>
   <stream name="v1.0.x"/>
