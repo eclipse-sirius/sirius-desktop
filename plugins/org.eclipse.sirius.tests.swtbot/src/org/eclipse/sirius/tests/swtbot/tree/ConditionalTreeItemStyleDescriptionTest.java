@@ -301,7 +301,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
         assertThat(labelColor, equalTo(lightGreen));
 
         // Manual refreh with click context menu
-        ((SWTBotTreeItem) editor.bot().tree().getAllItems()[1]).contextMenu(REFRESH_TREE).click();
+        editor.bot().tree().contextMenu(REFRESH_TREE).click();
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
 
         refreshEditorTest();
