@@ -188,6 +188,18 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     @Override
+    public void detachEditor(final DialectEditor dialectEditor, boolean revertChanges) {
+
+        // We need to compute the closeAllDetected() before to execute the
+        // detachEditor since this editor will be removed from the list.
+        boolean returnToSyncState = revertChanges && (getEditors().size() == 1 || closeAllDetected());
+        detachEditor(dialectEditor);
+        if (returnToSyncState) {
+            returnToSyncState();
+        }
+    }
+
+    @Override
     public void closeEditors(final boolean save, final Collection<? extends DialectEditor> editorParts) {
         for (final DialectEditor editor : new ArrayList<DialectEditor>(editorParts)) {
             closeEditor(editor, save);
@@ -240,8 +252,6 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
 
             if (choice == ISaveablePart2.CANCEL) {
                 needSaveOnCloseDetec.reInit();
-            } else if (choice == ISaveablePart2.NO && (getEditors().size() == 1 || closeAllDetected())) {
-                returnToSyncState();
             }
         }
         return choice;

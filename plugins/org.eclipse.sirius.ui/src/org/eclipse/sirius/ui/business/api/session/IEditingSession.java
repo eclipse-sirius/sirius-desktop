@@ -65,6 +65,18 @@ public interface IEditingSession {
     void detachEditor(DialectEditor editor);
 
     /**
+     * Detach an editor from the current Session. This is called when a
+     * DialectEditor is closed. Revert all changes since the last save if the
+     * last opened editor is closed and the revertChanges is true.
+     * 
+     * @param dialectEditor
+     *            editor to detach.
+     * @param revertChanges
+     *            true if we should revert all user changes.
+     */
+    void detachEditor(DialectEditor dialectEditor, boolean revertChanges);
+
+    /**
      * Returns editors.
      * 
      * @return editors

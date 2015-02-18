@@ -192,6 +192,8 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      */
     private Image noWritePermissionImage;
 
+    private int choice = ISaveablePart2.DEFAULT;
+
     /**
      * Default constructor.
      */
@@ -515,14 +517,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         if (this.undoRedoActionHandler != null) {
             this.undoRedoActionHandler.dispose();
         }
-
-        if (session != null) {
-            session.removeListener(this);
-            final IEditingSession sess = SessionUIManager.INSTANCE.getUISession(session);
-            if (sess != null) {
-                sess.detachEditor(this);
-            }
-        }
         super.dispose();
         if (getTableViewer() != null) {
             getTableViewer().dispose();
@@ -532,6 +526,19 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         if (getEditorInput() instanceof SessionEditorInput) {
             ((SessionEditorInput) getEditorInput()).dispose();
         }
+
+        // We need to perform the detachEditor after having disposed the viewer
+        // and the editor input to avoid a refresh. A refresh can occurs in the
+        // case where the detach triggers the reload of the modified resources
+        // (if choice == ISaveablePart2.NO)
+        if (session != null) {
+            session.removeListener(this);
+            final IEditingSession sess = SessionUIManager.INSTANCE.getUISession(session);
+            if (sess != null) {
+                sess.detachEditor(this, choice == ISaveablePart2.NO);
+            }
+        }
+
     }
 
     /**
@@ -701,7 +708,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      * @see ISaveablePart2#promptToSaveOnClose()
      */
     public int promptToSaveOnClose() {
-        int choice = ISaveablePart2.DEFAULT;
+        choice = ISaveablePart2.DEFAULT;
         if (session != null && session.isOpen()) {
             IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
             // Close all && Still open elsewhere detection.

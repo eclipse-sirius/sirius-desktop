@@ -312,6 +312,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     private Job refreshJob;
 
+    private int choice = ISaveablePart2.DEFAULT;
+
     /**
      * Create a new instance.
      */
@@ -683,7 +685,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             if (getSession() != null) {
                 final IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(getSession());
                 if (editingSession != null) {
-                    editingSession.detachEditor(this);
+                    editingSession.detachEditor(this, choice == ISaveablePart2.NO);
 
                 }
             }
@@ -1835,7 +1837,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * @see ISaveablePart2#promptToSaveOnClose()
      */
     public int promptToSaveOnClose() {
-        int choice = ISaveablePart2.DEFAULT;
+        choice = ISaveablePart2.DEFAULT;
         if (session != null && session.isOpen()) {
             IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
             // Close all && Still open elsewhere detection.
