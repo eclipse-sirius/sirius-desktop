@@ -23,16 +23,12 @@ import org.eclipse.sirius.tools.internal.validation.description.constraints.Abst
  * 
  */
 public class ValidDiagramImageConstraint extends AbstractValidImageConstraint {
-    private static final EAttribute[] attrs = {DescriptionPackage.eINSTANCE.getLayer_Icon(), 
-        StylePackage.eINSTANCE.getWorkspaceImageDescription_WorkspacePath(),
-        ToolPackage.eINSTANCE.getContainerCreationDescription_IconPath(),
-        ToolPackage.eINSTANCE.getEdgeCreationDescription_IconPath(),
-        ToolPackage.eINSTANCE.getNodeCreationDescription_IconPath(),
-        ToolPackage.eINSTANCE.getToolSection_Icon()};
-    
+    private static final EAttribute[] PATH_ATTRIBUTES = { DescriptionPackage.eINSTANCE.getLayer_Icon(), StylePackage.eINSTANCE.getWorkspaceImageDescription_WorkspacePath(),
+            ToolPackage.eINSTANCE.getContainerCreationDescription_IconPath(), ToolPackage.eINSTANCE.getEdgeCreationDescription_IconPath(), ToolPackage.eINSTANCE.getNodeCreationDescription_IconPath(),
+            ToolPackage.eINSTANCE.getToolSection_Icon(), };
+
     @Override
     public EAttribute[] getImagePathAttributes() {
-        return attrs;
+        return PATH_ATTRIBUTES;
     }
-    
 }

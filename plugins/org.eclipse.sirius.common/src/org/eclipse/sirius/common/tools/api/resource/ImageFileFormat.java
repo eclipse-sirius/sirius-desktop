@@ -57,7 +57,7 @@ public final class ImageFileFormat {
     /**
      * supported format Scalable Vector Graphics compressed (SVGZ).
      */
-    public static final ImageFileFormat SVGZ = new ImageFileFormat("SVGZ", 101); //$NON-NLS-1$
+    public static final ImageFileFormat SVGZ = new ImageFileFormat("SVGZ"); //$NON-NLS-1$
 
     /**
      * supported format PNG.

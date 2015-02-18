@@ -15,12 +15,12 @@ import java.net.MalformedURLException;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
-import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.swt.graphics.Image;
 
 /**

@@ -65,17 +65,18 @@ public abstract class AbstractValidImageConstraint extends AbstractConstraint {
     public abstract EAttribute[] getImagePathAttributes();
 
     private IStatus validateImagePath(IValidationContext ctx, ResourceSet rs, String path) {
+        IStatus result = ctx.createSuccessStatus();
         // when path is empty, success (even when a path is needed, because
         // there is another validation rule for that)
         if (!StringUtil.isEmpty(path)) {
             if (!validateExtension(path)) {
-                return ctx.createFailureStatus(new Object[] { "The path '" + path + "' does not correspond to an image." });
+                result = ctx.createFailureStatus(new Object[] { "The path '" + path + "' does not correspond to an image." });
             }
             if (!validateExistence(path, rs)) {
-                return ctx.createFailureStatus(new Object[] { "The image '" + path + "' does not exist." });
+                result = ctx.createFailureStatus(new Object[] { "The image '" + path + "' does not exist." });
             }
         }
-        return ctx.createSuccessStatus();
+        return result;
     }
 
     private boolean validateExistence(String path, ResourceSet rs) {

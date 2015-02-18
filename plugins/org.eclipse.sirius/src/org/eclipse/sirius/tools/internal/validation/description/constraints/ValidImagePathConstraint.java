@@ -21,20 +21,15 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * @author bgrouhan
  *
  */
-public class ValidImagePathConstraint extends AbstractValidImageConstraint{
-    private static final EAttribute[] attrs = {DescriptionPackage.eINSTANCE.getViewpoint_Icon(),
-        DescriptionPackage.eINSTANCE.getDecorationDescription_DecoratorPath(),
-        StylePackage.eINSTANCE.getBasicLabelStyleDescription_IconPath(),
-        ToolPackage.eINSTANCE.getMenuItemDescription_Icon(),
-        ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription_IconPath(),
-        ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription_WindowImagePath(),
-        ToolPackage.eINSTANCE.getSelectionWizardDescription_IconPath(),
-        ToolPackage.eINSTANCE.getSelectionWizardDescription_WindowImagePath(),
-        ToolPackage.eINSTANCE.getToolDescription_IconPath()};
-    
+public class ValidImagePathConstraint extends AbstractValidImageConstraint {
+    private static final EAttribute[] PATHS_ATTRIBUTES = { DescriptionPackage.eINSTANCE.getViewpoint_Icon(), DescriptionPackage.eINSTANCE.getDecorationDescription_DecoratorPath(),
+            StylePackage.eINSTANCE.getBasicLabelStyleDescription_IconPath(), ToolPackage.eINSTANCE.getMenuItemDescription_Icon(),
+            ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription_IconPath(), ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription_WindowImagePath(),
+            ToolPackage.eINSTANCE.getSelectionWizardDescription_IconPath(), ToolPackage.eINSTANCE.getSelectionWizardDescription_WindowImagePath(), ToolPackage.eINSTANCE.getToolDescription_IconPath(), };
+
     @Override
     public EAttribute[] getImagePathAttributes() {
-        return attrs;
+        return PATHS_ATTRIBUTES;
     }
 
 }
