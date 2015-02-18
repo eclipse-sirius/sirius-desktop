@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tools.internal.validation.description.constraints;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
@@ -25,6 +26,8 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
+
+import com.google.common.collect.Lists;
 
 /**
  * Abstract Constraint to validate image references.
@@ -65,18 +68,22 @@ public abstract class AbstractValidImageConstraint extends AbstractConstraint {
     public abstract EAttribute[] getImagePathAttributes();
 
     private IStatus validateImagePath(IValidationContext ctx, ResourceSet rs, String path) {
-        IStatus result = ctx.createSuccessStatus();
+        Collection<IStatus> failures = Lists.newArrayList();
         // when path is empty, success (even when a path is needed, because
         // there is another validation rule for that)
         if (!StringUtil.isEmpty(path)) {
             if (!validateExtension(path)) {
-                result = ctx.createFailureStatus(new Object[] { "The path '" + path + "' does not correspond to an image." });
+                failures.add(ctx.createFailureStatus(new Object[] { "The path '" + path + "' does not correspond to an image." }));
             }
             if (!validateExistence(path, rs)) {
-                result = ctx.createFailureStatus(new Object[] { "The image '" + path + "' does not exist." });
+                failures.add(ctx.createFailureStatus(new Object[] { "The image '" + path + "' does not exist." }));
             }
         }
-        return result;
+        if (failures.isEmpty()) {
+            return ctx.createSuccessStatus();
+        } else {
+            return ConstraintStatus.createMultiStatus(ctx, failures);
+        }
     }
 
     private boolean validateExistence(String path, ResourceSet rs) {

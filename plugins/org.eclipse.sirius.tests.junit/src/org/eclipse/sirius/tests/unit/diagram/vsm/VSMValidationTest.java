@@ -184,18 +184,21 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         // Check that there is a pop up for validation problems
         assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
         List<Diagnostic> children = diagnostic.getChildren();
-        // test if there is 7 errors and if each one corresponds to the awaited
-        // one
-        assertEquals("The diagnostic must contain 7 elements invalidated", 7, children.size());
-        assertEquals("The first error do not match the awaited one", "The path '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not correspond to an image.", children.get(0).getMessage());
-        assertEquals("The second error do not match the awaited one", "The image '/test/noimage.gif' does not exist.", children.get(1).getMessage());
-        assertEquals("The third error do not match the awaited one", "The path 'icon' does not correspond to an image.", children.get(2).getMessage());
-        assertEquals("The fourth error do not match the awaited one", "The path '/org.eclipse.sirius.tests.junit/plugin.xml' does not correspond to an image.", children.get(3).getMessage());
-        assertEquals("The fifth error do not match the awaited one", "The image 'C:\\images\\image.png' does not exist.", children.get(4).getMessage());
-        assertEquals("The sixth error do not match the awaited one", "The image '/org.eclipse.sirius.tests.junit/images/notexisting.png' does not exist.", children.get(5).getMessage());
-        // partial assert because the full message references the object with by
-        // its toString(), so it contains the its instance id, which is variable
-        assertEquals("The seventh error do not match the awaited one", "The required feature 'decoratorPath' of", children.get(6).getMessage().substring(0, 39));
+        String[] expectedMessagesPatterns = {
+                "^The path '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not correspond to an image.$",
+                "^The image '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not exist.$",
+                "^The image '/test/noimage.gif' does not exist.$",
+                "^The path 'icon' does not correspond to an image.$",
+                "^The image 'icon' does not exist.$",
+                "^The path '/org.eclipse.sirius.tests.junit/plugin.xml' does not correspond to an image.$",
+                "^The image 'C:\\\\images\\\\image.png' does not exist.$",
+                "^The image '/org.eclipse.sirius.tests.junit/images/notexisting.png' does not exist.$",
+                "^The required feature 'decoratorPath' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$",
+        };
+        assertEquals("The diagnostic must contain " + expectedMessagesPatterns.length + " validation errors", expectedMessagesPatterns.length, children.size());
+        for (int i = 0; i < expectedMessagesPatterns.length; i++) {
+            assertTrue("Unexpected validation error at position " + i, children.get(i).getMessage().matches(expectedMessagesPatterns[i]));
+        }
     }
 
     private void addSpaceInDomainClassValue(EObject current, EAttribute attribute, int iterate) {
