@@ -11,7 +11,6 @@
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
 import java.util.Collection;
-import java.util.Collections;
 
 import org.eclipse.core.resources.IWorkspaceDescription;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
@@ -20,18 +19,13 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -139,16 +133,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         waitJobsBuildOrRefresh();
         
         bot.activeEditor().setFocus();
-        URI vsmURI = URI.createPlatformResourceURI(VSM_PROJECT_NAME + "/description/" + VSM, true);
-        final SiriusEditor vsmEditor = ((SiriusEditor) bot.activeEditor().getReference().getEditor(false));
-        Resource vsmResource = vsmEditor.getEditingDomain().getResourceSet().getResource(vsmURI, false);
-        final Viewpoint vp = ((Group) vsmResource.getContents().get(0)).getOwnedViewpoints().get(0);
-        bot.getDisplay().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                vsmEditor.setSelectionToViewer(Collections.singleton(vp));
-            }
-        });
+        bot.activeEditor().bot().tree().expandNode("platform:/resource/" + VSM_PROJECT_NAME + "/description/" + VSM, "test", "VP", "Diag").select();
 
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
