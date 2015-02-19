@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eClassifiers xsi:type="ecore:EClass" name="square">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toC2" eType="#//C2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="triangle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toNote" eType="#//note"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toTransparent" eType="#//transparentSquare"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="note"/>
+  <eClassifiers xsi:type="ecore:EClass" name="actor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uses" eType="#//useCase"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="useCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="transparentSquare"/>
+  <eClassifiers xsi:type="ecore:EClass" name="cow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cowUses" eType="#//useCase"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="circles">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="circlesUses" eType="#//useCase"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="circleWithBlank">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toNote2" eType="#//note"/>
+  </eClassifiers>
+</ecore:EPackage>

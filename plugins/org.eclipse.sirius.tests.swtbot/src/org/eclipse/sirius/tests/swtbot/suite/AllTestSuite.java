@@ -219,6 +219,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeStabilityOnDragAndDropTest.class);
         suite.addTestSuite(EdgeLabelStabilityTest.class);
         suite.addTestSuite(EdgeStabilityOnLayerManagementTest.class);
+        suite.addTestSuite(EdgeOnFigureWithAlphaAnchorTest.class);
         suite.addTestSuite(CenteredEdgesTest.class);
         suite.addTestSuite(EditorSavingTest.class);
         suite.addTestSuite(EmptyPropertyViewAfterDeletionTest.class);
