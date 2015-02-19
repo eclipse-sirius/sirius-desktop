@@ -228,7 +228,7 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
             Option<Object> option = ReflectionHelper.getFieldValueWithoutException(page, "selectionService");
             if (option.some()) {
                 ISelectionService pageSelectionService = (ISelectionService) option.get();
-                Option<Object> listenerListOption = getFieldValueWithoutException(pageSelectionService.getClass().getSuperclass(), pageSelectionService, "listeners");
+                Option<Object> listenerListOption = ReflectionHelper.getFieldValueWithoutException(pageSelectionService, "listeners");
                 if (listenerListOption.some()) {
                     listeners = ((ListenerList) listenerListOption.get()).getListeners();
                 }
