@@ -295,12 +295,15 @@
 				<code>PinHelper.IsPinned(IDiagramElementEditPart)</code> removed in favor of 
 				<code>PinHelper.IsPinned(DDiagramElement)</code>.
 			</li>
-			<li>external java actions declared as 
+			<li>External java actions declared as 
 				<code>org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.pinElementsActionId</code> and 
 				<code>org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.unpinElementsActionId</code> are now declared as 
 				<code>org.eclipse.sirius.diagram.tools.internal.actions.pinning.pinElementsActionId</code> and 
 				<code>org.eclipse.sirius.diagram.tools.internal.actions.pinning.unpinElementsActionId</code> in 
 				<code>org.eclipse.sirius.diagram</code> plugin.
+			</li>
+			<li>The 
+				<code>org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart.getEAdapterStrokeColor</code> method has been removed as the corresponding adapter was uneffective and is no more used and installed on the edge edit parts.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 

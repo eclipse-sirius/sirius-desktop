@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,13 +64,6 @@ public interface IDiagramEdgeEditPart extends IDiagramElementEditPart, INodeEdit
      * @return the listener that listens the routing style of the connection.
      */
     NotificationPreCommitListener getEAdapterRoutingStyle();
-
-    /**
-     * Returns the listener that listens the stroke color of the connection.
-     * 
-     * @return the listener that listens the stroke color of the connection.
-     */
-    NotificationPreCommitListener getEAdapterStrokeColor();
 
     /**
      * This method is invoked when the routing style of the connection is

@@ -108,25 +108,6 @@ public final class DiagramEdgeEditPartOperation {
     }
 
     /**
-     * Creates the listener of the stroke color of the connection.
-     * 
-     * @param self
-     *            the edge edit part.
-     * @return the listener of the stroke color of the connection.
-     */
-    public static NotificationPreCommitListener createEAdapterStrokeColor(final IDiagramEdgeEditPart self) {
-        return new NotificationPreCommitListener() {
-
-            public Command transactionAboutToCommit(final Notification msg) {
-                if (self.getParent() != null) {
-                    return new EdgeRoutingStyleChangedCommand(self.getEditingDomain(), self, msg);
-                }
-                return null;
-            }
-        };
-    }
-
-    /**
      * Creates the listener of the routing style of the connection.
      * 
      * @param self
@@ -476,13 +457,6 @@ public final class DiagramEdgeEditPartOperation {
         final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(self.getEditingDomain().getResourceSet());
         auth.addAuthorityListener(self.getEditPartAuthorityListener());
         self.getEditPartAuthorityListener().refreshEditMode();
-        final EObject semanticElement = self.resolveSemanticElement();
-        if (semanticElement instanceof DEdge) {
-            final DEdge edge = (DEdge) semanticElement;
-            if (edge.getOwnedStyle() != null) {
-                broker.addNotificationListener(edge.getOwnedStyle(), self.getEAdapterStrokeColor());
-            }
-        }
     }
 
     /**
@@ -496,13 +470,6 @@ public final class DiagramEdgeEditPartOperation {
         if (self.getModel() != null && self.getNotationView().getStyle(NotationPackage.eINSTANCE.getRoutingStyle()) != null) {
             final RoutingStyle rstyle = (RoutingStyle) self.getNotationView().getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
             broker.removeNotificationListener(rstyle, self.getEAdapterRoutingStyle());
-        }
-        final EObject semanticElement = self.resolveSemanticElement();
-        if (semanticElement instanceof DEdge) {
-            final DEdge edge = (DEdge) semanticElement;
-            if (edge.getOwnedStyle() != null) {
-                broker.removeNotificationListener(edge.getOwnedStyle(), self.getEAdapterStrokeColor());
-            }
         }
         final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(self.getEditingDomain().getResourceSet());
         auth.removeAuthorityListener(self.getEditPartAuthorityListener());

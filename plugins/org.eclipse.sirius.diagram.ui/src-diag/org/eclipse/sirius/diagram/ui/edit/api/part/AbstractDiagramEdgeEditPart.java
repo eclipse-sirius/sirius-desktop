@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -96,9 +96,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
 
     /** Listens the routing style. */
     private NotificationPreCommitListener adapterRoutingStyle;
-
-    /** Listens the stroke color. */
-    private NotificationPreCommitListener adapterStrokeColor;
 
     /** listen to semantic elements container */
     private NotificationListener editModeListener = new EditStatusUpdater(this);
@@ -379,18 +376,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             this.adapterRoutingStyle = DiagramEdgeEditPartOperation.createEAdapterRoutingStyle(this);
         }
         return this.adapterRoutingStyle;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart#getEAdapterStrokeColor()
-     */
-    public NotificationPreCommitListener getEAdapterStrokeColor() {
-        if (this.adapterStrokeColor == null) {
-            this.adapterStrokeColor = DiagramEdgeEditPartOperation.createEAdapterStrokeColor(this);
-        }
-        return this.adapterStrokeColor;
     }
 
     /**

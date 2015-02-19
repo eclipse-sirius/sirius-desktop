@@ -84,8 +84,7 @@ public class StylePropertySection extends SemanticPropertySection {
                 if (af != null) {
                     final IItemPropertySource ips = (IItemPropertySource) af.adapt(style, IItemPropertySource.class);
                     if (ips != null) {
-                        final IPropertySource targetPropertySource = new StylePropertySource(style, view, ips);
-                        propSrc = targetPropertySource;
+                        propSrc = new StylePropertySource(style, view, ips);
                     }
                 }
             }
