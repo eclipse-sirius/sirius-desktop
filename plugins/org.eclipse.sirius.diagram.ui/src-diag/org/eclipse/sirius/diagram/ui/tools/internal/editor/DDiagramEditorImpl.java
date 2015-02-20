@@ -328,6 +328,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                 DiagramPlugin.getDefault().getLog().log(new Status(IStatus.INFO, DiagramPlugin.ID, "Refresh job got interrupted", e));
             }
         }
+        disposeGraphicalListeners();
         super.close(save);
     }
 
@@ -651,18 +652,12 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     public void dispose() {
         isClosing = true;
-        // Dispose the tabbar (to avoir memory leak)
+        // Dispose the tabbar (to avoid memory leak)
         if (getTabbar() != null) {
             getTabbar().dispose();
             setTabbar(null);
         }
-        // Dispose post-commit listener
-        disposePostCommitListener();
-
-        if (gmfDiagramUpdater != null) {
-            gmfDiagramUpdater.dispose();
-            gmfDiagramUpdater = null;
-        }
+        disposeGraphicalListeners();
         if (getDiagram() != null && getDiagram().eResource() != null) {
             if (dRepresentationLockStatusListener != null) {
                 IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getDiagram().getElement());
@@ -733,6 +728,21 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // If possible, remove the diagram event broker for the listening of the
         // transactional editing domain
         stopDiagramEventBrokerListener(getEditingDomain());
+    }
+
+    /**
+     * Dispose all graphical listeners. This method can be called as soon as the
+     * close of the editor is in progress. This avoids that these listeners
+     * react to notification whereas the editor will be closed.
+     */
+    protected void disposeGraphicalListeners() {
+        // Dispose post-commit listener
+        disposePostCommitListener();
+
+        if (gmfDiagramUpdater != null) {
+            gmfDiagramUpdater.dispose();
+            gmfDiagramUpdater = null;
+        }
     }
 
     private void disposeOutline() {
