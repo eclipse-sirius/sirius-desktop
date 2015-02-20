@@ -29,6 +29,12 @@ h4. Changes in @org.eclipse.sirius@
 * The @isBbocked()@ and @setBlocked()@ methods on the @org.eclipse.sirius.viewpoint.DAnalysisSessionEObject@ EClass have been removed, as they were not actually used in the internal code.
 * The @org.eclipse.sirius.business.api.session.Session.createSemanticResource()@ method has been removed. Use @Session.addSemanticResource()@ instead.
 
+h4. Changes in @org.eclipse.sirius.ui@
+
+* The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject, EStructuralFeature)@ has been added to customize the tooltip displayed in the VSM editor by using the feature of the current object. The old method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject)@ has been deprecated.
+* The class @org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource@ has been added. It allows developers to make their properties views CellEditor customizable by using the new extension point @org.eclipse.sirius.ui.siriuspropertiescelleditor@
+* The interface @org.eclipse.sirius.ext.emf.ui.ICellEditorProvider@ has been added to allow clients to provide their own @CellEditor@ - in the Sirius semantic properties views - through the new extension point @org.eclipse.sirius.ui.siriuspropertiescelleditor@.
+
 h4. Changes in @org.eclipse.sirius.common@
 
 * The @org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter@ interface and the @org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl@ have been added to have the capability to disable the proxy resolution. This feature is typically used to prevent loading a resource during its unloading. *Warning* : _Every additional custom CrossReferenceAdapter_  should extend @SiriusCrossReferenceAdapterImpl@ or at least implement @SiriusCrossReferenceAdapter@ with the same implementation as @SiriusCrossReferenceAdapterImpl@.
@@ -96,10 +102,6 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 * The @warnings@ member variable has been added to @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase@ to allow the recording of warning logs. Methods @doesAWarningOccurs()@, @setWarningCatchActive(boolean)@, @isWarningCatchActive()@ and @getWarningLoggersMessage()@ have also been added to manage the @warnings@ member variable in the same way as the existing @errors@ member variable.
 
 * The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.selectPropertyTabItem(String)@ now returns a @boolean@ that is true when the property tab item is found, false otherwise.
-
-h4. Changes in @org.eclipse.sirius.ui.business.api@
-
-* The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject, EStructuralFeature)@ has been added to customize the tooltip displayed in the VSM editor by using the feature of the current object. The old method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject)@ has been deprecated.
 
 h4. Changes in @org.eclipse.sirius.ext.swt@
 

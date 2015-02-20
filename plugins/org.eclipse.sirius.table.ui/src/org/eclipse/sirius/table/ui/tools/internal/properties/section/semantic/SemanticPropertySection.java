@@ -23,6 +23,7 @@ import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.ui.tools.internal.properties.propertysource.TableCompositeEObjectPropertySource;
 import org.eclipse.sirius.table.ui.tools.internal.properties.section.common.AbstractDTablePropertySection;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractCompositeEObjectPropertySource;
+import org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -120,7 +121,7 @@ public class SemanticPropertySection extends AbstractDTablePropertySection {
             if (af != null) {
                 final IItemPropertySource ips = (IItemPropertySource) af.adapt(semanticElement, IItemPropertySource.class);
                 if (ips != null) {
-                    final IPropertySource targetPropertySource = new PropertySource(semanticElement, ips);
+                    final IPropertySource targetPropertySource = new SiriusExtensiblePropertySource(semanticElement, ips);
                     propertySource.addPropertySource(semanticElement, targetPropertySource);
                 }
             }

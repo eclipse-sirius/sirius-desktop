@@ -1,0 +1,12 @@
+h1. Sirius - Provide Custom Cell Editors
+
+h2. Sirius Semantic Properties View
+
+You can override the default CellEditors in the Sirius semantic properties views by implementing @org.eclipse.sirius.ext.emf.ui.ICellEditorProvider@ and provide it through the @org.eclipse.sirius.ui.siriuspropertiescelleditor@ extension point.
+
+!images/propertiesView.png!
+_The semantic properties view_
+
+h2. Other Editors Properties View
+
+This extension mechanism can also be used for other editors properties view. That can be done by providing the @org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource@ instead of the default EMF one by replacing the @propertySourceProvider@ in the generated editor.

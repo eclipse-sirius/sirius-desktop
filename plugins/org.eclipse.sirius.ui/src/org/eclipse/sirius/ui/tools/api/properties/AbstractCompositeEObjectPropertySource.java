@@ -241,7 +241,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
     }
 
     /**
-     * Decorates an {@link IPropertyDescriptor}. Adds the abality to test if the
+     * Decorates an {@link IPropertyDescriptor}. Adds the ability to test if the
      * property is editable.
      * 
      * @author ymortier
@@ -279,11 +279,11 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
          * @see org.eclipse.ui.views.properties.IPropertyDescriptor#createPropertyEditor(org.eclipse.swt.widgets.Composite)
          */
         public CellEditor createPropertyEditor(final Composite parent) {
-            final CellEditor editor = decorated.createPropertyEditor(parent);
+            CellEditor cellEditor = null;
             if (getPermissionAuthority().canEditInstance(identifier.getEObject())) {
-                return editor;
+                cellEditor = decorated.createPropertyEditor(parent);
             }
-            return null;
+            return cellEditor;
         }
 
         private IPermissionAuthority getPermissionAuthority() {

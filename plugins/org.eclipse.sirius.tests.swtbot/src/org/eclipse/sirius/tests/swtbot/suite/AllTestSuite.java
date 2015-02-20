@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.tests.swtbot.*;
+import org.eclipse.sirius.tests.swtbot.celleditor.CellEditorExtensionTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.CustomClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.DisabledSiriusClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.GenericClipboardSupportTest;
@@ -128,6 +129,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CustomClipboardSupportTest.class);
         suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
         suite.addTestSuite(DragAndDropDifferentElementsTest.class);
+        suite.addTestSuite(CellEditorExtensionTest.class);
     }
 
     /**

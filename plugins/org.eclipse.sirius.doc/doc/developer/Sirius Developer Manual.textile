@@ -13,5 +13,6 @@ This document gives an overview of the internals of the _Sirius_ platform, and d
 ** "*Provide tab-bar extensions*":extensions-provide_tabbar_extensions.html
 ** "*Provide custom representation files migration*":extensions-provide_migrate_contribution.html
 ** "*Provide custom repair participant*":extensions-provide_repair_contribution.html
+** "*Provide custom cell editor*":extensions-provide_celleditor.html
 * The Sirius platform publishs a set of API, and the next sections describe some which require particular attention:
 ** "*SiriusCrossReferenceAdapter*":siriusCrossReferenceAdapter.html
