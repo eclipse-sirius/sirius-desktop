@@ -13,9 +13,11 @@ package org.eclipse.sirius.viewpoint;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
@@ -26,6 +28,7 @@ import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionRegistryListener;
 import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -33,7 +36,7 @@ import org.osgi.framework.BundleContext;
  * 
  * @author ymortier
  */
-public final class SiriusPlugin extends Plugin {
+public final class SiriusPlugin extends EMFPlugin {
     /**
      * Tell whether Eclipse is running or not.
      */
@@ -53,8 +56,10 @@ public final class SiriusPlugin extends Plugin {
     /** The id. */
     public static final String ID = "org.eclipse.sirius"; //$NON-NLS-1$
 
-    /** The shared instance. */
-    private static SiriusPlugin defaultPlugin;
+    /** Keep track of the singleton.. */
+    public static final SiriusPlugin INSTANCE = new SiriusPlugin();
+
+    private static Implementation plugin;
 
     /**
      * create at the initialization to avoid synchronization cost in
@@ -69,136 +74,166 @@ public final class SiriusPlugin extends Plugin {
     private static final InterpreterRegistry INTER_REGISTRY = new InterpreterRegistry();
 
     /**
-     * The registry listener that will be used to listen to sessionFactory
-     * extension changes.
-     */
-    private SessionFactoryRegistryListener sessionFactoryRegistryListener;
-
-    /** The registry listener that will be used to listen to extension changes. */
-    private DeleteHookDescriptorRegistryListener deleteHookDescriptorRegistryListener;
-
-    /**
-     * The registry listener that will be used to listen to contribution changes
-     * against the external java action extension point.
-     */
-    private ExternalJavaActionRegistryListener javaActionRegistryListener;
-
-    /**
-     * Creates a new <code>ExtensionPlugin</code>.
+     * Creates the instance.
      */
     public SiriusPlugin() {
-        defaultPlugin = this;
+        super(new ResourceLocator[] { EcorePlugin.INSTANCE, SiriusPlugin.INSTANCE, });
     }
 
     /**
-     * Returns the shared instance.
+     * Returns the singleton instance of the Eclipse plugin.
      * 
-     * @return the shared instance.
-     */
-    public static SiriusPlugin getDefault() {
-        return SiriusPlugin.defaultPlugin;
-    }
-
-    /**
-     * Logs an error in the error log.
-     * 
-     * @param message
-     *            the message to log (optional).
-     * @param e
-     *            the exception (optional).
-     */
-    public void error(String message, final Throwable e) {
-        String messageToDisplay = message;
-        if (messageToDisplay == null && e != null) {
-            messageToDisplay = e.getMessage();
-        }
-        if (e instanceof CoreException) {
-            this.getLog().log(((CoreException) e).getStatus());
-        } else {
-            final IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), messageToDisplay, e);
-            this.getLog().log(status);
-        }
-    }
-
-    /**
-     * Logs a warning in the error log.
-     * 
-     * @param message
-     *            the message to log (optional).
-     * @param e
-     *            the exception (optional).
-     */
-    public void warning(String message, final Exception e) {
-        String messageToDisplay = message;
-        if (messageToDisplay == null && e != null) {
-            messageToDisplay = e.getMessage();
-        }
-        if (e instanceof CoreException) {
-            this.getLog().log(((CoreException) e).getStatus());
-        } else {
-            final IStatus status = new Status(IStatus.WARNING, this.getBundle().getSymbolicName(), messageToDisplay, e);
-            this.getLog().log(status);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
+     * @return the singleton instance.
      */
     @Override
-    public void start(final BundleContext context) throws Exception {
-        super.start(context);
-
-        // Sets the validator for these model.
-        EValidator.Registry.INSTANCE.put(ViewpointPackage.eINSTANCE, new EValidatorAdapter());
-        EValidator.Registry.INSTANCE.put(DescriptionPackage.eINSTANCE, new EValidatorAdapter());
-        EValidator.Registry.INSTANCE.put(ToolPackage.eINSTANCE, new EValidatorAdapter());
-
-        sessionFactoryRegistryListener = new SessionFactoryRegistryListener();
-        sessionFactoryRegistryListener.init();
-        deleteHookDescriptorRegistryListener = new DeleteHookDescriptorRegistryListener();
-        deleteHookDescriptorRegistryListener.init();
-        javaActionRegistryListener = new ExternalJavaActionRegistryListener();
-        javaActionRegistryListener.init();
+    public ResourceLocator getPluginResourceLocator() {
+        return plugin;
     }
 
     /**
-     * {@inheritDoc}
+     * Returns the singleton instance of the Eclipse plugin.
      * 
-     * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
+     * @return the singleton instance.
      */
-    @Override
-    public void stop(final BundleContext context) throws Exception {
-        super.stop(context);
-        REGISTRY.dispose();
-
-        sessionFactoryRegistryListener.dispose();
-        sessionFactoryRegistryListener = null;
-        deleteHookDescriptorRegistryListener.dispose();
-        deleteHookDescriptorRegistryListener = null;
-        javaActionRegistryListener.dispose();
-        javaActionRegistryListener = null;
-
-        ViewpointRegistry.getInstance().dispose();
+    public static Implementation getDefault() {
+        return plugin;
     }
 
     /**
-     * Return the global instance of {@link ModelAccessorsRegistry}.
-     * 
-     * @return the global instance of {@link ModelAccessorsRegistry}.
+     * The actual implementation of the Eclipse <b>Plugin</b>.
      */
-    public ModelAccessorsRegistry getModelAccessorRegistry() {
-        return REGISTRY;
-    }
+    public static class Implementation extends EclipsePlugin {
 
-    /**
-     * Return the global instance of {@link ExtendedPackageRegistry}.
-     * 
-     * @return the global instance of {@link ExtendedPackageRegistry}.
-     */
-    public InterpreterRegistry getInterpreterRegistry() {
-        return INTER_REGISTRY;
+        /**
+         * The registry listener that will be used to listen to sessionFactory
+         * extension changes.
+         */
+        private SessionFactoryRegistryListener sessionFactoryRegistryListener;
+
+        /**
+         * The registry listener that will be used to listen to extension
+         * changes.
+         */
+        private DeleteHookDescriptorRegistryListener deleteHookDescriptorRegistryListener;
+
+        /**
+         * The registry listener that will be used to listen to contribution
+         * changes against the external java action extension point.
+         */
+        private ExternalJavaActionRegistryListener javaActionRegistryListener;
+
+        /**
+         * Creates an instance.
+         */
+        public Implementation() {
+            super();
+            plugin = this;
+        }
+
+        /**
+         * The actual implementation of the purely OSGi-compatible <b>Bundle
+         * Activator</b>.
+         */
+        public static final class Activator extends EMFPlugin.OSGiDelegatingBundleActivator {
+            @Override
+            protected BundleActivator createBundle() {
+                return new Implementation();
+            }
+        }
+
+        @Override
+        public void start(BundleContext context) throws Exception {
+            super.start(context);
+
+            // Sets the validator for these model.
+            EValidator.Registry.INSTANCE.put(ViewpointPackage.eINSTANCE, new EValidatorAdapter());
+            EValidator.Registry.INSTANCE.put(DescriptionPackage.eINSTANCE, new EValidatorAdapter());
+            EValidator.Registry.INSTANCE.put(ToolPackage.eINSTANCE, new EValidatorAdapter());
+
+            sessionFactoryRegistryListener = new SessionFactoryRegistryListener();
+            sessionFactoryRegistryListener.init();
+            deleteHookDescriptorRegistryListener = new DeleteHookDescriptorRegistryListener();
+            deleteHookDescriptorRegistryListener.init();
+            javaActionRegistryListener = new ExternalJavaActionRegistryListener();
+            javaActionRegistryListener.init();
+        }
+
+        @Override
+        public void stop(BundleContext context) throws Exception {
+            REGISTRY.dispose();
+
+            sessionFactoryRegistryListener.dispose();
+            sessionFactoryRegistryListener = null;
+            deleteHookDescriptorRegistryListener.dispose();
+            deleteHookDescriptorRegistryListener = null;
+            javaActionRegistryListener.dispose();
+            javaActionRegistryListener = null;
+
+            ViewpointRegistry.getInstance().dispose();
+
+            super.stop(context);
+        }
+
+        /**
+         * Return the global instance of {@link ModelAccessorsRegistry}.
+         * 
+         * @return the global instance of {@link ModelAccessorsRegistry}.
+         */
+        public ModelAccessorsRegistry getModelAccessorRegistry() {
+            return REGISTRY;
+        }
+
+        /**
+         * Return the global instance of {@link ExtendedPackageRegistry}.
+         * 
+         * @return the global instance of {@link ExtendedPackageRegistry}.
+         */
+        public InterpreterRegistry getInterpreterRegistry() {
+            return INTER_REGISTRY;
+        }
+
+        /**
+         * Logs an error in the error log.
+         * 
+         * @param message
+         *            the message to log (optional).
+         * @param e
+         *            the exception (optional).
+         */
+        public void error(String message, final Throwable e) {
+            String messageToDisplay = message;
+            if (messageToDisplay == null && e != null) {
+                messageToDisplay = e.getMessage();
+            }
+            if (e instanceof CoreException) {
+                getLog().log(((CoreException) e).getStatus());
+            } else {
+                IStatus status = new Status(IStatus.ERROR, getDefault().getSymbolicName(), messageToDisplay, e);
+                getLog().log(status);
+            }
+        }
+
+        /**
+         * Logs a warning in the error log.
+         * 
+         * @param message
+         *            the message to log (optional).
+         * @param e
+         *            the exception (optional).
+         */
+        public void warning(String message, final Exception e) {
+            String messageToDisplay = message;
+            if (messageToDisplay == null && e != null) {
+                messageToDisplay = e.getMessage();
+            }
+            if (e instanceof CoreException) {
+                getLog().log(((CoreException) e).getStatus());
+            } else {
+                final IStatus status = new Status(IStatus.WARNING, getDefault().getSymbolicName(), messageToDisplay, e);
+                getLog().log(status);
+            }
+        }
+
     }
 
 }

@@ -159,6 +159,11 @@
 				<code>postXMLEndElement([..])</code> which is called during a migration operation. This method should be overrided by participants which have to hook the loading process after each end of XML tag. The  corresponding abstract class 
 				<code>org.eclipse.sirius.business.api.migration.AbstractMigrationParticipant</code> provides a default NO-OP implementation.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.common.tools.api.util.EclipseUtil.getConfigurationElementsFor()</code> added to call 
+				<code>org.eclipse.core.runtime.Platform.getExtensionRegistry().getConfigurationElementsFor()</code> and check 
+				<code>Platform.isRunning()</code> before. 
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>

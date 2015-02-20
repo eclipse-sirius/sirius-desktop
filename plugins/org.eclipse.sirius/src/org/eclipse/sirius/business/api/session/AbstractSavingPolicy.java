@@ -16,13 +16,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.IWorkspaceRunnable;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -59,20 +59,23 @@ public abstract class AbstractSavingPolicy implements SavingPolicy {
         final Collection<Resource> resourcesToSave = Lists.newArrayList();
         try {
             monitor.beginTask("Save Session", IProgressMonitor.UNKNOWN);
+            resourcesToSave.addAll(computeResourcesToSave(Sets.newLinkedHashSet(allResources), options, monitor));
             if (alreadyIsInWorkspaceModificationOperation()) {
-                resourcesToSave.addAll(computeResourcesToSave(Sets.newLinkedHashSet(allResources), options, monitor));
                 wrappedSave(resourcesToSave, allResources, options, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
             } else {
-                final IWorkspace workspace = ResourcesPlugin.getWorkspace();
-                try {
-                    workspace.run(new IWorkspaceRunnable() {
-                        public void run(final IProgressMonitor monitor) throws CoreException {
-                            resourcesToSave.addAll(computeResourcesToSave(Sets.newLinkedHashSet(allResources), options, monitor));
-                            wrappedSave(resourcesToSave, allResources, options, monitor);
-                        }
-                    }, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
-                } catch (final CoreException e) {
-                    SiriusPlugin.getDefault().error("Core exception while saving session", e);
+                IWorkspaceRoot workspaceRoot = EcorePlugin.getWorkspaceRoot();
+                if (workspaceRoot != null) {
+                    try {
+                        workspaceRoot.getWorkspace().run(new IWorkspaceRunnable() {
+                            public void run(final IProgressMonitor monitor) throws CoreException {
+                                wrappedSave(resourcesToSave, allResources, options, monitor);
+                            }
+                        }, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
+                    } catch (final CoreException e) {
+                        SiriusPlugin.getDefault().error("Core exception while saving session", e);
+                    }
+                } else {
+                    wrappedSave(resourcesToSave, allResources, options, monitor);
                 }
             }
         } finally {

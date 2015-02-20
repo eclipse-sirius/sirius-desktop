@@ -20,7 +20,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -28,7 +27,6 @@ import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
-import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy.Action;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
@@ -278,8 +276,9 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
         boolean allResourceAreInSync = true;
         for (Resource resource : resourcesToConsider) {
             ResourceStatus status = ResourceSetSync.getStatus(resource);
-            URI uri = resource.getURI();
-            allResourceAreInSync = status == ResourceStatus.SYNC || (!uri.isPlatformResource() && !new URIQuery(uri).isInMemoryURI() && !new URIQuery(uri).isCDOURI());
+            // Test also resource.modified field in case ResourceStatus ==
+            // UNKNOWN
+            allResourceAreInSync = status == ResourceStatus.SYNC || !resource.isModified();
             if (!allResourceAreInSync) {
                 break;
             }

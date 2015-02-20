@@ -18,9 +18,9 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 
 /**
  * Class able to tell whether a save operation on a resource can succeed or not,
@@ -30,7 +30,6 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
  * resource to know whether it will change the file or not.
  * 
  * @author cbrun
- * 
  */
 public class ResourceSaveDiagnose {
 
@@ -52,7 +51,10 @@ public class ResourceSaveDiagnose {
      * @return true if the resource might be saved, false otherwise.
      */
     public boolean isSaveable() {
-        return resourcetoSave.getURI().isFile() || resourcetoSave.getURI().isPlatformResource() && !SiriusUtil.isModelerDescriptionFile(resourcetoSave);
+        boolean isSaveable = false;
+        ResourceSet resourceSet = resourcetoSave.getResourceSet();
+        isSaveable = resourceSet != null && !Boolean.TRUE.equals(resourceSet.getURIConverter().getAttributes(resourcetoSave.getURI(), null).get(URIConverter.ATTRIBUTE_READ_ONLY));
+        return isSaveable;
     }
 
     /**
@@ -77,7 +79,7 @@ public class ResourceSaveDiagnose {
 
             final URIConverter uriConverter = resourcetoSave.getResourceSet() == null ? new ResourceSetImpl().getURIConverter() : resourcetoSave.getResourceSet().getURIConverter();
             final OutputStream temporaryFileOutputStream = uriConverter.createOutputStream(temporaryFileURI);
-            
+
             long preSaveTimestamp = resourcetoSave.getTimeStamp();
             boolean preSaveIsModified = resourcetoSave.isModified();
             try {
@@ -86,9 +88,10 @@ public class ResourceSaveDiagnose {
                 temporaryFileOutputStream.close();
                 /*
                  * saving the resource instance even in an external buffer will
-                 * change the session state, notably isModified and the timestamp
-                 * (see the implementation of ResourceImpl). We don't want to have
-                 * this side effect, the best we can do is undo it aftersaving.
+                 * change the session state, notably isModified and the
+                 * timestamp (see the implementation of ResourceImpl). We don't
+                 * want to have this side effect, the best we can do is undo it
+                 * aftersaving.
                  */
                 resourcetoSave.setModified(preSaveIsModified);
                 resourcetoSave.setTimeStamp(preSaveTimestamp);

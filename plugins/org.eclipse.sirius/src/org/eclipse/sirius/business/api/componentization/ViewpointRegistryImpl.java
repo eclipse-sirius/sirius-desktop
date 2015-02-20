@@ -26,12 +26,13 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceDelta;
-import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -146,10 +147,10 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
 
         crossReferencer = new ECrossReferenceAdapter();
         this.resourceSet.eAdapters().add(crossReferencer);
-
-        final IWorkspace workspace = ResourcesPlugin.getWorkspace();
-        workspace.addResourceChangeListener(this, IResourceChangeEvent.POST_CHANGE);
-
+        IWorkspaceRoot workspaceRoot = EcorePlugin.getWorkspaceRoot();
+        if (workspaceRoot != null) {
+            workspaceRoot.getWorkspace().addResourceChangeListener(this, IResourceChangeEvent.POST_CHANGE);
+        }
         initViewpointsFromPlugins();
         refreshComponentsFromWorkspace();
     }
@@ -470,8 +471,10 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         if (filters != null) {
             filters.clear();
         }
-        final IWorkspace workspace = ResourcesPlugin.getWorkspace();
-        workspace.removeResourceChangeListener(this);
+        IWorkspaceRoot workspaceRoot = EcorePlugin.getWorkspaceRoot();
+        if (workspaceRoot != null) {
+            workspaceRoot.getWorkspace().removeResourceChangeListener(this);
+        }
         invalidateCache();
     }
 

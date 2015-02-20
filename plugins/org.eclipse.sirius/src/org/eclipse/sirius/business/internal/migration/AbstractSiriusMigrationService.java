@@ -17,7 +17,6 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -29,6 +28,7 @@ import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.sirius.business.api.migration.IMigrationParticipant;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -45,9 +45,8 @@ import org.xml.sax.Attributes;
 public abstract class AbstractSiriusMigrationService {
 
     /**
-     * This option is passed during a resource load if a migration should
-     * be done. The value contains a string representation of the loaded
-     * version.
+     * This option is passed during a resource load if a migration should be
+     * done. The value contains a string representation of the loaded version.
      */
     public static final String OPTION_RESOURCE_MIGRATION_LOADEDVERSION = "RESOURCE_MIGRATION_LOADEDVERSION";
 
@@ -72,7 +71,7 @@ public abstract class AbstractSiriusMigrationService {
      */
     protected void loadContributions() {
         delegatesParticipants.clear();
-        IConfigurationElement[] config = Platform.getExtensionRegistry().getConfigurationElementsFor("org.eclipse.sirius.migrationParticipant");
+        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor("org.eclipse.sirius.migrationParticipant");
         for (IConfigurationElement configurationElement : config) {
             try {
                 String kind = configurationElement.getAttribute("kind");

@@ -18,15 +18,15 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
-import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 
 import com.google.common.base.Objects;
@@ -123,27 +123,27 @@ public final class EclipseUtil {
      */
     private static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String executableAttribute, final String attributeName,
             final Predicate<String> attributeValuePredicate) {
+        final List<T> contributors = new ArrayList<T>();
+        if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+            final IExtension[] extensions = EclipseUtil.getExtensions(extensionId);
+            for (final IExtension ext : extensions) {
+                final IConfigurationElement[] ce = ext.getConfigurationElements();
+                for (IConfigurationElement element : ce) {
 
-        final IExtension[] extensions = EclipseUtil.getExtensions(extensionId);
-        final List<T> contributors = new ArrayList<T>(extensions.length);
-
-        for (final IExtension ext : extensions) {
-            final IConfigurationElement[] ce = ext.getConfigurationElements();
-            for (IConfigurationElement element : ce) {
-
-                if (EclipseUtil.checkAttribute(element, attributeName, attributeValuePredicate)) {
-                    Object obj;
-                    try {
-                        obj = element.createExecutableExtension(executableAttribute);
-                        if (clazz.isInstance(obj)) {
-                            contributors.add(clazz.cast(obj));
+                    if (EclipseUtil.checkAttribute(element, attributeName, attributeValuePredicate)) {
+                        Object obj;
+                        try {
+                            obj = element.createExecutableExtension(executableAttribute);
+                            if (clazz.isInstance(obj)) {
+                                contributors.add(clazz.cast(obj));
+                            }
+                        } catch (final CoreException e) {
+                            DslCommonPlugin.getDefault().error("Impossible to load the extension " + ext.getLabel(), e);
+                            DslCommonPlugin.getDefault().getLog().log(e.getStatus());
                         }
-                    } catch (final CoreException e) {
-                        DslCommonPlugin.getDefault().error("Impossible to load the extension " + ext.getLabel(), e);
-                        DslCommonPlugin.getDefault().getLog().log(e.getStatus());
                     }
-                }
 
+                }
             }
         }
         return contributors;
@@ -171,36 +171,37 @@ public final class EclipseUtil {
      * @since 1.0.0M7
      */
     public static <T> Map<String, Collection<T>> getExtensionPluginsByKey(Class<T> clazz, String extensionId, String executableAttribute, String keyAttributeName) {
-        final IExtension[] extensions = EclipseUtil.getExtensions(extensionId);
         final Map<String, Collection<T>> contributors = Maps.newLinkedHashMap();
+        if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+            final IExtension[] extensions = EclipseUtil.getExtensions(extensionId);
+            for (final IExtension ext : extensions) {
+                final IConfigurationElement[] ce = ext.getConfigurationElements();
+                for (IConfigurationElement element : ce) {
 
-        for (final IExtension ext : extensions) {
-            final IConfigurationElement[] ce = ext.getConfigurationElements();
-            for (IConfigurationElement element : ce) {
-
-                if (EclipseUtil.checkAttribute(element, keyAttributeName, Predicates.<String> alwaysTrue())) {
-                    Object obj;
-                    try {
-                        obj = element.createExecutableExtension(executableAttribute);
-                        if (clazz.isInstance(obj)) {
-                            String key = null;
-                            if (keyAttributeName != null) {
-                                key = element.getAttribute(keyAttributeName);
+                    if (EclipseUtil.checkAttribute(element, keyAttributeName, Predicates.<String> alwaysTrue())) {
+                        Object obj;
+                        try {
+                            obj = element.createExecutableExtension(executableAttribute);
+                            if (clazz.isInstance(obj)) {
+                                String key = null;
+                                if (keyAttributeName != null) {
+                                    key = element.getAttribute(keyAttributeName);
+                                }
+                                key = Objects.firstNonNull(key, "");
+                                Collection<T> val = contributors.get(key);
+                                if (val == null) {
+                                    val = Lists.newArrayList();
+                                    contributors.put(key, val);
+                                }
+                                val.add(clazz.cast(obj));
                             }
-                            key = Objects.firstNonNull(key, "");
-                            Collection<T> val = contributors.get(key);
-                            if (val == null) {
-                                val = Lists.newArrayList();
-                                contributors.put(key, val);
-                            }
-                            val.add(clazz.cast(obj));
+                        } catch (final CoreException e) {
+                            DslCommonPlugin.getDefault().error("Impossible to load the extension " + ext.getLabel(), e);
+                            DslCommonPlugin.getDefault().getLog().log(e.getStatus());
                         }
-                    } catch (final CoreException e) {
-                        DslCommonPlugin.getDefault().error("Impossible to load the extension " + ext.getLabel(), e);
-                        DslCommonPlugin.getDefault().getLog().log(e.getStatus());
                     }
-                }
 
+                }
             }
         }
         return contributors;
@@ -246,27 +247,44 @@ public final class EclipseUtil {
      */
     public static List<IFile> getFilesFromWorkspace(final String prefix, final String suffix) {
         final List<IFile> matches = Lists.newArrayList();
-        final IWorkspace workspace = ResourcesPlugin.getWorkspace();
-        final IWorkspaceRoot root = workspace.getRoot();
-
         try {
-            root.accept(new IResourceVisitor() {
-                public boolean visit(IResource resource) throws CoreException {
-                    if (resource.isAccessible() && resource instanceof IFile) {
-                        IFile file = (IFile) resource;
-                        boolean okForPrefix = StringUtil.isEmpty(prefix) || file.getName().startsWith(prefix);
-                        boolean okForSuffix = StringUtil.isEmpty(suffix) || file.getName().endsWith(suffix);
-                        if (okForPrefix && okForSuffix) {
-                            matches.add(file);
+            IWorkspaceRoot root = EcorePlugin.getWorkspaceRoot();
+            if (root != null) {
+                root.accept(new IResourceVisitor() {
+                    public boolean visit(IResource resource) throws CoreException {
+                        if (resource.isAccessible() && resource instanceof IFile) {
+                            IFile file = (IFile) resource;
+                            boolean okForPrefix = StringUtil.isEmpty(prefix) || file.getName().startsWith(prefix);
+                            boolean okForSuffix = StringUtil.isEmpty(suffix) || file.getName().endsWith(suffix);
+                            if (okForPrefix && okForSuffix) {
+                                matches.add(file);
+                            }
                         }
+                        return true;
                     }
-                    return true;
-                }
-            });
+                });
+            }
         } catch (final CoreException e1) {
             // do nothing -- fail silently
         }
 
         return matches;
+    }
+
+    /**
+     * Get {@link IConfigurationElement configurationElements} for a specified
+     * extensionPointId.
+     * 
+     * @param extensionPointId
+     *            the id of extension point
+     * @return {@link IConfigurationElement configurationElements} for a
+     *         specified extensionPointId
+     */
+    public static IConfigurationElement[] getConfigurationElementsFor(String extensionPointId) {
+        IConfigurationElement[] result = new IConfigurationElement[0];
+        if (Platform.isRunning()) {
+            result = Platform.getExtensionRegistry().getConfigurationElementsFor(extensionPointId);
+        }
+        return result;
     }
 }

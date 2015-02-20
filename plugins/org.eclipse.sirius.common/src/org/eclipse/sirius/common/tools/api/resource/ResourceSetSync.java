@@ -22,6 +22,7 @@ import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
@@ -30,6 +31,7 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -243,7 +245,10 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     private void addDefaultBackends() {
-        backends.add(new WorkspaceBackend(this));
+        IWorkspaceRoot workspaceRoot = EcorePlugin.getWorkspaceRoot();
+        if (workspaceRoot != null) {
+            backends.add(new WorkspaceBackend(this));
+        }
     }
 
     private ResourceStatus getResourceStatus(final Resource res) {
@@ -486,12 +491,12 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
 
     private void doSave(final Iterable<Resource> resourcesToSave, final Map<?, ?> saveOptions, Collection<ResourceStatusChange> changesToTransmit) throws InterruptedException, IOException {
         final Collection<IFile> files2Validate = Lists.newArrayList();
-        final Iterator<Resource> it = resourcesToSave.iterator();
-        while (it.hasNext()) {
-            final Resource nextResource = it.next();
-            final IFile file = WorkspaceSynchronizer.getFile(nextResource);
-            if (file != null && file.isReadOnly()) {
-                files2Validate.add(file);
+        for (Resource resourceToSave : resourcesToSave) {
+            if (resourceToSave.getURI().isPlatformResource()) {
+                IFile file = WorkspaceSynchronizer.getFile(resourceToSave);
+                if (file != null && file.isReadOnly()) {
+                    files2Validate.add(file);
+                }
             }
         }
 

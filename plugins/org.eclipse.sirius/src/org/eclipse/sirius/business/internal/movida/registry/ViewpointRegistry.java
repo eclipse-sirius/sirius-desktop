@@ -46,6 +46,7 @@ import org.eclipse.sirius.business.internal.movida.registry.monitoring.PluginMon
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceListener;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.WorkspaceMonitor;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.base.relations.Relation;
@@ -174,7 +175,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
 
     private void configureResourceHandler() {
         compositeResourceHandler.addResourceType(new DefaultViewpointResourceHandler());
-        IConfigurationElement[] elements = Platform.getExtensionRegistry().getConfigurationElementsFor(VIEWPOINT_RESOURCE_TYPE_EXTENSION_POINT);
+        IConfigurationElement[] elements = EclipseUtil.getConfigurationElementsFor(VIEWPOINT_RESOURCE_TYPE_EXTENSION_POINT);
         for (IConfigurationElement element : elements) {
             if ("handler".equals(element.getName())) {
                 Object handler;

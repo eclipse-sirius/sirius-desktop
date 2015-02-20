@@ -18,10 +18,10 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ext.emf.ui.ICellEditorProvider;
 import org.eclipse.sirius.ext.emf.ui.properties.CellEditorProviderCollector;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -71,7 +71,7 @@ public final class SiriusCellEditorProviderCollector implements CellEditorProvid
      */
     private void loadCache() {
         cache = new HashSet<ICellEditorProvider>();
-        IConfigurationElement[] config = Platform.getExtensionRegistry().getConfigurationElementsFor(EXTENSION_POINT_ID);
+        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor(EXTENSION_POINT_ID);
         for (IConfigurationElement configurationElement : config) {
             try {
                 Object contribution = configurationElement.createExecutableExtension("class");

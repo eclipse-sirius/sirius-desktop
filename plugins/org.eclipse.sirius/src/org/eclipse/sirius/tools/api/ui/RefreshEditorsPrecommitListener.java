@@ -229,7 +229,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
      * @return true if a refresh must be launch.
      */
     private boolean isAutoRefresh() {
-        return Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+        return Platform.isRunning() && Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
     }
 
     /**

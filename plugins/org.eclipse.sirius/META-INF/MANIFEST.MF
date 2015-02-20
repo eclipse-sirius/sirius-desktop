@@ -130,6 +130,6 @@ Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
  org.eclipse.sirius.ext.emf;version="2.0.0",
  org.eclipse.sirius.ext.emf.tx;version="2.0.0"
 Eclipse-LazyStart: true
-Bundle-Activator: org.eclipse.sirius.viewpoint.SiriusPlugin
+Bundle-Activator: org.eclipse.sirius.viewpoint.SiriusPlugin$Implementation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

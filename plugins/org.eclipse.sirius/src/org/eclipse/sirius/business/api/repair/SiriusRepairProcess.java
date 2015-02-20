@@ -29,7 +29,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
@@ -53,6 +52,7 @@ import org.eclipse.sirius.business.internal.repair.commands.RestoreModelElementS
 import org.eclipse.sirius.business.internal.repair.commands.SaveModelElementStateCommand;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.ResourceUtil;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -110,7 +110,7 @@ public class SiriusRepairProcess {
 
     private List<IRepairParticipant> getRepairParticipants() {
         List<IRepairParticipant> participants = new ArrayList<IRepairParticipant>();
-        IConfigurationElement[] config = Platform.getExtensionRegistry().getConfigurationElementsFor("org.eclipse.sirius.repairParticipant");
+        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor("org.eclipse.sirius.repairParticipant");
         for (IConfigurationElement configurationElement : config) {
             try {
 
