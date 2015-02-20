@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -30,8 +31,14 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IReusableEditor;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -93,6 +100,20 @@ public class SiriusUncontrolHandler extends AbstractHandler {
             Command vuc = new SiriusUncontrolCommand(semanticRoot, uncontrolRepresentations, false, new SubProgressMonitor(monitor, 1));
             TransactionUtil.getEditingDomain(semanticRoot).getCommandStack().execute(vuc);
             session.save(new SubProgressMonitor(monitor, 1));
+
+            // Opened editors of uncontrolled representations need an update of
+            // the editor input with the new DRepresentation location
+            if (uncontrolRepresentations) {
+                IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+                for (DialectEditor dialectEditor : uiSession.getEditors()) {
+                    if (dialectEditor instanceof IReusableEditor) {
+                        IReusableEditor iReusableEditor = (IReusableEditor) dialectEditor;
+                        DRepresentation representation = dialectEditor.getRepresentation();
+                        SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(representation), representation.getName(), session);
+                        iReusableEditor.setInput(updatedEditorInput);
+                    }
+                }
+            }
         }
     }
 

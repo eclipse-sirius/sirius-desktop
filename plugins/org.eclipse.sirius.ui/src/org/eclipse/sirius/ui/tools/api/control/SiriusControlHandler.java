@@ -43,6 +43,10 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.ui.tools.internal.wizards.SelectRepresentationsWizard;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -51,6 +55,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IReusableEditor;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -121,6 +126,19 @@ public class SiriusControlHandler extends AbstractHandler {
                     Command vcc = new SiriusControlCommand(semanticRoot, semanticDest, representations, representationDest, false, new SubProgressMonitor(monitor, 1));
                     TransactionUtil.getEditingDomain(semanticRoot).getCommandStack().execute(vcc);
                     session.save(new SubProgressMonitor(monitor, 1));
+
+                    // Opened editors of uncontrolled representations need an
+                    // update of the editor input with the new DRepresentation
+                    // location
+                    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+                    for (DRepresentation dRepresentation : representations) {
+                        DialectEditor editor = uiSession.getEditor(dRepresentation);
+                        if (editor instanceof IReusableEditor) {
+                            IReusableEditor iReusableEditor = (IReusableEditor) editor;
+                            SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(dRepresentation), dRepresentation.getName(), session);
+                            iReusableEditor.setInput(updatedEditorInput);
+                        }
+                    }
                 } catch (InterruptedException e) {
                     // cancel done : no command to execute
                 }
