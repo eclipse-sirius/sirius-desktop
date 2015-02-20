@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="460351" version="8.1.0">
+  <ownedViewpoints name="460351" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="460351Diagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="Diagram_EPackage" semanticCandidatesExpression="[eContents(EPackage)/]" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='460351']/@ownedRepresentations[name='460351Diagram']/@defaultLayer/@containerMappings[name='Diagram_EPackage']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="460351Table" domainClass="EPackage">
+      <ownedLineMappings name="Table_EPackage" reusedSubLines="//@ownedViewpoints[name='460351']/@ownedRepresentations[name='460351Table']/@ownedLineMappings[name='Table_EPackage']" reusedInMappings="//@ownedViewpoints[name='460351']/@ownedRepresentations[name='460351Table']/@ownedLineMappings[name='Table_EPackage']" domainClass="EPackage" semanticCandidatesExpression="[eContents(EPackage)/]"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="460351Tree" domainClass="EPackage">
+      <subItemMappings name="Tree_EPackage" domainClass="EPackage" semanticCandidatesExpression="[eContents(EPackage)/]" reusedTreeItemMappings="//@ownedViewpoints[name='460351']/@ownedRepresentations[name='460351Tree']/@subItemMappings[name='Tree_EPackage']">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

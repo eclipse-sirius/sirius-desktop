@@ -36,6 +36,7 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -102,6 +103,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
@@ -1761,13 +1763,30 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * {@inheritDoc}
      * 
-     * Overridden to have the title image stable during super.setInput(input)
-     * because the title image can change depending if the representation is
-     * locked (CDO).
+     * Overridden for two reason: <br/>
+     * - to update the given input in case the URI is a DDiagram instead of a
+     * GMF Diagram <br/>
+     * - to have the title image stable during super.setInput(input) because the
+     * title image can change depending on the representation is editable status
+     * (permission authority).
      */
     @Override
     public void setInput(IEditorInput input) {
-        super.setInput(input);
+        // In case the input is based on the DDiagram, we need to updated it to
+        // use the GMF diagram
+        IEditorInput updatedEditorInput = input;
+        EObject eObject = session.getTransactionalEditingDomain().getResourceSet().getEObject(((SessionEditorInput) input).getURI(), false);
+        if (eObject instanceof DDiagram) {
+            DDiagram dDiagram = (DDiagram) eObject;
+            final DiagramCreationUtil util = new DiagramCreationUtil(dDiagram);
+            if (!util.findAssociatedGMFDiagram()) {
+                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, "The gmf diagram is expected to be created before calling setInput() on the editor"));
+            }
+            final Diagram gmfDiag = util.getAssociatedGMFDiagram();
+            updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), dDiagram.getName(), session);
+
+        }
+        super.setInput(updatedEditorInput);
         if (getGraphicalViewer() != null) {
             getGraphicalViewer().setSelection(new StructuredSelection());
         }
