@@ -59,6 +59,7 @@ import org.eclipse.sirius.tests.unit.common.OperationCanceledExceptionSessionTes
 import org.eclipse.sirius.tests.unit.common.PreferencesTests;
 import org.eclipse.sirius.tests.unit.common.RefreshEditorsPrecommitListenerTests;
 import org.eclipse.sirius.tests.unit.common.RestoreSessionFromEditorInputTests;
+import org.eclipse.sirius.tests.unit.common.SaverTest;
 import org.eclipse.sirius.tests.unit.common.SiriusCrossReferenceAdapterTests;
 import org.eclipse.sirius.tests.unit.common.TransientSessionTests;
 import org.eclipse.sirius.tests.unit.common.WorkspaceResourceSyncTestCase;
@@ -265,6 +266,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(TransientSessionTests.class);
         suite.addTestSuite(RestoreSessionFromEditorInputTests.class);
         suite.addTestSuite(SiriusCrossReferenceAdapterTests.class);
+        suite.addTestSuite(SaverTest.class);
     }
 
     /**
@@ -280,7 +282,8 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign10.class));
         // This one takes too long (12 minutes) to be part of the Gerrit suite.
         suite.addTestSuite(AcceleoMTInterpreterOnPackageImportTests.class);
-        // The ones below are "blacklisted" for now because they caused at least one false-negative Gerrit Verification job
+        // The ones below are "blacklisted" for now because they caused at least
+        // one false-negative Gerrit Verification job
         suite.addTestSuite(SessionManagerListener2Tests.class);
 
     }
