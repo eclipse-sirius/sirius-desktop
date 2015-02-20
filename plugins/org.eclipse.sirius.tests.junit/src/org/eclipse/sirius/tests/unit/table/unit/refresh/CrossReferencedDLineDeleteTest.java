@@ -133,7 +133,7 @@ public class CrossReferencedDLineDeleteTest extends SiriusTestCase {
 
     @Override
     protected void tearDown() throws Exception {
-        DialectUIManager.INSTANCE.closeEditor(tableEditor, true);
+        DialectUIManager.INSTANCE.closeEditor(tableEditor, false);
         TestsUtil.synchronizationWithUIThread();
         tableCommandFactory = null;
         tableEditor = null;

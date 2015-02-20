@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
@@ -28,17 +29,16 @@ import org.eclipse.ui.IEditorPart;
  * on Edges.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
- * 
  */
 public class AbstractEdgeOnEdgeTest extends SiriusDiagramTestCase {
 
-    protected static final String FOLDER_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/mappings/edges_on_edges/";
+    protected static final String FOLDER_PATH = "/data/unit/mappings/edges_on_edges/";
 
-    private static final String DEFAULT_SEMANTIC_MODEL_PATH = FOLDER_PATH + "2182.ecore";
+    private static final String DEFAULT_SEMANTIC_MODEL = "2182.ecore";
 
-    private static final String DEFAULT_SESSION_FILE_PATH = FOLDER_PATH + "2182.aird";
+    private static final String DEFAULT_SESSION_MODEL = "2182.aird";
 
-    private static final String DEFAULT_MODELER_PATH = FOLDER_PATH + "2182.odesign";
+    private static final String DEFAULT_MODELER_MODEL = "2182.odesign";
 
     private static final String VIEWPOINT_NAME = "doremi_2182";
 
@@ -50,16 +50,13 @@ public class AbstractEdgeOnEdgeTest extends SiriusDiagramTestCase {
 
     protected EPackage semanticRoot;
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.support.api.SiriusTestCase#setUp()
-     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        genericSetUp(getSemanticModelPath(), getModelerPath(), getSessionFilePath());
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, getFolder() + "/" + getSemanticModelPath(), TEMPORARY_PROJECT_NAME + "/" + getSemanticModelPath());
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, getFolder() + "/" + getModelerPath(), TEMPORARY_PROJECT_NAME + "/" + getModelerPath());
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, getFolder() + "/" + getSessionFilePath(), TEMPORARY_PROJECT_NAME + "/" + getSessionFilePath());
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + getSemanticModelPath(), TEMPORARY_PROJECT_NAME + "/" + getModelerPath(), TEMPORARY_PROJECT_NAME + "/" + getSessionFilePath());
         initViewpoint(VIEWPOINT_NAME);
         diagram = (DDiagram) getRepresentations(REPRESENTATION_DECRIPTION_NAME).toArray()[0];
         assertNotNull(diagram);
@@ -120,7 +117,8 @@ public class AbstractEdgeOnEdgeTest extends SiriusDiagramTestCase {
      * Closes the current editor and opens a new one on the same diagram.
      */
     protected void closeAndReopenEditor() {
-        DialectUIManager.INSTANCE.closeEditor(editor, true);
+        session.save(new NullProgressMonitor());
+        DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.emptyEventsFromUIThread();
 
         diagram = (DDiagram) getRepresentations(REPRESENTATION_DECRIPTION_NAME).toArray()[0];
@@ -147,13 +145,23 @@ public class AbstractEdgeOnEdgeTest extends SiriusDiagramTestCase {
     }
 
     /**
+     * Returns the path of the folder common to aird/odesign and semantic
+     * resources.
+     * 
+     * @return the path of the folder
+     */
+    protected String getFolder() {
+        return FOLDER_PATH;
+    }
+
+    /**
      * Returns the path of the aird file to open. Subclasses can override this
      * method.
      * 
      * @return the path of the aird file to open
      */
     protected String getSessionFilePath() {
-        return DEFAULT_SESSION_FILE_PATH;
+        return DEFAULT_SESSION_MODEL;
     }
 
     /**
@@ -163,7 +171,7 @@ public class AbstractEdgeOnEdgeTest extends SiriusDiagramTestCase {
      * @return the path of the semantic model file to open
      */
     protected String getSemanticModelPath() {
-        return DEFAULT_SEMANTIC_MODEL_PATH;
+        return DEFAULT_SEMANTIC_MODEL;
     }
 
     /**
@@ -173,6 +181,6 @@ public class AbstractEdgeOnEdgeTest extends SiriusDiagramTestCase {
      * @return the path of the semantic model file to open
      */
     protected String getModelerPath() {
-        return DEFAULT_MODELER_PATH;
+        return DEFAULT_MODELER_MODEL;
     }
 }

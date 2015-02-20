@@ -46,6 +46,8 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
@@ -78,8 +80,9 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
 
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
-
-        genericSetUp(PACKAGES_SEMANTIC_MODEL_PATH, MODELER_PATH);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PACKAGES_SEMANTIC_MODEL_FOLDER_PATH + PACKAGES_SEMANTIC_MODEL_NAME, TEMPORARY_PROJECT_NAME + "/"
+                + PACKAGES_SEMANTIC_MODEL_NAME);
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + PACKAGES_SEMANTIC_MODEL_NAME, MODELER_PATH);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
         TestsUtil.emptyEventsFromUIThread();
     }

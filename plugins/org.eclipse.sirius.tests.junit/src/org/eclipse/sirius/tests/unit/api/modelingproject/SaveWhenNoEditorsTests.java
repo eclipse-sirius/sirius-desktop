@@ -23,6 +23,8 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
@@ -53,7 +55,8 @@ public class SaveWhenNoEditorsTests extends SiriusDiagramTestCase implements Eco
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
 
         TestsUtil.emptyEventsFromUIThread();
-        genericSetUp(TEST_SEMANTIC_MODEL_PATH, MODELER_PATH);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, TEST_SEMANTIC_MODEL_PROJECT_RELATIVE_PATH, TEMPORARY_PROJECT_NAME + "/" + TEST_SEMANTIC_MODEL_FILENAME);
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + TEST_SEMANTIC_MODEL_FILENAME, MODELER_PATH);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
         TestsUtil.synchronizationWithUIThread();
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());

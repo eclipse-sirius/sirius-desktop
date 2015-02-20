@@ -20,7 +20,11 @@ public interface EcoreModeler {
 
     String TEST_SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + TEST_SEMANTIC_MODEL_PROJECT_RELATIVE_PATH; //$NON-NLS-1$
 
-    String PACKAGES_SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/modelers/ecore/packages.ecore"; //$NON-NLS-1$ $NON-NLS-2$
+    String PACKAGES_SEMANTIC_MODEL_NAME = "packages.ecore"; //$NON-NLS-1$
+
+    String PACKAGES_SEMANTIC_MODEL_FOLDER_PATH = "/data/unit/modelers/ecore/"; //$NON-NLS-1$
+
+    String PACKAGES_SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + PACKAGES_SEMANTIC_MODEL_FOLDER_PATH + PACKAGES_SEMANTIC_MODEL_NAME; //$NON-NLS-1$ 
 
     String ZOOM_SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/modelers/ecore/design/zoom.ecore"; //$NON-NLS-1$ $NON-NLS-2$
 
@@ -47,7 +51,7 @@ public interface EcoreModeler {
     String DEPENDENCIES_DESC_NAME = "Dependencies";
 
     String RELATIONS_DESC_NAME = "Relations";//$NON-NLS-1$
-    
+
     String TAGS_DESC_NAME = "Tags";//$NON-NLS-1$
 
     String LAYER_DOCUMENTATION_NAME = "Documentation";//$NON-NLS-1$

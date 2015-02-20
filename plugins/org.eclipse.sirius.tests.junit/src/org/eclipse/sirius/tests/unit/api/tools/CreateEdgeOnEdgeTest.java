@@ -45,7 +45,6 @@ import com.google.common.base.Predicate;
  * </p>
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
- * 
  */
 public class CreateEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
 

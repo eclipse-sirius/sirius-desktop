@@ -34,6 +34,8 @@ import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilte
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealAllElementsAction;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
@@ -74,14 +76,12 @@ public class EntitiesDiagramHideRevealTests extends SiriusDiagramTestCase implem
 
     private IGraphicalEditPart diagramEditPart;
 
-    /**
-     * @{inheritDoc
-     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-
-        genericSetUp(TEST_SEMANTIC_MODEL_PATH, MODELER_PATH);
+        String ecoreDestination = TEMPORARY_PROJECT_NAME + "/test.ecore";
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, TEST_SEMANTIC_MODEL_PROJECT_RELATIVE_PATH, ecoreDestination);
+        genericSetUp(ecoreDestination, MODELER_PATH);
 
         initViewpoint(DESIGN_VIEWPOINT_NAME);
         diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
@@ -462,12 +462,15 @@ public class EntitiesDiagramHideRevealTests extends SiriusDiagramTestCase implem
         assertEquals("We should have only one GMF diagram for each viewpoint diagram.", 1, inverseReferences.size());
     }
 
-    /**
-     * @{inheritDoc
-     */
     @Override
     protected void tearDown() throws Exception {
+        diagram = null;
+        diagramEditor = null;
+        editorPart = null;
+        class1DiagramElement = null;
+        hideAction = null;
+        revealAction = null;
+        diagramEditPart = null;
         super.tearDown();
     }
-
 }

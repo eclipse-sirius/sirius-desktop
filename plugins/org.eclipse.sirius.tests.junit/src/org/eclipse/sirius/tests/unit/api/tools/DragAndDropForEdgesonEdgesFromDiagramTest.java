@@ -23,6 +23,8 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -52,11 +54,13 @@ import com.google.common.base.Predicate;
  */
 public class DragAndDropForEdgesonEdgesFromDiagramTest extends AbstractEdgeOnEdgeTest {
 
-    private static final String SEMANTIC_MODEL_PATH = FOLDER_PATH + "/drag_and_drop/from_diagram/2182.ecore";
+    private static final String FOLDER = FOLDER_PATH + "/drag_and_drop/from_diagram/";
 
-    private static final String SESSION_FILE_PATH = FOLDER_PATH + "drag_and_drop/from_diagram/2182-dnd.aird";
+    private static final String SEMANTIC_MODEL_PATH = "2182.ecore";
 
-    private static final String MODELER_PATH = FOLDER_PATH + "drag_and_drop/from_diagram/2182-dnd.odesign";
+    private static final String SESSION_FILE_PATH = "2182-dnd.aird";
+
+    private static final String MODELER_PATH = "2182-dnd.odesign";
 
     private Predicate<EPackage> dndFromModelContentViewFromNodeToEdgeSemanticPredicate_fromdiagram = new Predicate<EPackage>() {
         public boolean apply(EPackage semanticRoot) {
@@ -84,34 +88,20 @@ public class DragAndDropForEdgesonEdgesFromDiagramTest extends AbstractEdgeOnEdg
         }
     };
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest#getSemanticModelPath()
-     */
+    protected String getFolder() {
+        return FOLDER;
+    }
+
     @Override
     protected String getSemanticModelPath() {
         return SEMANTIC_MODEL_PATH;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest#getSessionFilePath()
-     */
     @Override
     protected String getSessionFilePath() {
         return SESSION_FILE_PATH;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest#getModelerPath()
-     */
     @Override
     protected String getModelerPath() {
         return MODELER_PATH;
@@ -119,7 +109,10 @@ public class DragAndDropForEdgesonEdgesFromDiagramTest extends AbstractEdgeOnEdg
 
     @Override
     protected void setUp() throws Exception {
-        genericSetUp(getSemanticModelPath(), getModelerPath(), getSessionFilePath());
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, getFolder() + "/" + getSemanticModelPath(), TEMPORARY_PROJECT_NAME + "/" + getSemanticModelPath());
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, getFolder() + "/" + getModelerPath(), TEMPORARY_PROJECT_NAME + "/" + getModelerPath());
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, getFolder() + "/" + getSessionFilePath(), TEMPORARY_PROJECT_NAME + "/" + getSessionFilePath());
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + getSemanticModelPath(), TEMPORARY_PROJECT_NAME + "/" + getModelerPath(), TEMPORARY_PROJECT_NAME + "/" + getSessionFilePath());
         diagram = (DDiagram) getRepresentations(REPRESENTATION_DECRIPTION_NAME).toArray()[0];
         assertNotNull(diagram);
         editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());

@@ -36,11 +36,14 @@ import com.google.common.base.Predicate;
  * </p>
  */
 public class DisabledDragAndDropForEdgesonEdgesFromDiagramTest extends AbstractEdgeOnEdgeTest {
-    private static final String SEMANTIC_MODEL_PATH = FOLDER_PATH + "/drag_and_drop/from_diagram/2182.ecore";
 
-    private static final String SESSION_FILE_PATH = FOLDER_PATH + "drag_and_drop/from_diagram/2182-dnd.aird";
+    private static final String FOLDER = FOLDER_PATH + "/drag_and_drop/from_diagram/";
 
-    private static final String MODELER_PATH = FOLDER_PATH + "drag_and_drop/from_diagram/2182-dnd.odesign";
+    private static final String SEMANTIC_MODEL_PATH = "2182.ecore";
+
+    private static final String SESSION_FILE_PATH = "2182-dnd.aird";
+
+    private static final String MODELER_PATH = "2182-dnd.odesign";
 
     private Predicate<EPackage> dndFromModelContentViewFromNodeToEdgeSemanticPredicate_fromdiagram = new Predicate<EPackage>() {
         public boolean apply(EPackage semanticRoot) {
@@ -68,34 +71,20 @@ public class DisabledDragAndDropForEdgesonEdgesFromDiagramTest extends AbstractE
         }
     };
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest#getSemanticModelPath()
-     */
+    protected String getFolder() {
+        return FOLDER;
+    }
+
     @Override
     protected String getSemanticModelPath() {
         return SEMANTIC_MODEL_PATH;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest#getSessionFilePath()
-     */
     @Override
     protected String getSessionFilePath() {
         return SESSION_FILE_PATH;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest#getModelerPath()
-     */
     @Override
     protected String getModelerPath() {
         return MODELER_PATH;

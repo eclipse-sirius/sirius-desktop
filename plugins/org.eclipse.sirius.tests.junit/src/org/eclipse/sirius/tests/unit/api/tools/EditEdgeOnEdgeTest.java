@@ -48,7 +48,6 @@ import com.google.common.base.Predicate;
  * </p>
  * 
  * @author <a href="mailto:julien.dupont@obeo.fr">Julien Dupont</a>
- * 
  */
 public class EditEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
 
@@ -58,7 +57,6 @@ public class EditEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      * A predicate that return true if the edge edit label modified the semantic
      * model has expected.
      */
-
     private Predicate<EPackage> edgeLabelEditedFromEdgeToNodeSemanticPredicate = new Predicate<EPackage>() {
         public boolean apply(EPackage semanticRoot) {
             EReference annotationReference = ((EClass) semanticRoot.getEClassifier("C0")).getEReferences().iterator().next();
@@ -443,10 +441,9 @@ public class EditEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
         assertNotNull("Edge should have been edited ", gmfEP);
         if (gmfEP.getSource() instanceof DEdgeEditPart) {
             if (((DEdgeEditPart) gmfEP.getSource()).getChildren().get(0) instanceof DEdgeNameEditPart) {
-                Assert.assertTrue("The figure should be a SiriusWrapLabel.",
-                        ((DEdgeNameEditPart) ((DEdgeEditPart) gmfEP.getSource()).getChildren().get(0)).getFigure() instanceof SiriusWrapLabel);
-                assertEquals("Edge should have been edited", true, ((SiriusWrapLabel) ((DEdgeNameEditPart) ((DEdgeEditPart) gmfEP.getSource()).getChildren().get(0)).getFigure()).getText()
-                        .contains(EDIT_LABEL));
+                Assert.assertTrue("The figure should be a SiriusWrapLabel.", ((DEdgeNameEditPart) ((DEdgeEditPart) gmfEP.getSource()).getChildren().get(0)).getFigure() instanceof SiriusWrapLabel);
+                assertEquals("Edge should have been edited", true,
+                        ((SiriusWrapLabel) ((DEdgeNameEditPart) ((DEdgeEditPart) gmfEP.getSource()).getChildren().get(0)).getFigure()).getText().contains(EDIT_LABEL));
             }
         }
 
