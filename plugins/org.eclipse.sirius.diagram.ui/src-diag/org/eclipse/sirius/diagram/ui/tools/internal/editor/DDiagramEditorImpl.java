@@ -734,7 +734,15 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     protected void disposeGraphicalListeners() {
         // Dispose the tabbar (to avoir memory leak)
         if (getTabbar() != null) {
-            getTabbar().dispose();
+            if (Display.getCurrent() == null) {
+                PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+                    public void run() {
+                        getTabbar().dispose();
+                    }
+                });
+            } else {
+                getTabbar().dispose();
+            }
             setTabbar(null);
         }
         // Dispose post-commit listener
