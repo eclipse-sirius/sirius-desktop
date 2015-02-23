@@ -105,6 +105,7 @@ import org.eclipse.sirius.tests.unit.diagram.filter.CollapseFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.CompositeFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.DiagramElementSelectionDialogPatternMatcherTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.DiagramElementSelectionDialogTest;
+import org.eclipse.sirius.tests.unit.diagram.filter.DiagramListenersTests;
 import org.eclipse.sirius.tests.unit.diagram.filter.FilterEdgeOnEdgeTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.MinimizedTransparentCollapsingTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.VariableFilterTest;
@@ -164,8 +165,8 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.uml.LayerTests;
 import org.eclipse.sirius.tests.unit.diagram.modeler.uml.PortLocationTest;
 import org.eclipse.sirius.tests.unit.diagram.modelers.dynamicinstance.DynamicInstanceTests;
 import org.eclipse.sirius.tests.unit.diagram.modelers.ecore.EntitiesDiagramStyleCustomizationTests;
-import org.eclipse.sirius.tests.unit.diagram.navigation.OpenMenuTest;
 import org.eclipse.sirius.tests.unit.diagram.navigation.NavigationOperationTest;
+import org.eclipse.sirius.tests.unit.diagram.navigation.OpenMenuTest;
 import org.eclipse.sirius.tests.unit.diagram.navigation.OpenRepresentationTest;
 import org.eclipse.sirius.tests.unit.diagram.node.style.ModifyNodeStyleTest;
 import org.eclipse.sirius.tests.unit.diagram.operations.CreateViewOperationTest;
@@ -460,7 +461,7 @@ public class AllDiagramPluginsTests {
 
         // Specific diagram editor tests (tabbar, palette...)
         suite.addTestSuite(TabbarActionSelectionListenerTest.class);
-
+        suite.addTestSuite(DiagramListenersTests.class);
         // uml
 
         suite.addTestSuite(LayerTests.class);
