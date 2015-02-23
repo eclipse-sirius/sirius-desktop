@@ -13,5 +13,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.common.ocl;version="2.0.3",
- org.eclipse.sirius.common.ocl.business.internal.interpreter;x-internal:=true;version="2.0.3"
+Export-Package: org.eclipse.sirius.common.ocl;version="2.0.4",
+ org.eclipse.sirius.common.ocl.business.internal.interpreter;x-internal:=true;version="2.0.4"

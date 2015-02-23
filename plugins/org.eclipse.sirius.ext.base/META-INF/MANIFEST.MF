@@ -8,7 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin
 Import-Package: com.google.common.base;version="[11.0.2,16.0)",
  com.google.common.collect;version="[11.0.2,16.0)"
-Export-Package: org.eclipse.sirius.ext.base;version="2.0.3",
- org.eclipse.sirius.ext.base.cache;version="2.0.3",
- org.eclipse.sirius.ext.base.collect;version="2.0.3",
- org.eclipse.sirius.ext.base.relations;version="2.0.3"
+Export-Package: org.eclipse.sirius.ext.base;version="2.0.4",
+ org.eclipse.sirius.ext.base.cache;version="2.0.4",
+ org.eclipse.sirius.ext.base.collect;version="2.0.4",
+ org.eclipse.sirius.ext.base.relations;version="2.0.4"

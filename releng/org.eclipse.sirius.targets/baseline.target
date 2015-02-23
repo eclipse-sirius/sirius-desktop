@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="baseline" sequenceNumber="1422548730">
+<target name="baseline" sequenceNumber="1424698270">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="2.0.3.201501210814"/>
-      <unit id="org.eclipse.sirius.runtime.feature.group" version="2.0.3.201501210814"/>
-      <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="2.0.3.201501210814"/>
-      <unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="2.0.3.201501210814"/>
-      <unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="2.0.3.201501210814"/>
-      <unit id="org.eclipse.sirius.runtime.ide.xtext.feature.group" version="2.0.3.201501210814"/>
-      <unit id="org.eclipse.sirius.runtime.ocl.feature.group" version="2.0.3.201501210814"/>
-      <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="2.0.3.201501210814"/>
-      <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="2.0.3.201501210814"/>
-      <unit id="org.eclipse.sirius.tests.support.feature.group" version="2.0.3.201501210814"/>
-      <repository id="Sirius-Latest-Release" location="http://download.eclipse.org/sirius/updates/releases/2.0.3/luna"/>
+      <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="2.0.4.201502061354"/>
+      <unit id="org.eclipse.sirius.runtime.feature.group" version="2.0.4.201502061354"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="2.0.4.201502061354"/>
+      <unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="2.0.4.201502061354"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="2.0.4.201502061354"/>
+      <unit id="org.eclipse.sirius.runtime.ide.xtext.feature.group" version="2.0.4.201502061354"/>
+      <unit id="org.eclipse.sirius.runtime.ocl.feature.group" version="2.0.4.201502061354"/>
+      <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="2.0.4.201502061354"/>
+      <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="2.0.4.201502061354"/>
+      <unit id="org.eclipse.sirius.tests.support.feature.group" version="2.0.4.201502061354"/>
+      <repository id="Sirius-Latest-Release" location="http://download.eclipse.org/sirius/updates/releases/2.0.4/luna"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.query.legacy.feature.feature.group" version="1.0.0.201408130952"/>
