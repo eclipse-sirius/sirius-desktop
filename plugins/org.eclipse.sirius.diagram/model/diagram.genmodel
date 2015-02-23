@@ -195,7 +195,7 @@
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//Dot">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Dot/strokeSizeComputationExpression"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute diagram.ecore#//Dot/backgroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Dot/backgroundColor"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//GaugeSection">
       <genFeatures property="None" createChild="false" propertyCategory="General"
@@ -205,8 +205,8 @@
       <genFeatures property="None" createChild="false" propertyCategory="General"
           ecoreFeature="ecore:EAttribute diagram.ecore#//GaugeSection/value"/>
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//GaugeSection/label"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute diagram.ecore#//GaugeSection/backgroundColor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute diagram.ecore#//GaugeSection/foregroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//GaugeSection/backgroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//GaugeSection/foregroundColor"/>
     </genClasses>
     <genClasses image="false" ecoreClass="diagram.ecore#//ContainerStyle"/>
     <genClasses ecoreClass="diagram.ecore#//FlatContainerStyle">
@@ -221,17 +221,17 @@
     <genClasses ecoreClass="diagram.ecore#//Square">
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//Square/width"/>
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//Square/height"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute diagram.ecore#//Square/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Square/color"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//Ellipse">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Ellipse/horizontalDiameter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Ellipse/verticalDiameter"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute diagram.ecore#//Ellipse/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Ellipse/color"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//Lozenge">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Lozenge/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Lozenge/height"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute diagram.ecore#//Lozenge/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Lozenge/color"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//BundledImage">
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//BundledImage/shape"/>
@@ -259,7 +259,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//EdgeStyle/centerLabelStyle"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//EdgeStyle/endLabelStyle"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//EdgeStyle/centered"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute diagram.ecore#//EdgeStyle/strokeColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//EdgeStyle/strokeColor"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//GaugeCompositeStyle">
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//GaugeCompositeStyle/alignment"/>
@@ -269,8 +269,8 @@
       <genFeatures property="None" createChild="false" propertyCategory="Border" propertyDescription=""
           ecoreFeature="ecore:EAttribute diagram.ecore#//BorderedStyle/borderSize"/>
       <genFeatures createChild="false" propertyCategory="Border" ecoreFeature="ecore:EAttribute diagram.ecore#//BorderedStyle/borderSizeComputationExpression"/>
-      <genFeatures property="None" children="true" createChild="true" propertyCategory="Border"
-          propertyDescription="" ecoreFeature="ecore:EAttribute diagram.ecore#//BorderedStyle/borderColor"/>
+      <genFeatures createChild="false" propertyCategory="Border" propertyDescription=""
+          ecoreFeature="ecore:EAttribute diagram.ecore#//BorderedStyle/borderColor"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//Note">
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//Note/color"/>

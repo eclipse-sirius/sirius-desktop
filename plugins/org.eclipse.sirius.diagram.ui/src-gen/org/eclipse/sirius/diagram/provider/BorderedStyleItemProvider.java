@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -25,8 +24,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 
 /**
@@ -59,6 +56,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
             super.getPropertyDescriptors(object);
 
             addBorderSizeComputationExpressionPropertyDescriptor(object);
+            addBorderColorPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -78,36 +76,15 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Border Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    @Override
-    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-        if (childrenFeatures == null) {
-            super.getChildrenFeatures(object);
-            childrenFeatures.add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR);
-        }
-        return childrenFeatures;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
-        // adding (see {@link AddCommand}) it as a child.
-
-        return super.getChildFeature(object, child);
+    protected void addBorderColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_BorderedStyle_borderColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderColor_feature", "_UI_BorderedStyle_type"),
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
     }
 
     /**
@@ -149,10 +126,8 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
         switch (notification.getFeatureID(BorderedStyle.class)) {
         case DiagramPackage.BORDERED_STYLE__BORDER_SIZE:
         case DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
         case DiagramPackage.BORDERED_STYLE__BORDER_COLOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }
         super.notifyChanged(notification);
@@ -168,8 +143,6 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "0,0,0")));
     }
 
     /**

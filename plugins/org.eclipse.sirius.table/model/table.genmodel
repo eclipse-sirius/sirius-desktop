@@ -87,8 +87,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/labelFormat"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/defaultForegroundStyle"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/defaultBackgroundStyle"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/foregroundColor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/backgroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/foregroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/backgroundColor"/>
     </genClasses>
     <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.table.metamodel.table"
         disposableProviderFactory="true" ecorePackage="table.ecore#//description">

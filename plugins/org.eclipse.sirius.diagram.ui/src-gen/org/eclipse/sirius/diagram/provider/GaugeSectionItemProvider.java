@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -25,8 +24,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GaugeSection;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.CustomizableItemProvider;
 
 /**
@@ -59,6 +56,8 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
             super.getPropertyDescriptors(object);
 
             addLabelPropertyDescriptor(object);
+            addBackgroundColorPropertyDescriptor(object);
+            addForegroundColorPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -76,37 +75,27 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Background Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    @Override
-    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-        if (childrenFeatures == null) {
-            super.getChildrenFeatures(object);
-            childrenFeatures.add(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR);
-            childrenFeatures.add(DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR);
-        }
-        return childrenFeatures;
+    protected void addBackgroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_GaugeSection_backgroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_backgroundColor_feature", "_UI_GaugeSection_type"),
+                DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Foreground Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    @Override
-    protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
-        // adding (see {@link AddCommand}) it as a child.
-
-        return super.getChildFeature(object, child);
+    protected void addForegroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_GaugeSection_foregroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_foregroundColor_feature", "_UI_GaugeSection_type"),
+                DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -150,11 +139,9 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
         case DiagramPackage.GAUGE_SECTION__MAX:
         case DiagramPackage.GAUGE_SECTION__VALUE:
         case DiagramPackage.GAUGE_SECTION__LABEL:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
         case DiagramPackage.GAUGE_SECTION__BACKGROUND_COLOR:
         case DiagramPackage.GAUGE_SECTION__FOREGROUND_COLOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }
         super.notifyChanged(notification);
@@ -170,12 +157,6 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR,
-                ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "0,0,0")));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR,
-                ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "138,226,52")));
     }
 
     /**

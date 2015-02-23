@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -29,8 +28,6 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * This is the item provider adapter for a
@@ -66,6 +63,8 @@ public class DTableElementStyleItemProvider extends ItemProviderAdapter implemen
             addLabelFormatPropertyDescriptor(object);
             addDefaultForegroundStylePropertyDescriptor(object);
             addDefaultBackgroundStylePropertyDescriptor(object);
+            addForegroundColorPropertyDescriptor(object);
+            addBackgroundColorPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -121,37 +120,29 @@ public class DTableElementStyleItemProvider extends ItemProviderAdapter implemen
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Foreground Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    @Override
-    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-        if (childrenFeatures == null) {
-            super.getChildrenFeatures(object);
-            childrenFeatures.add(TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR);
-            childrenFeatures.add(TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR);
-        }
-        return childrenFeatures;
+    protected void addForegroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DTableElementStyle_foregroundColor_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_foregroundColor_feature", "_UI_DTableElementStyle_type"),
+                TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Background Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    @Override
-    protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
-        // adding (see {@link AddCommand}) it as a child.
-
-        return super.getChildFeature(object, child);
+    protected void addBackgroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DTableElementStyle_backgroundColor_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_backgroundColor_feature", "_UI_DTableElementStyle_type"),
+                TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -194,11 +185,9 @@ public class DTableElementStyleItemProvider extends ItemProviderAdapter implemen
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT:
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE:
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
         case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
         case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }
         super.notifyChanged(notification);
@@ -214,12 +203,6 @@ public class DTableElementStyleItemProvider extends ItemProviderAdapter implemen
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        newChildDescriptors.add(createChildParameter(TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR,
-                ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "0,0,0")));
-
-        newChildDescriptors.add(createChildParameter(TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR,
-                ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "255,255,255")));
     }
 
     /**

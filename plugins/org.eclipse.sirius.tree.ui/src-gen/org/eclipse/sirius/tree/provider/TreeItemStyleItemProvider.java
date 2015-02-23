@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -24,7 +23,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 
@@ -61,7 +59,9 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
             addLabelFormatPropertyDescriptor(object);
             addShowIconPropertyDescriptor(object);
             addIconPathPropertyDescriptor(object);
+            addLabelColorPropertyDescriptor(object);
             addLabelAlignmentPropertyDescriptor(object);
+            addBackgroundColorPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -115,6 +115,18 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Label Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addLabelColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_BasicLabelStyle_labelColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_labelColor_feature", "_UI_BasicLabelStyle_type"),
+                ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This adds a property descriptor for the Label Alignment feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -127,37 +139,15 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Background Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    @Override
-    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-        if (childrenFeatures == null) {
-            super.getChildrenFeatures(object);
-            childrenFeatures.add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR);
-            childrenFeatures.add(TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR);
-        }
-        return childrenFeatures;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
-        // adding (see {@link AddCommand}) it as a child.
-
-        return super.getChildFeature(object, child);
+    protected void addBackgroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_TreeItemStyle_backgroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TreeItemStyle_backgroundColor_feature", "_UI_TreeItemStyle_type"),
+                TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -200,12 +190,10 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
         case TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT:
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
         case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
-        case TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
         case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
+        case TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT:
         case TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }
         super.notifyChanged(notification);
@@ -221,12 +209,6 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR,
-                ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "0,0,0")));
-
-        newChildDescriptors.add(createChildParameter(TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR,
-                ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "255,255,255")));
     }
 
     /**

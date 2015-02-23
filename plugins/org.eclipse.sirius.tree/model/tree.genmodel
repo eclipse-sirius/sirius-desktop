@@ -36,7 +36,7 @@
           ecoreFeature="ecore:EReference tree.ecore#//DTreeItem/updater"/>
     </genClasses>
     <genClasses ecoreClass="tree.ecore#//TreeItemStyle">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute tree.ecore#//TreeItemStyle/backgroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tree.ecore#//TreeItemStyle/backgroundColor"/>
     </genClasses>
     <genClasses ecoreClass="tree.ecore#//DTreeElementSynchronizer">
       <genOperations ecoreOperation="tree.ecore#//DTreeElementSynchronizer/refresh">

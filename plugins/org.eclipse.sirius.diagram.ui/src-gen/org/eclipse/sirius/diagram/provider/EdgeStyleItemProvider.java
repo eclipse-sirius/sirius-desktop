@@ -27,8 +27,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 
 /**
@@ -67,6 +65,7 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
             addSizePropertyDescriptor(object);
             addRoutingStylePropertyDescriptor(object);
             addCenteredPropertyDescriptor(object);
+            addStrokeColorPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -156,6 +155,18 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Stroke Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addStrokeColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_EdgeStyle_strokeColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_strokeColor_feature", "_UI_EdgeStyle_type"),
+                DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to
      * deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand},
@@ -172,7 +183,6 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
             childrenFeatures.add(DiagramPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE);
             childrenFeatures.add(DiagramPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE);
             childrenFeatures.add(DiagramPackage.Literals.EDGE_STYLE__END_LABEL_STYLE);
-            childrenFeatures.add(DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR);
         }
         return childrenFeatures;
     }
@@ -234,12 +244,12 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
         case DiagramPackage.EDGE_STYLE__SIZE:
         case DiagramPackage.EDGE_STYLE__ROUTING_STYLE:
         case DiagramPackage.EDGE_STYLE__CENTERED:
+        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE:
         case DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE:
         case DiagramPackage.EDGE_STYLE__END_LABEL_STYLE:
-        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -262,9 +272,6 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE, DiagramFactory.eINSTANCE.createCenterLabelStyle()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.EDGE_STYLE__END_LABEL_STYLE, DiagramFactory.eINSTANCE.createEndLabelStyle()));
-
-        newChildDescriptors
-                .add(createChildParameter(DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR, ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "136,136,136")));
     }
 
     /**

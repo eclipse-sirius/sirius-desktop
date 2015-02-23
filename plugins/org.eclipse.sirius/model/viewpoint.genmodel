@@ -135,7 +135,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BasicLabelStyle/labelFormat"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BasicLabelStyle/showIcon"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BasicLabelStyle/iconPath"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BasicLabelStyle/labelColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BasicLabelStyle/labelColor"/>
     </genClasses>
     <genClasses image="false" ecoreClass="viewpoint.ecore#//Customizable">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Customizable/customFeatures"/>
