@@ -105,6 +105,7 @@ import org.eclipse.sirius.tests.unit.diagram.filter.CollapseFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.CompositeFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.DiagramElementSelectionDialogPatternMatcherTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.DiagramElementSelectionDialogTest;
+import org.eclipse.sirius.tests.unit.diagram.filter.DiagramListenersTests;
 import org.eclipse.sirius.tests.unit.diagram.filter.FilterEdgeOnEdgeTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.MinimizedTransparentCollapsingTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.VariableFilterTest;
@@ -451,7 +452,7 @@ public class AllDiagramPluginsTests {
 
         // Specific diagram editor tests (tabbar, palette...)
         suite.addTestSuite(TabbarActionSelectionListenerTest.class);
-
+        suite.addTestSuite(DiagramListenersTests.class);
         // uml
 
         suite.addTestSuite(LayerTests.class);
