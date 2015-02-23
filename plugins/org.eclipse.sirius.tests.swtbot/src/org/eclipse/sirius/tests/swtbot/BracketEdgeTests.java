@@ -868,9 +868,9 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         propertiesBot = bot.viewByTitle(PROPERTIES);
         SWTBotSiriusHelper.selectPropertyTabItem("Style");
         SWTBotTree tree = propertiesBot.bot().tree();
-        tree.expandNode("Bracket Edge Style solid").select().getNode("Source Arrow").doubleClick();
+        tree.expandNode("Misc").select().getNode("Source Arrow").doubleClick();
         assertEquals("The type of Source Arrow must be Input Fill Closed Arrow", "Input Fill Closed Arrow", propertiesBot.bot().ccomboBox().getText());
-        tree.expandNode("Bracket Edge Style solid").select().getNode("Target Arrow").doubleClick();
+        tree.expandNode("Misc").select().getNode("Target Arrow").doubleClick();
         assertEquals("The type of Target Arrow must be Input Fill Closed Arrow", "Input Fill Closed Arrow", propertiesBot.bot().ccomboBox().getText());
 
         editor.save();
@@ -1018,7 +1018,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         propertiesBot = bot.viewByTitle(PROPERTIES);
         SWTBotSiriusHelper.selectPropertyTabItem("Style");
         tree = propertiesBot.bot().tree();
-        tree.expandNode("Bracket Edge Style dot").select().getNode("Line Style").doubleClick();
+        tree.expandNode("General").select().getNode("Line Style").doubleClick();
         assertEquals("The line style should be dot", "dot", propertiesBot.bot().ccomboBox().getText());
 
     }
