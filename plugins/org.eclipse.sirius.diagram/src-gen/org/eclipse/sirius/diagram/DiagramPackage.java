@@ -5132,15 +5132,6 @@ public interface DiagramPackage extends EPackage {
     int COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS = 0;
 
     /**
-     * The feature id for the '<em><b>Cache</b></em>' map. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int COMPUTED_STYLE_DESCRIPTION_REGISTRY__CACHE = 1;
-
-    /**
      * The number of structural features of the '
      * <em>Computed Style Description Registry</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
@@ -5148,167 +5139,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMPUTED_STYLE_DESCRIPTION_REGISTRY_FEATURE_COUNT = 2;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.impl.DiagramElementMapping2ModelElementImpl
-     * <em>Element Mapping2 Model Element</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.impl.DiagramElementMapping2ModelElementImpl
-     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDiagramElementMapping2ModelElement()
-     * @generated
-     */
-    int DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT = 43;
-
-    /**
-     * The feature id for the '<em><b>Key</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT__KEY = 0;
-
-    /**
-     * The feature id for the '<em><b>Value</b></em>' map. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT__VALUE = 1;
-
-    /**
-     * The number of structural features of the '
-     * <em>Element Mapping2 Model Element</em>' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT_FEATURE_COUNT = 2;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.impl.ModelElement2ViewVariableImpl
-     * <em>Model Element2 View Variable</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.impl.ModelElement2ViewVariableImpl
-     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getModelElement2ViewVariable()
-     * @generated
-     */
-    int MODEL_ELEMENT2_VIEW_VARIABLE = 44;
-
-    /**
-     * The feature id for the '<em><b>Key</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int MODEL_ELEMENT2_VIEW_VARIABLE__KEY = 0;
-
-    /**
-     * The feature id for the '<em><b>Value</b></em>' map. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int MODEL_ELEMENT2_VIEW_VARIABLE__VALUE = 1;
-
-    /**
-     * The number of structural features of the '
-     * <em>Model Element2 View Variable</em>' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int MODEL_ELEMENT2_VIEW_VARIABLE_FEATURE_COUNT = 2;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.impl.ViewVariable2ContainerVariableImpl
-     * <em>View Variable2 Container Variable</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.impl.ViewVariable2ContainerVariableImpl
-     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getViewVariable2ContainerVariable()
-     * @generated
-     */
-    int VIEW_VARIABLE2_CONTAINER_VARIABLE = 45;
-
-    /**
-     * The feature id for the '<em><b>Key</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int VIEW_VARIABLE2_CONTAINER_VARIABLE__KEY = 0;
-
-    /**
-     * The feature id for the '<em><b>Value</b></em>' map. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int VIEW_VARIABLE2_CONTAINER_VARIABLE__VALUE = 1;
-
-    /**
-     * The number of structural features of the '
-     * <em>View Variable2 Container Variable</em>' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int VIEW_VARIABLE2_CONTAINER_VARIABLE_FEATURE_COUNT = 2;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.impl.ContainerVariable2StyleDescriptionImpl
-     * <em>Container Variable2 Style Description</em>}' class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.impl.ContainerVariable2StyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerVariable2StyleDescription()
-     * @generated
-     */
-    int CONTAINER_VARIABLE2_STYLE_DESCRIPTION = 46;
-
-    /**
-     * The feature id for the '<em><b>Key</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_VARIABLE2_STYLE_DESCRIPTION__KEY = 0;
-
-    /**
-     * The feature id for the '<em><b>Value</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_VARIABLE2_STYLE_DESCRIPTION__VALUE = 1;
-
-    /**
-     * The number of structural features of the '
-     * <em>Container Variable2 Style Description</em>' class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_VARIABLE2_STYLE_DESCRIPTION_FEATURE_COUNT = 2;
+    int COMPUTED_STYLE_DESCRIPTION_REGISTRY_FEATURE_COUNT = 1;
 
     /**
      * The meta object id for the '
@@ -5320,7 +5151,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDragAndDropTarget()
      * @generated
      */
-    int DRAG_AND_DROP_TARGET = 47;
+    int DRAG_AND_DROP_TARGET = 43;
 
     /**
      * The number of structural features of the '<em>Drag And Drop Target</em>'
@@ -5341,7 +5172,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerLayout()
      * @generated
      */
-    int CONTAINER_LAYOUT = 48;
+    int CONTAINER_LAYOUT = 44;
 
     /**
      * The meta object id for the '
@@ -5352,7 +5183,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLabelPosition()
      * @generated
      */
-    int LABEL_POSITION = 49;
+    int LABEL_POSITION = 45;
 
     /**
      * The meta object id for the '
@@ -5364,7 +5195,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerShape()
      * @generated
      */
-    int CONTAINER_SHAPE = 50;
+    int CONTAINER_SHAPE = 46;
 
     /**
      * The meta object id for the '
@@ -5376,7 +5207,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBackgroundStyle()
      * @generated
      */
-    int BACKGROUND_STYLE = 51;
+    int BACKGROUND_STYLE = 47;
 
     /**
      * The meta object id for the '
@@ -5388,7 +5219,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBundledImageShape()
      * @generated
      */
-    int BUNDLED_IMAGE_SHAPE = 52;
+    int BUNDLED_IMAGE_SHAPE = 48;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.LineStyle
@@ -5398,7 +5229,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLineStyle()
      * @generated
      */
-    int LINE_STYLE = 53;
+    int LINE_STYLE = 49;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.EdgeArrows
@@ -5409,7 +5240,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeArrows()
      * @generated
      */
-    int EDGE_ARROWS = 54;
+    int EDGE_ARROWS = 50;
 
     /**
      * The meta object id for the '
@@ -5420,7 +5251,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeRouting()
      * @generated
      */
-    int EDGE_ROUTING = 55;
+    int EDGE_ROUTING = 51;
 
     /**
      * The meta object id for the '
@@ -5431,7 +5262,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAlignmentKind()
      * @generated
      */
-    int ALIGNMENT_KIND = 56;
+    int ALIGNMENT_KIND = 52;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.ResizeKind
@@ -5442,7 +5273,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getResizeKind()
      * @generated
      */
-    int RESIZE_KIND = 57;
+    int RESIZE_KIND = 53;
 
     /**
      * The meta object id for the '
@@ -5454,7 +5285,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getArrangeConstraint()
      * @generated
      */
-    int ARRANGE_CONSTRAINT = 58;
+    int ARRANGE_CONSTRAINT = 54;
 
     /**
      * Returns the meta object for class '
@@ -7478,167 +7309,6 @@ public interface DiagramPackage extends EPackage {
     EReference getComputedStyleDescriptionRegistry_ComputedStyleDescriptions();
 
     /**
-     * Returns the meta object for the map '
-     * {@link org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry#getCache
-     * <em>Cache</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the map '<em>Cache</em>'.
-     * @see org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry#getCache()
-     * @see #getComputedStyleDescriptionRegistry()
-     * @generated
-     */
-    EReference getComputedStyleDescriptionRegistry_Cache();
-
-    /**
-     * Returns the meta object for class '{@link java.util.Map.Entry
-     * <em>Element Mapping2 Model Element</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '
-     *         <em>Element Mapping2 Model Element</em>'.
-     * @see java.util.Map.Entry
-     * @model 
-     *        keyType="org.eclipse.sirius.diagram.description.DiagramElementMapping"
-     *        keyRequired="true" valueMapType=
-     *        "org.eclipse.sirius.diagram.ModelElement2ViewVariable<org.eclipse.emf.ecore.EObject, org.eclipse.sirius.diagram.ViewVariable2ContainerVariable>"
-     * @generated
-     */
-    EClass getDiagramElementMapping2ModelElement();
-
-    /**
-     * Returns the meta object for the reference '{@link java.util.Map.Entry
-     * <em>Key</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Key</em>'.
-     * @see java.util.Map.Entry
-     * @see #getDiagramElementMapping2ModelElement()
-     * @generated
-     */
-    EReference getDiagramElementMapping2ModelElement_Key();
-
-    /**
-     * Returns the meta object for the map '{@link java.util.Map.Entry
-     * <em>Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the map '<em>Value</em>'.
-     * @see java.util.Map.Entry
-     * @see #getDiagramElementMapping2ModelElement()
-     * @generated
-     */
-    EReference getDiagramElementMapping2ModelElement_Value();
-
-    /**
-     * Returns the meta object for class '{@link java.util.Map.Entry
-     * <em>Model Element2 View Variable</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '<em>Model Element2 View Variable</em>
-     *         '.
-     * @see java.util.Map.Entry
-     * @model keyType="org.eclipse.emf.ecore.EObject" keyRequired="true"
-     *        valueMapType=
-     *        "org.eclipse.sirius.diagram.ViewVariable2ContainerVariable<org.eclipse.emf.ecore.EObject, org.eclipse.sirius.diagram.ContainerVariable2StyleDescription>"
-     * @generated
-     */
-    EClass getModelElement2ViewVariable();
-
-    /**
-     * Returns the meta object for the reference '{@link java.util.Map.Entry
-     * <em>Key</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Key</em>'.
-     * @see java.util.Map.Entry
-     * @see #getModelElement2ViewVariable()
-     * @generated
-     */
-    EReference getModelElement2ViewVariable_Key();
-
-    /**
-     * Returns the meta object for the map '{@link java.util.Map.Entry
-     * <em>Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the map '<em>Value</em>'.
-     * @see java.util.Map.Entry
-     * @see #getModelElement2ViewVariable()
-     * @generated
-     */
-    EReference getModelElement2ViewVariable_Value();
-
-    /**
-     * Returns the meta object for class '{@link java.util.Map.Entry
-     * <em>View Variable2 Container Variable</em>}'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @return the meta object for class '
-     *         <em>View Variable2 Container Variable</em>'.
-     * @see java.util.Map.Entry
-     * @model keyType="org.eclipse.emf.ecore.EObject" keyRequired="true"
-     *        valueMapType=
-     *        "org.eclipse.sirius.diagram.ContainerVariable2StyleDescription<org.eclipse.emf.ecore.EObject, org.eclipse.sirius.viewpoint.description.style.StyleDescription>"
-     * @generated
-     */
-    EClass getViewVariable2ContainerVariable();
-
-    /**
-     * Returns the meta object for the reference '{@link java.util.Map.Entry
-     * <em>Key</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Key</em>'.
-     * @see java.util.Map.Entry
-     * @see #getViewVariable2ContainerVariable()
-     * @generated
-     */
-    EReference getViewVariable2ContainerVariable_Key();
-
-    /**
-     * Returns the meta object for the map '{@link java.util.Map.Entry
-     * <em>Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the map '<em>Value</em>'.
-     * @see java.util.Map.Entry
-     * @see #getViewVariable2ContainerVariable()
-     * @generated
-     */
-    EReference getViewVariable2ContainerVariable_Value();
-
-    /**
-     * Returns the meta object for class '{@link java.util.Map.Entry
-     * <em>Container Variable2 Style Description</em>}'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @return the meta object for class '
-     *         <em>Container Variable2 Style Description</em>'.
-     * @see java.util.Map.Entry
-     * @model keyType="org.eclipse.emf.ecore.EObject" keyRequired="true"
-     *        valueType=
-     *        "org.eclipse.sirius.viewpoint.description.style.StyleDescription"
-     * @generated
-     */
-    EClass getContainerVariable2StyleDescription();
-
-    /**
-     * Returns the meta object for the reference '{@link java.util.Map.Entry
-     * <em>Key</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Key</em>'.
-     * @see java.util.Map.Entry
-     * @see #getContainerVariable2StyleDescription()
-     * @generated
-     */
-    EReference getContainerVariable2StyleDescription_Key();
-
-    /**
-     * Returns the meta object for the reference '{@link java.util.Map.Entry
-     * <em>Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Value</em>'.
-     * @see java.util.Map.Entry
-     * @see #getContainerVariable2StyleDescription()
-     * @generated
-     */
-    EReference getContainerVariable2StyleDescription_Value();
-
-    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.DragAndDropTarget
      * <em>Drag And Drop Target</em>}'. <!-- begin-user-doc --> <!--
@@ -9297,126 +8967,6 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EReference COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS = eINSTANCE.getComputedStyleDescriptionRegistry_ComputedStyleDescriptions();
-
-        /**
-         * The meta object literal for the '<em><b>Cache</b></em>' map feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference COMPUTED_STYLE_DESCRIPTION_REGISTRY__CACHE = eINSTANCE.getComputedStyleDescriptionRegistry_Cache();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.impl.DiagramElementMapping2ModelElementImpl
-         * <em>Element Mapping2 Model Element</em>}' class. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.impl.DiagramElementMapping2ModelElementImpl
-         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDiagramElementMapping2ModelElement()
-         * @generated
-         */
-        EClass DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT = eINSTANCE.getDiagramElementMapping2ModelElement();
-
-        /**
-         * The meta object literal for the '<em><b>Key</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT__KEY = eINSTANCE.getDiagramElementMapping2ModelElement_Key();
-
-        /**
-         * The meta object literal for the '<em><b>Value</b></em>' map feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT__VALUE = eINSTANCE.getDiagramElementMapping2ModelElement_Value();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.impl.ModelElement2ViewVariableImpl
-         * <em>Model Element2 View Variable</em>}' class. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.impl.ModelElement2ViewVariableImpl
-         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getModelElement2ViewVariable()
-         * @generated
-         */
-        EClass MODEL_ELEMENT2_VIEW_VARIABLE = eINSTANCE.getModelElement2ViewVariable();
-
-        /**
-         * The meta object literal for the '<em><b>Key</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference MODEL_ELEMENT2_VIEW_VARIABLE__KEY = eINSTANCE.getModelElement2ViewVariable_Key();
-
-        /**
-         * The meta object literal for the '<em><b>Value</b></em>' map feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference MODEL_ELEMENT2_VIEW_VARIABLE__VALUE = eINSTANCE.getModelElement2ViewVariable_Value();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.impl.ViewVariable2ContainerVariableImpl
-         * <em>View Variable2 Container Variable</em>}' class. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.impl.ViewVariable2ContainerVariableImpl
-         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getViewVariable2ContainerVariable()
-         * @generated
-         */
-        EClass VIEW_VARIABLE2_CONTAINER_VARIABLE = eINSTANCE.getViewVariable2ContainerVariable();
-
-        /**
-         * The meta object literal for the '<em><b>Key</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference VIEW_VARIABLE2_CONTAINER_VARIABLE__KEY = eINSTANCE.getViewVariable2ContainerVariable_Key();
-
-        /**
-         * The meta object literal for the '<em><b>Value</b></em>' map feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference VIEW_VARIABLE2_CONTAINER_VARIABLE__VALUE = eINSTANCE.getViewVariable2ContainerVariable_Value();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.impl.ContainerVariable2StyleDescriptionImpl
-         * <em>Container Variable2 Style Description</em>}' class. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.impl.ContainerVariable2StyleDescriptionImpl
-         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerVariable2StyleDescription()
-         * @generated
-         */
-        EClass CONTAINER_VARIABLE2_STYLE_DESCRIPTION = eINSTANCE.getContainerVariable2StyleDescription();
-
-        /**
-         * The meta object literal for the '<em><b>Key</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference CONTAINER_VARIABLE2_STYLE_DESCRIPTION__KEY = eINSTANCE.getContainerVariable2StyleDescription_Key();
-
-        /**
-         * The meta object literal for the '<em><b>Value</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference CONTAINER_VARIABLE2_STYLE_DESCRIPTION__VALUE = eINSTANCE.getContainerVariable2StyleDescription_Value();
 
         /**
          * The meta object literal for the '

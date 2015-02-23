@@ -251,6 +251,11 @@
 				<code>org.eclipse.sirius.diagram.DiagramPackage.Literals.DNODE_LIST__LINE_WIDTH()</code>.
 			</li>
 		</ul>
+		<p>
+			<code>org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry.cache</code> reference has been removed from the metamodel as it is no more useful, to limit memory consumed by computed 
+			<code>StyleDescription</code> we directly look for them in the 
+			<code>ComputedStyleDescriptionRegistry.computedStyleDescriptions</code> list.
+		</p>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>

@@ -959,29 +959,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="computedStyleDescriptions"
         upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/StyleDescription"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cache" upperBound="-1"
-        eType="#//DiagramElementMapping2ModelElement" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DiagramElementMapping2ModelElement"
-      instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//description/DiagramElementMapping"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
-        eType="#//ModelElement2ViewVariable" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelElement2ViewVariable" instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
-        eType="#//ViewVariable2ContainerVariable" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ViewVariable2ContainerVariable" instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
-        eType="#//ContainerVariable2StyleDescription" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ContainerVariable2StyleDescription"
-      instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/StyleDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DragAndDropTarget">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

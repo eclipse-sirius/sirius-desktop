@@ -12,9 +12,7 @@
 package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
@@ -23,15 +21,12 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry#getComputedStyleDescriptions
  * <em>Computed Style Descriptions</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry#getCache
- * <em>Cache</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getComputedStyleDescriptionRegistry()
  * @model
@@ -57,28 +52,5 @@ public interface ComputedStyleDescriptionRegistry extends EObject {
      * @generated
      */
     EList<StyleDescription> getComputedStyleDescriptions();
-
-    /**
-     * Returns the value of the '<em><b>Cache</b></em>' map. The key is of type
-     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}, and
-     * the value is of type list of {@link java.util.Map.Entry
-     * <org.eclipse.emf.ecore.EObject,
-     * org.eclipse.emf.common.util.EMap<org.eclipse.emf.ecore.EObject,
-     * org.eclipse.emf.common.util.EMap<org.eclipse.emf.ecore.EObject,
-     * org.eclipse.sirius.viewpoint.description.style.StyleDescription>>>}, <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Cache</em>' map isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Cache</em>' map.
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getComputedStyleDescriptionRegistry_Cache()
-     * @model mapType=
-     *        "org.eclipse.sirius.diagram.DiagramElementMapping2ModelElement<org.eclipse.sirius.diagram.description.DiagramElementMapping, org.eclipse.sirius.diagram.ModelElement2ViewVariable>"
-     * @generated
-     */
-    EMap<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> getCache();
 
 } // ComputedStyleDescriptionRegistry

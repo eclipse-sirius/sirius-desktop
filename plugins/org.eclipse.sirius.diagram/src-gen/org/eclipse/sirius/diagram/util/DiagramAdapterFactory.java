@@ -11,12 +11,9 @@
  */
 package org.eclipse.sirius.diagram.util;
 
-import java.util.Map;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -63,7 +60,6 @@ import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DContainer;
@@ -80,7 +76,6 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
-import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
@@ -350,26 +345,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseComputedStyleDescriptionRegistry(ComputedStyleDescriptionRegistry object) {
             return createComputedStyleDescriptionRegistryAdapter();
-        }
-
-        @Override
-        public Adapter caseDiagramElementMapping2ModelElement(Map.Entry<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> object) {
-            return createDiagramElementMapping2ModelElementAdapter();
-        }
-
-        @Override
-        public Adapter caseModelElement2ViewVariable(Map.Entry<EObject, EMap<EObject, EMap<EObject, StyleDescription>>> object) {
-            return createModelElement2ViewVariableAdapter();
-        }
-
-        @Override
-        public Adapter caseViewVariable2ContainerVariable(Map.Entry<EObject, EMap<EObject, StyleDescription>> object) {
-            return createViewVariable2ContainerVariableAdapter();
-        }
-
-        @Override
-        public Adapter caseContainerVariable2StyleDescription(Map.Entry<EObject, StyleDescription> object) {
-            return createContainerVariable2StyleDescriptionAdapter();
         }
 
         @Override
@@ -1142,66 +1117,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createComputedStyleDescriptionRegistryAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
-     * <em>Element Mapping2 Model Element</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see java.util.Map.Entry
-     * @generated
-     */
-    public Adapter createDiagramElementMapping2ModelElementAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
-     * <em>Model Element2 View Variable</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see java.util.Map.Entry
-     * @generated
-     */
-    public Adapter createModelElement2ViewVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
-     * <em>View Variable2 Container Variable</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see java.util.Map.Entry
-     * @generated
-     */
-    public Adapter createViewVariable2ContainerVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
-     * <em>Container Variable2 Style Description</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see java.util.Map.Entry
-     * @generated
-     */
-    public Adapter createContainerVariable2StyleDescriptionAdapter() {
         return null;
     }
 

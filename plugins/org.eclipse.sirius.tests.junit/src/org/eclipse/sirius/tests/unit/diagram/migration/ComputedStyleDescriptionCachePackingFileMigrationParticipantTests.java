@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipant;
@@ -76,9 +77,12 @@ public class ComputedStyleDescriptionCachePackingFileMigrationParticipantTests e
         DDiagram dDiagram = (DDiagram) dRepresentation;
         ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = new DDiagramInternalQuery(dDiagram).getComputedStyleDescriptionRegistry(false);
         assertNotNull(computedStyleDescriptionRegistry);
-        /* Without migration we should have had a map of 4 entries in the cache. */
-        assertEquals("As the maps of ComputedStyleDescriptionRegistry are no more used, the cache should be empty", 0, computedStyleDescriptionRegistry.getCache().size());
-        /* Without migration we should have had 76 computed StyleDescription. */
+        /* Without migration we should have had 24 computed StyleDescription. */
         assertEquals("Computed StyleDescriptiosshould have been shared among styles within the DDiagram", 3, computedStyleDescriptionRegistry.getComputedStyleDescriptions().size());
+        /* Without migration we should have had a map of 4 entries in the cache. */
+        assertEquals("As the maps of ComputedStyleDescriptionRegistry are no more used, it should remains only the 3 computed StyleDescriptions", 3, computedStyleDescriptionRegistry.eContents()
+                .size());
+        XMLResource airdResource = (XMLResource) session.getSessionResource();
+        assertEquals("As the migration has done its job, the map of unknown data should be empty", 0, airdResource.getEObjectToExtensionMap().size());
     }
 }

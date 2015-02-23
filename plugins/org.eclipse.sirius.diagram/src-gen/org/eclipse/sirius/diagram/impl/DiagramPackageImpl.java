@@ -11,8 +11,6 @@
  */
 package org.eclipse.sirius.diagram.impl;
 
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -398,34 +396,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     private EClass computedStyleDescriptionRegistryEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass diagramElementMapping2ModelElementEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass modelElement2ViewVariableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass viewVariable2ContainerVariableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass containerVariable2StyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2082,123 +2052,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getComputedStyleDescriptionRegistry_Cache() {
-        return (EReference) computedStyleDescriptionRegistryEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getDiagramElementMapping2ModelElement() {
-        return diagramElementMapping2ModelElementEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDiagramElementMapping2ModelElement_Key() {
-        return (EReference) diagramElementMapping2ModelElementEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDiagramElementMapping2ModelElement_Value() {
-        return (EReference) diagramElementMapping2ModelElementEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getModelElement2ViewVariable() {
-        return modelElement2ViewVariableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getModelElement2ViewVariable_Key() {
-        return (EReference) modelElement2ViewVariableEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getModelElement2ViewVariable_Value() {
-        return (EReference) modelElement2ViewVariableEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getViewVariable2ContainerVariable() {
-        return viewVariable2ContainerVariableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getViewVariable2ContainerVariable_Key() {
-        return (EReference) viewVariable2ContainerVariableEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getViewVariable2ContainerVariable_Value() {
-        return (EReference) viewVariable2ContainerVariableEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getContainerVariable2StyleDescription() {
-        return containerVariable2StyleDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getContainerVariable2StyleDescription_Key() {
-        return (EReference) containerVariable2StyleDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getContainerVariable2StyleDescription_Value() {
-        return (EReference) containerVariable2StyleDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getDragAndDropTarget() {
         return dragAndDropTargetEClass;
     }
@@ -2537,23 +2390,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
         computedStyleDescriptionRegistryEClass = createEClass(COMPUTED_STYLE_DESCRIPTION_REGISTRY);
         createEReference(computedStyleDescriptionRegistryEClass, COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS);
-        createEReference(computedStyleDescriptionRegistryEClass, COMPUTED_STYLE_DESCRIPTION_REGISTRY__CACHE);
-
-        diagramElementMapping2ModelElementEClass = createEClass(DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT);
-        createEReference(diagramElementMapping2ModelElementEClass, DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT__KEY);
-        createEReference(diagramElementMapping2ModelElementEClass, DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT__VALUE);
-
-        modelElement2ViewVariableEClass = createEClass(MODEL_ELEMENT2_VIEW_VARIABLE);
-        createEReference(modelElement2ViewVariableEClass, MODEL_ELEMENT2_VIEW_VARIABLE__KEY);
-        createEReference(modelElement2ViewVariableEClass, MODEL_ELEMENT2_VIEW_VARIABLE__VALUE);
-
-        viewVariable2ContainerVariableEClass = createEClass(VIEW_VARIABLE2_CONTAINER_VARIABLE);
-        createEReference(viewVariable2ContainerVariableEClass, VIEW_VARIABLE2_CONTAINER_VARIABLE__KEY);
-        createEReference(viewVariable2ContainerVariableEClass, VIEW_VARIABLE2_CONTAINER_VARIABLE__VALUE);
-
-        containerVariable2StyleDescriptionEClass = createEClass(CONTAINER_VARIABLE2_STYLE_DESCRIPTION);
-        createEReference(containerVariable2StyleDescriptionEClass, CONTAINER_VARIABLE2_STYLE_DESCRIPTION__KEY);
-        createEReference(containerVariable2StyleDescriptionEClass, CONTAINER_VARIABLE2_STYLE_DESCRIPTION__VALUE);
 
         dragAndDropTargetEClass = createEClass(DRAG_AND_DROP_TARGET);
 
@@ -3035,32 +2871,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEClass(computedStyleDescriptionRegistryEClass, ComputedStyleDescriptionRegistry.class, "ComputedStyleDescriptionRegistry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getComputedStyleDescriptionRegistry_ComputedStyleDescriptions(), theStylePackage_1.getStyleDescription(), null, "computedStyleDescriptions", null, 0, -1,
                 ComputedStyleDescriptionRegistry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getComputedStyleDescriptionRegistry_Cache(), this.getDiagramElementMapping2ModelElement(), null, "cache", null, 0, -1, ComputedStyleDescriptionRegistry.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(diagramElementMapping2ModelElementEClass, Map.Entry.class, "DiagramElementMapping2ModelElement", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDiagramElementMapping2ModelElement_Key(), theDescriptionPackage.getDiagramElementMapping(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDiagramElementMapping2ModelElement_Value(), this.getModelElement2ViewVariable(), null, "value", null, 0, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(modelElement2ViewVariableEClass, Map.Entry.class, "ModelElement2ViewVariable", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getModelElement2ViewVariable_Key(), theEcorePackage.getEObject(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getModelElement2ViewVariable_Value(), this.getViewVariable2ContainerVariable(), null, "value", null, 0, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(viewVariable2ContainerVariableEClass, Map.Entry.class, "ViewVariable2ContainerVariable", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getViewVariable2ContainerVariable_Key(), theEcorePackage.getEObject(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getViewVariable2ContainerVariable_Value(), this.getContainerVariable2StyleDescription(), null, "value", null, 0, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(containerVariable2StyleDescriptionEClass, Map.Entry.class, "ContainerVariable2StyleDescription", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getContainerVariable2StyleDescription_Key(), theEcorePackage.getEObject(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getContainerVariable2StyleDescription_Value(), theStylePackage_1.getStyleDescription(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dragAndDropTargetEClass, DragAndDropTarget.class, "DragAndDropTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

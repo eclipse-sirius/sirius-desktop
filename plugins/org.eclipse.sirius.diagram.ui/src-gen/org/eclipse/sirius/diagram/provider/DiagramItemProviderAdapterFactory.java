@@ -975,102 +975,6 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DiagramElementMapping2ModelElementItemProvider diagramElementMapping2ModelElementItemProvider;
-
-    /**
-     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDiagramElementMapping2ModelElementAdapter() {
-        if (diagramElementMapping2ModelElementItemProvider == null) {
-            diagramElementMapping2ModelElementItemProvider = new DiagramElementMapping2ModelElementItemProvider(this);
-        }
-
-        return diagramElementMapping2ModelElementItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ModelElement2ViewVariableItemProvider modelElement2ViewVariableItemProvider;
-
-    /**
-     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createModelElement2ViewVariableAdapter() {
-        if (modelElement2ViewVariableItemProvider == null) {
-            modelElement2ViewVariableItemProvider = new ModelElement2ViewVariableItemProvider(this);
-        }
-
-        return modelElement2ViewVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ViewVariable2ContainerVariableItemProvider viewVariable2ContainerVariableItemProvider;
-
-    /**
-     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createViewVariable2ContainerVariableAdapter() {
-        if (viewVariable2ContainerVariableItemProvider == null) {
-            viewVariable2ContainerVariableItemProvider = new ViewVariable2ContainerVariableItemProvider(this);
-        }
-
-        return viewVariable2ContainerVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ContainerVariable2StyleDescriptionItemProvider containerVariable2StyleDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createContainerVariable2StyleDescriptionAdapter() {
-        if (containerVariable2StyleDescriptionItemProvider == null) {
-            containerVariable2StyleDescriptionItemProvider = new ContainerVariable2StyleDescriptionItemProvider(this);
-        }
-
-        return containerVariable2StyleDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.DragAndDropTarget} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1264,14 +1168,6 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
             bracketEdgeStyleItemProvider.dispose();
         if (computedStyleDescriptionRegistryItemProvider != null)
             computedStyleDescriptionRegistryItemProvider.dispose();
-        if (diagramElementMapping2ModelElementItemProvider != null)
-            diagramElementMapping2ModelElementItemProvider.dispose();
-        if (modelElement2ViewVariableItemProvider != null)
-            modelElement2ViewVariableItemProvider.dispose();
-        if (viewVariable2ContainerVariableItemProvider != null)
-            viewVariable2ContainerVariableItemProvider.dispose();
-        if (containerVariable2StyleDescriptionItemProvider != null)
-            containerVariable2StyleDescriptionItemProvider.dispose();
         if (dragAndDropTargetItemProvider != null)
             dragAndDropTargetItemProvider.dispose();
     }

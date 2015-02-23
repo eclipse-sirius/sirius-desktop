@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
-import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -81,7 +80,6 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS);
-            childrenFeatures.add(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__CACHE);
         }
         return childrenFeatures;
     }
@@ -136,7 +134,6 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
 
         switch (notification.getFeatureID(ComputedStyleDescriptionRegistry.class)) {
         case DiagramPackage.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS:
-        case DiagramPackage.COMPUTED_STYLE_DESCRIPTION_REGISTRY__CACHE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -187,9 +184,6 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS,
                 StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__CACHE,
-                DiagramFactory.eINSTANCE.create(DiagramPackage.Literals.DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT)));
     }
 
     /**

@@ -12,9 +12,7 @@
 package org.eclipse.sirius.diagram.util;
 
 import java.util.List;
-import java.util.Map;
 
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
@@ -62,7 +60,6 @@ import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DContainer;
@@ -79,7 +76,6 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
-import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance
@@ -899,38 +895,6 @@ public class DiagramSwitch<T> {
                 result = defaultCase(theEObject);
             return result;
         }
-        case DiagramPackage.DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT: {
-            @SuppressWarnings("unchecked")
-            Map.Entry<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> diagramElementMapping2ModelElement = (Map.Entry<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>>) theEObject;
-            T result = caseDiagramElementMapping2ModelElement(diagramElementMapping2ModelElement);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case DiagramPackage.MODEL_ELEMENT2_VIEW_VARIABLE: {
-            @SuppressWarnings("unchecked")
-            Map.Entry<EObject, EMap<EObject, EMap<EObject, StyleDescription>>> modelElement2ViewVariable = (Map.Entry<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>) theEObject;
-            T result = caseModelElement2ViewVariable(modelElement2ViewVariable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case DiagramPackage.VIEW_VARIABLE2_CONTAINER_VARIABLE: {
-            @SuppressWarnings("unchecked")
-            Map.Entry<EObject, EMap<EObject, StyleDescription>> viewVariable2ContainerVariable = (Map.Entry<EObject, EMap<EObject, StyleDescription>>) theEObject;
-            T result = caseViewVariable2ContainerVariable(viewVariable2ContainerVariable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case DiagramPackage.CONTAINER_VARIABLE2_STYLE_DESCRIPTION: {
-            @SuppressWarnings("unchecked")
-            Map.Entry<EObject, StyleDescription> containerVariable2StyleDescription = (Map.Entry<EObject, StyleDescription>) theEObject;
-            T result = caseContainerVariable2StyleDescription(containerVariable2StyleDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
         case DiagramPackage.DRAG_AND_DROP_TARGET: {
             DragAndDropTarget dragAndDropTarget = (DragAndDropTarget) theEObject;
             T result = caseDragAndDropTarget(dragAndDropTarget);
@@ -1671,74 +1635,6 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseComputedStyleDescriptionRegistry(ComputedStyleDescriptionRegistry object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Element Mapping2 Model Element</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Element Mapping2 Model Element</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDiagramElementMapping2ModelElement(Map.Entry<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Model Element2 View Variable</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Model Element2 View Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseModelElement2ViewVariable(Map.Entry<EObject, EMap<EObject, EMap<EObject, StyleDescription>>> object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>View Variable2 Container Variable</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>View Variable2 Container Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseViewVariable2ContainerVariable(Map.Entry<EObject, EMap<EObject, StyleDescription>> object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Container Variable2 Style Description</em>'. <!-- begin-user-doc -->
-     * This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Container Variable2 Style Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseContainerVariable2StyleDescription(Map.Entry<EObject, StyleDescription> object) {
         return null;
     }
 

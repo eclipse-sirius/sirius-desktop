@@ -11,9 +11,6 @@
  */
 package org.eclipse.sirius.diagram.impl;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -89,8 +86,6 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.spec.NoteSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.ShapeContainerStyleSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.SquareSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.WorkspaceImageSpec;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -207,14 +202,6 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
             return createBracketEdgeStyle();
         case DiagramPackage.COMPUTED_STYLE_DESCRIPTION_REGISTRY:
             return createComputedStyleDescriptionRegistry();
-        case DiagramPackage.DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT:
-            return (EObject) createDiagramElementMapping2ModelElement();
-        case DiagramPackage.MODEL_ELEMENT2_VIEW_VARIABLE:
-            return (EObject) createModelElement2ViewVariable();
-        case DiagramPackage.VIEW_VARIABLE2_CONTAINER_VARIABLE:
-            return (EObject) createViewVariable2ContainerVariable();
-        case DiagramPackage.CONTAINER_VARIABLE2_STYLE_DESCRIPTION:
-            return (EObject) createContainerVariable2StyleDescription();
         case DiagramPackage.DRAG_AND_DROP_TARGET:
             return createDragAndDropTarget();
         default:
@@ -650,46 +637,6 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public ComputedStyleDescriptionRegistry createComputedStyleDescriptionRegistry() {
         ComputedStyleDescriptionRegistryImpl computedStyleDescriptionRegistry = new ComputedStyleDescriptionRegistryImpl();
         return computedStyleDescriptionRegistry;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Map.Entry<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> createDiagramElementMapping2ModelElement() {
-        DiagramElementMapping2ModelElementImpl diagramElementMapping2ModelElement = new DiagramElementMapping2ModelElementImpl();
-        return diagramElementMapping2ModelElement;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Map.Entry<EObject, EMap<EObject, EMap<EObject, StyleDescription>>> createModelElement2ViewVariable() {
-        ModelElement2ViewVariableImpl modelElement2ViewVariable = new ModelElement2ViewVariableImpl();
-        return modelElement2ViewVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Map.Entry<EObject, EMap<EObject, StyleDescription>> createViewVariable2ContainerVariable() {
-        ViewVariable2ContainerVariableImpl viewVariable2ContainerVariable = new ViewVariable2ContainerVariableImpl();
-        return viewVariable2ContainerVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Map.Entry<EObject, StyleDescription> createContainerVariable2StyleDescription() {
-        ContainerVariable2StyleDescriptionImpl containerVariable2StyleDescription = new ContainerVariable2StyleDescriptionImpl();
-        return containerVariable2StyleDescription;
     }
 
     /**
