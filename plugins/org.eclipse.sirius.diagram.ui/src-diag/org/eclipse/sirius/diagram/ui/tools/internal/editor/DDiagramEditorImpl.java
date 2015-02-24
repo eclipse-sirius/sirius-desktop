@@ -1099,10 +1099,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         return super.getDocumentProvider(input);
     }
 
-    private IEditingSession getUISession() {
-        return SessionUIManager.INSTANCE.getUISession(getSession());
-    }
-
     /**
      * {@inheritDoc}
      * 
