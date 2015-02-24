@@ -260,7 +260,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
-                PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell().setFullScreen(AbstractSiriusSwtBotGefTestCase.fFullScreen);
+                Shell shell = PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell();
+                if (System.getProperty("os.name").contains("Mac")) {
+                    shell.setMaximized(AbstractSiriusSwtBotGefTestCase.fFullScreen);
+                } else {
+                    shell.setFullScreen(AbstractSiriusSwtBotGefTestCase.fFullScreen);
+                }
             }
         });
 
