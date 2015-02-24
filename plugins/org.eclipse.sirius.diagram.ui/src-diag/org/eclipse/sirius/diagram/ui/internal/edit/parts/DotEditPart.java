@@ -223,26 +223,6 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
         public DotFigure() {
             this.setLineWidth(3);
         }
-
-        /**
-         * @was-generated
-         */
-        private boolean myUseLocalCoordinates = false;
-
-        /**
-         * @was-generated
-         */
-        protected boolean useLocalCoordinates() {
-            return myUseLocalCoordinates;
-        }
-
-        /**
-         * @was-generated
-         */
-        protected void setUseLocalCoordinates(boolean useLocalCoordinates) {
-            myUseLocalCoordinates = useLocalCoordinates;
-        }
-
     }
 
     private IFigure nodePlate;

@@ -26,11 +26,6 @@ public class ViewNodeContainerRectangleFigureDesc extends RectangleFigure implem
     private SiriusWrapLabel fContainerLabelFigure;
 
     /**
-     * @was-generated
-     */
-    private boolean myUseLocalCoordinates;
-
-    /**
      * Create a new {@link ViewNodeContainerFigureDesc}.
      */
     public ViewNodeContainerRectangleFigureDesc() {
@@ -44,27 +39,6 @@ public class ViewNodeContainerRectangleFigureDesc extends RectangleFigure implem
         fContainerLabelFigure.setText("  ");
         fContainerLabelFigure.setTextWrap(true);
         this.add(fContainerLabelFigure);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @was-generated
-     * @see org.eclipse.draw2d.Figure#useLocalCoordinates()
-     */
-    @Override
-    protected boolean useLocalCoordinates() {
-        return myUseLocalCoordinates;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @was-generated
-     * @param useLocalCoordinates
-     */
-    protected void setUseLocalCoordinates(final boolean useLocalCoordinates) {
-        myUseLocalCoordinates = useLocalCoordinates;
     }
 
     /**

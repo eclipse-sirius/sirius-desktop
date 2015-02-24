@@ -214,26 +214,6 @@ public class SquareEditPart extends AbstractNotSelectableShapeNodeEditPart imple
         public SquareFigure() {
             this.setLineWidth(3);
         }
-
-        /**
-         * @was-generated
-         */
-        private boolean myUseLocalCoordinates = false;
-
-        /**
-         * @was-generated
-         */
-        protected boolean useLocalCoordinates() {
-            return myUseLocalCoordinates;
-        }
-
-        /**
-         * @was-generated
-         */
-        protected void setUseLocalCoordinates(boolean useLocalCoordinates) {
-            myUseLocalCoordinates = useLocalCoordinates;
-        }
-
     }
 
     protected Class<?> getMetamodelType() {

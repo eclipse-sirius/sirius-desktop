@@ -33,8 +33,6 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
 
     private BackgroundStyle backgroundStyle;
 
-    private boolean myUseLocalCoordinates;
-
     /**
      * Create a new {@link GradientRoundedRectangle}.
      * 
@@ -92,27 +90,6 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
      */
     protected void createBorder() {
         this.setBorder(new MarginBorder(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0));
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @was-generated
-     * @see org.eclipse.draw2d.Figure#useLocalCoordinates()
-     */
-    @Override
-    protected boolean useLocalCoordinates() {
-        return myUseLocalCoordinates;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @was-generated
-     * @param useLocalCoordinates
-     */
-    protected void setUseLocalCoordinates(final boolean useLocalCoordinates) {
-        myUseLocalCoordinates = useLocalCoordinates;
     }
 
     /**
