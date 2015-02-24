@@ -132,14 +132,21 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR,
                 RGBValues.create(backgroundColor.getRed(), backgroundColor.getGreen(), 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
+        
+        // Now that RGBValues is no more an EObject, the corresponding
+        // GenFeature children properties are set to false. The
+        // SetCommand.create creates a non wrapped SetCommand, during execution
+        // EMFCommandOperation does not just take the label of the executed
+        // command but improves it.
+        String cmdLabel = "Set " + TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR.getName();
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
-        undo(changeDTreeItemBackgroundColorCmd.getLabel());
+        undo(cmdLabel);
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
-        redo(changeDTreeItemBackgroundColorCmd.getLabel());
+        redo(cmdLabel);
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
@@ -150,11 +157,11 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
-        undo(changeDTreeItemBackgroundColorCmd.getLabel());
+        undo(cmdLabel);
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
-        redo(changeDTreeItemBackgroundColorCmd.getLabel());
+        redo(cmdLabel);
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
     }
@@ -306,14 +313,21 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR,
                 RGBValues.create(labelColor.getRed(), labelColor.getGreen(), 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
+        
+        // Now that RGBValues is no more an EObject, the corresponding
+        // GenFeature children properties are set to false. The
+        // SetCommand.create creates a non wrapped SetCommand, during execution
+        // EMFCommandOperation does not just take the label of the executed
+        // command but improves it.
+        String cmdLabel = "Set " + ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName();
+
+   TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
+
+        undo(cmdLabel);
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
-        undo(changeDTreeItemBackgroundColorCmd.getLabel());
-
-        TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
-
-        redo(changeDTreeItemBackgroundColorCmd.getLabel());
+        redo(cmdLabel);
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
@@ -324,11 +338,11 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
-        undo(changeDTreeItemBackgroundColorCmd.getLabel());
+        undo(cmdLabel);
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
-        redo(changeDTreeItemBackgroundColorCmd.getLabel());
+        redo(cmdLabel);
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
     }

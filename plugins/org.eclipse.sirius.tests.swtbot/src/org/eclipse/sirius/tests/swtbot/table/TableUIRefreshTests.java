@@ -106,7 +106,7 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
      * {@link DLine}, expand/collapse correctly the corresponding SWT
      * {@link TreeItem}.
      */
-    public void testTreeItemExpansion() {
+    public void testTableElementExpansion() {
         // Test expansion
         TreeUtils.changeDLineCollapse(firstDLine, true);
 
@@ -140,7 +140,7 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
      * update correctly the background color of the corresponding SWT
      * {@link TreeItem}.
      */
-    public void testTreeItemStyleBackgroundColor() {
+    public void testTableElementStyleBackgroundColor() {
         // Test a first color change
         Option<DTableElementStyle> optionalBackgroundStyleToApply = new DCellQuery(firstDCellOfFirstDLine).getBackgroundStyleToApply();
         assertTrue("We should have a currentStyle for the cell.", optionalBackgroundStyleToApply.some());
@@ -156,32 +156,39 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(firstDCellOfFirstDLine);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR,
+        Command changeDTableElementBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR,
                 RGBValues.create(backgroundColor.getRed(), backgroundColor.getGreen(), 200));
-        commandStack.execute(changeDTreeItemBackgroundColorCmd);
+        commandStack.execute(changeDTableElementBackgroundColorCmd);
+
+        // Now that RGBValues is no more an EObject, the corresponding
+        // GenFeature children properties are set to false. The
+        // SetCommand.create creates a non wrapped SetCommand, during execution
+        // EMFCommandOperation does not just take the label of the executed
+        // command but improves it.
+        String cmdLabel = "Set " + TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR.getName();
 
         TreeUtils.checkTreeItemBackgroundColor(tableEditorBot, firstDCellOfFirstDLine);
 
-        undo(changeDTreeItemBackgroundColorCmd.getLabel());
+        undo(cmdLabel);
 
         TreeUtils.checkTreeItemBackgroundColor(tableEditorBot, firstDCellOfFirstDLine);
 
-        redo(changeDTreeItemBackgroundColorCmd.getLabel());
+        redo(cmdLabel);
 
         TreeUtils.checkTreeItemBackgroundColor(tableEditorBot, firstDCellOfFirstDLine);
 
         // Test a second color change
-        changeDTreeItemBackgroundColorCmd = changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle,
-                TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, RGBValues.create(backgroundColor.getRed(), 255, 200));
-        commandStack.execute(changeDTreeItemBackgroundColorCmd);
+        changeDTableElementBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR,
+                RGBValues.create(backgroundColor.getRed(), 255, 200));
+        commandStack.execute(changeDTableElementBackgroundColorCmd);
 
         TreeUtils.checkTreeItemBackgroundColor(tableEditorBot, firstDCellOfFirstDLine);
 
-        undo(changeDTreeItemBackgroundColorCmd.getLabel());
+        undo(cmdLabel);
 
         TreeUtils.checkTreeItemBackgroundColor(tableEditorBot, firstDCellOfFirstDLine);
 
-        redo(changeDTreeItemBackgroundColorCmd.getLabel());
+        redo(cmdLabel);
 
         TreeUtils.checkTreeItemBackgroundColor(tableEditorBot, firstDCellOfFirstDLine);
     }
@@ -191,7 +198,7 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
      * {@link TablePackage#DCELL_STYLE__LABEL_SIZE} of a {@link DCell}, update
      * correctly the text size in swt {@link TreeItem} .
      */
-    public void testTreeItemStyleLabelSize() {
+    public void testTableElementStyleLabelSize() {
         Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(firstDCellOfSecondDLine).getForegroundStyleToApply();
         assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
         DTableElementStyle dTableElementStyle = optionalForegroundStyleToApply.get();
@@ -234,7 +241,7 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
      * {@link TablePackage#DCELL_STYLE__LABEL_FORMAT} of a {@link DCell}, update
      * correctly the text format in swt {@link TreeItem} .
      */
-    public void testTreeItemStyleLabelFormat() {
+    public void testTableElementStyleLabelFormat() {
         Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(firstDCellOfSecondDLine).getForegroundStyleToApply();
         assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
         DTableElementStyle dTableElementStyle = optionalForegroundStyleToApply.get();
@@ -275,7 +282,7 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
      * {@link TablePackage#DCELL_STYLE__FOREGROUND_COLOR} of a {@link DCell},
      * update correctly the {@link TreeItem}'s label color .
      */
-    public void testTreeItemStyleLabelColor() {
+    public void testTableElementStyleLabelColor() {
         // Test a first color change
         Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(firstDCellOfFirstDLine).getForegroundStyleToApply();
         assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
@@ -291,30 +298,37 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(firstDCellOfFirstDLine);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR,
+        Command changeDTableElementBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR,
                 RGBValues.create(labelColor.getRed(), labelColor.getGreen(), 100));
-        commandStack.execute(changeDTreeItemBackgroundColorCmd);
+        commandStack.execute(changeDTableElementBackgroundColorCmd);
+
+        // Now that RGBValues is no more an EObject, the corresponding
+        // GenFeature children properties are set to false. The
+        // SetCommand.create creates a non wrapped SetCommand, during execution
+        // EMFCommandOperation does not just take the label of the executed
+        // command but improves it.
+        String cmdLabel = "Set " + TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR.getName();
 
         TreeUtils.checkTreeItemLabelColor(tableEditorBot, firstDCellOfFirstDLine);
 
-        undo(changeDTreeItemBackgroundColorCmd.getLabel());
+        undo(cmdLabel);
 
         TreeUtils.checkTreeItemLabelColor(tableEditorBot, firstDCellOfFirstDLine);
 
-        redo(changeDTreeItemBackgroundColorCmd.getLabel());
+        redo(cmdLabel);
 
         TreeUtils.checkTreeItemLabelColor(tableEditorBot, firstDCellOfFirstDLine);
 
         // Test a second color change
-        changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR,
+        changeDTableElementBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR,
                 RGBValues.create(labelColor.getRed(), 100, 100));
-        commandStack.execute(changeDTreeItemBackgroundColorCmd);
+        commandStack.execute(changeDTableElementBackgroundColorCmd);
 
-        undo(changeDTreeItemBackgroundColorCmd.getLabel());
+        undo(cmdLabel);
 
         TreeUtils.checkTreeItemLabelColor(tableEditorBot, firstDCellOfFirstDLine);
 
-        redo(changeDTreeItemBackgroundColorCmd.getLabel());
+        redo(cmdLabel);
 
         TreeUtils.checkTreeItemLabelColor(tableEditorBot, firstDCellOfFirstDLine);
     }
