@@ -11,11 +11,14 @@
 package org.eclipse.sirius.tests.unit.diagram.layoutingmode;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
 
@@ -24,7 +27,6 @@ import org.eclipse.ui.IEditorPart;
  * LayoutingMode.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
- * 
  */
 public class AbstractLayoutingModeTest extends SiriusDiagramTestCase {
 
@@ -46,17 +48,13 @@ public class AbstractLayoutingModeTest extends SiriusDiagramTestCase {
      * Activates/Deactivate the LayoutingMode according to the given value.
      * 
      * @param layoutingModeShouldBeActivated
-     *            indicates whether layoutingmode should be activated or
+     *            indicates whether layouting mode should be activated or
      *            disabled
      */
     protected void setLayoutingMode(final boolean layoutingModeShouldBeActivated) {
-        executeCommand(new SiriusCommand(session.getTransactionalEditingDomain()) {
-            @Override
-            protected void doExecute() {
-                diagram.setIsInLayoutingMode(layoutingModeShouldBeActivated);
-            }
-        });
-
+        TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        Command cmd = SetCommand.create(domain, diagram, DiagramPackage.Literals.DDIAGRAM__IS_IN_LAYOUTING_MODE, layoutingModeShouldBeActivated);
+        domain.getCommandStack().execute(cmd);
     }
 
     /**

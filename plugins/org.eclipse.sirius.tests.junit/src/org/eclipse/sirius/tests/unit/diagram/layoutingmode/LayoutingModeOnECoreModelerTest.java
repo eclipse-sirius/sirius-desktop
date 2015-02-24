@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -45,23 +46,18 @@ import com.google.common.collect.Iterables;
  * </p>
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
- * 
  */
 public class LayoutingModeOnECoreModelerTest extends AbstractLayoutingModeTest implements EcoreModeler {
 
-    private static final String SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/layoutingMode/vp2120.ecore";
+    private static final String SEMANTIC_MODEL_PATH = "/data/unit/layoutingMode/";
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.support.api.SiriusTestCase#setUp()
-     */
+    private static final String SEMANTIC_MODEL_NAME = "vp2120.ecore";
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-
-        genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, SEMANTIC_MODEL_PATH + SEMANTIC_MODEL_NAME, TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_NAME);
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_NAME, MODELER_PATH);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
 
         diagram = (DDiagram) createRepresentation(ENTITIES_DESC_NAME, semanticModel);
@@ -70,12 +66,6 @@ public class LayoutingModeOnECoreModelerTest extends AbstractLayoutingModeTest i
         Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, new NullProgressMonitor());
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.support.api.SiriusTestCase#tearDown()
-     */
     @Override
     protected void tearDown() throws Exception {
         DialectUIManager.INSTANCE.closeEditor(editor, false);
@@ -160,8 +150,8 @@ public class LayoutingModeOnECoreModelerTest extends AbstractLayoutingModeTest i
     public void testLayoutingModeOnDragAndDrop() {
         // Step 1 : getting tool and diagram elements
         ContainerDropDescription dndTool = (ContainerDropDescription) getTool(diagram, "Drop attribute");
-        DDiagramElement eAttribute = getDiagramElementsFromLabel(diagram, "new Attribute").iterator().next();
-        DragAndDropTarget eClass3 = (DragAndDropTarget) getDiagramElementsFromLabel(diagram, "new EClass 3").iterator().next();
+        DDiagramElement eAttribute = getDiagramElementsFromLabel(diagram, "new Attribute").get(0);
+        DragAndDropTarget eClass3 = (DragAndDropTarget) getDiagramElementsFromLabel(diagram, "new EClass 3").get(0);
         // Step 2 : applying tool
         Command command = getCommandFactory().buildDropInContainerCommandFromTool(eClass3, eAttribute, dndTool);
         executeCommand(command);
