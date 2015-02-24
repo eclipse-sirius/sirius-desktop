@@ -42,31 +42,25 @@ import org.eclipse.ui.PartInitException;
  * </p>
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
- * 
  */
 public class LayoutingModeOnCustomModelerTest extends AbstractLayoutingModeTest {
 
-    private static final String FOLDER_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/layoutingMode/";
+    private static final String FOLDER_PATH = "/data/unit/layoutingMode/";
 
-    private static final String SEMANTIC_MODEL_PATH = FOLDER_PATH + "vp2120.ecore";
+    private static final String SEMANTIC_MODEL_NAME = "vp2120.ecore";
 
-    private static final String MODELER_PATH = FOLDER_PATH + "vp2120.odesign";
+    private static final String MODELER_NAME = "vp2120.odesign";
 
     private static final String VIEWPOINT_NAME = "LayoutingMode";
 
     private static final String REPRESENTATION_DECRIPTION_NAME = "LayoutingMode Diagram";
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.support.api.SiriusTestCase#setUp()
-     */
     @Override
     protected void setUp() throws Exception {
         // Step 1 : generic setup
         super.setUp();
-        genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, FOLDER_PATH, SEMANTIC_MODEL_NAME, MODELER_NAME);
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_NAME, TEMPORARY_PROJECT_NAME + "/" + MODELER_NAME);
         initViewpoint(VIEWPOINT_NAME);
 
         // Step 2 : opening editor
