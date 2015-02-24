@@ -165,7 +165,7 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         // SetCommand.create creates a non wrapped SetCommand, during execution
         // EMFCommandOperation does not just take the label of the executed
         // command but improves it.
-        String cmdLabel = "Set " + TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR.getName();
+        String cmdLabel = "Set Background Color";
 
         TreeUtils.checkTreeItemBackgroundColor(tableEditorBot, firstDCellOfFirstDLine);
 
@@ -307,7 +307,7 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         // SetCommand.create creates a non wrapped SetCommand, during execution
         // EMFCommandOperation does not just take the label of the executed
         // command but improves it.
-        String cmdLabel = "Set " + TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR.getName();
+        String cmdLabel = "Set Foreground Color";
 
         TreeUtils.checkTreeItemLabelColor(tableEditorBot, firstDCellOfFirstDLine);
 

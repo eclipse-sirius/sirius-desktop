@@ -138,7 +138,7 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         // SetCommand.create creates a non wrapped SetCommand, during execution
         // EMFCommandOperation does not just take the label of the executed
         // command but improves it.
-        String cmdLabel = "Set " + TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR.getName();
+        String cmdLabel = "Set Background Color";
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
@@ -319,9 +319,9 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         // SetCommand.create creates a non wrapped SetCommand, during execution
         // EMFCommandOperation does not just take the label of the executed
         // command but improves it.
-        String cmdLabel = "Set " + ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName();
+        String cmdLabel = "Set Label Color";
 
-   TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
+        TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
         undo(cmdLabel);
 
