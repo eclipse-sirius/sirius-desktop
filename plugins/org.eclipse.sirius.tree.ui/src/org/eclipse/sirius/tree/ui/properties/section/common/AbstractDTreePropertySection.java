@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.ui.properties.section.common;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
@@ -21,11 +22,20 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.transaction.DemultiplexingListener;
 import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListener;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
+import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
+import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
+import org.eclipse.sirius.ui.tools.api.properties.UndoableModelPropertySheetEntry;
+import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
@@ -35,14 +45,6 @@ import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
-import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
-import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
-import org.eclipse.sirius.ui.tools.api.properties.UndoableModelPropertySheetEntry;
-import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 
 /**
  * An abstract implementation of a property tab section for the property sheet.<BR>
@@ -84,11 +86,19 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
      * Model event listener.<BR>
      * Listen the editing domain
      */
-    protected DemultiplexingListener eventListener = new DemultiplexingListener(getFilter()) {
+    protected ResourceSetListener eventListener = new ResourceSetListenerImpl(getFilter()) {
+
+        /**
+         * We want only post-commit events, not pre-commit events.
+         */
+        @Override
+        public boolean isPostcommitOnly() {
+            return true;
+        }
 
         @Override
-        protected void handleNotification(final TransactionalEditingDomain domain, final Notification notification) {
-            update(domain, notification);
+        public void resourceSetChanged(ResourceSetChangeEvent event) {
+            update(event);
         }
     };
 
@@ -288,7 +298,7 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
      * 
      * @return Returns the eventListener.
      */
-    protected DemultiplexingListener getEventListener() {
+    protected ResourceSetListener getEventListener() {
         return eventListener;
     }
 
@@ -302,33 +312,36 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
      * @return the filter for events used by my <code>eventListener</code>.
      */
     public NotificationFilter getFilter() {
-        return NotificationFilter.createEventTypeFilter(Notification.SET).or(NotificationFilter.createEventTypeFilter(Notification.UNSET))
+        return NotificationFilter.NOT_TOUCH.and(NotificationFilter.createEventTypeFilter(Notification.SET)).or(NotificationFilter.createEventTypeFilter(Notification.UNSET))
                 .and(NotificationFilter.createNotifierTypeFilter(EObject.class));
     }
 
     /**
-     * Updates me if the notifier is an <code>EObject</code> by calling
-     * {@link #update(Notification, EObject)}. Does nothing otherwise.
-     * Subclasses should override this method if they need to update based on
-     * non-EObject notifiers.
+     * Update the tree items property sections only once per transaction on post
+     * commit event. Subclasses should override this method if they need to
+     * update based on non-EObject notifiers.
      * 
-     * @param domain
-     *            the editing domain
-     * @param notification
-     *            the event notification
+     * @param event
+     *            the event object
      */
-    protected void update(final TransactionalEditingDomain domain, final Notification notification) {
+    protected void update(final ResourceSetChangeEvent event) {
         if (parentPropertySheetPage.isUpdateEnabled()) {
-            Object notifier = notification.getNotifier();
-            if (notifier instanceof EObject && contentPage != null && contentPage.getControl() != null) {
-                final Control control = contentPage.getControl();
-                control.getDisplay().syncExec(new Runnable() {
-                    public void run() {
-                        if (!control.isDisposed() && control.isVisible()) {
-                            refresh();
-                        }                        
-                    }
-                });
+            Iterator<Notification> it = event.getNotifications().iterator();
+            boolean shouldUpdate = false;
+            while (it.hasNext() && !shouldUpdate) {
+                shouldUpdate = it.next().getNotifier() instanceof EObject;
+            }
+            if (shouldUpdate) {
+                if (contentPage != null && contentPage.getControl() != null) {
+                    final Control control = contentPage.getControl();
+                    control.getDisplay().syncExec(new Runnable() {
+                        public void run() {
+                            if (!control.isDisposed() && control.isVisible()) {
+                                refresh();
+                            }
+                        }
+                    });
+                }
             }
         }
     }
@@ -353,7 +366,8 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
     }
 
     /**
-     * Override to use all vertical space.<BR> {@inheritDoc}
+     * Override to use all vertical space.<BR>
+     * {@inheritDoc}
      * 
      * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
      */

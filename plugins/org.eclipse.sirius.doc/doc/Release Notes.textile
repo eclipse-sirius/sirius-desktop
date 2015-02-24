@@ -4,6 +4,16 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
+h2(#sirius3.1.0). Changes in Sirius 3.1.0 (from Sirius 3.0.0)
+
+h3. API Changes
+
+h4. Changes in @org.eclipse.sirius.tree.ui@
+
+* The method @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(final TransactionalEditingDomain domain, final Notification notification)@ has been replaced by @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(ResourceSetChangeEvent)@ to allow to update only once per ResourceSetChangeEvent and let subclasses make additional filtering on the notifications.
+* The return type of the method @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.getEventListener()@ has been changed from @DemultiplexingListener@ to @ResourceSetListener@.
+* The type of @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.eventListener@ has been changed from @DemultiplexingListener@ to @ResourceSetListener@.
+
 h2(#sirius3.0.0). Changes in Sirius 3.0.0 (from Sirius 2.0.0)
 
 h3. User-Visible Changes
