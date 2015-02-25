@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Iterator;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
+import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeMenuManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -59,24 +60,18 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
         EclipseUIUtil.addSelectionListener(this.representationPart, this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.ContributionManager#add(org.eclipse.jface.action.IAction)
-     */
     @Override
     public void add(IAction action) {
-        super.add(action);
+        if (action instanceof DiagramAction) {
+            add(new DiagramActionContributionItem((DiagramAction) action));
+        } else {
+            add(new ActionContributionItem(action));
+        }
         if (action instanceof IDisposableAction) {
             ((IDisposableAction) action).init();
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.ui.action.ActionMenuManager#itemRemoved(org.eclipse.jface.action.IContributionItem)
-     */
     @Override
     protected void itemRemoved(IContributionItem item) {
         if (item instanceof ActionContributionItem) {
@@ -87,9 +82,6 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void dispose() {
         if (representationPart != null) {
@@ -145,9 +137,7 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void selectionChanged(IWorkbenchPart part, ISelection selection) {
         IWorkbenchPage page = EclipseUIUtil.getActivePage();
         if (page != null && representationPart != null && representationPart.equals(part)) {

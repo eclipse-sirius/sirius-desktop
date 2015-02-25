@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,12 +11,18 @@
 package org.eclipse.sirius.tests.swtbot.tabbar;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionProvider;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.DefaultPermissionProvider;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionService;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors.StandalonePermissionProviderDescriptor;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -25,6 +31,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondit
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -95,6 +102,8 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
+        initCustomPermissionAuthority();
+
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
@@ -115,11 +124,8 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         selectPackageElement();
         checkEnabledWithSelectedElement(true);
 
-        // activate the ReadOnlyPermission Authority on the representation
-        DialectEditor dialectEditor = (DialectEditor) editor.getReference().getEditor(false);
-        ((ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dialectEditor.getRepresentation())).activate();
-
-        looseAndRetrieveTheFocus();
+        // lock the diagram
+        lockDiagram();
 
         // check that tested buttons are disabled for the diagram
         selectDiagram();
@@ -128,6 +134,63 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         // check that tested buttons are disable for the selected package
         selectPackageElement();
         checkEnabledWithSelectedElement(false);
+    }
+
+    /**
+     * Check that tabbar actions are enabled or disabled for the diagram
+     * depending on the permission authority
+     */
+    public void testTabbarActionsEnablementForDiagram() {
+        selectDiagram();
+
+        // check that tested buttons are enabled for the diagram
+        checkEnabled(true);
+
+        // lock the diagram
+        lockDiagram();
+
+        // check that tested buttons are disabled for the diagram
+        checkEnabled(false);
+    }
+
+    /**
+     * Check that tabbar actions are enabled or disabled for a selection
+     * depending on the permission authority
+     */
+    public void testTabbarActionsEnablementForSelection() {
+        selectPackageElement();
+
+        // check that tested buttons are enabled for the selected package
+        checkEnabledWithSelectedElement(true);
+
+        // lock the diagram
+        lockDiagram();
+
+        // check that tested buttons are disable for the selected package
+        checkEnabledWithSelectedElement(false);
+    }
+
+    /**
+     * Lock the diagram
+     */
+    private void lockDiagram() {
+        // activate the ReadOnlyPermission Authority on the representation
+        DialectEditor dialectEditor = (DialectEditor) editor.getReference().getEditor(false);
+        DRepresentation representation = dialectEditor.getRepresentation();
+        ReadOnlyPermissionAuthority permissionAuthority = (ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representation);
+        permissionAuthority.activate();
+        permissionAuthority.notifyLock(Collections.singleton(representation));
+    }
+
+    /**
+     * Init Sirius with a {@link ReadOnlyPermissionAuthority}.
+     */
+    private void initCustomPermissionAuthority() {
+        ReadOnlyPermissionAuthority readOnlyPermissionAuthority = new ReadOnlyPermissionAuthority();
+        IPermissionProvider permissionProvider = new DefaultPermissionProvider(readOnlyPermissionAuthority);
+        StandalonePermissionProviderDescriptor permissionProviderDescriptor = new StandalonePermissionProviderDescriptor("org.eclipse.sirius.tree.tests.forbiddenPermissionAuthorityProvider",
+                ExtenderConstants.HIGHEST_PRIORITY, permissionProvider);
+        PermissionService.addExtension(permissionProviderDescriptor);
     }
 
     /**
@@ -144,20 +207,6 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         } else {
             assertNotEnabled(widget);
         }
-    }
-
-    /**
-     * Loose and retrieve the focus
-     */
-    private void looseAndRetrieveTheFocus() {
-        // loose the focus (set focus to the session brower)
-        localSession.getLocalSessionBrowser().getTreeItem().setFocus();
-        SWTBotUtils.waitAllUiEvents();
-
-        // retrieve the focus
-        editor.setFocus();
-        editor.click(300, 300);
-        SWTBotUtils.waitAllUiEvents();
     }
 
     /**

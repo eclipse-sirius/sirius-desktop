@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,31 +53,19 @@ public class EditPartAuthorityListener implements IAuthorityListener {
         this.part = part;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener#notifyIsLocked(org.eclipse.emf.ecore.EObject)
-     */
+    @Override
     public void notifyIsLocked(final EObject instance) {
         if (shouldRefresh(instance))
             refreshEditMode();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener#notifyIsReleased(org.eclipse.emf.ecore.EObject)
-     */
+    @Override
     public void notifyIsReleased(final EObject instance) {
         if (shouldRefresh(instance))
             refreshEditMode();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener#notifyIsLocked(java.util.Collection)
-     */
+    @Override
     public void notifyIsLocked(Collection<EObject> instances) {
         for (final EObject eObject : instances) {
             if (shouldRefresh(eObject)) {
@@ -87,11 +75,7 @@ public class EditPartAuthorityListener implements IAuthorityListener {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener#notifyIsReleased(java.util.Collection)
-     */
+    @Override
     public void notifyIsReleased(Collection<EObject> instances) {
         for (final EObject eObject : instances) {
             if (shouldRefresh(eObject)) {
@@ -102,11 +86,20 @@ public class EditPartAuthorityListener implements IAuthorityListener {
     }
 
     private boolean shouldRefresh(EObject instance) {
+        // Do not call part.resolveSemanticElement() if the part is not active
         boolean shouldRefresh = instance != null && part.isActive() && part.resolveSemanticElement() instanceof DSemanticDecorator;
-        boolean isConcerningEditPart = shouldRefresh && instance.equals(((DSemanticDecorator) part.resolveSemanticElement()).getTarget());
-        boolean isConcerningDiagramEditPart = shouldRefresh && part.resolveSemanticElement() instanceof DDiagramElement && ((DDiagramElement) part.resolveSemanticElement()).getTarget() != null
-                && instance.equals(((DDiagramElement) part.resolveSemanticElement()).getParentDiagram());
-        return shouldRefresh && (isConcerningEditPart || isConcerningDiagramEditPart);
+
+        if (shouldRefresh) {
+            DSemanticDecorator semanticDecorator = (DSemanticDecorator) part.resolveSemanticElement();
+            EObject target = semanticDecorator.getTarget();
+
+            boolean isConcerningEditPart = instance.equals(target) || instance.equals(semanticDecorator);
+            boolean isConcerningDiagramEditPart = semanticDecorator instanceof DDiagramElement && target != null && instance.equals(((DDiagramElement) semanticDecorator).getParentDiagram());
+
+            shouldRefresh = isConcerningEditPart || isConcerningDiagramEditPart;
+        }
+
+        return shouldRefresh;
     }
 
     /**
@@ -138,6 +131,7 @@ public class EditPartAuthorityListener implements IAuthorityListener {
                 // Otherwise, we launch it asynchronously
                 PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 
+                    @Override
                     public void run() {
                         doRefreshEditMode(enableEditMode, diagramEditor, semanticElement);
                     }
