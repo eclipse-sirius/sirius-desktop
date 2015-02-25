@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import junit.framework.TestCase;
 
@@ -53,6 +54,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -87,6 +89,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -166,6 +169,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     private static final String POINT = ".";
 
     private static final String EDIT_MENU_NAME = "Edit";
+
+    private static final List<String> SHELL_TO_CLOSE_AT_TEAR_DOWN_TEXTS = Lists.newArrayList(OpenRepresentationsFileJob.JOB_LABEL);
 
     private static boolean fFullScreen = true;
 
@@ -1602,20 +1607,33 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                         result.add(new SWTBotShell(shell));
                     }
                 }
-                final SWTBotShell[] foundShells = result.toArray(new SWTBotShell[] {});
+                final Set<Shell> workbenchWindowsWidgets = Sets.newHashSet();
+                for (IWorkbenchWindow w : PlatformUI.getWorkbench().getWorkbenchWindows()) {
+                    workbenchWindowsWidgets.add(w.getShell());
+                }
 
+                final SWTBotShell[] foundShells = result.toArray(new SWTBotShell[] {});
                 for (final SWTBotShell swtBotShell : foundShells) {
                     // Close all opened windows except Eclipse
-                    if (swtBotShell.isOpen()) {
-                        for (IWorkbenchWindow w : PlatformUI.getWorkbench().getWorkbenchWindows()) {
-                            if (swtBotShell.widget != w.getShell()) {
-                                swtBotShell.close();
+                    if (!workbenchWindowsWidgets.contains(swtBotShell.widget)) {
+                        if (swtBotShell.isOpen()) {
+                            swtBotShell.close();
+                        } else {
+                            String shellText = swtBotShell.getText();
+                            if (!StringUtil.isEmpty(shellText) && SHELL_TO_CLOSE_AT_TEAR_DOWN_TEXTS.contains(shellText)) {
+                                System.err.println("The shell \"" + shellText
+                                        + "\" is closed but not disposed. Something is potentially not correctly clean in this test. A dispose of this shell is called on tearDown.");
+                                UIThreadRunnable.syncExec(new VoidResult() {
+                                    @Override
+                                    public void run() {
+                                        swtBotShell.widget.dispose();
+                                    }
+                                });
                             }
                         }
                     }
                 }
             }
-
             SWTBotUtils.waitAllUiEvents();
 
             // Close all opened editors without saving before session closing to
