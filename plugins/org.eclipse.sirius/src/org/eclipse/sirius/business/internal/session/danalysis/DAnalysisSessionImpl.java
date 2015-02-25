@@ -130,8 +130,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     
     private SessionResourcesTracker tracker = new SessionResourcesTracker(this);
 
-    private DAnalysisRefresher dAnalysisRefresher;
-
     // Session's configuration
 
     private final Saver saver;
@@ -689,11 +687,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
-        // Add the unknown resources to the semantic resources of this
-        // session.
-        if (dAnalysisRefresher != null) {
-            dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(allResources);
-        }
+        tracker.discoverAutomaticallyLoadedSemanticResources(allResources);
     }
 
     // *******************
@@ -1189,7 +1183,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             notifyListeners(SessionListener.OPENING);
             monitor.worked(1);
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_SESSION_KEY);
-            dAnalysisRefresher = new DAnalysisRefresher(this);
 
             ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).registerClient(resourcesSynchronizer);
             monitor.worked(1);
@@ -1200,34 +1193,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             if (allAnalyses.isEmpty()) {
                 throw new RuntimeException("A analysis session could not be opened without at least a valid analyis");
             }
-            /*
-             * Resolves all models needed by the session because GMF installs a
-             * CrossReferencerAdapter that resolves the resource set.
-             */
-            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.RESOLVE_ALL_KEY);
-            // First resolve all VSM resources used for Sirius to ignore VSM
-            // resources and VSM linked resources (as viewpoint:/environment
-            // resource) as new semantic element
-            dAnalysisRefresher.resolveAllVSMResources(allAnalyses);
-            // Then resolve all resources (to automatically add new semantic
-            // resources)
-            List<Resource> resourcesBeforeLoadOfSession = Lists.newArrayList(getTransactionalEditingDomain().getResourceSet().getResources());
-            dAnalysisRefresher.forceLoadingOfEveryLinkedResource();
-            monitor.worked(10);
-
-            // Add the unknown resources to the semantic resources of this
-            // session.
-            dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(resourcesBeforeLoadOfSession);
-            monitor.worked(1);
-            setSynchronizeStatusofEveryResource();
-            monitor.worked(1);
-
-            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.RESOLVE_ALL_KEY);
-            // Look for controlled resources after load of every linked
-            // resources.
-            tracker.handlePossibleControlledResources();
-            monitor.worked(1);
-            dAnalysisRefresher.init();
+            tracker.initialize(monitor);
             monitor.worked(1);
             if (!getSemanticResources().isEmpty()) {
                 configureInterpreter();
@@ -1277,10 +1243,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         notifyListeners(SessionListener.CLOSING);
         disableAndRemoveECrossReferenceAdapters();
 
-        if (dAnalysisRefresher != null) {
-            dAnalysisRefresher.dispose();
-            dAnalysisRefresher = null;
-        }
         removeListener(getRefreshEditorsListener());
         refreshEditorsListeners = null;
         reloadingPolicy = null;
