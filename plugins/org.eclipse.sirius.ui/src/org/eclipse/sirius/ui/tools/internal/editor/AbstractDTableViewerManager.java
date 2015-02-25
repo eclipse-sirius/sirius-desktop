@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,11 +83,6 @@ public abstract class AbstractDTableViewerManager {
      * The associated editor.
      */
     protected final AbstractDTreeEditor tableEditor;
-
-    /**
-     * the current active column.
-     */
-    protected int activeColumn = -1;
 
     /**
      * Menu manager.
@@ -235,34 +230,4 @@ public abstract class AbstractDTableViewerManager {
         descriptionFileChanged = modified;
     }
 
-    /**
-     * Manage height of the lines, selected colors.
-     */
-    protected void triggerCustomDrawingTreeItems() {
-        // Line height modification (aborted because of Windows SWT
-        // limitation)
-        // Manage height of the lines
-        // treeViewer.getTree().addListener(SWT.MeasureItem, new Listener() {
-        // public void handleEvent(final Event event) {
-        // if (event.item != null && event.item.getData() instanceof DLine) {
-        // final DLine currentLine = (DLine) event.item.getData();
-        // if (currentLine.getHeight() != 0) {
-        // event.height = currentLine.getHeight();
-        // }
-        // }
-        // }
-        // });
-        // Manage selected colors for cells
-        treeViewer.getTree().addListener(SWT.EraseItem, new DTableEraseItemListener(this, treeViewer));
-    }
-
-    /**
-     * Return the index of the active column.<BR>
-     * Warning : The column 0 represents the line header.
-     * 
-     * @return the activeColumn
-     */
-    public int getActiveColumn() {
-        return activeColumn;
-    }
 }

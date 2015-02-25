@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,8 +73,6 @@ import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
@@ -188,13 +186,9 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         treeViewer.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
 
         fillMenu();
-        triggerColumnSelectedColumn();
         initializeEditingSupport();
         initializeDragAndDropSupport();
         initializeKeyBindingSupport();
-
-        // Manage height of the lines, selected colors,
-        triggerCustomDrawingTreeItems();
 
         // Create a new CellFocusManager
         final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
@@ -211,6 +205,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
     private void initializeKeyBindingSupport() {
         treeViewer.getTree().addKeyListener(new KeyListener() {
+            @Override
             public void keyPressed(final KeyEvent e) {
                 if (e.keyCode == SWT.DEL) {
                     DeleteTreeItemsAction deleteItemsAction = new DeleteTreeItemsAction(getEditingDomain(), getTreeCommandFactory());
@@ -221,6 +216,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
                 }
             }
 
+            @Override
             public void keyReleased(final KeyEvent e) {
             };
         });
@@ -402,43 +398,6 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
                 calculateAvailableMenusForLine(treeItemMapping.getAllSubMappings(), mappingToCreateActions, processedLineMappings);
             }
         }
-    }
-
-    /**
-     * Add a listener on the tree to listen the mouseDouwn or the key left-right
-     * arrows and store the activeColumn
-     */
-    private void triggerColumnSelectedColumn() {
-        treeViewer.getTree().addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseDown(final MouseEvent event) {
-                int x = 0;
-                for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
-                    x += treeViewer.getTree().getColumn(i).getWidth();
-                    if (event.x <= x) {
-                        activeColumn = i;
-                        break;
-                    }
-                }
-            }
-
-        });
-        treeViewer.getTree().addKeyListener(new KeyListener() {
-            public void keyPressed(final KeyEvent e) {
-                if (e.keyCode == SWT.ARROW_LEFT && activeColumn != 0) {
-                    activeColumn--;
-                    treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn != treeViewer.getTree().getColumnCount() - 1) {
-                    activeColumn++;
-                    treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                }
-            }
-
-            public void keyReleased(final KeyEvent e) {
-            };
-        });
-
     }
 
     /**

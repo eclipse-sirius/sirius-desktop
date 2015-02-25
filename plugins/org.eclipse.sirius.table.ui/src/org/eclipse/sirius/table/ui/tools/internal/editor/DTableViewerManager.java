@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -154,6 +154,11 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         imageRegistry.put(EXPORT_IMG, ImageDescriptor.createFromURL((URL) TableUIPlugin.INSTANCE.getImage(EXPORT_IMG)));
     }
 
+    /**
+     * the current active column.
+     */
+    private int activeColumn = -1;
+
     private DTableViewerListener tableViewerListener;
 
     private ITableCommandFactory tableCommandFactory;
@@ -303,8 +308,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         // Create a new CellFocusManager
         final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
         // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
-                | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
+                ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
         // Set after the setInput to avoid layout call it several time for
         // nothing at opening
         headerTreeColumn.getColumn().addControlListener(tableViewerListener);
@@ -313,6 +318,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
     private void initializeKeyBindingSupport() {
         treeViewer.getTree().addKeyListener(new KeyListener() {
+            @Override
             public void keyPressed(final KeyEvent e) {
                 if (e.keyCode == SWT.DEL) {
                     DeleteLinesAction deleteLinesAction = new DeleteLinesAction(getEditingDomain(), getTableCommandFactory());
@@ -323,6 +329,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 }
             }
 
+            @Override
             public void keyReleased(final KeyEvent e) {
             };
         });
@@ -338,7 +345,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Initialize a cache and add, if needed, the contextual menu for the table. <BR>
+     * Initialize a cache and add, if needed, the contextual menu for the table.
+     * <BR>
      * Cached the actions of creation and deletion in order to increase
      * performance and not calculate it on each contextual menu.<BR>
      * Problem for action on column header :
@@ -487,10 +495,18 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Add a listener on the tree to listen the mouseDouwn or the key left-right
-     * arrows and store the activeColumn
+     * Manage height of the lines, selected colors.
      */
-    private void triggerColumnSelectedColumn() {
+    protected void triggerCustomDrawingTreeItems() {
+        // Manage selected colors for cells
+        treeViewer.getTree().addListener(SWT.EraseItem, new DTableEraseItemListener(this, treeViewer));
+    }
+
+    /**
+     * Add a listener on the tree to listen the mouseDouwn or the key left-right
+     * arrows and store the activeColumn.
+     */
+    protected void triggerColumnSelectedColumn() {
         treeViewer.getTree().addMouseListener(new MouseAdapter() {
 
             @Override
@@ -507,20 +523,32 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
         });
         treeViewer.getTree().addKeyListener(new KeyListener() {
+            @Override
             public void keyPressed(final KeyEvent e) {
-                if (e.keyCode == SWT.ARROW_LEFT && activeColumn != 0) {
+                if (e.keyCode == SWT.ARROW_LEFT && activeColumn >= 0) {
                     activeColumn--;
                     treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn != treeViewer.getTree().getColumnCount() - 1) {
+                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn < treeViewer.getTree().getColumnCount()) {
                     activeColumn++;
                     treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
                 }
             }
 
+            @Override
             public void keyReleased(final KeyEvent e) {
             };
         });
 
+    }
+
+    /**
+     * Return the index of the active column.<BR>
+     * Warning : The column 0 represents the line header.
+     * 
+     * @return the activeColumn
+     */
+    public int getActiveColumn() {
+        return activeColumn;
     }
 
     /**
@@ -630,11 +658,11 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         treeViewerColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
 
         if (newColumn instanceof DFeatureColumn) {
-            treeViewerColumn.setEditingSupport(new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(),
-                    (AbstractDTableEditor) tableEditor));
+            treeViewerColumn.setEditingSupport(
+                    new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(), (AbstractDTableEditor) tableEditor));
         } else if (newColumn instanceof DTargetColumn) {
-            treeViewerColumn.setEditingSupport(new DTargetColumnEditingSupport(treeViewer, (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory,
-                    (AbstractDTableEditor) tableEditor));
+            treeViewerColumn.setEditingSupport(
+                    new DTargetColumnEditingSupport(treeViewer, (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory, (AbstractDTableEditor) tableEditor));
         }
         treeViewerColumn.getColumn().setData(TABLE_COLUMN_DATA, newColumn);
         treeViewerColumn.getColumn().addControlListener(tableViewerListener);
