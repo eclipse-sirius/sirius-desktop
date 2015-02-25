@@ -14,10 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -92,20 +89,6 @@ public class ComputedStyleDescriptionCachePackingFileMigrationParticipant extend
             }
             if (!packedList.isEmpty()) {
                 computedStyleDescriptions.retainAll(packedList);
-            }
-        }
-    }
-
-    /**
-     * Overridden to {@link ComputedStyleDescriptionRegistry}'s cache.
-     */
-    @Override
-    protected void handleFeature(EObject owner, final EStructuralFeature unkownFeature, final Object valueOfUnknownFeature) {
-        super.handleFeature(owner, unkownFeature, valueOfUnknownFeature);
-        if (owner instanceof ComputedStyleDescriptionRegistry) {
-            if ("cache".equals(unkownFeature.getName()) && owner.eResource() instanceof XMLResource) {
-                XMLResource xmlResource = (XMLResource) owner.eResource();
-                xmlResource.getEObjectToExtensionMap().remove(owner);
             }
         }
     }
