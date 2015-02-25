@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,19 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.internal.permission;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.MapMaker;
-
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+
+import com.google.common.collect.MapMaker;
 
 /**
  * A basic permission authority which will manage a list of listeners.
@@ -35,7 +32,7 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
     protected boolean listen;
 
     /** the authority listeners. */
-    protected List<IAuthorityListener> listeners = new ArrayList<IAuthorityListener>();
+    protected List<IAuthorityListener> listeners = new CopyOnWriteArrayList<IAuthorityListener>();
 
     /** the locked objects. */
     protected ConcurrentMap<Object, Object> lockedObjects = new MapMaker().concurrencyLevel(4).weakKeys().makeMap();
@@ -59,9 +56,7 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
      */
     protected void storeAsLockedAndNotify(final EObject eObject) {
         lockedObjects.put(eObject, true);
-        final Iterator<IAuthorityListener> iterator = Lists.newArrayList(listeners).iterator();
-        while (iterator.hasNext()) {
-            final IAuthorityListener listener = iterator.next();
+        for (IAuthorityListener listener : listeners) {
             listener.notifyIsLocked(eObject);
         }
     }
@@ -74,18 +69,12 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
      */
     protected void releaseFromLockedAndNotify(final EObject eObject) {
         lockedObjects.remove(eObject);
-        final Iterator<IAuthorityListener> iterator = Lists.newArrayList(listeners).iterator();
-        while (iterator.hasNext()) {
-            final IAuthorityListener listener = iterator.next();
+        for (IAuthorityListener listener : listeners) {
             listener.notifyIsReleased(eObject);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority#addAuthorityListener(org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener)
-     */
+    @Override
     public void addAuthorityListener(final IAuthorityListener listener) {
         // The same listener cannot be added multiple times
         if (!listeners.contains(listener)) {
@@ -93,11 +82,7 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority#dispose(org.eclipse.emf.ecore.resource.ResourceSet)
-     */
+    @Override
     public void dispose(final ResourceSet set) {
         if (set == null) {
             listeners.clear();
@@ -107,49 +92,29 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority#init(org.eclipse.emf.ecore.resource.ResourceSet)
-     */
+    @Override
     public void init(final ResourceSet set) {
         if (set != null) {
             // we may create a map for each resource set
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority#removeAuthorityListener(org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener)
-     */
+    @Override
     public void removeAuthorityListener(final IAuthorityListener listener) {
         listeners.remove(listener);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority#setListening(boolean)
-     */
+    @Override
     public void setListening(final boolean shouldListen) {
         listen = shouldListen;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority#isChanged(org.eclipse.emf.ecore.EObject)
-     */
+    @Override
     public boolean isChanged(final EObject instance) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority#isNewInstance(org.eclipse.emf.ecore.EObject)
-     */
+    @Override
     public boolean isNewInstance(final EObject instance) {
         return false;
     }
