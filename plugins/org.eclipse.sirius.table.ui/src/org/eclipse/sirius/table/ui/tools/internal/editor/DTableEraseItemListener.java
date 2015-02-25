@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.tools.internal.editor;
+package org.eclipse.sirius.table.ui.tools.internal.editor;
 
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
@@ -44,7 +44,7 @@ public class DTableEraseItemListener implements Listener {
     /**
      * The viewer manager associated to the treeViewer.
      */
-    private AbstractDTableViewerManager tableViewerManager;
+    private DTableViewerManager tableViewerManager;
 
     /**
      * Use to remember the last line which was drawn with selected color.
@@ -65,7 +65,7 @@ public class DTableEraseItemListener implements Listener {
      * @param treeViewer
      *            The listen treeViewer
      */
-    public DTableEraseItemListener(final AbstractDTableViewerManager tableViewerManager, final TreeViewer treeViewer) {
+    public DTableEraseItemListener(final DTableViewerManager tableViewerManager, final TreeViewer treeViewer) {
         this.tableViewerManager = tableViewerManager;
         this.treeViewer = treeViewer;
     }
