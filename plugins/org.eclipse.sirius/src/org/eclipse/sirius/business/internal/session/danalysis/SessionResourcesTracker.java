@@ -43,6 +43,8 @@ class SessionResourcesTracker {
     /** The semantic resources collection updater. */
     private SemanticResourcesUpdater semanticResourcesUpdater;
 
+    private ControlledResourcesDetector controlledResourcesDetector;
+
     /**
      * Creates a new tracker for the specified session.
      * 
@@ -51,6 +53,7 @@ class SessionResourcesTracker {
      */
     SessionResourcesTracker(DAnalysisSessionImpl session) {
         this.session = Preconditions.checkNotNull(session);
+        this.controlledResourcesDetector = new ControlledResourcesDetector(session);
     }
 
     void addAdaptersOnAnalysis(final DAnalysis analysis) {
@@ -81,6 +84,10 @@ class SessionResourcesTracker {
     }
 
     void handlePossibleControlledResources() {
+        // Detect actual controlled resources.
+        if (controlledResourcesDetector != null) {
+            controlledResourcesDetector.init();
+        }
         // Reset semanticResources to have getSemanticResources() ignores
         // controlledResources which are computed only at this step
         if (semanticResourcesUpdater != null) {
@@ -92,6 +99,10 @@ class SessionResourcesTracker {
 
     void dispose() {
         session = null;
+        if (controlledResourcesDetector != null) {
+            controlledResourcesDetector.dispose();
+            controlledResourcesDetector = null;
+        }
         if (semanticResourcesUpdater != null) {
             semanticResourcesUpdater.dispose();
             semanticResourcesUpdater = null;

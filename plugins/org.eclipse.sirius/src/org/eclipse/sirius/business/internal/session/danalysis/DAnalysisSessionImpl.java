@@ -130,8 +130,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     
     private SessionResourcesTracker tracker = new SessionResourcesTracker(this);
 
-    private ControlledResourcesDetector controlledResourcesDetector;
-
     private DAnalysisRefresher dAnalysisRefresher;
 
     // Session's configuration
@@ -189,7 +187,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         this.saver = new Saver(this);
         this.interpreter = new ODesignGenericInterpreter();
         this.representationsChangeAdapter = new RepresentationsChangeAdapter(this);
-        this.controlledResourcesDetector = new ControlledResourcesDetector(this);
         super.getAnalyses().add(mainDAnalysis);
         super.getResources().add(sessionResource);
         setAnalysisSelector(DAnalysisSelectorService.getSelector(this));
@@ -1228,7 +1225,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.RESOLVE_ALL_KEY);
             // Look for controlled resources after load of every linked
             // resources.
-            handlePossibleControlledResources();
+            tracker.handlePossibleControlledResources();
             monitor.worked(1);
             dAnalysisRefresher.init();
             monitor.worked(1);
@@ -1270,14 +1267,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    private void handlePossibleControlledResources() {
-        // Detect actual controlled resources.
-        if (controlledResourcesDetector != null) {
-            controlledResourcesDetector.init();
-        }
-        tracker.handlePossibleControlledResources();
-    }
-
     @Override
     public void close(IProgressMonitor monitor) {
         if (!isOpen()) {
@@ -1288,10 +1277,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         notifyListeners(SessionListener.CLOSING);
         disableAndRemoveECrossReferenceAdapters();
 
-        if (controlledResourcesDetector != null) {
-            controlledResourcesDetector.dispose();
-            controlledResourcesDetector = null;
-        }
         if (dAnalysisRefresher != null) {
             dAnalysisRefresher.dispose();
             dAnalysisRefresher = null;
