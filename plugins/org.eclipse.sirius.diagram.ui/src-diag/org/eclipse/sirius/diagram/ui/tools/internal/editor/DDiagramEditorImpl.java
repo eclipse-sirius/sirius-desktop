@@ -653,6 +653,11 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     public void dispose() {
         isClosing = true;
+        // Dispose the tabbar (to avoid memory leak)
+        if (getTabbar() != null) {
+            getTabbar().dispose();
+            setTabbar(null);
+        }
         disposeGraphicalListeners();
         if (getDiagram() != null && getDiagram().eResource() != null) {
             if (dRepresentationLockStatusListener != null) {
@@ -732,19 +737,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * react to notification whereas the editor will be closed.
      */
     protected void disposeGraphicalListeners() {
-        // Dispose the tabbar (to avoir memory leak)
-        if (getTabbar() != null) {
-            if (Display.getCurrent() == null) {
-                PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-                    public void run() {
-                        getTabbar().dispose();
-                    }
-                });
-            } else {
-                getTabbar().dispose();
-            }
-            setTabbar(null);
-        }
         // Dispose post-commit listener
         disposePostCommitListener();
 
