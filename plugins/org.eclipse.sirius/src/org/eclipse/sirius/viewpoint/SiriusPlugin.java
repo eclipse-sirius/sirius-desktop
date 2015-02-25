@@ -28,7 +28,6 @@ import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionRegistryListener;
 import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -128,17 +127,6 @@ public final class SiriusPlugin extends EMFPlugin {
         public Implementation() {
             super();
             plugin = this;
-        }
-
-        /**
-         * The actual implementation of the purely OSGi-compatible <b>Bundle
-         * Activator</b>.
-         */
-        public static final class Activator extends EMFPlugin.OSGiDelegatingBundleActivator {
-            @Override
-            protected BundleActivator createBundle() {
-                return new Implementation();
-            }
         }
 
         @Override
