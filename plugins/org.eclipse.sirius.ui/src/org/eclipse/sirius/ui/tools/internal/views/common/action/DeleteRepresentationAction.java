@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -37,10 +38,14 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Action to delete on or more Sirius representations.
@@ -60,13 +65,13 @@ public class DeleteRepresentationAction extends Action {
     public DeleteRepresentationAction(Collection<DRepresentation> representations) {
         super("Delete", AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/delete.gif"));
         this.selectedRepresentations = representations;
+
+        // Disable the action if the selection is not valid
+        if (!isValidSelection()) {
+            this.setEnabled(false);
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         Map<DRepresentation, Session> dRepresentation2Session = getRepresentations();
@@ -83,6 +88,7 @@ public class DeleteRepresentationAction extends Action {
             if (deletionConfirmation) {
                 IRunnableContext context = new ProgressMonitorDialog(shell);
                 IRunnableWithProgress editorClosingRunnable = new IRunnableWithProgress() {
+                    @Override
                     public void run(final IProgressMonitor monitor) {
                         try {
                             monitor.beginTask("Associated editor closing", 1);
@@ -114,6 +120,7 @@ public class DeleteRepresentationAction extends Action {
 
                 IRunnableWithProgress representationsDeletionRunnable = new IRunnableWithProgress() {
 
+                    @Override
                     public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                         try {
                             monitor.beginTask("Representation" + (session2DRepresentations.size() > 1 ? "s" : "") + " deletion", session2DRepresentations.size());
@@ -187,4 +194,30 @@ public class DeleteRepresentationAction extends Action {
         }
         return isEnabled;
     }
+
+    /**
+     * Test if the selection is valid.
+     * 
+     * @return true if the selection is valid
+     */
+    private boolean isValidSelection() {
+
+        boolean anyInvalidDelete = Iterables.any(selectedRepresentations, new Predicate<DRepresentation>() {
+
+            @Override
+            public boolean apply(DRepresentation input) {
+                EObject container = input.eContainer();
+                if (container instanceof DRepresentationContainer) {
+                    IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
+                    if (permissionAuthority != null && !permissionAuthority.canDeleteInstance(input)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        return !anyInvalidDelete;
+    }
+
 }

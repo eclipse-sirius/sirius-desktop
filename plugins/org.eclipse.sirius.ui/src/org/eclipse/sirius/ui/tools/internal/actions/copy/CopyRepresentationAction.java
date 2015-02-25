@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.actions.copy;
 
 import java.util.Collection;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
@@ -20,10 +21,16 @@ import org.eclipse.sirius.business.api.dialect.command.CopyRepresentationCommand
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * An action to copy selected representations.
@@ -52,13 +59,13 @@ public class CopyRepresentationAction extends Action {
         final ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
         this.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
         this.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY_DISABLED));
+
+        // Disable the action if the selection is not valid
+        if (!isValidSelection()) {
+            this.setEnabled(false);
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
 
@@ -94,5 +101,30 @@ public class CopyRepresentationAction extends Action {
 
     private String getPrefix() {
         return StringUtil.EMPTY_STRING;
+    }
+
+    /**
+     * Test if the selection is valid.
+     * 
+     * @return true if the selection is valid
+     */
+    private boolean isValidSelection() {
+
+        boolean anyInvalidCopy = Iterables.any(representations, new Predicate<DRepresentation>() {
+
+            @Override
+            public boolean apply(DRepresentation input) {
+                EObject container = input.eContainer();
+                if (container instanceof DRepresentationContainer) {
+                    IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
+                    if (permissionAuthority != null && !permissionAuthority.canCreateIn(container)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        return !anyInvalidCopy;
     }
 }

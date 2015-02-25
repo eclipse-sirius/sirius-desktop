@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,10 @@ import java.util.Set;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
@@ -207,6 +209,20 @@ public final class DAnalysisSessionHelper {
         }
 
         return freeContainer;
+    }
+
+    /**
+     * Find an existing container.
+     * 
+     * @param analysis
+     *            selected analysis
+     * @param representation
+     *            the added representation.
+     * @return the free container if found or <code>null</code> otherwise.
+     */
+    public static DRepresentationContainer findContainerForAddedRepresentation(DAnalysis analysis, final DRepresentation representation) {
+        final Viewpoint viewpoint = new RepresentationDescriptionQuery(DialectManager.INSTANCE.getDescription(representation)).getParentViewpoint();
+        return getContainer(analysis, viewpoint);
     }
 
     /**

@@ -1,13 +1,13 @@
-/**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
- * All rights reserved.   This program and the accompanying materials
+/*******************************************************************************
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *      Obeo - Initial API and implementation
- */
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.support.api.editor;
 
 import java.util.ArrayList;
@@ -313,12 +313,6 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         return bounds;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#drag(java.lang.String,
-     *      int, int)
-     */
     @Override
     public void drag(final String label, final int toXPosition, final int toYPosition) {
         final SWTBotGefEditPart selectedEP = getEditPart(label);
@@ -406,9 +400,6 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public SWTBotGefEditPart getEditPart(final String label) {
         final SWTBotGefEditPart selectedEP = super.getEditPart(label);
@@ -830,11 +821,6 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         return swtbotGefEditPartList;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#clickContextMenu(java.lang.String)
-     */
     @Override
     public SWTBotGefEditor clickContextMenu(String text) throws WidgetNotFoundException {
         SWTBotGefEditor swtBotGefEditor = super.clickContextMenu(text);
@@ -1686,9 +1672,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     public DiagramEditPart getDiagramEditPart() {
         final List<SWTBotGefEditPart> parts = editParts(new BaseMatcher<EditPart>() {
 
+            @Override
             public void describeTo(final Description description) {
             }
 
+            @Override
             public boolean matches(final Object item) {
                 return item instanceof DiagramEditPart;
             }
@@ -1732,5 +1720,20 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
             final SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
             outlineView.activateLayer(layerName);
         }
+    }
+
+    /**
+     * Get the {@link DRepresentation} instance available in the diagram editor.
+     * 
+     * @return the {@link DRepresentation} instance
+     */
+    public DRepresentation getDRepresentation() {
+        DRepresentation dRepresentation = null;
+        IEditorPart editorPart = getReference().getEditor(false);
+        if (editorPart instanceof DialectEditor) {
+            DialectEditor dialectEditor = (DialectEditor) editorPart;
+            dRepresentation = dialectEditor.getRepresentation();
+        }
+        return dRepresentation;
     }
 }

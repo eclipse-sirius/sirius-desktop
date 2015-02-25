@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.GroupMarker;
@@ -45,10 +44,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.dialect.command.MoveRepresentationCommand;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -74,19 +70,18 @@ import org.eclipse.sirius.ui.tools.internal.actions.session.OpenRepresentationsA
 import org.eclipse.sirius.ui.tools.internal.actions.session.OpenViewpointSelectionAction;
 import org.eclipse.sirius.ui.tools.internal.views.ViewHelperImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.action.DeleteRepresentationAction;
+import org.eclipse.sirius.ui.tools.internal.views.common.action.ExtractRepresentationAction;
+import org.eclipse.sirius.ui.tools.internal.views.common.action.MoveRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.action.RenameRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.IContextMenuActionProvider;
-import org.eclipse.sirius.ui.tools.internal.wizards.ExtractRepresentationsWizard;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.ISaveablesSource;
 import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.PlatformUI;
@@ -526,40 +521,11 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     }
 
     private IAction buildExtractRepresentationsAction(final Session session, final Collection<DRepresentation> movableRepresentations) {
-        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/export.gif");
-        return new Action("Extract to ." + SiriusUtil.SESSION_RESOURCE_EXTENSION + " file ...", descriptor) {
-
-            @Override
-            public void run() {
-                final TransactionalEditingDomain transDomain = session.getTransactionalEditingDomain();
-                final ExtractRepresentationsWizard wizard = new ExtractRepresentationsWizard(session, transDomain, movableRepresentations);
-                final Shell defaultShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-                final WizardDialog dialog = new WizardDialog(defaultShell, wizard);
-                dialog.create();
-                dialog.open();
-            }
-        };
+        return new ExtractRepresentationAction(session, movableRepresentations);
     }
 
     private Action buildMoveRepresentationsActions(final Session session, final Collection<DRepresentation> movableRepresentations, final DAnalysis targetAnalysis) {
-        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif");
-        final String uri = targetAnalysis.eResource().getURI().toString();
-        return new Action("move to " + uri, descriptor) {
-
-            @Override
-            public void run() {
-                final IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
-                if (uiSession != null) {
-                    for (final DRepresentation representation : movableRepresentations) {
-                        final IEditorPart editor = uiSession.getEditor(representation);
-                        if (editor != null) {
-                            editor.getEditorSite().getPage().closeEditor(editor, false);
-                        }
-                    }
-                }
-                session.getTransactionalEditingDomain().getCommandStack().execute(new MoveRepresentationCommand(session, targetAnalysis, movableRepresentations));
-            }
-        };
+        return new MoveRepresentationAction(session, targetAnalysis, movableRepresentations);
     }
 
     private Action buildViewpointsSelectionDialogAction(final Session session) {
@@ -723,17 +689,12 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         return semRes;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void menuAboutToShow(IMenuManager manager) {
         // Nothing to do
-
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void menuAboutToHide(IMenuManager manager) {
         // As the menu is about to be hidden, and because all actions filled by
         // this menu filler will be re-calculated,

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,8 +32,11 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -54,6 +57,8 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
     private static final String SELECT_REPRESENTATIONS_TO_EXPORT = "Select Representations to export";
 
+    private static final String READ_ONLY_REPRESENTATION_CONTAINER = "The representation container is read only.\r\n Please select another representation.";
+
     /** The title of the page. */
     private static final String PAGE_TITLE = "Selection of representations to export";
 
@@ -63,8 +68,8 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
     /** The user has not selected one or more diagrams. */
     private static final int CODE_NO_SEL = 1;
 
-    /** The user has selected an object that is not a diagram. */
-    private static final int CODE_ERROR = 2;
+    /** A representation cannot be extracted because the container is read only */
+    private static final int CODE_ERROR_READONLY = 2;
 
     /** The composite control of the page. */
     private Composite pageComposite;
@@ -97,11 +102,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
         setMessage(SELECT_REPRESENTATIONS_TO_EXPORT, IMessageProvider.INFORMATION);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
 
@@ -149,12 +150,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * @author cbrun
      */
     private class SiriusDiagramSelectionCheckStateListener implements ICheckStateListener {
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ICheckStateListener#checkStateChanged(org.eclipse.jface.viewers.CheckStateChangedEvent)
-         */
+        @Override
         public void checkStateChanged(final CheckStateChangedEvent event) {
             final int result = checkSelection(getSelectedElements());
             switch (result) {
@@ -163,7 +159,9 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
                 setMessage(SELECT_REPRESENTATIONS_TO_EXPORT, IMessageProvider.INFORMATION);
                 setPageComplete(true);
                 break;
-            case CODE_ERROR:
+            case CODE_ERROR_READONLY:
+                setMessage(READ_ONLY_REPRESENTATION_CONTAINER, IMessageProvider.ERROR);
+                setPageComplete(false);
                 break;
             default:
                 setMessage("Unknown code result", IMessageProvider.ERROR);
@@ -171,21 +169,25 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
                 break;
             }
         }
-
     }
 
-    private int checkSelection(final Collection<?> selectedItems) {
+    private int checkSelection(final Collection<DRepresentation> selectedRepresentations) {
         int result = CODE_OK;
-        if (selectedItems.isEmpty()) {
+        if (selectedRepresentations.isEmpty()) {
             result = CODE_NO_SEL;
         } else {
-            final Iterator<?> iterItems = selectedItems.iterator();
-            while (iterItems.hasNext()) {
-                final Object next = iterItems.next();
-                if (!(next instanceof DRepresentation)) {
-                    result = CODE_ERROR;
+            for (DRepresentation item : selectedRepresentations) {
+                // check permission authority
+                EObject container = item.eContainer();
+                if (container instanceof DRepresentationContainer) {
+                    IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
+                    if (permissionAuthority != null && !permissionAuthority.canDeleteInstance(item)) {
+                        // Cannot remove representation from the container
+                        result = CODE_ERROR_READONLY;
+                        break; // quit the while
+                    }
                 }
-            }
+            } // while
         }
         return result;
     }
@@ -229,11 +231,6 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
             super(tree);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.dialogs.ContainerCheckedTreeViewer#doCheckStateChanged(java.lang.Object)
-         */
         @Override
         protected void doCheckStateChanged(final Object element) {
             //
@@ -310,6 +307,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * 
      * @return all selected elements.
      */
+    @SuppressWarnings("unchecked")
     public Collection<DRepresentation> getSelectedElements() {
         final Collection<DRepresentation> result = new HashSet<DRepresentation>();
         result.addAll((Collection<? extends DRepresentation>) Arrays.asList(treeViewer.getCheckedElements()));
@@ -317,6 +315,9 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
         return result;
     }
 
+    /**
+     * Session content provider.
+     */
     private static final class SessionContentProvider implements ITreeContentProvider {
 
         private static Object[] empty = new Object[0];
@@ -339,11 +340,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
             this.semanticProvider = new AdapterFactoryContentProvider(adapterFactory);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-         */
+        @Override
         public Object[] getChildren(final Object parentElement) {
             Object[] children = empty;
             if (parentElement instanceof Session) {
@@ -386,11 +383,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
             return filtered.toArray();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-         */
+        @Override
         public Object getParent(final Object element) {
             if (element instanceof EObject) {
                 final EObject current = (EObject) element;
@@ -400,39 +393,22 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-         */
+        @Override
         public boolean hasChildren(final Object element) {
             return getChildren(element).length > 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
-         */
+        @Override
         public Object[] getElements(final Object inputElement) {
             return getChildren(inputElement);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-         */
+        @Override
         public void dispose() {
             this.semanticProvider.dispose();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
-         */
+        @Override
         public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
             // empty
         }
