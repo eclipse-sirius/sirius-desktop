@@ -17,7 +17,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -130,9 +129,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private DAnalysis mainDAnalysis;
     
     private SessionResourcesTracker tracker = new SessionResourcesTracker(this);
-
-    /** The semantic resources collection. */
-    private Collection<Resource> semanticResources;
 
     private ControlledResourcesDetector controlledResourcesDetector;
 
@@ -659,18 +655,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public Collection<Resource> getSemanticResources() {
-        if (semanticResources == null) {
-            semanticResources = new CopyOnWriteArrayList<Resource>();
-            tracker.initSemanticResourcesUpdater(semanticResources);
-            RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(this);
-            try {
-                TransactionUtil.runExclusive(getTransactionalEditingDomain(), semanticResourcesGetter);
-            } catch (InterruptedException e) {
-                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while accessing semantic resources"));
-            }
-            ((CopyOnWriteArrayList<Resource>) semanticResources).addAllAbsent(semanticResourcesGetter.getResult());
-        }
-        return Collections.unmodifiableCollection(semanticResources);
+        return tracker.getSemanticResources();
     }
 
     @Override
@@ -1291,7 +1276,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             controlledResourcesDetector.init();
         }
         tracker.handlePossibleControlledResources();
-        semanticResources = null;
     }
 
     @Override
@@ -1361,9 +1345,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (tracker != null) {
             tracker.dispose();
             tracker = null;
-        }
-        if (semanticResources != null) {
-            semanticResources.clear();
         }
         crossReferencer = null;
         saver.dispose();
