@@ -53,6 +53,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -1489,10 +1490,25 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                                 swtBotShell.close();
                             }
                         }
+                    } else {
+                        for (IWorkbenchWindow w : PlatformUI.getWorkbench().getWorkbenchWindows()) {
+                            if (swtBotShell.widget != w.getShell()) {
+                                String shellText = swtBotShell.getText();
+                                if (!StringUtil.isEmpty(shellText)) {
+                                    System.err.println("The shell \"" + shellText
+                                            + "\" is closed but not disposed. Something is potentially not correctly clean in this test. A dispose of this shell is called on tearDown.");
+                                    UIThreadRunnable.syncExec(new VoidResult() {
+                                        @Override
+                                        public void run() {
+                                            swtBotShell.widget.dispose();
+                                        }
+                                    });
+                                }
+                            }
+                        }
                     }
                 }
             }
-
             SWTBotUtils.waitAllUiEvents();
 
             // Close all opened editors without saving before session closing to
