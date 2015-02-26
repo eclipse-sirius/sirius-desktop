@@ -1564,6 +1564,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 analysis.getModels().remove(root);
             }
         }
+        disableCrossReferencerResolve(res);
         unregisterResourceInCrossReferencer(res);
         if (couldBeUnload(set, res)) {
             res.unload();
