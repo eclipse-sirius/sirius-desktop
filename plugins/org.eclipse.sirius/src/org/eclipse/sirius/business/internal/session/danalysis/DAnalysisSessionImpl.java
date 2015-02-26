@@ -1533,9 +1533,26 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public void removeSemanticResource(Resource semanticResource, IProgressMonitor monitor) {
+        this.removeSemanticResource(semanticResource, monitor, true);
+    }
+
+    /**
+     * Remove the specified semantic resource.
+     * 
+     * @param semanticResource
+     *            the specified semantic resource to remove
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of semantic
+     *            resource removal
+     * @param removeReferencingResources
+     *            indicates if the referencing resources are also to remove
+     */
+    public void removeSemanticResource(Resource semanticResource, IProgressMonitor monitor, boolean removeReferencingResources) {
         ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
-        for (final Resource res : collectAllReferencingResources(semanticResource)) {
-            doRemoveSemanticResource(res, resourceSet);
+        if (removeReferencingResources) {
+            for (final Resource res : collectAllReferencingResources(semanticResource)) {
+                doRemoveSemanticResource(res, resourceSet);
+            }
         }
         doRemoveSemanticResource(semanticResource, resourceSet);
     }
@@ -1705,7 +1722,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     private void removeResourceFromSession(Resource resource, IProgressMonitor pm) {
         if (this.getSemanticResources().contains(resource)) {
-            getTransactionalEditingDomain().getCommandStack().execute(new RemoveSemanticResourceCommand(this, resource, false, new NullProgressMonitor()));
+            getTransactionalEditingDomain().getCommandStack().execute(new RemoveSemanticResourceCommand(this, resource, false, new NullProgressMonitor(), false));
         } else if (this.getAllSessionResources().contains(resource)) {
             this.removeAnalysis(resource);
         }

@@ -13,6 +13,9 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius2.0.5">Changes in Sirius 2.0.5 (from Sirius 2.0.4)</a>
+					</li>
+					<li>
 						<a href="#sirius2.0.4">Changes in Sirius 2.0.4 (from Sirius 2.0.3)</a>
 					</li>
 					<li>
@@ -43,8 +46,21 @@
 			</li>
 		</ol>
 		<p>This document contains the release notes for all major releases of Sirius.</p>
-		<h2 id="sirius2.0.4">Changes in Sirius 2.0.4 (from Sirius 2.0.3)</h2>
+		<h2 id="sirius2.0.5">Changes in Sirius 2.0.5 (from Sirius 2.0.4)</h2>
 		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li>A new constructor has been added in 
+				<code>org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand</code> allowing giving the boolean value 
+				<code>removeReferencingResources</code> to indicate if the referencing resources are also to remove. Note that, in 
+				<code>doExecute</code> method, a cast is done on 
+				<code>DAnalysisSessionImpl</code> to avoid API break.
+			</li>
+		</ul>
+		<h2 id="sirius2.0.4">Changes in Sirius 2.0.4 (from Sirius 2.0.3)</h2>
+		<h3 id="APIChanges2">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
@@ -64,7 +80,7 @@
 		<ul>
 			<li>In Open menu, the menu is computed from the navigation tool label instead of its name/id.</li>
 		</ul>
-		<h3 id="APIChanges2">API Changes</h3>
+		<h3 id="APIChanges3">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
@@ -152,8 +168,8 @@
 				<em>New &gt; Viewpoint Specification Project</em>, the VSM name is now given according to the project name. If the project name is suffixed with &#171;design&#187;, the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.
 			</li>
 		</ul>
-		<h3 id="APIChanges3">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h3 id="APIChanges4">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -529,8 +545,8 @@
 				<em>Layer</em>. The corresponding property sections will be shown only for old VSM with reused elements.
 			</li>
 		</ul>
-		<h3 id="APIChanges4">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h3 id="APIChanges5">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -587,7 +603,7 @@
 				<em>Time (ms)</em> column, harder to read/sort, and showed wrongly formatted results. 
 			</li>
 		</ul>
-		<h3 id="APIChanges5">API Changes</h3>
+		<h3 id="APIChanges6">API Changes</h3>
 		<h4 id="separationOfDiagramSpecificConcept-step3">Move diagram.ecore in its own plugin</h4>
 		<p>This milestone (Sirius 1.0M7) includes the third, and final, step towards a full separation of the diagram-specific stuff out of the core of Sirius (see 
 			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a> and 
@@ -806,7 +822,7 @@
 				<code>Predicate</code> tested on the key.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1143,7 +1159,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
-		<h3 id="APIChanges6">API Changes</h3>
+		<h3 id="APIChanges7">API Changes</h3>
 		<h4 id="tests">High-level API for Automated Tests Using JUnit and SWTBot</h4>
 		<p>Starting from version 1.0.0M6, Sirius includes high-level APIs to help creating automated tests using JUnit and/or SWTBot. These can be used either to test Sirius itself or to test Sirius-based modelers. These APIs are provided by two plug-ins:</p>
 		<ul>
@@ -1192,7 +1208,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<p>if 
 			<code>element</code> is a Diagram concept.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1284,7 +1300,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<ul>
 			<li>The table csv export has been improved to handle cropped label. In some specific cases, the cell label is automatically cropped and &#8249;...&#8250; is concatenated to the resulting value. This cropped displayed label was previously exported, now the complete semantic value is exported.</li>
 		</ul>
-		<h3 id="APIChanges7">API Changes</h3>
+		<h3 id="APIChanges8">API Changes</h3>
 		<h4 id="LibraryExtensions">Library Extensions</h4>
 		<p>This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called &#171;library extensions&#187;. They are all named 
 			<code>org.eclipse.sirius.ext.LIB</code>, where 
@@ -1356,7 +1372,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>viewpoint/diagram/description/concern</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius6">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1420,7 +1436,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<ul>
 			<li>The ability to print table representations, which had been disabled for the 0.9 release, has been re-enabled.</li>
 		</ul>
-		<h3 id="APIChanges8">API Changes</h3>
+		<h3 id="APIChanges9">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
 		<h4 id="Changesinorg.eclipse.sirius.common5">Changes in 
 			<code>org.eclipse.sirius.common</code>
@@ -1448,7 +1464,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius7">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 
 import com.google.common.collect.Lists;
@@ -49,6 +50,11 @@ public class RemoveSemanticResourceCommand extends RecordingCommand {
      * Indicates if the resource should be removed from controlled resources.
      */
     protected boolean removeFromControlledResources;
+    
+    /**
+     * Indicates if the referencing resources are also to remove.
+     */
+    private boolean removeReferencingResources;
 
     private IProgressMonitor monitor;
 
@@ -67,11 +73,32 @@ public class RemoveSemanticResourceCommand extends RecordingCommand {
      *            resource removal
      */
     public RemoveSemanticResourceCommand(Session session, Resource semanticResource, boolean removeFromControlledResources, IProgressMonitor monitor) {
+        this(session, semanticResource, removeFromControlledResources, monitor, true);
+    }
+
+    /**
+     * Default Constructor.
+     * 
+     * @param session
+     *            contextual {@link Session}
+     * @param semanticResource
+     *            Resource
+     * @param removeFromControlledResources
+     *            true if the given resource will removed from controlled
+     *            resources
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of semantic
+     *            resource removal
+     * @param removeReferencingResources
+     *            indicates if the referencing resources are also to remove
+     */
+    public RemoveSemanticResourceCommand(Session session, Resource semanticResource, boolean removeFromControlledResources, IProgressMonitor monitor, boolean removeReferencingResources) {
         super(session.getTransactionalEditingDomain(), "Remove model");
         this.semanticResource = semanticResource;
         this.session = session;
         this.removeFromControlledResources = removeFromControlledResources;
         this.monitor = monitor;
+        this.removeReferencingResources = removeReferencingResources;
     }
 
     /**
@@ -83,7 +110,10 @@ public class RemoveSemanticResourceCommand extends RecordingCommand {
             monitor = new NullProgressMonitor();
         }
         if (semanticResource != null && session != null && session.getSemanticResources().contains(semanticResource)) {
-            session.removeSemanticResource(semanticResource, monitor);
+            if (session instanceof DAnalysisSessionImpl)
+                ((DAnalysisSessionImpl) session).removeSemanticResource(semanticResource, monitor, removeReferencingResources);
+            else
+                session.removeSemanticResource(semanticResource, monitor);
         }
         if (removeFromControlledResources && session instanceof DAnalysisSessionEObject && ((DAnalysisSessionEObject) session).getControlledResources().contains(semanticResource)) {
             for (final EObject root : Lists.newArrayList(semanticResource.getContents())) {
