@@ -37,6 +37,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -78,22 +79,26 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true);
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
 
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, ZOOM_SEMANTIC_MODEL_FOLDER_PATH, ZOOM_SEMANTIC_MODEL_NAME);
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PACKAGES_SEMANTIC_MODEL_FOLDER_PATH, PACKAGES_SEMANTIC_MODEL_NAME);
+
         /* Initialize session 2 */
         String alternativeSessionResourcePath = TEMPORARY_PROJECT_NAME + "/" + "alternativeSession.aird";
-        genericSetUp(ZOOM_SEMANTIC_MODEL_PATH, MODELER_PATH, alternativeSessionResourcePath);
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + ZOOM_SEMANTIC_MODEL_NAME, MODELER_PATH, alternativeSessionResourcePath);
         alternateSession = session;
         alternateSemanticModel = alternateSession.getSemanticResources().iterator().next().getContents().get(0);
         initViewpoint(DESIGN_VIEWPOINT_NAME, alternateSession, alternateSemanticModel);
         TestsUtil.emptyEventsFromUIThread();
 
         String sessionResourcePath = TEMPORARY_PROJECT_NAME + "/" + "session.aird";
-        genericSetUp(PACKAGES_SEMANTIC_MODEL_PATH, MODELER_PATH, sessionResourcePath);
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + PACKAGES_SEMANTIC_MODEL_NAME, MODELER_PATH, sessionResourcePath);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
         TestsUtil.emptyEventsFromUIThread();
-        Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
+        session.save(new NullProgressMonitor());
 
         mock = createMock(SessionManagerListener.class);
-        // by default in easymock 2.4 a mock wasn't allowed to be called in multiple threads unless it was made thread-safe
+        // by default in easymock 2.4 a mock wasn't allowed to be called in
+        // multiple threads unless it was made thread-safe
         makeThreadSafe(mock, true);
 
         SessionManager.INSTANCE.addSessionsListener(mock);

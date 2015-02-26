@@ -833,16 +833,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 // has already been logged.
                 status = save.getStatus();
             } else {
-                boolean semanticSave = false;
-                for (final Resource resource : savedResources) {
-                    if (semanticResourcesCollection.contains(resource) || getControlledResources().contains(resource)) {
-                        semanticSave = true;
-                    }
-                }
-                if (semanticSave) {
-                    notifyListeners(SessionListener.SEMANTIC_CHANGE);
-                }
-                monitor.worked(1);
                 CommandStack commandStack = transactionalEditingDomain.getCommandStack();
                 if (commandStack instanceof BasicCommandStack) {
                     ((BasicCommandStack) commandStack).saveIsDone();

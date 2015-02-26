@@ -95,6 +95,13 @@
 				<code>EDataType</code>, it is not an 
 				<code>EObject</code> anymore.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.session.SessionListener.SEMANTIC_CHANGE</code> is no more send to 
+				<code>SessionListener</code> and 
+				<code>SessionManagerListener</code> listeners on save when a semantic resource is saved. Use a 
+				<code>ResourceSyncClient</code> listener on 
+				<code>ResourceSetSync</code> to have know if a semantic resource is saved.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>

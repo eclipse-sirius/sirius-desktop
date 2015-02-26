@@ -26,7 +26,11 @@ public interface EcoreModeler {
 
     String PACKAGES_SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + PACKAGES_SEMANTIC_MODEL_FOLDER_PATH + PACKAGES_SEMANTIC_MODEL_NAME; //$NON-NLS-1$ 
 
-    String ZOOM_SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/modelers/ecore/design/zoom.ecore"; //$NON-NLS-1$ $NON-NLS-2$
+    String ZOOM_SEMANTIC_MODEL_NAME = "zoom.ecore"; //$NON-NLS-1$
+
+    String ZOOM_SEMANTIC_MODEL_FOLDER_PATH = "/data/unit/modelers/ecore/design/"; //$NON-NLS-1$
+
+    String ZOOM_SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + ZOOM_SEMANTIC_MODEL_FOLDER_PATH + ZOOM_SEMANTIC_MODEL_NAME; //$NON-NLS-1$ $NON-NLS-2$
 
     String MODELER_PATH = "/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign";//$NON-NLS-1$
 
