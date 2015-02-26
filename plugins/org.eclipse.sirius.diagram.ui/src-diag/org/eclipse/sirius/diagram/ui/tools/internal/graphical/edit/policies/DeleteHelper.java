@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
@@ -66,7 +66,27 @@ public final class DeleteHelper {
                 }
             }
         }
+    }
 
+    /**
+     * Delete all note attachments attached to view.
+     * 
+     * @param command
+     *            the command
+     * @param deletedView
+     *            the view
+     */
+    public static void addDeleteLinkedNoteAttachmentsTask(Command command, final View deletedView) {
+        List<Command> wrappedCommands = DeleteHelper.getWrappedCommands(command);
+        if (deletedView.getDiagram().getElement() instanceof DSemanticDiagram) {
+            for (Command wrappedCommand : wrappedCommands) {
+                if (wrappedCommand instanceof DCommand && command.canExecute()) {
+                    final DCommand cmd = (DCommand) wrappedCommand;
+                    cmd.getTasks().add(new DeleteRelatedNoteAttachmentsTask(deletedView));
+                    return;
+                }
+            }
+        }
     }
 
     private static List<Command> getWrappedCommands(Command command) {
@@ -107,11 +127,7 @@ public final class DeleteHelper {
             this.view = deletedView;
         }
 
-        /**
-         * Execute deletion notes. {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-         */
+        @Override
         public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
             Set<View> allViewsToDelete = Sets.newHashSet();
 
@@ -123,7 +139,7 @@ public final class DeleteHelper {
             }
 
             for (final View v : allViewsToDelete) {
-                ViewUtil.destroy(v);
+                EcoreUtil.remove(v);
             }
 
             // Hide notes associated to element hide in model.
@@ -132,11 +148,7 @@ public final class DeleteHelper {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
-         */
+        @Override
         public String getLabel() {
             return "Delete Related GMF notes";
         }
@@ -235,6 +247,47 @@ public final class DeleteHelper {
             }
         }
 
+    }
+
+    /**
+     * Delete note attachment if this is associated to node deleted.
+     * 
+     * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
+     * 
+     */
+    private static final class DeleteRelatedNoteAttachmentsTask extends AbstractCommandTask {
+
+        private View view;
+
+        public DeleteRelatedNoteAttachmentsTask(final View deletedView) {
+            this.view = deletedView;
+        }
+
+        @Override
+        public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
+            List<View> linkedViews = Lists.newArrayList();
+
+            for (Edge sourceEdge : Iterables.filter(view.getSourceEdges(), Edge.class)) {
+                if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
+                    linkedViews.add(sourceEdge);
+                }
+            }
+
+            for (Edge targetEdge : Iterables.filter(view.getTargetEdges(), Edge.class)) {
+                if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
+                    linkedViews.add(targetEdge);
+                }
+            }
+
+            for (final View v : linkedViews) {
+                EcoreUtil.remove(v);
+            }
+        }
+
+        @Override
+        public String getLabel() {
+            return "Delete Related GMF note attachments";
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.Transaction;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.AbstractEMFOperation;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
@@ -33,6 +34,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.common.core.util.Log;
 import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.common.core.util.Trace;
+import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CanonicalConnectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CanonicalEditPolicy;
@@ -42,6 +44,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIStatusCodes;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.util.EditPartUtil;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.business.internal.command.ViewDeleteCommand;
 import org.eclipse.sirius.diagram.ui.internal.refresh.IsOrphanedSwitch;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusNodeDescriptor;
@@ -56,6 +59,7 @@ import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
  * 
  * @author edugueperoux
  */
+@SuppressWarnings("restriction")
 public class DumnySiriusCanonicalConnectionEditPolicy extends CanonicalConnectionEditPolicy {
 
     /**
@@ -83,6 +87,7 @@ public class DumnySiriusCanonicalConnectionEditPolicy extends CanonicalConnectio
 
         AbstractEMFOperation operation = new AbstractEMFOperation(((IGraphicalEditPart) getHost()).getEditingDomain(), StringStatics.BLANK, options) {
 
+            @Override
             protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 
                 cmd.execute();
@@ -107,15 +112,15 @@ public class DumnySiriusCanonicalConnectionEditPolicy extends CanonicalConnectio
     protected List<EObject> getSemanticChildrenList() {
         View viewObject = (View) getHost().getModel();
         List<EObject> result = new LinkedList<EObject>();
-        for (Iterator it = SiriusDiagramUpdater.getSemanticChildren(viewObject).iterator(); it.hasNext();) {
-            result.add(((SiriusNodeDescriptor) it.next()).getModelElement());
+        for (Iterator<SiriusNodeDescriptor> it = SiriusDiagramUpdater.getSemanticChildren(viewObject).iterator(); it.hasNext();) {
+            result.add(it.next().getModelElement());
         }
         return result;
     }
 
     @Override
     protected List<EObject> getSemanticConnectionsList() {
-        return Collections.EMPTY_LIST;
+        return Collections.emptyList();
     }
 
     @Override
@@ -133,12 +138,21 @@ public class DumnySiriusCanonicalConnectionEditPolicy extends CanonicalConnectio
      * feature to null.
      */
     @Override
-    protected boolean isOrphaned(Collection semanticChildren, View view) {
+    protected boolean isOrphaned(Collection<EObject> semanticChildren, View view) {
         boolean isOrphaned = false;
         View parentView = (View) view.eContainer();
 
         int visualID = SiriusVisualIDRegistry.getVisualID(parentView);
         isOrphaned = new IsOrphanedSwitch(view, semanticChildren, parentView).doSwitch(visualID);
         return isOrphaned;
+    }
+
+    @Override
+    protected Command getDeleteViewCommand(View view) {
+        // Override to use {@link ViewDeleteCommand} instead of GMF {@link
+        // DeleteCommand}. The original code comes from GMF {@link
+        // CanonicalEditPolicy.getDeleteViewCommand(View)}
+        TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
+        return new ICommandProxy(new ViewDeleteCommand(editingDomain, view));
     }
 }

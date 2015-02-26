@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,11 +59,6 @@ public class NodeDeletionEditPolicy extends ComponentEditPolicy {
         this.editingDomain = editingDomain;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.ComponentEditPolicy#createDeleteSemanticCommand(org.eclipse.gef.requests.GroupRequest)
-     */
     @Override
     protected Command createDeleteSemanticCommand(final GroupRequest deleteRequest) {
         // Delete from model.
@@ -93,17 +88,13 @@ public class NodeDeletionEditPolicy extends ComponentEditPolicy {
         boolean removeHideNote = DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
         if (removeHideNote) {
             DeleteHelper.addDeleteLinkedNotesTask(buildedCommand, view);
+        } else {
+            DeleteHelper.addDeleteLinkedNoteAttachmentsTask(buildedCommand, view);
         }
         compositeCommand.add(new GMFCommandWrapper(editingDomain, buildedCommand));
         return new ICommandProxy(compositeCommand.reduce());
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.ComponentEditPolicy#shouldDeleteSemantic()
-     */
     @Override
     protected boolean shouldDeleteSemantic() {
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.providers.IViewProvider;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
@@ -103,9 +104,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     public AbstractCanonicalSynchronizer() {
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void storeViewsToArrange(boolean storeViewsToArrange) {
         this.storeViews2Arrange = storeViewsToArrange;
     }
@@ -846,7 +845,12 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      */
     protected boolean deleteViews(Collection<? extends View> views) {
         for (View view : views) {
-            ViewUtil.destroy(view);
+            // org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.destroy(v) is
+            // no more needed, simply remove the view
+            // from its container, DanglinRefRemovalTrigger will complete
+            // the work. This prevents GMF to install its
+            // CrossReferencerAdapter
+            EcoreUtil.remove(view);
         }
         return !views.isEmpty();
     }

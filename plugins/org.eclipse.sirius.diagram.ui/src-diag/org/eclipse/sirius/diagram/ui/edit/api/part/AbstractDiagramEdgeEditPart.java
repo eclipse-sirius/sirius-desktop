@@ -35,6 +35,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
@@ -55,6 +56,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeSelectionFeedb
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.EdgeCreationEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
@@ -72,6 +74,7 @@ import org.eclipse.swt.graphics.Image;
  * 
  * @author ymortier
  */
+@SuppressWarnings("restriction")
 public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart implements IDiagramEdgeEditPart {
 
     /**
@@ -110,33 +113,18 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         super(view);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#registerModel()
-     */
     @Override
     protected void registerModel() {
         super.registerModel();
         DiagramElementEditPartOperation.registerModel(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#unregisterModel()
-     */
     @Override
     protected void unregisterModel() {
         super.unregisterModel();
         DiagramElementEditPartOperation.unregisterModel(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart#createDefaultEditPolicies()
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
@@ -153,10 +141,19 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         // RequestTool)
         final CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
         compoundEditPolicy.addEditPolicy(new EdgeCreationEditPolicy());
-        if (getEditPolicy(EditPolicy.CONNECTION_ROLE) != null) {
-            compoundEditPolicy.addEditPolicy(getEditPolicy(EditPolicy.CONNECTION_ROLE));
+
+        EditPolicy oldRoleEditPolicy = getEditPolicy(EditPolicy.CONNECTION_ROLE);
+        if (oldRoleEditPolicy != null) {
             removeEditPolicy(EditPolicy.CONNECTION_ROLE);
+
+            if (oldRoleEditPolicy instanceof SiriusConnectionEditPolicy || !(oldRoleEditPolicy instanceof ConnectionEditPolicy)) {
+                // add the existing edit policy
+                compoundEditPolicy.addEditPolicy(oldRoleEditPolicy);
+            } else {
+                compoundEditPolicy.addEditPolicy(new SiriusConnectionEditPolicy());
+            }
         }
+
         installEditPolicy(EditPolicy.CONNECTION_ROLE, compoundEditPolicy);
         installEditPolicy(RequestConstants.REQ_LAUNCH_TOOL, new LaunchToolEditPolicy());
 
@@ -175,9 +172,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Command getCommand(final Request request) {
         final Command cmd = super.getCommand(request);
@@ -230,11 +224,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart#getPolylineConnectionFigure()
-     */
+    @Override
     public PolylineConnectionEx getPolylineConnectionFigure() {
         final Connection connection = this.getConnectionFigure();
         if (connection instanceof PolylineConnectionEx) {
@@ -243,20 +233,12 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         throw new IllegalStateException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#refreshVisuals()
-     */
     @Override
     public void refreshVisuals() {
         super.refreshVisuals();
         DiagramEdgeEditPartOperation.refreshVisuals(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void refreshFont() {
         super.refreshFont();
@@ -294,11 +276,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#refreshForegroundColor()
-     */
     @Override
     public void refreshForegroundColor() {
         // We don't change the foregroundColor to keep the selected color.
@@ -308,38 +285,22 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart#refreshSourceDecoration()
-     */
+    @Override
     public void refreshSourceDecoration() {
         DiagramEdgeEditPartOperation.refreshSourceDecoration(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart#refreshTargetDecoration()
-     */
+    @Override
     public void refreshTargetDecoration() {
         DiagramEdgeEditPartOperation.refreshTargetDecoration(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart#refreshLineStyle()
-     */
+    @Override
     public void refreshLineStyle() {
         DiagramEdgeEditPartOperation.refreshLineStyle(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEAdapterDiagramElement()
-     */
+    @Override
     public NotificationListener getEAdapterDiagramElement() {
         if (this.adapterDiagramElement == null) {
             this.adapterDiagramElement = DiagramElementEditPartOperation.createEApdaterDiagramElement(this);
@@ -347,11 +308,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         return this.adapterDiagramElement;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEAdapterSemanticElements()
-     */
+    @Override
     public NotificationPreCommitListener getEAdapterSemanticElements() {
         if (this.adapterSemanticElements == null) {
             this.adapterSemanticElements = DiagramElementEditPartOperation.createEAdpaterSemanticElements(this);
@@ -359,18 +316,12 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         return this.adapterSemanticElements;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public NotificationListener getEditModeListener() {
         return this.editModeListener;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart#getEAdapterRoutingStyle()
-     */
+    @Override
     public NotificationPreCommitListener getEAdapterRoutingStyle() {
         if (this.adapterRoutingStyle == null) {
             this.adapterRoutingStyle = DiagramEdgeEditPartOperation.createEAdapterRoutingStyle(this);
@@ -378,74 +329,41 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         return this.adapterRoutingStyle;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEditPartAuthorityListener()
-     */
+    @Override
     public EditPartAuthorityListener getEditPartAuthorityListener() {
         return this.authListener;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getMetamodelType()
-     */
+    @Override
     public Class<?> getMetamodelType() {
         return DEdge.class;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getStyleEditPart()
-     */
+    @Override
     public IStyleEditPart getStyleEditPart() {
         return DiagramElementEditPartOperation.getStyleEditPart(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveAllSemanticElements()
-     */
+    @Override
     public List<EObject> resolveAllSemanticElements() {
         return DiagramElementEditPartOperation.resolveAllSemanticElements(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveDiagramElement()
-     */
+    @Override
     public DDiagramElement resolveDiagramElement() {
         return DiagramElementEditPartOperation.resolveDiagramElement(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveTargetSemanticElement()
-     */
+    @Override
     public EObject resolveTargetSemanticElement() {
         return DiagramElementEditPartOperation.resolveTargetSemanticElement(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart#routingStyleChanged(org.eclipse.emf.common.notify.Notification)
-     */
+    @Override
     public void routingStyleChanged(final Notification message) {
         DiagramEdgeEditPartOperation.routingStyleChanged(this, message);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#activate()
-     */
     @Override
     public void activate() {
         if (!isActive()) {
@@ -462,11 +380,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         installRouter();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#deactivate()
-     */
     @Override
     public void deactivate() {
         if (isActive()) {
@@ -476,11 +389,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#enableEditMode()
-     */
     @Override
     public void enableEditMode() {
         /*
@@ -492,11 +400,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#installRouter()
-     */
     @Override
     protected void installRouter() {
         final EObject element = this.resolveSemanticElement();
@@ -510,11 +413,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#refreshRoutingStyles()
-     */
     @Override
     protected void refreshRoutingStyles() {
         final EObject element = resolveSemanticElement();
@@ -523,11 +421,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#refreshRouterChange()
-     */
     @Override
     protected void refreshRouterChange() {
         final EObject element = resolveSemanticElement();
@@ -536,20 +429,11 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getLabelIcon()
-     */
+    @Override
     public Image getLabelIcon() {
         return DiagramElementEditPartOperation.getLabelIcon(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#createConnectionFigure()
-     */
     @Override
     protected Connection createConnectionFigure() {
         return new ViewEdgeFigure();
@@ -689,11 +573,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             this.add(fFigureViewEdgeEndNameFigure);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.draw2d.PolylineConnection#layout()
-         */
+        @SuppressWarnings("deprecation")
         @Override
         public void layout() {
             if (!isActive()) {
@@ -740,6 +620,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             }
         }
 
+        @SuppressWarnings("deprecation")
         @Override
         public void paintFigure(final Graphics graphics) {
             if (!isActive()) {
@@ -815,9 +696,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             return super.getTargetDecoration();
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public String getHint() {
             if (AbstractDiagramEdgeEditPart.this.getTarget() != null) {
                 return AbstractDiagramEdgeEditPart.this.getTarget().toString();
@@ -826,6 +705,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             }
         }
 
+        @Override
         public Orientation getOrientation() {
             return Orientation.VERTICAL;
         }
@@ -844,9 +724,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void performRequest(final Request request) {
         if (request instanceof DirectEditRequest || RequestConstants.REQ_DIRECT_EDIT.equals(request.getType())) {

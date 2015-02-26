@@ -1601,6 +1601,36 @@
               editparts="SIRIUS_EDIT_PART">
         </context>
      </editpolicyProvider>
+     <editpolicyProvider
+           class="org.eclipse.sirius.diagram.ui.internal.edit.policies.NoteTextEditPolicyProvider">
+        <Priority
+              name="Lowest">
+        </Priority>
+        <object
+              class="org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart"
+              id="GMF_NOTE_EDIT_PART">
+        </object>
+        <object
+              class="org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart"
+              id="GMF_TEXT_EDIT_PART">
+        </object>
+        <context
+              editparts="GMF_NOTE_EDIT_PART, GMF_TEXT_EDIT_PART">
+        </context>
+     </editpolicyProvider>
+     <editpolicyProvider
+           class="org.eclipse.sirius.diagram.ui.internal.edit.policies.NoteAttachmentEditPolicyProvider">
+        <Priority
+              name="Lowest">
+        </Priority>
+        <object
+              class="org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditPart"
+              id="GMF_NOTE_ATTACHMENT_EDIT_PART">
+        </object>
+        <context
+              editparts="GMF_NOTE_ATTACHMENT_EDIT_PART">
+        </context>
+     </editpolicyProvider>
   </extension>
   <extension
         point="org.eclipse.sirius.diagram.ui.viewOrderingProvider">

@@ -170,6 +170,8 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                                 org.eclipse.emf.common.command.Command cmd = cmdFactoryProvider.getCommandFactory(editingDomain).buildDeleteFromDiagramCommand(viewPointElement);
                                 if (shouldImpactLinkedNotesOnHideOrRemove()) {
                                     DeleteHelper.addDeleteLinkedNotesTask(cmd, view);
+                                } else {
+                                    DeleteHelper.addDeleteLinkedNoteAttachmentsTask(cmd, view);
                                 }
                                 compositeCommand.add(new GMFCommandWrapper(getEditingDomain(), cmd));
                                 cc.add(new ICommandProxy(compositeCommand.reduce()));
