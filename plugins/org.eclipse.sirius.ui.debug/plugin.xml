@@ -36,11 +36,20 @@
        </propertySections>
    </extension>
    <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+      <editpolicyProvider
+            class="org.eclipse.sirius.ui.debug.statusline.StatusLineEditPolicyProvider">
+         <Priority
+               name="Lowest">
+         </Priority>
+      </editpolicyProvider>
+   </extension>
+   <extension
          point="org.eclipse.ui.menus">
          <menuContribution
             locationURI="toolbar:org.eclipse.ui.trim.status">
          <toolbar
-               id="fr.obeo.dsl.viewpoint.diagram.debug.statusline.mouseLocationContribution">
+               id="org.eclipse.sirius.ui.debug.statusline.mouseLocationContribution">
             <control
                   class="org.eclipse.sirius.ui.debug.statusline.MouseLocationContribution"
                   id="contributions.mouseLocationContrib">
