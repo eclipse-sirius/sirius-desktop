@@ -416,7 +416,7 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
             @Override
             protected void doExecute() {
                 session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
-                session.removeSemanticResource(resource, new NullProgressMonitor());
+                session.removeSemanticResource(resource, new NullProgressMonitor(), true);
             }
         });
 

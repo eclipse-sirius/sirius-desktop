@@ -130,6 +130,21 @@
 				<code>getAllRepresentations()</code> can simply use 
 				<code>getOwnedRepresentations()</code> instead.  
 			</li>
+			<li>The default constructor has been changed in 
+				<code>org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand</code>.
+				<ul>
+					<li>The boolean value 
+						<code>removeReferencingResources</code> has been added to indicate if the referencing resources are also to remove.
+					</li>
+					<li>The boolean value 
+						<code>removeFromControlledResources</code> has been removed because controlled resources are managed internally.
+					</li>
+				</ul>
+			</li>
+			<li>The boolean value 
+				<code>removeReferencingResources</code> has been added in 
+				<code>org.eclipse.sirius.business.api.session.Session.removeSemanticResource</code> method to indicate if the referencing resources are also to remove.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>

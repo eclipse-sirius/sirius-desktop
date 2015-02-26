@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,7 +81,7 @@ public class RemoveSemanticResourceAction extends Action {
         final TransactionalEditingDomain transDomain = session.getTransactionalEditingDomain();
         CompoundCommand compoundCommand = new CompoundCommand();
         for (Resource semanticResourceToRemove : toRemove) {
-            compoundCommand.append(new RemoveSemanticResourceCommand(session, semanticResourceToRemove, false, new NullProgressMonitor()));
+            compoundCommand.append(new RemoveSemanticResourceCommand(session, semanticResourceToRemove, new NullProgressMonitor(), true));
         }
         transDomain.getCommandStack().execute(compoundCommand);
     }

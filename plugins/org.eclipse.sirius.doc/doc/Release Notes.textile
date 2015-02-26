@@ -38,6 +38,10 @@ h4. Changes in @org.eclipse.sirius@
 * @org.eclipse.sirius.business.api.session.SessionListener.SEMANTIC_CHANGE@ is no more send to @SessionListener@ and @SessionManagerListener@ listeners on save when a semantic resource is saved. Use a @ResourceSyncClient@ listener on @ResourceSetSync@ to have know if a semantic resource is saved.
 * The @ExtendedPackage@ @EDataType@ which was defined in the @http://www.eclipse.org/sirius/1.1.0@ package was not actually used anywhere and has been removed.
 * The @DView@ methods @getAllRepresentations()@, @getReferencedRepresentations()@ and @getHiddenRepresentations()@ have been removed: @getReferencedRepresentations()@ and @getHiddenRepresentations()@  were never actually used, making @getAllRepresentations()@ strictly equivalent to @getOwnedRepresentations()@. Code that used @getAllRepresentations()@ can simply use @getOwnedRepresentations()@ instead.  
+* The default constructor has been changed in @org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand@.
+** The boolean value @removeReferencingResources@ has been added to indicate if the referencing resources are also to remove.
+** The boolean value @removeFromControlledResources@ has been removed because controlled resources are managed internally.
+* The boolean value @removeReferencingResources@ has been added in @org.eclipse.sirius.business.api.session.Session.removeSemanticResource@ method to indicate if the referencing resources are also to remove.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

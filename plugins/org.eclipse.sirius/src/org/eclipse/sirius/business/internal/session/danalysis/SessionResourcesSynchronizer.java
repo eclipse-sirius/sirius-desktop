@@ -233,8 +233,8 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
      *            The resource to remove
      */
     private void removeResourceFromSession(Resource resource, IProgressMonitor pm) {
-        if (session.getSemanticResources().contains(resource)) {
-            session.getTransactionalEditingDomain().getCommandStack().execute(new RemoveSemanticResourceCommand(session, resource, false, new NullProgressMonitor()));
+        if (session.getAllSemanticResources().contains(resource)) {
+            session.getTransactionalEditingDomain().getCommandStack().execute(new RemoveSemanticResourceCommand(session, resource, new NullProgressMonitor(), false));
         } else if (session.getAllSessionResources().contains(resource)) {
             session.removeAnalysis(resource);
         }

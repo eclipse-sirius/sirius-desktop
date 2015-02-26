@@ -419,6 +419,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return analysisAndReferenced;
     }
 
+    Collection<Resource> getAllSemanticResources() {
+        Collection<Resource> semanticResources = new LinkedHashSet<Resource>(this.getSemanticResources());
+        semanticResources.addAll(this.getControlledResources());
+        return semanticResources;
+    }
+
     private void addAllReferencedAnalyses(final Collection<DAnalysis> analysisAndReferenced, final DAnalysis analysis) {
         for (DAnalysis referenced : Sets.newLinkedHashSet(analysis.getReferencedAnalysis())) {
             if (!analysisAndReferenced.contains(referenced) && referenced.eResource() != null) {
@@ -689,10 +695,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
-    public void removeSemanticResource(Resource semanticResource, IProgressMonitor monitor) {
+    public void removeSemanticResource(Resource semanticResource, IProgressMonitor monitor, boolean removeReferencingResources) {
         ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
-        for (final Resource res : collectAllReferencingResources(semanticResource)) {
-            doRemoveSemanticResource(res, resourceSet);
+        if (removeReferencingResources) {
+            for (final Resource res : collectAllReferencingResources(semanticResource)) {
+                doRemoveSemanticResource(res, resourceSet);
+            }
         }
         doRemoveSemanticResource(semanticResource, resourceSet);
     }
@@ -706,6 +714,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *            the resourceset from which to remove it.
      */
     protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
+        set.getResources().remove(res);
+
         if (res.getContents().size() > 0) {
             final EObject root = findSemanticRoot(res);
             for (final DAnalysis analysis : this.allAnalyses()) {
@@ -718,7 +728,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             res.unload();
             enableCrossReferencerResolve(res);
         }
-        set.getResources().remove(res);
     }
 
     void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {

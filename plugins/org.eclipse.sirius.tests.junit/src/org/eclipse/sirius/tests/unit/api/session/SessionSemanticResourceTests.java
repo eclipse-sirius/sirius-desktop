@@ -170,7 +170,7 @@ public class SessionSemanticResourceTests extends SiriusDiagramTestCase {
         Resource addedSemanticResource = session.getSemanticResources().iterator().next();
 
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, addedSemanticResource, true, new NullProgressMonitor());
+        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, addedSemanticResource, new NullProgressMonitor(), true);
         domain.getCommandStack().execute(removeSemanticResourceCmd);
 
         assertEquals("The session shouldn't have semantic resource now", 0, session.getSemanticResources().size());
@@ -188,7 +188,7 @@ public class SessionSemanticResourceTests extends SiriusDiagramTestCase {
         Resource semanticResource3 = getSemanticResourceFromSession(semanticResource3URI);
 
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, semanticResource3, true, new NullProgressMonitor());
+        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, semanticResource3, new NullProgressMonitor(), true);
         domain.getCommandStack().execute(removeSemanticResourceCmd);
 
         assertEquals("The session should have now only 2 semantic resources", 2, session.getSemanticResources().size());
@@ -208,7 +208,7 @@ public class SessionSemanticResourceTests extends SiriusDiagramTestCase {
         Resource semanticResource5 = getSemanticResourceFromSession(semanticResource5URI);
 
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, semanticResource5, true, new NullProgressMonitor());
+        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, semanticResource5, new NullProgressMonitor(), true);
         domain.getCommandStack().execute(removeSemanticResourceCmd);
 
         assertEquals("The session shouldn't have semantic resource now", 0, session.getSemanticResources().size());
@@ -236,7 +236,7 @@ public class SessionSemanticResourceTests extends SiriusDiagramTestCase {
         // Test the removal of r5.ecore
         URI semanticResource5URI = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_5_NAME, true);
         Resource semanticResource5 = getSemanticResourceFromSession(semanticResource5URI);
-        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, semanticResource5, true, new NullProgressMonitor());
+        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, semanticResource5, new NullProgressMonitor(), true);
         domain.getCommandStack().execute(removeSemanticResourceCmd);
 
         assertEquals("The session should have only 1 semantic resource now", 1, session.getSemanticResources().size());
@@ -267,7 +267,7 @@ public class SessionSemanticResourceTests extends SiriusDiagramTestCase {
         domain.getCommandStack().execute(addR2DependencyToR4Cmd);
 
         // Test the removal of r4.ecore
-        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, semanticResource4, true, new NullProgressMonitor());
+        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, semanticResource4, new NullProgressMonitor(), true);
         domain.getCommandStack().execute(removeSemanticResourceCmd);
 
         assertEquals("The session shouldn't have semantic resource now", 0, session.getSemanticResources().size());

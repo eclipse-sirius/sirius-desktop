@@ -199,7 +199,7 @@ public class XSDSemanticResourceTests extends SiriusDiagramTestCase {
     private void removeSemanticResource() {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         Resource addedSemanticResource = session.getSemanticResources().iterator().next();
-        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, addedSemanticResource, true, new NullProgressMonitor());
+        Command removeSemanticResourceCmd = new RemoveSemanticResourceCommand(session, addedSemanticResource, new NullProgressMonitor(), true);
         domain.getCommandStack().execute(removeSemanticResourceCmd);
     }
 

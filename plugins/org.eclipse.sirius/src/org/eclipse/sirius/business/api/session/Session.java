@@ -142,8 +142,10 @@ public interface Session {
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of semantic
      *            resource removal
+     * @param removeReferencingResources
+     *            indicates if the referencing resources are also to remove
      */
-    void removeSemanticResource(final Resource semanticResource, IProgressMonitor monitor);
+    void removeSemanticResource(final Resource semanticResource, IProgressMonitor monitor, boolean removeReferencingResources);
 
     /**
      * Save the session data.

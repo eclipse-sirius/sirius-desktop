@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -300,7 +300,7 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
 
     private void removeSemanticResource() {
         session.getTransactionalEditingDomain().getCommandStack()
-                .execute(new RemoveSemanticResourceCommand(session, session.getSemanticResources().iterator().next(), true, new NullProgressMonitor()));
+                .execute(new RemoveSemanticResourceCommand(session, session.getSemanticResources().iterator().next(), new NullProgressMonitor(), true));
     }
 
     /**
