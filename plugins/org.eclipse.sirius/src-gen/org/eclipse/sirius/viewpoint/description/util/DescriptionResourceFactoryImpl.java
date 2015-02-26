@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMResourceHandler;
@@ -80,6 +81,11 @@ public class DescriptionResourceFactoryImpl extends ResourceFactoryImpl {
 
             loadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
             loadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
+            /**
+             * This option is passed so that the resource can decide to adapt
+             * the load mechanism depending on the loaded version.
+             */
+            loadOptions.put(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION, loadedVersion);
 
             saveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
             saveOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);

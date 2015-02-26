@@ -127,11 +127,14 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
 
     @Override
     protected XMLLoad createXMLLoad(Map<?, ?> options) {
-        if (options != null) {
-            Object loadedVersion = options.get(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION);
-            if (loadedVersion instanceof String) {
-                return new AirdResourceXMILoad((String) loadedVersion, createXMLHelper());
+        if (options != null && options.containsKey(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION)) {
+            // LoadedVersion can be null for old aird files.
+            String loadedVersion = null;
+            Object mapVersion = options.get(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION);
+            if (mapVersion instanceof String) {
+                loadedVersion = (String) mapVersion;
             }
+            return new AirdResourceXMILoad(loadedVersion, createXMLHelper());
         }
         return createXMLLoad();
 

@@ -8,30 +8,29 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.migration;
+package org.eclipse.sirius.business.internal.migration.description;
 
 import java.util.Map;
 
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.SAXWrapper;
-import org.eclipse.gmf.runtime.emf.core.resources.GMFHandler;
-import org.eclipse.gmf.runtime.emf.core.resources.GMFLoad;
+import org.eclipse.emf.ecore.xmi.impl.SAXXMIHandler;
+import org.eclipse.emf.ecore.xmi.impl.XMILoadImpl;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * A specialization of {@link GMFLoad} to enable hooking into the XML parsing
- * for modeling migration.
+ * A specialization of {@link XMILoadImpl} to enable hooking into the XML
+ * parsing for modeling migration.
  * 
- * @author Cedric Brun <cedric.brun@obeo.fr>
+ * @author mporhel
  *
  */
-public class AirdResourceXMILoad extends GMFLoad {
+public class VSMResourceXMILoad extends XMILoadImpl {
 
     private String loadedVersion;
 
     /**
-     * Create a new {@link AirdResourceXMILoad}, suitable for on the fly
+     * Create a new {@link DescriptionResourceXMILoad}, suitable for on the fly
      * migration of .aird files.
      * 
      * @param loadedVersion
@@ -40,7 +39,7 @@ public class AirdResourceXMILoad extends GMFLoad {
      * @param helper
      *            the xml helper to use during the load.
      */
-    public AirdResourceXMILoad(String loadedVersion, XMLHelper helper) {
+    public VSMResourceXMILoad(String loadedVersion, XMLHelper helper) {
         super(helper);
         this.loadedVersion = loadedVersion;
     }
@@ -50,26 +49,25 @@ public class AirdResourceXMILoad extends GMFLoad {
      */
     @Override
     protected DefaultHandler makeDefaultHandler() {
-        return new SAXWrapper(new AirdHandler(resource, helper, options));
+        return new VSMHandler(resource, helper, options);
     }
 
     /**
-     * A specialization of the GMF handler to delegate to the file migration
+     * A specialization of the handler to delegate to the file migration
      * service.
      * 
-     * @author cedric
-     *
+     * @author mporhel
      */
-    class AirdHandler extends GMFHandler {
+    class VSMHandler extends SAXXMIHandler {
 
-        public AirdHandler(XMLResource xmiResource, XMLHelper helper, Map<?, ?> options) {
+        public VSMHandler(XMLResource xmiResource, XMLHelper helper, Map<?, ?> options) {
             super(xmiResource, helper, options);
         }
 
         @Override
         public void endElement(String uri, String localName, String name) {
             super.endElement(uri, localName, name);
-            RepresentationsFileMigrationService.getInstance().postXMLEndElement(objects.peek(), attribs, uri, localName, name, loadedVersion);
+            VSMMigrationService.getInstance().postXMLEndElement(objects.peek(), attribs, uri, localName, name, loadedVersion);
         }
     }
 }

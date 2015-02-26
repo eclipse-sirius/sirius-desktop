@@ -47,6 +47,8 @@ public abstract class AbstractSiriusMigrationService {
     /**
      * This option is passed during a resource load if a migration should be
      * done. The value contains a string representation of the loaded version.
+     * The value can be null if the resource was created before the current
+     * migration mechanism.
      */
     public static final String OPTION_RESOURCE_MIGRATION_LOADEDVERSION = "RESOURCE_MIGRATION_LOADEDVERSION";
 

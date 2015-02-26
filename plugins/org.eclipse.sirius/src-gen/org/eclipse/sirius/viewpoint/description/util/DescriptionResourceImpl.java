@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,9 +17,12 @@ import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
+import org.eclipse.emf.ecore.xmi.XMLLoad;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
+import org.eclipse.sirius.business.internal.migration.description.VSMResourceXMILoad;
 import org.eclipse.sirius.business.internal.migration.description.VSMXMIHelper;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -57,6 +60,20 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
     @Override
     protected XMLHelper createXMLHelper() {
         return new VSMXMIHelper(this);
+    }
+
+    @Override
+    protected XMLLoad createXMLLoad(Map<?, ?> options) {
+        if (options != null && options.containsKey(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION)) {
+            // LoadedVersion can be null for old aird files.
+            String loadedVersion = null;
+            Object mapVersion = options.get(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION);
+            if (mapVersion instanceof String) {
+                loadedVersion = (String) mapVersion;
+            }
+            return new VSMResourceXMILoad(loadedVersion, createXMLHelper());
+        }
+        return super.createXMLLoad(options);
     }
 
     @Override
