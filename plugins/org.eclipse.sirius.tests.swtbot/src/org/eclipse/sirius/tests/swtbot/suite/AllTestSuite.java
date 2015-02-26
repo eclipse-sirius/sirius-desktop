@@ -150,6 +150,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RepresentationGroupWithoutRepresentationInstanceTest.class);
         suite.addTestSuite(RenameProjectWithSessionTest.class);
         suite.addTestSuite(ReconnectEdgeWithChangedRoutingStyleTest.class);
+        suite.addTestSuite(ReconnectEdgeBendpointStabilityTest.class);
         suite.addTestSuite(QuickStartScenario.class);
         suite.addTestSuite(NonVisibleLabelSelectionTest.class);
         suite.addTestSuite(NodeLabelPositionTest.class);

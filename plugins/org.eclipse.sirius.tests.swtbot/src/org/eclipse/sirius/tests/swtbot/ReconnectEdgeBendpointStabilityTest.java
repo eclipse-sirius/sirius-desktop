@@ -361,7 +361,8 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
         } else {
             for (int i = 0; i < pointList.size() - expectedMovedBendpoint; i++) {
                 // Reconnecting from target will move the last bendpoints
-                Assert.assertEquals("Bendpoint " + pointList.getPoint(i) + " expected to be at " + originalPointList.getPoint(i), originalPointList.getPoint(i), pointList.getPoint(i));
+                Assert.assertEquals("Bendpoint " + pointList.getPoint(i) + " expected to be at " + originalPointList.getPoint(i), originalPointList.getPoint(i).x, pointList.getPoint(i).x, 1);
+                Assert.assertEquals("Bendpoint " + pointList.getPoint(i) + " expected to be at " + originalPointList.getPoint(i), originalPointList.getPoint(i).y, pointList.getPoint(i).y, 1);
             }
         }
     }
