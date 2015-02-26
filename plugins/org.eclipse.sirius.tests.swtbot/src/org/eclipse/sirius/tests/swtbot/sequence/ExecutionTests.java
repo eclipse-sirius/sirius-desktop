@@ -69,7 +69,7 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
      */
     public void test_Zoom() {
         // Not available in 4.x specific Tabbar
-        if (TestsUtil.isEclipse4xPlatform()) {
+        if (TestsUtil.isDynamicTabbar()) {
             return;
         }
         try {

@@ -130,6 +130,9 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
         suite.addTestSuite(DragAndDropDifferentElementsTest.class);
         suite.addTestSuite(CellEditorExtensionTest.class);
+        suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
+        
+
     }
 
     /**
@@ -243,7 +246,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(PortNotVisibleSelectionTest.class);
         suite.addTestSuite(RefreshAfterUndoDeletionFromGenericToolTest.class);
         suite.addTestSuite(RefreshAfterViewCreationTest.class);
-        suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
         suite.addTestSuite(RefreshWithCustomizedStyleFromAppearanceTabTests.class);
         suite.addTestSuite(RefreshWithCustomizedStyleFromTabbarTests.class);
         suite.addTestSuite(ResizeKindRefreshTests.class);

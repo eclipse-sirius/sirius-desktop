@@ -82,7 +82,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
      */
     public void testSetWorkspaceImageStyleCustomization() throws Exception {
         // Not available in 4.x specific Tabbar
-        if (TestsUtil.isEclipse4xPlatform()) {
+        if (TestsUtil.isDynamicTabbar()) {
             return;
         }
 
@@ -306,7 +306,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     private void testStyleCustomization(SWTBotGefEditPart swtBotGefEditPart) throws Exception {
         // Not available in 4.x specific Tabbar
-        if (TestsUtil.isEclipse4xPlatform()) {
+        if (TestsUtil.isDynamicTabbar()) {
             return;
         }
 

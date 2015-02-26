@@ -123,7 +123,7 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testTabBarRoutingStyle() throws Exception {
         // Not available in 4.x specific Tabbar
-        if (TestsUtil.isEclipse4xPlatform()) {
+        if (TestsUtil.isDynamicTabbar()) {
             return;
         }
 
