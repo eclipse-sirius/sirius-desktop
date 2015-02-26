@@ -70,6 +70,16 @@ h4. Changes in @org.eclipse.sirius.tree@
 
 * The method @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.refreshContent(boolean fullRefresh)@ has been added to allow full refresh from a specified @DTreeItem@.
 * The EMF Command @org.eclipse.sirius.tree.business.api.command.DTreeItemLocalRefreshCommand@ has been added to call @DTreeItemUserInteraction.refreshContent(boolean fullRefresh)@ in an EMF Command. 
+* The constructor @org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand.DTreeItemExpansionChangeCommand(GlobalContext, TransactionalEditingDomain, DTreeItem, IProgressMonitor, boolean)@ have an additional @IProgressMonitor@ parameter.
+* The method @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.expand(IProgressMonitor)@ has been added similar to @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.expand()@ but taking a @IProgressMonitor@ in parameter to have progression on @DTreeItem@ expanding.
+* The method @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.collapse(IProgressMonitor)@ has been added similar to @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.collapse()@ but taking a @IProgressMonitor@ in parameter to have progression on @DTreeItem@ collapsing.
+* The method @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.expandAll(IProgressMonitor)@ has been added similar to @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.expandAll()@ but taking a @IProgressMonitor@ in parameter to have progression on @DTreeItem@ expanding.
+* The method @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.refreshContent(boolean, IProgressMonitor)@ has been added similar to @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.refreshContent(boolean)@ but taking a @IProgressMonitor@ in parameter to have progression on @DTreeItem@ expanding.
+* The method @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expand(IProgressMonitor)@ has been added similar to @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expand()@ but taking a @IProgressMonitor@ in parameter to have progression on @DTreeItem@ expanding.
+* The method @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expandAll(IProgressMonitor)@ has been added similar to @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expandAll()@ but taking a @IProgressMonitor@ in parameter to have progression on @DTreeItem@ expanding.
+
+h4. Changes in @org.eclipse.sirius.synchronizer@
+* The method @org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean, IProgressMonitor)@ has been added similar to @org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)@ but taking a @IProgressMonitor@ in parameter to have progression on synchronization.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 

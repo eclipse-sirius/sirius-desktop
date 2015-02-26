@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.api.interaction;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.query.DTreeItemQuery;
@@ -49,17 +51,35 @@ public class DTreeItemUserInteraction {
      * Expands the treeItem.
      */
     public void expand() {
+        expand(new NullProgressMonitor());
+    }
+
+    /**
+     * Expands the treeItem.
+     * 
+     * @param monitor
+     *            a {@link IProgressMonitor} to give progression
+     */
+    public void expand(IProgressMonitor monitor) {
         item.setExpanded(true);
-        refreshContent();
+        refreshContent(false, monitor);
     }
 
     /**
      * Expands all child of the treeItem.
+     * 
+     * @param monitor
+     *            a {@link IProgressMonitor} to give progression
      */
-    public void expandAll() {
-        expand();
-        for (DTreeItem child : item.getOwnedTreeItems()) {
-            new DTreeItemUserInteraction(child, ctx).expandAll();
+    public void expandAll(IProgressMonitor monitor) {
+        try {
+            monitor.beginTask("Tree item expandion", item.getOwnedTreeItems().size() + 1);
+            expand(new SubProgressMonitor(monitor, 1));
+            for (DTreeItem child : item.getOwnedTreeItems()) {
+                new DTreeItemUserInteraction(child, ctx).expandAll(new SubProgressMonitor(monitor, 1));
+            }
+        } finally {
+            monitor.done();
         }
     }
 
@@ -78,11 +98,25 @@ public class DTreeItemUserInteraction {
      *            children recursively
      */
     public void refreshContent(boolean fullRefresh) {
+        refreshContent(fullRefresh, new NullProgressMonitor());
+    }
+
+    /**
+     * Refresh the content of the TreeItem.
+     * 
+     * @param fullRefresh
+     *            true to do a full refresh of the {@link DTreeItem} and its
+     *            children recursively
+     * 
+     * @param monitor
+     *            a {@link IProgressMonitor} to give progression
+     */
+    public void refreshContent(boolean fullRefresh, IProgressMonitor monitor) {
         SemanticPartitionInvalidator invalidator = new SemanticPartitionInvalidator();
         Option<DTree> parentTree = new DTreeItemQuery(item).getParentTree();
         if (parentTree.some()) {
             DTreeRefresh refresher = new DTreeRefresh(item, new TreeDescriptionQuery(parentTree.get().getDescription()).getAllDescendantMappings(), invalidator, ctx);
-            refresher.refresh(fullRefresh, new NullProgressMonitor());
+            refresher.refresh(fullRefresh, monitor);
         }
     }
 
@@ -97,9 +131,19 @@ public class DTreeItemUserInteraction {
     }
 
     /**
-     * Collapses the treeItem.
+     * Collapse the treeItem.
      */
     public void collapse() {
+        collapse(new NullProgressMonitor());
+    }
+
+    /**
+     * Collapses the treeItem.
+     * 
+     * @param monitor
+     *            a {@link IProgressMonitor} to give progression
+     */
+    public void collapse(IProgressMonitor monitor) {
         item.setExpanded(false);
     }
 

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.business.api.interaction;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator;
@@ -51,7 +52,7 @@ public class DTreeUserInteraction {
      * Refreshes the content of the DTree.
      * 
      * @param monitor
-     *            a {@link IProgressMonitor} to use
+     *            a {@link IProgressMonitor} to give progression
      * 
      * @return this user interaction for convenience
      */
@@ -91,8 +92,25 @@ public class DTreeUserInteraction {
      * @return this user interaction
      */
     public DTreeUserInteraction expandAll() {
-        for (DTreeItem child : tree.getOwnedTreeItems()) {
-            new DTreeItemUserInteraction(child, ctx).expandAll();
+        return expand(new NullProgressMonitor());
+    }
+
+    /**
+     * Expands all items of the DTree recursively.
+     * 
+     * @param monitor
+     *            a {@link IProgressMonitor} to give progression
+     * 
+     * @return this user interaction
+     */
+    public DTreeUserInteraction expandAll(IProgressMonitor monitor) {
+        try {
+            monitor.beginTask("Tree item expandion", tree.getOwnedTreeItems().size());
+            for (DTreeItem child : tree.getOwnedTreeItems()) {
+                new DTreeItemUserInteraction(child, ctx).expandAll(new SubProgressMonitor(monitor, 1));
+            }
+        } finally {
+            monitor.done();
         }
         return this;
     }
@@ -101,12 +119,32 @@ public class DTreeUserInteraction {
      * Expand all root items of the DTree.
      * 
      * @return this user interaction
+     * 
      */
     public DTreeUserInteraction expand() {
-        for (DTreeItem child : tree.getOwnedTreeItems()) {
-            if (!child.isExpanded()) {
-                new DTreeItemUserInteraction(child, ctx).expand();
+        return expand(new NullProgressMonitor());
+    }
+
+    /**
+     * Expand all root items of the DTree.
+     * 
+     * @return this user interaction
+     * 
+     * @param monitor
+     *            a {@link IProgressMonitor} to give progression
+     */
+    public DTreeUserInteraction expand(IProgressMonitor monitor) {
+        try {
+            monitor.beginTask("Tree item expanding", tree.getOwnedTreeItems().size());
+            for (DTreeItem child : tree.getOwnedTreeItems()) {
+                if (!child.isExpanded()) {
+                    new DTreeItemUserInteraction(child, ctx).expand(new SubProgressMonitor(monitor, 1));
+                } else {
+                    monitor.worked(1);
+                }
             }
+        } finally {
+            monitor.done();
         }
         return this;
     }

@@ -12,6 +12,8 @@ package org.eclipse.sirius.synchronizer;
 
 import java.util.Collection;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -44,57 +46,75 @@ public class ModelToModelSynchronizer {
     }
 
     public void update(CreatedOutput container, boolean fullRefresh) {
-        RefreshPlan plan = new RefreshPlanner(this.table, this.evaluator, this.pre, this.signatureProvider).computePlan(container);
-
-        Collection<CreatedOutput> descriptorsToDelete = plan.getDescriptorsToDelete();
-        Collection<OutputDescriptor> descriptorsToCreate = plan.getDescriptorsToCreate();
-        Collection<CreatedOutput> descriptorsToRefresh = plan.getDescriptorsToRefresh();
-        // Refresh children only if needed
-        Option<? extends ChildCreationSupport> childSupport = container.getChildSupport();
-        if (container.synchronizeChildren() || fullRefresh) {
-            if (childSupport.some()) {
-
-                ChildCreationSupport containerChildSupport = childSupport.get();
-                for (CreatedOutput outDesc : descriptorsToDelete) {
-                    containerChildSupport.deleteChild(outDesc);
-                }
-
-                Collection<CreatedOutput> newlyCreated = Lists.newArrayList();
-                for (OutputDescriptor outDesc : descriptorsToCreate) {
-                    CreatedOutput newOne = containerChildSupport.createChild(outDesc);
-                    newOne.refresh();
-                    // update(newOne);
-                    newlyCreated.add(newOne);
-                }
-
-                Iterable<CreatedOutput> createdOrRefreshed = Iterables.concat(descriptorsToRefresh, newlyCreated);
-                containerChildSupport.reorderChilds(createdOrRefreshed);
-
-                for (CreatedOutput createdOutput : createdOrRefreshed) {
-                    update(createdOutput, fullRefresh);
-                }
-            }
-
-            for (CreatedOutput outDesc : plan.getDescriptorToUpdateMapping()) {
-                outDesc.updateMapping();
-                outDesc.refresh();
-            }
-
-            for (CreatedOutput outDesc : descriptorsToRefresh) {
-                outDesc.refresh();
-            }
-        } else {
-            if (childSupport.some()) {
-                EObject createdElement = container.getCreatedElement();
-                if (createdElement != null && descriptorsToRefresh.isEmpty() && !descriptorsToCreate.isEmpty()) {
-                    // Create only one children not refreshed to have
-                    // ITreeContentProvider.hasChildren() returning true
-                    ChildCreationSupport containerChildSupport = childSupport.get();
-                    OutputDescriptor outDesc = descriptorsToCreate.iterator().next();
-                    containerChildSupport.createChild(outDesc);
-                }
-            }
-        }
+        update(container, fullRefresh, new NullProgressMonitor());
     }
 
+    public void update(CreatedOutput container, boolean fullRefresh, IProgressMonitor monitor) {
+        try {
+            RefreshPlan plan = new RefreshPlanner(this.table, this.evaluator, this.pre, this.signatureProvider).computePlan(container);
+
+            Collection<CreatedOutput> descriptorsToDelete = plan.getDescriptorsToDelete();
+            Collection<OutputDescriptor> descriptorsToCreate = plan.getDescriptorsToCreate();
+            Collection<CreatedOutput> descriptorsToRefresh = plan.getDescriptorsToRefresh();
+            // Refresh children only if needed
+            Option<? extends ChildCreationSupport> childSupport = container.getChildSupport();
+            if (container.synchronizeChildren() || fullRefresh) {
+                int nbSteps = 1 + plan.getDescriptorToUpdateMapping().size() + descriptorsToRefresh.size();
+                if (childSupport.some()) {
+                    nbSteps += descriptorsToCreate.size() * 2 + descriptorsToDelete.size() + descriptorsToRefresh.size();
+                }
+                monitor.beginTask("Synchronization", nbSteps);
+                if (childSupport.some()) {
+                    ChildCreationSupport containerChildSupport = childSupport.get();
+                    for (CreatedOutput outDesc : descriptorsToDelete) {
+                        containerChildSupport.deleteChild(outDesc);
+                        monitor.worked(1);
+                    }
+
+                    Collection<CreatedOutput> newlyCreated = Lists.newArrayList();
+                    for (OutputDescriptor outDesc : descriptorsToCreate) {
+                        CreatedOutput newOne = containerChildSupport.createChild(outDesc);
+                        newOne.refresh();
+                        // update(newOne);
+                        newlyCreated.add(newOne);
+                        monitor.worked(1);
+                    }
+
+                    Iterable<CreatedOutput> createdOrRefreshed = Iterables.concat(descriptorsToRefresh, newlyCreated);
+                    containerChildSupport.reorderChilds(createdOrRefreshed);
+
+                    for (CreatedOutput createdOutput : createdOrRefreshed) {
+                        update(createdOutput, fullRefresh);
+                        monitor.worked(1);
+                    }
+                }
+
+                for (CreatedOutput outDesc : plan.getDescriptorToUpdateMapping()) {
+                    outDesc.updateMapping();
+                    outDesc.refresh();
+                    monitor.worked(1);
+                }
+
+                for (CreatedOutput outDesc : descriptorsToRefresh) {
+                    outDesc.refresh();
+                    monitor.worked(1);
+                }
+            } else {
+                monitor.beginTask("Synchronization", 1);
+                if (childSupport.some()) {
+                    EObject createdElement = container.getCreatedElement();
+                    if (createdElement != null && descriptorsToRefresh.isEmpty() && !descriptorsToCreate.isEmpty()) {
+                        // Create only one children not refreshed to have
+                        // ITreeContentProvider.hasChildren() returning true
+                        ChildCreationSupport containerChildSupport = childSupport.get();
+                        OutputDescriptor outDesc = descriptorsToCreate.iterator().next();
+                        containerChildSupport.createChild(outDesc);
+                    }
+                }
+                monitor.worked(1);
+            }
+        } finally {
+            monitor.done();
+        }
+    }
 }

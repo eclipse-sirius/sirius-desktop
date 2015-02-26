@@ -239,7 +239,54 @@
 				<code>org.eclipse.sirius.tree.business.api.command.DTreeItemLocalRefreshCommand</code> has been added to call 
 				<code>DTreeItemUserInteraction.refreshContent(boolean fullRefresh)</code> in an EMF Command. 
 			</li>
+			<li>The constructor 
+				<code>org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand.DTreeItemExpansionChangeCommand(GlobalContext, TransactionalEditingDomain, DTreeItem, IProgressMonitor, boolean)</code> have an additional 
+				<code>IProgressMonitor</code> parameter.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.expand(IProgressMonitor)</code> has been added similar to 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.expand()</code> but taking a 
+				<code>IProgressMonitor</code> in parameter to have progression on 
+				<code>DTreeItem</code> expanding.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.collapse(IProgressMonitor)</code> has been added similar to 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.collapse()</code> but taking a 
+				<code>IProgressMonitor</code> in parameter to have progression on 
+				<code>DTreeItem</code> collapsing.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.expandAll(IProgressMonitor)</code> has been added similar to 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.expandAll()</code> but taking a 
+				<code>IProgressMonitor</code> in parameter to have progression on 
+				<code>DTreeItem</code> expanding.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.refreshContent(boolean, IProgressMonitor)</code> has been added similar to 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.refreshContent(boolean)</code> but taking a 
+				<code>IProgressMonitor</code> in parameter to have progression on 
+				<code>DTreeItem</code> expanding.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expand(IProgressMonitor)</code> has been added similar to 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expand()</code> but taking a 
+				<code>IProgressMonitor</code> in parameter to have progression on 
+				<code>DTreeItem</code> expanding.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expandAll(IProgressMonitor)</code> has been added similar to 
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expandAll()</code> but taking a 
+				<code>IProgressMonitor</code> in parameter to have progression on 
+				<code>DTreeItem</code> expanding.
+			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
+			<code>org.eclipse.sirius.synchronizer</code>
+			* The method 
+			<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean, IProgressMonitor)</code> has been added similar to 
+			<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)</code> but taking a 
+			<code>IProgressMonitor</code> in parameter to have progression on synchronization.
+		</h4>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
@@ -696,7 +743,7 @@
 				<code>DTreeItem</code>. On expansion a refresh of children is done.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer2">Changes in 
 			<code>org.eclipse.sirius.synchronizer</code>
 		</h4>
 		<ul>
@@ -1376,7 +1423,7 @@
 				<code>com.google.common.base.Function</code>, but keeps the same API otherwise.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.synchronizer2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer3">Changes in 
 			<code>org.eclipse.sirius.synchronizer</code>
 		</h4>
 		<ul>

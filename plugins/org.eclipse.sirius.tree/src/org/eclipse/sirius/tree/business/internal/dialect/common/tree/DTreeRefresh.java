@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -122,7 +123,7 @@ public class DTreeRefresh {
      */
     public void refresh(boolean fullRefresh, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh tree", 4);
+            monitor.beginTask("Refresh tree", 8);
             if (ctx.getModelAccessor().getPermissionAuthority().canEditInstance(container)) {
                 MappingHiearchyTable hierarchy = new MappingHiearchyTable();
                 SignatureProvider signProvider = new TreeSignatureProvider(hierarchy);
@@ -146,8 +147,7 @@ public class DTreeRefresh {
                 CreatedOutput cDiag = buildOutput(provider);
                 monitor.worked(1);
 
-                refresher.update(cDiag, fullRefresh);
-                monitor.worked(1);
+                refresher.update(cDiag, fullRefresh, new SubProgressMonitor(monitor, 5));
             }
         } finally {
             monitor.done();

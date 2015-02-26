@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.api.command;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -29,6 +31,8 @@ public class DTreeItemExpansionChangeCommand extends RecordingCommand {
 
     private boolean expand;
 
+    private IProgressMonitor monitor;
+
     /**
      * Default constructor.
      * 
@@ -47,14 +51,38 @@ public class DTreeItemExpansionChangeCommand extends RecordingCommand {
         this.globalContext = globalContext;
         this.dTreeItem = dTreeItem;
         this.expand = expand;
+        this.monitor = new NullProgressMonitor();
+    }
+
+    /**
+     * Default constructor.
+     * 
+     * @param globalContext
+     *            the {@link GlobalContext} to synchronize the model.
+     * @param domain
+     *            the {@link TransactionalEditingDomain} on which execute this
+     *            command
+     * @param dTreeItem
+     *            the {@link DTreeItem} to expand/collapse
+     * @param expand
+     *            true to expand, false to collapse
+     * @param monitor
+     *            a {@link IProgressMonitor} to give progression
+     */
+    public DTreeItemExpansionChangeCommand(GlobalContext globalContext, TransactionalEditingDomain domain, DTreeItem dTreeItem, IProgressMonitor monitor, boolean expand) {
+        super(domain, (expand ? "Expand" : "Collapse") + " \"" + dTreeItem.getName() + "\" tree item");
+        this.globalContext = globalContext;
+        this.dTreeItem = dTreeItem;
+        this.expand = expand;
+        this.monitor = monitor;
     }
 
     @Override
     protected void doExecute() {
         if (expand) {
-            new DTreeItemUserInteraction(dTreeItem, globalContext).expand();
+            new DTreeItemUserInteraction(dTreeItem, globalContext).expand(monitor);
         } else {
-            new DTreeItemUserInteraction(dTreeItem, globalContext).collapse();
+            new DTreeItemUserInteraction(dTreeItem, globalContext).collapse(monitor);
         }
     }
 }

@@ -10,21 +10,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.ui.tools.internal.editor.listeners;
 
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ITreeViewerListener;
 import org.eclipse.jface.viewers.TreeExpansionEvent;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tree.DTreeItem;
-import org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand;
-import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
-import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * A {@link ITreeViewerListener} to update the DTree model when a SWT TreeItem
@@ -48,34 +45,44 @@ public class DTreeViewerListener implements ITreeViewerListener {
 
     @Override
     public void treeExpanded(final TreeExpansionEvent event) {
-        if (event.getElement() instanceof DTreeItem) {
-            DTreeItem dTreeItem = (DTreeItem) event.getElement();
-            if (!dTreeItem.isExpanded()) {
-                TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-                CommandStack commandStack = domain.getCommandStack();
-                CompoundCommand expandDTreeItemCmd = new CompoundCommand("Expand " + dTreeItem.getName() + " tree item");
-                GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
-                expandDTreeItemCmd.append(new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, true));
-                if (!Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
-                    SiriusCommand result = new SiriusCommand(domain);
-                    result.getTasks().add(new RefreshTreeElementTask((DTreeItem) event.getElement()));
-                    expandDTreeItemCmd.append(result);
-                }
-                commandStack.execute(expandDTreeItemCmd);
-            }
-        }
+        treeExpandingCollapsingAction(event, true, "expanding the tree.");
     }
 
     @Override
     public void treeCollapsed(final TreeExpansionEvent event) {
+        treeExpandingCollapsingAction(event, false, "collapsing the tree.");
+    }
+
+    /**
+     * Expanding/collapsing a DTreeItem.
+     * 
+     * @param event
+     *            the tree expansion event
+     * @param expand
+     *            true to expand, false to collapse
+     * @param errorMessage
+     *            the error message while expanding/collapsing the tree
+     */
+    private void treeExpandingCollapsingAction(final TreeExpansionEvent event, final boolean expand, final String errorMessage) {
         if (event.getElement() instanceof DTreeItem) {
-            DTreeItem dTreeItem = (DTreeItem) event.getElement();
-            if (dTreeItem.isExpanded()) {
-                TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-                CommandStack commandStack = domain.getCommandStack();
-                GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
-                Command collapseDTreeItemCmd = new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, false);
-                commandStack.execute(collapseDTreeItemCmd);
+            final DTreeItem dTreeItem = (DTreeItem) event.getElement();
+            if ((expand && !dTreeItem.isExpanded()) || (!expand && dTreeItem.isExpanded())) {
+                final Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+                final ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(activeShell);
+                activeShell.getDisplay().asyncExec(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            monitorDialog.run(true, false, new ExpandDTreeItemRunnableWithProgress(session, dTreeItem, expand));
+                        } catch (InvocationTargetException e) {
+                            TreeUIPlugin.INSTANCE.log(new Status(IStatus.ERROR, TreeUIPlugin.ID, "Error while " + errorMessage, e));
+                        } catch (InterruptedException e) {
+                            TreeUIPlugin.INSTANCE.log(new Status(IStatus.WARNING, TreeUIPlugin.ID, "Interruption while " + errorMessage, e));
+                        }
+                    }
+                });
+
             }
         }
     }
