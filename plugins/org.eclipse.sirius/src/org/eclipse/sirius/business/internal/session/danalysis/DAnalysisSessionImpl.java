@@ -430,7 +430,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.registerAnalysis(analysis);
         }
-        tracker.addAdaptersOnAnalysis(analysis);
+        if (tracker != null) {
+            tracker.addAdaptersOnAnalysis(analysis);
+        }
     }
 
     @Override
@@ -438,7 +440,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.unregisterAnalysis(analysis);
         }
-        tracker.removeAdaptersOnAnalysis(analysis);
+        if (tracker != null) {
+            tracker.removeAdaptersOnAnalysis(analysis);
+        }
     }
 
     @Override
@@ -666,7 +670,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public Collection<Resource> getSemanticResources() {
-        return tracker.getSemanticResources();
+        if (tracker != null) {
+            return tracker.getSemanticResources();
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @Override
@@ -703,7 +711,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
-        tracker.discoverAutomaticallyLoadedSemanticResources(allResources);
+        if (tracker != null) {
+            tracker.discoverAutomaticallyLoadedSemanticResources(allResources);
+        }
     }
 
     // *******************
