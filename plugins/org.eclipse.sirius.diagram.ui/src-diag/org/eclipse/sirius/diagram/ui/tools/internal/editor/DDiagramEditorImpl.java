@@ -1474,10 +1474,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                 request.setEditParts(list);
                 return request;
             }
-            
+
             @Override
             public void setCurrentEvent(DropTargetEvent currentEvent) {
-                if (currentEvent!=null) {
+                if (currentEvent != null) {
                     currentEvent.detail = DND.DROP_COPY;
                 }
                 super.setCurrentEvent(currentEvent);
