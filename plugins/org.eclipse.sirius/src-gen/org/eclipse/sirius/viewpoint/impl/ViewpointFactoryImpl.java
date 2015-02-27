@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.internal.metamodel.spec.DRepresentationContainerSpec;
 import org.eclipse.sirius.business.internal.metamodel.spec.DSourceFileLinkSpec;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
@@ -142,8 +141,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return createLabelAlignmentFromString(eDataType, initialValue);
         case ViewpointPackage.SYNC_STATUS:
             return createSyncStatusFromString(eDataType, initialValue);
-        case ViewpointPackage.EXTENDED_PACKAGE:
-            return createExtendedPackageFromString(eDataType, initialValue);
         case ViewpointPackage.RGB_VALUES:
             return createRGBValuesFromString(eDataType, initialValue);
         default:
@@ -165,8 +162,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return convertLabelAlignmentToString(eDataType, instanceValue);
         case ViewpointPackage.SYNC_STATUS:
             return convertSyncStatusToString(eDataType, instanceValue);
-        case ViewpointPackage.EXTENDED_PACKAGE:
-            return convertExtendedPackageToString(eDataType, instanceValue);
         case ViewpointPackage.RGB_VALUES:
             return convertRGBValuesToString(eDataType, instanceValue);
         default:
@@ -397,24 +392,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      */
     public String convertSyncStatusToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ModelAccessor createExtendedPackageFromString(EDataType eDataType, String initialValue) {
-        return (ModelAccessor) super.createFromString(eDataType, initialValue);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public String convertExtendedPackageToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
     }
 
     /**

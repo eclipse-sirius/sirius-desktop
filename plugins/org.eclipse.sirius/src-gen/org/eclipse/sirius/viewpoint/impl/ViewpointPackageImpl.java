@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -312,13 +311,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EEnum syncStatusEEnum = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EDataType extendedPackageEDataType = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1196,15 +1188,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EDataType getExtendedPackage() {
-        return extendedPackageEDataType;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public ViewpointFactory getViewpointFactory() {
         return (ViewpointFactory) getEFactoryInstance();
     }
@@ -1348,7 +1331,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         syncStatusEEnum = createEEnum(SYNC_STATUS);
 
         // Create data types
-        extendedPackageEDataType = createEDataType(EXTENDED_PACKAGE);
         rgbValuesEDataType = createEDataType(RGB_VALUES);
     }
 
@@ -1602,7 +1584,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         addEEnumLiteral(syncStatusEEnum, SyncStatus.SYNC);
 
         // Initialize data types
-        initEDataType(extendedPackageEDataType, ModelAccessor.class, "ExtendedPackage", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(rgbValuesEDataType, RGBValues.class, "RGBValues", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource

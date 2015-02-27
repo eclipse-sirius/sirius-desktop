@@ -1101,7 +1101,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getRGBValues()
      * @generated
      */
-    int RGB_VALUES = 35;
+    int RGB_VALUES = 34;
 
     /**
      * The meta object id for the '
@@ -1499,16 +1499,6 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      */
     int SYNC_STATUS = 33;
-
-    /**
-     * The meta object id for the '<em>Extended Package</em>' data type. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor
-     * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getExtendedPackage()
-     * @generated
-     */
-    int EXTENDED_PACKAGE = 34;
 
     /**
      * Returns the meta object for class '
@@ -2555,20 +2545,6 @@ public interface ViewpointPackage extends EPackage {
     EEnum getSyncStatus();
 
     /**
-     * Returns the meta object for data type '
-     * {@link org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor
-     * <em>Extended Package</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for data type '<em>Extended Package</em>'.
-     * @see org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor
-     * @model instanceClass=
-     *        "org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor"
-     * @generated
-     */
-    EDataType getExtendedPackage();
-
-    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3420,16 +3396,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EEnum SYNC_STATUS = eINSTANCE.getSyncStatus();
-
-        /**
-         * The meta object literal for the '<em>Extended Package</em>' data
-         * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor
-         * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getExtendedPackage()
-         * @generated
-         */
-        EDataType EXTENDED_PACKAGE = eINSTANCE.getExtendedPackage();
 
     }
 

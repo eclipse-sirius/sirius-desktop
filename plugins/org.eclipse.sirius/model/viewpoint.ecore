@@ -276,7 +276,6 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//description/style/StyleDescription"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="ExtendedPackage" instanceClassName="org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor"/>
   <eClassifiers xsi:type="ecore:EEnum" name="LabelAlignment">
     <eLiterals name="CENTER"/>
     <eLiterals name="LEFT" value="1"/>
