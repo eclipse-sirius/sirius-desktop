@@ -1566,12 +1566,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
         set.getResources().remove(res);
 
-        if (res.getContents().size() > 0) {
-            final EObject root = res.getContents().get(0);
-            for (final DAnalysis analysis : this.allAnalyses()) {
-                analysis.getModels().remove(root);
-            }
+        // update models in aird resource
+        // The semantic resources are updated by the SemanticResourcesUpdater
+        EObject rootObject = semanticResourcesUpdater.getRootObjectFromResourceURI(res.getURI().toString());
+        for (final DAnalysis analysis : this.allAnalyses()) {
+            analysis.getModels().remove(rootObject);
         }
+
         disableCrossReferencerResolve(res);
         unregisterResourceInCrossReferencer(res);
         if (couldBeUnload(set, res)) {
