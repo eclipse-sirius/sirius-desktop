@@ -123,6 +123,21 @@ import com.google.common.collect.Sets;
  * @author mchauvin
  */
 public abstract class SiriusTestCase extends TestCase {
+
+    /**
+     * Type of the URI.
+     */
+    public enum ResourceURIType {
+        /**
+         * URI of type platform.
+         */
+        RESOURCE_PLATFORM_URI,
+        /**
+         * URI of type plugin.
+         */
+        RESOURCE_PLUGIN_URI
+    }
+
     /** Initialization error message. */
     public static final String INIT_ERROR_MSG = "An error occurs during tests initialization";
 
@@ -223,6 +238,7 @@ public abstract class SiriusTestCase extends TestCase {
     private final HashMap<String, Object> oldValueSiriusUIPreferences = new HashMap<String, Object>();
 
     private final HashMap<String, Object> oldPlatformUIPreferences = new HashMap<String, Object>();
+
 
     /**
      * Overridden to create the project. {@inheritDoc}
@@ -327,6 +343,31 @@ public abstract class SiriusTestCase extends TestCase {
         genericSetUp(semanticModelUris, modelerDescUris, true, toURI(representationsModelPath));
     }
 
+    /**
+     * Convert path to URI.
+     * 
+     * @param path
+     *            the path
+     * @param uriType
+     *            type of the URI to create
+     * @return the URI
+     */
+    protected URI toURI(final String path, ResourceURIType uriType) {
+        URI uri = null;
+        if (path != null) {
+            String consistentPath = path;
+            if (!path.startsWith("/")) {
+                consistentPath = '/' + path;
+            }
+            if (uriType.equals(ResourceURIType.RESOURCE_PLATFORM_URI)) {
+                uri = URI.createPlatformResourceURI(consistentPath, true);
+            } else if (uriType.equals(ResourceURIType.RESOURCE_PLUGIN_URI)) {
+                uri = URI.createPlatformPluginURI(consistentPath, true);
+            }
+        }
+        return uri;
+    }
+
     private URI toURI(final String path) {
         if (path != null) {
             URI uri;
@@ -334,19 +375,32 @@ public abstract class SiriusTestCase extends TestCase {
              * if path starts with the temporary project name, then we have a
              * local resource uri
              */
-            if (path.startsWith(SiriusTestCase.TEMPORARY_PROJECT_NAME)) {
-                uri = URI.createPlatformResourceURI('/' + path, true);
-            } else if (path.startsWith('/' + SiriusTestCase.TEMPORARY_PROJECT_NAME)) {
-                uri = URI.createPlatformResourceURI(path, true);
+            if (path.startsWith(SiriusTestCase.TEMPORARY_PROJECT_NAME) || (path.startsWith('/' + SiriusTestCase.TEMPORARY_PROJECT_NAME))) {
+                uri = toURI(path, ResourceURIType.RESOURCE_PLATFORM_URI);
             } else {
-                uri = URI.createPlatformPluginURI(path, true);
+                uri = toURI(path, ResourceURIType.RESOURCE_PLUGIN_URI);
             }
             return uri;
         }
         return null;
     }
 
-    private void genericSetUp(final List<URI> semanticResourceURIs, final List<URI> modelerResourceURIs, boolean createSession, final URI sessionResourceURI) throws Exception {
+    /**
+     * Generic set up.
+     * 
+     * @param semanticResourceURIs
+     *            the semantic model paths
+     * @param modelerResourceURIs
+     *            the modeler description paths (PlatformPlugin or
+     *            PlatformResource)
+     * @param createSession
+     *            force session creation even if it already exists
+     * @param sessionResourceURI
+     *            the aird path
+     * @throws Exception
+     *             any exception
+     */
+    protected void genericSetUp(final List<URI> semanticResourceURIs, final List<URI> modelerResourceURIs, boolean createSession, final URI sessionResourceURI) throws Exception {
         TestsUtil.emptyEventsFromUIThread();
 
         /* Set no ui callbacks for tests */

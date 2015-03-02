@@ -116,6 +116,8 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
         // ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE,
         // null);
 
+        assertTrue("Deleted controlled resource is still in session controlled resources.", ((DAnalysisSessionEObject) session).getControlledResources().size() == 0);
+
         // check that no warning "loading resource while unloading it" has been
         // dispatched
         for (Iterator<IStatus> warning = warnings.values().iterator(); warning.hasNext();) {

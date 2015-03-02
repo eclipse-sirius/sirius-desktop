@@ -131,6 +131,10 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * @org.eclipse.sirius.tests.support.api.ImageComposer@ has been added to the test API to do assertions on image decorators. 
 
+* The @SiriusTestCase.ResourceURIType@ and @SiriusTestCase.toURI(final String, ResourceURIType)@ have been added to allow choosing the type of URI created(platform or plugin).
+
+* The @SiriusTestCase.genericSetUp@ method has been set to protected so that it can be called from concrete test cases. This method allows initializing session.
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * The methods @org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.deleteProject(UIProject)@ and @org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.deleteProject(String)@ have been deprecated, @org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)@ can be used instead.
