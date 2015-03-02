@@ -11,26 +11,19 @@
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
 import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
+import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
 
 /**
  * An abstract class which handles the variables and classloading status.
@@ -38,18 +31,11 @@ import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
  * @author cedric
  */
 public abstract class AcceleoAbstractInterpreter implements IInterpreter {
-
     /**
-     * This will be updated with the list of accessible viewpoint plugins, if
-     * any.
+     * Instance responsible for managing the imports, dependencies and Java
+     * Services.
      */
-    protected final Set<String> viewpointPlugins = Sets.newLinkedHashSet();
-
-    /**
-     * This will be updated with the list of accessible viewpoint projects
-     * present in the workspace, if any.
-     */
-    protected final Set<String> viewpointProjects = Sets.newLinkedHashSet();
+    protected JavaExtensionsManager javaExtensions;
 
     /**
      * This map will hold the values associated to given variable names. Note
@@ -64,35 +50,10 @@ public abstract class AcceleoAbstractInterpreter implements IInterpreter {
     private final Set<IVariableStatusListener> variableStatusListeners = Sets.newHashSet();
 
     /**
-     * Checks whether the given path exists in the plugins.
-     *
-     * @param path
-     *            The path we need to check.
-     * @return <code>true</code> if <em>path</em> denotes an existing plugin
-     *         resource, <code>false</code> otherwise.
+     * Create a new Interpreter.
      */
-    private static boolean existsInPlugins(String path) {
-        try {
-            URL url = new URL(path);
-            return FileLocator.find(url) != null;
-        } catch (MalformedURLException e) {
-            return false;
-        }
-    }
-
-    /**
-     * Checks whether the given path exists in the workspace.
-     *
-     * @param path
-     *            The path we need to check.
-     * @return <code>true</code> if <em>path</em> denotes an existing workspace
-     *         resource, <code>false</code> otherwise.
-     */
-    private static boolean existsInWorkspace(String path) {
-        if (path == null || path.length() == 0 || EcorePlugin.getWorkspaceRoot() == null) {
-            return false;
-        }
-        return ResourcesPlugin.getWorkspace().getRoot().exists(new Path(path));
+    public AcceleoAbstractInterpreter() {
+        javaExtensions = JavaExtensionsManager.createManagerWithOverride();
     }
 
     /**
@@ -142,8 +103,7 @@ public abstract class AcceleoAbstractInterpreter implements IInterpreter {
     public void dispose() {
         variables.clear();
         variableStatusListeners.clear();
-        viewpointPlugins.clear();
-        viewpointProjects.clear();
+        this.javaExtensions.dispose();
 
     }
 
@@ -211,20 +171,7 @@ public abstract class AcceleoAbstractInterpreter implements IInterpreter {
          * us all the VSM files as a Collection.
          */
         if (IInterpreter.FILES.equals(key)) {
-            if (value == null) {
-                viewpointProjects.clear();
-                viewpointPlugins.clear();
-            } else if (value instanceof Collection<?>) {
-                for (final String odesignPath : Iterables.filter((Collection<?>) value, String.class)) {
-                    final URI workspaceCandidate = URI.createPlatformResourceURI(odesignPath, true);
-                    final URI pluginCandidate = URI.createPlatformPluginURI(odesignPath, true);
-                    if (AcceleoAbstractInterpreter.existsInWorkspace(workspaceCandidate.toPlatformString(true))) {
-                        viewpointProjects.add(workspaceCandidate.segment(1));
-                    } else if (AcceleoAbstractInterpreter.existsInPlugins(URI.decode(pluginCandidate.toString()))) {
-                        viewpointPlugins.add(pluginCandidate.segment(1));
-                    }
-                }
-            }
+            javaExtensions.updateScope((Collection<String>) value);
         }
     }
 
@@ -255,6 +202,28 @@ public abstract class AcceleoAbstractInterpreter implements IInterpreter {
                 notifyVariableListeners();
             }
         }
+    }
+
+    @Override
+    public void addImport(String dependency) {
+        javaExtensions.addImport(dependency);
+
+    }
+
+    @Override
+    public void removeImport(String dependency) {
+        javaExtensions.removeImport(dependency);
+    }
+
+    @Override
+    public Collection<String> getImports() {
+        return javaExtensions.getImports();
+
+    }
+
+    @Override
+    public void clearImports() {
+        javaExtensions.clearImports();
     }
 
 }

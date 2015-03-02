@@ -20,8 +20,6 @@ import com.google.common.collect.Sets;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -53,21 +51,19 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.acceleo.aql.business.AQLSiriusPlugin;
 import org.eclipse.sirius.common.acceleo.aql.business.api.AQLConstants;
 import org.eclipse.sirius.common.acceleo.aql.business.api.ExpressionTrimmer;
 import org.eclipse.sirius.common.acceleo.aql.business.api.TypesUtil;
+import org.eclipse.sirius.common.tools.api.interpreter.ClassLoadingCallback;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.osgi.framework.Bundle;
 
 /**
  * A Sirius interpreter using the Acceleo Query Language. It only supports
@@ -76,8 +72,6 @@ import org.osgi.framework.Bundle;
  * @author cedric
  */
 public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
-
-    private final Collection<String> imports = new LinkedHashSet<String>();
 
     private LoadingCache<String, AstResult> parsedExpressions;
 
@@ -98,11 +92,39 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         }
     };
 
+    private final ClassLoadingCallback callback = new ClassLoadingCallback() {
+
+        @Override
+        public void loaded(String qualifiedName, Class<?> clazz) {
+            try {
+                queryEnvironment.registerServicePackage(clazz);
+            } catch (InvalidAcceleoPackageException e) {
+                AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), "Error loading Java extension class " + qualifiedName + " :" + e.getMessage(), e));
+            }
+
+        }
+
+        @Override
+        public void notFound(String qualifiedName) {
+            AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), "Could not find Java extension class " + qualifiedName));
+
+        }
+
+        @Override
+        public void unloaded(String qualifiedName, Class<?> clazz) {
+            // TODO implement the un-register once it is available in AQL.
+            // see Bug 461072
+
+        }
+    };
+
     /**
      * Create a new interpreter supporting the AQL evaluation engine.
      */
     public AQLSiriusInterpreter() {
+        super();
         this.queryEnvironment = new QueryEnvironment(xRef);
+        this.javaExtensions.addClassLoadingCallBack(callback);
         final IQueryBuilderEngine builder = new QueryBuilderEngine(queryEnvironment);
         this.parsedExpressions = CacheBuilder.newBuilder().maximumSize(500).build(new CacheLoader<String, AstResult>() {
 
@@ -113,7 +135,6 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
         });
         this.queryEnvironment.registerEPackage(EcorePackage.eINSTANCE);
-        this.queryEnvironment.registerCustomClassMapping(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class);
         registerEcoreModels(EPackage.Registry.INSTANCE);
 
     }
@@ -135,71 +156,9 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     }
 
     @Override
-    public void addImport(String dependency) {
-        if (dependency != null && dependency.contains(".") && !imports.contains(dependency)) {
-            imports.add(dependency);
-        }
-        updateServiceClasses();
-    }
-
-    private void updateServiceClasses() {
-        List<Class> classesToLoad = Lists.newArrayList();
-        for (String qualifiedName : this.imports) {
-            Class found = null;
-            Iterator<String> it = viewpointPlugins.iterator();
-            while (found == null && it.hasNext()) {
-                String bundleID = it.next();
-                found = loadClassInBundle(bundleID, qualifiedName);
-            }
-            if (found != null) {
-                classesToLoad.add(found);
-
-            }
-
-        }
-        for (Class found : classesToLoad) {
-            try {
-                queryEnvironment.registerServicePackage(found);
-            } catch (InvalidAcceleoPackageException e) {
-                AQLSiriusPlugin.getPlugin().log(new Status(IStatus.WARNING, AQLSiriusPlugin.getPlugin().getSymbolicName(), e.getMessage(), e));
-            }
-        }
-
-    }
-
-    private Class loadClassInBundle(String bundleID, String qualifiedName) {
-        Bundle requiredBundle = Platform.getBundle(bundleID);
-        if (requiredBundle != null) {
-            return loadClassInBundle(requiredBundle, qualifiedName);
-        }
-        return null;
-
-    }
-
-    private Class loadClassInBundle(Bundle bundle, String qualifiedName) {
-        try {
-            return bundle.loadClass(qualifiedName);
-        } catch (ClassNotFoundException e) {
-            /*
-             * nothing to report, move along to the next bundle.
-             */
-        } catch (NoClassDefFoundError e) {
-            /*
-             * nothing to report, move along to the next bundle.
-             */
-        }
-        return null;
-    }
-
-    @Override
-    public void clearImports() {
-        this.imports.clear();
-        updateServiceClasses();
-    }
-
-    @Override
     public void dispose() {
         super.dispose();
+        this.javaExtensions.removeClassLoadingCallBack(callback);
     }
 
     @Override
@@ -292,24 +251,11 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     }
 
     @Override
-    public Collection<String> getImports() {
-        return Collections.<String> unmodifiableCollection(this.imports);
-    }
-
-    @Override
     public String getVariablePrefix() {
         /*
          * no variable prefix for this interpreter.
          */
         return null;
-    }
-
-    @Override
-    public void removeImport(String dependency) {
-        if (this.imports.contains(dependency)) {
-            this.imports.remove(dependency);
-        }
-        updateServiceClasses();
     }
 
     @Override
@@ -320,20 +266,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     @Override
     public void setModelAccessor(ModelAccessor modelAccessor) {
         /*
-         * nothing to do
+         * AQL does not support the ModelAccessor yet.
          */
-    }
-
-    @Override
-    public void setProperty(Object key, Object value) {
-        super.setProperty(key, value);
-        if (IInterpreter.FILES.equals(key)) {
-            /*
-             * this.viewpointPlugins and/or this.viewpointProjects might have
-             * been updated. We have to update the loaded classes.
-             */
-            updateServiceClasses();
-        }
     }
 
     @Override
