@@ -10,7 +10,7 @@ h3. API Changes
 
 h4. Changes in @org.eclipse.sirius@
 
-* A new constructor has been added in @org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand@ allowing giving the boolean value @removeReferencingResources@ to indicate if the referencing resources are also to remove. Note that, in @doExecute@ method, a cast is done on @DAnalysisSessionImpl@ to avoid API break.
+* A new constructor has been added in @org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand@ allowing giving the boolean value @removeReferencingResources@ to indicate if the referencing resources are also to remove. Note that, in @doExecute@ method, a cast is done on @DAnalysisSessionImpl@ to avoid API break. Moreover, the @doExecute@ implementation has changed. The constructor parameter @removeFromControlledResources@ is not taken into account anymore because a fix allows a better resource management whatever controlled or not the resource is.
 
 h2(#sirius2.0.4). Changes in Sirius 2.0.4 (from Sirius 2.0.3)
 

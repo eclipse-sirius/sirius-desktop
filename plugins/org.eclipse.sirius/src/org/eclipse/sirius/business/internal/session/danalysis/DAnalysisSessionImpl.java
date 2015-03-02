@@ -487,6 +487,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return new DAnalysisesInternalQuery(super.getAnalyses()).getAllAnalyses();
     }
 
+    private Collection<Resource> getAllSemanticResources() {
+        Collection<Resource> semanticResources = new LinkedHashSet<Resource>(this.getSemanticResources());
+        semanticResources.addAll(this.getControlledResources());
+        return semanticResources;
+    }
+
     /*
      * unload only if resource has not an http scheme => this prevent special
      * resources such as http://www.eclipse.org/EMF/2002 to be unloaded
@@ -1558,6 +1564,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
+        set.getResources().remove(res);
+
         if (res.getContents().size() > 0) {
             final EObject root = res.getContents().get(0);
             for (final DAnalysis analysis : this.allAnalyses()) {
@@ -1569,7 +1577,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (couldBeUnload(set, res)) {
             res.unload();
         }
-        set.getResources().remove(res);
     }
 
     @Override
@@ -1722,7 +1729,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *            The resource to remove
      */
     private void removeResourceFromSession(Resource resource, IProgressMonitor pm) {
-        if (this.getSemanticResources().contains(resource)) {
+        if (this.getAllSemanticResources().contains(resource)) {
             getTransactionalEditingDomain().getCommandStack().execute(new RemoveSemanticResourceCommand(this, resource, false, new NullProgressMonitor(), false));
         } else if (this.getAllSessionResources().contains(resource)) {
             this.removeAnalysis(resource);

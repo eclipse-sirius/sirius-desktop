@@ -10,17 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.command.semantic;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-
-import com.google.common.collect.Lists;
 
 /**
  * Specific command do remove semantic resources from the given session.
@@ -109,17 +108,20 @@ public class RemoveSemanticResourceCommand extends RecordingCommand {
         if (monitor == null) {
             monitor = new NullProgressMonitor();
         }
-        if (semanticResource != null && session != null && session.getSemanticResources().contains(semanticResource)) {
-            if (session instanceof DAnalysisSessionImpl)
-                ((DAnalysisSessionImpl) session).removeSemanticResource(semanticResource, monitor, removeReferencingResources);
-            else
-                session.removeSemanticResource(semanticResource, monitor);
-        }
-        if (removeFromControlledResources && session instanceof DAnalysisSessionEObject && ((DAnalysisSessionEObject) session).getControlledResources().contains(semanticResource)) {
-            for (final EObject root : Lists.newArrayList(semanticResource.getContents())) {
-                EcoreUtil.remove(root);
+
+        if (semanticResource != null && session != null) {
+            Collection<Resource> semanticResources = new ArrayList<Resource>(session.getSemanticResources());
+            if (session instanceof DAnalysisSessionImpl) {
+                semanticResources.addAll(((DAnalysisSessionEObject) session).getControlledResources());
             }
-            ((DAnalysisSessionEObject) session).getControlledResources().remove(semanticResource);
+
+            if (semanticResources.contains(semanticResource)) {
+                if (session instanceof DAnalysisSessionImpl) {
+                    ((DAnalysisSessionImpl) session).removeSemanticResource(semanticResource, monitor, removeReferencingResources);
+                } else {
+                    session.removeSemanticResource(semanticResource, monitor);
+                }
+            }
         }
     }
 

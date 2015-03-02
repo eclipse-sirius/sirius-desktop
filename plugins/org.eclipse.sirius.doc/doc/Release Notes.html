@@ -56,7 +56,9 @@
 				<code>org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand</code> allowing giving the boolean value 
 				<code>removeReferencingResources</code> to indicate if the referencing resources are also to remove. Note that, in 
 				<code>doExecute</code> method, a cast is done on 
-				<code>DAnalysisSessionImpl</code> to avoid API break.
+				<code>DAnalysisSessionImpl</code> to avoid API break. Moreover, the 
+				<code>doExecute</code> implementation has changed. The constructor parameter 
+				<code>removeFromControlledResources</code> is not taken into account anymore because a fix allows a better resource management whatever controlled or not the resource is.
 			</li>
 		</ul>
 		<h2 id="sirius2.0.4">Changes in Sirius 2.0.4 (from Sirius 2.0.3)</h2>
