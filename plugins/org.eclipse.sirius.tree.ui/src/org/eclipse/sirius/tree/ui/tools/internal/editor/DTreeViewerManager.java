@@ -31,7 +31,6 @@ import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ISelectionProvider;
-import org.eclipse.jface.viewers.ITreeViewerListener;
 import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerColumn;
@@ -56,7 +55,7 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.AbstractToolActi
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.CreateToolItemAction;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.DeleteTreeItemsAction;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.EditorCreateTreeItemMenuAction;
-import org.eclipse.sirius.tree.ui.tools.internal.editor.listeners.DTreeViewerListener;
+import org.eclipse.sirius.tree.ui.tools.internal.editor.listeners.TreeItemExpansionManager;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeContentProvider;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeDecoratingLabelProvider;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeItemDropListener;
@@ -104,8 +103,6 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         imageRegistry.put(DELETE_IMG, ImageDescriptor.createFromURL((URL) TreeUIPlugin.INSTANCE.getImage(DELETE_IMG)));
         imageRegistry.put(CREATE_TREE_ITEM_IMG, ImageDescriptor.createFromURL((URL) TreeUIPlugin.INSTANCE.getImage(CREATE_TREE_ITEM_IMG)));
     }
-
-    private ITreeViewerListener treeViewerListener;
 
     private final ITreeCommandFactory treeCommandFactory;
 
@@ -168,6 +165,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
         DTreeViewer dTreeViewer = new DTreeViewer(composite, style, getAccessor().getPermissionAuthority());
         treeViewer = dTreeViewer;
+        new TreeItemExpansionManager(dTreeViewer.getTree(), getSession());
 
         // Add a focus listener to deactivate the EMF actions on the Tree
         treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(tableEditor, treeViewer.getTree()));
@@ -192,9 +190,6 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         initializeEditingSupport();
         initializeDragAndDropSupport();
         initializeKeyBindingSupport();
-
-        treeViewerListener = new DTreeViewerListener(getSession());
-        treeViewer.addTreeListener(treeViewerListener);
 
         // Manage height of the lines, selected colors,
         triggerCustomDrawingTreeItems();
@@ -490,8 +485,6 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
      */
     @Override
     public void dispose() {
-        treeViewer.removeTreeListener(treeViewerListener);
-        treeViewerListener = null;
         descriptionFileChangedNotifier.dispose();
         descriptionFileChangedNotifier = null;
         treeUIUpdater.dispose();

@@ -11,9 +11,7 @@
 package org.eclipse.sirius.tree.ui.tools.internal.editor;
 
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.tree.ui.tools.internal.editor.listeners.DTreeItemExpansionChecker;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeViewer;
-import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TreeItem;
 
@@ -23,8 +21,6 @@ import org.eclipse.swt.widgets.TreeItem;
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class DTreeViewer extends AbstractDTreeViewer {
-
-    private DTreeItemExpansionChecker dTreeItemExpansionChecker;
 
     /**
      * Creates a tree viewer on the given tree control. The viewer has no input,
@@ -40,7 +36,6 @@ public class DTreeViewer extends AbstractDTreeViewer {
      */
     public DTreeViewer(Composite parent, int style, IPermissionAuthority permissionAuthority) {
         super(parent, style);
-        dTreeItemExpansionChecker = new DTreeItemExpansionChecker(getTree(), permissionAuthority);
     }
 
     /**
@@ -83,18 +78,6 @@ public class DTreeViewer extends AbstractDTreeViewer {
             }
         }
         return maxLevel;
-    }
-
-    /**
-     * Overridden to remove the {@link DTreeItemExpansionChecker}.
-     * 
-     * {@inheritDoc}
-     */
-    @Override
-    protected void handleDispose(DisposeEvent event) {
-        dTreeItemExpansionChecker.dispose();
-        dTreeItemExpansionChecker = null;
-        super.handleDispose(event);
     }
 
 }

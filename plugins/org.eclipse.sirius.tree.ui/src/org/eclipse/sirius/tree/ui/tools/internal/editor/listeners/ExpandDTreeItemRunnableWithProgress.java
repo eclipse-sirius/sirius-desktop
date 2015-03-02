@@ -82,6 +82,13 @@ public class ExpandDTreeItemRunnableWithProgress implements IRunnableWithProgres
                     expandDTreeItemCmd.append(result);
                 }
                 commandStack.execute(expandDTreeItemCmd);
+                if (commandStack.getMostRecentCommand() != expandDTreeItemCmd) {
+                    // In case of monitor cancel the last executed command in
+                    // the commandStack will not be expandDTreeItemCmd then we
+                    // throw a InterruptedException to cancel the swt TreeItem
+                    // expand
+                    throw new InterruptedException();
+                }
             } else {
                 monitor.beginTask("Tree item collapsing", 1);
                 Command collapseDTreeItemCmd = new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, monitor, false);

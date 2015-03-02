@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -68,6 +69,9 @@ public class ModelToModelSynchronizer {
                     ChildCreationSupport containerChildSupport = childSupport.get();
                     for (CreatedOutput outDesc : descriptorsToDelete) {
                         containerChildSupport.deleteChild(outDesc);
+                        if (monitor.isCanceled()) {
+                            throw new OperationCanceledException();
+                        }
                         monitor.worked(1);
                     }
 
@@ -75,8 +79,10 @@ public class ModelToModelSynchronizer {
                     for (OutputDescriptor outDesc : descriptorsToCreate) {
                         CreatedOutput newOne = containerChildSupport.createChild(outDesc);
                         newOne.refresh();
-                        // update(newOne);
                         newlyCreated.add(newOne);
+                        if (monitor.isCanceled()) {
+                            throw new OperationCanceledException();
+                        }
                         monitor.worked(1);
                     }
 
@@ -85,6 +91,9 @@ public class ModelToModelSynchronizer {
 
                     for (CreatedOutput createdOutput : createdOrRefreshed) {
                         update(createdOutput, fullRefresh);
+                        if (monitor.isCanceled()) {
+                            throw new OperationCanceledException();
+                        }
                         monitor.worked(1);
                     }
                 }
@@ -92,11 +101,17 @@ public class ModelToModelSynchronizer {
                 for (CreatedOutput outDesc : plan.getDescriptorToUpdateMapping()) {
                     outDesc.updateMapping();
                     outDesc.refresh();
+                    if (monitor.isCanceled()) {
+                        throw new OperationCanceledException();
+                    }
                     monitor.worked(1);
                 }
 
                 for (CreatedOutput outDesc : descriptorsToRefresh) {
                     outDesc.refresh();
+                    if (monitor.isCanceled()) {
+                        throw new OperationCanceledException();
+                    }
                     monitor.worked(1);
                 }
             } else {

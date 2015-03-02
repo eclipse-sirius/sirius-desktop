@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
@@ -136,15 +137,24 @@ public class DTreeRefresh {
                         return provider.getOrCreate(from);
                     }
                 });
+                if (monitor.isCanceled()) {
+                    throw new OperationCanceledException();
+                }
                 monitor.worked(1);
 
                 hierarchy.compute(Lists.newArrayList(providedMappings));
+                if (monitor.isCanceled()) {
+                    throw new OperationCanceledException();
+                }
                 monitor.worked(1);
 
                 DTreePreRefreshStatus pre = new DTreePreRefreshStatus(ctx, provider);
                 ModelToModelSynchronizer refresher = new ModelToModelSynchronizer(this.invalidator, hierarchy, pre, signProvider);
 
                 CreatedOutput cDiag = buildOutput(provider);
+                if (monitor.isCanceled()) {
+                    throw new OperationCanceledException();
+                }
                 monitor.worked(1);
 
                 refresher.update(cDiag, fullRefresh, new SubProgressMonitor(monitor, 5));
