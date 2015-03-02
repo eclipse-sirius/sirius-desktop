@@ -32,6 +32,7 @@ import org.eclipse.sirius.tests.sample.component.Component;
 import org.eclipse.sirius.tests.sample.component.ComponentFactory;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 
 import com.google.common.collect.LinkedHashMultimap;
 
@@ -56,7 +57,7 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
      */
     protected final LinkedHashMultimap<String, IStatus> warnings = LinkedHashMultimap.create();
 
-    static final String fragmentFileName = "fragComponent.component";
+    static final String FRAGMENT_FILE_NAME = "fragComponent.component";
 
     @Override
     protected void setUp() throws Exception {
@@ -94,7 +95,8 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
         initSemanticResource();
 
         // check that semantic crossRefAdapter is set on fragmented resource
-        Resource fragmentedResource = editingDomain.getResourceSet().getResources().get(2);
+        Resource fragmentedResource = ((DAnalysisSessionEObject) session).getControlledResources().get(0);
+        assertNotNull(FRAGMENT_FILE_NAME + " should be part of session controlled resource", fragmentedResource);
         boolean found = false;
         for (Adapter adapter : fragmentedResource.eAdapters()) {
             if (adapter instanceof LazyCrossReferencer) {
@@ -105,11 +107,45 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
         assertTrue("The LazyCrossReferencer adapter is not set on fragmented resource", found);
 
         // simulation an EXTERNAL CHANGE of fragmentResource
-        File fragFile = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).getFile(fragmentFileName).getLocation().toFile();
+        File fragFile = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).getFile(FRAGMENT_FILE_NAME).getLocation().toFile();
         fragFile.setLastModified(System.currentTimeMillis());
 
         ResourceSetSync resourceSetSync = ResourceSetSync.getResourceSetSync(editingDomain).get();
         resourceSetSync.statusChanged(fragmentedResource, ResourceSetSync.ResourceStatus.SYNC, ResourceSetSync.ResourceStatus.EXTERNAL_CHANGED);
+
+        // check that no warning "loading resource while unloading it" has been
+        // dispatched
+        for (Iterator<IStatus> warning = warnings.values().iterator(); warning.hasNext();) {
+            IStatus status = warning.next();
+            if (status.getCode() == EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD) {
+                fail("Resource is being reloaded during its unload.");
+            }
+        }
+    }
+
+    /**
+     * Check that fragmented resource is not reloaded during its unload when it
+     * has been externally deleted.
+     * 
+     * @throws Exception
+     */
+    public void testDisablingCrossReferencerWhileDeletingResource() throws Exception {
+
+        // create session with empty aird
+        genericSetUp();
+
+        // add semantic resources
+        initSemanticResource();
+
+        // simulation of DELETION of fragmentResource
+        File fragFile = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).getFile(FRAGMENT_FILE_NAME).getLocation().toFile();
+        fragFile.delete();
+        ResourceSetSync resourceSetSync = ResourceSetSync.getResourceSetSync(editingDomain).get();
+        resourceSetSync.statusChanged(((DAnalysisSessionEObject) session).getControlledResources().get(0), ResourceSetSync.ResourceStatus.SYNC, ResourceSetSync.ResourceStatus.DELETED);
+        // Warning : Avoid using ResourcesPlugin because event are sent too late.
+        // ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, null);
+
+        assertTrue("Deleted controlled resource is still in session controlled resources.", ((DAnalysisSessionEObject) session).getControlledResources().size() == 0);
 
         // check that no warning "loading resource while unloading it" has been
         // dispatched
@@ -148,7 +184,7 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
         final URI fileMainComponentUri = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + "Maincomponent.component", true);
         final Resource rsMainComponent = rset.createResource(fileMainComponentUri);
 
-        final URI fileFragComponentUri = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + fragmentFileName, true);
+        final URI fileFragComponentUri = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + FRAGMENT_FILE_NAME, true);
         final Resource rsFragComponent = rset.createResource(fileFragComponentUri);
 
         editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
