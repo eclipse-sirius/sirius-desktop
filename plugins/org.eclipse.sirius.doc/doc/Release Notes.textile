@@ -67,6 +67,7 @@ h4. Changes in @org.eclipse.sirius.common@
 * The @org.eclipse.sirius.common.tools.api.resource.ImageFileFormat@ class has been added (it was in @org.eclipse.sirius.ext.swt@ before).
 * The interface @org.eclipse.sirius.business.api.migration.IMigrationParticipant@ exposes a new method @postXMLEndElement([..])@ which is called during a migration operation. This method should be overrided by participants which have to hook the loading process after each end of XML tag. The  corresponding abstract class @org.eclipse.sirius.business.api.migration.AbstractMigrationParticipant@ provides a default NO-OP implementation.
 * @org.eclipse.sirius.common.tools.api.util.EclipseUtil.getConfigurationElementsFor()@ added to call @org.eclipse.core.runtime.Platform.getExtensionRegistry().getConfigurationElementsFor()@ and check @Platform.isRunning()@ before. 
+* A new class @org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager@ can now be used by langages interpreters to benefit from a consistent handling of Java extensions and support for loading Java services from the workspace.
 
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 

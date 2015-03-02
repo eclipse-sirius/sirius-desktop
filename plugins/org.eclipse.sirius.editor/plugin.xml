@@ -1299,6 +1299,7 @@
      <customizer
            class="org.eclipse.sirius.editor.tools.internal.editor.SiriusCoreEditorCustomization"></customizer>
   </extension>
+  
   <extension
         point="org.eclipse.ui.commands">
      <command
@@ -1329,6 +1330,13 @@
            class="org.eclipse.sirius.editor.tools.internal.commands.VSMQuickOutlineHandler"
            commandId="org.eclipse.sirius.editor.command.show.outline">
      </handler>
+   </extension>
+  
+  <extension
+        point="org.eclipse.sirius.common.classloading_override">
+     <override
+           class="org.eclipse.sirius.editor.utils.WorkspaceClassLoading">
+     </override>
   </extension>
     
  <!-- End of user code plugin.xml end specifics  -->

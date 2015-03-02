@@ -19,6 +19,7 @@
   <extension-point id="dynamic_package" name="Forked Ecore Package Registry for Dynamic Packages" schema="schema/dynamic_package.exsd"/>
   <extension-point id="fileModificationValidator" name="File Modification Validator" schema="schema/fileModificationValidator.exsd"/>
   <extension-point id="resourceSetFactory" name="org.eclipse.sirius.common.resourceSetFactory" schema="schema/resourceSetFactory.exsd"/>
+  <extension-point id="classloading_override" name="org.eclipse.sirius.common.classloading_override" schema="schema/classloading_override.exsd"/>
   
   <extension id="org.eclipse.sirius.common.variableInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
     <expressionInterpreterProvider interpreterProviderClass="org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter" />
@@ -29,4 +30,5 @@
   <extension id="org.eclipse.sirius.common.serviceInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
     <expressionInterpreterProvider interpreterProviderClass="org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter" />
   </extension>
+  
 </plugin>
