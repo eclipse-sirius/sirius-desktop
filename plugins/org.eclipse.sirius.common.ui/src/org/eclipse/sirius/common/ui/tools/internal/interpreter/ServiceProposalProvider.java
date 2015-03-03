@@ -76,15 +76,6 @@ public class ServiceProposalProvider implements IProposalProvider {
                     - ServiceInterpreter.PREFIX.length() + VariableInterpreter.PREFIX.length(), context.getInterpreterContext());
             proposals.addAll(getVariableProposals(context.getContents(), varContext));
 
-            // Reset the available services (in case of call for other VSM)
-            serviceInterpreter.setProperty(IInterpreter.FILES, null);
-
-            // for (String dependency :
-            // context.getInterpreterContext().getDependencies()) {
-            // serviceInterpreter.addImport(dependency);
-            // }
-            // TODO : when the ServiceInterpreter will support service use from
-            // workspace we could propose service completion
         }
         return proposals;
     }

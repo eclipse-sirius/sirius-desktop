@@ -15,28 +15,23 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.regex.Pattern;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.interpreter.ClassLoadingCallback;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
+import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.osgi.framework.Bundle;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Multimap;
 
 /**
  * A specialized interpreter which can only directly invoke Java service
@@ -58,22 +53,43 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
 
     private final Map<Object, Object> properties = Maps.newHashMap();
 
-    private final Set<Bundle> bundles = Sets.newLinkedHashSet();
-
-    private final Set<String> imports = Sets.newLinkedHashSet();
-
     private final Map<String, PolymorphicService> services = Maps.newHashMap();
 
-    private Function<String, String> file2bundleName = new Function<String, String>() {
+    /**
+     * Used to retrieve the services instances we create so that we can
+     * un-register those.
+     */
+    private final Multimap<String, PolymorphicService> qualifiedNameToServices = HashMultimap.create();
+
+    private final JavaExtensionsManager javaExtensions = JavaExtensionsManager.createManagerWithOverride();
+
+    private final ClassLoadingCallback callback = new ClassLoadingCallback() {
+
         @Override
-        public String apply(String file) {
-            String[] segments = file.split(Pattern.quote("/"));
-            if (segments != null && segments.length > 1) {
-                return segments[1];
+        public void unloaded(String qualifiedName, Class<?> clazz) {
+            for (PolymorphicService service : qualifiedNameToServices.get(qualifiedName)) {
+                services.remove(service.getName());
             }
-            return null;
+            qualifiedNameToServices.removeAll(qualifiedName);
+        }
+
+        @Override
+        public void notFound(String qualifiedName) {
+            DslCommonPlugin.getDefault().warning("Could not find Java extension class " + qualifiedName, new RuntimeException());
+        }
+
+        @Override
+        public void loaded(String qualifiedName, Class<?> clazz) {
+            registerServiceClass(qualifiedName, clazz);
         }
     };
+
+    /**
+     * Create an instance of {@link ServiceInterpreter}.
+     */
+    public ServiceInterpreter() {
+        this.javaExtensions.addClassLoadingCallBack(callback);
+    }
 
     /**
      * Get the receiver variable name if any, none {@link Option} otherwise.
@@ -90,7 +106,6 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
         }
         return Options.newNone();
     }
-
 
     @Override
     public IInterpreter createInterpreter() {
@@ -148,13 +163,10 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
 
     @Override
     public void addImport(String dependency) {
-        Class<?> klass = loadClassFromBundlePath(dependency);
-        if (klass != null) {
-            registerServiceClass(klass);
-        }
+        javaExtensions.addImport(dependency);
     }
 
-    private void registerServiceClass(Class<?> klass) {
+    private void registerServiceClass(String qualifiedName, Class<?> klass) {
         Object serviceInstance = null;
         try {
             serviceInstance = klass.newInstance();
@@ -170,16 +182,17 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
 
         for (Method m : klass.getMethods()) {
             if (isValidServiceMethod(m)) {
-                registerService(new MonomorphicService(serviceInstance, m));
+                registerService(qualifiedName, new MonomorphicService(serviceInstance, m));
             }
         }
-        imports.add(klass.getCanonicalName());
     }
 
-    private void registerService(MonomorphicService service) {
+    private void registerService(String qualifiedName, MonomorphicService service) {
         String name = service.getName();
         if (!services.containsKey(name)) {
-            services.put(name, new PolymorphicService(name));
+            PolymorphicService newService = new PolymorphicService(name);
+            services.put(name, newService);
+            qualifiedNameToServices.put(qualifiedName, newService);
         }
         services.get(name).addImplementer(service);
     }
@@ -214,53 +227,26 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
 
     @Override
     public Collection<String> getImports() {
-        return Sets.newHashSet(imports);
+        return javaExtensions.getImports();
     }
 
     @Override
     public void removeImport(String dependency) {
-        if (imports.remove(dependency)) {
-            // TODO
-        }
+        javaExtensions.removeImport(dependency);
     }
 
     @Override
     public void clearImports() {
-        imports.clear();
+        javaExtensions.clearImports();
         services.clear();
-    }
-
-    private Class<?> loadClassFromBundlePath(String className) {
-        for (Bundle bundle : bundles) {
-            try {
-                return bundle.loadClass(className);
-            } catch (ClassNotFoundException e) {
-                // Ignore, try next bundle in the path.
-            }
-        }
-        return null;
+        qualifiedNameToServices.clear();
     }
 
     @Override
     public void setProperty(Object key, Object value) {
         properties.put(key, value);
-        if (IInterpreter.FILES.equals(key) && (value instanceof List<?>)) {
-            // Reload all the imported services using the new bundle path
-            updateBundlePath(Iterables.filter((List<?>) value, String.class));
-            services.clear();
-            for (String imp : Lists.newArrayList(imports)) {
-                addImport(imp);
-            }
-        }
-    }
-
-    private void updateBundlePath(Iterable<String> files) {
-        bundles.clear();
-        for (String name : Iterables.filter(Iterables.transform(files, file2bundleName), Predicates.notNull())) {
-            Bundle bundle = Platform.getBundle(name);
-            if (bundle != null) {
-                bundles.add(bundle);
-            }
+        if (IInterpreter.FILES.equals(key)) {
+            javaExtensions.updateScope((Collection<String>) value);
         }
     }
 
@@ -277,5 +263,11 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
         Collection<IInterpreterStatus> interpreterStatus = new ArrayList<IInterpreterStatus>();
         return interpreterStatus;
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        this.javaExtensions.removeClassLoadingCallBack(callback);
     }
 }
