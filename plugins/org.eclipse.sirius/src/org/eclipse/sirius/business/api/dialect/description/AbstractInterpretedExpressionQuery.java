@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -294,19 +295,47 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      */
     private void collectContextualVariableDefinitions(Map<String, String> vars, EObject top, EObject bottom) {
         // A map with multiple values is not strictly required as we only use
-        // one value, but it is useful when debugging to have all the information.
+        // one value, but it is useful when debugging to have all the
+        // information.
         Map<String, Collection<String>> definitions = Maps.newHashMap();
         // Walk up from bottom to top and gather every definition in the scope.
         EObject context = bottom;
         do {
             appendAllLocalVariableDefinitions(definitions, context);
-            context = context.eContainer();
+            context = precedingSiblingOrContainer(context);
         } while (context != null && context != top.eContainer());
         // Merge all the definitions, by taking the one closest to
         // <code>bottom</code> when there are multiple ones.
         for (String var : definitions.keySet()) {
             vars.put(var, ((List<String>) definitions.get(var)).get(0));
         }
+    }
+
+    private EObject precedingSiblingOrContainer(EObject context) {
+        EObject container = context.eContainer();
+        EStructuralFeature containingFeature = context.eContainingFeature();
+        if (container != null && containingFeature != null) {
+            Object val = container.eGet(containingFeature);
+            /*
+             * if val is not a collection then we have no siblings.
+             */
+            if (val instanceof EList<?>) {
+                EList<?> childs = (EList<?>) val;
+                int contextPositionInContainingList = childs.indexOf(context);
+                if (contextPositionInContainingList > 0) {
+                    /*
+                     * we have at least one sibling, we return the closest one
+                     * to our position going upward.
+                     */
+                    Object sibling = childs.get(contextPositionInContainingList - 1);
+                    if (sibling instanceof EObject) {
+                        return (EObject)sibling;
+                    }
+                }
+            }
+        }
+
+        return container;
     }
 
     /**
