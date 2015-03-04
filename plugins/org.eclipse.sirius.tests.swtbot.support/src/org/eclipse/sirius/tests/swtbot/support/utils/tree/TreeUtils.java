@@ -33,6 +33,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.widget.TreeItemExpander;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.TreeItemLabelColorQuery;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.TreeItemLabelFontFormatQuery;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.TreeItemLabelSizeQuery;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
@@ -143,6 +144,7 @@ public final class TreeUtils {
         TreeItem treeItem = (TreeItem) itemSearcher.getResult();
         TreeItemExpander treeItemExpander = new TreeItemExpander(treeItem, expansion);
         Display.getDefault().syncExec(treeItemExpander);
+        SWTBotUtils.waitProgressMonitorClose("Progress Information");
     }
 
     /**
