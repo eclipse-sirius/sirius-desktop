@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IContributor;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -143,6 +144,9 @@ public class CellEditorExtensionTest extends AbstractSiriusSwtBotGefTestCase {
         IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
         IExtension extension = extensionRegistry.getExtension(SiriusCellEditorProviderCollector.EXTENSION_POINT_ID, Activator.PLUGIN_ID + ".customCellEditor");
         extensionRegistry.removeExtension(extension, ((ExtensionRegistry) extensionRegistry).getTemporaryUserToken());
+        // Also force a clean of the internal cache of
+        // SiriusCellEditorProviderCollector
+        ReflectionHelper.setFieldValueWithoutException(SiriusCellEditorProviderCollector.getInstance(), "cache", null);
     }
 
     @Override
