@@ -69,7 +69,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
 
     private static final String SESSION_FILE2 = "bendpointsStability.aird";
 
-    private static final String VSM_FILE2 = "bendpointsStability.odesign";
+    private static final String VSM_FILE2 = "bendpointsStability2.odesign";
 
     private static final String DATA_UNIT_DIR2 = "data/unit/reconnect/bendpointStability2/";
 
