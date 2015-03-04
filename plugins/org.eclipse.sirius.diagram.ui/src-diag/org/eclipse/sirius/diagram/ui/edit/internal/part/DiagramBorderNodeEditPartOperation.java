@@ -112,8 +112,6 @@ public final class DiagramBorderNodeEditPartOperation {
         final AbstractDiagramNodeEditPartRefreshVisualsOperation op = new AbstractDiagramNodeEditPartRefreshVisualsOperation(self);
         if (op.canRefresh()) {
             op.refreshSize();
-            op.refreshFont();
-            op.refreshColor();
         }
     }
 

@@ -102,8 +102,6 @@ public final class DiagramNodeEditPartOperation {
         final AbstractDiagramNodeEditPartRefreshVisualsOperation op = new AbstractDiagramNodeEditPartRefreshVisualsOperation(self);
         if (op.canRefresh()) {
             op.refreshSize();
-            op.refreshFont();
-            op.refreshColor();
         }
     }
 

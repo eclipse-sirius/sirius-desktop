@@ -41,9 +41,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItem
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.viewpoint.LabelStyle;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -232,30 +229,6 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         }
 
         return height;
-    }
-
-    /**
-     * Refresh the font.
-     */
-    public void refreshFont() {
-        if (node != null) {
-            if (node.getOwnedStyle() != null) {
-                final LabelStyle style = node.getOwnedStyle();
-                final Font newFont = VisualBindingManager.getDefault().getFontFromValue(style.getLabelSize());
-                // if (editPart.getPrimaryChildEditPart() instanceof
-                // DNodeNameEditPart) {
-                // (((DNodeNameEditPart)
-                // editPart.getPrimaryChildEditPart()).getFigure()).setFont(newFont);
-                // }
-            }
-        }
-    }
-
-    /**
-     * Refresh the color.
-     */
-    public void refreshColor() {
-        // nothing to do;
     }
 
     /**
