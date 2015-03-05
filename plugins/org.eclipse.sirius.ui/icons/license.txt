@@ -6,6 +6,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 icons/full/decorator/MappingDecorator.png - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/decorator/MappingDecorator.png
 icons/full/decorator/SiriusNature.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/decorator/SiriusNature.gif
+icons/full/decorator/folder_close.gif - org.eclipse.ui.perspectives - org.eclipse.sirius.ui/icons/full/decorator/folder_close.gif
 icons/full/decorator/permission_denied.gif - org.eclipse.jdt.ui - icons/full/elcl16/deadlock_view.gif
 icons/full/decorator/permission_denied_overlay.gif - org.eclipse.jdt.ui - icons/full/elcl16/deadlock_view.gif
 icons/full/decorator/permission_granted_to_current_user_exclusively.gif - org.eclipse.jdt.ui - icons/full/elcl16/deadlock_view.gif

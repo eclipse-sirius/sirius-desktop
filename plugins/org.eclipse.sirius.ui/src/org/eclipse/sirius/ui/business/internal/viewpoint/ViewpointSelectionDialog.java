@@ -199,9 +199,9 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
             // Default image
             Image viewpointImage = SiriusEditPlugin.getPlugin().getBundledImage("icons/full/obj16/Viewpoint.gif");
 
-            // Overlayed image ?
-            if (ViewpointRegistry.getInstance().isFromPlugin(item.getViewpoint())) {
-                final ImageDescriptor decoratorDescriptor = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/others/plugin.gif");
+            // Add decorator if the viewpoint comes from workspace
+            if (!ViewpointRegistry.getInstance().isFromPlugin(item.getViewpoint())) {
+                final ImageDescriptor decoratorDescriptor = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/folder_close.gif");
                 viewpointImage = SiriusEditPlugin.getPlugin().getImage(new DecorationOverlayIcon(viewpointImage, decoratorDescriptor, IDecoration.BOTTOM_LEFT));
             }
 

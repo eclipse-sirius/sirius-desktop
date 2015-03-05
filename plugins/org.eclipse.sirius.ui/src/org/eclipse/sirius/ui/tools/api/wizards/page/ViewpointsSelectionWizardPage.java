@@ -537,8 +537,9 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         }
 
         private Image getEnhancedImage(final Image image, final Viewpoint viewpoint) {
-            if (ViewpointRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
-                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/ovr16/plugin_ovr.gif"));
+            // Add decorator if the viewpoint comes from workspace
+            if (!ViewpointRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
+                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/decorator/folder_close.gif"));
             }
             return image;
         }

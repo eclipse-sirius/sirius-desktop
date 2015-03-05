@@ -6,6 +6,10 @@ This document contains the release notes for all major releases of Sirius.
 
 h2(#sirius3.0.0). Changes in Sirius 3.0.0 (from Sirius 2.0.0)
 
+h3. User-Visible Changes
+
+* In the Viewpoint Selection Dialog and ViewpointsSelectionWizardPage, the "plug-in" decorator for viewpoints loaded from plug-ins is removed, and a "Folder" decorator for viewpoints loaded from the current workspace has been added on the top of the default viewpoint icon.
+
 h3. Specifier-Visible Changes
 
 * In Open menu, the menu is computed from the navigation tool label instead of its name/id.
