@@ -87,6 +87,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * <span class="label label-warning">Deprecated</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR@ deprecated in favor @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR@ as it is an action id about border nodes layout.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES@ added to replace @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR@ which is deprecated  
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR@ added to replace @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES@ which is deprecated 
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.diagram.ui.graphical.edit.policies.EdgeCreationEditPolicy@ has been removed as it should not be in API and has been replaced by internal @org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionEditPolicy@.
 
 h4. Changes in @org.eclipse.sirius.tests.support@
 

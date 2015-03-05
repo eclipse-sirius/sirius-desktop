@@ -10,10 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.requests.GroupRequest;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionEditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
@@ -36,5 +39,21 @@ public class SiriusConnectionEditPolicy extends ConnectionEditPolicy {
         // ConnectionEditPolicy.createDeleteViewCommand(GroupRequest)}
         TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
         return new ICommandProxy(new ViewDeleteCommand(editingDomain, (View) getHost().getModel()));
+    }
+
+    // Overridden to not test CanonicalEditPolicy as now canonical refresh is
+    // done in precommit.
+    @Override
+    protected boolean shouldDeleteSemantic() {
+        Assert.isTrue(getHost() instanceof AbstractConnectionEditPart);
+
+        AbstractConnectionEditPart cep = (AbstractConnectionEditPart) getHost();
+
+        if (cep instanceof ConnectionEditPart) {
+            if (!((ConnectionEditPart) cep).isSemanticConnection()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

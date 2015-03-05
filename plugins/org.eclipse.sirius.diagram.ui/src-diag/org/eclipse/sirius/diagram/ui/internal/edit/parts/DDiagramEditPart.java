@@ -29,7 +29,6 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RevealSelectedEleme
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DDiagramItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalConnectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
@@ -69,7 +68,6 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DDiagramItemSemanticEditPolicy());
-        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new DumnySiriusCanonicalConnectionEditPolicy());
         installEditPolicy(EditPolicy.CONTAINER_ROLE, new ContainerCreationEditPolicy());
         installEditPolicy(RequestConstants.REQ_LAUNCH_TOOL, new LaunchToolEditPolicy());
         final CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();

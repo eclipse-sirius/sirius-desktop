@@ -15,11 +15,20 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
+import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyRequest;
 
 /**
  * @was-generated
  */
 public class DEdgeItemSemanticEditPolicy extends SiriusBaseItemSemanticEditPolicy {
+
+    /**
+     * As now canonical refresh is done in precommit, we always return true.
+     */
+    @Override
+    protected boolean shouldProceed(DestroyRequest destroyRequest) {
+        return true;
+    }
 
     /**
      * @was-generated

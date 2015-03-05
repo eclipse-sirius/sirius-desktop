@@ -22,15 +22,13 @@ import org.eclipse.gef.requests.GroupRequest;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CanonicalEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusComponentEditPolicy;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
+import org.eclipse.sirius.diagram.ui.part.SiriusNodeDescriptor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -95,18 +93,27 @@ public class NodeDeletionEditPolicy extends SiriusComponentEditPolicy {
         return new ICommandProxy(compositeCommand.reduce());
     }
 
+    // Override to return true as there are no CanonicalEditPolicy in Sirius as
+    // notation model is updated in precommit.
     @Override
     protected boolean shouldDeleteSemantic() {
-
-        if (getHost() instanceof ConnectionNodeEditPart && getHost().getParent() instanceof DiagramRootEditPart) {
-            final EditPart content = ((DiagramRootEditPart) getHost().getParent()).getContents();
-            if (content instanceof IGraphicalEditPart) {
-                final CanonicalEditPolicy cep = (CanonicalEditPolicy) content.getEditPolicy(EditPolicyRoles.CANONICAL_ROLE);
-                if (cep != null) {
-                    return cep.isEnabled();
+        boolean shouldDeleteSemantic = false;
+        EditPart host = getHost();
+        if (host instanceof ConnectionNodeEditPart) {
+            shouldDeleteSemantic = true;
+        } else {
+            EditPart parent = host.getParent();
+            if (parent != null) {
+                View viewObject = (View) parent.getModel();
+                EObject eObject = (EObject) host.getAdapter(EObject.class);
+                for (SiriusNodeDescriptor descriptor : SiriusDiagramUpdater.getSemanticChildren(viewObject)) {
+                    if (eObject == descriptor.getModelElement()) {
+                        shouldDeleteSemantic = true;
+                        break;
+                    }
                 }
             }
         }
-        return super.shouldDeleteSemantic();
+        return shouldDeleteSemantic;
     }
 }

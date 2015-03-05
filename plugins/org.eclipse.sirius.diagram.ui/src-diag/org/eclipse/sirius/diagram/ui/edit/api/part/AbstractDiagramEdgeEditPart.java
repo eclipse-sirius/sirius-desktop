@@ -36,7 +36,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
@@ -54,7 +53,6 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramEdgeEditPartOpera
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.EditStatusUpdater;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeSelectionFeedbackEditPolicy;
-import org.eclipse.sirius.diagram.ui.graphical.edit.policies.EdgeCreationEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionEditPolicy;
@@ -135,25 +133,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         // Enables Font and Style action
         removeEditPolicy(EditPolicyRoles.PROPERTY_HANDLER_ROLE);
         installEditPolicy(EditPolicyRoles.PROPERTY_HANDLER_ROLE, new SiriusPropertyHandlerEditPolicy());
-
-        // Enable Specific tools (SelectionWizard, PaneBasedSelectionWizard,
-        // RequestTool)
-        final CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
-        compoundEditPolicy.addEditPolicy(new EdgeCreationEditPolicy());
-
-        EditPolicy oldRoleEditPolicy = getEditPolicy(EditPolicy.CONNECTION_ROLE);
-        if (oldRoleEditPolicy != null) {
-            removeEditPolicy(EditPolicy.CONNECTION_ROLE);
-
-            if (oldRoleEditPolicy instanceof SiriusConnectionEditPolicy || !(oldRoleEditPolicy instanceof ConnectionEditPolicy)) {
-                // add the existing edit policy
-                compoundEditPolicy.addEditPolicy(oldRoleEditPolicy);
-            } else {
-                compoundEditPolicy.addEditPolicy(new SiriusConnectionEditPolicy());
-            }
-        }
-
-        installEditPolicy(EditPolicy.CONNECTION_ROLE, compoundEditPolicy);
+        installEditPolicy(EditPolicy.CONNECTION_ROLE, new SiriusConnectionEditPolicy());
         installEditPolicy(RequestConstants.REQ_LAUNCH_TOOL, new LaunchToolEditPolicy());
 
         final EditPolicy currentSelectionEditPolicy = getEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE);

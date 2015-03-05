@@ -68,7 +68,6 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPol
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPopupBarEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerViewNodeContainerCompartmentItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
@@ -265,7 +264,6 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         // dragDropEditPolicy);
         // -- 01-08-2008
         installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new SiriusContainerDropPolicy());
-        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new DumnySiriusCanonicalEditPolicy());
         installEditPolicy(EditPolicy.CONTAINER_ROLE, new NodeCreationEditPolicy());
         installEditPolicy(RequestConstants.REQ_LAUNCH_TOOL, new LaunchToolEditPolicy());
         removeEditPolicy(EditPolicy.LAYOUT_ROLE);
