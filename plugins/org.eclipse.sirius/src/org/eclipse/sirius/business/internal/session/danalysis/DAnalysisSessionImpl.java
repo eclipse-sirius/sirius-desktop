@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
@@ -833,11 +832,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @param runExclusive
      *            whether or not to execute the saving in an exclusive
      *            transaction.
-     * @return the result of the save operation.
      */
-    protected IStatus doSave(final Map<?, ?> options, final IProgressMonitor monitor, boolean runExclusive) {
-        IStatus status = Status.OK_STATUS;
-
+    protected void doSave(final Map<?, ?> options, final IProgressMonitor monitor, boolean runExclusive) {
         try {
             monitor.beginTask("Session saving", 3);
             final Collection<Resource> allResources = Lists.newArrayList();
@@ -849,17 +845,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             RunnableWithResult<Collection<Resource>> save = new RunnableWithResult.Impl<Collection<Resource>>() {
                 @Override
                 public void run() {
-                    try {
-                        Collection<Resource> savedResources = getSavingPolicy().save(allResources, options, new SubProgressMonitor(monitor, 7));
-                        setResult(savedResources);
-                        setStatus(Status.OK_STATUS);
-                        // CHECKSTYLE:OFF
-                    } catch (Throwable e) {
-                        // CHECKSTYLE:ON
-                        Status status = new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while saving the session", e);
-                        setStatus(status);
-                        SiriusPlugin.getDefault().error("Save failed", new CoreException(status));
-                    }
+                    Collection<Resource> savedResources = getSavingPolicy().save(allResources, options, new SubProgressMonitor(monitor, 7));
+                    setResult(savedResources);
                 }
             };
             if (runExclusive && !saver.domainDisposed.get()) {
@@ -874,11 +861,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
 
             Collection<Resource> savedResources = save.getResult();
-            if (savedResources == null) {
-                // If the savedResources list is null, something went wrong and
-                // has already been logged.
-                status = save.getStatus();
-            } else {
+            if (savedResources != null) {
                 CommandStack commandStack = transactionalEditingDomain.getCommandStack();
                 if (commandStack instanceof BasicCommandStack) {
                     ((BasicCommandStack) commandStack).saveIsDone();
@@ -895,8 +878,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         } finally {
             monitor.done();
         }
-
-        return status;
     }
 
     @Override

@@ -116,6 +116,7 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
             if (workspaceRoot != null) {
                 try {
                     workspaceRoot.getWorkspace().run(new IWorkspaceRunnable() {
+                        @Override
                         public void run(final IProgressMonitor progressMonitor) throws CoreException {
                             wrappedSave(options, progressMonitor, runExclusive);
                         }

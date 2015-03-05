@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -164,15 +163,12 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
         doOpenAllRepresentations();
         assertTrue("The session should be dirty.", editors.get(0).isDirty());
         // Try to save the session
-        session.save(new NullProgressMonitor());
-        assertTrue("An error is expected during this save", doesAnErrorOccurs());
-        Collection<IStatus> statuses = errors.get("org.eclipse.core.runtime");
-        assertTrue("It should be only one error.", statuses != null && statuses.size() == 1);
-        IStatus status = statuses.iterator().next();
-        assertTrue("The exception should be a RuntimeException", status.getException() instanceof RuntimeException);
-        assertEquals("The message should be the one logged in DAnalysisSessionImpl.doSave(Map<?, ?>, IProgressMonitor, boolean)", "Error while saving the session", status.getMessage());
-        // Clear the errors to avoid a fail during tear down
-        errors.clear();
+        try {
+            session.save(new NullProgressMonitor());
+            fail("A RuntimeException should be thrown");
+        } catch (RuntimeException e) {
+
+        }
         doCleanup();
     }
 
