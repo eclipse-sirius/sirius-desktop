@@ -59,7 +59,7 @@
       defaultValue="None"/>
   <setupTask
       xsi:type="setup:VariableTask"
-      id=""
+      id="sirius.target.platform"
       name="sirius.target.platform"
       defaultValue="sirius_tests_luna"
       label="Target Platform - Sirius">
@@ -116,8 +116,7 @@
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone.sirius"
-      remoteURI="sirius/org.eclipse.sirius"
-      pushURI="">
+      remoteURI="sirius/org.eclipse.sirius">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
       <detail
@@ -225,7 +224,6 @@
   </setupTask>
   <setupTask
       xsi:type="setup:PreferenceTask"
-      id=""
       key="/instance/org.eclipse.pde.api.tools/missing_default_api_profile"
       value="Ignore">
     <description>Ignore &quot;Plug-in Development/API Baselines&quot;</description>
