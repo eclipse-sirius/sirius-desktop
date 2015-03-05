@@ -329,7 +329,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                      */
                     Object sibling = childs.get(contextPositionInContainingList - 1);
                     if (sibling instanceof EObject) {
-                        return (EObject)sibling;
+                        return (EObject) sibling;
                     }
                 }
             }
