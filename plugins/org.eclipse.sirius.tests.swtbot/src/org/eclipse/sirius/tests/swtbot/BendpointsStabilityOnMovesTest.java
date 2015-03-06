@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -118,25 +118,23 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
 
     boolean isPropertiesViewOpened;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM, INTERACTION_MODEL);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_FILE);
-        localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+
+        // "bendpointsStability.aird" has references to
+        // "bendpointsStability.interactions" and "bendpointsStability.ecore"
+        localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
         // Close outline & property view (to improve test performances)
         final IWorkbenchPage currentPage = PlatformUI.getWorkbench().getWorkbenchWindows()[0].getPages()[0];
         final IViewReference[] viewReferences = currentPage.getViewReferences();
         Display.getDefault().asyncExec(new Runnable() {
+            @Override
             public void run() {
                 for (int i = 0; i < viewReferences.length; i++) {
                     if ("org.eclipse.ui.views.ContentOutline".equals(viewReferences[i].getId())) {
@@ -158,6 +156,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
         }
         if (isPropertiesViewOpened) {
             Display.getDefault().asyncExec(new Runnable() {
+                @Override
                 public void run() {
                     try {
                         PlatformUI.getWorkbench().getWorkbenchWindows()[0].getPages()[0].showView(PROPERTIES_VIEW_ID);
