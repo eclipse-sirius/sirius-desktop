@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,10 +12,11 @@ package org.eclipse.sirius.business.internal.logger;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
@@ -117,15 +118,16 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
     public void clear(final EObject object) {
         if (object != null) {
             Resource objectResource = object.eResource();
-            if (objectResource != null) {
+            if (objectResource != null && objectResource.getURI() != null && objectResource.getURI().isPlatformResource()) {
+                IWorkspaceRoot root = EcorePlugin.getWorkspaceRoot();
                 final String relativePath = objectResource.getURI().toPlatformString(true);
 
                 // relativePath can be null if the ODesign is located on a
                 // CDO Repository
-                if (relativePath != null) {
+                if (relativePath != null && root != null) {
                     try {
-                        if (!"".equals(relativePath) && ResourcesPlugin.getWorkspace().getRoot().findMember(relativePath) != null) {
-                            final IMarker[] markers = ResourcesPlugin.getWorkspace().getRoot().findMember(relativePath).findMarkers(MarkerRuntimeLogger.MARKER_TYPE, false, IResource.DEPTH_ZERO);
+                        if (!"".equals(relativePath) && root.findMember(relativePath) != null) {
+                            final IMarker[] markers = root.findMember(relativePath).findMarkers(MarkerRuntimeLogger.MARKER_TYPE, false, IResource.DEPTH_ZERO);
                             for (final IMarker marker : markers) {
                                 marker.delete();
                             }
@@ -183,9 +185,12 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
     private static IResource findMarkerTargetResource(final EObject markerTarget) {
         if (markerTarget != null) {
             Resource markerTargetResource = markerTarget.eResource();
-            if (markerTargetResource != null) {
+            if (markerTargetResource != null && markerTargetResource.getURI() != null && markerTargetResource.getURI().isPlatformResource()) {
                 final String relativePath = markerTargetResource.getURI().toPlatformString(true);
-                return ResourcesPlugin.getWorkspace().getRoot().findMember(relativePath);
+                IWorkspaceRoot root = EcorePlugin.getWorkspaceRoot();
+                if (root != null) {
+                    return root.findMember(relativePath);
+                }
             }
         }
         return null;
