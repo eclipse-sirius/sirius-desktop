@@ -97,6 +97,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -1816,16 +1817,21 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // In case the input is based on the DDiagram, we need to updated it to
         // use the GMF diagram
         IEditorInput updatedEditorInput = input;
-        EObject eObject = session.getTransactionalEditingDomain().getResourceSet().getEObject(((SessionEditorInput) input).getURI(), false);
-        if (eObject instanceof DDiagram) {
-            DDiagram dDiagram = (DDiagram) eObject;
-            final DiagramCreationUtil util = new DiagramCreationUtil(dDiagram);
-            if (!util.findAssociatedGMFDiagram()) {
-                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, "The gmf diagram is expected to be created before calling setInput() on the editor"));
-            }
-            final Diagram gmfDiag = util.getAssociatedGMFDiagram();
-            updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), dDiagram.getName(), session);
+        if (input instanceof URIEditorInput) {
+            URI uri = ((URIEditorInput) input).getURI();
+            if (uri != null && !StringUtil.isEmpty(uri.fragment())) {
+                EObject eObject = session.getTransactionalEditingDomain().getResourceSet().getEObject(uri, false);
+                if (eObject instanceof DDiagram) {
+                    DDiagram dDiagram = (DDiagram) eObject;
+                    final DiagramCreationUtil util = new DiagramCreationUtil(dDiagram);
+                    if (!util.findAssociatedGMFDiagram()) {
+                        DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, "The gmf diagram is expected to be created before calling setInput() on the editor"));
+                    }
+                    final Diagram gmfDiag = util.getAssociatedGMFDiagram();
+                    updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), dDiagram.getName(), session);
 
+                }
+            }
         }
         super.setInput(updatedEditorInput);
         if (getGraphicalViewer() != null) {
