@@ -284,17 +284,6 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refresh()
-     */
-    public void refresh() {
-        if (resolveSemanticElement() != null && resolveSemanticElement().eResource() != null) {
-            super.refresh();
-        }
-    }
-
-    /**
      * Return the set of {@link ConnectionNodeEditPart}s contained in the
      * supplied shape compartment.
      * 

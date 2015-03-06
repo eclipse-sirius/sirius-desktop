@@ -144,20 +144,6 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
     /**
      * {@inheritDoc}
      * 
-     * @not-generated let's run a refresh with the canonical edit policy.
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refresh()
-     */
-    @Override
-    public void refresh() {
-        final EObject semanticElement = resolveSemanticElement();
-        if (semanticElement != null && semanticElement.eResource() != null) {
-            super.refresh();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#handleNotificationEvent(org.eclipse.emf.common.notify.Notification)
      */
     @Override
