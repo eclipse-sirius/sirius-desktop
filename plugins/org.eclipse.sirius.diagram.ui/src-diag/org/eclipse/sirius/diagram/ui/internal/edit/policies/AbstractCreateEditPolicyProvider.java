@@ -15,9 +15,9 @@ import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.CreateEditPoliciesOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider;
-import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
  * Abstract policy provider used after the creation of an edit part.
@@ -43,8 +43,7 @@ public abstract class AbstractCreateEditPolicyProvider implements IEditPolicyPro
             Object model = editPart.getModel();
             if (model instanceof View && isValidEditPart(editPart)) {
                 View view = (View) model;
-                Diagram diagram = view.getDiagram();
-                if (diagram != null && diagram.getElement() != null && diagram.getElement().eClass().getEPackage().getNsURI().equals(DiagramPackage.eINSTANCE.getNsURI())) {
+                if (DDiagramEditPart.MODEL_ID.equals(SiriusVisualIDRegistry.getModelID(view))) {
                     return true;
                 }
             }

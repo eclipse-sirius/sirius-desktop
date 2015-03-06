@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.ui.business.internal.command.ViewDeleteCommand;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
@@ -154,7 +155,7 @@ public class EntitiesDiagramDeleteFromDiagramTests extends SiriusDiagramTestCase
         diagramEditor.getDiagramGraphicalViewer().select(editPart);
         TestsUtil.synchronizationWithUIThread();
 
-        final DeleteCommand cmd = new DeleteCommand(session.getTransactionalEditingDomain(), note);
+        final DeleteCommand cmd = new ViewDeleteCommand(session.getTransactionalEditingDomain(), note);
         final CompositeCommand compoundCommand = new CompositeCommand(cmd.getLabel());
         compoundCommand.add(cmd);
 

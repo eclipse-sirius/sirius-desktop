@@ -25,12 +25,12 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CanonicalEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ComponentEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusComponentEditPolicy;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -46,7 +46,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * 
  * @author ymortier
  */
-public class NodeDeletionEditPolicy extends ComponentEditPolicy {
+public class NodeDeletionEditPolicy extends SiriusComponentEditPolicy {
     TransactionalEditingDomain editingDomain;
 
     /**
