@@ -770,7 +770,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public Collection<Resource> getSemanticResources() {
         if (semanticResources == null) {
             semanticResources = new CopyOnWriteArrayList<Resource>();
-            semanticResourcesUpdater = new SemanticResourcesUpdater(this, semanticResources);
+            if (semanticResourcesUpdater == null) {
+                semanticResourcesUpdater = new SemanticResourcesUpdater(this);
+            }
+            semanticResourcesUpdater.setSemanticResources(semanticResources);
             if (!super.isBlocked()) {
                 RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(this);
                 try {
@@ -1569,6 +1572,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         // update models in aird resource
         // The semantic resources are updated by the SemanticResourcesUpdater
         EObject rootObject = semanticResourcesUpdater.getRootObjectFromResourceURI(res.getURI().toString());
+        if (rootObject == null) {
+            rootObject = res.getContents() == null ? null : res.getContents().get(0);
+        }
         for (final DAnalysis analysis : this.allAnalyses()) {
             analysis.getModels().remove(rootObject);
         }
@@ -1578,6 +1584,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (couldBeUnload(set, res)) {
             res.unload();
         }
+
+        controlledResourcesDetector.detectControlledResources();
     }
 
     @Override
@@ -1762,9 +1770,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             @Override
             public void run() {
                 disableCrossReferencerResolve(resource);
-                
+
                 resource.unload();
-                
+
                 enableCrossReferencerResolve(resource);
                 try {
                     resource.load(Collections.EMPTY_MAP);
@@ -1806,41 +1814,41 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private void disableCrossReferencerResolve(Resource resource) {
         disableCrossReferencerResolveOnNotifer(resource);
-        
-        //disable on all contents of the resource(crossRef on any EObject in the resource is also set on root EObject)
+
+        // disable on all contents of the resource(crossRef on any EObject in
+        // the resource is also set on root EObject)
         EList<EObject> contents = resource.getContents();
         if (contents.size() > 0 && contents.get(0) != null) {
             disableCrossReferencerResolveOnNotifer(contents.get(0));
         }
     }
- 
+
     private void disableCrossReferencerResolveOnNotifer(Notifier notifier) {
         // Disable resolve for CrossreferencerAdapter
-        for (Iterator<Adapter> iterator = notifier.eAdapters().iterator(); iterator.hasNext(); ) {
-            Adapter next = iterator.next();
-            if (next instanceof SiriusCrossReferenceAdapter) {
-                ((SiriusCrossReferenceAdapter) next).disableResolve();
+        for (Adapter adapter : notifier.eAdapters()) {
+            if (adapter instanceof SiriusCrossReferenceAdapter) {
+                ((SiriusCrossReferenceAdapter) adapter).disableResolve();
             }
         }
     }
-   
+
     private void enableCrossReferencerResolve(Resource resource) {
-        //enable on ressource itself
+        // enable on ressource itself
         enableCrossReferencerResolveOnNotifer(resource);
-        
-        //enable on all contents of the resource(crossRef on any EObject in the resource is also set on root EObject)
+
+        // enable on all contents of the resource(crossRef on any EObject in the
+        // resource is also set on root EObject)
         EList<EObject> contents = resource.getContents();
         if (contents.size() > 0 && contents.get(0) != null) {
             enableCrossReferencerResolveOnNotifer(contents.get(0));
         }
     }
-    
+
     private void enableCrossReferencerResolveOnNotifer(Notifier notifier) {
         // Disable resolve for SiriusCrossReferenceAdapter
-        for (Iterator<Adapter> iterator = notifier.eAdapters().iterator(); iterator.hasNext(); ) {
-            Adapter next = iterator.next();
-            if (next instanceof SiriusCrossReferenceAdapter) {
-                ((SiriusCrossReferenceAdapter) next).enableResolve();
+        for (Adapter adapter : notifier.eAdapters()) {
+            if (adapter instanceof SiriusCrossReferenceAdapter) {
+                ((SiriusCrossReferenceAdapter) adapter).enableResolve();
             }
         }
     }
@@ -2000,7 +2008,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         flushOperations();
         // Unload all referenced resources
-        unloadResource();
+        unloadAllResources();
         if (disposeEditingDomainOnClose) {
             // To remove remaining resource like environment:/viewpoint
             for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
@@ -2110,7 +2118,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * Method called at {@link Session#close(IProgressMonitor)} to unload all
      * referenced {@link Resource}s.
      */
-    private void unloadResource() {
+    private void unloadAllResources() {
         for (final DAnalysis analysis : Iterables.filter(allAnalyses(), Predicates.notNull())) {
             final Resource resource = analysis.eResource();
             if (resource != null) {
@@ -2208,5 +2216,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     public boolean isSaveInExclusiveTransaction() {
         return this.saver.saveInExclusiveTransaction;
+    }
+
+    /**
+     * Allow semanticResources to be recomputed when calling
+     * <code>getSemanticResources()</code>.
+     */
+    void setSemanticResourcesNotUptodate() {
+        semanticResources.clear();
+        semanticResources = null;
     }
 }

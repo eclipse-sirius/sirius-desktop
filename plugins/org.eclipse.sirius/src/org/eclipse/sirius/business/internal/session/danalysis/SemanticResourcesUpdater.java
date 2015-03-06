@@ -52,12 +52,18 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
      * @param dAnalysisSessionImpl
      *            the {@link DAnalysisSessionImpl} referencing the semantic
      *            resource
+     */
+    public SemanticResourcesUpdater(DAnalysisSessionImpl dAnalysisSessionImpl) {
+        this.dAnalysisSessionImpl = dAnalysisSessionImpl;
+    }
+
+    /**
+     * Initialize the semantic resources of the session.
      * 
      * @param semanticResources
      *            the collection of semantic resources of the Session
      */
-    public SemanticResourcesUpdater(DAnalysisSessionImpl dAnalysisSessionImpl, Collection<Resource> semanticResources) {
-        this.dAnalysisSessionImpl = dAnalysisSessionImpl;
+    public void setSemanticResources(Collection<Resource> semanticResources) {
         Collection<DAnalysis> allAnalyses = new DAnalysisesInternalQuery(dAnalysisSessionImpl.getAnalyses()).getAllAnalyses();
         for (DAnalysis dAnalysis : allAnalyses) {
             if (!dAnalysis.eAdapters().contains(this)) {
@@ -77,15 +83,11 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
 
             // update the map resource-EObject
             if (msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__MODELS) {
-                Object notifier = msg.getNotifier();
-                if (notifier instanceof EObject) {
-                    updateAssociatedResource((EObject) notifier, msg.getEventType());
-                } else if (notifier instanceof EList<?>) {
-                    EList<?> eListNotifier = (EList<?>) notifier;
-                    for (Object object : eListNotifier) {
-                        if (object instanceof EObject)
-                            updateAssociatedResource((EObject) object, msg.getEventType());
-                    }
+                int eventType = msg.getEventType();
+                if (eventType == Notification.ADD || eventType == Notification.ADD_MANY) {
+                    addAssociatedResource(msg.getNewValue());
+                } else if (eventType == Notification.REMOVE || eventType == Notification.REMOVE_MANY) {
+                    removeAssociatedResource(msg.getOldValue());
                 }
             }
 
@@ -100,15 +102,29 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
         }
     }
 
-    private void updateAssociatedResource(EObject eObject, int eventType) {
-        if (eventType == Notification.ADD || eventType == Notification.ADD_MANY) {
-            resourceToRootEObjectMap.put(eObject.eResource().getURI().toString(), eObject);
-        } else if (eventType == Notification.REMOVE || eventType == Notification.REMOVE_MANY) {
+    private void addAssociatedResource(Object value) {
+        if (value instanceof EObject) {
+            resourceToRootEObjectMap.put(((EObject) value).eResource().getURI().toString(), (EObject) value);
+        } else if (value instanceof EList<?>) {
+            EList<?> eListNotifier = (EList<?>) value;
+            for (Object object : eListNotifier) {
+                addAssociatedResource(object);
+            }
+        }
+    }
+
+    private void removeAssociatedResource(Object value) {
+        if (value instanceof EObject) {
             for (String resource : resourceToRootEObjectMap.keySet()) {
-                if (eObject.equals(resourceToRootEObjectMap.get(resource))) {
+                if (value.equals(resourceToRootEObjectMap.get(resource))) {
                     resourceToRootEObjectMap.remove(resource);
                     break;
                 }
+            }
+        } else if (value instanceof EList<?>) {
+            EList<?> eListNotifier = (EList<?>) value;
+            for (Object object : eListNotifier) {
+                removeAssociatedResource(object);
             }
         }
     }

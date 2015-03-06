@@ -12,7 +12,8 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.ListIterator;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
@@ -89,17 +90,27 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     public void detectControlledResources() {
         final Collection<Resource> semantics = session.getSemanticResources();
         final Collection<Resource> resourcesToCheck = new ArrayList<Resource>(session.getTransactionalEditingDomain().getResourceSet().getResources());
-        Collection<Resource> newControlledResources = new LinkedHashSet<Resource>();
-        Collection<Resource> controlledResources = new ArrayList<Resource>(session.getControlledResources());
+        List<Resource> controlledResources = session.getControlledResources();
+        List<Resource> controlledResourcesBefore = new ArrayList<Resource>(session.getControlledResources());
+
+        // add controlled resource
         for (final Resource resource : Iterables.filter(resourcesToCheck, Predicates.not(Predicates.in(controlledResources)))) {
-            if (hasControlledRootInSemantics(resource, semantics) && !controlledResources.contains(resource)) {
-                newControlledResources.add(resource);
+            if (hasControlledRootInSemantics(resource, semantics)) {
+                controlledResources.add(resource);
             }
         }
 
-        if (!newControlledResources.isEmpty()) {
-            session.getControlledResources().addAll(newControlledResources);
+        // remove controlled resource if it is not in the resourceSet anymore
+        ListIterator<Resource> listIterator = controlledResources.listIterator();
+        while (listIterator.hasNext()) {
+            Resource resource = listIterator.next();
+            if (!resourcesToCheck.contains(resource))
+                listIterator.remove();
+        }
+
+        if (!controlledResourcesBefore.equals(controlledResources)) {
             session.transfertNotification(SessionListener.SEMANTIC_CHANGE);
+            session.setSemanticResourcesNotUptodate();
         }
 
     }
