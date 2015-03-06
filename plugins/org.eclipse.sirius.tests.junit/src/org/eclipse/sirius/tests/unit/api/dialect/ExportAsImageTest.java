@@ -103,8 +103,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
 
         // Reopen the session( because after migration the session is closed)
         session = SessionManager.INSTANCE.getSession(URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME, true), new NullProgressMonitor());
-
-        // initSirius(VIEWPOINT_NAME);
+        session.open(new NullProgressMonitor());
         TestsUtil.emptyEventsFromUIThread();
 
         Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
