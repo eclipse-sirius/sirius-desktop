@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2009-2015 THALES GLOBAL SERVICES and others.
+/*******************************************************************************
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  * 
  * Contributors:
  *      Obeo - Initial API and implementation
- */
+ *******************************************************************************/
 package org.eclipse.sirius.tests.support.api;
 
 import java.io.File;
@@ -84,6 +84,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tests.support.internal.helper.CrossReferenceAdapterDetector;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
@@ -424,17 +425,17 @@ public abstract class SiriusTestCase extends TestCase {
      * The default session URI used when there is no session path passed to the
      * generic setup. The name of the aird used the name of the test case to
      * easily debug.
-     * 
+     *
      * @return default session URI.
      */
     protected URI getDefaultRepresentationsFileURI() {
-        return URI.createPlatformResourceURI(
-                File.separator + SiriusTestCase.TEMPORARY_PROJECT_NAME + File.separator + this.getClass().getSimpleName() + "_" + getName() + SiriusTestCase.DOT + SiriusUtil.SESSION_RESOURCE_EXTENSION, true);
+        return URI.createPlatformResourceURI(File.separator + SiriusTestCase.TEMPORARY_PROJECT_NAME + File.separator + this.getClass().getSimpleName() + "_" + getName() + SiriusTestCase.DOT
+                + SiriusUtil.SESSION_RESOURCE_EXTENSION, true);
     }
 
     /**
      * Create and open a session from this URI.
-     * 
+     *
      * @param sessionResourceURI
      *            the URI of the session to create.
      */
@@ -1736,6 +1737,7 @@ public abstract class SiriusTestCase extends TestCase {
 
     @Override
     protected void tearDown() throws Exception {
+        CrossReferenceAdapterDetector crossRefDetector = new CrossReferenceAdapterDetector();
         createModelingProject = false;
         setErrorCatchActive(false);
         setWarningCatchActive(false);
@@ -1747,6 +1749,8 @@ public abstract class SiriusTestCase extends TestCase {
             domain = session.getTransactionalEditingDomain();
             cleanCurrentSession();
         }
+
+        crossRefDetector.checkNoCrossReferenceAdapter();
 
         closeAllSessions();
         // Add a emptyEventsFromUIThread here to wait the closing of all editors
@@ -1814,6 +1818,7 @@ public abstract class SiriusTestCase extends TestCase {
             platformUIPrefs.setValue(key, (Boolean) oldPlatformUIPreferences.get(key));
         }
 
+        crossRefDetector.assertNoCrossReferenceAdapterFound();
         checkLogs();
 
         new TestCaseCleaner(this).clearAllFields();

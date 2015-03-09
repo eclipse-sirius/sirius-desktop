@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -183,8 +183,8 @@ import org.eclipse.sirius.tests.unit.diagram.refresh.MultiMappingImportChainsWit
 import org.eclipse.sirius.tests.unit.diagram.refresh.RefreshToolTipTest;
 import org.eclipse.sirius.tests.unit.diagram.refresh.StyleSizeChangeRefreshTest;
 import org.eclipse.sirius.tests.unit.diagram.refresh.customization.RefreshWithCustomizationTests;
-import org.eclipse.sirius.tests.unit.diagram.resource.AirDCrossReferenceAdapterTest;
 import org.eclipse.sirius.tests.unit.diagram.resource.FileModificationValidationTest;
+import org.eclipse.sirius.tests.unit.diagram.resource.GMFCrossReferenceAdapterTest;
 import org.eclipse.sirius.tests.unit.diagram.session.MultiAirdResourcesSessionTest;
 import org.eclipse.sirius.tests.unit.diagram.session.SessionServiceGMFDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.session.SessionTest;
@@ -338,7 +338,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(UnsynchronizedMappingAndDeleteFromOutsideEditorTests.class);
         suite.addTestSuite(DeleteViewCommandTest.class);
         suite.addTestSuite(FileModificationValidationTest.class);
-        suite.addTestSuite(AirDCrossReferenceAdapterTest.class);
+        suite.addTestSuite(GMFCrossReferenceAdapterTest.class);
         suite.addTestSuite(EdgeStabilityOnPortCollapsingTest.class);
         suite.addTestSuite(MinimizedTransparentCollapsingTest.class);
         suite.addTestSuite(CompositeFilterTest.class);

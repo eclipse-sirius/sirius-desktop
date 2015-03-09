@@ -25,6 +25,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -143,10 +144,12 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), session.getSemanticResources());
         // Remove the known referenced representations file resources
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), session.getReferencedSessionResources());
-        // Remove the Sirius Environment resource
+
         final Iterable<Resource> newSemanticResourcesIterator = Iterables.filter(resourcesAfterLoadOfSession, new Predicate<Resource>() {
+            @Override
             public boolean apply(Resource resource) {
-                return !(new URIQuery(resource.getURI()).isEnvironmentURI());
+                // Remove empty resource and the Sirius environment
+                return !resource.getContents().isEmpty() && !(new URIQuery(resource.getURI()).isEnvironmentURI());
             }
         });
         if (!Iterables.isEmpty(newSemanticResourcesIterator)) {
@@ -198,6 +201,20 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
                         resolvedResources.add(vsmResource);
                     }
                 }
+            }
+        }
+    }
+
+    /**
+     * Resolve all semantic resources.
+     * 
+     * @param allAnalysis
+     *            The analysis of this session
+     */
+    public void resolveAllSemanticResourcesFromModels(Collection<DAnalysis> allAnalysis) {
+        for (DAnalysis dAnalysis : allAnalysis) {
+            for (EObject model : dAnalysis.getModels()) {
+                EcoreUtil.resolve(model, dAnalysis);
             }
         }
     }

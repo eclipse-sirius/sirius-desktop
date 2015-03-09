@@ -21,10 +21,10 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
-import org.eclipse.sirius.business.internal.resource.parser.AirDCrossReferenceAdapterImpl;
 import org.eclipse.sirius.common.tools.api.editing.DefaultEditingDomainFactory;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryDescriptor;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryRegistry;
@@ -117,7 +117,7 @@ public class EditingDomainFactoryServiceTests {
         IEditingDomainFactory firstMostOverriderExtension = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory();
         Assert.assertEquals(SharedTestEditingDomainFactory.class, firstMostOverriderExtension.getClass());
 
-        assertExpectedAirdCrossReferencerAdapterNumber(sharedEditingDomainFactory, 0);
+        assertExpectedGMFCrossReferencerAdapterNumber(sharedEditingDomainFactory, 0);
 
         URI sessionResourceURI = URI.createPlatformPluginURI("org.eclipse.sirius.tests.junit/data/unit/session/VP-3829/test.aird", true);
         SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(sessionResourceURI, new NullProgressMonitor());
@@ -130,14 +130,14 @@ public class EditingDomainFactoryServiceTests {
 
         assertNotNull(session);
         assertEquals(sharedEditingDomainFactory.sharedDomain, session.getTransactionalEditingDomain());
-        assertExpectedAirdCrossReferencerAdapterNumber(sharedEditingDomainFactory, 1);
+        assertExpectedGMFCrossReferencerAdapterNumber(sharedEditingDomainFactory, 0);
 
         session.close(new NullProgressMonitor());
-        assertExpectedAirdCrossReferencerAdapterNumber(sharedEditingDomainFactory, 0);
+        assertExpectedGMFCrossReferencerAdapterNumber(sharedEditingDomainFactory, 0);
     }
 
-    private void assertExpectedAirdCrossReferencerAdapterNumber(SharedTestEditingDomainFactory sharedEditingDomainFactory, int expected) {
-    assertEquals(expected, Iterables.size(Iterables.filter(sharedEditingDomainFactory.sharedDomain.getResourceSet().eAdapters(), AirDCrossReferenceAdapterImpl.class)));
+    private void assertExpectedGMFCrossReferencerAdapterNumber(SharedTestEditingDomainFactory sharedEditingDomainFactory, int expected) {
+        assertEquals(expected, Iterables.size(Iterables.filter(sharedEditingDomainFactory.sharedDomain.getResourceSet().eAdapters(), CrossReferenceAdapter.class)));
     }
 
     @After

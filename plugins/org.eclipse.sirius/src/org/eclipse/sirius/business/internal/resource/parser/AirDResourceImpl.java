@@ -13,7 +13,6 @@ package org.eclipse.sirius.business.internal.resource.parser;
 import java.io.IOException;
 import java.util.Map;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
@@ -107,17 +106,6 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
         // AirDResourceMigration migration = new AirDResourceMigration(this);
         // // Notify user only if there is no more load in progress.
         // migration.migrate(!AirDResourceImpl.hasLoadInProgress());
-    }
-
-    @Override
-    protected void doUnload() {
-        for (Adapter adapter : eAdapters()) {
-            if (adapter instanceof AirDCrossReferenceAdapterImpl) {
-                eAdapters().remove(adapter);
-                break;
-            }
-        }
-        super.doUnload();
     }
 
     @Override

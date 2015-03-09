@@ -126,7 +126,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /** The {@link DAnalysis} of the main session resource (*.aird). */
     private DAnalysis mainDAnalysis;
-    
+
     private SessionResourcesTracker tracker = new SessionResourcesTracker(this);
 
     // Session's configuration
@@ -190,6 +190,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         setResourceCollector(new LocalResourceCollector(getTransactionalEditingDomain().getResourceSet()));
         setDeferSaveToPostCommit(true);
         setSaveInExclusiveTransaction(true);
+
     }
 
     // *******************
@@ -286,18 +287,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void disableAndRemoveECrossReferenceAdapters() {
         ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
-
-        // Disable resolution of proxy for AirDCrossReferenceAdapter of
-        // resourceSet
-        // code to remove when AirDCrossReferenceAdapter is deleted
-        List<Adapter> adaptersToRemove = new ArrayList<Adapter>();
-        for (Adapter next : resourceSet.eAdapters()) {
-            if (next instanceof SiriusCrossReferenceAdapter) {
-                ((SiriusCrossReferenceAdapter) next).disableResolveProxy();
-                adaptersToRemove.add(next);
-            }
-        }
-        resourceSet.eAdapters().removeAll(adaptersToRemove);
 
         // disable resolveProxy capability before clearing adapters on resources
         for (Resource resource : resourceSet.getResources()) {
@@ -420,7 +409,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
         }
     }
-    
+
     DAnalysis getMainAnalysis() {
         return this.mainDAnalysis;
     }
@@ -1483,5 +1472,4 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         return builder.toString();
     }
-
 }

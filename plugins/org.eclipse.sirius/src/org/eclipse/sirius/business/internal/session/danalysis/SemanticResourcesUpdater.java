@@ -56,7 +56,7 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
     @Override
     public void notifyChanged(Notification msg) {
         // CHECKSTYLE:OFF
-        if (!msg.isTouch()
+        if (msg.getEventType() != Notification.REMOVING_ADAPTER
                 && (msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__REFERENCED_ANALYSIS
                         || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__MODELS || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES)) {
             // CHECKSTYLE:ON

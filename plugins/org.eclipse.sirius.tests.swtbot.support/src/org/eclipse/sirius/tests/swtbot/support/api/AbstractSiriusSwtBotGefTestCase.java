@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2009-2015 THALES GLOBAL SERVICES and others.
+/*******************************************************************************
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  * 
  * Contributors:
  *      Obeo - Initial API and implementation
- */
+ *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.support.api;
 
 import java.io.File;
@@ -73,6 +73,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestCaseCleaner;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.support.internal.helper.CrossReferenceAdapterDetector;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective;
@@ -1590,16 +1591,15 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     // Cannot be overriden, we are trying to preserve and cleanup workspace for
     // next tests
     private void failureTearDown() throws Exception {
+        CrossReferenceAdapterDetector crossRefDetector = new CrossReferenceAdapterDetector();
         try {
             SWTBotUtils.waitAllUiEvents();
 
             // Close an eventual popup if the test failed and a popup remain
             // opened
             if (bot != null) {
-                /*
-                 * replace shells() by this code to avoid a
-                 * WidgetNotFoundException: The widget {null} was disposed.
-                 */
+                // replace shells() by this code to avoid a
+                // WidgetNotFoundException: The widget {null} was disposed.
                 Shell[] shells = bot.getFinder().getShells();
                 ArrayList<SWTBotShell> result = new ArrayList<SWTBotShell>();
                 for (Shell shell : shells) {
@@ -1643,6 +1643,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
             SWTBotUtils.waitAllUiEvents();
 
+            crossRefDetector.checkNoCrossReferenceAdapter();
             closeAllSessions();
 
             SWTBotUtils.waitAllUiEvents();
@@ -1668,10 +1669,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
             // Wait all ui events. Indeed, if we don't wait, the access to
             // preferenceStore cause some NPE because the editor is not dispose
-            // :
-            // java.lang.NullPointerException
-            // at
-            // org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor$PropertyChangeListener.propertyChange(DiagramDocumentEditor.java:1661)
+            // : java.lang.NullPointerException at
+            // DiagramDocumentEditor$PropertyChangeListener.propertyChange(DiagramDocumentEditor.java:1661)
             SWTBotUtils.waitAllUiEvents();
 
             UIThreadRunnable.syncExec(new VoidResult() {
@@ -1684,6 +1683,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             });
             setErrorCatchActive(false);
             setWarningCatchActive(false);
+
+            crossRefDetector.assertNoCrossReferenceAdapterFound();
             checkLogs();
         }
 

@@ -70,10 +70,13 @@ class SessionResourcesTracker {
          */
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.RESOLVE_ALL_KEY);
         dAnalysisRefresher = new DAnalysisRefresher(session);
+        Collection<DAnalysis> analyses = session.allAnalyses();
         // First resolve all VSM resources used for Sirius to ignore VSM
         // resources and VSM linked resources (as viewpoint:/environment
         // resource) as new semantic element
-        dAnalysisRefresher.resolveAllVSMResources(session.allAnalyses());
+        dAnalysisRefresher.resolveAllVSMResources(analyses);
+        // Resolve all semantic resources from {@link DAnalysis.getModels()}
+        dAnalysisRefresher.resolveAllSemanticResourcesFromModels(analyses);
         // Then resolve all resources (to automatically add new semantic
         // resources)
         List<Resource> resourcesBeforeLoadOfSession = Lists.newArrayList(session.getTransactionalEditingDomain().getResourceSet().getResources());

@@ -15,8 +15,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.sirius.business.internal.resource.parser.AirDCrossReferenceAdapterImpl;
-import org.eclipse.sirius.business.internal.resource.parser.AirDResourceImpl;
+import org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -28,12 +27,12 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * Test the use of AirDCrossReferenceAdapter.
+ * Test that the GMF CrossReferenceAdapter is not present on resource.
  * 
  * @author smonnier
  * 
  */
-public class AirDCrossReferenceAdapterTest extends SiriusDiagramTestCase implements EcoreModeler {
+public class GMFCrossReferenceAdapterTest extends SiriusDiagramTestCase implements EcoreModeler {
 
     @Override
     protected void setUp() throws Exception {
@@ -48,7 +47,7 @@ public class AirDCrossReferenceAdapterTest extends SiriusDiagramTestCase impleme
      * @throws Exception
      *             If problem
      */
-    public void testAirDCrossReferencerAdapter() throws Exception {
+    public void testGMFCrossReferencerAdapter() throws Exception {
 
         DDiagram diagram = (DDiagram) createRepresentation(ENTITIES_DESC_NAME, semanticModel);
         /* IEditorPart editor = */DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
@@ -57,11 +56,7 @@ public class AirDCrossReferenceAdapterTest extends SiriusDiagramTestCase impleme
         ResourceSet resourceSet = semanticModel.eResource().getResourceSet();
 
         for (Resource resource : resourceSet.getResources()) {
-            if (resource instanceof AirDResourceImpl) {
-                assertTrue("This resource should have an AirDCrossReferenceAdapter : " + resource.getURI().path(), shouldContainAirDCrossReferencer(resource));
-            } else {
-                assertFalse("This resource should not have an AirDCrossReferenceAdapter : " + resource.getURI().path(), shouldContainAirDCrossReferencer(resource));
-            }
+            assertFalse("This resource should not have a GMF CrossReferenceAdapter : " + resource.getURI().path(), hasGMFCrossReferencer(resource));
         }
 
         EPackage ePackage = (EPackage) semanticModel;
@@ -69,20 +64,16 @@ public class AirDCrossReferenceAdapterTest extends SiriusDiagramTestCase impleme
         delete(getEditPart(elementToDelete));
 
         for (Resource resource : resourceSet.getResources()) {
-            if (resource instanceof AirDResourceImpl) {
-                assertTrue("This resource should have an AirDCrossReferenceAdapter : " + resource.getURI().path(), shouldContainAirDCrossReferencer(resource));
-            } else {
-                assertFalse("This resource should not have an AirDCrossReferenceAdapter : " + resource.getURI().path(), shouldContainAirDCrossReferencer(resource));
-            }
+            assertFalse("This resource should not have  a GMF CrossReferenceAdapter : " + resource.getURI().path(), hasGMFCrossReferencer(resource));
         }
     }
 
-    private boolean shouldContainAirDCrossReferencer(Resource resource) {
+    private boolean hasGMFCrossReferencer(Resource resource) {
         return Iterables.any(resource.eAdapters(), new Predicate<Adapter>() {
 
             @Override
             public boolean apply(Adapter input) {
-        return input instanceof AirDCrossReferenceAdapterImpl;
+                return input instanceof CrossReferenceAdapter;
             }
         });
     }

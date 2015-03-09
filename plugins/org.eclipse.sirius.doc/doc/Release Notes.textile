@@ -187,7 +187,8 @@ h4. Changes in @org.eclipse.sirius@
 * @org.eclipse.sirius.tools.api.profiler.SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY@ constant has been deprecated in favor of @SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY@ to fix a typo.
 * @org.eclipse.sirius.business.api.color.AbstractColorUpdater.DEFAULT_RED_VALUE/DEFAULT_GREEN_VALUE/DEFAULT_BLUE_VALUE@ constants have been added to have access to default @RGBValues@'s values. This is used during refresh when there isn't any @ColorDescription@, for example in tree dialect where background color definition is optional.
 * The @org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener.ToolFilterDescriptionListener()@ constructor now takes an @IInterpreter@ as additional parameter to capture the current interpreter and avoid calls to the @IInterpreterRegistry@ for each evaluation of the tool filter expressions.
- 
+* @org.eclipse.sirius.business.api.query.AirdResourceQuery.getAirDCrossReferenceAdapter()@ and @org.eclipse.sirius.business.internal.resource.AirdCrossReferencerAdapter@ have been removed. The adapter was here to customize GMF's own @org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter@. However considering the way Sirius uses GMF, this adapter is not needed.
+
 h4. Changes in @org.eclipse.sirius.ui@
 
 * In @org.eclipse.sirius.ui.business.api.session.UserSession@, the methods @selectSirius()@, @selectOnlySirius()@ and @findSiriusByName()@ have been renamed into @selectViewpoint()@, @selectOnlyViewpoint()@ and @findViewpointByName()@ to correct a wrong rebranding.
@@ -265,7 +266,7 @@ h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean)@ has been added. It allows to disable or enable the snapToGrid option for this editor.
-* The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean, double, int)@ has been added. It allows to disable or enable the snapToGrid option for this editor. In case of activation, you can also set the grid spacing and the ruler units. 
+* The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean, double, int)@ has been added. It allows to disable or enable the snapToGrid option for this editor. In case of activation, you can also set the grid spacing and the ruler units.
 * The method @SWTBotSiriusDiagramEditor.disableSnapToGrid()@ has been deprecated, use @SWTBotSiriusDiagramEditor.setSnapToGrid(false)@ instead.
 * The method @SWTBotSiriusDiagramEditor.adaptLocationToSnap(Point)@ has been added. It allows to adapt location according to SnapToHelper of the current editor.
 * The method @SWTBotSiriusDiagramEditor.getDiagramEditPart()@ has been added. It allows to retrieve the diagram edit part of the current editor.
@@ -308,7 +309,7 @@ h2(#sirius1.0M7). Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)
 h3. Specifier-Visible Changes
 
 * The default value of the _Semantic Candidates Expression_ for Tree Items has changed from an empty string (meaning "any compatible element in the session") to @feature:eAllContents@ which only looks for compatible candidates inside the current element (recursively). The new behavior is more efficient on large models and consistent with what happens for diagrams. The change does not affect existing VSMs which continue to work as before whatever was the expression they used. Users who want the old behavior on specific mappings can simply remove the expression in the properties view.
-* In the _Time Profiler_ view, the _Time (hh:mm:ss,ms)_ has been removed. It was redundant with the existing _Time (ms)_ column, harder to read/sort, and showed wrongly formatted results. 
+* In the _Time Profiler_ view, the _Time (hh:mm:ss,ms)_ has been removed. It was redundant with the existing _Time (ms)_ column, harder to read/sort, and showed wrongly formatted results.
 
 h3. API Changes
 
@@ -394,8 +395,8 @@ h4. Changes in @org.eclipse.sirius@
 ** a semantic resource of this session,
 ** a referenced sub representations file,
 ** a controlled resource.
-* The @EObjectLink@ class has been removed from the metamodel. It was not used anywhere. 
-* In interface @org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch@, the @getFirstRelevantContainerFinder()@ method which returned a Guava @Function<EObject, EObject>@ has been replaced with the new method @getFirstRelevantContainer(EObject)@ which directly returns the result of applying the previously returned function. All implementers in Sirius itself have been updated. 
+* The @EObjectLink@ class has been removed from the metamodel. It was not used anywhere.
+* In interface @org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch@, the @getFirstRelevantContainerFinder()@ method which returned a Guava @Function<EObject, EObject>@ has been replaced with the new method @getFirstRelevantContainer(EObject)@ which directly returns the result of applying the previously returned function. All implementers in Sirius itself have been updated.
 * The constructor @org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch(EStructuralFeature, IInterpretedExpressionTargetSwitch, Function<EObject, EObject>)@ has been removed to avoid exposing a the Guava-specific @Predicate@ type. Sub-classes which used it with a non-null @Function@ should override the @getFirstRelevantContainer(EObject)@ method to return the result of that function instead.
 * The @org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask@ constructor which took a Guava @Predicate<EReference>@ now takes an equivalent @EReferencePredicate@ (from @org.eclipse.sirius.ext.emf@).
 * The constants @DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE@ and @NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE@ from @org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger@ are now instances of @EReferencePredicate@ instead of Guava's @Predicate<EReference>@.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
-import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -32,8 +30,6 @@ public class AirDResouceQuery {
      */
     public static final String ANNOTATION_SOURCE = "Migration";
 
-    private AirdResource resource;
-
     private DAnalysis analysis;
 
     /**
@@ -43,7 +39,6 @@ public class AirDResouceQuery {
      *            the element to query.
      */
     public AirDResouceQuery(AirdResource resource) {
-        this.resource = resource;
         if (resource != null) {
             if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof DAnalysis) {
                 analysis = (DAnalysis) resource.getContents().get(0);
@@ -78,19 +73,5 @@ public class AirDResouceQuery {
         }
         final Option<DAnnotationEntry> annotation = new DAnalysisQuery(analysis).getAnnotation(ANNOTATION_SOURCE, tag);
         return annotation.some();
-    }
-
-    /**
-     * Return the airDCrossReferenceAdapter of this resource.
-     * 
-     * @return the airDCrossReferenceAdapter of this resource.
-     */
-    public Option<AirDCrossReferenceAdapter> getAirDCrossReferenceAdapter() {
-        for (Adapter adapter : resource.eAdapters()) {
-            if (adapter instanceof AirDCrossReferenceAdapter) {
-                return Options.newSome((AirDCrossReferenceAdapter) adapter);
-            }
-        }
-        return Options.newNone();
     }
 }

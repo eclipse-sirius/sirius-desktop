@@ -48,7 +48,7 @@
 				<code>[eContents()-&gt;size()/]</code>) in the VSM, that was implicit before. Customers who want to completely remove this dependency must remove the A3 expressions from there VSM after the migration.
 			</li>
 			<li>The default icons paths of Selection Wizard and Pane Based Selection Wizard used to reference invalid icons, so the corresponding tools had no icon per default in the palette. The default icons paths have been corrected to reference the icons displayed for those elements in the VSM editor.</li>
-			<li>&#171;*&#187; can now be used as feature name of a FeatureColumn to skip the feature name validation during the cell creation. This allow to compute the label of cells for lines whose semantic element types have no common EStructuralFeatures (inherited or with same name).</li>
+			<li>&#8220;*&#8221; can now be used as feature name of a FeatureColumn to skip the feature name validation during the cell creation. This allow to compute the label of cells for lines whose semantic element types have no common EStructuralFeatures (inherited or with same name).</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.ext.emf.tx">Changes in 
@@ -591,6 +591,11 @@
 				<code>IInterpreter</code> as additional parameter to capture the current interpreter and avoid calls to the 
 				<code>IInterpreterRegistry</code> for each evaluation of the tool filter expressions.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.query.AirdResourceQuery.getAirDCrossReferenceAdapter()</code> and 
+				<code>org.eclipse.sirius.business.internal.resource.AirdCrossReferencerAdapter</code> have been removed. The adapter was here to customize GMF&#8217;s own 
+				<code>org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter</code>. However considering the way Sirius uses GMF, this adapter is not needed.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
@@ -846,7 +851,7 @@
 				<code>SWTBotSiriusDiagramEditor.setSnapToGrid(boolean)</code> has been added. It allows to disable or enable the snapToGrid option for this editor.
 			</li>
 			<li>The method 
-				<code>SWTBotSiriusDiagramEditor.setSnapToGrid(boolean, double, int)</code> has been added. It allows to disable or enable the snapToGrid option for this editor. In case of activation, you can also set the grid spacing and the ruler units. 
+				<code>SWTBotSiriusDiagramEditor.setSnapToGrid(boolean, double, int)</code> has been added. It allows to disable or enable the snapToGrid option for this editor. In case of activation, you can also set the grid spacing and the ruler units.
 			</li>
 			<li>The method 
 				<code>SWTBotSiriusDiagramEditor.disableSnapToGrid()</code> has been deprecated, use 
@@ -953,7 +958,7 @@
 			<li>In the 
 				<em>Time Profiler</em> view, the 
 				<em>Time (hh:mm:ss,ms)</em> has been removed. It was redundant with the existing 
-				<em>Time (ms)</em> column, harder to read/sort, and showed wrongly formatted results. 
+				<em>Time (ms)</em> column, harder to read/sort, and showed wrongly formatted results.
 			</li>
 		</ul>
 		<h3 id="APIChanges4">API Changes</h3>
@@ -1239,13 +1244,13 @@
 				</ul>
 			</li>
 			<li>The 
-				<code>EObjectLink</code> class has been removed from the metamodel. It was not used anywhere. 
+				<code>EObjectLink</code> class has been removed from the metamodel. It was not used anywhere.
 			</li>
 			<li>In interface 
 				<code>org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch</code>, the 
 				<code>getFirstRelevantContainerFinder()</code> method which returned a Guava 
 				<code>Function&lt;EObject, EObject&gt;</code> has been replaced with the new method 
-				<code>getFirstRelevantContainer(EObject)</code> which directly returns the result of applying the previously returned function. All implementers in Sirius itself have been updated. 
+				<code>getFirstRelevantContainer(EObject)</code> which directly returns the result of applying the previously returned function. All implementers in Sirius itself have been updated.
 			</li>
 			<li>The constructor 
 				<code>org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch(EStructuralFeature, IInterpretedExpressionTargetSwitch, Function&lt;EObject, EObject&gt;)</code> has been removed to avoid exposing a the Guava-specific 

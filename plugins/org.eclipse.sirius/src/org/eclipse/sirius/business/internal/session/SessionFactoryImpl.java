@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,6 @@ import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIConverter;
-import org.eclipse.sirius.business.internal.resource.parser.AirDCrossReferenceAdapterImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
@@ -42,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
 
 /**
  * Default implementation of a session factory.
- * 
+ *
  * @author mchauvin
  */
 public final class SessionFactoryImpl implements SessionFactory {
@@ -53,7 +52,7 @@ public final class SessionFactoryImpl implements SessionFactory {
 
     /**
      * Default initialization of a {@link SessionFactoryImpl}.
-     * 
+     *
      * @return a new instance of {@link SessionFactory}.
      */
     public static SessionFactory init() {
@@ -65,22 +64,26 @@ public final class SessionFactoryImpl implements SessionFactory {
     }
 
     /**
-     * {@inheritDoc}
+     * Create a new empty {@link Session} instance from the sessionModelURI.
+     * 
+     * @param sessionResourceURI
+     *            the location URI of the new {@link Session} to create
+     * @return the newly created {@link Session}
+     * 
+     * @throws CoreException
+     *             exception when session resource creation failed
      */
     public Session createSession(URI sessionResourceURI) throws CoreException {
         return createSession(sessionResourceURI, new NullProgressMonitor());
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Session createSession(final URI sessionResourceURI, IProgressMonitor monitor) throws CoreException {
         final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionResourceURI);
         final TransactionalEditingDomain transactionalEditingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().createEditingDomain(set);
 
         // Configure the resource set, its is done here and not before the
         // editing domain creation which could provide its own resource set.
-        transactionalEditingDomain.getResourceSet().eAdapters().add(new AirDCrossReferenceAdapterImpl());
         if (Movida.isEnabled()) {
             transactionalEditingDomain.getResourceSet()
                     .setURIConverter(new ViewpointURIConverter((ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
@@ -89,9 +92,9 @@ public final class SessionFactoryImpl implements SessionFactory {
             ResourceSetImpl resourceSetImpl = (ResourceSetImpl) set;
             new ResourceSetImpl.MappedResourceLocator(resourceSetImpl);
         }
-        
+
         set.getLoadOptions().put(DescriptionResourceImpl.OPTION_USE_URI_FRAGMENT_AS_ID, true);
-        
+
         boolean alreadyExistingResource = set.getURIConverter().exists(sessionResourceURI, null);
         Session session = null;
         if (alreadyExistingResource) {
@@ -158,9 +161,7 @@ public final class SessionFactoryImpl implements SessionFactory {
         return session;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Session createDefaultSession(URI sessionResourceURI) throws CoreException {
         return createSession(sessionResourceURI, new NullProgressMonitor());
     }
