@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2008, 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,9 +11,8 @@
 package org.eclipse.sirius.ui.tools.api.properties;
 
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor.PropertyValueWrapper;
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
-import org.eclipse.ui.IEditorPart;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 
 /**
  * Specialization for the manage of DTable elements.
@@ -39,19 +38,16 @@ public abstract class AbstractEObjectPropertySource extends AbstractCompositeEOb
     public void setPropertyValue(final Object id, final Object value) {
         final Identifier identifier = (Identifier) id;
 
-        final IEditorPart part = EclipseUIUtil.getActiveEditor();
-        if (part instanceof AbstractDTreeEditor) {
-            final AbstractDTreeEditor tableEditor = (AbstractDTreeEditor) part;
-            if (tableEditor.getAccessor().getPermissionAuthority().canEditInstance(identifier.getEObject())) {
-                // Test if the value is different
-                boolean isDifferent = true;
-                final Object propertyValue = getPropertySource(identifier).getPropertyValue(identifier.getId());
-                if (propertyValue instanceof PropertyValueWrapper && value != null) {
-                    isDifferent = !value.equals(((PropertyValueWrapper) propertyValue).getEditableValue(propertyValue));
-                }
-                if (isDifferent) {
-                    getPropertySource(identifier).setPropertyValue(identifier.getId(), value);
-                }
+        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(identifier.getEObject());
+        if (permissionAuthority == null || permissionAuthority.canEditInstance(identifier.getEObject())) {
+            // Test if the value is different
+            boolean isDifferent = true;
+            final Object propertyValue = getPropertySource(identifier).getPropertyValue(identifier.getId());
+            if (propertyValue instanceof PropertyValueWrapper && value != null) {
+                isDifferent = !value.equals(((PropertyValueWrapper) propertyValue).getEditableValue(propertyValue));
+            }
+            if (isDifferent) {
+                getPropertySource(identifier).setPropertyValue(identifier.getId(), value);
             }
         }
 
