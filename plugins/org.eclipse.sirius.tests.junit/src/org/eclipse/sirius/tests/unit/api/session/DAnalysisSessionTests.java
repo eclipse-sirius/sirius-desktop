@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -388,8 +388,6 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
 
         Assert.assertTrue(domain.getResourceSet().getResources().contains(resource));
         resource.unload();
-        doCloseSession();
-        // Assert.assertFalse(domain.getResourceSet().getResources().contains(resource));
     }
 
     public void testCreateWrongSession() throws Exception {
