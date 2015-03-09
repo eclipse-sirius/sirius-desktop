@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,12 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
@@ -37,7 +32,10 @@ import org.eclipse.sirius.table.metamodel.table.impl.DLineImpl;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
-//TOODOCBR comment this !
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+
+//TODOCBR comment this !
 /**
  * .
  * 
@@ -47,10 +45,6 @@ public class DLineSpec extends DLineImpl {
 
     private Adapter targetListener;
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void activate(final DTableElementSynchronizer sync) {
         for (final EObject semantic : getSemanticElements()) {
@@ -61,10 +55,6 @@ public class DLineSpec extends DLineImpl {
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void deactivate() {
         if (targetListener != null) {
@@ -97,18 +87,12 @@ public class DLineSpec extends DLineImpl {
         return targetListener;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public EList<DCell> getOrderedCells() {
-        final Map<DColumn, Integer> columnIndices = Maps.newHashMap();
-        int i = 0;
-        for (DColumn col : TableHelper.getTable(this).getColumns()) {
-            columnIndices.put(col, i++);
-        }
         Ordering<DCell> ordering = Ordering.from(new Comparator<DCell>() {
+            Map<DColumn, Integer> columnIndices;
+
+            @Override
             public int compare(DCell a, DCell b) {
                 int result = 0;
                 DColumn columnA = a.getColumn();
@@ -119,6 +103,13 @@ public class DLineSpec extends DLineImpl {
                 } else if (columnB == null || columnB.eContainer() == null) {
                     result = 1;
                 } else {
+                    if (columnIndices == null) {
+                        columnIndices = Maps.newHashMap();
+                        int i = 0;
+                        for (DColumn col : columnA.getTable().getColumns()) {
+                            columnIndices.put(col, i++);
+                        }
+                    }
                     Integer aIndex = columnIndices.get(columnA);
                     Integer bIndex = columnIndices.get(columnB);
                     if (aIndex == null || bIndex == null) {
@@ -135,30 +126,17 @@ public class DLineSpec extends DLineImpl {
         return new EcoreEList.UnmodifiableEList<DCell>(eInternalContainer(), TablePackage.eINSTANCE.getDLine_OrderedCells(), data.length, data);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getMapping()
-     */
     @Override
     public RepresentationElementMapping getMapping() {
         return getOriginMapping();
     }
-    
-    /**
-     * 
-     * {@inheritDoc}
-     * @see org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#basicGetTableElementMapping()
-     */
+
+    @Override
     public TableMapping basicGetTableElementMapping() {
         return (TableMapping) getMapping();
     }
-    
-    /**
-     * 
-     * {@inheritDoc}
-     * @see org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getTableElementMapping()
-     */
+
+    @Override
     public TableMapping getTableElementMapping() {
         TableMapping tableElementMapping = basicGetTableElementMapping();
         return tableElementMapping != null && tableElementMapping.eIsProxy() ? (TableMapping) eResolveProxy((InternalEObject) tableElementMapping) : tableElementMapping;

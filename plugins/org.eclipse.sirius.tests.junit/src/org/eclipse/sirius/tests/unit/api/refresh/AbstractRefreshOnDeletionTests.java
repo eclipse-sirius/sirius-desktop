@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -219,11 +219,12 @@ public abstract class AbstractRefreshOnDeletionTests extends SiriusDiagramTestCa
          * @return the changed {@link DRepresentation}
          */
         public Set<DRepresentation> getChangedDRepresentations() {
-            return changedDRepresentations;
+            return changedDRepresentations != null ? changedDRepresentations : Collections.<DRepresentation> emptySet();
         }
 
     }
 
+    @Override
     public void tearDown() throws Exception {
         session.getTransactionalEditingDomain().removeResourceSetListener(changedDRepresentationsGetter);
         changedDRepresentationsGetter = null;
