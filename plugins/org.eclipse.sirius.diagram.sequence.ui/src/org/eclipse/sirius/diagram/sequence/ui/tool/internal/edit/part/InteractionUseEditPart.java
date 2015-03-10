@@ -129,15 +129,17 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
         String centeredLabelText = "";
         if (resolveSemanticElement() instanceof DNodeContainer) {
             DNodeContainer dNodeContainer = (DNodeContainer) resolveSemanticElement();
-            ContainerMapping actualMapping = dNodeContainer.getActualMapping();
-            if (actualMapping instanceof FrameMapping) {
-                FrameMapping frameMapping = (FrameMapping) actualMapping;
-                String centerLabelExpression = frameMapping.getCenterLabelExpression();
-                EObject eObject = dNodeContainer.getTarget();
-                try {
-                    centeredLabelText = evaluationExpression(eObject, centerLabelExpression);
-                } catch (EvaluationException e) {
-                    RuntimeLoggerManager.INSTANCE.error(frameMapping, DescriptionPackage.eINSTANCE.getFrameMapping_CenterLabelExpression(), e);
+            if (dNodeContainer.eContainer() != null) {
+                ContainerMapping actualMapping = dNodeContainer.getActualMapping();
+                if (actualMapping instanceof FrameMapping) {
+                    FrameMapping frameMapping = (FrameMapping) actualMapping;
+                    String centerLabelExpression = frameMapping.getCenterLabelExpression();
+                    EObject eObject = dNodeContainer.getTarget();
+                    try {
+                        centeredLabelText = evaluationExpression(eObject, centerLabelExpression);
+                    } catch (EvaluationException e) {
+                        RuntimeLoggerManager.INSTANCE.error(frameMapping, DescriptionPackage.eINSTANCE.getFrameMapping_CenterLabelExpression(), e);
+                    }
                 }
             }
         }
