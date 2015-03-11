@@ -13,7 +13,13 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.IWorkspaceRunnable;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain.Lifecycle;
 import org.eclipse.emf.transaction.TransactionalEditingDomainEvent;
@@ -21,6 +27,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomainListenerImpl;
 import org.eclipse.emf.transaction.impl.InternalTransaction;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Encapsulates the decision of *when* to actually save the session's state when
@@ -101,7 +108,28 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
     /**
      * Save immediately and disarm the trigger.
      */
-    private void saveNow(Map<?, ?> options, IProgressMonitor monitor, boolean runExclusive) {
+    private void saveNow(final Map<?, ?> options, IProgressMonitor monitor, final boolean runExclusive) {
+        if (alreadyIsInWorkspaceModificationOperation()) {
+            wrappedSave(options, monitor, runExclusive);
+        } else {
+            IWorkspaceRoot workspaceRoot = EcorePlugin.getWorkspaceRoot();
+            if (workspaceRoot != null) {
+                try {
+                    workspaceRoot.getWorkspace().run(new IWorkspaceRunnable() {
+                        public void run(final IProgressMonitor progressMonitor) throws CoreException {
+                            wrappedSave(options, progressMonitor, runExclusive);
+                        }
+                    }, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
+                } catch (final CoreException e) {
+                    SiriusPlugin.getDefault().error("Core exception while saving session", e);
+                }
+            } else {
+                wrappedSave(options, monitor, runExclusive);
+            }
+        }
+    }
+
+    private void wrappedSave(Map<?, ?> options, IProgressMonitor monitor, boolean runExclusive) {
         // This allows to have session saving thread safe, i.e. only one thread
         // can do a save at a time
         synchronized (isSaving) {
@@ -120,6 +148,11 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
                 }
             }
         }
+    }
+
+    private boolean alreadyIsInWorkspaceModificationOperation() {
+        final Job currentJob = Job.getJobManager().currentJob();
+        return currentJob != null && currentJob.getRule() != null;
     }
 
     protected void disarm() {

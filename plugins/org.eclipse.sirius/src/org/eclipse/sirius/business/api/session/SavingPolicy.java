@@ -24,7 +24,10 @@ import org.eclipse.emf.ecore.resource.Resource;
  */
 public interface SavingPolicy {
     /**
-     * Save the given resources with the provided options.
+     * Save the given resources with the provided options. The caller has the
+     * responsibility to call this method in a
+     * {@link org.eclipse.core.resources.IWorkspaceRunnable} if it modifies the
+     * workspace.
      * 
      * @param resourcesToSave
      *            the resources to save

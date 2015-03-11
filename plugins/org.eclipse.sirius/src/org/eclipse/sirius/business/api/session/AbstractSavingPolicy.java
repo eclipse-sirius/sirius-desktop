@@ -16,13 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.IWorkspaceRunnable;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -60,24 +54,15 @@ public abstract class AbstractSavingPolicy implements SavingPolicy {
         try {
             monitor.beginTask("Save Session", IProgressMonitor.UNKNOWN);
             resourcesToSave.addAll(computeResourcesToSave(Sets.newLinkedHashSet(allResources), options, monitor));
-            if (alreadyIsInWorkspaceModificationOperation()) {
-                wrappedSave(resourcesToSave, allResources, options, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
+            if (options == null) {
+                ResourceSetSync.getOrInstallResourceSetSync(domain).save(resourcesToSave, allResources, getDefaultSaveOptions());
             } else {
-                IWorkspaceRoot workspaceRoot = EcorePlugin.getWorkspaceRoot();
-                if (workspaceRoot != null) {
-                    try {
-                        workspaceRoot.getWorkspace().run(new IWorkspaceRunnable() {
-                            public void run(final IProgressMonitor monitor) throws CoreException {
-                                wrappedSave(resourcesToSave, allResources, options, monitor);
-                            }
-                        }, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
-                    } catch (final CoreException e) {
-                        SiriusPlugin.getDefault().error("Core exception while saving session", e);
-                    }
-                } else {
-                    wrappedSave(resourcesToSave, allResources, options, monitor);
-                }
+                ResourceSetSync.getOrInstallResourceSetSync(domain).save(resourcesToSave, allResources, options);
             }
+        } catch (final IOException e) {
+            SiriusPlugin.getDefault().error("error while saving session", e);
+        } catch (final InterruptedException e) {
+            SiriusPlugin.getDefault().error("error while saving session", e);
         } finally {
             monitor.done();
         }
@@ -112,26 +97,4 @@ public abstract class AbstractSavingPolicy implements SavingPolicy {
      *         on disk.
      */
     protected abstract Collection<Resource> computeResourcesToSave(Set<Resource> scope, Map<?, ?> options, IProgressMonitor monitor);
-
-    private void wrappedSave(final Iterable<Resource> resourcesToSave, final Iterable<Resource> allResources, final Map<?, ?> options, IProgressMonitor monitor) {
-        try {
-            monitor.beginTask("Session Saving", IProgressMonitor.UNKNOWN);
-            if (options == null) {
-                ResourceSetSync.getOrInstallResourceSetSync(domain).save(resourcesToSave, allResources, getDefaultSaveOptions());
-            } else {
-                ResourceSetSync.getOrInstallResourceSetSync(domain).save(resourcesToSave, allResources, options);
-            }
-        } catch (final IOException e) {
-            SiriusPlugin.getDefault().error("error while saving session", e);
-        } catch (final InterruptedException e) {
-            SiriusPlugin.getDefault().error("error while saving session", e);
-        } finally {
-            monitor.done();
-        }
-    }
-
-    private boolean alreadyIsInWorkspaceModificationOperation() {
-        final Job currentJob = Job.getJobManager().currentJob();
-        return currentJob != null && currentJob.getRule() != null;
-    }
 }
