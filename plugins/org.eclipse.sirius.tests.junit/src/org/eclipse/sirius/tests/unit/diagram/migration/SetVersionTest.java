@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileResourc
 import org.eclipse.sirius.business.internal.migration.description.VSMExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMResourceHandler;
-import org.eclipse.sirius.business.internal.resource.parser.AirDResourceImpl;
+import org.eclipse.sirius.business.internal.resource.AirDResourceImpl;
 import org.eclipse.sirius.business.internal.session.SessionFactoryImpl;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;

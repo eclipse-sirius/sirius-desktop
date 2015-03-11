@@ -32,7 +32,7 @@ import org.eclipse.sirius.business.api.session.SavingPolicy;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
-import org.eclipse.sirius.business.internal.resource.parser.AirDResourceFactory;
+import org.eclipse.sirius.business.internal.resource.AirDResourceFactory;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.resource.parser;
+package org.eclipse.sirius.business.internal.resource;
 
 import java.io.IOException;
 import java.util.Map;
@@ -17,12 +17,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
-import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.api.session.resource.DResource;
 import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
-import org.eclipse.sirius.business.internal.migration.AirdResourceXMILoad;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
+import org.eclipse.sirius.business.internal.resource.parser.RepresentationsFileXMIHelper;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -32,7 +32,14 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
  * 
  * @author mchauvin
  */
-public class AirDResourceImpl extends GMFResource implements DResource, AirdResource {
+public class AirDResourceImpl extends XMIResourceImpl implements DResource, AirdResource {
+
+    /**
+     * Use this option to abort loading a resource immediately when an error
+     * occurs. The default is <code>Boolean.FALSE</code> unless set to
+     * <code>Boolean.TRUE</code> explicitly.
+     */
+    public static final String OPTION_ABORT_ON_ERROR = "ABORT_ON_ERROR"; //$NON-NLS-1$
 
     /**
      * The number of current load in progress. Usefull for determine if the
@@ -55,6 +62,16 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
      */
     public AirDResourceImpl(final URI uri) {
         super(uri);
+    }
+
+    @Override
+    protected boolean useUUIDs() {
+        return true;
+    }
+
+    @Override
+    protected boolean useIDAttributes() {
+        return false;
     }
 
     /**
@@ -81,7 +98,7 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
     }
 
     /**
-     * Overridden to not have {@link GMFResource} set to true in this
+     * Overridden to not have {@link XMIResourceImpl} set to true in this
      * constructor because now it is
      * {@link org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater}
      * which manage {@link org.eclipse.emf.ecore.resource.Resource#isModified()}
@@ -124,8 +141,8 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
             }
             return new AirdResourceXMILoad(loadedVersion, createXMLHelper());
         }
-        return createXMLLoad();
 
+        return new AirdResourceXMILoad(createXMLHelper());
     }
 
     /**

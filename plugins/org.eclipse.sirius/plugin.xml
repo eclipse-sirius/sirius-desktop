@@ -371,7 +371,7 @@
       <?gmfgen generated="false"?>
       <parser
          type="aird"
-         class="org.eclipse.sirius.business.internal.resource.parser.AirDResourceFactory">
+         class="org.eclipse.sirius.business.internal.resource.AirDResourceFactory">
       </parser>
    </extension>
 
