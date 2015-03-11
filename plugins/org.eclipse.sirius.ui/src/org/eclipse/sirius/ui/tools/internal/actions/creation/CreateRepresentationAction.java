@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.actions.creation;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -30,15 +31,19 @@ import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationComma
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -90,20 +95,40 @@ public class CreateRepresentationAction extends Action {
     void updateActionLabels() {
         ImageDescriptor descriptor = ImageDescriptor.getMissingImageDescriptor();
         final Image descImage = labelProvider.getImage(description);
+
         if (descImage != null) {
             descriptor = ImageDescriptor.createFromImage(descImage);
         }
+
         this.setImageDescriptor(descriptor);
+
         computeRepresentationName();
         this.setText(name);
         this.setToolTipText(description.getEndUserDocumentation());
+
+        if (session instanceof DAnalysisSessionImpl) {
+            // Disable the action in case of the representation cannot be
+            // created
+            Collection<DRepresentationContainer> containers = ((DAnalysisSessionImpl) session).getAvailableRepresentationContainers(description);
+
+            // If containers is empty, a new one will be created, so the action
+            // is enabled
+            if (!containers.isEmpty()) {
+                // Try to find one valid container candidate
+                boolean enabled = false;
+                for (DRepresentationContainer container : containers) {
+                    IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
+                    if (permissionAuthority == null || permissionAuthority.canCreateIn(container)) {
+                        enabled = true;
+                        break;
+                    }
+                } // for
+
+                this.setEnabled(enabled);
+            }
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
@@ -116,6 +141,7 @@ public class CreateRepresentationAction extends Action {
 
             IRunnableWithProgress representationCreationRunnable = new IRunnableWithProgress() {
 
+                @Override
                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     try {
                         monitor.beginTask("Representation creation", 5);
@@ -135,6 +161,7 @@ public class CreateRepresentationAction extends Action {
             };
             PlatformUI.getWorkbench().getProgressService().run(true, false, representationCreationRunnable);
             IRunnableWithProgress runnable = new IRunnableWithProgress() {
+                @Override
                 public void run(final IProgressMonitor monitor) {
                     try {
                         monitor.beginTask("Representation opening", 1);
@@ -175,6 +202,7 @@ public class CreateRepresentationAction extends Action {
         }
         descriptionLabel += Messages.createRepresentationInputDialog_NewRepresentationNameLabel;
         final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), Messages.createRepresentationInputDialog_Title, descriptionLabel, name, new IInputValidator() {
+            @Override
             public String isValid(final String newText) {
                 return null;
             }

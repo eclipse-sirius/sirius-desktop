@@ -51,6 +51,7 @@ import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
+import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
@@ -97,6 +98,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 
@@ -1493,5 +1495,37 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             builder.delete(builder.length() - 2, builder.length());
         }
         return builder.toString();
+    }
+
+    /**
+     * Get collection of available {@link DRepresentationContainer} for the
+     * {@link RepresentationDescription}.
+     * 
+     * @param representationDescription
+     *            the representation description.
+     * @return available representation containers
+     */
+    public Collection<DRepresentationContainer> getAvailableRepresentationContainers(RepresentationDescription representationDescription) {
+        final Viewpoint viewpoint = new RepresentationDescriptionQuery(representationDescription).getParentViewpoint();
+        Collection<DAnalysis> allAnalysis = allAnalyses();
+
+        final List<DRepresentationContainer> containers = new ArrayList<DRepresentationContainer>();
+
+        for (DAnalysis analysis : allAnalysis) {
+            DRepresentationContainer container = null;
+
+            for (final DView view : analysis.getOwnedViews()) {
+                if (view instanceof DRepresentationContainer && viewpoint == view.getViewpoint() && view.eContainer() instanceof DAnalysis) {
+                    container = (DRepresentationContainer) view;
+                    break;
+                }
+            } // for
+
+            if (container != null) {
+                containers.add(container);
+            }
+        }
+
+        return containers;
     }
 }

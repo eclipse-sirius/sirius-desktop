@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -25,9 +26,13 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
@@ -47,6 +52,8 @@ import com.google.common.collect.Lists;
 public class RepresentationSelectionWizardPage extends WizardPage {
 
     private static final String SELECT_REPRESENTATIONS = "Select a representation type";
+
+    private static final String READ_ONLY_REPRESENTATION_CONTAINER = "The representation container is read only.\r\n Please select another representation type.";
 
     /** The title of the page. */
     private static final String PAGE_TITLE = "Create a new representation";
@@ -77,18 +84,42 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         setMessage(SELECT_REPRESENTATIONS);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.WizardPage#canFlipToNextPage()
-     */
+    @Override
     public boolean canFlipToNextPage() {
+        boolean result = false;
+
+        setErrorMessage(null); // clear previous error if exists
         ISelection selection = treeViewer.getSelection();
         if (selection instanceof StructuredSelection && ((StructuredSelection) selection).getFirstElement() instanceof RepresentationDescription) {
-            setRepresentation((RepresentationDescription) ((StructuredSelection) selection).getFirstElement());
-            return true;
+            RepresentationDescription representationDescription = (RepresentationDescription) ((StructuredSelection) selection).getFirstElement();
+            result = true; // set to true before permission authority check
+
+            if (root instanceof DAnalysisSessionImpl) {
+                Collection<DRepresentationContainer> containers = ((DAnalysisSessionImpl) root).getAvailableRepresentationContainers(representationDescription);
+
+                // If containers is empty, a new one will be created, so the
+                // wizard is available
+                if (!containers.isEmpty()) {
+                    // Try to find one valid container candidate
+                    result = false;
+                    for (DRepresentationContainer container : containers) {
+                        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
+                        if (permissionAuthority == null || permissionAuthority.canCreateIn(container)) {
+                            result = true;
+                            break;
+                        }
+                    } // for
+                }
+            }
+
+            if (result) {
+                setRepresentation(representationDescription);
+            } else {
+                setErrorMessage(READ_ONLY_REPRESENTATION_CONTAINER);
+            }
         }
-        return false;
+
+        return result;
     }
 
     private void setRepresentation(RepresentationDescription firstElement) {
@@ -103,11 +134,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         this.selectionWizard = selectionWizard;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
 
@@ -131,6 +158,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         treeViewer.collapseAll();
         treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            @Override
             public void selectionChanged(SelectionChangedEvent event) {
                 setPageComplete(isPageComplete());
                 if (selectionWizard != null) {
@@ -173,6 +201,9 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         return super.isCurrentPage();
     }
 
+    /**
+     * Session content provider.
+     */
     private static final class SessionContentProvider implements ITreeContentProvider {
 
         private static Object[] empty = new Object[0];
@@ -180,16 +211,11 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         /**
          * Create a new <code>SemanticContentProvider</code> with the specified
          * session.
-         * 
          */
         public SessionContentProvider() {
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-         */
+        @Override
         public Object[] getChildren(final Object parentElement) {
             Object[] children = empty;
             if (parentElement instanceof Session) {
@@ -197,6 +223,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
             } else if (parentElement instanceof Viewpoint) {
                 List<RepresentationDescription> reps = Lists.newArrayList(((Viewpoint) parentElement).getOwnedRepresentations());
                 Collections.sort(reps, new Comparator<RepresentationDescription>() {
+                    @Override
                     public int compare(RepresentationDescription rep1, RepresentationDescription rep2) {
                         return CommonItemSorter.compareRepresentationDescriptions(rep1, rep2);
                     };
@@ -206,50 +233,28 @@ public class RepresentationSelectionWizardPage extends WizardPage {
             return children;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-         */
+        @Override
         public Object getParent(final Object element) {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-         */
+        @Override
         public boolean hasChildren(final Object element) {
             return getChildren(element).length > 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
-         */
+        @Override
         public Object[] getElements(final Object inputElement) {
             return getChildren(inputElement);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-         */
+        @Override
         public void dispose() {
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
-         */
+        @Override
         public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
             // empty
         }
     }
-
 }

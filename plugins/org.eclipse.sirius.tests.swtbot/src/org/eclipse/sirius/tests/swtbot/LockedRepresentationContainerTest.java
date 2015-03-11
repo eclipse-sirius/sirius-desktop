@@ -116,6 +116,54 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
+     * Ensure that the creation of a new representation is forbidden when the
+     * representation container is locked by using permission authority.
+     */
+    public void testCreateRepresentation() {
+        SWTBotTreeItem semanticPackageNode = getSelectedSemanticPackageNode();
+
+        // Before locking the representation container
+        assertTrue("The creation of new representation should be enabled", semanticPackageNode.contextMenu(NEW_REPRESENTATION).menu(REPRESENTATION_NAME).isEnabled());
+
+        // Lock the representation container
+        lockRepresentationContainer();
+
+        // After locking the representation container
+        assertFalse("The creation of new representation should be disabled when the representation container is locked", semanticPackageNode.contextMenu(NEW_REPRESENTATION).menu(REPRESENTATION_NAME)
+                .isEnabled());
+    }
+
+    /**
+     * Ensure that the creation of a new representation from the session is
+     * forbidden when the representation container is locked by using permission
+     * authority.
+     */
+    public void testCreateRepresentationFromSession() {
+        SWTBotTreeItem sessionTreeItem = localSession.getRootSessionTreeItem();
+
+        // Open the "Create Representation" Wizard from the session
+        clickContextMenu(sessionTreeItem, CREATE_REPRESENTATION);
+
+        SWTBotShell shell = bot.shell(CREATE_REPRESENTATION_WIZARD);
+        shell.activate();
+
+        // Select the representation description
+        bot.tree().expandNode(VIEWPOINT_NAME, REPRESENTATION_DESCRIPTION_NAME).select();
+        assertTrue("The representation creation should be allowed", bot.button(NEXT).isEnabled());
+
+        // Lock the representation container
+        lockRepresentationContainer();
+
+        // After locking the representation container, the node must be selected
+        // again to update the button status
+        bot.tree().expandNode(VIEWPOINT_NAME, REPRESENTATION_DESCRIPTION_NAME).select();
+        assertFalse("The representation creation should be forbidden when the representation container is locked", bot.button(NEXT).isEnabled());
+
+        // Close the wizard
+        bot.button(CANCEL).click();
+    }
+
+    /**
      * Ensure that the creation of a new representation from the session is
      * forbidden when the representation container is locked by using permission
      * authority.
