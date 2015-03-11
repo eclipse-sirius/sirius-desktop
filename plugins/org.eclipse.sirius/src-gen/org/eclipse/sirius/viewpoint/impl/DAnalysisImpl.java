@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,9 +21,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DView;
@@ -39,6 +41,9 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getReferencedAnalysis
  * <em>Referenced Analysis</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getSemanticResources
+ * <em>Semantic Resources</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getModels <em>
  * Models</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getEAnnotations
@@ -68,6 +73,17 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
      * @ordered
      */
     protected EList<DAnalysis> referencedAnalysis;
+
+    /**
+     * The cached value of the '{@link #getSemanticResources()
+     * <em>Semantic Resources</em>}' attribute list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getSemanticResources()
+     * @generated
+     * @ordered
+     */
+    protected EList<ResourceDescriptor> semanticResources;
 
     /**
      * The cached value of the '{@link #getModels() <em>Models</em>}' reference
@@ -269,6 +285,19 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
      * @generated
      */
     @Override
+    public EList<ResourceDescriptor> getSemanticResources() {
+        if (semanticResources == null) {
+            semanticResources = new EDataTypeUniqueEList<ResourceDescriptor>(ResourceDescriptor.class, this, ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES);
+        }
+        return semanticResources;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case ViewpointPackage.DANALYSIS__EANNOTATIONS:
@@ -291,6 +320,8 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
         switch (featureID) {
         case ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS:
             return getReferencedAnalysis();
+        case ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES:
+            return getSemanticResources();
         case ViewpointPackage.DANALYSIS__MODELS:
             return getModels();
         case ViewpointPackage.DANALYSIS__EANNOTATIONS:
@@ -319,6 +350,10 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
         case ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS:
             getReferencedAnalysis().clear();
             getReferencedAnalysis().addAll((Collection<? extends DAnalysis>) newValue);
+            return;
+        case ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES:
+            getSemanticResources().clear();
+            getSemanticResources().addAll((Collection<? extends ResourceDescriptor>) newValue);
             return;
         case ViewpointPackage.DANALYSIS__MODELS:
             getModels().clear();
@@ -358,6 +393,9 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
         case ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS:
             getReferencedAnalysis().clear();
             return;
+        case ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES:
+            getSemanticResources().clear();
+            return;
         case ViewpointPackage.DANALYSIS__MODELS:
             getModels().clear();
             return;
@@ -390,6 +428,8 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
         switch (featureID) {
         case ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS:
             return referencedAnalysis != null && !referencedAnalysis.isEmpty();
+        case ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES:
+            return semanticResources != null && !semanticResources.isEmpty();
         case ViewpointPackage.DANALYSIS__MODELS:
             return models != null && !models.isEmpty();
         case ViewpointPackage.DANALYSIS__EANNOTATIONS:
@@ -418,7 +458,9 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (version: ");
+        result.append(" (semanticResources: ");
+        result.append(semanticResources);
+        result.append(", version: ");
         result.append(version);
         result.append(')');
         return result.toString();

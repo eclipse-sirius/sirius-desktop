@@ -63,6 +63,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
             super.getPropertyDescriptors(object);
 
             addReferencedAnalysisPropertyDescriptor(object);
+            addSemanticResourcesPropertyDescriptor(object);
             addModelsPropertyDescriptor(object);
             addSelectedViewsPropertyDescriptor(object);
             addVersionPropertyDescriptor(object);
@@ -117,6 +118,18 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DAnalysis_version_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_version_feature", "_UI_DAnalysis_type"),
                 ViewpointPackage.Literals.DANALYSIS__VERSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Semantic Resources feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addSemanticResourcesPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DAnalysis_semanticResources_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_semanticResources_feature", "_UI_DAnalysis_type"),
+                ViewpointPackage.Literals.DANALYSIS__SEMANTIC_RESOURCES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -189,6 +202,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
         updateChildren(notification);
 
         switch (notification.getFeatureID(DAnalysis.class)) {
+        case ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES:
         case ViewpointPackage.DANALYSIS__VERSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

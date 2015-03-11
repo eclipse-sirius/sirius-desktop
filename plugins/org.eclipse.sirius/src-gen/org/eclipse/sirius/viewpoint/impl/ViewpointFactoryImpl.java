@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.metamodel.spec.DRepresentationContainerSpec;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
@@ -139,6 +140,8 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return createSyncStatusFromString(eDataType, initialValue);
         case ViewpointPackage.RGB_VALUES:
             return createRGBValuesFromString(eDataType, initialValue);
+        case ViewpointPackage.RESOURCE_DESCRIPTOR:
+            return createResourceDescriptorFromString(eDataType, initialValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -160,6 +163,8 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return convertSyncStatusToString(eDataType, instanceValue);
         case ViewpointPackage.RGB_VALUES:
             return convertRGBValuesToString(eDataType, instanceValue);
+        case ViewpointPackage.RESOURCE_DESCRIPTOR:
+            return convertResourceDescriptorToString(eDataType, instanceValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -442,6 +447,24 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         if (instanceValue instanceof RGBValues) {
             return instanceValue.toString();
         }
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ResourceDescriptor createResourceDescriptorFromString(EDataType eDataType, String initialValue) {
+        return (ResourceDescriptor) super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String convertResourceDescriptorToString(EDataType eDataType, Object instanceValue) {
         return super.convertToString(eDataType, instanceValue);
     }
 

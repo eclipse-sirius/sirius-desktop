@@ -144,7 +144,9 @@
 			</li>
 			<li>There is a new capability on Dialect. This capability is to refresh only impacted elements concerned by a list of notifications. It is used, for example, to refresh the opened representations when the user chooses manual refresh mode. Each dialect that want to offer this capability must implement 
 				<code>org.eclipse.sirius.business.api.dialect.DialectServices.refreshImpactedElements(DRepresentation, Collection&lt;Notification&gt;, IProgressMonitor)</code>. A default implementation that does nothing is done in 
-				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices</code>.* A new method has been added in the query 
+				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices</code>.
+			</li>
+			<li>A new method has been added in the query 
 				<code>org.eclipse.sirius.business.api.query.DAnalysisQuery</code> named 
 				<code>getMainModels()</code>. This method returns a Set of the main model and the other non controlled models.
 			</li>
@@ -168,6 +170,11 @@
 			</li>
 			<li>The API 
 				<code>org.eclipse.sirius.viewpoint.DContainer</code> has been removed.
+			</li>
+			<li>A new method has been added in 
+				<code>org.eclipse.sirius.viewpoint.DAnalysis</code> named 
+				<code>getSemanticResources()</code>. This method returns a list of 
+				<code>org.eclipse.sirius.business.api.resource.ResourceDescriptor</code> which is a descriptor of the semantic resource.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 

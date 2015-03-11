@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 
 /**
@@ -24,6 +25,8 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.DAnalysis#getReferencedAnalysis <em>
  * Referenced Analysis</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysis#getSemanticResources <em>
+ * Semantic Resources</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DAnalysis#getModels <em>Models</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DAnalysis#getEAnnotations <em>
  * EAnnotations</em>}</li>
@@ -180,5 +183,23 @@ public interface DAnalysis extends EObject {
      * @generated
      */
     void setVersion(String value);
+
+    /**
+     * Returns the value of the '<em><b>Semantic Resources</b></em>' attribute
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.business.api.resource.ResourceDescriptor}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Semantic Resources</em>' attribute list isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Semantic Resources</em>' attribute list.
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_SemanticResources()
+     * @model dataType="org.eclipse.sirius.viewpoint.ResourceDescriptor"
+     * @generated
+     */
+    EList<ResourceDescriptor> getSemanticResources();
 
 } // DAnalysis

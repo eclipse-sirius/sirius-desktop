@@ -8,6 +8,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="DAnalysis">
     <eStructuralFeatures xsi:type="ecore:EReference" name="referencedAnalysis" upperBound="-1"
         eType="#//DAnalysis"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticResources" upperBound="-1"
+        eType="#//ResourceDescriptor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eAnnotations" upperBound="-1"
@@ -256,6 +258,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="customFeatures" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ResourceDescriptor" instanceClassName="org.eclipse.sirius.business.api.resource.ResourceDescriptor"/>
   <eSubpackages name="description" nsURI="http://www.eclipse.org/sirius/description/1.1.0"
       nsPrefix="description">
     <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="#//description/DModelElement #//description/DocumentedElement">

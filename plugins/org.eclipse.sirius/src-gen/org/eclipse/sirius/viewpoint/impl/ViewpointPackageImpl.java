@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -272,6 +273,13 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     private EDataType rgbValuesEDataType = null;
 
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EDataType resourceDescriptorEDataType = null;
+
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
      * package package URI value.
@@ -389,16 +397,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      */
     @Override
     public EReference getDAnalysis_Models() {
-        return (EReference) dAnalysisEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EReference getDAnalysis_EAnnotations() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(2);
     }
 
@@ -408,7 +406,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getDAnalysis_OwnedViews() {
+    public EReference getDAnalysis_EAnnotations() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(3);
     }
 
@@ -418,7 +416,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getDAnalysis_SelectedViews() {
+    public EReference getDAnalysis_OwnedViews() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(4);
     }
 
@@ -428,7 +426,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getDAnalysis_OwnedFeatureExtensions() {
+    public EReference getDAnalysis_SelectedViews() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(5);
     }
 
@@ -438,8 +436,28 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
+    public EReference getDAnalysis_OwnedFeatureExtensions() {
+        return (EReference) dAnalysisEClass.getEStructuralFeatures().get(6);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EAttribute getDAnalysis_Version() {
-        return (EAttribute) dAnalysisEClass.getEStructuralFeatures().get(6);
+        return (EAttribute) dAnalysisEClass.getEStructuralFeatures().get(7);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getDAnalysis_SemanticResources() {
+        return (EAttribute) dAnalysisEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -778,6 +796,16 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
+    public EDataType getResourceDescriptor() {
+        return resourceDescriptorEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EClass getDAnalysisSessionEObject() {
         return dAnalysisSessionEObjectEClass;
     }
@@ -1095,6 +1123,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         // Create classes and their features
         dAnalysisEClass = createEClass(ViewpointPackage.DANALYSIS);
         createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS);
+        createEAttribute(dAnalysisEClass, ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES);
         createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__MODELS);
         createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__EANNOTATIONS);
         createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__OWNED_VIEWS);
@@ -1191,6 +1220,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Create data types
         rgbValuesEDataType = createEDataType(ViewpointPackage.RGB_VALUES);
+        resourceDescriptorEDataType = createEDataType(ViewpointPackage.RESOURCE_DESCRIPTOR);
     }
 
     /**
@@ -1255,6 +1285,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEReference(getDAnalysis_ReferencedAnalysis(), this.getDAnalysis(), null, "referencedAnalysis", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysis_SemanticResources(), this.getResourceDescriptor(), "semanticResources", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDAnalysis_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
@@ -1432,6 +1464,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Initialize data types
         initEDataType(rgbValuesEDataType, RGBValues.class, "RGBValues", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(resourceDescriptorEDataType, ResourceDescriptor.class, "ResourceDescriptor", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(ViewpointPackage.eNS_URI);

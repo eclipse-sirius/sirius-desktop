@@ -86,13 +86,22 @@ public interface ViewpointPackage extends EPackage {
     int DANALYSIS__REFERENCED_ANALYSIS = 0;
 
     /**
+     * The feature id for the '<em><b>Semantic Resources</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DANALYSIS__SEMANTIC_RESOURCES = 1;
+
+    /**
      * The feature id for the '<em><b>Models</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DANALYSIS__MODELS = 1;
+    int DANALYSIS__MODELS = 2;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment
@@ -101,7 +110,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS__EANNOTATIONS = 2;
+    int DANALYSIS__EANNOTATIONS = 3;
 
     /**
      * The feature id for the '<em><b>Owned Views</b></em>' containment
@@ -110,7 +119,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS__OWNED_VIEWS = 3;
+    int DANALYSIS__OWNED_VIEWS = 4;
 
     /**
      * The feature id for the '<em><b>Selected Views</b></em>' reference list.
@@ -119,7 +128,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS__SELECTED_VIEWS = 4;
+    int DANALYSIS__SELECTED_VIEWS = 5;
 
     /**
      * The feature id for the '<em><b>Owned Feature Extensions</b></em>'
@@ -128,7 +137,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS__OWNED_FEATURE_EXTENSIONS = 5;
+    int DANALYSIS__OWNED_FEATURE_EXTENSIONS = 6;
 
     /**
      * The feature id for the '<em><b>Version</b></em>' attribute. <!--
@@ -137,7 +146,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS__VERSION = 6;
+    int DANALYSIS__VERSION = 7;
 
     /**
      * The number of structural features of the '<em>DAnalysis</em>' class. <!--
@@ -146,7 +155,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS_FEATURE_COUNT = 7;
+    int DANALYSIS_FEATURE_COUNT = 8;
 
     /**
      * The meta object id for the '
@@ -837,6 +846,16 @@ public interface ViewpointPackage extends EPackage {
     int RGB_VALUES = 28;
 
     /**
+     * The meta object id for the '<em>Resource Descriptor</em>' data type. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.business.api.resource.ResourceDescriptor
+     * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getResourceDescriptor()
+     * @generated
+     */
+    int RESOURCE_DESCRIPTOR = 29;
+
+    /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl
      * <em>DAnalysis Session EObject</em>}' class. <!-- begin-user-doc --> <!--
@@ -1335,6 +1354,20 @@ public interface ViewpointPackage extends EPackage {
     EAttribute getDAnalysis_Version();
 
     /**
+     * Returns the meta object for the attribute list '
+     * {@link org.eclipse.sirius.viewpoint.DAnalysis#getSemanticResources
+     * <em>Semantic Resources</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute list '
+     *         <em>Semantic Resources</em>'.
+     * @see org.eclipse.sirius.viewpoint.DAnalysis#getSemanticResources()
+     * @see #getDAnalysis()
+     * @generated
+     */
+    EAttribute getDAnalysis_SemanticResources();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.viewpoint.DFeatureExtension
      * <em>DFeature Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1732,6 +1765,20 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      */
     EDataType getRGBValues();
+
+    /**
+     * Returns the meta object for data type '
+     * {@link org.eclipse.sirius.business.api.resource.ResourceDescriptor
+     * <em>Resource Descriptor</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for data type '<em>Resource Descriptor</em>'.
+     * @see org.eclipse.sirius.business.api.resource.ResourceDescriptor
+     * @model instanceClass=
+     *        "org.eclipse.sirius.business.api.resource.ResourceDescriptor"
+     * @generated
+     */
+    EDataType getResourceDescriptor();
 
     /**
      * Returns the meta object for class '
@@ -2176,6 +2223,14 @@ public interface ViewpointPackage extends EPackage {
         EAttribute DANALYSIS__VERSION = ViewpointPackage.eINSTANCE.getDAnalysis_Version();
 
         /**
+         * The meta object literal for the '<em><b>Semantic Resources</b></em>'
+         * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute DANALYSIS__SEMANTIC_RESOURCES = ViewpointPackage.eINSTANCE.getDAnalysis_SemanticResources();
+
+        /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl
          * <em>DFeature Extension</em>}' class. <!-- begin-user-doc --> <!--
@@ -2498,6 +2553,16 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EDataType RGB_VALUES = ViewpointPackage.eINSTANCE.getRGBValues();
+
+        /**
+         * The meta object literal for the '<em>Resource Descriptor</em>' data
+         * type. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.business.api.resource.ResourceDescriptor
+         * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getResourceDescriptor()
+         * @generated
+         */
+        EDataType RESOURCE_DESCRIPTOR = ViewpointPackage.eINSTANCE.getResourceDescriptor();
 
         /**
          * The meta object literal for the '
