@@ -57,7 +57,6 @@ public class WorkspaceBackend extends AbstractResourceSyncBackend {
             workspace.removeResourceChangeListener(listener);
             listener = null;
         }
-        super.uninstall();
     }
 
     public ResourceSet getObservedSet() {

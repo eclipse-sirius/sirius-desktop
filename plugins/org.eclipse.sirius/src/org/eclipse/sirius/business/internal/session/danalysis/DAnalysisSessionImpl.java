@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -131,7 +132,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     // Session's configuration
 
-    private final Saver saver;
+    private final Saver saver = new Saver(this);
 
     private ReloadingPolicy reloadingPolicy;
 
@@ -181,7 +182,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         Preconditions.checkNotNull(this.sessionResource, "A session must be inside a resource.");
         this.transactionalEditingDomain = Preconditions.checkNotNull(TransactionUtil.getEditingDomain(mainDAnalysis), "A session must be associated to an EditingDomain");
         this.mainDAnalysis = mainDAnalysis;
-        this.saver = new Saver(this);
+
         this.interpreter = new ODesignGenericInterpreter();
         this.representationsChangeAdapter = new RepresentationsChangeAdapter(this);
         super.getAnalyses().add(mainDAnalysis);
@@ -291,7 +292,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         // Disable resolution of proxy for SiriusCrossReferenceAdapter of
         // resourceSet
         List<Adapter> adaptersToRemove = new ArrayList<Adapter>();
-        for (Adapter next : resourceSet.eAdapters()) {
+        for (Iterator<Adapter> iterator = resourceSet.eAdapters().iterator(); iterator.hasNext(); ) {
+            Adapter next = iterator.next();
             if (next instanceof SiriusCrossReferenceAdapter) {
                 ((SiriusCrossReferenceAdapter) next).disableResolveProxy();
                 adaptersToRemove.add(next);
@@ -969,14 +971,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return this.saver.deferSaveToPostCommit;
     }
 
-    /**
-     * Set to true to do saving in a read-only EMF Transaction, false otherwise.
-     * Note that if the {@link SavingPolicy} execute some EMF Command, this must
-     * be at false.
-     * 
-     * @param saveInExclusiveTransaction
-     *            specify if the saving is done in a read-only transaction
-     */
     public void setSaveInExclusiveTransaction(boolean saveInExclusiveTransaction) {
         this.saver.saveInExclusiveTransaction = saveInExclusiveTransaction;
     }
@@ -1204,6 +1198,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.worked(1);
             this.representationNameListener = new RepresentationNameListener(this);
             monitor.worked(1);
+            saver.initialize();
 
             final Collection<DAnalysis> allAnalyses = allAnalyses();
             if (allAnalyses.isEmpty()) {
@@ -1241,6 +1236,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.worked(1);
             DViewOperations.on(this).updateSelectedViewpointsData(new SubProgressMonitor(monitor, 10));
             initLocalTriggers();
+
+            getTransactionalEditingDomain().addResourceSetListener(saver);
         } catch (OperationCanceledException e) {
             close(new SubProgressMonitor(monitor, 10));
             throw e;
@@ -1253,6 +1250,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public void close(IProgressMonitor monitor) {
         if (!isOpen()) {
             return;
+        }
+        if (saver != null && getTransactionalEditingDomain() != null) {
+            getTransactionalEditingDomain().removeResourceSetListener(saver);
         }
         ViewpointRegistry.getInstance().removeListener(this.vsmUpdater);
         this.vsmUpdater = null;
@@ -1334,9 +1334,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         // Disable resolveProxy for SiriusCrossreferencerAdapter.
         // SiriusCrossreferencerAdapter on EObject are also on resource,
         // consequently we manage only the resource itself.
-        for (Adapter adapter : resource.eAdapters()) {
-            if (adapter instanceof SiriusCrossReferenceAdapter) {
-                ((SiriusCrossReferenceAdapter) adapter).disableResolveProxy();
+        for (Iterator<Adapter> iterator = resource.eAdapters().iterator(); iterator.hasNext(); ) {
+            Adapter next = iterator.next();
+            if (next instanceof SiriusCrossReferenceAdapter) {
+                ((SiriusCrossReferenceAdapter) next).disableResolveProxy();
             }
         }
     }
@@ -1352,9 +1353,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         // Enable resolveProxy for SiriusCrossreferencerAdapter.
         // SiriusCrossreferencerAdapter on EObject are also on resource,
         // consequently we manage only the resource itself.
-        for (Adapter adapter : resource.eAdapters()) {
-            if (adapter instanceof SiriusCrossReferenceAdapter) {
-                ((SiriusCrossReferenceAdapter) adapter).enableResolveProxy();
+        for (Iterator<Adapter> iterator = resource.eAdapters().iterator(); iterator.hasNext(); ) {
+            Adapter next = iterator.next();
+            if (next instanceof SiriusCrossReferenceAdapter) {
+                ((SiriusCrossReferenceAdapter) next).enableResolveProxy();
             }
         }
     }

@@ -14,33 +14,32 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.TransactionalEditingDomain.Lifecycle;
 import org.eclipse.emf.transaction.TransactionalEditingDomainEvent;
+import org.eclipse.emf.transaction.TransactionalEditingDomainListener;
 import org.eclipse.emf.transaction.TransactionalEditingDomainListenerImpl;
 import org.eclipse.emf.transaction.impl.InternalTransaction;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 
 /**
- * Encapsulates the decision of *when* to actually save the session's state when
- * Session.save() is called. If Session.save() is called while a transaction is
- * in progress and deferSaveToPostCommit is true, the actual saving will be
- * performed after the current transaction has been successfully commited.
- * Otherwise it is performed immediatly.
+ * Encapsulates the decision of *when* to actually save the session's state
+ * when Session.save() is called. If Session.save() is called while a
+ * transaction is in progress and deferSaveToPostCommit is true, the actual
+ * saving will be performed after the current transaction has been
+ * successfully commited. Otherwise it is performed immediatly.
  * 
  * @author pcdavid
  */
-final class Saver extends TransactionalEditingDomainListenerImpl {
+final class Saver extends ResourceSetListenerImpl {
 
+    
     boolean deferSaveToPostCommit;
-
+    
     boolean saveInExclusiveTransaction;
-
+    
     AtomicBoolean domainDisposed = new AtomicBoolean(false);
-
-    private TransactionalEditingDomain domain;
-
     private final DAnalysisSessionImpl session;
 
     private AtomicBoolean saveOnPostCommit = new AtomicBoolean(false);
@@ -49,7 +48,22 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
 
     private IProgressMonitor savedMonitor;
 
-    private AtomicBoolean isSaving = new AtomicBoolean();
+    /**
+     * Make sure the Saver's state is reset after the transaction is
+     * finished, even in case of rollback (in which case #resourceSetChanged
+     * will not have need called).
+     */
+    private TransactionalEditingDomainListener domainListener = new TransactionalEditingDomainListenerImpl() {
+        @Override
+        public void transactionClosed(TransactionalEditingDomainEvent event) {
+            disarm();
+        }
+
+        @Override
+        public void editingDomainDisposing(TransactionalEditingDomainEvent event) {
+            domainDisposed.set(true);
+        }
+    };
 
     /**
      * Create a new Saver for the specified session.
@@ -59,40 +73,51 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
      */
     public Saver(DAnalysisSessionImpl session) {
         this.session = session;
-        domain = session.getTransactionalEditingDomain();
-        Lifecycle lifecycle = TransactionUtil.getAdapter(domain, Lifecycle.class);
-        if (lifecycle != null) {
-            lifecycle.addTransactionalEditingDomainListener(this);
+    }
+
+    public void initialize() {
+        TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
+        if (ted instanceof TransactionalEditingDomain.Lifecycle) {
+            TransactionalEditingDomain.Lifecycle lc = (TransactionalEditingDomain.Lifecycle) ted;
+            lc.addTransactionalEditingDomainListener(domainListener);
         }
     }
 
-    /**
-     * Do saving after transaction closing in case the SavingPolicy trigger
-     * another transaction by executing a EMF Command.
-     */
+    public void dispose() {
+        TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
+        if (ted instanceof TransactionalEditingDomain.Lifecycle) {
+            TransactionalEditingDomain.Lifecycle lc = (TransactionalEditingDomain.Lifecycle) ted;
+            lc.removeTransactionalEditingDomainListener(domainListener);
+        }
+        disarm();
+    }
+
     @Override
-    public void transactionClosed(TransactionalEditingDomainEvent event) {
-        if (!event.getTransaction().isReadOnly()) {
-            if (saveOnPostCommit.get()) {
-                saveNow(this.savedOptions, this.savedMonitor, saveInExclusiveTransaction);
-            }
+    public boolean isPostcommitOnly() {
+        return true;
+    }
+
+    @Override
+    public void resourceSetChanged(ResourceSetChangeEvent event) {
+        if (saveOnPostCommit.get()) {
+            saveNow(this.savedOptions, this.savedMonitor, true);
         }
     }
 
     public void save(Map<?, ?> options, IProgressMonitor monitor) {
         boolean tip = transactionInProgress();
         if (tip && deferSaveToPostCommit) {
-            saveAfterTransactionClosing(options, monitor);
+            saveOnPostCommit(options, monitor);
         } else {
             saveNow(options, monitor, saveInExclusiveTransaction && !tip && !domainDisposed.get());
         }
     }
 
     /**
-     * Arm the trigger so that the saving is performed after transaction
-     * closing.
+     * Arm the trigger so that the saving is performed on the next
+     * post-commit.
      */
-    private void saveAfterTransactionClosing(Map<?, ?> options, IProgressMonitor monitor) {
+    private void saveOnPostCommit(Map<?, ?> options, IProgressMonitor monitor) {
         this.savedOptions = options;
         this.savedMonitor = monitor;
         this.saveOnPostCommit.set(true);
@@ -102,23 +127,10 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
      * Save immediately and disarm the trigger.
      */
     private void saveNow(Map<?, ?> options, IProgressMonitor monitor, boolean runExclusive) {
-        // This allows to have session saving thread safe, i.e. only one thread
-        // can do a save at a time
-        synchronized (isSaving) {
-            // In addition if the session saving or more specifically its
-            // SavingPolicy execute a EMF Command, and we have saveOnPostCommit
-            // at true, we risk a StackOverflow then to avoid that we check if
-            // we are already in a session saving call
-            if (!isSaving.get()) {
-                try {
-                    isSaving.set(true);
-                    session.doSave(options, monitor, runExclusive);
-                } finally {
-                    disarm();
-                    isSaving.set(false);
-
-                }
-            }
+        try {
+            session.doSave(options, monitor, runExclusive);
+        } finally {
+            disarm();
         }
     }
 
@@ -134,14 +146,6 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
             return tx != null;
         }
         return false;
-    }
-
-    public void dispose() {
-        Lifecycle lifecycle = TransactionUtil.getAdapter(domain, Lifecycle.class);
-        if (lifecycle != null) {
-            lifecycle.removeTransactionalEditingDomainListener(this);
-        }
-        disarm();
     }
 
 }

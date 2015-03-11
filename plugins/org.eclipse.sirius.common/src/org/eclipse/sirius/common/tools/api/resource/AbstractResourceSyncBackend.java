@@ -43,19 +43,16 @@ public abstract class AbstractResourceSyncBackend {
         this.client = client;
     }
 
+
     /**
      * initialize and prepare the backend.
      */
-    public void install() {
-
-    }
+    public abstract void install();
 
     /**
      * de-initialize the backend.
      */
-    public void uninstall() {
-        observedSet = null;
-    }
+    public abstract void uninstall();
 
     /**
      * Specify which {@link ResourceSet} the backend should notify about.
