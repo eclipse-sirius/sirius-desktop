@@ -288,6 +288,17 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     protected void disableAndRemoveECrossReferenceAdapters() {
         ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
 
+        // Disable resolution of proxy for SiriusCrossReferenceAdapter of
+        // resourceSet
+        List<Adapter> adaptersToRemove = new ArrayList<Adapter>();
+        for (Adapter next : resourceSet.eAdapters()) {
+            if (next instanceof SiriusCrossReferenceAdapter) {
+                ((SiriusCrossReferenceAdapter) next).disableResolveProxy();
+                adaptersToRemove.add(next);
+            }
+        }
+        resourceSet.eAdapters().removeAll(adaptersToRemove);
+
         // disable resolveProxy capability before clearing adapters on resources
         for (Resource resource : resourceSet.getResources()) {
             disableCrossReferencerResolve(resource);
