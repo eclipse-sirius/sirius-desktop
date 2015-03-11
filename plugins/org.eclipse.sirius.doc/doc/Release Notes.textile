@@ -52,6 +52,7 @@ h4. Changes in @org.eclipse.sirius@
 * The API @org.eclipse.sirius.viewpoint.DLabelled@ has been removed.
 * The API @org.eclipse.sirius.viewpoint.DContainer@ has been removed.
 * A new method has been added in @org.eclipse.sirius.viewpoint.DAnalysis@ named @getSemanticResources()@. This method returns a list of @org.eclipse.sirius.business.api.resource.ResourceDescriptor@ which is a descriptor of the semantic resource.
+* The @getModels()@ method in @org.eclipse.sirius.viewpoint.DAnalysis@ returns a non-modifiable list. Use @getSemanticResources()@ instead.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
