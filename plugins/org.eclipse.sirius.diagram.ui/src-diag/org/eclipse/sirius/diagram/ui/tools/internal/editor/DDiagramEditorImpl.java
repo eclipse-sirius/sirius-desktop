@@ -43,6 +43,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.KeyHandler;
 import org.eclipse.gef.KeyStroke;
@@ -88,6 +89,7 @@ import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -184,6 +186,10 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DropTarget;
+import org.eclipse.swt.dnd.DropTargetEvent;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -218,6 +224,65 @@ import com.google.common.collect.Sets;
  * @since 0.9.0
  */
 public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramEditor, ISelectionListener, SessionListener {
+
+    protected class DDiagramEditorTransferDropTargetListener extends AbstractTransferDropTargetListener {
+
+        /**
+         * Constructs a new AbstractTransferDropTargetListener and sets the
+         * EditPartViewer and Transfer. The Viewer's Control should be the Drop
+         * target.
+         * 
+         * @param viewer
+         *            the EditPartViewer
+         * @param xfer
+         *            the Transfer
+         */
+        protected DDiagramEditorTransferDropTargetListener(EditPartViewer viewer, Transfer xfer) {
+            super(viewer, xfer);
+        }
+
+        @Override
+        protected Request createTargetRequest() {
+            final ChangeBoundsRequest request = new ChangeBoundsRequest(RequestConstants.REQ_DROP);
+            final List<EditPart> list = new ArrayList<EditPart>(1);
+            if (getCurrentEvent().data instanceof IStructuredSelection) {
+                list.add(new DragAndDropWrapper(getCurrentEvent().data));
+            } else if (getTransfer() instanceof LocalSelectionTransfer) {
+                final LocalSelectionTransfer localSelectionTransfer = (LocalSelectionTransfer) getTransfer();
+                if (localSelectionTransfer.getSelection() instanceof IStructuredSelection) {
+                    list.add(new DragAndDropWrapper(localSelectionTransfer.getSelection()));
+                }
+            }
+            request.setEditParts(list);
+            return request;
+        }
+
+        @Override
+        public void setCurrentEvent(DropTargetEvent currentEvent) {
+            // Look into the DropTargetEvent for a LocalSelectionTransfer
+            if (currentEvent != null && currentEvent.getSource() instanceof DropTarget) {
+                Transfer[] transferArray = ((DropTarget) currentEvent.getSource()).getTransfer();
+                for (Transfer transfer : transferArray) {
+                    if (transfer instanceof LocalSelectionTransfer && ((LocalSelectionTransfer) transfer).getSelection() instanceof TreeSelection) {
+                        TreeSelection localSelectionTransfer = (TreeSelection) ((LocalSelectionTransfer) transfer).getSelection();
+                        // If there is a DSemanticDecorator among the selected
+                        // element then the source view is a DRepresentation and
+                        // we do not want to modify the performed operation
+                        if (Iterables.isEmpty(Iterables.filter(localSelectionTransfer.toList(), DSemanticDecorator.class))) {
+                            currentEvent.detail = DND.DROP_COPY;
+                        }
+                    }
+                }
+            }
+            super.setCurrentEvent(currentEvent);
+        }
+
+        @Override
+        protected void updateTargetRequest() {
+            final Request request = getTargetRequest();
+            ((ChangeBoundsRequest) request).setLocation(getDropLocation());
+        }
+    }
 
     /**
      * The ID of the editor in the Editor Registry.
@@ -1462,31 +1527,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             SiriusCanonicalLayoutHandler.launchArrangeCommand(diagramEditPart);
         }
 
-        transferDropTargetListener = new AbstractTransferDropTargetListener(getGraphicalViewer(), LocalSelectionTransfer.getTransfer()) {
-
-            @Override
-            protected Request createTargetRequest() {
-                final ChangeBoundsRequest request = new ChangeBoundsRequest(RequestConstants.REQ_DROP);
-                final List<EditPart> list = new ArrayList<EditPart>(1);
-                if (getCurrentEvent().data instanceof IStructuredSelection) {
-                    list.add(new DragAndDropWrapper(getCurrentEvent().data));
-                } else if (getTransfer() instanceof LocalSelectionTransfer) {
-                    final LocalSelectionTransfer localSelectionTransfer = (LocalSelectionTransfer) getTransfer();
-                    if (localSelectionTransfer.getSelection() instanceof IStructuredSelection) {
-                        list.add(new DragAndDropWrapper(localSelectionTransfer.getSelection()));
-                    }
-                }
-                request.setEditParts(list);
-                return request;
-            }
-
-            @Override
-            protected void updateTargetRequest() {
-                final Request request = getTargetRequest();
-                ((ChangeBoundsRequest) request).setLocation(getDropLocation());
-            }
-
-        };
+        transferDropTargetListener = new DDiagramEditorTransferDropTargetListener(getGraphicalViewer(), LocalSelectionTransfer.getTransfer());
 
         getGraphicalViewer().addDropTargetListener(transferDropTargetListener);
 
