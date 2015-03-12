@@ -24,13 +24,14 @@ import java.util.Set;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
+import org.eclipse.sirius.common.tools.internal.interpreter.AbstractInterpreter;
 
 /**
  * An abstract class which handles the variables and classloading status.
  *
  * @author cedric
  */
-public abstract class AcceleoAbstractInterpreter implements IInterpreter {
+public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
     /**
      * Instance responsible for managing the imports, dependencies and Java
      * Services.

@@ -13,7 +13,6 @@ package org.eclipse.sirius.common.acceleo.aql.business.internal;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -42,9 +41,7 @@ import org.eclipse.acceleo.query.runtime.impl.QueryBuilderEngine;
 import org.eclipse.acceleo.query.runtime.impl.QueryEnvironment;
 import org.eclipse.acceleo.query.runtime.impl.QueryValidationEngine;
 import org.eclipse.acceleo.query.validation.type.IType;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -194,63 +191,6 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     }
 
     @Override
-    public boolean evaluateBoolean(EObject context, String expression) throws EvaluationException {
-        Object result = evaluate(context, expression);
-        final Boolean coerced;
-        if (result instanceof Boolean) {
-            coerced = (Boolean) result;
-        } else {
-            coerced = coerceValue(result, Boolean.class);
-        }
-
-        if (coerced != null) {
-            return coerced.booleanValue();
-        }
-        return false;
-    }
-
-    @Override
-    public Collection<EObject> evaluateCollection(EObject context, String expression) throws EvaluationException {
-        Object result = evaluate(context, expression);
-        Collection<EObject> coercedResult = Lists.newArrayList();
-        if (result instanceof Collection<?>) {
-            Iterables.addAll(coercedResult, Iterables.filter((Collection<?>) result, EObject.class));
-        } else if (result != null && result.getClass().isArray()) {
-            Iterables.addAll(coercedResult, Iterables.filter(Lists.newArrayList((Object[]) result), EObject.class));
-        } else {
-            EObject coerced = coerceValue(result, EObject.class);
-            if (coerced != null) {
-                coercedResult.add(coerced);
-            }
-        }
-
-        return coercedResult;
-    }
-
-    @Override
-    public EObject evaluateEObject(EObject context, String expression) throws EvaluationException {
-        Object result = evaluate(context, expression);
-        EObject coerced = coerceValue(result, EObject.class);
-        return coerced;
-    }
-
-    @Override
-    public Integer evaluateInteger(EObject context, String expression) throws EvaluationException {
-        Object result = evaluate(context, expression);
-        Integer coerced = coerceValue(result, Integer.class);
-        return coerced;
-    }
-
-    @Override
-    public String evaluateString(EObject context, String expression) throws EvaluationException {
-        Object result = evaluate(context, expression);
-        if (result != null) {
-            return result.toString();
-        }
-        return null;
-    }
-
-    @Override
     public String getVariablePrefix() {
         /*
          * no variable prefix for this interpreter.
@@ -327,39 +267,6 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     @Override
     public boolean provides(String expression) {
         return expression != null && expression.startsWith(AQLConstants.AQL_PREFIX);
-    }
-
-    /**
-     * Tries and coerce the given <em>object</em> to an instance of the given
-     * class.
-     * 
-     * @param <T>
-     *            Type to which we need to coerce <em>object</em>.
-     * @param object
-     *            The object we need to coerce to a given {@link Class}.
-     * @param clazz
-     *            Class to which we are to cast <em>object</em>.
-     * @return <em>object</em> cast to type <em>T</em> if possible,
-     *         <code>null</code> if not.
-     */
-    @SuppressWarnings("unchecked")
-    protected static <T> T coerceValue(Object object, Class<T> clazz) {
-        if (object == null) {
-            return null;
-        }
-
-        T result = null;
-        if (clazz.isInstance(object)) {
-            result = (T) object;
-        } else if (object instanceof IAdaptable) {
-            result = (T) ((IAdaptable) object).getAdapter(clazz);
-        }
-
-        if (result == null) {
-            result = (T) Platform.getAdapterManager().getAdapter(object, clazz);
-        }
-
-        return result;
     }
 
     /**
