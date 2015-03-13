@@ -11,6 +11,7 @@
 
 package org.eclipse.sirius.business.internal.session;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,11 +26,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.AbstractSavingPolicy;
-import org.eclipse.sirius.business.internal.session.danalysis.DifferentSerialization;
+import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
 import org.eclipse.sirius.business.internal.session.danalysis.URIExists;
 import org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -158,7 +160,6 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
         if (logicallyModified.size() > 0) {
             Iterables.addAll(dependOnLogicallyModified, Iterables.filter(Sets.difference(saveable, logicallyModified), new ResourceHasReferenceTo(isModified)));
         }
-        Predicate<Resource> hasDifferentSerialization = new DifferentSerialization(mergedOptions);
 
         Predicate<Resource> exists = new URIExists(mergedOptions);
         Set<Resource> underlyingFileDoesNotExist = Sets.newLinkedHashSet(Iterables.filter(saveable, Predicates.not(exists)));
@@ -169,7 +170,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
          */
         Set<Resource> toSave = Sets.newLinkedHashSet();
         for (Resource resource : Sets.union(logicallyModified, dependOnLogicallyModified)) {
-            if (hasDifferentSerialization.apply(resource)) {
+            if (hasDifferentSerialization(resource, mergedOptions)) {
                 toSave.add(resource);
             } else {
                 ResourceMigrationMarker.clearMigrationMarker(resource);
@@ -183,6 +184,16 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
          * then something is fishy...
          */
         return toSave;
+    }
+
+    private boolean hasDifferentSerialization(Resource input, Map<?, ?> options) {
+        ResourceSaveDiagnose diagnose = new ResourceSaveDiagnose(input);
+        try {
+            return diagnose.isSaveable() && diagnose.hasDifferentSerialization(options);
+        } catch (final IOException e) {
+            SiriusPlugin.getDefault().error("Error saving resource", e);
+        }
+        return false;
     }
 
     private static class ResourceHasReferenceTo implements Predicate<Resource> {
