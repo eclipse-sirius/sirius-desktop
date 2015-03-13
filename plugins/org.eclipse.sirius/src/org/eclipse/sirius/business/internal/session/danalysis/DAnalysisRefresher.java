@@ -11,11 +11,7 @@
 package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -34,6 +30,8 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 
 /**
  * A {@link ResourceSetListener} to update the
@@ -92,19 +90,17 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
      */
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
-        CompoundCommand refreshDAnalysisCmds = new CompoundCommand();
-        Map<DAnalysis, Set<EObject>> rootSemanticResourceEltsPerRepresentationsResource = getRootSemanticResourceEltsPerRepresentationsResource(event.getNotifications());
-        for (Entry<DAnalysis, Set<EObject>> entry : rootSemanticResourceEltsPerRepresentationsResource.entrySet()) {
-            DAnalysis dAnalysis = entry.getKey();
-            Set<EObject> rootSemanticResourceElts = entry.getValue();
-            if (!dAnalysis.getModels().containsAll(rootSemanticResourceElts)) {
-                rootSemanticResourceElts.removeAll(dAnalysis.getModels());
-                Command refreshDAnalysisCmd = AddCommand.create(event.getEditingDomain(), dAnalysis, ViewpointPackage.Literals.DANALYSIS__MODELS, rootSemanticResourceElts);
-                refreshDAnalysisCmds.append(refreshDAnalysisCmd);
-
+        Multimap<DAnalysis, EObject> referencedSemanticModels = getRootSemanticResourceEltsPerRepresentationsResource(event.getNotifications());
+        CompoundCommand result = new CompoundCommand();
+        for (Entry<DAnalysis, Collection<EObject>> entry : referencedSemanticModels.asMap().entrySet()) {
+            DAnalysis analysis = entry.getKey();
+            Collection<EObject> rootSemanticResourceElts = entry.getValue();
+            if (!analysis.getModels().containsAll(rootSemanticResourceElts)) {
+                rootSemanticResourceElts.removeAll(analysis.getModels());
+                result.append(AddCommand.create(event.getEditingDomain(), analysis, ViewpointPackage.Literals.DANALYSIS__MODELS, rootSemanticResourceElts));
             }
         }
-        return refreshDAnalysisCmds;
+        return result;
     }
 
     /**
@@ -126,37 +122,26 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
      * @return a map associating for each {@link DAnalysis} semantic resource
      *         root element
      */
-    private Map<DAnalysis, Set<EObject>> getRootSemanticResourceEltsPerRepresentationsResource(Collection<Notification> notifications) {
-        Map<DAnalysis, Set<EObject>> rootSemanticResourceEltsPerRepresentationsResource = new HashMap<DAnalysis, Set<EObject>>();
+    private Multimap<DAnalysis, EObject> getRootSemanticResourceEltsPerRepresentationsResource(Collection<Notification> notifications) {
+        Multimap<DAnalysis, EObject> referencedSemanticModels = HashMultimap.create();
         for (Notification notification : notifications) {
-            if (Notification.ADD == notification.getEventType()) {
-                Object newValue = notification.getNewValue();
-                if (newValue instanceof DSemanticDecorator) {
-                    DSemanticDecorator dSemanticDecorator = (DSemanticDecorator) newValue;
-                    Resource representationsResource = dSemanticDecorator.eResource();
-                    if (representationsResource != null && dSemanticDecorator.getTarget() != null) {
-                        EObject representationsResourceRoot = representationsResource.getContents().get(0);
-                        assert representationsResourceRoot instanceof DAnalysis;
-                        DAnalysis dAnalysis = (DAnalysis) representationsResourceRoot;
-                        Resource targetResource = dSemanticDecorator.getTarget().eResource();
-                        updateMap(rootSemanticResourceEltsPerRepresentationsResource, targetResource, dAnalysis);
-                    }
+            if (Notification.ADD == notification.getEventType() && notification.getNewValue() instanceof DSemanticDecorator) {
+                DSemanticDecorator decorator = (DSemanticDecorator) notification.getNewValue();
+                Resource representationsResource = decorator.eResource();
+                if (decorator.getTarget() != null && representationsResource != null) {
+                    DAnalysis analysis = (DAnalysis) representationsResource.getContents().get(0);
+                    Resource targetResource = decorator.getTarget().eResource();
+                    registerNewReferencedResource(referencedSemanticModels, analysis, targetResource);
                 }
             }
         }
-        return rootSemanticResourceEltsPerRepresentationsResource;
+        return referencedSemanticModels;
     }
 
-    private void updateMap(Map<DAnalysis, Set<EObject>> rootSemanticResourceEltsPerRepresentationsResource, Resource targetResource, DAnalysis dAnalysis) {
-        if (targetResource != null) {
-            EObject rootSemanticResourceElement = targetResource.getContents().get(0);
-            Set<EObject> rootSemanticResourceElts = rootSemanticResourceEltsPerRepresentationsResource.get(dAnalysis);
-            if (rootSemanticResourceElts == null) {
-                rootSemanticResourceElts = new HashSet<EObject>();
-                rootSemanticResourceEltsPerRepresentationsResource.put(dAnalysis, rootSemanticResourceElts);
-            }
-            rootSemanticResourceElts.add(rootSemanticResourceElement);
+    private void registerNewReferencedResource(Multimap<DAnalysis, EObject> referencedSemanticModels, DAnalysis analysis, Resource semanticResource) {
+        if (semanticResource != null) {
+            EObject rootSemanticResourceElement = semanticResource.getContents().get(0);
+            referencedSemanticModels.put(analysis, rootSemanticResourceElement);
         }
     }
-
 }
