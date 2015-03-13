@@ -22,12 +22,14 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.AbstractSavingPolicy;
 import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
-import org.eclipse.sirius.business.internal.session.danalysis.URIExists;
 import org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
@@ -133,7 +135,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
     @Override
     public Collection<Resource> computeResourcesToSave(Set<Resource> scope, Map<?, ?> options, IProgressMonitor monitor) {
 
-        Map<Object, Object> mergedOptions = new HashMap<Object, Object>(getDefaultSaveOptions());
+        final Map<Object, Object> mergedOptions = new HashMap<Object, Object>(getDefaultSaveOptions());
         if (options != null) {
             mergedOptions.putAll(options);
         }
@@ -161,7 +163,23 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
             Iterables.addAll(dependOnLogicallyModified, Iterables.filter(Sets.difference(saveable, logicallyModified), new ResourceHasReferenceTo(isModified)));
         }
 
-        Predicate<Resource> exists = new URIExists(mergedOptions);
+        Predicate<Resource> exists = new Predicate<Resource>() {
+            private URIConverter defaultConverter;
+            
+            @Override
+            public boolean apply(Resource resourcetoSave) {
+                ResourceSet rs = resourcetoSave.getResourceSet();
+                URIConverter uriConverter = rs == null ? getDefaultURIConverter() : rs.getURIConverter();
+                return uriConverter.exists(resourcetoSave.getURI(), mergedOptions);
+            }
+            
+            private URIConverter getDefaultURIConverter() {
+                if (defaultConverter == null) {
+                    defaultConverter = new ResourceSetImpl().getURIConverter();
+                }
+                return defaultConverter;
+            }
+        };
         Set<Resource> underlyingFileDoesNotExist = Sets.newLinkedHashSet(Iterables.filter(saveable, Predicates.not(exists)));
         Set<Resource> isConflictingOrDeleted = Sets.newLinkedHashSet(Iterables.filter(saveable, underlyingFileIsDeletedOrConflicting));
         /*
