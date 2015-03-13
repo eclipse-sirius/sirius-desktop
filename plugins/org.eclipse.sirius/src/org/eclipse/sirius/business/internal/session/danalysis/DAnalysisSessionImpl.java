@@ -104,6 +104,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -927,7 +928,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *         {@link Session}, false otherwise
      */
     protected boolean isResourceOfSession(Resource resource, Iterable<Resource> resources) {
-        return Iterables.any(resources, new ResourceSyncClientNotificationFilter(resource));
+        for (Resource input : resources) {
+            if (resource == input || (input.getURI() != null && Objects.equal(resource.getURI(), input.getURI()))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     void sessionResourceReloaded(final Resource newSessionResource) {
