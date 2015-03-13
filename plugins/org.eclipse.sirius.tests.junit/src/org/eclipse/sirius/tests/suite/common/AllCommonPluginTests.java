@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.sirius.tests.unit.api.resource.WorkspaceDragAndDropSupportTes
 import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEdgeConditionalStyleTest;
 import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEndUserOverrideTest;
 import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleTests;
+import org.eclipse.sirius.tests.unit.api.semantic.XSDSemanticResourceTests;
 import org.eclipse.sirius.tests.unit.api.session.DAnalysisSessionTests;
 import org.eclipse.sirius.tests.unit.api.session.ReloadSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.SampleSessionTest;
@@ -94,6 +95,7 @@ import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampai
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius0_9Test;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius1_0_0_M5Test;
 import org.eclipse.sirius.tests.unit.diagram.filter.EObjectSelectionFilterTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipantTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.CorruptedViewsMigrationTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.DDiagramSetRemovalMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.DiagramSplitMigrationTest;
@@ -107,7 +109,6 @@ import org.eclipse.sirius.tests.unit.diagram.migration.MigrationLabelBoundsToLoc
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfCollapsedBorderedNodeTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfHideLabelFilterInconsistencyTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationRoutingStyleEndUserOverrideTest;
-import org.eclipse.sirius.tests.unit.diagram.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipantTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RemoveAcceleoReferencesMigrationTest;
@@ -267,6 +268,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(RestoreSessionFromEditorInputTests.class);
         suite.addTestSuite(SiriusCrossReferenceAdapterTests.class);
         suite.addTestSuite(SaverTest.class);
+        suite.addTestSuite(XSDSemanticResourceTests.class);
     }
 
     /**

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:scxml="http://www.w3.org/2005/07/scxml" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_Dl5ZEMu5EeSBa8vetVe4iA" selectedViews="_GOYeQMu5EeSBa8vetVe4iA" version="10.0.10.201502231700">
+  <models xmi:type="scxml:scxml.scxml.type" href="test.scxml#//@scxml"/>
+  <models xmi:type="scxml" href="test.scxml#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_GOYeQMu5EeSBa8vetVe4iA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_xW41gMu5EeSBa8vetVe4iA" name="new Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_xW41gcu5EeSBa8vetVe4iA" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_xW41gsu5EeSBa8vetVe4iA"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_xW5ckMu5EeSBa8vetVe4iA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_xW5ckcu5EeSBa8vetVe4iA" type="Sirius" element="_xW41gMu5EeSBa8vetVe4iA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_xW6DoMu5EeSBa8vetVe4iA" type="2001" element="_xW41g8u5EeSBa8vetVe4iA">
+            <children xmi:type="notation:Node" xmi:id="_xW6qsMu5EeSBa8vetVe4iA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_xW6qscu5EeSBa8vetVe4iA" x="-1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xW-8IMu5EeSBa8vetVe4iA" type="3016" element="_xW41hMu5EeSBa8vetVe4iA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_xW-8Icu5EeSBa8vetVe4iA" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xW-8Isu5EeSBa8vetVe4iA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_xW6Docu5EeSBa8vetVe4iA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xW6Dosu5EeSBa8vetVe4iA" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_xW9uBMu5EeSBa8vetVe4iA" type="2002" element="_xW41icu5EeSBa8vetVe4iA">
+            <children xmi:type="notation:Node" xmi:id="_xW-VEMu5EeSBa8vetVe4iA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_xW-VEcu5EeSBa8vetVe4iA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_xW-VEsu5EeSBa8vetVe4iA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_xW-VE8u5EeSBa8vetVe4iA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_xW9uBcu5EeSBa8vetVe4iA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xW9uBsu5EeSBa8vetVe4iA" x="348" y="36"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_yxo8QMu5EeSBa8vetVe4iA" type="2001" element="_ywDA0Mu5EeSBa8vetVe4iA">
+            <children xmi:type="notation:Node" xmi:id="_yxpjUMu5EeSBa8vetVe4iA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_yxpjUcu5EeSBa8vetVe4iA" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_yxqxcMu5EeSBa8vetVe4iA" type="3016" element="_ywDA0cu5EeSBa8vetVe4iA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_yxqxccu5EeSBa8vetVe4iA" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yxqxcsu5EeSBa8vetVe4iA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_yxo8Qcu5EeSBa8vetVe4iA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yxo8Qsu5EeSBa8vetVe4iA" x="12" y="67" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zMfsQMu5EeSBa8vetVe4iA" type="2003" element="_zK5JwMu5EeSBa8vetVe4iA">
+            <children xmi:type="notation:Node" xmi:id="_zMgTUMu5EeSBa8vetVe4iA" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_zMg6YMu5EeSBa8vetVe4iA" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_zMg6Ycu5EeSBa8vetVe4iA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_zMg6Ysu5EeSBa8vetVe4iA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zMfsQcu5EeSBa8vetVe4iA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zMfsQsu5EeSBa8vetVe4iA" x="156" y="29"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_0Bn9cMu5EeSBa8vetVe4iA" type="2002" element="_0Adf0Mu5EeSBa8vetVe4iA">
+            <children xmi:type="notation:Node" xmi:id="_0BokgMu5EeSBa8vetVe4iA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_0Bokgcu5EeSBa8vetVe4iA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_0Bokgsu5EeSBa8vetVe4iA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_0Bokg8u5EeSBa8vetVe4iA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_0Bn9ccu5EeSBa8vetVe4iA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0Bn9csu5EeSBa8vetVe4iA" x="480" y="168"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_15IRoMu5EeSBa8vetVe4iA" type="2002" element="_14ta4Mu5EeSBa8vetVe4iA">
+            <children xmi:type="notation:Node" xmi:id="_15I4sMu5EeSBa8vetVe4iA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_15I4scu5EeSBa8vetVe4iA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_15I4ssu5EeSBa8vetVe4iA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_15I4s8u5EeSBa8vetVe4iA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_15IRocu5EeSBa8vetVe4iA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_15IRosu5EeSBa8vetVe4iA" x="192" y="168"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_xW5cksu5EeSBa8vetVe4iA"/>
+          <edges xmi:type="notation:Edge" xmi:id="_0YDgcMu5EeSBa8vetVe4iA" type="4001" element="_0XYLAMu5EeSBa8vetVe4iA" source="_xW9uBMu5EeSBa8vetVe4iA" target="_0Bn9cMu5EeSBa8vetVe4iA">
+            <children xmi:type="notation:Node" xmi:id="_0YEHgMu5EeSBa8vetVe4iA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0YEHgcu5EeSBa8vetVe4iA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_0YEHgsu5EeSBa8vetVe4iA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0YEHg8u5EeSBa8vetVe4iA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_0YEHhMu5EeSBa8vetVe4iA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0YEHhcu5EeSBa8vetVe4iA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_0YDgccu5EeSBa8vetVe4iA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_0YDgcsu5EeSBa8vetVe4iA" fontName="Cantarell" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0YDgc8u5EeSBa8vetVe4iA" points="[40, -8, -8, -72]$[48, 64, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0YEukMu5EeSBa8vetVe4iA" id="(0.7297297297297297,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0YEukcu5EeSBa8vetVe4iA" id="(0.16216216216216217,0.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_15JfwMu5EeSBa8vetVe4iA" type="4001" element="_15FOUMu5EeSBa8vetVe4iA" source="_xW9uBMu5EeSBa8vetVe4iA" target="_15IRoMu5EeSBa8vetVe4iA">
+            <children xmi:type="notation:Node" xmi:id="_15JfxMu5EeSBa8vetVe4iA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_15Jfxcu5EeSBa8vetVe4iA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_15Jfxsu5EeSBa8vetVe4iA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_15Jfx8u5EeSBa8vetVe4iA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_15KG0Mu5EeSBa8vetVe4iA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_15KG0cu5EeSBa8vetVe4iA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_15Jfwcu5EeSBa8vetVe4iA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_15Jfwsu5EeSBa8vetVe4iA" fontName="Cantarell" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_15Jfw8u5EeSBa8vetVe4iA" points="[-34, 34, 122, -98]$[-114, 98, 42, -34]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_15KG0su5EeSBa8vetVe4iA" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_15KG08u5EeSBa8vetVe4iA" id="(0.5,0.5)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_xW41g8u5EeSBa8vetVe4iA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="scxml:scxml.scxml.type" href="test.scxml#//@scxml"/>
+        <semanticElements xmi:type="scxml:scxml.scxml.type" href="test.scxml#//@scxml"/>
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_xW41hMu5EeSBa8vetVe4iA" showIcon="false">
+          <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Initial']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Initial']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_xW41icu5EeSBa8vetVe4iA" outgoingEdges="_0XYLAMu5EeSBa8vetVe4iA _15FOUMu5EeSBa8vetVe4iA">
+        <target xmi:type="scxml:scxml.state.type" href="test.scxml#//@scxml/@state.0"/>
+        <semanticElements xmi:type="scxml:scxml.state.type" href="test.scxml#//@scxml/@state.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_xW41isu5EeSBa8vetVe4iA" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,255,255">
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='State']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='State']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_ywDA0Mu5EeSBa8vetVe4iA" name="final1" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="scxml:scxml.final.type" href="test.scxml#final1"/>
+        <semanticElements xmi:type="scxml:scxml.final.type" href="test.scxml#final1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_ywDA0cu5EeSBa8vetVe4iA" color="138,226,52">
+          <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Final']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Final']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_zK5JwMu5EeSBa8vetVe4iA" name="Datamodel">
+        <target xmi:type="scxml:scxml.datamodel.type" href="test.scxml#//@scxml/@datamodel.0"/>
+        <semanticElements xmi:type="scxml:scxml.datamodel.type" href="test.scxml#//@scxml/@datamodel.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_zK5w0Mu5EeSBa8vetVe4iA" backgroundColor="255,245,181">
+          <description xmi:type="style:ShapeContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Datamodel']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Datamodel']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_0Adf0Mu5EeSBa8vetVe4iA" name="State4" incomingEdges="_0XYLAMu5EeSBa8vetVe4iA">
+        <target xmi:type="scxml:scxml.state.type" href="test.scxml#State4"/>
+        <semanticElements xmi:type="scxml:scxml.state.type" href="test.scxml#State4"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_0AeG4Mu5EeSBa8vetVe4iA" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,255,255">
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='State']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='State']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_0XYLAMu5EeSBa8vetVe4iA" sourceNode="_xW41icu5EeSBa8vetVe4iA" targetNode="_0Adf0Mu5EeSBa8vetVe4iA">
+        <target xmi:type="scxml:scxml.transition.type" href="test.scxml#//@scxml/@state.0/@transition.1"/>
+        <semanticElements xmi:type="scxml:scxml.transition.type" href="test.scxml#//@scxml/@state.0/@transition.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_0XYLAcu5EeSBa8vetVe4iA" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='Transition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_0XYyEMu5EeSBa8vetVe4iA"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='Transition']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_14ta4Mu5EeSBa8vetVe4iA" name="State4" incomingEdges="_15FOUMu5EeSBa8vetVe4iA">
+        <target xmi:type="scxml:scxml.state.type" href="test.scxml#State4"/>
+        <semanticElements xmi:type="scxml:scxml.state.type" href="test.scxml#State4"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_14ta4cu5EeSBa8vetVe4iA" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,255,255">
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='State']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='State']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_15FOUMu5EeSBa8vetVe4iA" sourceNode="_xW41icu5EeSBa8vetVe4iA" targetNode="_14ta4Mu5EeSBa8vetVe4iA">
+        <target xmi:type="scxml:scxml.transition.type" href="test.scxml#//@scxml/@state.0/@transition.1"/>
+        <semanticElements xmi:type="scxml:scxml.transition.type" href="test.scxml#//@scxml/@state.0/@transition.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_15F1YMu5EeSBa8vetVe4iA" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='Transition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_15F1Ycu5EeSBa8vetVe4iA"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='Transition']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_xW41i8u5EeSBa8vetVe4iA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
+      <target xmi:type="scxml:scxml.scxml.type" href="test.scxml#//@scxml"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.sample.scxml.design/description/scxml.odesign#//@ownedViewpoints[name='SCXML%20Diagram']"/>
+  </ownedViews>
+  <models xmi:type="scxml" href="calc.scxml#/"/>
+</viewpoint:DAnalysis>
