@@ -161,7 +161,7 @@ class SessionResourcesTracker {
     private void handlePossibleControlledResources() {
         // Detect actual controlled resources.
         if (controlledResourcesDetector != null) {
-            controlledResourcesDetector.init();
+            controlledResourcesDetector.initialize();
         }
         // Reset semanticResources to have getSemanticResources() ignores
         // controlledResources which are computed only at this step

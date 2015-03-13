@@ -45,7 +45,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     private DAnalysisSessionImpl session;
 
     /**
-     * Construcotr.
+     * Constructor.
      * 
      * @param session
      *            the session to populate.
@@ -54,11 +54,18 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
         this.session = Preconditions.checkNotNull(session);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
+    public NotificationFilter getFilter() {
+        return NotificationFilter.createFeatureFilter(ResourceSet.class, ResourceSet.RESOURCE_SET__RESOURCES).and(NotificationFilter.NOT_TOUCH);
+    }
+
     @Override
     public boolean isPrecommitOnly() {
+        return true;
+    }
+
+    @Override
+    public boolean isAggregatePrecommitListener() {
         return true;
     }
 
@@ -66,10 +73,23 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      * Looks for already loaded resources and then add this listener to the
      * session's transactional editing domain.
      */
-    public void init() {
+    public void initialize() {
         // Detect controlled resources for future resource add.
         detectControlledResources();
         session.getTransactionalEditingDomain().addResourceSetListener(this);
+    }
+
+    @Override
+    public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+        // No check on notifier and feature : already done by filter.
+        for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
+            int change = notif.getEventType();
+            boolean resourcesWereAdded = change == Notification.ADD || change == Notification.SET || change == Notification.ADD_MANY;
+            if (resourcesWereAdded) {
+                return new ControlledResourcesDetectionCommand(session.getTransactionalEditingDomain());
+            }
+        }
+        return null;
     }
 
     /**
@@ -108,7 +128,6 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
             if (!resourcesToCheck.contains(resource))
                 listIterator.remove();
         }
-
         if (!controlledResourcesBefore.equals(controlledResources)) {
             session.notifyListeners(SessionListener.SEMANTIC_CHANGE);
             session.setSemanticResourcesNotUptodate();
@@ -136,44 +155,12 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isAggregatePrecommitListener() {
-        return true;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
-        // No check on notifier and feature : already done by filter.
-        for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
-            int change = notif.getEventType();
-            boolean resourcesWereAdded = change == Notification.ADD || change == Notification.SET || change == Notification.ADD_MANY;
-            if (resourcesWereAdded) {
-                return new ControlledResourcesDetectionCommand(session.getTransactionalEditingDomain());
-            }
-        }
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public NotificationFilter getFilter() {
-        return NotificationFilter.createFeatureFilter(ResourceSet.class, ResourceSet.RESOURCE_SET__RESOURCES).and(NotificationFilter.NOT_TOUCH);
-    }
-
-    /**
      * Simply wraps a call to {@link #detectControlledResources()} into a
      * {@link RecordingCommand}.
      */
     private class ControlledResourcesDetectionCommand extends RecordingCommand {
         public ControlledResourcesDetectionCommand(TransactionalEditingDomain domain) {
-            super(domain, "Controled resource detection");
+            super(domain, "Controlled resource detection");
         }
 
         @Override
