@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.common.tools.api.query;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 
 import com.google.common.base.Preconditions;
 
@@ -65,10 +66,15 @@ public class NotificationQuery {
     private boolean isContainedThroughTransientFeature(EObject obj) {
         EObject current = obj;
         while (current.eContainer() != null) {
-            if (current.eContainingFeature().isTransient()) {
+            EObject container = current.eContainer();
+
+            // Do not consider transient containing feature when the container
+            // is a DocumentRoot. See section 1.5 of
+            // https://www.eclipse.org/modeling/emf/docs/overviews/XMLSchemaToEcoreMapping.pdf
+            if (current.eContainingFeature().isTransient() && !ExtendedMetaData.INSTANCE.isDocumentRoot(container.eClass())) {
                 return true;
             }
-            current = current.eContainer();
+            current = container;
         }
         return false;
     }
