@@ -30,88 +30,109 @@ modelers, using JUnit or SWTbot. Install this if you want to write automated tes
       %license
    </license>
 
-   <plugin id="org.eclipse.sirius.sample.ecore.design"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.sample.ecore.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.sample.interactions"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.sample.interactions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.sample.interactions.design"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.sample.interactions.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.sample.interactions.edit"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.sample.interactions.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.sample.interactions.editor"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.sample.interactions.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests.sample.benchmark"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.tests.sample.benchmark"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests.sample.docbook"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.tests.sample.docbook"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests.sample.docbook.design"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.tests.sample.docbook.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests.sample.migration"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.tests.sample.migration"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests.sample.migration.design"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.tests.sample.migration.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests.sample.component"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.tests.sample.component"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests.junit"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.tests.sample.scxml"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.sirius.tests.junit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests.tree"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.tests.tree"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests.swtbot"
-           download-size="0"
-           install-size="0"
-           version="0.0.0"
-           unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.tests.swtbot"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

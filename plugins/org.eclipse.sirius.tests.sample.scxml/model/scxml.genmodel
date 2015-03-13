@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA; &#xA;Contributors:&#xA;   Obeo - initial API and implementation"
+    modelDirectory="/org.eclipse.sirius.tests.sample.scxml/src-gen" editDirectory="/org.eclipse.sirius.tests.sample.scxml.edit/src-gen"
+    editorDirectory="/org.eclipse.sirius.tests.sample.scxml.editor/src-gen" modelPluginID="org.eclipse.sirius.tests.sample.scxml"
+    modelName="Scxml" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0" copyrightFields="false"
+    editPluginID="org.eclipse.sirius.tests.sample.scxml.edit" usedGenPackages="../../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace"
+    interfaceNamePattern="" operationReflection="true" importOrganizing="true">
+  <foreignModel>file:/home/mlanoe/Desktop/scxml/scxml.xsd</foreignModel>
+  <genPackages prefix="Scxml" basePackage="org.eclipse.sirius.tests.sample" resource="XML"
+      disposableProviderFactory="true" ecorePackage="scxml.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="scxml.ecore#//AssignTypeDatatype">
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//AssignTypeDatatype/replacechildren"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//AssignTypeDatatype/firstchild"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//AssignTypeDatatype/lastchild"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//AssignTypeDatatype/previoussibling"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//AssignTypeDatatype/nextsibling"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//AssignTypeDatatype/replace"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//AssignTypeDatatype/delete"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//AssignTypeDatatype/addattribute"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="scxml.ecore#//BindingDatatype">
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//BindingDatatype/early"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//BindingDatatype/late"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="scxml.ecore#//BooleanDatatype">
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//BooleanDatatype/true"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//BooleanDatatype/false"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="scxml.ecore#//ExmodeDatatype">
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//ExmodeDatatype/lax"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//ExmodeDatatype/strict"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="scxml.ecore#//HistoryTypeDatatype">
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//HistoryTypeDatatype/shallow"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//HistoryTypeDatatype/deep"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="scxml.ecore#//TransitionTypeDatatype">
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//TransitionTypeDatatype/internal"/>
+      <genEnumLiterals ecoreEnumLiteral="scxml.ecore#//TransitionTypeDatatype/external"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="scxml.ecore#//AssignTypeDatatypeObject"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//BindingDatatypeObject"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//BooleanDatatypeObject"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//CondLangDatatype"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//DurationDatatype"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//EventTypeDatatype"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//EventTypesDatatype"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//ExmodeDatatypeObject"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//HistoryTypeDatatypeObject"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//IntegerDatatype"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//LocLangDatatype"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//TransitionTypeDatatypeObject"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//URIDatatype"/>
+    <genDataTypes ecoreDataType="scxml.ecore#//ValueLangDatatype"/>
+    <genClasses ecoreClass="scxml.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/assign"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/cancel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/content"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/data"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/datamodel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/donedata"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/else"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/elseif"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/final"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/finalize"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/foreach"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/history"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/if"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/initial"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/invoke"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/log"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/onentry"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/onexit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/parallel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/param"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/raise"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/script"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/scxml"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/send"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//DocumentRoot/transition"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlAssignType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlAssignType/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlAssignType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlAssignType/attr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlAssignType/expr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlAssignType/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlAssignType/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlAssignType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlCancelType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlCancelType/scxmlExtraContent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlCancelType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlCancelType/sendid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlCancelType/sendidexpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlCancelType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlContentType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlContentType/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlContentType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlContentType/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlContentType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlDatamodelType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlDatamodelType/data"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDatamodelType/scxmlExtraContent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDatamodelType/any"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDatamodelType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlDataType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDataType/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDataType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDataType/expr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDataType/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDataType/src"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDataType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlDonedataType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlDonedataType/content"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlDonedataType/param"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlDonedataType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlElseifType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlElseifType/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlElseifType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlElseType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlElseType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlFinalizeType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlFinalizeType/scxmlCoreExecutablecontent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlFinalizeType/any"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalizeType/raise"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalizeType/if"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalizeType/foreach"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalizeType/send"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalizeType/script"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalizeType/assign"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalizeType/log"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalizeType/cancel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlFinalizeType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlFinalType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlFinalType/scxmlFinalMix"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalType/onentry"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalType/onexit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlFinalType/donedata"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlFinalType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlFinalType/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlFinalType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlForeachType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlForeachType/scxmlCoreExecutablecontent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlForeachType/any"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlForeachType/raise"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlForeachType/if"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlForeachType/foreach"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlForeachType/send"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlForeachType/script"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlForeachType/assign"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlForeachType/log"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlForeachType/cancel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlForeachType/array"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlForeachType/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlForeachType/item"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlForeachType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlHistoryType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlHistoryType/scxmlExtraContent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlHistoryType/any"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlHistoryType/transition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlHistoryType/scxmlExtraContent1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlHistoryType/any1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlHistoryType/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlHistoryType/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlHistoryType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlIfType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlIfType/scxmlCoreExecutablecontent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlIfType/any"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/raise"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/if"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/foreach"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/send"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/script"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/assign"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/log"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/cancel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/elseif"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlIfType/scxmlCoreExecutablecontent1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlIfType/any1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/raise1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/if1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/foreach1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/send1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/script1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/assign1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/log1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/cancel1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/else"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlIfType/scxmlCoreExecutablecontent2"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlIfType/any2"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/raise2"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/if2"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/foreach2"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/send2"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/script2"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/assign2"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/log2"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlIfType/cancel2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlIfType/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlIfType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlInitialType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInitialType/scxmlExtraContent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInitialType/any"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlInitialType/transition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInitialType/scxmlExtraContent1"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInitialType/any1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInitialType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlInvokeType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/scxmlInvokeMix"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlInvokeType/content"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlInvokeType/param"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlInvokeType/finalize"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/autoforward"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/idlocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/namelist"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/src"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/srcexpr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/typeexpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlInvokeType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlLogType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlLogType/scxmlExtraContent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlLogType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlLogType/expr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlLogType/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlLogType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlOnentryType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlOnentryType/scxmlCoreExecutablecontent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlOnentryType/any"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnentryType/raise"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnentryType/if"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnentryType/foreach"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnentryType/send"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnentryType/script"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnentryType/assign"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnentryType/log"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnentryType/cancel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlOnentryType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlOnexitType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlOnexitType/scxmlCoreExecutablecontent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlOnexitType/any"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnexitType/raise"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnexitType/if"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnexitType/foreach"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnexitType/send"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnexitType/script"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnexitType/assign"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnexitType/log"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlOnexitType/cancel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlOnexitType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlParallelType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParallelType/scxmlParallelMix"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlParallelType/onentry"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlParallelType/onexit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlParallelType/transition"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlParallelType/state"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlParallelType/parallel"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlParallelType/history"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlParallelType/datamodel"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlParallelType/invoke"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParallelType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParallelType/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParallelType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlParamType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParamType/scxmlExtraContent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParamType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParamType/expr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParamType/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParamType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlParamType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlRaiseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlRaiseType/event"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlRaiseType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlScriptType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScriptType/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScriptType/scxmlExtraContent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScriptType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScriptType/src"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScriptType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlScxmlType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScxmlType/scxmlScxmlMix"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlScxmlType/state"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlScxmlType/parallel"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlScxmlType/final"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlScxmlType/datamodel"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlScxmlType/script"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScxmlType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScxmlType/binding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScxmlType/datamodel1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScxmlType/exmode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScxmlType/initial"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScxmlType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScxmlType/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlScxmlType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlSendType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/scxmlSendMix"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlSendType/content"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlSendType/param"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/delay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/delayexpr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/event"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/eventexpr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/idlocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/namelist"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/targetexpr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/typeexpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlSendType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlStateType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlStateType/scxmlStateMix"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/onentry"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/onexit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/transition"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/initial"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/state"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/parallel"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/final"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/history"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/datamodel"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlStateType/invoke"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlStateType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlStateType/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlStateType/initial1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlStateType/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="scxml.ecore#//ScxmlTransitionType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlTransitionType/scxmlCoreExecutablecontent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlTransitionType/any"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlTransitionType/raise"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlTransitionType/if"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlTransitionType/foreach"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlTransitionType/send"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlTransitionType/script"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlTransitionType/assign"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlTransitionType/log"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference scxml.ecore#//ScxmlTransitionType/cancel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlTransitionType/cond"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlTransitionType/event"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlTransitionType/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlTransitionType/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute scxml.ecore#//ScxmlTransitionType/anyAttribute"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -72,6 +72,7 @@
     <module>../../plugins/org.eclipse.sirius.tests.sample.migration</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.migration.design</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.component</module>
+    <module>../../plugins/org.eclipse.sirius.tests.sample.scxml</module>
     <module>../../plugins/org.eclipse.sirius.tests.junit</module>
     <module>../../plugins/org.eclipse.sirius.tests.tree</module>
     <module>../../plugins/org.eclipse.sirius.tests.swtbot</module>
