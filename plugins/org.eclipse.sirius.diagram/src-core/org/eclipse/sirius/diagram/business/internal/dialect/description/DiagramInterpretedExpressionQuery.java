@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.dialect.description;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,13 +20,22 @@ import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedEx
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -33,6 +43,8 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -44,6 +56,10 @@ import com.google.common.collect.Sets;
  * 
  */
 public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpressionQuery implements IInterpretedExpressionQuery {
+
+    private static final String DIAGRAM_D_EDGE_TYPE = "diagram.DEdge";
+
+    private static final String DIAGRAM_EDGE_TARGET_TYPE = "diagram.EdgeTarget";
 
     /**
      * Default constructor.
@@ -74,7 +90,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
      * {@inheritDoc}
      */
     @Override
-    protected void appendAllLocalVariableDefinitions(Map<String, Collection<String>> definitions, EObject context) {
+    protected void appendAllLocalVariableDefinitions(Map<String, Collection<VariableType>> definitions, EObject context) {
         super.appendAllLocalVariableDefinitions(definitions, context);
         // Direct edit defines numbered variables based on their mask.
         if (context instanceof DirectEditLabel && ((DirectEditLabel) context).getMask() != null) {
@@ -84,12 +100,69 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         // Add CreateViewn and CreateEdgeView Variable Name to available
         // variables
         if (context instanceof CreateView) {
-            availableVariables.put(((CreateView) context).getVariableName(), AbstractInterpretedExpressionQuery.DEFAULT_VARIABLE_TYPE);
+            availableVariables.put(((CreateView) context).getVariableName(), VariableType.ANY_EOBJECT);
         }
+
     }
 
     @Override
-    public Map<String, String> getAvailableVariables() {
+    public Map<String, VariableType> getAvailableVariables() {
+
+        Map<String, VariableType> availableVariables = super.getAvailableVariables();
+
+        if (getToolContext().some()) {
+            EObject operationContext = getToolContext().get();
+            if (operationContext instanceof EdgeCreationDescription) {
+                EdgeCreationDescription tool = (EdgeCreationDescription) operationContext;
+                declareEdgeSourceTargets(availableVariables, tool.getEdgeMappings(), tool.getExtraSourceMappings(), tool.getExtraTargetMappings());
+            }
+            if (operationContext instanceof ReconnectEdgeDescription) {
+                ReconnectEdgeDescription tool = (ReconnectEdgeDescription) operationContext;
+                declareEdgeSourceTargets(availableVariables, tool.getMappings(), Collections.<DiagramElementMapping> emptyList(), Collections.<DiagramElementMapping> emptyList());
+                availableVariables.put("otherEnd", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE));
+                availableVariables.put("edgeView", VariableType.fromString(DIAGRAM_D_EDGE_TYPE));
+
+                Collection<String> possibleSources = Lists.newArrayList();
+                for (EdgeMapping eMapping : tool.getMappings()) {
+                    collectSemanticElementType(possibleSources, eMapping);
+                }
+                if (possibleSources.size() > 0) {
+                    VariableType sourceTypes = VariableType.fromStrings(possibleSources);
+                    availableVariables.put(IInterpreterSiriusVariables.ELEMENT, sourceTypes);
+                }
+
+            }
+            if (operationContext instanceof NodeCreationDescription) {
+                NodeCreationDescription tool = (NodeCreationDescription) operationContext;
+                Collection<String> possibleTypes = Sets.newLinkedHashSet();
+                /*
+                 * gather types for the "container" variable.
+                 */
+                for (AbstractNodeMapping np : tool.getExtraMappings()) {
+                    String domainClass = np.getDomainClass();
+                    if (!StringUtil.isEmpty(domainClass)) {
+                        possibleTypes.add(domainClass);
+                    }
+                }
+                availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleTypes));
+            }
+
+            if (operationContext instanceof ContainerCreationDescription) {
+                ContainerCreationDescription tool = (ContainerCreationDescription) operationContext;
+                Collection<String> possibleTypes = Sets.newLinkedHashSet();
+                /*
+                 * gather types for the "container" variable.
+                 */
+                for (AbstractNodeMapping np : tool.getExtraMappings()) {
+                    String domainClass = np.getDomainClass();
+                    if (!StringUtil.isEmpty(domainClass)) {
+                        possibleTypes.add(domainClass);
+                    }
+                }
+                availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleTypes));
+            }
+
+        }
         /*
          * [428757] tool variables and not displayed in autocompletion This
          * patch adds hard coded variables and hence is a temporary solution.
@@ -98,17 +171,74 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
          * complete the AbstractInterpretedExpressionQuery to make it able to
          * find specific variables for concrete types.
          */
-        Map<String, String> availableVariables = super.getAvailableVariables();
-
         if (target instanceof EdgeCreationDescription && ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION.equals(feature)) {
-            availableVariables.put("diagram", "diagram.DDiagram");
-            availableVariables.put("preSource", "ecore.EObject");
-            availableVariables.put("preSourceView", "diagram.EdgeTarget");
-            availableVariables.put("preTarget", "ecore.EObject");
-            availableVariables.put("preTargetView", "diagram.EdgeTarget");
+            availableVariables.put("diagram", VariableType.fromString("diagram.DDiagram"));
+            availableVariables.put("preSource", VariableType.fromString("ecore.EObject"));
+            availableVariables.put("preSourceView", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE));
+            availableVariables.put("preTarget", VariableType.fromString("ecore.EObject"));
+            availableVariables.put("preTargetView", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE));
+
         }
 
         return availableVariables;
+    }
+
+    private void declareEdgeSourceTargets(Map<String, VariableType> availableVariables, Collection<EdgeMapping> eMappings, Collection<DiagramElementMapping> extraSourceMappings,
+            Collection<DiagramElementMapping> extraTargetMappings) {
+        Collection<String> possibleSources = Sets.newLinkedHashSet();
+        Collection<String> possibleTargets = Sets.newLinkedHashSet();
+        for (EdgeMapping eMapping : eMappings) {
+            for (DiagramElementMapping endMapping : eMapping.getSourceMapping()) {
+                collectTypes(possibleSources, endMapping);
+            }
+            for (DiagramElementMapping endMapping : eMapping.getTargetMapping()) {
+                collectTypes(possibleTargets, endMapping);
+            }
+        }
+        for (DiagramElementMapping extraSource : extraSourceMappings) {
+            collectTypes(possibleSources, extraSource);
+        }
+        for (DiagramElementMapping extraTarget : extraTargetMappings) {
+            collectTypes(possibleTargets, extraTarget);
+        }
+        if (possibleSources.size() > 0) {
+            VariableType sourceTypes = VariableType.fromStrings(possibleSources);
+            availableVariables.put(IInterpreterSiriusVariables.SOURCE_PRE, sourceTypes);
+            availableVariables.put(IInterpreterSiriusVariables.SOURCE, sourceTypes);
+        }
+        if (possibleTargets.size() > 0 && feature != org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION) {
+            VariableType targetTypes = VariableType.fromStrings(possibleTargets);
+            availableVariables.put(IInterpreterSiriusVariables.TARGET_PRE, targetTypes);
+            availableVariables.put(IInterpreterSiriusVariables.TARGET, targetTypes);
+        }
+    }
+
+    private void collectTypes(Collection<String> possibleSources, DiagramElementMapping endMapping) {
+        if (endMapping instanceof AbstractNodeMapping) {
+            String domainClass = ((AbstractNodeMapping) endMapping).getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                possibleSources.add(domainClass);
+            }
+        } else if (endMapping instanceof EdgeMapping) {
+            EdgeMapping edgeMapping = (EdgeMapping) endMapping;
+            collectSemanticElementType(possibleSources, edgeMapping);
+        }
+    }
+
+    private void collectSemanticElementType(Collection<String> possibleSources, EdgeMapping edgeMapping) {
+        if (edgeMapping.isUseDomainElement()) {
+            String domainClass = edgeMapping.getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                possibleSources.add(domainClass);
+            }
+        } else {
+            for (AbstractNodeMapping nMapping : Iterables.filter(edgeMapping.getSourceMapping(), AbstractNodeMapping.class)) {
+                String domainClass = nMapping.getDomainClass();
+                if (!StringUtil.isEmpty(domainClass)) {
+                    possibleSources.add(domainClass);
+                }
+            }
+        }
     }
 
     /**
@@ -208,7 +338,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         }
 
         private boolean isRelevant(EObject container) {
-            return container instanceof RepresentationDescription || container instanceof RepresentationElementMapping || container instanceof EdgeMappingImport || container instanceof DiagramExtensionDescription;
+            return container instanceof RepresentationDescription || container instanceof RepresentationElementMapping || container instanceof EdgeMappingImport
+                    || container instanceof DiagramExtensionDescription;
         }
     }
 }

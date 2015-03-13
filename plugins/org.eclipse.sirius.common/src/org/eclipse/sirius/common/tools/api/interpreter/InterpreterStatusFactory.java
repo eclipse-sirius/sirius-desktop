@@ -13,7 +13,6 @@ package org.eclipse.sirius.common.tools.api.interpreter;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.sirius.common.tools.internal.interpreter.InterpreterStatusImpl;
 
 /**
@@ -43,7 +42,31 @@ public final class InterpreterStatusFactory {
      * @return a {@link IInterpreterStatus} created from the given informations
      */
     public static IInterpreterStatus createInterpreterStatus(IInterpreterContext context, String severity, String message) {
-        return new InterpreterStatusImpl(context.getTargetTypes(), context.getField(), severity, message, 1, 1, 2);
+        return new InterpreterStatusImpl(context.getTargetType(), context.getField(), severity, message, 1, 1, 2);
+    }
+
+    /**
+     * Creates a new {@link IInterpreterStatus} from the given informations.
+     * 
+     * This method has been deprecated in favor of the variant using a
+     * {@link VariableType} instance in parameter.
+     * 
+     * @param targetTypes
+     *            the names of all possible types for the target of the
+     *            expression to evaluate
+     * @param field
+     *            the field containing the incorrect Interpreted Expression
+     * @param severity
+     *            the severity of this error (can be
+     *            {@link IInterpreterStatus#WARNING} or
+     *            {@link IInterpreterStatus#ERROR}).
+     * @param message
+     *            a message explaining the cause of the error
+     * @return a {@link IInterpreterStatus} created from the given informations
+     */
+    @Deprecated
+    public static IInterpreterStatus createInterpreterStatus(Collection<String> targetTypes, EStructuralFeature field, String severity, String message) {
+        return createInterpreterStatus(VariableType.fromStrings(targetTypes), field, severity, message);
     }
 
     /**
@@ -61,9 +84,41 @@ public final class InterpreterStatusFactory {
      * @param message
      *            a message explaining the cause of the error
      * @return a {@link IInterpreterStatus} created from the given informations
+     * 
+     * @since 3.0
      */
-    public static IInterpreterStatus createInterpreterStatus(Collection<String> targetTypes, EStructuralFeature field, String severity, String message) {
+    public static IInterpreterStatus createInterpreterStatus(VariableType targetTypes, EStructuralFeature field, String severity, String message) {
         return new InterpreterStatusImpl(targetTypes, field, severity, message, 0, 0, 0);
+    }
+
+    /**
+     * Creates a new {@link IInterpreterStatus} from the given informations.
+     * 
+     * This method has been deprecated in favor of the variant using a
+     * {@link VariableType} instance in parameter.
+     * 
+     * @param targetTypes
+     *            the names of all possible types for the target of the
+     *            expression to evaluate
+     * @param field
+     *            the field containing the incorrect Interpreted Expression
+     * @param severity
+     *            the severity of this error (can be
+     *            {@link IInterpreterStatus#WARNING} or
+     *            {@link IInterpreterStatus#ERROR}).
+     * @param message
+     *            a message explaining the cause of the error
+     * @param line
+     *            the line of the error.
+     * @param posBegin
+     *            the begin position of the error.
+     * @param posEnd
+     *            the end position of the error
+     * @return a {@link IInterpreterStatus} created from the given informations
+     */
+    @Deprecated
+    public static IInterpreterStatus createInterpreterStatus(Collection<String> targetTypes, EStructuralFeature field, String severity, String message, int line, int posBegin, int posEnd) {
+        return createInterpreterStatus(VariableType.fromStrings(targetTypes), field, severity, message, line, posBegin, posEnd);
     }
 
     /**
@@ -87,8 +142,10 @@ public final class InterpreterStatusFactory {
      * @param posEnd
      *            the end position of the error
      * @return a {@link IInterpreterStatus} created from the given informations
+     * 
+     * @since 3.0
      */
-    public static IInterpreterStatus createInterpreterStatus(Collection<String> targetTypes, EStructuralFeature field, String severity, String message, int line, int posBegin, int posEnd) {
+    public static IInterpreterStatus createInterpreterStatus(VariableType targetTypes, EStructuralFeature field, String severity, String message, int line, int posBegin, int posEnd) {
         return new InterpreterStatusImpl(targetTypes, field, severity, message, line, posBegin, posEnd);
     }
 }

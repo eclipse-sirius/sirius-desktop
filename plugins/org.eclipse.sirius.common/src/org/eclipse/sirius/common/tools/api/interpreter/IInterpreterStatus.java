@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.interpreter;
 
-import java.util.Collection;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
@@ -40,7 +38,7 @@ public interface IInterpreterStatus {
      * @return the names of all possible types for the target of the evaluated
      *         expression to evaluate
      */
-    Collection<String> getTargetTypes();
+    VariableType getTargetTypes();
 
     /**
      * Returns the feature containing the evaluated expression.

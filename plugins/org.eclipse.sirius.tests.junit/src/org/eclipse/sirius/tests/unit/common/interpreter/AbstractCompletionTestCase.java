@@ -30,6 +30,8 @@ import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContextFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -157,7 +159,7 @@ public class AbstractCompletionTestCase extends TestCase {
      * @return a new {@link ContentContext}
      */
     protected ContentContext createContentContext(String expression, int cursorPosition, String eClass) {
-        return createContentContext(expression, cursorPosition, eClass, Collections.<String, String> emptyMap());
+        return createContentContext(expression, cursorPosition, eClass, Collections.<String, VariableType> emptyMap());
     }
 
     /**
@@ -174,7 +176,7 @@ public class AbstractCompletionTestCase extends TestCase {
      * @return a new {@link ContentContext}
      */
     protected ContentContext createContentContext(String expression, int cursorPosition, EObject element, String eClass) {
-        return createContentContext(expression, cursorPosition, element, eClass, null, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
+        return createContentContext(expression, cursorPosition, element, eClass, null, Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
     }
 
     /**
@@ -190,7 +192,7 @@ public class AbstractCompletionTestCase extends TestCase {
      *            declared variables
      * @return a new {@link ContentContext}
      */
-    protected ContentContext createContentContext(String expression, int cursorPosition, String eClass, Map<String, String> variables) {
+    protected ContentContext createContentContext(String expression, int cursorPosition, String eClass, Map<String, VariableType> variables) {
         return createContentContext(expression, cursorPosition, eClass, null, variables, Collections.<String> emptyList());
     }
 
@@ -208,7 +210,7 @@ public class AbstractCompletionTestCase extends TestCase {
      * @return a new {@link ContentContext}
      */
     protected ContentContext createContentContext(String expression, int cursorPosition, String eClass, EPackage ePackage) {
-        return createContentContext(expression, cursorPosition, eClass, ePackage, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
+        return createContentContext(expression, cursorPosition, eClass, ePackage, Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
     }
 
     /**
@@ -227,7 +229,7 @@ public class AbstractCompletionTestCase extends TestCase {
      * @return a new {@link ContentContext}
      */
     protected ContentContext createContentContext(String expression, int cursorPosition, EObject element, String eClass, EPackage ePackage) {
-        return createContentContext(expression, cursorPosition, element, eClass, ePackage, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
+        return createContentContext(expression, cursorPosition, element, eClass, ePackage, Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
     }
 
     /**
@@ -247,7 +249,7 @@ public class AbstractCompletionTestCase extends TestCase {
      *            the list of available dependencies
      * @return a new {@link ContentContext}
      */
-    protected ContentContext createContentContext(String expression, int cursorPosition, String eClass, EPackage ePackage, Map<String, String> variables, Collection<String> dependencies) {
+    protected ContentContext createContentContext(String expression, int cursorPosition, String eClass, EPackage ePackage, Map<String, VariableType> variables, Collection<String> dependencies) {
         return createContentContext(expression, cursorPosition, null, eClass, ePackage, variables, dependencies);
     }
 
@@ -270,10 +272,10 @@ public class AbstractCompletionTestCase extends TestCase {
      *            the list of available dependencies
      * @return a new {@link ContentContext}
      */
-    protected ContentContext createContentContext(String expression, int cursorPosition, EObject element, String eClass, EPackage ePackage, Map<String, String> variables,
+    protected ContentContext createContentContext(String expression, int cursorPosition, EObject element, String eClass, EPackage ePackage, Map<String, VariableType> variables,
             Collection<String> dependencies) {
         Collection<EPackage> pList = ePackage == null ? Collections.<EPackage> emptyList() : Collections.singletonList(ePackage);
-        return new ContentContext(expression, cursorPosition, DefaultInterpreterContextFactory.createInterpreterContext(element, true, null, Collections.singletonList(eClass), pList, variables,
+        return new ContentContext(expression, cursorPosition, DefaultInterpreterContextFactory.createInterpreterContext(element, true, null, VariableType.fromString(eClass), pList, variables,
                 dependencies));
     }
 

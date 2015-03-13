@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ext.base.Option;
 
 /**
@@ -56,6 +57,6 @@ public interface IInterpretedExpressionQuery {
      * 
      * @return a map representing all available variables
      */
-    Map<String, String> getAvailableVariables();
+    Map<String, VariableType> getAvailableVariables();
 
 }

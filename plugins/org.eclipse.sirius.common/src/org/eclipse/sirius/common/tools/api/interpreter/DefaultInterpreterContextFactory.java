@@ -16,7 +16,6 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.sirius.common.tools.internal.interpreter.InterpretedContextImpl;
 
 /**
@@ -53,8 +52,8 @@ public final class DefaultInterpreterContextFactory {
      * 
      * @return a {@link IInterpreterContext} created from the given informations
      */
-    public static IInterpreterContext createInterpreterContext(EObject element, boolean requiresTargetType, EStructuralFeature feature, Collection<String> targetTypes,
-            Collection<EPackage> avalaiblePackages, Map<String, String> variables, Collection<String> dependencies) {
+    public static IInterpreterContext createInterpreterContext(EObject element, boolean requiresTargetType, EStructuralFeature feature, VariableType targetTypes,
+            Collection<EPackage> avalaiblePackages, Map<String, VariableType> variables, Collection<String> dependencies) {
         return new InterpretedContextImpl(element, requiresTargetType, feature, targetTypes, avalaiblePackages, variables, dependencies);
     }
 

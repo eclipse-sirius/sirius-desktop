@@ -19,6 +19,7 @@ import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedEx
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
@@ -59,7 +60,7 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
     }
 
     @Override
-    protected void appendAllLocalVariableDefinitions(Map<String, Collection<String>> definitions, EObject context) {
+    protected void appendAllLocalVariableDefinitions(Map<String, Collection<VariableType>> definitions, EObject context) {
         super.appendAllLocalVariableDefinitions(definitions, context);
 
         // The "Direct edit" and the "Create Cell" tools define numbered

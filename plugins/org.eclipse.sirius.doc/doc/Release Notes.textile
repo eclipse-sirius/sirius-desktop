@@ -68,6 +68,13 @@ h4. Changes in @org.eclipse.sirius.common@
 * The interface @org.eclipse.sirius.business.api.migration.IMigrationParticipant@ exposes a new method @postXMLEndElement([..])@ which is called during a migration operation. This method should be overrided by participants which have to hook the loading process after each end of XML tag. The  corresponding abstract class @org.eclipse.sirius.business.api.migration.AbstractMigrationParticipant@ provides a default NO-OP implementation.
 * @org.eclipse.sirius.common.tools.api.util.EclipseUtil.getConfigurationElementsFor()@ added to call @org.eclipse.core.runtime.Platform.getExtensionRegistry().getConfigurationElementsFor()@ and check @Platform.isRunning()@ before. 
 * A new class @org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager@ can now be used by langages interpreters to benefit from a consistent handling of Java extensions and support for loading Java services from the workspace.
+* The static method @org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContextFactory.createInterpreterContext(...)@ now requires a @Map<String, VariableType>@ for the accessible variables instead of a @Map<String, String>@.
+* The method @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext.getTargetTypes()@ has been deprecated in favor of @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext.getTargetType()@ which returns a @VariableType@ instance instead of encoded Strings.
+* The methods @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext.getVariables()@  and @org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery.getAvailableVariables()@ are now returning a map containing @VariableType@ instances instead of encoded Strings.
+* The method @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus.getTargetTypes()@ no longer returns a list of encoded Strings but a @VariableType@ instance instead.
+* The class @org.eclipse.sirius.common.tools.api.interpreter.TypeName@ has been introduced to represent in the codebase any type which was previously represented as a plain String.
+* A new interface @org.eclipse.sirius.common.tools.api.interpreter.TypedValidation@ has been introduced for @IInterpreter@ implementations able to provide richer information when validating an expression. This information is captured through a @org.eclipse.sirius.common.tools.api.interpreter.ValidationResult@ instance.
+* The class @org.eclipse.sirius.common.tools.api.interpreter.VariableType@ has been introduced to represent the possible types a variable can have in a Viewpoint specification model.
 
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 

@@ -20,6 +20,8 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
 import org.eclipse.sirius.common.ui.tools.internal.interpreter.VariableProposalProvider;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
@@ -54,10 +56,10 @@ public class VariableProposalProviderTests extends TestCase {
     public void testVariableProposalProviderWithoutVariables() {
         DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
         diagramDescription.setDomainClass(EcorePackage.eNAME + "." + EcorePackage.Literals.EPACKAGE.getName());
-        IInterpreterContext interpreterContext = SiriusInterpreterContextFactory.createInterpreterContext(diagramDescription,
-                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION);
+        IInterpreterContext interpreterContext = SiriusInterpreterContextFactory.createInterpreterContext(diagramDescription, DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION);
 
-        ContentContext context = new ContentContext(VariableInterpreter.PREFIX, VariableInterpreter.PREFIX.length(), interpreterContext); List<ContentProposal> proposals = proposalProvider.getProposals(interpreter, context);
+        ContentContext context = new ContentContext(VariableInterpreter.PREFIX, VariableInterpreter.PREFIX.length(), interpreterContext);
+        List<ContentProposal> proposals = proposalProvider.getProposals(interpreter, context);
         assertNotNull("proposals should not be null", proposals);
         assertEquals("There should be only one proposal", 1, proposals.size());
         ContentProposal contentProposal = proposals.get(0);
@@ -67,11 +69,10 @@ public class VariableProposalProviderTests extends TestCase {
     public void testVariableProposalProviderWithVariables() {
         DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
         diagramDescription.setDomainClass(EcorePackage.eNAME + "." + EcorePackage.Literals.EPACKAGE.getName());
-        IInterpreterContext interpreterContext = SiriusInterpreterContextFactory.createInterpreterContext(diagramDescription,
-                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION);
+        IInterpreterContext interpreterContext = SiriusInterpreterContextFactory.createInterpreterContext(diagramDescription, DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION);
         String varExampleName = "varExampleName";
         String varExampleValue = "varExampleValue";
-        interpreterContext.getVariables().put(varExampleName, varExampleValue);
+        interpreterContext.getVariables().put(varExampleName, VariableType.fromString(varExampleValue));
 
         ContentContext context = new ContentContext(VariableInterpreter.PREFIX, VariableInterpreter.PREFIX.length(), interpreterContext);
         List<ContentProposal> proposals = proposalProvider.getProposals(interpreter, context);
@@ -91,11 +92,10 @@ public class VariableProposalProviderTests extends TestCase {
     public void testVariableProposalProviderWithVariablesWithPrefix() {
         DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
         diagramDescription.setDomainClass(EcorePackage.eNAME + "." + EcorePackage.Literals.EPACKAGE.getName());
-        IInterpreterContext interpreterContext = SiriusInterpreterContextFactory.createInterpreterContext(diagramDescription,
-                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION);
+        IInterpreterContext interpreterContext = SiriusInterpreterContextFactory.createInterpreterContext(diagramDescription, DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION);
         String varExampleName = "varExampleName";
         String varExampleValue = "varExampleValue";
-        interpreterContext.getVariables().put(varExampleName, varExampleValue);
+        interpreterContext.getVariables().put(varExampleName, VariableType.fromString(varExampleValue));
 
         ContentContext context = new ContentContext(VariableInterpreter.PREFIX + VariableInterpreter.SELF_VARIABLE_NAME.substring(0, 2), VariableInterpreter.PREFIX.length() + 2, interpreterContext);
         List<ContentProposal> proposals = proposalProvider.getProposals(interpreter, context);
@@ -104,7 +104,6 @@ public class VariableProposalProviderTests extends TestCase {
         ContentProposal contentProposal1 = proposals.get(0);
         assertEquals("The proposal should be the self variable", VariableInterpreter.SELF_VARIABLE_NAME, contentProposal1.getProposal());
     }
-
 
     @Override
     protected void tearDown() throws Exception {

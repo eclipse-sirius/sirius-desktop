@@ -22,6 +22,8 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
 
 import com.google.common.base.Function;
@@ -50,10 +52,18 @@ public class VariableProposalProvider implements IProposalProvider {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof VariableInterpreter)) {
             proposals = Collections.emptyList();
-        } else if (context.getContents() == null || context.getContents().length() == 0) {
-            proposals = Collections.singletonList(getNewEmtpyExpression());
         } else {
-            proposals = getProposals(context.getContents(), context.getPosition(), context.getInterpreterContext().getVariables().entrySet().iterator());
+            // Transform Entry<String,VariableType> to Entry<String,String>
+            Iterator<Entry<String, String>> variablesIterator = Iterators.transform(context.getInterpreterContext().getVariables().entrySet().iterator(),
+                    new Function<Map.Entry<String, VariableType>, Map.Entry<String, String>>() {
+
+                        @Override
+                        public Entry<String, String> apply(Entry<String, VariableType> input) {
+                            return Maps.immutableEntry(input.getKey(), input.getValue().toString());
+                        }
+
+                    });
+            proposals = getProposals(context.getContents(), context.getPosition(), variablesIterator);
         }
         return proposals;
     }
@@ -65,18 +75,20 @@ public class VariableProposalProvider implements IProposalProvider {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof VariableInterpreter)) {
             proposals = Collections.emptyList();
-        } else if (context.getCurrentSelected() == null) {
-            proposals = Collections.singletonList(getNewEmtpyExpression());
         } else {
-            // Transform Entry<String, Object> to Entry<String, String>
-            VariableInterpreter variableInterpreter = (VariableInterpreter) interpreter;
-            Iterator<Entry<String, String>> variablesIterator = Iterators.transform(variableInterpreter.getVariables().entrySet().iterator(),
-                    new Function<Entry<String, Object>, Entry<String, String>>() {
-                        public Map.Entry<String, String> apply(Map.Entry<String, Object> input) {
-                            return Maps.immutableEntry(input.getKey(), input.getValue().toString());
-                        };
-                    });
-            proposals = getProposals(context.getTextSoFar(), context.getCursorPosition(), variablesIterator);
+            if (context.getCurrentSelected() == null) {
+                proposals = Collections.singletonList(getNewEmtpyExpression());
+            } else {
+                VariableInterpreter variableInterpreter = (VariableInterpreter) interpreter;
+                // Transform Entry<String, Object> to Entry<String, String>
+                Iterator<Entry<String, String>> variablesIterator = Iterators.transform(variableInterpreter.getVariables().entrySet().iterator(),
+                        new Function<Entry<String, Object>, Entry<String, String>>() {
+                            public Map.Entry<String, String> apply(Map.Entry<String, Object> input) {
+                                return Maps.immutableEntry(input.getKey(), input.getValue().toString());
+                            };
+                        });
+                proposals = getProposals(context.getTextSoFar(), context.getCursorPosition(), variablesIterator);
+            }
         }
         return proposals;
     }
@@ -95,30 +107,35 @@ public class VariableProposalProvider implements IProposalProvider {
      * @return content proposal list.
      */
     private List<ContentProposal> getProposals(String writtenExpression, int cursorPosition, Iterator<Entry<String, String>> variablesIterator) {
-        final List<ContentProposal> proposals = new ArrayList<ContentProposal>();
-        // Keep only characters before cursor
-        String variableNamePrefix = writtenExpression.substring(0, cursorPosition);
-        // Remove not needed space characters.
-        variableNamePrefix = variableNamePrefix.trim();
-        // Remove "var:" prefix if the cursor position is after the prefix
-        // If the cursor position is before the prefix, there is no proposal
-        // returned.
-        if (variableNamePrefix.length() >= VariableInterpreter.PREFIX.length()) {
-            variableNamePrefix = variableNamePrefix.substring(VariableInterpreter.PREFIX.length());
+        if (StringUtil.isEmpty(writtenExpression)) {
+            return Collections.singletonList(getNewEmtpyExpression());
+        } else {
 
-            if (VariableInterpreter.SELF_VARIABLE_NAME.startsWith(variableNamePrefix)) {
-                proposals.add(new ContentProposal(VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME));
-            }
-            while (variablesIterator.hasNext()) {
-                Map.Entry<String, String> entry = variablesIterator.next();
-                String variableName = entry.getKey();
-                String variableType = entry.getValue();
-                if (variableName.startsWith(variableNamePrefix)) {
-                    proposals.add(new ContentProposal(variableName, variableName + ": " + variableType, variableType));
+            final List<ContentProposal> proposals = new ArrayList<ContentProposal>();
+            // Keep only characters before cursor
+            String variableNamePrefix = writtenExpression.substring(0, cursorPosition);
+            // Remove not needed space characters.
+            variableNamePrefix = variableNamePrefix.trim();
+            // Remove "var:" prefix if the cursor position is after the prefix
+            // If the cursor position is before the prefix, there is no proposal
+            // returned.
+            if (variableNamePrefix.length() >= VariableInterpreter.PREFIX.length()) {
+                variableNamePrefix = variableNamePrefix.substring(VariableInterpreter.PREFIX.length());
+
+                if (VariableInterpreter.SELF_VARIABLE_NAME.startsWith(variableNamePrefix)) {
+                    proposals.add(new ContentProposal(VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME));
+                }
+                while (variablesIterator.hasNext()) {
+                    Map.Entry<String, String> entry = variablesIterator.next();
+                    String variableName = entry.getKey();
+                    String variableType = entry.getValue();
+                    if (variableName.startsWith(variableNamePrefix)) {
+                        proposals.add(new ContentProposal(variableName, variableName + ": " + variableType, variableType));
+                    }
                 }
             }
+            return proposals;
         }
-        return proposals;
     }
 
 }

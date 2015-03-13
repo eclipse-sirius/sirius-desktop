@@ -10,23 +10,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
+import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
+
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * A specialized interpreter which only supports direct access to a named
@@ -110,14 +110,24 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
      * {@inheritDoc}
      */
     @Override
-    public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-        Collection<IInterpreterStatus> interpreterStatus = new ArrayList<IInterpreterStatus>();
+    public ValidationResult analyzeExpression(IInterpreterContext context, String expression) {
+        ValidationResult interpreterStatus = new ValidationResult();
         if (expression != null && context != null && expression.startsWith(PREFIX)) {
             String featureName = expression.substring(PREFIX.length());
-            EClass currentElementType = getCurrentElementType(context);
-            if (currentElementType != null && !(hasFeatureName(currentElementType, featureName) || isDefaultFeatureName(featureName))) {
-                interpreterStatus.add(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, "The current element " + currentElementType.getEPackage().getName() + "::"
-                        + currentElementType.getName() + " does not have the feature named : " + featureName));
+            VariableType targetType = context.getTargetType();
+            if (!isDefaultFeatureName(featureName)) {
+                for (TypeName typeName : targetType.getPossibleTypes()) {
+                    Iterator<EClass> possibleEClasses = Iterators.filter(typeName.search(context.getAvailableEPackages()).iterator(), EClass.class);
+                    boolean foundAtLeastOneValid = false;
+                    while (!foundAtLeastOneValid && possibleEClasses.hasNext()) {
+                        EClass cur = possibleEClasses.next();
+                        foundAtLeastOneValid = hasFeatureName(cur, featureName);
+                    }
+                    if (!foundAtLeastOneValid) {
+                        interpreterStatus.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, "The current element " + typeName.getCompleteName("::")
+                                + " does not have the feature named : " + featureName));
+                    }
+                }
             }
         }
         return interpreterStatus;
@@ -139,44 +149,4 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
         return isDefaultFeatureName;
     }
 
-    /**
-     * Get the type of the current element from the specified
-     * {@link IInterpreterContext}.
-     * 
-     * @param interpreterContext
-     *            the specified {@link IInterpreterContext}
-     * @return the type of the current element
-     */
-    public EClass getCurrentElementType(IInterpreterContext interpreterContext) {
-        EClass currentElementType = null;
-        Collection<String> targetTypes = interpreterContext.getTargetTypes();
-        if (!targetTypes.isEmpty()) {
-            String targetType = targetTypes.iterator().next();
-            Collection<EPackage> availableEPackages = interpreterContext.getAvailableEPackages();
-            if (targetType != null && targetType.contains(SEPARATOR)) {
-                // If the current targetType has a EPackage prefix then look for
-                // the corresponding EPackage
-                for (EPackage availableEPackage : availableEPackages) {
-                    if (availableEPackage.getName() != null && targetType.startsWith(availableEPackage.getName() + SEPARATOR)) {
-                        String eClassName = targetType.substring(targetType.indexOf(SEPARATOR) + 1);
-                        EClassifier eClassifier = availableEPackage.getEClassifier(eClassName);
-                        if (eClassifier instanceof EClass) {
-                            currentElementType = (EClass) eClassifier;
-                            break;
-                        }
-                    }
-                }
-            } else {
-                // Else look for in all EPackages
-                for (EPackage availableEPackage : availableEPackages) {
-                    EClassifier eClassifier = availableEPackage.getEClassifier(targetType);
-                    if (eClassifier instanceof EClass) {
-                        currentElementType = (EClass) eClassifier;
-                        break;
-                    }
-                }
-            }
-        }
-        return currentElementType;
-    }
 }

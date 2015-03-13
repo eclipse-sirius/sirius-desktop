@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
- * A context providing all informations required by {@link IInterpreter} to validate
- * statically an expression and compute completion proposals.
+ * A context providing all informations required by {@link IInterpreter} to
+ * validate statically an expression and compute completion proposals.
  * 
  * @since 0.9.0
  * @author alagarde
@@ -54,9 +54,12 @@ public interface IInterpreterContext {
      * resulting list is empty and the requiresTargetTypes() method return
      * false, the expected evaluation context type will be EObject.
      * 
+     * This method is deprecated, getTargetType() should be used instead.
+     * 
      * @return the names of all possible types for the target of the expression
      *         to evaluate
      */
+    @Deprecated
     Collection<String> getTargetTypes();
 
     /**
@@ -75,7 +78,7 @@ public interface IInterpreterContext {
      * @return the available variables (Key is the variable name, value is the
      *         variable Type)
      */
-    Map<String, String> getVariables();
+    Map<String, VariableType> getVariables();
 
     /**
      * Returns the feature containing the expression to evaluate.
@@ -92,5 +95,16 @@ public interface IInterpreterContext {
      *         expression
      */
     Collection<String> getDependencies();
+
+    /**
+     * Returns a representation of the current receiver type. This type might be
+     * the union of several types.
+     * 
+     * @return a representation of the current receiver type. This type might be
+     *         the union of several types.
+     * @since 3.0
+     * 
+     */
+    VariableType getTargetType();
 
 }

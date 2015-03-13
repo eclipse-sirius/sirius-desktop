@@ -40,9 +40,11 @@ import org.eclipse.acceleo.query.runtime.impl.Nothing;
 import org.eclipse.acceleo.query.runtime.impl.QueryBuilderEngine;
 import org.eclipse.acceleo.query.runtime.impl.QueryEnvironment;
 import org.eclipse.acceleo.query.runtime.impl.QueryValidationEngine;
+import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.IType;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
@@ -58,6 +60,8 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
+import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -216,9 +220,25 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     }
 
     @Override
-    public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String fullExpression) {
+    public ValidationResult analyzeExpression(IInterpreterContext context, String fullExpression) {
+
+        /*
+         * use the VSM resource to declare dependent project/bundles.
+         */
+        EObject vsmElement = context.getElement();
+        if (vsmElement.eResource() != null && vsmElement.eResource().getURI() != null && vsmElement.eResource().getURI().segmentCount() >= 2) {
+            URI vsmURI = vsmElement.eResource().getURI();
+            String bundleOrProjectName = vsmURI.segment(1);
+            if (vsmURI.isPlatformResource()) {
+                javaExtensions.updateScope(Sets.<String> newHashSet(), Sets.newHashSet(bundleOrProjectName));
+            } else if (vsmURI.isPlatformPlugin()) {
+                javaExtensions.updateScope(Sets.newHashSet(bundleOrProjectName), Sets.<String> newHashSet());
+            }
+        }
+
         String trimmedExpression = new ExpressionTrimmer(fullExpression).getExpression();
 
+        ValidationResult result = new ValidationResult();
         for (EPackage pak : context.getAvailableEPackages()) {
             if (pak != null) {
                 queryEnvironment.registerEPackage(pak);
@@ -226,25 +246,37 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         }
         Map<String, Set<IType>> variableTypes = TypesUtil.createAQLVariableTypesFromInterpreterContext(context, queryEnvironment);
 
-        List<IInterpreterStatus> statuses = Lists.newArrayList();
+        for (String dependency : context.getDependencies()) {
+            addImport(dependency);
+        }
         QueryValidationEngine validator = new QueryValidationEngine(this.queryEnvironment);
         try {
             IValidationResult validationResult = validator.validate(trimmedExpression, variableTypes);
             for (IValidationMessage message : validationResult.getMessages()) {
-                IInterpreterStatus status = InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.WARNING, message.getMessage());
-                statuses.add(status);
+                result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.WARNING, message.getMessage()));
+            }
+            List<String> classifierNames = Lists.newArrayList();
+            for (IType type : validationResult.getPossibleTypes(validationResult.getAstResult().getAst())) {
+                if (type instanceof EClassifierType) {
+                    EClassifierType eClassifierType = (EClassifierType) type;
+                    if (eClassifierType.getType() != null && eClassifierType.getType().getName() != null) {
+                        String typeName = eClassifierType.getType().getName();
+                        if (eClassifierType.getType().getEPackage() != null && eClassifierType.getType().getEPackage().getName() != null) {
+                            typeName = eClassifierType.getType().getEPackage().getName() + "." + typeName;
+                        }
+                        classifierNames.add(typeName);
+                    }
+                }
+                result.setReturnType(VariableType.fromStrings(classifierNames));
             }
         } catch (AcceleoQueryValidationException e) {
-            statuses.add(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, e.getMessage()));
-            AQLSiriusPlugin.getPlugin().log(new Status(IStatus.ERROR, AQLSiriusPlugin.getPlugin().getSymbolicName(), e.getMessage(), e));
+            result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, e.getMessage()));
+            AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.ERROR, AQLSiriusPlugin.INSTANCE.getSymbolicName(), e.getMessage(), e));
         } catch (AcceleoQueryEvaluationException e) {
-            statuses.add(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, e.getMessage()));
+            result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, e.getMessage()));
         }
-        if (statuses.size() == 0) {
-            // TODO check the return type of the expression matches or will be
-            // adapted to the expected type
-        }
-        return statuses;
+
+        return result;
     }
 
     /**

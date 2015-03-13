@@ -10,6 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.ide;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.acceleo.common.IAcceleoConstants;
+import org.eclipse.acceleo.parser.interpreter.CompilationContext;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreter;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.DynamicAcceleoModule;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.DynamicAcceleoModule.QueryIdentifier;
@@ -19,19 +27,11 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.acceleo.common.IAcceleoConstants;
-import org.eclipse.acceleo.parser.interpreter.CompilationContext;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * This implementation of the {@link IProposalProvider} interface will be used
@@ -54,24 +54,6 @@ public class AcceleoProposalProvider implements IProposalProvider {
      */
     private static final String ACCELEO_EXPRESSION_SUFFIX = IAcceleoConstants.DEFAULT_END_BODY_CHAR + IAcceleoConstants.DEFAULT_END;
 
-    /**
-     * This will be used to convert a Java-style qualified name
-     * (my.package.Type) to an OCL-style qualified name (my::package::Type).
-     * <p>
-     * Note that this will make no effort to try and check whether the given
-     * type is indeed a Java qualified name.
-     * </p>
-     * 
-     * @param type
-     *            The type we are to convert.
-     * @return The OCL qualified name corresponding to the given type.
-     */
-    private static String convertToOCLQualifiedName(String type) {
-        if (type != null && type.length() > 0) {
-            return type.replace(".", IAcceleoConstants.NAMESPACE_SEPARATOR); //$NON-NLS-1$
-        }
-        return type;
-    }
 
     /**
      * {@inheritDoc}
@@ -100,24 +82,25 @@ public class AcceleoProposalProvider implements IProposalProvider {
             final IInterpreterContext interpreterContext = context.getInterpreterContext();
 
             final Map<String, String> validationVariables = Maps.newLinkedHashMap();
-            for (Map.Entry<String, String> contextVariable : interpreterContext.getVariables().entrySet()) {
+            for (Map.Entry<String, VariableType> contextVariable : interpreterContext.getVariables().entrySet()) {
                 final String varName = contextVariable.getKey();
-                final String varType = contextVariable.getValue();
-                if (varName != null && varName.length() > 0 && varType != null && varType.length() > 0) {
+                final VariableType varType = contextVariable.getValue();
+                if (varName != null && varName.length() > 0 && varType.hasDefinition()) {
                     if (varName.matches("[0-9]+")) { //$NON-NLS-1$
                         // Ignore old Acceleo 2 style numeric variables used for
                         // direct edit tools.
                         continue;
                     }
-                    validationVariables.put(varName, convertToOCLQualifiedName(varType));
+                    validationVariables.put(varName, varType.getCommonType(context.getInterpreterContext().getAvailableEPackages()).getCompleteName(IAcceleoConstants.NAMESPACE_SEPARATOR));
                 }
             }
 
             final String targetType;
+            VariableType selfType = interpreterContext.getTargetType();
             if (!interpreterContext.requiresTargetType()) {
                 targetType = "ecore::EObject"; //$NON-NLS-1$
-            } else if (!interpreterContext.getTargetTypes().isEmpty()) {
-                targetType = convertToOCLQualifiedName(interpreterContext.getTargetTypes().iterator().next());
+            } else if (selfType.hasDefinition()) {
+                targetType = interpreterContext.getTargetType().getCommonType(context.getInterpreterContext().getAvailableEPackages()).getCompleteName(IAcceleoConstants.NAMESPACE_SEPARATOR);
             } else {
                 targetType = null;
             }

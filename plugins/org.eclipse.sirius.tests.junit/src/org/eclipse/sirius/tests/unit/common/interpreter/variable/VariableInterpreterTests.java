@@ -23,6 +23,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.internal.interpreter.AbstractInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter;
@@ -165,7 +166,7 @@ public class VariableInterpreterTests extends TestCase {
         IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(diagramDescription, DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION);
         String varExampleName = "varExampleName";
         String varExampleValue = "varExampleValue";
-        context.getVariables().put(varExampleName, varExampleValue);
+        context.getVariables().put(varExampleName, VariableType.fromString(varExampleValue));
         // Test
         Collection<IInterpreterStatus> status = interpreter.validateExpression(context, VariableInterpreter.PREFIX + varExampleName);
         // Check

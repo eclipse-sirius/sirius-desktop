@@ -16,8 +16,11 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
+
+import com.google.common.collect.Sets;
 
 /**
  * Default implementation for of {@link IInterpreterContext}.
@@ -28,11 +31,11 @@ public class InterpretedContextImpl implements IInterpreterContext {
 
     private EStructuralFeature field;
 
-    private Map<String, String> variables;
+    private Map<String, VariableType> variables;
 
     private Collection<EPackage> avalaiblePackages;
 
-    private Collection<String> targetTypes;
+    private VariableType targetTypes;
 
     private final EObject element;
 
@@ -65,8 +68,8 @@ public class InterpretedContextImpl implements IInterpreterContext {
      * @param dependencies
      *            the list of available dependencies.
      */
-    public InterpretedContextImpl(EObject element, boolean requiresTargetType, EStructuralFeature field, Collection<String> targetTypes, Collection<EPackage> avalaiblePackages,
-            Map<String, String> variables, Collection<String> dependencies) {
+    public InterpretedContextImpl(EObject element, boolean requiresTargetType, EStructuralFeature field, VariableType targetTypes, Collection<EPackage> avalaiblePackages,
+            Map<String, VariableType> variables, Collection<String> dependencies) {
         this.element = element;
         this.requiresTargetType = requiresTargetType;
         this.targetTypes = targetTypes;
@@ -90,9 +93,9 @@ public class InterpretedContextImpl implements IInterpreterContext {
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getTargetTypes()
+     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getTargetType()
      */
-    public Collection<String> getTargetTypes() {
+    public VariableType getTargetType() {
         return targetTypes;
     }
 
@@ -112,7 +115,7 @@ public class InterpretedContextImpl implements IInterpreterContext {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getVariables()
      */
-    public Map<String, String> getVariables() {
+    public Map<String, VariableType> getVariables() {
         return variables;
     }
 
@@ -144,6 +147,16 @@ public class InterpretedContextImpl implements IInterpreterContext {
      */
     public boolean requiresTargetType() {
         return requiresTargetType;
+    }
+
+    @Override
+    public Collection<String> getTargetTypes() {
+        Collection<String> typeNames = Sets.newLinkedHashSet();
+        for (TypeName type : getTargetType().getPossibleTypes()) {
+            typeNames.add(type.getCompleteName());
+        }
+        return typeNames;
+
     }
 
 }

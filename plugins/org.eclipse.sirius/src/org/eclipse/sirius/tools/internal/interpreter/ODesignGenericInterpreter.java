@@ -54,8 +54,8 @@ public class ODesignGenericInterpreter implements IInterpreter, IProposalProvide
     private Collection<String> dependencies = Sets.newLinkedHashSet();
 
     /**
-     * If Sirius knows of any additional metamodel that may be necessary for
-     * the interpreter, they'll be registered here.
+     * If Sirius knows of any additional metamodel that may be necessary for the
+     * interpreter, they'll be registered here.
      */
     private Collection<MetamodelDescriptor> additionalMetamodels = Sets.newLinkedHashSet();
 

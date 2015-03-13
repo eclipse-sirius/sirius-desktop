@@ -23,17 +23,30 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
+import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
+import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.AllContents;
+import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
@@ -74,12 +87,6 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     protected static final String VARIABLE_TYPE_KEY = "type";
 
     /**
-     * The type to use for variables for which nothing more specific could be
-     * found.
-     */
-    protected static final String DEFAULT_VARIABLE_TYPE = "ecore.EObject";
-
-    /**
      * The target containing the InterpretedExpression (NodeMapping,
      * ModelOperation...).
      */
@@ -112,7 +119,12 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * A map representing all available variables. Keys of the map are the
      * variable names, and values of the map their type.
      */
-    protected Map<String, String> availableVariables;
+    protected Map<String, VariableType> availableVariables;
+
+    /**
+     * The most specific type we could find for the current Receiver.
+     */
+    protected VariableType selfType;
 
     /**
      * The available {@link IInterpretedExpressionTargetSwitch} that will be
@@ -150,8 +162,24 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      */
     public Option<Collection<String>> getTargetDomainClasses() {
         if (targetDomainClass == null) {
-            // Use the available TargetSwitches to get the domain class
-            targetDomainClass = targetSwitch.doSwitch(target, feature != null);
+            /*
+             * the "self" variable might be redefined by a containing
+             * ModelOperation (CreateInstance, ChangeContext by example). We
+             * have to trigger the computation of the available variables as
+             * this will update the "self" type computation at the same time.
+             */
+            getAvailableVariables();
+
+            if (selfType != null && selfType.hasDefinition()) {
+                Collection<String> possibleTypes = Sets.newLinkedHashSet();
+                for (TypeName typeName : selfType.getPossibleTypes()) {
+                    possibleTypes.add(typeName.getCompleteName());
+                }
+                targetDomainClass = Options.fromNullable(possibleTypes);
+            } else {
+                // Use the available TargetSwitches to get the domain class
+                targetDomainClass = targetSwitch.doSwitch(target, feature != null);
+            }
         }
         return targetDomainClass;
     }
@@ -232,20 +260,47 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * 
      * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery#getAvailableVariables()
      */
-    public Map<String, String> getAvailableVariables() {
+    public Map<String, VariableType> getAvailableVariables() {
         if (availableVariables == null) {
             availableVariables = Maps.newLinkedHashMap();
         }
         Option<EObject> toolContext = getToolContext();
         if (toolContext.some()) {
-            collectContextualVariableDefinitions(availableVariables, toolContext.get(), target);
+            EObject operationContext = toolContext.get();
+            collectContextualVariableDefinitions(availableVariables, operationContext, target);
         }
         collectLocalVariablesDefinitions();
         return availableVariables;
     }
 
+    /**
+     * return the EObject which represents the top-level execution context.
+     * 
+     * @return the EObject which represents the top-level execution context.
+     */
     protected Option<EObject> getToolContext() {
-        return new EObjectQuery(target).getFirstAncestorOfType(ToolPackage.eINSTANCE.getAbstractToolDescription());
+        Option<EObject> found = Options.newNone();
+        /*
+         * ValidationFix can contains operations and is not a subclas of a tool.
+         * We need to return it as the "tool context" or the logic will find the
+         * global diagram definition instead.
+         */
+        found = new EObjectQuery(target).getFirstAncestorOfType(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE.getValidationRule());
+        if (!found.some()) {
+            found = new EObjectQuery(target).getFirstAncestorOfType(ToolPackage.eINSTANCE.getAbstractToolDescription());
+            if (found.some() && found.get() instanceof ExternalJavaAction) {
+                /*
+                 * an ExternalJavaAction is a special case as it can also be
+                 * embedded as an Operation. We need to make sure it is not the
+                 * case.
+                 */
+                EObject container = found.get().eContainer();
+                if (container instanceof ModelOperation || container instanceof InitialOperation) {
+                    found = new EObjectQuery(container).getFirstAncestorOfType(ToolPackage.eINSTANCE.getAbstractToolDescription());
+                }
+            }
+        }
+        return found;
     }
 
     /**
@@ -273,15 +328,19 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * @see #TYPE_DEFINTION_SEPARATOR
      */
     private void collectLocalVariablesDefinitions() {
-        EAnnotation varAnnotations = feature.getEAnnotation(AbstractInterpretedExpressionQuery.VARIABLES_ANNOTATION_SOURCE);
-        if (varAnnotations != null) {
-            for (String varName : varAnnotations.getDetails().keySet()) {
-                String doc = varAnnotations.getDetails().get(varName);
-                String typeName = AbstractInterpretedExpressionQuery.DEFAULT_VARIABLE_TYPE;
-                if (doc != null && doc.indexOf(AbstractInterpretedExpressionQuery.TYPE_DEFINTION_SEPARATOR) != -1) {
-                    typeName = doc.substring(0, doc.indexOf(AbstractInterpretedExpressionQuery.TYPE_DEFINTION_SEPARATOR)).trim();
+        if (feature != null) {
+            EAnnotation varAnnotations = feature.getEAnnotation(AbstractInterpretedExpressionQuery.VARIABLES_ANNOTATION_SOURCE);
+            if (varAnnotations != null) {
+                for (String varName : varAnnotations.getDetails().keySet()) {
+                    String doc = varAnnotations.getDetails().get(varName);
+                    VariableType typeName = VariableType.ANY_EOBJECT;
+                    if (doc != null && doc.indexOf(AbstractInterpretedExpressionQuery.TYPE_DEFINTION_SEPARATOR) != -1) {
+                        typeName = VariableType.fromString(doc.substring(0, doc.indexOf(AbstractInterpretedExpressionQuery.TYPE_DEFINTION_SEPARATOR)).trim());
+                    }
+                    if (!availableVariables.containsKey(varName)) {
+                        availableVariables.put(varName, typeName);
+                    }
                 }
-                availableVariables.put(varName, typeName);
             }
         }
     }
@@ -293,25 +352,63 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * shadowing, priority is given to the the value defined closest to
      * <code>bottom</code> (lexical scoping).
      */
-    private void collectContextualVariableDefinitions(Map<String, String> vars, EObject top, EObject bottom) {
+    private void collectContextualVariableDefinitions(Map<String, VariableType> vars, EObject top, EObject bottom) {
         // A map with multiple values is not strictly required as we only use
         // one value, but it is useful when debugging to have all the
         // information.
-        Map<String, Collection<String>> definitions = Maps.newHashMap();
+        Map<String, Collection<VariableType>> definitions = Maps.newHashMap();
         // Walk up from bottom to top and gather every definition in the scope.
         EObject context = bottom;
-        do {
+
+        while (context != null && context != top.eContainer()) {
             appendAllLocalVariableDefinitions(definitions, context);
-            context = precedingSiblingOrContainer(context);
-        } while (context != null && context != top.eContainer());
+            if (context instanceof ChangeContext && context != bottom) {
+                ChangeContext f = (ChangeContext) context;
+
+                IInterpreter interpreterForExpression = CompoundInterpreter.INSTANCE.getInterpreterForExpression(f.getBrowseExpression());
+
+                if (interpreterForExpression.supportsValidation() && interpreterForExpression instanceof TypedValidation) {
+                    IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
+                    ValidationResult res = ((TypedValidation) interpreterForExpression).analyzeExpression(iContext, f.getBrowseExpression());
+                    VariableType returnTypes = res.getReturnTypes();
+                    changeSelfType(definitions, returnTypes);
+                }
+
+            }
+            if (context instanceof CreateInstance) {
+                CreateInstance f = (CreateInstance) context;
+                changeSelfType(definitions, VariableType.fromString(f.getTypeName()));
+            }
+            if (context != top) {
+                EObject sibling = precedingSibling(context);
+                while (sibling != null) {
+                    appendAllLocalVariableDefinitions(definitions, sibling);
+                    sibling = precedingSibling(sibling);
+                }
+            }
+            context = context.eContainer();
+
+        }
+
         // Merge all the definitions, by taking the one closest to
         // <code>bottom</code> when there are multiple ones.
         for (String var : definitions.keySet()) {
-            vars.put(var, ((List<String>) definitions.get(var)).get(0));
+            vars.put(var, ((List<VariableType>) definitions.get(var)).get(0));
         }
     }
 
-    private EObject precedingSiblingOrContainer(EObject context) {
+    private void changeSelfType(Map<String, Collection<VariableType>> definitions, VariableType returnTypes) {
+        /*
+         * We only set the self type once as we are browsing the model from most
+         * to less specific. The first assignation will be the most specific,
+         * further assignations should not be considered.
+         */
+        if (selfType == null) {
+            selfType = returnTypes;
+        }
+    }
+
+    private EObject precedingSibling(EObject context) {
         EObject container = context.eContainer();
         EStructuralFeature containingFeature = context.eContainingFeature();
         if (container != null && containingFeature != null) {
@@ -334,8 +431,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                 }
             }
         }
-
-        return container;
+        return null;
     }
 
     /**
@@ -348,14 +444,14 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      *         {@link #DEFAULT_VARIABLE_TYPE} if nothing more specified was
      *         specified in the meta-model.
      */
-    protected String getVariableTypeName(AbstractVariable var) {
+    protected VariableType getVariableTypeName(AbstractVariable var) {
         Preconditions.checkNotNull(var);
         Preconditions.checkNotNull(var.eContainingFeature());
 
-        String typeName = AbstractInterpretedExpressionQuery.DEFAULT_VARIABLE_TYPE;
+        VariableType typeName = VariableType.ANY_EOBJECT;
         EAnnotation varAnnotation = var.eContainingFeature().getEAnnotation(AbstractInterpretedExpressionQuery.VARIABLES_ANNOTATION_SOURCE);
         if (varAnnotation != null && varAnnotation.getDetails().containsKey(AbstractInterpretedExpressionQuery.VARIABLE_TYPE_KEY)) {
-            typeName = varAnnotation.getDetails().get(AbstractInterpretedExpressionQuery.VARIABLE_TYPE_KEY);
+            typeName = VariableType.fromString(varAnnotation.getDetails().get(AbstractInterpretedExpressionQuery.VARIABLE_TYPE_KEY));
         }
         return typeName;
     }
@@ -372,7 +468,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * @param context
      *            the element which may define new variables.
      */
-    protected void appendAllLocalVariableDefinitions(Map<String, Collection<String>> definitions, EObject context) {
+    protected void appendAllLocalVariableDefinitions(Map<String, Collection<VariableType>> definitions, EObject context) {
         // Tool definitions can contain variables, but they do not share a
         // common type/feature name for this containment, so we must do a
         // eAllContent(). This is ugly, and possibly broken if AbstractVariables
@@ -405,8 +501,9 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         // reference the newly created instance.
         if (context instanceof For) {
             For f = (For) context;
-            addDefinition(definitions, f.getIteratorName(), AbstractInterpretedExpressionQuery.DEFAULT_VARIABLE_TYPE);
+            addDefinition(definitions, f.getIteratorName(), VariableType.ANY_EOBJECT);
         }
+
     }
 
     /**
@@ -421,7 +518,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * @param definitions
      *            the set of variables definition to which to append.
      */
-    protected void appendEditMaskVariables(EditMaskVariables mask, Map<String, Collection<String>> definitions) {
+    protected void appendEditMaskVariables(EditMaskVariables mask, Map<String, Collection<VariableType>> definitions) {
         Pattern p = Pattern.compile("\\{\\d\\}");
         Matcher m = p.matcher(mask.getMask());
         while (m.find()) {
@@ -445,12 +542,26 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * @param value
      *            the value of the variable to (re-)define.
      */
-    protected void addDefinition(Map<String, Collection<String>> definitions, String name, String value) {
-        Collection<String> defs = definitions.get(name);
+    protected void addDefinition(Map<String, Collection<VariableType>> definitions, String name, String value) {
+        addDefinition(definitions, name, VariableType.fromString(value));
+    }
+
+    /**
+     * Add a new definition for a variable, shadowing any previously added ones.
+     * 
+     * @param definitions
+     *            the definitions of all the variables.
+     * @param name
+     *            the name of the variable to (re-)define.
+     * @param type
+     *            the variable type
+     */
+    protected void addDefinition(Map<String, Collection<VariableType>> definitions, String name, VariableType type) {
+        Collection<VariableType> defs = definitions.get(name);
         if (defs == null) {
             defs = Lists.newArrayList();
             definitions.put(name, defs);
         }
-        defs.add(value);
+        defs.add(type);
     }
 }

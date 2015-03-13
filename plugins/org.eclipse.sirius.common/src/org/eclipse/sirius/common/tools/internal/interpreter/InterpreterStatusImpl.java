@@ -10,11 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
-import java.util.Collection;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 
 /**
  * A concrete {@link IInterpreterStatus}.
@@ -42,7 +40,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      */
     private int posEnd;
 
-    private Collection<String> targets;
+    private VariableType targets;
 
     private EStructuralFeature field;
 
@@ -69,7 +67,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * @param posEnd
      *            the end position of the error
      */
-    public InterpreterStatusImpl(Collection<String> targets, EStructuralFeature field, String severity, String message, int line, int posBegin, int posEnd) {
+    public InterpreterStatusImpl(VariableType targets, EStructuralFeature field, String severity, String message, int line, int posBegin, int posEnd) {
         this.targets = targets;
         this.field = field;
         this.severity = severity;
@@ -130,7 +128,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus#getTargetTypes()
      */
-    public Collection<String> getTargetTypes() {
+    public VariableType getTargetTypes() {
         return targets;
     }
 

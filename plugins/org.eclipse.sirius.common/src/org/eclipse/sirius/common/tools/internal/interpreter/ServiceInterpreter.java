@@ -12,7 +12,6 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,8 +23,8 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
+import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -260,9 +259,8 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     }
 
     @Override
-    public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-        Collection<IInterpreterStatus> interpreterStatus = new ArrayList<IInterpreterStatus>();
-        return interpreterStatus;
+    public ValidationResult analyzeExpression(IInterpreterContext context, String expression) {
+        return new ValidationResult();
     }
 
     @Override

@@ -242,6 +242,36 @@
 			<li>A new class 
 				<code>org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager</code> can now be used by langages interpreters to benefit from a consistent handling of Java extensions and support for loading Java services from the workspace.
 			</li>
+			<li>The static method 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContextFactory.createInterpreterContext(...)</code> now requires a 
+				<code>Map&lt;String, VariableType&gt;</code> for the accessible variables instead of a 
+				<code>Map&lt;String, String&gt;</code>.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext.getTargetTypes()</code> has been deprecated in favor of 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext.getTargetType()</code> which returns a 
+				<code>VariableType</code> instance instead of encoded Strings.
+			</li>
+			<li>The methods 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext.getVariables()</code>  and 
+				<code>org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery.getAvailableVariables()</code> are now returning a map containing 
+				<code>VariableType</code> instances instead of encoded Strings.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus.getTargetTypes()</code> no longer returns a list of encoded Strings but a 
+				<code>VariableType</code> instance instead.
+			</li>
+			<li>The class 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.TypeName</code> has been introduced to represent in the codebase any type which was previously represented as a plain String.
+			</li>
+			<li>A new interface 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.TypedValidation</code> has been introduced for 
+				<code>IInterpreter</code> implementations able to provide richer information when validating an expression. This information is captured through a 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.ValidationResult</code> instance.
+			</li>
+			<li>The class 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.VariableType</code> has been introduced to represent the possible types a variable can have in a Viewpoint specification model.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>

@@ -47,7 +47,7 @@ import com.google.common.collect.Sets;
  * 
  * @author ymortier
  */
-public final class CompoundInterpreter implements IInterpreter, IProposalProvider {
+public final class CompoundInterpreter implements IInterpreter, IProposalProvider, TypedValidation {
 
     /** The shared instance of the registry. */
     public static final CompoundInterpreter INSTANCE = new CompoundInterpreter();
@@ -567,7 +567,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      * 
      * @author ymortier
      */
-    private static class DefaultInterpreterProvider implements IInterpreterProvider, IInterpreter {
+    private static class DefaultInterpreterProvider implements IInterpreterProvider, IInterpreter, TypedValidation {
 
         /** The shared instance. */
         public static final DefaultInterpreterProvider INSTANCE = new DefaultInterpreterProvider();
@@ -760,6 +760,11 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
         public boolean supportsValidation() {
             return false;
+        }
+
+        @Override
+        public ValidationResult analyzeExpression(IInterpreterContext context, String expression) {
+            return new ValidationResult();
         }
 
     }
@@ -969,6 +974,17 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         return interpreter.validateExpression(context, expression);
     }
 
+    @Override
+    public ValidationResult analyzeExpression(IInterpreterContext context, String expression) {
+        final IInterpreter interpreter = getInterpreterForExpression(expression);
+        if (interpreter instanceof TypedValidation) {
+            return ((TypedValidation) interpreter).analyzeExpression(context, expression);
+        }
+        ValidationResult result = new ValidationResult();
+        result.addAllStatus(interpreter.validateExpression(context, expression));
+        return result;
+    }
+
     /**
      * 
      * {@inheritDoc}
@@ -1001,4 +1017,5 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
         return proposals;
     }
+
 }

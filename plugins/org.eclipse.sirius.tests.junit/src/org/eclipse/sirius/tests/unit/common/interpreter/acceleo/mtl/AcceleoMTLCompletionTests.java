@@ -27,6 +27,8 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramFactory;
@@ -275,13 +277,13 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
     public void testAcceleoMTLCompletionOnOtherM2() {
 
         DNode dNode = DiagramFactory.eINSTANCE.createDNode();
-        ContentContext cc = createContentContext("[/]", 0, "DNode", DiagramPackage.eINSTANCE, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
+        ContentContext cc = createContentContext("[/]", 0, "DNode", DiagramPackage.eINSTANCE, Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
 
         // No completion before [
         List<ContentProposal> contentProposals = getProposals(cc);
         // assertTrue(contentProposals.isEmpty());
 
-        cc = createContentContext("[/]", 1, "DNode", DiagramPackage.eINSTANCE, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
+        cc = createContentContext("[/]", 1, "DNode", DiagramPackage.eINSTANCE, Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
         contentProposals = getProposals(cc);
 
         Set<String> vars = Sets.newHashSet();
@@ -290,12 +292,12 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
 
         checkCompletionProposal(dNode.eClass(), contentProposals, vars, true);
 
-        cc = createContentContext("[self./]", 6, "DNode", DiagramPackage.eINSTANCE, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
+        cc = createContentContext("[self./]", 6, "DNode", DiagramPackage.eINSTANCE, Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
         contentProposals = getProposals(cc);
 
         checkCompletionProposal(dNode.eClass(), contentProposals, concreteInterpreter.getVariables().keySet(), false);
 
-        cc = createContentContext("[self./]", 6, "diagram.DNode", DiagramPackage.eINSTANCE, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
+        cc = createContentContext("[self./]", 6, "diagram.DNode", DiagramPackage.eINSTANCE, Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
         contentProposals = getProposals(cc);
 
         checkCompletionProposal(dNode.eClass(), contentProposals, concreteInterpreter.getVariables().keySet(), false);
@@ -342,7 +344,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         EClass c = EcoreFactory.eINSTANCE.createEClass();
 
         String varName = "maClasse";
-        String varType = c.eClass().getName();
+        VariableType varType = VariableType.fromString(c.eClass().getName());
         ContentContext c1 = createContentContext("[/]", 1, "EClass", Collections.singletonMap(varName, varType));
         ContentContext c2 = createContentContext("[self.name.concat()/]", 18, "EClass", Collections.singletonMap(varName, varType));
 
@@ -396,8 +398,8 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         EClass c = EcoreFactory.eINSTANCE.createEClass();
 
         Collection<String> dependencies = Lists.newArrayList(IMPORT, SERVICE);
-        ContentContext c1 = createContentContext("[/]", 1, "EClass", EcorePackage.eINSTANCE, Collections.<String, String> emptyMap(), dependencies);
-        ContentContext c2 = createContentContext("[self./]", 6, "EClass", EcorePackage.eINSTANCE, Collections.<String, String> emptyMap(), dependencies);
+        ContentContext c1 = createContentContext("[/]", 1, "EClass", EcorePackage.eINSTANCE, Collections.<String, VariableType> emptyMap(), dependencies);
+        ContentContext c2 = createContentContext("[self./]", 6, "EClass", EcorePackage.eINSTANCE, Collections.<String, VariableType> emptyMap(), dependencies);
         ContentContext c3 = createContentContext("[self.name.concat()/]", 18, "EClass");
 
         doTestAcceleoMTLCompletionWithDependencies(c, c1, c2, c3, proposalFunction, dependencies);

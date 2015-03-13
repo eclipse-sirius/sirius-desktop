@@ -20,6 +20,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContextFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Maps;
@@ -57,7 +58,7 @@ public final class SiriusInterpreterContextFactory {
         Collection<String> targetDomainClasses = Sets.newLinkedHashSet();
         Collection<EPackage> avalaiblePackages = Sets.newLinkedHashSet();
         Collection<String> dependencies = Sets.newLinkedHashSet();
-        Map<String, String> variables = Maps.newLinkedHashMap();
+        Map<String, VariableType> variables = Maps.newLinkedHashMap();
         boolean requiresTargetType = true;
 
         // Step 1 : getting the InterpretedExpressionQuery from the given
@@ -72,7 +73,9 @@ public final class SiriusInterpreterContextFactory {
         if (!targetDomainClassesOption.some()) {
             requiresTargetType = false;
         } else {
-            targetDomainClasses = targetDomainClassesOption.get();
+            for (String domainClass : targetDomainClassesOption.get()) {
+                targetDomainClasses.add(domainClass);
+            }
         }
 
         if (!targetDomainClassesOption.some() || !targetDomainClassesOption.get().isEmpty()) {
@@ -88,7 +91,8 @@ public final class SiriusInterpreterContextFactory {
         }
 
         // Step 5 : building the IInterpretedContext
-        IInterpreterContext context = DefaultInterpreterContextFactory.createInterpreterContext(element, requiresTargetType, feature, targetDomainClasses, avalaiblePackages, variables, dependencies);
+        IInterpreterContext context = DefaultInterpreterContextFactory.createInterpreterContext(element, requiresTargetType, feature, VariableType.fromStrings(targetDomainClasses), avalaiblePackages,
+                variables, dependencies);
         return context;
     }
 }

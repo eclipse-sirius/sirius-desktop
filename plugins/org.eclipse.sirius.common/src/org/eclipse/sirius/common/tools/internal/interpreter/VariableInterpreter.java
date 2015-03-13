@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -21,7 +19,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
+import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 
 /**
  * A specialized interpreter which can only directly access variables (and
@@ -131,14 +131,28 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
      * {@inheritDoc}
      */
     @Override
-    public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-        Collection<IInterpreterStatus> interpreterStatus = new ArrayList<IInterpreterStatus>();
+    public ValidationResult analyzeExpression(IInterpreterContext context, String expression) {
+        ValidationResult result = new ValidationResult();
         if (expression != null && context != null && expression.startsWith(PREFIX)) {
             String variableName = expression.substring(PREFIX.length());
             if (!context.getVariables().containsKey(variableName) && !SELF_VARIABLE_NAME.equals(variableName)) {
-                interpreterStatus.add(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, "The current context does not contains variable named : " + variableName));
+                result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, "The current context does not contains variable named : " + variableName));
             }
+
+            if (SELF_VARIABLE_NAME.equals(variableName)) {
+                VariableType firstType = context.getTargetType();
+                if (firstType != null) {
+                    result.setReturnType(firstType);
+                }
+            } else {
+                VariableType returnType = context.getVariables().get(variableName);
+                if (returnType != null) {
+                    result.setReturnType(returnType);
+                }
+            }
+
         }
-        return interpreterStatus;
+
+        return result;
     }
 }

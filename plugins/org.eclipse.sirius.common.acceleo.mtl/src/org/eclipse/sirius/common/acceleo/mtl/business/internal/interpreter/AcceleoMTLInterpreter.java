@@ -71,13 +71,16 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
+import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
+import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.osgi.framework.Bundle;
 
 import com.google.common.base.Joiner;
-import com.google.common.base.Strings;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.ListMultimap;
@@ -91,7 +94,7 @@ import com.google.common.collect.Sets;
  * 
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
-public class AcceleoMTLInterpreter implements IInterpreter {
+public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     /**
      * This represents the prefix of an Acceleo 3 expression.
      * 
@@ -205,25 +208,6 @@ public class AcceleoMTLInterpreter implements IInterpreter {
         }
 
         return result;
-    }
-
-    /**
-     * This will be used to convert a Java-style qualified name
-     * (my.package.Type) to an OCL-style qualified name (my::package::Type).
-     * <p>
-     * Note that this will make no effort to try and check whether the given
-     * type is indeed a Java qualified name.
-     * </p>
-     * 
-     * @param type
-     *            The type we are to convert.
-     * @return The OCL qualified name corresponding to the given type.
-     */
-    private static String convertToOCLQualifiedName(String type) {
-        if (type != null && type.length() > 0) {
-            return type.replace(".", IAcceleoConstants.NAMESPACE_SEPARATOR); //$NON-NLS-1$
-        }
-        return type;
     }
 
     /**
@@ -906,53 +890,7 @@ public class AcceleoMTLInterpreter implements IInterpreter {
      *      java.lang.String)
      */
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-        /*
-         * The interpreter is created as a global singleton : one single
-         * interpreter for all operations, whatever the number of VSM or
-         * representation files. Validation is called on expression granularity,
-         * and we are never warned of the validation "start" or "end" events. We
-         * thus cannot keep any state for the in-memory module as it could be
-         * reflecting operations located on other VSM files.
-         */
-        invalidateModule();
-
-        final Set<IInterpreterStatus> validationStatus = Sets.newLinkedHashSet();
-
-        final Map<String, String> validationVariables = Maps.newLinkedHashMap();
-        for (Map.Entry<String, String> contextVariable : context.getVariables().entrySet()) {
-            final String varName = contextVariable.getKey();
-            final String varType = contextVariable.getValue();
-            boolean isVarNameValid = varName != null && varName.length() > 0 && !varName.matches("[0-9]+"); //$NON-NLS-1$
-            boolean isVarTypeValid = varType != null && varType.length() > 0;
-            if (isVarNameValid && isVarTypeValid) {
-                validationVariables.put(varName, convertToOCLQualifiedName(varType));
-            }
-        }
-
-        if (!context.requiresTargetType()) {
-            final CompilationContext compilationContext = createCompilationContext(context, expression, "ecore::EObject", validationVariables); //$NON-NLS-1$
-            validationStatus.addAll(doValidateExpression(context, compilationContext));
-        } else {
-            final Collection<String> actualTargetTypes = Lists.newArrayListWithCapacity(context.getTargetTypes().size());
-            for (String candidateType : context.getTargetTypes()) {
-                if (!Strings.isNullOrEmpty(candidateType)) {
-                    actualTargetTypes.add(candidateType);
-                }
-            }
-            if (actualTargetTypes.isEmpty()) {
-                validationStatus.add(InterpreterStatusFactory.createInterpreterStatus(context.getTargetTypes(), context.getField(), IInterpreterStatus.WARNING, "Cannot find Domain Class for " //$NON-NLS-1$
-                        + context.getField().getName() + " - Expression cannot be validated.")); //$NON-NLS-1$
-            } else {
-                for (String candidateTargetType : actualTargetTypes) {
-                    final String expressionType = convertToOCLQualifiedName(candidateTargetType);
-
-                    final CompilationContext compilationContext = createCompilationContext(context, expression, expressionType, validationVariables);
-                    validationStatus.addAll(doValidateExpression(context, compilationContext));
-                }
-            }
-        }
-
-        return validationStatus;
+        return analyzeExpression(context, expression).getStatuses();
     }
 
     /**
@@ -1076,7 +1014,7 @@ public class AcceleoMTLInterpreter implements IInterpreter {
         if (compilationResult.getStatus() != null && compilationResult.getStatus().getSeverity() != IStatus.OK) {
             if (compilationResult.getStatus() instanceof MultiStatus) {
                 for (IStatus child : ((MultiStatus) compilationResult.getStatus()).getChildren()) {
-                    final String type = compilationContext.getTargetType();
+                    final VariableType type = VariableType.fromString(compilationContext.getTargetType());
                     final String severity;
                     if (child.getSeverity() == IStatus.ERROR) {
                         severity = IInterpreterStatus.ERROR;
@@ -1088,7 +1026,7 @@ public class AcceleoMTLInterpreter implements IInterpreter {
                         severity = IInterpreterStatus.WARNING;
                     }
 
-                    validationStatus.add(InterpreterStatusFactory.createInterpreterStatus(Collections.singleton(type), context.getField(), severity, child.getMessage(), 0, 0, 0));
+                    validationStatus.add(InterpreterStatusFactory.createInterpreterStatus(type, context.getField(), severity, child.getMessage(), 0, 0, 0));
                 }
             }
         }
@@ -1256,6 +1194,52 @@ public class AcceleoMTLInterpreter implements IInterpreter {
         } else {
             throw new RuntimeException("Coudln't retrieve location of plugin 'org.eclipse.acceleo.model'.");
         }
+    }
+
+    @Override
+    public ValidationResult analyzeExpression(IInterpreterContext context, String expression) {
+        /*
+         * The interpreter is created as a global singleton : one single
+         * interpreter for all operations, whatever the number of VSM or
+         * representation files. Validation is called on expression granularity,
+         * and we are never warned of the validation "start" or "end" events. We
+         * thus cannot keep any state for the in-memory module as it could be
+         * reflecting operations located on other VSM files.
+         */
+        invalidateModule();
+
+        ValidationResult result = new ValidationResult();
+
+        final Map<String, String> validationVariables = Maps.newLinkedHashMap();
+        for (Map.Entry<String, VariableType> contextVariable : context.getVariables().entrySet()) {
+            final String varName = contextVariable.getKey();
+            final VariableType varType = contextVariable.getValue();
+            boolean isVarNameValid = varName != null && varName.length() > 0 && !varName.matches("[0-9]+"); //$NON-NLS-1$
+            boolean isVarTypeValid = varType.hasDefinition();
+            if (isVarNameValid && isVarTypeValid) {
+                validationVariables.put(varName, varType.getCommonType(context.getAvailableEPackages()).getCompleteName(IAcceleoConstants.NAMESPACE_SEPARATOR));
+            }
+        }
+
+        if (!context.requiresTargetType()) {
+            final CompilationContext compilationContext = createCompilationContext(context, expression, "ecore::EObject", validationVariables); //$NON-NLS-1$
+            result.addAllStatus(doValidateExpression(context, compilationContext));
+        } else {
+
+            VariableType candidateType = context.getTargetType();
+            if (!candidateType.hasDefinition()) {
+                result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context.getTargetType(), context.getField(), IInterpreterStatus.WARNING, "Cannot find Domain Class for " //$NON-NLS-1$
+                        + context.getField().getName() + " - Expression cannot be validated.")); //$NON-NLS-1$
+            } else {
+                for (TypeName candidateTargetType : candidateType.getPossibleTypes()) {
+                    final String expressionType = candidateTargetType.getCompleteName(IAcceleoConstants.NAMESPACE_SEPARATOR);
+
+                    final CompilationContext compilationContext = createCompilationContext(context, expression, expressionType, validationVariables);
+                    result.addAllStatus(doValidateExpression(context, compilationContext));
+                }
+            }
+        }
+        return result;
     }
 
 }

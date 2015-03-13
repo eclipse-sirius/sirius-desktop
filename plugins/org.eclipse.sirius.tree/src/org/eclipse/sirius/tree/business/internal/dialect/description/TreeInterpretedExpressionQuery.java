@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
@@ -65,7 +66,7 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
      * {@inheritDoc}
      */
     @Override
-    protected void appendAllLocalVariableDefinitions(Map<String, Collection<String>> definitions, EObject context) {
+    protected void appendAllLocalVariableDefinitions(Map<String, Collection<VariableType>> definitions, EObject context) {
         super.appendAllLocalVariableDefinitions(definitions, context);
         // Direct edit defines numbered variables based on their mask.
         if (context instanceof TreeItemEditionTool && ((TreeItemEditionTool) context).getMask() != null) {

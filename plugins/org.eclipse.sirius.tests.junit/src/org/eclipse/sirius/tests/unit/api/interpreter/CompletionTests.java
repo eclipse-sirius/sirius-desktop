@@ -22,6 +22,8 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContextFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
@@ -70,8 +72,8 @@ public class CompletionTests extends SiriusDiagramTestCase implements EcoreModel
     }
 
     private ContentContext getContext(EObject element, EStructuralFeature feature, String domainClass, String text, int cursorPosition) {
-        IInterpreterContext interContext = DefaultInterpreterContextFactory.createInterpreterContext(element, true, feature, Collections.singletonList(domainClass),
-                Collections.<EPackage> emptyList(), Collections.<String, String> emptyMap(), Collections.<String> emptyList());
+        IInterpreterContext interContext = DefaultInterpreterContextFactory.createInterpreterContext(element, true, feature, VariableType.fromString(domainClass), Collections.<EPackage> emptyList(),
+                Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
 
         ContentContext context = new ContentContext(text, cursorPosition, interContext);
         return context;

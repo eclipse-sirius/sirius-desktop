@@ -21,6 +21,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
+import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
@@ -32,7 +33,7 @@ import com.google.common.collect.Lists;
  * 
  * @author pcdavid
  */
-public abstract class AbstractInterpreter implements IInterpreter {
+public abstract class AbstractInterpreter implements IInterpreter, TypedValidation {
 
     /** The separator between EPackage name and EClass name for domain class. */
     protected static final String SEPARATOR = ".";
@@ -237,7 +238,7 @@ public abstract class AbstractInterpreter implements IInterpreter {
      * {@inheritDoc}
      */
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-        return Collections.emptySet();
+        return analyzeExpression(context, expression).getStatuses();
     }
 
     /**

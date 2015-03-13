@@ -24,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
 import org.eclipse.sirius.common.ui.tools.internal.interpreter.ServiceProposalProvider;
@@ -69,7 +70,7 @@ public class ServiceProposalProviderTests extends TestCase {
             EAttribute eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
             eAttribute.setName("a1");
             interpreter.setVariable(GETAWAY_VARIABLE, eAttribute);
-            interpreterContext.getVariables().put(GETAWAY_VARIABLE, "newVariable");
+            interpreterContext.getVariables().put(GETAWAY_VARIABLE, VariableType.ANY_EOBJECT);
         }
         return interpreterContext;
     }

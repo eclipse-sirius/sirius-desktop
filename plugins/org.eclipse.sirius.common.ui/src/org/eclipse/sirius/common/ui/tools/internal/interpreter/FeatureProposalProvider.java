@@ -13,6 +13,7 @@ package org.eclipse.sirius.common.ui.tools.internal.interpreter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -23,7 +24,12 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * A {@link IProposalProvider} to provide completion for the feature
@@ -56,10 +62,24 @@ public class FeatureProposalProvider implements IProposalProvider {
         } else if (context.getContents() == null || context.getContents().length() == 0) {
             proposals = Collections.singletonList(getNewEmtpyExpression());
         } else {
-            FeatureInterpreter featureInterpreter = (FeatureInterpreter) interpreter;
+            Set<ContentProposal> intersectingProposals = null;
             IInterpreterContext interpreterContext = context.getInterpreterContext();
-            EClass currentElementType = featureInterpreter.getCurrentElementType(interpreterContext);
-            proposals = getProposals(context.getContents(), context.getPosition(), currentElementType);
+            for (TypeName type : interpreterContext.getTargetType().getPossibleTypes()) {
+                for (EClass possibleEClass : Iterables.filter(type.search(interpreterContext.getAvailableEPackages()), EClass.class)) {
+                    Set<ContentProposal> proposalsForThisType = Sets.newLinkedHashSet(getProposals(context.getContents(), context.getPosition(), possibleEClass));
+                    if (intersectingProposals == null) {
+                        intersectingProposals = proposalsForThisType;
+                    } else {
+                        intersectingProposals = Sets.intersection(intersectingProposals, proposalsForThisType);
+                    }
+                }
+            }
+
+            if (intersectingProposals != null) {
+                proposals = Lists.newArrayList(intersectingProposals);
+            } else {
+                proposals = Collections.<ContentProposal> emptyList();
+            }
         }
         return proposals;
     }
