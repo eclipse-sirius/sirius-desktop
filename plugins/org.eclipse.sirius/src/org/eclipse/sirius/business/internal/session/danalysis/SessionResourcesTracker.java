@@ -158,7 +158,7 @@ class SessionResourcesTracker {
         return semanticResourcesUpdater.getRootObjectFromResourceURI(resourceURI);
     }
 
-    void handlePossibleControlledResources() {
+    private void handlePossibleControlledResources() {
         // Detect actual controlled resources.
         if (controlledResourcesDetector != null) {
             controlledResourcesDetector.init();
