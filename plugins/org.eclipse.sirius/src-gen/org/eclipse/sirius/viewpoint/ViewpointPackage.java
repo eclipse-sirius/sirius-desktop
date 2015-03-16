@@ -359,40 +359,13 @@ public interface ViewpointPackage extends EPackage {
     int DVIEW__OWNED_EXTENSIONS = DREFRESHABLE_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>All Representations</b></em>' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DVIEW__ALL_REPRESENTATIONS = DREFRESHABLE_FEATURE_COUNT + 2;
-
-    /**
-     * The feature id for the '<em><b>Hidden Representations</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DVIEW__HIDDEN_REPRESENTATIONS = DREFRESHABLE_FEATURE_COUNT + 3;
-
-    /**
-     * The feature id for the '<em><b>Referenced Representations</b></em>'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DVIEW__REFERENCED_REPRESENTATIONS = DREFRESHABLE_FEATURE_COUNT + 4;
-
-    /**
      * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DVIEW__INITIALIZED = DREFRESHABLE_FEATURE_COUNT + 5;
+    int DVIEW__INITIALIZED = DREFRESHABLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Viewpoint</b></em>' reference. <!--
@@ -401,7 +374,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DVIEW__VIEWPOINT = DREFRESHABLE_FEATURE_COUNT + 6;
+    int DVIEW__VIEWPOINT = DREFRESHABLE_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>DView</em>' class. <!--
@@ -410,7 +383,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DVIEW_FEATURE_COUNT = DREFRESHABLE_FEATURE_COUNT + 7;
+    int DVIEW_FEATURE_COUNT = DREFRESHABLE_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -441,33 +414,6 @@ public interface ViewpointPackage extends EPackage {
      * @ordered
      */
     int DREPRESENTATION_CONTAINER__OWNED_EXTENSIONS = DVIEW__OWNED_EXTENSIONS;
-
-    /**
-     * The feature id for the '<em><b>All Representations</b></em>' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DREPRESENTATION_CONTAINER__ALL_REPRESENTATIONS = DVIEW__ALL_REPRESENTATIONS;
-
-    /**
-     * The feature id for the '<em><b>Hidden Representations</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DREPRESENTATION_CONTAINER__HIDDEN_REPRESENTATIONS = DVIEW__HIDDEN_REPRESENTATIONS;
-
-    /**
-     * The feature id for the '<em><b>Referenced Representations</b></em>'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DREPRESENTATION_CONTAINER__REFERENCED_REPRESENTATIONS = DVIEW__REFERENCED_REPRESENTATIONS;
 
     /**
      * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -1907,48 +1853,6 @@ public interface ViewpointPackage extends EPackage {
     EReference getDView_OwnedExtensions();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.viewpoint.DView#getAllRepresentations
-     * <em>All Representations</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for the reference list '
-     *         <em>All Representations</em>'.
-     * @see org.eclipse.sirius.viewpoint.DView#getAllRepresentations()
-     * @see #getDView()
-     * @generated
-     */
-    EReference getDView_AllRepresentations();
-
-    /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.viewpoint.DView#getHiddenRepresentations
-     * <em>Hidden Representations</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the containment reference list '
-     *         <em>Hidden Representations</em>'.
-     * @see org.eclipse.sirius.viewpoint.DView#getHiddenRepresentations()
-     * @see #getDView()
-     * @generated
-     */
-    EReference getDView_HiddenRepresentations();
-
-    /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.viewpoint.DView#getReferencedRepresentations
-     * <em>Referenced Representations</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the reference list '
-     *         <em>Referenced Representations</em>'.
-     * @see org.eclipse.sirius.viewpoint.DView#getReferencedRepresentations()
-     * @see #getDView()
-     * @generated
-     */
-    EReference getDView_ReferencedRepresentations();
-
-    /**
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.DView#isInitialized
      * <em>Initialized</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2890,32 +2794,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference DVIEW__OWNED_EXTENSIONS = eINSTANCE.getDView_OwnedExtensions();
-
-        /**
-         * The meta object literal for the '<em><b>All Representations</b></em>'
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DVIEW__ALL_REPRESENTATIONS = eINSTANCE.getDView_AllRepresentations();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Hidden Representations</b></em>' containment reference list
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DVIEW__HIDDEN_REPRESENTATIONS = eINSTANCE.getDView_HiddenRepresentations();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Referenced Representations</b></em>' reference list feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DVIEW__REFERENCED_REPRESENTATIONS = eINSTANCE.getDView_ReferencedRepresentations();
 
         /**
          * The meta object literal for the '<em><b>Initialized</b></em>'

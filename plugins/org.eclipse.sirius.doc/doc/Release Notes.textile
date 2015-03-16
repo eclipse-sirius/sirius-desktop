@@ -35,6 +35,7 @@ h4. Changes in @org.eclipse.sirius@
 * @org.eclipse.sirius.viewpoint.RGBValues@ has been changed from an @EClass@ to an @EDataType@, it is not an @EObject@ anymore.
 * @org.eclipse.sirius.business.api.session.SessionListener.SEMANTIC_CHANGE@ is no more send to @SessionListener@ and @SessionManagerListener@ listeners on save when a semantic resource is saved. Use a @ResourceSyncClient@ listener on @ResourceSetSync@ to have know if a semantic resource is saved.
 * The @ExtendedPackage@ @EDataType@ which was defined in the @http://www.eclipse.org/sirius/1.1.0@ package was not actually used anywhere and has been removed.
+* The @DView@ methods @getAllRepresentations()@, @getReferencedRepresentations()@ and @getHiddenRepresentations()@ have been removed: @getReferencedRepresentations()@ and @getHiddenRepresentations()@  were never actually used, making @getAllRepresentations()@ strictly equivalent to @getOwnedRepresentations()@. Code that used @getAllRepresentations()@ can simply use @getOwnedRepresentations()@ instead.  
 
 h4. Changes in @org.eclipse.sirius.ui@
 

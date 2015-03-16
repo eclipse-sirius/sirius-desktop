@@ -34,12 +34,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * Owned Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions <em>Owned
  * Extensions</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#getAllRepresentations <em>All
- * Representations</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#getHiddenRepresentations <em>
- * Hidden Representations</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#getReferencedRepresentations
- * <em>Referenced Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#isInitialized <em>Initialized
  * </em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint
@@ -95,50 +89,6 @@ public interface DView extends DRefreshable {
      * @generated
      */
     void setOwnedExtensions(MetaModelExtension value);
-
-    /**
-     * Returns the value of the '<em><b>All Representations</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.DRepresentation}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> All viewpoints of this
-     * analysis <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>All Representations</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_AllRepresentations()
-     * @model transient="true" changeable="false" volatile="true" derived="true"
-     * @generated
-     */
-    EList<DRepresentation> getAllRepresentations();
-
-    /**
-     * Returns the value of the '<em><b>Hidden Representations</b></em>'
-     * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.DRepresentation}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> All hidden viewpoints
-     * of this analysis. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Hidden Representations</em>' containment
-     *         reference list.
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_HiddenRepresentations()
-     * @model containment="true" resolveProxies="true"
-     * @generated
-     */
-    EList<DRepresentation> getHiddenRepresentations();
-
-    /**
-     * Returns the value of the '<em><b>Referenced Representations</b></em>'
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.DRepresentation}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> ViewPoints referenced
-     * but not contained in this analysis. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Referenced Representations</em>' reference
-     *         list.
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_ReferencedRepresentations()
-     * @model
-     * @generated
-     */
-    EList<DRepresentation> getReferencedRepresentations();
 
     /**
      * Returns the value of the '<em><b>Initialized</b></em>' attribute. <!--

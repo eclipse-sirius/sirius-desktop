@@ -61,36 +61,10 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addAllRepresentationsPropertyDescriptor(object);
-            addReferencedRepresentationsPropertyDescriptor(object);
             addInitializedPropertyDescriptor(object);
             addViewpointPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
-    }
-
-    /**
-     * This adds a property descriptor for the All Representations feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addAllRepresentationsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DView_allRepresentations_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DView_allRepresentations_feature", "_UI_DView_type"),
-                ViewpointPackage.Literals.DVIEW__ALL_REPRESENTATIONS, false, false, false, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Referenced Representations
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addReferencedRepresentationsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DView_referencedRepresentations_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DView_referencedRepresentations_feature", "_UI_DView_type"),
-                ViewpointPackage.Literals.DVIEW__REFERENCED_REPRESENTATIONS, true, false, true, null, null, null));
     }
 
     /**
@@ -132,7 +106,6 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
             super.getChildrenFeatures(object);
             childrenFeatures.add(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS);
             childrenFeatures.add(ViewpointPackage.Literals.DVIEW__OWNED_EXTENSIONS);
-            childrenFeatures.add(ViewpointPackage.Literals.DVIEW__HIDDEN_REPRESENTATIONS);
         }
         return childrenFeatures;
     }
@@ -191,7 +164,6 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
             return;
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
-        case ViewpointPackage.DVIEW__HIDDEN_REPRESENTATIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }

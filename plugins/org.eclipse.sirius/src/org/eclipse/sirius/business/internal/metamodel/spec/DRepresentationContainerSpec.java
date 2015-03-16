@@ -33,17 +33,6 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationContainerImpl;
  * @author cbrun
  */
 public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DViewImpl#getAllRepresentations()
-     */
-    @Override
-    public EList<DRepresentation> getAllRepresentations() {
-        final Collection<DRepresentation> result = new ArrayList<DRepresentation>(getOwnedRepresentations());
-        result.addAll(getReferencedRepresentations());
-        return new EcoreEList.UnmodifiableEList<DRepresentation>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDView_AllRepresentations(), result.size(), result.toArray());
-    }
 
     /**
      * Refresh the functionnal analysis.

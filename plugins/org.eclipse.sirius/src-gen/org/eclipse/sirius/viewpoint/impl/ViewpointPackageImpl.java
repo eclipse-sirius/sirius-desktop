@@ -711,35 +711,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EReference getDView_AllRepresentations() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDView_HiddenRepresentations() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDView_ReferencedRepresentations() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(4);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EAttribute getDView_Initialized() {
-        return (EAttribute) dViewEClass.getEStructuralFeatures().get(5);
+        return (EAttribute) dViewEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -748,7 +721,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     public EReference getDView_Viewpoint() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(6);
+        return (EReference) dViewEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1258,9 +1231,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dViewEClass = createEClass(DVIEW);
         createEReference(dViewEClass, DVIEW__OWNED_REPRESENTATIONS);
         createEReference(dViewEClass, DVIEW__OWNED_EXTENSIONS);
-        createEReference(dViewEClass, DVIEW__ALL_REPRESENTATIONS);
-        createEReference(dViewEClass, DVIEW__HIDDEN_REPRESENTATIONS);
-        createEReference(dViewEClass, DVIEW__REFERENCED_REPRESENTATIONS);
         createEAttribute(dViewEClass, DVIEW__INITIALIZED);
         createEReference(dViewEClass, DVIEW__VIEWPOINT);
 
@@ -1466,12 +1436,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDView_OwnedExtensions(), this.getMetaModelExtension(), null, "ownedExtensions", null, 0, 1, DView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDView_AllRepresentations(), this.getDRepresentation(), null, "allRepresentations", null, 0, -1, DView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEReference(getDView_HiddenRepresentations(), this.getDRepresentation(), null, "hiddenRepresentations", null, 0, -1, DView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDView_ReferencedRepresentations(), this.getDRepresentation(), null, "referencedRepresentations", null, 0, -1, DView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDView_Initialized(), theEcorePackage.getEBoolean(), "initialized", null, 1, 1, DView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
         initEReference(getDView_Viewpoint(), theDescriptionPackage.getViewpoint(), null, "viewpoint", null, 1, 1, DView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,

@@ -40,14 +40,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <em>Owned Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedExtensions
  * <em>Owned Extensions</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getAllRepresentations
- * <em>All Representations</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getHiddenRepresentations
- * <em>Hidden Representations</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getReferencedRepresentations
- * <em>Referenced Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#isInitialized <em>
  * Initialized</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getViewpoint <em>
@@ -79,28 +71,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
      * @ordered
      */
     protected MetaModelExtension ownedExtensions;
-
-    /**
-     * The cached value of the '{@link #getHiddenRepresentations()
-     * <em>Hidden Representations</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getHiddenRepresentations()
-     * @generated
-     * @ordered
-     */
-    protected EList<DRepresentation> hiddenRepresentations;
-
-    /**
-     * The cached value of the '{@link #getReferencedRepresentations()
-     * <em>Referenced Representations</em>}' reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see #getReferencedRepresentations()
-     * @generated
-     * @ordered
-     */
-    protected EList<DRepresentation> referencedRepresentations;
 
     /**
      * The default value of the '{@link #isInitialized() <em>Initialized</em>}'
@@ -238,47 +208,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
      * 
      * @generated
      */
-    public EList<DRepresentation> getAllRepresentations() {
-        // TODO: implement this method to return the 'All Representations'
-        // reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<DRepresentation> getHiddenRepresentations() {
-        if (hiddenRepresentations == null) {
-            hiddenRepresentations = new EObjectContainmentEList.Resolving<DRepresentation>(DRepresentation.class, this, ViewpointPackage.DVIEW__HIDDEN_REPRESENTATIONS);
-        }
-        return hiddenRepresentations;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<DRepresentation> getReferencedRepresentations() {
-        if (referencedRepresentations == null) {
-            referencedRepresentations = new EObjectResolvingEList<DRepresentation>(DRepresentation.class, this, ViewpointPackage.DVIEW__REFERENCED_REPRESENTATIONS);
-        }
-        return referencedRepresentations;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public boolean isInitialized() {
         return initialized;
     }
@@ -356,8 +285,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
             return ((InternalEList<?>) getOwnedRepresentations()).basicRemove(otherEnd, msgs);
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             return basicSetOwnedExtensions(null, msgs);
-        case ViewpointPackage.DVIEW__HIDDEN_REPRESENTATIONS:
-            return ((InternalEList<?>) getHiddenRepresentations()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -376,12 +303,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
             if (resolve)
                 return getOwnedExtensions();
             return basicGetOwnedExtensions();
-        case ViewpointPackage.DVIEW__ALL_REPRESENTATIONS:
-            return getAllRepresentations();
-        case ViewpointPackage.DVIEW__HIDDEN_REPRESENTATIONS:
-            return getHiddenRepresentations();
-        case ViewpointPackage.DVIEW__REFERENCED_REPRESENTATIONS:
-            return getReferencedRepresentations();
         case ViewpointPackage.DVIEW__INITIALIZED:
             return isInitialized();
         case ViewpointPackage.DVIEW__VIEWPOINT:
@@ -408,14 +329,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             setOwnedExtensions((MetaModelExtension) newValue);
             return;
-        case ViewpointPackage.DVIEW__HIDDEN_REPRESENTATIONS:
-            getHiddenRepresentations().clear();
-            getHiddenRepresentations().addAll((Collection<? extends DRepresentation>) newValue);
-            return;
-        case ViewpointPackage.DVIEW__REFERENCED_REPRESENTATIONS:
-            getReferencedRepresentations().clear();
-            getReferencedRepresentations().addAll((Collection<? extends DRepresentation>) newValue);
-            return;
         case ViewpointPackage.DVIEW__INITIALIZED:
             setInitialized((Boolean) newValue);
             return;
@@ -440,12 +353,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             setOwnedExtensions((MetaModelExtension) null);
             return;
-        case ViewpointPackage.DVIEW__HIDDEN_REPRESENTATIONS:
-            getHiddenRepresentations().clear();
-            return;
-        case ViewpointPackage.DVIEW__REFERENCED_REPRESENTATIONS:
-            getReferencedRepresentations().clear();
-            return;
         case ViewpointPackage.DVIEW__INITIALIZED:
             setInitialized(INITIALIZED_EDEFAULT);
             return;
@@ -468,12 +375,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
             return ownedRepresentations != null && !ownedRepresentations.isEmpty();
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             return ownedExtensions != null;
-        case ViewpointPackage.DVIEW__ALL_REPRESENTATIONS:
-            return !getAllRepresentations().isEmpty();
-        case ViewpointPackage.DVIEW__HIDDEN_REPRESENTATIONS:
-            return hiddenRepresentations != null && !hiddenRepresentations.isEmpty();
-        case ViewpointPackage.DVIEW__REFERENCED_REPRESENTATIONS:
-            return referencedRepresentations != null && !referencedRepresentations.isEmpty();
         case ViewpointPackage.DVIEW__INITIALIZED:
             return initialized != INITIALIZED_EDEFAULT;
         case ViewpointPackage.DVIEW__VIEWPOINT:

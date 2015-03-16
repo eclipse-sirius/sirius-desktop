@@ -156,25 +156,6 @@
         <details key="documentation" value="The Meta Model extension for this analysis. It may be null."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allRepresentations" upperBound="-1"
-        eType="#//DRepresentation" changeable="false" volatile="true" transient="true"
-        derived="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="All viewpoints of this analysis"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hiddenRepresentations"
-        upperBound="-1" eType="#//DRepresentation" containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="All hidden viewpoints of this analysis."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="referencedRepresentations"
-        upperBound="-1" eType="#//DRepresentation">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="ViewPoints referenced but not contained in this analysis."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialized" lowerBound="1"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="viewpoint" lowerBound="1"

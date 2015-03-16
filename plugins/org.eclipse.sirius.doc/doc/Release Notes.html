@@ -52,7 +52,7 @@
 				<code>[eContents()-&gt;size()/]</code>) in the VSM, that was implicit before. Customers who want to completely remove this dependency must remove the A3 expressions from there VSM after the migration.
 			</li>
 			<li>The default icons paths of Selection Wizard and Pane Based Selection Wizard used to reference invalid icons, so the corresponding tools had no icon per default in the palette. The default icons paths have been corrected to reference the icons displayed for those elements in the VSM editor.</li>
-			<li>&#8220;*&#8221; can now be used as feature name of a FeatureColumn to skip the feature name validation during the cell creation. This allow to compute the label of cells for lines whose semantic element types have no common EStructuralFeatures (inherited or with same name).</li>
+			<li>&#171;*&#187; can now be used as feature name of a FeatureColumn to skip the feature name validation during the cell creation. This allow to compute the label of cells for lines whose semantic element types have no common EStructuralFeatures (inherited or with same name).</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.ext.emf.tx">Changes in 
@@ -110,6 +110,18 @@
 				<code>ExtendedPackage</code> 
 				<code>EDataType</code> which was defined in the 
 				<code>http://www.eclipse.org/sirius/1.1.0</code> package was not actually used anywhere and has been removed.
+			</li>
+			<li>The 
+				<code>DView</code> methods 
+				<code>getAllRepresentations()</code>, 
+				<code>getReferencedRepresentations()</code> and 
+				<code>getHiddenRepresentations()</code> have been removed: 
+				<code>getReferencedRepresentations()</code> and 
+				<code>getHiddenRepresentations()</code>  were never actually used, making 
+				<code>getAllRepresentations()</code> strictly equivalent to 
+				<code>getOwnedRepresentations()</code>. Code that used 
+				<code>getAllRepresentations()</code> can simply use 
+				<code>getOwnedRepresentations()</code> instead.  
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
