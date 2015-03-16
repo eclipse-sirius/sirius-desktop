@@ -47,7 +47,6 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
-import org.eclipse.sirius.business.internal.repair.commands.MoveAllRepresentationsFromHiddenToOwnedCommand;
 import org.eclipse.sirius.business.internal.repair.commands.RestoreModelElementStateCommand;
 import org.eclipse.sirius.business.internal.repair.commands.SaveModelElementStateCommand;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
@@ -363,18 +362,6 @@ public class SiriusRepairProcess {
                 // command
                 monitor.subTask("--> Restoring element stats");
                 restoreModelElementState(view, new SubProgressMonitor(monitor, 1));
-
-                /*
-                 * Move all representations from hidden- to owned-
-                 * representations
-                 */
-                if (view instanceof DRepresentationContainer) {
-                    Command moveAllRepresentationsFromHiddenToOwnedCommand = new MoveAllRepresentationsFromHiddenToOwnedCommand((DRepresentationContainer) view);
-                    monitor.subTask("--> Move all representations from hidden to owned representations");
-                    migrationCommandExecutor.execute(transactionalEditingDomain, moveAllRepresentationsFromHiddenToOwnedCommand);
-                    monitor.worked(1);
-
-                }
                 for (IRepairParticipant participant : repairParticipants) {
                     participant.endRepairOnView();
                 }
