@@ -314,9 +314,9 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         // (one for each package) in the same aird.
         EList<DRepresentation> allRepresentations = Iterables.find(session.getOwnedViews(), new Predicate<DView>() {
             public boolean apply(DView v) {
-                return v.getAllRepresentations().size() == 4;
+                return v.getOwnedRepresentations().size() == 4;
             }
-        }).getAllRepresentations();
+        }).getOwnedRepresentations();
         assertEquals("package1 package entities", allRepresentations.get(0).getName());
         assertEquals("package2 package entities", allRepresentations.get(1).getName());
 

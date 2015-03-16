@@ -61,7 +61,7 @@ public class InvalidParentExpressionTest extends SiriusTestCase {
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, REPRESENTATION_MODEL_PATH);
 
         // The test model contains a single view with a single representation.
-        DTable table = (DTable) session.getOwnedViews().iterator().next().getAllRepresentations().get(0);
+        DTable table = (DTable) session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
         refresh(table);
         IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, table, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();

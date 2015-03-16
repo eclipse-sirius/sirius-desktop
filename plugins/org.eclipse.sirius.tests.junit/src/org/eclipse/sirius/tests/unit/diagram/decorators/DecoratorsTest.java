@@ -450,7 +450,7 @@ public class DecoratorsTest extends GenericTestCase {
         Iterable<DSemanticDiagram> matchingDescriptions = Collections.emptySet();
         for (final DView dView : session.getOwnedViews()) {
 
-            Iterable<DSemanticDiagram> allDSemanticDiagrams = Iterables.filter(dView.getAllRepresentations(), DSemanticDiagram.class);
+            Iterable<DSemanticDiagram> allDSemanticDiagrams = Iterables.filter(dView.getOwnedRepresentations(), DSemanticDiagram.class);
             matchingDescriptions = Iterables.filter(allDSemanticDiagrams, new Predicate<DSemanticDiagram>() {
                 public boolean apply(DSemanticDiagram input) {
                     return name.equals(input.getDescription().getName());
@@ -483,7 +483,7 @@ public class DecoratorsTest extends GenericTestCase {
             sb.append("DView: ");
             sb.append(dView);
             sb.append("\n");
-            for (DRepresentation rep : dView.getAllRepresentations()) {
+            for (DRepresentation rep : dView.getOwnedRepresentations()) {
                 sb.append("\t");
                 sb.append("DRepresentation: ");
                 sb.append(rep.getName());

@@ -219,7 +219,7 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
 
     private DDiagram findDiagram(final Session session) {
         for (final DView view : session.getOwnedViews()) {
-            for (final DRepresentation repr : view.getAllRepresentations()) {
+            for (final DRepresentation repr : view.getOwnedRepresentations()) {
                 if (repr instanceof DDiagram) {
                     return (DDiagram) repr;
                 }

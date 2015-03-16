@@ -1260,7 +1260,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
                 for (Object view : ((DAnalysis) EcoreUtil.getRootContainer(anyAnalysisObject)).getOwnedViews()) {
                     if (view instanceof DRepresentationContainer) {
                         DRepresentationContainer container = (DRepresentationContainer) view;
-                        for (Object diagram : container.getAllRepresentations()) {
+                        for (Object diagram : container.getOwnedRepresentations()) {
                             if (diagram instanceof DRepresentation) {
                                 DialectManager.INSTANCE.refresh((DRepresentation) diagram, new NullProgressMonitor());
                             }

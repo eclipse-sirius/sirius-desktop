@@ -144,7 +144,7 @@ public class RgbValuesEDataTypeMigrationTest extends SiriusTestCase {
 
     private void checkMigrationEffect(DAnalysis analysis) {
         DView view = analysis.getOwnedViews().iterator().next();
-        Collection<DRepresentation> allRepresentations = view.getAllRepresentations();
+        Collection<DRepresentation> allRepresentations = view.getOwnedRepresentations();
         assertEquals(3, allRepresentations.size());
         for (DRepresentation rep : allRepresentations) {
             if (rep instanceof DDiagram) {

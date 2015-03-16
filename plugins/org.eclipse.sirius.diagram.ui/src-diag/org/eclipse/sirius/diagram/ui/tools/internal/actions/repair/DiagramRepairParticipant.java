@@ -173,7 +173,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
      * @param view
      */
     private void refreshVisibility(DView view) {
-        for (final DRepresentation representation : view.getAllRepresentations()) {
+        for (final DRepresentation representation : view.getOwnedRepresentations()) {
             if (representation instanceof DDiagram) {
 
                 Command refreshAllElementsVisibilityCommand = new IdentityCommand() {
@@ -248,7 +248,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     }
 
     private void setDefaultConcern(final DView view) {
-        for (final DRepresentation representation : view.getAllRepresentations()) {
+        for (final DRepresentation representation : view.getOwnedRepresentations()) {
             if (representation instanceof DDiagram) {
                 final DDiagram diagram = (DDiagram) representation;
                 final DiagramDescription description = diagram.getDescription();
@@ -288,7 +288,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
      */
     public void startRepairOnView(Session session, DView view) {
 
-        for (DRepresentation representation : view.getAllRepresentations()) {
+        for (DRepresentation representation : view.getOwnedRepresentations()) {
             if (representation instanceof DDiagram) {
                 GMFDiagramUpdater updater = new GMFDiagramUpdater(session, (DDiagram) representation);
                 gmfDiagramUpdaters.add(updater);

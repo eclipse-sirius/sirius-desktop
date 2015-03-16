@@ -293,8 +293,8 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
      *         B
      */
     private DAnalysis controlB() throws Exception {
-        representationB = session.getOwnedViews().iterator().next().getAllRepresentations().get(1);
-        representationC = session.getOwnedViews().iterator().next().getAllRepresentations().get(0);
+        representationB = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(1);
+        representationC = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
 
         URI controlledModelUriB = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/doremi-2436/My_B.ecore", true);
         URI controlledAirdUriB = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/doremi-2436/My_B.aird", true);

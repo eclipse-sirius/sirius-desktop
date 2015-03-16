@@ -526,7 +526,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
                 return Collections.emptySet();
             }
             final Collection<DRepresentation> result = new HashSet<DRepresentation>();
-            final Iterator<DRepresentation> itRepresentations = this.representationContainer.getAllRepresentations().iterator();
+            final Iterator<DRepresentation> itRepresentations = this.representationContainer.getOwnedRepresentations().iterator();
             while (itRepresentations.hasNext()) {
                 final DRepresentation representation = itRepresentations.next();
                 if (representation instanceof DSemanticDecorator) {

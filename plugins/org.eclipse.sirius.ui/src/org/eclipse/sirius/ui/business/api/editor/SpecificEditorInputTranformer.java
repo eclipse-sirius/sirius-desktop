@@ -231,7 +231,7 @@ public class SpecificEditorInputTranformer {
     private Option<DRepresentation> findRepresentation(RepresentationDescription representationDescriptionUsed, EObject semanticElement) {
         if (session != null && representationDescriptionUsed != null && semanticElement != null) {
             for (final DView view : session.getOwnedViews()) {
-                for (final DRepresentation repr : view.getAllRepresentations()) {
+                for (final DRepresentation repr : view.getOwnedRepresentations()) {
                     RepresentationDescription reprDesc = DialectManager.INSTANCE.getDescription(repr);
                     if (repr instanceof DSemanticDecorator && representationDescriptionUsed.equals(reprDesc) && semanticElement.equals(((DSemanticDecorator) repr).getTarget())) {
                         return Options.newSome(repr);

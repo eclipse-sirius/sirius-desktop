@@ -45,7 +45,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 /**
@@ -98,7 +97,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         for (DAnalysis analysis : analysisAndReferenced) {
             for (final DView view : analysis.getOwnedViews()) {
                 representations.addAll(view.getOwnedRepresentations());
-                representations.addAll(view.getReferencedRepresentations());
             }
         }
         return representations;
@@ -165,7 +163,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
                 Collection<EObject> datas = new ArrayList<EObject>();
                 for (DAnalysis analysis : analysisAndReferenced) {
                     for (final DView view : analysis.getOwnedViews()) {
-                        final Iterator<DRepresentation> it = Iterators.concat(view.getOwnedRepresentations().iterator(), view.getReferencedRepresentations().iterator());
+                        final Iterator<DRepresentation> it = view.getOwnedRepresentations().iterator();
                         while (it.hasNext()) {
                             final DRepresentation rep = it.next();
                             if (rep instanceof DSemanticDecorator) {
@@ -204,7 +202,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         final Collection<EObject> datas = Lists.newArrayList();
         for (DAnalysis analysis : analysisAndReferenced) {
             for (final DView view : analysis.getOwnedViews()) {
-                final Iterator<DRepresentation> it = Iterators.concat(view.getOwnedRepresentations().iterator(), view.getReferencedRepresentations().iterator());
+                final Iterator<DRepresentation> it = view.getOwnedRepresentations().iterator();
                 while (it.hasNext()) {
                     final DRepresentation rep = it.next();
                     final RepresentationDescription currentRepresentationDescription = DialectManager.INSTANCE.getDescription(rep);

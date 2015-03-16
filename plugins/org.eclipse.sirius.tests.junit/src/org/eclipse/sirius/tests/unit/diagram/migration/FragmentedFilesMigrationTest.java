@@ -375,7 +375,7 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
 
     private DSemanticDiagram getDiagramFromName(final Session sessionToGo, final String name) {
         for (final DView dView : sessionToGo.getOwnedViews()) {
-            for (final Iterator<DRepresentation> iterator = dView.getAllRepresentations().iterator(); iterator.hasNext();) {
+            for (final Iterator<DRepresentation> iterator = dView.getOwnedRepresentations().iterator(); iterator.hasNext();) {
                 final DSemanticDiagram rep = (DSemanticDiagram) iterator.next();
                 if (name.equals(rep.getName())) {
                     return rep;

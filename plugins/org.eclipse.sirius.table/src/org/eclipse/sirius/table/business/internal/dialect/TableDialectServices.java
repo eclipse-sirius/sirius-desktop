@@ -136,7 +136,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         if (Movida.isEnabled()) {
             IProgressMonitor monitor = new NullProgressMonitor();
             for (DView view : session.getOwnedViews()) {
-                for (DRepresentation representation : view.getAllRepresentations()) {
+                for (DRepresentation representation : view.getOwnedRepresentations()) {
                     if (isHandledByMovida(representation)) {
                         RepresentationExtensionsFinder ref = new RepresentationExtensionsFinder(((DTable) representation).getDescription());
                         if (ref.isAffectedBy(viewpoint)) {

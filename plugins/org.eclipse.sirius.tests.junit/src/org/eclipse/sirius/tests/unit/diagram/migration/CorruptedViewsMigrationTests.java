@@ -126,7 +126,7 @@ public class CorruptedViewsMigrationTests extends AbstractMigrationTestCase {
         EReference elementReference = NotationPackage.eINSTANCE.getView_Element();
         for (Resource sessionResource : session.getAllSessionResources()) {
             for (DView view : ((DAnalysis) sessionResource.getContents().iterator().next()).getOwnedViews()) {
-                for (DDiagram dDiagram : Iterables.filter(view.getAllRepresentations(), DDiagram.class)) {
+                for (DDiagram dDiagram : Iterables.filter(view.getOwnedRepresentations(), DDiagram.class)) {
                     DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
                     assertTrue(diagramCreationUtil.findAssociatedGMFDiagram());
                     Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();

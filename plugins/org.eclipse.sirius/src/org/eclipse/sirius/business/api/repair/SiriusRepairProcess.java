@@ -453,8 +453,8 @@ public class SiriusRepairProcess {
      *            the view to inform
      */
     private void informViewpoint(final DView view) {
-        if (view.getAllRepresentations() != null && !view.getAllRepresentations().isEmpty()) {
-            final DRepresentation representation = view.getAllRepresentations().get(0);
+        if (view.getOwnedRepresentations() != null && !view.getOwnedRepresentations().isEmpty()) {
+            final DRepresentation representation = view.getOwnedRepresentations().get(0);
             final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
             if (description != null) {
                 Viewpoint vp = new RepresentationDescriptionQuery(description).getParentViewpoint();
@@ -583,7 +583,7 @@ public class SiriusRepairProcess {
 
         final List<DRepresentation> representationsToRemove = new LinkedList<DRepresentation>();
         for (final IRepairParticipant participant : this.repairParticipants) {
-            representationsToRemove.addAll(participant.cleanRepresentations(view.getAllRepresentations()));
+            representationsToRemove.addAll(participant.cleanRepresentations(view.getOwnedRepresentations()));
         }
         removeRepresentations(representationsToRemove);
     }

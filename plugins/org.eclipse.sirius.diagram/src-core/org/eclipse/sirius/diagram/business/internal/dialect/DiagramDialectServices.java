@@ -381,7 +381,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         final EList<RepresentationExtensionDescription> extensions = viewpoint.getOwnedRepresentationExtensions();
 
         for (final DView view : session.getOwnedViews()) {
-            for (final DRepresentation representation : view.getAllRepresentations()) {
+            for (final DRepresentation representation : view.getOwnedRepresentations()) {
                 if (representation instanceof DSemanticDiagram) {
                     for (final RepresentationExtensionDescription ext : extensions) {
                         if (ComponentizationHelper.extensionAppliesTo(ext, representation) && ext instanceof DiagramExtensionDescription) {

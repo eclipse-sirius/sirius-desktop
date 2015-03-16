@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.metamodel.spec;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -34,7 +33,6 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationContainerImpl;
  * @author cbrun
  */
 public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
-
     /**
      * {@inheritDoc}
      * 
@@ -55,7 +53,7 @@ public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
     @Override
     public void refresh() {
         final Set<DRepresentation> representationsToDelete = new HashSet<DRepresentation>();
-        Iterator<DRepresentation> it = getAllRepresentations().iterator();
+        Iterator<DRepresentation> it = getOwnedRepresentations().iterator();
         while (it.hasNext()) {
             final DRepresentation representation = it.next();
             /*
@@ -84,15 +82,10 @@ public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DRepresentationContainerImpl#getModels()
-     */
     @Override
     public EList<EObject> getModels() {
         final Collection<EObject> models = new HashSet<EObject>(3);
-        for (final DRepresentation representation : this.getAllRepresentations()) {
+        for (final DRepresentation representation : this.getOwnedRepresentations()) {
             if (representation instanceof DSemanticDecorator) {
                 models.add(getModel(((DSemanticDecorator) representation).getTarget()));
             }

@@ -135,7 +135,7 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
      */
     private CompoundCommand migrateRepresentationContainer(DRepresentationContainer container, TransactionalEditingDomain domain) {
         CompoundCommand cc = new CompoundCommand("Repair Sequence Diagram");
-        for (SequenceDDiagram seqDDiag : Iterables.filter(container.getAllRepresentations(), SequenceDDiagram.class)) {
+        for (SequenceDDiagram seqDDiag : Iterables.filter(container.getOwnedRepresentations(), SequenceDDiagram.class)) {
             final Diagram gmfDiagram = SiriusGMFHelper.getGmfDiagram(seqDDiag);
             Option<SequenceDiagram> iSequenceDiagram = ISequenceElementAccessor.getSequenceDiagram(gmfDiagram);
             if (iSequenceDiagram.some()) {

@@ -128,7 +128,7 @@ public class SiriusControlTest extends AbstractControlTest {
             assertEquals("The resourceSet should be contains only 2 resources typed Aird and Ecore", 2, getResourceTypeAirdOrEcore(rs).size());
 
             final EObject root = findPackageNamed("acceleo", semanticElt);
-            final DRepresentation representation = session.getOwnedViews().iterator().next().getAllRepresentations().get(0);
+            final DRepresentation representation = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
             final URI controlledModelUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/base/chain_acceleo.ecore", true);
             final URI controlledAirdUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/base/chain_acceleo.aird", true);
             siriusControl(root, controlledModelUri, Collections.singleton(representation), controlledAirdUri);
@@ -177,7 +177,7 @@ public class SiriusControlTest extends AbstractControlTest {
             assertEquals("The resourceSet should be contains only 2 resources typed Aird and Ecore", 2, getResourceTypeAirdOrEcore(rs).size());
 
             final EObject root = findPackageNamed("p1", semanticElt);
-            final DRepresentation representation = session.getOwnedViews().iterator().next().getAllRepresentations().get(0);
+            final DRepresentation representation = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
             final URI controlledModelUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/VP-2070/root_p1.ecore", true);
             final URI controlledAirdUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/VP-2070/root_p1.aird", true);
             siriusControl(root, controlledModelUri, Collections.singleton(representation), controlledAirdUri);
@@ -225,7 +225,7 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject root = findPackageNamed("p2", semanticElt);
             DRepresentation representationP2 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : dView.getAllRepresentations()) {
+                for (DRepresentation dRepresentation : dView.getOwnedRepresentations()) {
                     if ("p2 package entities".equals(dRepresentation.getName())) {
                         representationP2 = dRepresentation;
                     }
@@ -435,7 +435,7 @@ public class SiriusControlTest extends AbstractControlTest {
 
             // First control
             final EObject p1 = findPackageNamed("p1", semanticElt);
-            final DRepresentation representation = session.getOwnedViews().iterator().next().getAllRepresentations().get(0);
+            final DRepresentation representation = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
             final URI p1ControlledModelUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/VP-2070/root_p1.ecore", true);
             final URI p1ControlledAirdUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/VP-2070/root_p1.aird", true);
             siriusControl(p1, p1ControlledModelUri, Collections.singleton(representation), p1ControlledAirdUri);
@@ -453,7 +453,7 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject p11 = findPackageNamed("p11", semanticElt);
             DRepresentation representationP11 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : dView.getAllRepresentations()) {
+                for (DRepresentation dRepresentation : dView.getOwnedRepresentations()) {
                     if ("p11 package entities".equals(dRepresentation.getName())) {
                         representationP11 = dRepresentation;
                     }
@@ -549,7 +549,7 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject p11 = findPackageNamed("p11", semanticElt);
             DRepresentation representationP11 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : dView.getAllRepresentations()) {
+                for (DRepresentation dRepresentation : dView.getOwnedRepresentations()) {
                     if ("p11 package entities".equals(dRepresentation.getName())) {
                         representationP11 = dRepresentation;
                     }
@@ -572,7 +572,7 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject p1 = findPackageNamed("p1", semanticElt);
             DRepresentation representationP1 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : dView.getAllRepresentations()) {
+                for (DRepresentation dRepresentation : dView.getOwnedRepresentations()) {
                     if ("p1 package entities".equals(dRepresentation.getName())) {
                         representationP1 = dRepresentation;
                     }

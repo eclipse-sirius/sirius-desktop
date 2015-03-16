@@ -117,10 +117,10 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
         openNonControlledSession();
         controlledModelUrip1p1p1 = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/vp-2067/2067_p1p1_p1p1p1.ecore", true);
         controlledAirdUrip1p1p1 = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/vp-2067/2067_p1p1_p1p1p1.aird", true);
-        if (((DView) session.getOwnedViews().toArray()[0]).getAllRepresentations().size() == 0) {
-            representationP1 = ((DView) session.getOwnedViews().toArray()[1]).getAllRepresentations().get(0);
+        if (((DView) session.getOwnedViews().toArray()[0]).getOwnedRepresentations().size() == 0) {
+            representationP1 = ((DView) session.getOwnedViews().toArray()[1]).getOwnedRepresentations().get(0);
         } else {
-            representationP1 = ((DView) session.getOwnedViews().toArray()[0]).getAllRepresentations().get(0);
+            representationP1 = ((DView) session.getOwnedViews().toArray()[0]).getOwnedRepresentations().get(0);
         }
 
         ResourcesPlugin.getWorkspace().addResourceChangeListener(readonlyValidator);

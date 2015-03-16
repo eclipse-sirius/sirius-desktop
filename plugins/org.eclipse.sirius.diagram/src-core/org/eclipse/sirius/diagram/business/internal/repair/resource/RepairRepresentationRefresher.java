@@ -120,7 +120,7 @@ public class RepairRepresentationRefresher {
                         InterpreterRegistry.prepareImportsFromSession(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(model), SessionManager.INSTANCE.getSession(model));
                     }
                 }
-                for (DRepresentation dRepresentation : view.getAllRepresentations()) {
+                for (DRepresentation dRepresentation : view.getOwnedRepresentations()) {
                     DialectManager.INSTANCE.refresh(dRepresentation, new NullProgressMonitor());
                 }
             }
@@ -160,7 +160,7 @@ public class RepairRepresentationRefresher {
      *            {@link RefreshAllElementsVisibilityCommand}
      */
     public void refreshAllElementsVisibility(final DView view, TransactionalEditingDomain transactionalEditingDomain, MigrationCommandExecutor migrationCommandExecutor) {
-        for (final DRepresentation representation : view.getAllRepresentations()) {
+        for (final DRepresentation representation : view.getOwnedRepresentations()) {
             if (representation instanceof DDiagram) {
                 Command refreshAllElementsVisibilityCommand = new RefreshAllElementsVisibilityCommand((DDiagram) representation);
                 migrationCommandExecutor.execute(transactionalEditingDomain, refreshAllElementsVisibilityCommand);
@@ -174,7 +174,7 @@ public class RepairRepresentationRefresher {
         Command refreshLostDiagramElementsCommand = new IdentityCommand() {
             @Override
             public void execute() {
-                for (final DSemanticDiagram diagram : Iterables.filter(view.getAllRepresentations(), DSemanticDiagram.class)) {
+                for (final DSemanticDiagram diagram : Iterables.filter(view.getOwnedRepresentations(), DSemanticDiagram.class)) {
                     final DiagramKey diagramKey = DiagramKey.createDiagramKey(diagram);
 
                     final List<LostNodeData> lostNodes = lostNodesByDelete.get(diagramKey);
