@@ -138,6 +138,15 @@ class SessionResourcesTracker {
     }
 
     /**
+     * Allow semanticResources to be recomputed when calling
+     * <code>getSemanticResources()</code>.
+     */
+    void setSemanticResourcesNotUptodate() {
+        semanticResources.clear();
+        semanticResources = null;
+    }
+
+    /**
      * Return the root EObject associated to the resource. The root EObject is
      * part of {@link DAnalysis.getModels}
      * 
@@ -145,7 +154,7 @@ class SessionResourcesTracker {
      *            the URI of the resource
      * @return the eObject
      */
-    public EObject getRootObjectFromResourceURI(String resourceURI) {
+    EObject getRootObjectFromResourceURI(String resourceURI) {
         return semanticResourcesUpdater.getRootObjectFromResourceURI(resourceURI);
     }
 

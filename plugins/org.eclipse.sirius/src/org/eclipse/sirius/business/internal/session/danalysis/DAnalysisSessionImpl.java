@@ -691,6 +691,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return result;
     }
 
+    /**
+     * Allow semanticResources to be recomputed when calling
+     * <code>getSemanticResources()</code>.
+     */
+    void setSemanticResourcesNotUptodate() {
+        tracker.setSemanticResourcesNotUptodate();
+    }
+
     @Override
     public Collection<Resource> getSemanticResources() {
         if (tracker != null) {
@@ -738,6 +746,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             res.unload();
             enableCrossReferencerResolve(res);
         }
+
+        tracker.detectControlledResources();
     }
 
     void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
@@ -1324,7 +1334,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         flushOperations(transactionalEditingDomain);
         // Unload all referenced resources
-        unloadResources();
+        unloadAllResources();
         if (disposeEditingDomainOnClose) {
             // To remove remaining resource like environment:/viewpoint
             for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
@@ -1423,7 +1433,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * Method called at {@link Session#close(IProgressMonitor)} to unload all
      * referenced {@link Resource}s.
      */
-    private void unloadResources() {
+    private void unloadAllResources() {
         ResourceSet rs = transactionalEditingDomain.getResourceSet();
         for (Resource resource : getAllSessionResources()) {
             resource.unload();
