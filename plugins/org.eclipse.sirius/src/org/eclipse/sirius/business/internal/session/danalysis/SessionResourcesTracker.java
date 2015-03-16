@@ -18,6 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -120,7 +121,11 @@ class SessionResourcesTracker {
     Collection<Resource> getSemanticResources() {
         if (semanticResources == null) {
             semanticResources = new CopyOnWriteArrayList<Resource>();
-            semanticResourcesUpdater = new SemanticResourcesUpdater(session, semanticResources);
+            if (semanticResourcesUpdater == null) {
+                semanticResourcesUpdater = new SemanticResourcesUpdater(session);
+            }
+            semanticResourcesUpdater.setSemanticResources(semanticResources);
+
             RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(session);
             try {
                 TransactionUtil.runExclusive(session.getTransactionalEditingDomain(), semanticResourcesGetter);
@@ -130,6 +135,18 @@ class SessionResourcesTracker {
             ((CopyOnWriteArrayList<Resource>) semanticResources).addAllAbsent(semanticResourcesGetter.getResult());
         }
         return Collections.unmodifiableCollection(semanticResources);
+    }
+
+    /**
+     * Return the root EObject associated to the resource. The root EObject is
+     * part of {@link DAnalysis.getModels}
+     * 
+     * @param resourceURI
+     *            the URI of the resource
+     * @return the eObject
+     */
+    public EObject getRootObjectFromResourceURI(String resourceURI) {
+        return semanticResourcesUpdater.getRootObjectFromResourceURI(resourceURI);
     }
 
     void handlePossibleControlledResources() {
