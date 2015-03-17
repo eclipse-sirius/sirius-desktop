@@ -24,8 +24,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
-import org.eclipse.sirius.table.metamodel.table.DTableElementUpdater;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
@@ -266,28 +264,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
-    public void activate(DTableElementSynchronizer sync) {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void deactivate() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     @SuppressWarnings("unchecked")
     @Override
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -444,12 +420,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
                 return -1;
             }
         }
-        if (baseClass == DTableElementUpdater.class) {
-            switch (derivedFeatureID) {
-            default:
-                return -1;
-            }
-        }
         return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
     }
 
@@ -472,12 +442,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
             switch (baseFeatureID) {
             case TablePackage.LINE_CONTAINER__LINES:
                 return TablePackage.DTABLE__LINES;
-            default:
-                return -1;
-            }
-        }
-        if (baseClass == DTableElementUpdater.class) {
-            switch (baseFeatureID) {
             default:
                 return -1;
             }

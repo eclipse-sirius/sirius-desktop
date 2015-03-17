@@ -27,8 +27,6 @@ import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
-import org.eclipse.sirius.table.metamodel.table.DTableElementUpdater;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
@@ -500,28 +498,6 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
-    public void activate(DTableElementSynchronizer sync) {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void deactivate() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -803,12 +779,6 @@ public class DLineImpl extends LineContainerImpl implements DLine {
                 return -1;
             }
         }
-        if (baseClass == DTableElementUpdater.class) {
-            switch (derivedFeatureID) {
-            default:
-                return -1;
-            }
-        }
         return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
     }
 
@@ -857,12 +827,6 @@ public class DLineImpl extends LineContainerImpl implements DLine {
             switch (baseFeatureID) {
             case TablePackage.DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING:
                 return TablePackage.DLINE__TABLE_ELEMENT_MAPPING;
-            default:
-                return -1;
-            }
-        }
-        if (baseClass == DTableElementUpdater.class) {
-            switch (baseFeatureID) {
             default:
                 return -1;
             }

@@ -26,7 +26,6 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
-import org.eclipse.sirius.table.metamodel.table.DTableElementUpdater;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
@@ -48,13 +47,6 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * @generated
      */
     private EClass dTableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dTableElementUpdaterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -233,15 +225,6 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      */
     public EAttribute getDTable_HeaderColumnWidth() {
         return (EAttribute) dTableEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getDTableElementUpdater() {
-        return dTableElementUpdaterEClass;
     }
 
     /**
@@ -665,8 +648,6 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         createEAttribute(dTableEClass, DTABLE__HEADER_COLUMN_WIDTH);
         createEReference(dTableEClass, DTABLE__DESCRIPTION);
 
-        dTableElementUpdaterEClass = createEClass(DTABLE_ELEMENT_UPDATER);
-
         dTableElementEClass = createEClass(DTABLE_ELEMENT);
         createEReference(dTableElementEClass, DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING);
 
@@ -760,20 +741,16 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         // Add supertypes to classes
         dTableEClass.getESuperTypes().add(theViewpointPackage.getDRepresentation());
         dTableEClass.getESuperTypes().add(this.getLineContainer());
-        dTableEClass.getESuperTypes().add(this.getDTableElementUpdater());
         dTableElementEClass.getESuperTypes().add(theViewpointPackage.getDRepresentationElement());
         lineContainerEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dLineEClass.getESuperTypes().add(this.getLineContainer());
         dLineEClass.getESuperTypes().add(this.getDTableElement());
-        dLineEClass.getESuperTypes().add(this.getDTableElementUpdater());
         dCellEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dCellEClass.getESuperTypes().add(this.getDTableElement());
-        dCellEClass.getESuperTypes().add(this.getDTableElementUpdater());
         dCellStyleEClass.getESuperTypes().add(this.getDTableElementStyle());
         dColumnEClass.getESuperTypes().add(this.getDTableElement());
         dTargetColumnEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dTargetColumnEClass.getESuperTypes().add(this.getDColumn());
-        dTargetColumnEClass.getESuperTypes().add(this.getDTableElementUpdater());
         dFeatureColumnEClass.getESuperTypes().add(this.getDColumn());
 
         // Initialize classes and features; add operations and parameters
@@ -784,13 +761,6 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDTable_Description(), theDescriptionPackage.getTableDescription(), null, "description", null, 0, 1, DTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(dTableElementUpdaterEClass, DTableElementUpdater.class, "DTableElementUpdater", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-        EOperation op = addEOperation(dTableElementUpdaterEClass, null, "activate", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, this.getDTableElementSynchronizer(), "sync", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-        addEOperation(dTableElementUpdaterEClass, null, "deactivate", 0, 1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(dTableElementEClass, DTableElement.class, "DTableElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDTableElement_TableElementMapping(), theDescriptionPackage.getTableMapping(), null, "tableElementMapping", null, 0, 1, DTableElement.class, IS_TRANSIENT, IS_VOLATILE,
@@ -864,7 +834,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
 
         initEClass(dTableElementSynchronizerEClass, DTableElementSynchronizer.class, "DTableElementSynchronizer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-        op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);
+        EOperation op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, this.getDCell(), "cell", 1, 1, IS_UNIQUE, IS_ORDERED);
 
         op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);

@@ -21,5 +21,5 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * @model
  * @generated
  */
-public interface DTargetColumn extends DSemanticDecorator, DColumn, DTableElementUpdater {
+public interface DTargetColumn extends DSemanticDecorator, DColumn {
 } // DTargetColumn

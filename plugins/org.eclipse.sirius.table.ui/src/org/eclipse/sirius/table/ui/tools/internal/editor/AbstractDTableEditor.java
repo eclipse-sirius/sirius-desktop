@@ -51,9 +51,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.table.business.internal.refresh.DTableElementSynchronizerSpec;
 import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactoryProvider;
@@ -119,10 +117,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     private DTable tableModel;
 
     private IPartListener refreshAtOpeningActivator;
-
-    private IInterpreter getInterpreter() {
-        return SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(getTableModel().getTarget());
-    }
 
     /**
      * {@inheritDoc}
@@ -280,12 +274,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
         setAccessor(SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(getTableModel()));
 
         if (getTableModel() != null) {
-            /*
-             * let's activate the model listening
-             */
-            final DTableElementSynchronizer sync = new DTableElementSynchronizerSpec(accessor, getInterpreter());
-            getTableModel().activate(sync);
-
             /* Update title. Semantic table could have been renamed */
             notify(PROP_TITLE);
 

@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
  * @model
  * @generated
  */
-public interface DTable extends DRepresentation, LineContainer, DTableElementUpdater {
+public interface DTable extends DRepresentation, LineContainer {
 
     /**
      * Returns the value of the '<em><b>Columns</b></em>' containment reference

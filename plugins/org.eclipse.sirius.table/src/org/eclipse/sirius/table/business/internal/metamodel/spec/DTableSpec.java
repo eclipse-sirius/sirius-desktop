@@ -14,15 +14,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
 import org.eclipse.sirius.table.metamodel.table.DLine;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
-import org.eclipse.sirius.table.metamodel.table.DTableElementUpdater;
 import org.eclipse.sirius.table.metamodel.table.impl.DTableImpl;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -40,26 +34,6 @@ public class DTableSpec extends DTableImpl {
     @Override
     public void refresh() {
         DialectManager.INSTANCE.refresh(this, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void activate(DTableElementSynchronizer sync) {
-        for (DTableElementUpdater updater : Iterables.filter(AllContents.of(this), DTableElementUpdater.class)) {
-            updater.activate(sync);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void deactivate() {
-        for (DTableElementUpdater updater : Iterables.filter(AllContents.of(this), DTableElementUpdater.class)) {
-            updater.deactivate();
-        }
     }
 
     /**

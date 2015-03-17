@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * @model
  * @generated
  */
-public interface DCell extends DSemanticDecorator, DTableElement, DTableElementUpdater {
+public interface DCell extends DSemanticDecorator, DTableElement {
     /**
      * Returns the value of the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc -->

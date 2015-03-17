@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="table" nsURI="http://www.eclipse.org/sirius/table/1.1.0" nsPrefix="table">
-  <eClassifiers xsi:type="ecore:EClass" name="DTable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//LineContainer #//DTableElementUpdater">
+  <eClassifiers xsi:type="ecore:EClass" name="DTable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//LineContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
         eType="#//DColumn" containment="true" eOpposite="#//DColumn/table"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="headerColumnWidth" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//description/TableDescription"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DTableElementUpdater" abstract="true"
-      interface="true">
-    <eOperations name="activate">
-      <eParameters name="sync" lowerBound="1" eType="#//DTableElementSynchronizer"/>
-    </eOperations>
-    <eOperations name="deactivate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DTableElement" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentationElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableElementMapping" eType="#//description/TableMapping"
@@ -26,7 +19,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="lines" upperBound="-1"
         eType="#//DLine" containment="true" eOpposite="#//DLine/container"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DLine" eSuperTypes="#//LineContainer #//DTableElement #//DTableElementUpdater">
+  <eClassifiers xsi:type="ecore:EClass" name="DLine" eSuperTypes="#//LineContainer #//DTableElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="originMapping" lowerBound="1"
         eType="#//description/LineMapping"/>
@@ -57,7 +50,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DCell" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDecorator #//DTableElement #//DTableElementUpdater">
+  <eClassifiers xsi:type="ecore:EClass" name="DCell" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDecorator #//DTableElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="line" eType="#//DLine"
         eOpposite="#//DLine/cells"/>
@@ -116,7 +109,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DTargetColumn" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDecorator #//DColumn #//DTableElementUpdater"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DTargetColumn" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDecorator #//DColumn"/>
   <eClassifiers xsi:type="ecore:EClass" name="DFeatureColumn" eSuperTypes="#//DColumn">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" lowerBound="1"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>

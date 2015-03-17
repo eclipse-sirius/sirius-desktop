@@ -201,17 +201,7 @@ public class TableDialectUIServices implements DialectUIServices {
             final Display display = editorPart.getSite().getShell().getDisplay();
             display.asyncExec(new Runnable() {
                 public void run() {
-
-                    try {
-                        DTable dTable = ((AbstractDTableEditor) editorPart).getTableModel();
-                        if (dTable != null) {
-                            dTable.deactivate();
-                        }
-                    } catch (IllegalStateException e) {
-                        // Can occur when Eobject has been disposed
-                    } finally {
-                        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeEditor(editorPart, save);
-                    }
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeEditor(editorPart, save);
                 }
             });
         }

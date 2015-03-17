@@ -23,7 +23,6 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
-import org.eclipse.sirius.table.metamodel.table.DTableElementUpdater;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
@@ -95,11 +94,6 @@ public class TableAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDTable(DTable object) {
             return createDTableAdapter();
-        }
-
-        @Override
-        public Adapter caseDTableElementUpdater(DTableElementUpdater object) {
-            return createDTableElementUpdaterAdapter();
         }
 
         @Override
@@ -229,22 +223,6 @@ public class TableAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDTableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementUpdater
-     * <em>DTable Element Updater</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.table.metamodel.table.DTableElementUpdater
-     * @generated
-     */
-    public Adapter createDTableElementUpdaterAdapter() {
         return null;
     }
 

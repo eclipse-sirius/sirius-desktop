@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.table.business.internal.metamodel.operations.DColumnOperations;
 import org.eclipse.sirius.table.metamodel.table.DCell;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl;
@@ -34,16 +33,6 @@ public class DTargetColumnSpec extends DTargetColumnImpl {
     public EList<DCell> getOrderedCells() {
         final Collection<DCell> result = DColumnOperations.getOrderedCells(this);
         return new EcoreEList.UnmodifiableEList<DCell>(eInternalContainer(), TablePackage.eINSTANCE.getDColumn_OrderedCells(), result.size(), result.toArray());
-    }
-
-    @Override
-    public void activate(final DTableElementSynchronizer sync) {
-        // do nothing
-    }
-
-    @Override
-    public void deactivate() {
-        // do nothing
     }
 
     @Override

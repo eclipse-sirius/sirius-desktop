@@ -23,7 +23,6 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
-import org.eclipse.sirius.table.metamodel.table.DTableElementUpdater;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
@@ -118,8 +117,6 @@ public class TableSwitch<T> {
             if (result == null)
                 result = caseLineContainer(dTable);
             if (result == null)
-                result = caseDTableElementUpdater(dTable);
-            if (result == null)
                 result = caseDocumentedElement(dTable);
             if (result == null)
                 result = caseDRefreshable(dTable);
@@ -127,13 +124,6 @@ public class TableSwitch<T> {
                 result = caseDModelElement(dTable);
             if (result == null)
                 result = caseDSemanticDecorator(dTable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case TablePackage.DTABLE_ELEMENT_UPDATER: {
-            DTableElementUpdater dTableElementUpdater = (DTableElementUpdater) theEObject;
-            T result = caseDTableElementUpdater(dTableElementUpdater);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -174,8 +164,6 @@ public class TableSwitch<T> {
             if (result == null)
                 result = caseDTableElement(dLine);
             if (result == null)
-                result = caseDTableElementUpdater(dLine);
-            if (result == null)
                 result = caseDRepresentationElement(dLine);
             if (result == null)
                 result = caseDSemanticDecorator(dLine);
@@ -196,8 +184,6 @@ public class TableSwitch<T> {
             T result = caseDCell(dCell);
             if (result == null)
                 result = caseDTableElement(dCell);
-            if (result == null)
-                result = caseDTableElementUpdater(dCell);
             if (result == null)
                 result = caseDRepresentationElement(dCell);
             if (result == null)
@@ -249,8 +235,6 @@ public class TableSwitch<T> {
             T result = caseDTargetColumn(dTargetColumn);
             if (result == null)
                 result = caseDColumn(dTargetColumn);
-            if (result == null)
-                result = caseDTableElementUpdater(dTargetColumn);
             if (result == null)
                 result = caseDTableElement(dTargetColumn);
             if (result == null)
@@ -325,23 +309,6 @@ public class TableSwitch<T> {
      * @generated
      */
     public T caseDTable(DTable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DTable Element Updater</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DTable Element Updater</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDTableElementUpdater(DTableElementUpdater object) {
         return null;
     }
 

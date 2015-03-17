@@ -16,12 +16,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTable/headerColumnWidth"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//DTable/description"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="table.ecore#//DTableElementUpdater">
-      <genOperations ecoreOperation="table.ecore#//DTableElementUpdater/activate">
-        <genParameters ecoreParameter="table.ecore#//DTableElementUpdater/activate/sync"/>
-      </genOperations>
-      <genOperations ecoreOperation="table.ecore#//DTableElementUpdater/deactivate"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="table.ecore#//DTableElement">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//DTableElement/tableElementMapping"/>
     </genClasses>

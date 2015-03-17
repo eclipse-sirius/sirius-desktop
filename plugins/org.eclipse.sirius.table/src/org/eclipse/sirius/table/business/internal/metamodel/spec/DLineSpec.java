@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.impl.DLineImpl;
@@ -34,16 +33,6 @@ import com.google.common.collect.Ordering;
  * @author cbrun
  */
 public class DLineSpec extends DLineImpl {
-
-    @Override
-    public void activate(final DTableElementSynchronizer sync) {
-        // we do nothing
-    }
-
-    @Override
-    public void deactivate() {
-        // we do nothing
-    }
 
     @Override
     public EList<DCell> getOrderedCells() {

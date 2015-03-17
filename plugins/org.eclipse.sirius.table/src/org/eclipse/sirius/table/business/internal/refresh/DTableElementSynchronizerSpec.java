@@ -83,7 +83,8 @@ import com.google.common.collect.Lists;
 public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl {
 
     /**
-     * '*' as feature name allows to skip the feature name validation for cell creation.
+     * '*' as feature name allows to skip the feature name validation for cell
+     * creation.
      */
     protected static final String SKIP_FEATURENAME_VALIDATION = "*";
 
@@ -326,7 +327,6 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      *            The cell to removed
      */
     protected void removeUneededCell(DCell cell) {
-        cell.deactivate();
         final Session session = SessionManager.INSTANCE.getSession(cell.getTarget());
         final ECrossReferenceAdapter xref = session != null ? session.getSemanticCrossReferencer() : null;
         if (accessor.getPermissionAuthority().canDeleteInstance(cell)) {
@@ -1069,9 +1069,6 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             }
             synchronizeLists(newCell.getSemanticElements(), newElements);
         }
-
-        newCell.deactivate();
-        newCell.activate(this);
     }
 
     private void synchronizeLists(final EList<EObject> semanticElements, final Collection<EObject> newElements) {

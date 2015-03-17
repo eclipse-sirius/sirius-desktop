@@ -182,27 +182,6 @@ public interface TablePackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementUpdater
-     * <em>DTable Element Updater</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.DTableElementUpdater
-     * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementUpdater()
-     * @generated
-     */
-    int DTABLE_ELEMENT_UPDATER = 1;
-
-    /**
-     * The number of structural features of the '<em>DTable Element Updater</em>
-     * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DTABLE_ELEMENT_UPDATER_FEATURE_COUNT = 0;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementImpl
      * <em>DTable Element</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -211,7 +190,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElement()
      * @generated
      */
-    int DTABLE_ELEMENT = 2;
+    int DTABLE_ELEMENT = 1;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -268,7 +247,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getLineContainer()
      * @generated
      */
-    int LINE_CONTAINER = 3;
+    int LINE_CONTAINER = 2;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -306,7 +285,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDLine()
      * @generated
      */
-    int DLINE = 4;
+    int DLINE = 3;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -443,7 +422,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDCell()
      * @generated
      */
-    int DCELL = 5;
+    int DCELL = 4;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -554,7 +533,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementStyle()
      * @generated
      */
-    int DTABLE_ELEMENT_STYLE = 11;
+    int DTABLE_ELEMENT_STYLE = 10;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -629,7 +608,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDCellStyle()
      * @generated
      */
-    int DCELL_STYLE = 6;
+    int DCELL_STYLE = 5;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -721,7 +700,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDColumn()
      * @generated
      */
-    int DCOLUMN = 7;
+    int DCOLUMN = 6;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -850,7 +829,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTargetColumn()
      * @generated
      */
-    int DTARGET_COLUMN = 8;
+    int DTARGET_COLUMN = 7;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -979,7 +958,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDFeatureColumn()
      * @generated
      */
-    int DFEATURE_COLUMN = 9;
+    int DFEATURE_COLUMN = 8;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -1117,7 +1096,7 @@ public interface TablePackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementSynchronizer()
      * @generated
      */
-    int DTABLE_ELEMENT_SYNCHRONIZER = 10;
+    int DTABLE_ELEMENT_SYNCHRONIZER = 9;
 
     /**
      * The number of structural features of the '
@@ -1177,18 +1156,6 @@ public interface TablePackage extends EPackage {
      * @generated
      */
     EAttribute getDTable_HeaderColumnWidth();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementUpdater
-     * <em>DTable Element Updater</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '<em>DTable Element Updater</em>'.
-     * @see org.eclipse.sirius.table.metamodel.table.DTableElementUpdater
-     * @generated
-     */
-    EClass getDTableElementUpdater();
 
     /**
      * Returns the meta object for class '
@@ -1777,18 +1744,6 @@ public interface TablePackage extends EPackage {
          * @generated
          */
         EAttribute DTABLE__HEADER_COLUMN_WIDTH = eINSTANCE.getDTable_HeaderColumnWidth();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.DTableElementUpdater
-         * <em>DTable Element Updater</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.table.metamodel.table.DTableElementUpdater
-         * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementUpdater()
-         * @generated
-         */
-        EClass DTABLE_ELEMENT_UPDATER = eINSTANCE.getDTableElementUpdater();
 
         /**
          * The meta object literal for the '

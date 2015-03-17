@@ -11,7 +11,6 @@
 package org.eclipse.sirius.table.business.internal.metamodel.spec;
 
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
@@ -25,22 +24,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * @author cbrun
  */
 public class DCellSpec extends DCellImpl {
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void activate(DTableElementSynchronizer sync) {
-        // do nothing
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void deactivate() {
-        // do nothing
-    }
 
     /**
      * {@inheritDoc}

@@ -43,7 +43,7 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
  * @model
  * @generated
  */
-public interface DLine extends LineContainer, DTableElement, DTableElementUpdater {
+public interface DLine extends LineContainer, DTableElement {
     /**
      * Returns the value of the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc -->

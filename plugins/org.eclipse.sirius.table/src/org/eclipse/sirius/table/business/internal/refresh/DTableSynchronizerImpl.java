@@ -301,7 +301,6 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         for (final DCellCandidate toRemove : status.getRemovedElements()) {
             final DCell cell = toRemove.getOriginalElement();
             if (cell != null) {
-                cell.deactivate();
                 /*
                  * we should never reach a case were cells are deleted without
                  * having been deleted by their line or column. !
@@ -380,8 +379,6 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             // Assign this cell to its line and column.
             newCell.setLine(line);
             newCell.setColumn(column);
-            // Activate cell
-            newCell.activate(sync);
             result = Options.newSome(newCell);
         }
         return result;
