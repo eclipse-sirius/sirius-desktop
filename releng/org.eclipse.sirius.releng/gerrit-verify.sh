@@ -93,14 +93,14 @@ if [ "$PLATFORM" = "$REFERENCE_PLATFORM" -o "$SUITE" = "gerrit-junit" ]; then
         fi
         invoke_maven -f packaging/org.eclipse.sirius.tests.parent/pom.xml -P"$SUITE" clean integration-test
         readonly TESTS_RESULT="$?"
-        export "TESTS_RESULT=$TESTS_RESULT"
+        echo "TESTS_RESULT=$TESTS_RESULT"
         kill_window_manager
     else
         # Build Sirius tests but do not execute them
         adjust_tests_target_platform
         invoke_maven -f packaging/org.eclipse.sirius.tests.parent/pom.xml clean package
         readonly TESTS_RESULT="$?"
-        export "TESTS_RESULT=$TESTS_RESULT"
+        echo "TESTS_RESULT=$TESTS_RESULT"
         create_dummy_test_report
     fi
 else
@@ -114,4 +114,3 @@ else
   echo "TESTS_RESULT=$TESTS_RESULT"
   exit 1
 fi
-
