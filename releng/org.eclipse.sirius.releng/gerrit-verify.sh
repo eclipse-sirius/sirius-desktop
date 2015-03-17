@@ -104,6 +104,8 @@ if [ "$PLATFORM" = "$REFERENCE_PLATFORM" -o "$SUITE" = "gerrit-junit" ]; then
         create_dummy_test_report
     fi
 else
+    export BUILD_RESULT="0"
+    export TESTS_RESULT="0"
     create_dummy_test_report
 fi
 
@@ -114,3 +116,4 @@ else
   echo "TESTS_RESULT=$TESTS_RESULT"
   exit 1
 fi
+
