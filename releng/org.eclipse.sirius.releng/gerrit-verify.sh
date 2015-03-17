@@ -77,7 +77,7 @@ if [ "$PLATFORM" = "$REFERENCE_PLATFORM" -o "$SUITE" = "gerrit-junit" ]; then
     remove_cached_sirius_bundles
     # Build Sirius core
     invoke_maven -f packaging/org.eclipse.sirius.parent/pom.xml clean package
-    readonly BUILD_RESULT="$!"
+    readonly BUILD_RESULT="$?"
 
     # Build the tests, and run them on the reference platform
     if [ "$GERRIT_BRANCH" = "master" -a "$PLATFORM" = "$REFERENCE_PLATFORM" ]; then
@@ -91,13 +91,13 @@ if [ "$PLATFORM" = "$REFERENCE_PLATFORM" -o "$SUITE" = "gerrit-junit" ]; then
             export SWT_GTK3=0
         fi
         invoke_maven -f packaging/org.eclipse.sirius.tests.parent/pom.xml -P"$SUITE" clean integration-test
-        readonly TESTS_RESULT="$!"
+        readonly TESTS_RESULT="$?"
         kill_window_manager
     else
         # Build Sirius tests but do not execute them
         adjust_tests_target_platform
         invoke_maven -f packaging/org.eclipse.sirius.tests.parent/pom.xml clean package
-        readonly TESTS_RESULT="$!"
+        readonly TESTS_RESULT="$?"
         create_dummy_test_report
     fi
 else
