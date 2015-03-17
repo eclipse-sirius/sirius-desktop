@@ -10,27 +10,22 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.metamodel.spec;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
-import org.eclipse.sirius.tree.DTreeElementSynchronizer;
-import org.eclipse.sirius.tree.DTreeElementUpdater;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.impl.DTreeImpl;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * Implementation od DTree.
@@ -77,42 +72,10 @@ public class DTreeSpec extends DTreeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tree.impl.DTreeImpl#activate(org.eclipse.sirius.tree.DTreeElementSynchronizer)
-     */
-    @Override
-    public void activate(final DTreeElementSynchronizer sync) {
-        final Iterator<EObject> it = eAllContents();
-        while (it.hasNext()) {
-            final EObject eObj = it.next();
-            if (eObj instanceof DTreeElementUpdater) {
-                ((DTreeElementUpdater) eObj).activate(sync);
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getDAnnotation(String)
      */
     @Override
     public DAnnotation getDAnnotation(String source) {
         return new DModelElementInternalQuery(this).getDAnnotation(source);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.impl.DTreeImpl#deactivate()
-     */
-    @Override
-    public void deactivate() {
-        final Iterator<EObject> it = eAllContents();
-        while (it.hasNext()) {
-            final EObject eObj = it.next();
-            if (eObj instanceof DTreeElementUpdater) {
-                ((DTreeElementUpdater) eObj).deactivate();
-            }
-        }
     }
 }

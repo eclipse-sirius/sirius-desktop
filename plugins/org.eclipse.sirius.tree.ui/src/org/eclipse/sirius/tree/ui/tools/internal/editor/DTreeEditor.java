@@ -47,12 +47,10 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tree.DTree;
-import org.eclipse.sirius.tree.DTreeElementSynchronizer;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactoryProvider;
 import org.eclipse.sirius.tree.business.api.command.TreeCommandFactoryService;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
-import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.tree.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
@@ -185,12 +183,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         setAccessor(SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(getTreeModel()));
 
         if (getTreeModel() != null) {
-            /*
-             * let's activate the model listening
-             */
-            final DTreeElementSynchronizer sync = new DTreeElementSynchronizerSpec(getInterpreter(), getAccessor());
-            getTreeModel().activate(sync);
-
             /* Update title. Semantic tree could have been renamed */
             notify(PROP_TITLE);
 
