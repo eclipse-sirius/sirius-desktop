@@ -12,8 +12,10 @@ package org.eclipse.sirius.business.api.query;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -111,6 +113,34 @@ public class DAnalysisQuery {
         } else {
             return Options.newSome(analysis.getModels().get(0));
         }
+    }
+
+    /**
+     * Build a list of main models. <br/>
+     * First, get the first model of this analysis if it contains at least one
+     * model. The first model is the model used to create the representations
+     * file. <br/>
+     * Then add each non controlled models that is not a parent of the main
+     * model (which can be a model fragment if the current DAnalysis is a
+     * referenced analysis and has been created during a previous control).
+     * 
+     * @return an {@link Set} of EObject representing the root of the main
+     *         semantic models.
+     */
+    public Set<EObject> getMainModels() {
+        Option<EObject> optionalMainModel = getMainModel();
+        // We need a list with the "main model" and other root models to allow
+        // control on project with many models
+        Set<EObject> releventModels = Sets.newLinkedHashSet();
+        if (optionalMainModel.some()) {
+            releventModels.add(optionalMainModel.get());
+            for (EObject model : analysis.getModels()) {
+                if (!AdapterFactoryEditingDomain.isControlled(model) && !(new EObjectQuery(optionalMainModel.get()).isContainedIn(model))) {
+                    releventModels.add(model);
+                }
+            }
+        }
+        return releventModels;
     }
 
     /**

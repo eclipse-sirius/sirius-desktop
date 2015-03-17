@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.api.control;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
@@ -25,11 +26,11 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.internal.command.control.UncontrolCommand;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -195,8 +196,8 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
 
         for (final Resource anResource : session.getAllSessionResources()) {
             for (final DAnalysis analysis : getAnalyses(anResource)) {
-                Option<EObject> optionalMainModel = new DAnalysisQuery(analysis).getMainModel();
-                if (optionalMainModel.some() && optionalMainModel.get().equals(object)) {
+                Set<EObject> releventModels = new DAnalysisQuery(analysis).getMainModels();
+                if (Iterables.contains(releventModels, object)) {
                     return anResource;
                 }
             }
