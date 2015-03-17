@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,13 +68,11 @@ import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPathEditorInput;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-import org.eclipse.ui.contexts.IContextService;
 import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;
@@ -87,11 +85,6 @@ import com.google.common.collect.Sets;
  * standard EMF-generated editor, but with Sirius-specific customizations.
  */
 public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigable {
-
-    /**
-     * ID of the context.
-     */
-    public static final String CONTEXT_ID = "org.eclipse.sirius.editor.siriusEditorContext"; //$NON-NLS-1$
 
     private final RepresentationTemplateUpdateTrigger templateUpdateTrigger = new RepresentationTemplateUpdateTrigger();
 
@@ -146,10 +139,9 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         }
     }
 
-    public Control getControl() {
-        return getControl(0);
-    }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void gotoMarker(final IMarker marker) {
         super.gotoMarker(marker);
@@ -176,7 +168,9 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         }
     }
 
-    @Override
+    /**
+     * {@inheritDoc}
+     */
     public boolean navigateToEObject(final URI uri) {
         final EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
         if (eObject != null) {
@@ -186,14 +180,12 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void createPages() {
         super.createPages();
-
-        // Activate context
-        IContextService contextService = (IContextService) getSite().getService(IContextService.class);
-        contextService.activateContext(CONTEXT_ID);
-
         if (selectionViewer != null) {
             selectionViewer.setLabelProvider(new CustomSiriusAdapterFactoryLabelProvider(adapterFactory));
             selectionViewer.addFilter(new ViewerFilter() {
@@ -329,6 +321,11 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         return null;
     }
 
+    /**
+     * {@inheritDoc} Override to handle other editor input.
+     * 
+     * @see org.eclipse.sirius.editor.editorPlugin.SiriusEditor#createModel()
+     */
     @Override
     public void createModel() {
         URI resourceURI = getURIFromInput(getEditorInput());
@@ -372,6 +369,9 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         return result;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void dispose() {
         super.dispose();

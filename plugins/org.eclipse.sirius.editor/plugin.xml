@@ -1299,37 +1299,6 @@
      <customizer
            class="org.eclipse.sirius.editor.tools.internal.editor.SiriusCoreEditorCustomization"></customizer>
   </extension>
-  <extension
-        point="org.eclipse.ui.commands">
-     <command
-           id="org.eclipse.sirius.editor.command.show.outline"
-           name="VSM Quick outline">
-     </command>
-  </extension>
-  <extension
-        point="org.eclipse.ui.bindings">
-     <key
-           commandId="org.eclipse.sirius.editor.command.show.outline"
-           contextId="org.eclipse.sirius.editor.siriusEditorContext"
-           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-           sequence="M1+O">
-     </key>
-  </extension>
-  <extension
-        point="org.eclipse.ui.contexts">
-     <context
-           id="org.eclipse.sirius.editor.siriusEditorContext"
-           name="SiriusEditor Context"
-           parentId="org.eclipse.ui.contexts.window">
-     </context>
-  </extension>
-  <extension
-        point="org.eclipse.ui.handlers">
-     <handler
-           class="org.eclipse.sirius.editor.tools.internal.commands.VSMQuickOutlineHandler"
-           commandId="org.eclipse.sirius.editor.command.show.outline">
-     </handler>
-  </extension>
     
  <!-- End of user code plugin.xml end specifics  -->
 </plugin>
