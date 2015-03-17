@@ -38,6 +38,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
@@ -249,8 +250,7 @@ public class SiriusControlCommand extends ControlCommand {
 
         for (Resource aird : session.getAllSessionResources()) {
             DAnalysis currentAnalysis = getDAnalysis(aird);
-            Option<EObject> optionalMainModel = new DAnalysisQuery(currentAnalysis).getMainModel();
-            if (optionalMainModel.some() && optionalMainModel.get().equals(semanticParentRoot)) {
+            if (Iterables.contains(currentAnalysis.getModels(), semanticParentRoot)) {
                 List<DAnalysis> referencedAnalysis = new ArrayList<DAnalysis>(currentAnalysis.getReferencedAnalysis());
                 for (DAnalysis childrenAnalysis : referencedAnalysis) {
                     Option<EObject> optionalChildrenMainModel = new DAnalysisQuery(childrenAnalysis).getMainModel();

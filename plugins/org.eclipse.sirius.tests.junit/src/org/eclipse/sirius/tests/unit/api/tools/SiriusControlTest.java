@@ -11,8 +11,10 @@
 package org.eclipse.sirius.tests.unit.api.tools;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -32,16 +34,18 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.control.AbstractControlTest;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.junit.Assert;
 
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.control.AbstractControlTest;
+import com.google.common.collect.Lists;
 
 public class SiriusControlTest extends AbstractControlTest {
 
@@ -67,6 +71,10 @@ public class SiriusControlTest extends AbstractControlTest {
 
     private static final String SEMANTIC_MODEL_FILENAME_7 = "VP-2818/tc.ecore";
 
+    private static final String SEMANTIC_MODEL_FILENAME_8 = "448373/448373.ecore";
+
+    private static final String SEMANTIC_MODEL_FILENAME_8_1 = "448373/448373b.ecore";
+
     private static final String SESSION_MODEL_FILENAME_1 = "base/chain.aird";
 
     private static final String SESSION_MODEL_FILENAME_2 = "controlled/chain.aird";
@@ -87,6 +95,8 @@ public class SiriusControlTest extends AbstractControlTest {
 
     private static final String SESSION_MODEL_FILENAME_7 = "VP-2818/tc.aird";
 
+    private static final String SESSION_MODEL_FILENAME_8 = "448373/representations.aird";
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -101,6 +111,8 @@ public class SiriusControlTest extends AbstractControlTest {
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME_6_1, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_6_1);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME_6_2, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_6_2);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME_7, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_7);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME_8, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_8);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME_8_1, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_8_1);
 
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_1, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_1);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_2, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_2);
@@ -112,6 +124,7 @@ public class SiriusControlTest extends AbstractControlTest {
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_6_1, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_6_1);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_6_2, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_6_2);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_7, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_7);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_8, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_8);
     }
 
     public void testControl() throws Exception {
@@ -147,6 +160,71 @@ public class SiriusControlTest extends AbstractControlTest {
 
             assertFilesExist("/base/chain.ecore", "/base/chain.aird", "/base/chain_acceleo.ecore", "/base/chain_acceleo.aird");
             assertEquals("The resourceSet should be contains only 4 resources typed Aird and Ecore", 4, getResourceTypeAirdOrEcore(rs).size());
+        } finally {
+            session.close(new NullProgressMonitor());
+        }
+    }
+
+    /**
+     * Test validating that it is possible to control/uncontrol the second
+     * semantic model of a modeling project.
+     * 
+     * @throws Exception
+     */
+    public void testControlUncontrolSecondModel() throws Exception {
+        // Addition of 2 models as semantic resources
+        ArrayList<String> semanticModelPaths = Lists.<String> newArrayList();
+        semanticModelPaths.add(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_8);
+        semanticModelPaths.add(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_8_1);
+        genericSetUp(semanticModelPaths, Collections.<String> emptyList(), TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_8);
+        ResourceSet rs = session.getTransactionalEditingDomain().getResourceSet();
+        // Disabling ui callback
+        SiriusEditPlugin.getPlugin().setUiCallback(new NoUICallback());
+        IDiagramCommandFactory commandFactory = DiagramCommandFactoryService.getInstance().getNewProvider().getCommandFactory(session.getTransactionalEditingDomain());
+        commandFactory.setUserInterfaceCallBack(new NoUICallback());
+
+        // The control will be done on a element of the second semantic resource
+        Iterator<Resource> semanticResourceIterator = session.getSemanticResources().iterator();
+        Resource semanticResource = semanticResourceIterator.next();
+        Assert.assertEquals("The path of the first semantic resource is unexpected", "/resource/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_8, semanticResource.getURI().path());
+        semanticResource = semanticResourceIterator.next();
+        Assert.assertEquals("The path of the second semantic resource is unexpected", "/resource/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_8_1, semanticResource.getURI().path());
+
+        EObject semanticElt = semanticResource.getContents().get(0);
+        try {
+            assertFilesExist("/" + SEMANTIC_MODEL_FILENAME_8, "/" + SEMANTIC_MODEL_FILENAME_8_1, "/" + SESSION_MODEL_FILENAME_8);
+            String semantic_model_filename_8_1_controlled = ("/" + SEMANTIC_MODEL_FILENAME_8_1).replace(".ecore", "_controlled.ecore");
+            String session_model_filename_8_1_controlled = ("/" + SESSION_MODEL_FILENAME_8).replace(".aird", "_controlled.aird");
+            assertFilesDoNotExist(semantic_model_filename_8_1_controlled, session_model_filename_8_1_controlled);
+            assertEquals("The resourceSet should be contains only 3 resources typed Aird and Ecore", 3, getResourceTypeAirdOrEcore(rs).size());
+
+            final EObject root = findPackageNamed("p1", semanticElt);
+            final DRepresentation representation = session.getOwnedViews().iterator().next().getAllRepresentations().get(0);
+            final URI controlledModelUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + semantic_model_filename_8_1_controlled, true);
+            final URI controlledAirdUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + session_model_filename_8_1_controlled, true);
+            siriusControl(root, controlledModelUri, Collections.singleton(representation), controlledAirdUri);
+
+            final EObject root2 = findPackageNamed("p1", semanticElt);
+            assertNotNull(root2);
+            assertSame(root, root2);
+            assertEquals(controlledModelUri, root2.eResource().getURI());
+            assertEquals(controlledAirdUri, representation.eResource().getURI());
+
+            // Check that the created aird does not need migration (version tag
+            // must be initialized)
+            checkRepresentationFileMigrationStatus(controlledAirdUri, false);
+
+            assertFilesExist("/" + SEMANTIC_MODEL_FILENAME_8, "/" + SEMANTIC_MODEL_FILENAME_8_1, "/" + SESSION_MODEL_FILENAME_8, semantic_model_filename_8_1_controlled,
+                    session_model_filename_8_1_controlled);
+            assertEquals("The resourceSet should be contains only 5 resources typed Aird and Ecore", 5, getResourceTypeAirdOrEcore(rs).size());
+
+            // Uncontrol the controlled element
+            Command vuc = new SiriusUncontrolCommand(root2, true, true, new NullProgressMonitor());
+            session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
+
+            assertFilesExist("/" + SEMANTIC_MODEL_FILENAME_8, "/" + SEMANTIC_MODEL_FILENAME_8_1, "/" + SESSION_MODEL_FILENAME_8);
+            assertEquals("The resourceSet should be contains only 3 resources typed Aird and Ecore", 3, getResourceTypeAirdOrEcore(rs).size());
+            assertFilesDoNotExist(semantic_model_filename_8_1_controlled, session_model_filename_8_1_controlled);
         } finally {
             session.close(new NullProgressMonitor());
         }
