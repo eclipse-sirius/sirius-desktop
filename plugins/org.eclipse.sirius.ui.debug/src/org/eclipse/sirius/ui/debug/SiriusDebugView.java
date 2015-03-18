@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.ContentHandler;
@@ -383,6 +382,7 @@ public class SiriusDebugView extends AbstractDebugView {
         addShowResourceSetTopologyAction();
         addShowAdaptersAction();
         addShowSessionStructureAction();
+        addShowCrossReferencerMap();
     }
 
     private void addShowSessionStructureAction() {
@@ -406,7 +406,7 @@ public class SiriusDebugView extends AbstractDebugView {
             private String getStructure(DAnalysisSessionImpl session) {
                 StringBuilder sb = new StringBuilder();
                 sb.append("DAnalysisSessionEObject references:\n");
-                for (EStructuralFeature esf: session.eClass().getEAllStructuralFeatures()) {
+                for (EStructuralFeature esf : session.eClass().getEAllStructuralFeatures()) {
                     sb.append("* ").append(esf.getName()).append(":\n");
                     appendValue(session, esf, sb);
                 }
@@ -425,7 +425,7 @@ public class SiriusDebugView extends AbstractDebugView {
                     sb.append("  - ").append(value instanceof EObject ? toString((EObject) value) : String.valueOf(value)).append("\n");
                 }
             }
-            
+
             private String toString(EObject obj) {
                 if (obj == null) {
                     return null;
@@ -440,6 +440,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addShowPayloadAccessLogAction() {
         addAction("Show Payload Access Log", new Runnable() {
+            @Override
             public void run() {
                 int max = 50;
                 List<FeatureAccess> log = PayloadMarkerAdapter.INSTANCE.getAccessLog();
@@ -473,6 +474,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addClearPayloadAccessLogAction() {
         addAction("Clear Payload Access Log", new Runnable() {
+            @Override
             public void run() {
                 PayloadMarkerAdapter.INSTANCE.clearAccessLog();
             }
@@ -529,7 +531,11 @@ public class SiriusDebugView extends AbstractDebugView {
         });
     }
 
-    private EObject getCurrentEObject() {
+    private void addShowCrossReferencerMap() {
+        addAction("Show Cross Referencer Map", new ShowCrossReferencerMap(this));
+    }
+
+    EObject getCurrentEObject() {
         if (selection instanceof IGraphicalEditPart) {
             return ((IGraphicalEditPart) selection).resolveSemanticElement();
         } else if (selection instanceof EObject) {
@@ -541,6 +547,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addShowResourceSetTopologyAction() {
         addAction("Show ResourceSet Topology", new Runnable() {
+            @Override
             public void run() {
                 for (Session s : SessionManager.INSTANCE.getSessions()) {
                     ResourceSetTopologyAnalyzer rsta = new ResourceSetTopologyAnalyzer(s.getTransactionalEditingDomain().getResourceSet());
@@ -577,6 +584,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addLoadResourceWithProgressAction() {
         addAction("Load with progress", new Runnable() {
+            @Override
             public void run() {
                 FileDialog dia = new FileDialog(getSite().getShell(), SWT.OPEN);
                 dia.setFilterExtensions(new String[] { "*.ecore" });
@@ -585,6 +593,7 @@ public class SiriusDebugView extends AbstractDebugView {
                 if (path != null) {
                     try {
                         IRunnableWithProgress op = new IRunnableWithProgress() {
+                            @Override
                             public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                                 ResourceSet rs = new ResourceSetImpl();
                                 final SubMonitor loadingMonitor = SubMonitor.convert(monitor, (int) new File(path).length());
@@ -638,6 +647,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addExtractExpressionsAction() {
         addAction("Extract Expressions", new Runnable() {
+            @Override
             public void run() {
                 FileDialog dia = new FileDialog(getSite().getShell(), SWT.OPEN | SWT.MULTI);
                 dia.setFilterExtensions(new String[] { "*.odesign" });
@@ -686,6 +696,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addSiriusSelectionAction() {
         addAction("Sirius Selection", new Runnable() {
+            @Override
             public void run() {
                 ViewpointRegistry reg = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
                 if (currentSelection == null) {
@@ -701,6 +712,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addShowCommandStackAction() {
         addAction("Show CommandStack", new Runnable() {
+            @Override
             public void run() {
                 IUndoContext undoContext = getUndoContext(selection);
                 if (undoContext != null) {
@@ -751,6 +763,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addSelectReusedSiriussAction() {
         addAction("Select reused", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof Viewpoint) {
                     final Option<Set<URI>> sel = new ViewpoitnDependenciesSelectionDialog((Viewpoint) selection).selectReusedViewpoints(getSite().getShell());
@@ -765,6 +778,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addShowMovidaRegistryStatusAction() {
         addAction("Show Registry Status", new Runnable() {
+            @Override
             public void run() {
                 if (registry != null) {
                     StringBuilder status = new StringBuilder();
@@ -777,12 +791,14 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addStartMovidaRegistryAction() {
         addAction("Start Registry", new Runnable() {
+            @Override
             public void run() {
                 if (registry != null) {
                     registry.stop();
                 }
                 registry = new ViewpointRegistry();
                 registry.addListener(new ViewpointRegistryListener() {
+                    @Override
                     public void registryChanged(ViewpointRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed) {
                         System.out.println();
                         System.out.println("Added:");
@@ -806,6 +822,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addRefreshDiagramAction() {
         addAction("Refresh diagram", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof DiagramEditPart) {
                     final DiagramEditPart diag = (DiagramEditPart) selection;
@@ -820,6 +837,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addRefreshCoverageAction() {
         addAction("Refresh coverage", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof SequenceDiagramEditPart) {
                     final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
@@ -833,6 +851,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addExpandAction() {
         addAction("Expand", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof SequenceDiagramEditPart) {
                     final int start = Integer.parseInt(askStringFromUser("Expansion", "Start y", "0"));
@@ -849,6 +868,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addRefreshBenpointsAction() {
         addAction("Refresh bendpoints", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof SequenceMessageEditPart) {
                     final SequenceMessageEditPart smep = (SequenceMessageEditPart) selection;
@@ -869,6 +889,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addResetBendpointsAction() {
         addAction("Reset bendpoints", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof SequenceDiagramEditPart) {
                     final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
@@ -887,6 +908,7 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     private void addStorePositionsAction() {
         addAction("Store positions", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof SequenceDiagramEditPart) {
                     SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
@@ -904,6 +926,7 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     private void addShowPositionChangesAction() {
         addAction("Show Position Changes", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof SequenceDiagramEditPart) {
                     SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
@@ -948,6 +971,7 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     private void addShowOrderingsAction() {
         addAction("Orderings", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof SequenceDiagramEditPart) {
                     AdapterFactoryLabelProvider lp = new AdapterFactoryLabelProvider(getAdapterFactory());
@@ -999,6 +1023,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addFoldingToggleAction() {
         addAction("Toggle folding", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof IAbstractDiagramNodeEditPart) {
                     IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) selection;
@@ -1019,6 +1044,7 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     private void addShowFiguresHierarchyAction() {
         addAction("Show figures", new Runnable() {
+            @Override
             public void run() {
                 if (selection instanceof IAbstractDiagramNodeEditPart) {
                     IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) selection;
