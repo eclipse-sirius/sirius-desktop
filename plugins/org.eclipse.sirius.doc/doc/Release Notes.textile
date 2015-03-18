@@ -9,6 +9,7 @@ h2(#sirius3.0.0). Changes in Sirius 3.0.0 (from Sirius 2.0.0)
 h3. User-Visible Changes
 
 * In the Viewpoint Selection Dialog and ViewpointsSelectionWizardPage, the "plug-in" decorator for viewpoints loaded from plug-ins is removed, and a "Folder" decorator for viewpoints loaded from the current workspace has been added on the top of the default viewpoint icon.
+* The ability to print table representations has been re-introduced.
 
 h3. Specifier-Visible Changes
 

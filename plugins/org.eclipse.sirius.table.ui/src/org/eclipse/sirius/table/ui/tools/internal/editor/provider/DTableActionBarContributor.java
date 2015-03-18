@@ -12,15 +12,22 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IEditorActionBarContributor;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchActionConstants;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.part.IPage;
+
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableCrossEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateLineMenuAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateTargetColumnMenuAction;
+import org.eclipse.sirius.table.ui.tools.internal.editor.action.PrintAction;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
-import org.eclipse.ui.IEditorActionBarContributor;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbenchActionConstants;
 
 /**
  * This is a contributor for an DTable editor.
@@ -28,11 +35,44 @@ import org.eclipse.ui.IWorkbenchActionConstants;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class DTableActionBarContributor extends EditingDomainActionBarContributor {
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor#setActiveEditor(org.eclipse.ui.IEditorPart)
-     */
+
+    /* ISharedImages.IMG_ETOOL_PRINT_EDIT only since 3.4 */
+    private static final String IMG_ETOOL_PRINT_EDIT = "IMG_ETOOL_PRINT_EDIT";
+
+    private PrintAction printAction;
+
+    @Override
+    public void init(final IActionBars actionBars) {
+        super.init(actionBars);
+        final ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
+        printAction = new PrintAction();
+        printAction.setImageDescriptor(sharedImages.getImageDescriptor(IMG_ETOOL_PRINT_EDIT));
+        actionBars.setGlobalActionHandler(ActionFactory.PRINT.getId(), printAction);
+    }
+
+    @Override
+    public void shareGlobalActions(final IPage page, final IActionBars actionBars) {
+        super.shareGlobalActions(page, actionBars);
+        actionBars.setGlobalActionHandler(ActionFactory.PRINT.getId(), printAction);
+    }
+
+    @Override
+    public void deactivate() {
+        super.deactivate();
+        printAction.setEditor(null);
+    }
+
+    @Override
+    public void activate() {
+        super.activate();
+        printAction.setEditor(activeEditor);
+    }
+
+    @Override
+    public void contributeToToolBar(final IToolBarManager toolBarManager) {
+        super.contributeToToolBar(toolBarManager);
+    }
+
     @Override
     public void setActiveEditor(IEditorPart part) {
         boolean updateCreateMenus = part != activeEditor && part != null;
@@ -84,5 +124,4 @@ public class DTableActionBarContributor extends EditingDomainActionBarContributo
         toolBarManager.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, editorCreateTargetColumnMenuAction);
         toolBarManager.update(true);
     }
-
 }
