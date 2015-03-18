@@ -128,7 +128,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
             // Do nothing if the notification concern only elements of aird
             // resource and that the representationsToForceRefresh is empty.
             if (impactingNotification || !representationsToForceRefresh.isEmpty()) {
-                Option<? extends Command> optionCommand = getRefreshOpennedRepresentationsCommand(impactingNotification);
+                Option<? extends Command> optionCommand = getRefreshOpenedRepresentationsCommand(impactingNotification);
                 if (optionCommand.some()) {
                     result = optionCommand.get();
                 }
@@ -164,7 +164,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
      *            session, false otherwise
      * @return An optional command if at least one refresh is needed.
      */
-    private Option<? extends Command> getRefreshOpennedRepresentationsCommand(boolean isChanged) {
+    private Option<? extends Command> getRefreshOpenedRepresentationsCommand(boolean isChanged) {
         // Get all Sirius editors (that respects the
         // DialectEditor interface) */
         Option<? extends Command> result = Options.newNone();
@@ -175,13 +175,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
         representationsToRefresh.addAll(representationsToForceRefresh);
 
         // Refresh only the editors of the current editing domain.
-        for (DRepresentation rep : Lists.newArrayList(representationsToRefresh)) {
-            if (transactionalEditingDomain != TransactionUtil.getEditingDomain(rep)) {
-                representationsToRefresh.remove(rep);
-            } else if (rep instanceof DSemanticDecorator && transactionalEditingDomain != TransactionUtil.getEditingDomain(((DSemanticDecorator) rep).getTarget())) {
-                representationsToRefresh.remove(rep);
-            }
-        }
+        restrictRepresentationWithinCurrentEditingDomain(representationsToRefresh);
 
         if (!representationsToRefresh.isEmpty()) {
             CompoundCommand cc = new CompoundCommand();
@@ -196,6 +190,16 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
             result = Options.newSome(cc);
         }
         return result;
+    }
+
+    private void restrictRepresentationWithinCurrentEditingDomain(Collection<DRepresentation> representationsToRefresh) {
+        for (DRepresentation rep : Lists.newArrayList(representationsToRefresh)) {
+            if (transactionalEditingDomain != TransactionUtil.getEditingDomain(rep)) {
+                representationsToRefresh.remove(rep);
+            } else if (rep instanceof DSemanticDecorator && transactionalEditingDomain != TransactionUtil.getEditingDomain(((DSemanticDecorator) rep).getTarget())) {
+                representationsToRefresh.remove(rep);
+            }
+        }
     }
 
     /**
@@ -245,7 +249,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
                 // because
                 // of an outside modification of the resource) so we must also
                 // launch a refresh.
-                Option<? extends Command> optionCommand = getRefreshOpennedRepresentationsCommand(true);
+                Option<? extends Command> optionCommand = getRefreshOpenedRepresentationsCommand(true);
                 representationsToForceRefresh.clear();
                 if (optionCommand.some()) {
                     transactionalEditingDomain.getCommandStack().execute(optionCommand.get());

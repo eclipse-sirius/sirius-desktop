@@ -38,20 +38,12 @@ public class DTargetColumnSpec extends DTargetColumnImpl {
 
     private Adapter targetListener;
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public EList<DCell> getOrderedCells() {
         final Collection<DCell> result = DColumnOperations.getOrderedCells(this);
         return new EcoreEList.UnmodifiableEList<DCell>(eInternalContainer(), TablePackage.eINSTANCE.getDColumn_OrderedCells(), result.size(), result.toArray());
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void activate(final DTableElementSynchronizer sync) {
         if (getTarget() != null) {
@@ -62,10 +54,6 @@ public class DTargetColumnSpec extends DTargetColumnImpl {
     private Adapter getOrCreateListener(final DTableElementSynchronizer sync) {
         if (targetListener == null) {
             targetListener = new AdapterImpl() {
-                /**
-                 * 
-                 * {@inheritDoc}
-                 */
                 @Override
                 public void notifyChanged(final Notification msg) {
                     if (msg.getEventType() != Notification.REMOVING_ADAPTER
@@ -78,10 +66,6 @@ public class DTargetColumnSpec extends DTargetColumnImpl {
         return targetListener;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void deactivate() {
         if (getTarget() != null) {
@@ -89,31 +73,18 @@ public class DTargetColumnSpec extends DTargetColumnImpl {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getMapping()
-     */
     @Override
     public RepresentationElementMapping getMapping() {
         return getOriginMapping();
     }
-    
-    /**
-     * 
-     * {@inheritDoc}
-     * @see org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getTableElementMapping()
-     */
+
+    @Override
     public TableMapping getTableElementMapping() {
         TableMapping tableElementMapping = basicGetTableElementMapping();
         return tableElementMapping != null && tableElementMapping.eIsProxy() ? (TableMapping) eResolveProxy((InternalEObject) tableElementMapping) : tableElementMapping;
     }
-    
-    /**
-     * 
-     * {@inheritDoc}
-     * @see org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#basicGetTableElementMapping()
-     */
+
+    @Override
     public TableMapping basicGetTableElementMapping() {
         return (TableMapping) getMapping();
     }

@@ -35,9 +35,8 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
-//TODOCBR comment this !
 /**
- * .
+ * Specialization of DLine.
  * 
  * @author cbrun
  */

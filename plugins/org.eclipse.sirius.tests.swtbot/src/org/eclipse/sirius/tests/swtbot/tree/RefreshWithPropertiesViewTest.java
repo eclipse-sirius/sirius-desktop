@@ -14,6 +14,7 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemTextCondition;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
@@ -146,27 +147,27 @@ public class RefreshWithPropertiesViewTest extends AbstractTreeSiriusSWTBotGefTe
         SWTBotTree tree = editor.bot().tree();
         SWTBotTreeItem item = tree.expandNode(NEW_E_CLASS_1).select();
 
-        TreeItem widgetEnum = item.widget;
-        assertNotNull("The tree item for the class is null", widgetEnum);
-
-        checkpropertiesview(widgetEnum);
+        checkpropertiesview(item);
 
         // undo redo
         editor.setFocus();
         bot.menu("Edit").menu("Undo Set Name").click();
-        assertEquals("The undo of the change of the properties view is not correctly applied.", NEW_E_CLASS_1, getWidgetLabelExpression(widgetEnum));
+        bot.waitUntil(new TreeItemTextCondition(item, NEW_E_CLASS_1));
 
         bot.menu("Edit").menu("Redo Set Name").click();
-        assertEquals("The undo of the change of the properties view is not correctly applied.", NEW_E_CLASS_2, getWidgetLabelExpression(widgetEnum));
+        bot.waitUntil(new TreeItemTextCondition(item, NEW_E_CLASS_2));
 
         localSession.save();
         localSession.closeNoDirty();
     }
 
     /**
-     * @param widgetEnum
+     * @param item
      */
-    private void checkpropertiesview(TreeItem widgetEnum) {
+    private void checkpropertiesview(SWTBotTreeItem item) {
+        TreeItem widgetEnum = item.widget;
+        assertNotNull("The tree item for the class is null", widgetEnum);
+
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         SWTBot propertiesViewBot = propertiesView.bot();
         SWTBotTree tree2 = propertiesViewBot.tree();
@@ -182,7 +183,7 @@ public class RefreshWithPropertiesViewTest extends AbstractTreeSiriusSWTBotGefTe
         tree2 = propertiesViewBot.tree();
         packageName = tree2.getTreeItem(NEW_E_CLASS_2).getNode(NAME);
         packageName.click();
-        assertEquals("The name of the class in the tree is not updated.", NEW_E_CLASS_2, getWidgetLabelExpression(widgetEnum));
+        bot.waitUntil(new TreeItemTextCondition(item, NEW_E_CLASS_2));
     }
 
     /**
