@@ -104,7 +104,10 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
 
     private void addAssociatedResource(Object value) {
         if (value instanceof EObject) {
-            resourceToRootEObjectMap.put(((EObject) value).eResource().getURI().toString(), (EObject) value);
+            Resource eResource = ((EObject) value).eResource();
+            if (eResource != null) {
+                resourceToRootEObjectMap.put(eResource.getURI().toString(), (EObject) value);
+            }
         } else if (value instanceof EList<?>) {
             EList<?> eListNotifier = (EList<?>) value;
             for (Object object : eListNotifier) {

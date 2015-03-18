@@ -1573,7 +1573,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         // The semantic resources are updated by the SemanticResourcesUpdater
         EObject rootObject = semanticResourcesUpdater.getRootObjectFromResourceURI(res.getURI().toString());
         if (rootObject == null) {
-            rootObject = res.getContents() == null ? null : res.getContents().get(0);
+            EList<EObject> contents = res.getContents();
+            rootObject = (contents == null || contents.size() == 0) ? null : contents.get(0);
         }
         for (final DAnalysis analysis : this.allAnalyses()) {
             analysis.getModels().remove(rootObject);
