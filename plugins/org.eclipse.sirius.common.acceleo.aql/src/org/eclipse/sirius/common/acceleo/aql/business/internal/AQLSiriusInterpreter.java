@@ -46,7 +46,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -55,6 +54,7 @@ import org.eclipse.sirius.common.acceleo.aql.business.api.AQLConstants;
 import org.eclipse.sirius.common.acceleo.aql.business.api.ExpressionTrimmer;
 import org.eclipse.sirius.common.acceleo.aql.business.api.TypesUtil;
 import org.eclipse.sirius.common.tools.api.interpreter.ClassLoadingCallback;
+import org.eclipse.sirius.common.tools.api.interpreter.EPackageLoadingCallback;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
@@ -117,13 +117,28 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         }
     };
 
+    private final EPackageLoadingCallback ePackageCallBack;
+
     /**
      * Create a new interpreter supporting the AQL evaluation engine.
      */
     public AQLSiriusInterpreter() {
         super();
         this.queryEnvironment = new QueryEnvironment(xRef);
+        this.ePackageCallBack = new EPackageLoadingCallback() {
+
+            @Override
+            public void loaded(String nsURI, EPackage pak) {
+                queryEnvironment.registerEPackage(pak);
+            }
+
+            @Override
+            public void unloaded(String nsURI, EPackage pak) {
+                queryEnvironment.removeEPackage(pak.getNsPrefix());
+            }
+        };
         this.javaExtensions.addClassLoadingCallBack(callback);
+        this.javaExtensions.addEPackageCallBack(ePackageCallBack);
         final IQueryBuilderEngine builder = new QueryBuilderEngine(queryEnvironment);
         this.parsedExpressions = CacheBuilder.newBuilder().maximumSize(500).build(new CacheLoader<String, AstResult>() {
 
@@ -134,7 +149,6 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
         });
         this.queryEnvironment.registerEPackage(EcorePackage.eINSTANCE);
-        registerEcoreModels(EPackage.Registry.INSTANCE);
 
     }
 
@@ -158,6 +172,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     public void dispose() {
         super.dispose();
         this.javaExtensions.removeClassLoadingCallBack(callback);
+        this.javaExtensions.removeEPackageCallBack(ePackageCallBack);
     }
 
     @Override
@@ -165,9 +180,6 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         String expression = new ExpressionTrimmer(fullExpression).getExpression();
         Map<String, Object> variables = Maps.newLinkedHashMap(getVariables());
         variables.put("self", target);
-        if (target != null && target.eResource() != null && target.eResource().getResourceSet() != null) {
-            registerEcoreModels(target.eResource().getResourceSet().getPackageRegistry());
-        }
         AstResult build;
         try {
             build = parsedExpressions.get(expression);
@@ -180,15 +192,6 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             return result;
         } catch (ExecutionException e) {
             throw new EvaluationException(e.getCause());
-        }
-    }
-
-    private void registerEcoreModels(Registry packageRegistry) {
-        for (String nsURI : packageRegistry.keySet()) {
-            EPackage pak = packageRegistry.getEPackage(nsURI);
-            if (pak != null && this.queryEnvironment.getEPackageProvider().getEPackage(pak.getNsPrefix()) == null) {
-                this.queryEnvironment.registerEPackage(pak);
-            }
         }
     }
 
