@@ -362,15 +362,19 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     @Override
     public void addReferencedAnalysis(final DAnalysis newAnalysis, final Collection<DAnalysis> referencers) {
         if (referencers != null && !referencers.isEmpty()) {
+            // Install the cross referencer as soon as possible
+            registerResourceInCrossReferencer(newAnalysis.eResource());
+
             for (DAnalysis referencer : referencers) {
                 referencer.getReferencedAnalysis().add(newAnalysis);
             }
+
             addAdaptersOnAnalysis(newAnalysis);
-            registerResourceInCrossReferencer(newAnalysis.eResource());
             for (DAnalysis dAnalysis : new DAnalysisQuery(newAnalysis).getAllReferencedAnalyses()) {
-                addAdaptersOnAnalysis(dAnalysis);
                 registerResourceInCrossReferencer(dAnalysis.eResource());
+                addAdaptersOnAnalysis(dAnalysis);
             }
+
             notifyListeners(SessionListener.REPRESENTATION_CHANGE);
         } else {
             throw new IllegalStateException("Cant add a referenced analysis if no parent analysis exists");
