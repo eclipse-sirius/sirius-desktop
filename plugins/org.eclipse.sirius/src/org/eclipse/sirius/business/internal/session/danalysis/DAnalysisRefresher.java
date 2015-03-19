@@ -16,13 +16,13 @@ import java.util.Map.Entry;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -87,14 +87,14 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl {
      */
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
-        Multimap<DAnalysis, EObject> referencedSemanticModels = getRootSemanticResourceEltsPerRepresentationsResource(event.getNotifications());
+        Multimap<DAnalysis, ResourceDescriptor> referencedSemanticModels = getRootSemanticResourceEltsPerRepresentationsResource(event.getNotifications());
         CompoundCommand result = new CompoundCommand();
-        for (Entry<DAnalysis, Collection<EObject>> entry : referencedSemanticModels.asMap().entrySet()) {
+        for (Entry<DAnalysis, Collection<ResourceDescriptor>> entry : referencedSemanticModels.asMap().entrySet()) {
             DAnalysis analysis = entry.getKey();
-            Collection<EObject> rootSemanticResourceElts = entry.getValue();
-            if (!analysis.getModels().containsAll(rootSemanticResourceElts)) {
-                rootSemanticResourceElts.removeAll(analysis.getModels());
-                result.append(AddCommand.create(event.getEditingDomain(), analysis, ViewpointPackage.Literals.DANALYSIS__MODELS, rootSemanticResourceElts));
+            Collection<ResourceDescriptor> semanticResourceDescriptors = entry.getValue();
+            if (!analysis.getSemanticResources().containsAll(semanticResourceDescriptors)) {
+                semanticResourceDescriptors.removeAll(analysis.getSemanticResources());
+                result.append(AddCommand.create(event.getEditingDomain(), analysis, ViewpointPackage.Literals.DANALYSIS__SEMANTIC_RESOURCES, semanticResourceDescriptors));
             }
         }
         return result;
@@ -119,10 +119,10 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl {
      * @param notifications
      *            the specified collection of {@link Notification}
      * @return a map associating for each {@link DAnalysis} semantic resource
-     *         root element
+     *         descriptor.
      */
-    private Multimap<DAnalysis, EObject> getRootSemanticResourceEltsPerRepresentationsResource(Collection<Notification> notifications) {
-        Multimap<DAnalysis, EObject> referencedSemanticModels = HashMultimap.create();
+    private Multimap<DAnalysis, ResourceDescriptor> getRootSemanticResourceEltsPerRepresentationsResource(Collection<Notification> notifications) {
+        Multimap<DAnalysis, ResourceDescriptor> semanticResourceDescriptors = HashMultimap.create();
         for (Notification notification : notifications) {
             if (Notification.ADD == notification.getEventType() && notification.getNewValue() instanceof DSemanticDecorator) {
                 DSemanticDecorator decorator = (DSemanticDecorator) notification.getNewValue();
@@ -130,17 +130,16 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl {
                 if (decorator.getTarget() != null && representationsResource != null) {
                     DAnalysis analysis = (DAnalysis) representationsResource.getContents().get(0);
                     Resource targetResource = decorator.getTarget().eResource();
-                    registerNewReferencedResource(referencedSemanticModels, analysis, targetResource);
+                    registerNewReferencedResource(semanticResourceDescriptors, analysis, targetResource);
                 }
             }
         }
-        return referencedSemanticModels;
+        return semanticResourceDescriptors;
     }
 
-    private void registerNewReferencedResource(Multimap<DAnalysis, EObject> referencedSemanticModels, DAnalysis analysis, Resource semanticResource) {
+    private void registerNewReferencedResource(Multimap<DAnalysis, ResourceDescriptor> referencedSemanticModels, DAnalysis analysis, Resource semanticResource) {
         if (semanticResource != null) {
-            EObject rootSemanticResourceElement = semanticResource.getContents().get(0);
-            referencedSemanticModels.put(analysis, rootSemanticResourceElement);
+            referencedSemanticModels.put(analysis, new ResourceDescriptor(semanticResource.getURI()));
         }
     }
 }

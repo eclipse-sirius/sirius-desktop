@@ -13,14 +13,10 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
+import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Helper to collect top-level semantic resources.
@@ -50,23 +46,16 @@ public final class SemanticResourceGetter {
     public static Collection<Resource> collectTopLevelSemanticResources(DAnalysisSessionImpl session) {
         Collection<Resource> semanticResources = new LinkedHashSet<Resource>();
         for (DAnalysis analysis : session.allAnalyses()) {
-            @SuppressWarnings("unchecked")
-            InternalEList<EObject> semanticRoots = (InternalEList<EObject>) analysis.eGet(ViewpointPackage.Literals.DANALYSIS__MODELS, false);
-            for (EObject semanticRoot : semanticRoots.basicList()) {
-                if (semanticRoot != null) {
-                    try {
-                        Resource resource = semanticRoot.eResource();
-                        if (resource != null) {
-                            semanticResources.add(resource);
-                        }
-                    } catch (IllegalStateException e) {
-                        if (SiriusPlugin.getDefault().isDebugging()) {
-                            SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, e.getMessage(), e));
-                        }
-                    }
+            for (ResourceDescriptor resourceDesc : analysis.getSemanticResources()) {
+                Resource resource = ModelUtils.getResource(session.getTransactionalEditingDomain().getResourceSet(), resourceDesc.getResourceURI());
+                // empty resource are not taken into account because it can be
+                // resource that has been created for bad reason
+                if (resource != null && !resource.getContents().isEmpty()) {
+                    semanticResources.add(resource);
                 }
             }
         }
+
         semanticResources.removeAll(session.getControlledResources());
         return semanticResources;
     }

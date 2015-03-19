@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,6 +53,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -340,6 +341,7 @@ public class ProfiledCommandFactory {
                              * 
                              * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
                              */
+                            @Override
                             public void execute() {
                                 handleActivation();
                             }
@@ -355,6 +357,7 @@ public class ProfiledCommandFactory {
                              * 
                              * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
                              */
+                            @Override
                             public String getLabel() {
                                 return "hide or show filter";
                             }
@@ -448,6 +451,7 @@ public class ProfiledCommandFactory {
                              * 
                              * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
                              */
+                            @Override
                             public void execute() {
                                 activatedLayers.add(layer);
                             }
@@ -457,6 +461,7 @@ public class ProfiledCommandFactory {
                              * 
                              * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
                              */
+                            @Override
                             public String getLabel() {
                                 return "hide or show layer";
                             }
@@ -471,6 +476,7 @@ public class ProfiledCommandFactory {
                             /**
                              * {@inheritDoc}
                              */
+                            @Override
                             public void execute() {
                                 DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility((DDiagram) designerElement);
                             }
@@ -478,6 +484,7 @@ public class ProfiledCommandFactory {
                             /**
                              * {@inheritDoc}
                              */
+                            @Override
                             public String getLabel() {
                                 return "Refresh visibility";
                             }
@@ -1215,6 +1222,7 @@ public class ProfiledCommandFactory {
                 session.save(new NullProgressMonitor());
                 session.close(new NullProgressMonitor());
                 session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+                    @Override
                     protected void doExecute() {
                         if (model.eResource() != null)
                             resources.add(model.eResource());
@@ -1476,11 +1484,12 @@ public class ProfiledCommandFactory {
     private void moveRepresentations(final DAnalysis slaveAnalysis, final DAnalysisSession session, final Collection<DRepresentation> representationsToMove) {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 
+            @Override
             protected void doExecute() {
                 session.addReferencedAnalysis(slaveAnalysis);
                 for (final Resource resource : session.getSemanticResources()) {
                     if (!resource.getContents().isEmpty()) {
-                        slaveAnalysis.getModels().add(resource.getContents().iterator().next());
+                        slaveAnalysis.getSemanticResources().add(new ResourceDescriptor(resource.getURI()));
                     }
                 }
                 for (final DRepresentation representation : representationsToMove) {
@@ -1488,6 +1497,7 @@ public class ProfiledCommandFactory {
                 }
             }
 
+            @Override
             public boolean canUndo() {
                 /*
                  * We don't want to let people undo that !
@@ -1531,8 +1541,7 @@ public class ProfiledCommandFactory {
      */
     private void synchronizationWithUIThread() {
         while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) {
-        }
-        ;
+        };
     }
 
     private class ToolBasedCreationFactory implements CreationFactory {
@@ -1543,10 +1552,12 @@ public class ProfiledCommandFactory {
             this.toolDesc = toolDescription;
         }
 
+        @Override
         public Object getNewObject() {
             return toolDesc;
         }
 
+        @Override
         public Object getObjectType() {
             return toolDesc.getClass();
         }
@@ -1564,6 +1575,7 @@ public class ProfiledCommandFactory {
             pickedUri = uri;
         }
 
+        @Override
         protected void execute(final IProgressMonitor monitor) throws CoreException, InterruptedException {
             final ResourceSet set = benchmarkScenario.getDomain().getResourceSet();
             pickedResource = set.createResource(pickedUri);

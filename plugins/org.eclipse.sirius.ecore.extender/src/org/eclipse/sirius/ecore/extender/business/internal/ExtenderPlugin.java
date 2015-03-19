@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,8 @@ import org.osgi.framework.BundleContext;
  */
 public class ExtenderPlugin extends Plugin {
 
-    private static final String ID = "org.eclipse.sirius.ecore.extender"; //$NON-NLS-1$ 
+    /** The id. */
+    public static final String ID = "org.eclipse.sirius.ecore.extender"; //$NON-NLS-1$ 
 
     private static ExtenderPlugin instance;
 

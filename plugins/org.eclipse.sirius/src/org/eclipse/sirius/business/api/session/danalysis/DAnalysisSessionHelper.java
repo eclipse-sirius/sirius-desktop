@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -385,7 +386,7 @@ public final class DAnalysisSessionHelper {
                         }
                     }
                     if (!isMainModelOfReferencedAnalysis) {
-                        analysis.getModels().add(rootContainerInSameResource);
+                        analysis.getSemanticResources().add(new ResourceDescriptor(rootContainerInSameResource.eResource().getURI()));
                     }
                 }
             }

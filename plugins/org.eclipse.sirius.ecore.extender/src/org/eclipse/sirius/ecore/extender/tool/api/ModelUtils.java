@@ -22,9 +22,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -39,6 +42,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin;
 import org.eclipse.sirius.ecore.extender.tool.internal.ReferencesResolver;
 import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
@@ -285,6 +289,37 @@ public final class ModelUtils {
         Map<Object, Object> options = new HashMap<Object, Object>();
         options.put(XMLResource.OPTION_ENCODING, System.getProperty(ModelUtils.ENCODING_PROPERTY));
         return ModelUtils.load(modelResource, options);
+    }
+
+    /**
+     * Loads a resource from an {@link org.eclipse.emf.common.util.URI URI} in a
+     * given {@link ResourceSet}.
+     * <p>
+     * If the load fails, the resource is unloaded and removed from the
+     * resourceSet.
+     * </p>
+     * 
+     * @param resourceURI
+     *            {@link org.eclipse.emf.common.util.URI URI} where the model is
+     *            stored.
+     * @param resourceSet
+     *            The {@link ResourceSet} to load the model in.
+     * @return The resource.
+     */
+    public static Resource getResource(final ResourceSet resourceSet, final URI resourceURI) {
+        Resource resource = null;
+        try {
+            resource = resourceSet.getResource(resourceURI, true);
+        } catch (WrappedException e) {
+            if (ExtenderPlugin.getInstance().isDebugging()) {
+                ExtenderPlugin.getInstance().getLog().log(new Status(IStatus.WARNING, ExtenderPlugin.ID, e.getMessage(), e));
+            }
+            // Warning: as getResource has been called with loadOnDemand to
+            // true, the resource is created with errors but is set on
+            // resourceSet
+        }
+
+        return resource;
     }
 
     /**

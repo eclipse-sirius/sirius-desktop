@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -212,7 +213,7 @@ public class SiriusControlCommand extends ControlCommand {
         }
         final DAnalysis newDAnalysis = getDAnalysis(newRepresentationsFile);
         // Add the new semantic root to the models reference of the new analysis
-        newDAnalysis.getModels().add(this.controlledResource.getContents().get(0));
+        newDAnalysis.getSemanticResources().add(new ResourceDescriptor(controlledResource.getURI()));
         // Update the referencedAnalysis according to the new analysis
         updateReferencedAnalysisReferences(newDAnalysis);
 

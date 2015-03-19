@@ -17,23 +17,21 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
+import org.eclipse.sirius.business.internal.helper.model.ResourceQueryInternal;
+import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DView;
@@ -203,88 +201,22 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
         // so it's likely that an appropriate subclass of
         // org.eclipse.emf.ecore.util.EcoreEList should be used.
 
-        // user code
         Collection<EObject> models = new ArrayList<EObject>();
-        for (ResourceDescriptor resourceDescriptor : getSemanticResources()) {
-            Resource eResource = eResource();
-            if (eResource != null) {
-                try {
-                    Resource resource = eResource.getResourceSet().getResource(resourceDescriptor.getResourceURI(), true);
-                    if (resource != null) {
-                        EObject eObject = findSemanticRoot(resource);
-                        if (eObject != null) {
-                            models.add(eObject);
-                        }
+        Resource eResource = eResource();
+        ResourceSet resourceSet = eResource != null ? eResource.getResourceSet() : null;
+        if (resourceSet != null) {
+            for (ResourceDescriptor resourceDescriptor : getSemanticResources()) {
+                Resource resource = ModelUtils.getResource(resourceSet, resourceDescriptor.getResourceURI());
+                if (resource != null) {
+                    EObject eObject = new ResourceQueryInternal(resource).findSemanticRoot();
+                    if (eObject != null) {
+                        models.add(eObject);
                     }
-                } catch (WrappedException e) {
-                    // a problem occured during demand load.
                 }
             }
         }
 
         return new EcoreEList.UnmodifiableEList<EObject>(this, ViewpointPackage.eINSTANCE.getDAnalysis_Models(), models.size(), models.toArray());
-    }
-
-    /**
-     * Find the root EObject from the resource It is the first EObject of the
-     * resource except for XSD like resource
-     *
-     * @param resource
-     *            the resource from which to find the root
-     * @return the root EObject
-     *
-     * @generated NOT
-     */
-    private EObject findSemanticRoot(final Resource res) {
-        EObject root = null;
-        EList<EObject> contents = res.getContents();
-        if (contents != null && contents.size() > 0) {
-            root = contents.get(0);
-
-            /*
-             * Attempt to determine if the Ecore model was generated from XSD by
-             * inspecting the annotation on the root. XSD->ECore will use the
-             * ExtendedMetaData as the annotation source, set the 'name' to an
-             * empty string (since the generated DocumentRoot doesn't have an
-             * underlying Element name), and have a 'kind' of 'mixed'.
-             */
-            EClass eClass = root.eClass();
-            ExtendedMetaData extendedMetaData = ExtendedMetaData.INSTANCE;
-            if (extendedMetaData.isDocumentRoot(eClass)) {
-
-                /*
-                 * Step over the "mixed", "xMLNSPrefixMap", and
-                 * "xSISchemaLocation" features of the injected DocumentRoot
-                 * found in an XSD generated Ecore model extracted from
-                 * https://www
-                 * .eclipse.org/modeling/emf/docs/overviews/XMLSchemaToEcoreMapping
-                 * .pdf (section 1.5) ... The document root EClass looks like
-                 * one corresponding to a mixed complex type (see section 3.4)
-                 * including a "mixed" feature, and derived implementations for
-                 * the other features in the class. This allows it to maintain
-                 * comments and white space that appears in the document, before
-                 * the root element. A document root class contains two more
-                 * EMap features, both String to String, to record the namespace
-                 * to prefix mappings (xMLNSPrefixMap) and xsi:schemaLocation
-                 * mappings (xSISchemaLocation) of an XML instance document.
-                 */
-                EReference xmlnsPrefixMapFeature = extendedMetaData.getXMLNSPrefixMapFeature(eClass);
-                EReference xsiSchemaLocationFeature = extendedMetaData.getXSISchemaLocationMapFeature(eClass);
-                EAttribute mixedFeatureFeature = extendedMetaData.getMixedFeature(eClass);
-
-                for (int featureID = 0; featureID < eClass.getFeatureCount(); featureID++) {
-                    EStructuralFeature feature = eClass.getEStructuralFeature(featureID);
-                    if (feature != mixedFeatureFeature && feature != xmlnsPrefixMapFeature && feature != xsiSchemaLocationFeature) {
-                        Object obj = root.eGet(feature);
-                        if (obj instanceof EObject) {
-                            root = (EObject) obj;
-                            break;
-                        }
-                    }
-                } // for
-            }
-        }
-        return root;
     }
 
     /**

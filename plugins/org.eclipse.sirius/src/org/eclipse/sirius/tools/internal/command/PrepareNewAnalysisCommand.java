@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tools.internal.command;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -51,9 +52,6 @@ public class PrepareNewAnalysisCommand extends RecordingCommand {
         this.session = session;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void doExecute() {
         if (slaveAnalysis != null && resource != null) {
@@ -63,7 +61,7 @@ public class PrepareNewAnalysisCommand extends RecordingCommand {
             ((DAnalysisSession) session).addReferencedAnalysis(slaveAnalysis);
             for (final Resource semResource : session.getSemanticResources()) {
                 if (!semResource.getContents().isEmpty()) {
-                    slaveAnalysis.getModels().add(semResource.getContents().iterator().next());
+                    slaveAnalysis.getSemanticResources().add(new ResourceDescriptor(semResource.getURI()));
                 }
             }
         }
