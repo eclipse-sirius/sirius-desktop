@@ -30,16 +30,17 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -609,34 +610,21 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         EObject root = res.getContents().get(0);
 
         /*
-         * Attempt to determine if the eCore model was generated from XSD by
+         * Attempt to determine if the Ecore model was generated from XSD by
          * inspecting the annotation on the root. XSD->ECore will use the
          * ExtendedMetaData as the annotation source, set the 'name' to an empty
          * string (since the generated DocumentRoot doesn't have an underlying
          * Element name), and have a 'kind' of 'mixed'.
          */
-        EClass eCls = root.eClass();
-        boolean isXSD = Iterables.any(eCls.getEAnnotations(), new Predicate<EAnnotation>() {
+        EClass eClass = root.eClass();
+        ExtendedMetaData extendedMetaData = ExtendedMetaData.INSTANCE;
+        if (extendedMetaData.isDocumentRoot(eClass)) {
 
-            @Override
-            public boolean apply(EAnnotation annotation) {
-                boolean isExtMetadata = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData".equals(annotation.getSource());
-                if (isExtMetadata) {
-                    EMap<String, String> details = annotation.getDetails();
-                    if (details.containsKey("name") && details.get("name").isEmpty() && details.containsKey("kind") && "mixed".equals(details.get("kind"))) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        });
-
-        if (isXSD) {
             /*
              * Step over the "mixed", "xMLNSPrefixMap", and "xSISchemaLocation"
              * features of the injected DocumentRoot found in an XSD generated
-             * ECore model Excerpts from https://www
-             * .eclipse.org/modeling/emf/docs/overviews/ XMLSchemaToEcoreMapping
+             * Ecore model extracted from https://www
+             * .eclipse.org/modeling/emf/docs/overviews/XMLSchemaToEcoreMapping
              * .pdf (section 1.5) ... The document root EClass looks like one
              * corresponding to a mixed complex type (see section 3.4) including
              * a "mixed" feature, and derived implementations for the other
@@ -647,17 +635,20 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
              * (xMLNSPrefixMap) and xsi:schemaLocation mappings
              * (xSISchemaLocation) of an XML instance document.
              */
-            for (int featureID = 0; featureID < eCls.getFeatureCount(); featureID++) {
-                EStructuralFeature eFeature = eCls.getEStructuralFeature(featureID);
-                String name = eFeature.getName();
-                if (!"mixed".equals(name) && !"xMLNSPrefixMap".equals(name) && !"xSISchemaLocation".equals(name)) {
-                    Object obj = root.eGet(eFeature);
+            EReference xmlnsPrefixMapFeature = extendedMetaData.getXMLNSPrefixMapFeature(eClass);
+            EReference xsiSchemaLocationFeature = extendedMetaData.getXSISchemaLocationMapFeature(eClass);
+            EAttribute mixedFeatureFeature = extendedMetaData.getMixedFeature(eClass);
+
+            for (int featureID = 0; featureID < eClass.getFeatureCount(); featureID++) {
+                EStructuralFeature feature = eClass.getEStructuralFeature(featureID);
+                if (feature != mixedFeatureFeature && feature != xmlnsPrefixMapFeature && feature != xsiSchemaLocationFeature) {
+                    Object obj = root.eGet(feature);
                     if (obj instanceof EObject) {
                         root = (EObject) obj;
                         break;
                     }
                 }
-            }
+            } // for
         }
         return root;
     }

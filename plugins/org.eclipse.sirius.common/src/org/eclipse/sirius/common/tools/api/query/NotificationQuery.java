@@ -11,12 +11,9 @@
 package org.eclipse.sirius.common.tools.api.query;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 
 import com.google.common.base.Preconditions;
 
@@ -69,43 +66,15 @@ public class NotificationQuery {
     private boolean isContainedThroughTransientFeature(EObject obj) {
         EObject current = obj;
         while (current.eContainer() != null) {
-            if (current.eContainingFeature().isTransient() && !isFeatureMap(current.eContainer())) {
+            EObject container = current.eContainer();
+
+            // Do not consider transient containing feature when the container
+            // is a DocumentRoot. See section 1.5 of
+            // https://www.eclipse.org/modeling/emf/docs/overviews/XMLSchemaToEcoreMapping.pdf
+            if (current.eContainingFeature().isTransient() && !ExtendedMetaData.INSTANCE.isDocumentRoot(container.eClass())) {
                 return true;
             }
-            current = current.eContainer();
-        }
-        return false;
-    }
-
-    /**
-     * Return true if the EObject is a feature map as defined in section 3.5 of
-     * https
-     * ://www.eclipse.org/modeling/emf/docs/overviews/XMLSchemaToEcoreMapping
-     * .pdf
-     * 
-     * @param obj
-     *            object to test
-     * @return true if the EObject is a feature map
-     */
-    private boolean isFeatureMap(EObject obj) {
-
-        EAnnotation annotation = obj.eClass().getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData");
-        if (annotation != null && annotation.getDetails() != null) {
-            String kind = annotation.getDetails().get("kind");
-            // Is it sufficient to test kind.equals("mixed")?
-            if ("mixed".equals(kind)) {
-                // If not (or just to be safe), check if type is
-                // EFeatureMapEntry
-
-                // Not exactly sure the difference between getEAllAttributes
-                // and getEAttributes.
-                EList<EAttribute> attribs = obj.eClass().getEAllAttributes();
-                for (EAttribute eAttribute : attribs) {
-                    if (eAttribute.getEType().equals(EcorePackage.eINSTANCE.getEFeatureMapEntry())) {
-                        return true;
-                    }
-                }
-            }
+            current = container;
         }
         return false;
     }
