@@ -16,7 +16,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -78,16 +77,6 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
                         || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__MODELS || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES)) {
             // CHECKSTYLE:ON
 
-            // update the map resource-EObject
-            if (msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__MODELS) {
-                int eventType = msg.getEventType();
-                if (eventType == Notification.ADD || eventType == Notification.ADD_MANY) {
-                    addAssociatedResource(msg.getNewValue());
-                } else if (eventType == Notification.REMOVE || eventType == Notification.REMOVE_MANY) {
-                    removeAssociatedResource(msg.getOldValue());
-                }
-            }
-
             Collection<Resource> updatedSemanticResources = SemanticResourceGetter.collectTopLevelSemanticResources(dAnalysisSessionImpl);
 
             boolean newSemanticResourceAdded = false;
@@ -110,48 +99,6 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
                 dAnalysisSessionImpl.notifyListeners(SessionListener.SEMANTIC_CHANGE);
             }
         }
-    }
-
-    private void addAssociatedResource(Object value) {
-        if (value instanceof EObject) {
-            Resource eResource = ((EObject) value).eResource();
-            if (eResource != null) {
-                resourceToRootEObjectMap.put(eResource.getURI().toString(), (EObject) value);
-            }
-        } else if (value instanceof EList<?>) {
-            EList<?> eListNotifier = (EList<?>) value;
-            for (Object object : eListNotifier) {
-                addAssociatedResource(object);
-            }
-        }
-    }
-
-    private void removeAssociatedResource(Object value) {
-        if (value instanceof EObject) {
-            for (String resource : resourceToRootEObjectMap.keySet()) {
-                if (value.equals(resourceToRootEObjectMap.get(resource))) {
-                    resourceToRootEObjectMap.remove(resource);
-                    break;
-                }
-            }
-        } else if (value instanceof EList<?>) {
-            EList<?> eListNotifier = (EList<?>) value;
-            for (Object object : eListNotifier) {
-                removeAssociatedResource(object);
-            }
-        }
-    }
-
-    /**
-     * Return the root EObject associated to the resource. The root EObject is
-     * part of {@link DAnalysis.getModels}
-     * 
-     * @param resourceURI
-     *            the URI of the resource
-     * @return the eObject
-     */
-    public EObject getRootObjectFromResourceURI(String resourceURI) {
-        return resourceToRootEObjectMap.get(resourceURI);
     }
 
     /**

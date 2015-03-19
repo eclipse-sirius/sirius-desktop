@@ -162,18 +162,6 @@ class SessionResourcesTracker {
     }
 
     /**
-     * Return the root EObject associated to the resource. The root EObject is
-     * part of {@link DAnalysis.getModels}
-     * 
-     * @param resourceURI
-     *            the URI of the resource
-     * @return the eObject
-     */
-    EObject getRootObjectFromResourceURI(String resourceURI) {
-        return semanticResourcesUpdater.getRootObjectFromResourceURI(resourceURI);
-    }
-
-    /**
      * Resolve all resources of the resource set of this session. Some
      * references are ignored (derived features, containment/container
      * references).
