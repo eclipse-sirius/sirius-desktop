@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
-import org.eclipse.sirius.tree.DTreeElementUpdater;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.TreeItemStyle;
@@ -117,8 +116,6 @@ public class TreeSwitch<T> {
             if (result == null)
                 result = caseDTreeItemContainer(dTree);
             if (result == null)
-                result = caseDTreeElementUpdater(dTree);
-            if (result == null)
                 result = caseDocumentedElement(dTree);
             if (result == null)
                 result = caseDRefreshable(dTree);
@@ -126,13 +123,6 @@ public class TreeSwitch<T> {
                 result = caseDModelElement(dTree);
             if (result == null)
                 result = caseDSemanticDecorator(dTree);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case TreePackage.DTREE_ELEMENT_UPDATER: {
-            DTreeElementUpdater dTreeElementUpdater = (DTreeElementUpdater) theEObject;
-            T result = caseDTreeElementUpdater(dTreeElementUpdater);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -172,8 +162,6 @@ public class TreeSwitch<T> {
                 result = caseDTreeItemContainer(dTreeItem);
             if (result == null)
                 result = caseDTreeElement(dTreeItem);
-            if (result == null)
-                result = caseDTreeElementUpdater(dTreeItem);
             if (result == null)
                 result = caseDRepresentationElement(dTreeItem);
             if (result == null)
@@ -250,23 +238,6 @@ public class TreeSwitch<T> {
      * @generated
      */
     public T caseDTree(DTree object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DTree Element Updater</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DTree Element Updater</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDTreeElementUpdater(DTreeElementUpdater object) {
         return null;
     }
 

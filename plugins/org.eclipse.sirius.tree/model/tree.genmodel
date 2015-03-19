@@ -14,12 +14,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tree.ecore#//DTree/semanticElements"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tree.ecore#//DTree/description"/>
     </genClasses>
-    <genClasses ecoreClass="tree.ecore#//DTreeElementUpdater">
-      <genOperations ecoreOperation="tree.ecore#//DTreeElementUpdater/activate">
-        <genParameters ecoreParameter="tree.ecore#//DTreeElementUpdater/activate/sync"/>
-      </genOperations>
-      <genOperations ecoreOperation="tree.ecore#//DTreeElementUpdater/deactivate"/>
-    </genClasses>
     <genClasses ecoreClass="tree.ecore#//DTreeElement">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference tree.ecore#//DTreeElement/treeElementMapping"/>
     </genClasses>

@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
-import org.eclipse.sirius.tree.DTreeElementUpdater;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreeFactory;
 import org.eclipse.sirius.tree.TreeItemStyle;
@@ -71,8 +70,6 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
         switch (eClass.getClassifierID()) {
         case TreePackage.DTREE:
             return createDTree();
-        case TreePackage.DTREE_ELEMENT_UPDATER:
-            return createDTreeElementUpdater();
         case TreePackage.DTREE_ELEMENT:
             return createDTreeElement();
         case TreePackage.DTREE_ITEM:
@@ -94,16 +91,6 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
     public DTree createDTree() {
         DTreeImpl dTree = new DTreeSpec();
         return dTree;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public DTreeElementUpdater createDTreeElementUpdater() {
-        DTreeElementUpdaterImpl dTreeElementUpdater = new DTreeElementUpdaterImpl();
-        return dTreeElementUpdater;
     }
 
     /**

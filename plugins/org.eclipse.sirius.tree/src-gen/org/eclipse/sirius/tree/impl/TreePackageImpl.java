@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
-import org.eclipse.sirius.tree.DTreeElementUpdater;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.TreeFactory;
@@ -50,13 +49,6 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * @generated
      */
     private EClass dTreeEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dTreeElementUpdaterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -209,15 +201,6 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
-    public EClass getDTreeElementUpdater() {
-        return dTreeElementUpdaterEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getDTreeElement() {
         return dTreeElementEClass;
     }
@@ -354,8 +337,6 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         createEReference(dTreeEClass, DTREE__SEMANTIC_ELEMENTS);
         createEReference(dTreeEClass, DTREE__DESCRIPTION);
 
-        dTreeElementUpdaterEClass = createEClass(DTREE_ELEMENT_UPDATER);
-
         dTreeElementEClass = createEClass(DTREE_ELEMENT);
         createEReference(dTreeElementEClass, DTREE_ELEMENT__TREE_ELEMENT_MAPPING);
 
@@ -415,12 +396,10 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         // Add supertypes to classes
         dTreeEClass.getESuperTypes().add(theViewpointPackage.getDRepresentation());
         dTreeEClass.getESuperTypes().add(this.getDTreeItemContainer());
-        dTreeEClass.getESuperTypes().add(this.getDTreeElementUpdater());
         dTreeElementEClass.getESuperTypes().add(theViewpointPackage.getDRepresentationElement());
         dTreeItemContainerEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dTreeItemEClass.getESuperTypes().add(this.getDTreeItemContainer());
         dTreeItemEClass.getESuperTypes().add(this.getDTreeElement());
-        dTreeItemEClass.getESuperTypes().add(this.getDTreeElementUpdater());
         treeItemStyleEClass.getESuperTypes().add(theViewpointPackage.getStyle());
         treeItemStyleEClass.getESuperTypes().add(theViewpointPackage.getLabelStyle());
 
@@ -430,13 +409,6 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDTree_Description(), theDescriptionPackage.getTreeDescription(), null, "description", null, 1, 1, DTree.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(dTreeElementUpdaterEClass, DTreeElementUpdater.class, "DTreeElementUpdater", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-        EOperation op = addEOperation(dTreeElementUpdaterEClass, null, "activate", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, this.getDTreeElementSynchronizer(), "sync", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-        addEOperation(dTreeElementUpdaterEClass, null, "deactivate", 0, 1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(dTreeElementEClass, DTreeElement.class, "DTreeElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDTreeElement_TreeElementMapping(), theDescriptionPackage.getTreeMapping(), null, "treeElementMapping", null, 0, 1, DTreeElement.class, IS_TRANSIENT, IS_VOLATILE,
@@ -466,7 +438,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
         initEClass(dTreeElementSynchronizerEClass, DTreeElementSynchronizer.class, "DTreeElementSynchronizer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-        op = addEOperation(dTreeElementSynchronizerEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);
+        EOperation op = addEOperation(dTreeElementSynchronizerEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, this.getDTreeItem(), "DTreeItem", 1, 1, IS_UNIQUE, IS_ORDERED);
 
         // Create resource

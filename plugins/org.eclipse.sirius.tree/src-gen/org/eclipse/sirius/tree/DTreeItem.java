@@ -38,7 +38,7 @@ import org.eclipse.sirius.tree.description.TreeItemUpdater;
  * @model
  * @generated
  */
-public interface DTreeItem extends DTreeItemContainer, DTreeElement, DTreeElementUpdater {
+public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     /**
      * Returns the value of the '<em><b>Expanded</b></em>' attribute. <!--
      * begin-user-doc -->

@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tree" nsURI="http://www.eclipse.org/sirius/tree/1.0.0" nsPrefix="tree">
-  <eClassifiers xsi:type="ecore:EClass" name="DTree" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//DTreeItemContainer #//DTreeElementUpdater">
+  <eClassifiers xsi:type="ecore:EClass" name="DTree" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//DTreeItemContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticElements" upperBound="-1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
         eType="#//description/TreeDescription"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DTreeElementUpdater">
-    <eOperations name="activate">
-      <eParameters name="sync" eType="#//DTreeElementSynchronizer"/>
-    </eOperations>
-    <eOperations name="deactivate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DTreeElement" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentationElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="treeElementMapping" eType="#//description/TreeMapping"
@@ -22,7 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTreeItems" upperBound="-1"
         eType="#//DTreeItem" containment="true" eOpposite="#//DTreeItem/container"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DTreeItem" eSuperTypes="#//DTreeItemContainer #//DTreeElement #//DTreeElementUpdater">
+  <eClassifiers xsi:type="ecore:EClass" name="DTreeItem" eSuperTypes="#//DTreeItemContainer #//DTreeElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expanded" lowerBound="1"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStyle" lowerBound="1"

@@ -22,8 +22,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.tree.DTreeElement;
-import org.eclipse.sirius.tree.DTreeElementSynchronizer;
-import org.eclipse.sirius.tree.DTreeElementUpdater;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.TreeItemStyle;
@@ -424,28 +422,6 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
-    public void activate(DTreeElementSynchronizer sync) {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void deactivate() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -705,12 +681,6 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
                 return -1;
             }
         }
-        if (baseClass == DTreeElementUpdater.class) {
-            switch (derivedFeatureID) {
-            default:
-                return -1;
-            }
-        }
         return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
     }
 
@@ -759,12 +729,6 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
             switch (baseFeatureID) {
             case TreePackage.DTREE_ELEMENT__TREE_ELEMENT_MAPPING:
                 return TreePackage.DTREE_ITEM__TREE_ELEMENT_MAPPING;
-            default:
-                return -1;
-            }
-        }
-        if (baseClass == DTreeElementUpdater.class) {
-            switch (baseFeatureID) {
             default:
                 return -1;
             }

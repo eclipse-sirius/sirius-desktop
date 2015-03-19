@@ -106,31 +106,6 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.tree.DTreeElementUpdater} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DTreeElementUpdaterItemProvider dTreeElementUpdaterItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.tree.DTreeElementUpdater}. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDTreeElementUpdaterAdapter() {
-        if (dTreeElementUpdaterItemProvider == null) {
-            dTreeElementUpdaterItemProvider = new DTreeElementUpdaterItemProvider(this);
-        }
-
-        return dTreeElementUpdaterItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.DTreeElement} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -328,8 +303,6 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     public void dispose() {
         if (dTreeItemProvider != null)
             dTreeItemProvider.dispose();
-        if (dTreeElementUpdaterItemProvider != null)
-            dTreeElementUpdaterItemProvider.dispose();
         if (dTreeElementItemProvider != null)
             dTreeElementItemProvider.dispose();
         if (dTreeItemItemProvider != null)

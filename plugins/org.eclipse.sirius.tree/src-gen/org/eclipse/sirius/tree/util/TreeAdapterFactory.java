@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
-import org.eclipse.sirius.tree.DTreeElementUpdater;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.TreeItemStyle;
@@ -94,11 +93,6 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDTree(DTree object) {
             return createDTreeAdapter();
-        }
-
-        @Override
-        public Adapter caseDTreeElementUpdater(DTreeElementUpdater object) {
-            return createDTreeElementUpdaterAdapter();
         }
 
         @Override
@@ -239,22 +233,6 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDTreeAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.tree.DTreeElementUpdater
-     * <em>DTree Element Updater</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.tree.DTreeElementUpdater
-     * @generated
-     */
-    public Adapter createDTreeElementUpdaterAdapter() {
         return null;
     }
 

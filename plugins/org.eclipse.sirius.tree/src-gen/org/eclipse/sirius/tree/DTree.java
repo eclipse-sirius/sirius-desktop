@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
  * @model
  * @generated
  */
-public interface DTree extends DRepresentation, DTreeItemContainer, DTreeElementUpdater {
+public interface DTree extends DRepresentation, DTreeItemContainer {
 
     /**
      * Returns the value of the '<em><b>Semantic Elements</b></em>' reference

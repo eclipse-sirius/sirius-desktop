@@ -284,7 +284,7 @@
 				<code>DTableElementStyle.eContainer()</code> can be used instead.
 			</li>
 			<li>The methods 
-				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getCell(DCellStyle)</code> has been removedhas been removed because they are not useful, use 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getCell(DCellStyle)</code> has been removed because they are not useful, use 
 				<code>DCellStyle.eContainer</code> instead.
 			</li>
 			<li>The methods 
@@ -354,6 +354,11 @@
 				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expandAll()</code> but taking a 
 				<code>IProgressMonitor</code> in parameter to have progression on 
 				<code>DTreeItem</code> expanding.
+			</li>
+			<li>The interface 
+				<code>DTreeElementUpdater</code> has been removed from metamodel. It is now unnecessary. This interface was here to provide operations to activate and deactivate the listeners, that have been replaced by the 
+				<code>RefreshImpactedElementsCommand</code> launched from 
+				<code>RefreshEditorsPrecommitListener</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 

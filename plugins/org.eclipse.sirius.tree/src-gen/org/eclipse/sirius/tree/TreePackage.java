@@ -71,7 +71,7 @@ public interface TreePackage extends EPackage {
      * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeItemContainer()
      * @generated
      */
-    int DTREE_ITEM_CONTAINER = 3;
+    int DTREE_ITEM_CONTAINER = 2;
 
     /**
      * The meta object id for the '
@@ -185,27 +185,6 @@ public interface TreePackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.tree.impl.DTreeElementUpdaterImpl
-     * <em>DTree Element Updater</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.tree.impl.DTreeElementUpdaterImpl
-     * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElementUpdater()
-     * @generated
-     */
-    int DTREE_ELEMENT_UPDATER = 1;
-
-    /**
-     * The number of structural features of the '<em>DTree Element Updater</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DTREE_ELEMENT_UPDATER_FEATURE_COUNT = 0;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.tree.impl.DTreeElementImpl
      * <em>DTree Element</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -214,7 +193,7 @@ public interface TreePackage extends EPackage {
      * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElement()
      * @generated
      */
-    int DTREE_ELEMENT = 2;
+    int DTREE_ELEMENT = 1;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -297,7 +276,7 @@ public interface TreePackage extends EPackage {
      * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeItem()
      * @generated
      */
-    int DTREE_ITEM = 4;
+    int DTREE_ITEM = 3;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -417,7 +396,7 @@ public interface TreePackage extends EPackage {
      * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getTreeItemStyle()
      * @generated
      */
-    int TREE_ITEM_STYLE = 5;
+    int TREE_ITEM_STYLE = 4;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -519,7 +498,7 @@ public interface TreePackage extends EPackage {
      * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElementSynchronizer()
      * @generated
      */
-    int DTREE_ELEMENT_SYNCHRONIZER = 6;
+    int DTREE_ELEMENT_SYNCHRONIZER = 5;
 
     /**
      * The number of structural features of the '
@@ -592,18 +571,6 @@ public interface TreePackage extends EPackage {
      * @generated
      */
     EReference getDTree_Description();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.tree.DTreeElementUpdater
-     * <em>DTree Element Updater</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '<em>DTree Element Updater</em>'.
-     * @see org.eclipse.sirius.tree.DTreeElementUpdater
-     * @generated
-     */
-    EClass getDTreeElementUpdater();
 
     /**
      * Returns the meta object for class '
@@ -821,18 +788,6 @@ public interface TreePackage extends EPackage {
          * @generated
          */
         EReference DTREE__DESCRIPTION = eINSTANCE.getDTree_Description();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.tree.impl.DTreeElementUpdaterImpl
-         * <em>DTree Element Updater</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.tree.impl.DTreeElementUpdaterImpl
-         * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElementUpdater()
-         * @generated
-         */
-        EClass DTREE_ELEMENT_UPDATER = eINSTANCE.getDTreeElementUpdater();
 
         /**
          * The meta object literal for the '

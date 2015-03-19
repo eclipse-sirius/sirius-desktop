@@ -38,15 +38,6 @@ public interface TreeFactory extends EFactory {
     DTree createDTree();
 
     /**
-     * Returns a new object of class '<em>DTree Element Updater</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>DTree Element Updater</em>'.
-     * @generated
-     */
-    DTreeElementUpdater createDTreeElementUpdater();
-
-    /**
      * Returns a new object of class '<em>DTree Element</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
