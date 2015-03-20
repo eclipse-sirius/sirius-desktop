@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+  Copyright (c) 2015 Obeo.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="org.eclipse.sirius.tests.sample.component.design.ComponentDesignPlugin"
+               id="org.eclipse.sirius.tests.sample.component.design"
+	       name="component">
+    </component>
+  </extension>
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated component -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.sirius.tests.sample.component.presentation.ComponentModelWizardID"
+            name="%_UI_ComponentModelWizard_label"
+            class="org.eclipse.sirius.tests.sample.component.presentation.ComponentModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ComponentModelFile.gif">
+         <description>%_UI_ComponentModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated component -->
+      <editor
+            id="org.eclipse.sirius.tests.sample.component.presentation.ComponentEditorID"
+            name="%_UI_ComponentEditor_label"
+            icon="icons/full/obj16/ComponentModelFile.gif"
+            extensions="component"
+            class="org.eclipse.sirius.tests.sample.component.presentation.ComponentEditor"
+            contributorClass="org.eclipse.sirius.tests.sample.component.presentation.ComponentActionBarContributor">
+      </editor>
+   </extension>
+</plugin>

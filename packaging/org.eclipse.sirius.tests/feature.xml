@@ -113,14 +113,14 @@ modelers, using JUnit or SWTbot. Install this if you want to write automated tes
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.sirius.tests.sample.scxml.design"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.sirius.tests.junit"
          download-size="0"
@@ -137,6 +137,13 @@ modelers, using JUnit or SWTbot. Install this if you want to write automated tes
 
    <plugin
          id="org.eclipse.sirius.tests.swtbot"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.tests.sample.component.design"
          download-size="0"
          install-size="0"
          version="0.0.0"
