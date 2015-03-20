@@ -71,7 +71,7 @@ Export-Package: org.eclipse.sirius.description.contribution.provider;version="2.
  org.eclipse.sirius.ui.tools.internal.util;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.ui.tools.internal.views;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.ui.tools.internal.views.common;x-internal:=true;version="2.0.4",
- org.eclipse.sirius.ui.tools.internal.views.common.action;x-internal:=true;version="2.0.4",
+ org.eclipse.sirius.ui.tools.internal.views.common.action;x-internal:=true;version="2.1.0",
  org.eclipse.sirius.ui.tools.internal.views.common.item;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.ui.tools.internal.views.common.modelingproject;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager;x-internal:=true;version="2.0.4",
