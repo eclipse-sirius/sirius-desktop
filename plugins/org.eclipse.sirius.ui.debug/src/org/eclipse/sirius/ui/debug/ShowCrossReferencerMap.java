@@ -15,15 +15,16 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -41,6 +42,45 @@ import com.google.common.collect.Lists;
  */
 final class ShowCrossReferencerMap implements Runnable {
 
+    /**
+     * Store inverse references.
+     */
+    private static class InverseReferences {
+        private Map<EStructuralFeature, Integer> features = new HashMap<EStructuralFeature, Integer>();
+
+        private int totalReferences;
+
+        public void addInstance(EStructuralFeature feature) {
+            Integer instances = features.get(feature);
+            if (instances == null) {
+                instances = 0;
+            }
+
+            features.put(feature, instances + 1);
+            totalReferences++;
+        }
+
+        public int getTotalReferences() {
+            return totalReferences;
+        }
+
+        public Set<Entry<EStructuralFeature, Integer>> getFeatures() {
+            return features.entrySet();
+        }
+    }
+
+    /**
+     * Sort map entry by value.
+     */
+    private static class InverseReferencesComparator implements Comparator<Entry<EClass, InverseReferences>> {
+
+        @Override
+        public int compare(Entry<EClass, InverseReferences> left, Entry<EClass, InverseReferences> right) {
+            return right.getValue().getTotalReferences() - left.getValue().getTotalReferences();
+        }
+    }
+
+    /** Sirius debug view */
     private final SiriusDebugView view;
 
     /**
@@ -62,9 +102,10 @@ final class ShowCrossReferencerMap implements Runnable {
 
             if (session != null) {
                 ECrossReferenceAdapter crossReferencer = session.getSemanticCrossReferencer();
+                Collection<Resource> semanticResources = session.getSemanticResources();
                 Option<Object> inverseCrossReferencer = ReflectionHelper.getFieldValueWithoutException(crossReferencer, "inverseCrossReferencer");
                 if (inverseCrossReferencer.some()) {
-                    dump((Map<EObject, Collection<EStructuralFeature.Setting>>) inverseCrossReferencer.get());
+                    dumpCrossReferencer(semanticResources, (Map<EObject, Collection<EStructuralFeature.Setting>>) inverseCrossReferencer.get());
                 }
             }
         }
@@ -73,23 +114,30 @@ final class ShowCrossReferencerMap implements Runnable {
     /**
      * Dump the cross reference map.
      * 
+     * @param semanticResources
+     *            list of semantic resource
+     * 
      * @param crossReferenceMap
      *            the cross reference map
      */
-    private void dump(Map<EObject, Collection<EStructuralFeature.Setting>> crossReferenceMap) {
-        int numberOfSetting = 0;
-        int numberOfSettingNotEList = 0;
+    private void dumpCrossReferencer(Collection<Resource> semanticResources, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferenceMap) {
+        int totalInverseReferences = 0;
+        int totalInversReferencesNotEList = 0;
 
-        LinkedHashMap<EClass, Map<EStructuralFeature, Integer>> featuresMap = new LinkedHashMap<EClass, Map<EStructuralFeature, Integer>>();
+        Map<EClass, InverseReferences> referencesToSemantic = new HashMap<EClass, InverseReferences>();
+        Map<EClass, InverseReferences> referencesToNonSemantic = new HashMap<EClass, InverseReferences>();
 
         for (Map.Entry<EObject, Collection<EStructuralFeature.Setting>> entry : crossReferenceMap.entrySet()) {
             EObject eObject = entry.getKey();
-            EClass eClass = eObject.eClass();
+            Resource resource = eObject.eResource();
 
-            Map<EStructuralFeature, Integer> features = featuresMap.get(eClass);
+            Map<EClass, InverseReferences> inverseReferences = semanticResources.contains(resource) ? referencesToSemantic : referencesToNonSemantic;
+
+            EClass eClass = eObject.eClass();
+            InverseReferences features = inverseReferences.get(eClass);
 
             Collection<EStructuralFeature.Setting> collection = entry.getValue();
-            numberOfSetting += collection.size();
+            totalInverseReferences += collection.size();
 
             Iterator<EStructuralFeature.Setting> j = collection.iterator();
             while (j.hasNext()) {
@@ -97,71 +145,70 @@ final class ShowCrossReferencerMap implements Runnable {
 
                 if (!(setting instanceof EList)) {
                     // An EList is contains by an EObject
-                    numberOfSettingNotEList++;
+                    totalInversReferencesNotEList++;
                 }
 
                 EStructuralFeature feature = setting.getEStructuralFeature();
 
                 if (features == null) {
-                    features = new HashMap<EStructuralFeature, Integer>();
-                    featuresMap.put(eClass, features);
+                    features = new InverseReferences();
+                    inverseReferences.put(eClass, features);
                 }
 
-                Integer instances = features.get(feature);
-                if (instances == null) {
-                    instances = 0;
-                }
-
-                features.put(feature, instances + 1);
+                features.addInstance(feature);
             }
         }
 
         StringBuilder result = new StringBuilder();
         result.append("Number of entry: ");
         result.append(crossReferenceMap.size());
-        result.append("\r\nNumber of Setting: ");
-        result.append(numberOfSetting);
-        result.append("\r\nNumber of Setting not EList: ");
-        result.append(numberOfSettingNotEList);
-        result.append("\r\n---------------------------\r\n\r\n");
+        result.append("\r\nNumber of inverse reference: ");
+        result.append(totalInverseReferences);
+        result.append("\r\nNumber of inverse reference not EList: ");
+        result.append(totalInversReferencesNotEList);
+        result.append("\r\n\r\n");
 
-        List<Entry<EClass, Map<EStructuralFeature, Integer>>> entries = Lists.newArrayList(featuresMap.entrySet());
-        Collections.sort(entries, new Comparator<Entry<EClass, Map<EStructuralFeature, Integer>>>() {
+        result.append("-------------------------------------\r\n");
+        result.append("- References to non semantic element:\r\n");
+        result.append("-------------------------------------\r\n\r\n");
 
-            @Override
-            public int compare(Entry<EClass, Map<EStructuralFeature, Integer>> left, Entry<EClass, Map<EStructuralFeature, Integer>> right) {
-                int leftTotal = 0;
-                for (Integer l : left.getValue().values()) {
-                    leftTotal += l;
-                }
+        dumpInverseReferences(result, referencesToNonSemantic);
 
-                int rightTotal = 0;
-                for (Integer r : right.getValue().values()) {
-                    rightTotal += r;
-                }
+        result.append("---------------------------------\r\n");
+        result.append("- References to semantic element:\r\n");
+        result.append("---------------------------------\r\n\r\n");
+        dumpInverseReferences(result, referencesToSemantic);
 
-                return rightTotal - leftTotal;
-            }
+        view.setText(result.toString());
+    }
 
-        });
+    /**
+     * Dump some inverses reference.
+     * 
+     * @param result
+     *            result to fill
+     * 
+     * @param inverseReferences
+     *            inverse references to dump
+     */
+    private void dumpInverseReferences(StringBuilder result, Map<EClass, InverseReferences> inverseRerefences) {
+        List<Entry<EClass, InverseReferences>> entries = Lists.newArrayList(inverseRerefences.entrySet());
+        Collections.sort(entries, new InverseReferencesComparator());
 
-        for (Map.Entry<EClass, Map<EStructuralFeature, Integer>> entry : entries) {
+        for (Map.Entry<EClass, InverseReferences> entry : entries) {
             EClass eClass = entry.getKey();
             String eClassName = eClass.getInstanceClassName();
 
             result.append(eClassName);
 
-            Map<EStructuralFeature, Integer> collection = entry.getValue();
-            numberOfSetting += collection.size();
+            InverseReferences collection = entry.getValue();
 
             result.append(" <-\r\n    ");
-            int totalInstances = 0;
-            Iterator<Entry<EStructuralFeature, Integer>> j = collection.entrySet().iterator();
+            Iterator<Entry<EStructuralFeature, Integer>> j = collection.getFeatures().iterator();
             while (j.hasNext()) {
                 Entry<EStructuralFeature, Integer> featureInstance = j.next();
                 EStructuralFeature feature = featureInstance.getKey();
                 int instances = featureInstance.getValue();
-                totalInstances += instances;
 
                 result.append(feature.getEContainingClass().getInstanceClassName());
                 result.append(".");
@@ -178,10 +225,10 @@ final class ShowCrossReferencerMap implements Runnable {
                 if (j.hasNext()) {
                     result.append("\r\n    ");
                 } else {
-                    if (totalInstances != instances) {
+                    if (collection.getTotalReferences() != instances) {
                         result.append("\r\n    ");
                         result.append("[");
-                        result.append(totalInstances);
+                        result.append(collection.getTotalReferences());
                         result.append(" total refs]");
                     }
                     result.append("\r\n\r\n");
@@ -189,6 +236,6 @@ final class ShowCrossReferencerMap implements Runnable {
             }
         }
 
-        view.setText(result.toString());
     }
+
 }
