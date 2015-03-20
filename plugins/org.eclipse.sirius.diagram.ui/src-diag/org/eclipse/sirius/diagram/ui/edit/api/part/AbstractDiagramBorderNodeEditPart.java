@@ -34,7 +34,6 @@ import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.util.Proxy;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
-import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
@@ -86,9 +85,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
 
     /** Listens the diagram element. */
     private NotificationListener adapterDiagramElement;
-
-    /** Listens the semantic elements. */
-    private NotificationPreCommitListener adapterSemanticElements;
 
     private NotificationListener editModeListener = new EditStatusUpdater(this);
 
@@ -169,18 +165,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
             this.adapterDiagramElement = DiagramElementEditPartOperation.createEApdaterDiagramElement(this);
         }
         return this.adapterDiagramElement;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEAdapterSemanticElements()
-     */
-    public NotificationPreCommitListener getEAdapterSemanticElements() {
-        if (this.adapterSemanticElements == null) {
-            this.adapterSemanticElements = DiagramElementEditPartOperation.createEAdpaterSemanticElements(this);
-        }
-        return this.adapterSemanticElements;
     }
 
     /**

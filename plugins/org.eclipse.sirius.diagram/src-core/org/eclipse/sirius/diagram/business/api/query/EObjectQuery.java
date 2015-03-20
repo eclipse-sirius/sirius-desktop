@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.api.query;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -33,6 +34,21 @@ public class EObjectQuery extends org.eclipse.sirius.business.api.query.EObjectQ
      */
     public EObjectQuery(EObject eObject) {
         super(eObject);
+    }
+
+    /**
+     * Create a new query. Prefer this constructor if in the context of the
+     * call, you already have access to the cross referencer of the session
+     * containing the queried EObject.
+     * 
+     * @param eObject
+     *            the element to query.
+     * @param xref
+     *            ECrossReferenceAdapter to use for all queries about inverse
+     *            references.
+     */
+    public EObjectQuery(EObject eObject, ECrossReferenceAdapter xref) {
+        super(eObject, xref);
     }
 
     /**

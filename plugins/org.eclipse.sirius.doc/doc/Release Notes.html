@@ -136,6 +136,10 @@
 				<code>removeReferencingResources</code> has been added in 
 				<code>org.eclipse.sirius.business.api.session.Session.removeSemanticResource</code> method to indicate if the referencing resources are also to remove.
 			</li>
+			<li>The query 
+				<code>org.eclipse.sirius.business.api.query.EObjectQuery</code> has now a new constructor with an additional parameter, ECrossReferenceAdapter. This can be usefull if there is many calls to inverse references methods for the same Session. This avoids to get the semantic cross referencer from the EObject each time. This query also proposes a new method 
+				<code>getInverseReferences(Set&lt;EReference&gt;)</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
@@ -348,11 +352,14 @@
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
 			<code>org.eclipse.sirius.synchronizer</code>
-			* The method 
-			<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean, IProgressMonitor)</code> has been added similar to 
-			<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)</code> but taking a 
-			<code>IProgressMonitor</code> in parameter to have progression on synchronization.
 		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean, IProgressMonitor)</code> has been added similar to 
+				<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)</code> but taking a 
+				<code>IProgressMonitor</code> in parameter to have progression on synchronization.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
@@ -450,6 +457,10 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure</code> class has been removed, use a 
 				<code>org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure</code> with a 
 				<code>org.eclipse.draw2d.MarginBorder</code> or a null border instead.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart.getEAdapterSemanticElements()</code> has been removed (and all its implementations). For manual refresh, this adapter has been replaced with the 
+				<code>RefreshEditorsPrecommitListener</code>. 
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 

@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -64,10 +65,17 @@ public class RefreshImpactedElementsCommand extends RecordingCommand {
             monitor = new NullProgressMonitor();
         }
 
-        for (DRepresentation representation : representations) {
-            if (safeRefresh(representation) && DialectManager.INSTANCE instanceof DialectServices2) {
-                ((DialectServices2) DialectManager.INSTANCE).refreshImpactedElements(representation, notifications, monitor);
+        try {
+            monitor.beginTask("Refresh impacted representation elements", representations.size());
+            for (DRepresentation representation : representations) {
+                if (safeRefresh(representation) && DialectManager.INSTANCE instanceof DialectServices2) {
+                    ((DialectServices2) DialectManager.INSTANCE).refreshImpactedElements(representation, notifications, new SubProgressMonitor(monitor, 1));
+                } else {
+                    monitor.worked(1);
+                }
             }
+        } finally {
+            monitor.done();
         }
     }
 

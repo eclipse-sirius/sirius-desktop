@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
-import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
@@ -44,14 +43,6 @@ public interface IDiagramElementEditPart extends IGraphicalEditPart, ISiriusEdit
      *         represented by this edit part.
      */
     EObject resolveTargetSemanticElement();
-
-    /**
-     * Returns the listener to install on semantic elements.
-     * 
-     * @return the listener to install on semantic elements, <code>null</code>
-     *         if there is none.
-     */
-    NotificationPreCommitListener getEAdapterSemanticElements();
 
     /**
      * Returns the adapter to install on the diagram element.

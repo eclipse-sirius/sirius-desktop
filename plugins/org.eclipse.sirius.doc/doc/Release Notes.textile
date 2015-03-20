@@ -39,6 +39,7 @@ h4. Changes in @org.eclipse.sirius@
 ** The boolean value @removeReferencingResources@ has been added to indicate if the referencing resources are also to remove.
 ** The boolean value @removeFromControlledResources@ has been removed because controlled resources are managed internally.
 * The boolean value @removeReferencingResources@ has been added in @org.eclipse.sirius.business.api.session.Session.removeSemanticResource@ method to indicate if the referencing resources are also to remove.
+* The query @org.eclipse.sirius.business.api.query.EObjectQuery@ has now a new constructor with an additional parameter, ECrossReferenceAdapter. This can be usefull if there is many calls to inverse references methods for the same Session. This avoids to get the semantic cross referencer from the EObject each time. This query also proposes a new method @getInverseReferences(Set<EReference>)@.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
@@ -97,6 +98,7 @@ h4. Changes in @org.eclipse.sirius.tree.ui@
 * The type of @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.eventListener@ has been changed from @DemultiplexingListener@ to @ResourceSetListener@.
 
 h4. Changes in @org.eclipse.sirius.synchronizer@
+
 * The method @org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean, IProgressMonitor)@ has been added similar to @org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)@ but taking a @IProgressMonitor@ in parameter to have progression on synchronization.
 
 h4. Changes in @org.eclipse.sirius.diagram@
@@ -122,6 +124,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * The @org.eclipse.sirius.diagram.ui.tools.api.figure.ImageFigureWithAlpha@ interface has been added to identify Figures having the capability to return an alpha value from a coordinate.
 ** @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractCachedSVGFigure@ and @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentImage@  now implement this new interface.
 * @org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure@ class has been removed, use a @org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure@ with a @org.eclipse.draw2d.MarginBorder@ or a null border instead.
+* The method @org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart.getEAdapterSemanticElements()@ has been removed (and all its implementations). For manual refresh, this adapter has been replaced with the @RefreshEditorsPrecommitListener@. 
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 

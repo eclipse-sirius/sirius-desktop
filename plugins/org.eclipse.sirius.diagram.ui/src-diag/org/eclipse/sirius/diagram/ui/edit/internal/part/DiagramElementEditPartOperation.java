@@ -18,7 +18,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -60,7 +59,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.SemanticChangedCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -156,24 +154,6 @@ public final class DiagramElementEditPartOperation {
             return ((DSemanticDecorator) semanticHost).getTarget();
         }
         return null;
-    }
-
-    /**
-     * Creates a listener for semantic elements.
-     * 
-     * @param self
-     *            the edit part.
-     * @return the listener to install on semantic elements.
-     */
-    public static NotificationPreCommitListener createEAdpaterSemanticElements(final IDiagramElementEditPart self) {
-
-        return new NotificationPreCommitListener() {
-
-            public Command transactionAboutToCommit(final Notification msg) {
-                return new SemanticChangedCommand(self.getEditingDomain(), self, msg);
-            }
-
-        };
     }
 
     /**
@@ -395,9 +375,6 @@ public final class DiagramElementEditPartOperation {
         addNavigateDecoratorRefresher(self, broker);
         while (iterSemanticElements.hasNext()) {
             final EObject semantic = iterSemanticElements.next();
-            if (self.getEAdapterSemanticElements() != null) {
-                broker.addNotificationListener(semantic, self.getEAdapterSemanticElements());
-            }
             if (self.getEditModeListener() != null) {
                 broker.addNotificationListener(semantic, self.getEditModeListener());
             }
@@ -479,7 +456,6 @@ public final class DiagramElementEditPartOperation {
                 removeNavigateDecoratorRefresher(self, broker);
                 while (iterSemanticElements.hasNext()) {
                     final EObject semantic = iterSemanticElements.next();
-                    DiagramElementEditPartOperation.removeListener(broker, semantic, self.getEAdapterSemanticElements());
                     DiagramElementEditPartOperation.removeListener(broker, semantic, self.getEditModeListener());
                     // remove this try/catch once the offline mode
                     // will be supported

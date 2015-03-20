@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -59,12 +60,33 @@ public class EObjectQuery {
     protected EObject eObject;
 
     /**
+     * The {@link ECrossReferenceAdapter} to use for all inverse references
+     * queries.
+     */
+    protected ECrossReferenceAdapter xref;
+
+    /**
      * Create a new query.
      * 
      * @param eObject
      *            the element to query.
      */
     public EObjectQuery(EObject eObject) {
+        this.eObject = eObject;
+    }
+
+    /**
+     * Create a new query. Prefer this constructor if in the context of the
+     * call, you already have access to the cross referencer of the session
+     * containing the queried EObject.
+     * 
+     * @param eObject
+     *            the element to query.
+     * @param xref
+     *            ECrossReferenceAdapter to use for all queries about inverse
+     *            references.
+     */
+    public EObjectQuery(EObject eObject, ECrossReferenceAdapter xref) {
         this.eObject = eObject;
     }
 
@@ -162,6 +184,25 @@ public class EObjectQuery {
     }
 
     /**
+     * Finds all the objects in the session which point to this EObject through
+     * one of the specific references type. The queried EObject must be part of
+     * an opened Sirius session.
+     * 
+     * @param refs
+     *            the pointing references.
+     * @return all the EObjects in the same session as this EObject which point
+     *         to it through one of the specified references.
+     */
+    public Collection<EObject> getInverseReferences(final Set<EReference> refs) {
+        Preconditions.checkNotNull(refs);
+        return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
+            public boolean apply(Setting input) {
+                return input != null && refs.contains(input.getEStructuralFeature());
+            }
+        });
+    }
+
+    /**
      * Finds all the objects in the session which reference this EObject through
      * a setting matching the specified predicate. The queried EObject must be
      * part of an opened Sirius session.
@@ -174,16 +215,20 @@ public class EObjectQuery {
      */
     private Collection<EObject> getInverseReferences(Predicate<Setting> predicate) {
         Preconditions.checkNotNull(predicate);
-        Session session = getSession();
-        if (session != null) {
+        if (xref == null) {
+            Session session = getSession();
+            if (session != null) {
+                xref = session.getSemanticCrossReferencer();
+            }
+        }
+        if (xref == null) {
+            return Collections.emptySet();
+        } else {
             Collection<EObject> result = Sets.newHashSet();
-            ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
             for (EStructuralFeature.Setting setting : Iterables.filter(xref.getInverseReferences(eObject), predicate)) {
                 result.add(setting.getEObject());
             }
             return result;
-        } else {
-            return Collections.emptySet();
         }
     }
 

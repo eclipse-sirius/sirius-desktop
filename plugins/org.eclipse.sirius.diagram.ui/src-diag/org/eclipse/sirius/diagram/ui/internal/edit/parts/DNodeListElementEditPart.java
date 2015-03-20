@@ -18,7 +18,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.SelectionRequest;
-import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
@@ -51,8 +50,6 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
 
     /** The authority listener. */
     protected EditPartAuthorityListener authListener = new EditPartAuthorityListener(this);
-
-    private NotificationPreCommitListener adapterSemanticElements;
 
     /**
      * @was-generated
@@ -263,19 +260,6 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     @Override
     public EditPartAuthorityListener getEditPartAuthorityListener() {
         return authListener;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEAdapterSemanticElements()
-     */
-    @Override
-    public NotificationPreCommitListener getEAdapterSemanticElements() {
-        if (this.adapterSemanticElements == null) {
-            this.adapterSemanticElements = DiagramElementEditPartOperation.createEAdpaterSemanticElements(this);
-        }
-        return this.adapterSemanticElements;
     }
 
     @Override

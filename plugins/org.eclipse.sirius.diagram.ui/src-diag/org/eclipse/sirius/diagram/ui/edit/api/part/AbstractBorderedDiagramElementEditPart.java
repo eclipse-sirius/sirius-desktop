@@ -16,7 +16,6 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
-import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.notation.View;
@@ -43,9 +42,6 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
 
     /** Listens the diagram element. */
     private NotificationListener adapterDiagramElement;
-
-    /** Listens the semantic elements. */
-    private NotificationPreCommitListener adapterSemanticElements;
 
     /** listen to semantic elements container */
     private NotificationListener editModeListener = new EditStatusUpdater(this);
@@ -92,18 +88,6 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
             this.adapterDiagramElement = DiagramElementEditPartOperation.createEApdaterDiagramElement(this);
         }
         return this.adapterDiagramElement;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEAdapterSemanticElements()
-     */
-    public NotificationPreCommitListener getEAdapterSemanticElements() {
-        if (this.adapterSemanticElements == null) {
-            this.adapterSemanticElements = DiagramElementEditPartOperation.createEAdpaterSemanticElements(this);
-        }
-        return this.adapterSemanticElements;
     }
 
     /**

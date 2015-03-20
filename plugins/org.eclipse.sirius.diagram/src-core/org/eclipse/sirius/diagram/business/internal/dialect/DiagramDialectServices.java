@@ -10,15 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.dialect;
 
+import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -28,9 +33,11 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
+import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.dialect.DialectServices2;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
@@ -43,6 +50,7 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
@@ -52,6 +60,7 @@ import org.eclipse.sirius.diagram.business.internal.dialect.identifier.EdgeIdent
 import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeContainerIdentifier;
 import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeIdentifier;
 import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeStyleIdentifier;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.CreateViewTask;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.NavigationTask;
 import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
@@ -74,18 +83,32 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
+import com.google.common.collect.Sets;
+
 /**
  * Services for diagram.
  * 
  * @author cbrun
  */
-public class DiagramDialectServices extends AbstractRepresentationDialectServices {
+public class DiagramDialectServices extends AbstractRepresentationDialectServices implements DialectServices2 {
+    /**
+     * All references to find {@link DDiagramElement} from corresponding
+     * semantic elements.
+     */
+    private static final Set<EReference> DIAGRAM_ELEMENTS_INVERSE_REFERENCES = Sets.newHashSet();
+
+    static {
+        DIAGRAM_ELEMENTS_INVERSE_REFERENCES.add(ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target());
+        DIAGRAM_ELEMENTS_INVERSE_REFERENCES.add(ViewpointPackage.eINSTANCE.getDRepresentationElement_SemanticElements());
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -176,7 +199,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
                 canonicalSynchronizer.synchronize();
                 canonicalSynchronizer.postCreation();
                 monitor.worked(10);
-                
+
             }
         } finally {
             monitor.done();
@@ -221,7 +244,8 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     }
 
     /**
-     * The <code>fullRefresh</code> is not taken into account for diagram dialect.
+     * The <code>fullRefresh</code> is not taken into account for diagram
+     * dialect.
      * 
      * {@inheritDoc}
      */
@@ -492,5 +516,74 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         }
         return false;
 
+    }
+
+    @Override
+    public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
+        try {
+            monitor.beginTask("Refresh diagram", 10);
+            DSemanticDiagram diagram = (DSemanticDiagram) representation;
+            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(diagram.getTarget());
+            ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
+
+            Set<DDiagramElement> diagramElements = getDiagramElementsToRefresh(notifications, diagram);
+            monitor.worked(2);
+            DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(diagram, interpreter, accessor);
+            IProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
+            try {
+                subMonitor.beginTask("Refresh impacted elements", diagramElements.size());
+                for (DDiagramElement diagramElement : diagramElements) {
+                    sync.refresh(diagramElement);
+                    subMonitor.worked(1);
+                }
+            } finally {
+                subMonitor.done();
+            }
+        } finally {
+            monitor.done();
+        }
+    }
+
+    private Set<DDiagramElement> getDiagramElementsToRefresh(Collection<Notification> notifications, DSemanticDiagram diagram) {
+        Set<DDiagramElement> diagramElementsToRefresh = Sets.newHashSet();
+        Session session = new EObjectQuery(diagram.getTarget()).getSession();
+        if (session != null) {
+            ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
+            // Deal with each notifier only one time.
+            Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
+            for (Notification notification : notifications) {
+                Object notifier = notification.getNotifier();
+                if (notifier instanceof EObject) {
+                    EObject eObjectNotifier = (EObject) notifier;
+                    boolean expecetedEventType = notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET;
+                    expecetedEventType = expecetedEventType || notification.getEventType() == Notification.ADD || notification.getEventType() == Notification.ADD_MANY
+                            || notification.getEventType() == Notification.MOVE;
+                    if (expecetedEventType) {
+                        if (alreadyDoneNotifiers.add(eObjectNotifier)) {
+                            diagramElementsToRefresh.addAll(getDiagramElementsToRefresh(eObjectNotifier, diagram, xref));
+                        }
+                    }
+                }
+            }
+        }
+        return diagramElementsToRefresh;
+    }
+
+    private Set<DDiagramElement> getDiagramElementsToRefresh(EObject notifier, DSemanticDiagram diagram, ECrossReferenceAdapter xref) {
+        Set<DDiagramElement> diagramElementsToRefresh = Sets.newHashSet();
+        Collection<EObject> inverseReferencers = new EObjectQuery(notifier, xref).getInverseReferences(DIAGRAM_ELEMENTS_INVERSE_REFERENCES);
+        for (EObject inverseReferencer : inverseReferencers) {
+            if (inverseReferencer instanceof DDiagramElement) {
+                DDiagramElement diagramElement = (DDiagramElement) inverseReferencer;
+                if (isContainedWithinCurrentDiagram(diagramElement, diagram)) {
+                    diagramElementsToRefresh.add(diagramElement);
+                }
+            }
+        }
+        return diagramElementsToRefresh;
+    }
+
+    private boolean isContainedWithinCurrentDiagram(DDiagramElement diagramElement, DSemanticDiagram diagram) {
+        return diagram == new DRepresentationElementQuery(diagramElement).getParentRepresentation();
     }
 }

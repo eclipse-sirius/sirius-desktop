@@ -94,9 +94,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     /** Listens the diagram element. */
     private NotificationListener adapterDiagramElement;
 
-    /** Listens the semantic elements. */
-    private NotificationPreCommitListener adapterSemanticElements;
-
     /** Listens the routing style. */
     private NotificationPreCommitListener adapterRoutingStyle;
 
@@ -306,14 +303,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             this.adapterDiagramElement = DiagramElementEditPartOperation.createEApdaterDiagramElement(this);
         }
         return this.adapterDiagramElement;
-    }
-
-    @Override
-    public NotificationPreCommitListener getEAdapterSemanticElements() {
-        if (this.adapterSemanticElements == null) {
-            this.adapterSemanticElements = DiagramElementEditPartOperation.createEAdpaterSemanticElements(this);
-        }
-        return this.adapterSemanticElements;
     }
 
     @Override
