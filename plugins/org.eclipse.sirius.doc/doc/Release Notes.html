@@ -13,9 +13,6 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#sirius3.1.0">Changes in Sirius 3.1.0 (from Sirius 3.0.0)</a>
-					</li>
-					<li>
 						<a href="#sirius3.0.0">Changes in Sirius 3.0.0 (from Sirius 2.0.0)</a>
 					</li>
 					<li>
@@ -43,27 +40,6 @@
 			</li>
 		</ol>
 		<p>This document contains the release notes for all major releases of Sirius.</p>
-		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0 (from Sirius 3.0.0)</h2>
-		<h3 id="APIChanges">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius.tree.ui">Changes in 
-			<code>org.eclipse.sirius.tree.ui</code>
-		</h4>
-		<ul>
-			<li>The method 
-				<code>org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(final TransactionalEditingDomain domain, final Notification notification)</code> has been replaced by 
-				<code>org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(ResourceSetChangeEvent)</code> to allow to update only once per ResourceSetChangeEvent and let subclasses make additional filtering on the notifications.
-			</li>
-			<li>The return type of the method 
-				<code>org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.getEventListener()</code> has been changed from 
-				<code>DemultiplexingListener</code> to 
-				<code>ResourceSetListener</code>.
-			</li>
-			<li>The type of 
-				<code>org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.eventListener</code> has been changed from 
-				<code>DemultiplexingListener</code> to 
-				<code>ResourceSetListener</code>.
-			</li>
-		</ul>
 		<h2 id="sirius3.0.0">Changes in Sirius 3.0.0 (from Sirius 2.0.0)</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
@@ -80,17 +56,7 @@
 			<li>&#171;*&#187; can now be used as feature name of a FeatureColumn to skip the feature name validation during the cell creation. This allow to compute the label of cells for lines whose semantic element types have no common EStructuralFeatures (inherited or with same name).</li>
 			<li>A quick outline is now accessible in the VSM editor by using the shortcut &#171;Ctrl&#187; + &#171;O&#187;.</li>
 		</ul>
-		<h3 id="APIChanges2">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius.ext.emf.tx">Changes in 
-			<code>org.eclipse.sirius.ext.emf.tx</code>
-		</h4>
-		<ul>
-			<li>The class 
-				<code>org.eclipse.sirius.ext.emf.tx.DelegatingValidateEditSupport</code> has been added to be able to have a 
-				<code>ValidateEditSupport</code> which delegate to an existing 
-				<code>ValidateEditSupport</code>.
-			</li>
-		</ul>
+		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -188,11 +154,6 @@
 				<code>CellEditor</code> - in the Sirius semantic properties views &#8211; through the new extension point 
 				<code>org.eclipse.sirius.ui.siriuspropertiescelleditor</code>.
 			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
-			<code>org.eclipse.sirius.ui</code>
-		</h4>
-		<ul>
 			<li>The method 
 				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession.detachEditor(DialectEditor, boolean)</code> has been added to choose whether we should revert the user changes when detaching the editor.
 			</li>
@@ -364,6 +325,25 @@
 				<code>DTreeElementUpdater</code> has been removed from metamodel. It is now unnecessary. This interface was here to provide operations to activate and deactivate the listeners, that have been replaced by the 
 				<code>RefreshImpactedElementsCommand</code> launched from 
 				<code>RefreshEditorsPrecommitListener</code>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tree.ui">Changes in 
+			<code>org.eclipse.sirius.tree.ui</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(final TransactionalEditingDomain domain, final Notification notification)</code> has been replaced by 
+				<code>org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(ResourceSetChangeEvent)</code> to allow to update only once per ResourceSetChangeEvent and let subclasses make additional filtering on the notifications.
+			</li>
+			<li>The return type of the method 
+				<code>org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.getEventListener()</code> has been changed from 
+				<code>DemultiplexingListener</code> to 
+				<code>ResourceSetListener</code>.
+			</li>
+			<li>The type of 
+				<code>org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.eventListener</code> has been changed from 
+				<code>DemultiplexingListener</code> to 
+				<code>ResourceSetListener</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
@@ -564,6 +544,16 @@
 				<code>org.eclipse.ui.dialogs.FilteredTree</code> with Eclipse Juno.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ext.emf.tx">Changes in 
+			<code>org.eclipse.sirius.ext.emf.tx</code>
+		</h4>
+		<ul>
+			<li>The class 
+				<code>org.eclipse.sirius.ext.emf.tx.DelegatingValidateEditSupport</code> has been added to be able to have a 
+				<code>ValidateEditSupport</code> which delegate to an existing 
+				<code>ValidateEditSupport</code>.
+			</li>
+		</ul>
 		<h2 id="sirius2.0.0">Changes in Sirius 2.0.0 (from Sirius 1.0.0)</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -626,7 +616,7 @@
 			</li>
 			<li>&#171;Lozenge&#187; is replaced by &#171;Diamond&#187; in diagram style.</li>
 		</ul>
-		<h3 id="APIChanges3">API Changes</h3>
+		<h3 id="APIChanges2">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -702,7 +692,7 @@
 				<code>org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter</code>. However considering the way Sirius uses GMF, this adapter is not needed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1008,7 +998,7 @@
 				<em>Layer</em>. The corresponding property sections will be shown only for old VSM with reused elements.
 			</li>
 		</ul>
-		<h3 id="APIChanges4">API Changes</h3>
+		<h3 id="APIChanges3">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -1066,7 +1056,7 @@
 				<em>Time (ms)</em> column, harder to read/sort, and showed wrongly formatted results.
 			</li>
 		</ul>
-		<h3 id="APIChanges5">API Changes</h3>
+		<h3 id="APIChanges4">API Changes</h3>
 		<h4 id="separationOfDiagramSpecificConcept-step3">Move diagram.ecore in its own plugin</h4>
 		<p>This milestone (Sirius 1.0M7) includes the third, and final, step towards a full separation of the diagram-specific stuff out of the core of Sirius (see 
 			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a> and 
@@ -1501,7 +1491,7 @@
 				<code>org.eclipse.sirius.diagram.sequence.template.Transformer</code> interface instead, which is functionally equivalent.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1622,7 +1612,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
-		<h3 id="APIChanges6">API Changes</h3>
+		<h3 id="APIChanges5">API Changes</h3>
 		<h4 id="tests">High-level API for Automated Tests Using JUnit and SWTBot</h4>
 		<p>Starting from version 1.0.0M6, Sirius includes high-level APIs to help creating automated tests using JUnit and/or SWTBot. These can be used either to test Sirius itself or to test Sirius-based modelers. These APIs are provided by two plug-ins:</p>
 		<ul>
@@ -1717,7 +1707,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>new org.eclipse.sirius.business.api.query.EObjectQuery(element).getParentDiagram()</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1763,7 +1753,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<ul>
 			<li>The table csv export has been improved to handle cropped label. In some specific cases, the cell label is automatically cropped and &#8249;...&#8250; is concatenated to the resulting value. This cropped displayed label was previously exported, now the complete semantic value is exported.</li>
 		</ul>
-		<h3 id="APIChanges7">API Changes</h3>
+		<h3 id="APIChanges6">API Changes</h3>
 		<h4 id="LibraryExtensions">Library Extensions</h4>
 		<p>This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called &#171;library extensions&#187;. They are all named 
 			<code>org.eclipse.sirius.ext.LIB</code>, where 
@@ -1885,7 +1875,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>DCellQuery.getExportableLabel()</code> to compute the cell labels used in HTML export.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1899,7 +1889,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<ul>
 			<li>The ability to print table representations, which had been disabled for the 0.9 release, has been re-enabled.</li>
 		</ul>
-		<h3 id="APIChanges8">API Changes</h3>
+		<h3 id="APIChanges7">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
 		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
 			<code>org.eclipse.sirius.common</code>
@@ -2135,7 +2125,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>ECrossReferenceAdapter</code> can be null.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui7">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>

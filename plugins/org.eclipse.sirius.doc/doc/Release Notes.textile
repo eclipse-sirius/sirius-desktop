@@ -4,16 +4,6 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
-h2(#sirius3.1.0). Changes in Sirius 3.1.0 (from Sirius 3.0.0)
-
-h3. API Changes
-
-h4. Changes in @org.eclipse.sirius.tree.ui@
-
-* The method @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(final TransactionalEditingDomain domain, final Notification notification)@ has been replaced by @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(ResourceSetChangeEvent)@ to allow to update only once per ResourceSetChangeEvent and let subclasses make additional filtering on the notifications.
-* The return type of the method @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.getEventListener()@ has been changed from @DemultiplexingListener@ to @ResourceSetListener@.
-* The type of @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.eventListener@ has been changed from @DemultiplexingListener@ to @ResourceSetListener@.
-
 h2(#sirius3.0.0). Changes in Sirius 3.0.0 (from Sirius 2.0.0)
 
 h3. User-Visible Changes
@@ -30,10 +20,6 @@ h3. Specifier-Visible Changes
 * A quick outline is now accessible in the VSM editor by using the shortcut "Ctrl" + "O".
 
 h3. API Changes
-
-h4. Changes in @org.eclipse.sirius.ext.emf.tx@
-
-* The class @org.eclipse.sirius.ext.emf.tx.DelegatingValidateEditSupport@ has been added to be able to have a @ValidateEditSupport@ which delegate to an existing @ValidateEditSupport@.
 
 h4. Changes in @org.eclipse.sirius@
 
@@ -59,10 +45,6 @@ h4. Changes in @org.eclipse.sirius.ui@
 * The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject, EStructuralFeature)@ has been added to customize the tooltip displayed in the VSM editor by using the feature of the current object. The old method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject)@ has been deprecated.
 * The class @org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource@ has been added. It allows developers to make their properties views CellEditor customizable by using the new extension point @org.eclipse.sirius.ui.siriuspropertiescelleditor@
 * The interface @org.eclipse.sirius.ext.emf.ui.ICellEditorProvider@ has been added to allow clients to provide their own @CellEditor@ - in the Sirius semantic properties views - through the new extension point @org.eclipse.sirius.ui.siriuspropertiescelleditor@.
-
-
-h4. Changes in @org.eclipse.sirius.ui@
-
 * The method @org.eclipse.sirius.ui.business.api.session.IEditingSession.detachEditor(DialectEditor, boolean)@ has been added to choose whether we should revert the user changes when detaching the editor.
 
 h4. Changes in @org.eclipse.sirius.common@
@@ -107,6 +89,12 @@ h4. Changes in @org.eclipse.sirius.tree@
 * The method @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expand(IProgressMonitor)@ has been added similar to @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expand()@ but taking a @IProgressMonitor@ in parameter to have progression on @DTreeItem@ expanding.
 * The method @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expandAll(IProgressMonitor)@ has been added similar to @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.expandAll()@ but taking a @IProgressMonitor@ in parameter to have progression on @DTreeItem@ expanding.
 * The interface @DTreeElementUpdater@ has been removed from metamodel. It is now unnecessary. This interface was here to provide operations to activate and deactivate the listeners, that have been replaced by the @RefreshImpactedElementsCommand@ launched from @RefreshEditorsPrecommitListener@.
+
+h4. Changes in @org.eclipse.sirius.tree.ui@
+
+* The method @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(final TransactionalEditingDomain domain, final Notification notification)@ has been replaced by @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(ResourceSetChangeEvent)@ to allow to update only once per ResourceSetChangeEvent and let subclasses make additional filtering on the notifications.
+* The return type of the method @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.getEventListener()@ has been changed from @DemultiplexingListener@ to @ResourceSetListener@.
+* The type of @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.eventListener@ has been changed from @DemultiplexingListener@ to @ResourceSetListener@.
 
 h4. Changes in @org.eclipse.sirius.synchronizer@
 * The method @org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean, IProgressMonitor)@ has been added similar to @org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)@ but taking a @IProgressMonitor@ in parameter to have progression on synchronization.
@@ -165,6 +153,10 @@ h4. Changes in @org.eclipse.sirius.ext.swt@
 h4. Changes in @org.eclipse.sirius.ext.e3.ui@
 
 * The classes @org.eclipse.sirius.ext.e3.ui.dialogs.FilteredTree@ and @org.eclipse.sirius.ext.e3.ui.dialogs.PatternFilter@ have been added in order to have the latest functionalites of @org.eclipse.ui.dialogs.FilteredTree@ with Eclipse Juno.
+
+h4. Changes in @org.eclipse.sirius.ext.emf.tx@
+
+* The class @org.eclipse.sirius.ext.emf.tx.DelegatingValidateEditSupport@ has been added to be able to have a @ValidateEditSupport@ which delegate to an existing @ValidateEditSupport@.
 
 h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
 
