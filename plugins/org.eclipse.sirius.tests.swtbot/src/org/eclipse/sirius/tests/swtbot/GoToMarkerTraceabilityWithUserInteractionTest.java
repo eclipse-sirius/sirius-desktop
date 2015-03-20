@@ -16,6 +16,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.gmf.runtime.common.ui.util.WorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.notation.View;
@@ -31,9 +33,11 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.part.ValidateAction;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionClosedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -43,8 +47,11 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
@@ -177,6 +184,59 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         if (assertionException != null) {
             throw assertionException;
         }
+    }
+
+    /**
+     * Ensure that after closing a representation editor having validation
+     * errors, it can be reopened using an error marker from the Problem view.
+     */
+    public void testTraceabilityWithNoOpenedRepresentations() {
+        processEditorOpeningFromMarker(false);
+    }
+
+    /**
+     * Ensure that after closing a session containing a representation having
+     * validation errors, it can be reopened using an error marker from the
+     * Problem view.
+     */
+    public void testTraceabilityWithClosedSession() {
+        processEditorOpeningFromMarker(true);
+    }
+
+    private void processEditorOpeningFromMarker(boolean fromClosedSession) {
+        // Open editor
+        editor = openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram", DDiagram.class);
+
+        // Run validation
+        WorkbenchPartDescriptor workbenchPartDescriptor = new WorkbenchPartDescriptor(editor.getReference().getId(), editor.getReference().getClass(), editor.getReference().getPage());
+        ValidateAction va = new ValidateAction(workbenchPartDescriptor);
+        va.run();
+
+        // Close editor
+        editor.close();
+        SWTBotUtils.waitAllUiEvents();
+
+        if (fromClosedSession) {
+            // Close session
+            SessionClosedCondition sessionClosedCondition = new SessionClosedCondition(localSession.getOpenedSession());
+            localSession.getOpenedSession().close(new NullProgressMonitor());
+            bot.waitUntil(sessionClosedCondition);
+        }
+
+        // Reopen the editor using a marker created during the validation
+        SWTBotView problemsView = bot.viewByTitle("Problems");
+        problemsView.setFocus();
+        SWTBotTree problemsTree = problemsView.bot().tree();
+        problemsTree.getTreeItem("Errors (3 items)").expand();
+
+        // Reopen the editor using a marker created during the validation
+        final SWTBotTreeItem node = problemsTree.getTreeItem("Errors (3 items)").getNode("The namespace URI '' is not well formed");
+        node.select();
+
+        // Double click the error marker to reopen the diagram
+        Assert.assertFalse("An error happened before opening an editor using an error marker", doesAnErrorOccurs());
+        node.doubleClick();
+        Assert.assertFalse("An error happened on opening of an editor using an error marker", doesAnErrorOccurs());
     }
 
     /**
