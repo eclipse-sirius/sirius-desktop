@@ -32,6 +32,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -46,6 +48,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
@@ -219,6 +222,10 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                 }
             }
             packagesToImport.add(EcorePackage.eINSTANCE);
+            packagesToImport.add(ViewpointPackage.eINSTANCE);
+            packagesToImport.add(DescriptionPackage.eINSTANCE);
+            packagesToImport.add(ToolPackage.eINSTANCE);
+            packagesToImport.add(ValidationPackage.eINSTANCE);
         }
         return packagesToImport;
     }

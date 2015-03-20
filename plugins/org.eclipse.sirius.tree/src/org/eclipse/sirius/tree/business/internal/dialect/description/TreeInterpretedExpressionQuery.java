@@ -14,7 +14,9 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.tree.TreePackage;
 import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
@@ -60,6 +62,14 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
     @Override
     protected void initializeTargetSwitch() {
         targetSwitch = new TreeGlobalInterpretedTargetSwitch();
+    }
+    
+    @Override
+    public Collection<EPackage> getPackagesToImport() {
+        Collection<EPackage> superResult = super.getPackagesToImport();
+        superResult.add(TreePackage.eINSTANCE);
+        superResult.add(DescriptionPackage.eINSTANCE);
+        return superResult;
     }
 
     /**
