@@ -74,7 +74,8 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
         // CHECKSTYLE:OFF
         if (msg.getEventType() != Notification.REMOVING_ADAPTER
                 && (msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__REFERENCED_ANALYSIS
-                        || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__MODELS || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES)) {
+                        || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__SEMANTIC_RESOURCES || msg
+                        .getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES)) {
             // CHECKSTYLE:ON
 
             Collection<Resource> updatedSemanticResources = SemanticResourceGetter.collectTopLevelSemanticResources(dAnalysisSessionImpl);
