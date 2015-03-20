@@ -37,7 +37,6 @@ import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.dialect.DialectServices2;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
@@ -97,7 +96,7 @@ import com.google.common.collect.Sets;
  * 
  * @author cbrun
  */
-public class DiagramDialectServices extends AbstractRepresentationDialectServices implements DialectServices2 {
+public class DiagramDialectServices extends AbstractRepresentationDialectServices {
     /**
      * All references to find {@link DDiagramElement} from corresponding
      * semantic elements.

@@ -140,6 +140,10 @@
 				<code>org.eclipse.sirius.business.api.query.EObjectQuery</code> has now a new constructor with an additional parameter, ECrossReferenceAdapter. This can be usefull if there is many calls to inverse references methods for the same Session. This avoids to get the semantic cross referencer from the EObject each time. This query also proposes a new method 
 				<code>getInverseReferences(Set&lt;EReference&gt;)</code>.
 			</li>
+			<li>There is a new capability on Dialect. This capability is to refresh only impacted elements concerned by a list of notifications. It is used, for example, to refresh the opened representations when the user chooses manual refresh mode. Each dialect that want to offer this capability must implement 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.refreshImpactedElements(DRepresentation, Collection&lt;Notification&gt;, IProgressMonitor)</code>. A default implementation that does nothing is done in 
+				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>

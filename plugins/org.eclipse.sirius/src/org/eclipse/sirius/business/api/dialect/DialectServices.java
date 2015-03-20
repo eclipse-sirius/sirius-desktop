@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
@@ -157,6 +158,20 @@ public interface DialectServices {
      *            to monitor the refresh operation.
      */
     void refresh(DRepresentation representation, boolean fullRefresh, IProgressMonitor monitor);
+
+    /**
+     * Performs a refresh only for elements impacted by the given notifications
+     * list.
+     * 
+     * @param representation
+     *            representation to refresh.
+     * @param notifications
+     *            the notifications that triggered this refresh. This list does
+     *            not contain touch notifications.
+     * @param monitor
+     *            to monitor the refresh operation.
+     */
+    void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor);
 
     /**
      * Tell whether the dialect is able to refresh the given representation.

@@ -40,7 +40,6 @@ import org.eclipse.sirius.business.internal.contribution.IntrinsicPathIdentifier
 import org.eclipse.sirius.business.internal.contribution.ModelContributorAdapter;
 import org.eclipse.sirius.business.internal.contribution.RepresentationExtensionsFinder;
 import org.eclipse.sirius.business.internal.contribution.SiriusReferenceResolver;
-import org.eclipse.sirius.business.internal.dialect.DialectServices2;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -83,7 +82,7 @@ import com.google.common.collect.Sets;
  * 
  * @author cbrun
  */
-public class TableDialectServices extends AbstractRepresentationDialectServices implements DialectServices2 {
+public class TableDialectServices extends AbstractRepresentationDialectServices {
 
     /**
      * Tests whether a representation should be handled by the Movida-specific

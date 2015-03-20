@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.internal.dialect.DialectServices2;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
@@ -68,8 +67,8 @@ public class RefreshImpactedElementsCommand extends RecordingCommand {
         try {
             monitor.beginTask("Refresh impacted representation elements", representations.size());
             for (DRepresentation representation : representations) {
-                if (safeRefresh(representation) && DialectManager.INSTANCE instanceof DialectServices2) {
-                    ((DialectServices2) DialectManager.INSTANCE).refreshImpactedElements(representation, notifications, new SubProgressMonitor(monitor, 1));
+                if (safeRefresh(representation)) {
+                    DialectManager.INSTANCE.refreshImpactedElements(representation, notifications, new SubProgressMonitor(monitor, 1));
                 } else {
                     monitor.worked(1);
                 }

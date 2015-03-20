@@ -20,6 +20,7 @@ import java.util.Map;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -115,6 +116,20 @@ public class DialectManagerImpl implements DialectManager {
             for (final Dialect dialect : dialects.values()) {
                 if (dialect.getServices().canRefresh(representation)) {
                     dialect.getServices().refresh(representation, doFullRefresh, new SubProgressMonitor(monitor, 1));
+                }
+            }
+        } finally {
+            monitor.done();
+        }
+    }
+
+    @Override
+    public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
+        try {
+            monitor.beginTask("Refresh impacted representation elements", 1);
+            for (final Dialect dialect : dialects.values()) {
+                if (dialect.getServices().canRefresh(representation)) {
+                    dialect.getServices().refreshImpactedElements(representation, notifications, new SubProgressMonitor(monitor, 1));
                 }
             }
         } finally {

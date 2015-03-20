@@ -33,7 +33,6 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.dialect.DialectServices2;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -68,7 +67,7 @@ import com.google.common.collect.Sets;
  * 
  * @author pcdavid
  */
-public class TreeDialectServices extends AbstractRepresentationDialectServices implements DialectServices2 {
+public class TreeDialectServices extends AbstractRepresentationDialectServices {
     /**
      * {@inheritDoc}
      */
