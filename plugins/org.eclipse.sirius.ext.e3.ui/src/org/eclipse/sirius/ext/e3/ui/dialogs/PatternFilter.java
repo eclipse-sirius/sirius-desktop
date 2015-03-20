@@ -34,6 +34,7 @@ import org.eclipse.ui.internal.misc.StringMatcher;
  * @see org.eclipse.ui.dialogs.FilteredTree
  * @since 3.2
  */
+//CHECKSTYLE:OFF
 public class PatternFilter extends ViewerFilter {
     /*
      * Cache of filtered elements in the tree

@@ -74,6 +74,7 @@ import org.eclipse.ui.progress.WorkbenchJob;
  * @see org.eclipse.ui.dialogs.PatternFilter
  * @since 3.2
  */
+// CHECKSTYLE:OFF
 public class FilteredTree extends Composite {
 
     /**
