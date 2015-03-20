@@ -277,8 +277,10 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
                 synchronizer.refresh((DCell) dTableElement);
             } else if (dTableElement instanceof DLine) {
                 synchronizer.refresh((DLine) dTableElement);
+                synchronizer.refreshSemanticElements(dTableElement, ((DLine) dTableElement).getOriginMapping());
             } else if (dTableElement instanceof DColumn) {
                 synchronizer.refresh((DColumn) dTableElement);
+                synchronizer.refreshSemanticElements(dTableElement, ((DColumn) dTableElement).getOriginMapping());
             }
         }
 
@@ -291,7 +293,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         Set<EObject> notifiers = Sets.newHashSet();
         for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
-            if (notifier instanceof EObject) {
+            if (!notification.isTouch() && notifier instanceof EObject) {
                 notifiers.add((EObject) notifier);
             }
         }

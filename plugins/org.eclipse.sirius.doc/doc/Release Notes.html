@@ -302,6 +302,11 @@
 				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getCellDefaultForegroundColor()</code> has been removed because it is not useful, use 
 				<code>EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("gray")</code> instead.
 			</li>
+			<li>The interface 
+				<code>DTableElementUpdater</code> has been removed from metamodel. It is now unnecessary. This interface was here to provide operations to activate and deactivate the listeners, that have been replaced by the 
+				<code>RefreshImpactedElementsCommand</code> launched from 
+				<code>RefreshEditorsPrecommitListener</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
 			<code>org.eclipse.sirius.tree</code>

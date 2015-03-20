@@ -93,6 +93,7 @@ h4. Changes in @org.eclipse.sirius.table@
 * The methods @org.eclipse.sirius.table.business.api.helper.TableHelper.getCell(RGBValues)@ has been removed, @RGBValues@ is not an @EObject@ anymore. The method was looking in the eContainer hierarchy of a an instance of @RGBValues@ to find the parent @DCell@.
 * The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getCreateCellTool(DCell)@ has been removed because it is not useful, use @TableHelper.getCreateCellTool(line, column)@ instead.
 * The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getCellDefaultForegroundColor()@ has been removed because it is not useful, use @EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("gray")@ instead.
+* The interface @DTableElementUpdater@ has been removed from metamodel. It is now unnecessary. This interface was here to provide operations to activate and deactivate the listeners, that have been replaced by the @RefreshImpactedElementsCommand@ launched from @RefreshEditorsPrecommitListener@.
 
 h4. Changes in @org.eclipse.sirius.tree@
 
