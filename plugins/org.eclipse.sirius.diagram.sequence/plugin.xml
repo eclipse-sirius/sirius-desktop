@@ -61,4 +61,10 @@
            class="org.eclipse.sirius.diagram.sequence.tool.internal.action.repair.SequenceDiagramRepairParticipant">
      </repairParticipant>
   </extension>
+  <extension
+        point="org.eclipse.sirius.mmdescriptor">
+     <descriptorprovider
+           class="org.eclipse.sirius.diagram.sequence.business.internal.metamodel.SequenceDiagramMetamodelsProvider">
+     </descriptorprovider>
+  </extension>
 </plugin>

@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
@@ -21,6 +22,7 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
@@ -50,6 +52,14 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
      */
     public TableInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         super(target, feature);
+    }
+
+    @Override
+    public Collection<EPackage> getPackagesToImport() {
+        Collection<EPackage> superResult = super.getPackagesToImport();
+        superResult.add(TablePackage.eINSTANCE);
+        superResult.add(DescriptionPackage.eINSTANCE);
+        return superResult;
     }
 
     @Override

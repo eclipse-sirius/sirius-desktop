@@ -33,5 +33,11 @@
             class="org.eclipse.sirius.table.business.internal.dialect.TableDialect">
       </dialect>
    </extension>
+    <extension
+          point="org.eclipse.sirius.mmdescriptor">
+       <descriptorprovider
+             class="org.eclipse.sirius.table.business.internal.dialect.TableMetamodelsProvider">
+       </descriptorprovider>
+    </extension>
    
 </plugin>

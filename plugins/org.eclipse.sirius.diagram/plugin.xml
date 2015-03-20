@@ -530,4 +530,10 @@
      <dialect
            class="org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialect"></dialect>
   </extension>
+  <extension
+        point="org.eclipse.sirius.mmdescriptor">
+     <descriptorprovider
+           class="org.eclipse.sirius.diagram.business.internal.dialect.DiagramMetamodelsProvider">
+     </descriptorprovider>
+  </extension>
 </plugin>

@@ -336,5 +336,11 @@
          class="org.eclipse.sirius.business.internal.resource.parser.AirDResourceFactory">
       </parser>
    </extension>
+   <extension
+         point="org.eclipse.sirius.mmdescriptor">
+      <descriptorprovider
+            class="org.eclipse.sirius.business.internal.dialect.ViewpointMetamodelsProvider">
+      </descriptorprovider>
+   </extension>
 
 </plugin>

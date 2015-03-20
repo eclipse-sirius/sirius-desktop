@@ -32,5 +32,11 @@
             class="org.eclipse.sirius.tree.business.internal.dialect.TreeDialect">
       </dialect>
    </extension>
+   <extension
+         point="org.eclipse.sirius.mmdescriptor">
+      <descriptorprovider
+            class="org.eclipse.sirius.tree.business.internal.dialect.TreeMetamodelsProvider">
+      </descriptorprovider>
+   </extension>
 
 </plugin>

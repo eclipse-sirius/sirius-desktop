@@ -14,15 +14,21 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
@@ -56,6 +62,18 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
      */
     public DiagramInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         super(target, feature);
+    }
+
+    @Override
+    public Collection<EPackage> getPackagesToImport() {
+        Collection<EPackage> superResult = super.getPackagesToImport();
+        superResult.add(DiagramPackage.eINSTANCE);
+        superResult.add(DescriptionPackage.eINSTANCE);
+        superResult.add(StylePackage.eINSTANCE);
+        superResult.add(org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE);
+        superResult.add(FilterPackage.eINSTANCE);
+        superResult.add(ConcernPackage.eINSTANCE);
+        return superResult;
     }
 
     /**
