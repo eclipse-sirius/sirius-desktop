@@ -225,6 +225,7 @@ import org.eclipse.sirius.tests.unit.diagram.tools.palette.PaletteUpdateDoesNotD
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.PaletteUpdateWithoutInvalidThreadAccessTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.ModelContentTest;
 import org.eclipse.sirius.tests.unit.diagram.vsm.VSMValidationTest;
+import org.eclipse.sirius.tests.unit.diagram.vsm.VSMVariableTypesValidationTest;
 import org.eclipse.sirius.tests.unit.diagram.vsm.VSMWithCustomizationValidationTests;
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartmentConnectionRefreshMgrTest;
 
@@ -488,6 +489,7 @@ public class AllDiagramPluginsTests {
         // VSM
         suite.addTestSuite(VSMValidationTest.class);
         suite.addTestSuite(VSMWithCustomizationValidationTests.class);
+        suite.addTest(new JUnit4TestAdapter(VSMVariableTypesValidationTest.class));
 
         suite.addTestSuite(DiagramCustomizationTest.class);
 

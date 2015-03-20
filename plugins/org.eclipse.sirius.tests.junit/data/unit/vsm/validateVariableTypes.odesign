@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="vsmtypes" version="10.0.0.201411061000">
+  <ownedViewpoints name="VSMTypes">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SelfTypeInference" domainClass="interactions.Model">
+      <metamodel href="http://www.eclipse.org/sirius/sample/interactions#/"/>
+      <validationSet name="Interactions Rules">
+        <ownedRules xsi:type="validation:ViewValidationRule" message="feature:nonExistent" targets="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']">
+          <audits auditExpression="feature:target"/>
+          <audits auditExpression="feature:nonExistent"/>
+          <fixes name="Fix">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nonExistent"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" targetClass="interactions.State">
+          <audits auditExpression="feature:start"/>
+          <audits auditExpression="feature:nonExistent"/>
+          <fixes name="fix the validation">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:start"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nonExistent"/>
+              </firstModelOperations>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <nodeMappings name="ParticipantNode" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" domainClass="interactions.Participant">
+          <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+          <conditionnalStyles predicateExpression="feature:nonExistent">
+            <style xsi:type="style:DotDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <nodeMappings name="InteractionNode" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" domainClass="interactions.Interaction">
+          <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ParticipantNode to InteractionNode through Message" sourceMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']" targetMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode']" targetFinderExpression="feature:nonExistent" sourceFinderExpression="feature:nonExistent" domainClass="interactions.Message" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Dupplicate ParticipantNode to InteractionNode through Message" sourceMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']" targetMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode']" targetFinderExpression="feature:nonExistent" sourceFinderExpression="feature:nonExistent" domainClass="interactions.Message" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="(Participant/Interaction)Container to (Participant/Interaction)Container through Message" sourceMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='InteractionContainer']" targetMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='InteractionContainer'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer']" targetFinderExpression="feature:nonExistent" sourceFinderExpression="feature:nonExistent" domainClass="interactions.Message" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ParticipantContainer" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@subSections[name='Ignored']/@ownedTools[name='ElementType']" domainClass="interactions.Participant">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="feature:nonExistent">
+            <style xsi:type="style:ShapeContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="InteractionContainer" domainClass="interactions.Interaction">
+          <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="StateContainer" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" domainClass="interactions.State">
+          <style xsi:type="style:ShapeContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="ShouldBeValid">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Check Node variables types are infered" nodeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:name"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:containerView">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Check variables types with multiple self types" containerMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='InteractionContainer'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:name"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Only Participant Mapping" nodeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain Participant/InteractionContainer to Interaction/Participant Container" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='(Participant%2FInteraction)Container%20to%20(Participant%2FInteraction)Container%20through%20Message']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:name"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:name"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="MultipleTypes">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:name"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="interactions.Message" referenceName="nonExistent" variableName="createdMessage">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContainer">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:createdMessage">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="interactions.Participant" referenceName="nonExistent">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="interactions.Execution" referenceName="nonExistent">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:start"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="nonExistent">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:abstract"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain Participant/InteractionContainer to Interaction/Participant Container Other" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='(Participant%2FInteraction)Container%20to%20(Participant%2FInteraction)Container%20through%20Message']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <subSections name="Ignored">
+            <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">
+              <mask mask="{0}"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:arg0">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:name"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain ParticipantNode to Interaction Node" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='ParticipantNode%20to%20InteractionNode%20through%20Message']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:participants"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:targetView">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sourceView">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain ParticipantNode to Interaction Node two Edge Mappings" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='ParticipantNode%20to%20InteractionNode%20through%20Message'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='Dupplicate%20ParticipantNode%20to%20InteractionNode%20through%20Message']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:participants"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:targetView">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sourceView">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CreateViews" nodeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']" containerViewExpression="var:containerView" variableName="createdNode">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer']" containerViewExpression="var:containerView" variableName="createdContainer">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:childrenPresentation"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+        </toolSections>
+        <toolSections name="ShouldBeInvalid">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Goto self.nonExistent" nodeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nonExistent"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Container Goto self.nonExistent" containerMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='InteractionContainer'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nonExistent"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain Participant/InteractionContainer to Interaction/Participant Container" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='(Participant%2FInteraction)Container%20to%20(Participant%2FInteraction)Container%20through%20Message']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:participants"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain Participant/InteractionContainer to Interaction/Participant Container With Extra Mapping" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='(Participant%2FInteraction)Container%20to%20(Participant%2FInteraction)Container%20through%20Message']" extraSourceMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='StateContainer']" extraTargetMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='StateContainer']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <subSections name="Ignored">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Goto container.nonExistent" nodeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nonExistent"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Container Goto container.nonExistent" containerMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='InteractionContainer'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nonExistent"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
