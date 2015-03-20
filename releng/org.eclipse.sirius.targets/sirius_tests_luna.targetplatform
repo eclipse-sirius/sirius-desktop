@@ -14,6 +14,7 @@ location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/latest
         org.eclipse.sirius.runtime.ide.ui.feature.group lazy
         org.eclipse.sirius.runtime.ide.xtext.feature.group lazy
         org.eclipse.sirius.runtime.ocl.feature.group lazy
+        org.eclipse.sirius.runtime.aql.feature.group lazy
         org.eclipse.sirius.samples.feature.group lazy
         org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group lazy
         org.eclipse.sirius.specifier.ide.ui.feature.group lazy
