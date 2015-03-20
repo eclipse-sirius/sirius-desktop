@@ -65,7 +65,7 @@ adjust_tests_target_platform() {
 }
 
 invoke_maven() {
-    /shared/common/apache-maven-latest/bin/mvn -V -X -B -DBUILD_SIGN=false -Dmaven.repo.local="$WORKSPACE/.maven/repo" -DPLATFORM="$PLATFORM" -Dplatform-version-name="$PLATFORM" "$@"
+    /shared/common/apache-maven-latest/bin/mvn -V -B -DBUILD_SIGN=false -Dmaven.repo.local="$WORKSPACE/.maven/repo" -DPLATFORM="$PLATFORM" -Dplatform-version-name="$PLATFORM" "$@"
 }
 
 remove_cached_sirius_bundles() {
