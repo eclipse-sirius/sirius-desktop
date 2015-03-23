@@ -11,6 +11,7 @@ location Eclipse-Staging "http://download.eclipse.org/releases/staging" {
         com.ibm.icu lazy
         org.eclipse.acceleo.feature.group lazy
         org.eclipse.acceleo.ide.ui lazy
+        org.eclipse.acceleo.query.feature.group lazy
         org.eclipse.draw2d.sdk.feature.group lazy
         org.eclipse.emf.common.feature.group lazy
         org.eclipse.emf.compare.feature.group lazy
