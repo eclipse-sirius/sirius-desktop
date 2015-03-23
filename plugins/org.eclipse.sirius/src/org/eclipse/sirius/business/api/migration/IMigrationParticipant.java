@@ -164,6 +164,26 @@ public interface IMigrationParticipant {
     EObject updateCreatedObject(EObject newObject, String loadedVersion);
 
     /**
+     * Allows changing the eStructuralFeature when it is about to set the value
+     * on the feature. <br>
+     * This method should by overloaded in association with
+     * <code>IMigrationParticipant.getValue(EObject,EStructuralFeature,Object,String)</code>
+     * if the value or its type is different. <br>
+     * This method is useful when an EStructuralFeature is not persisted anymore
+     * but still remains in the metamodel as volatile. The returned
+     * EStructuralFeature is the one which replace eStructuralFeature.
+     * 
+     * @param eClass
+     *            the eClass where looking for feature
+     * @param eStructuralFeature
+     *            the EStructuralFeature on which looking for the affiliation
+     * @param loadedVersion
+     *            the version of current loading model
+     * @return the replacing EStructuralFeature
+     */
+    EStructuralFeature getAffiliation(EClass eClass, EStructuralFeature eStructuralFeature, String loadedVersion);
+
+    /**
      * Called after the processing of an XML end tag. This method is useful for
      * migration logic which needs to access XML Attributes which are not mapped
      * with the Ecore model in any way.

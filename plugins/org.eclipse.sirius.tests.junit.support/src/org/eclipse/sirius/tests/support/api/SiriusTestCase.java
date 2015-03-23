@@ -239,7 +239,6 @@ public abstract class SiriusTestCase extends TestCase {
 
     private final HashMap<String, Object> oldPlatformUIPreferences = new HashMap<String, Object>();
 
-
     /**
      * Overridden to create the project. {@inheritDoc}
      */
@@ -1410,6 +1409,26 @@ public abstract class SiriusTestCase extends TestCase {
         for (final String path : filePaths) {
             final String pluginFilePath = pluginCommonPath + path;
             final String wksPath = SiriusTestCase.TEMPORARY_PROJECT_NAME + "/" + path;
+            EclipseTestsSupportHelper.INSTANCE.copyFile(pluginID, pluginFilePath, wksPath);
+        }
+    }
+
+    /**
+     * Copies the files located at the given paths into the targetPath.
+     * 
+     * @param pluginID
+     *            the plugin id
+     * @param pluginCommonPath
+     *            the relative path in plugin
+     * @param targetPath
+     *            the target path in junit workspace
+     * @param filePaths
+     *            the paths of the files to copy
+     */
+    protected void copyFiles(String pluginID, String pluginCommonPath, String targetPath, String... filePaths) {
+        for (final String path : filePaths) {
+            final String pluginFilePath = pluginCommonPath + path;
+            final String wksPath = targetPath + File.separator + path;
             EclipseTestsSupportHelper.INSTANCE.copyFile(pluginID, pluginFilePath, wksPath);
         }
     }

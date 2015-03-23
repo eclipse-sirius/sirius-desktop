@@ -110,6 +110,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.MigrationLabelBoundsToLoc
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfCollapsedBorderedNodeTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfHideLabelFilterInconsistencyTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationRoutingStyleEndUserOverrideTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.ModelsToSemanticResourcesMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RemoveAcceleoReferencesMigrationTest;
@@ -270,6 +271,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(SaverTest.class);
         suite.addTestSuite(XSDSemanticResourceTests.class);
         suite.addTestSuite(SiriusControlAndCrossReferenceInMultiSessionTest.class);
+        suite.addTestSuite(ModelsToSemanticResourcesMigrationTest.class);
     }
 
     /**

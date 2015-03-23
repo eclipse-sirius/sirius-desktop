@@ -42,7 +42,7 @@ import org.xml.sax.Attributes;
  * @author fbarbin
  * 
  */
-public abstract class AbstractSiriusMigrationService {
+public abstract class AbstractSiriusMigrationService implements IMigrationParticipant {
 
     /**
      * This option is passed during a resource load if a migration should be
@@ -93,6 +93,7 @@ public abstract class AbstractSiriusMigrationService {
     /**
      * {@inheritDoc}
      */
+    @Override
     public EStructuralFeature getAttribute(EClass eClass, String name, String loadedVersion) {
         EStructuralFeature structuralFeature = null;
         for (IMigrationParticipant contribution : delegatesParticipants) {
@@ -107,6 +108,7 @@ public abstract class AbstractSiriusMigrationService {
     /**
      * {@inheritDoc}
      */
+    @Override
     public EStructuralFeature getLocalElement(EClass eClass, String name, String loadedVersion) {
         EStructuralFeature structuralFeature = null;
         for (IMigrationParticipant contribution : delegatesParticipants) {
@@ -121,6 +123,7 @@ public abstract class AbstractSiriusMigrationService {
     /**
      * {@inheritDoc}
      */
+    @Override
     public EClassifier getType(EPackage ePackage, String name, String loadedVersion) {
         EClassifier classifier = null;
         for (IMigrationParticipant contribution : delegatesParticipants) {
@@ -135,6 +138,7 @@ public abstract class AbstractSiriusMigrationService {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object getValue(EObject object, EStructuralFeature feature, Object value, String loadedVersion) {
         Object returnedValue = null;
         for (IMigrationParticipant contribution : delegatesParticipants) {
@@ -153,6 +157,7 @@ public abstract class AbstractSiriusMigrationService {
      *            the current fragment.
      * @return the optional new uri fragment (none if no changes).
      */
+    @Override
     public Option<String> getNewFragment(String uriFragment) {
         Option<String> optionalNewFragment = Options.newNone();
         for (IMigrationParticipant contribution : delegatesParticipants) {
@@ -167,6 +172,7 @@ public abstract class AbstractSiriusMigrationService {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void postLoad(XMLResource resource, String loadedVersion) {
         for (IMigrationParticipant contribution : delegatesParticipants) {
             contribution.postLoad(resource, loadedVersion);
@@ -275,10 +281,23 @@ public abstract class AbstractSiriusMigrationService {
      *            the version of current loading model
      * @return an EPackage if some mapping exists, null otherwise.
      */
+    @Override
     public EPackage getPackage(String namespace, String version) {
         EPackage returnedValue = null;
         for (IMigrationParticipant contribution : delegatesParticipants) {
             returnedValue = contribution.getPackage(namespace, version);
+            if (returnedValue != null) {
+                break;
+            }
+        }
+        return returnedValue;
+    }
+
+    @Override
+    public EStructuralFeature getAffiliation(EClass eClass, EStructuralFeature eStructuralFeature, String loadedVersion) {
+        EStructuralFeature returnedValue = null;
+        for (IMigrationParticipant contribution : delegatesParticipants) {
+            returnedValue = contribution.getAffiliation(eClass, eStructuralFeature, loadedVersion);
             if (returnedValue != null) {
                 break;
             }
@@ -297,6 +316,7 @@ public abstract class AbstractSiriusMigrationService {
      * @return An EObject with updated values or the EObject itself if this
      *         migration has nothing to do.
      */
+    @Override
     public EObject updateCreatedObject(EObject newObject, String loadedVersion) {
         EObject returnedValue = newObject;
         for (IMigrationParticipant contribution : delegatesParticipants) {
@@ -328,11 +348,17 @@ public abstract class AbstractSiriusMigrationService {
      *            the version of current loading model
      * 
      */
+    @Override
     public void postXMLEndElement(Object doneObject, Attributes xmlAttributes, String uri, String localName, String qName, String loadedVersion) {
         for (IMigrationParticipant contribution : delegatesParticipants) {
             contribution.postXMLEndElement(doneObject, xmlAttributes, uri, localName, qName, loadedVersion);
         }
 
+    }
+
+    @Override
+    public Version getMigrationVersion() {
+        return null;
     }
 
 }

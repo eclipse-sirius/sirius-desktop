@@ -49,57 +49,48 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
      */
     public static final Version VERSION_VP_6_5_0 = Version.parseVersion("6.5.0");
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public EStructuralFeature getAttribute(EClass eClass, String name, String loadedVersion) {
         // Nothing to migrate by default.
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public EStructuralFeature getLocalElement(EClass eClass, String name, String loadedVersion) {
         // Nothing to migrate by default.
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public EClassifier getType(EPackage ePackage, String name, String loadedVersion) {
         // Nothing to migrate by default.
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object getValue(EObject object, EStructuralFeature feature, Object value, String loadedVersion) {
         // Nothing to migrate by default.
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<String> getNewFragment(String uriFragment) {
         // Nothing to migrate by default.
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void postLoad(XMLResource resource, String loadedVersion) {
         handleUnknownData(resource);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public EPackage getPackage(String namespace, String loadedVersion) {
+        return null;
+    }
+
+    @Override
+    public EStructuralFeature getAffiliation(EClass eClass, EStructuralFeature eStructuralFeature, String loadedVersion) {
         return null;
     }
 
@@ -156,9 +147,6 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
         return newObject;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void postXMLEndElement(Object doneObject, Attributes xmlAttributes, String uri, String localName, String qName, String loadedVersion) {
         // nothing to do by default.
