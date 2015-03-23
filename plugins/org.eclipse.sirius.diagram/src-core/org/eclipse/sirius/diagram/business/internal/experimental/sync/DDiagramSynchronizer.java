@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -684,37 +684,42 @@ public class DDiagramSynchronizer {
 
             final Set<AbstractDNodeCandidate> newCandidates = new HashSet<AbstractDNodeCandidate>(1);
             newCandidates.add(newCandidate);
-            final AbstractDNode newNode = createNewContent(newCandidates, viewContainer, containerMapping, false, monitor).get(0);
+            List<AbstractDNode> newContents = createNewContent(newCandidates, true, viewContainer, containerMapping, false, monitor);
+            if (!newContents.isEmpty()) {
+                SiriusDiagramHelper.removeNodeFromContainer(viewContainer, false, node);
 
-            SiriusDiagramHelper.removeNodeFromContainer(viewContainer, false, node);
+                final AbstractDNode newNode = newContents.get(0);
+                convertGmfModelTypes(node, newNode);
+                return newNode;
+            }
+        }
+        return node;
+    }
 
-            final Collection<Setting> settings = session.getSemanticCrossReferencer().getInverseReferences(node);
-            for (final Setting setting : settings) {
-                final EObject referencer = setting.getEObject();
-                referencer.eSet(setting.getEStructuralFeature(), newNode);
+    private void convertGmfModelTypes(final AbstractDNode node, final AbstractDNode newNode) {
+        final Collection<Setting> settings = session.getSemanticCrossReferencer().getInverseReferences(node);
+        for (final Setting setting : settings) {
+            final EObject referencer = setting.getEObject();
+            referencer.eSet(setting.getEStructuralFeature(), newNode);
 
-                convertType(referencer);
+            convertType(referencer);
 
-                final List<?> children = getChildren(referencer);
-                for (final Object eChild : children) {
-                    if (eChild instanceof EObject) {
-                        convertType((EObject) eChild);
-                        final List<EObject> toRemove = new ArrayList<EObject>();
-                        for (final Object childOfChild : getChildren((EObject) eChild)) {
-                            if (childOfChild instanceof EObject) {
-                                toRemove.add((EObject) childOfChild);
-                            }
+            final List<?> children = getChildren(referencer);
+            for (final Object eChild : children) {
+                if (eChild instanceof EObject) {
+                    convertType((EObject) eChild);
+                    final List<EObject> toRemove = new ArrayList<EObject>();
+                    for (final Object childOfChild : getChildren((EObject) eChild)) {
+                        if (childOfChild instanceof EObject) {
+                            toRemove.add((EObject) childOfChild);
                         }
-                        for (final EObject eObject : toRemove) {
-                            EcoreUtil.remove(eObject);
-                        }
-
+                    }
+                    for (final EObject eObject : toRemove) {
+                        EcoreUtil.remove(eObject);
                     }
                 }
             }
-            return newNode;
         }
-        return node;
     }
 
     private List<?> getChildren(final EObject eObject) {
@@ -735,10 +740,12 @@ public class DDiagramSynchronizer {
             final Set<AbstractDNodeCandidate> newCandidates = new HashSet<AbstractDNodeCandidate>(1);
             newCandidates.add(newCandidate);
 
-            final AbstractDNode newNode = createNewContent(newCandidates, diagramElementContainer, nodeMapping, false, monitor).get(0);
+            List<AbstractDNode> newContents = createNewContent(newCandidates, true, diagramElementContainer, nodeMapping, false, monitor);
 
-            SiriusDiagramHelper.removeNodeFromContainer(diagramElementContainer, false, node);
-            return newNode;
+            if (!newContents.isEmpty()) {
+                SiriusDiagramHelper.removeNodeFromContainer(diagramElementContainer, false, node);
+                return newContents.get(0);
+            }
         }
         return node;
     }
@@ -1223,10 +1230,16 @@ public class DDiagramSynchronizer {
      */
     private List<AbstractDNode> createNewContent(final Collection<AbstractDNodeCandidate> candidatesToCreate, final DragAndDropTarget container, final AbstractNodeMapping mapping,
             final boolean border, IProgressMonitor monitor) {
+        return createNewContent(candidatesToCreate, false, container, mapping, border, monitor);
+    }
+
+    private List<AbstractDNode> createNewContent(final Collection<AbstractDNodeCandidate> candidatesToCreate, boolean force, final DragAndDropTarget container, final AbstractNodeMapping mapping,
+            final boolean border, IProgressMonitor monitor) {
         try {
             monitor.beginTask("Nodes creation", candidatesToCreate.size());
             /* check first that there is candidates */
-            if (!candidatesToCreate.isEmpty() && this.accessor.getPermissionAuthority().canCreateIn(container) && new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram)) {
+            if (!candidatesToCreate.isEmpty() && this.accessor.getPermissionAuthority().canCreateIn(container)
+                    && (force || new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram))) {
                 final List<AbstractDNode> createdNodes = new ArrayList<AbstractDNode>(candidatesToCreate.size());
                 for (final AbstractDNodeCandidate candidate : candidatesToCreate) {
                     final AbstractDNode createdNode = this.sync.createNewNode(diagramMappingsManager, candidate, border);
