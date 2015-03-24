@@ -43,6 +43,7 @@ h4. Changes in @org.eclipse.sirius@
 * There is a new capability on Dialect. This capability is to refresh only impacted elements concerned by a list of notifications. It is used, for example, to refresh the opened representations when the user chooses manual refresh mode. Each dialect that want to offer this capability must implement @org.eclipse.sirius.business.api.dialect.DialectServices.refreshImpactedElements(DRepresentation, Collection<Notification>, IProgressMonitor)@. A default implementation that does nothing is done in @org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices@.* A new method has been added in the query @org.eclipse.sirius.business.api.query.DAnalysisQuery@ named @getMainModels()@. This method returns a Set of the main model and the other non controlled models.
 * The API @org.eclipse.sirius.viewpoint.DSourceFileLink@ has been removed.
 * The API @org.eclipse.sirius.viewpoint.DNavigable@ has been removed.
+* The API @org.eclipse.sirius.viewpoint.DNavigationLink@ has been removed.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

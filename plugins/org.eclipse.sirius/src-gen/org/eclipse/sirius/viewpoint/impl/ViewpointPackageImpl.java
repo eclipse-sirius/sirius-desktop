@@ -31,7 +31,6 @@ import org.eclipse.sirius.viewpoint.DFolder;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DModel;
-import org.eclipse.sirius.viewpoint.DNavigationLink;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -176,13 +175,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass decorationEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dNavigationLinkEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -731,33 +723,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EClass getDNavigationLink() {
-        return dNavigationLinkEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getDNavigationLink_TargetType() {
-        return (EAttribute) dNavigationLinkEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getDNavigationLink_Label() {
-        return (EAttribute) dNavigationLinkEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getDAnalysisCustomData() {
         return dAnalysisCustomDataEClass;
     }
@@ -1167,10 +1132,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         decorationEClass = createEClass(DECORATION);
         createEReference(decorationEClass, DECORATION__DESCRIPTION);
 
-        dNavigationLinkEClass = createEClass(DNAVIGATION_LINK);
-        createEAttribute(dNavigationLinkEClass, DNAVIGATION_LINK__TARGET_TYPE);
-        createEAttribute(dNavigationLinkEClass, DNAVIGATION_LINK__LABEL);
-
         dAnalysisCustomDataEClass = createEClass(DANALYSIS_CUSTOM_DATA);
         createEAttribute(dAnalysisCustomDataEClass, DANALYSIS_CUSTOM_DATA__KEY);
         createEReference(dAnalysisCustomDataEClass, DANALYSIS_CUSTOM_DATA__DATA);
@@ -1365,14 +1326,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEClass(decorationEClass, Decoration.class, "Decoration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDecoration_Description(), theDescriptionPackage.getDecorationDescription(), null, "description", null, 1, 1, Decoration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(dNavigationLinkEClass, DNavigationLink.class, "DNavigationLink", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDNavigationLink_TargetType(), theDescriptionPackage.getNavigationTargetType(), "targetType", null, 0, 1, DNavigationLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDNavigationLink_Label(), theEcorePackage.getEString(), "label", "link to...", 0, 1, DNavigationLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        addEOperation(dNavigationLinkEClass, theEcorePackage.getEBoolean(), "isAvailable", 0, 1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(dAnalysisCustomDataEClass, DAnalysisCustomData.class, "DAnalysisCustomData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDAnalysisCustomData_Key(), theEcorePackage.getEString(), "key", null, 1, 1, DAnalysisCustomData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,

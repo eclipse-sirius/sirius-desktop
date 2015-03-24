@@ -27,7 +27,6 @@ import org.eclipse.sirius.viewpoint.DFolder;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DModel;
-import org.eclipse.sirius.viewpoint.DNavigationLink;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -176,11 +175,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDecoration(Decoration object) {
             return createDecorationAdapter();
-        }
-
-        @Override
-        public Adapter caseDNavigationLink(DNavigationLink object) {
-            return createDNavigationLinkAdapter();
         }
 
         @Override
@@ -507,22 +501,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDecorationAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DNavigationLink
-     * <em>DNavigation Link</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DNavigationLink
-     * @generated
-     */
-    public Adapter createDNavigationLinkAdapter() {
         return null;
     }
 

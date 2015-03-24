@@ -27,7 +27,6 @@ import org.eclipse.sirius.viewpoint.DFolder;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DModel;
-import org.eclipse.sirius.viewpoint.DNavigationLink;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -244,13 +243,6 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DECORATION: {
             Decoration decoration = (Decoration) theEObject;
             T result = caseDecoration(decoration);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ViewpointPackage.DNAVIGATION_LINK: {
-            DNavigationLink dNavigationLink = (DNavigationLink) theEObject;
-            T result = caseDNavigationLink(dNavigationLink);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -629,23 +621,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseDecoration(Decoration object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DNavigation Link</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DNavigation Link</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDNavigationLink(DNavigationLink object) {
         return null;
     }
 

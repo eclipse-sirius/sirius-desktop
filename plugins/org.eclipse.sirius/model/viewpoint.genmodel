@@ -81,11 +81,6 @@
     <genClasses ecoreClass="viewpoint.ecore#//Decoration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//Decoration/description"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="viewpoint.ecore#//DNavigationLink">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNavigationLink/targetType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNavigationLink/label"/>
-      <genOperations ecoreOperation="viewpoint.ecore#//DNavigationLink/isAvailable"/>
-    </genClasses>
     <genClasses ecoreClass="viewpoint.ecore#//DAnalysisCustomData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisCustomData/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysisCustomData/data"/>
