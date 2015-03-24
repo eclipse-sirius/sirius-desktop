@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -203,31 +203,6 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
         }
 
         return decorationItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.DSourceFileLink} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DSourceFileLinkItemProvider dSourceFileLinkItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.DSourceFileLink}. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDSourceFileLinkAdapter() {
-        if (dSourceFileLinkItemProvider == null) {
-            dSourceFileLinkItemProvider = new DSourceFileLinkItemProvider(this);
-        }
-
-        return dSourceFileLinkItemProvider;
     }
 
     /**
@@ -586,8 +561,6 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
             metaModelExtensionItemProvider.dispose();
         if (decorationItemProvider != null)
             decorationItemProvider.dispose();
-        if (dSourceFileLinkItemProvider != null)
-            dSourceFileLinkItemProvider.dispose();
         if (dAnalysisCustomDataItemProvider != null)
             dAnalysisCustomDataItemProvider.dispose();
         if (labelStyleItemProvider != null)

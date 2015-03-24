@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -199,8 +199,6 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, ViewpointFactory.eINSTANCE.createDSourceFileLink()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT__DECORATIONS, ViewpointFactory.eINSTANCE.createDecoration()));
 

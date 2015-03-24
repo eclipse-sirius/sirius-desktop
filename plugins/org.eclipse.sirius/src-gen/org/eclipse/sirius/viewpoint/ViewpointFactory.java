@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,15 +73,6 @@ public interface ViewpointFactory extends EFactory {
      * @generated
      */
     Decoration createDecoration();
-
-    /**
-     * Returns a new object of class '<em>DSource File Link</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>DSource File Link</em>'.
-     * @generated
-     */
-    DSourceFileLink createDSourceFileLink();
 
     /**
      * Returns a new object of class '<em>DAnalysis Custom Data</em>'. <!--

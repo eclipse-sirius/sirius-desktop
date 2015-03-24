@@ -89,11 +89,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNavigationLink/label"/>
       <genOperations ecoreOperation="viewpoint.ecore#//DNavigationLink/isAvailable"/>
     </genClasses>
-    <genClasses ecoreClass="viewpoint.ecore#//DSourceFileLink">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DSourceFileLink/filePath"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DSourceFileLink/startPosition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DSourceFileLink/endPosition"/>
-    </genClasses>
     <genClasses ecoreClass="viewpoint.ecore#//DAnalysisCustomData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisCustomData/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysisCustomData/data"/>

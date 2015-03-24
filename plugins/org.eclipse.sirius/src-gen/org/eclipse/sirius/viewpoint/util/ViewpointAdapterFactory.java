@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSourceFileLink;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.DView;
@@ -188,11 +187,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDNavigationLink(DNavigationLink object) {
             return createDNavigationLinkAdapter();
-        }
-
-        @Override
-        public Adapter caseDSourceFileLink(DSourceFileLink object) {
-            return createDSourceFileLinkAdapter();
         }
 
         @Override
@@ -550,22 +544,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDNavigationLinkAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DSourceFileLink
-     * <em>DSource File Link</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DSourceFileLink
-     * @generated
-     */
-    public Adapter createDSourceFileLinkAdapter() {
         return null;
     }
 

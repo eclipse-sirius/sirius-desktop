@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.internal.metamodel.spec.DRepresentationContainerSpec;
-import org.eclipse.sirius.business.internal.metamodel.spec.DSourceFileLinkSpec;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -32,7 +31,6 @@ import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
-import org.eclipse.sirius.viewpoint.DSourceFileLink;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -100,8 +98,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return createMetaModelExtension();
         case ViewpointPackage.DECORATION:
             return createDecoration();
-        case ViewpointPackage.DSOURCE_FILE_LINK:
-            return createDSourceFileLink();
         case ViewpointPackage.DANALYSIS_CUSTOM_DATA:
             return createDAnalysisCustomData();
         case ViewpointPackage.LABEL_STYLE:
@@ -174,6 +170,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public DAnalysis createDAnalysis() {
         DAnalysisImpl dAnalysis = new DAnalysisImpl();
         return dAnalysis;
@@ -184,6 +181,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @not-generated
      */
+    @Override
     public DRepresentationContainer createDRepresentationContainer() {
         DRepresentationContainerImpl dRepresentationContainer = new DRepresentationContainerSpec();
         return dRepresentationContainer;
@@ -194,6 +192,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public DView createDView() {
         DViewImpl dView = new DViewImpl();
         return dView;
@@ -204,6 +203,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public MetaModelExtension createMetaModelExtension() {
         MetaModelExtensionImpl metaModelExtension = new MetaModelExtensionImpl();
         return metaModelExtension;
@@ -214,6 +214,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public Decoration createDecoration() {
         DecorationImpl decoration = new DecorationImpl();
         return decoration;
@@ -222,18 +223,9 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
-     */
-    public DSourceFileLink createDSourceFileLink() {
-        DSourceFileLinkImpl dSourceFileLink = new DSourceFileLinkSpec();
-        return dSourceFileLink;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
+    @Override
     public DAnalysisCustomData createDAnalysisCustomData() {
         DAnalysisCustomDataImpl dAnalysisCustomData = new DAnalysisCustomDataImpl();
         return dAnalysisCustomData;
@@ -244,6 +236,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public LabelStyle createLabelStyle() {
         LabelStyleImpl labelStyle = new LabelStyleImpl();
         return labelStyle;
@@ -254,6 +247,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public DAnalysisSessionEObject createDAnalysisSessionEObject() {
         DAnalysisSessionEObjectImpl dAnalysisSessionEObject = new DAnalysisSessionEObjectImpl();
         return dAnalysisSessionEObject;
@@ -264,6 +258,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public SessionManagerEObject createSessionManagerEObject() {
         SessionManagerEObjectImpl sessionManagerEObject = new SessionManagerEObjectImpl();
         return sessionManagerEObject;
@@ -274,6 +269,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public DFile createDFile() {
         DFileImpl dFile = new DFileImpl();
         return dFile;
@@ -284,6 +280,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public DResourceContainer createDResourceContainer() {
         DResourceContainerImpl dResourceContainer = new DResourceContainerImpl();
         return dResourceContainer;
@@ -294,6 +291,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public DProject createDProject() {
         DProjectImpl dProject = new DProjectImpl();
         return dProject;
@@ -304,6 +302,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public DFolder createDFolder() {
         DFolderImpl dFolder = new DFolderImpl();
         return dFolder;
@@ -314,6 +313,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public DModel createDModel() {
         DModelImpl dModel = new DModelImpl();
         return dModel;
@@ -324,6 +324,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public BasicLabelStyle createBasicLabelStyle() {
         BasicLabelStyleImpl basicLabelStyle = new BasicLabelStyleImpl();
         return basicLabelStyle;
@@ -446,6 +447,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
+    @Override
     public ViewpointPackage getViewpointPackage() {
         return (ViewpointPackage) getEPackage();
     }
@@ -466,6 +468,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @not-generated
      */
+    @Override
     public RGBValues createRGBValues() {
         return RGBValues.create(0, 0, 0);
     }

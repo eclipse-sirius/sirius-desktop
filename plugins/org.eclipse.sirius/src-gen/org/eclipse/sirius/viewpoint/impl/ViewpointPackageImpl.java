@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSourceFileLink;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.DView;
@@ -192,13 +191,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass dNavigationLinkEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dSourceFileLinkEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -792,42 +784,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EClass getDSourceFileLink() {
-        return dSourceFileLinkEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getDSourceFileLink_FilePath() {
-        return (EAttribute) dSourceFileLinkEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getDSourceFileLink_StartPosition() {
-        return (EAttribute) dSourceFileLinkEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getDSourceFileLink_EndPosition() {
-        return (EAttribute) dSourceFileLinkEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getDAnalysisCustomData() {
         return dAnalysisCustomDataEClass;
     }
@@ -1244,11 +1200,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         createEAttribute(dNavigationLinkEClass, DNAVIGATION_LINK__TARGET_TYPE);
         createEAttribute(dNavigationLinkEClass, DNAVIGATION_LINK__LABEL);
 
-        dSourceFileLinkEClass = createEClass(DSOURCE_FILE_LINK);
-        createEAttribute(dSourceFileLinkEClass, DSOURCE_FILE_LINK__FILE_PATH);
-        createEAttribute(dSourceFileLinkEClass, DSOURCE_FILE_LINK__START_POSITION);
-        createEAttribute(dSourceFileLinkEClass, DSOURCE_FILE_LINK__END_POSITION);
-
         dAnalysisCustomDataEClass = createEClass(DANALYSIS_CUSTOM_DATA);
         createEAttribute(dAnalysisCustomDataEClass, DANALYSIS_CUSTOM_DATA__KEY);
         createEReference(dAnalysisCustomDataEClass, DANALYSIS_CUSTOM_DATA__DATA);
@@ -1351,7 +1302,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dRepresentationElementEClass.getESuperTypes().add(this.getDRefreshable());
         dRepresentationElementEClass.getESuperTypes().add(this.getDSemanticDecorator());
         dViewEClass.getESuperTypes().add(this.getDRefreshable());
-        dSourceFileLinkEClass.getESuperTypes().add(this.getDNavigationLink());
         labelStyleEClass.getESuperTypes().add(this.getBasicLabelStyle());
         styleEClass.getESuperTypes().add(this.getDRefreshable());
         styleEClass.getESuperTypes().add(this.getCustomizable());
@@ -1456,14 +1406,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         addEOperation(dNavigationLinkEClass, theEcorePackage.getEBoolean(), "isAvailable", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-        initEClass(dSourceFileLinkEClass, DSourceFileLink.class, "DSourceFileLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDSourceFileLink_FilePath(), theEcorePackage.getEString(), "filePath", null, 1, 1, DSourceFileLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDSourceFileLink_StartPosition(), theEcorePackage.getEInt(), "startPosition", "0", 0, 1, DSourceFileLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDSourceFileLink_EndPosition(), theEcorePackage.getEInt(), "endPosition", "1", 0, 1, DSourceFileLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dAnalysisCustomDataEClass, DAnalysisCustomData.class, "DAnalysisCustomData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDAnalysisCustomData_Key(), theEcorePackage.getEString(), "key", null, 1, 1, DAnalysisCustomData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,

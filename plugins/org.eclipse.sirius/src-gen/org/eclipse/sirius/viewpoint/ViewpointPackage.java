@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -707,72 +707,6 @@ public interface ViewpointPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.impl.DSourceFileLinkImpl
-     * <em>DSource File Link</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DSourceFileLinkImpl
-     * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDSourceFileLink()
-     * @generated
-     */
-    int DSOURCE_FILE_LINK = 17;
-
-    /**
-     * The feature id for the '<em><b>Target Type</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DSOURCE_FILE_LINK__TARGET_TYPE = DNAVIGATION_LINK__TARGET_TYPE;
-
-    /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DSOURCE_FILE_LINK__LABEL = DNAVIGATION_LINK__LABEL;
-
-    /**
-     * The feature id for the '<em><b>File Path</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DSOURCE_FILE_LINK__FILE_PATH = DNAVIGATION_LINK_FEATURE_COUNT + 0;
-
-    /**
-     * The feature id for the '<em><b>Start Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DSOURCE_FILE_LINK__START_POSITION = DNAVIGATION_LINK_FEATURE_COUNT + 1;
-
-    /**
-     * The feature id for the '<em><b>End Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DSOURCE_FILE_LINK__END_POSITION = DNAVIGATION_LINK_FEATURE_COUNT + 2;
-
-    /**
-     * The number of structural features of the '<em>DSource File Link</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DSOURCE_FILE_LINK_FEATURE_COUNT = DNAVIGATION_LINK_FEATURE_COUNT + 3;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisCustomDataImpl
      * <em>DAnalysis Custom Data</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -781,7 +715,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDAnalysisCustomData()
      * @generated
      */
-    int DANALYSIS_CUSTOM_DATA = 18;
+    int DANALYSIS_CUSTOM_DATA = 17;
 
     /**
      * The feature id for the '<em><b>Key</b></em>' attribute. <!--
@@ -820,7 +754,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getCustomizable()
      * @generated
      */
-    int CUSTOMIZABLE = 30;
+    int CUSTOMIZABLE = 29;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -850,7 +784,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getBasicLabelStyle()
      * @generated
      */
-    int BASIC_LABEL_STYLE = 29;
+    int BASIC_LABEL_STYLE = 28;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -925,7 +859,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getLabelStyle()
      * @generated
      */
-    int LABEL_STYLE = 19;
+    int LABEL_STYLE = 18;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -1008,7 +942,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getStyle()
      * @generated
      */
-    int STYLE = 20;
+    int STYLE = 19;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -1047,7 +981,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getRGBValues()
      * @generated
      */
-    int RGB_VALUES = 34;
+    int RGB_VALUES = 33;
 
     /**
      * The meta object id for the '
@@ -1059,7 +993,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDAnalysisSessionEObject()
      * @generated
      */
-    int DANALYSIS_SESSION_EOBJECT = 21;
+    int DANALYSIS_SESSION_EOBJECT = 20;
 
     /**
      * The feature id for the '<em><b>Open</b></em>' attribute. <!--
@@ -1135,7 +1069,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSessionManagerEObject()
      * @generated
      */
-    int SESSION_MANAGER_EOBJECT = 22;
+    int SESSION_MANAGER_EOBJECT = 21;
 
     /**
      * The feature id for the '<em><b>Owned Sessions</b></em>' containment
@@ -1165,7 +1099,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDResource()
      * @generated
      */
-    int DRESOURCE = 23;
+    int DRESOURCE = 22;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1203,7 +1137,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFile()
      * @generated
      */
-    int DFILE = 24;
+    int DFILE = 23;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1242,7 +1176,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDResourceContainer()
      * @generated
      */
-    int DRESOURCE_CONTAINER = 25;
+    int DRESOURCE_CONTAINER = 24;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1289,7 +1223,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDProject()
      * @generated
      */
-    int DPROJECT = 26;
+    int DPROJECT = 25;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1336,7 +1270,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFolder()
      * @generated
      */
-    int DFOLDER = 27;
+    int DFOLDER = 26;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1383,7 +1317,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDModel()
      * @generated
      */
-    int DMODEL = 28;
+    int DMODEL = 27;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1421,7 +1355,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getFontFormat()
      * @generated
      */
-    int FONT_FORMAT = 31;
+    int FONT_FORMAT = 30;
 
     /**
      * The meta object id for the '
@@ -1433,7 +1367,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getLabelAlignment()
      * @generated
      */
-    int LABEL_ALIGNMENT = 32;
+    int LABEL_ALIGNMENT = 31;
 
     /**
      * The meta object id for the '
@@ -1444,7 +1378,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSyncStatus()
      * @generated
      */
-    int SYNC_STATUS = 33;
+    int SYNC_STATUS = 32;
 
     /**
      * Returns the meta object for class '
@@ -1958,54 +1892,6 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      */
     EAttribute getDNavigationLink_Label();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.DSourceFileLink
-     * <em>DSource File Link</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for class '<em>DSource File Link</em>'.
-     * @see org.eclipse.sirius.viewpoint.DSourceFileLink
-     * @generated
-     */
-    EClass getDSourceFileLink();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.DSourceFileLink#getFilePath
-     * <em>File Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>File Path</em>'.
-     * @see org.eclipse.sirius.viewpoint.DSourceFileLink#getFilePath()
-     * @see #getDSourceFileLink()
-     * @generated
-     */
-    EAttribute getDSourceFileLink_FilePath();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.DSourceFileLink#getStartPosition
-     * <em>Start Position</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Start Position</em>'.
-     * @see org.eclipse.sirius.viewpoint.DSourceFileLink#getStartPosition()
-     * @see #getDSourceFileLink()
-     * @generated
-     */
-    EAttribute getDSourceFileLink_StartPosition();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.DSourceFileLink#getEndPosition
-     * <em>End Position</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>End Position</em>'.
-     * @see org.eclipse.sirius.viewpoint.DSourceFileLink#getEndPosition()
-     * @see #getDSourceFileLink()
-     * @generated
-     */
-    EAttribute getDSourceFileLink_EndPosition();
 
     /**
      * Returns the meta object for class '
@@ -2878,42 +2764,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EAttribute DNAVIGATION_LINK__LABEL = eINSTANCE.getDNavigationLink_Label();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.impl.DSourceFileLinkImpl
-         * <em>DSource File Link</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.viewpoint.impl.DSourceFileLinkImpl
-         * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDSourceFileLink()
-         * @generated
-         */
-        EClass DSOURCE_FILE_LINK = eINSTANCE.getDSourceFileLink();
-
-        /**
-         * The meta object literal for the '<em><b>File Path</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute DSOURCE_FILE_LINK__FILE_PATH = eINSTANCE.getDSourceFileLink_FilePath();
-
-        /**
-         * The meta object literal for the '<em><b>Start Position</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute DSOURCE_FILE_LINK__START_POSITION = eINSTANCE.getDSourceFileLink_StartPosition();
-
-        /**
-         * The meta object literal for the '<em><b>End Position</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute DSOURCE_FILE_LINK__END_POSITION = eINSTANCE.getDSourceFileLink_EndPosition();
 
         /**
          * The meta object literal for the '

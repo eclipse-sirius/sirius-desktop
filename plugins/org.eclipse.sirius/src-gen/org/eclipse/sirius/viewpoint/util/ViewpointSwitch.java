@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSourceFileLink;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.DView;
@@ -260,15 +259,6 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DNAVIGATION_LINK: {
             DNavigationLink dNavigationLink = (DNavigationLink) theEObject;
             T result = caseDNavigationLink(dNavigationLink);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ViewpointPackage.DSOURCE_FILE_LINK: {
-            DSourceFileLink dSourceFileLink = (DSourceFileLink) theEObject;
-            T result = caseDSourceFileLink(dSourceFileLink);
-            if (result == null)
-                result = caseDNavigationLink(dSourceFileLink);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -681,23 +671,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseDNavigationLink(DNavigationLink object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DSource File Link</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DSource File Link</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDSourceFileLink(DSourceFileLink object) {
         return null;
     }
 
