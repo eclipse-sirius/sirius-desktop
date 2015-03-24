@@ -60,30 +60,34 @@ public class DoubleClickCommandBuilder extends AbstractDiagramCommandBuilder {
      * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
      */
     public Command buildCommand() {
+        if (canDoubleClick()) {
+            final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
+            variables.put(tool.getElement(), dDiagramElement.getTarget());
+            variables.put(tool.getElementView(), dDiagramElement);
+
+            final DCommand cmd = createEnclosingCommand();
+            IInterpreter interpreter = InterpreterUtil.getInterpreter(dDiagramElement);
+            cmd.getTasks().add(new InitInterpreterVariablesTask(variables, interpreter, uiCallback));
+
+            Option<DDiagram> parentDiagram = getDDiagram();
+            if (tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
+                cmd.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), dDiagramElement, tool.getInitialOperation().getFirstModelOperations()));
+                addPostOperationTasks(cmd, interpreter);
+            }
+
+            return cmd;
+        }
+        return UnexecutableCommand.INSTANCE;
+    }
+
+    private boolean canDoubleClick() {
         // Layouting mode on diagrams
         // if the dDiagram is in layoutMode
-        if (isInLayoutingModeDiagram(dDiagramElement)) {
-            // We disable this double click, unless the tool is only containing
-            // Navigation descriptions
-            if (!(tool.getInitialOperation().getFirstModelOperations() instanceof Navigation)) {
-                return UnexecutableCommand.INSTANCE;
-            }
-        }
-        final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
-        variables.put(tool.getElement(), dDiagramElement.getTarget());
-        variables.put(tool.getElementView(), dDiagramElement);
-
-        final DCommand cmd = createEnclosingCommand();
-        IInterpreter interpreter = InterpreterUtil.getInterpreter(dDiagramElement);
-        cmd.getTasks().add(new InitInterpreterVariablesTask(variables, interpreter, uiCallback));
-
-        Option<DDiagram> parentDiagram = getDDiagram();
-        if (tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
-            cmd.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), dDiagramElement, tool.getInitialOperation().getFirstModelOperations()));
-            addPostOperationTasks(cmd, interpreter);
-        }
-
-        return cmd;
+        // We disable this double click, unless the tool is only containing
+        // Navigation descriptions
+        boolean valid = !(isInLayoutingModeDiagram(dDiagramElement) && !(tool.getInitialOperation().getFirstModelOperations() instanceof Navigation));
+        valid = valid && checkPrecondition(dDiagramElement, tool);
+        return valid;
     }
 
     /**

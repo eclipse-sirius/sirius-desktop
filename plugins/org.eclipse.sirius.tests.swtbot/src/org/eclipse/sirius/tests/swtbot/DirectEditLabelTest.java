@@ -99,12 +99,32 @@ public class DirectEditLabelTest extends AbstractSiriusSwtBotGefTestCase {
         DiagramDescription diagramDescription = dDiagram.getDescription();
 
         // we create a new direct edit tool in VSM while the diagram is open
-        addDirectEditToolToVSM(diagramDescription);
+        String precondition = null;
+        addDirectEditToolToVSM(diagramDescription, precondition);
 
-        checkDirectEditLabel();
+        checkDirectEditLabel(precondition);
     }
 
-    private void checkDirectEditLabel() {
+    /**
+     * Tests that the direct edit tool is not available if the tool has false
+     * precondition.
+     * 
+     * @throws Exception
+     *             thrown to fail
+     */
+    public void testDirectEditToolWithPrecondition() throws Exception {
+
+        DDiagram dDiagram = (DDiagram) getRepresentationWithName(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME);
+        DiagramDescription diagramDescription = dDiagram.getDescription();
+
+        // we create a new direct edit tool in VSM while the diagram is open
+        String precondition = "[false/]";
+        addDirectEditToolToVSM(diagramDescription, precondition);
+
+        checkDirectEditLabel(precondition);
+    }
+
+    private void checkDirectEditLabel(String precondition) {
         // Click a first time on the edit part to select it.
         editor.click(CLASS_NAME, AbstractDiagramContainerEditPart.class);
         SWTBotUtils.waitAllUiEvents();
@@ -113,7 +133,12 @@ public class DirectEditLabelTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
 
         /* wait until text widget appears */
-        editor.bot().text();
+        try {
+            editor.bot().text();
+        } catch (Exception e) {
+            assertTrue("The direct edit mode is not accessible while there is no precondition.", "[false/]".equals(precondition));
+            return;
+        }
         /* Find the text widget and check its label now. */
         List<Text> controls = editor.bot().getFinder().findControls(editor.getWidget(), new IsInstanceOf<Text>(Text.class), true);
         if (controls.size() == 1) {
@@ -132,7 +157,7 @@ public class DirectEditLabelTest extends AbstractSiriusSwtBotGefTestCase {
         editor.getEditPart("newLabel", AbstractDiagramContainerEditPart.class);
     }
 
-    private void addDirectEditToolToVSM(DiagramDescription diagramDescription) throws Exception {
+    private void addDirectEditToolToVSM(DiagramDescription diagramDescription, String precondition) throws Exception {
         ResourceSet resourceSet = new ResourceSetImpl();
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("odesign", new DescriptionResourceFactoryImpl());
         Resource odesignResource = resourceSet.getResource(diagramDescription.eResource().getURI(), true);
@@ -148,6 +173,9 @@ public class DirectEditLabelTest extends AbstractSiriusSwtBotGefTestCase {
         DirectEditLabel directEditLabel = ToolFactory.eINSTANCE.createDirectEditLabel();
         section.getOwnedTools().add(directEditLabel);
         directEditLabel.setName(DIRECT_EDIT_NAME);
+        if (precondition != null) {
+            directEditLabel.setPrecondition(precondition);
+        }
 
         containerMapping.setLabelDirectEdit(directEditLabel);
         InitialOperation initialOperation = directEditLabel.getInitialOperation();

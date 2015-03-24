@@ -58,9 +58,7 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
      * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
      */
     public Command buildCommand() {
-        // Layouting mode on diagrams, if the ddiagram is in
-        // LayoutingMode, we do not allow direct edit.
-        if (this.permissionAuthority.canEditInstance(labeled) && !isInLayoutingModeDiagram(labeled)) {
+        if (this.permissionAuthority.canEditInstance(labeled) && canDirectEdit()) {
             final DCommand result = createEnclosingCommand();
             /*
              * First we need to init the mask variables.
@@ -82,6 +80,19 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
             return result;
         }
         return UnexecutableCommand.INSTANCE;
+    }
+
+    /**
+     * Indicates if the label to edit can be directly editable.
+     * 
+     * @return true if the label can be direct edited, false otherwise
+     */
+    public boolean canDirectEdit() {
+        // Layouting mode on diagrams, if the diagram is in
+        // LayoutingMode, we do not allow direct edit.
+        boolean valid = !isInLayoutingModeDiagram(labeled);
+        valid = valid && checkPrecondition((DDiagramElement) labeled, directEditTool);
+        return valid;
     }
 
     /**

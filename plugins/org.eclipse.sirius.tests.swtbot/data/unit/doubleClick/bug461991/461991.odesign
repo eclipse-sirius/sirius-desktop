@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="bug461991" version="10.0.0.201411061000">
+  <ownedViewpoints name="bug461991" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bug461991" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="EPackage" semanticCandidatesExpression="[eContents()/]" doubleClickDescription="//@ownedViewpoints[name='bug461991']/@ownedRepresentations[name='bug461991']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20EPackage']" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='bug461991']/@ownedRepresentations[name='bug461991']/@defaultLayer/@containerMappings[name='EPackage']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EClass" doubleClickDescription="//@ownedViewpoints[name='bug461991']/@ownedRepresentations[name='bug461991']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20EClass']" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_chocolate']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Double click EPackage" precondition="[false/]" mappings="//@ownedViewpoints[name='bug461991']/@ownedRepresentations[name='bug461991']/@defaultLayer/@containerMappings[name='EPackage']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Double click EClass" mappings="//@ownedViewpoints[name='bug461991']/@ownedRepresentations[name='bug461991']/@defaultLayer/@containerMappings[name='EClass']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

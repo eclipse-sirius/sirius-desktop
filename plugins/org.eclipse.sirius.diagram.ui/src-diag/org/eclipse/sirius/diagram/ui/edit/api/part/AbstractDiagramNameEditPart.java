@@ -31,6 +31,8 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
+import org.eclipse.sirius.diagram.tools.internal.command.builders.DirectEditCommandBuilder;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LabelDeletionEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LabelSemanticEditPolicy;
@@ -245,10 +247,10 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
             final DMappingBased mappingBasedObject = (DMappingBased) eObj;
             if (mappingBasedObject.getMapping() != null && mappingBasedObject instanceof DDiagramElement
                     && ((DDiagramElement) mappingBasedObject).getDiagramElementMapping().getLabelDirectEdit() != null) {
-                // Layouting mode on diagrams
-                // if the ddiagram is in LayoutingMode, we do not allow
-                // direct edit
-                directEditEnabled = !isInLayoutingModeDiagram((DDiagramElement) mappingBasedObject);
+                // check precondition
+                DirectEditLabel labelDirectEdit = ((DDiagramElement) mappingBasedObject).getDiagramElementMapping().getLabelDirectEdit();
+                final DirectEditCommandBuilder builder = new DirectEditCommandBuilder((DDiagramElement) mappingBasedObject, labelDirectEdit, null);
+                directEditEnabled = builder.canDirectEdit();
             }
         }
         return directEditEnabled;
