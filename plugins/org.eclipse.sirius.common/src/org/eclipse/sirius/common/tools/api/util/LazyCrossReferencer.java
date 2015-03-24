@@ -25,7 +25,9 @@ import com.google.common.collect.Iterables;
  * <BR>
  * This cross referencer also reacts to {@link EObject} removal from their
  * containing reference : it removes itself automatically from their adapters
- * and recursively from those of their contents. <BR>
+ * and recursively from those of their contents. If the new container is already
+ * set and also has the cross referencer, in this case cross referencer is not
+ * removed. <BR>
  * <BR>
  * This cross referencer also provide a way to disable the resolution of proxy.
  * This can be useful to avoid reloading of a resource during the unloading of
@@ -39,6 +41,7 @@ import com.google.common.collect.Iterables;
  * 
  * @author mchauvin
  */
+@SuppressWarnings("restriction")
 public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapability {
     /**
      * Flag to know if the LazyCrossReferencer has been initialized.
@@ -132,8 +135,6 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
         super.unsetTarget(target);
     }
 
-
-
     /**
      * Look at all EObjects of this resource and resolve proxy cross reference
      * that reference these EObjects.
@@ -174,18 +175,43 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
         case Notification.REMOVE:
             Object oldValue = notification.getOldValue();
             if (oldValue instanceof Notifier) {
-                removeAdapter((Notifier) oldValue);
+                removeAdapterIfNecessary(notification, (Notifier) oldValue);
             }
             break;
 
         case Notification.REMOVE_MANY:
             for (Notifier oldVal : Iterables.filter((Collection<?>) notification.getOldValue(), Notifier.class)) {
-                removeAdapter(oldVal);
+                removeAdapterIfNecessary(notification, oldVal);
             }
             break;
 
         default:
             break;
+        }
+    }
+
+    /**
+     * This method does not remove the adapter from the notification old value
+     * if its new container is already set and also has the adapter.
+     * 
+     * @param notification
+     *            a containment notification
+     * @param oldValue
+     *            notification old value on which the adapter may be removed
+     */
+    private void removeAdapterIfNecessary(Notification notification, Notifier oldValue) {
+        boolean toRemove = true;
+
+        if (oldValue instanceof EObject) {
+            EObject currentContainer = ((EObject) oldValue).eContainer();
+
+            if (currentContainer != null && currentContainer != notification.getNotifier() && currentContainer.eAdapters().contains(this)) {
+                toRemove = false;
+            }
+        }
+
+        if (toRemove) {
+            removeAdapter(oldValue);
         }
     }
 }
