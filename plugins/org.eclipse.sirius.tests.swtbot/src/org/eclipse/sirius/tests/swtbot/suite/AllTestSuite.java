@@ -27,6 +27,7 @@ import org.eclipse.sirius.tests.swtbot.clipboard.GenericClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.MultiSessionCopyPasteTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionExpressionTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionTest;
+import org.eclipse.sirius.tests.swtbot.editor.vsm.BorderSizeComputationExpressionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CompletionProposalInVSMTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ContentAssistTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CustomizationPropertySectionsTests;
@@ -131,7 +132,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DragAndDropDifferentElementsTest.class);
         suite.addTestSuite(CellEditorExtensionTest.class);
         suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
-        
 
     }
 
@@ -255,6 +255,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DoubleClickToolNavigationOperationTest.class);
         suite.addTestSuite(BackgroundColorFigureUpdateTests.class);
         suite.addTestSuite(BackgroundStyleUpdateTest.class);
+        suite.addTestSuite(BorderSizeComputationExpressionTest.class);
         suite.addTestSuite(EdgeMappingTestCase.class);
         suite.addTestSuite(InvalidMetamodelRessourceTest.class);
         suite.addTestSuite(ExtensionActivationOrderTest.class);
