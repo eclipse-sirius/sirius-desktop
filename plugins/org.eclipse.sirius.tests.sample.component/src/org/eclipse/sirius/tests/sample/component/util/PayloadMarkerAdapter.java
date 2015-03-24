@@ -60,8 +60,10 @@ public class PayloadMarkerAdapter extends EContentAdapter {
     }
 
     private final List<FeatureAccess> accessLog = new ArrayList<PayloadMarkerAdapter.FeatureAccess>();
-    
+
     private final Multiset<String> uniqueContexts = ConcurrentHashMultiset.create();
+
+    private boolean enabled = true;
 
     public static void install(EObject target) {
         for (Adapter a : target.eAdapters()) {
@@ -85,11 +87,17 @@ public class PayloadMarkerAdapter extends EContentAdapter {
         return null;
     }
 
+    public void setEnable(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public synchronized void logAccess(Setting s) {
-        String context = computeContext();
-        FeatureAccess fa = FeatureAccess.of(s, context);
-        accessLog.add(fa);
-        uniqueContexts.add(context);
+        if (enabled) {
+            String context = computeContext();
+            FeatureAccess fa = FeatureAccess.of(s, context);
+            accessLog.add(fa);
+            uniqueContexts.add(context);
+        }
     }
 
     private static String computeContext() {
@@ -99,7 +107,8 @@ public class PayloadMarkerAdapter extends EContentAdapter {
         boolean tooDeep = false;
         for (int i = 0; i < stack.length; i++) {
             StackTraceElement elt = stack[i];
-            if (!tooDeep && (elt.getClassName().equals("org.eclipse.swt.widgets.RunnableLock") && elt.getMethodName().equals("run")) || (elt.getClassName().equals("org.eclipse.core.runtime.SafeRunner") && elt.getMethodName().equals("run"))) {
+            if (!tooDeep && (elt.getClassName().equals("org.eclipse.swt.widgets.RunnableLock") && elt.getMethodName().equals("run"))
+                    || (elt.getClassName().equals("org.eclipse.core.runtime.SafeRunner") && elt.getMethodName().equals("run"))) {
                 tooDeep = true;
             }
             if (!tooDeep && !elt.getClassName().startsWith(PayloadMarkerAdapter.class.getName())) {
@@ -112,7 +121,7 @@ public class PayloadMarkerAdapter extends EContentAdapter {
     public synchronized List<FeatureAccess> getAccessLog() {
         return Collections.unmodifiableList(new ArrayList<FeatureAccess>(accessLog));
     }
-    
+
     public Multiset<String> getUniqueContexts() {
         return ImmutableMultiset.copyOf(uniqueContexts);
     }

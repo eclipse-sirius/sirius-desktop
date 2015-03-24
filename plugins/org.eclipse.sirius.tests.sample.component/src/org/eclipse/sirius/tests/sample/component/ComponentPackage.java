@@ -118,13 +118,31 @@ public interface ComponentPackage extends EPackage {
     int COMPONENT__REFERENCE = 4;
 
     /**
+     * The feature id for the '<em><b>Opposites</b></em>' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int COMPONENT__OPPOSITES = 5;
+
+    /**
+     * The feature id for the '<em><b>References2</b></em>' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int COMPONENT__REFERENCES2 = 6;
+
+    /**
      * The number of structural features of the '<em>Component</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int COMPONENT_FEATURE_COUNT = 5;
+    int COMPONENT_FEATURE_COUNT = 7;
 
     /**
      * The number of operations of the '<em>Component</em>' class. <!--
@@ -208,6 +226,30 @@ public interface ComponentPackage extends EPackage {
     EReference getComponent_Reference();
 
     /**
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getOpposites
+     * <em>Opposites</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference list '<em>Opposites</em>'.
+     * @see org.eclipse.sirius.tests.sample.component.Component#getOpposites()
+     * @see #getComponent()
+     * @generated
+     */
+    EReference getComponent_Opposites();
+
+    /**
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getReferences2
+     * <em>References2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference list '<em>References2</em>'.
+     * @see org.eclipse.sirius.tests.sample.component.Component#getReferences2()
+     * @see #getComponent()
+     * @generated
+     */
+    EReference getComponent_References2();
+
+    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -283,6 +325,22 @@ public interface ComponentPackage extends EPackage {
          * @generated
          */
         EReference COMPONENT__REFERENCE = eINSTANCE.getComponent_Reference();
+
+        /**
+         * The meta object literal for the '<em><b>Opposites</b></em>' reference
+         * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference COMPONENT__OPPOSITES = eINSTANCE.getComponent_Opposites();
+
+        /**
+         * The meta object literal for the '<em><b>References2</b></em>'
+         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference COMPONENT__REFERENCES2 = eINSTANCE.getComponent_References2();
 
     }
 

@@ -11,7 +11,6 @@
 package org.eclipse.sirius.tests.sample.component;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -31,6 +30,11 @@ import org.eclipse.emf.ecore.EObject;
  * <em>References</em>}</li>
  * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getReference
  * <em>Reference</em>}</li>
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getOpposites
+ * <em>Opposites</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.tests.sample.component.Component#getReferences2
+ * <em>References2</em>}</li>
  * </ul>
  * </p>
  *
@@ -163,5 +167,44 @@ public interface Component extends EObject {
      * @generated
      */
     void setReference(Component value);
+
+    /**
+     * Returns the value of the '<em><b>Opposites</b></em>' reference list. The
+     * list contents are of type
+     * {@link org.eclipse.sirius.tests.sample.component.Component}. It is
+     * bidirectional and its opposite is '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getReferences
+     * <em>References</em>}'. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Opposites</em>' reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Opposites</em>' reference list.
+     * @see org.eclipse.sirius.tests.sample.component.ComponentPackage#getComponent_Opposites()
+     * @see org.eclipse.sirius.tests.sample.component.Component#getReferences
+     * @model opposite="references"
+     * @generated
+     */
+    EList<Component> getOpposites();
+
+    /**
+     * Returns the value of the '<em><b>References2</b></em>' reference list.
+     * The list contents are of type
+     * {@link org.eclipse.sirius.tests.sample.component.Component}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>References2</em>' reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>References2</em>' reference list.
+     * @see org.eclipse.sirius.tests.sample.component.ComponentPackage#getComponent_References2()
+     * @model
+     * @generated
+     */
+    EList<Component> getReferences2();
 
 } // Component

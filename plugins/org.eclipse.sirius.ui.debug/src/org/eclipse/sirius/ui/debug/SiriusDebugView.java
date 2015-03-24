@@ -478,12 +478,18 @@ public class SiriusDebugView extends AbstractDebugView {
                 int totalSize = log.size();
                 int shown = Math.min(totalSize, max);
                 TabularReport tr = new TabularReport(/* "Timestamp", */"EObject", "Feature");
-                for (int i = log.size() > max ? log.size() - max : 0; i < log.size(); i++) {
-                    FeatureAccess featureAccess = log.get(i);
-                    tr.addLine(Arrays.asList(/*
-                                              * String.format("%tT",
-                                              * featureAccess.timestamp),
-                                              */((Component) featureAccess.setting.getEObject()).getName(), featureAccess.setting.getEStructuralFeature().getName()));
+
+                try {
+                    PayloadMarkerAdapter.INSTANCE.setEnable(false);
+                    for (int i = log.size() > max ? log.size() - max : 0; i < log.size(); i++) {
+                        FeatureAccess featureAccess = log.get(i);
+                        tr.addLine(Arrays.asList(/*
+                                                  * String.format("%tT",
+                                                  * featureAccess.timestamp),
+                                                  */((Component) featureAccess.setting.getEObject()).getName(), featureAccess.setting.getEStructuralFeature().getName()));
+                    }
+                } finally {
+                    PayloadMarkerAdapter.INSTANCE.setEnable(true);
                 }
                 StringBuilder sb = new StringBuilder();
                 sb.append("Showing " + shown + " of " + totalSize + " accesses.\n");

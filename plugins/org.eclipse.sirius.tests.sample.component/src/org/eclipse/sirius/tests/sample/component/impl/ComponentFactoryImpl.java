@@ -20,9 +20,9 @@ import org.eclipse.sirius.tests.sample.component.ComponentFactory;
 import org.eclipse.sirius.tests.sample.component.ComponentPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
 public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFactory {
@@ -101,4 +101,4 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
         return ComponentPackage.eINSTANCE;
     }
 
-} //ComponentFactoryImpl
+} // ComponentFactoryImpl

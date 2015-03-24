@@ -9,7 +9,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Component" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
-        eType="#//Component"/>
+        eType="#//Component" eOpposite="#//Component/opposites"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Component"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="opposites" upperBound="-1"
+        eType="#//Component" eOpposite="#//Component/references"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="references2" upperBound="-1"
+        eType="#//Component"/>
   </eClassifiers>
 </ecore:EPackage>
