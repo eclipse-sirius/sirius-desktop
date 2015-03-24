@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,6 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -55,7 +54,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * .
+ * Delete command builder.
  * 
  * @author mchauvin
  */
@@ -121,11 +120,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         this.deleteFromDiagram = deleteFromDiagram;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
-     */
+    @Override
     public Command buildCommand() {
         Command command = UnexecutableCommand.INSTANCE;
         if (diagram != null) {
@@ -138,7 +133,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
 
     private Command buildDeleteDiagram() {
         Command cmd = UnexecutableCommand.INSTANCE;
-        if (permissionAuthority.canEditInstance(diagram) && permissionAuthority.canEditInstance(diagram.eContainer())) {
+        if (permissionAuthority.canDeleteInstance(diagram)) {
             final DCommand vpCmd = createEnclosingCommand();
             /* delete the diagram */
             vpCmd.getTasks().add(new DeleteDRepresentationTask(diagram));
@@ -148,7 +143,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
     }
 
     private Command buildDeleteDiagramElementFromDiagram() {
-        if (permissionAuthority.canEditInstance(diagramElement) && permissionAuthority.canEditInstance(diagramElement.eContainer())) {
+        if (permissionAuthority.canDeleteInstance(diagramElement)) {
             final DCommand cmd = createEnclosingCommand();
             cmd.getTasks().add(new DeleteEObjectTask(diagramElement, modelAccessor));
 
@@ -172,22 +167,15 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         Command cmd = UnexecutableCommand.INSTANCE;
         // We first check that the permission authority allows to delete the
         // given diagram element
-        if (permissionAuthority.canEditInstance(diagramElement) && permissionAuthority.canEditInstance(diagramElement.eContainer())) {
+        if (permissionAuthority.canDeleteInstance(diagramElement)) {
 
             // We also check that the underlying semantic elements can be
             // deleted
-            boolean semanticElementCanBeDeleted = true;
-            final Set<EObject> allSemanticElements = getSemanticElementsToDestroy(diagramElement);
-            for (final EObject semantic : allSemanticElements) {
-                final EObject container = semantic.eContainer();
-                if (!permissionAuthority.canDeleteInstance(semantic) || (container != null && !permissionAuthority.canEditInstance(container))) {
-                    semanticElementCanBeDeleted = false;
-                }
-            }
+            Set<EObject> semanticElements = getSemanticElementsToDestroy(diagramElement);
 
             // If both graphical and semantic elements can be deleted, we build
             // the command
-            if (semanticElementCanBeDeleted) {
+            if (semanticElements != null) {
                 final DCommand result = createEnclosingCommand();
                 setTool();
                 if (tool != null) {
@@ -195,7 +183,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
                     addRefreshTask(diagramElement, result, tool);
                     cmd = new NoNullResourceCommand(result, diagramElement);
                 } else {
-                    cmd = buildDeleteDiagramElementCommandWithoutTool(result, allSemanticElements);
+                    cmd = buildDeleteDiagramElementCommandWithoutTool(result, semanticElements);
                 }
             }
         }
@@ -284,18 +272,18 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         return result;
     }
 
-    private Command buildDeleteDiagramElementCommandWithoutTool(final DCommand result, final Set<EObject> allSemanticElements) {
+    private Command buildDeleteDiagramElementCommandWithoutTool(final DCommand result, final Set<EObject> semanticElements) {
         Command cmd;
 
-        if (allSemanticElements.isEmpty()) {
-            // Do not return unexcutable command, actions will be deactivated
+        if (semanticElements.isEmpty()) {
+            // Do not return unexecutable command, actions will be deactivated
             // when an element is not deletable, here the result needs to be
             // return to handle multi-selection.
             cmd = result;
         } else {
             // Now delete all the diagram elements corresponding to
             // the semantic elements to delete
-            ICommandTask deleteWithoutToolTask = new DeleteWithoutToolTask(diagramElement, allSemanticElements, modelAccessor, taskHelper) {
+            ICommandTask deleteWithoutToolTask = new DeleteWithoutToolTask(diagramElement, semanticElements, modelAccessor, taskHelper) {
 
                 @Override
                 protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks) {
@@ -326,26 +314,39 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     private Set<EObject> getSemanticElementsToDestroy(final DDiagramElement currentDiagramElement) {
         Set<EObject> elementsToDestroy = Sets.newLinkedHashSet();
-        appendSemanticElementsToDestroy(currentDiagramElement, elementsToDestroy);
-        return elementsToDestroy;
+        boolean canDelete = appendSemanticElementsToDestroy(currentDiagramElement, elementsToDestroy);
+        return canDelete ? elementsToDestroy : null;
     }
 
-    private void appendSemanticElementsToDestroy(final DDiagramElement currentDiagramElement, Set<EObject> elementsToDestroy) {
+    private boolean appendSemanticElementsToDestroy(final DDiagramElement currentDiagramElement, Set<EObject> elementsToDestroy) {
+        boolean canDelete = true;
+
         for (final EObject semantic : currentDiagramElement.getSemanticElements()) {
             if (semantic != null && !elementsToDestroy.contains(semantic)) {
-                Iterables.addAll(elementsToDestroy, AllContents.of(semantic, true));
+                if (!permissionAuthority.canDeleteInstance(semantic)) {
+                    canDelete = false;
+                    break;
+                } else {
+                    elementsToDestroy.add(semantic);
+                }
             }
+        } // for
+
+        if (canDelete) {
+            for (final EObject child : currentDiagramElement.eContents()) {
+                if (child instanceof DDiagramElement) {
+                    if (!appendSemanticElementsToDestroy((DDiagramElement) child, elementsToDestroy)) {
+                        canDelete = false;
+                        break;
+                    }
+                }
+            } // for
         }
-        for (final EObject child : currentDiagramElement.eContents()) {
-            if (child instanceof DDiagramElement) {
-                appendSemanticElementsToDestroy((DDiagramElement) child, elementsToDestroy);
-            }
-        }
+
+        return canDelete;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     protected String getEnclosingCommandLabel() {
         String commandLabel = DELETE;
         if (diagram != null) {
@@ -362,9 +363,6 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         return commandLabel;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Option<DDiagram> getDDiagram() {
         if (diagram == null && diagramElement != null) {
