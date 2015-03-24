@@ -22,11 +22,13 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
+import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
+import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
 
 /**
  * This is the item provider adapter for a
@@ -191,15 +193,42 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_FOREGROUND, DescriptionFactory.eINSTANCE.createForegroundStyleDescription()));
 
+        ForegroundConditionalStyle foregroundConditionalStyle = DescriptionFactory.eINSTANCE.createForegroundConditionalStyle();
+        foregroundConditionalStyle.setStyle(DescriptionFactory.eINSTANCE.createForegroundStyleDescription());
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE, foregroundConditionalStyle));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_BACKGROUND, DescriptionFactory.eINSTANCE.createBackgroundStyleDescription()));
+
+        BackgroundConditionalStyle backgroundConditionalStyle = DescriptionFactory.eINSTANCE.createBackgroundConditionalStyle();
+        backgroundConditionalStyle.setStyle(DescriptionFactory.eINSTANCE.createBackgroundStyleDescription());
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE, backgroundConditionalStyle));
+
+        collectCreateColumnTool(newChildDescriptors);
+
+        collectCreateDeleteColumnTool(newChildDescriptors);
+    }
+
+    /**
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+     * describing the children that can be created under this object. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_FOREGROUND, DescriptionFactory.eINSTANCE.createForegroundStyleDescription()));
+
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE, DescriptionFactory.eINSTANCE.createForegroundConditionalStyle()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_BACKGROUND, DescriptionFactory.eINSTANCE.createBackgroundStyleDescription()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE, DescriptionFactory.eINSTANCE.createBackgroundConditionalStyle()));
 
-        collectCreateColumnTool(newChildDescriptors);
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ELEMENT_COLUMN_MAPPING__CREATE, DescriptionFactory.eINSTANCE.createCreateColumnTool()));
 
-        collectCreateDeleteColumnTool(newChildDescriptors);
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ELEMENT_COLUMN_MAPPING__DELETE, DescriptionFactory.eINSTANCE.createDeleteColumnTool()));
     }
 
     private void collectCreateColumnTool(Collection<Object> newChildDescriptors) {

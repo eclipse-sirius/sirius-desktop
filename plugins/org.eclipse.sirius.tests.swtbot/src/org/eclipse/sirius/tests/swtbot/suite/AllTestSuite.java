@@ -30,6 +30,7 @@ import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.BorderSizeComputationExpressionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CompletionProposalInVSMTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ContentAssistTest;
+import org.eclipse.sirius.tests.swtbot.editor.vsm.CreateMandatoryElementsTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CustomizationPropertySectionsTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MetamodelPropertyTabTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MigrationOnVsmEditorReloadTest;
@@ -176,6 +177,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(GenericClipboardSupportTest.class);
         suite.addTestSuite(MultiSessionCopyPasteTest.class);
         suite.addTestSuite(CloseWithoutSavingTest.class);
+        suite.addTestSuite(CreateMandatoryElementsTest.class);
     }
 
     /**

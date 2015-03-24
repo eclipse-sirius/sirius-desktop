@@ -22,11 +22,13 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
@@ -316,17 +318,58 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         EdgeStyleDescription esd = StyleFactory.eINSTANCE.createEdgeStyleDescription();
-        esd.setSizeComputationExpression("2");
-        esd.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
+        edgeStyleInit(esd);
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, esd));
 
         BracketEdgeStyleDescription bsd = StyleFactory.eINSTANCE.createBracketEdgeStyleDescription();
-        bsd.setSizeComputationExpression("2");
-        bsd.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
+        edgeStyleInit(bsd);
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, bsd));
+
+        ConditionalEdgeStyleDescription conditionalEdgeStyle = DescriptionFactory.eINSTANCE.createConditionalEdgeStyleDescription();
+        EdgeStyleDescription edgeStyle = ((EdgeMapping) object).getStyle();
+        EdgeStyleDescription newStyle;
+        // if the style of the EdgeMapping is a BracketEdgeStyle, then the style
+        // for the conditional style will be a BracketEdgeStyle, otherwise it
+        // will be a EdgeStyle
+        if (edgeStyle != null && edgeStyle.eClass() == StylePackage.eINSTANCE.getBracketEdgeStyleDescription()) {
+            newStyle = StyleFactory.eINSTANCE.createBracketEdgeStyleDescription();
+        } else {
+            newStyle = StyleFactory.eINSTANCE.createEdgeStyleDescription();
+        }
+        edgeStyleInit(newStyle);
+        conditionalEdgeStyle.setStyle(newStyle);
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__CONDITIONNAL_STYLES, conditionalEdgeStyle));
+    }
+
+    /**
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+     * describing the children that can be created under this object. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, StyleFactory.eINSTANCE.createEdgeStyleDescription()));
+
+        newChildDescriptors
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__CONDITIONNAL_STYLES,
                 DescriptionFactory.eINSTANCE.createConditionalEdgeStyleDescription()));
+    }
+
+    /**
+     * Add a center label style and set the size computation expression of the
+     * given edge style.
+     * 
+     * @param edgeStyle
+     *            the edge style.
+     */
+    private void edgeStyleInit(EdgeStyleDescription edgeStyle) {
+        edgeStyle.setSizeComputationExpression("2");
+        edgeStyle.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
     }
 
 }

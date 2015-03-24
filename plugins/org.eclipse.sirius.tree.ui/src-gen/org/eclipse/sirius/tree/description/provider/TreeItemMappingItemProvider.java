@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
+import org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
@@ -244,7 +245,9 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_STYLE, DescriptionFactory.eINSTANCE.createTreeItemStyleDescription()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__CONDITIONAL_STYLES, DescriptionFactory.eINSTANCE.createConditionalTreeItemStyleDescription()));
+        ConditionalTreeItemStyleDescription conditionalTreeItemStyle = DescriptionFactory.eINSTANCE.createConditionalTreeItemStyleDescription();
+        conditionalTreeItemStyle.setStyle(DescriptionFactory.eINSTANCE.createTreeItemStyleDescription());
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__CONDITIONAL_STYLES, conditionalTreeItemStyle));
 
         TreeItemMapping newItemMapping = DescriptionFactory.eINSTANCE.createTreeItemMapping();
         newItemMapping.setDefaultStyle(DescriptionFactory.eINSTANCE.createTreeItemStyleDescription());

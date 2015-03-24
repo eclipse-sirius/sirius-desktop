@@ -22,10 +22,12 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
+import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.CreateLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
+import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 
 /**
@@ -233,6 +235,35 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_FOREGROUND, DescriptionFactory.eINSTANCE.createForegroundStyleDescription()));
 
+        ForegroundConditionalStyle foregroundConditionalStyle = DescriptionFactory.eINSTANCE.createForegroundConditionalStyle();
+        foregroundConditionalStyle.setStyle(DescriptionFactory.eINSTANCE.createForegroundStyleDescription());
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE, foregroundConditionalStyle));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_BACKGROUND, DescriptionFactory.eINSTANCE.createBackgroundStyleDescription()));
+
+        BackgroundConditionalStyle backgroundConditionalStyle = DescriptionFactory.eINSTANCE.createBackgroundConditionalStyle();
+        backgroundConditionalStyle.setStyle(DescriptionFactory.eINSTANCE.createBackgroundStyleDescription());
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE, backgroundConditionalStyle));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.LINE_MAPPING__OWNED_SUB_LINES, DescriptionFactory.eINSTANCE.createLineMapping()));
+
+        collectCreateLineTool(newChildDescriptors);
+
+        collectCreateDeleteLineTool(newChildDescriptors);
+    }
+
+    /**
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+     * describing the children that can be created under this object. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_FOREGROUND, DescriptionFactory.eINSTANCE.createForegroundStyleDescription()));
+
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE, DescriptionFactory.eINSTANCE.createForegroundConditionalStyle()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_BACKGROUND, DescriptionFactory.eINSTANCE.createBackgroundStyleDescription()));
@@ -241,9 +272,9 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.LINE_MAPPING__OWNED_SUB_LINES, DescriptionFactory.eINSTANCE.createLineMapping()));
 
-        collectCreateLineTool(newChildDescriptors);
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.LINE_MAPPING__CREATE, DescriptionFactory.eINSTANCE.createCreateLineTool()));
 
-        collectCreateDeleteLineTool(newChildDescriptors);
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.LINE_MAPPING__DELETE, DescriptionFactory.eINSTANCE.createDeleteLineTool()));
     }
 
     private void collectCreateLineTool(Collection<Object> newChildDescriptors) {
