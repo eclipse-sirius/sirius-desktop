@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,7 +49,7 @@ public class ModelAccessorTest extends TestCase {
 
     private final String instanciableEClass = "DAnalysis";
 
-    private final String abstractEClass = "DNavigable";
+    private final String abstractEClass = "DDiagramElement";
 
     private final String interfaceEClass = "DValidable";
 
@@ -58,6 +58,7 @@ public class ModelAccessorTest extends TestCase {
      * 
      * @see junit.framework.TestCase#setUp()
      */
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
         ResourceSet resourceSet = new ResourceSetImpl();
@@ -76,6 +77,7 @@ public class ModelAccessorTest extends TestCase {
      * 
      * @see junit.framework.TestCase#tearDown()
      */
+    @Override
     protected void tearDown() throws Exception {
         super.tearDown();
         accessor.dispose();
@@ -151,7 +153,6 @@ public class ModelAccessorTest extends TestCase {
 
     }
 
-    
     /**
      * Ensures that model {@link ModelAccessor} works as expected when setting
      * values to {@link EEnum} features.
@@ -233,7 +234,6 @@ public class ModelAccessorTest extends TestCase {
         assertEquals("eenumAttribute should not have changed as value is invalid", literal2, instance.eGet(eenumAttribute));
 
     }
-
 
     public void testModelAccesorInstanceOf() throws Exception {
         EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();

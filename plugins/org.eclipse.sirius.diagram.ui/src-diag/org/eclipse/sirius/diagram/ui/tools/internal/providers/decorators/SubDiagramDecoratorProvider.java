@@ -32,10 +32,10 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.gef.ui.internal.editpolicies.GraphicalEditPolicyEx;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
-import org.eclipse.sirius.viewpoint.DNavigable;
 
 /**
  * 
@@ -51,6 +51,7 @@ public class SubDiagramDecoratorProvider extends AbstractProvider implements IDe
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean provides(IOperation operation) {
         if (!(operation instanceof CreateDecoratorsOperation)) {
             return false;
@@ -69,6 +70,7 @@ public class SubDiagramDecoratorProvider extends AbstractProvider implements IDe
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createDecorators(IDecoratorTarget decoratorTarget) {
         EditPart editPart = (EditPart) decoratorTarget.getAdapter(EditPart.class);
         if (editPart instanceof GraphicalEditPart || editPart instanceof AbstractConnectionEditPart) {
@@ -102,7 +104,7 @@ public class SubDiagramDecoratorProvider extends AbstractProvider implements IDe
     public static void refreshEditParts(EditPart part) {
         if (part instanceof IGraphicalEditPart) {
             IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) part;
-            if (graphicalEditPart.resolveSemanticElement() instanceof DNavigable) {
+            if (graphicalEditPart.resolveSemanticElement() instanceof DDiagramElement) {
                 SubDiagramDecoratorProvider.internalRefresh(part);
             }
         } else if (part instanceof RenderedDiagramRootEditPart) {

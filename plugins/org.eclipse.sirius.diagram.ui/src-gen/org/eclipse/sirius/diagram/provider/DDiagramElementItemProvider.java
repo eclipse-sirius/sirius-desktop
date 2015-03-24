@@ -27,7 +27,6 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.DRepresentationElementItemProvider;
 
 /**
@@ -130,7 +129,6 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS);
             childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM_ELEMENT__DECORATIONS);
             childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS);
         }
@@ -180,7 +178,6 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
         case DiagramPackage.DDIAGRAM_ELEMENT__TOOLTIP_TEXT:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
-        case DiagramPackage.DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS:
         case DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS:
         case DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

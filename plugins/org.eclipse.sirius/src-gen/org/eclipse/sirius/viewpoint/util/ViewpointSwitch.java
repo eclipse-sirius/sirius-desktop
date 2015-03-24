@@ -27,7 +27,6 @@ import org.eclipse.sirius.viewpoint.DFolder;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DModel;
-import org.eclipse.sirius.viewpoint.DNavigable;
 import org.eclipse.sirius.viewpoint.DNavigationLink;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
@@ -139,13 +138,6 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DVALIDABLE: {
             DValidable dValidable = (DValidable) theEObject;
             T result = caseDValidable(dValidable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ViewpointPackage.DNAVIGABLE: {
-            DNavigable dNavigable = (DNavigable) theEObject;
-            T result = caseDNavigable(dNavigable);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -433,23 +425,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseDValidable(DValidable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DNavigable</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DNavigable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDNavigable(DNavigable object) {
         return null;
     }
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -2461,7 +2461,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         dSemanticDiagramEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dDiagramElementEClass.getESuperTypes().add(theViewpointPackage.getDRepresentationElement());
         dDiagramElementEClass.getESuperTypes().add(theViewpointPackage.getDValidable());
-        dDiagramElementEClass.getESuperTypes().add(theViewpointPackage.getDNavigable());
         hideFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
         hideLabelFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
         foldingPointFilterEClass.getESuperTypes().add(this.getGraphicalFilter());

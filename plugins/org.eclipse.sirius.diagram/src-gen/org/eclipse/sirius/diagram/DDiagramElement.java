@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.viewpoint.DNavigable;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.Decoration;
@@ -46,7 +45,7 @@ import org.eclipse.sirius.viewpoint.Decoration;
  * @model abstract="true"
  * @generated
  */
-public interface DDiagramElement extends DRepresentationElement, DValidable, DNavigable {
+public interface DDiagramElement extends DRepresentationElement, DValidable {
     /**
      * Returns the value of the '<em><b>Visible</b></em>' attribute. The default
      * value is <code>"true"</code>. <!-- begin-user-doc --> <!-- end-user-doc

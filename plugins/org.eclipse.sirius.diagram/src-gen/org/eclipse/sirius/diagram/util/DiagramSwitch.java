@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,6 @@ import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
-import org.eclipse.sirius.viewpoint.DNavigable;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -204,8 +203,6 @@ public class DiagramSwitch<T> {
             if (result == null)
                 result = caseDValidable(dDiagramElement);
             if (result == null)
-                result = caseDNavigable(dDiagramElement);
-            if (result == null)
                 result = caseDLabelled(dDiagramElement);
             if (result == null)
                 result = caseDMappingBased(dDiagramElement);
@@ -290,8 +287,6 @@ public class DiagramSwitch<T> {
             if (result == null)
                 result = caseDValidable(abstractDNode);
             if (result == null)
-                result = caseDNavigable(abstractDNode);
-            if (result == null)
                 result = caseDLabelled(abstractDNode);
             if (result == null)
                 result = caseDMappingBased(abstractDNode);
@@ -320,8 +315,6 @@ public class DiagramSwitch<T> {
                 result = caseDRepresentationElement(dNode);
             if (result == null)
                 result = caseDValidable(dNode);
-            if (result == null)
-                result = caseDNavigable(dNode);
             if (result == null)
                 result = caseDLabelled(dNode);
             if (result == null)
@@ -353,8 +346,6 @@ public class DiagramSwitch<T> {
                 result = caseDRepresentationElement(dDiagramElementContainer);
             if (result == null)
                 result = caseDValidable(dDiagramElementContainer);
-            if (result == null)
-                result = caseDNavigable(dDiagramElementContainer);
             if (result == null)
                 result = caseDLabelled(dDiagramElementContainer);
             if (result == null)
@@ -389,8 +380,6 @@ public class DiagramSwitch<T> {
             if (result == null)
                 result = caseDValidable(dNodeContainer);
             if (result == null)
-                result = caseDNavigable(dNodeContainer);
-            if (result == null)
                 result = caseDLabelled(dNodeContainer);
             if (result == null)
                 result = caseDMappingBased(dNodeContainer);
@@ -424,8 +413,6 @@ public class DiagramSwitch<T> {
             if (result == null)
                 result = caseDValidable(dNodeList);
             if (result == null)
-                result = caseDNavigable(dNodeList);
-            if (result == null)
                 result = caseDLabelled(dNodeList);
             if (result == null)
                 result = caseDMappingBased(dNodeList);
@@ -451,8 +438,6 @@ public class DiagramSwitch<T> {
             if (result == null)
                 result = caseDValidable(dNodeListElement);
             if (result == null)
-                result = caseDNavigable(dNodeListElement);
-            if (result == null)
                 result = caseDLabelled(dNodeListElement);
             if (result == null)
                 result = caseDMappingBased(dNodeListElement);
@@ -477,8 +462,6 @@ public class DiagramSwitch<T> {
                 result = caseDRepresentationElement(dEdge);
             if (result == null)
                 result = caseDValidable(dEdge);
-            if (result == null)
-                result = caseDNavigable(dEdge);
             if (result == null)
                 result = caseDLabelled(dEdge);
             if (result == null)
@@ -1839,23 +1822,6 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseDRepresentationElement(DRepresentationElement object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DNavigable</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DNavigable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDNavigable(DNavigable object) {
         return null;
     }
 

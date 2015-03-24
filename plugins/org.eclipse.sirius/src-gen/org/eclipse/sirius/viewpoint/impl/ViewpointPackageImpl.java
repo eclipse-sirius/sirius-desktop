@@ -31,7 +31,6 @@ import org.eclipse.sirius.viewpoint.DFolder;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DModel;
-import org.eclipse.sirius.viewpoint.DNavigable;
 import org.eclipse.sirius.viewpoint.DNavigationLink;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
@@ -93,13 +92,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass dValidableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dNavigableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -498,24 +490,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      */
     public EClass getDValidable() {
         return dValidableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getDNavigable() {
-        return dNavigableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDNavigable_OwnedNavigationLinks() {
-        return (EReference) dNavigableEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -1155,9 +1129,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         dValidableEClass = createEClass(DVALIDABLE);
 
-        dNavigableEClass = createEClass(DNAVIGABLE);
-        createEReference(dNavigableEClass, DNAVIGABLE__OWNED_NAVIGATION_LINKS);
-
         dStylizableEClass = createEClass(DSTYLIZABLE);
 
         dRefreshableEClass = createEClass(DREFRESHABLE);
@@ -1336,10 +1307,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEClass(dValidableEClass, DValidable.class, "DValidable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         addEOperation(dValidableEClass, theEcorePackage.getEBoolean(), "validate", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-        initEClass(dNavigableEClass, DNavigable.class, "DNavigable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDNavigable_OwnedNavigationLinks(), this.getDNavigationLink(), null, "ownedNavigationLinks", null, 0, -1, DNavigable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dStylizableEClass, DStylizable.class, "DStylizable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

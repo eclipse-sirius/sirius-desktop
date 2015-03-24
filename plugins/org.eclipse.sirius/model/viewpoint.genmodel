@@ -42,9 +42,6 @@
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DValidable">
       <genOperations ecoreOperation="viewpoint.ecore#//DValidable/validate"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="viewpoint.ecore#//DNavigable">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNavigable/ownedNavigationLinks"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DStylizable">
       <genOperations ecoreOperation="viewpoint.ecore#//DStylizable/getStyle"/>
     </genClasses>

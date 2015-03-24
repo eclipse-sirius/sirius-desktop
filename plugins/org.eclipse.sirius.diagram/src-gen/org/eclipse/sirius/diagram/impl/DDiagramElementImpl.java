@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,11 +28,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.viewpoint.DNavigable;
-import org.eclipse.sirius.viewpoint.DNavigationLink;
-import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.Decoration;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
 
 /**
@@ -41,9 +37,6 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementImpl#getOwnedNavigationLinks
- * <em>Owned Navigation Links</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementImpl#isVisible <em>
  * Visible</em>}</li>
  * <li>
@@ -67,17 +60,6 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
  * @generated
  */
 public abstract class DDiagramElementImpl extends DRepresentationElementImpl implements DDiagramElement {
-    /**
-     * The cached value of the '{@link #getOwnedNavigationLinks()
-     * <em>Owned Navigation Links</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getOwnedNavigationLinks()
-     * @generated
-     * @ordered
-     */
-    protected EList<DNavigationLink> ownedNavigationLinks;
-
     /**
      * The default value of the '{@link #isVisible() <em>Visible</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -169,18 +151,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     protected EClass eStaticClass() {
         return DiagramPackage.Literals.DDIAGRAM_ELEMENT;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<DNavigationLink> getOwnedNavigationLinks() {
-        if (ownedNavigationLinks == null) {
-            ownedNavigationLinks = new EObjectContainmentEList.Resolving<DNavigationLink>(DNavigationLink.class, this, DiagramPackage.DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS);
-        }
-        return ownedNavigationLinks;
     }
 
     /**
@@ -312,8 +282,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case DiagramPackage.DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS:
-            return ((InternalEList<?>) getOwnedNavigationLinks()).basicRemove(otherEnd, msgs);
         case DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS:
             return ((InternalEList<?>) getDecorations()).basicRemove(otherEnd, msgs);
         case DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS:
@@ -330,8 +298,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case DiagramPackage.DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS:
-            return getOwnedNavigationLinks();
         case DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE:
             return isVisible();
         case DiagramPackage.DDIAGRAM_ELEMENT__TOOLTIP_TEXT:
@@ -359,10 +325,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case DiagramPackage.DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS:
-            getOwnedNavigationLinks().clear();
-            getOwnedNavigationLinks().addAll((Collection<? extends DNavigationLink>) newValue);
-            return;
         case DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE:
             setVisible((Boolean) newValue);
             return;
@@ -393,9 +355,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case DiagramPackage.DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS:
-            getOwnedNavigationLinks().clear();
-            return;
         case DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE:
             setVisible(VISIBLE_EDEFAULT);
             return;
@@ -423,8 +382,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case DiagramPackage.DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS:
-            return ownedNavigationLinks != null && !ownedNavigationLinks.isEmpty();
         case DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE:
             return visible != VISIBLE_EDEFAULT;
         case DiagramPackage.DDIAGRAM_ELEMENT__TOOLTIP_TEXT:
@@ -439,54 +396,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
             return graphicalFilters != null && !graphicalFilters.isEmpty();
         }
         return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == DValidable.class) {
-            switch (derivedFeatureID) {
-            default:
-                return -1;
-            }
-        }
-        if (baseClass == DNavigable.class) {
-            switch (derivedFeatureID) {
-            case DiagramPackage.DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS:
-                return ViewpointPackage.DNAVIGABLE__OWNED_NAVIGATION_LINKS;
-            default:
-                return -1;
-            }
-        }
-        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == DValidable.class) {
-            switch (baseFeatureID) {
-            default:
-                return -1;
-            }
-        }
-        if (baseClass == DNavigable.class) {
-            switch (baseFeatureID) {
-            case ViewpointPackage.DNAVIGABLE__OWNED_NAVIGATION_LINKS:
-                return DiagramPackage.DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS;
-            default:
-                return -1;
-            }
-        }
-        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
     /**

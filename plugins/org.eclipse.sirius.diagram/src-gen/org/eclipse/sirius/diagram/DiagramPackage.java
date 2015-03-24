@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -585,22 +585,13 @@ public interface DiagramPackage extends EPackage {
     int DDIAGRAM_ELEMENT__SEMANTIC_ELEMENTS = ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
 
     /**
-     * The feature id for the '<em><b>Owned Navigation Links</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 0;
-
-    /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT__VISIBLE = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 1;
+    int DDIAGRAM_ELEMENT__VISIBLE = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Tooltip Text</b></em>' attribute. <!--
@@ -609,7 +600,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT__TOOLTIP_TEXT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 2;
+    int DDIAGRAM_ELEMENT__TOOLTIP_TEXT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Parent Layers</b></em>' reference list.
@@ -618,7 +609,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT__PARENT_LAYERS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 3;
+    int DDIAGRAM_ELEMENT__PARENT_LAYERS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Decorations</b></em>' containment
@@ -627,7 +618,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT__DECORATIONS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 4;
+    int DDIAGRAM_ELEMENT__DECORATIONS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>'
@@ -636,7 +627,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 5;
+    int DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Graphical Filters</b></em>' containment
@@ -645,7 +636,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 6;
+    int DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>DDiagram Element</em>'
@@ -654,7 +645,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 7;
+    int DDIAGRAM_ELEMENT_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '
@@ -888,15 +879,6 @@ public interface DiagramPackage extends EPackage {
     int ABSTRACT_DNODE__SEMANTIC_ELEMENTS = DDIAGRAM_ELEMENT__SEMANTIC_ELEMENTS;
 
     /**
-     * The feature id for the '<em><b>Owned Navigation Links</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int ABSTRACT_DNODE__OWNED_NAVIGATION_LINKS = DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS;
-
-    /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1014,15 +996,6 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DNODE__SEMANTIC_ELEMENTS = ABSTRACT_DNODE__SEMANTIC_ELEMENTS;
-
-    /**
-     * The feature id for the '<em><b>Owned Navigation Links</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DNODE__OWNED_NAVIGATION_LINKS = ABSTRACT_DNODE__OWNED_NAVIGATION_LINKS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
@@ -1233,15 +1206,6 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DDIAGRAM_ELEMENT_CONTAINER__SEMANTIC_ELEMENTS = ABSTRACT_DNODE__SEMANTIC_ELEMENTS;
-
-    /**
-     * The feature id for the '<em><b>Owned Navigation Links</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DDIAGRAM_ELEMENT_CONTAINER__OWNED_NAVIGATION_LINKS = ABSTRACT_DNODE__OWNED_NAVIGATION_LINKS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
@@ -1462,15 +1426,6 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DNODE_CONTAINER__SEMANTIC_ELEMENTS = DDIAGRAM_ELEMENT_CONTAINER__SEMANTIC_ELEMENTS;
-
-    /**
-     * The feature id for the '<em><b>Owned Navigation Links</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DNODE_CONTAINER__OWNED_NAVIGATION_LINKS = DDIAGRAM_ELEMENT_CONTAINER__OWNED_NAVIGATION_LINKS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
@@ -1709,15 +1664,6 @@ public interface DiagramPackage extends EPackage {
     int DNODE_LIST__SEMANTIC_ELEMENTS = DDIAGRAM_ELEMENT_CONTAINER__SEMANTIC_ELEMENTS;
 
     /**
-     * The feature id for the '<em><b>Owned Navigation Links</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DNODE_LIST__OWNED_NAVIGATION_LINKS = DDIAGRAM_ELEMENT_CONTAINER__OWNED_NAVIGATION_LINKS;
-
-    /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1946,15 +1892,6 @@ public interface DiagramPackage extends EPackage {
     int DNODE_LIST_ELEMENT__SEMANTIC_ELEMENTS = ABSTRACT_DNODE__SEMANTIC_ELEMENTS;
 
     /**
-     * The feature id for the '<em><b>Owned Navigation Links</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DNODE_LIST_ELEMENT__OWNED_NAVIGATION_LINKS = ABSTRACT_DNODE__OWNED_NAVIGATION_LINKS;
-
-    /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2108,15 +2045,6 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DEDGE__SEMANTIC_ELEMENTS = DDIAGRAM_ELEMENT__SEMANTIC_ELEMENTS;
-
-    /**
-     * The feature id for the '<em><b>Owned Navigation Links</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DEDGE__OWNED_NAVIGATION_LINKS = DDIAGRAM_ELEMENT__OWNED_NAVIGATION_LINKS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--

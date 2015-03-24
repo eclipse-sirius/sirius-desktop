@@ -42,6 +42,7 @@ h4. Changes in @org.eclipse.sirius@
 * The query @org.eclipse.sirius.business.api.query.EObjectQuery@ has now a new constructor with an additional parameter, ECrossReferenceAdapter. This can be usefull if there is many calls to inverse references methods for the same Session. This avoids to get the semantic cross referencer from the EObject each time. This query also proposes a new method @getInverseReferences(Set<EReference>)@.
 * There is a new capability on Dialect. This capability is to refresh only impacted elements concerned by a list of notifications. It is used, for example, to refresh the opened representations when the user chooses manual refresh mode. Each dialect that want to offer this capability must implement @org.eclipse.sirius.business.api.dialect.DialectServices.refreshImpactedElements(DRepresentation, Collection<Notification>, IProgressMonitor)@. A default implementation that does nothing is done in @org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices@.* A new method has been added in the query @org.eclipse.sirius.business.api.query.DAnalysisQuery@ named @getMainModels()@. This method returns a Set of the main model and the other non controlled models.
 * The API @org.eclipse.sirius.viewpoint.DSourceFileLink@ has been removed.
+* The API @org.eclipse.sirius.viewpoint.DNavigable@ has been removed.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

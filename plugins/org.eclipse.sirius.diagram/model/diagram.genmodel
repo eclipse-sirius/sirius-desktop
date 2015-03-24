@@ -308,23 +308,6 @@
     <genClasses ecoreClass="diagram.ecore#//BracketEdgeStyle"/>
     <genClasses ecoreClass="diagram.ecore#//ComputedStyleDescriptionRegistry">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//ComputedStyleDescriptionRegistry/computedStyleDescriptions"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//ComputedStyleDescriptionRegistry/cache"/>
-    </genClasses>
-    <genClasses ecoreClass="diagram.ecore#//DiagramElementMapping2ModelElement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DiagramElementMapping2ModelElement/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DiagramElementMapping2ModelElement/value"/>
-    </genClasses>
-    <genClasses ecoreClass="diagram.ecore#//ModelElement2ViewVariable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//ModelElement2ViewVariable/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//ModelElement2ViewVariable/value"/>
-    </genClasses>
-    <genClasses ecoreClass="diagram.ecore#//ViewVariable2ContainerVariable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//ViewVariable2ContainerVariable/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//ViewVariable2ContainerVariable/value"/>
-    </genClasses>
-    <genClasses ecoreClass="diagram.ecore#//ContainerVariable2StyleDescription">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//ContainerVariable2StyleDescription/key"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//ContainerVariable2StyleDescription/value"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//DragAndDropTarget">
       <genOperations ecoreOperation="diagram.ecore#//DragAndDropTarget/getDragAndDropDescription"/>
