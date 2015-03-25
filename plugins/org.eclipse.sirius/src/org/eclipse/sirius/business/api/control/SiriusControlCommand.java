@@ -250,7 +250,8 @@ public class SiriusControlCommand extends ControlCommand {
 
         for (Resource aird : session.getAllSessionResources()) {
             DAnalysis currentAnalysis = getDAnalysis(aird);
-            if (Iterables.contains(currentAnalysis.getModels(), semanticParentRoot)) {
+            Set<EObject> releventModels = new DAnalysisQuery(currentAnalysis).getMainModels();
+            if (Iterables.contains(releventModels, semanticParentRoot)) {
                 List<DAnalysis> referencedAnalysis = new ArrayList<DAnalysis>(currentAnalysis.getReferencedAnalysis());
                 for (DAnalysis childrenAnalysis : referencedAnalysis) {
                     Option<EObject> optionalChildrenMainModel = new DAnalysisQuery(childrenAnalysis).getMainModel();
