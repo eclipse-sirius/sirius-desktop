@@ -125,24 +125,6 @@ public class DNodeListName2EditPart extends AbstractGeneratedDiagramNameEditPart
      * @was-generated
      */
     @Override
-    protected void addNotationalListeners() {
-        super.addNotationalListeners();
-        addListenerFilter("PrimaryView", this, getPrimaryView()); //$NON-NLS-1$
-    }
-
-    /**
-     * @was-generated
-     */
-    @Override
-    protected void removeNotationalListeners() {
-        super.removeNotationalListeners();
-        removeListenerFilter("PrimaryView"); //$NON-NLS-1$
-    }
-
-    /**
-     * @was-generated
-     */
-    @Override
     protected void handleNotificationEvent(final Notification event) {
         final Object feature = event.getFeature();
         if (DiagramPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
