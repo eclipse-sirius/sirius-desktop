@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -176,16 +176,6 @@ public class DNodeContainerSpec extends DNodeContainerImpl {
     public EList<DNode> getNodesFromMapping(final NodeMapping mapping) {
         return DDiagramElementContainerSpecOperations.getNodesFromMapping(this, mapping);
 
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramElementContainerImpl#validate()
-     */
-    @Override
-    public boolean validate() {
-        return DDiagramElementContainerSpecOperations.validate(this);
     }
 
     /**

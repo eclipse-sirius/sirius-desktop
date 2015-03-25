@@ -44,6 +44,7 @@ h4. Changes in @org.eclipse.sirius@
 * The API @org.eclipse.sirius.viewpoint.DSourceFileLink@ has been removed.
 * The API @org.eclipse.sirius.viewpoint.DNavigable@ has been removed.
 * The API @org.eclipse.sirius.viewpoint.DNavigationLink@ has been removed.
+* The API @org.eclipse.sirius.viewpoint.DValidable@ has been removed.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

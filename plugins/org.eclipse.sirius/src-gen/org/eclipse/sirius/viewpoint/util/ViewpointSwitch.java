@@ -36,7 +36,6 @@ import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.LabelStyle;
@@ -130,13 +129,6 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DFEATURE_EXTENSION: {
             DFeatureExtension dFeatureExtension = (DFeatureExtension) theEObject;
             T result = caseDFeatureExtension(dFeatureExtension);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ViewpointPackage.DVALIDABLE: {
-            DValidable dValidable = (DValidable) theEObject;
-            T result = caseDValidable(dValidable);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -400,23 +392,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseDFeatureExtension(DFeatureExtension object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DValidable</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DValidable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDValidable(DValidable object) {
         return null;
     }
 

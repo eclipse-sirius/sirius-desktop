@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.Decoration;
 
 /**
@@ -45,7 +44,7 @@ import org.eclipse.sirius.viewpoint.Decoration;
  * @model abstract="true"
  * @generated
  */
-public interface DDiagramElement extends DRepresentationElement, DValidable {
+public interface DDiagramElement extends DRepresentationElement {
     /**
      * Returns the value of the '<em><b>Visible</b></em>' attribute. The default
      * value is <code>"true"</code>. <!-- begin-user-doc --> <!-- end-user-doc

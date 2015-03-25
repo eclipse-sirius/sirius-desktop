@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
@@ -79,7 +78,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * @model
  * @generated
  */
-public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDropTarget, DValidable, DContainer {
+public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDropTarget, DContainer {
     /**
      * Returns the value of the '<em><b>Owned Diagram Elements</b></em>'
      * containment reference list. The list contents are of type

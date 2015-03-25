@@ -2455,12 +2455,10 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDRepresentation());
         dDiagramEClass.getESuperTypes().add(theDescriptionPackage_1.getDocumentedElement());
         dDiagramEClass.getESuperTypes().add(this.getDragAndDropTarget());
-        dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDValidable());
         dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDContainer());
         dSemanticDiagramEClass.getESuperTypes().add(this.getDDiagram());
         dSemanticDiagramEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dDiagramElementEClass.getESuperTypes().add(theViewpointPackage.getDRepresentationElement());
-        dDiagramElementEClass.getESuperTypes().add(theViewpointPackage.getDValidable());
         hideFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
         hideLabelFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
         foldingPointFilterEClass.getESuperTypes().add(this.getGraphicalFilter());

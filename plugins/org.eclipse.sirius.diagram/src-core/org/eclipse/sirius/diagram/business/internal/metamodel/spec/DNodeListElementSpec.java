@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,14 +11,10 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DSemanticDiagramHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.impl.DNodeListElementImpl;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
 
@@ -58,30 +54,6 @@ public class DNodeListElementSpec extends DNodeListElementImpl {
             cur = cur.eContainer();
         }
         return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DNodeListElementImpl#validate()
-     */
-    @Override
-    public boolean validate() {
-        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.VALIDATE_NODE_KEY);
-        if (getTarget() != null && getFirstParentWithSemantic() != null && getActualMapping() != null) {
-            final EObject mySemanticElement = getTarget();
-            final EObject representedParent = getFirstParentWithSemantic();
-            EObject representedParentSemantic = getFirstParentWithSemantic().getTarget();
-            if (representedParent instanceof DSemanticDiagram) {
-                representedParentSemantic = DSemanticDiagramHelper.getRootContent((DSemanticDiagram) representedParent);
-            }
-            if (!getActualMapping().getNodesCandidates(representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), this.eContainer()).contains(mySemanticElement)) {
-                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.VALIDATE_NODE_KEY);
-                return false;
-            }
-        }
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.VALIDATE_NODE_KEY);
-        return true;
     }
 
     /**

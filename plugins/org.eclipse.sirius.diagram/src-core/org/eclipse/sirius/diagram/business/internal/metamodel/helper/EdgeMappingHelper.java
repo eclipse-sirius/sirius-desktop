@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -18,8 +19,12 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -27,9 +32,12 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
+import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -37,14 +45,18 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.resource.ISiriusMessages;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+
+import com.google.common.collect.Lists;
 
 /**
  * Common utils between
@@ -226,7 +238,6 @@ public final class EdgeMappingHelper {
 
         /*
          * Validation does not work here : getParentDiagram is still unknown.
-         * 
          * Let's check the fact that we can find back the target from the source
          * using the target finder expression
          */
@@ -320,7 +331,7 @@ public final class EdgeMappingHelper {
      *            The existing edge to update
      */
     public void updateEdge(final EdgeMapping edgeMapping, final DEdge dEdge) {
-        if (dEdge.validate()) {
+        if (validate(dEdge)) {
 
             EObject containerVariable = null;
             if (dEdge.eContainer() instanceof DSemanticDecorator) {
@@ -359,6 +370,133 @@ public final class EdgeMappingHelper {
                 styleHelper.refreshStyle(dEdge.getOwnedStyle());
             }
         }
+    }
+
+    private boolean validate(DEdge dEdge) {
+        boolean result = true;
+        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.VALIDATE_EDGE_KEY);
+        if (dEdge.getActualMapping() != null) {
+            if (cantFindSemanticTargetFromSemanticSource(dEdge)) {
+                result = false;
+            }
+        }
+
+        EObject root = null;
+        final DSemanticDiagram diagram;
+        if (dEdge.getParentDiagram() instanceof DSemanticDiagram) {
+            diagram = (DSemanticDiagram) dEdge.getParentDiagram();
+            root = DSemanticDiagramHelper.getRootContent(diagram);
+        } else {
+            diagram = null;
+        }
+
+        if (diagram != null && root != null && dEdge.getActualMapping() != null) {
+            final IInterpreter rootInterpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(root);
+
+            // semantic candidates.
+            Option<EdgeMapping> edgeMappingOption = new IEdgeMappingQuery(dEdge.getActualMapping()).getEdgeMapping();
+            if (edgeMappingOption.some() && edgeMappingOption.get().isUseDomainElement()) {
+                final Collection<EObject> candidates = this.getSemanticCandidates(dEdge, rootInterpreter, root, diagram);
+                if (!candidates.contains(dEdge.getTarget())) {
+                    DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.VALIDATE_EDGE_KEY);
+                    return false;
+                }
+            }
+
+            // precondition.
+            if (edgeMappingOption.some() && dEdge.getSourceNode() instanceof DSemanticDecorator && dEdge.getTargetNode() instanceof DSemanticDecorator) {
+                EdgeMapping edgeMapping = edgeMappingOption.get();
+                EdgeMappingQuery edgeMappingQuery = new EdgeMappingQuery(edgeMapping);
+                result = result
+                        && edgeMappingQuery.evaluatePrecondition(diagram, diagram, rootInterpreter, dEdge.getTarget(), (DSemanticDecorator) dEdge.getSourceNode(),
+                                (DSemanticDecorator) dEdge.getTargetNode());
+            }
+        }
+
+        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.VALIDATE_EDGE_KEY);
+        return result;
+    }
+
+    private boolean cantFindSemanticTargetFromSemanticSource(DEdge dEdge) {
+
+        DDiagram vp = null;
+        boolean result = false;
+
+        final EObject srcNode = dEdge.getSourceNode();
+
+        if (srcNode instanceof DDiagramElement) {
+            vp = ((DDiagramElement) srcNode).getParentDiagram();
+        }
+
+        Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(dEdge.getActualMapping()).getEdgeMapping();
+        if (edgeMapping.some() && srcNode instanceof DSemanticDecorator) {
+            final EObject tgNode = dEdge.getTargetNode();
+            if (tgNode instanceof DSemanticDecorator) {
+                final EObject semanticSource = ((DSemanticDecorator) srcNode).getTarget();
+                final EObject semanticTarget = ((DSemanticDecorator) tgNode).getTarget();
+
+                result = !findTargetFromSource(dEdge, edgeMapping.get(), vp, semanticSource, semanticTarget);
+            }
+        }
+        return result;
+    }
+
+    private boolean findTargetFromSource(DEdge dEdge, final EdgeMapping mapping, final DDiagram vp, final EObject source, final EObject target) {
+        boolean result = false;
+
+        if (mapping.isUseDomainElement()) {
+            final EObject edgeTarget = dEdge.getTarget();
+            if (mapping.getEdgeTargetCandidates(edgeTarget, vp).contains(target)) {
+                if (mapping.getEdgeSourceCandidates(edgeTarget, vp).contains(source)) {
+                    result = true;
+                }
+            }
+        } else {
+            if (mapping.getEdgeTargetCandidates(source, vp).contains(target)) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    private Collection<EObject> getSemanticCandidates(DEdge dEdge, final IInterpreter iInterpreter, final EObject model, final DDiagram diagram) {
+        Collection<EObject> semanticCandidates = null;
+        final Option<EdgeMapping> actualEdgeMappingOption = new IEdgeMappingQuery(dEdge.getActualMapping()).getEdgeMapping();
+        if (actualEdgeMappingOption.some()) {
+            EdgeMapping actualEdgeMapping = actualEdgeMappingOption.get();
+            if (actualEdgeMapping.isUseDomainElement() && actualEdgeMapping.getSemanticCandidatesExpression() != null
+                    && !StringUtil.isEmpty(actualEdgeMapping.getSemanticCandidatesExpression().trim())) {
+                iInterpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, diagram);
+                iInterpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT_2, diagram);
+                iInterpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram);
+                iInterpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, diagram);
+                final EObject context = model;
+                try {
+                    semanticCandidates = iInterpreter.evaluateCollection(context, actualEdgeMapping.getSemanticCandidatesExpression());
+                } catch (final EvaluationException e) {
+                    RuntimeLoggerManager.INSTANCE.error(dEdge.getActualMapping(), DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticCandidatesExpression(), e);
+                } finally {
+                    iInterpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER_VIEW);
+                    iInterpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
+                    iInterpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT_2);
+                    iInterpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);
+                }
+            } else {
+                final ModelAccessor extPackage = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(model);
+
+                semanticCandidates = Lists.newArrayList();
+                final Session session = SessionManager.INSTANCE.getSession(model);
+                for (final Resource resource : session.getSemanticResources()) {
+                    for (final EObject root : resource.getContents()) {
+                        semanticCandidates.addAll(extPackage.eAllContents(root, "EObject"));
+                    }
+                }
+            }
+        }
+        if (semanticCandidates == null) {
+            semanticCandidates = Collections.emptySet();
+        }
+        return semanticCandidates;
     }
 
     /**

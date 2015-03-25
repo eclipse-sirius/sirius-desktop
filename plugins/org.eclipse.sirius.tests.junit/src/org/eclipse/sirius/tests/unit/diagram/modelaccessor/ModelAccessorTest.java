@@ -51,7 +51,7 @@ public class ModelAccessorTest extends TestCase {
 
     private final String abstractEClass = "DDiagramElement";
 
-    private final String interfaceEClass = "DValidable";
+    private final String interfaceEClass = "DDiagramElement";
 
     /**
      * {@inheritDoc}

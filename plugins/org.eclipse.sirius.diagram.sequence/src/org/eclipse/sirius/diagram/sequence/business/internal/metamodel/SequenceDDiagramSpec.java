@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -174,16 +174,6 @@ public class SequenceDDiagramSpec extends SequenceDDiagramImpl {
     @Override
     public EList<DDiagramElementContainer> getContainersFromMapping(final ContainerMapping mapping) {
         return DDiagramSpecOperations.getContainersFromMapping(this, mapping);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#validate()
-     */
-    @Override
-    public boolean validate() {
-        return DDiagramSpecOperations.validate(this);
     }
 
     /**

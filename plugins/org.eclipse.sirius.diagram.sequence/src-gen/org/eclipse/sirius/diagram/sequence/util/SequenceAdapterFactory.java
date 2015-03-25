@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
@@ -110,11 +109,6 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDragAndDropTarget(DragAndDropTarget object) {
             return createDragAndDropTargetAdapter();
-        }
-
-        @Override
-        public Adapter caseDValidable(DValidable object) {
-            return createDValidableAdapter();
         }
 
         @Override

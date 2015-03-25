@@ -40,7 +40,6 @@ import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -84,13 +83,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass dFeatureExtensionEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dValidableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -473,15 +465,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      */
     public EReference getDFeatureExtension_Description() {
         return (EReference) dFeatureExtensionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getDValidable() {
-        return dValidableEClass;
     }
 
     /**
@@ -1092,8 +1075,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dFeatureExtensionEClass = createEClass(DFEATURE_EXTENSION);
         createEReference(dFeatureExtensionEClass, DFEATURE_EXTENSION__DESCRIPTION);
 
-        dValidableEClass = createEClass(DVALIDABLE);
-
         dStylizableEClass = createEClass(DSTYLIZABLE);
 
         dRefreshableEClass = createEClass(DREFRESHABLE);
@@ -1264,10 +1245,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEClass(dFeatureExtensionEClass, DFeatureExtension.class, "DFeatureExtension", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDFeatureExtension_Description(), theDescriptionPackage.getFeatureExtensionDescription(), null, "description", null, 1, 1, DFeatureExtension.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(dValidableEClass, DValidable.class, "DValidable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-        addEOperation(dValidableEClass, theEcorePackage.getEBoolean(), "validate", 0, 1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(dStylizableEClass, DStylizable.class, "DStylizable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
