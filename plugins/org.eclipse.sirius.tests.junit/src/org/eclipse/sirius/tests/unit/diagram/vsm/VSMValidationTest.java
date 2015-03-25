@@ -45,6 +45,8 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
 
     private Group modelerForImagePathValidation;
 
+    private Group modelerForDefaultLayerValidation;
+
     public void setUp() throws Exception {
         ResourceSet set = new ResourceSetImpl();
         EclipseTestsSupportHelper.INSTANCE.createProject("Project");
@@ -55,6 +57,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         modelerForDomainClassValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideDomainClassVSM.odesign", true), set);
         modelerForVariableNameValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVariableNameVSM.odesign", true), set);
         modelerForImagePathValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateImagePathVSM.odesign", true), set);
+        modelerForDefaultLayerValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateDefaultLayerVSM.odesign", true), set);
     }
 
     /**
@@ -184,21 +187,29 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         // Check that there is a pop up for validation problems
         assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
         List<Diagnostic> children = diagnostic.getChildren();
-        String[] expectedMessagesPatterns = {
-                "^The path '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not correspond to an image.$",
-                "^The image '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not exist.$",
-                "^The image '/test/noimage.gif' does not exist.$",
-                "^The path 'icon' does not correspond to an image.$",
-                "^The image 'icon' does not exist.$",
-                "^The path '/org.eclipse.sirius.tests.junit/plugin.xml' does not correspond to an image.$",
-                "^The image 'C:\\\\images\\\\image.png' does not exist.$",
-                "^The image '/org.eclipse.sirius.tests.junit/images/notexisting.png' does not exist.$",
-                "^The required feature 'decoratorPath' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$",
-        };
+        String[] expectedMessagesPatterns = { "^The path '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not correspond to an image.$",
+                "^The image '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not exist.$", "^The image '/test/noimage.gif' does not exist.$",
+                "^The path 'icon' does not correspond to an image.$", "^The image 'icon' does not exist.$", "^The path '/org.eclipse.sirius.tests.junit/plugin.xml' does not correspond to an image.$",
+                "^The image 'C:\\\\images\\\\image.png' does not exist.$", "^The image '/org.eclipse.sirius.tests.junit/images/notexisting.png' does not exist.$",
+                "^The required feature 'decoratorPath' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$", };
         assertEquals("The diagnostic must contain " + expectedMessagesPatterns.length + " validation errors", expectedMessagesPatterns.length, children.size());
         for (int i = 0; i < expectedMessagesPatterns.length; i++) {
             assertTrue("Unexpected validation error at position " + i, children.get(i).getMessage().matches(expectedMessagesPatterns[i]));
         }
+    }
+
+    /**
+     * Ensure that VSM validation detect errors for missing default layers.
+     */
+    public void testValidationDefaultLayer() {
+        Diagnostician diagnostician = new Diagnostician();
+        Diagnostic diagnostic = diagnostician.validate(modelerForDefaultLayerValidation);
+        // Check that there is a pop up for validation problems
+        assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
+        List<Diagnostic> children = diagnostic.getChildren();
+        assertEquals("The diagnostic must contain 2 validation errors", 2, children.size());
+        assertEquals("The first error does not match", "The default layer is missing for the diagram 'D1'.", children.get(0).getMessage());
+        assertEquals("The second error does not match", "The default layer is missing for the diagram 'S2'.", children.get(1).getMessage());
     }
 
     private void addSpaceInDomainClassValue(EObject current, EAttribute attribute, int iterate) {

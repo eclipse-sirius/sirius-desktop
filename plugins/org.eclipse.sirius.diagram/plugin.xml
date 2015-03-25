@@ -403,6 +403,21 @@
             </constraint>
             <constraint
                   lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ExistingDefaultLayerConstraint"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Diagram Has Default Layer"
+                  id="org.eclipse.sirius.diagram.constraints.DiagramHasDefaultLayer"
+                  statusCode="1">
+               <description>
+                  Validate that each diagram has a default layer.
+               </description>
+               <message>
+                  The default layer is missing for the diagram {0}.
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ValidDiagramImageConstraint"
                   severity="ERROR"
                   mode="Batch"
