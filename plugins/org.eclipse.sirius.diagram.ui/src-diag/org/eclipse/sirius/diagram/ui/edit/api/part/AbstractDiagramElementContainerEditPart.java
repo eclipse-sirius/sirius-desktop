@@ -43,6 +43,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
+import org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
@@ -80,7 +81,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
@@ -793,14 +793,14 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     public void reInitFigure() {
         final IFigure mainFigure = ((BorderedNodeFigure) getFigure()).getMainFigure();
         final List<IFigure> prevChildren = new ArrayList(mainFigure.getChildren());
-        InvisibleResizableCompartmentFigure containerCompartment = null;
+        ShapeCompartmentFigure containerCompartment = null;
         ResizableCompartmentFigure listCompartment = null;
         SiriusWrapLabel wrapLabel = null;
         final IFigure tmpFigure = createMainFigure();
 
         for (IFigure object : prevChildren) {
-            if (object instanceof InvisibleResizableCompartmentFigure) {
-                containerCompartment = (InvisibleResizableCompartmentFigure) object;
+            if (object instanceof ShapeCompartmentFigure) {
+                containerCompartment = (ShapeCompartmentFigure) object;
             } else if (object instanceof ViewNodeContainerFigureDesc) {
                 for (Object object2 : ((ViewNodeContainerFigureDesc) object).getChildren()) {
                     if (object2 instanceof SiriusWrapLabel) {

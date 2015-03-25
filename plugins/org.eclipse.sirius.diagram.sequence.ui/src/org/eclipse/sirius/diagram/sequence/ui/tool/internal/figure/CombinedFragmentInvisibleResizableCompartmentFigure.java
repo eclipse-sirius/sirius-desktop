@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,10 +13,10 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.ScrollPane;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
 
-public class CombinedFragmentInvisibleResizableCompartmentFigure extends InvisibleResizableCompartmentFigure {
+public class CombinedFragmentInvisibleResizableCompartmentFigure extends ShapeCompartmentFigure {
     /**
      * Create a new compartment figure without borders. Overridden to remove
      * border margin.

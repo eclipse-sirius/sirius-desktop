@@ -121,6 +121,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * The @org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart.getEAdapterStrokeColor@ method has been removed as the corresponding adapter was uneffective and is no more used and installed on the edge edit parts.
 * The @org.eclipse.sirius.diagram.ui.tools.api.figure.ImageFigureWithAlpha@ interface has been added to identify Figures having the capability to return an alpha value from a coordinate.
 ** @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractCachedSVGFigure@ and @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentImage@  now implement this new interface.
+* @org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure@ class has been removed, use a @org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure@ with a @org.eclipse.draw2d.MarginBorder@ or a null border instead.
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 

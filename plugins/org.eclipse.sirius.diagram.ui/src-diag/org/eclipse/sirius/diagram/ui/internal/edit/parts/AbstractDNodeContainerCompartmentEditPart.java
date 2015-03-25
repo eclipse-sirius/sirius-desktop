@@ -61,7 +61,6 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPopupBarEditP
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerViewNodeContainerCompartmentItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ContainerCompartmentNodeEditPolicy;
 import org.eclipse.sirius.ext.base.Option;
@@ -196,7 +195,10 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
      */
     public IFigure createFigure() {
         IMapMode mapMode = getMapMode();
-        ShapeCompartmentFigure scf = new InvisibleResizableCompartmentFigure(getCompartmentName(), mapMode);
+        ShapeCompartmentFigure scf = new ShapeCompartmentFigure(getCompartmentName(), mapMode);
+        if (!isRegionContainerCompartment()) {
+            scf.setBorder(new MarginBorder(mapMode.DPtoLP(1), 0, 0, 0));
+        }
         scf.getContentPane().setLayoutManager(getLayoutManager());
         scf.getContentPane().addLayoutListener(LayoutAnimator.getDefault());
         scf.setTitleVisibility(false);
