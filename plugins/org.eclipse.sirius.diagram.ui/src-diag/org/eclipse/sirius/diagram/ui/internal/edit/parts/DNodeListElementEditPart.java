@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.common.notify.Notification;
@@ -266,24 +263,6 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
         if (isActive()) {
             super.deactivate();
         }
-    }
-
-    /**
-     * Returns all the semantic elements (instances of <code>EObject</code>).
-     * The list that is returned by this method is a view. If the client try to
-     * change the content of the list then a
-     * {@link UnsupportedOperationException} will be thrown.
-     * 
-     * @return all the semantic elements (instances of <code>EObject</code>).
-     */
-    public List getSemanticElements() {
-        View view = (View) getModel();
-        EObject viewpointElement = view.getElement();
-        if (viewpointElement instanceof DDiagramElement) {
-            List semanticElements = Collections.unmodifiableList(((DDiagramElement) viewpointElement).getSemanticElements());
-            return semanticElements;
-        }
-        return Collections.EMPTY_LIST;
     }
 
     /**
