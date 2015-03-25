@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,14 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.tools.DirectEditManager;
-import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
-import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DEdge;
@@ -27,7 +25,6 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeNameSelectionFeedbackEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResizableShapeLabelEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.ext.base.Option;
@@ -78,16 +75,9 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
         refreshVisuals();
     }
 
-    /**
-     * @was-generated
-     */
-    public IParser getParser() {
-        if (parser == null) {
-            String parserHint = ((View) getModel()).getType();
-            IAdaptable hintAdapter = new SiriusParserProvider.HintAdapter(SiriusElementTypes.DEdge_4001, getParserElement(), parserHint);
-            parser = ParserService.getInstance().getParser(hintAdapter);
-        }
-        return parser;
+    @Override
+    protected IElementType getParserElementType() {
+        return SiriusElementTypes.DEdge_4001;
     }
 
     /**

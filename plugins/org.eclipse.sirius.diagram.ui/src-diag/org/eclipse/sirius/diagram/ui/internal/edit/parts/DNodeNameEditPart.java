@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,17 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
-import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNode;
@@ -28,7 +26,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
@@ -105,16 +102,9 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
         refreshVisuals();
     }
 
-    /**
-     * @was-generated
-     */
-    public IParser getParser() {
-        if (parser == null) {
-            final String parserHint = ((View) getModel()).getType();
-            final IAdaptable hintAdapter = new SiriusParserProvider.HintAdapter(SiriusElementTypes.DNode_2001, getParserElement(), parserHint);
-            parser = ParserService.getInstance().getParser(hintAdapter);
-        }
-        return parser;
+    @Override
+    protected IElementType getParserElementType() {
+        return SiriusElementTypes.DNode_2001;
     }
 
     /**

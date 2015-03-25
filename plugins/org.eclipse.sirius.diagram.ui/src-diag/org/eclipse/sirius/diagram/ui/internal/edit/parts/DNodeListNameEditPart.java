@@ -10,13 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
-import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider;
 
 /**
  * @was-generated
@@ -35,16 +32,8 @@ public class DNodeListNameEditPart extends AbstractDiagramListNameEditPart imple
         super(view);
     }
 
-    /**
-     * @was-generated
-     */
     @Override
-    public IParser getParser() {
-        if (parser == null) {
-            final String parserHint = ((View) getModel()).getType();
-            final IAdaptable hintAdapter = new SiriusParserProvider.HintAdapter(SiriusElementTypes.DNodeList_2003, getParserElement(), parserHint);
-            parser = ParserService.getInstance().getParser(hintAdapter);
-        }
-        return parser;
+    protected IElementType getParserElementType() {
+        return SiriusElementTypes.DNodeList_2003;
     }
 }

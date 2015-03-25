@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
-import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider;
 
 /**
  * @was-generated
@@ -35,15 +32,8 @@ public class DNodeContainerNameEditPart extends AbstractDiagramElementContainerN
         super(view);
     }
 
-    /**
-     * @was-generated
-     */
-    public IParser getParser() {
-        if (parser == null) {
-            String parserHint = ((View) getModel()).getType();
-            IAdaptable hintAdapter = new SiriusParserProvider.HintAdapter(SiriusElementTypes.DNodeContainer_2002, getParserElement(), parserHint);
-            parser = ParserService.getInstance().getParser(hintAdapter);
-        }
-        return parser;
+    @Override
+    protected IElementType getParserElementType() {
+        return SiriusElementTypes.DNodeContainer_2002;
     }
 }
