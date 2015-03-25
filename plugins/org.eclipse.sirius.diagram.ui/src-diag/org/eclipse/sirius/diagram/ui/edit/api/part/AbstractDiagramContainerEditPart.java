@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.edit.api.part;
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -27,6 +28,8 @@ import org.eclipse.gmf.runtime.common.core.util.Proxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.internal.tools.RubberbandDragTracker;
@@ -49,6 +52,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResetOriginEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
@@ -246,5 +250,25 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
         }
 
         return result;
+    }
+
+    @Override
+    protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
+        IFigure pane = null;
+        if (editPart instanceof IBorderItemEditPart) {
+            pane = getBorderedFigure().getBorderItemContainer();
+        } else if (editPart instanceof AbstractDiagramElementContainerNameEditPart || isRegionContainer()) {
+            // Add the name edit part to the content pane figure which is
+            // currently the primary shape, see
+            // AbstractDiagramElementContainerEditPart.createMainFigure().
+            //
+            // Also add all non border parts to the content pane if the current
+            // part is a region container. This is done to retrieve the "list"
+            // behavior and layout.
+            pane = getContentPane();
+        } else {
+            pane = super.getContentPaneFor(editPart);
+        }
+        return pane;
     }
 }

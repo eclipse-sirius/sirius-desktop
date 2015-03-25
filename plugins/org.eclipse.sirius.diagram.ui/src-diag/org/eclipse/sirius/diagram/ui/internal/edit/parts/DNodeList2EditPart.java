@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,30 +61,6 @@ public class DNodeList2EditPart extends AbstractDiagramListEditPart {
             }
         });
         super.createDefaultEditPolicies();
-    }
-
-    /**
-     * @was-generated
-     */
-    protected boolean addFixedChild(EditPart childEditPart) {
-        if (childEditPart instanceof DNodeListName2EditPart) {
-            ((DNodeListName2EditPart) childEditPart).setLabel(getPrimaryShape().getLabelFigure());
-            return true;
-        }
-        return super.addFixedChild(childEditPart);
-    }
-
-    /**
-     * @was-generated
-     */
-    protected void removeChildVisual(EditPart childEditPart) {
-        /* workaround, we don't want the view node container to remove it's name */
-        if (!(childEditPart instanceof DNodeListName2EditPart)) {
-            if (removeFixedChild(childEditPart)) {
-                return;
-            }
-            super.removeChildVisual(childEditPart);
-        }
     }
 
     /**

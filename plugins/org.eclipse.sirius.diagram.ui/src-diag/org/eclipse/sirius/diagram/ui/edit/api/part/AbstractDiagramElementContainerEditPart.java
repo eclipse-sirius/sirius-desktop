@@ -73,6 +73,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOp
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
@@ -577,6 +578,17 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         super.setLayoutConstraint(child, childFigure, constraint);
     }
 
+    @Override
+    protected void removeChildVisual(EditPart childEditPart) {
+        /* workaround, we don't want the view node container to remove it's name */
+        if (!(childEditPart instanceof AbstractDiagramElementContainerNameEditPart)) {
+            if (removeFixedChild(childEditPart)) {
+                return;
+            }
+            super.removeChildVisual(childEditPart);
+        }
+    }
+
     /**
      * Specific method to handle fixed children (DNode4EditPart).
      * 
@@ -617,7 +629,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * @was-generated
      */
     protected boolean addFixedChild(EditPart childEditPart) {
-        if (childEditPart instanceof DNode4EditPart && ((DNode4EditPart) childEditPart).resolveSemanticElement() instanceof DDiagramElement) {
+        boolean added = false;
+        if (childEditPart instanceof AbstractDiagramElementContainerNameEditPart) {
+            ((AbstractDiagramElementContainerNameEditPart) childEditPart).setLabel(getPrimaryShape().getLabelFigure());
+            added = true;
+        } else if (childEditPart instanceof DNode4EditPart && ((DNode4EditPart) childEditPart).resolveSemanticElement() instanceof DDiagramElement) {
             IBorderItemLocator locator = createBorderItemLocator(getMainFigure(), (DDiagramElement) ((DNode4EditPart) childEditPart).resolveSemanticElement());
             // Convert child figure bounds to relative (There may be a
             // better solution, but none was found to recover the necessary
@@ -628,9 +644,9 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             final Point newTopLeft = constraint.getTopLeft().getCopy().translate(negateParentOrigin);
             locator.setConstraint(new Rectangle(newTopLeft.x, newTopLeft.y, constraint.width, constraint.height));
             getBorderedFigure().getBorderItemContainer().add(((DNode4EditPart) childEditPart).getFigure(), locator);
-            return true;
+            added = true;
         }
-        return false;
+        return added;
     }
 
     /**

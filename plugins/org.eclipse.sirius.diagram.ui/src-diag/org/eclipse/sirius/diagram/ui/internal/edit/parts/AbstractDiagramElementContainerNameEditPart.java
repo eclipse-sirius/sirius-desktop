@@ -25,11 +25,13 @@ import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.handles.NonResizableHandleKit;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
 /**
- * @was-generated
+ * Abstract edit part for {@link DDiagramElementContainer} name edit parts. It
+ * regroups all the common code previously genrated for the subclasses.
  */
 public abstract class AbstractDiagramElementContainerNameEditPart extends AbstractGeneratedDiagramNameEditPart implements ITextAwareEditPart {
 

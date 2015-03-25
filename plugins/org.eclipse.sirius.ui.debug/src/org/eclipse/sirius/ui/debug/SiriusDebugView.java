@@ -99,6 +99,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
@@ -199,7 +201,26 @@ public class SiriusDebugView extends AbstractDebugView {
             appendSequenceEventInfo(part, sb);
             appendBoundsDetails(part, sb);
 
-            if (part instanceof InstanceRoleEditPart) {
+            if (part instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) part).isRegionContainer()) {
+                IGraphicalEditPart compartment = null;
+                for (IGraphicalEditPart child : Iterables.filter(part.getChildren(), IGraphicalEditPart.class)) {
+                    sb.append("Children bounds:\n");
+                    appendBoundsDetails(child, sb);
+                    compartment = child;
+                }
+
+                for (IGraphicalEditPart child2 : Iterables.filter(compartment.getChildren(), IGraphicalEditPart.class)) {
+                    sb.append("Region bounds:\n");
+                    appendBoundsDetails(child2, sb);
+                }
+            } else if (part instanceof AbstractDiagramElementContainerEditPart && ((AbstractDiagramElementContainerEditPart) part).isRegion()) {
+                IGraphicalEditPart parent = (IGraphicalEditPart) part.getParent();
+                sb.append("Compartment bounds:\n");
+                appendBoundsDetails(parent, sb);
+                parent = (IGraphicalEditPart) parent.getParent();
+                sb.append("Region Container bounds:\n");
+                appendBoundsDetails(parent, sb);
+            } else if (part instanceof InstanceRoleEditPart) {
                 LifelineEditPart lep = Iterables.filter(part.getChildren(), LifelineEditPart.class).iterator().next();
                 appendSequenceEventInfo(lep, sb);
             }
@@ -214,23 +235,31 @@ public class SiriusDebugView extends AbstractDebugView {
         return sb.toString();
     }
 
-    private void appendBoundsDetails(IDiagramElementEditPart part, StringBuilder sb) {
-        LayoutConstraint layoutConstraint = ((Node) ((IGraphicalEditPart) part).getNotationView()).getLayoutConstraint();
+    private void appendBoundsDetails(IGraphicalEditPart part, StringBuilder sb) {
+        Node node = (Node) ((IGraphicalEditPart) part).getNotationView();
+        LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         if (layoutConstraint instanceof Bounds) {
             Bounds bounds = (Bounds) layoutConstraint;
-            sb.append("Bounds (GMF):              Rectangle(" + bounds.getX() + ", " + bounds.getY() + ", " + bounds.getWidth() + ", " + bounds.getHeight() + ")\n");
+            sb.append("Bounds (GMF):                      Rectangle(" + bounds.getX() + ", " + bounds.getY() + ", " + bounds.getWidth() + ", " + bounds.getHeight() + ")\n");
         } else if (layoutConstraint instanceof Location) {
             Location location = (Location) layoutConstraint;
-            sb.append("Location (GMF):         Location(" + location.getX() + ", " + location.getY() + ")\n");
+            sb.append("Location (GMF):                    Location(" + location.getX() + ", " + location.getY() + ")\n");
         }
+
+        Rectangle absoluteBounds = GMFHelper.getAbsoluteBounds(node, true);
+        sb.append("Bounds (GMF absolute - insets):    " + absoluteBounds + "\n");
+
+        absoluteBounds = GMFHelper.getAbsoluteBounds(node, false);
+        sb.append("Bounds (GMF absolute - no insets): " + absoluteBounds + "\n");
+
         Option<ISequenceElement> elt = ISequenceElementAccessor.getISequenceElement(part.getNotationView());
         if (elt.some()) {
-            sb.append("Bounds (logical):          " + elt.get().getProperLogicalBounds()).append("\n");
+            sb.append("Bounds (logical):              " + elt.get().getProperLogicalBounds()).append("\n");
         }
         Rectangle bounds = ((IGraphicalEditPart) part).getFigure().getBounds().getCopy();
-        sb.append("Bounds (Draw2D):           " + bounds.toString() + "\n");
+        sb.append("Bounds (Draw2D):                   " + bounds.toString() + "\n");
         ((IGraphicalEditPart) part).getFigure().translateToAbsolute(bounds);
-        sb.append("Bounds (Draw2D absolute):  " + bounds.toString() + "\n");
+        sb.append("Bounds (Draw2D absolute):          " + bounds.toString() + "\n");
         sb.append("\n");
     }
 
@@ -362,9 +391,9 @@ public class SiriusDebugView extends AbstractDebugView {
     protected void createActionButtons() {
         // addFoldingToggleAction();
         // addShowOrderingsAction();
-        // addStorePositionsAction();
-        // addShowPositionChangesAction();
-        // addShowFiguresHierarchyAction();
+        addStorePositionsAction();
+        addShowPositionChangesAction();
+        addShowFiguresHierarchyAction();
         // addRefreshBenpointsAction();
         // addResetBendpointsAction();
         // addExpandAction();
@@ -382,7 +411,7 @@ public class SiriusDebugView extends AbstractDebugView {
         addShowResourceSetTopologyAction();
         addShowAdaptersAction();
         addShowSessionStructureAction();
-        addShowCrossReferencerMap();
+        // addShowCrossReferencerMap();
     }
 
     private void addShowSessionStructureAction() {

@@ -123,9 +123,8 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             regionBounds.put(node, bounds);
         }
 
-        int y = getMinY();
+        int y = 0;
         int x = 0;
-
         for (Node node : regionsToLayout) {
             Rectangle bounds = regionBounds.get(node);
 
@@ -164,15 +163,6 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             }
         }
 
-    }
-
-    private int getMinY() {
-        int y = 0;
-        Node labelNode = SiriusGMFHelper.getLabelNode(regionContainer);
-        if (labelNode != null) {
-            y = GMFHelper.getBounds(labelNode, true).bottom();
-        }
-        return y;
     }
 
     /**

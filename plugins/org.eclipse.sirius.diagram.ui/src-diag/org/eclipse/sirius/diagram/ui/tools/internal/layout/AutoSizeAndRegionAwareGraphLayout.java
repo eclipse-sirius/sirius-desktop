@@ -36,7 +36,6 @@ import org.eclipse.draw2d.graph.Node;
 import org.eclipse.draw2d.graph.NodeList;
 import org.eclipse.draw2d.graph.Subgraph;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.graph.AdvancedSubGraph;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.graph.CompositeDirectedGraphLayout;
@@ -48,12 +47,9 @@ import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContain
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-
-import com.google.common.collect.Iterables;
 
 /**
  * Customized version of the standard CompositeDirectedGraphLayout to improve
@@ -81,7 +77,6 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
 
     /*
      * (non-Javadoc)
-     * 
      * @see
      * org.eclipse.draw2d.graph.DirectedGraphLayout#visit(org.eclipse.draw2d
      * .graph.DirectedGraph)
@@ -142,12 +137,10 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
             }
 
             /*
-             * <handle_bordered_nodes>
-             * 
-             * Translate all the elements at this level of the appropriate
-             * offsets to consider their bordered nodes. Otherwise elements are
-             * put too close to their parent's border, and the bordered nodes
-             * cause the appearance of scrollbars.
+             * <handle_bordered_nodes> Translate all the elements at this level
+             * of the appropriate offsets to consider their bordered nodes.
+             * Otherwise elements are put too close to their parent's border,
+             * and the bordered nodes cause the appearance of scrollbars.
              */
             Dimension offsets = getOffsets(nodes);
             for (int j = 0; j < nodes.size(); j++) {
@@ -198,11 +191,9 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
             commonWidth = Math.max(commonWidth, n.width);
             commonHeight = Math.max(commonHeight, n.height);
         }
-
-        // Start regions after parent label.
-        int y = getLabelHeight(parent);
+        
+        int y = 0;
         int x = 0;
-
         for (int j = 0; j < nodes.size(); j++) {
             Node n = nodes.getNode(j);
             n.x = x;
@@ -228,18 +219,6 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
         }
 
         return rc;
-    }
-
-    private int getLabelHeight(Node parent) {
-        if (parent != null && parent.data instanceof AbstractDNodeContainerCompartmentEditPart) {
-            AbstractDNodeContainerCompartmentEditPart comp = (AbstractDNodeContainerCompartmentEditPart) parent.data;
-            EditPart containerEditPart = comp.getParent();
-            IDiagramNameEditPart nameEditPart = Iterables.getFirst(Iterables.filter(containerEditPart.getChildren(), IDiagramNameEditPart.class), null);
-            if (nameEditPart != null && nameEditPart.getFigure() != null) {
-                return nameEditPart.getFigure().getBounds().height;
-            }
-        }
-        return 0;
     }
 
     /* no parent detect regions */
@@ -501,9 +480,7 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
         subGraph.height = bottom - top + yDiff;
 
         /*
-         * <auto-size_fix>
-         * 
-         * This algorithm comes from
+         * <auto-size_fix> This algorithm comes from
          * org.eclipse.gmf.runtime.diagram.ui.layout.FreeFormLayoutEx
          * .layout(IFigure parent).
          */
