@@ -277,6 +277,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(GoToMarkerTraceabilityWithUserInteractionTest.class);
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);
         suite.addTestSuite(ContainerCreationTest.class);
+        suite.addTestSuite(ContainerChildrenPresentationChangeTest.class);
         suite.addTestSuite(ContainerCreationWithSnapToGridTest.class);
         suite.addTestSuite(DNodeListCreationTest.class);
         suite.addTestSuite(DNodeListCreationWithSnapToGridTest.class);
