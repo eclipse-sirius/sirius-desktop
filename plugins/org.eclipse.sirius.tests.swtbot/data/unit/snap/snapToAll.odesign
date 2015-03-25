@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="snapToAll" version="10.0.0.201505222000">
+  <ownedViewpoints name="snapToAll" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="snapToAllDiagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NodePackage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
+          <borderedNodeMappings name="EClassOnNode" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <borderedNodeMappings name="EAttributeOnEClassOnNode" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:'BNBNN_' + self.name" labelPosition="node" resizeKind="NSEW" width="5" height="5">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelExpression="aql:'BNN_' + self.name" labelPosition="node" resizeKind="NSEW" width="10" height="10">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelExpression="aql:'Node_' + self.name" labelPosition="node" resizeKind="NSEW" width="25" height="25">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Reference" sourceMapping="//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer/@containerMappings[name='ContainerPackage']/@subNodeMappings[name='EClassInContainer']" targetMapping="//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer/@containerMappings[name='ContainerPackage']/@subNodeMappings[name='EClassInContainer']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="feature:name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ContainerPackage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer/@containerMappings[name='ContainerPackage']">
+          <borderedNodeMappings name="EClassOnContainer" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <borderedNodeMappings name="EAttribute" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:'BNBNC_' + self.name" labelPosition="node" resizeKind="NSEW" width="5" height="5">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelExpression="aql:'BNC_' + self.name" labelPosition="node" resizeKind="NSEW" width="10" height="10">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="EClassInContainer" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <borderedNodeMappings name="EAttribute" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:'BNNC_' + self.name" labelPosition="node" resizeKind="NSEW" width="5" height="5">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelExpression="aql:'NC_' + self.name" labelPosition="node" resizeKind="NSEW" width="10" height="10">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="aql:'Container_' + self.name">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -42,6 +42,32 @@ h3. Managing Diagrams
 
 Opening existing diagrams and renaming or deleting them works exactly as for any other kind of representation. Refer to the general documentation about the _Modeling Project_ UI for details.
 
+h4. Rulers & Grid
+
+Several behaviors concerning the diagram elements editing is conditioned by properties of the diagram accessible through the _Rulers & Grid_ tab of the _Properties_ view of the diagram.
+!images/properties_view_rulers_and_grid_tab.png!
+
+h5. Show Ruler
+
+_Display/Show Ruler_: Display an horizonal and vertical ruler according to _Measurement/Ruler Units_ property.
+
+h5. Show Grid 
+
+_Display/Show Grid_: Display a grid in background of the diagram according to _Measurement/Grid Spacing_ and _Grid Line_ properties. This grid can be in front of all figures if the property _Grid In Front_ is enabled.
+
+h5. Snap to grid
+
+Capability to allow edit parts to snap to the grid when editing (during creation, moving or resizing). It is also possible to have connection bendpoints snap to it. Grid snapping and visibility are two distinct properties, and it is possible to enable one without the other.
+
+h5(#snap_to_shapes). Snap to shapes
+
+The _Snap to shapes_ feature allows you to quickly align parts being dragged or resized to other parts in the diagram or that share the same parent (e.g: edit parts inside a compartment can only snap to each other). The snap is effective on top, bottom, right, left and center of the figure. Feedback is shown in the form of a gray line when a part is being attached to another part. This feature is not enabled on border nodes.
+!images/snap_to_shape.png!
+
+By pressing the <kdb>F4</kdb> shortcut key, it is possible to temporarily enable the snap to all shapes currently visible on the diagram. Some screenshots of this feature are shown below.
+!images/snap_to_all_shapes.png!
+!images/snap_to_all_shapes_2.png!
+
 h3. Resizing elements
 
 If the specifier has authorized it, it is possible to resize a shape by dragging them until they are the size that you want.
@@ -51,8 +77,21 @@ There are specific shortcuts to change the resize behavior:
 * SHIFT: Resize that keeps the ratio
 * ALT (or CTRL for Mac users): Resize without snap (temporarily disables the snap during the resize if it is activated). 
 * F3: Resize with children location relative to the parent. If the shape is resized to the left, upwards, or both, the children (contained nodes for container and border nodes for all shapes) are moved with the same offset that the resize.
+* F4: Resize with snap to all shapes (if the "Snap to shapes":#snap_to_shapes is already activated for the current diagram)
+
+
+h3. Moving elements
+
+There are specific shortcuts to change the move behavior:
+* SHIFT: Constrained move (only vertical or horizontal move is authorized at once).
+* ALT (or CTRL for Mac users): Ignore snap while dragging (temporarily disables the snap during the move if it is activated).
+* F4: Move with snap to all shapes (if the "Snap to shapes":#snap_to_shapes is already activated for the current diagram)
 
 h3. Manage edges
+
+h4. Move bend-points
+
+It is possible to snap the bend-points to all shapes by pressing kdb>F4</kdb> shortcut key during the move. This feature is only available if the "Snap to shapes":#snap_to_shapes is already activated for the current diagram. As for _Snap to grid_, and unlike to snap for node, there is no guide drawn during the move.
 
 h4. Remove Bend-points
 

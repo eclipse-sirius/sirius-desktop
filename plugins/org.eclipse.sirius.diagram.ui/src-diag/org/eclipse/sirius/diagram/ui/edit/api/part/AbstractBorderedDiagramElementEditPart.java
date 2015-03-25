@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditP
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.EditStatusUpdater;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
+import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.swt.graphics.Image;
@@ -83,6 +85,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEAdapterDiagramElement()
      */
+    @Override
     public NotificationListener getEAdapterDiagramElement() {
         if (this.adapterDiagramElement == null) {
             this.adapterDiagramElement = DiagramElementEditPartOperation.createEApdaterDiagramElement(this);
@@ -93,6 +96,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
     /**
      * {@inheritDoc}
      */
+    @Override
     public NotificationListener getEditModeListener() {
         return this.editModeListener;
     }
@@ -102,6 +106,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEditPartAuthorityListener()
      */
+    @Override
     public EditPartAuthorityListener getEditPartAuthorityListener() {
         return this.authListener;
     }
@@ -111,6 +116,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveAllSemanticElements()
      */
+    @Override
     public List<EObject> resolveAllSemanticElements() {
         return DiagramElementEditPartOperation.resolveAllSemanticElements(this);
     }
@@ -120,6 +126,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveDiagramElement()
      */
+    @Override
     public DDiagramElement resolveDiagramElement() {
         return DiagramElementEditPartOperation.resolveDiagramElement(this);
     }
@@ -129,6 +136,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveTargetSemanticElement()
      */
+    @Override
     public EObject resolveTargetSemanticElement() {
         return DiagramElementEditPartOperation.resolveTargetSemanticElement(this);
     }
@@ -138,6 +146,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getStyleEditPart()
      */
+    @Override
     public IStyleEditPart getStyleEditPart() {
         return DiagramElementEditPartOperation.getStyleEditPart(this);
     }
@@ -215,6 +224,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * @see org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart#createBorderItemLocator(IFigure,
      *      DDiagramElement)
      */
+    @Override
     public IBorderItemLocator createBorderItemLocator(final IFigure figure, final DDiagramElement vpElementBorderItem) {
         return AbstractDiagramNodeEditPartOperation.createBorderItemLocator(this, figure, vpElementBorderItem);
     }
@@ -224,6 +234,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getLabelIcon()
      */
+    @Override
     public Image getLabelIcon() {
         return DiagramElementEditPartOperation.getLabelIcon(this);
     }
@@ -248,6 +259,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      *            the tooltip's text.
      * @since 0.9.0
      */
+    @Override
     public void setTooltipText(final String text) {
         AbstractDiagramNodeEditPartOperation.setTooltipText(this, text);
     }
@@ -257,7 +269,16 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart#getZoomManager()
      */
+    @Override
     public ZoomManager getZoomManager() {
         return AbstractDiagramNodeEditPartOperation.getZoomManager(this);
+    }
+
+    @Override
+    public Object getAdapter(Class key) {
+        if (key == SnapToHelper.class) {
+            return SiriusSnapToHelperUtil.getSnapHelper(this);
+        }
+        return super.getAdapter(key);
     }
 }

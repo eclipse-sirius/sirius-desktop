@@ -181,6 +181,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CloseWithoutSavingTest.class);
         suite.addTestSuite(CreateMandatoryElementsTest.class);
         suite.addTestSuite(LockedModelExplorerTest.class);
+        suite.addTestSuite(SnapAllShapesTest.class);
     }
 
     /**

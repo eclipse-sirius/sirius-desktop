@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
@@ -117,7 +118,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Applies inverse zoom on a point and returns this point for convenience.<BR>
+     * Applies inverse zoom on a point and returns this point for convenience.
+     * <BR>
      * For example:
      * <UL>
      * <LI>For a zoom of 200%, the result of this method for the point (100,
@@ -311,11 +313,11 @@ public final class GraphicalHelper {
      * @return The corresponding point to this anchor
      */
     public static Point getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor) {
-        Rectangle bounds;
+        PrecisionRectangle bounds;
         if (parent.getFigure() instanceof HandleBounds) {
-            bounds = ((HandleBounds) parent.getFigure()).getHandleBounds();
+            bounds = new PrecisionRectangle(((HandleBounds) parent.getFigure()).getHandleBounds());
         } else {
-            bounds = parent.getFigure().getBounds();
+            bounds = new PrecisionRectangle(parent.getFigure().getBounds());
         }
         parent.getFigure().translateToAbsolute(bounds);
 
@@ -326,7 +328,7 @@ public final class GraphicalHelper {
             // If anchor is null, the default value is (0.5, 0.5)
             rel = new PrecisionPoint(0.5, 0.5);
         }
-        Point location = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
+        Point location = new PrecisionPoint(bounds.preciseX() + bounds.preciseWidth() * rel.preciseX(), bounds.preciseY() + bounds.preciseHeight() * rel.preciseY());
         return location;
     }
 
@@ -438,11 +440,11 @@ public final class GraphicalHelper {
      * @return The absolute bounds.
      */
     public static Rectangle getAbsoluteBounds(IGraphicalEditPart part) {
-        Rectangle bounds;
+        PrecisionRectangle bounds;
         if (part.getFigure() instanceof HandleBounds) {
-            bounds = ((HandleBounds) part.getFigure()).getHandleBounds().getCopy();
+            bounds = new PrecisionRectangle(((HandleBounds) part.getFigure()).getHandleBounds());
         } else {
-            bounds = part.getFigure().getBounds().getCopy();
+            bounds = new PrecisionRectangle(part.getFigure().getBounds());
         }
         part.getFigure().translateToAbsolute(bounds);
         return bounds;
@@ -457,11 +459,11 @@ public final class GraphicalHelper {
      * @return The absolute bounds.
      */
     public static Rectangle getAbsoluteBoundsIn100Percent(GraphicalEditPart part) {
-        Rectangle bounds;
+        PrecisionRectangle bounds;
         if (part.getFigure() instanceof HandleBounds) {
-            bounds = ((HandleBounds) part.getFigure()).getHandleBounds().getCopy();
+            bounds = new PrecisionRectangle(((HandleBounds) part.getFigure()).getHandleBounds());
         } else {
-            bounds = part.getFigure().getBounds().getCopy();
+            bounds = new PrecisionRectangle(part.getFigure().getBounds());
         }
         part.getFigure().translateToAbsolute(bounds);
         screen2logical(bounds, part);

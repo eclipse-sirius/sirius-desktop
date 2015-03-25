@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
@@ -31,6 +32,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DDiagramItemSemantic
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalConnectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 
 /**
@@ -48,6 +50,7 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
      */
     public static final int VISUAL_ID = 1000;
 
+    @Override
     protected void refreshBackgroundColor() {
         super.refreshBackgroundColor();
     };
@@ -62,6 +65,7 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
     /**
      * @not-generated add the compound edit policy
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DDiagramItemSemanticEditPolicy());
@@ -168,4 +172,11 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
 
     }
 
+    @Override
+    public Object getAdapter(Class key) {
+        if (key == SnapToHelper.class) {
+            return SiriusSnapToHelperUtil.getSnapHelper(this);
+        }
+        return super.getAdapter(key);
+    }
 }

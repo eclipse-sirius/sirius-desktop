@@ -8,4 +8,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.gef;bundle-version="3.9.0",
  org.eclipse.equinox.common;bundle-version="3.6.100"
-Export-Package: org.eclipse.sirius.ext.gef.editpolicies;version="2.0.4"
+Export-Package: org.eclipse.sirius.ext.gef.editpolicies;version="2.0.4",
+ org.eclipse.sirius.ext.gef.query;version="3.1.0"
+Import-Package: com.google.common.base;version="[11.0.2,16.0)",
+ com.google.common.collect;version="[11.0.2,16.0)"

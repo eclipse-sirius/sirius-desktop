@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.Viewport;
+import org.eclipse.draw2d.ViewportUtilities;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -147,6 +150,7 @@ public class EditPartQuery {
     public List<IBorderItemEditPart> getBorderNodeEditParts(final int expectedSide) {
         if (part instanceof IBorderedShapeEditPart) {
             Iterable<IBorderItemEditPart> bordersItemPart = Iterables.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IBorderItemEditPart.class), new Predicate<IBorderItemEditPart>() {
+                @Override
                 public boolean apply(IBorderItemEditPart input) {
                     int currentSide = input.getBorderItemLocator().getCurrentSideOfParent();
                     return expectedSide == currentSide;
@@ -223,6 +227,90 @@ public class EditPartQuery {
 
         }
         return result;
+    }
+
+    /**
+     * Return true if the figure of the current part is currently visible (by
+     * the end-user), false otherwise.
+     * 
+     * @return true if the figure of the current part is currently visible (by
+     *         the end-user), false otherwise.
+     */
+    @SuppressWarnings("unchecked")
+    public boolean isVisibleOnViewport() {
+        // Traverse the viewport path of the figure (and reduce clipRect
+        // to what is actually visible); process all viewports up to the
+        // root viewport
+        Viewport topViewport = ((FigureCanvas) part.getViewer().getControl()).getViewport();
+        IFigure figure = part.getFigure();
+        Viewport nearestEnclosingViewport = ViewportUtilities.getNearestEnclosingViewport(figure);
+        List<Viewport> enclosingViewportsPath;
+        if (topViewport.equals(nearestEnclosingViewport)) {
+            enclosingViewportsPath = Lists.newArrayList(topViewport);
+        } else {
+            enclosingViewportsPath = ViewportUtilities.getViewportsPath(nearestEnclosingViewport, topViewport, true);
+        }
+        Rectangle clipRect = getAbsoluteBoundsAsCopy(figure);
+        clipAtViewports(clipRect, enclosingViewportsPath);
+        return !clipRect.isEmpty();
+    }
+
+    /**
+     * Clips the given clipRect at all given viewports. Method copied from
+     * {@link org.eclipse.draw2d.ViewportAwareConnectionLayerClippingStrategy}.
+     * 
+     * @param clipRect
+     *            Rectangle to clip
+     * @param enclosingViewportsPath
+     *            All viewports to use to clip
+     */
+    protected void clipAtViewports(Rectangle clipRect, List<Viewport> enclosingViewportsPath) {
+        for (Viewport viewport : enclosingViewportsPath) {
+            clipRect.intersect(getAbsoluteViewportAreaAsCopy(viewport));
+        }
+    }
+
+    /**
+     * Returns the area covered by the viewport in absolute coordinates. Method
+     * copied from
+     * {@link org.eclipse.draw2d.ViewportAwareConnectionLayerClippingStrategy}.
+     * 
+     * @param viewport
+     *            Concerned Viewport
+     * @return the area covered by the viewport in absolute coordinates.
+     */
+    protected Rectangle getAbsoluteViewportAreaAsCopy(Viewport viewport) {
+        return getAbsoluteClientAreaAsCopy(viewport);
+    }
+
+    /**
+     * Returns the viewport's client area in absolute coordinates. Method copied
+     * from
+     * {@link org.eclipse.draw2d.ViewportAwareConnectionLayerClippingStrategy}.
+     * 
+     * @param figure
+     *            Concerned figure
+     * @return a copy of the client area of this figure
+     */
+    protected Rectangle getAbsoluteClientAreaAsCopy(IFigure figure) {
+        Rectangle absoluteClientArea = figure.getClientArea();
+        figure.translateToParent(absoluteClientArea);
+        figure.translateToAbsolute(absoluteClientArea);
+        return absoluteClientArea;
+    }
+
+    /**
+     * Returns the figure's bounds in absolute coordinates. Method copied from
+     * {@link org.eclipse.draw2d.ViewportAwareConnectionLayerClippingStrategy}.
+     * 
+     * @param figure
+     *            Concerned figure
+     * @return the figure's bounds in absolute coordinates
+     */
+    protected Rectangle getAbsoluteBoundsAsCopy(IFigure figure) {
+        Rectangle absoluteFigureBounds = figure.getBounds().getCopy();
+        figure.translateToAbsolute(absoluteFigureBounds);
+        return absoluteFigureBounds;
     }
 
     /**
@@ -331,8 +419,8 @@ public class EditPartQuery {
                 expectedNewBounds = borderItemLocator.getValidLocation(expectedNewBounds, borderItemEditPart.getFigure());
             }
             if (PositionConstants.NORTH == resizedSide) {
-                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y
-                        + parentResizeSize));
+                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(),
+                        new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y + parentResizeSize));
             } else {
                 shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y));
             }
@@ -429,8 +517,8 @@ public class EditPartQuery {
                 expectedNewBounds = borderItemLocator.getValidLocation(expectedNewBounds, borderItemEditPart.getFigure());
             }
             if (PositionConstants.WEST == resizedSide) {
-                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x + parentResizeSize, expectedNewBounds.y
-                        - currentBounds.y));
+                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(),
+                        new Dimension(expectedNewBounds.x - currentBounds.x + parentResizeSize, expectedNewBounds.y - currentBounds.y));
             } else {
                 shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y));
             }
@@ -469,6 +557,7 @@ public class EditPartQuery {
         if (PositionConstants.NORTH == resizedSide) {
             // Smaller y in first
             getValueToCompareFunction = new Function<IBorderItemEditPart, Integer>() {
+                @Override
                 public Integer apply(IBorderItemEditPart from) {
                     Node node = (Node) from.getModel();
                     if (node.getLayoutConstraint() instanceof Bounds) {
@@ -481,6 +570,7 @@ public class EditPartQuery {
         } else if (PositionConstants.SOUTH == resizedSide) {
             // Greater (y+height) in first
             getValueToCompareFunction = new Function<IBorderItemEditPart, Integer>() {
+                @Override
                 public Integer apply(IBorderItemEditPart from) {
                     Node node = (Node) from.getModel();
                     if (node.getLayoutConstraint() instanceof Bounds) {
@@ -493,6 +583,7 @@ public class EditPartQuery {
         } else if (PositionConstants.EAST == resizedSide) {
             // Greater (x+width) in first
             getValueToCompareFunction = new Function<IBorderItemEditPart, Integer>() {
+                @Override
                 public Integer apply(IBorderItemEditPart from) {
                     Node node = (Node) from.getModel();
                     if (node.getLayoutConstraint() instanceof Bounds) {
@@ -505,6 +596,7 @@ public class EditPartQuery {
         } else {
             // Smaller x in first
             getValueToCompareFunction = new Function<IBorderItemEditPart, Integer>() {
+                @Override
                 public Integer apply(IBorderItemEditPart from) {
                     Node node = (Node) from.getModel();
                     if (node.getLayoutConstraint() instanceof Bounds) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,10 @@
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.tools.ResizeTracker;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 
@@ -55,6 +58,16 @@ public class SiriusResizeTracker extends ResizeTracker {
     boolean childrenMoveMode = DEFAULT_CHILDREN_MOVE_MODE;
 
     /**
+     * The mode of this tracker concerning the snap to shape:
+     * <UL>
+     * <LI>true to snap to all shapes and not only brothers ones,</LI>
+     * <LI>false otherwise.</LI>
+     * </UL>
+     * This variable is used to update the request.
+     */
+    boolean snapToAllShape = NoCopyDragEditPartsTrackerEx.DEFAULT_SNAP_TO_SHAPE_MODE;
+
+    /**
      * Default constructor.
      * 
      * @param owner
@@ -67,19 +80,43 @@ public class SiriusResizeTracker extends ResizeTracker {
     }
 
     @Override
+    protected Request createSourceRequest() {
+        ChangeBoundsRequest request;
+        // Create a specific request (see javadoc of SnapChangeBoundsRequest for
+        // more details).
+        request = new SnapChangeBoundsRequest(REQ_RESIZE);
+        request.setResizeDirection(getResizeDirection());
+        return request;
+    }
+
+    @Override
     protected boolean handleKeyDown(KeyEvent event) {
+        boolean keyHandled = false;
         if (SiriusResizeTracker.CHILDREN_MOVE_MODE_SHORTCUT_KEY == event.keyCode) {
             childrenMoveMode = !SiriusResizeTracker.DEFAULT_CHILDREN_MOVE_MODE;
-            return true;
+            keyHandled = true;
+        } else if (NoCopyDragEditPartsTrackerEx.SNAP_TO_ALL == event.keyCode) {
+            snapToAllShape = !NoCopyDragEditPartsTrackerEx.DEFAULT_SNAP_TO_SHAPE_MODE;
+            keyHandled = true;
+        }
+        if (keyHandled) {
+            return keyHandled;
         }
         return super.handleKeyDown(event);
     }
 
     @Override
     protected boolean handleKeyUp(KeyEvent event) {
+        boolean keyHandled = false;
         if (SiriusResizeTracker.CHILDREN_MOVE_MODE_SHORTCUT_KEY == event.keyCode) {
             childrenMoveMode = SiriusResizeTracker.DEFAULT_CHILDREN_MOVE_MODE;
-            return true;
+            keyHandled = true;
+        } else if (NoCopyDragEditPartsTrackerEx.SNAP_TO_ALL == event.keyCode) {
+            snapToAllShape = NoCopyDragEditPartsTrackerEx.DEFAULT_SNAP_TO_SHAPE_MODE;
+            keyHandled = true;
+        }
+        if (keyHandled) {
+            return keyHandled;
         }
         return super.handleKeyUp(event);
     }
@@ -87,11 +124,19 @@ public class SiriusResizeTracker extends ResizeTracker {
     /**
      * Set {@link CHILDREN_MOVE_MODE_KEY} extended data after update of request
      * (the extended data are cleaned during the
-     * {@link ResizeTracker#updateSourceRequest()}).
+     * {@link ResizeTracker#updateSourceRequest()}). Also update the request
+     * with information about snapToAll mode.
      */
     @SuppressWarnings("unchecked")
     @Override
     protected void updateSourceRequest() {
+        if (getSourceRequest() instanceof SnapChangeBoundsRequest) {
+            if (snapToAllShape) {
+                ((SnapChangeBoundsRequest) getSourceRequest()).setSnapToAllShape(true);
+            } else {
+                ((SnapChangeBoundsRequest) getSourceRequest()).setSnapToAllShape(false);
+            }
+        }
         super.updateSourceRequest();
         if (childrenMoveMode) {
             getSourceRequest().getExtendedData().put(SiriusResizeTracker.CHILDREN_MOVE_MODE_KEY, Boolean.TRUE);
@@ -110,7 +155,9 @@ public class SiriusResizeTracker extends ResizeTracker {
     @Override
     protected boolean handleButtonUp(int button) {
         boolean result = super.handleButtonUp(button);
+        // Clean up the mode to original state.
         childrenMoveMode = SiriusResizeTracker.DEFAULT_CHILDREN_MOVE_MODE;
+        snapToAllShape = NoCopyDragEditPartsTrackerEx.DEFAULT_SNAP_TO_SHAPE_MODE;
         return result;
     }
 }

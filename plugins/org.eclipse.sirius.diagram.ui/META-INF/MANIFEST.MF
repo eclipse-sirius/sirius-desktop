@@ -179,6 +179,7 @@ Export-Package: org.eclipse.sirius.diagram.description.concern.provider;version=
  org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.ui.tools.internal.resource;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.ui.tools.internal.routers;x-internal:=true;version="2.0.4",
+ org.eclipse.sirius.diagram.ui.tools.internal.ruler;x-internal:=true;version="3.1.0",
  org.eclipse.sirius.diagram.ui.tools.internal.testers;x-internal:=true;version="2.1.0",
  org.eclipse.sirius.diagram.ui.tools.internal.ui;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.ui.tools.internal.util;x-internal:=true;version="3.0.0",
@@ -191,7 +192,8 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
  org.eclipse.sirius.ext.draw2d.figure;version="2.0.0",
  org.eclipse.sirius.ext.emf;version="2.0.0",
- org.eclipse.sirius.ext.emf.ui.properties,
+ org.eclipse.sirius.ext.emf.ui.properties;version="3.0.0",
  org.eclipse.sirius.ext.gef.editpolicies;version="2.0.0",
+ org.eclipse.sirius.ext.gef.query;version="3.1.0",
  org.eclipse.sirius.ext.gmf.runtime.editparts;version="2.0.0",
  org.eclipse.sirius.ext.swt;version="2.0.0"
