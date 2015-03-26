@@ -16,6 +16,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckMessageEditPartIsDisplayed;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
 import com.google.common.collect.Iterables;
@@ -26,6 +28,21 @@ import com.google.common.collect.Iterables;
  * @author smonnier
  */
 public class SequenceReturnMessageTest extends AbstractDefaultModelSequenceTests {
+
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+        SWTBotUtils.waitAllUiEvents();
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        // Reopen outline
+        new DesignerViews(bot).openOutlineView();
+        SWTBotUtils.waitAllUiEvents();
+        super.tearDown();
+    }
 
     /**
      * Test method.
