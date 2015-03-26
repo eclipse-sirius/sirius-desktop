@@ -91,7 +91,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Min Value Computation Expression</em>'
      *         attribute.
      * @see #setMinValueComputationExpression(String)
@@ -128,7 +128,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Max Value Computation Expression</em>'
      *         attribute.
      * @see #setMaxValueComputationExpression(String)

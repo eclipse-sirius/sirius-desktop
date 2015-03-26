@@ -43,7 +43,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
      * The cached value of the '{@link #getDetailDescriptions()
      * <em>Detail Descriptions</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getDetailDescriptions()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
      * The cached value of the '{@link #getNavigationDescriptions()
      * <em>Navigation Descriptions</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getNavigationDescriptions()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RepresentationElementMappingImpl() {
@@ -72,7 +72,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -147,7 +147,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

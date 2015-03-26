@@ -81,7 +81,7 @@ public interface DView extends DRefreshable {
      * {@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions
      * <em>Owned Extensions</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Owned Extensions</em>' containment
      *            reference.
@@ -112,7 +112,7 @@ public interface DView extends DRefreshable {
      * {@link org.eclipse.sirius.viewpoint.DView#isInitialized
      * <em>Initialized</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Initialized</em>' attribute.
      * @see #isInitialized()

@@ -84,7 +84,7 @@ public interface CreateInstance extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance#getReferenceName
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Reference Name</em>' attribute.
      * @see #getReferenceName()
@@ -112,7 +112,7 @@ public interface CreateInstance extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance#getVariableName
      * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Variable Name</em>' attribute.
      * @see #getVariableName()

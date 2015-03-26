@@ -38,7 +38,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
      * The default value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
      * The cached value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ConditionalStyleDescriptionImpl() {
@@ -67,7 +67,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -77,18 +77,20 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getPredicateExpression() {
         return predicateExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setPredicateExpression(String newPredicateExpression) {
         String oldPredicateExpression = predicateExpression;
         predicateExpression = newPredicateExpression;
@@ -99,9 +101,10 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public boolean checkPredicate(EObject modelElement, EObject viewVariable, EObject containerVariable) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -110,7 +113,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +127,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +142,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -154,21 +157,22 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION:
-            return PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !PREDICATE_EXPRESSION_EDEFAULT.equals(predicateExpression);
+            return ConditionalStyleDescriptionImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !ConditionalStyleDescriptionImpl.PREDICATE_EXPRESSION_EDEFAULT
+                    .equals(predicateExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

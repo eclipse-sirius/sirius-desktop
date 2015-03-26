@@ -59,7 +59,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The default value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getBrowseExpression()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The cached value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getBrowseExpression()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The default value of the '{@link #getNavigationNameExpression()
      * <em>Navigation Name Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getNavigationNameExpression()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The cached value of the '{@link #getNavigationNameExpression()
      * <em>Navigation Name Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getNavigationNameExpression()
      * @generated
      * @ordered
@@ -114,7 +114,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The cached value of the '{@link #getContainerVariable()
      * <em>Container Variable</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getContainerVariable()
      * @generated
      * @ordered
@@ -134,7 +134,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RepresentationNavigationDescriptionImpl() {
@@ -143,7 +143,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -153,18 +153,20 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getBrowseExpression() {
         return browseExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setBrowseExpression(String newBrowseExpression) {
         String oldBrowseExpression = browseExpression;
         browseExpression = newBrowseExpression;
@@ -175,18 +177,20 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getNavigationNameExpression() {
         return navigationNameExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setNavigationNameExpression(String newNavigationNameExpression) {
         String oldNavigationNameExpression = navigationNameExpression;
         navigationNameExpression = newNavigationNameExpression;
@@ -197,9 +201,10 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public RepresentationDescription getRepresentationDescription() {
         RepresentationDescription representationDescription = basicGetRepresentationDescription();
         return representationDescription != null && representationDescription.eIsProxy() ? (RepresentationDescription) eResolveProxy((InternalEObject) representationDescription)
@@ -208,7 +213,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public RepresentationDescription basicGetRepresentationDescription() {
@@ -221,9 +226,10 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public ContainerViewVariable getContainerViewVariable() {
         if (containerViewVariable != null && containerViewVariable.eIsProxy()) {
             InternalEObject oldContainerViewVariable = (InternalEObject) containerViewVariable;
@@ -249,7 +255,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerViewVariable basicGetContainerViewVariable() {
@@ -258,7 +264,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainerViewVariable(ContainerViewVariable newContainerViewVariable, NotificationChain msgs) {
@@ -278,9 +284,10 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setContainerViewVariable(ContainerViewVariable newContainerViewVariable) {
         if (newContainerViewVariable != containerViewVariable) {
             NotificationChain msgs = null;
@@ -303,9 +310,10 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public ElementSelectVariable getContainerVariable() {
         if (containerVariable != null && containerVariable.eIsProxy()) {
             InternalEObject oldContainerVariable = (InternalEObject) containerVariable;
@@ -330,7 +338,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ElementSelectVariable basicGetContainerVariable() {
@@ -339,7 +347,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainerVariable(ElementSelectVariable newContainerVariable, NotificationChain msgs) {
@@ -359,9 +367,10 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setContainerVariable(ElementSelectVariable newContainerVariable) {
         if (newContainerVariable != containerVariable) {
             NotificationChain msgs = null;
@@ -384,9 +393,10 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public NameVariable getRepresentationNameVariable() {
         if (representationNameVariable != null && representationNameVariable.eIsProxy()) {
             InternalEObject oldRepresentationNameVariable = (InternalEObject) representationNameVariable;
@@ -413,7 +423,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NameVariable basicGetRepresentationNameVariable() {
@@ -422,7 +432,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetRepresentationNameVariable(NameVariable newRepresentationNameVariable, NotificationChain msgs) {
@@ -442,9 +452,10 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setRepresentationNameVariable(NameVariable newRepresentationNameVariable) {
         if (newRepresentationNameVariable != representationNameVariable) {
             NotificationChain msgs = null;
@@ -468,9 +479,10 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public EList<RepresentationElementMapping> getMappings() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -479,7 +491,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -497,7 +509,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -533,7 +545,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -560,7 +572,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -587,16 +599,18 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION:
-            return BROWSE_EXPRESSION_EDEFAULT == null ? browseExpression != null : !BROWSE_EXPRESSION_EDEFAULT.equals(browseExpression);
+            return RepresentationNavigationDescriptionImpl.BROWSE_EXPRESSION_EDEFAULT == null ? browseExpression != null : !RepresentationNavigationDescriptionImpl.BROWSE_EXPRESSION_EDEFAULT
+                    .equals(browseExpression);
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION:
-            return NAVIGATION_NAME_EXPRESSION_EDEFAULT == null ? navigationNameExpression != null : !NAVIGATION_NAME_EXPRESSION_EDEFAULT.equals(navigationNameExpression);
+            return RepresentationNavigationDescriptionImpl.NAVIGATION_NAME_EXPRESSION_EDEFAULT == null ? navigationNameExpression != null
+                    : !RepresentationNavigationDescriptionImpl.NAVIGATION_NAME_EXPRESSION_EDEFAULT.equals(navigationNameExpression);
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_DESCRIPTION:
             return basicGetRepresentationDescription() != null;
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE:
@@ -611,7 +625,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

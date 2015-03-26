@@ -52,7 +52,7 @@ public interface SetObject extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

@@ -68,7 +68,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getContainer
      * <em>Container</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Container</em>' containment
      *            reference.
@@ -98,7 +98,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getContainerView
      * <em>Container View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Container View</em>' containment
      *            reference.
@@ -127,7 +127,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getCopiedView
      * <em>Copied View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Copied View</em>' containment
      *            reference.
@@ -154,7 +154,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getCopiedElement
      * <em>Copied Element</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Copied Element</em>' containment
      *            reference.
@@ -182,7 +182,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -193,7 +193,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model kind="operation"
      * @generated
      */

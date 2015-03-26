@@ -36,7 +36,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected UserFixedColorImpl() {
@@ -64,7 +64,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

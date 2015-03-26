@@ -43,7 +43,7 @@ public interface Customization extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Vsm Element Customizations</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getCustomization_VsmElementCustomizations()

@@ -65,7 +65,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -86,7 +86,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
      * The default value of the '{@link #getCornerHeight()
      * <em>Corner Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getCornerHeight()
      * @generated
      * @ordered
@@ -97,7 +97,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
      * The cached value of the '{@link #getCornerHeight()
      * <em>Corner Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getCornerHeight()
      * @generated
      * @ordered
@@ -107,7 +107,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The default value of the '{@link #getCornerWidth() <em>Corner Width</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getCornerWidth()
      * @generated
      * @ordered
@@ -117,7 +117,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getCornerWidth() <em>Corner Width</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getCornerWidth()
      * @generated
      * @ordered
@@ -126,7 +126,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected LabelBorderStyleDescriptionImpl() {
@@ -135,7 +135,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -261,7 +261,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -285,7 +285,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -309,7 +309,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -329,7 +329,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

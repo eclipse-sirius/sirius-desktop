@@ -43,7 +43,7 @@ public interface SwitchChild extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Sub Model Operations</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSwitchChild_SubModelOperations()

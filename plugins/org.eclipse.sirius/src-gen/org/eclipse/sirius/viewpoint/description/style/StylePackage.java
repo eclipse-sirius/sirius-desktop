@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.viewpoint.description.style.StyleFactory
  * @model kind="package"
  * @generated
@@ -34,21 +34,21 @@ import org.eclipse.emf.ecore.EReference;
 public interface StylePackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     String eNAME = "style";
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/description/style/1.1.0";
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     String eNS_PREFIX = "style";
@@ -56,7 +56,7 @@ public interface StylePackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     StylePackage eINSTANCE = org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl.init();
@@ -76,7 +76,7 @@ public interface StylePackage extends EPackage {
     /**
      * The number of structural features of the '<em>Description</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -87,7 +87,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescriptionImpl
      * <em>Basic Label Style Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescriptionImpl
      * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getBasicLabelStyleDescription()
      * @generated
@@ -152,7 +152,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Basic Label Style Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -163,7 +163,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.impl.LabelStyleDescriptionImpl
      * <em>Label Style Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see org.eclipse.sirius.viewpoint.description.style.impl.LabelStyleDescriptionImpl
      * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getLabelStyleDescription()
      * @generated
@@ -238,7 +238,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Label Style Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -249,7 +249,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStylesImpl
      * <em>Label Border Styles</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStylesImpl
      * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getLabelBorderStyles()
      * @generated
@@ -259,7 +259,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Border Style Descriptions</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -268,7 +268,7 @@ public interface StylePackage extends EPackage {
     /**
      * The number of structural features of the '<em>Label Border Styles</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -279,7 +279,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl
      * <em>Label Border Style Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl
      * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getLabelBorderStyleDescription()
      * @generated
@@ -326,7 +326,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Label Border Style Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -368,7 +368,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.viewpoint.description.style.StyleDescription
      * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Description</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.StyleDescription
      * @generated
@@ -380,7 +380,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
      * <em>Basic Label Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Basic Label Style Description</em>
      *         '.
      * @see org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
@@ -392,7 +392,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelSize
      * <em>Label Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Label Size</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelSize()
      * @see #getBasicLabelStyleDescription()
@@ -404,7 +404,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelFormat
      * <em>Label Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Label Format</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelFormat()
      * @see #getBasicLabelStyleDescription()
@@ -416,7 +416,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#isShowIcon
      * <em>Show Icon</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Show Icon</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#isShowIcon()
      * @see #getBasicLabelStyleDescription()
@@ -441,7 +441,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelColor
      * <em>Label Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference '<em>Label Color</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelColor()
      * @see #getBasicLabelStyleDescription()
@@ -453,7 +453,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getIconPath
      * <em>Icon Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Icon Path</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getIconPath()
      * @see #getBasicLabelStyleDescription()
@@ -466,7 +466,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription
      * <em>Label Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Label Style Description</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription
      * @generated
@@ -503,7 +503,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyles#getLabelBorderStyleDescriptions
      * <em>Label Border Style Descriptions</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the meta object for the containment reference list '
      *         <em>Label Border Style Descriptions</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.LabelBorderStyles#getLabelBorderStyleDescriptions()
@@ -517,7 +517,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription
      * <em>Label Border Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the meta object for class '
      *         <em>Label Border Style Description</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription
@@ -529,7 +529,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getId()
      * @see #getLabelBorderStyleDescription()
@@ -541,7 +541,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getName()
      * @see #getLabelBorderStyleDescription()
@@ -553,7 +553,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getCornerHeight
      * <em>Corner Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Corner Height</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getCornerHeight()
      * @see #getLabelBorderStyleDescription()
@@ -565,7 +565,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getCornerWidth
      * <em>Corner Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Corner Width</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getCornerWidth()
      * @see #getLabelBorderStyleDescription()
@@ -617,7 +617,7 @@ public interface StylePackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     interface Literals {
@@ -626,7 +626,7 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.viewpoint.description.style.StyleDescription
          * <em>Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         *
+         * 
          * @see org.eclipse.sirius.viewpoint.description.style.StyleDescription
          * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getStyleDescription()
          * @generated
@@ -638,7 +638,7 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescriptionImpl
          * <em>Basic Label Style Description</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescriptionImpl
          * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getBasicLabelStyleDescription()
          * @generated
@@ -648,7 +648,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Size</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelSize();
@@ -656,7 +656,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Format</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelFormat();
@@ -664,7 +664,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Show Icon</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.eINSTANCE.getBasicLabelStyleDescription_ShowIcon();
@@ -672,7 +672,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelExpression();
@@ -680,7 +680,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelColor();
@@ -688,7 +688,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Icon Path</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH = StylePackage.eINSTANCE.getBasicLabelStyleDescription_IconPath();
@@ -698,7 +698,7 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.viewpoint.description.style.impl.LabelStyleDescriptionImpl
          * <em>Label Style Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         *
+         * 
          * @see org.eclipse.sirius.viewpoint.description.style.impl.LabelStyleDescriptionImpl
          * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getLabelStyleDescription()
          * @generated
@@ -708,7 +708,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Alignment</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.eINSTANCE.getLabelStyleDescription_LabelAlignment();
@@ -718,7 +718,7 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStylesImpl
          * <em>Label Border Styles</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         *
+         * 
          * @see org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStylesImpl
          * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getLabelBorderStyles()
          * @generated
@@ -729,7 +729,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Label Border Style Descriptions</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference LABEL_BORDER_STYLES__LABEL_BORDER_STYLE_DESCRIPTIONS = StylePackage.eINSTANCE.getLabelBorderStyles_LabelBorderStyleDescriptions();
@@ -739,7 +739,7 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl
          * <em>Label Border Style Description</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl
          * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getLabelBorderStyleDescription()
          * @generated
@@ -749,7 +749,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute LABEL_BORDER_STYLE_DESCRIPTION__ID = StylePackage.eINSTANCE.getLabelBorderStyleDescription_Id();
@@ -757,7 +757,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute LABEL_BORDER_STYLE_DESCRIPTION__NAME = StylePackage.eINSTANCE.getLabelBorderStyleDescription_Name();
@@ -765,7 +765,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Corner Height</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute LABEL_BORDER_STYLE_DESCRIPTION__CORNER_HEIGHT = StylePackage.eINSTANCE.getLabelBorderStyleDescription_CornerHeight();
@@ -773,7 +773,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Corner Width</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute LABEL_BORDER_STYLE_DESCRIPTION__CORNER_WIDTH = StylePackage.eINSTANCE.getLabelBorderStyleDescription_CornerWidth();

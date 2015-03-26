@@ -65,7 +65,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getPrecondition
      * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Precondition</em>' attribute.
      * @see #getPrecondition()
@@ -93,7 +93,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isForceRefresh
      * <em>Force Refresh</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Force Refresh</em>' attribute.
      * @see #isForceRefresh()
@@ -111,7 +111,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Filters</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_Filters()
      * @model containment="true" resolveProxies="true"

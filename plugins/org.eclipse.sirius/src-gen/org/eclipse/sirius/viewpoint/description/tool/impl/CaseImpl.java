@@ -36,7 +36,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
      * The default value of the '{@link #getConditionExpression()
      * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getConditionExpression()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
      * The cached value of the '{@link #getConditionExpression()
      * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getConditionExpression()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CaseImpl() {
@@ -65,7 +65,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

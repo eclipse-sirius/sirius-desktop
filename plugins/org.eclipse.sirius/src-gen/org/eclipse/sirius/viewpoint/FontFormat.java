@@ -31,7 +31,7 @@ public enum FontFormat implements Enumerator {
     /**
      * The '<em><b>Normal</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #NORMAL
      * @generated
      * @ordered
@@ -41,7 +41,7 @@ public enum FontFormat implements Enumerator {
     /**
      * The '<em><b>Italic</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #ITALIC
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public enum FontFormat implements Enumerator {
     /**
      * The '<em><b>Bold</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #BOLD
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public enum FontFormat implements Enumerator {
     /**
      * The '<em><b>Bold italic</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #BOLD_ITALIC
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public enum FontFormat implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #NORMAL_LITERAL
      * @model name="normal"
      * @generated
@@ -90,7 +90,7 @@ public enum FontFormat implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #ITALIC_LITERAL
      * @model name="italic"
      * @generated
@@ -105,7 +105,7 @@ public enum FontFormat implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #BOLD_LITERAL
      * @model name="bold"
      * @generated
@@ -120,7 +120,7 @@ public enum FontFormat implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #BOLD_ITALIC_LITERAL
      * @model name="bold_italic"
      * @generated
@@ -139,7 +139,7 @@ public enum FontFormat implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Font Format</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static final List<FontFormat> VALUES = Collections.unmodifiableList(Arrays.asList(FontFormat.VALUES_ARRAY));
@@ -147,7 +147,7 @@ public enum FontFormat implements Enumerator {
     /**
      * Returns the '<em><b>Font Format</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static FontFormat get(String literal) {
@@ -162,7 +162,7 @@ public enum FontFormat implements Enumerator {
     /**
      * Returns the '<em><b>Font Format</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static FontFormat getByName(String name) {
@@ -177,7 +177,7 @@ public enum FontFormat implements Enumerator {
     /**
      * Returns the '<em><b>Font Format</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static FontFormat get(int value) {
@@ -196,21 +196,21 @@ public enum FontFormat implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
@@ -218,7 +218,7 @@ public enum FontFormat implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     private FontFormat(int value, String name, String literal) {
@@ -229,7 +229,7 @@ public enum FontFormat implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public enum FontFormat implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public enum FontFormat implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public enum FontFormat implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Drag Source</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getDragSource()
  * @model
  * @generated
@@ -30,7 +30,7 @@ public enum DragSource implements Enumerator {
     /**
      * The '<em><b>DIAGRAM</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DIAGRAM
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public enum DragSource implements Enumerator {
     /**
      * The '<em><b>BOTH</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #BOTH
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public enum DragSource implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DIAGRAM_LITERAL
      * @model
      * @generated
@@ -80,7 +80,7 @@ public enum DragSource implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #PROJECT_EXPLORER_LITERAL
      * @model
      * @generated
@@ -95,7 +95,7 @@ public enum DragSource implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #BOTH_LITERAL
      * @model
      * @generated
@@ -114,7 +114,7 @@ public enum DragSource implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Drag Source</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static final List<DragSource> VALUES = Collections.unmodifiableList(Arrays.asList(DragSource.VALUES_ARRAY));
@@ -122,7 +122,7 @@ public enum DragSource implements Enumerator {
     /**
      * Returns the '<em><b>Drag Source</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static DragSource get(String literal) {
@@ -137,7 +137,7 @@ public enum DragSource implements Enumerator {
     /**
      * Returns the '<em><b>Drag Source</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static DragSource getByName(String name) {
@@ -152,7 +152,7 @@ public enum DragSource implements Enumerator {
     /**
      * Returns the '<em><b>Drag Source</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static DragSource get(int value) {
@@ -169,21 +169,21 @@ public enum DragSource implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
@@ -191,7 +191,7 @@ public enum DragSource implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     private DragSource(int value, String name, String literal) {
@@ -202,7 +202,7 @@ public enum DragSource implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public enum DragSource implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public enum DragSource implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public enum DragSource implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

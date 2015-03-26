@@ -46,7 +46,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
     /**
      * The default value of the '{@link #getPosition() <em>Position</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getPosition()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
     /**
      * The cached value of the '{@link #getPosition() <em>Position</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getPosition()
      * @generated
      * @ordered
@@ -87,7 +87,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
      * The default value of the '{@link #getDecoratorPath()
      * <em>Decorator Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getDecoratorPath()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
      * The cached value of the '{@link #getDecoratorPath()
      * <em>Decorator Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getDecoratorPath()
      * @generated
      * @ordered
@@ -109,7 +109,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
      * The default value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -120,7 +120,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
      * The cached value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -129,7 +129,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DecorationDescriptionImpl() {
@@ -138,7 +138,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,18 +148,20 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
@@ -170,18 +172,20 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public Position getPosition() {
         return position;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setPosition(Position newPosition) {
         Position oldPosition = position;
         position = newPosition == null ? DecorationDescriptionImpl.POSITION_EDEFAULT : newPosition;
@@ -192,18 +196,20 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getDecoratorPath() {
         return decoratorPath;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setDecoratorPath(String newDecoratorPath) {
         String oldDecoratorPath = decoratorPath;
         decoratorPath = newDecoratorPath;
@@ -214,18 +220,20 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getPreconditionExpression() {
         return preconditionExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setPreconditionExpression(String newPreconditionExpression) {
         String oldPreconditionExpression = preconditionExpression;
         preconditionExpression = newPreconditionExpression;
@@ -236,7 +244,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -256,7 +264,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -280,7 +288,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -304,7 +312,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -317,14 +325,15 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
         case DescriptionPackage.DECORATION_DESCRIPTION__DECORATOR_PATH:
             return DecorationDescriptionImpl.DECORATOR_PATH_EDEFAULT == null ? decoratorPath != null : !DecorationDescriptionImpl.DECORATOR_PATH_EDEFAULT.equals(decoratorPath);
         case DescriptionPackage.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION:
-            return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
+            return DecorationDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !DecorationDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT
+                    .equals(preconditionExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

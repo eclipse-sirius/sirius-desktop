@@ -48,7 +48,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected VSMElementCustomizationImpl() {
@@ -88,7 +88,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,18 +98,20 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getPredicateExpression() {
         return predicateExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setPredicateExpression(String newPredicateExpression) {
         String oldPredicateExpression = predicateExpression;
         predicateExpression = newPredicateExpression;
@@ -120,9 +122,10 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public EList<EStructuralFeatureCustomization> getFeatureCustomizations() {
         if (featureCustomizations == null) {
             featureCustomizations = new EObjectContainmentEList.Resolving<EStructuralFeatureCustomization>(EStructuralFeatureCustomization.class, this,
@@ -133,7 +136,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -147,7 +150,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +166,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -183,7 +186,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -201,14 +204,15 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__PREDICATE_EXPRESSION:
-            return PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !PREDICATE_EXPRESSION_EDEFAULT.equals(predicateExpression);
+            return VSMElementCustomizationImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !VSMElementCustomizationImpl.PREDICATE_EXPRESSION_EDEFAULT
+                    .equals(predicateExpression);
         case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__FEATURE_CUSTOMIZATIONS:
             return featureCustomizations != null && !featureCustomizations.isEmpty();
         }
@@ -217,7 +221,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

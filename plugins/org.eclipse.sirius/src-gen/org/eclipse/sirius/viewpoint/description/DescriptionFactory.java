@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage
  * @generated
  */
@@ -24,7 +24,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     DescriptionFactory eINSTANCE = org.eclipse.sirius.viewpoint.description.impl.DescriptionFactoryImpl.init();
@@ -32,7 +32,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Group</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Group</em>'.
      * @generated
      */
@@ -41,7 +41,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Viewpoint</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Viewpoint</em>'.
      * @generated
      */
@@ -50,7 +50,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Metamodel Extension Setting</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Metamodel Extension Setting</em>'.
      * @generated
      */
@@ -68,7 +68,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DAnnotation</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>DAnnotation</em>'.
      * @generated
      */
@@ -77,7 +77,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Decoration Descriptions Set</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Decoration Descriptions Set</em>'.
      * @generated
      */
@@ -113,7 +113,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>VSM Element Customization Reuse</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>VSM Element Customization Reuse</em>'.
      * @generated
      */
@@ -158,7 +158,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Color Step</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Color Step</em>'.
      * @generated
      */
@@ -167,7 +167,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Fixed Color</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Fixed Color</em>'.
      * @generated
      */
@@ -185,7 +185,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Environment</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Environment</em>'.
      * @generated
      */
@@ -248,7 +248,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the package supported by this factory.
      * @generated
      */

@@ -48,7 +48,7 @@ public interface Environment extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>System Colors</em>' containment reference.
      * @see #setSystemColors(SytemColorsPalette)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEnvironment_SystemColors()
@@ -62,7 +62,7 @@ public interface Environment extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.Environment#getSystemColors
      * <em>System Colors</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>System Colors</em>' containment
      *            reference.
@@ -99,7 +99,7 @@ public interface Environment extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Label Border Styles</em>' containment
      *         reference.
      * @see #setLabelBorderStyles(LabelBorderStyles)
@@ -114,7 +114,7 @@ public interface Environment extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.Environment#getLabelBorderStyles
      * <em>Label Border Styles</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Label Border Styles</em>'
      *            containment reference.

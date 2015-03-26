@@ -57,7 +57,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelSize
      * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -86,7 +86,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelFormat
      * <em>Label Format</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
@@ -144,7 +144,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor
      * <em>Label Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Label Color</em>' attribute.
      * @see #getLabelColor()

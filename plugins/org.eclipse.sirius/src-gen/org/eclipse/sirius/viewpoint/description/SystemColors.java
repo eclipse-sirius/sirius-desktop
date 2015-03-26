@@ -31,7 +31,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Black</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #BLACK
      * @generated
      * @ordered
@@ -41,7 +41,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Blue</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #BLUE
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Red</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #RED
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Green</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #GREEN
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Yellow</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #YELLOW
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Purple</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #PURPLE
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Orange</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #ORANGE
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Chocolate</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #CHOCOLATE
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Gray</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #GRAY
      * @generated
      * @ordered
@@ -121,7 +121,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>White</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #WHITE
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Dark blue</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_BLUE
      * @generated
      * @ordered
@@ -141,7 +141,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Dark red</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_RED
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Dark green</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_GREEN
      * @generated
      * @ordered
@@ -161,7 +161,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Dark yellow</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_YELLOW
      * @generated
      * @ordered
@@ -171,7 +171,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Dark purple</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_PURPLE
      * @generated
      * @ordered
@@ -181,7 +181,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Dark orange</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_ORANGE
      * @generated
      * @ordered
@@ -191,7 +191,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Dark chocolate</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_CHOCOLATE
      * @generated
      * @ordered
@@ -201,7 +201,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Dark gray</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_GRAY
      * @generated
      * @ordered
@@ -211,7 +211,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Light blue</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_BLUE
      * @generated
      * @ordered
@@ -221,7 +221,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Light red</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_RED
      * @generated
      * @ordered
@@ -231,7 +231,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Light green</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_GREEN
      * @generated
      * @ordered
@@ -241,7 +241,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Light yellow</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_YELLOW
      * @generated
      * @ordered
@@ -251,7 +251,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Light purple</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_PURPLE
      * @generated
      * @ordered
@@ -261,7 +261,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Light orange</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_ORANGE
      * @generated
      * @ordered
@@ -271,7 +271,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Light chocolate</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_CHOCOLATE
      * @generated
      * @ordered
@@ -281,7 +281,7 @@ public enum SystemColors implements Enumerator {
     /**
      * The '<em><b>Light gray</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_GRAY
      * @generated
      * @ordered
@@ -295,7 +295,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #BLACK_LITERAL
      * @model name="black"
      * @generated
@@ -310,7 +310,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #BLUE_LITERAL
      * @model name="blue"
      * @generated
@@ -325,7 +325,7 @@ public enum SystemColors implements Enumerator {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #RED_LITERAL
      * @model name="red"
      * @generated
@@ -340,7 +340,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #GREEN_LITERAL
      * @model name="green"
      * @generated
@@ -355,7 +355,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #YELLOW_LITERAL
      * @model name="yellow"
      * @generated
@@ -370,7 +370,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #PURPLE_LITERAL
      * @model name="purple"
      * @generated
@@ -385,7 +385,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #ORANGE_LITERAL
      * @model name="orange"
      * @generated
@@ -400,7 +400,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #CHOCOLATE_LITERAL
      * @model name="chocolate"
      * @generated
@@ -415,7 +415,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #GRAY_LITERAL
      * @model name="gray"
      * @generated
@@ -430,7 +430,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #WHITE_LITERAL
      * @model name="white"
      * @generated
@@ -445,7 +445,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_BLUE_LITERAL
      * @model name="dark_blue"
      * @generated
@@ -460,7 +460,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_RED_LITERAL
      * @model name="dark_red"
      * @generated
@@ -475,7 +475,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_GREEN_LITERAL
      * @model name="dark_green"
      * @generated
@@ -490,7 +490,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_YELLOW_LITERAL
      * @model name="dark_yellow"
      * @generated
@@ -505,7 +505,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_PURPLE_LITERAL
      * @model name="dark_purple"
      * @generated
@@ -520,7 +520,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_ORANGE_LITERAL
      * @model name="dark_orange"
      * @generated
@@ -536,7 +536,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_CHOCOLATE_LITERAL
      * @model name="dark_chocolate"
      * @generated
@@ -551,7 +551,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DARK_GRAY_LITERAL
      * @model name="dark_gray"
      * @generated
@@ -566,7 +566,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_BLUE_LITERAL
      * @model name="light_blue"
      * @generated
@@ -581,7 +581,7 @@ public enum SystemColors implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_RED_LITERAL
      * @model name="light_red"
      * @generated
@@ -596,7 +596,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_GREEN_LITERAL
      * @model name="light_green"
      * @generated
@@ -611,7 +611,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_YELLOW_LITERAL
      * @model name="light_yellow"
      * @generated
@@ -626,7 +626,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_PURPLE_LITERAL
      * @model name="light_purple"
      * @generated
@@ -641,7 +641,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_ORANGE_LITERAL
      * @model name="light_orange"
      * @generated
@@ -657,7 +657,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_CHOCOLATE_LITERAL
      * @model name="light_chocolate"
      * @generated
@@ -672,7 +672,7 @@ public enum SystemColors implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LIGHT_GRAY_LITERAL
      * @model name="light_gray"
      * @generated
@@ -687,14 +687,14 @@ public enum SystemColors implements Enumerator {
      * @generated
      */
     private static final SystemColors[] VALUES_ARRAY = new SystemColors[] { BLACK_LITERAL, BLUE_LITERAL, RED_LITERAL, GREEN_LITERAL, YELLOW_LITERAL, PURPLE_LITERAL, ORANGE_LITERAL, CHOCOLATE_LITERAL,
-            GRAY_LITERAL, WHITE_LITERAL, DARK_BLUE_LITERAL, DARK_RED_LITERAL, DARK_GREEN_LITERAL, DARK_YELLOW_LITERAL, DARK_PURPLE_LITERAL, DARK_ORANGE_LITERAL, DARK_CHOCOLATE_LITERAL,
-            DARK_GRAY_LITERAL, LIGHT_BLUE_LITERAL, LIGHT_RED_LITERAL, LIGHT_GREEN_LITERAL, LIGHT_YELLOW_LITERAL, LIGHT_PURPLE_LITERAL, LIGHT_ORANGE_LITERAL, LIGHT_CHOCOLATE_LITERAL,
-            LIGHT_GRAY_LITERAL, };
+        GRAY_LITERAL, WHITE_LITERAL, DARK_BLUE_LITERAL, DARK_RED_LITERAL, DARK_GREEN_LITERAL, DARK_YELLOW_LITERAL, DARK_PURPLE_LITERAL, DARK_ORANGE_LITERAL, DARK_CHOCOLATE_LITERAL,
+        DARK_GRAY_LITERAL, LIGHT_BLUE_LITERAL, LIGHT_RED_LITERAL, LIGHT_GREEN_LITERAL, LIGHT_YELLOW_LITERAL, LIGHT_PURPLE_LITERAL, LIGHT_ORANGE_LITERAL, LIGHT_CHOCOLATE_LITERAL,
+        LIGHT_GRAY_LITERAL, };
 
     /**
      * A public read-only list of all the '<em><b>System Colors</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static final List<SystemColors> VALUES = Collections.unmodifiableList(Arrays.asList(SystemColors.VALUES_ARRAY));
@@ -702,7 +702,7 @@ public enum SystemColors implements Enumerator {
     /**
      * Returns the '<em><b>System Colors</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static SystemColors get(String literal) {
@@ -717,7 +717,7 @@ public enum SystemColors implements Enumerator {
     /**
      * Returns the '<em><b>System Colors</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static SystemColors getByName(String name) {
@@ -732,7 +732,7 @@ public enum SystemColors implements Enumerator {
     /**
      * Returns the '<em><b>System Colors</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static SystemColors get(int value) {
@@ -795,21 +795,21 @@ public enum SystemColors implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
@@ -817,7 +817,7 @@ public enum SystemColors implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     private SystemColors(int value, String name, String literal) {
@@ -828,7 +828,7 @@ public enum SystemColors implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -838,7 +838,7 @@ public enum SystemColors implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -848,7 +848,7 @@ public enum SystemColors implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -859,7 +859,7 @@ public enum SystemColors implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

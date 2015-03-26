@@ -60,7 +60,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     /**
      * The default value of the '{@link #isOpen() <em>Open</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #isOpen()
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     /**
      * The cached value of the '{@link #getResources() <em>Resources</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getResources()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getControlledResources()
      * <em>Controlled Resources</em>}' attribute list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getControlledResources()
      * @generated
      * @ordered
@@ -102,7 +102,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getActivatedViewpoints()
      * <em>Activated Viewpoints</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getActivatedViewpoints()
      * @generated
      * @ordered
@@ -112,7 +112,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     /**
      * The cached value of the '{@link #getAnalyses() <em>Analyses</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getAnalyses()
      * @generated
      * @ordered
@@ -123,7 +123,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getSynchronizationStatus()
      * <em>Synchronization Status</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getSynchronizationStatus()
      * @generated
      * @ordered
@@ -134,7 +134,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getSynchronizationStatus()
      * <em>Synchronization Status</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getSynchronizationStatus()
      * @generated
      * @ordered
@@ -143,7 +143,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DAnalysisSessionEObjectImpl() {
@@ -152,7 +152,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -225,7 +225,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -238,7 +238,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -248,7 +248,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -262,7 +262,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -286,7 +286,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -321,7 +321,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -351,7 +351,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -375,7 +375,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

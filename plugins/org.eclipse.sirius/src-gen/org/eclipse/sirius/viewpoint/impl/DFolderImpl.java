@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class DFolderImpl extends DResourceContainerImpl implements DFolder {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DFolderImpl() {
@@ -35,7 +35,7 @@ public class DFolderImpl extends DResourceContainerImpl implements DFolder {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

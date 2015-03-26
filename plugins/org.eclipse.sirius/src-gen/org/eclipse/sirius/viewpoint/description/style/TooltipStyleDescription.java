@@ -58,7 +58,7 @@ public interface TooltipStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription#getTooltipExpression
      * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Tooltip Expression</em>' attribute.
      * @see #getTooltipExpression()

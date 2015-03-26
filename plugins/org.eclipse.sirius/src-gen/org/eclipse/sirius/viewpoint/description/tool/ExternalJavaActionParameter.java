@@ -51,7 +51,7 @@ public interface ExternalJavaActionParameter extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -79,7 +79,7 @@ public interface ExternalJavaActionParameter extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter#getValue
      * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

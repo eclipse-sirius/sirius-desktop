@@ -43,7 +43,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
      * The cached value of the '{@link #getSubVariables()
      * <em>Sub Variables</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getSubVariables()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected VariableContainerImpl() {
@@ -61,7 +61,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -129,7 +129,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

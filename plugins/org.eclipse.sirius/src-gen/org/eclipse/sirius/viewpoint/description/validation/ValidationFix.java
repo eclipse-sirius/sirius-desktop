@@ -52,7 +52,7 @@ public interface ValidationFix extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -79,7 +79,7 @@ public interface ValidationFix extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.

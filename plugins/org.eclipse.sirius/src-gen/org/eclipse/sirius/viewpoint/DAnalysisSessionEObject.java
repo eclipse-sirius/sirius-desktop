@@ -67,7 +67,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isOpen
      * <em>Open</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Open</em>' attribute.
      * @see #isOpen()
@@ -84,7 +84,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Resources</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Resources()
      * @model transient="true"
@@ -101,7 +101,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Controlled Resources</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_ControlledResources()
      * @model transient="true"
@@ -136,7 +136,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Analyses</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Analyses()
      * @model
@@ -154,7 +154,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Synchronization Status</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.SyncStatus
      * @see #setSynchronizationStatus(SyncStatus)
@@ -169,7 +169,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus
      * <em>Synchronization Status</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Synchronization Status</em>'
      *            attribute.

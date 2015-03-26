@@ -37,7 +37,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
      * The default value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
      * The cached value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DocumentedElementImpl() {
@@ -66,7 +66,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

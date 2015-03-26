@@ -39,7 +39,7 @@ public interface DocumentedElement extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Documentation</em>' attribute.
      * @see #setDocumentation(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDocumentedElement_Documentation()
@@ -53,7 +53,7 @@ public interface DocumentedElement extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.DocumentedElement#getDocumentation
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Documentation</em>' attribute.
      * @see #getDocumentation()

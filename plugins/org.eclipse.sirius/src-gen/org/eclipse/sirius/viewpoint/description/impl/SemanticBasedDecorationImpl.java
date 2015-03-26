@@ -35,7 +35,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SemanticBasedDecorationImpl() {
@@ -63,7 +63,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

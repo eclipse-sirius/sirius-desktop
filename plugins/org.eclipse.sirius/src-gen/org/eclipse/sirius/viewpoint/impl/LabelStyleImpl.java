@@ -57,7 +57,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected LabelStyleImpl() {
@@ -66,7 +66,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

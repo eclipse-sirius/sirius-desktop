@@ -32,14 +32,14 @@ import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static ValidationFactory init() {
@@ -57,7 +57,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ValidationFactoryImpl() {
@@ -66,7 +66,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ERROR_LEVEL createERROR_LEVELFromString(EDataType eDataType, String initialValue) {
@@ -187,7 +187,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public String convertERROR_LEVELToString(EDataType eDataType, Object instanceValue) {
@@ -196,7 +196,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

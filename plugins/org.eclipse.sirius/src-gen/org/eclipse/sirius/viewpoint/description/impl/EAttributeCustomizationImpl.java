@@ -39,7 +39,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
      * The default value of the '{@link #getAttributeName()
      * <em>Attribute Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getAttributeName()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
      * The cached value of the '{@link #getAttributeName()
      * <em>Attribute Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getAttributeName()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
     /**
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
     /**
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EAttributeCustomizationImpl() {
@@ -88,7 +88,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -65,7 +65,7 @@ public interface ToolFilterDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription#getPrecondition
      * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Precondition</em>' attribute.
      * @see #getPrecondition()
@@ -96,7 +96,7 @@ public interface ToolFilterDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription#getElementsToListen
      * <em>Elements To Listen</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Elements To Listen</em>' attribute.
      * @see #getElementsToListen()
@@ -114,7 +114,7 @@ public interface ToolFilterDescription extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Listeners</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolFilterDescription_Listeners()
      * @model containment="true" resolveProxies="true" required="true"

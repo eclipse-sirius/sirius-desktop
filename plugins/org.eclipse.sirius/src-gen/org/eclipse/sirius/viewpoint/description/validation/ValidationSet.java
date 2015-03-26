@@ -47,7 +47,7 @@ public interface ValidationSet extends DocumentedElement {
      * Returns the value of the '<em><b>Name</b></em>' attribute. The default
      * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The name of the set. <!-- end-model-doc -->
-     *
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_Name()
@@ -60,7 +60,7 @@ public interface ValidationSet extends DocumentedElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()

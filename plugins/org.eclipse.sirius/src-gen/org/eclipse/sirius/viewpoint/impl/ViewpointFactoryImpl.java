@@ -48,14 +48,14 @@ import com.google.common.base.Splitter;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static ViewpointFactory init() {
@@ -73,7 +73,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ViewpointFactoryImpl() {
@@ -82,7 +82,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -211,7 +211,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -244,7 +244,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -277,7 +277,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -288,7 +288,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -310,7 +310,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -321,7 +321,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -332,7 +332,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public FontFormat createFontFormatFromString(EDataType eDataType, String initialValue) {
@@ -345,7 +345,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public String convertFontFormatToString(EDataType eDataType, Object instanceValue) {
@@ -378,7 +378,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public SyncStatus createSyncStatusFromString(EDataType eDataType, String initialValue) {
@@ -391,7 +391,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public String convertSyncStatusToString(EDataType eDataType, Object instanceValue) {
@@ -447,7 +447,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -457,7 +457,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

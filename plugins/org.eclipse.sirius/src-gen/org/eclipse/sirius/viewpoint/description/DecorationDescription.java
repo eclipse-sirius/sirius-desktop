@@ -57,7 +57,7 @@ public interface DecorationDescription extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -75,7 +75,7 @@ public interface DecorationDescription extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Position</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.Position
      * @see #setPosition(Position)
@@ -117,7 +117,7 @@ public interface DecorationDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getDecoratorPath
      * <em>Decorator Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Decorator Path</em>' attribute.
      * @see #getDecoratorPath()
@@ -149,7 +149,7 @@ public interface DecorationDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Precondition Expression</em>'
      *            attribute.

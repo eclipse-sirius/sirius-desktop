@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class DModelImpl extends DFileImpl implements DModel {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DModelImpl() {
@@ -35,7 +35,7 @@ public class DModelImpl extends DFileImpl implements DModel {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

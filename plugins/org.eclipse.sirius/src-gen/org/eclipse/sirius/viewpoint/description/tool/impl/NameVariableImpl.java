@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class NameVariableImpl extends AbstractVariableImpl implements NameVariable {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected NameVariableImpl() {
@@ -35,7 +35,7 @@ public class NameVariableImpl extends AbstractVariableImpl implements NameVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

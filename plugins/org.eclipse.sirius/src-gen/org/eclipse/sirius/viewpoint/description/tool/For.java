@@ -56,7 +56,7 @@ public interface For extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.For#getExpression
      * <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Expression</em>' attribute.
      * @see #getExpression()
@@ -83,7 +83,7 @@ public interface For extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.For#getIteratorName
      * <em>Iterator Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Iterator Name</em>' attribute.
      * @see #getIteratorName()

@@ -49,7 +49,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected InitialContainerDropOperationImpl() {
@@ -58,7 +58,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ModelOperation basicGetFirstModelOperations() {
@@ -105,7 +105,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetFirstModelOperations(ModelOperation newFirstModelOperations, NotificationChain msgs) {
@@ -125,7 +125,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

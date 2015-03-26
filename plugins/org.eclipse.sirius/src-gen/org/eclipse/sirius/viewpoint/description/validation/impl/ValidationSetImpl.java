@@ -54,7 +54,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     /**
      * The cached value of the '{@link #getOwnedRules() <em>Owned Rules</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getOwnedRules()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     /**
      * The cached value of the '{@link #getReusedRules() <em>Reused Rules</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getReusedRules()
      * @generated
      * @ordered
@@ -93,7 +93,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ValidationSetImpl() {
@@ -102,7 +102,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -237,7 +237,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -258,7 +258,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -278,7 +278,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

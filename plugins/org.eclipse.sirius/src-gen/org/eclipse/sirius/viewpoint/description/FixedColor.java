@@ -53,7 +53,7 @@ public interface FixedColor extends ColorDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.FixedColor#getRed
      * <em>Red</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Red</em>' attribute.
      * @see #getRed()
@@ -79,7 +79,7 @@ public interface FixedColor extends ColorDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.FixedColor#getGreen
      * <em>Green</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Green</em>' attribute.
      * @see #getGreen()
@@ -105,7 +105,7 @@ public interface FixedColor extends ColorDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.FixedColor#getBlue
      * <em>Blue</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Blue</em>' attribute.
      * @see #getBlue()

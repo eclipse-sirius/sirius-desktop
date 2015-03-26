@@ -72,7 +72,7 @@ public interface DAnnotation extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Details</em>' map.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_Details()
      * @model mapType=

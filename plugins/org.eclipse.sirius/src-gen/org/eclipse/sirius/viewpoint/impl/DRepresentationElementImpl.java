@@ -54,7 +54,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getTarget()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -85,7 +85,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
      * The cached value of the '{@link #getSemanticElements()
      * <em>Semantic Elements</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getSemanticElements()
      * @generated
      * @ordered
@@ -94,7 +94,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DRepresentationElementImpl() {
@@ -103,7 +103,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public EObject basicGetTarget() {
@@ -141,7 +141,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -272,7 +272,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -293,7 +293,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -311,7 +311,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -347,7 +347,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -383,7 +383,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

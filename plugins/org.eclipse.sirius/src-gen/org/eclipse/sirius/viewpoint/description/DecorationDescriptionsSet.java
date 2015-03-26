@@ -43,7 +43,7 @@ public interface DecorationDescriptionsSet extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Decoration Descriptions</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDecorationDescriptionsSet_DecorationDescriptions()

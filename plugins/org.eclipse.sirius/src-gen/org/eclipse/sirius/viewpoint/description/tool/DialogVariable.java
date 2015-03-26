@@ -51,7 +51,7 @@ public interface DialogVariable extends AbstractVariable {
      * {@link org.eclipse.sirius.viewpoint.description.tool.DialogVariable#getDialogPrompt
      * <em>Dialog Prompt</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Dialog Prompt</em>' attribute.
      * @see #getDialogPrompt()

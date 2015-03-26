@@ -50,7 +50,7 @@ public interface MenuItemDescriptionReference extends MenuItemOrRef {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference#getItem
      * <em>Item</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Item</em>' reference.
      * @see #getItem()

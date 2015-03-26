@@ -54,7 +54,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getAttributeName
      * <em>Attribute Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Attribute Name</em>' attribute.
      * @see #getAttributeName()
@@ -88,7 +88,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getValue
      * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

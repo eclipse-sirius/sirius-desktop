@@ -51,7 +51,7 @@ public interface DResource extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.DResource#getName <em>Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -80,7 +80,7 @@ public interface DResource extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.DResource#getPath <em>Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Path</em>' attribute.
      * @see #getPath()

@@ -40,7 +40,7 @@ public interface InitialOperation extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>First Model Operations</em>' containment
      *         reference.
      * @see #setFirstModelOperations(ModelOperation)

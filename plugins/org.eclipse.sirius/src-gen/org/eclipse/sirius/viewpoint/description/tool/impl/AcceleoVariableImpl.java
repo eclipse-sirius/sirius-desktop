@@ -40,7 +40,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
      * The default value of the '{@link #getComputationExpression()
      * <em>Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getComputationExpression()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
      * The cached value of the '{@link #getComputationExpression()
      * <em>Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getComputationExpression()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AcceleoVariableImpl() {
@@ -90,7 +90,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +164,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +264,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

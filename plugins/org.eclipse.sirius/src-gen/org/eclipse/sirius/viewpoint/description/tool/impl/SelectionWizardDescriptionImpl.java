@@ -80,7 +80,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The default value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The default value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -121,7 +121,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The default value of the '{@link #isTree() <em>Tree</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #isTree()
      * @generated
      * @ordered
@@ -142,7 +142,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The default value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -153,7 +153,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -164,7 +164,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The default value of the '{@link #getChildrenExpression()
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getChildrenExpression()
      * @generated
      * @ordered
@@ -175,7 +175,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getChildrenExpression()
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getChildrenExpression()
      * @generated
      * @ordered
@@ -185,7 +185,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The default value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getMessage()
      * @generated
      * @ordered
@@ -195,7 +195,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getMessage()
      * @generated
      * @ordered
@@ -205,7 +205,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getElement() <em>Element</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getElement()
      * @generated
      * @ordered
@@ -216,7 +216,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getContainerView()
      * <em>Container View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getContainerView()
      * @generated
      * @ordered
@@ -226,7 +226,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getContainer() <em>Container</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getContainer()
      * @generated
      * @ordered
@@ -237,7 +237,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -247,7 +247,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -257,7 +257,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -267,7 +267,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The default value of the '{@link #getWindowTitle() <em>Window Title</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getWindowTitle()
      * @generated
      * @ordered
@@ -277,7 +277,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getWindowTitle() <em>Window Title</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getWindowTitle()
      * @generated
      * @ordered
@@ -288,7 +288,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The default value of the '{@link #getWindowImagePath()
      * <em>Window Image Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getWindowImagePath()
      * @generated
      * @ordered
@@ -299,7 +299,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getWindowImagePath()
      * <em>Window Image Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getWindowImagePath()
      * @generated
      * @ordered
@@ -308,7 +308,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SelectionWizardDescriptionImpl() {
@@ -317,7 +317,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -327,18 +327,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getCandidatesExpression() {
         return candidatesExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setCandidatesExpression(String newCandidatesExpression) {
         String oldCandidatesExpression = candidatesExpression;
         candidatesExpression = newCandidatesExpression;
@@ -349,18 +351,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public boolean isMultiple() {
         return multiple;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setMultiple(boolean newMultiple) {
         boolean oldMultiple = multiple;
         multiple = newMultiple;
@@ -371,18 +375,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public boolean isTree() {
         return tree;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setTree(boolean newTree) {
         boolean oldTree = tree;
         tree = newTree;
@@ -393,18 +399,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getRootExpression() {
         return rootExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setRootExpression(String newRootExpression) {
         String oldRootExpression = rootExpression;
         rootExpression = newRootExpression;
@@ -415,18 +423,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getChildrenExpression() {
         return childrenExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setChildrenExpression(String newChildrenExpression) {
         String oldChildrenExpression = childrenExpression;
         childrenExpression = newChildrenExpression;
@@ -437,18 +447,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getMessage() {
         return message;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setMessage(String newMessage) {
         String oldMessage = message;
         message = newMessage;
@@ -459,9 +471,10 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public ElementSelectVariable getElement() {
         if (element != null && element.eIsProxy()) {
             InternalEObject oldElement = (InternalEObject) element;
@@ -485,7 +498,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ElementSelectVariable basicGetElement() {
@@ -494,7 +507,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetElement(ElementSelectVariable newElement, NotificationChain msgs) {
@@ -513,9 +526,10 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setElement(ElementSelectVariable newElement) {
         if (newElement != element) {
             NotificationChain msgs = null;
@@ -536,9 +550,10 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public ContainerViewVariable getContainerView() {
         if (containerView != null && containerView.eIsProxy()) {
             InternalEObject oldContainerView = (InternalEObject) containerView;
@@ -562,7 +577,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerViewVariable basicGetContainerView() {
@@ -571,7 +586,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainerView(ContainerViewVariable newContainerView, NotificationChain msgs) {
@@ -590,9 +605,10 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setContainerView(ContainerViewVariable newContainerView) {
         if (newContainerView != containerView) {
             NotificationChain msgs = null;
@@ -613,9 +629,10 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public SelectContainerVariable getContainer() {
         if (container != null && container.eIsProxy()) {
             InternalEObject oldContainer = (InternalEObject) container;
@@ -639,7 +656,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public SelectContainerVariable basicGetContainer() {
@@ -648,7 +665,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainer(SelectContainerVariable newContainer, NotificationChain msgs) {
@@ -667,9 +684,10 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setContainer(SelectContainerVariable newContainer) {
         if (newContainer != container) {
             NotificationChain msgs = null;
@@ -690,9 +708,10 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
@@ -716,7 +735,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -725,7 +744,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -744,9 +763,10 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
@@ -767,18 +787,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getIconPath() {
         return iconPath;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setIconPath(String newIconPath) {
         String oldIconPath = iconPath;
         iconPath = newIconPath;
@@ -789,18 +811,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getWindowTitle() {
         return windowTitle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setWindowTitle(String newWindowTitle) {
         String oldWindowTitle = windowTitle;
         windowTitle = newWindowTitle;
@@ -811,18 +835,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getWindowImagePath() {
         return windowImagePath;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setWindowImagePath(String newWindowImagePath) {
         String oldWindowImagePath = windowImagePath;
         windowImagePath = newWindowImagePath;
@@ -833,7 +859,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -853,7 +879,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -903,7 +929,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -954,7 +980,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1005,14 +1031,15 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CANDIDATES_EXPRESSION:
-            return CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !CANDIDATES_EXPRESSION_EDEFAULT.equals(candidatesExpression);
+            return SelectionWizardDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !SelectionWizardDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT
+                    .equals(candidatesExpression);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__MULTIPLE:
             return multiple != SelectionWizardDescriptionImpl.MULTIPLE_EDEFAULT;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__TREE:
@@ -1020,7 +1047,8 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION:
             return SelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !SelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION:
-            return CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
+            return SelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !SelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT
+                    .equals(childrenExpression);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__MESSAGE:
             return SelectionWizardDescriptionImpl.MESSAGE_EDEFAULT == null ? message != null : !SelectionWizardDescriptionImpl.MESSAGE_EDEFAULT.equals(message);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT:
@@ -1043,7 +1071,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1071,7 +1099,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1099,7 +1127,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage
  * @generated
  */
@@ -24,7 +24,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     ViewpointFactory eINSTANCE = org.eclipse.sirius.viewpoint.impl.ViewpointFactoryImpl.init();
@@ -32,7 +32,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DAnalysis</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>DAnalysis</em>'.
      * @generated
      */
@@ -50,7 +50,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DView</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>DView</em>'.
      * @generated
      */
@@ -68,7 +68,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Decoration</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Decoration</em>'.
      * @generated
      */
@@ -86,7 +86,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Label Style</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Label Style</em>'.
      * @generated
      */
@@ -113,7 +113,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DFile</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>DFile</em>'.
      * @generated
      */
@@ -131,7 +131,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DProject</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>DProject</em>'.
      * @generated
      */
@@ -140,7 +140,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DFolder</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>DFolder</em>'.
      * @generated
      */
@@ -149,7 +149,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DModel</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>DModel</em>'.
      * @generated
      */
@@ -167,7 +167,7 @@ public interface ViewpointFactory extends EFactory {
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the package supported by this factory.
      * @generated
      */

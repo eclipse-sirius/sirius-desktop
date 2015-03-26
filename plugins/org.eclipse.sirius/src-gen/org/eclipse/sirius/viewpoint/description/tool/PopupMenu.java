@@ -42,7 +42,7 @@ public interface PopupMenu extends AbstractToolDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Menu Item Description</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPopupMenu_MenuItemDescription()

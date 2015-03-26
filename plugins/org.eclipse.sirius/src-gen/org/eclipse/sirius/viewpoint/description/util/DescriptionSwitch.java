@@ -67,14 +67,14 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage
  * @generated
  */
 public class DescriptionSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected static DescriptionPackage modelPackage;
@@ -82,7 +82,7 @@ public class DescriptionSwitch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DescriptionSwitch() {
@@ -95,7 +95,7 @@ public class DescriptionSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -108,7 +108,7 @@ public class DescriptionSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -126,7 +126,7 @@ public class DescriptionSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -574,7 +574,7 @@ public class DescriptionSwitch<T> {
      * <em>Group</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -591,7 +591,7 @@ public class DescriptionSwitch<T> {
      * <em>Component</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -608,7 +608,7 @@ public class DescriptionSwitch<T> {
      * <em>Viewpoint</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -625,7 +625,7 @@ public class DescriptionSwitch<T> {
      * <em>Feature Extension Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -642,7 +642,7 @@ public class DescriptionSwitch<T> {
      * <em>Representation Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -659,7 +659,7 @@ public class DescriptionSwitch<T> {
      * <em>Representation Template</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -676,7 +676,7 @@ public class DescriptionSwitch<T> {
      * <em>Representation Import Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -693,7 +693,7 @@ public class DescriptionSwitch<T> {
      * <em>Representation Extension Description</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -710,7 +710,7 @@ public class DescriptionSwitch<T> {
      * <em>Metamodel Extension Setting</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -727,7 +727,7 @@ public class DescriptionSwitch<T> {
      * <em>Java Extension</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -744,7 +744,7 @@ public class DescriptionSwitch<T> {
      * <em>Representation Element Mapping</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -761,7 +761,7 @@ public class DescriptionSwitch<T> {
      * <em>Abstract Mapping Import</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -778,7 +778,7 @@ public class DescriptionSwitch<T> {
      * <em>Documented Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -795,7 +795,7 @@ public class DescriptionSwitch<T> {
      * <em>DModel Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -812,7 +812,7 @@ public class DescriptionSwitch<T> {
      * <em>DAnnotation</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -829,7 +829,7 @@ public class DescriptionSwitch<T> {
      * <em>Conditional Style Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -846,7 +846,7 @@ public class DescriptionSwitch<T> {
      * <em>Paste Target Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -863,7 +863,7 @@ public class DescriptionSwitch<T> {
      * <em>Decoration Descriptions Set</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -880,7 +880,7 @@ public class DescriptionSwitch<T> {
      * <em>Decoration Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -897,7 +897,7 @@ public class DescriptionSwitch<T> {
      * <em>Semantic Based Decoration</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -914,7 +914,7 @@ public class DescriptionSwitch<T> {
      * <em>Customization</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -931,7 +931,7 @@ public class DescriptionSwitch<T> {
      * <em>IVSM Element Customization</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -948,7 +948,7 @@ public class DescriptionSwitch<T> {
      * <em>VSM Element Customization</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -965,7 +965,7 @@ public class DescriptionSwitch<T> {
      * <em>VSM Element Customization Reuse</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -982,7 +982,7 @@ public class DescriptionSwitch<T> {
      * <em>EStructural Feature Customization</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -999,7 +999,7 @@ public class DescriptionSwitch<T> {
      * <em>EAttribute Customization</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1016,7 +1016,7 @@ public class DescriptionSwitch<T> {
      * <em>EReference Customization</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1033,7 +1033,7 @@ public class DescriptionSwitch<T> {
      * <em>Selection Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1050,7 +1050,7 @@ public class DescriptionSwitch<T> {
      * <em>Color Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1067,7 +1067,7 @@ public class DescriptionSwitch<T> {
      * <em>System Color</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1084,7 +1084,7 @@ public class DescriptionSwitch<T> {
      * <em>Interpolated Color</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1101,7 +1101,7 @@ public class DescriptionSwitch<T> {
      * <em>Color Step</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1118,7 +1118,7 @@ public class DescriptionSwitch<T> {
      * <em>Fixed Color</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1135,7 +1135,7 @@ public class DescriptionSwitch<T> {
      * <em>User Fixed Color</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1152,7 +1152,7 @@ public class DescriptionSwitch<T> {
      * <em>User Color</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1169,7 +1169,7 @@ public class DescriptionSwitch<T> {
      * <em>Environment</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1186,7 +1186,7 @@ public class DescriptionSwitch<T> {
      * <em>Sytem Colors Palette</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1203,7 +1203,7 @@ public class DescriptionSwitch<T> {
      * <em>User Colors Palette</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1220,7 +1220,7 @@ public class DescriptionSwitch<T> {
      * <em>Annotation Entry</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1237,7 +1237,7 @@ public class DescriptionSwitch<T> {
      * <em>End User Documented Element</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1254,7 +1254,7 @@ public class DescriptionSwitch<T> {
      * <em>Identified Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1271,7 +1271,7 @@ public class DescriptionSwitch<T> {
      * <em>Computed Color</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1288,7 +1288,7 @@ public class DescriptionSwitch<T> {
      * <em>DAnnotation Entry</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1305,7 +1305,7 @@ public class DescriptionSwitch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

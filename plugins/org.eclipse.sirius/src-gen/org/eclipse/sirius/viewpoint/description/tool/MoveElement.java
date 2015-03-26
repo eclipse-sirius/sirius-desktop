@@ -59,7 +59,7 @@ public interface MoveElement extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getNewContainerExpression
      * <em>New Container Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>New Container Expression</em>'
      *            attribute.
@@ -88,7 +88,7 @@ public interface MoveElement extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

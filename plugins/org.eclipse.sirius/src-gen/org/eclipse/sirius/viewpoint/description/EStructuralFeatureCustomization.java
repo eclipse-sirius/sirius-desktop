@@ -74,7 +74,7 @@ public interface EStructuralFeatureCustomization extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization#isApplyOnAll
      * <em>Apply On All</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Apply On All</em>' attribute.
      * @see #isApplyOnAll()

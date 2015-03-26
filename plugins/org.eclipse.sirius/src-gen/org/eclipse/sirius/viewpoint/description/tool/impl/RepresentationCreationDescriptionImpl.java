@@ -59,7 +59,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The default value of the '{@link #getTitleExpression()
      * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The cached value of the '{@link #getTitleExpression()
      * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The default value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getBrowseExpression()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The cached value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getBrowseExpression()
      * @generated
      * @ordered
@@ -103,7 +103,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -134,7 +134,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RepresentationCreationDescriptionImpl() {
@@ -143,7 +143,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -153,18 +153,20 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getTitleExpression() {
         return titleExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setTitleExpression(String newTitleExpression) {
         String oldTitleExpression = titleExpression;
         titleExpression = newTitleExpression;
@@ -175,18 +177,20 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public String getBrowseExpression() {
         return browseExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setBrowseExpression(String newBrowseExpression) {
         String oldBrowseExpression = browseExpression;
         browseExpression = newBrowseExpression;
@@ -197,9 +201,10 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public RepresentationDescription getRepresentationDescription() {
         RepresentationDescription representationDescription = basicGetRepresentationDescription();
         return representationDescription != null && representationDescription.eIsProxy() ? (RepresentationDescription) eResolveProxy((InternalEObject) representationDescription)
@@ -208,7 +213,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public RepresentationDescription basicGetRepresentationDescription() {
@@ -221,9 +226,10 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
@@ -248,7 +254,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -257,7 +263,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -276,9 +282,10 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
@@ -301,9 +308,10 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public ContainerViewVariable getContainerViewVariable() {
         if (containerViewVariable != null && containerViewVariable.eIsProxy()) {
             InternalEObject oldContainerViewVariable = (InternalEObject) containerViewVariable;
@@ -328,7 +336,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerViewVariable basicGetContainerViewVariable() {
@@ -337,7 +345,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainerViewVariable(ContainerViewVariable newContainerViewVariable, NotificationChain msgs) {
@@ -357,9 +365,10 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setContainerViewVariable(ContainerViewVariable newContainerViewVariable) {
         if (newContainerViewVariable != containerViewVariable) {
             NotificationChain msgs = null;
@@ -382,9 +391,10 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public NameVariable getRepresentationNameVariable() {
         if (representationNameVariable != null && representationNameVariable.eIsProxy()) {
             InternalEObject oldRepresentationNameVariable = (InternalEObject) representationNameVariable;
@@ -411,7 +421,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NameVariable basicGetRepresentationNameVariable() {
@@ -420,7 +430,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetRepresentationNameVariable(NameVariable newRepresentationNameVariable, NotificationChain msgs) {
@@ -440,9 +450,10 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public void setRepresentationNameVariable(NameVariable newRepresentationNameVariable) {
         if (newRepresentationNameVariable != representationNameVariable) {
             NotificationChain msgs = null;
@@ -466,9 +477,10 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @Override
     public EList<RepresentationElementMapping> getMappings() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -477,7 +489,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -495,7 +507,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -531,7 +543,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -558,7 +570,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -585,16 +597,18 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__TITLE_EXPRESSION:
-            return TITLE_EXPRESSION_EDEFAULT == null ? titleExpression != null : !TITLE_EXPRESSION_EDEFAULT.equals(titleExpression);
+            return RepresentationCreationDescriptionImpl.TITLE_EXPRESSION_EDEFAULT == null ? titleExpression != null : !RepresentationCreationDescriptionImpl.TITLE_EXPRESSION_EDEFAULT
+                    .equals(titleExpression);
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__BROWSE_EXPRESSION:
-            return BROWSE_EXPRESSION_EDEFAULT == null ? browseExpression != null : !BROWSE_EXPRESSION_EDEFAULT.equals(browseExpression);
+            return RepresentationCreationDescriptionImpl.BROWSE_EXPRESSION_EDEFAULT == null ? browseExpression != null : !RepresentationCreationDescriptionImpl.BROWSE_EXPRESSION_EDEFAULT
+                    .equals(browseExpression);
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_DESCRIPTION:
             return basicGetRepresentationDescription() != null;
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION:
@@ -609,7 +623,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

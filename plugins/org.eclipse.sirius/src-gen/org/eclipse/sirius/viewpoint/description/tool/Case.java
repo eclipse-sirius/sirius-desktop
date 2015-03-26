@@ -58,7 +58,7 @@ public interface Case extends SwitchChild {
      * {@link org.eclipse.sirius.viewpoint.description.tool.Case#getConditionExpression
      * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Condition Expression</em>'
      *            attribute.

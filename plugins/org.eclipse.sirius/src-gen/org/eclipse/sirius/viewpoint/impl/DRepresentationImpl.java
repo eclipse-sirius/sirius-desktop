@@ -71,7 +71,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DRepresentationImpl() {
@@ -110,7 +110,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -268,7 +268,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -292,7 +292,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -335,7 +335,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -383,7 +383,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

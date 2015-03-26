@@ -35,20 +35,20 @@ import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass informationSectionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass templateInformationSectionEClass = null;
@@ -74,7 +74,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private static boolean isInited = false;
@@ -146,7 +146,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private boolean isCreated = false;
@@ -195,7 +195,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public void createPackageContents() {
@@ -213,7 +213,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private boolean isInitialized = false;

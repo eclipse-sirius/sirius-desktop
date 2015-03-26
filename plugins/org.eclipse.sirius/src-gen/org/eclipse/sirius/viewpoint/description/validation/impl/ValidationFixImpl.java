@@ -42,7 +42,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ValidationFixImpl() {
@@ -81,7 +81,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -151,7 +151,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -170,7 +170,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +208,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -245,7 +245,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

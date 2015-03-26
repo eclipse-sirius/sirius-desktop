@@ -39,48 +39,48 @@ import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class StylePackageImpl extends EPackageImpl implements StylePackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass styleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass basicLabelStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass labelStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass labelBorderStylesEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass labelBorderStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass tooltipStyleDescriptionEClass = null;
@@ -106,7 +106,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private static boolean isInited = false;
@@ -178,7 +178,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +208,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -238,7 +238,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -248,7 +248,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -258,7 +258,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -268,7 +268,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -278,7 +278,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -288,7 +288,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -298,7 +298,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -308,7 +308,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -318,7 +318,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -328,7 +328,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -338,7 +338,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -348,7 +348,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -358,7 +358,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -368,7 +368,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -378,7 +378,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private boolean isCreated = false;
@@ -387,7 +387,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public void createPackageContents() {
@@ -425,7 +425,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private boolean isInitialized = false;
@@ -517,7 +517,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * Initializes the annotations for
      * <b>http://www.eclipse.org/sirius/interpreted/expression/returnType</b>.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void createReturnTypeAnnotations() {
@@ -530,13 +530,13 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * Initializes the annotations for
      * <b>http://www.eclipse.org/sirius/interpreted/expression/variables</b>.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables";
         addAnnotation(getBasicLabelStyleDescription_LabelExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", "view",
-                "diagram.DDiagramElement | the current view for which the label is calculated." });
+        "diagram.DDiagramElement | the current view for which the label is calculated." });
         addAnnotation(getTooltipStyleDescription_TooltipExpression(), source, new String[] { "view", "viewpoint.DSemanticDecorator | the current view." });
     }
 

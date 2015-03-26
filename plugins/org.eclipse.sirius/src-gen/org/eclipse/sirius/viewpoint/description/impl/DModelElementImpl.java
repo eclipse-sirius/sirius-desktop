@@ -59,7 +59,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DModelElementImpl() {
@@ -68,7 +68,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -78,7 +78,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -146,7 +146,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -305,8 +305,8 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
     }
 
     private static final String[] ESCAPE = { "%00", "%01", "%02", "%03", "%04", "%05", "%06", "%07", "%08", "%09", "%0A", "%0B", "%0C", "%0D", "%0E", "%0F", "%10", "%11", "%12", "%13", "%14", "%15",
-            "%16", "%17", "%18", "%19", "%1A", "%1B", "%1C", "%1D", "%1E", "%1F", "%20", null, "%22", "%23", null, "%25", "%26", "%27", null, null, null, null, "%2C", null, null, "%2F", null, null,
-            null, null, null, null, null, null, null, null, "%3A", null, "%3C", null, "%3E", null, };
+        "%16", "%17", "%18", "%19", "%1A", "%1B", "%1C", "%1D", "%1E", "%1F", "%20", null, "%22", "%23", null, "%25", "%26", "%27", null, null, null, null, "%2C", null, null, "%2F", null, null,
+        null, null, null, null, null, null, null, null, "%3A", null, "%3C", null, "%3E", null, };
 
     /**
      * Returns the encoded value or the original, if no encoding was needed.

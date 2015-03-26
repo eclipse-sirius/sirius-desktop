@@ -28,14 +28,14 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static StyleFactory init() {
@@ -53,7 +53,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public StyleFactoryImpl() {
@@ -62,7 +62,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

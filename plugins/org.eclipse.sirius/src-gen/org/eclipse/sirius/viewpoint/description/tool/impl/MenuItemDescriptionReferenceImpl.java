@@ -38,7 +38,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
     /**
      * The cached value of the '{@link #getItem() <em>Item</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getItem()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected MenuItemDescriptionReferenceImpl() {
@@ -56,7 +56,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public MenuItemDescription basicGetItem() {
@@ -94,7 +94,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -66,223 +66,223 @@ import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackag
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dAnalysisEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dFeatureExtensionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dStylizableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dRefreshableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dLabelledEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dMappingBasedEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dRepresentationContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dSemanticDecoratorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dRepresentationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dRepresentationElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dViewEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass metaModelExtensionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass decorationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dAnalysisCustomDataEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass labelStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass styleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dAnalysisSessionEObjectEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass sessionManagerEObjectEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dResourceEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dFileEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dResourceContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dProjectEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dFolderEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass dModelEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass basicLabelStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass customizableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EEnum fontFormatEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EEnum labelAlignmentEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EEnum syncStatusEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EDataType rgbValuesEDataType = null;
@@ -308,7 +308,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private static boolean isInited = false;
@@ -380,7 +380,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -390,7 +390,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -400,7 +400,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -410,7 +410,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -420,7 +420,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -430,7 +430,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -440,7 +440,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -450,7 +450,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -460,7 +460,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -470,7 +470,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -480,7 +480,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -490,7 +490,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -500,7 +500,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -510,7 +510,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -520,7 +520,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -530,7 +530,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -540,7 +540,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -550,7 +550,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -560,7 +560,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -570,7 +570,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -580,7 +580,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -590,7 +590,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -600,7 +600,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -610,7 +610,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -620,7 +620,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -630,7 +630,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -640,7 +640,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -650,7 +650,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -660,7 +660,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -670,7 +670,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -680,7 +680,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -690,7 +690,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -700,7 +700,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -710,7 +710,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -720,7 +720,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -730,7 +730,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -740,7 +740,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -750,7 +750,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -760,7 +760,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -770,7 +770,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -780,7 +780,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -790,7 +790,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -800,7 +800,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -810,7 +810,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -820,7 +820,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -830,7 +830,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -840,7 +840,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -850,7 +850,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -860,7 +860,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -870,7 +870,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -880,7 +880,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -890,7 +890,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -900,7 +900,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -910,7 +910,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -920,7 +920,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -930,7 +930,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -940,7 +940,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -950,7 +950,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -960,7 +960,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -970,7 +970,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -980,7 +980,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -990,7 +990,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1000,7 +1000,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1010,7 +1010,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1020,7 +1020,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1030,7 +1030,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1040,7 +1040,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1050,7 +1050,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1060,7 +1060,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1070,7 +1070,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1080,7 +1080,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1090,7 +1090,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1100,7 +1100,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1110,7 +1110,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1120,7 +1120,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private boolean isCreated = false;
@@ -1129,7 +1129,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public void createPackageContents() {
@@ -1246,7 +1246,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private boolean isInitialized = false;
@@ -1502,13 +1502,13 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     /**
      * Initializes the annotations for <b>Tags</b>. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void createTagsAnnotations() {
         String source = "Tags";
         addAnnotation(this, source, new String[] { "deprecated", "Anything tagged as deprecated will disappear quite soon.\n\n", "to be renamed",
-                "Anything tagged \"to be renamed\" will be renamed, at least in the UI\n" });
+        "Anything tagged \"to be renamed\" will be renamed, at least in the UI\n" });
     }
 
 } // ViewpointPackageImpl

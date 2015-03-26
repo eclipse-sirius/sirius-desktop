@@ -52,7 +52,7 @@ public interface DAnalysis extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Referenced Analysis</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_ReferencedAnalysis()
      * @model
@@ -105,7 +105,7 @@ public interface DAnalysis extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Owned Views</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_OwnedViews()
@@ -123,7 +123,7 @@ public interface DAnalysis extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Selected Views</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_SelectedViews()
      * @model

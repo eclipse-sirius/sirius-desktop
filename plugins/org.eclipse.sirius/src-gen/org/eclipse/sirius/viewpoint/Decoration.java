@@ -54,7 +54,7 @@ public interface Decoration extends EObject {
      * {@link org.eclipse.sirius.viewpoint.Decoration#getDescription
      * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

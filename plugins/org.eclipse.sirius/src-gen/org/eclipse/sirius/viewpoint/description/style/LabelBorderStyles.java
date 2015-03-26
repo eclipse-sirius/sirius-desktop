@@ -46,7 +46,7 @@ public interface LabelBorderStyles extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Label Border Style Descriptions</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyles_LabelBorderStyleDescriptions()

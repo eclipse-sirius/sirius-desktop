@@ -45,7 +45,7 @@ public interface VSMElementCustomizationReuse extends IVSMElementCustomization {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Reuse</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomizationReuse_Reuse()
      * @model required="true"

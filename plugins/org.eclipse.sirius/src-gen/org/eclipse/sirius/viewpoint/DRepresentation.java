@@ -78,7 +78,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The name of the representation. <!--
      * end-model-doc -->
-     *
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_Name()
@@ -91,7 +91,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.DRepresentation#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()

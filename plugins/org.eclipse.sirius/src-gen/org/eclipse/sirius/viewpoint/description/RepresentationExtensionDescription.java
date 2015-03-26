@@ -63,7 +63,7 @@ public interface RepresentationExtensionDescription extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -90,7 +90,7 @@ public interface RepresentationExtensionDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription#getViewpointURI
      * <em>Viewpoint URI</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Viewpoint URI</em>' attribute.
      * @see #getViewpointURI()
@@ -116,7 +116,7 @@ public interface RepresentationExtensionDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription#getRepresentationName
      * <em>Representation Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Representation Name</em>' attribute.
      * @see #getRepresentationName()

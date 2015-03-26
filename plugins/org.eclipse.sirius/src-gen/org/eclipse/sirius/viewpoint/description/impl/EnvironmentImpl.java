@@ -53,7 +53,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
      * The cached value of the '{@link #getSystemColors()
      * <em>System Colors</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getSystemColors()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
      * The cached value of the '{@link #getDefaultTools()
      * <em>Default Tools</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getDefaultTools()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
      * The cached value of the '{@link #getLabelBorderStyles()
      * <em>Label Border Styles</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getLabelBorderStyles()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EnvironmentImpl() {
@@ -93,7 +93,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public SytemColorsPalette basicGetSystemColors() {
@@ -139,7 +139,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetSystemColors(SytemColorsPalette newSystemColors, NotificationChain msgs) {
@@ -158,7 +158,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public LabelBorderStyles basicGetLabelBorderStyles() {
@@ -231,7 +231,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetLabelBorderStyles(LabelBorderStyles newLabelBorderStyles, NotificationChain msgs) {
@@ -250,7 +250,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -292,7 +292,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -316,7 +316,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -339,7 +339,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -360,7 +360,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

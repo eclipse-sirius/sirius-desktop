@@ -50,7 +50,7 @@ public interface MenuItemDescription extends AbstractToolDescription, MenuItemOr
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription#getIcon
      * <em>Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Icon</em>' attribute.
      * @see #getIcon()

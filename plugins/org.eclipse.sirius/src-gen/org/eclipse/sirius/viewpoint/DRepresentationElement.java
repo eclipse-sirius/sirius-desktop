@@ -39,7 +39,7 @@ public interface DRepresentationElement extends DLabelled, DMappingBased, DStyli
      * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The name of the element. It is the name that is
      * displayed on the diagram. <!-- end-model-doc -->
-     *
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationElement_Name()
@@ -52,7 +52,7 @@ public interface DRepresentationElement extends DLabelled, DMappingBased, DStyli
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.DRepresentationElement#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()

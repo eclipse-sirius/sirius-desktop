@@ -43,7 +43,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
     /**
      * The default value of the '{@link #getSource() <em>Source</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getSource()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
     /**
      * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getSource()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
     /**
      * The cached value of the '{@link #getDetails() <em>Details</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getDetails()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DAnnotationEntryImpl() {
@@ -81,7 +81,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -164,7 +164,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

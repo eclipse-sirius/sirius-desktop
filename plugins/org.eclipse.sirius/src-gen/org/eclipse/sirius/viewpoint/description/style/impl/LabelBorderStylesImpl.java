@@ -43,7 +43,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
      * The cached value of the '{@link #getLabelBorderStyleDescriptions()
      * <em>Label Border Style Descriptions</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getLabelBorderStyleDescriptions()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected LabelBorderStylesImpl() {
@@ -61,7 +61,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -130,7 +130,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

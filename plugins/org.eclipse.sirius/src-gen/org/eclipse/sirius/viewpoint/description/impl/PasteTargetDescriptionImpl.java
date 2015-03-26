@@ -40,7 +40,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
      * The cached value of the '{@link #getPasteDescriptions()
      * <em>Paste Descriptions</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getPasteDescriptions()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PasteTargetDescriptionImpl() {
@@ -58,7 +58,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -112,7 +112,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

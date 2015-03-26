@@ -63,7 +63,7 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#getTitleExpression
      * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Title Expression</em>' attribute.
      * @see #getTitleExpression()
@@ -90,7 +90,7 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#isInitialisation
      * <em>Initialisation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Initialisation</em>' attribute.
      * @see #isInitialisation()

@@ -53,7 +53,7 @@ public interface DModelElement extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model
      * @generated
      */

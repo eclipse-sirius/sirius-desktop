@@ -64,7 +64,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
      * The cached value of the '{@link #getOwnedExtensions()
      * <em>Owned Extensions</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getOwnedExtensions()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     /**
      * The default value of the '{@link #isInitialized() <em>Initialized</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #isInitialized()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     /**
      * The cached value of the '{@link #isInitialized() <em>Initialized</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #isInitialized()
      * @generated
      * @ordered
@@ -94,7 +94,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     /**
      * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getViewpoint()
      * @generated
      * @ordered
@@ -103,7 +103,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DViewImpl() {
@@ -112,7 +112,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public MetaModelExtension basicGetOwnedExtensions() {
@@ -171,7 +171,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOwnedExtensions(MetaModelExtension newOwnedExtensions, NotificationChain msgs) {
@@ -190,7 +190,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -238,7 +238,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public Viewpoint basicGetViewpoint() {
@@ -266,7 +266,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -280,7 +280,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -292,7 +292,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -308,7 +308,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -334,7 +334,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -360,7 +360,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -384,7 +384,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -404,7 +404,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

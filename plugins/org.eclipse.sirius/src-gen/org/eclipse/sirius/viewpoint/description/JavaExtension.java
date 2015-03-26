@@ -54,7 +54,7 @@ public interface JavaExtension extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.JavaExtension#getQualifiedClassName
      * <em>Qualified Class Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Qualified Class Name</em>'
      *            attribute.
