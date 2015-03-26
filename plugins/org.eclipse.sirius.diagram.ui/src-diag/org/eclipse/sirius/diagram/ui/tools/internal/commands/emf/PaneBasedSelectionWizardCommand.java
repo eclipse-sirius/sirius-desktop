@@ -37,6 +37,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.ImmutableSet;
 
@@ -84,7 +85,15 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
     public void doExecute() {
         computeInput();
         final Collection<EObject> preSelection = computePreSelection();
-        final Shell shell = new Shell();
+        Shell shell = null;
+        boolean createdShell = false;
+        if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {
+            shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+        }
+        if (shell == null) {
+            shell = new Shell();
+            createdShell = true;
+        }
         final EObjectPaneBasedSelectionWizard wizard = new EObjectPaneBasedSelectionWizard(this.tool.getWindowTitle(), this.tool.getMessage(), getImage(), this.tool.getChoiceOfValuesMessage(),
                 this.tool.getSelectedValuesMessage(), DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
         wizard.init(input, preSelection);
@@ -116,7 +125,9 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
                 SiriusLayoutDataManager.INSTANCE.getData((AbstractDNode) containerView);
             }
         }
-        shell.dispose();
+        if (createdShell) {
+            shell.dispose();
+        }
     }
 
     private ImageDescriptor getImage() {

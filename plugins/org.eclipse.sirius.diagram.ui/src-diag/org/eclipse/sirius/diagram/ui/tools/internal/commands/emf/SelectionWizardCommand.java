@@ -35,6 +35,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * A command to display a selection wizard.
@@ -79,7 +80,15 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
     @Override
     public void doExecute() {
         computeInput();
-        final Shell shell = new Shell();
+        Shell shell = null;
+        boolean createdShell = false;
+        if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {
+            shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+        }
+        if (shell == null) {
+            shell = new Shell();
+            createdShell = true;
+        }
         final EObjectSelectionWizard wizard = new EObjectSelectionWizard(this.tool.getWindowTitle(), this.tool.getMessage(), getImage(), input, DiagramUIPlugin.getPlugin()
                 .getItemProvidersAdapterFactory());
         wizard.setMany(tool.isMultiple());
@@ -89,12 +98,16 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
             final Collection<EObject> selectedElements = wizard.getSelectedEObjects();
             final org.eclipse.emf.common.command.Command command = factory.buildSelectionWizardCommandFromTool(tool, containerView, selectedElements);
             command.execute();
-            shell.dispose();
+            if (createdShell) {
+                shell.dispose();
+            }
         } else {
             if (containerView instanceof AbstractDNode) {
                 SiriusLayoutDataManager.INSTANCE.getData((AbstractDNode) containerView);
             }
-            shell.dispose();
+            if (createdShell) {
+                shell.dispose();
+            }
             throw new OperationCanceledException("User cancel operation");
         }
     }
