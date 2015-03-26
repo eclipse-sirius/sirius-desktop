@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
@@ -158,7 +159,8 @@ public final class SiriusPlugin extends EMFPlugin {
             javaActionRegistryListener = null;
 
             ViewpointRegistry.getInstance().dispose();
-
+            
+            MultiLanguagesValidator.getInstance().dispose();
             super.stop(context);
         }
 

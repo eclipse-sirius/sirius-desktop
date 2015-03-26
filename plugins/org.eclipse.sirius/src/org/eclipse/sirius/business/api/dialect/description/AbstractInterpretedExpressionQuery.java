@@ -23,11 +23,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
-import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -364,15 +361,10 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
             appendAllLocalVariableDefinitions(definitions, context);
             if (context instanceof ChangeContext && context != bottom) {
                 ChangeContext f = (ChangeContext) context;
-
-                IInterpreter interpreterForExpression = CompoundInterpreter.INSTANCE.getInterpreterForExpression(f.getBrowseExpression());
-
-                if (interpreterForExpression.supportsValidation() && interpreterForExpression instanceof TypedValidation) {
-                    IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
-                    ValidationResult res = ((TypedValidation) interpreterForExpression).analyzeExpression(iContext, f.getBrowseExpression());
-                    VariableType returnTypes = res.getReturnTypes();
-                    changeSelfType(definitions, returnTypes);
-                }
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, f.getBrowseExpression());
+                VariableType returnTypes = res.getReturnTypes();
+                changeSelfType(definitions, returnTypes);
 
             }
             if (context instanceof CreateInstance) {

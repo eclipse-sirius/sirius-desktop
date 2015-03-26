@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -74,13 +74,11 @@ public class ValidInterpretedExpressionConstraint extends AbstractConstraint {
 
     private IStatus checkExpression(IValidationContext ctx, EObject target, EStructuralFeature feature) {
         String expression = (String) target.eGet(feature);
-        IInterpreter interpreterForExpression = CompoundInterpreter.INSTANCE.getInterpreterForExpression(expression);
 
         Collection<IInterpreterStatus> errors = Sets.newLinkedHashSet();
-        if (interpreterForExpression.supportsValidation()) {
+        if (!StringUtil.isEmpty(expression)) {
             IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(target, feature);
-
-            errors = interpreterForExpression.validateExpression(context, expression);
+            errors = MultiLanguagesValidator.getInstance().validateExpression(context, expression).getStatuses();
         }
 
         if (errors.isEmpty()) {
@@ -101,4 +99,5 @@ public class ValidInterpretedExpressionConstraint extends AbstractConstraint {
         }
         return returnStatus;
     }
+
 }

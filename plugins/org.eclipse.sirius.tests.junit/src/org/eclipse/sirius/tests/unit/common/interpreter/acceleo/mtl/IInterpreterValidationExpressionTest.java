@@ -120,7 +120,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
         odesignEditor = page.openEditor(new FileEditorInput(odesignFile), "org.eclipse.sirius.editor.editorPlugin.SiriusEditorID");
 
         ResourceSet rs = new ResourceSetImpl();
-        Resource r = rs.getResource(URI.createURI(odesignFile.getLocationURI().toString()), true);
+        Resource r = rs.getResource(URI.createPlatformResourceURI(odesignFile.getFullPath().toOSString(), true), true);
         // A CrossReferenceAdapter is needed for validation to work. In the
         // standard VSM editor, one is installed on the constructor (see
         // org.eclipse.sirius.editor.tools.internal.presentation.CustomSiriusEditor.CustomSiriusEditor()).

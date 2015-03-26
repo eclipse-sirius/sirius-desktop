@@ -26,6 +26,10 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.description.Group;
 
+import com.google.common.base.Function;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Iterables;
+
 /**
  * Test VSM validation. VP-2506, VP-2475, VP-3836
  * 
@@ -191,8 +195,17 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
                 "^The image '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not exist.$", "^The image '/test/noimage.gif' does not exist.$",
                 "^The path 'icon' does not correspond to an image.$", "^The image 'icon' does not exist.$", "^The path '/org.eclipse.sirius.tests.junit/plugin.xml' does not correspond to an image.$",
                 "^The image 'C:\\\\images\\\\image.png' does not exist.$", "^The image '/org.eclipse.sirius.tests.junit/images/notexisting.png' does not exist.$",
-                "^The required feature 'decoratorPath' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$", };
-        assertEquals("The diagnostic must contain " + expectedMessagesPatterns.length + " validation errors", expectedMessagesPatterns.length, children.size());
+                "^The required feature 'decoratorPath' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$"};
+        
+        assertEquals(
+                "The diagnostic must contain " + expectedMessagesPatterns.length + " validation errors. Returned messages were :\n"
+                        + Joiner.on('\n').join(Iterables.transform(children, new Function<Diagnostic, String>() {
+
+                            @Override
+                            public String apply(Diagnostic input) {
+                                return input.getMessage();
+                            }
+                        })), expectedMessagesPatterns.length, children.size());
         for (int i = 0; i < expectedMessagesPatterns.length; i++) {
             assertTrue("Unexpected validation error at position " + i, children.get(i).getMessage().matches(expectedMessagesPatterns[i]));
         }

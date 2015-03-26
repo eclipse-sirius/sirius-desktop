@@ -44,7 +44,6 @@ import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.IType;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
@@ -222,33 +221,11 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     @Override
     public ValidationResult analyzeExpression(IInterpreterContext context, String fullExpression) {
 
-        /*
-         * use the VSM resource to declare dependent project/bundles.
-         */
-        EObject vsmElement = context.getElement();
-        if (vsmElement.eResource() != null && vsmElement.eResource().getURI() != null && vsmElement.eResource().getURI().segmentCount() >= 2) {
-            URI vsmURI = vsmElement.eResource().getURI();
-            String bundleOrProjectName = vsmURI.segment(1);
-            if (vsmURI.isPlatformResource()) {
-                javaExtensions.updateScope(Sets.<String> newHashSet(), Sets.newHashSet(bundleOrProjectName));
-            } else if (vsmURI.isPlatformPlugin()) {
-                javaExtensions.updateScope(Sets.newHashSet(bundleOrProjectName), Sets.<String> newHashSet());
-            }
-        }
-
         String trimmedExpression = new ExpressionTrimmer(fullExpression).getExpression();
-
         ValidationResult result = new ValidationResult();
-        for (EPackage pak : context.getAvailableEPackages()) {
-            if (pak != null) {
-                queryEnvironment.registerEPackage(pak);
-            }
-        }
+
         Map<String, Set<IType>> variableTypes = TypesUtil.createAQLVariableTypesFromInterpreterContext(context, queryEnvironment);
 
-        for (String dependency : context.getDependencies()) {
-            addImport(dependency);
-        }
         QueryValidationEngine validator = new QueryValidationEngine(this.queryEnvironment);
         try {
             IValidationResult validationResult = validator.validate(trimmedExpression, variableTypes);

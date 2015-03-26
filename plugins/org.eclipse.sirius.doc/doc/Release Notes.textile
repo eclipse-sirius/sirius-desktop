@@ -76,6 +76,8 @@ h4. Changes in @org.eclipse.sirius.common@
 * The class @org.eclipse.sirius.common.tools.api.interpreter.TypeName@ has been introduced to represent in the codebase any type which was previously represented as a plain String.
 * A new interface @org.eclipse.sirius.common.tools.api.interpreter.TypedValidation@ has been introduced for @IInterpreter@ implementations able to provide richer information when validating an expression. This information is captured through a @org.eclipse.sirius.common.tools.api.interpreter.ValidationResult@ instance.
 * The class @org.eclipse.sirius.common.tools.api.interpreter.VariableType@ has been introduced to represent the possible types a variable can have in a Viewpoint specification model.
+* The utility class @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContextUtils@ has been introduced to factorize code related to managing @IInterpreterContext@ instances.
+* The class @org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator@ has been introduced to provide a safe and more efficient way to switch to the proper @IInterpreter@ instance when validating expressions.
 
 h4. Changes in @org.eclipse.sirius.common.ui@
 

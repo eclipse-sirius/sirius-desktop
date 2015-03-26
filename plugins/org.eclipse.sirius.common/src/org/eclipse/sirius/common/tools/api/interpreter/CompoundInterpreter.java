@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
@@ -97,6 +98,8 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      */
     private boolean extensionsLoaded;
 
+    private Map<Object, Object> properties;
+
     /**
      * The default constructor.
      */
@@ -106,6 +109,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         this.dependencies = new LinkedList<String>();
         this.listeners = new ArrayList<IVariableStatusListener>();
         this.interpreterIdentifiers = Maps.newHashMap();
+        this.properties = Maps.newHashMap();
     }
 
     /**
@@ -282,6 +286,10 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
             result = this.providers.get(provider);
             if (result == null) {
                 result = provider.createInterpreter();
+                for (Entry<Object, Object> entry : this.properties.entrySet()) {
+                    result.setProperty(entry.getKey(), entry.getValue());
+                }
+                result.activateMetamodels(additionalMetamodels);
                 this.variableManager.setVariables(result);
                 for (final String dependency : this.dependencies) {
                     result.addImport(dependency);
@@ -426,6 +434,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      *      java.lang.Object)
      */
     public void setProperty(final Object key, final Object value) {
+        this.properties.put(key, value);
         for (final IInterpreter interpreter : this.providers.values()) {
             if (interpreter != null) {
                 interpreter.setProperty(key, value);
@@ -461,6 +470,8 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         this.variableManager.clearVariables();
         this.dependencies.clear();
         this.providers.clear();
+        this.properties.clear();
+        this.additionalMetamodels.clear();
         this.extensionsLoaded = false;
         this.modelAccessor = null;
     }
