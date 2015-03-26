@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -39,7 +39,7 @@ public interface EndUserDocumentedElement extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>End User Documentation</em>' attribute.
      * @see #setEndUserDocumentation(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEndUserDocumentedElement_EndUserDocumentation()
@@ -53,7 +53,7 @@ public interface EndUserDocumentedElement extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement#getEndUserDocumentation
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>End User Documentation</em>'
      *            attribute.

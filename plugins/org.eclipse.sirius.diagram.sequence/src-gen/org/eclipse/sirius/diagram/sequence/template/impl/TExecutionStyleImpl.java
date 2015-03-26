@@ -43,7 +43,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -54,12 +54,12 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * The cached value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
      */
-    protected String borderSizeComputationExpression = BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String borderSizeComputationExpression = TExecutionStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
@@ -106,6 +106,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * 
      * @generated
      */
+    @Override
     public String getBorderSizeComputationExpression() {
         return borderSizeComputationExpression;
     }
@@ -115,12 +116,14 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * 
      * @generated
      */
+    @Override
     public void setBorderSizeComputationExpression(String newBorderSizeComputationExpression) {
         String oldBorderSizeComputationExpression = borderSizeComputationExpression;
         borderSizeComputationExpression = newBorderSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION, oldBorderSizeComputationExpression,
                     borderSizeComputationExpression));
+        }
     }
 
     /**
@@ -128,13 +131,15 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * 
      * @generated
      */
+    @Override
     public ColorDescription getBorderColor() {
         if (borderColor != null && borderColor.eIsProxy()) {
             InternalEObject oldBorderColor = (InternalEObject) borderColor;
             borderColor = (ColorDescription) eResolveProxy(oldBorderColor);
             if (borderColor != oldBorderColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TemplatePackage.TEXECUTION_STYLE__BORDER_COLOR, oldBorderColor, borderColor));
+                }
             }
         }
         return borderColor;
@@ -154,11 +159,13 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * 
      * @generated
      */
+    @Override
     public void setBorderColor(ColorDescription newBorderColor) {
         ColorDescription oldBorderColor = borderColor;
         borderColor = newBorderColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TEXECUTION_STYLE__BORDER_COLOR, oldBorderColor, borderColor));
+        }
     }
 
     /**
@@ -166,13 +173,15 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * 
      * @generated
      */
+    @Override
     public ColorDescription getBackgroundColor() {
         if (backgroundColor != null && backgroundColor.eIsProxy()) {
             InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
             backgroundColor = (ColorDescription) eResolveProxy(oldBackgroundColor);
             if (backgroundColor != oldBackgroundColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TemplatePackage.TEXECUTION_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+                }
             }
         }
         return backgroundColor;
@@ -192,11 +201,13 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(ColorDescription newBackgroundColor) {
         ColorDescription oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TEXECUTION_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -210,12 +221,14 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
         case TemplatePackage.TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return getBorderSizeComputationExpression();
         case TemplatePackage.TEXECUTION_STYLE__BORDER_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getBorderColor();
+            }
             return basicGetBorderColor();
         case TemplatePackage.TEXECUTION_STYLE__BACKGROUND_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getBackgroundColor();
+            }
             return basicGetBackgroundColor();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -251,7 +264,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
     public void eUnset(int featureID) {
         switch (featureID) {
         case TemplatePackage.TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setBorderSizeComputationExpression(TExecutionStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case TemplatePackage.TEXECUTION_STYLE__BORDER_COLOR:
             setBorderColor((ColorDescription) null);
@@ -272,7 +285,8 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TemplatePackage.TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
+            return TExecutionStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !TExecutionStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(borderSizeComputationExpression);
         case TemplatePackage.TEXECUTION_STYLE__BORDER_COLOR:
             return borderColor != null;
         case TemplatePackage.TEXECUTION_STYLE__BACKGROUND_COLOR:
@@ -288,8 +302,9 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSizeComputationExpression: ");

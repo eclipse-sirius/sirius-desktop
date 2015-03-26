@@ -56,6 +56,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
      * 
      * @generated
      */
+    @Override
     public TableMapping getTableElementMapping() {
         TableMapping tableElementMapping = basicGetTableElementMapping();
         return tableElementMapping != null && tableElementMapping.eIsProxy() ? (TableMapping) eResolveProxy((InternalEObject) tableElementMapping) : tableElementMapping;
@@ -63,7 +64,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     public TableMapping basicGetTableElementMapping() {
@@ -79,8 +80,9 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TablePackage.DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getTableElementMapping();
+            }
             return basicGetTableElementMapping();
         }
         return super.eGet(featureID, resolve, coreType);

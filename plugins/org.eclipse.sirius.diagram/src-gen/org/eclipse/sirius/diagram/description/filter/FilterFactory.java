@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter;
 
@@ -32,7 +32,7 @@ public interface FilterFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Mapping Filter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Mapping Filter</em>'.
      * @generated
      */
@@ -50,7 +50,7 @@ public interface FilterFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Variable Filter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Variable Filter</em>'.
      * @generated
      */

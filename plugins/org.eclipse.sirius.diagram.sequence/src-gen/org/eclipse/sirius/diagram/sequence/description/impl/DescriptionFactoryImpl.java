@@ -126,9 +126,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public SequenceDiagramDescription createSequenceDiagramDescription() {
         SequenceDiagramDescriptionSpec sequenceDiagramDescription = new SequenceDiagramDescriptionSpec();
         return sequenceDiagramDescription;
@@ -136,9 +137,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public InstanceRoleMapping createInstanceRoleMapping() {
         InstanceRoleMappingSpec instanceRoleMapping = new InstanceRoleMappingSpec();
         return instanceRoleMapping;
@@ -146,9 +148,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ExecutionMapping createExecutionMapping() {
         ExecutionMappingSpec executionMapping = new ExecutionMappingSpec();
         return executionMapping;
@@ -156,9 +159,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public StateMapping createStateMapping() {
         StateMappingSpec stateMapping = new StateMappingSpec();
         return stateMapping;
@@ -166,9 +170,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EndOfLifeMapping createEndOfLifeMapping() {
         EndOfLifeMappingSpec endOfLifeMapping = new EndOfLifeMappingSpec();
         return endOfLifeMapping;
@@ -176,9 +181,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public BasicMessageMapping createBasicMessageMapping() {
         BasicMessageMappingSpec basicMessageMapping = new BasicMessageMappingSpec();
         return basicMessageMapping;
@@ -186,9 +192,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ReturnMessageMapping createReturnMessageMapping() {
         ReturnMessageMappingSpec returnMessageMapping = new ReturnMessageMappingSpec();
         return returnMessageMapping;
@@ -196,9 +203,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CreationMessageMapping createCreationMessageMapping() {
         CreationMessageMappingSpec creationMessageMapping = new CreationMessageMappingSpec();
         return creationMessageMapping;
@@ -206,9 +214,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DestructionMessageMapping createDestructionMessageMapping() {
         DestructionMessageMappingSpec destructionMessageMapping = new DestructionMessageMappingSpec();
         return destructionMessageMapping;
@@ -219,6 +228,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable createMessageEndVariable() {
         MessageEndVariableImpl messageEndVariable = new MessageEndVariableImpl();
         return messageEndVariable;
@@ -229,6 +239,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public CoveredLifelinesVariable createCoveredLifelinesVariable() {
         CoveredLifelinesVariableImpl coveredLifelinesVariable = new CoveredLifelinesVariableImpl();
         return coveredLifelinesVariable;
@@ -236,9 +247,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public InteractionUseMapping createInteractionUseMapping() {
         InteractionUseMapping interactionUseMapping = new InteractionUseMappingSpec();
         return interactionUseMapping;
@@ -246,9 +258,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CombinedFragmentMapping createCombinedFragmentMapping() {
         CombinedFragmentMapping combinedFragmentMapping = new CombinedFragmentMappingSpec();
         return combinedFragmentMapping;
@@ -256,9 +269,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public OperandMapping createOperandMapping() {
         OperandMappingImpl operandMapping = new OperandMappingSpec();
         return operandMapping;
@@ -266,9 +280,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ObservationPointMapping createObservationPointMapping() {
         ObservationPointMappingImpl observationPointMapping = new ObservationPointMappingSpec();
         return observationPointMapping;
@@ -279,6 +294,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public DescriptionPackage getDescriptionPackage() {
         return (DescriptionPackage) getEPackage();
     }

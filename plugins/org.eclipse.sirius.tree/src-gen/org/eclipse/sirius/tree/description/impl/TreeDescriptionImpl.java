@@ -108,7 +108,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected String endUserDocumentation = END_USER_DOCUMENTATION_EDEFAULT;
+    protected String endUserDocumentation = TreeDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -128,7 +128,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = TreeDescriptionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -148,7 +148,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = TreeDescriptionImpl.LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTitleExpression()
@@ -170,7 +170,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected String titleExpression = TITLE_EXPRESSION_EDEFAULT;
+    protected String titleExpression = TreeDescriptionImpl.TITLE_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isInitialisation()
@@ -192,7 +192,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected boolean initialisation = INITIALISATION_EDEFAULT;
+    protected boolean initialisation = TreeDescriptionImpl.INITIALISATION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}'
@@ -224,13 +224,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected boolean showOnStartup = SHOW_ON_STARTUP_EDEFAULT;
+    protected boolean showOnStartup = TreeDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSubItemMappings()
      * <em>Sub Item Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubItemMappings()
      * @generated
      * @ordered
@@ -265,7 +265,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = TreeDescriptionImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPreconditionExpression()
@@ -287,13 +287,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected String preconditionExpression = PRECONDITION_EXPRESSION_EDEFAULT;
+    protected String preconditionExpression = TreeDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCreateTreeItem()
      * <em>Create Tree Item</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCreateTreeItem()
      * @generated
      * @ordered
@@ -348,6 +348,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public String getEndUserDocumentation() {
         return endUserDocumentation;
     }
@@ -357,11 +358,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public void setEndUserDocumentation(String newEndUserDocumentation) {
         String oldEndUserDocumentation = endUserDocumentation;
         endUserDocumentation = newEndUserDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_DESCRIPTION__END_USER_DOCUMENTATION, oldEndUserDocumentation, endUserDocumentation));
+        }
     }
 
     /**
@@ -369,6 +372,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -378,11 +382,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_DESCRIPTION__NAME, oldName, name));
+        }
     }
 
     /**
@@ -390,6 +396,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -399,11 +406,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_DESCRIPTION__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -411,6 +420,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public String getTitleExpression() {
         return titleExpression;
     }
@@ -420,11 +430,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public void setTitleExpression(String newTitleExpression) {
         String oldTitleExpression = titleExpression;
         titleExpression = newTitleExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_DESCRIPTION__TITLE_EXPRESSION, oldTitleExpression, titleExpression));
+        }
     }
 
     /**
@@ -432,6 +444,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public boolean isInitialisation() {
         return initialisation;
     }
@@ -441,11 +454,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public void setInitialisation(boolean newInitialisation) {
         boolean oldInitialisation = initialisation;
         initialisation = newInitialisation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_DESCRIPTION__INITIALISATION, oldInitialisation, initialisation));
+        }
     }
 
     /**
@@ -453,6 +468,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public EList<EPackage> getMetamodel() {
         if (metamodel == null) {
             metamodel = new EObjectResolvingEList<EPackage>(EPackage.class, this, DescriptionPackage.TREE_DESCRIPTION__METAMODEL);
@@ -465,6 +481,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public boolean isShowOnStartup() {
         return showOnStartup;
     }
@@ -474,11 +491,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public void setShowOnStartup(boolean newShowOnStartup) {
         boolean oldShowOnStartup = showOnStartup;
         showOnStartup = newShowOnStartup;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_DESCRIPTION__SHOW_ON_STARTUP, oldShowOnStartup, showOnStartup));
+        }
     }
 
     /**
@@ -486,6 +505,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -495,11 +515,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_DESCRIPTION__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -507,6 +529,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public String getPreconditionExpression() {
         return preconditionExpression;
     }
@@ -516,11 +539,13 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public void setPreconditionExpression(String newPreconditionExpression) {
         String oldPreconditionExpression = preconditionExpression;
         preconditionExpression = newPreconditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_DESCRIPTION__PRECONDITION_EXPRESSION, oldPreconditionExpression, preconditionExpression));
+        }
     }
 
     /**
@@ -528,6 +553,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemMapping> getSubItemMappings() {
         if (subItemMappings == null) {
             subItemMappings = new EObjectContainmentEList<TreeItemMapping>(TreeItemMapping.class, this, DescriptionPackage.TREE_DESCRIPTION__SUB_ITEM_MAPPINGS);
@@ -540,6 +566,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemContainerDropTool> getDropTools() {
         if (dropTools == null) {
             dropTools = new EObjectContainmentEList<TreeItemContainerDropTool>(TreeItemContainerDropTool.class, this, DescriptionPackage.TREE_DESCRIPTION__DROP_TOOLS);
@@ -552,6 +579,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemCreationTool> getCreateTreeItem() {
         if (createTreeItem == null) {
             createTreeItem = new EObjectContainmentEList<TreeItemCreationTool>(TreeItemCreationTool.class, this, DescriptionPackage.TREE_DESCRIPTION__CREATE_TREE_ITEM);
@@ -564,6 +592,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public EList<RepresentationCreationDescription> getOwnedRepresentationCreationDescriptions() {
         if (ownedRepresentationCreationDescriptions == null) {
             ownedRepresentationCreationDescriptions = new EObjectContainmentEList<RepresentationCreationDescription>(RepresentationCreationDescription.class, this,
@@ -577,6 +606,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * 
      * @generated
      */
+    @Override
     public EList<RepresentationNavigationDescription> getOwnedRepresentationNavigationDescriptions() {
         if (ownedRepresentationNavigationDescriptions == null) {
             ownedRepresentationNavigationDescriptions = new EObjectContainmentEList<RepresentationNavigationDescription>(RepresentationNavigationDescription.class, this,
@@ -717,25 +747,25 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.TREE_DESCRIPTION__END_USER_DOCUMENTATION:
-            setEndUserDocumentation(END_USER_DOCUMENTATION_EDEFAULT);
+            setEndUserDocumentation(TreeDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.TREE_DESCRIPTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(TreeDescriptionImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.TREE_DESCRIPTION__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(TreeDescriptionImpl.LABEL_EDEFAULT);
             return;
         case DescriptionPackage.TREE_DESCRIPTION__TITLE_EXPRESSION:
-            setTitleExpression(TITLE_EXPRESSION_EDEFAULT);
+            setTitleExpression(TreeDescriptionImpl.TITLE_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.TREE_DESCRIPTION__INITIALISATION:
-            setInitialisation(INITIALISATION_EDEFAULT);
+            setInitialisation(TreeDescriptionImpl.INITIALISATION_EDEFAULT);
             return;
         case DescriptionPackage.TREE_DESCRIPTION__METAMODEL:
             getMetamodel().clear();
             return;
         case DescriptionPackage.TREE_DESCRIPTION__SHOW_ON_STARTUP:
-            setShowOnStartup(SHOW_ON_STARTUP_EDEFAULT);
+            setShowOnStartup(TreeDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT);
             return;
         case DescriptionPackage.TREE_DESCRIPTION__SUB_ITEM_MAPPINGS:
             getSubItemMappings().clear();
@@ -744,10 +774,10 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
             getDropTools().clear();
             return;
         case DescriptionPackage.TREE_DESCRIPTION__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(TreeDescriptionImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case DescriptionPackage.TREE_DESCRIPTION__PRECONDITION_EXPRESSION:
-            setPreconditionExpression(PRECONDITION_EXPRESSION_EDEFAULT);
+            setPreconditionExpression(TreeDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.TREE_DESCRIPTION__CREATE_TREE_ITEM:
             getCreateTreeItem().clear();
@@ -771,27 +801,27 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.TREE_DESCRIPTION__END_USER_DOCUMENTATION:
-            return END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
+            return TreeDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !TreeDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
         case DescriptionPackage.TREE_DESCRIPTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return TreeDescriptionImpl.NAME_EDEFAULT == null ? name != null : !TreeDescriptionImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.TREE_DESCRIPTION__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return TreeDescriptionImpl.LABEL_EDEFAULT == null ? label != null : !TreeDescriptionImpl.LABEL_EDEFAULT.equals(label);
         case DescriptionPackage.TREE_DESCRIPTION__TITLE_EXPRESSION:
-            return TITLE_EXPRESSION_EDEFAULT == null ? titleExpression != null : !TITLE_EXPRESSION_EDEFAULT.equals(titleExpression);
+            return TreeDescriptionImpl.TITLE_EXPRESSION_EDEFAULT == null ? titleExpression != null : !TreeDescriptionImpl.TITLE_EXPRESSION_EDEFAULT.equals(titleExpression);
         case DescriptionPackage.TREE_DESCRIPTION__INITIALISATION:
-            return initialisation != INITIALISATION_EDEFAULT;
+            return initialisation != TreeDescriptionImpl.INITIALISATION_EDEFAULT;
         case DescriptionPackage.TREE_DESCRIPTION__METAMODEL:
             return metamodel != null && !metamodel.isEmpty();
         case DescriptionPackage.TREE_DESCRIPTION__SHOW_ON_STARTUP:
-            return showOnStartup != SHOW_ON_STARTUP_EDEFAULT;
+            return showOnStartup != TreeDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT;
         case DescriptionPackage.TREE_DESCRIPTION__SUB_ITEM_MAPPINGS:
             return subItemMappings != null && !subItemMappings.isEmpty();
         case DescriptionPackage.TREE_DESCRIPTION__DROP_TOOLS:
             return dropTools != null && !dropTools.isEmpty();
         case DescriptionPackage.TREE_DESCRIPTION__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return TreeDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !TreeDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.TREE_DESCRIPTION__PRECONDITION_EXPRESSION:
-            return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
+            return TreeDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !TreeDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
         case DescriptionPackage.TREE_DESCRIPTION__CREATE_TREE_ITEM:
             return createTreeItem != null && !createTreeItem.isEmpty();
         case DescriptionPackage.TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS:
@@ -885,8 +915,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (endUserDocumentation: ");

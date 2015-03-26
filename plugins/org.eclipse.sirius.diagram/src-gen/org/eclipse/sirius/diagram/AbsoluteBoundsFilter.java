@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -43,7 +43,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>X</em>' attribute.
      * @see #setX(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbsoluteBoundsFilter_X()
@@ -72,7 +72,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Y</em>' attribute.
      * @see #setY(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbsoluteBoundsFilter_Y()
@@ -101,7 +101,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbsoluteBoundsFilter_Height()
@@ -115,7 +115,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * {@link org.eclipse.sirius.diagram.AbsoluteBoundsFilter#getHeight
      * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -131,7 +131,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbsoluteBoundsFilter_Width()

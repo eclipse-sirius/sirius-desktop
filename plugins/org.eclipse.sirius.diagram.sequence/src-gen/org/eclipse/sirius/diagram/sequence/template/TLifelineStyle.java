@@ -39,7 +39,7 @@ public interface TLifelineStyle extends TTransformer {
      * default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> An expression computing the
      * size of the border. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Lifeline Width Computation Expression</em>'
      *         attribute.
      * @see #setLifelineWidthComputationExpression(String)
@@ -57,7 +57,7 @@ public interface TLifelineStyle extends TTransformer {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineWidthComputationExpression
      * <em>Lifeline Width Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Lifeline Width Computation Expression</em>' attribute.
@@ -74,7 +74,7 @@ public interface TLifelineStyle extends TTransformer {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Lifeline Color</em>' reference.
      * @see #setLifelineColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTLifelineStyle_LifelineColor()

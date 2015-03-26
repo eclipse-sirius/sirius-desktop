@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -74,7 +74,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * @generated
      * @ordered
      */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
+    protected String documentation = AbstractNodeMappingImpl.DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
@@ -94,13 +94,13 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = AbstractNodeMappingImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBorderedNodeMappings()
      * <em>Bordered Node Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderedNodeMappings()
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * The cached value of the '{@link #getReusedBorderedNodeMappings()
      * <em>Reused Bordered Node Mappings</em>}' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedBorderedNodeMappings()
      * @generated
      * @ordered
@@ -142,6 +142,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public String getDocumentation() {
         return documentation;
     }
@@ -151,11 +152,13 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public void setDocumentation(String newDocumentation) {
         String oldDocumentation = documentation;
         documentation = newDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ABSTRACT_NODE_MAPPING__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
@@ -163,6 +166,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -172,11 +176,13 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ABSTRACT_NODE_MAPPING__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -184,6 +190,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getBorderedNodeMappings() {
         if (borderedNodeMappings == null) {
             borderedNodeMappings = new EObjectContainmentEList.Resolving<NodeMapping>(NodeMapping.class, this, DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS);
@@ -196,6 +203,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getReusedBorderedNodeMappings() {
         if (reusedBorderedNodeMappings == null) {
             reusedBorderedNodeMappings = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, DescriptionPackage.ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS);
@@ -208,6 +216,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElement> findDNodeFromEObject(EObject eObject) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -219,6 +228,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public void clearDNodesDone() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -230,6 +240,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public void addDoneNode(DSemanticDecorator node) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -241,6 +252,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getAllBorderedNodeMappings() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -317,10 +329,10 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.ABSTRACT_NODE_MAPPING__DOCUMENTATION:
-            setDocumentation(DOCUMENTATION_EDEFAULT);
+            setDocumentation(AbstractNodeMappingImpl.DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.ABSTRACT_NODE_MAPPING__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(AbstractNodeMappingImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS:
             getBorderedNodeMappings().clear();
@@ -341,9 +353,9 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.ABSTRACT_NODE_MAPPING__DOCUMENTATION:
-            return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+            return AbstractNodeMappingImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !AbstractNodeMappingImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case DescriptionPackage.ABSTRACT_NODE_MAPPING__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return AbstractNodeMappingImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !AbstractNodeMappingImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS:
             return borderedNodeMappings != null && !borderedNodeMappings.isEmpty();
         case DescriptionPackage.ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS:
@@ -395,8 +407,9 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (documentation: ");

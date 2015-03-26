@@ -35,7 +35,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
      * The default value of the '{@link #getInvocationMessageFinderExpression()
      * <em>Invocation Message Finder Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInvocationMessageFinderExpression()
      * @generated
      * @ordered
@@ -46,12 +46,12 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
      * The cached value of the '{@link #getInvocationMessageFinderExpression()
      * <em>Invocation Message Finder Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInvocationMessageFinderExpression()
      * @generated
      * @ordered
      */
-    protected String invocationMessageFinderExpression = INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT;
+    protected String invocationMessageFinderExpression = ReturnMessageMappingImpl.INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -77,6 +77,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
      * 
      * @generated
      */
+    @Override
     public String getInvocationMessageFinderExpression() {
         return invocationMessageFinderExpression;
     }
@@ -86,12 +87,14 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
      * 
      * @generated
      */
+    @Override
     public void setInvocationMessageFinderExpression(String newInvocationMessageFinderExpression) {
         String oldInvocationMessageFinderExpression = invocationMessageFinderExpression;
         invocationMessageFinderExpression = newInvocationMessageFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION, oldInvocationMessageFinderExpression,
                     invocationMessageFinderExpression));
+        }
     }
 
     /**
@@ -132,7 +135,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION:
-            setInvocationMessageFinderExpression(INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT);
+            setInvocationMessageFinderExpression(ReturnMessageMappingImpl.INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -147,8 +150,8 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION:
-            return INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT == null ? invocationMessageFinderExpression != null : !INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT
-                    .equals(invocationMessageFinderExpression);
+            return ReturnMessageMappingImpl.INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT == null ? invocationMessageFinderExpression != null
+                    : !ReturnMessageMappingImpl.INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT.equals(invocationMessageFinderExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -160,8 +163,9 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (invocationMessageFinderExpression: ");

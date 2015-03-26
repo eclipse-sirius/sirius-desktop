@@ -52,7 +52,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -69,7 +69,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public DescriptionItemProviderAdapterFactory() {
@@ -93,7 +93,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeItemDragTool}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeItemCreationTool}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -268,7 +268,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeItemEditionTool}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -293,7 +293,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeItemDeletionTool}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -318,7 +318,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeCreationDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.TreeMapping} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeMappingItemProvider treeMappingItemProvider;
@@ -368,7 +368,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -384,7 +384,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.StyleUpdater} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StyleUpdaterItemProvider styleUpdaterItemProvider;
@@ -393,7 +393,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.StyleUpdater}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,7 +409,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.TreeVariable} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeVariableItemProvider treeVariableItemProvider;
@@ -418,7 +418,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeVariable}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -443,7 +443,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreeItemUpdater}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.TreePopupMenu} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreePopupMenuItemProvider treePopupMenuItemProvider;
@@ -493,7 +493,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.description.TreePopupMenu}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -508,9 +508,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -518,9 +519,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -568,6 +570,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -577,6 +580,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -585,9 +589,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -599,44 +604,62 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (treeDescriptionItemProvider != null)
+        if (treeDescriptionItemProvider != null) {
             treeDescriptionItemProvider.dispose();
-        if (treeItemMappingItemProvider != null)
+        }
+        if (treeItemMappingItemProvider != null) {
             treeItemMappingItemProvider.dispose();
-        if (treeItemStyleDescriptionItemProvider != null)
+        }
+        if (treeItemStyleDescriptionItemProvider != null) {
             treeItemStyleDescriptionItemProvider.dispose();
-        if (conditionalTreeItemStyleDescriptionItemProvider != null)
+        }
+        if (conditionalTreeItemStyleDescriptionItemProvider != null) {
             conditionalTreeItemStyleDescriptionItemProvider.dispose();
-        if (treeItemDragToolItemProvider != null)
+        }
+        if (treeItemDragToolItemProvider != null) {
             treeItemDragToolItemProvider.dispose();
-        if (treeItemContainerDropToolItemProvider != null)
+        }
+        if (treeItemContainerDropToolItemProvider != null) {
             treeItemContainerDropToolItemProvider.dispose();
-        if (treeItemCreationToolItemProvider != null)
+        }
+        if (treeItemCreationToolItemProvider != null) {
             treeItemCreationToolItemProvider.dispose();
-        if (treeItemEditionToolItemProvider != null)
+        }
+        if (treeItemEditionToolItemProvider != null) {
             treeItemEditionToolItemProvider.dispose();
-        if (treeItemDeletionToolItemProvider != null)
+        }
+        if (treeItemDeletionToolItemProvider != null) {
             treeItemDeletionToolItemProvider.dispose();
-        if (treeCreationDescriptionItemProvider != null)
+        }
+        if (treeCreationDescriptionItemProvider != null) {
             treeCreationDescriptionItemProvider.dispose();
-        if (treeNavigationDescriptionItemProvider != null)
+        }
+        if (treeNavigationDescriptionItemProvider != null) {
             treeNavigationDescriptionItemProvider.dispose();
-        if (treeMappingItemProvider != null)
+        }
+        if (treeMappingItemProvider != null) {
             treeMappingItemProvider.dispose();
-        if (styleUpdaterItemProvider != null)
+        }
+        if (styleUpdaterItemProvider != null) {
             styleUpdaterItemProvider.dispose();
-        if (treeVariableItemProvider != null)
+        }
+        if (treeVariableItemProvider != null) {
             treeVariableItemProvider.dispose();
-        if (treeItemUpdaterItemProvider != null)
+        }
+        if (treeItemUpdaterItemProvider != null) {
             treeItemUpdaterItemProvider.dispose();
-        if (precedingSiblingsVariablesItemProvider != null)
+        }
+        if (precedingSiblingsVariablesItemProvider != null) {
             precedingSiblingsVariablesItemProvider.dispose();
-        if (treePopupMenuItemProvider != null)
+        }
+        if (treePopupMenuItemProvider != null) {
             treePopupMenuItemProvider.dispose();
+        }
     }
 
 }

@@ -62,7 +62,7 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The elements that are represented by this connection.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source Finder Expression</em>' attribute.
      * @see #setSourceFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_SourceFinderExpression()
@@ -96,7 +96,7 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The elements that are represented by this connection.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Finder Expression</em>' attribute.
      * @see #setTargetFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_TargetFinderExpression()

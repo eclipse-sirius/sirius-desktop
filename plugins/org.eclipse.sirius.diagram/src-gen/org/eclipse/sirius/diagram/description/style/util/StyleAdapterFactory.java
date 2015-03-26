@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.util;
 
@@ -66,8 +66,8 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public StyleAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = StylePackage.eINSTANCE;
+        if (StyleAdapterFactory.modelPackage == null) {
+            StyleAdapterFactory.modelPackage = StylePackage.eINSTANCE;
         }
     }
 
@@ -82,11 +82,11 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == StyleAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == StyleAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -94,7 +94,7 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StyleSwitch<Adapter> modelSwitch = new StyleSwitch<Adapter>() {
@@ -431,7 +431,7 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
      * @generated
@@ -655,7 +655,7 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway.
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription

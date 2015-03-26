@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.impl;
 
@@ -106,14 +106,14 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#eNS_URI
      * @see #init()
      * @generated
      */
     private FilterPackageImpl() {
-        super(eNS_URI, FilterFactory.eINSTANCE);
+        super(FilterPackage.eNS_URI, FilterFactory.eINSTANCE);
     }
 
     /**
@@ -126,27 +126,28 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link FilterPackage#eINSTANCE} when
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static FilterPackage init() {
-        if (isInited)
+        if (FilterPackageImpl.isInited) {
             return (FilterPackage) EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-                : new FilterPackageImpl());
+        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.get(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
+                .get(FilterPackage.eNS_URI) : new FilterPackageImpl());
 
-        isInited = true;
+        FilterPackageImpl.isInited = true;
 
         // Initialize simple dependencies
         ViewpointPackage.eINSTANCE.eClass();
@@ -192,6 +193,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getFilterDescription() {
         return filterDescriptionEClass;
     }
@@ -201,6 +203,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getFilter() {
         return filterEClass;
     }
@@ -210,6 +213,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getFilter_FilterKind() {
         return (EAttribute) filterEClass.getEStructuralFeatures().get(0);
     }
@@ -219,6 +223,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getMappingFilter() {
         return mappingFilterEClass;
     }
@@ -228,6 +233,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getMappingFilter_Mappings() {
         return (EReference) mappingFilterEClass.getEStructuralFeatures().get(0);
     }
@@ -237,6 +243,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getMappingFilter_SemanticConditionExpression() {
         return (EAttribute) mappingFilterEClass.getEStructuralFeatures().get(1);
     }
@@ -246,6 +253,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getMappingFilter_ViewConditionExpression() {
         return (EAttribute) mappingFilterEClass.getEStructuralFeatures().get(2);
     }
@@ -255,6 +263,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getCompositeFilterDescription() {
         return compositeFilterDescriptionEClass;
     }
@@ -264,6 +273,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getCompositeFilterDescription_Filters() {
         return (EReference) compositeFilterDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -273,6 +283,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getVariableFilter() {
         return variableFilterEClass;
     }
@@ -282,6 +293,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getVariableFilter_OwnedVariables() {
         return (EReference) variableFilterEClass.getEStructuralFeatures().get(0);
     }
@@ -291,6 +303,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getVariableFilter_SemanticConditionExpression() {
         return (EAttribute) variableFilterEClass.getEStructuralFeatures().get(1);
     }
@@ -300,6 +313,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getFilterVariable() {
         return filterVariableEClass;
     }
@@ -309,6 +323,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getFilterVariable_Name() {
         return (EAttribute) filterVariableEClass.getEStructuralFeatures().get(0);
     }
@@ -318,6 +333,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public EEnum getFilterKind() {
         return filterKindEEnum;
     }
@@ -327,6 +343,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * 
      * @generated
      */
+    @Override
     public FilterFactory getFilterFactory() {
         return (FilterFactory) getEFactoryInstance();
     }
@@ -346,33 +363,34 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        filterDescriptionEClass = createEClass(FILTER_DESCRIPTION);
+        filterDescriptionEClass = createEClass(FilterPackage.FILTER_DESCRIPTION);
 
-        filterEClass = createEClass(FILTER);
-        createEAttribute(filterEClass, FILTER__FILTER_KIND);
+        filterEClass = createEClass(FilterPackage.FILTER);
+        createEAttribute(filterEClass, FilterPackage.FILTER__FILTER_KIND);
 
-        mappingFilterEClass = createEClass(MAPPING_FILTER);
-        createEReference(mappingFilterEClass, MAPPING_FILTER__MAPPINGS);
-        createEAttribute(mappingFilterEClass, MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION);
-        createEAttribute(mappingFilterEClass, MAPPING_FILTER__VIEW_CONDITION_EXPRESSION);
+        mappingFilterEClass = createEClass(FilterPackage.MAPPING_FILTER);
+        createEReference(mappingFilterEClass, FilterPackage.MAPPING_FILTER__MAPPINGS);
+        createEAttribute(mappingFilterEClass, FilterPackage.MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION);
+        createEAttribute(mappingFilterEClass, FilterPackage.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION);
 
-        compositeFilterDescriptionEClass = createEClass(COMPOSITE_FILTER_DESCRIPTION);
-        createEReference(compositeFilterDescriptionEClass, COMPOSITE_FILTER_DESCRIPTION__FILTERS);
+        compositeFilterDescriptionEClass = createEClass(FilterPackage.COMPOSITE_FILTER_DESCRIPTION);
+        createEReference(compositeFilterDescriptionEClass, FilterPackage.COMPOSITE_FILTER_DESCRIPTION__FILTERS);
 
-        variableFilterEClass = createEClass(VARIABLE_FILTER);
-        createEReference(variableFilterEClass, VARIABLE_FILTER__OWNED_VARIABLES);
-        createEAttribute(variableFilterEClass, VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION);
+        variableFilterEClass = createEClass(FilterPackage.VARIABLE_FILTER);
+        createEReference(variableFilterEClass, FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES);
+        createEAttribute(variableFilterEClass, FilterPackage.VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION);
 
-        filterVariableEClass = createEClass(FILTER_VARIABLE);
-        createEAttribute(filterVariableEClass, FILTER_VARIABLE__NAME);
+        filterVariableEClass = createEClass(FilterPackage.FILTER_VARIABLE);
+        createEAttribute(filterVariableEClass, FilterPackage.FILTER_VARIABLE__NAME);
 
         // Create enums
-        filterKindEEnum = createEEnum(FILTER_KIND);
+        filterKindEEnum = createEEnum(FilterPackage.FILTER_KIND);
     }
 
     /**
@@ -386,18 +404,19 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(FilterPackage.eNAME);
+        setNsPrefix(FilterPackage.eNS_PREFIX);
+        setNsURI(FilterPackage.eNS_URI);
 
         // Obtain other dependent packages
         org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
@@ -419,47 +438,54 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
         filterVariableEClass.getESuperTypes().add(theDescriptionPackage_1.getSelectionDescription());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(filterDescriptionEClass, FilterDescription.class, "FilterDescription", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(filterDescriptionEClass, FilterDescription.class, "FilterDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        EOperation op = addEOperation(filterDescriptionEClass, theEcorePackage.getEBoolean(), "isVisible", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theDiagramPackage.getDDiagramElement(), "element", 0, 1, IS_UNIQUE, IS_ORDERED);
+        EOperation op = addEOperation(filterDescriptionEClass, theEcorePackage.getEBoolean(), "isVisible", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
+        addEParameter(op, theDiagramPackage.getDDiagramElement(), "element", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(filterEClass, Filter.class, "Filter", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getFilter_FilterKind(), this.getFilterKind(), "filterKind", "HIDE", 0, 1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
+        initEClass(filterEClass, Filter.class, "Filter", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getFilter_FilterKind(), this.getFilterKind(), "filterKind", "HIDE", 0, 1, Filter.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        op = addEOperation(filterEClass, theEcorePackage.getEBoolean(), "isVisible", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theDiagramPackage.getDDiagramElement(), "element", 0, 1, IS_UNIQUE, IS_ORDERED);
+        op = addEOperation(filterEClass, theEcorePackage.getEBoolean(), "isVisible", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
+        addEParameter(op, theDiagramPackage.getDDiagramElement(), "element", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(mappingFilterEClass, MappingFilter.class, "MappingFilter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getMappingFilter_Mappings(), theDescriptionPackage.getDiagramElementMapping(), null, "mappings", null, 0, -1, MappingFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(mappingFilterEClass, MappingFilter.class, "MappingFilter", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getMappingFilter_Mappings(), theDescriptionPackage.getDiagramElementMapping(), null, "mappings", null, 0, -1, MappingFilter.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getMappingFilter_SemanticConditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "semanticConditionExpression", null, 0, 1, MappingFilter.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getMappingFilter_ViewConditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "viewConditionExpression", null, 0, 1, MappingFilter.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getMappingFilter_ViewConditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "viewConditionExpression", null, 0, 1, MappingFilter.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(compositeFilterDescriptionEClass, CompositeFilterDescription.class, "CompositeFilterDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getCompositeFilterDescription_Filters(), this.getFilter(), null, "filters", null, 1, -1, CompositeFilterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(compositeFilterDescriptionEClass, CompositeFilterDescription.class, "CompositeFilterDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getCompositeFilterDescription_Filters(), this.getFilter(), null, "filters", null, 1, -1, CompositeFilterDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(variableFilterEClass, VariableFilter.class, "VariableFilter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getVariableFilter_OwnedVariables(), this.getFilterVariable(), null, "ownedVariables", null, 0, -1, VariableFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(variableFilterEClass, VariableFilter.class, "VariableFilter", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getVariableFilter_OwnedVariables(), this.getFilterVariable(), null, "ownedVariables", null, 0, -1, VariableFilter.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEAttribute(getVariableFilter_SemanticConditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "semanticConditionExpression", "", 0, 1, VariableFilter.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        op = addEOperation(variableFilterEClass, null, "setFilterContext", 0, 1, IS_UNIQUE, IS_ORDERED);
+        op = addEOperation(variableFilterEClass, null, "setFilterContext", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
         EGenericType g1 = createEGenericType(theEcorePackage.getEMap());
         EGenericType g2 = createEGenericType();
         g1.getETypeArguments().add(g2);
         g2 = createEGenericType();
         g1.getETypeArguments().add(g2);
-        addEParameter(op, g1, "variables", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, g1, "variables", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(filterVariableEClass, FilterVariable.class, "FilterVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getFilterVariable_Name(), theEcorePackage.getEString(), "name", null, 1, 1, FilterVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
+        initEClass(filterVariableEClass, FilterVariable.class, "FilterVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getFilterVariable_Name(), theEcorePackage.getEString(), "name", null, 1, 1, FilterVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(filterKindEEnum, FilterKind.class, "FilterKind");

@@ -53,7 +53,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeDescription_DomainClass()
@@ -84,7 +84,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> The precondition (Acceleo
      * Expression). <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeDescription_PreconditionExpression()
@@ -115,7 +115,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * {@link org.eclipse.sirius.tree.description.TreeItemCreationTool}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * tools of the section. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Create Tree Item</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeDescription_CreateTreeItem()
@@ -131,7 +131,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the section. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '
      *         <em>Owned Representation Creation Descriptions</em>' containment
      *         reference list.
@@ -148,7 +148,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All navigation tools. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '
      *         <em>Owned Representation Navigation Descriptions</em>'
      *         containment reference list.

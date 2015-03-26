@@ -42,7 +42,7 @@ public interface TAbstractMapping extends TTransformer {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTAbstractMapping_Name()
@@ -67,7 +67,7 @@ public interface TAbstractMapping extends TTransformer {
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * domain class of the mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTAbstractMapping_DomainClass()
@@ -98,7 +98,7 @@ public interface TAbstractMapping extends TTransformer {
      * EObject that are candidates of the mapping instead of the candidates of
      * the default case. The context of the expression is the semantic element
      * of the view container. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Candidates Expression</em>'
      *         attribute.
      * @see #setSemanticCandidatesExpression(String)

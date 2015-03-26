@@ -99,7 +99,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DLineImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSemanticElements()
@@ -130,7 +130,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = DLineImpl.LABEL_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOriginMapping()
@@ -161,7 +161,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * @generated
      * @ordered
      */
-    protected boolean visible = VISIBLE_EDEFAULT;
+    protected boolean visible = DLineImpl.VISIBLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isCollapsed() <em>Collapsed</em>}'
@@ -181,7 +181,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * @generated
      * @ordered
      */
-    protected boolean collapsed = COLLAPSED_EDEFAULT;
+    protected boolean collapsed = DLineImpl.COLLAPSED_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCells() <em>Cells</em>}' containment
@@ -228,6 +228,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -237,11 +238,13 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DLINE__NAME, oldName, name));
+        }
     }
 
     /**
@@ -249,6 +252,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
             semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, TablePackage.DLINE__SEMANTIC_ELEMENTS);
@@ -261,6 +265,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public TableMapping getTableElementMapping() {
         TableMapping tableElementMapping = basicGetTableElementMapping();
         return tableElementMapping != null && tableElementMapping.eIsProxy() ? (TableMapping) eResolveProxy((InternalEObject) tableElementMapping) : tableElementMapping;
@@ -268,7 +273,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     public TableMapping basicGetTableElementMapping() {
@@ -280,6 +285,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -289,11 +295,13 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DLINE__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -301,13 +309,15 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public LineMapping getOriginMapping() {
         if (originMapping != null && originMapping.eIsProxy()) {
             InternalEObject oldOriginMapping = (InternalEObject) originMapping;
             originMapping = (LineMapping) eResolveProxy(oldOriginMapping);
             if (originMapping != oldOriginMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TablePackage.DLINE__ORIGIN_MAPPING, oldOriginMapping, originMapping));
+                }
             }
         }
         return originMapping;
@@ -327,11 +337,13 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public void setOriginMapping(LineMapping newOriginMapping) {
         LineMapping oldOriginMapping = originMapping;
         originMapping = newOriginMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DLINE__ORIGIN_MAPPING, oldOriginMapping, originMapping));
+        }
     }
 
     /**
@@ -339,6 +351,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public boolean isVisible() {
         return visible;
     }
@@ -348,11 +361,13 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public void setVisible(boolean newVisible) {
         boolean oldVisible = visible;
         visible = newVisible;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DLINE__VISIBLE, oldVisible, visible));
+        }
     }
 
     /**
@@ -360,6 +375,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public boolean isCollapsed() {
         return collapsed;
     }
@@ -369,11 +385,13 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public void setCollapsed(boolean newCollapsed) {
         boolean oldCollapsed = collapsed;
         collapsed = newCollapsed;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DLINE__COLLAPSED, oldCollapsed, collapsed));
+        }
     }
 
     /**
@@ -381,6 +399,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public EList<DCell> getCells() {
         if (cells == null) {
             cells = new EObjectContainmentWithInverseEList<DCell>(DCell.class, this, TablePackage.DLINE__CELLS, TablePackage.DCELL__LINE);
@@ -393,9 +412,11 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public LineContainer getContainer() {
-        if (eContainerFeatureID() != TablePackage.DLINE__CONTAINER)
+        if (eContainerFeatureID() != TablePackage.DLINE__CONTAINER) {
             return null;
+        }
         return (LineContainer) eInternalContainer();
     }
 
@@ -414,20 +435,26 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public void setContainer(LineContainer newContainer) {
         if (newContainer != eInternalContainer() || (eContainerFeatureID() != TablePackage.DLINE__CONTAINER && newContainer != null)) {
-            if (EcoreUtil.isAncestor(this, newContainer))
+            if (EcoreUtil.isAncestor(this, newContainer)) {
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            }
             NotificationChain msgs = null;
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
-            if (newContainer != null)
+            }
+            if (newContainer != null) {
                 msgs = ((InternalEObject) newContainer).eInverseAdd(this, TablePackage.LINE_CONTAINER__LINES, LineContainer.class, msgs);
+            }
             msgs = basicSetContainer(newContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DLINE__CONTAINER, newContainer, newContainer));
+        }
     }
 
     /**
@@ -435,6 +462,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public EList<DCell> getOrderedCells() {
         // TODO: implement this method to return the 'Ordered Cells' reference
         // list
@@ -452,6 +480,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public DTableElementStyle getCurrentStyle() {
         return currentStyle;
     }
@@ -466,10 +495,11 @@ public class DLineImpl extends LineContainerImpl implements DLine {
         currentStyle = newCurrentStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TablePackage.DLINE__CURRENT_STYLE, oldCurrentStyle, newCurrentStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -479,18 +509,23 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public void setCurrentStyle(DTableElementStyle newCurrentStyle) {
         if (newCurrentStyle != currentStyle) {
             NotificationChain msgs = null;
-            if (currentStyle != null)
-                msgs = ((InternalEObject) currentStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TablePackage.DLINE__CURRENT_STYLE, null, msgs);
-            if (newCurrentStyle != null)
-                msgs = ((InternalEObject) newCurrentStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TablePackage.DLINE__CURRENT_STYLE, null, msgs);
+            if (currentStyle != null) {
+                msgs = ((InternalEObject) currentStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TablePackage.DLINE__CURRENT_STYLE, null, msgs);
+            }
+            if (newCurrentStyle != null) {
+                msgs = ((InternalEObject) newCurrentStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TablePackage.DLINE__CURRENT_STYLE, null, msgs);
+            }
             msgs = basicSetCurrentStyle(newCurrentStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DLINE__CURRENT_STYLE, newCurrentStyle, newCurrentStyle));
+        }
     }
 
     /**
@@ -498,6 +533,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -509,6 +545,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public Style getStyle() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -520,6 +557,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
+    @Override
     public RepresentationElementMapping getMapping() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -538,8 +576,9 @@ public class DLineImpl extends LineContainerImpl implements DLine {
         case TablePackage.DLINE__CELLS:
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getCells()).basicAdd(otherEnd, msgs);
         case TablePackage.DLINE__CONTAINER:
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
+            }
             return basicSetContainer((LineContainer) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -590,14 +629,16 @@ public class DLineImpl extends LineContainerImpl implements DLine {
         case TablePackage.DLINE__SEMANTIC_ELEMENTS:
             return getSemanticElements();
         case TablePackage.DLINE__TABLE_ELEMENT_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getTableElementMapping();
+            }
             return basicGetTableElementMapping();
         case TablePackage.DLINE__LABEL:
             return getLabel();
         case TablePackage.DLINE__ORIGIN_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getOriginMapping();
+            }
             return basicGetOriginMapping();
         case TablePackage.DLINE__VISIBLE:
             return isVisible();
@@ -666,22 +707,22 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     public void eUnset(int featureID) {
         switch (featureID) {
         case TablePackage.DLINE__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DLineImpl.NAME_EDEFAULT);
             return;
         case TablePackage.DLINE__SEMANTIC_ELEMENTS:
             getSemanticElements().clear();
             return;
         case TablePackage.DLINE__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(DLineImpl.LABEL_EDEFAULT);
             return;
         case TablePackage.DLINE__ORIGIN_MAPPING:
             setOriginMapping((LineMapping) null);
             return;
         case TablePackage.DLINE__VISIBLE:
-            setVisible(VISIBLE_EDEFAULT);
+            setVisible(DLineImpl.VISIBLE_EDEFAULT);
             return;
         case TablePackage.DLINE__COLLAPSED:
-            setCollapsed(COLLAPSED_EDEFAULT);
+            setCollapsed(DLineImpl.COLLAPSED_EDEFAULT);
             return;
         case TablePackage.DLINE__CELLS:
             getCells().clear();
@@ -705,19 +746,19 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TablePackage.DLINE__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DLineImpl.NAME_EDEFAULT == null ? name != null : !DLineImpl.NAME_EDEFAULT.equals(name);
         case TablePackage.DLINE__SEMANTIC_ELEMENTS:
             return semanticElements != null && !semanticElements.isEmpty();
         case TablePackage.DLINE__TABLE_ELEMENT_MAPPING:
             return basicGetTableElementMapping() != null;
         case TablePackage.DLINE__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return DLineImpl.LABEL_EDEFAULT == null ? label != null : !DLineImpl.LABEL_EDEFAULT.equals(label);
         case TablePackage.DLINE__ORIGIN_MAPPING:
             return originMapping != null;
         case TablePackage.DLINE__VISIBLE:
-            return visible != VISIBLE_EDEFAULT;
+            return visible != DLineImpl.VISIBLE_EDEFAULT;
         case TablePackage.DLINE__COLLAPSED:
-            return collapsed != COLLAPSED_EDEFAULT;
+            return collapsed != DLineImpl.COLLAPSED_EDEFAULT;
         case TablePackage.DLINE__CELLS:
             return cells != null && !cells.isEmpty();
         case TablePackage.DLINE__CONTAINER:
@@ -841,8 +882,9 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

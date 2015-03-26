@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -58,7 +58,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
      * @generated
      * @ordered
      */
-    protected Integer width = WIDTH_EDEFAULT;
+    protected Integer width = SquareDescriptionImpl.WIDTH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}'
@@ -78,7 +78,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
      * @generated
      * @ordered
      */
-    protected Integer height = HEIGHT_EDEFAULT;
+    protected Integer height = SquareDescriptionImpl.HEIGHT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' reference.
@@ -114,6 +114,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
      * 
      * @generated
      */
+    @Override
     public Integer getWidth() {
         return width;
     }
@@ -123,11 +124,13 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
      * 
      * @generated
      */
+    @Override
     public void setWidth(Integer newWidth) {
         Integer oldWidth = width;
         width = newWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SQUARE_DESCRIPTION__WIDTH, oldWidth, width));
+        }
     }
 
     /**
@@ -135,6 +138,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
      * 
      * @generated
      */
+    @Override
     public Integer getHeight() {
         return height;
     }
@@ -144,11 +148,13 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
      * 
      * @generated
      */
+    @Override
     public void setHeight(Integer newHeight) {
         Integer oldHeight = height;
         height = newHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SQUARE_DESCRIPTION__HEIGHT, oldHeight, height));
+        }
     }
 
     /**
@@ -156,13 +162,15 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
      * 
      * @generated
      */
+    @Override
     public ColorDescription getColor() {
         if (color != null && color.eIsProxy()) {
             InternalEObject oldColor = (InternalEObject) color;
             color = (ColorDescription) eResolveProxy(oldColor);
             if (color != oldColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.SQUARE_DESCRIPTION__COLOR, oldColor, color));
+                }
             }
         }
         return color;
@@ -182,11 +190,13 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
      * 
      * @generated
      */
+    @Override
     public void setColor(ColorDescription newColor) {
         ColorDescription oldColor = color;
         color = newColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SQUARE_DESCRIPTION__COLOR, oldColor, color));
+        }
     }
 
     /**
@@ -202,8 +212,9 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
         case StylePackage.SQUARE_DESCRIPTION__HEIGHT:
             return getHeight();
         case StylePackage.SQUARE_DESCRIPTION__COLOR:
-            if (resolve)
+            if (resolve) {
                 return getColor();
+            }
             return basicGetColor();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -239,10 +250,10 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.SQUARE_DESCRIPTION__WIDTH:
-            setWidth(WIDTH_EDEFAULT);
+            setWidth(SquareDescriptionImpl.WIDTH_EDEFAULT);
             return;
         case StylePackage.SQUARE_DESCRIPTION__HEIGHT:
-            setHeight(HEIGHT_EDEFAULT);
+            setHeight(SquareDescriptionImpl.HEIGHT_EDEFAULT);
             return;
         case StylePackage.SQUARE_DESCRIPTION__COLOR:
             setColor((ColorDescription) null);
@@ -260,9 +271,9 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.SQUARE_DESCRIPTION__WIDTH:
-            return WIDTH_EDEFAULT == null ? width != null : !WIDTH_EDEFAULT.equals(width);
+            return SquareDescriptionImpl.WIDTH_EDEFAULT == null ? width != null : !SquareDescriptionImpl.WIDTH_EDEFAULT.equals(width);
         case StylePackage.SQUARE_DESCRIPTION__HEIGHT:
-            return HEIGHT_EDEFAULT == null ? height != null : !HEIGHT_EDEFAULT.equals(height);
+            return SquareDescriptionImpl.HEIGHT_EDEFAULT == null ? height != null : !SquareDescriptionImpl.HEIGHT_EDEFAULT.equals(height);
         case StylePackage.SQUARE_DESCRIPTION__COLOR:
             return color != null;
         }
@@ -276,8 +287,9 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (width: ");

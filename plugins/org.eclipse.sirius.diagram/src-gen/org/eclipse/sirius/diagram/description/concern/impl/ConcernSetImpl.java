@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.concern.impl;
 
@@ -43,7 +43,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
      * The cached value of the '{@link #getOwnedConcernDescriptions()
      * <em>Owned Concern Descriptions</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedConcernDescriptions()
      * @generated
      * @ordered
@@ -74,6 +74,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
      * 
      * @generated
      */
+    @Override
     public EList<ConcernDescription> getOwnedConcernDescriptions() {
         if (ownedConcernDescriptions == null) {
             ownedConcernDescriptions = new EObjectContainmentEList.Resolving<ConcernDescription>(ConcernDescription.class, this, ConcernPackage.CONCERN_SET__OWNED_CONCERN_DESCRIPTIONS);

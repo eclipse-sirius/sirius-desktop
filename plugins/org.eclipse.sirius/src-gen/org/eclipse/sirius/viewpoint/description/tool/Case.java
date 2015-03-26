@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -39,7 +39,7 @@ public interface Case extends SwitchChild {
      * begin-model-doc --> Expression representing the condition, if it returns
      * true, every operation contained by this statement will be executed. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Condition Expression</em>' attribute.
      * @see #setConditionExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getCase_ConditionExpression()
@@ -58,7 +58,7 @@ public interface Case extends SwitchChild {
      * {@link org.eclipse.sirius.viewpoint.description.tool.Case#getConditionExpression
      * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Condition Expression</em>'
      *            attribute.

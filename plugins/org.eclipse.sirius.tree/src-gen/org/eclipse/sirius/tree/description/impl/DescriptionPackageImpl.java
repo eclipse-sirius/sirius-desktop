@@ -201,14 +201,14 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#eNS_URI
      * @see #init()
      * @generated
      */
     private DescriptionPackageImpl() {
-        super(eNS_URI, DescriptionFactory.eINSTANCE);
+        super(DescriptionPackage.eNS_URI, DescriptionFactory.eINSTANCE);
     }
 
     /**
@@ -221,27 +221,28 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link DescriptionPackage#eINSTANCE}
      * when that field is accessed. Clients should not invoke it directly.
      * Instead, they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static DescriptionPackage init() {
-        if (isInited)
+        if (DescriptionPackageImpl.isInited) {
             return (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-                : new DescriptionPackageImpl());
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
+                .get(DescriptionPackage.eNS_URI) : new DescriptionPackageImpl());
 
-        isInited = true;
+        DescriptionPackageImpl.isInited = true;
 
         // Initialize simple dependencies
         ViewpointPackage.eINSTANCE.eClass();
@@ -271,6 +272,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeDescription() {
         return treeDescriptionEClass;
     }
@@ -280,6 +282,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeDescription_DomainClass() {
         return (EAttribute) treeDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -289,6 +292,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeDescription_PreconditionExpression() {
         return (EAttribute) treeDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -298,6 +302,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeDescription_CreateTreeItem() {
         return (EReference) treeDescriptionEClass.getEStructuralFeatures().get(2);
     }
@@ -307,6 +312,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeDescription_OwnedRepresentationCreationDescriptions() {
         return (EReference) treeDescriptionEClass.getEStructuralFeatures().get(3);
     }
@@ -316,6 +322,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeDescription_OwnedRepresentationNavigationDescriptions() {
         return (EReference) treeDescriptionEClass.getEStructuralFeatures().get(4);
     }
@@ -325,6 +332,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemMapping() {
         return treeItemMappingEClass;
     }
@@ -334,6 +342,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeItemMapping_DomainClass() {
         return (EAttribute) treeItemMappingEClass.getEStructuralFeatures().get(0);
     }
@@ -343,6 +352,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeItemMapping_PreconditionExpression() {
         return (EAttribute) treeItemMappingEClass.getEStructuralFeatures().get(1);
     }
@@ -352,6 +362,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeItemMapping_SemanticCandidatesExpression() {
         return (EAttribute) treeItemMappingEClass.getEStructuralFeatures().get(2);
     }
@@ -361,6 +372,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemMapping_ReusedTreeItemMappings() {
         return (EReference) treeItemMappingEClass.getEStructuralFeatures().get(3);
     }
@@ -370,6 +382,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemMapping_AllSubMappings() {
         return (EReference) treeItemMappingEClass.getEStructuralFeatures().get(4);
     }
@@ -379,6 +392,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemMapping_Specialize() {
         return (EReference) treeItemMappingEClass.getEStructuralFeatures().get(5);
     }
@@ -388,6 +402,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemMapping_Delete() {
         return (EReference) treeItemMappingEClass.getEStructuralFeatures().get(6);
     }
@@ -397,6 +412,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemMapping_Create() {
         return (EReference) treeItemMappingEClass.getEStructuralFeatures().get(7);
     }
@@ -406,6 +422,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemMapping_DndTools() {
         return (EReference) treeItemMappingEClass.getEStructuralFeatures().get(8);
     }
@@ -415,6 +432,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemMapping_PopupMenus() {
         return (EReference) treeItemMappingEClass.getEStructuralFeatures().get(9);
     }
@@ -424,6 +442,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemStyleDescription() {
         return treeItemStyleDescriptionEClass;
     }
@@ -433,6 +452,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemStyleDescription_BackgroundColor() {
         return (EReference) treeItemStyleDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -442,6 +462,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getConditionalTreeItemStyleDescription() {
         return conditionalTreeItemStyleDescriptionEClass;
     }
@@ -451,6 +472,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getConditionalTreeItemStyleDescription_Style() {
         return (EReference) conditionalTreeItemStyleDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -460,6 +482,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemTool() {
         return treeItemToolEClass;
     }
@@ -469,6 +492,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemTool_FirstModelOperation() {
         return (EReference) treeItemToolEClass.getEStructuralFeatures().get(0);
     }
@@ -478,6 +502,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemTool_Variables() {
         return (EReference) treeItemToolEClass.getEStructuralFeatures().get(1);
     }
@@ -487,6 +512,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemDragTool() {
         return treeItemDragToolEClass;
     }
@@ -496,6 +522,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemDragTool_OldContainer() {
         return (EReference) treeItemDragToolEClass.getEStructuralFeatures().get(0);
     }
@@ -505,6 +532,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemDragTool_NewContainer() {
         return (EReference) treeItemDragToolEClass.getEStructuralFeatures().get(1);
     }
@@ -514,6 +542,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemDragTool_Element() {
         return (EReference) treeItemDragToolEClass.getEStructuralFeatures().get(2);
     }
@@ -523,6 +552,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemDragTool_NewViewContainer() {
         return (EReference) treeItemDragToolEClass.getEStructuralFeatures().get(3);
     }
@@ -532,6 +562,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemDragTool_Containers() {
         return (EReference) treeItemDragToolEClass.getEStructuralFeatures().get(4);
     }
@@ -541,6 +572,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeItemDragTool_DragSourceType() {
         return (EAttribute) treeItemDragToolEClass.getEStructuralFeatures().get(5);
     }
@@ -550,6 +582,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemDragTool_PrecedingSiblings() {
         return (EReference) treeItemDragToolEClass.getEStructuralFeatures().get(6);
     }
@@ -559,6 +592,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemContainerDropTool() {
         return treeItemContainerDropToolEClass;
     }
@@ -568,6 +602,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemContainerDropTool_OldContainer() {
         return (EReference) treeItemContainerDropToolEClass.getEStructuralFeatures().get(0);
     }
@@ -577,6 +612,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemContainerDropTool_NewContainer() {
         return (EReference) treeItemContainerDropToolEClass.getEStructuralFeatures().get(1);
     }
@@ -586,6 +622,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemContainerDropTool_Element() {
         return (EReference) treeItemContainerDropToolEClass.getEStructuralFeatures().get(2);
     }
@@ -595,6 +632,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemContainerDropTool_NewViewContainer() {
         return (EReference) treeItemContainerDropToolEClass.getEStructuralFeatures().get(3);
     }
@@ -604,6 +642,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemContainerDropTool_PrecedingSiblings() {
         return (EReference) treeItemContainerDropToolEClass.getEStructuralFeatures().get(4);
     }
@@ -613,6 +652,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeItemContainerDropTool_DragSource() {
         return (EAttribute) treeItemContainerDropToolEClass.getEStructuralFeatures().get(5);
     }
@@ -622,6 +662,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemCreationTool() {
         return treeItemCreationToolEClass;
     }
@@ -631,6 +672,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemCreationTool_Mapping() {
         return (EReference) treeItemCreationToolEClass.getEStructuralFeatures().get(0);
     }
@@ -640,6 +682,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemEditionTool() {
         return treeItemEditionToolEClass;
     }
@@ -649,6 +692,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemEditionTool_Mask() {
         return (EReference) treeItemEditionToolEClass.getEStructuralFeatures().get(0);
     }
@@ -658,6 +702,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemEditionTool_Mapping() {
         return (EReference) treeItemEditionToolEClass.getEStructuralFeatures().get(1);
     }
@@ -667,6 +712,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemEditionTool_Element() {
         return (EReference) treeItemEditionToolEClass.getEStructuralFeatures().get(2);
     }
@@ -676,6 +722,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemEditionTool_Root() {
         return (EReference) treeItemEditionToolEClass.getEStructuralFeatures().get(3);
     }
@@ -685,6 +732,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemDeletionTool() {
         return treeItemDeletionToolEClass;
     }
@@ -694,6 +742,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemDeletionTool_Mapping() {
         return (EReference) treeItemDeletionToolEClass.getEStructuralFeatures().get(0);
     }
@@ -703,6 +752,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeCreationDescription() {
         return treeCreationDescriptionEClass;
     }
@@ -712,6 +762,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeCreationDescription_TreeDescription() {
         return (EReference) treeCreationDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -721,6 +772,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeNavigationDescription() {
         return treeNavigationDescriptionEClass;
     }
@@ -730,6 +782,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeNavigationDescription_TreeDescription() {
         return (EReference) treeNavigationDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -739,6 +792,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeMapping() {
         return treeMappingEClass;
     }
@@ -748,6 +802,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeMapping_SemanticElements() {
         return (EAttribute) treeMappingEClass.getEStructuralFeatures().get(0);
     }
@@ -757,6 +812,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getStyleUpdater() {
         return styleUpdaterEClass;
     }
@@ -766,6 +822,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getStyleUpdater_DefaultStyle() {
         return (EReference) styleUpdaterEClass.getEStructuralFeatures().get(0);
     }
@@ -775,6 +832,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getStyleUpdater_ConditionalStyles() {
         return (EReference) styleUpdaterEClass.getEStructuralFeatures().get(1);
     }
@@ -784,6 +842,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeVariable() {
         return treeVariableEClass;
     }
@@ -793,6 +852,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeVariable_Documentation() {
         return (EAttribute) treeVariableEClass.getEStructuralFeatures().get(0);
     }
@@ -802,6 +862,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemUpdater() {
         return treeItemUpdaterEClass;
     }
@@ -811,6 +872,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemUpdater_DirectEdit() {
         return (EReference) treeItemUpdaterEClass.getEStructuralFeatures().get(0);
     }
@@ -820,6 +882,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getPrecedingSiblingsVariables() {
         return precedingSiblingsVariablesEClass;
     }
@@ -829,6 +892,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemMappingContainer() {
         return treeItemMappingContainerEClass;
     }
@@ -838,6 +902,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemMappingContainer_SubItemMappings() {
         return (EReference) treeItemMappingContainerEClass.getEStructuralFeatures().get(0);
     }
@@ -847,6 +912,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreeItemMappingContainer_DropTools() {
         return (EReference) treeItemMappingContainerEClass.getEStructuralFeatures().get(1);
     }
@@ -856,6 +922,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getTreePopupMenu() {
         return treePopupMenuEClass;
     }
@@ -865,6 +932,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EReference getTreePopupMenu_MenuItemDescriptions() {
         return (EReference) treePopupMenuEClass.getEStructuralFeatures().get(0);
     }
@@ -874,6 +942,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EEnum getTreeDragSource() {
         return treeDragSourceEEnum;
     }
@@ -883,6 +952,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public DescriptionFactory getDescriptionFactory() {
         return (DescriptionFactory) getEFactoryInstance();
     }
@@ -902,99 +972,100 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        treeDescriptionEClass = createEClass(TREE_DESCRIPTION);
-        createEAttribute(treeDescriptionEClass, TREE_DESCRIPTION__DOMAIN_CLASS);
-        createEAttribute(treeDescriptionEClass, TREE_DESCRIPTION__PRECONDITION_EXPRESSION);
-        createEReference(treeDescriptionEClass, TREE_DESCRIPTION__CREATE_TREE_ITEM);
-        createEReference(treeDescriptionEClass, TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS);
-        createEReference(treeDescriptionEClass, TREE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS);
+        treeDescriptionEClass = createEClass(DescriptionPackage.TREE_DESCRIPTION);
+        createEAttribute(treeDescriptionEClass, DescriptionPackage.TREE_DESCRIPTION__DOMAIN_CLASS);
+        createEAttribute(treeDescriptionEClass, DescriptionPackage.TREE_DESCRIPTION__PRECONDITION_EXPRESSION);
+        createEReference(treeDescriptionEClass, DescriptionPackage.TREE_DESCRIPTION__CREATE_TREE_ITEM);
+        createEReference(treeDescriptionEClass, DescriptionPackage.TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS);
+        createEReference(treeDescriptionEClass, DescriptionPackage.TREE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS);
 
-        treeItemMappingEClass = createEClass(TREE_ITEM_MAPPING);
-        createEAttribute(treeItemMappingEClass, TREE_ITEM_MAPPING__DOMAIN_CLASS);
-        createEAttribute(treeItemMappingEClass, TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION);
-        createEAttribute(treeItemMappingEClass, TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION);
-        createEReference(treeItemMappingEClass, TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS);
-        createEReference(treeItemMappingEClass, TREE_ITEM_MAPPING__ALL_SUB_MAPPINGS);
-        createEReference(treeItemMappingEClass, TREE_ITEM_MAPPING__SPECIALIZE);
-        createEReference(treeItemMappingEClass, TREE_ITEM_MAPPING__DELETE);
-        createEReference(treeItemMappingEClass, TREE_ITEM_MAPPING__CREATE);
-        createEReference(treeItemMappingEClass, TREE_ITEM_MAPPING__DND_TOOLS);
-        createEReference(treeItemMappingEClass, TREE_ITEM_MAPPING__POPUP_MENUS);
+        treeItemMappingEClass = createEClass(DescriptionPackage.TREE_ITEM_MAPPING);
+        createEAttribute(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__DOMAIN_CLASS);
+        createEAttribute(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION);
+        createEAttribute(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION);
+        createEReference(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS);
+        createEReference(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__ALL_SUB_MAPPINGS);
+        createEReference(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__SPECIALIZE);
+        createEReference(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__DELETE);
+        createEReference(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__CREATE);
+        createEReference(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__DND_TOOLS);
+        createEReference(treeItemMappingEClass, DescriptionPackage.TREE_ITEM_MAPPING__POPUP_MENUS);
 
-        treeItemStyleDescriptionEClass = createEClass(TREE_ITEM_STYLE_DESCRIPTION);
-        createEReference(treeItemStyleDescriptionEClass, TREE_ITEM_STYLE_DESCRIPTION__BACKGROUND_COLOR);
+        treeItemStyleDescriptionEClass = createEClass(DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION);
+        createEReference(treeItemStyleDescriptionEClass, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__BACKGROUND_COLOR);
 
-        conditionalTreeItemStyleDescriptionEClass = createEClass(CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION);
-        createEReference(conditionalTreeItemStyleDescriptionEClass, CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE);
+        conditionalTreeItemStyleDescriptionEClass = createEClass(DescriptionPackage.CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION);
+        createEReference(conditionalTreeItemStyleDescriptionEClass, DescriptionPackage.CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE);
 
-        treeItemToolEClass = createEClass(TREE_ITEM_TOOL);
-        createEReference(treeItemToolEClass, TREE_ITEM_TOOL__FIRST_MODEL_OPERATION);
-        createEReference(treeItemToolEClass, TREE_ITEM_TOOL__VARIABLES);
+        treeItemToolEClass = createEClass(DescriptionPackage.TREE_ITEM_TOOL);
+        createEReference(treeItemToolEClass, DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION);
+        createEReference(treeItemToolEClass, DescriptionPackage.TREE_ITEM_TOOL__VARIABLES);
 
-        treeItemDragToolEClass = createEClass(TREE_ITEM_DRAG_TOOL);
-        createEReference(treeItemDragToolEClass, TREE_ITEM_DRAG_TOOL__OLD_CONTAINER);
-        createEReference(treeItemDragToolEClass, TREE_ITEM_DRAG_TOOL__NEW_CONTAINER);
-        createEReference(treeItemDragToolEClass, TREE_ITEM_DRAG_TOOL__ELEMENT);
-        createEReference(treeItemDragToolEClass, TREE_ITEM_DRAG_TOOL__NEW_VIEW_CONTAINER);
-        createEReference(treeItemDragToolEClass, TREE_ITEM_DRAG_TOOL__CONTAINERS);
-        createEAttribute(treeItemDragToolEClass, TREE_ITEM_DRAG_TOOL__DRAG_SOURCE_TYPE);
-        createEReference(treeItemDragToolEClass, TREE_ITEM_DRAG_TOOL__PRECEDING_SIBLINGS);
+        treeItemDragToolEClass = createEClass(DescriptionPackage.TREE_ITEM_DRAG_TOOL);
+        createEReference(treeItemDragToolEClass, DescriptionPackage.TREE_ITEM_DRAG_TOOL__OLD_CONTAINER);
+        createEReference(treeItemDragToolEClass, DescriptionPackage.TREE_ITEM_DRAG_TOOL__NEW_CONTAINER);
+        createEReference(treeItemDragToolEClass, DescriptionPackage.TREE_ITEM_DRAG_TOOL__ELEMENT);
+        createEReference(treeItemDragToolEClass, DescriptionPackage.TREE_ITEM_DRAG_TOOL__NEW_VIEW_CONTAINER);
+        createEReference(treeItemDragToolEClass, DescriptionPackage.TREE_ITEM_DRAG_TOOL__CONTAINERS);
+        createEAttribute(treeItemDragToolEClass, DescriptionPackage.TREE_ITEM_DRAG_TOOL__DRAG_SOURCE_TYPE);
+        createEReference(treeItemDragToolEClass, DescriptionPackage.TREE_ITEM_DRAG_TOOL__PRECEDING_SIBLINGS);
 
-        treeItemContainerDropToolEClass = createEClass(TREE_ITEM_CONTAINER_DROP_TOOL);
-        createEReference(treeItemContainerDropToolEClass, TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER);
-        createEReference(treeItemContainerDropToolEClass, TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER);
-        createEReference(treeItemContainerDropToolEClass, TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT);
-        createEReference(treeItemContainerDropToolEClass, TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER);
-        createEReference(treeItemContainerDropToolEClass, TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS);
-        createEAttribute(treeItemContainerDropToolEClass, TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE);
+        treeItemContainerDropToolEClass = createEClass(DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL);
+        createEReference(treeItemContainerDropToolEClass, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER);
+        createEReference(treeItemContainerDropToolEClass, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER);
+        createEReference(treeItemContainerDropToolEClass, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT);
+        createEReference(treeItemContainerDropToolEClass, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER);
+        createEReference(treeItemContainerDropToolEClass, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS);
+        createEAttribute(treeItemContainerDropToolEClass, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE);
 
-        treeItemCreationToolEClass = createEClass(TREE_ITEM_CREATION_TOOL);
-        createEReference(treeItemCreationToolEClass, TREE_ITEM_CREATION_TOOL__MAPPING);
+        treeItemCreationToolEClass = createEClass(DescriptionPackage.TREE_ITEM_CREATION_TOOL);
+        createEReference(treeItemCreationToolEClass, DescriptionPackage.TREE_ITEM_CREATION_TOOL__MAPPING);
 
-        treeItemEditionToolEClass = createEClass(TREE_ITEM_EDITION_TOOL);
-        createEReference(treeItemEditionToolEClass, TREE_ITEM_EDITION_TOOL__MASK);
-        createEReference(treeItemEditionToolEClass, TREE_ITEM_EDITION_TOOL__MAPPING);
-        createEReference(treeItemEditionToolEClass, TREE_ITEM_EDITION_TOOL__ELEMENT);
-        createEReference(treeItemEditionToolEClass, TREE_ITEM_EDITION_TOOL__ROOT);
+        treeItemEditionToolEClass = createEClass(DescriptionPackage.TREE_ITEM_EDITION_TOOL);
+        createEReference(treeItemEditionToolEClass, DescriptionPackage.TREE_ITEM_EDITION_TOOL__MASK);
+        createEReference(treeItemEditionToolEClass, DescriptionPackage.TREE_ITEM_EDITION_TOOL__MAPPING);
+        createEReference(treeItemEditionToolEClass, DescriptionPackage.TREE_ITEM_EDITION_TOOL__ELEMENT);
+        createEReference(treeItemEditionToolEClass, DescriptionPackage.TREE_ITEM_EDITION_TOOL__ROOT);
 
-        treeItemDeletionToolEClass = createEClass(TREE_ITEM_DELETION_TOOL);
-        createEReference(treeItemDeletionToolEClass, TREE_ITEM_DELETION_TOOL__MAPPING);
+        treeItemDeletionToolEClass = createEClass(DescriptionPackage.TREE_ITEM_DELETION_TOOL);
+        createEReference(treeItemDeletionToolEClass, DescriptionPackage.TREE_ITEM_DELETION_TOOL__MAPPING);
 
-        treeCreationDescriptionEClass = createEClass(TREE_CREATION_DESCRIPTION);
-        createEReference(treeCreationDescriptionEClass, TREE_CREATION_DESCRIPTION__TREE_DESCRIPTION);
+        treeCreationDescriptionEClass = createEClass(DescriptionPackage.TREE_CREATION_DESCRIPTION);
+        createEReference(treeCreationDescriptionEClass, DescriptionPackage.TREE_CREATION_DESCRIPTION__TREE_DESCRIPTION);
 
-        treeNavigationDescriptionEClass = createEClass(TREE_NAVIGATION_DESCRIPTION);
-        createEReference(treeNavigationDescriptionEClass, TREE_NAVIGATION_DESCRIPTION__TREE_DESCRIPTION);
+        treeNavigationDescriptionEClass = createEClass(DescriptionPackage.TREE_NAVIGATION_DESCRIPTION);
+        createEReference(treeNavigationDescriptionEClass, DescriptionPackage.TREE_NAVIGATION_DESCRIPTION__TREE_DESCRIPTION);
 
-        treeMappingEClass = createEClass(TREE_MAPPING);
-        createEAttribute(treeMappingEClass, TREE_MAPPING__SEMANTIC_ELEMENTS);
+        treeMappingEClass = createEClass(DescriptionPackage.TREE_MAPPING);
+        createEAttribute(treeMappingEClass, DescriptionPackage.TREE_MAPPING__SEMANTIC_ELEMENTS);
 
-        styleUpdaterEClass = createEClass(STYLE_UPDATER);
-        createEReference(styleUpdaterEClass, STYLE_UPDATER__DEFAULT_STYLE);
-        createEReference(styleUpdaterEClass, STYLE_UPDATER__CONDITIONAL_STYLES);
+        styleUpdaterEClass = createEClass(DescriptionPackage.STYLE_UPDATER);
+        createEReference(styleUpdaterEClass, DescriptionPackage.STYLE_UPDATER__DEFAULT_STYLE);
+        createEReference(styleUpdaterEClass, DescriptionPackage.STYLE_UPDATER__CONDITIONAL_STYLES);
 
-        treeVariableEClass = createEClass(TREE_VARIABLE);
-        createEAttribute(treeVariableEClass, TREE_VARIABLE__DOCUMENTATION);
+        treeVariableEClass = createEClass(DescriptionPackage.TREE_VARIABLE);
+        createEAttribute(treeVariableEClass, DescriptionPackage.TREE_VARIABLE__DOCUMENTATION);
 
-        treeItemUpdaterEClass = createEClass(TREE_ITEM_UPDATER);
-        createEReference(treeItemUpdaterEClass, TREE_ITEM_UPDATER__DIRECT_EDIT);
+        treeItemUpdaterEClass = createEClass(DescriptionPackage.TREE_ITEM_UPDATER);
+        createEReference(treeItemUpdaterEClass, DescriptionPackage.TREE_ITEM_UPDATER__DIRECT_EDIT);
 
-        precedingSiblingsVariablesEClass = createEClass(PRECEDING_SIBLINGS_VARIABLES);
+        precedingSiblingsVariablesEClass = createEClass(DescriptionPackage.PRECEDING_SIBLINGS_VARIABLES);
 
-        treeItemMappingContainerEClass = createEClass(TREE_ITEM_MAPPING_CONTAINER);
-        createEReference(treeItemMappingContainerEClass, TREE_ITEM_MAPPING_CONTAINER__SUB_ITEM_MAPPINGS);
-        createEReference(treeItemMappingContainerEClass, TREE_ITEM_MAPPING_CONTAINER__DROP_TOOLS);
+        treeItemMappingContainerEClass = createEClass(DescriptionPackage.TREE_ITEM_MAPPING_CONTAINER);
+        createEReference(treeItemMappingContainerEClass, DescriptionPackage.TREE_ITEM_MAPPING_CONTAINER__SUB_ITEM_MAPPINGS);
+        createEReference(treeItemMappingContainerEClass, DescriptionPackage.TREE_ITEM_MAPPING_CONTAINER__DROP_TOOLS);
 
-        treePopupMenuEClass = createEClass(TREE_POPUP_MENU);
-        createEReference(treePopupMenuEClass, TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS);
+        treePopupMenuEClass = createEClass(DescriptionPackage.TREE_POPUP_MENU);
+        createEReference(treePopupMenuEClass, DescriptionPackage.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS);
 
         // Create enums
-        treeDragSourceEEnum = createEEnum(TREE_DRAG_SOURCE);
+        treeDragSourceEEnum = createEEnum(DescriptionPackage.TREE_DRAG_SOURCE);
     }
 
     /**
@@ -1008,18 +1079,19 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(DescriptionPackage.eNAME);
+        setNsPrefix(DescriptionPackage.eNS_PREFIX);
+        setNsURI(DescriptionPackage.eNS_URI);
 
         // Obtain other dependent packages
         org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
@@ -1060,149 +1132,197 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         treePopupMenuEClass.getESuperTypes().add(theToolPackage.getAbstractToolDescription());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(treeDescriptionEClass, TreeDescription.class, "TreeDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTreeDescription_DomainClass(), theDescriptionPackage_1.getTypeName(), "domainClass", null, 1, 1, TreeDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTreeDescription_PreconditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "preconditionExpression", null, 0, 1, TreeDescription.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeDescription_CreateTreeItem(), this.getTreeItemCreationTool(), null, "createTreeItem", null, 0, -1, TreeDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeDescriptionEClass, TreeDescription.class, "TreeDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTreeDescription_DomainClass(), theDescriptionPackage_1.getTypeName(), "domainClass", null, 1, 1, TreeDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTreeDescription_PreconditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "preconditionExpression", null, 0, 1, TreeDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTreeDescription_CreateTreeItem(), this.getTreeItemCreationTool(), null, "createTreeItem", null, 0, -1, TreeDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getTreeDescription_OwnedRepresentationCreationDescriptions(), theToolPackage.getRepresentationCreationDescription(), null, "ownedRepresentationCreationDescriptions", null, 0,
-                -1, TreeDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                -1, TreeDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES,
+                !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         getTreeDescription_OwnedRepresentationCreationDescriptions().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
         initEReference(getTreeDescription_OwnedRepresentationNavigationDescriptions(), theToolPackage.getRepresentationNavigationDescription(), null, "ownedRepresentationNavigationDescriptions",
-                null, 0, -1, TreeDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                null, 0, -1, TreeDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES,
+                !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         getTreeDescription_OwnedRepresentationNavigationDescriptions().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
 
-        initEClass(treeItemMappingEClass, TreeItemMapping.class, "TreeItemMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTreeItemMapping_DomainClass(), theDescriptionPackage_1.getTypeName(), "domainClass", null, 1, 1, TreeItemMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTreeItemMapping_PreconditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "preconditionExpression", null, 0, 1, TreeItemMapping.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemMappingEClass, TreeItemMapping.class, "TreeItemMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTreeItemMapping_DomainClass(), theDescriptionPackage_1.getTypeName(), "domainClass", null, 1, 1, TreeItemMapping.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTreeItemMapping_PreconditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "preconditionExpression", null, 0, 1, TreeItemMapping.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEAttribute(getTreeItemMapping_SemanticCandidatesExpression(), theDescriptionPackage_1.getInterpretedExpression(), "semanticCandidatesExpression", null, 0, 1, TreeItemMapping.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemMapping_ReusedTreeItemMappings(), this.getTreeItemMapping(), null, "reusedTreeItemMappings", null, 0, -1, TreeItemMapping.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemMapping_AllSubMappings(), this.getTreeItemMapping(), null, "allSubMappings", null, 0, -1, TreeItemMapping.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemMapping_Specialize(), this.getTreeItemMapping(), null, "specialize", null, 0, 1, TreeItemMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemMapping_Delete(), this.getTreeItemDeletionTool(), this.getTreeItemDeletionTool_Mapping(), "delete", null, 0, 1, TreeItemMapping.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemMapping_Create(), this.getTreeItemCreationTool(), null, "create", null, 0, -1, TreeItemMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemMapping_DndTools(), this.getTreeItemDragTool(), null, "dndTools", null, 0, -1, TreeItemMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemMapping_PopupMenus(), this.getTreePopupMenu(), null, "popupMenus", null, 0, -1, TreeItemMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemMapping_ReusedTreeItemMappings(), this.getTreeItemMapping(), null, "reusedTreeItemMappings", null, 0, -1, TreeItemMapping.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemMapping_AllSubMappings(), this.getTreeItemMapping(), null, "allSubMappings", null, 0, -1, TreeItemMapping.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE,
+                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemMapping_Specialize(), this.getTreeItemMapping(), null, "specialize", null, 0, 1, TreeItemMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemMapping_Delete(), this.getTreeItemDeletionTool(), this.getTreeItemDeletionTool_Mapping(), "delete", null, 0, 1, TreeItemMapping.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemMapping_Create(), this.getTreeItemCreationTool(), null, "create", null, 0, -1, TreeItemMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemMapping_DndTools(), this.getTreeItemDragTool(), null, "dndTools", null, 0, -1, TreeItemMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemMapping_PopupMenus(), this.getTreePopupMenu(), null, "popupMenus", null, 0, -1, TreeItemMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(treeItemStyleDescriptionEClass, TreeItemStyleDescription.class, "TreeItemStyleDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(treeItemStyleDescriptionEClass, TreeItemStyleDescription.class, "TreeItemStyleDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEReference(getTreeItemStyleDescription_BackgroundColor(), theDescriptionPackage_1.getColorDescription(), null, "backgroundColor", null, 1, 1, TreeItemStyleDescription.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(conditionalTreeItemStyleDescriptionEClass, ConditionalTreeItemStyleDescription.class, "ConditionalTreeItemStyleDescription", !IS_ABSTRACT, !IS_INTERFACE,
-                IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getConditionalTreeItemStyleDescription_Style(), this.getTreeItemStyleDescription(), null, "style", null, 0, 1, ConditionalTreeItemStyleDescription.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(conditionalTreeItemStyleDescriptionEClass, ConditionalTreeItemStyleDescription.class, "ConditionalTreeItemStyleDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getConditionalTreeItemStyleDescription_Style(), this.getTreeItemStyleDescription(), null, "style", null, 0, 1, ConditionalTreeItemStyleDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(treeItemToolEClass, TreeItemTool.class, "TreeItemTool", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemTool_FirstModelOperation(), theToolPackage.getModelOperation(), null, "firstModelOperation", null, 0, 1, TreeItemTool.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemTool_Variables(), this.getTreeVariable(), null, "variables", null, 0, -1, TreeItemTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemToolEClass, TreeItemTool.class, "TreeItemTool", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeItemTool_FirstModelOperation(), theToolPackage.getModelOperation(), null, "firstModelOperation", null, 0, 1, TreeItemTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemTool_Variables(), this.getTreeVariable(), null, "variables", null, 0, -1, TreeItemTool.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(treeItemDragToolEClass, TreeItemDragTool.class, "TreeItemDragTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemDragTool_OldContainer(), theToolPackage.getDropContainerVariable(), null, "oldContainer", null, 1, 1, TreeItemDragTool.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemDragTool_NewContainer(), theToolPackage.getDropContainerVariable(), null, "newContainer", null, 1, 1, TreeItemDragTool.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemDragTool_Element(), theToolPackage.getElementDropVariable(), null, "element", null, 1, 1, TreeItemDragTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemDragTool_NewViewContainer(), theToolPackage.getContainerViewVariable(), null, "newViewContainer", null, 1, 1, TreeItemDragTool.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemDragTool_Containers(), this.getTreeItemMappingContainer(), null, "containers", null, 1, -1, TreeItemDragTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTreeItemDragTool_DragSourceType(), this.getTreeDragSource(), "dragSourceType", null, 1, 1, TreeItemDragTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemDragTool_PrecedingSiblings(), this.getPrecedingSiblingsVariables(), null, "precedingSiblings", null, 1, 1, TreeItemDragTool.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemDragToolEClass, TreeItemDragTool.class, "TreeItemDragTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeItemDragTool_OldContainer(), theToolPackage.getDropContainerVariable(), null, "oldContainer", null, 1, 1, TreeItemDragTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemDragTool_NewContainer(), theToolPackage.getDropContainerVariable(), null, "newContainer", null, 1, 1, TreeItemDragTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemDragTool_Element(), theToolPackage.getElementDropVariable(), null, "element", null, 1, 1, TreeItemDragTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemDragTool_NewViewContainer(), theToolPackage.getContainerViewVariable(), null, "newViewContainer", null, 1, 1, TreeItemDragTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemDragTool_Containers(), this.getTreeItemMappingContainer(), null, "containers", null, 1, -1, TreeItemDragTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTreeItemDragTool_DragSourceType(), this.getTreeDragSource(), "dragSourceType", null, 1, 1, TreeItemDragTool.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemDragTool_PrecedingSiblings(), this.getPrecedingSiblingsVariables(), null, "precedingSiblings", null, 1, 1, TreeItemDragTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        addEOperation(treeItemDragToolEClass, this.getTreeItemMapping(), "getBestTreeItemMapping", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(treeItemDragToolEClass, this.getTreeItemMapping(), "getBestTreeItemMapping", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(treeItemContainerDropToolEClass, TreeItemContainerDropTool.class, "TreeItemContainerDropTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemContainerDropTool_OldContainer(), theToolPackage.getDropContainerVariable(), null, "oldContainer", null, 1, 1, TreeItemContainerDropTool.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemContainerDropTool_NewContainer(), theToolPackage.getDropContainerVariable(), null, "newContainer", null, 1, 1, TreeItemContainerDropTool.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemContainerDropTool_Element(), theToolPackage.getElementDropVariable(), null, "element", null, 1, 1, TreeItemContainerDropTool.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemContainerDropToolEClass, TreeItemContainerDropTool.class, "TreeItemContainerDropTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeItemContainerDropTool_OldContainer(), theToolPackage.getDropContainerVariable(), null, "oldContainer", null, 1, 1, TreeItemContainerDropTool.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemContainerDropTool_NewContainer(), theToolPackage.getDropContainerVariable(), null, "newContainer", null, 1, 1, TreeItemContainerDropTool.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemContainerDropTool_Element(), theToolPackage.getElementDropVariable(), null, "element", null, 1, 1, TreeItemContainerDropTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getTreeItemContainerDropTool_NewViewContainer(), theToolPackage.getContainerViewVariable(), null, "newViewContainer", null, 1, 1, TreeItemContainerDropTool.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemContainerDropTool_PrecedingSiblings(), this.getPrecedingSiblingsVariables(), null, "precedingSiblings", null, 1, 1, TreeItemContainerDropTool.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTreeItemContainerDropTool_DragSource(), this.getTreeDragSource(), "dragSource", null, 1, 1, TreeItemContainerDropTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemContainerDropTool_PrecedingSiblings(), this.getPrecedingSiblingsVariables(), null, "precedingSiblings", null, 1, 1, TreeItemContainerDropTool.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTreeItemContainerDropTool_DragSource(), this.getTreeDragSource(), "dragSource", null, 1, 1, TreeItemContainerDropTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(treeItemCreationToolEClass, TreeItemCreationTool.class, "TreeItemCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemCreationTool_Mapping(), this.getTreeItemMapping(), null, "mapping", null, 0, -1, TreeItemCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemCreationToolEClass, TreeItemCreationTool.class, "TreeItemCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeItemCreationTool_Mapping(), this.getTreeItemMapping(), null, "mapping", null, 0, -1, TreeItemCreationTool.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(treeItemEditionToolEClass, TreeItemEditionTool.class, "TreeItemEditionTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemEditionTool_Mask(), theToolPackage.getEditMaskVariables(), null, "mask", null, 1, 1, TreeItemEditionTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemEditionTool_Mapping(), this.getTreeItemMapping(), null, "mapping", null, 0, -1, TreeItemEditionTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemEditionTool_Element(), theToolPackage.getElementDropVariable(), null, "element", null, 1, 1, TreeItemEditionTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTreeItemEditionTool_Root(), theToolPackage.getElementDropVariable(), null, "root", null, 1, 1, TreeItemEditionTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemEditionToolEClass, TreeItemEditionTool.class, "TreeItemEditionTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeItemEditionTool_Mask(), theToolPackage.getEditMaskVariables(), null, "mask", null, 1, 1, TreeItemEditionTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemEditionTool_Mapping(), this.getTreeItemMapping(), null, "mapping", null, 0, -1, TreeItemEditionTool.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemEditionTool_Element(), theToolPackage.getElementDropVariable(), null, "element", null, 1, 1, TreeItemEditionTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTreeItemEditionTool_Root(), theToolPackage.getElementDropVariable(), null, "root", null, 1, 1, TreeItemEditionTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(treeItemDeletionToolEClass, TreeItemDeletionTool.class, "TreeItemDeletionTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemDeletionTool_Mapping(), this.getTreeItemMapping(), this.getTreeItemMapping_Delete(), "mapping", null, 1, 1, TreeItemDeletionTool.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemDeletionToolEClass, TreeItemDeletionTool.class, "TreeItemDeletionTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeItemDeletionTool_Mapping(), this.getTreeItemMapping(), this.getTreeItemMapping_Delete(), "mapping", null, 1, 1, TreeItemDeletionTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(treeCreationDescriptionEClass, TreeCreationDescription.class, "TreeCreationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeCreationDescription_TreeDescription(), this.getTreeDescription(), null, "treeDescription", null, 1, 1, TreeCreationDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeCreationDescriptionEClass, TreeCreationDescription.class, "TreeCreationDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeCreationDescription_TreeDescription(), this.getTreeDescription(), null, "treeDescription", null, 1, 1, TreeCreationDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(treeNavigationDescriptionEClass, TreeNavigationDescription.class, "TreeNavigationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeNavigationDescription_TreeDescription(), this.getTreeDescription(), null, "treeDescription", null, 1, 1, TreeNavigationDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeNavigationDescriptionEClass, TreeNavigationDescription.class, "TreeNavigationDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeNavigationDescription_TreeDescription(), this.getTreeDescription(), null, "treeDescription", null, 1, 1, TreeNavigationDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(treeMappingEClass, TreeMapping.class, "TreeMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTreeMapping_SemanticElements(), theDescriptionPackage_1.getInterpretedExpression(), "semanticElements", null, 0, 1, TreeMapping.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeMappingEClass, TreeMapping.class, "TreeMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTreeMapping_SemanticElements(), theDescriptionPackage_1.getInterpretedExpression(), "semanticElements", null, 0, 1, TreeMapping.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(styleUpdaterEClass, StyleUpdater.class, "StyleUpdater", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getStyleUpdater_DefaultStyle(), this.getTreeItemStyleDescription(), null, "defaultStyle", null, 1, 1, StyleUpdater.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getStyleUpdater_ConditionalStyles(), this.getConditionalTreeItemStyleDescription(), null, "conditionalStyles", null, 0, -1, StyleUpdater.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(styleUpdaterEClass, StyleUpdater.class, "StyleUpdater", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getStyleUpdater_DefaultStyle(), this.getTreeItemStyleDescription(), null, "defaultStyle", null, 1, 1, StyleUpdater.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getStyleUpdater_ConditionalStyles(), this.getConditionalTreeItemStyleDescription(), null, "conditionalStyles", null, 0, -1, StyleUpdater.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(treeVariableEClass, TreeVariable.class, "TreeVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTreeVariable_Documentation(), theEcorePackage.getEString(), "documentation", null, 0, 1, TreeVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeVariableEClass, TreeVariable.class, "TreeVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTreeVariable_Documentation(), theEcorePackage.getEString(), "documentation", null, 0, 1, TreeVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(treeItemUpdaterEClass, TreeItemUpdater.class, "TreeItemUpdater", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemUpdater_DirectEdit(), this.getTreeItemEditionTool(), null, "directEdit", null, 0, 1, TreeItemUpdater.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemUpdaterEClass, TreeItemUpdater.class, "TreeItemUpdater", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeItemUpdater_DirectEdit(), this.getTreeItemEditionTool(), null, "directEdit", null, 0, 1, TreeItemUpdater.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        addEOperation(treeItemUpdaterEClass, theDescriptionPackage_1.getInterpretedExpression(), "getLabelComputationExpression", 1, 1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(treeItemUpdaterEClass, theDescriptionPackage_1.getInterpretedExpression(), "getLabelComputationExpression", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        addEOperation(treeItemUpdaterEClass, this.getTreeItemCreationTool(), "getCreateTreeItem", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(treeItemUpdaterEClass, this.getTreeItemCreationTool(), "getCreateTreeItem", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(precedingSiblingsVariablesEClass, PrecedingSiblingsVariables.class, "PrecedingSiblingsVariables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(precedingSiblingsVariablesEClass, PrecedingSiblingsVariables.class, "PrecedingSiblingsVariables", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(treeItemMappingContainerEClass, TreeItemMappingContainer.class, "TreeItemMappingContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemMappingContainer_SubItemMappings(), this.getTreeItemMapping(), null, "subItemMappings", null, 0, -1, TreeItemMappingContainer.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemMappingContainerEClass, TreeItemMappingContainer.class, "TreeItemMappingContainer", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreeItemMappingContainer_SubItemMappings(), this.getTreeItemMapping(), null, "subItemMappings", null, 0, -1, TreeItemMappingContainer.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         getTreeItemMappingContainer_SubItemMappings().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
-        initEReference(getTreeItemMappingContainer_DropTools(), this.getTreeItemContainerDropTool(), null, "dropTools", null, 0, -1, TreeItemMappingContainer.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getTreeItemMappingContainer_DropTools(), this.getTreeItemContainerDropTool(), null, "dropTools", null, 0, -1, TreeItemMappingContainer.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(treePopupMenuEClass, TreePopupMenu.class, "TreePopupMenu", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreePopupMenu_MenuItemDescriptions(), theToolPackage.getMenuItemOrRef(), null, "menuItemDescriptions", null, 0, -1, TreePopupMenu.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treePopupMenuEClass, TreePopupMenu.class, "TreePopupMenu", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTreePopupMenu_MenuItemDescriptions(), theToolPackage.getMenuItemOrRef(), null, "menuItemDescriptions", null, 0, -1, TreePopupMenu.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(treeDragSourceEEnum, TreeDragSource.class, "TreeDragSource");
@@ -1243,14 +1363,14 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables";
         addAnnotation(getTreeDescription_PreconditionExpression(), source, new String[] {});
         addAnnotation(getTreeItemMapping_PreconditionExpression(), source, new String[] { "view", "tree.DTreeElement | current DTreeElement.", "containerView",
-                "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", "container",
-                "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." });
+            "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", "container",
+        "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." });
         addAnnotation(getTreeItemMapping_SemanticCandidatesExpression(), source, new String[] { "view", "tree.DTreeElement | current DTreeElement.", "containerView",
-                "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", "container",
-                "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." });
+            "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", "container",
+        "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." });
         addAnnotation(getTreeMapping_SemanticElements(), source, new String[] { "view", "tree.DTreeElement | current DTreeElement.", "containerView",
-                "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", "container",
-                "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." });
+            "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", "container",
+        "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." });
     }
 
 } // DescriptionPackageImpl

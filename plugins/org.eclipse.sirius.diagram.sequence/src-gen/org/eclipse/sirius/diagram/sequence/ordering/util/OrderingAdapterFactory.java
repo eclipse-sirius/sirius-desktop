@@ -44,8 +44,8 @@ public class OrderingAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public OrderingAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = OrderingPackage.eINSTANCE;
+        if (OrderingAdapterFactory.modelPackage == null) {
+            OrderingAdapterFactory.modelPackage = OrderingPackage.eINSTANCE;
         }
     }
 
@@ -60,11 +60,11 @@ public class OrderingAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == OrderingAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == OrderingAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -72,7 +72,7 @@ public class OrderingAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OrderingSwitch<Adapter> modelSwitch = new OrderingSwitch<Adapter>() {
@@ -144,7 +144,7 @@ public class OrderingAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.ordering.EventEnd
      * @generated

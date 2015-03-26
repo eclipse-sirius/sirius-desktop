@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.provider;
 
@@ -35,14 +35,14 @@ import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.NodeMapping} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeMappingItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +52,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
     /**
      * This adds a property descriptor for the Drop Descriptions feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
@@ -114,29 +114,31 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
     /**
      * This returns NodeMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @not-generated
      */
     @Override
     public Object getImage(Object object) {
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
-        if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS)
+        if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
             return overlayImage(object, getResourceLocator().getImage("obj16/BorderedNodeMapping"));
+        }
         return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeMapping"));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((NodeMapping) object).getLabel();
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
-        if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS)
+        if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
             return "Bordered " + label;
+        }
         return label == null || label.length() == 0 ? getString("_UI_NodeMapping_type") : label;
     }
 
@@ -176,7 +178,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -220,7 +222,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

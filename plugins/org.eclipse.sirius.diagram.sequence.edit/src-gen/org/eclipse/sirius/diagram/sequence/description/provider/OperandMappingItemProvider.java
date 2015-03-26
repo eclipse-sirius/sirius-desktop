@@ -37,7 +37,7 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public OperandMappingItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -135,7 +135,7 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider {
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getCreateChildTextGen(Object owner, Object feature, Object child, Collection<?> selection) {
@@ -206,7 +206,7 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider {
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -226,7 +226,7 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider {
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

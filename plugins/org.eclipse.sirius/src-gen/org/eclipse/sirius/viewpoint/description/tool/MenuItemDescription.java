@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -37,7 +37,7 @@ public interface MenuItemDescription extends AbstractToolDescription, MenuItemOr
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon</em>' attribute.
      * @see #setIcon(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMenuItemDescription_Icon()
@@ -50,7 +50,7 @@ public interface MenuItemDescription extends AbstractToolDescription, MenuItemOr
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription#getIcon
      * <em>Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon</em>' attribute.
      * @see #getIcon()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -44,7 +44,7 @@ public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, Iden
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The imported mapping used to define default values for the current
      * mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Imported Mapping</em>' reference.
      * @see #setImportedMapping(IEdgeMapping)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMappingImport_ImportedMapping()
@@ -72,7 +72,7 @@ public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, Iden
      * {@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All conditional styles. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditionnal Styles</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMappingImport_ConditionnalStyles()
@@ -87,7 +87,7 @@ public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, Iden
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if you
      * want the filters applying on the imported mappings apply on this one.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Inherits Ancestor Filters</em>' attribute.
      * @see #setInheritsAncestorFilters(boolean)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMappingImport_InheritsAncestorFilters()

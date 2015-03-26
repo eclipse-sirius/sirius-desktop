@@ -55,7 +55,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = TAbstractMappingImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
@@ -75,7 +75,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = TAbstractMappingImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSemanticCandidatesExpression()
@@ -97,7 +97,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * @generated
      * @ordered
      */
-    protected String semanticCandidatesExpression = SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
+    protected String semanticCandidatesExpression = TAbstractMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -123,6 +123,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -132,11 +133,13 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TABSTRACT_MAPPING__NAME, oldName, name));
+        }
     }
 
     /**
@@ -144,6 +147,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -153,11 +157,13 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TABSTRACT_MAPPING__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -165,6 +171,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * 
      * @generated
      */
+    @Override
     public String getSemanticCandidatesExpression() {
         return semanticCandidatesExpression;
     }
@@ -174,11 +181,13 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * 
      * @generated
      */
+    @Override
     public void setSemanticCandidatesExpression(String newSemanticCandidatesExpression) {
         String oldSemanticCandidatesExpression = semanticCandidatesExpression;
         semanticCandidatesExpression = newSemanticCandidatesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, oldSemanticCandidatesExpression, semanticCandidatesExpression));
+        }
     }
 
     /**
@@ -229,13 +238,13 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     public void eUnset(int featureID) {
         switch (featureID) {
         case TemplatePackage.TABSTRACT_MAPPING__NAME:
-            setName(NAME_EDEFAULT);
+            setName(TAbstractMappingImpl.NAME_EDEFAULT);
             return;
         case TemplatePackage.TABSTRACT_MAPPING__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(TAbstractMappingImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case TemplatePackage.TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            setSemanticCandidatesExpression(SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
+            setSemanticCandidatesExpression(TAbstractMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -250,11 +259,12 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TemplatePackage.TABSTRACT_MAPPING__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return TAbstractMappingImpl.NAME_EDEFAULT == null ? name != null : !TAbstractMappingImpl.NAME_EDEFAULT.equals(name);
         case TemplatePackage.TABSTRACT_MAPPING__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return TAbstractMappingImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !TAbstractMappingImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case TemplatePackage.TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            return SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
+            return TAbstractMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !TAbstractMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT
+                    .equals(semanticCandidatesExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -266,8 +276,9 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

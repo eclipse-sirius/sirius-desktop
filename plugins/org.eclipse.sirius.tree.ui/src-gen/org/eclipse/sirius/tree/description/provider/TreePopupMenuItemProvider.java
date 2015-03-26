@@ -31,14 +31,14 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescri
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.description.TreePopupMenu} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreePopupMenuItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
     /**
      * This returns TreePopupMenu.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -140,7 +140,7 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -86,7 +86,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -97,12 +97,12 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * The cached value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
      */
-    protected String borderSizeComputationExpression = BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String borderSizeComputationExpression = NodeStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
@@ -132,7 +132,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected int labelSize = LABEL_SIZE_EDEFAULT;
+    protected int labelSize = NodeStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
@@ -152,7 +152,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = LABEL_FORMAT_EDEFAULT;
+    protected FontFormat labelFormat = NodeStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
 
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
@@ -172,7 +172,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected boolean showIcon = SHOW_ICON_EDEFAULT;
+    protected boolean showIcon = NodeStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelExpression()
@@ -194,7 +194,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
+    protected String labelExpression = NodeStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
@@ -224,7 +224,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected String iconPath = ICON_PATH_EDEFAULT;
+    protected String iconPath = NodeStyleDescriptionImpl.ICON_PATH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelAlignment()
@@ -246,7 +246,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected LabelAlignment labelAlignment = LABEL_ALIGNMENT_EDEFAULT;
+    protected LabelAlignment labelAlignment = NodeStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTooltipExpression()
@@ -268,7 +268,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected String tooltipExpression = TOOLTIP_EXPRESSION_EDEFAULT;
+    protected String tooltipExpression = NodeStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSizeComputationExpression()
@@ -290,7 +290,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected String sizeComputationExpression = SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String sizeComputationExpression = NodeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelPosition()
@@ -312,7 +312,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected LabelPosition labelPosition = LABEL_POSITION_EDEFAULT;
+    protected LabelPosition labelPosition = NodeStyleDescriptionImpl.LABEL_POSITION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isHideLabelByDefault()
@@ -334,7 +334,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected boolean hideLabelByDefault = HIDE_LABEL_BY_DEFAULT_EDEFAULT;
+    protected boolean hideLabelByDefault = NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
 
     /**
      * The default value of the '{@link #getResizeKind() <em>Resize Kind</em>}'
@@ -354,7 +354,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected ResizeKind resizeKind = RESIZE_KIND_EDEFAULT;
+    protected ResizeKind resizeKind = NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -380,6 +380,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public String getBorderSizeComputationExpression() {
         return borderSizeComputationExpression;
     }
@@ -389,12 +390,14 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setBorderSizeComputationExpression(String newBorderSizeComputationExpression) {
         String oldBorderSizeComputationExpression = borderSizeComputationExpression;
         borderSizeComputationExpression = newBorderSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION, oldBorderSizeComputationExpression,
                     borderSizeComputationExpression));
+        }
     }
 
     /**
@@ -402,13 +405,15 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public ColorDescription getBorderColor() {
         if (borderColor != null && borderColor.eIsProxy()) {
             InternalEObject oldBorderColor = (InternalEObject) borderColor;
             borderColor = (ColorDescription) eResolveProxy(oldBorderColor);
             if (borderColor != oldBorderColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
+                }
             }
         }
         return borderColor;
@@ -428,11 +433,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setBorderColor(ColorDescription newBorderColor) {
         ColorDescription oldBorderColor = borderColor;
         borderColor = newBorderColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
+        }
     }
 
     /**
@@ -440,6 +447,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public int getLabelSize() {
         return labelSize;
     }
@@ -449,11 +457,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setLabelSize(int newLabelSize) {
         int oldLabelSize = labelSize;
         labelSize = newLabelSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
+        }
     }
 
     /**
@@ -461,6 +471,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public FontFormat getLabelFormat() {
         return labelFormat;
     }
@@ -470,11 +481,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setLabelFormat(FontFormat newLabelFormat) {
         FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired())
+        labelFormat = newLabelFormat == null ? NodeStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
+        }
     }
 
     /**
@@ -482,6 +495,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public boolean isShowIcon() {
         return showIcon;
     }
@@ -491,11 +505,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setShowIcon(boolean newShowIcon) {
         boolean oldShowIcon = showIcon;
         showIcon = newShowIcon;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON, oldShowIcon, showIcon));
+        }
     }
 
     /**
@@ -503,6 +519,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
@@ -512,11 +529,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setLabelExpression(String newLabelExpression) {
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
     }
 
     /**
@@ -524,13 +543,15 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public ColorDescription getLabelColor() {
         if (labelColor != null && labelColor.eIsProxy()) {
             InternalEObject oldLabelColor = (InternalEObject) labelColor;
             labelColor = (ColorDescription) eResolveProxy(oldLabelColor);
             if (labelColor != oldLabelColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
+                }
             }
         }
         return labelColor;
@@ -550,11 +571,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setLabelColor(ColorDescription newLabelColor) {
         ColorDescription oldLabelColor = labelColor;
         labelColor = newLabelColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
+        }
     }
 
     /**
@@ -562,6 +585,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public String getIconPath() {
         return iconPath;
     }
@@ -571,11 +595,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setIconPath(String newIconPath) {
         String oldIconPath = iconPath;
         iconPath = newIconPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
+        }
     }
 
     /**
@@ -583,6 +609,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public LabelAlignment getLabelAlignment() {
         return labelAlignment;
     }
@@ -592,11 +619,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setLabelAlignment(LabelAlignment newLabelAlignment) {
         LabelAlignment oldLabelAlignment = labelAlignment;
-        labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
-        if (eNotificationRequired())
+        labelAlignment = newLabelAlignment == null ? NodeStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
+        }
     }
 
     /**
@@ -604,6 +633,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public String getTooltipExpression() {
         return tooltipExpression;
     }
@@ -613,11 +643,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setTooltipExpression(String newTooltipExpression) {
         String oldTooltipExpression = tooltipExpression;
         tooltipExpression = newTooltipExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, oldTooltipExpression, tooltipExpression));
+        }
     }
 
     /**
@@ -625,6 +657,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public String getSizeComputationExpression() {
         return sizeComputationExpression;
     }
@@ -634,11 +667,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setSizeComputationExpression(String newSizeComputationExpression) {
         String oldSizeComputationExpression = sizeComputationExpression;
         sizeComputationExpression = newSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION, oldSizeComputationExpression, sizeComputationExpression));
+        }
     }
 
     /**
@@ -646,6 +681,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public LabelPosition getLabelPosition() {
         return labelPosition;
     }
@@ -655,11 +691,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setLabelPosition(LabelPosition newLabelPosition) {
         LabelPosition oldLabelPosition = labelPosition;
-        labelPosition = newLabelPosition == null ? LABEL_POSITION_EDEFAULT : newLabelPosition;
-        if (eNotificationRequired())
+        labelPosition = newLabelPosition == null ? NodeStyleDescriptionImpl.LABEL_POSITION_EDEFAULT : newLabelPosition;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION, oldLabelPosition, labelPosition));
+        }
     }
 
     /**
@@ -667,6 +705,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public boolean isHideLabelByDefault() {
         return hideLabelByDefault;
     }
@@ -676,11 +715,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setHideLabelByDefault(boolean newHideLabelByDefault) {
         boolean oldHideLabelByDefault = hideLabelByDefault;
         hideLabelByDefault = newHideLabelByDefault;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT, oldHideLabelByDefault, hideLabelByDefault));
+        }
     }
 
     /**
@@ -688,6 +729,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public ResizeKind getResizeKind() {
         return resizeKind;
     }
@@ -697,11 +739,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * 
      * @generated
      */
+    @Override
     public void setResizeKind(ResizeKind newResizeKind) {
         ResizeKind oldResizeKind = resizeKind;
-        resizeKind = newResizeKind == null ? RESIZE_KIND_EDEFAULT : newResizeKind;
-        if (eNotificationRequired())
+        resizeKind = newResizeKind == null ? NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT : newResizeKind;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND, oldResizeKind, resizeKind));
+        }
     }
 
     /**
@@ -715,8 +759,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
         case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return getBorderSizeComputationExpression();
         case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getBorderColor();
+            }
             return basicGetBorderColor();
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
             return getLabelSize();
@@ -727,8 +772,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             return getLabelExpression();
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getLabelColor();
+            }
             return basicGetLabelColor();
         case StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
             return getIconPath();
@@ -811,46 +857,46 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setBorderSizeComputationExpression(NodeStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) null);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
-            setLabelSize(LABEL_SIZE_EDEFAULT);
+            setLabelSize(NodeStyleDescriptionImpl.LABEL_SIZE_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat(LABEL_FORMAT_EDEFAULT);
+            setLabelFormat(NodeStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
-            setShowIcon(SHOW_ICON_EDEFAULT);
+            setShowIcon(NodeStyleDescriptionImpl.SHOW_ICON_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
+            setLabelExpression(NodeStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
             setLabelColor((ColorDescription) null);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
-            setIconPath(ICON_PATH_EDEFAULT);
+            setIconPath(NodeStyleDescriptionImpl.ICON_PATH_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-            setLabelAlignment(LABEL_ALIGNMENT_EDEFAULT);
+            setLabelAlignment(NodeStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-            setTooltipExpression(TOOLTIP_EXPRESSION_EDEFAULT);
+            setTooltipExpression(NodeStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
-            setSizeComputationExpression(SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setSizeComputationExpression(NodeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
-            setLabelPosition(LABEL_POSITION_EDEFAULT);
+            setLabelPosition(NodeStyleDescriptionImpl.LABEL_POSITION_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
-            setHideLabelByDefault(HIDE_LABEL_BY_DEFAULT_EDEFAULT);
+            setHideLabelByDefault(NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
-            setResizeKind(RESIZE_KIND_EDEFAULT);
+            setResizeKind(NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -865,33 +911,35 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
+            return NodeStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null
+                    : !NodeStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
         case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
             return borderColor != null;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
-            return labelSize != LABEL_SIZE_EDEFAULT;
+            return labelSize != NodeStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
-            return labelFormat != LABEL_FORMAT_EDEFAULT;
+            return labelFormat != NodeStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
-            return showIcon != SHOW_ICON_EDEFAULT;
+            return showIcon != NodeStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-            return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+            return NodeStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !NodeStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
             return labelColor != null;
         case StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
-            return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+            return NodeStyleDescriptionImpl.ICON_PATH_EDEFAULT == null ? iconPath != null : !NodeStyleDescriptionImpl.ICON_PATH_EDEFAULT.equals(iconPath);
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-            return labelAlignment != LABEL_ALIGNMENT_EDEFAULT;
+            return labelAlignment != NodeStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-            return TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
+            return NodeStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !NodeStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
         case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
-            return SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? sizeComputationExpression != null : !SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(sizeComputationExpression);
+            return NodeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? sizeComputationExpression != null : !NodeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(sizeComputationExpression);
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
-            return labelPosition != LABEL_POSITION_EDEFAULT;
+            return labelPosition != NodeStyleDescriptionImpl.LABEL_POSITION_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
-            return hideLabelByDefault != HIDE_LABEL_BY_DEFAULT_EDEFAULT;
+            return hideLabelByDefault != NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
-            return resizeKind != RESIZE_KIND_EDEFAULT;
+            return resizeKind != NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -1011,8 +1059,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSizeComputationExpression: ");

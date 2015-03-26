@@ -70,6 +70,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
      * 
      * @generated
      */
+    @Override
     public CoveredLifelinesVariable getCoveredLifelines() {
         return coveredLifelines;
     }
@@ -84,10 +85,11 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
         coveredLifelines = newCoveredLifelines;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.COVERING_ELEMENT_CREATION_TOOL__COVERED_LIFELINES, oldCoveredLifelines, newCoveredLifelines);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -97,18 +99,23 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
      * 
      * @generated
      */
+    @Override
     public void setCoveredLifelines(CoveredLifelinesVariable newCoveredLifelines) {
         if (newCoveredLifelines != coveredLifelines) {
             NotificationChain msgs = null;
-            if (coveredLifelines != null)
-                msgs = ((InternalEObject) coveredLifelines).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.COVERING_ELEMENT_CREATION_TOOL__COVERED_LIFELINES, null, msgs);
-            if (newCoveredLifelines != null)
-                msgs = ((InternalEObject) newCoveredLifelines).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.COVERING_ELEMENT_CREATION_TOOL__COVERED_LIFELINES, null, msgs);
+            if (coveredLifelines != null) {
+                msgs = ((InternalEObject) coveredLifelines).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.COVERING_ELEMENT_CREATION_TOOL__COVERED_LIFELINES, null, msgs);
+            }
+            if (newCoveredLifelines != null) {
+                msgs = ((InternalEObject) newCoveredLifelines).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.COVERING_ELEMENT_CREATION_TOOL__COVERED_LIFELINES, null, msgs);
+            }
             msgs = basicSetCoveredLifelines(newCoveredLifelines, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.COVERING_ELEMENT_CREATION_TOOL__COVERED_LIFELINES, newCoveredLifelines, newCoveredLifelines));
+        }
     }
 
     /**

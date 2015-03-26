@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter;
 
@@ -68,7 +68,7 @@ public interface FilterPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterDescriptionImpl
      * <em>Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.filter.impl.FilterDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterDescription()
      * @generated
@@ -78,7 +78,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -87,7 +87,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -96,7 +96,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -125,7 +125,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Filter Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -134,7 +134,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Filter</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -155,20 +155,20 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Filter Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MAPPING_FILTER__FILTER_KIND = FILTER__FILTER_KIND;
+    int MAPPING_FILTER__FILTER_KIND = FilterPackage.FILTER__FILTER_KIND;
 
     /**
      * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MAPPING_FILTER__MAPPINGS = FILTER_FEATURE_COUNT + 0;
+    int MAPPING_FILTER__MAPPINGS = FilterPackage.FILTER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Semantic Condition Expression</b></em>'
@@ -177,7 +177,7 @@ public interface FilterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION = FILTER_FEATURE_COUNT + 1;
+    int MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION = FilterPackage.FILTER_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>View Condition Expression</b></em>'
@@ -186,7 +186,7 @@ public interface FilterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MAPPING_FILTER__VIEW_CONDITION_EXPRESSION = FILTER_FEATURE_COUNT + 2;
+    int MAPPING_FILTER__VIEW_CONDITION_EXPRESSION = FilterPackage.FILTER_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Mapping Filter</em>' class.
@@ -195,7 +195,7 @@ public interface FilterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MAPPING_FILTER_FEATURE_COUNT = FILTER_FEATURE_COUNT + 3;
+    int MAPPING_FILTER_FEATURE_COUNT = FilterPackage.FILTER_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -212,29 +212,29 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMPOSITE_FILTER_DESCRIPTION__DOCUMENTATION = FILTER_DESCRIPTION__DOCUMENTATION;
+    int COMPOSITE_FILTER_DESCRIPTION__DOCUMENTATION = FilterPackage.FILTER_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMPOSITE_FILTER_DESCRIPTION__NAME = FILTER_DESCRIPTION__NAME;
+    int COMPOSITE_FILTER_DESCRIPTION__NAME = FilterPackage.FILTER_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMPOSITE_FILTER_DESCRIPTION__LABEL = FILTER_DESCRIPTION__LABEL;
+    int COMPOSITE_FILTER_DESCRIPTION__LABEL = FilterPackage.FILTER_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -243,7 +243,7 @@ public interface FilterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMPOSITE_FILTER_DESCRIPTION__FILTERS = FILTER_DESCRIPTION_FEATURE_COUNT + 0;
+    int COMPOSITE_FILTER_DESCRIPTION__FILTERS = FilterPackage.FILTER_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -253,7 +253,7 @@ public interface FilterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMPOSITE_FILTER_DESCRIPTION_FEATURE_COUNT = FILTER_DESCRIPTION_FEATURE_COUNT + 1;
+    int COMPOSITE_FILTER_DESCRIPTION_FEATURE_COUNT = FilterPackage.FILTER_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -270,11 +270,11 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Filter Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int VARIABLE_FILTER__FILTER_KIND = FILTER__FILTER_KIND;
+    int VARIABLE_FILTER__FILTER_KIND = FilterPackage.FILTER__FILTER_KIND;
 
     /**
      * The feature id for the '<em><b>Owned Variables</b></em>' containment
@@ -283,7 +283,7 @@ public interface FilterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VARIABLE_FILTER__OWNED_VARIABLES = FILTER_FEATURE_COUNT + 0;
+    int VARIABLE_FILTER__OWNED_VARIABLES = FilterPackage.FILTER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Semantic Condition Expression</b></em>'
@@ -292,7 +292,7 @@ public interface FilterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION = FILTER_FEATURE_COUNT + 1;
+    int VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION = FilterPackage.FILTER_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Variable Filter</em>'
@@ -301,7 +301,7 @@ public interface FilterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VARIABLE_FILTER_FEATURE_COUNT = FILTER_FEATURE_COUNT + 2;
+    int VARIABLE_FILTER_FEATURE_COUNT = FilterPackage.FILTER_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -326,7 +326,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Multiple</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -335,7 +335,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tree</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -344,7 +344,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -362,7 +362,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Message</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -371,7 +371,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -380,7 +380,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Variable</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -583,7 +583,7 @@ public interface FilterPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -613,19 +613,19 @@ public interface FilterPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterDescription()
          * @generated
          */
-        EClass FILTER_DESCRIPTION = eINSTANCE.getFilterDescription();
+        EClass FILTER_DESCRIPTION = FilterPackage.eINSTANCE.getFilterDescription();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterImpl
          * <em>Filter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterImpl
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilter()
          * @generated
          */
-        EClass FILTER = eINSTANCE.getFilter();
+        EClass FILTER = FilterPackage.eINSTANCE.getFilter();
 
         /**
          * The meta object literal for the '<em><b>Filter Kind</b></em>'
@@ -633,7 +633,7 @@ public interface FilterPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FILTER__FILTER_KIND = eINSTANCE.getFilter_FilterKind();
+        EAttribute FILTER__FILTER_KIND = FilterPackage.eINSTANCE.getFilter_FilterKind();
 
         /**
          * The meta object literal for the '
@@ -645,7 +645,7 @@ public interface FilterPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getMappingFilter()
          * @generated
          */
-        EClass MAPPING_FILTER = eINSTANCE.getMappingFilter();
+        EClass MAPPING_FILTER = FilterPackage.eINSTANCE.getMappingFilter();
 
         /**
          * The meta object literal for the '<em><b>Mappings</b></em>' reference
@@ -653,7 +653,7 @@ public interface FilterPackage extends EPackage {
          * 
          * @generated
          */
-        EReference MAPPING_FILTER__MAPPINGS = eINSTANCE.getMappingFilter_Mappings();
+        EReference MAPPING_FILTER__MAPPINGS = FilterPackage.eINSTANCE.getMappingFilter_Mappings();
 
         /**
          * The meta object literal for the '
@@ -662,16 +662,16 @@ public interface FilterPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION = eINSTANCE.getMappingFilter_SemanticConditionExpression();
+        EAttribute MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION = FilterPackage.eINSTANCE.getMappingFilter_SemanticConditionExpression();
 
         /**
          * The meta object literal for the '
          * <em><b>View Condition Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute MAPPING_FILTER__VIEW_CONDITION_EXPRESSION = eINSTANCE.getMappingFilter_ViewConditionExpression();
+        EAttribute MAPPING_FILTER__VIEW_CONDITION_EXPRESSION = FilterPackage.eINSTANCE.getMappingFilter_ViewConditionExpression();
 
         /**
          * The meta object literal for the '
@@ -683,7 +683,7 @@ public interface FilterPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getCompositeFilterDescription()
          * @generated
          */
-        EClass COMPOSITE_FILTER_DESCRIPTION = eINSTANCE.getCompositeFilterDescription();
+        EClass COMPOSITE_FILTER_DESCRIPTION = FilterPackage.eINSTANCE.getCompositeFilterDescription();
 
         /**
          * The meta object literal for the '<em><b>Filters</b></em>' containment
@@ -691,7 +691,7 @@ public interface FilterPackage extends EPackage {
          * 
          * @generated
          */
-        EReference COMPOSITE_FILTER_DESCRIPTION__FILTERS = eINSTANCE.getCompositeFilterDescription_Filters();
+        EReference COMPOSITE_FILTER_DESCRIPTION__FILTERS = FilterPackage.eINSTANCE.getCompositeFilterDescription_Filters();
 
         /**
          * The meta object literal for the '
@@ -703,7 +703,7 @@ public interface FilterPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getVariableFilter()
          * @generated
          */
-        EClass VARIABLE_FILTER = eINSTANCE.getVariableFilter();
+        EClass VARIABLE_FILTER = FilterPackage.eINSTANCE.getVariableFilter();
 
         /**
          * The meta object literal for the '<em><b>Owned Variables</b></em>'
@@ -712,7 +712,7 @@ public interface FilterPackage extends EPackage {
          * 
          * @generated
          */
-        EReference VARIABLE_FILTER__OWNED_VARIABLES = eINSTANCE.getVariableFilter_OwnedVariables();
+        EReference VARIABLE_FILTER__OWNED_VARIABLES = FilterPackage.eINSTANCE.getVariableFilter_OwnedVariables();
 
         /**
          * The meta object literal for the '
@@ -721,19 +721,19 @@ public interface FilterPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION = eINSTANCE.getVariableFilter_SemanticConditionExpression();
+        EAttribute VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION = FilterPackage.eINSTANCE.getVariableFilter_SemanticConditionExpression();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterVariableImpl
          * <em>Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterVariableImpl
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterVariable()
          * @generated
          */
-        EClass FILTER_VARIABLE = eINSTANCE.getFilterVariable();
+        EClass FILTER_VARIABLE = FilterPackage.eINSTANCE.getFilterVariable();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
@@ -741,7 +741,7 @@ public interface FilterPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FILTER_VARIABLE__NAME = eINSTANCE.getFilterVariable_Name();
+        EAttribute FILTER_VARIABLE__NAME = FilterPackage.eINSTANCE.getFilterVariable_Name();
 
         /**
          * The meta object literal for the '
@@ -752,7 +752,7 @@ public interface FilterPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterKind()
          * @generated
          */
-        EEnum FILTER_KIND = eINSTANCE.getFilterKind();
+        EEnum FILTER_KIND = FilterPackage.eINSTANCE.getFilterKind();
 
     }
 

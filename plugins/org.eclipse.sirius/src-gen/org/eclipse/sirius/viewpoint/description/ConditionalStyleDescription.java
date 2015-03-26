@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -36,7 +36,7 @@ public interface ConditionalStyleDescription extends EObject {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> This expression will get evaluated and if it returns
      * true the contained style will be choosen. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getConditionalStyleDescription_PredicateExpression()
@@ -55,7 +55,7 @@ public interface ConditionalStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Predicate Expression</em>'
      *            attribute.
@@ -66,7 +66,7 @@ public interface ConditionalStyleDescription extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

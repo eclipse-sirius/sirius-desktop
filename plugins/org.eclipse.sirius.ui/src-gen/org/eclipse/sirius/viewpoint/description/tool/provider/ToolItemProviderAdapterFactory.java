@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.provider;
 
@@ -60,7 +60,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -85,7 +85,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public ToolItemProviderAdapterFactory() {
@@ -309,7 +309,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -734,7 +734,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ChangeContext}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -759,7 +759,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.SetValue}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -784,7 +784,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.SetObject}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -809,7 +809,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.Unset}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -834,7 +834,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.MoveElement}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -859,7 +859,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.RemoveElement}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -875,7 +875,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.For} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ForItemProvider forItemProvider;
@@ -884,7 +884,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.For}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -900,7 +900,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.If} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IfItemProvider ifItemProvider;
@@ -909,7 +909,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.If}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -934,7 +934,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteView}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -959,7 +959,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.NameVariable}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1059,7 +1059,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.Case}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1084,7 +1084,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.Default}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1109,7 +1109,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.Switch}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1124,9 +1124,10 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -1134,9 +1135,10 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -1193,6 +1195,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
         return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
     }
@@ -1202,6 +1205,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public ResourceLocator getResourceLocator() {
         return childCreationExtenderManager;
     }
@@ -1211,6 +1215,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -1220,6 +1225,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -1228,9 +1234,10 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -1242,92 +1249,134 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (toolDescriptionItemProvider != null)
+        if (toolDescriptionItemProvider != null) {
             toolDescriptionItemProvider.dispose();
-        if (pasteDescriptionItemProvider != null)
+        }
+        if (pasteDescriptionItemProvider != null) {
             pasteDescriptionItemProvider.dispose();
-        if (selectionWizardDescriptionItemProvider != null)
+        }
+        if (selectionWizardDescriptionItemProvider != null) {
             selectionWizardDescriptionItemProvider.dispose();
-        if (paneBasedSelectionWizardDescriptionItemProvider != null)
+        }
+        if (paneBasedSelectionWizardDescriptionItemProvider != null) {
             paneBasedSelectionWizardDescriptionItemProvider.dispose();
-        if (menuItemDescriptionReferenceItemProvider != null)
+        }
+        if (menuItemDescriptionReferenceItemProvider != null) {
             menuItemDescriptionReferenceItemProvider.dispose();
-        if (operationActionItemProvider != null)
+        }
+        if (operationActionItemProvider != null) {
             operationActionItemProvider.dispose();
-        if (externalJavaActionItemProvider != null)
+        }
+        if (externalJavaActionItemProvider != null) {
             externalJavaActionItemProvider.dispose();
-        if (externalJavaActionCallItemProvider != null)
+        }
+        if (externalJavaActionCallItemProvider != null) {
             externalJavaActionCallItemProvider.dispose();
-        if (popupMenuItemProvider != null)
+        }
+        if (popupMenuItemProvider != null) {
             popupMenuItemProvider.dispose();
-        if (acceleoVariableItemProvider != null)
+        }
+        if (acceleoVariableItemProvider != null) {
             acceleoVariableItemProvider.dispose();
-        if (elementDropVariableItemProvider != null)
+        }
+        if (elementDropVariableItemProvider != null) {
             elementDropVariableItemProvider.dispose();
-        if (elementSelectVariableItemProvider != null)
+        }
+        if (elementSelectVariableItemProvider != null) {
             elementSelectVariableItemProvider.dispose();
-        if (elementVariableItemProvider != null)
+        }
+        if (elementVariableItemProvider != null) {
             elementVariableItemProvider.dispose();
-        if (elementViewVariableItemProvider != null)
+        }
+        if (elementViewVariableItemProvider != null) {
             elementViewVariableItemProvider.dispose();
-        if (elementDeleteVariableItemProvider != null)
+        }
+        if (elementDeleteVariableItemProvider != null) {
             elementDeleteVariableItemProvider.dispose();
-        if (dropContainerVariableItemProvider != null)
+        }
+        if (dropContainerVariableItemProvider != null) {
             dropContainerVariableItemProvider.dispose();
-        if (selectContainerVariableItemProvider != null)
+        }
+        if (selectContainerVariableItemProvider != null) {
             selectContainerVariableItemProvider.dispose();
-        if (containerViewVariableItemProvider != null)
+        }
+        if (containerViewVariableItemProvider != null) {
             containerViewVariableItemProvider.dispose();
-        if (selectModelElementVariableItemProvider != null)
+        }
+        if (selectModelElementVariableItemProvider != null) {
             selectModelElementVariableItemProvider.dispose();
-        if (editMaskVariablesItemProvider != null)
+        }
+        if (editMaskVariablesItemProvider != null) {
             editMaskVariablesItemProvider.dispose();
-        if (initialNodeCreationOperationItemProvider != null)
+        }
+        if (initialNodeCreationOperationItemProvider != null) {
             initialNodeCreationOperationItemProvider.dispose();
-        if (initialOperationItemProvider != null)
+        }
+        if (initialOperationItemProvider != null) {
             initialOperationItemProvider.dispose();
-        if (initEdgeCreationOperationItemProvider != null)
+        }
+        if (initEdgeCreationOperationItemProvider != null) {
             initEdgeCreationOperationItemProvider.dispose();
-        if (initialContainerDropOperationItemProvider != null)
+        }
+        if (initialContainerDropOperationItemProvider != null) {
             initialContainerDropOperationItemProvider.dispose();
-        if (createInstanceItemProvider != null)
+        }
+        if (createInstanceItemProvider != null) {
             createInstanceItemProvider.dispose();
-        if (changeContextItemProvider != null)
+        }
+        if (changeContextItemProvider != null) {
             changeContextItemProvider.dispose();
-        if (setValueItemProvider != null)
+        }
+        if (setValueItemProvider != null) {
             setValueItemProvider.dispose();
-        if (setObjectItemProvider != null)
+        }
+        if (setObjectItemProvider != null) {
             setObjectItemProvider.dispose();
-        if (unsetItemProvider != null)
+        }
+        if (unsetItemProvider != null) {
             unsetItemProvider.dispose();
-        if (moveElementItemProvider != null)
+        }
+        if (moveElementItemProvider != null) {
             moveElementItemProvider.dispose();
-        if (removeElementItemProvider != null)
+        }
+        if (removeElementItemProvider != null) {
             removeElementItemProvider.dispose();
-        if (forItemProvider != null)
+        }
+        if (forItemProvider != null) {
             forItemProvider.dispose();
-        if (ifItemProvider != null)
+        }
+        if (ifItemProvider != null) {
             ifItemProvider.dispose();
-        if (deleteViewItemProvider != null)
+        }
+        if (deleteViewItemProvider != null) {
             deleteViewItemProvider.dispose();
-        if (nameVariableItemProvider != null)
+        }
+        if (nameVariableItemProvider != null) {
             nameVariableItemProvider.dispose();
-        if (externalJavaActionParameterItemProvider != null)
+        }
+        if (externalJavaActionParameterItemProvider != null) {
             externalJavaActionParameterItemProvider.dispose();
-        if (toolFilterDescriptionItemProvider != null)
+        }
+        if (toolFilterDescriptionItemProvider != null) {
             toolFilterDescriptionItemProvider.dispose();
-        if (featureChangeListenerItemProvider != null)
+        }
+        if (featureChangeListenerItemProvider != null) {
             featureChangeListenerItemProvider.dispose();
-        if (caseItemProvider != null)
+        }
+        if (caseItemProvider != null) {
             caseItemProvider.dispose();
-        if (defaultItemProvider != null)
+        }
+        if (defaultItemProvider != null) {
             defaultItemProvider.dispose();
-        if (switchItemProvider != null)
+        }
+        if (switchItemProvider != null) {
             switchItemProvider.dispose();
+        }
     }
 
 }

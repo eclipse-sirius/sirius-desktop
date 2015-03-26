@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -37,7 +37,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -47,17 +47,17 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DFileImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPath()
      * @generated
      * @ordered
@@ -67,16 +67,16 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     /**
      * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPath()
      * @generated
      * @ordered
      */
-    protected String path = PATH_EDEFAULT;
+    protected String path = DFileImpl.PATH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DFileImpl() {
@@ -85,7 +85,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,49 +95,55 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DFILE__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getPath() {
         return path;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setPath(String newPath) {
         String oldPath = path;
         path = newPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DFILE__PATH, oldPath, path));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +159,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,17 +177,17 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ViewpointPackage.DFILE__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DFileImpl.NAME_EDEFAULT);
             return;
         case ViewpointPackage.DFILE__PATH:
-            setPath(PATH_EDEFAULT);
+            setPath(DFileImpl.PATH_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -189,29 +195,30 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ViewpointPackage.DFILE__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DFileImpl.NAME_EDEFAULT == null ? name != null : !DFileImpl.NAME_EDEFAULT.equals(name);
         case ViewpointPackage.DFILE__PATH:
-            return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+            return DFileImpl.PATH_EDEFAULT == null ? path != null : !DFileImpl.PATH_EDEFAULT.equals(path);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

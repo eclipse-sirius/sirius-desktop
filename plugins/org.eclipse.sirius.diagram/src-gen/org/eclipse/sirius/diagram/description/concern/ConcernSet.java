@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.concern;
 
@@ -40,7 +40,7 @@ public interface ConcernSet extends DocumentedElement {
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All concerns <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Concern Descriptions</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernSet_OwnedConcernDescriptions()

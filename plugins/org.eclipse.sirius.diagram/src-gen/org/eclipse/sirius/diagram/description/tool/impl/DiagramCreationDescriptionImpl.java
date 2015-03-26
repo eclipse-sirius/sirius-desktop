@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -70,13 +70,15 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
      * 
      * @generated
      */
+    @Override
     public DiagramDescription getDiagramDescription() {
         if (diagramDescription != null && diagramDescription.eIsProxy()) {
             InternalEObject oldDiagramDescription = (InternalEObject) diagramDescription;
             diagramDescription = (DiagramDescription) eResolveProxy(oldDiagramDescription);
             if (diagramDescription != oldDiagramDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.DIAGRAM_CREATION_DESCRIPTION__DIAGRAM_DESCRIPTION, oldDiagramDescription, diagramDescription));
+                }
             }
         }
         return diagramDescription;
@@ -96,11 +98,13 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
      * 
      * @generated
      */
+    @Override
     public void setDiagramDescription(DiagramDescription newDiagramDescription) {
         DiagramDescription oldDiagramDescription = diagramDescription;
         diagramDescription = newDiagramDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DIAGRAM_CREATION_DESCRIPTION__DIAGRAM_DESCRIPTION, oldDiagramDescription, diagramDescription));
+        }
     }
 
     /**
@@ -112,8 +116,9 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ToolPackage.DIAGRAM_CREATION_DESCRIPTION__DIAGRAM_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDiagramDescription();
+            }
             return basicGetDiagramDescription();
         }
         return super.eGet(featureID, resolve, coreType);

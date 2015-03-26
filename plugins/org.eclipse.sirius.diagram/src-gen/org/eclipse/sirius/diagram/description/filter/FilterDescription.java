@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter;
 
@@ -32,7 +32,7 @@ public interface FilterDescription extends DocumentedElement, IdentifiedElement 
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return true if the specified viewpoint element is visible for this
      * filter.
-     * 
+     *
      * @param element
      *            The element to test. <!-- end-model-doc -->
      * @model

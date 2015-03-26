@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -81,7 +81,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DiagramExtensionDescriptionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getViewpointURI()
@@ -103,7 +103,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * @generated
      * @ordered
      */
-    protected String viewpointURI = VIEWPOINT_URI_EDEFAULT;
+    protected String viewpointURI = DiagramExtensionDescriptionImpl.VIEWPOINT_URI_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRepresentationName()
@@ -125,7 +125,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * @generated
      * @ordered
      */
-    protected String representationName = REPRESENTATION_NAME_EDEFAULT;
+    protected String representationName = DiagramExtensionDescriptionImpl.REPRESENTATION_NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}'
@@ -192,6 +192,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -201,11 +202,13 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__NAME, oldName, name));
+        }
     }
 
     /**
@@ -213,6 +216,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public String getViewpointURI() {
         return viewpointURI;
     }
@@ -222,11 +226,13 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public void setViewpointURI(String newViewpointURI) {
         String oldViewpointURI = viewpointURI;
         viewpointURI = newViewpointURI;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VIEWPOINT_URI, oldViewpointURI, viewpointURI));
+        }
     }
 
     /**
@@ -234,6 +240,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public String getRepresentationName() {
         return representationName;
     }
@@ -243,11 +250,13 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public void setRepresentationName(String newRepresentationName) {
         String oldRepresentationName = representationName;
         representationName = newRepresentationName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__REPRESENTATION_NAME, oldRepresentationName, representationName));
+        }
     }
 
     /**
@@ -255,6 +264,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public EList<EPackage> getMetamodel() {
         if (metamodel == null) {
             metamodel = new EObjectResolvingEList<EPackage>(EPackage.class, this, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__METAMODEL);
@@ -267,6 +277,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public EList<AdditionalLayer> getLayers() {
         if (layers == null) {
             layers = new EObjectContainmentEList.Resolving<AdditionalLayer>(AdditionalLayer.class, this, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS);
@@ -279,20 +290,23 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public ValidationSet getValidationSet() {
         if (validationSet != null && validationSet.eIsProxy()) {
             InternalEObject oldValidationSet = (InternalEObject) validationSet;
             validationSet = (ValidationSet) eResolveProxy(oldValidationSet);
             if (validationSet != oldValidationSet) {
                 InternalEObject newValidationSet = (InternalEObject) validationSet;
-                NotificationChain msgs = oldValidationSet.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, null, null);
+                NotificationChain msgs = oldValidationSet.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, null, null);
                 if (newValidationSet.eInternalContainer() == null) {
-                    msgs = newValidationSet.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, null, msgs);
+                    msgs = newValidationSet.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, oldValidationSet, validationSet));
+                }
             }
         }
         return validationSet;
@@ -317,10 +331,11 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
         validationSet = newValidationSet;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, oldValidationSet, newValidationSet);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -330,18 +345,23 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public void setValidationSet(ValidationSet newValidationSet) {
         if (newValidationSet != validationSet) {
             NotificationChain msgs = null;
-            if (validationSet != null)
-                msgs = ((InternalEObject) validationSet).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, null, msgs);
-            if (newValidationSet != null)
-                msgs = ((InternalEObject) newValidationSet).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, null, msgs);
+            if (validationSet != null) {
+                msgs = ((InternalEObject) validationSet).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, null, msgs);
+            }
+            if (newValidationSet != null) {
+                msgs = ((InternalEObject) newValidationSet).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, null, msgs);
+            }
             msgs = basicSetValidationSet(newValidationSet, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, newValidationSet, newValidationSet));
+        }
     }
 
     /**
@@ -349,20 +369,23 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public ConcernSet getConcerns() {
         if (concerns != null && concerns.eIsProxy()) {
             InternalEObject oldConcerns = (InternalEObject) concerns;
             concerns = (ConcernSet) eResolveProxy(oldConcerns);
             if (concerns != oldConcerns) {
                 InternalEObject newConcerns = (InternalEObject) concerns;
-                NotificationChain msgs = oldConcerns.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, null, null);
+                NotificationChain msgs = oldConcerns.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, null, null);
                 if (newConcerns.eInternalContainer() == null) {
-                    msgs = newConcerns.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, null, msgs);
+                    msgs = newConcerns.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, oldConcerns, concerns));
+                }
             }
         }
         return concerns;
@@ -387,10 +410,11 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
         concerns = newConcerns;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, oldConcerns, newConcerns);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -400,18 +424,23 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      * 
      * @generated
      */
+    @Override
     public void setConcerns(ConcernSet newConcerns) {
         if (newConcerns != concerns) {
             NotificationChain msgs = null;
-            if (concerns != null)
-                msgs = ((InternalEObject) concerns).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, null, msgs);
-            if (newConcerns != null)
-                msgs = ((InternalEObject) newConcerns).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, null, msgs);
+            if (concerns != null) {
+                msgs = ((InternalEObject) concerns).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, null, msgs);
+            }
+            if (newConcerns != null) {
+                msgs = ((InternalEObject) newConcerns).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, null, msgs);
+            }
             msgs = basicSetConcerns(newConcerns, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, newConcerns, newConcerns));
+        }
     }
 
     /**
@@ -451,12 +480,14 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS:
             return getLayers();
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET:
-            if (resolve)
+            if (resolve) {
                 return getValidationSet();
+            }
             return basicGetValidationSet();
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS:
-            if (resolve)
+            if (resolve) {
                 return getConcerns();
+            }
             return basicGetConcerns();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -507,13 +538,13 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DiagramExtensionDescriptionImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VIEWPOINT_URI:
-            setViewpointURI(VIEWPOINT_URI_EDEFAULT);
+            setViewpointURI(DiagramExtensionDescriptionImpl.VIEWPOINT_URI_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__REPRESENTATION_NAME:
-            setRepresentationName(REPRESENTATION_NAME_EDEFAULT);
+            setRepresentationName(DiagramExtensionDescriptionImpl.REPRESENTATION_NAME_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__METAMODEL:
             getMetamodel().clear();
@@ -540,11 +571,12 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DiagramExtensionDescriptionImpl.NAME_EDEFAULT == null ? name != null : !DiagramExtensionDescriptionImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VIEWPOINT_URI:
-            return VIEWPOINT_URI_EDEFAULT == null ? viewpointURI != null : !VIEWPOINT_URI_EDEFAULT.equals(viewpointURI);
+            return DiagramExtensionDescriptionImpl.VIEWPOINT_URI_EDEFAULT == null ? viewpointURI != null : !DiagramExtensionDescriptionImpl.VIEWPOINT_URI_EDEFAULT.equals(viewpointURI);
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__REPRESENTATION_NAME:
-            return REPRESENTATION_NAME_EDEFAULT == null ? representationName != null : !REPRESENTATION_NAME_EDEFAULT.equals(representationName);
+            return DiagramExtensionDescriptionImpl.REPRESENTATION_NAME_EDEFAULT == null ? representationName != null : !DiagramExtensionDescriptionImpl.REPRESENTATION_NAME_EDEFAULT
+                    .equals(representationName);
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__METAMODEL:
             return metamodel != null && !metamodel.isEmpty();
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS:
@@ -564,8 +596,9 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

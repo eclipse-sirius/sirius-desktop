@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -29,12 +29,12 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * <em><b>Computed Style Description Registry</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.ComputedStyleDescriptionRegistryImpl#getComputedStyleDescriptions
  * <em>Computed Style Descriptions</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -43,7 +43,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
      * The cached value of the '{@link #getComputedStyleDescriptions()
      * <em>Computed Style Descriptions</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getComputedStyleDescriptions()
      * @generated
      * @ordered
@@ -74,6 +74,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
      * 
      * @generated
      */
+    @Override
     public EList<StyleDescription> getComputedStyleDescriptions() {
         if (computedStyleDescriptions == null) {
             computedStyleDescriptions = new EObjectContainmentEList.Resolving<StyleDescription>(StyleDescription.class, this,

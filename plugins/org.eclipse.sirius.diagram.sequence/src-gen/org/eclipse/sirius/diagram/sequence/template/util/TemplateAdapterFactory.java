@@ -58,8 +58,8 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public TemplateAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = TemplatePackage.eINSTANCE;
+        if (TemplateAdapterFactory.modelPackage == null) {
+            TemplateAdapterFactory.modelPackage = TemplatePackage.eINSTANCE;
         }
     }
 
@@ -74,11 +74,11 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == TemplateAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == TemplateAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -86,7 +86,7 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TemplateSwitch<Adapter> modelSwitch = new TemplateSwitch<Adapter>() {

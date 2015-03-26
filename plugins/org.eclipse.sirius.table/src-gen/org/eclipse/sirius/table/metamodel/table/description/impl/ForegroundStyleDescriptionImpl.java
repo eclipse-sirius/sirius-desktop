@@ -59,7 +59,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * @generated
      * @ordered
      */
-    protected int labelSize = LABEL_SIZE_EDEFAULT;
+    protected int labelSize = ForegroundStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
@@ -79,7 +79,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = LABEL_FORMAT_EDEFAULT;
+    protected FontFormat labelFormat = ForegroundStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getForeGroundColor()
@@ -116,6 +116,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public int getLabelSize() {
         return labelSize;
     }
@@ -125,11 +126,13 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public void setLabelSize(int newLabelSize) {
         int oldLabelSize = labelSize;
         labelSize = newLabelSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
+        }
     }
 
     /**
@@ -137,6 +140,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public FontFormat getLabelFormat() {
         return labelFormat;
     }
@@ -146,11 +150,13 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public void setLabelFormat(FontFormat newLabelFormat) {
         FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired())
+        labelFormat = newLabelFormat == null ? ForegroundStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
+        }
     }
 
     /**
@@ -158,13 +164,15 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public ColorDescription getForeGroundColor() {
         if (foreGroundColor != null && foreGroundColor.eIsProxy()) {
             InternalEObject oldForeGroundColor = (InternalEObject) foreGroundColor;
             foreGroundColor = (ColorDescription) eResolveProxy(oldForeGroundColor);
             if (foreGroundColor != oldForeGroundColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR, oldForeGroundColor, foreGroundColor));
+                }
             }
         }
         return foreGroundColor;
@@ -184,11 +192,13 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public void setForeGroundColor(ColorDescription newForeGroundColor) {
         ColorDescription oldForeGroundColor = foreGroundColor;
         foreGroundColor = newForeGroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR, oldForeGroundColor, foreGroundColor));
+        }
     }
 
     /**
@@ -204,8 +214,9 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT:
             return getLabelFormat();
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getForeGroundColor();
+            }
             return basicGetForeGroundColor();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -241,10 +252,10 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_SIZE:
-            setLabelSize(LABEL_SIZE_EDEFAULT);
+            setLabelSize(ForegroundStyleDescriptionImpl.LABEL_SIZE_EDEFAULT);
             return;
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat(LABEL_FORMAT_EDEFAULT);
+            setLabelFormat(ForegroundStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT);
             return;
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR:
             setForeGroundColor((ColorDescription) null);
@@ -262,9 +273,9 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_SIZE:
-            return labelSize != LABEL_SIZE_EDEFAULT;
+            return labelSize != ForegroundStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT:
-            return labelFormat != LABEL_FORMAT_EDEFAULT;
+            return labelFormat != ForegroundStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR:
             return foreGroundColor != null;
         }
@@ -278,8 +289,9 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (labelSize: ");

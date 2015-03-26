@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -73,7 +73,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * EdgeMappings used by this tool. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Edge Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getEdgeCreationDescription_EdgeMappings()
      * @model required="true"
@@ -86,7 +86,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The semantic element of the source view. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source Variable</em>' containment
      *         reference.
      * @see #setSourceVariable(SourceEdgeCreationVariable)
@@ -117,7 +117,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The semantic element of the target view. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Variable</em>' containment
      *         reference.
      * @see #setTargetVariable(TargetEdgeCreationVariable)
@@ -148,7 +148,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The source view (instance of EdgeTarget) <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source View Variable</em>' containment
      *         reference.
      * @see #setSourceViewVariable(SourceEdgeViewCreationVariable)
@@ -165,7 +165,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceViewVariable
      * <em>Source View Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source View Variable</em>'
      *            containment reference.
@@ -179,7 +179,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The target view (instance of EdgeTarget) <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target View Variable</em>' containment
      *         reference.
      * @see #setTargetViewVariable(TargetEdgeViewCreationVariable)
@@ -196,7 +196,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetViewVariable
      * <em>Target View Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target View Variable</em>'
      *            containment reference.
@@ -209,7 +209,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The first operation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitEdgeCreationOperation)
@@ -239,7 +239,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * end-user-doc --> <!-- begin-model-doc --> The path of the icon to display
      * in the palette. If unset, the icon corresponding to the semantic element
      * associated with the mapping will be displayed. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getEdgeCreationDescription_IconPath()
@@ -253,7 +253,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getIconPath
      * <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()
@@ -268,9 +268,9 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All mappings that create views that are able to received a request to
      * manage this creation
-     * 
+     *
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Extra Source Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getEdgeCreationDescription_ExtraSourceMappings()
      * @model
@@ -285,9 +285,9 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All mappings that create views that are able to received a request to
      * manage this creation
-     * 
+     *
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Extra Target Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getEdgeCreationDescription_ExtraTargetMappings()
      * @model
@@ -300,7 +300,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The start precondition of the tool. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Connection Start Precondition</em>'
      *         attribute.
      * @see #setConnectionStartPrecondition(String)
@@ -332,7 +332,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Returns the best mapping to use.
-     * 
+     *
      * @param source
      *            The source View.
      * @param target

@@ -127,14 +127,14 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#eNS_URI
      * @see #init()
      * @generated
      */
     private TablePackageImpl() {
-        super(eNS_URI, TableFactory.eINSTANCE);
+        super(TablePackage.eNS_URI, TableFactory.eINSTANCE);
     }
 
     /**
@@ -147,26 +147,28 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link TablePackage#eINSTANCE} when
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static TablePackage init() {
-        if (isInited)
+        if (TablePackageImpl.isInited) {
             return (TablePackage) EPackage.Registry.INSTANCE.getEPackage(TablePackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        TablePackageImpl theTablePackage = (TablePackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof TablePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new TablePackageImpl());
+        TablePackageImpl theTablePackage = (TablePackageImpl) (EPackage.Registry.INSTANCE.get(TablePackage.eNS_URI) instanceof TablePackageImpl ? EPackage.Registry.INSTANCE.get(TablePackage.eNS_URI)
+                : new TablePackageImpl());
 
-        isInited = true;
+        TablePackageImpl.isInited = true;
 
         // Initialize simple dependencies
         ViewpointPackage.eINSTANCE.eClass();
@@ -196,6 +198,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTable() {
         return dTableEClass;
     }
@@ -205,6 +208,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTable_Columns() {
         return (EReference) dTableEClass.getEStructuralFeatures().get(0);
     }
@@ -214,6 +218,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTable_Description() {
         return (EReference) dTableEClass.getEStructuralFeatures().get(2);
     }
@@ -223,6 +228,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDTable_HeaderColumnWidth() {
         return (EAttribute) dTableEClass.getEStructuralFeatures().get(1);
     }
@@ -232,6 +238,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTableElement() {
         return dTableElementEClass;
     }
@@ -241,6 +248,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTableElement_TableElementMapping() {
         return (EReference) dTableElementEClass.getEStructuralFeatures().get(0);
     }
@@ -250,6 +258,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getLineContainer() {
         return lineContainerEClass;
     }
@@ -259,6 +268,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getLineContainer_Lines() {
         return (EReference) lineContainerEClass.getEStructuralFeatures().get(0);
     }
@@ -268,6 +278,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDLine() {
         return dLineEClass;
     }
@@ -277,6 +288,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDLine_Label() {
         return (EAttribute) dLineEClass.getEStructuralFeatures().get(0);
     }
@@ -286,6 +298,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDLine_OriginMapping() {
         return (EReference) dLineEClass.getEStructuralFeatures().get(1);
     }
@@ -295,6 +308,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDLine_Visible() {
         return (EAttribute) dLineEClass.getEStructuralFeatures().get(2);
     }
@@ -304,6 +318,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDLine_Collapsed() {
         return (EAttribute) dLineEClass.getEStructuralFeatures().get(3);
     }
@@ -313,6 +328,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDLine_Cells() {
         return (EReference) dLineEClass.getEStructuralFeatures().get(4);
     }
@@ -322,6 +338,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDLine_Container() {
         return (EReference) dLineEClass.getEStructuralFeatures().get(5);
     }
@@ -331,6 +348,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDLine_OrderedCells() {
         return (EReference) dLineEClass.getEStructuralFeatures().get(6);
     }
@@ -340,6 +358,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDLine_CurrentStyle() {
         return (EReference) dLineEClass.getEStructuralFeatures().get(7);
     }
@@ -349,6 +368,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDCell() {
         return dCellEClass;
     }
@@ -358,6 +378,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDCell_Label() {
         return (EAttribute) dCellEClass.getEStructuralFeatures().get(0);
     }
@@ -367,6 +388,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDCell_Line() {
         return (EReference) dCellEClass.getEStructuralFeatures().get(1);
     }
@@ -376,6 +398,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDCell_Column() {
         return (EReference) dCellEClass.getEStructuralFeatures().get(2);
     }
@@ -385,6 +408,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDCell_CurrentStyle() {
         return (EReference) dCellEClass.getEStructuralFeatures().get(3);
     }
@@ -394,6 +418,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDCell_Updater() {
         return (EReference) dCellEClass.getEStructuralFeatures().get(4);
     }
@@ -403,6 +428,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDCell_IntersectionMapping() {
         return (EReference) dCellEClass.getEStructuralFeatures().get(5);
     }
@@ -412,6 +438,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDCellStyle() {
         return dCellStyleEClass;
     }
@@ -421,6 +448,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDCellStyle_ForegroundStyleOrigin() {
         return (EReference) dCellStyleEClass.getEStructuralFeatures().get(0);
     }
@@ -430,6 +458,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDCellStyle_BackgroundStyleOrigin() {
         return (EReference) dCellStyleEClass.getEStructuralFeatures().get(1);
     }
@@ -439,6 +468,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDColumn() {
         return dColumnEClass;
     }
@@ -448,6 +478,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDColumn_Label() {
         return (EAttribute) dColumnEClass.getEStructuralFeatures().get(0);
     }
@@ -457,6 +488,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDColumn_Cells() {
         return (EReference) dColumnEClass.getEStructuralFeatures().get(1);
     }
@@ -466,6 +498,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDColumn_OriginMapping() {
         return (EReference) dColumnEClass.getEStructuralFeatures().get(2);
     }
@@ -475,6 +508,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDColumn_Table() {
         return (EReference) dColumnEClass.getEStructuralFeatures().get(3);
     }
@@ -484,6 +518,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDColumn_OrderedCells() {
         return (EReference) dColumnEClass.getEStructuralFeatures().get(4);
     }
@@ -493,6 +528,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDColumn_Visible() {
         return (EAttribute) dColumnEClass.getEStructuralFeatures().get(5);
     }
@@ -502,6 +538,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDColumn_Width() {
         return (EAttribute) dColumnEClass.getEStructuralFeatures().get(6);
     }
@@ -511,6 +548,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDColumn_CurrentStyle() {
         return (EReference) dColumnEClass.getEStructuralFeatures().get(7);
     }
@@ -520,6 +558,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTargetColumn() {
         return dTargetColumnEClass;
     }
@@ -529,6 +568,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDFeatureColumn() {
         return dFeatureColumnEClass;
     }
@@ -538,6 +578,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDFeatureColumn_FeatureName() {
         return (EAttribute) dFeatureColumnEClass.getEStructuralFeatures().get(0);
     }
@@ -547,6 +588,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTableElementSynchronizer() {
         return dTableElementSynchronizerEClass;
     }
@@ -556,6 +598,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTableElementStyle() {
         return dTableElementStyleEClass;
     }
@@ -565,6 +608,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDTableElementStyle_LabelSize() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(0);
     }
@@ -574,6 +618,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDTableElementStyle_LabelFormat() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(1);
     }
@@ -583,6 +628,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDTableElementStyle_ForegroundColor() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(4);
     }
@@ -592,6 +638,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDTableElementStyle_BackgroundColor() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(5);
     }
@@ -601,6 +648,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDTableElementStyle_DefaultForegroundStyle() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(2);
     }
@@ -610,6 +658,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDTableElementStyle_DefaultBackgroundStyle() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(3);
     }
@@ -619,6 +668,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
+    @Override
     public TableFactory getTableFactory() {
         return (TableFactory) getEFactoryInstance();
     }
@@ -638,68 +688,69 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        dTableEClass = createEClass(DTABLE);
-        createEReference(dTableEClass, DTABLE__COLUMNS);
-        createEAttribute(dTableEClass, DTABLE__HEADER_COLUMN_WIDTH);
-        createEReference(dTableEClass, DTABLE__DESCRIPTION);
+        dTableEClass = createEClass(TablePackage.DTABLE);
+        createEReference(dTableEClass, TablePackage.DTABLE__COLUMNS);
+        createEAttribute(dTableEClass, TablePackage.DTABLE__HEADER_COLUMN_WIDTH);
+        createEReference(dTableEClass, TablePackage.DTABLE__DESCRIPTION);
 
-        dTableElementEClass = createEClass(DTABLE_ELEMENT);
-        createEReference(dTableElementEClass, DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING);
+        dTableElementEClass = createEClass(TablePackage.DTABLE_ELEMENT);
+        createEReference(dTableElementEClass, TablePackage.DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING);
 
-        lineContainerEClass = createEClass(LINE_CONTAINER);
-        createEReference(lineContainerEClass, LINE_CONTAINER__LINES);
+        lineContainerEClass = createEClass(TablePackage.LINE_CONTAINER);
+        createEReference(lineContainerEClass, TablePackage.LINE_CONTAINER__LINES);
 
-        dLineEClass = createEClass(DLINE);
-        createEAttribute(dLineEClass, DLINE__LABEL);
-        createEReference(dLineEClass, DLINE__ORIGIN_MAPPING);
-        createEAttribute(dLineEClass, DLINE__VISIBLE);
-        createEAttribute(dLineEClass, DLINE__COLLAPSED);
-        createEReference(dLineEClass, DLINE__CELLS);
-        createEReference(dLineEClass, DLINE__CONTAINER);
-        createEReference(dLineEClass, DLINE__ORDERED_CELLS);
-        createEReference(dLineEClass, DLINE__CURRENT_STYLE);
+        dLineEClass = createEClass(TablePackage.DLINE);
+        createEAttribute(dLineEClass, TablePackage.DLINE__LABEL);
+        createEReference(dLineEClass, TablePackage.DLINE__ORIGIN_MAPPING);
+        createEAttribute(dLineEClass, TablePackage.DLINE__VISIBLE);
+        createEAttribute(dLineEClass, TablePackage.DLINE__COLLAPSED);
+        createEReference(dLineEClass, TablePackage.DLINE__CELLS);
+        createEReference(dLineEClass, TablePackage.DLINE__CONTAINER);
+        createEReference(dLineEClass, TablePackage.DLINE__ORDERED_CELLS);
+        createEReference(dLineEClass, TablePackage.DLINE__CURRENT_STYLE);
 
-        dCellEClass = createEClass(DCELL);
-        createEAttribute(dCellEClass, DCELL__LABEL);
-        createEReference(dCellEClass, DCELL__LINE);
-        createEReference(dCellEClass, DCELL__COLUMN);
-        createEReference(dCellEClass, DCELL__CURRENT_STYLE);
-        createEReference(dCellEClass, DCELL__UPDATER);
-        createEReference(dCellEClass, DCELL__INTERSECTION_MAPPING);
+        dCellEClass = createEClass(TablePackage.DCELL);
+        createEAttribute(dCellEClass, TablePackage.DCELL__LABEL);
+        createEReference(dCellEClass, TablePackage.DCELL__LINE);
+        createEReference(dCellEClass, TablePackage.DCELL__COLUMN);
+        createEReference(dCellEClass, TablePackage.DCELL__CURRENT_STYLE);
+        createEReference(dCellEClass, TablePackage.DCELL__UPDATER);
+        createEReference(dCellEClass, TablePackage.DCELL__INTERSECTION_MAPPING);
 
-        dCellStyleEClass = createEClass(DCELL_STYLE);
-        createEReference(dCellStyleEClass, DCELL_STYLE__FOREGROUND_STYLE_ORIGIN);
-        createEReference(dCellStyleEClass, DCELL_STYLE__BACKGROUND_STYLE_ORIGIN);
+        dCellStyleEClass = createEClass(TablePackage.DCELL_STYLE);
+        createEReference(dCellStyleEClass, TablePackage.DCELL_STYLE__FOREGROUND_STYLE_ORIGIN);
+        createEReference(dCellStyleEClass, TablePackage.DCELL_STYLE__BACKGROUND_STYLE_ORIGIN);
 
-        dColumnEClass = createEClass(DCOLUMN);
-        createEAttribute(dColumnEClass, DCOLUMN__LABEL);
-        createEReference(dColumnEClass, DCOLUMN__CELLS);
-        createEReference(dColumnEClass, DCOLUMN__ORIGIN_MAPPING);
-        createEReference(dColumnEClass, DCOLUMN__TABLE);
-        createEReference(dColumnEClass, DCOLUMN__ORDERED_CELLS);
-        createEAttribute(dColumnEClass, DCOLUMN__VISIBLE);
-        createEAttribute(dColumnEClass, DCOLUMN__WIDTH);
-        createEReference(dColumnEClass, DCOLUMN__CURRENT_STYLE);
+        dColumnEClass = createEClass(TablePackage.DCOLUMN);
+        createEAttribute(dColumnEClass, TablePackage.DCOLUMN__LABEL);
+        createEReference(dColumnEClass, TablePackage.DCOLUMN__CELLS);
+        createEReference(dColumnEClass, TablePackage.DCOLUMN__ORIGIN_MAPPING);
+        createEReference(dColumnEClass, TablePackage.DCOLUMN__TABLE);
+        createEReference(dColumnEClass, TablePackage.DCOLUMN__ORDERED_CELLS);
+        createEAttribute(dColumnEClass, TablePackage.DCOLUMN__VISIBLE);
+        createEAttribute(dColumnEClass, TablePackage.DCOLUMN__WIDTH);
+        createEReference(dColumnEClass, TablePackage.DCOLUMN__CURRENT_STYLE);
 
-        dTargetColumnEClass = createEClass(DTARGET_COLUMN);
+        dTargetColumnEClass = createEClass(TablePackage.DTARGET_COLUMN);
 
-        dFeatureColumnEClass = createEClass(DFEATURE_COLUMN);
-        createEAttribute(dFeatureColumnEClass, DFEATURE_COLUMN__FEATURE_NAME);
+        dFeatureColumnEClass = createEClass(TablePackage.DFEATURE_COLUMN);
+        createEAttribute(dFeatureColumnEClass, TablePackage.DFEATURE_COLUMN__FEATURE_NAME);
 
-        dTableElementSynchronizerEClass = createEClass(DTABLE_ELEMENT_SYNCHRONIZER);
+        dTableElementSynchronizerEClass = createEClass(TablePackage.DTABLE_ELEMENT_SYNCHRONIZER);
 
-        dTableElementStyleEClass = createEClass(DTABLE_ELEMENT_STYLE);
-        createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__LABEL_SIZE);
-        createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__LABEL_FORMAT);
-        createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE);
-        createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE);
-        createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR);
-        createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR);
+        dTableElementStyleEClass = createEClass(TablePackage.DTABLE_ELEMENT_STYLE);
+        createEAttribute(dTableElementStyleEClass, TablePackage.DTABLE_ELEMENT_STYLE__LABEL_SIZE);
+        createEAttribute(dTableElementStyleEClass, TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT);
+        createEAttribute(dTableElementStyleEClass, TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE);
+        createEAttribute(dTableElementStyleEClass, TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE);
+        createEAttribute(dTableElementStyleEClass, TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR);
+        createEAttribute(dTableElementStyleEClass, TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR);
     }
 
     /**
@@ -713,18 +764,19 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(TablePackage.eNAME);
+        setNsPrefix(TablePackage.eNS_PREFIX);
+        setNsURI(TablePackage.eNS_URI);
 
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
@@ -754,111 +806,128 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         dFeatureColumnEClass.getESuperTypes().add(this.getDColumn());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(dTableEClass, DTable.class, "DTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDTable_Columns(), this.getDColumn(), this.getDColumn_Table(), "columns", null, 0, -1, DTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDTable_HeaderColumnWidth(), theEcorePackage.getEInt(), "headerColumnWidth", null, 0, 1, DTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTable_Description(), theDescriptionPackage.getTableDescription(), null, "description", null, 0, 1, DTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dTableEClass, DTable.class, "DTable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDTable_Columns(), this.getDColumn(), this.getDColumn_Table(), "columns", null, 0, -1, DTable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getDTable_HeaderColumnWidth(), theEcorePackage.getEInt(), "headerColumnWidth", null, 0, 1, DTable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDTable_Description(), theDescriptionPackage.getTableDescription(), null, "description", null, 0, 1, DTable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dTableElementEClass, DTableElement.class, "DTableElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDTableElement_TableElementMapping(), theDescriptionPackage.getTableMapping(), null, "tableElementMapping", null, 0, 1, DTableElement.class, IS_TRANSIENT, IS_VOLATILE,
-                !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEClass(dTableElementEClass, DTableElement.class, "DTableElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDTableElement_TableElementMapping(), theDescriptionPackage.getTableMapping(), null, "tableElementMapping", null, 0, 1, DTableElement.class, EPackageImpl.IS_TRANSIENT,
+                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(lineContainerEClass, LineContainer.class, "LineContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getLineContainer_Lines(), this.getDLine(), this.getDLine_Container(), "lines", null, 0, -1, LineContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(lineContainerEClass, LineContainer.class, "LineContainer", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getLineContainer_Lines(), this.getDLine(), this.getDLine_Container(), "lines", null, 0, -1, LineContainer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dLineEClass, DLine.class, "DLine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDLine_Label(), theEcorePackage.getEString(), "label", null, 0, 1, DLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
-        initEReference(getDLine_OriginMapping(), theDescriptionPackage.getLineMapping(), null, "originMapping", null, 1, 1, DLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDLine_Visible(), theEcorePackage.getEBoolean(), "visible", "true", 1, 1, DLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDLine_Collapsed(), theEcorePackage.getEBoolean(), "collapsed", "false", 1, 1, DLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
-        initEReference(getDLine_Cells(), this.getDCell(), this.getDCell_Line(), "cells", null, 0, -1, DLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDLine_Container(), this.getLineContainer(), this.getLineContainer_Lines(), "container", null, 0, 1, DLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDLine_OrderedCells(), this.getDCell(), null, "orderedCells", null, 0, -1, DLine.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEReference(getDLine_CurrentStyle(), this.getDTableElementStyle(), null, "currentStyle", null, 0, 1, DLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dLineEClass, DLine.class, "DLine", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDLine_Label(), theEcorePackage.getEString(), "label", null, 0, 1, DLine.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDLine_OriginMapping(), theDescriptionPackage.getLineMapping(), null, "originMapping", null, 1, 1, DLine.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getDLine_Visible(), theEcorePackage.getEBoolean(), "visible", "true", 1, 1, DLine.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDLine_Collapsed(), theEcorePackage.getEBoolean(), "collapsed", "false", 1, 1, DLine.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDLine_Cells(), this.getDCell(), this.getDCell_Line(), "cells", null, 0, -1, DLine.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDLine_Container(), this.getLineContainer(), this.getLineContainer_Lines(), "container", null, 0, 1, DLine.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDLine_OrderedCells(), this.getDCell(), null, "orderedCells", null, 0, -1, DLine.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDLine_CurrentStyle(), this.getDTableElementStyle(), null, "currentStyle", null, 0, 1, DLine.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dCellEClass, DCell.class, "DCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDCell_Label(), theEcorePackage.getEString(), "label", null, 0, 1, DCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
-        initEReference(getDCell_Line(), this.getDLine(), this.getDLine_Cells(), "line", null, 0, 1, DCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDCell_Column(), this.getDColumn(), this.getDColumn_Cells(), "column", null, 0, 1, DCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDCell_CurrentStyle(), this.getDCellStyle(), null, "currentStyle", null, 0, 1, DCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDCell_Updater(), theDescriptionPackage.getCellUpdater(), null, "updater", null, 0, 1, DCell.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEReference(getDCell_IntersectionMapping(), theDescriptionPackage.getIntersectionMapping(), null, "intersectionMapping", null, 0, 1, DCell.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dCellEClass, DCell.class, "DCell", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDCell_Label(), theEcorePackage.getEString(), "label", null, 0, 1, DCell.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDCell_Line(), this.getDLine(), this.getDLine_Cells(), "line", null, 0, 1, DCell.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDCell_Column(), this.getDColumn(), this.getDColumn_Cells(), "column", null, 0, 1, DCell.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDCell_CurrentStyle(), this.getDCellStyle(), null, "currentStyle", null, 0, 1, DCell.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDCell_Updater(), theDescriptionPackage.getCellUpdater(), null, "updater", null, 0, 1, DCell.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDCell_IntersectionMapping(), theDescriptionPackage.getIntersectionMapping(), null, "intersectionMapping", null, 0, 1, DCell.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dCellStyleEClass, DCellStyle.class, "DCellStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDCellStyle_ForegroundStyleOrigin(), theDescriptionPackage.getTableMapping(), null, "foregroundStyleOrigin", null, 0, 1, DCellStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDCellStyle_BackgroundStyleOrigin(), theDescriptionPackage.getTableMapping(), null, "backgroundStyleOrigin", null, 0, 1, DCellStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dCellStyleEClass, DCellStyle.class, "DCellStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDCellStyle_ForegroundStyleOrigin(), theDescriptionPackage.getTableMapping(), null, "foregroundStyleOrigin", null, 0, 1, DCellStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDCellStyle_BackgroundStyleOrigin(), theDescriptionPackage.getTableMapping(), null, "backgroundStyleOrigin", null, 0, 1, DCellStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dColumnEClass, DColumn.class, "DColumn", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDColumn_Label(), theEcorePackage.getEString(), "label", null, 0, 1, DColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
-        initEReference(getDColumn_Cells(), this.getDCell(), this.getDCell_Column(), "cells", null, 0, -1, DColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDColumn_OriginMapping(), theDescriptionPackage.getColumnMapping(), null, "originMapping", null, 1, 1, DColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDColumn_Table(), this.getDTable(), this.getDTable_Columns(), "table", null, 0, 1, DColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDColumn_OrderedCells(), this.getDCell(), null, "orderedCells", null, 0, -1, DColumn.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDColumn_Visible(), theEcorePackage.getEBoolean(), "visible", "true", 1, 1, DColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDColumn_Width(), theEcorePackage.getEInt(), "width", null, 0, 1, DColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
-        initEReference(getDColumn_CurrentStyle(), this.getDTableElementStyle(), null, "currentStyle", null, 0, 1, DColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dColumnEClass, DColumn.class, "DColumn", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDColumn_Label(), theEcorePackage.getEString(), "label", null, 0, 1, DColumn.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDColumn_Cells(), this.getDCell(), this.getDCell_Column(), "cells", null, 0, -1, DColumn.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDColumn_OriginMapping(), theDescriptionPackage.getColumnMapping(), null, "originMapping", null, 1, 1, DColumn.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDColumn_Table(), this.getDTable(), this.getDTable_Columns(), "table", null, 0, 1, DColumn.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDColumn_OrderedCells(), this.getDCell(), null, "orderedCells", null, 0, -1, DColumn.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDColumn_Visible(), theEcorePackage.getEBoolean(), "visible", "true", 1, 1, DColumn.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDColumn_Width(), theEcorePackage.getEInt(), "width", null, 0, 1, DColumn.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDColumn_CurrentStyle(), this.getDTableElementStyle(), null, "currentStyle", null, 0, 1, DColumn.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dTargetColumnEClass, DTargetColumn.class, "DTargetColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dTargetColumnEClass, DTargetColumn.class, "DTargetColumn", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(dFeatureColumnEClass, DFeatureColumn.class, "DFeatureColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDFeatureColumn_FeatureName(), theEcorePackage.getEString(), "featureName", null, 1, 1, DFeatureColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dFeatureColumnEClass, DFeatureColumn.class, "DFeatureColumn", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDFeatureColumn_FeatureName(), theEcorePackage.getEString(), "featureName", null, 1, 1, DFeatureColumn.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dTableElementSynchronizerEClass, DTableElementSynchronizer.class, "DTableElementSynchronizer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dTableElementSynchronizerEClass, DTableElementSynchronizer.class, "DTableElementSynchronizer", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        EOperation op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, this.getDCell(), "cell", 1, 1, IS_UNIQUE, IS_ORDERED);
+        EOperation op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
+        addEParameter(op, this.getDCell(), "cell", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, this.getDColumn(), "column", 1, 1, IS_UNIQUE, IS_ORDERED);
+        op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
+        addEParameter(op, this.getDColumn(), "column", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, this.getDLine(), "line", 1, 1, IS_UNIQUE, IS_ORDERED);
+        op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
+        addEParameter(op, this.getDLine(), "line", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(dTableElementStyleEClass, DTableElementStyle.class, "DTableElementStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDTableElementStyle_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDTableElementStyle_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", "normal", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDTableElementStyle_DefaultForegroundStyle(), theEcorePackage.getEBoolean(), "defaultForegroundStyle", "false", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDTableElementStyle_DefaultBackgroundStyle(), theEcorePackage.getEBoolean(), "defaultBackgroundStyle", "false", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDTableElementStyle_ForegroundColor(), theViewpointPackage.getRGBValues(), "foregroundColor", "0,0,0", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDTableElementStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "255,255,255", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dTableElementStyleEClass, DTableElementStyle.class, "DTableElementStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDTableElementStyle_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDTableElementStyle_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", "normal", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDTableElementStyle_DefaultForegroundStyle(), theEcorePackage.getEBoolean(), "defaultForegroundStyle", "false", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDTableElementStyle_DefaultBackgroundStyle(), theEcorePackage.getEBoolean(), "defaultBackgroundStyle", "false", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDTableElementStyle_ForegroundColor(), theViewpointPackage.getRGBValues(), "foregroundColor", "0,0,0", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDTableElementStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "255,255,255", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create resource
-        createResource(eNS_URI);
+        createResource(TablePackage.eNS_URI);
     }
 
 } // TablePackageImpl

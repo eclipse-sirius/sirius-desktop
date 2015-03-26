@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -38,7 +38,7 @@ public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DFeatureExtensionImpl() {
@@ -56,7 +56,7 @@ public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,16 +66,18 @@ public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public FeatureExtensionDescription getDescription() {
         if (description != null && description.eIsProxy()) {
             InternalEObject oldDescription = (InternalEObject) description;
             description = (FeatureExtensionDescription) eResolveProxy(oldDescription);
             if (description != oldDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DFEATURE_EXTENSION__DESCRIPTION, oldDescription, description));
+                }
             }
         }
         return description;
@@ -83,7 +85,7 @@ public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FeatureExtensionDescription basicGetDescription() {
@@ -92,27 +94,30 @@ public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDescription(FeatureExtensionDescription newDescription) {
         FeatureExtensionDescription oldDescription = description;
         description = newDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DFEATURE_EXTENSION__DESCRIPTION, oldDescription, description));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.DFEATURE_EXTENSION__DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDescription();
+            }
             return basicGetDescription();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -120,7 +125,7 @@ public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +140,7 @@ public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +155,7 @@ public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

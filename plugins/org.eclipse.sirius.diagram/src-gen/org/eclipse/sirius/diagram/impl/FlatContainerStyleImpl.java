@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -62,7 +62,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * @generated
      * @ordered
      */
-    protected BackgroundStyle backgroundStyle = BACKGROUND_STYLE_EDEFAULT;
+    protected BackgroundStyle backgroundStyle = FlatContainerStyleImpl.BACKGROUND_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBackgroundColor()
@@ -84,7 +84,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * @generated
      * @ordered
      */
-    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
+    protected RGBValues backgroundColor = FlatContainerStyleImpl.BACKGROUND_COLOR_EDEFAULT;
 
     /**
      * The default value of the '{@link #getForegroundColor()
@@ -106,7 +106,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * @generated
      * @ordered
      */
-    protected RGBValues foregroundColor = FOREGROUND_COLOR_EDEFAULT;
+    protected RGBValues foregroundColor = FlatContainerStyleImpl.FOREGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -132,6 +132,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * 
      * @generated
      */
+    @Override
     public BackgroundStyle getBackgroundStyle() {
         return backgroundStyle;
     }
@@ -141,11 +142,13 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * 
      * @generated
      */
+    @Override
     public void setBackgroundStyle(BackgroundStyle newBackgroundStyle) {
         BackgroundStyle oldBackgroundStyle = backgroundStyle;
-        backgroundStyle = newBackgroundStyle == null ? BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
-        if (eNotificationRequired())
+        backgroundStyle = newBackgroundStyle == null ? FlatContainerStyleImpl.BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE, oldBackgroundStyle, backgroundStyle));
+        }
     }
 
     /**
@@ -153,6 +156,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * 
      * @generated
      */
+    @Override
     public RGBValues getBackgroundColor() {
         return backgroundColor;
     }
@@ -162,11 +166,13 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(RGBValues newBackgroundColor) {
         RGBValues oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -174,6 +180,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * 
      * @generated
      */
+    @Override
     public RGBValues getForegroundColor() {
         return foregroundColor;
     }
@@ -183,11 +190,13 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * 
      * @generated
      */
+    @Override
     public void setForegroundColor(RGBValues newForegroundColor) {
         RGBValues oldForegroundColor = foregroundColor;
         foregroundColor = newForegroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
+        }
     }
 
     /**
@@ -238,13 +247,13 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE:
-            setBackgroundStyle(BACKGROUND_STYLE_EDEFAULT);
+            setBackgroundStyle(FlatContainerStyleImpl.BACKGROUND_STYLE_EDEFAULT);
             return;
         case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR:
-            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
+            setBackgroundColor(FlatContainerStyleImpl.BACKGROUND_COLOR_EDEFAULT);
             return;
         case DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR:
-            setForegroundColor(FOREGROUND_COLOR_EDEFAULT);
+            setForegroundColor(FlatContainerStyleImpl.FOREGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -259,11 +268,11 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE:
-            return backgroundStyle != BACKGROUND_STYLE_EDEFAULT;
+            return backgroundStyle != FlatContainerStyleImpl.BACKGROUND_STYLE_EDEFAULT;
         case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR:
-            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
+            return FlatContainerStyleImpl.BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !FlatContainerStyleImpl.BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         case DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR:
-            return FOREGROUND_COLOR_EDEFAULT == null ? foregroundColor != null : !FOREGROUND_COLOR_EDEFAULT.equals(foregroundColor);
+            return FlatContainerStyleImpl.FOREGROUND_COLOR_EDEFAULT == null ? foregroundColor != null : !FlatContainerStyleImpl.FOREGROUND_COLOR_EDEFAULT.equals(foregroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -275,8 +284,9 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (backgroundStyle: ");

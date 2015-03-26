@@ -52,8 +52,8 @@ public class SequenceSwitch<T> {
      * @generated
      */
     public SequenceSwitch() {
-        if (modelPackage == null) {
-            modelPackage = SequencePackage.eINSTANCE;
+        if (SequenceSwitch.modelPackage == null) {
+            SequenceSwitch.modelPackage = SequencePackage.eINSTANCE;
         }
     }
 
@@ -80,7 +80,7 @@ public class SequenceSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == SequenceSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -102,26 +102,36 @@ public class SequenceSwitch<T> {
         case SequencePackage.SEQUENCE_DDIAGRAM: {
             SequenceDDiagram sequenceDDiagram = (SequenceDDiagram) theEObject;
             T result = caseSequenceDDiagram(sequenceDDiagram);
-            if (result == null)
+            if (result == null) {
                 result = caseDSemanticDiagram(sequenceDDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDDiagram(sequenceDDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(sequenceDDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentation(sequenceDDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTarget(sequenceDDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDContainer(sequenceDDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(sequenceDDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(sequenceDDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDModelElement(sequenceDDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

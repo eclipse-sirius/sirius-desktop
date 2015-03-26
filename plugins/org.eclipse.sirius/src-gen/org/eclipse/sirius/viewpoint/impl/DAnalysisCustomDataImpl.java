@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -40,7 +40,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
     /**
      * The default value of the '{@link #getKey() <em>Key</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getKey()
      * @generated
      * @ordered
@@ -50,17 +50,17 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
     /**
      * The cached value of the '{@link #getKey() <em>Key</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getKey()
      * @generated
      * @ordered
      */
-    protected String key = KEY_EDEFAULT;
+    protected String key = DAnalysisCustomDataImpl.KEY_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getData() <em>Data</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getData()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnalysisCustomDataImpl() {
@@ -78,7 +78,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,44 +88,50 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getKey() {
         return key;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setKey(String newKey) {
         String oldKey = key;
         key = newKey;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DANALYSIS_CUSTOM_DATA__KEY, oldKey, key));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObject getData() {
         if (data != null && data.eIsProxy()) {
             InternalEObject oldData = (InternalEObject) data;
             data = eResolveProxy(oldData);
             if (data != oldData) {
                 InternalEObject newData = (InternalEObject) data;
-                NotificationChain msgs = oldData.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, null, null);
+                NotificationChain msgs = oldData.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, null, null);
                 if (newData.eInternalContainer() == null) {
-                    msgs = newData.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, null, msgs);
+                    msgs = newData.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, oldData, data));
+                }
             }
         }
         return data;
@@ -133,7 +139,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetData() {
@@ -142,7 +148,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetData(EObject newData, NotificationChain msgs) {
@@ -150,36 +156,42 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
         data = newData;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, oldData, newData);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setData(EObject newData) {
         if (newData != data) {
             NotificationChain msgs = null;
-            if (data != null)
-                msgs = ((InternalEObject) data).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, null, msgs);
-            if (newData != null)
-                msgs = ((InternalEObject) newData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, null, msgs);
+            if (data != null) {
+                msgs = ((InternalEObject) data).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, null, msgs);
+            }
+            if (newData != null) {
+                msgs = ((InternalEObject) newData).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, null, msgs);
+            }
             msgs = basicSetData(newData, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA, newData, newData));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +205,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,8 +214,9 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
         case ViewpointPackage.DANALYSIS_CUSTOM_DATA__KEY:
             return getKey();
         case ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA:
-            if (resolve)
+            if (resolve) {
                 return getData();
+            }
             return basicGetData();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -211,7 +224,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,14 +242,14 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ViewpointPackage.DANALYSIS_CUSTOM_DATA__KEY:
-            setKey(KEY_EDEFAULT);
+            setKey(DAnalysisCustomDataImpl.KEY_EDEFAULT);
             return;
         case ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA:
             setData((EObject) null);
@@ -247,14 +260,14 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ViewpointPackage.DANALYSIS_CUSTOM_DATA__KEY:
-            return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
+            return DAnalysisCustomDataImpl.KEY_EDEFAULT == null ? key != null : !DAnalysisCustomDataImpl.KEY_EDEFAULT.equals(key);
         case ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA:
             return data != null;
         }
@@ -263,13 +276,14 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (key: ");

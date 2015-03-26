@@ -50,7 +50,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Lifeline Creation Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Lifeline Creation Tool</em>'.
      * @generated
      */
@@ -59,7 +59,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Message Creation Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Message Creation Tool</em>'.
      * @generated
      */
@@ -68,7 +68,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Execution Creation Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Execution Creation Tool</em>'.
      * @generated
      */
@@ -77,7 +77,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>State Creation Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>State Creation Tool</em>'.
      * @generated
      */
@@ -86,7 +86,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Reorder Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Reorder Tool</em>'.
      * @generated
      */
@@ -95,7 +95,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Instance Role Reorder Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Instance Role Reorder Tool</em>'.
      * @generated
      */
@@ -131,7 +131,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Operand Creation Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Operand Creation Tool</em>'.
      * @generated
      */

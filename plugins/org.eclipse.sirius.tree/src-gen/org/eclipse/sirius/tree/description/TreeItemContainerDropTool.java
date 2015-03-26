@@ -213,7 +213,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * {@link org.eclipse.sirius.tree.description.TreeDragSource}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Authorized sources of the drag. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Drag Source</em>' attribute.
      * @see org.eclipse.sirius.tree.description.TreeDragSource
      * @see #setDragSource(TreeDragSource)

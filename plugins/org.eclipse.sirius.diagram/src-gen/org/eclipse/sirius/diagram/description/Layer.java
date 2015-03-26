@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -67,7 +67,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Node
      * mappings that are owned by this simple mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Node Mappings</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_NodeMappings()
@@ -82,7 +82,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Edge
      * mappings that are owned by this simple mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Edge Mappings</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_EdgeMappings()
@@ -98,7 +98,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Edge
      * mapping imports that are owned by this simple mapping. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Edge Mapping Imports</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_EdgeMappingImports()
@@ -114,7 +114,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * container mappings that are owned by this simple mapping. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Container Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_ContainerMappings()
@@ -130,7 +130,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Add here any mapping you want to reuse from another layer or diagram.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_ReusedMappings()
      * @model
@@ -144,7 +144,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the viewpoint. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>All Tools</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_AllTools()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -158,7 +158,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * {@link org.eclipse.sirius.diagram.description.tool.ToolSection}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A tool
      * section encloses many tools <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Tool Sections</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_ToolSections()
@@ -173,7 +173,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Tools that are reused by this viewpoint. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Tools</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_ReusedTools()
      * @model
@@ -205,7 +205,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * {@link org.eclipse.sirius.diagram.description.Layer#getDecorationDescriptionsSet
      * <em>Decoration Descriptions Set</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Decoration Descriptions Set</em>'
      *            containment reference.
@@ -218,7 +218,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * Returns the value of the '<em><b>Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> image
      * path to use as an icon for the layer <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon</em>' attribute.
      * @see #setIcon(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_Icon()
@@ -246,7 +246,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * edge mappings (including import edge mapping) of this simple mapping.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>All Edge Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_AllEdgeMappings()
      * @model transient="true" changeable="false" volatile="true" derived="true"

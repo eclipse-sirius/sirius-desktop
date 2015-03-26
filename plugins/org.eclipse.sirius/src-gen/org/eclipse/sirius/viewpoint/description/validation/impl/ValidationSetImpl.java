@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.validation.impl;
 
@@ -54,7 +54,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -64,17 +64,17 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = ValidationSetImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOwnedRules() <em>Owned Rules</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedRules()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     /**
      * The cached value of the '{@link #getReusedRules() <em>Reused Rules</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedRules()
      * @generated
      * @ordered
@@ -93,7 +93,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ValidationSetImpl() {
@@ -102,7 +102,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,30 +112,34 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ValidationPackage.VALIDATION_SET__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ValidationRule> getOwnedRules() {
         if (ownedRules == null) {
             ownedRules = new EObjectContainmentEList.Resolving<ValidationRule>(ValidationRule.class, this, ValidationPackage.VALIDATION_SET__OWNED_RULES);
@@ -145,9 +149,10 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ValidationRule> getReusedRules() {
         if (reusedRules == null) {
             reusedRules = new EObjectResolvingEList<ValidationRule>(ValidationRule.class, this, ValidationPackage.VALIDATION_SET__REUSED_RULES);
@@ -157,9 +162,10 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ValidationRule> getAllRules() {
         // TODO: implement this method to return the 'All Rules' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -173,7 +179,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,7 +193,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +213,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -231,14 +237,14 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ValidationPackage.VALIDATION_SET__NAME:
-            setName(NAME_EDEFAULT);
+            setName(ValidationSetImpl.NAME_EDEFAULT);
             return;
         case ValidationPackage.VALIDATION_SET__OWNED_RULES:
             getOwnedRules().clear();
@@ -252,14 +258,14 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ValidationPackage.VALIDATION_SET__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return ValidationSetImpl.NAME_EDEFAULT == null ? name != null : !ValidationSetImpl.NAME_EDEFAULT.equals(name);
         case ValidationPackage.VALIDATION_SET__OWNED_RULES:
             return ownedRules != null && !ownedRules.isEmpty();
         case ValidationPackage.VALIDATION_SET__REUSED_RULES:
@@ -272,13 +278,14 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

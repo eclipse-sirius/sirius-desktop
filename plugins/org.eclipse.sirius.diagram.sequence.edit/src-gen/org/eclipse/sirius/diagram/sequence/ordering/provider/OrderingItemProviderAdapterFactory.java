@@ -52,7 +52,7 @@ public class OrderingItemProviderAdapterFactory extends OrderingAdapterFactory i
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -69,7 +69,7 @@ public class OrderingItemProviderAdapterFactory extends OrderingAdapterFactory i
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public OrderingItemProviderAdapterFactory() {
@@ -118,7 +118,7 @@ public class OrderingItemProviderAdapterFactory extends OrderingAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,9 +183,10 @@ public class OrderingItemProviderAdapterFactory extends OrderingAdapterFactory i
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -193,9 +194,10 @@ public class OrderingItemProviderAdapterFactory extends OrderingAdapterFactory i
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -243,6 +245,7 @@ public class OrderingItemProviderAdapterFactory extends OrderingAdapterFactory i
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -252,6 +255,7 @@ public class OrderingItemProviderAdapterFactory extends OrderingAdapterFactory i
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -260,9 +264,10 @@ public class OrderingItemProviderAdapterFactory extends OrderingAdapterFactory i
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -274,18 +279,23 @@ public class OrderingItemProviderAdapterFactory extends OrderingAdapterFactory i
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (eventEndsOrderingItemProvider != null)
+        if (eventEndsOrderingItemProvider != null) {
             eventEndsOrderingItemProvider.dispose();
-        if (singleEventEndItemProvider != null)
+        }
+        if (singleEventEndItemProvider != null) {
             singleEventEndItemProvider.dispose();
-        if (compoundEventEndItemProvider != null)
+        }
+        if (compoundEventEndItemProvider != null) {
             compoundEventEndItemProvider.dispose();
-        if (instanceRolesOrderingItemProvider != null)
+        }
+        if (instanceRolesOrderingItemProvider != null) {
             instanceRolesOrderingItemProvider.dispose();
+        }
     }
 
 }

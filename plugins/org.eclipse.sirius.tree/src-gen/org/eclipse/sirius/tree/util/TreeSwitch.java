@@ -61,8 +61,8 @@ public class TreeSwitch<T> {
      * @generated
      */
     public TreeSwitch() {
-        if (modelPackage == null) {
-            modelPackage = TreePackage.eINSTANCE;
+        if (TreeSwitch.modelPackage == null) {
+            TreeSwitch.modelPackage = TreePackage.eINSTANCE;
         }
     }
 
@@ -89,7 +89,7 @@ public class TreeSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == TreeSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -111,95 +111,127 @@ public class TreeSwitch<T> {
         case TreePackage.DTREE: {
             DTree dTree = (DTree) theEObject;
             T result = caseDTree(dTree);
-            if (result == null)
+            if (result == null) {
                 result = caseDRepresentation(dTree);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDTreeItemContainer(dTree);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(dTree);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dTree);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDModelElement(dTree);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dTree);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TreePackage.DTREE_ELEMENT: {
             DTreeElement dTreeElement = (DTreeElement) theEObject;
             T result = caseDTreeElement(dTreeElement);
-            if (result == null)
+            if (result == null) {
                 result = caseDRepresentationElement(dTreeElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dTreeElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dTreeElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dTreeElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dTreeElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dTreeElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TreePackage.DTREE_ITEM_CONTAINER: {
             DTreeItemContainer dTreeItemContainer = (DTreeItemContainer) theEObject;
             T result = caseDTreeItemContainer(dTreeItemContainer);
-            if (result == null)
+            if (result == null) {
                 result = caseDSemanticDecorator(dTreeItemContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TreePackage.DTREE_ITEM: {
             DTreeItem dTreeItem = (DTreeItem) theEObject;
             T result = caseDTreeItem(dTreeItem);
-            if (result == null)
+            if (result == null) {
                 result = caseDTreeItemContainer(dTreeItem);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDTreeElement(dTreeItem);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dTreeItem);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dTreeItem);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dTreeItem);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dTreeItem);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dTreeItem);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dTreeItem);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TreePackage.TREE_ITEM_STYLE: {
             TreeItemStyle treeItemStyle = (TreeItemStyle) theEObject;
             T result = caseTreeItemStyle(treeItemStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseStyle(treeItemStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(treeItemStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(treeItemStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(treeItemStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(treeItemStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TreePackage.DTREE_ELEMENT_SYNCHRONIZER: {
             DTreeElementSynchronizer dTreeElementSynchronizer = (DTreeElementSynchronizer) theEObject;
             T result = caseDTreeElementSynchronizer(dTreeElementSynchronizer);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

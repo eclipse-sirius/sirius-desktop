@@ -38,7 +38,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TSequenceDiagramItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
     /**
      * This adds a property descriptor for the Ends Ordering feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEndsOrderingPropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
     /**
      * This adds a property descriptor for the Domain Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -93,7 +93,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated changing the order of the get children feature to have a
      *                more meaningful result : generated at the bottom,specified
      *                at the top.
@@ -136,7 +136,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -175,7 +175,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

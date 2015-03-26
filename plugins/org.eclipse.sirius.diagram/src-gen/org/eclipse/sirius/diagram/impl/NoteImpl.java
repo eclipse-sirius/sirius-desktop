@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -51,7 +51,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
      * @generated
      * @ordered
      */
-    protected RGBValues color = COLOR_EDEFAULT;
+    protected RGBValues color = NoteImpl.COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -77,6 +77,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
      * 
      * @generated
      */
+    @Override
     public RGBValues getColor() {
         return color;
     }
@@ -86,11 +87,13 @@ public class NoteImpl extends NodeStyleImpl implements Note {
      * 
      * @generated
      */
+    @Override
     public void setColor(RGBValues newColor) {
         RGBValues oldColor = color;
         color = newColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NOTE__COLOR, oldColor, color));
+        }
     }
 
     /**
@@ -131,7 +134,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.NOTE__COLOR:
-            setColor(COLOR_EDEFAULT);
+            setColor(NoteImpl.COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -146,7 +149,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.NOTE__COLOR:
-            return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
+            return NoteImpl.COLOR_EDEFAULT == null ? color != null : !NoteImpl.COLOR_EDEFAULT.equals(color);
         }
         return super.eIsSet(featureID);
     }
@@ -158,8 +161,9 @@ public class NoteImpl extends NodeStyleImpl implements Note {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (color: ");

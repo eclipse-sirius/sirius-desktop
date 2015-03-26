@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -85,7 +85,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * @generated
      * @ordered
      */
-    protected ReconnectionKind reconnectionKind = RECONNECTION_KIND_EDEFAULT;
+    protected ReconnectionKind reconnectionKind = ReconnectEdgeDescriptionImpl.RECONNECTION_KIND_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSource() <em>Source</em>}'
@@ -182,6 +182,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public ReconnectionKind getReconnectionKind() {
         return reconnectionKind;
     }
@@ -191,11 +192,13 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setReconnectionKind(ReconnectionKind newReconnectionKind) {
         ReconnectionKind oldReconnectionKind = reconnectionKind;
-        reconnectionKind = newReconnectionKind == null ? RECONNECTION_KIND_EDEFAULT : newReconnectionKind;
-        if (eNotificationRequired())
+        reconnectionKind = newReconnectionKind == null ? ReconnectEdgeDescriptionImpl.RECONNECTION_KIND_EDEFAULT : newReconnectionKind;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND, oldReconnectionKind, reconnectionKind));
+        }
     }
 
     /**
@@ -203,20 +206,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public SourceEdgeCreationVariable getSource() {
         if (source != null && source.eIsProxy()) {
             InternalEObject oldSource = (InternalEObject) source;
             source = (SourceEdgeCreationVariable) eResolveProxy(oldSource);
             if (source != oldSource) {
                 InternalEObject newSource = (InternalEObject) source;
-                NotificationChain msgs = oldSource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, null, null);
+                NotificationChain msgs = oldSource.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, null, null);
                 if (newSource.eInternalContainer() == null) {
-                    msgs = newSource.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, null, msgs);
+                    msgs = newSource.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, oldSource, source));
+                }
             }
         }
         return source;
@@ -241,10 +247,11 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
         source = newSource;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, oldSource, newSource);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -254,18 +261,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setSource(SourceEdgeCreationVariable newSource) {
         if (newSource != source) {
             NotificationChain msgs = null;
-            if (source != null)
-                msgs = ((InternalEObject) source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, null, msgs);
-            if (newSource != null)
-                msgs = ((InternalEObject) newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, null, msgs);
+            if (source != null) {
+                msgs = ((InternalEObject) source).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, null, msgs);
+            }
+            if (newSource != null) {
+                msgs = ((InternalEObject) newSource).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, null, msgs);
+            }
             msgs = basicSetSource(newSource, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE, newSource, newSource));
+        }
     }
 
     /**
@@ -273,20 +285,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public TargetEdgeCreationVariable getTarget() {
         if (target != null && target.eIsProxy()) {
             InternalEObject oldTarget = (InternalEObject) target;
             target = (TargetEdgeCreationVariable) eResolveProxy(oldTarget);
             if (target != oldTarget) {
                 InternalEObject newTarget = (InternalEObject) target;
-                NotificationChain msgs = oldTarget.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, null, null);
+                NotificationChain msgs = oldTarget.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, null, null);
                 if (newTarget.eInternalContainer() == null) {
-                    msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, null, msgs);
+                    msgs = newTarget.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, oldTarget, target));
+                }
             }
         }
         return target;
@@ -311,10 +326,11 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
         target = newTarget;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, oldTarget, newTarget);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -324,18 +340,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setTarget(TargetEdgeCreationVariable newTarget) {
         if (newTarget != target) {
             NotificationChain msgs = null;
-            if (target != null)
-                msgs = ((InternalEObject) target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, null, msgs);
-            if (newTarget != null)
-                msgs = ((InternalEObject) newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, null, msgs);
+            if (target != null) {
+                msgs = ((InternalEObject) target).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, null, msgs);
+            }
+            if (newTarget != null) {
+                msgs = ((InternalEObject) newTarget).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, null, msgs);
+            }
             msgs = basicSetTarget(newTarget, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET, newTarget, newTarget));
+        }
     }
 
     /**
@@ -343,20 +364,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public SourceEdgeViewCreationVariable getSourceView() {
         if (sourceView != null && sourceView.eIsProxy()) {
             InternalEObject oldSourceView = (InternalEObject) sourceView;
             sourceView = (SourceEdgeViewCreationVariable) eResolveProxy(oldSourceView);
             if (sourceView != oldSourceView) {
                 InternalEObject newSourceView = (InternalEObject) sourceView;
-                NotificationChain msgs = oldSourceView.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, null, null);
+                NotificationChain msgs = oldSourceView.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, null, null);
                 if (newSourceView.eInternalContainer() == null) {
-                    msgs = newSourceView.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, null, msgs);
+                    msgs = newSourceView.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, oldSourceView, sourceView));
+                }
             }
         }
         return sourceView;
@@ -381,10 +405,11 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
         sourceView = newSourceView;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, oldSourceView, newSourceView);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -394,18 +419,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setSourceView(SourceEdgeViewCreationVariable newSourceView) {
         if (newSourceView != sourceView) {
             NotificationChain msgs = null;
-            if (sourceView != null)
-                msgs = ((InternalEObject) sourceView).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, null, msgs);
-            if (newSourceView != null)
-                msgs = ((InternalEObject) newSourceView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, null, msgs);
+            if (sourceView != null) {
+                msgs = ((InternalEObject) sourceView).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, null, msgs);
+            }
+            if (newSourceView != null) {
+                msgs = ((InternalEObject) newSourceView).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, null, msgs);
+            }
             msgs = basicSetSourceView(newSourceView, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW, newSourceView, newSourceView));
+        }
     }
 
     /**
@@ -413,20 +443,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public TargetEdgeViewCreationVariable getTargetView() {
         if (targetView != null && targetView.eIsProxy()) {
             InternalEObject oldTargetView = (InternalEObject) targetView;
             targetView = (TargetEdgeViewCreationVariable) eResolveProxy(oldTargetView);
             if (targetView != oldTargetView) {
                 InternalEObject newTargetView = (InternalEObject) targetView;
-                NotificationChain msgs = oldTargetView.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, null, null);
+                NotificationChain msgs = oldTargetView.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, null, null);
                 if (newTargetView.eInternalContainer() == null) {
-                    msgs = newTargetView.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, null, msgs);
+                    msgs = newTargetView.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, oldTargetView, targetView));
+                }
             }
         }
         return targetView;
@@ -451,10 +484,11 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
         targetView = newTargetView;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, oldTargetView, newTargetView);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -464,18 +498,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setTargetView(TargetEdgeViewCreationVariable newTargetView) {
         if (newTargetView != targetView) {
             NotificationChain msgs = null;
-            if (targetView != null)
-                msgs = ((InternalEObject) targetView).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, null, msgs);
-            if (newTargetView != null)
-                msgs = ((InternalEObject) newTargetView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, null, msgs);
+            if (targetView != null) {
+                msgs = ((InternalEObject) targetView).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, null, msgs);
+            }
+            if (newTargetView != null) {
+                msgs = ((InternalEObject) newTargetView).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, null, msgs);
+            }
             msgs = basicSetTargetView(newTargetView, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, newTargetView, newTargetView));
+        }
     }
 
     /**
@@ -483,20 +522,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public ElementSelectVariable getElement() {
         if (element != null && element.eIsProxy()) {
             InternalEObject oldElement = (InternalEObject) element;
             element = (ElementSelectVariable) eResolveProxy(oldElement);
             if (element != oldElement) {
                 InternalEObject newElement = (InternalEObject) element;
-                NotificationChain msgs = oldElement.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, null, null);
+                NotificationChain msgs = oldElement.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, null, null);
                 if (newElement.eInternalContainer() == null) {
-                    msgs = newElement.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, null, msgs);
+                    msgs = newElement.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, oldElement, element));
+                }
             }
         }
         return element;
@@ -521,10 +563,11 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
         element = newElement;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, oldElement, newElement);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -534,18 +577,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setElement(ElementSelectVariable newElement) {
         if (newElement != element) {
             NotificationChain msgs = null;
-            if (element != null)
-                msgs = ((InternalEObject) element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, null, msgs);
-            if (newElement != null)
-                msgs = ((InternalEObject) newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, null, msgs);
+            if (element != null) {
+                msgs = ((InternalEObject) element).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, null, msgs);
+            }
+            if (newElement != null) {
+                msgs = ((InternalEObject) newElement).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, null, msgs);
+            }
             msgs = basicSetElement(newElement, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT, newElement, newElement));
+        }
     }
 
     /**
@@ -553,20 +601,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
             initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -591,10 +642,11 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -604,18 +656,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -623,20 +680,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public ElementSelectVariable getEdgeView() {
         if (edgeView != null && edgeView.eIsProxy()) {
             InternalEObject oldEdgeView = (InternalEObject) edgeView;
             edgeView = (ElementSelectVariable) eResolveProxy(oldEdgeView);
             if (edgeView != oldEdgeView) {
                 InternalEObject newEdgeView = (InternalEObject) edgeView;
-                NotificationChain msgs = oldEdgeView.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, null, null);
+                NotificationChain msgs = oldEdgeView.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, null, null);
                 if (newEdgeView.eInternalContainer() == null) {
-                    msgs = newEdgeView.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, null, msgs);
+                    msgs = newEdgeView.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, oldEdgeView, edgeView));
+                }
             }
         }
         return edgeView;
@@ -661,10 +721,11 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
         edgeView = newEdgeView;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, oldEdgeView, newEdgeView);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -674,18 +735,23 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setEdgeView(ElementSelectVariable newEdgeView) {
         if (newEdgeView != edgeView) {
             NotificationChain msgs = null;
-            if (edgeView != null)
-                msgs = ((InternalEObject) edgeView).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, null, msgs);
-            if (newEdgeView != null)
-                msgs = ((InternalEObject) newEdgeView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, null, msgs);
+            if (edgeView != null) {
+                msgs = ((InternalEObject) edgeView).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, null, msgs);
+            }
+            if (newEdgeView != null) {
+                msgs = ((InternalEObject) newEdgeView).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, null, msgs);
+            }
             msgs = basicSetEdgeView(newEdgeView, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, newEdgeView, newEdgeView));
+        }
     }
 
     /**
@@ -693,6 +759,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public EList<EdgeMapping> getMappings() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -736,32 +803,39 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND:
             return getReconnectionKind();
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE:
-            if (resolve)
+            if (resolve) {
                 return getSource();
+            }
             return basicGetSource();
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET:
-            if (resolve)
+            if (resolve) {
                 return getTarget();
+            }
             return basicGetTarget();
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW:
-            if (resolve)
+            if (resolve) {
                 return getSourceView();
+            }
             return basicGetSourceView();
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW:
-            if (resolve)
+            if (resolve) {
                 return getTargetView();
+            }
             return basicGetTargetView();
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__ELEMENT:
-            if (resolve)
+            if (resolve) {
                 return getElement();
+            }
             return basicGetElement();
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW:
-            if (resolve)
+            if (resolve) {
                 return getEdgeView();
+            }
             return basicGetEdgeView();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -812,7 +886,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND:
-            setReconnectionKind(RECONNECTION_KIND_EDEFAULT);
+            setReconnectionKind(ReconnectEdgeDescriptionImpl.RECONNECTION_KIND_EDEFAULT);
             return;
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE:
             setSource((SourceEdgeCreationVariable) null);
@@ -848,7 +922,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND:
-            return reconnectionKind != RECONNECTION_KIND_EDEFAULT;
+            return reconnectionKind != ReconnectEdgeDescriptionImpl.RECONNECTION_KIND_EDEFAULT;
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__SOURCE:
             return source != null;
         case ToolPackage.RECONNECT_EDGE_DESCRIPTION__TARGET:
@@ -874,8 +948,9 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (reconnectionKind: ");

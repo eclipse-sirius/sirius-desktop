@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
@@ -45,7 +45,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -55,17 +55,17 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = LabelBorderStyleDescriptionImpl.ID_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -75,18 +75,18 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = LabelBorderStyleDescriptionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getCornerHeight()
      * <em>Corner Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCornerHeight()
      * @generated
      * @ordered
@@ -97,17 +97,17 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
      * The cached value of the '{@link #getCornerHeight()
      * <em>Corner Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCornerHeight()
      * @generated
      * @ordered
      */
-    protected int cornerHeight = CORNER_HEIGHT_EDEFAULT;
+    protected int cornerHeight = LabelBorderStyleDescriptionImpl.CORNER_HEIGHT_EDEFAULT;
 
     /**
      * The default value of the '{@link #getCornerWidth() <em>Corner Width</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCornerWidth()
      * @generated
      * @ordered
@@ -117,16 +117,16 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getCornerWidth() <em>Corner Width</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCornerWidth()
      * @generated
      * @ordered
      */
-    protected int cornerWidth = CORNER_WIDTH_EDEFAULT;
+    protected int cornerWidth = LabelBorderStyleDescriptionImpl.CORNER_WIDTH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelBorderStyleDescriptionImpl() {
@@ -135,7 +135,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,91 +145,103 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__ID, oldId, id));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getCornerHeight() {
         return cornerHeight;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setCornerHeight(int newCornerHeight) {
         int oldCornerHeight = cornerHeight;
         cornerHeight = newCornerHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__CORNER_HEIGHT, oldCornerHeight, cornerHeight));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getCornerWidth() {
         return cornerWidth;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setCornerWidth(int newCornerWidth) {
         int oldCornerWidth = cornerWidth;
         cornerWidth = newCornerWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__CORNER_WIDTH, oldCornerWidth, cornerWidth));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +261,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,23 +285,23 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__ID:
-            setId(ID_EDEFAULT);
+            setId(LabelBorderStyleDescriptionImpl.ID_EDEFAULT);
             return;
         case StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(LabelBorderStyleDescriptionImpl.NAME_EDEFAULT);
             return;
         case StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__CORNER_HEIGHT:
-            setCornerHeight(CORNER_HEIGHT_EDEFAULT);
+            setCornerHeight(LabelBorderStyleDescriptionImpl.CORNER_HEIGHT_EDEFAULT);
             return;
         case StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__CORNER_WIDTH:
-            setCornerWidth(CORNER_WIDTH_EDEFAULT);
+            setCornerWidth(LabelBorderStyleDescriptionImpl.CORNER_WIDTH_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -297,33 +309,34 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return LabelBorderStyleDescriptionImpl.ID_EDEFAULT == null ? id != null : !LabelBorderStyleDescriptionImpl.ID_EDEFAULT.equals(id);
         case StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return LabelBorderStyleDescriptionImpl.NAME_EDEFAULT == null ? name != null : !LabelBorderStyleDescriptionImpl.NAME_EDEFAULT.equals(name);
         case StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__CORNER_HEIGHT:
-            return cornerHeight != CORNER_HEIGHT_EDEFAULT;
+            return cornerHeight != LabelBorderStyleDescriptionImpl.CORNER_HEIGHT_EDEFAULT;
         case StylePackage.LABEL_BORDER_STYLE_DESCRIPTION__CORNER_WIDTH:
-            return cornerWidth != CORNER_WIDTH_EDEFAULT;
+            return cornerWidth != LabelBorderStyleDescriptionImpl.CORNER_WIDTH_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");

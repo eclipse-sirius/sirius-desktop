@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.validation.impl;
 
@@ -32,14 +32,14 @@ import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static ValidationFactory init() {
@@ -57,7 +57,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ValidationFactoryImpl() {
@@ -66,7 +66,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,9 +119,10 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ValidationSet createValidationSet() {
         ValidationSetImpl validationSet = new ValidationSetSpec();
         return validationSet;
@@ -129,9 +130,10 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public SemanticValidationRule createSemanticValidationRule() {
         SemanticValidationRuleImpl semanticValidationRule = new SemanticValidationRuleSpec();
         return semanticValidationRule;
@@ -139,9 +141,10 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ViewValidationRule createViewValidationRule() {
         ViewValidationRuleImpl viewValidationRule = new ViewValidationRuleSpec();
         return viewValidationRule;
@@ -149,9 +152,10 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public RuleAudit createRuleAudit() {
         RuleAuditImpl ruleAudit = new RuleAuditImpl();
         return ruleAudit;
@@ -159,9 +163,10 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ValidationFix createValidationFix() {
         ValidationFixImpl validationFix = new ValidationFixImpl();
         return validationFix;
@@ -169,19 +174,20 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ERROR_LEVEL createERROR_LEVELFromString(EDataType eDataType, String initialValue) {
         ERROR_LEVEL result = ERROR_LEVEL.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertERROR_LEVELToString(EDataType eDataType, Object instanceValue) {
@@ -190,16 +196,17 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ValidationPackage getValidationPackage() {
         return (ValidationPackage) getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

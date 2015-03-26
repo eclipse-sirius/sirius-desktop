@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.impl;
 
@@ -72,6 +72,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
      * 
      * @generated
      */
+    @Override
     public EList<Filter> getFilters() {
         if (filters == null) {
             filters = new EObjectContainmentEList.Resolving<Filter>(Filter.class, this, FilterPackage.COMPOSITE_FILTER_DESCRIPTION__FILTERS);

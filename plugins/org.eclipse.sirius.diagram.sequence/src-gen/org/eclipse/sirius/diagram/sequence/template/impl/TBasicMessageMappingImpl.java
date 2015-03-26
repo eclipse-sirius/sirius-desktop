@@ -68,6 +68,7 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
      * 
      * @generated
      */
+    @Override
     public EList<TMessageExtremity> getTarget() {
         if (target == null) {
             target = new EObjectResolvingEList<TMessageExtremity>(TMessageExtremity.class, this, TemplatePackage.TBASIC_MESSAGE_MAPPING__TARGET);

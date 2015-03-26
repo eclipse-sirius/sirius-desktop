@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -44,7 +44,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * Returns the value of the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * color of the ellipse. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEllipseNodeDescription_Color()
@@ -72,7 +72,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * end-user-doc --> <!-- begin-model-doc --> An expression to compute the
      * horizontal diameter of the ellipse. (Semimajor axis) <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '
      *         <em>Horizontal Diameter Computation Expression</em>' attribute.
      * @see #setHorizontalDiameterComputationExpression(String)
@@ -90,7 +90,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression
      * <em>Horizontal Diameter Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Horizontal Diameter Computation Expression</em>'
@@ -106,7 +106,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> An expression to compute the
      * vertical diameter of the ellipse. (Semiminor axis) <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '
      *         <em>Vertical Diameter Computation Expression</em>' attribute.
      * @see #setVerticalDiameterComputationExpression(String)
@@ -124,7 +124,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression
      * <em>Vertical Diameter Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Vertical Diameter Computation Expression</em>' attribute.

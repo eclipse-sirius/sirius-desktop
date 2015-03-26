@@ -52,7 +52,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
      * @generated
      * @ordered
      */
-    protected String semanticElements = SEMANTIC_ELEMENTS_EDEFAULT;
+    protected String semanticElements = TableMappingImpl.SEMANTIC_ELEMENTS_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -78,6 +78,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
      * 
      * @generated
      */
+    @Override
     public String getSemanticElements() {
         return semanticElements;
     }
@@ -87,11 +88,13 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
      * 
      * @generated
      */
+    @Override
     public void setSemanticElements(String newSemanticElements) {
         String oldSemanticElements = semanticElements;
         semanticElements = newSemanticElements;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_MAPPING__SEMANTIC_ELEMENTS, oldSemanticElements, semanticElements));
+        }
     }
 
     /**
@@ -132,7 +135,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.TABLE_MAPPING__SEMANTIC_ELEMENTS:
-            setSemanticElements(SEMANTIC_ELEMENTS_EDEFAULT);
+            setSemanticElements(TableMappingImpl.SEMANTIC_ELEMENTS_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -147,7 +150,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.TABLE_MAPPING__SEMANTIC_ELEMENTS:
-            return SEMANTIC_ELEMENTS_EDEFAULT == null ? semanticElements != null : !SEMANTIC_ELEMENTS_EDEFAULT.equals(semanticElements);
+            return TableMappingImpl.SEMANTIC_ELEMENTS_EDEFAULT == null ? semanticElements != null : !TableMappingImpl.SEMANTIC_ELEMENTS_EDEFAULT.equals(semanticElements);
         }
         return super.eIsSet(featureID);
     }
@@ -159,8 +162,9 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (semanticElements: ");

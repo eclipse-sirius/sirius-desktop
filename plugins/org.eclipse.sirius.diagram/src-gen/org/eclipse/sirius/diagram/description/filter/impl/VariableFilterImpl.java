@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.impl;
 
@@ -48,7 +48,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * The cached value of the '{@link #getOwnedVariables()
      * <em>Owned Variables</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedVariables()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * @generated
      * @ordered
      */
-    protected String semanticConditionExpression = SEMANTIC_CONDITION_EXPRESSION_EDEFAULT;
+    protected String semanticConditionExpression = VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -101,6 +101,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * 
      * @generated
      */
+    @Override
     public EList<FilterVariable> getOwnedVariables() {
         if (ownedVariables == null) {
             ownedVariables = new EObjectContainmentEList.Resolving<FilterVariable>(FilterVariable.class, this, FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES);
@@ -113,6 +114,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * 
      * @generated
      */
+    @Override
     public String getSemanticConditionExpression() {
         return semanticConditionExpression;
     }
@@ -122,11 +124,13 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * 
      * @generated
      */
+    @Override
     public void setSemanticConditionExpression(String newSemanticConditionExpression) {
         String oldSemanticConditionExpression = semanticConditionExpression;
         semanticConditionExpression = newSemanticConditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION, oldSemanticConditionExpression, semanticConditionExpression));
+        }
     }
 
     /**
@@ -134,6 +138,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * 
      * @generated
      */
+    @Override
     public void setFilterContext(Map<?, ?> variables) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -202,7 +207,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
             getOwnedVariables().clear();
             return;
         case FilterPackage.VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION:
-            setSemanticConditionExpression(SEMANTIC_CONDITION_EXPRESSION_EDEFAULT);
+            setSemanticConditionExpression(VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -219,7 +224,8 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
         case FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES:
             return ownedVariables != null && !ownedVariables.isEmpty();
         case FilterPackage.VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION:
-            return SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null : !SEMANTIC_CONDITION_EXPRESSION_EDEFAULT.equals(semanticConditionExpression);
+            return VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null : !VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT
+                    .equals(semanticConditionExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -231,8 +237,9 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (semanticConditionExpression: ");

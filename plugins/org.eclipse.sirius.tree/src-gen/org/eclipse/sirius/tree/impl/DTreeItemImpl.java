@@ -86,7 +86,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DTreeItemImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSemanticElements()
@@ -117,7 +117,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * @generated
      * @ordered
      */
-    protected boolean expanded = EXPANDED_EDEFAULT;
+    protected boolean expanded = DTreeItemImpl.EXPANDED_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}'
@@ -164,6 +164,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -173,11 +174,13 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.DTREE_ITEM__NAME, oldName, name));
+        }
     }
 
     /**
@@ -185,6 +188,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
             semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, TreePackage.DTREE_ITEM__SEMANTIC_ELEMENTS);
@@ -197,6 +201,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public TreeMapping getTreeElementMapping() {
         TreeMapping treeElementMapping = basicGetTreeElementMapping();
         return treeElementMapping != null && treeElementMapping.eIsProxy() ? (TreeMapping) eResolveProxy((InternalEObject) treeElementMapping) : treeElementMapping;
@@ -220,6 +225,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public boolean isExpanded() {
         return expanded;
     }
@@ -229,11 +235,13 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public void setExpanded(boolean newExpanded) {
         boolean oldExpanded = expanded;
         expanded = newExpanded;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.DTREE_ITEM__EXPANDED, oldExpanded, expanded));
+        }
     }
 
     /**
@@ -241,6 +249,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public TreeItemStyle getOwnedStyle() {
         return ownedStyle;
     }
@@ -255,10 +264,11 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
         ownedStyle = newOwnedStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TreePackage.DTREE_ITEM__OWNED_STYLE, oldOwnedStyle, newOwnedStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -268,18 +278,23 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public void setOwnedStyle(TreeItemStyle newOwnedStyle) {
         if (newOwnedStyle != ownedStyle) {
             NotificationChain msgs = null;
-            if (ownedStyle != null)
-                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TreePackage.DTREE_ITEM__OWNED_STYLE, null, msgs);
-            if (newOwnedStyle != null)
-                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TreePackage.DTREE_ITEM__OWNED_STYLE, null, msgs);
+            if (ownedStyle != null) {
+                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TreePackage.DTREE_ITEM__OWNED_STYLE, null, msgs);
+            }
+            if (newOwnedStyle != null) {
+                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TreePackage.DTREE_ITEM__OWNED_STYLE, null, msgs);
+            }
             msgs = basicSetOwnedStyle(newOwnedStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.DTREE_ITEM__OWNED_STYLE, newOwnedStyle, newOwnedStyle));
+        }
     }
 
     /**
@@ -287,13 +302,15 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public TreeItemMapping getActualMapping() {
         if (actualMapping != null && actualMapping.eIsProxy()) {
             InternalEObject oldActualMapping = (InternalEObject) actualMapping;
             actualMapping = (TreeItemMapping) eResolveProxy(oldActualMapping);
             if (actualMapping != oldActualMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TreePackage.DTREE_ITEM__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+                }
             }
         }
         return actualMapping;
@@ -313,11 +330,13 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public void setActualMapping(TreeItemMapping newActualMapping) {
         TreeItemMapping oldActualMapping = actualMapping;
         actualMapping = newActualMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.DTREE_ITEM__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+        }
     }
 
     /**
@@ -325,9 +344,11 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public DTreeItemContainer getContainer() {
-        if (eContainerFeatureID() != TreePackage.DTREE_ITEM__CONTAINER)
+        if (eContainerFeatureID() != TreePackage.DTREE_ITEM__CONTAINER) {
             return null;
+        }
         return (DTreeItemContainer) eInternalContainer();
     }
 
@@ -346,20 +367,26 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public void setContainer(DTreeItemContainer newContainer) {
         if (newContainer != eInternalContainer() || (eContainerFeatureID() != TreePackage.DTREE_ITEM__CONTAINER && newContainer != null)) {
-            if (EcoreUtil.isAncestor(this, newContainer))
+            if (EcoreUtil.isAncestor(this, newContainer)) {
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            }
             NotificationChain msgs = null;
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
-            if (newContainer != null)
+            }
+            if (newContainer != null) {
                 msgs = ((InternalEObject) newContainer).eInverseAdd(this, TreePackage.DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS, DTreeItemContainer.class, msgs);
+            }
             msgs = basicSetContainer(newContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.DTREE_ITEM__CONTAINER, newContainer, newContainer));
+        }
     }
 
     /**
@@ -367,6 +394,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public StyleUpdater getStyleUpdater() {
         StyleUpdater styleUpdater = basicGetStyleUpdater();
         return styleUpdater != null && styleUpdater.eIsProxy() ? (StyleUpdater) eResolveProxy((InternalEObject) styleUpdater) : styleUpdater;
@@ -389,6 +417,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public TreeItemUpdater getUpdater() {
         TreeItemUpdater updater = basicGetUpdater();
         return updater != null && updater.eIsProxy() ? (TreeItemUpdater) eResolveProxy((InternalEObject) updater) : updater;
@@ -411,6 +440,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public void setUpdater(TreeItemUpdater newUpdater) {
         // TODO: implement this method to set the 'Updater' reference
         // Ensure that you remove @generated or mark it @generated NOT
@@ -422,6 +452,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -433,6 +464,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public Style getStyle() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -444,6 +476,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * 
      * @generated
      */
+    @Override
     public RepresentationElementMapping getMapping() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -459,8 +492,9 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TreePackage.DTREE_ITEM__CONTAINER:
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
+            }
             return basicSetContainer((DTreeItemContainer) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -509,26 +543,30 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
         case TreePackage.DTREE_ITEM__SEMANTIC_ELEMENTS:
             return getSemanticElements();
         case TreePackage.DTREE_ITEM__TREE_ELEMENT_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getTreeElementMapping();
+            }
             return basicGetTreeElementMapping();
         case TreePackage.DTREE_ITEM__EXPANDED:
             return isExpanded();
         case TreePackage.DTREE_ITEM__OWNED_STYLE:
             return getOwnedStyle();
         case TreePackage.DTREE_ITEM__ACTUAL_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getActualMapping();
+            }
             return basicGetActualMapping();
         case TreePackage.DTREE_ITEM__CONTAINER:
             return getContainer();
         case TreePackage.DTREE_ITEM__STYLE_UPDATER:
-            if (resolve)
+            if (resolve) {
                 return getStyleUpdater();
+            }
             return basicGetStyleUpdater();
         case TreePackage.DTREE_ITEM__UPDATER:
-            if (resolve)
+            if (resolve) {
                 return getUpdater();
+            }
             return basicGetUpdater();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -578,13 +616,13 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     public void eUnset(int featureID) {
         switch (featureID) {
         case TreePackage.DTREE_ITEM__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DTreeItemImpl.NAME_EDEFAULT);
             return;
         case TreePackage.DTREE_ITEM__SEMANTIC_ELEMENTS:
             getSemanticElements().clear();
             return;
         case TreePackage.DTREE_ITEM__EXPANDED:
-            setExpanded(EXPANDED_EDEFAULT);
+            setExpanded(DTreeItemImpl.EXPANDED_EDEFAULT);
             return;
         case TreePackage.DTREE_ITEM__OWNED_STYLE:
             setOwnedStyle((TreeItemStyle) null);
@@ -611,13 +649,13 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TreePackage.DTREE_ITEM__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DTreeItemImpl.NAME_EDEFAULT == null ? name != null : !DTreeItemImpl.NAME_EDEFAULT.equals(name);
         case TreePackage.DTREE_ITEM__SEMANTIC_ELEMENTS:
             return semanticElements != null && !semanticElements.isEmpty();
         case TreePackage.DTREE_ITEM__TREE_ELEMENT_MAPPING:
             return basicGetTreeElementMapping() != null;
         case TreePackage.DTREE_ITEM__EXPANDED:
-            return expanded != EXPANDED_EDEFAULT;
+            return expanded != DTreeItemImpl.EXPANDED_EDEFAULT;
         case TreePackage.DTREE_ITEM__OWNED_STYLE:
             return ownedStyle != null;
         case TreePackage.DTREE_ITEM__ACTUAL_MAPPING:
@@ -743,8 +781,9 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

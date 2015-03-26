@@ -66,7 +66,7 @@ public interface DTable extends DRepresentation, LineContainer {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(TableDescription)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTable_Description()

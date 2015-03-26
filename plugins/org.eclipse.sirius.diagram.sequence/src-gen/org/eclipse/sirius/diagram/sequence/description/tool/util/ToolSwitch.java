@@ -64,8 +64,8 @@ public class ToolSwitch<T> {
      * @generated
      */
     public ToolSwitch() {
-        if (modelPackage == null) {
-            modelPackage = ToolPackage.eINSTANCE;
+        if (ToolSwitch.modelPackage == null) {
+            ToolSwitch.modelPackage = ToolPackage.eINSTANCE;
         }
     }
 
@@ -92,7 +92,7 @@ public class ToolSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == ToolSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -114,263 +114,359 @@ public class ToolSwitch<T> {
         case ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION: {
             SequenceDiagramToolDescription sequenceDiagramToolDescription = (SequenceDiagramToolDescription) theEObject;
             T result = caseSequenceDiagramToolDescription(sequenceDiagramToolDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.ORDERED_ELEMENT_CREATION_TOOL: {
             OrderedElementCreationTool orderedElementCreationTool = (OrderedElementCreationTool) theEObject;
             T result = caseOrderedElementCreationTool(orderedElementCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.COVERING_ELEMENT_CREATION_TOOL: {
             CoveringElementCreationTool coveringElementCreationTool = (CoveringElementCreationTool) theEObject;
             T result = caseCoveringElementCreationTool(coveringElementCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.INSTANCE_ROLE_CREATION_TOOL: {
             InstanceRoleCreationTool instanceRoleCreationTool = (InstanceRoleCreationTool) theEObject;
             T result = caseInstanceRoleCreationTool(instanceRoleCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeCreationDescription(instanceRoleCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(instanceRoleCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(instanceRoleCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(instanceRoleCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(instanceRoleCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(instanceRoleCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(instanceRoleCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.LIFELINE_CREATION_TOOL: {
             LifelineCreationTool lifelineCreationTool = (LifelineCreationTool) theEObject;
             T result = caseLifelineCreationTool(lifelineCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerCreationDescription(lifelineCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(lifelineCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(lifelineCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(lifelineCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(lifelineCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(lifelineCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(lifelineCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.MESSAGE_CREATION_TOOL: {
             MessageCreationTool messageCreationTool = (MessageCreationTool) theEObject;
             T result = caseMessageCreationTool(messageCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(messageCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeCreationDescription(messageCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseOrderedElementCreationTool(messageCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(messageCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(messageCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(messageCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(messageCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(messageCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.EXECUTION_CREATION_TOOL: {
             ExecutionCreationTool executionCreationTool = (ExecutionCreationTool) theEObject;
             T result = caseExecutionCreationTool(executionCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeCreationDescription(executionCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(executionCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseOrderedElementCreationTool(executionCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(executionCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(executionCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(executionCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(executionCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(executionCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.STATE_CREATION_TOOL: {
             StateCreationTool stateCreationTool = (StateCreationTool) theEObject;
             T result = caseStateCreationTool(stateCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeCreationDescription(stateCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(stateCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseOrderedElementCreationTool(stateCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(stateCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(stateCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(stateCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(stateCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(stateCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.INTERACTION_USE_CREATION_TOOL: {
             InteractionUseCreationTool interactionUseCreationTool = (InteractionUseCreationTool) theEObject;
             T result = caseInteractionUseCreationTool(interactionUseCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerCreationDescription(interactionUseCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(interactionUseCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseOrderedElementCreationTool(interactionUseCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCoveringElementCreationTool(interactionUseCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(interactionUseCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(interactionUseCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(interactionUseCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(interactionUseCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(interactionUseCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL: {
             CombinedFragmentCreationTool combinedFragmentCreationTool = (CombinedFragmentCreationTool) theEObject;
             T result = caseCombinedFragmentCreationTool(combinedFragmentCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerCreationDescription(combinedFragmentCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(combinedFragmentCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseOrderedElementCreationTool(combinedFragmentCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCoveringElementCreationTool(combinedFragmentCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(combinedFragmentCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(combinedFragmentCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(combinedFragmentCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(combinedFragmentCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(combinedFragmentCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.OPERAND_CREATION_TOOL: {
             OperandCreationTool operandCreationTool = (OperandCreationTool) theEObject;
             T result = caseOperandCreationTool(operandCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerCreationDescription(operandCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(operandCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseOrderedElementCreationTool(operandCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(operandCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(operandCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(operandCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(operandCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(operandCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.OBSERVATION_POINT_CREATION_TOOL: {
             ObservationPointCreationTool observationPointCreationTool = (ObservationPointCreationTool) theEObject;
             T result = caseObservationPointCreationTool(observationPointCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeCreationDescription(observationPointCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(observationPointCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseOrderedElementCreationTool(observationPointCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(observationPointCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(observationPointCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(observationPointCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(observationPointCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(observationPointCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.REORDER_TOOL: {
             ReorderTool reorderTool = (ReorderTool) theEObject;
             T result = caseReorderTool(reorderTool);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(reorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(reorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(reorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(reorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(reorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.INSTANCE_ROLE_REORDER_TOOL: {
             InstanceRoleReorderTool instanceRoleReorderTool = (InstanceRoleReorderTool) theEObject;
             T result = caseInstanceRoleReorderTool(instanceRoleReorderTool);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(instanceRoleReorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSequenceDiagramToolDescription(instanceRoleReorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(instanceRoleReorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(instanceRoleReorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(instanceRoleReorderTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

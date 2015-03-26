@@ -117,6 +117,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<InstanceRoleMapping> getMappings() {
         if (mappings == null) {
             mappings = new EObjectResolvingEList<InstanceRoleMapping>(InstanceRoleMapping.class, this, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__MAPPINGS);
@@ -129,6 +130,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public ElementVariable getPredecessorBefore() {
         return predecessorBefore;
     }
@@ -143,10 +145,11 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
         predecessorBefore = newPredecessorBefore;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE, oldPredecessorBefore, newPredecessorBefore);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -156,18 +159,23 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setPredecessorBefore(ElementVariable newPredecessorBefore) {
         if (newPredecessorBefore != predecessorBefore) {
             NotificationChain msgs = null;
-            if (predecessorBefore != null)
-                msgs = ((InternalEObject) predecessorBefore).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE, null, msgs);
-            if (newPredecessorBefore != null)
-                msgs = ((InternalEObject) newPredecessorBefore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE, null, msgs);
+            if (predecessorBefore != null) {
+                msgs = ((InternalEObject) predecessorBefore).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE, null, msgs);
+            }
+            if (newPredecessorBefore != null) {
+                msgs = ((InternalEObject) newPredecessorBefore).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE, null, msgs);
+            }
             msgs = basicSetPredecessorBefore(newPredecessorBefore, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE, newPredecessorBefore, newPredecessorBefore));
+        }
     }
 
     /**
@@ -175,6 +183,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public ElementVariable getPredecessorAfter() {
         return predecessorAfter;
     }
@@ -189,10 +198,11 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
         predecessorAfter = newPredecessorAfter;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER, oldPredecessorAfter, newPredecessorAfter);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -202,18 +212,23 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setPredecessorAfter(ElementVariable newPredecessorAfter) {
         if (newPredecessorAfter != predecessorAfter) {
             NotificationChain msgs = null;
-            if (predecessorAfter != null)
-                msgs = ((InternalEObject) predecessorAfter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER, null, msgs);
-            if (newPredecessorAfter != null)
-                msgs = ((InternalEObject) newPredecessorAfter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER, null, msgs);
+            if (predecessorAfter != null) {
+                msgs = ((InternalEObject) predecessorAfter).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER, null, msgs);
+            }
+            if (newPredecessorAfter != null) {
+                msgs = ((InternalEObject) newPredecessorAfter).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER, null, msgs);
+            }
             msgs = basicSetPredecessorAfter(newPredecessorAfter, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER, newPredecessorAfter, newPredecessorAfter));
+        }
     }
 
     /**
@@ -221,6 +236,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public InitialOperation getInstanceRoleMoved() {
         return instanceRoleMoved;
     }
@@ -235,10 +251,11 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
         instanceRoleMoved = newInstanceRoleMoved;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED, oldInstanceRoleMoved, newInstanceRoleMoved);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -248,18 +265,23 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setInstanceRoleMoved(InitialOperation newInstanceRoleMoved) {
         if (newInstanceRoleMoved != instanceRoleMoved) {
             NotificationChain msgs = null;
-            if (instanceRoleMoved != null)
-                msgs = ((InternalEObject) instanceRoleMoved).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED, null, msgs);
-            if (newInstanceRoleMoved != null)
-                msgs = ((InternalEObject) newInstanceRoleMoved).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED, null, msgs);
+            if (instanceRoleMoved != null) {
+                msgs = ((InternalEObject) instanceRoleMoved).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED, null, msgs);
+            }
+            if (newInstanceRoleMoved != null) {
+                msgs = ((InternalEObject) newInstanceRoleMoved).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED, null, msgs);
+            }
             msgs = basicSetInstanceRoleMoved(newInstanceRoleMoved, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED, newInstanceRoleMoved, newInstanceRoleMoved));
+        }
     }
 
     /**

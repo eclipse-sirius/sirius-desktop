@@ -154,14 +154,14 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#eNS_URI
      * @see #init()
      * @generated
      */
     private ToolPackageImpl() {
-        super(eNS_URI, ToolFactory.eINSTANCE);
+        super(ToolPackage.eNS_URI, ToolFactory.eINSTANCE);
     }
 
     /**
@@ -174,26 +174,28 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link ToolPackage#eINSTANCE} when that
      * field is accessed. Clients should not invoke it directly. Instead, they
      * should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static ToolPackage init() {
-        if (isInited)
+        if (ToolPackageImpl.isInited) {
             return (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ToolPackageImpl());
+        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.get(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE.get(ToolPackage.eNS_URI)
+                : new ToolPackageImpl());
 
-        isInited = true;
+        ToolPackageImpl.isInited = true;
 
         // Initialize simple dependencies
         DiagramPackage.eINSTANCE.eClass();
@@ -235,6 +237,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getSequenceDiagramToolDescription() {
         return sequenceDiagramToolDescriptionEClass;
     }
@@ -244,6 +247,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getOrderedElementCreationTool() {
         return orderedElementCreationToolEClass;
     }
@@ -253,6 +257,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getOrderedElementCreationTool_StartingEndPredecessor() {
         return (EReference) orderedElementCreationToolEClass.getEStructuralFeatures().get(0);
     }
@@ -262,6 +267,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getOrderedElementCreationTool_FinishingEndPredecessor() {
         return (EReference) orderedElementCreationToolEClass.getEStructuralFeatures().get(1);
     }
@@ -271,6 +277,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getCoveringElementCreationTool() {
         return coveringElementCreationToolEClass;
     }
@@ -280,6 +287,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getCoveringElementCreationTool_CoveredLifelines() {
         return (EReference) coveringElementCreationToolEClass.getEStructuralFeatures().get(0);
     }
@@ -289,6 +297,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getInstanceRoleCreationTool() {
         return instanceRoleCreationToolEClass;
     }
@@ -298,6 +307,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getInstanceRoleCreationTool_Predecessor() {
         return (EReference) instanceRoleCreationToolEClass.getEStructuralFeatures().get(0);
     }
@@ -307,6 +317,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getLifelineCreationTool() {
         return lifelineCreationToolEClass;
     }
@@ -316,6 +327,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getMessageCreationTool() {
         return messageCreationToolEClass;
     }
@@ -325,6 +337,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getExecutionCreationTool() {
         return executionCreationToolEClass;
     }
@@ -334,6 +347,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getStateCreationTool() {
         return stateCreationToolEClass;
     }
@@ -343,6 +357,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getReorderTool() {
         return reorderToolEClass;
     }
@@ -352,6 +367,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getReorderTool_Mappings() {
         return (EReference) reorderToolEClass.getEStructuralFeatures().get(0);
     }
@@ -361,6 +377,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getReorderTool_StartingEndPredecessorBefore() {
         return (EReference) reorderToolEClass.getEStructuralFeatures().get(1);
     }
@@ -370,6 +387,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getReorderTool_StartingEndPredecessorAfter() {
         return (EReference) reorderToolEClass.getEStructuralFeatures().get(2);
     }
@@ -379,6 +397,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getReorderTool_FinishingEndPredecessorBefore() {
         return (EReference) reorderToolEClass.getEStructuralFeatures().get(3);
     }
@@ -388,6 +407,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getReorderTool_FinishingEndPredecessorAfter() {
         return (EReference) reorderToolEClass.getEStructuralFeatures().get(4);
     }
@@ -397,6 +417,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getReorderTool_OnEventMovedOperation() {
         return (EReference) reorderToolEClass.getEStructuralFeatures().get(5);
     }
@@ -406,6 +427,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getInstanceRoleReorderTool() {
         return instanceRoleReorderToolEClass;
     }
@@ -415,6 +437,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getInstanceRoleReorderTool_Mappings() {
         return (EReference) instanceRoleReorderToolEClass.getEStructuralFeatures().get(0);
     }
@@ -424,6 +447,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getInstanceRoleReorderTool_PredecessorBefore() {
         return (EReference) instanceRoleReorderToolEClass.getEStructuralFeatures().get(1);
     }
@@ -433,6 +457,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getInstanceRoleReorderTool_PredecessorAfter() {
         return (EReference) instanceRoleReorderToolEClass.getEStructuralFeatures().get(2);
     }
@@ -442,6 +467,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getInstanceRoleReorderTool_InstanceRoleMoved() {
         return (EReference) instanceRoleReorderToolEClass.getEStructuralFeatures().get(3);
     }
@@ -451,6 +477,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getObservationPointCreationTool() {
         return observationPointCreationToolEClass;
     }
@@ -460,6 +487,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getInteractionUseCreationTool() {
         return interactionUseCreationToolEClass;
     }
@@ -469,6 +497,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getCombinedFragmentCreationTool() {
         return combinedFragmentCreationToolEClass;
     }
@@ -478,6 +507,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getOperandCreationTool() {
         return operandCreationToolEClass;
     }
@@ -487,6 +517,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    @Override
     public ToolFactory getToolFactory() {
         return (ToolFactory) getEFactoryInstance();
     }
@@ -506,52 +537,53 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        sequenceDiagramToolDescriptionEClass = createEClass(SEQUENCE_DIAGRAM_TOOL_DESCRIPTION);
+        sequenceDiagramToolDescriptionEClass = createEClass(ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION);
 
-        orderedElementCreationToolEClass = createEClass(ORDERED_ELEMENT_CREATION_TOOL);
-        createEReference(orderedElementCreationToolEClass, ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR);
-        createEReference(orderedElementCreationToolEClass, ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR);
+        orderedElementCreationToolEClass = createEClass(ToolPackage.ORDERED_ELEMENT_CREATION_TOOL);
+        createEReference(orderedElementCreationToolEClass, ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR);
+        createEReference(orderedElementCreationToolEClass, ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR);
 
-        coveringElementCreationToolEClass = createEClass(COVERING_ELEMENT_CREATION_TOOL);
-        createEReference(coveringElementCreationToolEClass, COVERING_ELEMENT_CREATION_TOOL__COVERED_LIFELINES);
+        coveringElementCreationToolEClass = createEClass(ToolPackage.COVERING_ELEMENT_CREATION_TOOL);
+        createEReference(coveringElementCreationToolEClass, ToolPackage.COVERING_ELEMENT_CREATION_TOOL__COVERED_LIFELINES);
 
-        instanceRoleCreationToolEClass = createEClass(INSTANCE_ROLE_CREATION_TOOL);
-        createEReference(instanceRoleCreationToolEClass, INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR);
+        instanceRoleCreationToolEClass = createEClass(ToolPackage.INSTANCE_ROLE_CREATION_TOOL);
+        createEReference(instanceRoleCreationToolEClass, ToolPackage.INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR);
 
-        lifelineCreationToolEClass = createEClass(LIFELINE_CREATION_TOOL);
+        lifelineCreationToolEClass = createEClass(ToolPackage.LIFELINE_CREATION_TOOL);
 
-        messageCreationToolEClass = createEClass(MESSAGE_CREATION_TOOL);
+        messageCreationToolEClass = createEClass(ToolPackage.MESSAGE_CREATION_TOOL);
 
-        executionCreationToolEClass = createEClass(EXECUTION_CREATION_TOOL);
+        executionCreationToolEClass = createEClass(ToolPackage.EXECUTION_CREATION_TOOL);
 
-        stateCreationToolEClass = createEClass(STATE_CREATION_TOOL);
+        stateCreationToolEClass = createEClass(ToolPackage.STATE_CREATION_TOOL);
 
-        interactionUseCreationToolEClass = createEClass(INTERACTION_USE_CREATION_TOOL);
+        interactionUseCreationToolEClass = createEClass(ToolPackage.INTERACTION_USE_CREATION_TOOL);
 
-        combinedFragmentCreationToolEClass = createEClass(COMBINED_FRAGMENT_CREATION_TOOL);
+        combinedFragmentCreationToolEClass = createEClass(ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL);
 
-        operandCreationToolEClass = createEClass(OPERAND_CREATION_TOOL);
+        operandCreationToolEClass = createEClass(ToolPackage.OPERAND_CREATION_TOOL);
 
-        observationPointCreationToolEClass = createEClass(OBSERVATION_POINT_CREATION_TOOL);
+        observationPointCreationToolEClass = createEClass(ToolPackage.OBSERVATION_POINT_CREATION_TOOL);
 
-        reorderToolEClass = createEClass(REORDER_TOOL);
-        createEReference(reorderToolEClass, REORDER_TOOL__MAPPINGS);
-        createEReference(reorderToolEClass, REORDER_TOOL__STARTING_END_PREDECESSOR_BEFORE);
-        createEReference(reorderToolEClass, REORDER_TOOL__STARTING_END_PREDECESSOR_AFTER);
-        createEReference(reorderToolEClass, REORDER_TOOL__FINISHING_END_PREDECESSOR_BEFORE);
-        createEReference(reorderToolEClass, REORDER_TOOL__FINISHING_END_PREDECESSOR_AFTER);
-        createEReference(reorderToolEClass, REORDER_TOOL__ON_EVENT_MOVED_OPERATION);
+        reorderToolEClass = createEClass(ToolPackage.REORDER_TOOL);
+        createEReference(reorderToolEClass, ToolPackage.REORDER_TOOL__MAPPINGS);
+        createEReference(reorderToolEClass, ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_BEFORE);
+        createEReference(reorderToolEClass, ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_AFTER);
+        createEReference(reorderToolEClass, ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_BEFORE);
+        createEReference(reorderToolEClass, ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_AFTER);
+        createEReference(reorderToolEClass, ToolPackage.REORDER_TOOL__ON_EVENT_MOVED_OPERATION);
 
-        instanceRoleReorderToolEClass = createEClass(INSTANCE_ROLE_REORDER_TOOL);
-        createEReference(instanceRoleReorderToolEClass, INSTANCE_ROLE_REORDER_TOOL__MAPPINGS);
-        createEReference(instanceRoleReorderToolEClass, INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE);
-        createEReference(instanceRoleReorderToolEClass, INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER);
-        createEReference(instanceRoleReorderToolEClass, INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED);
+        instanceRoleReorderToolEClass = createEClass(ToolPackage.INSTANCE_ROLE_REORDER_TOOL);
+        createEReference(instanceRoleReorderToolEClass, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__MAPPINGS);
+        createEReference(instanceRoleReorderToolEClass, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE);
+        createEReference(instanceRoleReorderToolEClass, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER);
+        createEReference(instanceRoleReorderToolEClass, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED);
     }
 
     /**
@@ -565,18 +597,19 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(ToolPackage.eNAME);
+        setNsPrefix(ToolPackage.eNS_PREFIX);
+        setNsURI(ToolPackage.eNS_URI);
 
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
@@ -623,61 +656,83 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         instanceRoleReorderToolEClass.getESuperTypes().add(this.getSequenceDiagramToolDescription());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(sequenceDiagramToolDescriptionEClass, SequenceDiagramToolDescription.class, "SequenceDiagramToolDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(sequenceDiagramToolDescriptionEClass, SequenceDiagramToolDescription.class, "SequenceDiagramToolDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(orderedElementCreationToolEClass, OrderedElementCreationTool.class, "OrderedElementCreationTool", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(orderedElementCreationToolEClass, OrderedElementCreationTool.class, "OrderedElementCreationTool", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEReference(getOrderedElementCreationTool_StartingEndPredecessor(), theDescriptionPackage.getMessageEndVariable(), null, "startingEndPredecessor", null, 0, 1,
-                OrderedElementCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                OrderedElementCreationTool.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES,
+                !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getOrderedElementCreationTool_FinishingEndPredecessor(), theDescriptionPackage.getMessageEndVariable(), null, "finishingEndPredecessor", null, 0, 1,
-                OrderedElementCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                OrderedElementCreationTool.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES,
+                !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(coveringElementCreationToolEClass, CoveringElementCreationTool.class, "CoveringElementCreationTool", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(coveringElementCreationToolEClass, CoveringElementCreationTool.class, "CoveringElementCreationTool", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEReference(getCoveringElementCreationTool_CoveredLifelines(), theDescriptionPackage.getCoveredLifelinesVariable(), null, "coveredLifelines", null, 1, 1, CoveringElementCreationTool.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(instanceRoleCreationToolEClass, InstanceRoleCreationTool.class, "InstanceRoleCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getInstanceRoleCreationTool_Predecessor(), theToolPackage_2.getElementVariable(), null, "predecessor", null, 0, 1, InstanceRoleCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(instanceRoleCreationToolEClass, InstanceRoleCreationTool.class, "InstanceRoleCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getInstanceRoleCreationTool_Predecessor(), theToolPackage_2.getElementVariable(), null, "predecessor", null, 0, 1, InstanceRoleCreationTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(lifelineCreationToolEClass, LifelineCreationTool.class, "LifelineCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(lifelineCreationToolEClass, LifelineCreationTool.class, "LifelineCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(messageCreationToolEClass, MessageCreationTool.class, "MessageCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(messageCreationToolEClass, MessageCreationTool.class, "MessageCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(executionCreationToolEClass, ExecutionCreationTool.class, "ExecutionCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(executionCreationToolEClass, ExecutionCreationTool.class, "ExecutionCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(stateCreationToolEClass, StateCreationTool.class, "StateCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(stateCreationToolEClass, StateCreationTool.class, "StateCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(interactionUseCreationToolEClass, InteractionUseCreationTool.class, "InteractionUseCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(interactionUseCreationToolEClass, InteractionUseCreationTool.class, "InteractionUseCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(combinedFragmentCreationToolEClass, CombinedFragmentCreationTool.class, "CombinedFragmentCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(combinedFragmentCreationToolEClass, CombinedFragmentCreationTool.class, "CombinedFragmentCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(operandCreationToolEClass, OperandCreationTool.class, "OperandCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(operandCreationToolEClass, OperandCreationTool.class, "OperandCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(observationPointCreationToolEClass, ObservationPointCreationTool.class, "ObservationPointCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(observationPointCreationToolEClass, ObservationPointCreationTool.class, "ObservationPointCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(reorderToolEClass, ReorderTool.class, "ReorderTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getReorderTool_Mappings(), theDescriptionPackage.getEventMapping(), null, "mappings", null, 0, -1, ReorderTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(reorderToolEClass, ReorderTool.class, "ReorderTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getReorderTool_Mappings(), theDescriptionPackage.getEventMapping(), null, "mappings", null, 0, -1, ReorderTool.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getReorderTool_StartingEndPredecessorBefore(), theDescriptionPackage.getMessageEndVariable(), null, "startingEndPredecessorBefore", null, 0, 1, ReorderTool.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getReorderTool_StartingEndPredecessorAfter(), theDescriptionPackage.getMessageEndVariable(), null, "startingEndPredecessorAfter", null, 0, 1, ReorderTool.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getReorderTool_StartingEndPredecessorAfter(), theDescriptionPackage.getMessageEndVariable(), null, "startingEndPredecessorAfter", null, 0, 1, ReorderTool.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getReorderTool_FinishingEndPredecessorBefore(), theDescriptionPackage.getMessageEndVariable(), null, "finishingEndPredecessorBefore", null, 0, 1, ReorderTool.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getReorderTool_FinishingEndPredecessorAfter(), theDescriptionPackage.getMessageEndVariable(), null, "finishingEndPredecessorAfter", null, 0, 1, ReorderTool.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getReorderTool_OnEventMovedOperation(), theToolPackage_2.getInitialOperation(), null, "onEventMovedOperation", null, 1, 1, ReorderTool.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getReorderTool_OnEventMovedOperation(), theToolPackage_2.getInitialOperation(), null, "onEventMovedOperation", null, 1, 1, ReorderTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(instanceRoleReorderToolEClass, InstanceRoleReorderTool.class, "InstanceRoleReorderTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getInstanceRoleReorderTool_Mappings(), theDescriptionPackage.getInstanceRoleMapping(), null, "mappings", null, 0, -1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getInstanceRoleReorderTool_PredecessorBefore(), theToolPackage_2.getElementVariable(), null, "predecessorBefore", null, 0, 1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getInstanceRoleReorderTool_PredecessorAfter(), theToolPackage_2.getElementVariable(), null, "predecessorAfter", null, 0, 1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getInstanceRoleReorderTool_InstanceRoleMoved(), theToolPackage_2.getInitialOperation(), null, "instanceRoleMoved", null, 1, 1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(instanceRoleReorderToolEClass, InstanceRoleReorderTool.class, "InstanceRoleReorderTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getInstanceRoleReorderTool_Mappings(), theDescriptionPackage.getInstanceRoleMapping(), null, "mappings", null, 0, -1, InstanceRoleReorderTool.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getInstanceRoleReorderTool_PredecessorBefore(), theToolPackage_2.getElementVariable(), null, "predecessorBefore", null, 0, 1, InstanceRoleReorderTool.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getInstanceRoleReorderTool_PredecessorAfter(), theToolPackage_2.getElementVariable(), null, "predecessorAfter", null, 0, 1, InstanceRoleReorderTool.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getInstanceRoleReorderTool_InstanceRoleMoved(), theToolPackage_2.getInitialOperation(), null, "instanceRoleMoved", null, 1, 1, InstanceRoleReorderTool.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create annotations
         // toolVariable

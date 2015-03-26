@@ -41,7 +41,7 @@ public interface SingleEventEnd extends EventEnd {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Start</em>' attribute.
      * @see #setStart(boolean)
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getSingleEventEnd_Start()
@@ -70,7 +70,7 @@ public interface SingleEventEnd extends EventEnd {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Event</em>' reference.
      * @see #setSemanticEvent(EObject)
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getSingleEventEnd_SemanticEvent()

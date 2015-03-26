@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -75,6 +75,7 @@ public class TargetEdgeCreationVariableImpl extends AbstractVariableImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<SubVariable> getSubVariables() {
         if (subVariables == null) {
             subVariables = new EObjectContainmentEList.Resolving<SubVariable>(SubVariable.class, this, ToolPackage.TARGET_EDGE_CREATION_VARIABLE__SUB_VARIABLES);

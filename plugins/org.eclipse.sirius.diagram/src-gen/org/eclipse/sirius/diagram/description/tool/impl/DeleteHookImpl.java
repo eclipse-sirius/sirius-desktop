@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -47,7 +47,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -57,12 +57,12 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = DeleteHookImpl.ID_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}'
@@ -98,6 +98,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
      * 
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
@@ -107,11 +108,13 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
      * 
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DELETE_HOOK__ID, oldId, id));
+        }
     }
 
     /**
@@ -119,6 +122,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
      * 
      * @generated
      */
+    @Override
     public EList<DeleteHookParameter> getParameters() {
         if (parameters == null) {
             parameters = new EObjectContainmentEList.Resolving<DeleteHookParameter>(DeleteHookParameter.class, this, ToolPackage.DELETE_HOOK__PARAMETERS);
@@ -185,7 +189,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.DELETE_HOOK__ID:
-            setId(ID_EDEFAULT);
+            setId(DeleteHookImpl.ID_EDEFAULT);
             return;
         case ToolPackage.DELETE_HOOK__PARAMETERS:
             getParameters().clear();
@@ -203,7 +207,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.DELETE_HOOK__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return DeleteHookImpl.ID_EDEFAULT == null ? id != null : !DeleteHookImpl.ID_EDEFAULT.equals(id);
         case ToolPackage.DELETE_HOOK__PARAMETERS:
             return parameters != null && !parameters.isEmpty();
         }
@@ -217,8 +221,9 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");

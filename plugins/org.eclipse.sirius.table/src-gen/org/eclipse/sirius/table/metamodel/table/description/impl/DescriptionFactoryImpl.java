@@ -154,9 +154,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EditionTableDescription createEditionTableDescription() {
         EditionTableDescriptionImpl editionTableDescription = new EditionTableDescriptionSpec();
         return editionTableDescription;
@@ -164,9 +165,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CrossTableDescription createCrossTableDescription() {
         CrossTableDescriptionImpl crossTableDescription = new CrossTableDescriptionSpec();
         return crossTableDescription;
@@ -177,6 +179,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TableMapping createTableMapping() {
         TableMappingImpl tableMapping = new TableMappingImpl();
         return tableMapping;
@@ -184,9 +187,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated NOT
      */
+    @Override
     public LineMapping createLineMapping() {
         LineMappingImpl lineMapping = new LineMappingSpec();
         return lineMapping;
@@ -197,6 +201,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public ColumnMapping createColumnMapping() {
         ColumnMappingImpl columnMapping = new ColumnMappingImpl();
         return columnMapping;
@@ -204,9 +209,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public FeatureColumnMapping createFeatureColumnMapping() {
         final FeatureColumnMappingImpl featureColumnMapping = new FeatureColumnMappingSpec();
         return featureColumnMapping;
@@ -217,6 +223,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public CellUpdater createCellUpdater() {
         CellUpdaterImpl cellUpdater = new CellUpdaterImpl();
         return cellUpdater;
@@ -227,6 +234,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public ElementColumnMapping createElementColumnMapping() {
         ElementColumnMappingImpl elementColumnMapping = new ElementColumnMappingImpl();
         return elementColumnMapping;
@@ -234,9 +242,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public IntersectionMapping createIntersectionMapping() {
         final IntersectionMappingImpl intersectionMapping = new IntersectionMappingSpec();
         return intersectionMapping;
@@ -247,6 +256,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TableTool createTableTool() {
         TableToolImpl tableTool = new TableToolImpl();
         return tableTool;
@@ -254,9 +264,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public LabelEditTool createLabelEditTool() {
         final LabelEditToolImpl labelEditTool = new LabelEditToolSpec();
         return labelEditTool;
@@ -264,9 +275,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CreateColumnTool createCreateColumnTool() {
         CreateColumnToolImpl createColumnTool = new CreateColumnToolSpec();
         return createColumnTool;
@@ -277,6 +289,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public CreateCrossColumnTool createCreateCrossColumnTool() {
         CreateCrossColumnToolImpl createCrossColumnTool = new CreateCrossColumnToolImpl();
         return createCrossColumnTool;
@@ -284,9 +297,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CreateLineTool createCreateLineTool() {
         CreateLineToolImpl createLineTool = new CreateLineToolSpec();
         return createLineTool;
@@ -294,9 +308,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CreateCellTool createCreateCellTool() {
         final CreateCellToolImpl createCellTool = new CreateCellToolSpec();
         return createCellTool;
@@ -304,9 +319,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DeleteColumnTool createDeleteColumnTool() {
         DeleteColumnToolImpl deleteColumnTool = new DeleteColumnToolSpec();
         return deleteColumnTool;
@@ -314,9 +330,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DeleteLineTool createDeleteLineTool() {
         DeleteLineToolImpl deleteLineTool = new DeleteLineToolSpec();
         return deleteLineTool;
@@ -324,9 +341,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ForegroundStyleDescription createForegroundStyleDescription() {
         ForegroundStyleDescriptionImpl foregroundStyleDescription = new ForegroundStyleDescriptionImpl();
         new DefaultColorStyleDescription().setDefaultColors(foregroundStyleDescription);
@@ -335,9 +353,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public BackgroundStyleDescription createBackgroundStyleDescription() {
         BackgroundStyleDescription backgroundStyleDescription = new BackgroundStyleDescriptionImpl();
         new DefaultColorStyleDescription().setDefaultColors(backgroundStyleDescription);
@@ -349,6 +368,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public ForegroundConditionalStyle createForegroundConditionalStyle() {
         ForegroundConditionalStyleImpl foregroundConditionalStyle = new ForegroundConditionalStyleImpl();
         return foregroundConditionalStyle;
@@ -359,6 +379,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public BackgroundConditionalStyle createBackgroundConditionalStyle() {
         BackgroundConditionalStyleImpl backgroundConditionalStyle = new BackgroundConditionalStyleImpl();
         return backgroundConditionalStyle;
@@ -369,6 +390,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TableVariable createTableVariable() {
         TableVariableImpl tableVariable = new TableVariableImpl();
         return tableVariable;
@@ -376,9 +398,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TableCreationDescription createTableCreationDescription() {
         TableCreationDescriptionImpl tableCreationDescription = new TableCreationDescriptionSpec();
         return tableCreationDescription;
@@ -386,9 +409,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TableNavigationDescription createTableNavigationDescription() {
         TableNavigationDescriptionImpl tableNavigationDescription = new TableNavigationDescriptionSpec();
         return tableNavigationDescription;
@@ -399,6 +423,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public DescriptionPackage getDescriptionPackage() {
         return (DescriptionPackage) getEPackage();
     }

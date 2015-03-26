@@ -24,14 +24,14 @@ import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.description.TreeItemDeletionTool} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemDeletionToolItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -94,7 +94,7 @@ public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

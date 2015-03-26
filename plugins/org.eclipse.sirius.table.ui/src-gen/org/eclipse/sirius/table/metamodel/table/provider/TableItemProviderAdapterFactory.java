@@ -52,7 +52,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -69,7 +69,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public TableItemProviderAdapterFactory() {
@@ -84,7 +84,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.DTable} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTableItemProvider dTableItemProvider;
@@ -93,7 +93,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.DTable}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.DLine} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DLineItemProvider dLineItemProvider;
@@ -118,7 +118,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.DLine}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.DCell} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DCellItemProvider dCellItemProvider;
@@ -143,7 +143,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.DCell}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.DTargetColumn}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -258,9 +258,10 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -268,9 +269,10 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -318,6 +320,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -327,6 +330,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -335,9 +339,10 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -349,24 +354,32 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (dTableItemProvider != null)
+        if (dTableItemProvider != null) {
             dTableItemProvider.dispose();
-        if (dLineItemProvider != null)
+        }
+        if (dLineItemProvider != null) {
             dLineItemProvider.dispose();
-        if (dCellItemProvider != null)
+        }
+        if (dCellItemProvider != null) {
             dCellItemProvider.dispose();
-        if (dCellStyleItemProvider != null)
+        }
+        if (dCellStyleItemProvider != null) {
             dCellStyleItemProvider.dispose();
-        if (dTargetColumnItemProvider != null)
+        }
+        if (dTargetColumnItemProvider != null) {
             dTargetColumnItemProvider.dispose();
-        if (dFeatureColumnItemProvider != null)
+        }
+        if (dFeatureColumnItemProvider != null) {
             dFeatureColumnItemProvider.dispose();
-        if (dTableElementStyleItemProvider != null)
+        }
+        if (dTableElementStyleItemProvider != null) {
             dTableElementStyleItemProvider.dispose();
+        }
     }
 
 }

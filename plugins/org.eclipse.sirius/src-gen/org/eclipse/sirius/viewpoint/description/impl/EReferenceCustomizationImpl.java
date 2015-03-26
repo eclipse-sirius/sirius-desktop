@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -41,7 +41,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
      * The default value of the '{@link #getReferenceName()
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReferenceName()
      * @generated
      * @ordered
@@ -52,17 +52,17 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
      * The cached value of the '{@link #getReferenceName()
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReferenceName()
      * @generated
      * @ordered
      */
-    protected String referenceName = REFERENCE_NAME_EDEFAULT;
+    protected String referenceName = EReferenceCustomizationImpl.REFERENCE_NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValue()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EReferenceCustomizationImpl() {
@@ -80,7 +80,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,37 +90,42 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getReferenceName() {
         return referenceName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setReferenceName(String newReferenceName) {
         String oldReferenceName = referenceName;
         referenceName = newReferenceName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EREFERENCE_CUSTOMIZATION__REFERENCE_NAME, oldReferenceName, referenceName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObject getValue() {
         if (value != null && value.eIsProxy()) {
             InternalEObject oldValue = (InternalEObject) value;
             value = eResolveProxy(oldValue);
             if (value != oldValue) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.EREFERENCE_CUSTOMIZATION__VALUE, oldValue, value));
+                }
             }
         }
         return value;
@@ -128,7 +133,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetValue() {
@@ -137,19 +142,21 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setValue(EObject newValue) {
         EObject oldValue = value;
         value = newValue;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EREFERENCE_CUSTOMIZATION__VALUE, oldValue, value));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,8 +165,9 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
         case DescriptionPackage.EREFERENCE_CUSTOMIZATION__REFERENCE_NAME:
             return getReferenceName();
         case DescriptionPackage.EREFERENCE_CUSTOMIZATION__VALUE:
-            if (resolve)
+            if (resolve) {
                 return getValue();
+            }
             return basicGetValue();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -167,7 +175,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,14 +193,14 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.EREFERENCE_CUSTOMIZATION__REFERENCE_NAME:
-            setReferenceName(REFERENCE_NAME_EDEFAULT);
+            setReferenceName(EReferenceCustomizationImpl.REFERENCE_NAME_EDEFAULT);
             return;
         case DescriptionPackage.EREFERENCE_CUSTOMIZATION__VALUE:
             setValue((EObject) null);
@@ -203,14 +211,14 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.EREFERENCE_CUSTOMIZATION__REFERENCE_NAME:
-            return REFERENCE_NAME_EDEFAULT == null ? referenceName != null : !REFERENCE_NAME_EDEFAULT.equals(referenceName);
+            return EReferenceCustomizationImpl.REFERENCE_NAME_EDEFAULT == null ? referenceName != null : !EReferenceCustomizationImpl.REFERENCE_NAME_EDEFAULT.equals(referenceName);
         case DescriptionPackage.EREFERENCE_CUSTOMIZATION__VALUE:
             return value != null;
         }
@@ -219,13 +227,14 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (referenceName: ");

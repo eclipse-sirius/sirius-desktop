@@ -37,14 +37,14 @@ import org.eclipse.sirius.tree.description.TreePopupMenu;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.description.TreeItemMapping} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemMappingItemProvider(AdapterFactory adapterFactory) {
@@ -54,7 +54,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This adds a property descriptor for the Domain Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -91,10 +91,10 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_TreeItemMapping_preconditionExpression_feature"), getString("_UI_TreeItemMapping_preconditionExpression_description"),
-                        DescriptionPackage.Literals.TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_AdvancedPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_TreeItemMapping_preconditionExpression_feature"), getString("_UI_TreeItemMapping_preconditionExpression_description"),
+                DescriptionPackage.Literals.TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**
@@ -126,7 +126,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This adds a property descriptor for the Specialize feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSpecializePropertyDescriptor(Object object) {
@@ -190,7 +190,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -236,7 +236,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -273,7 +273,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

@@ -69,13 +69,15 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
      * 
      * @generated
      */
+    @Override
     public TableDescription getTableDescription() {
         if (tableDescription != null && tableDescription.eIsProxy()) {
             InternalEObject oldTableDescription = (InternalEObject) tableDescription;
             tableDescription = (TableDescription) eResolveProxy(oldTableDescription);
             if (tableDescription != oldTableDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.TABLE_CREATION_DESCRIPTION__TABLE_DESCRIPTION, oldTableDescription, tableDescription));
+                }
             }
         }
         return tableDescription;
@@ -95,11 +97,13 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
      * 
      * @generated
      */
+    @Override
     public void setTableDescription(TableDescription newTableDescription) {
         TableDescription oldTableDescription = tableDescription;
         tableDescription = newTableDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_CREATION_DESCRIPTION__TABLE_DESCRIPTION, oldTableDescription, tableDescription));
+        }
     }
 
     /**
@@ -111,8 +115,9 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DescriptionPackage.TABLE_CREATION_DESCRIPTION__TABLE_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getTableDescription();
+            }
             return basicGetTableDescription();
         }
         return super.eGet(featureID, resolve, coreType);

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -47,7 +47,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * domain class of the mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAbstractNodeMapping_DomainClass()
@@ -77,7 +77,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * mapping for nodes that are on the border of nodes created by this
      * mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Bordered Node Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAbstractNodeMapping_BorderedNodeMappings()
@@ -96,7 +96,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Bordered Node Mappings</em>'
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAbstractNodeMapping_ReusedBorderedNodeMappings()
@@ -109,7 +109,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return the node that has been created by this mapping and the specified
      * EObject as semantic element.
-     * 
+     *
      * @param eObject
      *            The semantic element. <!-- end-model-doc -->
      * @model
@@ -121,7 +121,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Clear the list of done nodes. <!-- end-model-doc -->
-     * 
+     *
      * @model
      * @generated
      */
@@ -131,9 +131,9 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Add a new node in the done nodes.
-     * 
+     *
      * <!-- end-model-doc -->
-     * 
+     *
      * @model nodeRequired="true"
      * @generated
      */

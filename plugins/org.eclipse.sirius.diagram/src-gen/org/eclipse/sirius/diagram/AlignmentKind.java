@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * Samples with three gauges :
  * <ul>
  * <li>VERTICAL :</li>
- * 
+ *
  * <pre>
  * &lt;code&gt;
  *    G
@@ -40,29 +40,29 @@ import org.eclipse.emf.common.util.Enumerator;
  *    G
  * &lt;/code&gt;
  * </pre>
- * 
+ *
  * <li>HORIZONTAL :</li>
- * 
+ *
  * <pre>
  * &lt;code&gt;
  * GGG
  * &lt;/code&gt;
  * </pre>
- * 
+ *
  * <li>SQUARE :</li>
- * 
+ *
  * <pre>
  * &lt;code&gt;
  *    GG
  *    G
  * &lt;/code&gt;
  * </pre>
- * 
+ *
  * </ul>
  * </p>
  * <!-- end-user-doc --> <!-- begin-model-doc --> Possible alignments of gauges.
  * <!-- end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getAlignmentKind()
  * @model
  * @generated
@@ -146,7 +146,7 @@ public enum AlignmentKind implements Enumerator {
     /**
      * An array of all the '<em><b>Alignment Kind</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final AlignmentKind[] VALUES_ARRAY = new AlignmentKind[] { VERTICAL_LITERAL, HORIZONTAL_LITERAL, SQUARE_LITERAL, };
@@ -157,7 +157,7 @@ public enum AlignmentKind implements Enumerator {
      * 
      * @generated
      */
-    public static final List<AlignmentKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<AlignmentKind> VALUES = Collections.unmodifiableList(Arrays.asList(AlignmentKind.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified
@@ -166,8 +166,7 @@ public enum AlignmentKind implements Enumerator {
      * @generated
      */
     public static AlignmentKind get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            AlignmentKind result = VALUES_ARRAY[i];
+        for (AlignmentKind result : AlignmentKind.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -182,8 +181,7 @@ public enum AlignmentKind implements Enumerator {
      * @generated
      */
     public static AlignmentKind getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            AlignmentKind result = VALUES_ARRAY[i];
+        for (AlignmentKind result : AlignmentKind.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -247,6 +245,7 @@ public enum AlignmentKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -256,6 +255,7 @@ public enum AlignmentKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -265,6 +265,7 @@ public enum AlignmentKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter;
 
@@ -40,7 +40,7 @@ public interface CompositeFilterDescription extends FilterDescription {
      * {@link org.eclipse.sirius.diagram.description.filter.Filter}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * filters. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Filters</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getCompositeFilterDescription_Filters()
      * @model containment="true" resolveProxies="true" required="true"

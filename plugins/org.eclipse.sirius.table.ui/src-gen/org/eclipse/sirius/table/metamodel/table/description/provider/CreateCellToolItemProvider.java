@@ -38,7 +38,7 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CreateCellToolItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
     /**
      * This adds a property descriptor for the Documentation feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
@@ -92,7 +92,7 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -104,7 +104,7 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
     /**
      * This adds a property descriptor for the Precondition feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionPropertyDescriptor(Object object) {
@@ -117,7 +117,7 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
     /**
      * This adds a property descriptor for the Force Refresh feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForceRefreshPropertyDescriptor(Object object) {
@@ -175,7 +175,7 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -216,7 +216,7 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

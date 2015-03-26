@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -86,6 +86,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getOutgoingEdges() {
         if (outgoingEdges == null) {
             outgoingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.EDGE_TARGET__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
@@ -98,6 +99,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getIncomingEdges() {
         if (incomingEdges == null) {
             incomingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.EDGE_TARGET__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);

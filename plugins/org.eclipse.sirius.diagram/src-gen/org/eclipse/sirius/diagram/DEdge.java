@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -59,7 +59,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * Returns the value of the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The style of the connection. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(EdgeStyle)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_OwnedStyle()
@@ -171,7 +171,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * mapping that has created the view edge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Actual Mapping</em>' reference.
      * @see #setActualMapping(IEdgeMapping)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_ActualMapping()
@@ -199,7 +199,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * enumeration {@link org.eclipse.sirius.diagram.EdgeRouting}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * routing style of the edge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeRouting
      * @see #setRoutingStyle(EdgeRouting)
@@ -229,7 +229,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * Returns the value of the '<em><b>Is Fold</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * <code>true</code> if the view edge is folded. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Is Fold</em>' attribute.
      * @see #setIsFold(boolean)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_IsFold()
@@ -243,7 +243,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DEdge#isIsFold
      * <em>Is Fold</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Is Fold</em>' attribute.
      * @see #isIsFold()
@@ -257,7 +257,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * <code>true</code> if the edge is an edge that is displayed only to have
      * the plus image to decollapse a branch. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Is Mock Edge</em>' attribute.
      * @see #setIsMockEdge(boolean)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_IsMockEdge()
@@ -286,7 +286,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * instance of style that is contained by the mapping. The ownedStyle
      * reference should be a copy of this style. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Original Style</em>' reference.
      * @see #setOriginalStyle(Style)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_OriginalStyle()
@@ -317,7 +317,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Path</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_Path()
      * @model
@@ -350,7 +350,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * default value is <code>""</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The name of the representation.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Begin Label</em>' attribute.
      * @see #setBeginLabel(String)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_BeginLabel()
@@ -377,7 +377,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * default value is <code>""</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The name of the representation.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>End Label</em>' attribute.
      * @see #setEndLabel(String)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_EndLabel()
@@ -402,7 +402,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * <code>true</code> if the edge is the root of a folded branch. <!--
      * end-model-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

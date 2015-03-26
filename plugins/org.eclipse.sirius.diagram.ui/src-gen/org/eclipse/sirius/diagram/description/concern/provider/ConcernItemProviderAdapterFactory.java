@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.concern.provider;
 
@@ -53,7 +53,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -70,7 +70,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public ConcernItemProviderAdapterFactory() {
@@ -94,7 +94,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernSet}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,9 +134,10 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -144,9 +145,10 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -194,6 +196,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -203,6 +206,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -211,9 +215,10 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -225,14 +230,17 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (concernSetItemProvider != null)
+        if (concernSetItemProvider != null) {
             concernSetItemProvider.dispose();
-        if (concernDescriptionItemProvider != null)
+        }
+        if (concernDescriptionItemProvider != null) {
             concernDescriptionItemProvider.dispose();
+        }
     }
 
 }

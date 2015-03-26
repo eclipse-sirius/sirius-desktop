@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.provider;
 
@@ -39,7 +39,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramElementMappingItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Paste Descriptions feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPasteDescriptionsPropertyDescriptor(Object object) {
@@ -109,15 +109,15 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Label Direct Edit feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelDirectEditPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_DiagramElementMapping_labelDirectEdit_feature"), getString("_UI_DiagramElementMapping_labelDirectEdit_description"),
-                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT, true, false, true, null,
-                        getString("_UI_BehaviorPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DiagramElementMapping_labelDirectEdit_feature"), getString("_UI_DiagramElementMapping_labelDirectEdit_description"),
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT, true, false, true, null,
+                getString("_UI_BehaviorPropertyCategory"), null));
     }
 
     /**
@@ -136,7 +136,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Semantic Elements feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
@@ -163,7 +163,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -200,7 +200,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -211,7 +211,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

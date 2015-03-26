@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -56,7 +56,7 @@ public enum ContainerShape implements Enumerator {
     /**
      * An array of all the '<em><b>Container Shape</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final ContainerShape[] VALUES_ARRAY = new ContainerShape[] { PARALLELOGRAM_LITERAL, };
@@ -67,7 +67,7 @@ public enum ContainerShape implements Enumerator {
      * 
      * @generated
      */
-    public static final List<ContainerShape> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<ContainerShape> VALUES = Collections.unmodifiableList(Arrays.asList(ContainerShape.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Container Shape</b></em>' literal with the specified
@@ -76,8 +76,7 @@ public enum ContainerShape implements Enumerator {
      * @generated
      */
     public static ContainerShape get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ContainerShape result = VALUES_ARRAY[i];
+        for (ContainerShape result : ContainerShape.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -92,8 +91,7 @@ public enum ContainerShape implements Enumerator {
      * @generated
      */
     public static ContainerShape getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ContainerShape result = VALUES_ARRAY[i];
+        for (ContainerShape result : ContainerShape.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -153,6 +151,7 @@ public enum ContainerShape implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -162,6 +161,7 @@ public enum ContainerShape implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -171,6 +171,7 @@ public enum ContainerShape implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

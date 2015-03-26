@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.validation.impl;
 
@@ -37,7 +37,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
      * The default value of the '{@link #getAuditExpression()
      * <em>Audit Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAuditExpression()
      * @generated
      * @ordered
@@ -48,16 +48,16 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
      * The cached value of the '{@link #getAuditExpression()
      * <em>Audit Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAuditExpression()
      * @generated
      * @ordered
      */
-    protected String auditExpression = AUDIT_EXPRESSION_EDEFAULT;
+    protected String auditExpression = RuleAuditImpl.AUDIT_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RuleAuditImpl() {
@@ -66,7 +66,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,28 +76,31 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getAuditExpression() {
         return auditExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setAuditExpression(String newAuditExpression) {
         String oldAuditExpression = auditExpression;
         auditExpression = newAuditExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ValidationPackage.RULE_AUDIT__AUDIT_EXPRESSION, oldAuditExpression, auditExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +114,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,14 +129,14 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ValidationPackage.RULE_AUDIT__AUDIT_EXPRESSION:
-            setAuditExpression(AUDIT_EXPRESSION_EDEFAULT);
+            setAuditExpression(RuleAuditImpl.AUDIT_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -141,27 +144,28 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ValidationPackage.RULE_AUDIT__AUDIT_EXPRESSION:
-            return AUDIT_EXPRESSION_EDEFAULT == null ? auditExpression != null : !AUDIT_EXPRESSION_EDEFAULT.equals(auditExpression);
+            return RuleAuditImpl.AUDIT_EXPRESSION_EDEFAULT == null ? auditExpression != null : !RuleAuditImpl.AUDIT_EXPRESSION_EDEFAULT.equals(auditExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (auditExpression: ");

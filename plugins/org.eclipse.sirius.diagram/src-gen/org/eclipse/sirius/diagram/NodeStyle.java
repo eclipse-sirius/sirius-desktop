@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -42,7 +42,7 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle {
      * <!-- end-user-doc --> <!-- begin-model-doc --> The position of the label
      * : BORDER : The label is around the node, on the border. NODE : the label
      * is in the node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition
      * @see #setLabelPosition(LabelPosition)
@@ -73,7 +73,7 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle {
      * of the label (available only if labelPosition equals BORDER). A change of
      * this option does not affect already existing elements. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Hide Label By Default</em>' attribute.
      * @see #setHideLabelByDefault(boolean)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getNodeStyle_HideLabelByDefault()

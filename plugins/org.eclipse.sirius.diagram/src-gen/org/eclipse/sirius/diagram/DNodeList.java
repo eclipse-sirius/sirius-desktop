@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -39,7 +39,7 @@ public interface DNodeList extends DDiagramElementContainer {
      * {@link org.eclipse.sirius.diagram.DNodeListElement}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> elements owned by this
      * list. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Elements</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeList_OwnedElements()

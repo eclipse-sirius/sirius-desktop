@@ -124,7 +124,7 @@ public interface TExecutionMapping extends TAbstractMapping, TMessageExtremity {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Recursive</em>' attribute.
      * @see #setRecursive(boolean)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionMapping_Recursive()
@@ -138,7 +138,7 @@ public interface TExecutionMapping extends TAbstractMapping, TMessageExtremity {
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#isRecursive
      * <em>Recursive</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Recursive</em>' attribute.
      * @see #isRecursive()

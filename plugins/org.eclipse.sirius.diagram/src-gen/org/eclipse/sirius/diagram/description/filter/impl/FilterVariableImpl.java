@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.impl;
 
@@ -71,7 +71,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * @generated
      * @ordered
      */
-    protected String candidatesExpression = CANDIDATES_EXPRESSION_EDEFAULT;
+    protected String candidatesExpression = FilterVariableImpl.CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isMultiple() <em>Multiple</em>}'
@@ -91,7 +91,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * @generated
      * @ordered
      */
-    protected boolean multiple = MULTIPLE_EDEFAULT;
+    protected boolean multiple = FilterVariableImpl.MULTIPLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isTree() <em>Tree</em>}' attribute.
@@ -106,12 +106,12 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The cached value of the '{@link #isTree() <em>Tree</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isTree()
      * @generated
      * @ordered
      */
-    protected boolean tree = TREE_EDEFAULT;
+    protected boolean tree = FilterVariableImpl.TREE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRootExpression()
@@ -133,7 +133,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * @generated
      * @ordered
      */
-    protected String rootExpression = ROOT_EXPRESSION_EDEFAULT;
+    protected String rootExpression = FilterVariableImpl.ROOT_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getChildrenExpression()
@@ -155,7 +155,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * @generated
      * @ordered
      */
-    protected String childrenExpression = CHILDREN_EXPRESSION_EDEFAULT;
+    protected String childrenExpression = FilterVariableImpl.CHILDREN_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getMessage() <em>Message</em>}'
@@ -175,7 +175,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * @generated
      * @ordered
      */
-    protected String message = MESSAGE_EDEFAULT;
+    protected String message = FilterVariableImpl.MESSAGE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -195,7 +195,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = FilterVariableImpl.NAME_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -221,6 +221,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public String getCandidatesExpression() {
         return candidatesExpression;
     }
@@ -230,11 +231,13 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public void setCandidatesExpression(String newCandidatesExpression) {
         String oldCandidatesExpression = candidatesExpression;
         candidatesExpression = newCandidatesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__CANDIDATES_EXPRESSION, oldCandidatesExpression, candidatesExpression));
+        }
     }
 
     /**
@@ -242,6 +245,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public boolean isMultiple() {
         return multiple;
     }
@@ -251,11 +255,13 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public void setMultiple(boolean newMultiple) {
         boolean oldMultiple = multiple;
         multiple = newMultiple;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__MULTIPLE, oldMultiple, multiple));
+        }
     }
 
     /**
@@ -263,6 +269,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public boolean isTree() {
         return tree;
     }
@@ -272,11 +279,13 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public void setTree(boolean newTree) {
         boolean oldTree = tree;
         tree = newTree;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__TREE, oldTree, tree));
+        }
     }
 
     /**
@@ -284,6 +293,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public String getRootExpression() {
         return rootExpression;
     }
@@ -293,11 +303,13 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public void setRootExpression(String newRootExpression) {
         String oldRootExpression = rootExpression;
         rootExpression = newRootExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__ROOT_EXPRESSION, oldRootExpression, rootExpression));
+        }
     }
 
     /**
@@ -305,6 +317,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public String getChildrenExpression() {
         return childrenExpression;
     }
@@ -314,11 +327,13 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public void setChildrenExpression(String newChildrenExpression) {
         String oldChildrenExpression = childrenExpression;
         childrenExpression = newChildrenExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__CHILDREN_EXPRESSION, oldChildrenExpression, childrenExpression));
+        }
     }
 
     /**
@@ -326,6 +341,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public String getMessage() {
         return message;
     }
@@ -335,11 +351,13 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public void setMessage(String newMessage) {
         String oldMessage = message;
         message = newMessage;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__MESSAGE, oldMessage, message));
+        }
     }
 
     /**
@@ -347,6 +365,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -356,11 +375,13 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__NAME, oldName, name));
+        }
     }
 
     /**
@@ -431,25 +452,25 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     public void eUnset(int featureID) {
         switch (featureID) {
         case FilterPackage.FILTER_VARIABLE__CANDIDATES_EXPRESSION:
-            setCandidatesExpression(CANDIDATES_EXPRESSION_EDEFAULT);
+            setCandidatesExpression(FilterVariableImpl.CANDIDATES_EXPRESSION_EDEFAULT);
             return;
         case FilterPackage.FILTER_VARIABLE__MULTIPLE:
-            setMultiple(MULTIPLE_EDEFAULT);
+            setMultiple(FilterVariableImpl.MULTIPLE_EDEFAULT);
             return;
         case FilterPackage.FILTER_VARIABLE__TREE:
-            setTree(TREE_EDEFAULT);
+            setTree(FilterVariableImpl.TREE_EDEFAULT);
             return;
         case FilterPackage.FILTER_VARIABLE__ROOT_EXPRESSION:
-            setRootExpression(ROOT_EXPRESSION_EDEFAULT);
+            setRootExpression(FilterVariableImpl.ROOT_EXPRESSION_EDEFAULT);
             return;
         case FilterPackage.FILTER_VARIABLE__CHILDREN_EXPRESSION:
-            setChildrenExpression(CHILDREN_EXPRESSION_EDEFAULT);
+            setChildrenExpression(FilterVariableImpl.CHILDREN_EXPRESSION_EDEFAULT);
             return;
         case FilterPackage.FILTER_VARIABLE__MESSAGE:
-            setMessage(MESSAGE_EDEFAULT);
+            setMessage(FilterVariableImpl.MESSAGE_EDEFAULT);
             return;
         case FilterPackage.FILTER_VARIABLE__NAME:
-            setName(NAME_EDEFAULT);
+            setName(FilterVariableImpl.NAME_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -464,19 +485,19 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case FilterPackage.FILTER_VARIABLE__CANDIDATES_EXPRESSION:
-            return CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !CANDIDATES_EXPRESSION_EDEFAULT.equals(candidatesExpression);
+            return FilterVariableImpl.CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !FilterVariableImpl.CANDIDATES_EXPRESSION_EDEFAULT.equals(candidatesExpression);
         case FilterPackage.FILTER_VARIABLE__MULTIPLE:
-            return multiple != MULTIPLE_EDEFAULT;
+            return multiple != FilterVariableImpl.MULTIPLE_EDEFAULT;
         case FilterPackage.FILTER_VARIABLE__TREE:
-            return tree != TREE_EDEFAULT;
+            return tree != FilterVariableImpl.TREE_EDEFAULT;
         case FilterPackage.FILTER_VARIABLE__ROOT_EXPRESSION:
-            return ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
+            return FilterVariableImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !FilterVariableImpl.ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
         case FilterPackage.FILTER_VARIABLE__CHILDREN_EXPRESSION:
-            return CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
+            return FilterVariableImpl.CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !FilterVariableImpl.CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
         case FilterPackage.FILTER_VARIABLE__MESSAGE:
-            return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
+            return FilterVariableImpl.MESSAGE_EDEFAULT == null ? message != null : !FilterVariableImpl.MESSAGE_EDEFAULT.equals(message);
         case FilterPackage.FILTER_VARIABLE__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return FilterVariableImpl.NAME_EDEFAULT == null ? name != null : !FilterVariableImpl.NAME_EDEFAULT.equals(name);
         }
         return super.eIsSet(featureID);
     }
@@ -488,8 +509,9 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (candidatesExpression: ");

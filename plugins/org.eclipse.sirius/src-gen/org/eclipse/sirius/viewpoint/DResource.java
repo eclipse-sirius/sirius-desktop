@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint;
 
@@ -38,7 +38,7 @@ public interface DResource extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDResource_Name()
@@ -51,7 +51,7 @@ public interface DResource extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.DResource#getName <em>Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -67,7 +67,7 @@ public interface DResource extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Path</em>' attribute.
      * @see #setPath(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDResource_Path()
@@ -80,7 +80,7 @@ public interface DResource extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.DResource#getPath <em>Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Path</em>' attribute.
      * @see #getPath()

@@ -126,7 +126,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
      * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getInstanceRoleSemanticOrdering
      * <em>Instance Role Semantic Ordering</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Instance Role Semantic Ordering</em>
      *            ' containment reference.

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -54,7 +54,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DeleteHookParameterImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -74,7 +74,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
      * @generated
      * @ordered
      */
-    protected String value = VALUE_EDEFAULT;
+    protected String value = DeleteHookParameterImpl.VALUE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -100,6 +100,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -109,11 +110,13 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DELETE_HOOK_PARAMETER__NAME, oldName, name));
+        }
     }
 
     /**
@@ -121,6 +124,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public String getValue() {
         return value;
     }
@@ -130,11 +134,13 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public void setValue(String newValue) {
         String oldValue = value;
         value = newValue;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DELETE_HOOK_PARAMETER__VALUE, oldValue, value));
+        }
     }
 
     /**
@@ -180,10 +186,10 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.DELETE_HOOK_PARAMETER__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DeleteHookParameterImpl.NAME_EDEFAULT);
             return;
         case ToolPackage.DELETE_HOOK_PARAMETER__VALUE:
-            setValue(VALUE_EDEFAULT);
+            setValue(DeleteHookParameterImpl.VALUE_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -198,9 +204,9 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.DELETE_HOOK_PARAMETER__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DeleteHookParameterImpl.NAME_EDEFAULT == null ? name != null : !DeleteHookParameterImpl.NAME_EDEFAULT.equals(name);
         case ToolPackage.DELETE_HOOK_PARAMETER__VALUE:
-            return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+            return DeleteHookParameterImpl.VALUE_EDEFAULT == null ? value != null : !DeleteHookParameterImpl.VALUE_EDEFAULT.equals(value);
         }
         return super.eIsSet(featureID);
     }
@@ -212,8 +218,9 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

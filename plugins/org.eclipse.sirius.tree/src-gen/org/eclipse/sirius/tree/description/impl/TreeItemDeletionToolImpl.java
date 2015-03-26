@@ -59,9 +59,11 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
      * 
      * @generated
      */
+    @Override
     public TreeItemMapping getMapping() {
-        if (eContainerFeatureID() != DescriptionPackage.TREE_ITEM_DELETION_TOOL__MAPPING)
+        if (eContainerFeatureID() != DescriptionPackage.TREE_ITEM_DELETION_TOOL__MAPPING) {
             return null;
+        }
         return (TreeItemMapping) eInternalContainer();
     }
 
@@ -80,20 +82,26 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
      * 
      * @generated
      */
+    @Override
     public void setMapping(TreeItemMapping newMapping) {
         if (newMapping != eInternalContainer() || (eContainerFeatureID() != DescriptionPackage.TREE_ITEM_DELETION_TOOL__MAPPING && newMapping != null)) {
-            if (EcoreUtil.isAncestor(this, newMapping))
+            if (EcoreUtil.isAncestor(this, newMapping)) {
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            }
             NotificationChain msgs = null;
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
-            if (newMapping != null)
+            }
+            if (newMapping != null) {
                 msgs = ((InternalEObject) newMapping).eInverseAdd(this, DescriptionPackage.TREE_ITEM_MAPPING__DELETE, TreeItemMapping.class, msgs);
+            }
             msgs = basicSetMapping(newMapping, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_DELETION_TOOL__MAPPING, newMapping, newMapping));
+        }
     }
 
     /**
@@ -105,8 +113,9 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case DescriptionPackage.TREE_ITEM_DELETION_TOOL__MAPPING:
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
+            }
             return basicSetMapping((TreeItemMapping) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);

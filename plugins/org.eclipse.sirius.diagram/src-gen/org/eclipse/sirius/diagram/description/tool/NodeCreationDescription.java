@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -60,7 +60,7 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Node
      * mappings used by this tool. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Node Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getNodeCreationDescription_NodeMappings()
      * @model required="true"
@@ -73,7 +73,7 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The variable container that represents the semantic
      * element of the clicked view. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Variable</em>' containment reference.
      * @see #setVariable(NodeCreationVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getNodeCreationDescription_Variable()
@@ -106,7 +106,7 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
      * begin-model-doc --> The variable containerView that represents the
      * clickedView (instance of ViewPoint or ViewPointElement). <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>View Variable</em>' containment reference.
      * @see #setViewVariable(ContainerViewVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getNodeCreationDescription_ViewVariable()
@@ -138,7 +138,7 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The first operation to execute. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialNodeCreationOperation)
@@ -168,7 +168,7 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
      * end-user-doc --> <!-- begin-model-doc --> The path of the icon to display
      * in the palette. If unset, the icon corresponding to the semantic element
      * associated with the mapping will be displayed. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getNodeCreationDescription_IconPath()
@@ -182,7 +182,7 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getIconPath
      * <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()
@@ -197,7 +197,7 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Add
      * here any mapping in which you want to allow the tool execution. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Extra Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getNodeCreationDescription_ExtraMappings()
      * @model

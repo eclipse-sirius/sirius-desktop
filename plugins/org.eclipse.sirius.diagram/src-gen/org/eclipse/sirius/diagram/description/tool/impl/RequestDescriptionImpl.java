@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -51,7 +51,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
      * @generated
      * @ordered
      */
-    protected String type = TYPE_EDEFAULT;
+    protected String type = RequestDescriptionImpl.TYPE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -77,6 +77,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
      * 
      * @generated
      */
+    @Override
     public String getType() {
         return type;
     }
@@ -86,11 +87,13 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
      * 
      * @generated
      */
+    @Override
     public void setType(String newType) {
         String oldType = type;
         type = newType;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REQUEST_DESCRIPTION__TYPE, oldType, type));
+        }
     }
 
     /**
@@ -131,7 +134,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.REQUEST_DESCRIPTION__TYPE:
-            setType(TYPE_EDEFAULT);
+            setType(RequestDescriptionImpl.TYPE_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -146,7 +149,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.REQUEST_DESCRIPTION__TYPE:
-            return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+            return RequestDescriptionImpl.TYPE_EDEFAULT == null ? type != null : !RequestDescriptionImpl.TYPE_EDEFAULT.equals(type);
         }
         return super.eIsSet(featureID);
     }
@@ -158,8 +161,9 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (type: ");

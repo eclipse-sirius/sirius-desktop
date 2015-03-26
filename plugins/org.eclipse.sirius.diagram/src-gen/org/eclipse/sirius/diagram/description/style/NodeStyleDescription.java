@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -51,7 +51,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * attribute. The default value is <code>"3"</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> Expression that computes
      * the size of the node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Size Computation Expression</em>'
      *         attribute.
      * @see #setSizeComputationExpression(String)
@@ -84,7 +84,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * enumeration {@link org.eclipse.sirius.diagram.LabelPosition}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * relative position of the label to the node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition
      * @see #setLabelPosition(LabelPosition)
@@ -115,7 +115,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * of the label (available only if labelPosition equals BORDER). A change of
      * this option does not affect already existing elements. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Hide Label By Default</em>' attribute.
      * @see #setHideLabelByDefault(boolean)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription_HideLabelByDefault()
@@ -144,7 +144,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * enumeration {@link org.eclipse.sirius.diagram.ResizeKind}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Define
      * the directions the user is able to resize. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Resize Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.ResizeKind
      * @see #setResizeKind(ResizeKind)

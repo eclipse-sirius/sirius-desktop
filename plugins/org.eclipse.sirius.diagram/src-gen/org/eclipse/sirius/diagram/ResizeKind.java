@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -130,7 +130,7 @@ public enum ResizeKind implements Enumerator {
     /**
      * An array of all the '<em><b>Resize Kind</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final ResizeKind[] VALUES_ARRAY = new ResizeKind[] { NONE_LITERAL, NSEW_LITERAL, NORTH_SOUTH_LITERAL, EAST_WEST_LITERAL, };
@@ -141,7 +141,7 @@ public enum ResizeKind implements Enumerator {
      * 
      * @generated
      */
-    public static final List<ResizeKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<ResizeKind> VALUES = Collections.unmodifiableList(Arrays.asList(ResizeKind.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Resize Kind</b></em>' literal with the specified
@@ -150,8 +150,7 @@ public enum ResizeKind implements Enumerator {
      * @generated
      */
     public static ResizeKind get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ResizeKind result = VALUES_ARRAY[i];
+        for (ResizeKind result : ResizeKind.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -166,8 +165,7 @@ public enum ResizeKind implements Enumerator {
      * @generated
      */
     public static ResizeKind getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ResizeKind result = VALUES_ARRAY[i];
+        for (ResizeKind result : ResizeKind.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -233,6 +231,7 @@ public enum ResizeKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -242,6 +241,7 @@ public enum ResizeKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -251,6 +251,7 @@ public enum ResizeKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

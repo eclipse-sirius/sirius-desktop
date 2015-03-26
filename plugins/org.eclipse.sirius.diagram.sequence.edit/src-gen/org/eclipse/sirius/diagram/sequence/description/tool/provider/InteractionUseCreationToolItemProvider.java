@@ -37,7 +37,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InteractionUseCreationToolItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -143,7 +143,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +181,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

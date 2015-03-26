@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter;
 
@@ -47,7 +47,7 @@ public interface MappingFilter extends Filter {
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All mappings to filter. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getMappingFilter_Mappings()
      * @model
@@ -60,7 +60,7 @@ public interface MappingFilter extends Filter {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The condition to apply on the semantic element, if
      * true the element is filtered. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Condition Expression</em>'
      *         attribute.
      * @see #setSemanticConditionExpression(String)
@@ -92,7 +92,7 @@ public interface MappingFilter extends Filter {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The condition to apply on the view element. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>View Condition Expression</em>' attribute.
      * @see #setViewConditionExpression(String)
      * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getMappingFilter_ViewConditionExpression()

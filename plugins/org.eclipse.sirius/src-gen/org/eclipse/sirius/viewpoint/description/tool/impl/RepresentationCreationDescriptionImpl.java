@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -59,7 +59,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The default value of the '{@link #getTitleExpression()
      * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -70,18 +70,18 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The cached value of the '{@link #getTitleExpression()
      * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTitleExpression()
      * @generated
      * @ordered
      */
-    protected String titleExpression = TITLE_EXPRESSION_EDEFAULT;
+    protected String titleExpression = RepresentationCreationDescriptionImpl.TITLE_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBrowseExpression()
      * @generated
      * @ordered
@@ -92,18 +92,18 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The cached value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBrowseExpression()
      * @generated
      * @ordered
      */
-    protected String browseExpression = BROWSE_EXPRESSION_EDEFAULT;
+    protected String browseExpression = RepresentationCreationDescriptionImpl.BROWSE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -114,7 +114,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The cached value of the '{@link #getContainerViewVariable()
      * <em>Container View Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerViewVariable()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * The cached value of the '{@link #getRepresentationNameVariable()
      * <em>Representation Name Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRepresentationNameVariable()
      * @generated
      * @ordered
@@ -134,7 +134,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RepresentationCreationDescriptionImpl() {
@@ -143,7 +143,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getTitleExpression() {
@@ -162,19 +162,20 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setTitleExpression(String newTitleExpression) {
         String oldTitleExpression = titleExpression;
         titleExpression = newTitleExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__TITLE_EXPRESSION, oldTitleExpression, titleExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getBrowseExpression() {
@@ -183,19 +184,20 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setBrowseExpression(String newBrowseExpression) {
         String oldBrowseExpression = browseExpression;
         browseExpression = newBrowseExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__BROWSE_EXPRESSION, oldBrowseExpression, browseExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RepresentationDescription getRepresentationDescription() {
@@ -206,7 +208,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RepresentationDescription basicGetRepresentationDescription() {
@@ -219,7 +221,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation getInitialOperation() {
@@ -228,14 +230,17 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
             initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, null,
+                        null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -243,7 +248,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -252,7 +257,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -260,36 +265,43 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, null,
+                        msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, null,
+                        msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable getContainerViewVariable() {
@@ -298,14 +310,17 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
             containerViewVariable = (ContainerViewVariable) eResolveProxy(oldContainerViewVariable);
             if (containerViewVariable != oldContainerViewVariable) {
                 InternalEObject newContainerViewVariable = (InternalEObject) containerViewVariable;
-                NotificationChain msgs = oldContainerViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, null);
+                NotificationChain msgs = oldContainerViewVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, null);
                 if (newContainerViewVariable.eInternalContainer() == null) {
-                    msgs = newContainerViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
+                    msgs = newContainerViewVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, oldContainerViewVariable, containerViewVariable));
+                }
             }
         }
         return containerViewVariable;
@@ -313,7 +328,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable basicGetContainerViewVariable() {
@@ -322,7 +337,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainerViewVariable(ContainerViewVariable newContainerViewVariable, NotificationChain msgs) {
@@ -331,36 +346,43 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, oldContainerViewVariable,
                     newContainerViewVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setContainerViewVariable(ContainerViewVariable newContainerViewVariable) {
         if (newContainerViewVariable != containerViewVariable) {
             NotificationChain msgs = null;
-            if (containerViewVariable != null)
-                msgs = ((InternalEObject) containerViewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
-            if (newContainerViewVariable != null)
-                msgs = ((InternalEObject) newContainerViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
+            if (containerViewVariable != null) {
+                msgs = ((InternalEObject) containerViewVariable).eInverseRemove(this,
+                        InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
+            }
+            if (newContainerViewVariable != null) {
+                msgs = ((InternalEObject) newContainerViewVariable).eInverseAdd(this,
+                        InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
+            }
             msgs = basicSetContainerViewVariable(newContainerViewVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, newContainerViewVariable, newContainerViewVariable));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NameVariable getRepresentationNameVariable() {
@@ -369,16 +391,19 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
             representationNameVariable = (NameVariable) eResolveProxy(oldRepresentationNameVariable);
             if (representationNameVariable != oldRepresentationNameVariable) {
                 InternalEObject newRepresentationNameVariable = (InternalEObject) representationNameVariable;
-                NotificationChain msgs = oldRepresentationNameVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
-                        null, null);
+                NotificationChain msgs = oldRepresentationNameVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, null, null);
                 if (newRepresentationNameVariable.eInternalContainer() == null) {
-                    msgs = newRepresentationNameVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, null, msgs);
+                    msgs = newRepresentationNameVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
+                            null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, oldRepresentationNameVariable,
                             representationNameVariable));
+                }
             }
         }
         return representationNameVariable;
@@ -386,7 +411,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NameVariable basicGetRepresentationNameVariable() {
@@ -395,7 +420,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetRepresentationNameVariable(NameVariable newRepresentationNameVariable, NotificationChain msgs) {
@@ -404,39 +429,44 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
                     oldRepresentationNameVariable, newRepresentationNameVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setRepresentationNameVariable(NameVariable newRepresentationNameVariable) {
         if (newRepresentationNameVariable != representationNameVariable) {
             NotificationChain msgs = null;
-            if (representationNameVariable != null)
-                msgs = ((InternalEObject) representationNameVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
-                        null, msgs);
-            if (newRepresentationNameVariable != null)
-                msgs = ((InternalEObject) newRepresentationNameVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
-                        null, msgs);
+            if (representationNameVariable != null) {
+                msgs = ((InternalEObject) representationNameVariable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, null, msgs);
+            }
+            if (newRepresentationNameVariable != null) {
+                msgs = ((InternalEObject) newRepresentationNameVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, null, msgs);
+            }
             msgs = basicSetRepresentationNameVariable(newRepresentationNameVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, newRepresentationNameVariable,
                     newRepresentationNameVariable));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EList<RepresentationElementMapping> getMappings() {
@@ -447,7 +477,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -465,7 +495,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -476,20 +506,24 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__BROWSE_EXPRESSION:
             return getBrowseExpression();
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getRepresentationDescription();
+            }
             return basicGetRepresentationDescription();
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getContainerViewVariable();
+            }
             return basicGetContainerViewVariable();
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getRepresentationNameVariable();
+            }
             return basicGetRepresentationNameVariable();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -497,7 +531,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -524,17 +558,17 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__TITLE_EXPRESSION:
-            setTitleExpression(TITLE_EXPRESSION_EDEFAULT);
+            setTitleExpression(RepresentationCreationDescriptionImpl.TITLE_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__BROWSE_EXPRESSION:
-            setBrowseExpression(BROWSE_EXPRESSION_EDEFAULT);
+            setBrowseExpression(RepresentationCreationDescriptionImpl.BROWSE_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
@@ -551,7 +585,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -575,13 +609,14 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (titleExpression: ");

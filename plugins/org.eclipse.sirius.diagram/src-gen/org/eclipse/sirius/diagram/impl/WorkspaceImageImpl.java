@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -52,7 +52,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
      * @generated
      * @ordered
      */
-    protected String workspacePath = WORKSPACE_PATH_EDEFAULT;
+    protected String workspacePath = WorkspaceImageImpl.WORKSPACE_PATH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -78,6 +78,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
      * 
      * @generated
      */
+    @Override
     public String getWorkspacePath() {
         return workspacePath;
     }
@@ -87,11 +88,13 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
      * 
      * @generated
      */
+    @Override
     public void setWorkspacePath(String newWorkspacePath) {
         String oldWorkspacePath = workspacePath;
         workspacePath = newWorkspacePath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.WORKSPACE_IMAGE__WORKSPACE_PATH, oldWorkspacePath, workspacePath));
+        }
     }
 
     /**
@@ -132,7 +135,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.WORKSPACE_IMAGE__WORKSPACE_PATH:
-            setWorkspacePath(WORKSPACE_PATH_EDEFAULT);
+            setWorkspacePath(WorkspaceImageImpl.WORKSPACE_PATH_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -147,7 +150,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.WORKSPACE_IMAGE__WORKSPACE_PATH:
-            return WORKSPACE_PATH_EDEFAULT == null ? workspacePath != null : !WORKSPACE_PATH_EDEFAULT.equals(workspacePath);
+            return WorkspaceImageImpl.WORKSPACE_PATH_EDEFAULT == null ? workspacePath != null : !WorkspaceImageImpl.WORKSPACE_PATH_EDEFAULT.equals(workspacePath);
         }
         return super.eIsSet(featureID);
     }
@@ -159,8 +162,9 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (workspacePath: ");

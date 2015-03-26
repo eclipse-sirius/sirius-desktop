@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.style.provider;
 
@@ -39,11 +39,11 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * @generated
  */
 public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BasicLabelStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +53,7 @@ public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter 
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter 
     /**
      * This adds a property descriptor for the Label Size feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelSizePropertyDescriptor(Object object) {
@@ -87,7 +87,7 @@ public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter 
     /**
      * This adds a property descriptor for the Label Format feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelFormatPropertyDescriptor(Object object) {
@@ -100,7 +100,7 @@ public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter 
     /**
      * This adds a property descriptor for the Show Icon feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addShowIconPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter 
     /**
      * This adds a property descriptor for the Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -126,7 +126,7 @@ public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter 
     /**
      * This adds a property descriptor for the Label Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelColorPropertyDescriptor(Object object) {
@@ -139,7 +139,7 @@ public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter 
     /**
      * This adds a property descriptor for the Icon Path feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -199,7 +199,7 @@ public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter 
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class BasicLabelStyleDescriptionItemProvider extends ItemProviderAdapter 
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

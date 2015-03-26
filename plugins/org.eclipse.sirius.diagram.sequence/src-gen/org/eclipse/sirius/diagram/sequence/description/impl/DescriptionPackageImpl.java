@@ -194,14 +194,14 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#eNS_URI
      * @see #init()
      * @generated
      */
     private DescriptionPackageImpl() {
-        super(eNS_URI, DescriptionFactory.eINSTANCE);
+        super(DescriptionPackage.eNS_URI, DescriptionFactory.eINSTANCE);
     }
 
     /**
@@ -214,27 +214,28 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link DescriptionPackage#eINSTANCE}
      * when that field is accessed. Clients should not invoke it directly.
      * Instead, they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static DescriptionPackage init() {
-        if (isInited)
+        if (DescriptionPackageImpl.isInited) {
             return (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-                : new DescriptionPackageImpl());
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
+                .get(DescriptionPackage.eNS_URI) : new DescriptionPackageImpl());
 
-        isInited = true;
+        DescriptionPackageImpl.isInited = true;
 
         // Initialize simple dependencies
         DiagramPackage.eINSTANCE.eClass();
@@ -276,6 +277,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getSequenceDiagramDescription() {
         return sequenceDiagramDescriptionEClass;
     }
@@ -285,6 +287,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getSequenceDiagramDescription_EndsOrdering() {
         return (EAttribute) sequenceDiagramDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -294,6 +297,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getSequenceDiagramDescription_InstanceRolesOrdering() {
         return (EAttribute) sequenceDiagramDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -303,6 +307,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getInstanceRoleMapping() {
         return instanceRoleMappingEClass;
     }
@@ -312,6 +317,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getEventMapping() {
         return eventMappingEClass;
     }
@@ -321,6 +327,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getDelimitedEventMapping() {
         return delimitedEventMappingEClass;
     }
@@ -330,6 +337,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getDelimitedEventMapping_StartingEndFinderExpression() {
         return (EAttribute) delimitedEventMappingEClass.getEStructuralFeatures().get(0);
     }
@@ -339,6 +347,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getDelimitedEventMapping_FinishingEndFinderExpression() {
         return (EAttribute) delimitedEventMappingEClass.getEStructuralFeatures().get(1);
     }
@@ -348,6 +357,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getExecutionMapping() {
         return executionMappingEClass;
     }
@@ -357,6 +367,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getStateMapping() {
         return stateMappingEClass;
     }
@@ -366,6 +377,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getEndOfLifeMapping() {
         return endOfLifeMappingEClass;
     }
@@ -375,6 +387,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getMessageMapping() {
         return messageMappingEClass;
     }
@@ -384,6 +397,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getMessageMapping_SendingEndFinderExpression() {
         return (EAttribute) messageMappingEClass.getEStructuralFeatures().get(0);
     }
@@ -393,6 +407,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getMessageMapping_ReceivingEndFinderExpression() {
         return (EAttribute) messageMappingEClass.getEStructuralFeatures().get(1);
     }
@@ -402,6 +417,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getBasicMessageMapping() {
         return basicMessageMappingEClass;
     }
@@ -411,6 +427,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getReturnMessageMapping() {
         return returnMessageMappingEClass;
     }
@@ -420,6 +437,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getReturnMessageMapping_InvocationMessageFinderExpression() {
         return (EAttribute) returnMessageMappingEClass.getEStructuralFeatures().get(0);
     }
@@ -429,6 +447,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getCreationMessageMapping() {
         return creationMessageMappingEClass;
     }
@@ -438,6 +457,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getDestructionMessageMapping() {
         return destructionMessageMappingEClass;
     }
@@ -447,6 +467,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getMessageEndVariable() {
         return messageEndVariableEClass;
     }
@@ -456,6 +477,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getCoveredLifelinesVariable() {
         return coveredLifelinesVariableEClass;
     }
@@ -465,6 +487,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getFrameMapping() {
         return frameMappingEClass;
     }
@@ -474,6 +497,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getFrameMapping_CoveredLifelinesExpression() {
         return (EAttribute) frameMappingEClass.getEStructuralFeatures().get(0);
     }
@@ -483,6 +507,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EAttribute getFrameMapping_CenterLabelExpression() {
         return (EAttribute) frameMappingEClass.getEStructuralFeatures().get(1);
     }
@@ -492,6 +517,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getInteractionUseMapping() {
         return interactionUseMappingEClass;
     }
@@ -501,6 +527,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getCombinedFragmentMapping() {
         return combinedFragmentMappingEClass;
     }
@@ -510,6 +537,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getOperandMapping() {
         return operandMappingEClass;
     }
@@ -519,6 +547,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public EClass getObservationPointMapping() {
         return observationPointMappingEClass;
     }
@@ -528,6 +557,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    @Override
     public DescriptionFactory getDescriptionFactory() {
         return (DescriptionFactory) getEFactoryInstance();
     }
@@ -547,57 +577,58 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        sequenceDiagramDescriptionEClass = createEClass(SEQUENCE_DIAGRAM_DESCRIPTION);
-        createEAttribute(sequenceDiagramDescriptionEClass, SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING);
-        createEAttribute(sequenceDiagramDescriptionEClass, SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING);
+        sequenceDiagramDescriptionEClass = createEClass(DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION);
+        createEAttribute(sequenceDiagramDescriptionEClass, DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING);
+        createEAttribute(sequenceDiagramDescriptionEClass, DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING);
 
-        instanceRoleMappingEClass = createEClass(INSTANCE_ROLE_MAPPING);
+        instanceRoleMappingEClass = createEClass(DescriptionPackage.INSTANCE_ROLE_MAPPING);
 
-        eventMappingEClass = createEClass(EVENT_MAPPING);
+        eventMappingEClass = createEClass(DescriptionPackage.EVENT_MAPPING);
 
-        delimitedEventMappingEClass = createEClass(DELIMITED_EVENT_MAPPING);
-        createEAttribute(delimitedEventMappingEClass, DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION);
-        createEAttribute(delimitedEventMappingEClass, DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION);
+        delimitedEventMappingEClass = createEClass(DescriptionPackage.DELIMITED_EVENT_MAPPING);
+        createEAttribute(delimitedEventMappingEClass, DescriptionPackage.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION);
+        createEAttribute(delimitedEventMappingEClass, DescriptionPackage.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION);
 
-        executionMappingEClass = createEClass(EXECUTION_MAPPING);
+        executionMappingEClass = createEClass(DescriptionPackage.EXECUTION_MAPPING);
 
-        stateMappingEClass = createEClass(STATE_MAPPING);
+        stateMappingEClass = createEClass(DescriptionPackage.STATE_MAPPING);
 
-        endOfLifeMappingEClass = createEClass(END_OF_LIFE_MAPPING);
+        endOfLifeMappingEClass = createEClass(DescriptionPackage.END_OF_LIFE_MAPPING);
 
-        messageMappingEClass = createEClass(MESSAGE_MAPPING);
-        createEAttribute(messageMappingEClass, MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION);
-        createEAttribute(messageMappingEClass, MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION);
+        messageMappingEClass = createEClass(DescriptionPackage.MESSAGE_MAPPING);
+        createEAttribute(messageMappingEClass, DescriptionPackage.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION);
+        createEAttribute(messageMappingEClass, DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION);
 
-        basicMessageMappingEClass = createEClass(BASIC_MESSAGE_MAPPING);
+        basicMessageMappingEClass = createEClass(DescriptionPackage.BASIC_MESSAGE_MAPPING);
 
-        returnMessageMappingEClass = createEClass(RETURN_MESSAGE_MAPPING);
-        createEAttribute(returnMessageMappingEClass, RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION);
+        returnMessageMappingEClass = createEClass(DescriptionPackage.RETURN_MESSAGE_MAPPING);
+        createEAttribute(returnMessageMappingEClass, DescriptionPackage.RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION);
 
-        creationMessageMappingEClass = createEClass(CREATION_MESSAGE_MAPPING);
+        creationMessageMappingEClass = createEClass(DescriptionPackage.CREATION_MESSAGE_MAPPING);
 
-        destructionMessageMappingEClass = createEClass(DESTRUCTION_MESSAGE_MAPPING);
+        destructionMessageMappingEClass = createEClass(DescriptionPackage.DESTRUCTION_MESSAGE_MAPPING);
 
-        messageEndVariableEClass = createEClass(MESSAGE_END_VARIABLE);
+        messageEndVariableEClass = createEClass(DescriptionPackage.MESSAGE_END_VARIABLE);
 
-        coveredLifelinesVariableEClass = createEClass(COVERED_LIFELINES_VARIABLE);
+        coveredLifelinesVariableEClass = createEClass(DescriptionPackage.COVERED_LIFELINES_VARIABLE);
 
-        frameMappingEClass = createEClass(FRAME_MAPPING);
-        createEAttribute(frameMappingEClass, FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION);
-        createEAttribute(frameMappingEClass, FRAME_MAPPING__CENTER_LABEL_EXPRESSION);
+        frameMappingEClass = createEClass(DescriptionPackage.FRAME_MAPPING);
+        createEAttribute(frameMappingEClass, DescriptionPackage.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION);
+        createEAttribute(frameMappingEClass, DescriptionPackage.FRAME_MAPPING__CENTER_LABEL_EXPRESSION);
 
-        interactionUseMappingEClass = createEClass(INTERACTION_USE_MAPPING);
+        interactionUseMappingEClass = createEClass(DescriptionPackage.INTERACTION_USE_MAPPING);
 
-        combinedFragmentMappingEClass = createEClass(COMBINED_FRAGMENT_MAPPING);
+        combinedFragmentMappingEClass = createEClass(DescriptionPackage.COMBINED_FRAGMENT_MAPPING);
 
-        operandMappingEClass = createEClass(OPERAND_MAPPING);
+        operandMappingEClass = createEClass(DescriptionPackage.OPERAND_MAPPING);
 
-        observationPointMappingEClass = createEClass(OBSERVATION_POINT_MAPPING);
+        observationPointMappingEClass = createEClass(DescriptionPackage.OBSERVATION_POINT_MAPPING);
     }
 
     /**
@@ -611,18 +642,19 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(DescriptionPackage.eNAME);
+        setNsPrefix(DescriptionPackage.eNS_PREFIX);
+        setNsURI(DescriptionPackage.eNS_URI);
 
         // Obtain other dependent packages
         ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
@@ -666,61 +698,76 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         observationPointMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getNodeMapping());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(sequenceDiagramDescriptionEClass, SequenceDiagramDescription.class, "SequenceDiagramDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getSequenceDiagramDescription_EndsOrdering(), theDescriptionPackage_2.getInterpretedExpression(), "endsOrdering", null, 1, 1, SequenceDiagramDescription.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(sequenceDiagramDescriptionEClass, SequenceDiagramDescription.class, "SequenceDiagramDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSequenceDiagramDescription_EndsOrdering(), theDescriptionPackage_2.getInterpretedExpression(), "endsOrdering", null, 1, 1, SequenceDiagramDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEAttribute(getSequenceDiagramDescription_InstanceRolesOrdering(), theDescriptionPackage_2.getInterpretedExpression(), "instanceRolesOrdering", null, 1, 1,
-                SequenceDiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                SequenceDiagramDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(instanceRoleMappingEClass, InstanceRoleMapping.class, "InstanceRoleMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(instanceRoleMappingEClass, InstanceRoleMapping.class, "InstanceRoleMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(eventMappingEClass, EventMapping.class, "EventMapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(eventMappingEClass, EventMapping.class, "EventMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(delimitedEventMappingEClass, DelimitedEventMapping.class, "DelimitedEventMapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(delimitedEventMappingEClass, DelimitedEventMapping.class, "DelimitedEventMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDelimitedEventMapping_StartingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "startingEndFinderExpression", null, 1, 1,
-                DelimitedEventMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                DelimitedEventMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getDelimitedEventMapping_FinishingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "finishingEndFinderExpression", null, 1, 1,
-                DelimitedEventMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                DelimitedEventMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(executionMappingEClass, ExecutionMapping.class, "ExecutionMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(executionMappingEClass, ExecutionMapping.class, "ExecutionMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(stateMappingEClass, StateMapping.class, "StateMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(stateMappingEClass, StateMapping.class, "StateMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(endOfLifeMappingEClass, EndOfLifeMapping.class, "EndOfLifeMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(endOfLifeMappingEClass, EndOfLifeMapping.class, "EndOfLifeMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(messageMappingEClass, MessageMapping.class, "MessageMapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(messageMappingEClass, MessageMapping.class, "MessageMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getMessageMapping_SendingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "sendingEndFinderExpression", null, 1, 1, MessageMapping.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEAttribute(getMessageMapping_ReceivingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "receivingEndFinderExpression", null, 1, 1, MessageMapping.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(basicMessageMappingEClass, BasicMessageMapping.class, "BasicMessageMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(basicMessageMappingEClass, BasicMessageMapping.class, "BasicMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(returnMessageMappingEClass, ReturnMessageMapping.class, "ReturnMessageMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(returnMessageMappingEClass, ReturnMessageMapping.class, "ReturnMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getReturnMessageMapping_InvocationMessageFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "invocationMessageFinderExpression", null, 1, 1,
-                ReturnMessageMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                ReturnMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(creationMessageMappingEClass, CreationMessageMapping.class, "CreationMessageMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(creationMessageMappingEClass, CreationMessageMapping.class, "CreationMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(destructionMessageMappingEClass, DestructionMessageMapping.class, "DestructionMessageMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(destructionMessageMappingEClass, DestructionMessageMapping.class, "DestructionMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(messageEndVariableEClass, MessageEndVariable.class, "MessageEndVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(messageEndVariableEClass, MessageEndVariable.class, "MessageEndVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(coveredLifelinesVariableEClass, CoveredLifelinesVariable.class, "CoveredLifelinesVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(coveredLifelinesVariableEClass, CoveredLifelinesVariable.class, "CoveredLifelinesVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(frameMappingEClass, FrameMapping.class, "FrameMapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getFrameMapping_CoveredLifelinesExpression(), theDescriptionPackage_2.getInterpretedExpression(), "coveredLifelinesExpression", null, 1, 1, FrameMapping.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getFrameMapping_CenterLabelExpression(), theDescriptionPackage_2.getInterpretedExpression(), "centerLabelExpression", null, 0, 1, FrameMapping.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(frameMappingEClass, FrameMapping.class, "FrameMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getFrameMapping_CoveredLifelinesExpression(), theDescriptionPackage_2.getInterpretedExpression(), "coveredLifelinesExpression", null, 1, 1, FrameMapping.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getFrameMapping_CenterLabelExpression(), theDescriptionPackage_2.getInterpretedExpression(), "centerLabelExpression", null, 0, 1, FrameMapping.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(interactionUseMappingEClass, InteractionUseMapping.class, "InteractionUseMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(interactionUseMappingEClass, InteractionUseMapping.class, "InteractionUseMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(combinedFragmentMappingEClass, CombinedFragmentMapping.class, "CombinedFragmentMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(combinedFragmentMappingEClass, CombinedFragmentMapping.class, "CombinedFragmentMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(operandMappingEClass, OperandMapping.class, "OperandMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(operandMappingEClass, OperandMapping.class, "OperandMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(observationPointMappingEClass, ObservationPointMapping.class, "ObservationPointMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(observationPointMappingEClass, ObservationPointMapping.class, "ObservationPointMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType
@@ -746,7 +793,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getMessageMapping_ReceivingEndFinderExpression(), source, new String[] { "returnType", "an EObject." });
         addAnnotation(getReturnMessageMapping_InvocationMessageFinderExpression(), source, new String[] { "returnType", "an EObject." });
         addAnnotation(getFrameMapping_CoveredLifelinesExpression(), source, new String[] { "returnType",
-                "the list of semantic EObjects representing the lifelines which are semantically covered by the frame." });
+        "the list of semantic EObjects representing the lifelines which are semantically covered by the frame." });
         addAnnotation(getFrameMapping_CenterLabelExpression(), source, new String[] { "returnType", "the text to show in the center of the IU" });
     }
 

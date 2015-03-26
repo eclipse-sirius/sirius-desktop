@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -60,7 +60,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * contents are of type {@link org.eclipse.sirius.diagram.DNode}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Nodes
      * owned by this container. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Nodes</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_Nodes()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -74,7 +74,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * {@link org.eclipse.sirius.diagram.DDiagramElementContainer}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Containers owned by this container. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Containers</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_Containers()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -88,7 +88,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * {@link org.eclipse.sirius.diagram.DDiagramElement}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> elements owned by this
      * container. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Elements</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_Elements()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -100,7 +100,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * Returns the value of the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The style of the container. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(ContainerStyle)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_OwnedStyle()
@@ -128,7 +128,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * instance of style that is contained by the mapping. The ownedStyle
      * reference should be a copy of this style. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Original Style</em>' reference.
      * @see #setOriginalStyle(Style)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_OriginalStyle()
@@ -154,7 +154,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * actual mapping of this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Actual Mapping</em>' reference.
      * @see #setActualMapping(ContainerMapping)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_ActualMapping()
@@ -182,7 +182,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * {@link org.eclipse.sirius.diagram.description.ContainerMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * candidates mapping of this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Candidates Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_CandidatesMapping()
      * @model annotation=
@@ -199,7 +199,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_Width()
@@ -228,7 +228,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_Height()
@@ -242,7 +242,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getHeight
      * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -253,7 +253,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return all nodes that have been created with the specified mapping.
-     * 
+     *
      * @param mapping
      *            The node mapping. <!-- end-model-doc -->
      * @model
@@ -264,7 +264,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return all containers that have been created with the specified mapping.
-     * 
+     *
      * @param mapping
      *            The container mapping <!-- end-model-doc -->
      * @model

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -120,7 +120,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * @generated
      * @ordered
      */
-    protected String iconPath = ICON_PATH_EDEFAULT;
+    protected String iconPath = NodeCreationDescriptionImpl.ICON_PATH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getExtraMappings()
@@ -157,6 +157,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getNodeMappings() {
         if (nodeMappings == null) {
             nodeMappings = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS);
@@ -169,20 +170,23 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public NodeCreationVariable getVariable() {
         if (variable != null && variable.eIsProxy()) {
             InternalEObject oldVariable = (InternalEObject) variable;
             variable = (NodeCreationVariable) eResolveProxy(oldVariable);
             if (variable != oldVariable) {
                 InternalEObject newVariable = (InternalEObject) variable;
-                NotificationChain msgs = oldVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, null, null);
+                NotificationChain msgs = oldVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, null, null);
                 if (newVariable.eInternalContainer() == null) {
-                    msgs = newVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, null, msgs);
+                    msgs = newVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, oldVariable, variable));
+                }
             }
         }
         return variable;
@@ -207,10 +211,11 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
         variable = newVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, oldVariable, newVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -220,18 +225,23 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public void setVariable(NodeCreationVariable newVariable) {
         if (newVariable != variable) {
             NotificationChain msgs = null;
-            if (variable != null)
-                msgs = ((InternalEObject) variable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, null, msgs);
-            if (newVariable != null)
-                msgs = ((InternalEObject) newVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, null, msgs);
+            if (variable != null) {
+                msgs = ((InternalEObject) variable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, null, msgs);
+            }
+            if (newVariable != null) {
+                msgs = ((InternalEObject) newVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, null, msgs);
+            }
             msgs = basicSetVariable(newVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE, newVariable, newVariable));
+        }
     }
 
     /**
@@ -239,20 +249,23 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public ContainerViewVariable getViewVariable() {
         if (viewVariable != null && viewVariable.eIsProxy()) {
             InternalEObject oldViewVariable = (InternalEObject) viewVariable;
             viewVariable = (ContainerViewVariable) eResolveProxy(oldViewVariable);
             if (viewVariable != oldViewVariable) {
                 InternalEObject newViewVariable = (InternalEObject) viewVariable;
-                NotificationChain msgs = oldViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, null);
+                NotificationChain msgs = oldViewVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, null);
                 if (newViewVariable.eInternalContainer() == null) {
-                    msgs = newViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+                    msgs = newViewVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, oldViewVariable, viewVariable));
+                }
             }
         }
         return viewVariable;
@@ -277,10 +290,11 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
         viewVariable = newViewVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, oldViewVariable, newViewVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -290,18 +304,23 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public void setViewVariable(ContainerViewVariable newViewVariable) {
         if (newViewVariable != viewVariable) {
             NotificationChain msgs = null;
-            if (viewVariable != null)
-                msgs = ((InternalEObject) viewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
-            if (newViewVariable != null)
-                msgs = ((InternalEObject) newViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+            if (viewVariable != null) {
+                msgs = ((InternalEObject) viewVariable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+            }
+            if (newViewVariable != null) {
+                msgs = ((InternalEObject) newViewVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+            }
             msgs = basicSetViewVariable(newViewVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, newViewVariable, newViewVariable));
+        }
     }
 
     /**
@@ -309,20 +328,23 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public InitialNodeCreationOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
             initialOperation = (InitialNodeCreationOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -347,10 +369,11 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -360,18 +383,23 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialNodeCreationOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -379,6 +407,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public String getIconPath() {
         return iconPath;
     }
@@ -388,11 +417,13 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public void setIconPath(String newIconPath) {
         String oldIconPath = iconPath;
         iconPath = newIconPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
+        }
     }
 
     /**
@@ -400,6 +431,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    @Override
     public EList<AbstractNodeMapping> getExtraMappings() {
         if (extraMappings == null) {
             extraMappings = new EObjectResolvingEList<AbstractNodeMapping>(AbstractNodeMapping.class, this, ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS);
@@ -436,16 +468,19 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
         case ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS:
             return getNodeMappings();
         case ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getVariable();
+            }
             return basicGetVariable();
         case ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getViewVariable();
+            }
             return basicGetViewVariable();
         case ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         case ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH:
             return getIconPath();
@@ -509,7 +544,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
             setInitialOperation((InitialNodeCreationOperation) null);
             return;
         case ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH:
-            setIconPath(ICON_PATH_EDEFAULT);
+            setIconPath(NodeCreationDescriptionImpl.ICON_PATH_EDEFAULT);
             return;
         case ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS:
             getExtraMappings().clear();
@@ -535,7 +570,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
         case ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
         case ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH:
-            return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+            return NodeCreationDescriptionImpl.ICON_PATH_EDEFAULT == null ? iconPath != null : !NodeCreationDescriptionImpl.ICON_PATH_EDEFAULT.equals(iconPath);
         case ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS:
             return extraMappings != null && !extraMappings.isEmpty();
         }
@@ -549,8 +584,9 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (iconPath: ");

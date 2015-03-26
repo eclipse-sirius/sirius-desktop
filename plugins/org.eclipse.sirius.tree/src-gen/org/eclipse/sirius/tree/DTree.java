@@ -60,7 +60,7 @@ public interface DTree extends DRepresentation, DTreeItemContainer {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(TreeDescription)
      * @see org.eclipse.sirius.tree.TreePackage#getDTree_Description()

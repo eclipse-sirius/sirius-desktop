@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -48,7 +48,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -59,18 +59,18 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
      */
-    protected String predicateExpression = PREDICATE_EXPRESSION_EDEFAULT;
+    protected String predicateExpression = VSMElementCustomizationImpl.PREDICATE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getFeatureCustomizations()
      * <em>Feature Customizations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureCustomizations()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected VSMElementCustomizationImpl() {
@@ -88,7 +88,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getPredicateExpression() {
@@ -107,19 +107,20 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setPredicateExpression(String newPredicateExpression) {
         String oldPredicateExpression = predicateExpression;
         predicateExpression = newPredicateExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__PREDICATE_EXPRESSION, oldPredicateExpression, predicateExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EList<EStructuralFeatureCustomization> getFeatureCustomizations() {
@@ -132,7 +133,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +147,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +163,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -182,14 +183,14 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__PREDICATE_EXPRESSION:
-            setPredicateExpression(PREDICATE_EXPRESSION_EDEFAULT);
+            setPredicateExpression(VSMElementCustomizationImpl.PREDICATE_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__FEATURE_CUSTOMIZATIONS:
             getFeatureCustomizations().clear();
@@ -200,7 +201,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,13 +217,14 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (predicateExpression: ");

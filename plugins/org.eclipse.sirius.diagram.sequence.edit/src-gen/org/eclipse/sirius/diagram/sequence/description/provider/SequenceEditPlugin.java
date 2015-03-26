@@ -19,14 +19,14 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 /**
  * This is the central singleton for the Sequence edit plugin. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public final class SequenceEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public static final SequenceEditPlugin INSTANCE = new SequenceEditPlugin();
@@ -34,7 +34,7 @@ public final class SequenceEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
@@ -57,7 +57,7 @@ public final class SequenceEditPlugin extends EMFPlugin {
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
-        return plugin;
+        return SequenceEditPlugin.plugin;
     }
 
     /**
@@ -68,13 +68,13 @@ public final class SequenceEditPlugin extends EMFPlugin {
      * @generated
      */
     public static Implementation getPlugin() {
-        return plugin;
+        return SequenceEditPlugin.plugin;
     }
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static class Implementation extends EclipsePlugin {
@@ -88,7 +88,7 @@ public final class SequenceEditPlugin extends EMFPlugin {
 
             // Remember the static instance.
             //
-            plugin = this;
+            SequenceEditPlugin.plugin = this;
         }
     }
 

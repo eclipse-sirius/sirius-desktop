@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Navigation Target Type</b></em>', and utility methods for working with
  * them. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getNavigationTargetType()
  * @model
  * @generated
@@ -30,7 +30,7 @@ public enum NavigationTargetType implements Enumerator {
     /**
      * The '<em><b>Model</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #MODEL
      * @generated
      * @ordered
@@ -40,7 +40,7 @@ public enum NavigationTargetType implements Enumerator {
     /**
      * The '<em><b>File</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #FILE
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public enum NavigationTargetType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #MODEL_LITERAL
      * @model name="model"
      * @generated
@@ -69,7 +69,7 @@ public enum NavigationTargetType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #FILE_LITERAL
      * @model name="file"
      * @generated
@@ -80,7 +80,7 @@ public enum NavigationTargetType implements Enumerator {
     /**
      * An array of all the '<em><b>Navigation Target Type</b></em>' enumerators.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final NavigationTargetType[] VALUES_ARRAY = new NavigationTargetType[] { MODEL_LITERAL, FILE_LITERAL, };
@@ -89,20 +89,19 @@ public enum NavigationTargetType implements Enumerator {
      * A public read-only list of all the '
      * <em><b>Navigation Target Type</b></em>' enumerators. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    public static final List<NavigationTargetType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<NavigationTargetType> VALUES = Collections.unmodifiableList(Arrays.asList(NavigationTargetType.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Navigation Target Type</b></em>' literal with the
      * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static NavigationTargetType get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            NavigationTargetType result = VALUES_ARRAY[i];
+        for (NavigationTargetType result : NavigationTargetType.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -113,12 +112,11 @@ public enum NavigationTargetType implements Enumerator {
     /**
      * Returns the '<em><b>Navigation Target Type</b></em>' literal with the
      * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static NavigationTargetType getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            NavigationTargetType result = VALUES_ARRAY[i];
+        for (NavigationTargetType result : NavigationTargetType.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -129,7 +127,7 @@ public enum NavigationTargetType implements Enumerator {
     /**
      * Returns the '<em><b>Navigation Target Type</b></em>' literal with the
      * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static NavigationTargetType get(int value) {
@@ -144,21 +142,21 @@ public enum NavigationTargetType implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -166,7 +164,7 @@ public enum NavigationTargetType implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private NavigationTargetType(int value, String name, String literal) {
@@ -177,27 +175,30 @@ public enum NavigationTargetType implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }
@@ -205,7 +206,7 @@ public enum NavigationTargetType implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

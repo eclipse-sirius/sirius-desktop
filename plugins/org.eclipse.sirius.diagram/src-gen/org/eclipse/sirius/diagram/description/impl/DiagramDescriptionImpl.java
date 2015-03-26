@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -186,7 +186,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
+    protected String documentation = DiagramDescriptionImpl.DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getEndUserDocumentation()
@@ -208,7 +208,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected String endUserDocumentation = END_USER_DOCUMENTATION_EDEFAULT;
+    protected String endUserDocumentation = DiagramDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -228,7 +228,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DiagramDescriptionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -248,7 +248,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = DiagramDescriptionImpl.LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTitleExpression()
@@ -270,7 +270,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected String titleExpression = TITLE_EXPRESSION_EDEFAULT;
+    protected String titleExpression = DiagramDescriptionImpl.TITLE_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isInitialisation()
@@ -292,7 +292,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected boolean initialisation = INITIALISATION_EDEFAULT;
+    protected boolean initialisation = DiagramDescriptionImpl.INITIALISATION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}'
@@ -324,7 +324,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected boolean showOnStartup = SHOW_ON_STARTUP_EDEFAULT;
+    protected boolean showOnStartup = DiagramDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getPasteDescriptions()
@@ -386,7 +386,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = DiagramDescriptionImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPreconditionExpression()
@@ -408,7 +408,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected String preconditionExpression = PRECONDITION_EXPRESSION_EDEFAULT;
+    protected String preconditionExpression = DiagramDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getDefaultConcern()
@@ -441,7 +441,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected String rootExpression = ROOT_EXPRESSION_EDEFAULT;
+    protected String rootExpression = DiagramDescriptionImpl.ROOT_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getInit() <em>Init</em>}' reference.
@@ -467,7 +467,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * The cached value of the '{@link #getDiagramInitialisation()
      * <em>Diagram Initialisation</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDiagramInitialisation()
      * @generated
      * @ordered
@@ -489,7 +489,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * The cached value of the '{@link #getAdditionalLayers()
      * <em>Additional Layers</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAdditionalLayers()
      * @generated
      * @ordered
@@ -522,7 +522,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * The cached value of the '{@link #getEdgeMappingImports()
      * <em>Edge Mapping Imports</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEdgeMappingImports()
      * @generated
      * @ordered
@@ -533,7 +533,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * The cached value of the '{@link #getContainerMappings()
      * <em>Container Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerMappings()
      * @generated
      * @ordered
@@ -591,7 +591,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      * @ordered
      */
-    protected boolean enablePopupBars = ENABLE_POPUP_BARS_EDEFAULT;
+    protected boolean enablePopupBars = DiagramDescriptionImpl.ENABLE_POPUP_BARS_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -617,6 +617,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public String getDocumentation() {
         return documentation;
     }
@@ -626,11 +627,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setDocumentation(String newDocumentation) {
         String oldDocumentation = documentation;
         documentation = newDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
@@ -638,6 +641,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public String getEndUserDocumentation() {
         return endUserDocumentation;
     }
@@ -647,11 +651,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setEndUserDocumentation(String newEndUserDocumentation) {
         String oldEndUserDocumentation = endUserDocumentation;
         endUserDocumentation = newEndUserDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION, oldEndUserDocumentation, endUserDocumentation));
+        }
     }
 
     /**
@@ -659,6 +665,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -668,11 +675,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__NAME, oldName, name));
+        }
     }
 
     /**
@@ -680,6 +689,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -689,11 +699,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -701,6 +713,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public String getTitleExpression() {
         return titleExpression;
     }
@@ -710,11 +723,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setTitleExpression(String newTitleExpression) {
         String oldTitleExpression = titleExpression;
         titleExpression = newTitleExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__TITLE_EXPRESSION, oldTitleExpression, titleExpression));
+        }
     }
 
     /**
@@ -722,6 +737,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public boolean isInitialisation() {
         return initialisation;
     }
@@ -731,11 +747,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setInitialisation(boolean newInitialisation) {
         boolean oldInitialisation = initialisation;
         initialisation = newInitialisation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__INITIALISATION, oldInitialisation, initialisation));
+        }
     }
 
     /**
@@ -743,6 +761,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<EPackage> getMetamodel() {
         if (metamodel == null) {
             metamodel = new EObjectResolvingEList<EPackage>(EPackage.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__METAMODEL);
@@ -755,6 +774,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public boolean isShowOnStartup() {
         return showOnStartup;
     }
@@ -764,11 +784,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setShowOnStartup(boolean newShowOnStartup) {
         boolean oldShowOnStartup = showOnStartup;
         showOnStartup = newShowOnStartup;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP, oldShowOnStartup, showOnStartup));
+        }
     }
 
     /**
@@ -776,6 +798,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<PasteDescription> getPasteDescriptions() {
         if (pasteDescriptions == null) {
             pasteDescriptions = new EObjectResolvingEList<PasteDescription>(PasteDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS);
@@ -788,6 +811,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<FilterDescription> getFilters() {
         if (filters == null) {
             filters = new EObjectContainmentEList.Resolving<FilterDescription>(FilterDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS);
@@ -800,6 +824,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<EdgeMapping> getAllEdgeMappings() {
         // TODO: implement this method to return the 'All Edge Mappings'
         // reference list
@@ -817,6 +842,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getAllNodeMappings() {
         // TODO: implement this method to return the 'All Node Mappings'
         // reference list
@@ -834,6 +860,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<ContainerMapping> getAllContainerMappings() {
         // TODO: implement this method to return the 'All Container Mappings'
         // reference list
@@ -851,20 +878,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public ValidationSet getValidationSet() {
         if (validationSet != null && validationSet.eIsProxy()) {
             InternalEObject oldValidationSet = (InternalEObject) validationSet;
             validationSet = (ValidationSet) eResolveProxy(oldValidationSet);
             if (validationSet != oldValidationSet) {
                 InternalEObject newValidationSet = (InternalEObject) validationSet;
-                NotificationChain msgs = oldValidationSet.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, null, null);
+                NotificationChain msgs = oldValidationSet.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, null, null);
                 if (newValidationSet.eInternalContainer() == null) {
-                    msgs = newValidationSet.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, null, msgs);
+                    msgs = newValidationSet.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, oldValidationSet, validationSet));
+                }
             }
         }
         return validationSet;
@@ -889,10 +919,11 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         validationSet = newValidationSet;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, oldValidationSet, newValidationSet);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -902,18 +933,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setValidationSet(ValidationSet newValidationSet) {
         if (newValidationSet != validationSet) {
             NotificationChain msgs = null;
-            if (validationSet != null)
-                msgs = ((InternalEObject) validationSet).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, null, msgs);
-            if (newValidationSet != null)
-                msgs = ((InternalEObject) newValidationSet).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, null, msgs);
+            if (validationSet != null) {
+                msgs = ((InternalEObject) validationSet).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, null, msgs);
+            }
+            if (newValidationSet != null) {
+                msgs = ((InternalEObject) newValidationSet).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, null, msgs);
+            }
             msgs = basicSetValidationSet(newValidationSet, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET, newValidationSet, newValidationSet));
+        }
     }
 
     /**
@@ -921,20 +957,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public ConcernSet getConcerns() {
         if (concerns != null && concerns.eIsProxy()) {
             InternalEObject oldConcerns = (InternalEObject) concerns;
             concerns = (ConcernSet) eResolveProxy(oldConcerns);
             if (concerns != oldConcerns) {
                 InternalEObject newConcerns = (InternalEObject) concerns;
-                NotificationChain msgs = oldConcerns.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, null, null);
+                NotificationChain msgs = oldConcerns.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, null, null);
                 if (newConcerns.eInternalContainer() == null) {
-                    msgs = newConcerns.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, null, msgs);
+                    msgs = newConcerns.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, oldConcerns, concerns));
+                }
             }
         }
         return concerns;
@@ -959,10 +998,11 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         concerns = newConcerns;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, oldConcerns, newConcerns);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -972,18 +1012,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setConcerns(ConcernSet newConcerns) {
         if (newConcerns != concerns) {
             NotificationChain msgs = null;
-            if (concerns != null)
-                msgs = ((InternalEObject) concerns).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, null, msgs);
-            if (newConcerns != null)
-                msgs = ((InternalEObject) newConcerns).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, null, msgs);
+            if (concerns != null) {
+                msgs = ((InternalEObject) concerns).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, null, msgs);
+            }
+            if (newConcerns != null) {
+                msgs = ((InternalEObject) newConcerns).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, null, msgs);
+            }
             msgs = basicSetConcerns(newConcerns, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, newConcerns, newConcerns));
+        }
     }
 
     /**
@@ -991,6 +1036,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<AbstractToolDescription> getAllTools() {
         // TODO: implement this method to return the 'All Tools' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -1007,6 +1053,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -1016,11 +1063,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -1028,6 +1077,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public String getPreconditionExpression() {
         return preconditionExpression;
     }
@@ -1037,11 +1087,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setPreconditionExpression(String newPreconditionExpression) {
         String oldPreconditionExpression = preconditionExpression;
         preconditionExpression = newPreconditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION, oldPreconditionExpression, preconditionExpression));
+        }
     }
 
     /**
@@ -1049,13 +1101,15 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public ConcernDescription getDefaultConcern() {
         if (defaultConcern != null && defaultConcern.eIsProxy()) {
             InternalEObject oldDefaultConcern = (InternalEObject) defaultConcern;
             defaultConcern = (ConcernDescription) eResolveProxy(oldDefaultConcern);
             if (defaultConcern != oldDefaultConcern) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_CONCERN, oldDefaultConcern, defaultConcern));
+                }
             }
         }
         return defaultConcern;
@@ -1075,11 +1129,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setDefaultConcern(ConcernDescription newDefaultConcern) {
         ConcernDescription oldDefaultConcern = defaultConcern;
         defaultConcern = newDefaultConcern;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_CONCERN, oldDefaultConcern, defaultConcern));
+        }
     }
 
     /**
@@ -1087,6 +1143,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public String getRootExpression() {
         return rootExpression;
     }
@@ -1096,11 +1153,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setRootExpression(String newRootExpression) {
         String oldRootExpression = rootExpression;
         rootExpression = newRootExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__ROOT_EXPRESSION, oldRootExpression, rootExpression));
+        }
     }
 
     /**
@@ -1108,13 +1167,15 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public RepresentationCreationDescription getInit() {
         if (init != null && init.eIsProxy()) {
             InternalEObject oldInit = (InternalEObject) init;
             init = (RepresentationCreationDescription) eResolveProxy(oldInit);
             if (init != oldInit) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_DESCRIPTION__INIT, oldInit, init));
+                }
             }
         }
         return init;
@@ -1134,11 +1195,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setInit(RepresentationCreationDescription newInit) {
         RepresentationCreationDescription oldInit = init;
         init = newInit;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__INIT, oldInit, init));
+        }
     }
 
     /**
@@ -1146,20 +1209,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public Layout getLayout() {
         if (layout != null && layout.eIsProxy()) {
             InternalEObject oldLayout = (InternalEObject) layout;
             layout = (Layout) eResolveProxy(oldLayout);
             if (layout != oldLayout) {
                 InternalEObject newLayout = (InternalEObject) layout;
-                NotificationChain msgs = oldLayout.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, null, null);
+                NotificationChain msgs = oldLayout.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, null, null);
                 if (newLayout.eInternalContainer() == null) {
-                    msgs = newLayout.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, null, msgs);
+                    msgs = newLayout.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, oldLayout, layout));
+                }
             }
         }
         return layout;
@@ -1184,10 +1250,11 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         layout = newLayout;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, oldLayout, newLayout);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -1197,18 +1264,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setLayout(Layout newLayout) {
         if (newLayout != layout) {
             NotificationChain msgs = null;
-            if (layout != null)
-                msgs = ((InternalEObject) layout).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, null, msgs);
-            if (newLayout != null)
-                msgs = ((InternalEObject) newLayout).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, null, msgs);
+            if (layout != null) {
+                msgs = ((InternalEObject) layout).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, null, msgs);
+            }
+            if (newLayout != null) {
+                msgs = ((InternalEObject) newLayout).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, null, msgs);
+            }
             msgs = basicSetLayout(newLayout, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT, newLayout, newLayout));
+        }
     }
 
     /**
@@ -1216,20 +1288,24 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public InitialOperation getDiagramInitialisation() {
         if (diagramInitialisation != null && diagramInitialisation.eIsProxy()) {
             InternalEObject oldDiagramInitialisation = (InternalEObject) diagramInitialisation;
             diagramInitialisation = (InitialOperation) eResolveProxy(oldDiagramInitialisation);
             if (diagramInitialisation != oldDiagramInitialisation) {
                 InternalEObject newDiagramInitialisation = (InternalEObject) diagramInitialisation;
-                NotificationChain msgs = oldDiagramInitialisation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, null, null);
+                NotificationChain msgs = oldDiagramInitialisation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, null,
+                        null);
                 if (newDiagramInitialisation.eInternalContainer() == null) {
-                    msgs = newDiagramInitialisation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, null, msgs);
+                    msgs = newDiagramInitialisation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, oldDiagramInitialisation, diagramInitialisation));
+                }
             }
         }
         return diagramInitialisation;
@@ -1255,10 +1331,11 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, oldDiagramInitialisation,
                     newDiagramInitialisation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -1268,18 +1345,25 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setDiagramInitialisation(InitialOperation newDiagramInitialisation) {
         if (newDiagramInitialisation != diagramInitialisation) {
             NotificationChain msgs = null;
-            if (diagramInitialisation != null)
-                msgs = ((InternalEObject) diagramInitialisation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, null, msgs);
-            if (newDiagramInitialisation != null)
-                msgs = ((InternalEObject) newDiagramInitialisation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, null, msgs);
+            if (diagramInitialisation != null) {
+                msgs = ((InternalEObject) diagramInitialisation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, null,
+                        msgs);
+            }
+            if (newDiagramInitialisation != null) {
+                msgs = ((InternalEObject) newDiagramInitialisation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, null,
+                        msgs);
+            }
             msgs = basicSetDiagramInitialisation(newDiagramInitialisation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, newDiagramInitialisation, newDiagramInitialisation));
+        }
     }
 
     /**
@@ -1287,20 +1371,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public Layer getDefaultLayer() {
         if (defaultLayer != null && defaultLayer.eIsProxy()) {
             InternalEObject oldDefaultLayer = (InternalEObject) defaultLayer;
             defaultLayer = (Layer) eResolveProxy(oldDefaultLayer);
             if (defaultLayer != oldDefaultLayer) {
                 InternalEObject newDefaultLayer = (InternalEObject) defaultLayer;
-                NotificationChain msgs = oldDefaultLayer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, null, null);
+                NotificationChain msgs = oldDefaultLayer.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, null, null);
                 if (newDefaultLayer.eInternalContainer() == null) {
-                    msgs = newDefaultLayer.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, null, msgs);
+                    msgs = newDefaultLayer.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, oldDefaultLayer, defaultLayer));
+                }
             }
         }
         return defaultLayer;
@@ -1325,10 +1412,11 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         defaultLayer = newDefaultLayer;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, oldDefaultLayer, newDefaultLayer);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -1338,18 +1426,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setDefaultLayer(Layer newDefaultLayer) {
         if (newDefaultLayer != defaultLayer) {
             NotificationChain msgs = null;
-            if (defaultLayer != null)
-                msgs = ((InternalEObject) defaultLayer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, null, msgs);
-            if (newDefaultLayer != null)
-                msgs = ((InternalEObject) newDefaultLayer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, null, msgs);
+            if (defaultLayer != null) {
+                msgs = ((InternalEObject) defaultLayer).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, null, msgs);
+            }
+            if (newDefaultLayer != null) {
+                msgs = ((InternalEObject) newDefaultLayer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, null, msgs);
+            }
             msgs = basicSetDefaultLayer(newDefaultLayer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, newDefaultLayer, newDefaultLayer));
+        }
     }
 
     /**
@@ -1357,6 +1450,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<AdditionalLayer> getAdditionalLayers() {
         if (additionalLayers == null) {
             additionalLayers = new EObjectContainmentEList.Resolving<AdditionalLayer>(AdditionalLayer.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS);
@@ -1369,6 +1463,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<Layer> getAllLayers() {
         // TODO: implement this method to return the 'All Layers' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -1385,6 +1480,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<AbstractToolDescription> getAllActivatedTools() {
         // TODO: implement this method to return the 'All Activated Tools'
         // reference list
@@ -1402,6 +1498,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getNodeMappings() {
         if (nodeMappings == null) {
             nodeMappings = new EObjectContainmentEList.Resolving<NodeMapping>(NodeMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__NODE_MAPPINGS);
@@ -1414,6 +1511,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<EdgeMapping> getEdgeMappings() {
         if (edgeMappings == null) {
             edgeMappings = new EObjectContainmentEList.Resolving<EdgeMapping>(EdgeMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS);
@@ -1426,6 +1524,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<EdgeMappingImport> getEdgeMappingImports() {
         if (edgeMappingImports == null) {
             edgeMappingImports = new EObjectContainmentEList.Resolving<EdgeMappingImport>(EdgeMappingImport.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS);
@@ -1438,6 +1537,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<ContainerMapping> getContainerMappings() {
         if (containerMappings == null) {
             containerMappings = new EObjectContainmentEList.Resolving<ContainerMapping>(ContainerMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS);
@@ -1450,6 +1550,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getReusedMappings() {
         if (reusedMappings == null) {
             reusedMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_MAPPINGS);
@@ -1462,20 +1563,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public ToolSection getToolSection() {
         if (toolSection != null && toolSection.eIsProxy()) {
             InternalEObject oldToolSection = (InternalEObject) toolSection;
             toolSection = (ToolSection) eResolveProxy(oldToolSection);
             if (toolSection != oldToolSection) {
                 InternalEObject newToolSection = (InternalEObject) toolSection;
-                NotificationChain msgs = oldToolSection.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, null, null);
+                NotificationChain msgs = oldToolSection.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, null, null);
                 if (newToolSection.eInternalContainer() == null) {
-                    msgs = newToolSection.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, null, msgs);
+                    msgs = newToolSection.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, oldToolSection, toolSection));
+                }
             }
         }
         return toolSection;
@@ -1500,10 +1604,11 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         toolSection = newToolSection;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, oldToolSection, newToolSection);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -1513,18 +1618,23 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setToolSection(ToolSection newToolSection) {
         if (newToolSection != toolSection) {
             NotificationChain msgs = null;
-            if (toolSection != null)
-                msgs = ((InternalEObject) toolSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, null, msgs);
-            if (newToolSection != null)
-                msgs = ((InternalEObject) newToolSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, null, msgs);
+            if (toolSection != null) {
+                msgs = ((InternalEObject) toolSection).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, null, msgs);
+            }
+            if (newToolSection != null) {
+                msgs = ((InternalEObject) newToolSection).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, null, msgs);
+            }
             msgs = basicSetToolSection(newToolSection, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION, newToolSection, newToolSection));
+        }
     }
 
     /**
@@ -1532,6 +1642,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<AbstractToolDescription> getReusedTools() {
         if (reusedTools == null) {
             reusedTools = new EObjectResolvingEList<AbstractToolDescription>(AbstractToolDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_TOOLS);
@@ -1544,6 +1655,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public boolean isEnablePopupBars() {
         return enablePopupBars;
     }
@@ -1553,11 +1665,13 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public void setEnablePopupBars(boolean newEnablePopupBars) {
         boolean oldEnablePopupBars = enablePopupBars;
         enablePopupBars = newEnablePopupBars;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS, oldEnablePopupBars, enablePopupBars));
+        }
     }
 
     /**
@@ -1565,6 +1679,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    @Override
     public DSemanticDiagram createDiagram() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -1642,12 +1757,14 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS:
             return getAllContainerMappings();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET:
-            if (resolve)
+            if (resolve) {
                 return getValidationSet();
+            }
             return basicGetValidationSet();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS:
-            if (resolve)
+            if (resolve) {
                 return getConcerns();
+            }
             return basicGetConcerns();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS:
             return getAllTools();
@@ -1656,26 +1773,31 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         case DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION:
             return getPreconditionExpression();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_CONCERN:
-            if (resolve)
+            if (resolve) {
                 return getDefaultConcern();
+            }
             return basicGetDefaultConcern();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ROOT_EXPRESSION:
             return getRootExpression();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__INIT:
-            if (resolve)
+            if (resolve) {
                 return getInit();
+            }
             return basicGetInit();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT:
-            if (resolve)
+            if (resolve) {
                 return getLayout();
+            }
             return basicGetLayout();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION:
-            if (resolve)
+            if (resolve) {
                 return getDiagramInitialisation();
+            }
             return basicGetDiagramInitialisation();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER:
-            if (resolve)
+            if (resolve) {
                 return getDefaultLayer();
+            }
             return basicGetDefaultLayer();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS:
             return getAdditionalLayers();
@@ -1694,8 +1816,9 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         case DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_MAPPINGS:
             return getReusedMappings();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION:
-            if (resolve)
+            if (resolve) {
                 return getToolSection();
+            }
             return basicGetToolSection();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_TOOLS:
             return getReusedTools();
@@ -1832,28 +1955,28 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DOCUMENTATION:
-            setDocumentation(DOCUMENTATION_EDEFAULT);
+            setDocumentation(DiagramDescriptionImpl.DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION:
-            setEndUserDocumentation(END_USER_DOCUMENTATION_EDEFAULT);
+            setEndUserDocumentation(DiagramDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DiagramDescriptionImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(DiagramDescriptionImpl.LABEL_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__TITLE_EXPRESSION:
-            setTitleExpression(TITLE_EXPRESSION_EDEFAULT);
+            setTitleExpression(DiagramDescriptionImpl.TITLE_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__INITIALISATION:
-            setInitialisation(INITIALISATION_EDEFAULT);
+            setInitialisation(DiagramDescriptionImpl.INITIALISATION_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__METAMODEL:
             getMetamodel().clear();
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP:
-            setShowOnStartup(SHOW_ON_STARTUP_EDEFAULT);
+            setShowOnStartup(DiagramDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS:
             getPasteDescriptions().clear();
@@ -1868,16 +1991,16 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             setConcerns((ConcernSet) null);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(DiagramDescriptionImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION:
-            setPreconditionExpression(PRECONDITION_EXPRESSION_EDEFAULT);
+            setPreconditionExpression(DiagramDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_CONCERN:
             setDefaultConcern((ConcernDescription) null);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ROOT_EXPRESSION:
-            setRootExpression(ROOT_EXPRESSION_EDEFAULT);
+            setRootExpression(DiagramDescriptionImpl.ROOT_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__INIT:
             setInit((RepresentationCreationDescription) null);
@@ -1922,7 +2045,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             getReusedTools().clear();
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS:
-            setEnablePopupBars(ENABLE_POPUP_BARS_EDEFAULT);
+            setEnablePopupBars(DiagramDescriptionImpl.ENABLE_POPUP_BARS_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -1937,21 +2060,21 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DOCUMENTATION:
-            return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+            return DiagramDescriptionImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !DiagramDescriptionImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION:
-            return END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
+            return DiagramDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !DiagramDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DiagramDescriptionImpl.NAME_EDEFAULT == null ? name != null : !DiagramDescriptionImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return DiagramDescriptionImpl.LABEL_EDEFAULT == null ? label != null : !DiagramDescriptionImpl.LABEL_EDEFAULT.equals(label);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__TITLE_EXPRESSION:
-            return TITLE_EXPRESSION_EDEFAULT == null ? titleExpression != null : !TITLE_EXPRESSION_EDEFAULT.equals(titleExpression);
+            return DiagramDescriptionImpl.TITLE_EXPRESSION_EDEFAULT == null ? titleExpression != null : !DiagramDescriptionImpl.TITLE_EXPRESSION_EDEFAULT.equals(titleExpression);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__INITIALISATION:
-            return initialisation != INITIALISATION_EDEFAULT;
+            return initialisation != DiagramDescriptionImpl.INITIALISATION_EDEFAULT;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__METAMODEL:
             return metamodel != null && !metamodel.isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP:
-            return showOnStartup != SHOW_ON_STARTUP_EDEFAULT;
+            return showOnStartup != DiagramDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS:
             return pasteDescriptions != null && !pasteDescriptions.isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS:
@@ -1969,13 +2092,14 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS:
             return !getAllTools().isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return DiagramDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DiagramDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION:
-            return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
+            return DiagramDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !DiagramDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT
+                    .equals(preconditionExpression);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_CONCERN:
             return defaultConcern != null;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ROOT_EXPRESSION:
-            return ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
+            return DiagramDescriptionImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !DiagramDescriptionImpl.ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__INIT:
             return init != null;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT:
@@ -2005,7 +2129,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         case DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_TOOLS:
             return reusedTools != null && !reusedTools.isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS:
-            return enablePopupBars != ENABLE_POPUP_BARS_EDEFAULT;
+            return enablePopupBars != DiagramDescriptionImpl.ENABLE_POPUP_BARS_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -2133,8 +2257,9 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (documentation: ");

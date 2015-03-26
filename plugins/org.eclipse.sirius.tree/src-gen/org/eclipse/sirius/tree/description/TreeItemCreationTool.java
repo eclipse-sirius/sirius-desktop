@@ -41,7 +41,7 @@ public interface TreeItemCreationTool extends TreeItemTool, MappingBasedToolDesc
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemCreationTool_Mapping()
      * @model

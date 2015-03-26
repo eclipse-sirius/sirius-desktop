@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint;
 
@@ -37,7 +37,7 @@ public interface DSemanticDecorator extends EObject {
      * Returns the value of the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * referenced EObject. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target</em>' reference.
      * @see #setTarget(EObject)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDSemanticDecorator_Target()
@@ -51,7 +51,7 @@ public interface DSemanticDecorator extends EObject {
      * {@link org.eclipse.sirius.viewpoint.DSemanticDecorator#getTarget
      * <em>Target</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target</em>' reference.
      * @see #getTarget()

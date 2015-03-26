@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.util;
 
@@ -82,14 +82,14 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage
  * @generated
  */
 public class ToolSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static ToolPackage modelPackage;
@@ -97,12 +97,12 @@ public class ToolSwitch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ToolSwitch() {
-        if (modelPackage == null) {
-            modelPackage = ToolPackage.eINSTANCE;
+        if (ToolSwitch.modelPackage == null) {
+            ToolSwitch.modelPackage = ToolPackage.eINSTANCE;
         }
     }
 
@@ -110,7 +110,7 @@ public class ToolSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -123,13 +123,13 @@ public class ToolSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == ToolSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -141,7 +141,7 @@ public class ToolSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -151,618 +151,789 @@ public class ToolSwitch<T> {
         case ToolPackage.TOOL_ENTRY: {
             ToolEntry toolEntry = (ToolEntry) theEObject;
             T result = caseToolEntry(toolEntry);
-            if (result == null)
+            if (result == null) {
                 result = caseDocumentedElement(toolEntry);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(toolEntry);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION: {
             AbstractToolDescription abstractToolDescription = (AbstractToolDescription) theEObject;
             T result = caseAbstractToolDescription(abstractToolDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseToolEntry(abstractToolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(abstractToolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(abstractToolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION: {
             MappingBasedToolDescription mappingBasedToolDescription = (MappingBasedToolDescription) theEObject;
             T result = caseMappingBasedToolDescription(mappingBasedToolDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(mappingBasedToolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(mappingBasedToolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(mappingBasedToolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(mappingBasedToolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.TOOL_DESCRIPTION: {
             ToolDescription toolDescription = (ToolDescription) theEObject;
             T result = caseToolDescription(toolDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseMappingBasedToolDescription(toolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(toolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(toolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(toolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(toolDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.PASTE_DESCRIPTION: {
             PasteDescription pasteDescription = (PasteDescription) theEObject;
             T result = casePasteDescription(pasteDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseMappingBasedToolDescription(pasteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(pasteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(pasteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(pasteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(pasteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION: {
             SelectionWizardDescription selectionWizardDescription = (SelectionWizardDescription) theEObject;
             T result = caseSelectionWizardDescription(selectionWizardDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(selectionWizardDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSelectionDescription(selectionWizardDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(selectionWizardDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(selectionWizardDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(selectionWizardDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION: {
             PaneBasedSelectionWizardDescription paneBasedSelectionWizardDescription = (PaneBasedSelectionWizardDescription) theEObject;
             T result = casePaneBasedSelectionWizardDescription(paneBasedSelectionWizardDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(paneBasedSelectionWizardDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(paneBasedSelectionWizardDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(paneBasedSelectionWizardDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(paneBasedSelectionWizardDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION: {
             RepresentationCreationDescription representationCreationDescription = (RepresentationCreationDescription) theEObject;
             T result = caseRepresentationCreationDescription(representationCreationDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(representationCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(representationCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(representationCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(representationCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION: {
             RepresentationNavigationDescription representationNavigationDescription = (RepresentationNavigationDescription) theEObject;
             T result = caseRepresentationNavigationDescription(representationNavigationDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(representationNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(representationNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(representationNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(representationNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.MENU_ITEM_OR_REF: {
             MenuItemOrRef menuItemOrRef = (MenuItemOrRef) theEObject;
             T result = caseMenuItemOrRef(menuItemOrRef);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.MENU_ITEM_DESCRIPTION: {
             MenuItemDescription menuItemDescription = (MenuItemDescription) theEObject;
             T result = caseMenuItemDescription(menuItemDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(menuItemDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMenuItemOrRef(menuItemDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(menuItemDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(menuItemDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(menuItemDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.MENU_ITEM_DESCRIPTION_REFERENCE: {
             MenuItemDescriptionReference menuItemDescriptionReference = (MenuItemDescriptionReference) theEObject;
             T result = caseMenuItemDescriptionReference(menuItemDescriptionReference);
-            if (result == null)
+            if (result == null) {
                 result = caseMenuItemOrRef(menuItemDescriptionReference);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.OPERATION_ACTION: {
             OperationAction operationAction = (OperationAction) theEObject;
             T result = caseOperationAction(operationAction);
-            if (result == null)
+            if (result == null) {
                 result = caseMenuItemDescription(operationAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(operationAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMenuItemOrRef(operationAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(operationAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(operationAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(operationAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.EXTERNAL_JAVA_ACTION: {
             ExternalJavaAction externalJavaAction = (ExternalJavaAction) theEObject;
             T result = caseExternalJavaAction(externalJavaAction);
-            if (result == null)
+            if (result == null) {
                 result = caseMenuItemDescription(externalJavaAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseContainerModelOperation(externalJavaAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(externalJavaAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMenuItemOrRef(externalJavaAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(externalJavaAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(externalJavaAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(externalJavaAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(externalJavaAction);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.EXTERNAL_JAVA_ACTION_CALL: {
             ExternalJavaActionCall externalJavaActionCall = (ExternalJavaActionCall) theEObject;
             T result = caseExternalJavaActionCall(externalJavaActionCall);
-            if (result == null)
+            if (result == null) {
                 result = caseMenuItemDescription(externalJavaActionCall);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseContainerModelOperation(externalJavaActionCall);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(externalJavaActionCall);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMenuItemOrRef(externalJavaActionCall);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(externalJavaActionCall);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(externalJavaActionCall);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(externalJavaActionCall);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(externalJavaActionCall);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.POPUP_MENU: {
             PopupMenu popupMenu = (PopupMenu) theEObject;
             T result = casePopupMenu(popupMenu);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(popupMenu);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(popupMenu);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(popupMenu);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(popupMenu);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.ABSTRACT_VARIABLE: {
             AbstractVariable abstractVariable = (AbstractVariable) theEObject;
             T result = caseAbstractVariable(abstractVariable);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.VARIABLE_CONTAINER: {
             VariableContainer variableContainer = (VariableContainer) theEObject;
             T result = caseVariableContainer(variableContainer);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.ACCELEO_VARIABLE: {
             AcceleoVariable acceleoVariable = (AcceleoVariable) theEObject;
             T result = caseAcceleoVariable(acceleoVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseVariableContainer(acceleoVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSubVariable(acceleoVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractVariable(acceleoVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.SUB_VARIABLE: {
             SubVariable subVariable = (SubVariable) theEObject;
             T result = caseSubVariable(subVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(subVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.DIALOG_VARIABLE: {
             DialogVariable dialogVariable = (DialogVariable) theEObject;
             T result = caseDialogVariable(dialogVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(dialogVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.ELEMENT_DROP_VARIABLE: {
             ElementDropVariable elementDropVariable = (ElementDropVariable) theEObject;
             T result = caseElementDropVariable(elementDropVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(elementDropVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(elementDropVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.ELEMENT_SELECT_VARIABLE: {
             ElementSelectVariable elementSelectVariable = (ElementSelectVariable) theEObject;
             T result = caseElementSelectVariable(elementSelectVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(elementSelectVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.ELEMENT_VARIABLE: {
             ElementVariable elementVariable = (ElementVariable) theEObject;
             T result = caseElementVariable(elementVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(elementVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(elementVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.ELEMENT_VIEW_VARIABLE: {
             ElementViewVariable elementViewVariable = (ElementViewVariable) theEObject;
             T result = caseElementViewVariable(elementViewVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(elementViewVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(elementViewVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.ELEMENT_DELETE_VARIABLE: {
             ElementDeleteVariable elementDeleteVariable = (ElementDeleteVariable) theEObject;
             T result = caseElementDeleteVariable(elementDeleteVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(elementDeleteVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(elementDeleteVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.DROP_CONTAINER_VARIABLE: {
             DropContainerVariable dropContainerVariable = (DropContainerVariable) theEObject;
             T result = caseDropContainerVariable(dropContainerVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(dropContainerVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(dropContainerVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.SELECT_CONTAINER_VARIABLE: {
             SelectContainerVariable selectContainerVariable = (SelectContainerVariable) theEObject;
             T result = caseSelectContainerVariable(selectContainerVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(selectContainerVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(selectContainerVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.CONTAINER_VIEW_VARIABLE: {
             ContainerViewVariable containerViewVariable = (ContainerViewVariable) theEObject;
             T result = caseContainerViewVariable(containerViewVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(containerViewVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(containerViewVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE: {
             SelectModelElementVariable selectModelElementVariable = (SelectModelElementVariable) theEObject;
             T result = caseSelectModelElementVariable(selectModelElementVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseSubVariable(selectModelElementVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSelectionDescription(selectModelElementVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractVariable(selectModelElementVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.EDIT_MASK_VARIABLES: {
             EditMaskVariables editMaskVariables = (EditMaskVariables) theEObject;
             T result = caseEditMaskVariables(editMaskVariables);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.CONTAINER_MODEL_OPERATION: {
             ContainerModelOperation containerModelOperation = (ContainerModelOperation) theEObject;
             T result = caseContainerModelOperation(containerModelOperation);
-            if (result == null)
+            if (result == null) {
                 result = caseModelOperation(containerModelOperation);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.MODEL_OPERATION: {
             ModelOperation modelOperation = (ModelOperation) theEObject;
             T result = caseModelOperation(modelOperation);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.INITIAL_NODE_CREATION_OPERATION: {
             InitialNodeCreationOperation initialNodeCreationOperation = (InitialNodeCreationOperation) theEObject;
             T result = caseInitialNodeCreationOperation(initialNodeCreationOperation);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.INITIAL_OPERATION: {
             InitialOperation initialOperation = (InitialOperation) theEObject;
             T result = caseInitialOperation(initialOperation);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.INIT_EDGE_CREATION_OPERATION: {
             InitEdgeCreationOperation initEdgeCreationOperation = (InitEdgeCreationOperation) theEObject;
             T result = caseInitEdgeCreationOperation(initEdgeCreationOperation);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.INITIAL_CONTAINER_DROP_OPERATION: {
             InitialContainerDropOperation initialContainerDropOperation = (InitialContainerDropOperation) theEObject;
             T result = caseInitialContainerDropOperation(initialContainerDropOperation);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.CREATE_INSTANCE: {
             CreateInstance createInstance = (CreateInstance) theEObject;
             T result = caseCreateInstance(createInstance);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(createInstance);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(createInstance);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.CHANGE_CONTEXT: {
             ChangeContext changeContext = (ChangeContext) theEObject;
             T result = caseChangeContext(changeContext);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(changeContext);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(changeContext);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.SET_VALUE: {
             SetValue setValue = (SetValue) theEObject;
             T result = caseSetValue(setValue);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(setValue);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(setValue);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.SET_OBJECT: {
             SetObject setObject = (SetObject) theEObject;
             T result = caseSetObject(setObject);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(setObject);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(setObject);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.UNSET: {
             Unset unset = (Unset) theEObject;
             T result = caseUnset(unset);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(unset);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(unset);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.MOVE_ELEMENT: {
             MoveElement moveElement = (MoveElement) theEObject;
             T result = caseMoveElement(moveElement);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(moveElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(moveElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.REMOVE_ELEMENT: {
             RemoveElement removeElement = (RemoveElement) theEObject;
             T result = caseRemoveElement(removeElement);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(removeElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(removeElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.FOR: {
             For for_ = (For) theEObject;
             T result = caseFor(for_);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(for_);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(for_);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.IF: {
             If if_ = (If) theEObject;
             T result = caseIf(if_);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(if_);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(if_);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.DELETE_VIEW: {
             DeleteView deleteView = (DeleteView) theEObject;
             T result = caseDeleteView(deleteView);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerModelOperation(deleteView);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseModelOperation(deleteView);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.NAME_VARIABLE: {
             NameVariable nameVariable = (NameVariable) theEObject;
             T result = caseNameVariable(nameVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(nameVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.EXTERNAL_JAVA_ACTION_PARAMETER: {
             ExternalJavaActionParameter externalJavaActionParameter = (ExternalJavaActionParameter) theEObject;
             T result = caseExternalJavaActionParameter(externalJavaActionParameter);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.TOOL_FILTER_DESCRIPTION: {
             ToolFilterDescription toolFilterDescription = (ToolFilterDescription) theEObject;
             T result = caseToolFilterDescription(toolFilterDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.FEATURE_CHANGE_LISTENER: {
             FeatureChangeListener featureChangeListener = (FeatureChangeListener) theEObject;
             T result = caseFeatureChangeListener(featureChangeListener);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.CASE: {
             Case case_ = (Case) theEObject;
             T result = caseCase(case_);
-            if (result == null)
+            if (result == null) {
                 result = caseSwitchChild(case_);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.SWITCH_CHILD: {
             SwitchChild switchChild = (SwitchChild) theEObject;
             T result = caseSwitchChild(switchChild);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.DEFAULT: {
             Default default_ = (Default) theEObject;
             T result = caseDefault(default_);
-            if (result == null)
+            if (result == null) {
                 result = caseSwitchChild(default_);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ToolPackage.SWITCH: {
             Switch switch_ = (Switch) theEObject;
             T result = caseSwitch(switch_);
-            if (result == null)
+            if (result == null) {
                 result = caseModelOperation(switch_);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -775,7 +946,7 @@ public class ToolSwitch<T> {
      * <em>Entry</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -792,7 +963,7 @@ public class ToolSwitch<T> {
      * <em>Abstract Tool Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -809,7 +980,7 @@ public class ToolSwitch<T> {
      * <em>Mapping Based Tool Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -826,7 +997,7 @@ public class ToolSwitch<T> {
      * <em>Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -843,7 +1014,7 @@ public class ToolSwitch<T> {
      * <em>Paste Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -860,7 +1031,7 @@ public class ToolSwitch<T> {
      * <em>Selection Wizard Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -877,7 +1048,7 @@ public class ToolSwitch<T> {
      * <em>Pane Based Selection Wizard Description</em>'. <!-- begin-user-doc
      * --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -894,7 +1065,7 @@ public class ToolSwitch<T> {
      * <em>Representation Creation Description</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -911,7 +1082,7 @@ public class ToolSwitch<T> {
      * <em>Representation Navigation Description</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -928,7 +1099,7 @@ public class ToolSwitch<T> {
      * <em>Menu Item Or Ref</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -945,7 +1116,7 @@ public class ToolSwitch<T> {
      * <em>Menu Item Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -962,7 +1133,7 @@ public class ToolSwitch<T> {
      * <em>Menu Item Description Reference</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -979,7 +1150,7 @@ public class ToolSwitch<T> {
      * <em>Operation Action</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -996,7 +1167,7 @@ public class ToolSwitch<T> {
      * <em>External Java Action</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1013,7 +1184,7 @@ public class ToolSwitch<T> {
      * <em>External Java Action Call</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1030,7 +1201,7 @@ public class ToolSwitch<T> {
      * <em>Popup Menu</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1047,7 +1218,7 @@ public class ToolSwitch<T> {
      * <em>Abstract Variable</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1064,7 +1235,7 @@ public class ToolSwitch<T> {
      * <em>Variable Container</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1081,7 +1252,7 @@ public class ToolSwitch<T> {
      * <em>Acceleo Variable</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1098,7 +1269,7 @@ public class ToolSwitch<T> {
      * <em>Sub Variable</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1115,7 +1286,7 @@ public class ToolSwitch<T> {
      * <em>Dialog Variable</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1132,7 +1303,7 @@ public class ToolSwitch<T> {
      * <em>Element Drop Variable</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1149,7 +1320,7 @@ public class ToolSwitch<T> {
      * <em>Element Select Variable</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1166,7 +1337,7 @@ public class ToolSwitch<T> {
      * <em>Element Variable</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1183,7 +1354,7 @@ public class ToolSwitch<T> {
      * <em>Element View Variable</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1200,7 +1371,7 @@ public class ToolSwitch<T> {
      * <em>Element Delete Variable</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1217,7 +1388,7 @@ public class ToolSwitch<T> {
      * <em>Drop Container Variable</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1234,7 +1405,7 @@ public class ToolSwitch<T> {
      * <em>Select Container Variable</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1251,7 +1422,7 @@ public class ToolSwitch<T> {
      * <em>Container View Variable</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1268,7 +1439,7 @@ public class ToolSwitch<T> {
      * <em>Select Model Element Variable</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1285,7 +1456,7 @@ public class ToolSwitch<T> {
      * <em>Edit Mask Variables</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1302,7 +1473,7 @@ public class ToolSwitch<T> {
      * <em>Container Model Operation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1319,7 +1490,7 @@ public class ToolSwitch<T> {
      * <em>Model Operation</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1336,7 +1507,7 @@ public class ToolSwitch<T> {
      * <em>Initial Node Creation Operation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1353,7 +1524,7 @@ public class ToolSwitch<T> {
      * <em>Initial Operation</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1370,7 +1541,7 @@ public class ToolSwitch<T> {
      * <em>Init Edge Creation Operation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1387,7 +1558,7 @@ public class ToolSwitch<T> {
      * <em>Initial Container Drop Operation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1404,7 +1575,7 @@ public class ToolSwitch<T> {
      * <em>Create Instance</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1421,7 +1592,7 @@ public class ToolSwitch<T> {
      * <em>Change Context</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1438,7 +1609,7 @@ public class ToolSwitch<T> {
      * <em>Set Value</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1455,7 +1626,7 @@ public class ToolSwitch<T> {
      * <em>Set Object</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1472,7 +1643,7 @@ public class ToolSwitch<T> {
      * <em>Unset</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1489,7 +1660,7 @@ public class ToolSwitch<T> {
      * <em>Move Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1506,7 +1677,7 @@ public class ToolSwitch<T> {
      * <em>Remove Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1523,7 +1694,7 @@ public class ToolSwitch<T> {
      * <em>For</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1540,7 +1711,7 @@ public class ToolSwitch<T> {
      * <em>If</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1557,7 +1728,7 @@ public class ToolSwitch<T> {
      * <em>Delete View</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1574,7 +1745,7 @@ public class ToolSwitch<T> {
      * <em>Name Variable</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1591,7 +1762,7 @@ public class ToolSwitch<T> {
      * <em>External Java Action Parameter</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1608,7 +1779,7 @@ public class ToolSwitch<T> {
      * <em>Filter Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1625,7 +1796,7 @@ public class ToolSwitch<T> {
      * <em>Feature Change Listener</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1642,7 +1813,7 @@ public class ToolSwitch<T> {
      * <em>Case</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1659,7 +1830,7 @@ public class ToolSwitch<T> {
      * <em>Switch Child</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1676,7 +1847,7 @@ public class ToolSwitch<T> {
      * <em>Default</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1693,7 +1864,7 @@ public class ToolSwitch<T> {
      * <em>Switch</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1710,7 +1881,7 @@ public class ToolSwitch<T> {
      * <em>Documented Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1727,7 +1898,7 @@ public class ToolSwitch<T> {
      * <em>Identified Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1744,7 +1915,7 @@ public class ToolSwitch<T> {
      * <em>Selection Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1761,7 +1932,7 @@ public class ToolSwitch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

@@ -68,7 +68,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected int labelSize = LABEL_SIZE_EDEFAULT;
+    protected int labelSize = TreeItemStyleImpl.LABEL_SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
@@ -88,7 +88,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = LABEL_FORMAT_EDEFAULT;
+    protected FontFormat labelFormat = TreeItemStyleImpl.LABEL_FORMAT_EDEFAULT;
 
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
@@ -108,7 +108,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected boolean showIcon = SHOW_ICON_EDEFAULT;
+    protected boolean showIcon = TreeItemStyleImpl.SHOW_ICON_EDEFAULT;
 
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
@@ -128,7 +128,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected String iconPath = ICON_PATH_EDEFAULT;
+    protected String iconPath = TreeItemStyleImpl.ICON_PATH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelColor() <em>Label Color</em>}'
@@ -148,7 +148,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected RGBValues labelColor = LABEL_COLOR_EDEFAULT;
+    protected RGBValues labelColor = TreeItemStyleImpl.LABEL_COLOR_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelAlignment()
@@ -170,7 +170,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected LabelAlignment labelAlignment = LABEL_ALIGNMENT_EDEFAULT;
+    protected LabelAlignment labelAlignment = TreeItemStyleImpl.LABEL_ALIGNMENT_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBackgroundColor()
@@ -192,7 +192,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
+    protected RGBValues backgroundColor = TreeItemStyleImpl.BACKGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -218,6 +218,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public int getLabelSize() {
         return labelSize;
     }
@@ -227,11 +228,13 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public void setLabelSize(int newLabelSize) {
         int oldLabelSize = labelSize;
         labelSize = newLabelSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_SIZE, oldLabelSize, labelSize));
+        }
     }
 
     /**
@@ -239,6 +242,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public FontFormat getLabelFormat() {
         return labelFormat;
     }
@@ -248,11 +252,13 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public void setLabelFormat(FontFormat newLabelFormat) {
         FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired())
+        labelFormat = newLabelFormat == null ? TreeItemStyleImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT, oldLabelFormat, labelFormat));
+        }
     }
 
     /**
@@ -260,6 +266,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public boolean isShowIcon() {
         return showIcon;
     }
@@ -269,11 +276,13 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public void setShowIcon(boolean newShowIcon) {
         boolean oldShowIcon = showIcon;
         showIcon = newShowIcon;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__SHOW_ICON, oldShowIcon, showIcon));
+        }
     }
 
     /**
@@ -281,6 +290,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public LabelAlignment getLabelAlignment() {
         return labelAlignment;
     }
@@ -290,11 +300,13 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public void setLabelAlignment(LabelAlignment newLabelAlignment) {
         LabelAlignment oldLabelAlignment = labelAlignment;
-        labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
-        if (eNotificationRequired())
+        labelAlignment = newLabelAlignment == null ? TreeItemStyleImpl.LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
+        }
     }
 
     /**
@@ -302,6 +314,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public RGBValues getLabelColor() {
         return labelColor;
     }
@@ -311,11 +324,13 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public void setLabelColor(RGBValues newLabelColor) {
         RGBValues oldLabelColor = labelColor;
         labelColor = newLabelColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_COLOR, oldLabelColor, labelColor));
+        }
     }
 
     /**
@@ -323,6 +338,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public String getIconPath() {
         return iconPath;
     }
@@ -332,11 +348,13 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public void setIconPath(String newIconPath) {
         String oldIconPath = iconPath;
         iconPath = newIconPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__ICON_PATH, oldIconPath, iconPath));
+        }
     }
 
     /**
@@ -344,6 +362,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public RGBValues getBackgroundColor() {
         return backgroundColor;
     }
@@ -353,11 +372,13 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(RGBValues newBackgroundColor) {
         RGBValues oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -428,25 +449,25 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     public void eUnset(int featureID) {
         switch (featureID) {
         case TreePackage.TREE_ITEM_STYLE__LABEL_SIZE:
-            setLabelSize(LABEL_SIZE_EDEFAULT);
+            setLabelSize(TreeItemStyleImpl.LABEL_SIZE_EDEFAULT);
             return;
         case TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT:
-            setLabelFormat(LABEL_FORMAT_EDEFAULT);
+            setLabelFormat(TreeItemStyleImpl.LABEL_FORMAT_EDEFAULT);
             return;
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
-            setShowIcon(SHOW_ICON_EDEFAULT);
+            setShowIcon(TreeItemStyleImpl.SHOW_ICON_EDEFAULT);
             return;
         case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
-            setIconPath(ICON_PATH_EDEFAULT);
+            setIconPath(TreeItemStyleImpl.ICON_PATH_EDEFAULT);
             return;
         case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-            setLabelColor(LABEL_COLOR_EDEFAULT);
+            setLabelColor(TreeItemStyleImpl.LABEL_COLOR_EDEFAULT);
             return;
         case TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT:
-            setLabelAlignment(LABEL_ALIGNMENT_EDEFAULT);
+            setLabelAlignment(TreeItemStyleImpl.LABEL_ALIGNMENT_EDEFAULT);
             return;
         case TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR:
-            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
+            setBackgroundColor(TreeItemStyleImpl.BACKGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -461,19 +482,19 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TreePackage.TREE_ITEM_STYLE__LABEL_SIZE:
-            return labelSize != LABEL_SIZE_EDEFAULT;
+            return labelSize != TreeItemStyleImpl.LABEL_SIZE_EDEFAULT;
         case TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT:
-            return labelFormat != LABEL_FORMAT_EDEFAULT;
+            return labelFormat != TreeItemStyleImpl.LABEL_FORMAT_EDEFAULT;
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
-            return showIcon != SHOW_ICON_EDEFAULT;
+            return showIcon != TreeItemStyleImpl.SHOW_ICON_EDEFAULT;
         case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
-            return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+            return TreeItemStyleImpl.ICON_PATH_EDEFAULT == null ? iconPath != null : !TreeItemStyleImpl.ICON_PATH_EDEFAULT.equals(iconPath);
         case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-            return LABEL_COLOR_EDEFAULT == null ? labelColor != null : !LABEL_COLOR_EDEFAULT.equals(labelColor);
+            return TreeItemStyleImpl.LABEL_COLOR_EDEFAULT == null ? labelColor != null : !TreeItemStyleImpl.LABEL_COLOR_EDEFAULT.equals(labelColor);
         case TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT:
-            return labelAlignment != LABEL_ALIGNMENT_EDEFAULT;
+            return labelAlignment != TreeItemStyleImpl.LABEL_ALIGNMENT_EDEFAULT;
         case TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR:
-            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
+            return TreeItemStyleImpl.BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !TreeItemStyleImpl.BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -553,8 +574,9 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (labelSize: ");

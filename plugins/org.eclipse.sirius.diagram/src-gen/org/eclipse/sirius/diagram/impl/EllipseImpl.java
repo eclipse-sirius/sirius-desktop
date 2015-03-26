@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -58,7 +58,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * @generated
      * @ordered
      */
-    protected Integer horizontalDiameter = HORIZONTAL_DIAMETER_EDEFAULT;
+    protected Integer horizontalDiameter = EllipseImpl.HORIZONTAL_DIAMETER_EDEFAULT;
 
     /**
      * The default value of the '{@link #getVerticalDiameter()
@@ -80,7 +80,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * @generated
      * @ordered
      */
-    protected Integer verticalDiameter = VERTICAL_DIAMETER_EDEFAULT;
+    protected Integer verticalDiameter = EllipseImpl.VERTICAL_DIAMETER_EDEFAULT;
 
     /**
      * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
@@ -100,7 +100,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * @generated
      * @ordered
      */
-    protected RGBValues color = COLOR_EDEFAULT;
+    protected RGBValues color = EllipseImpl.COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -126,6 +126,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * 
      * @generated
      */
+    @Override
     public Integer getHorizontalDiameter() {
         return horizontalDiameter;
     }
@@ -135,11 +136,13 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * 
      * @generated
      */
+    @Override
     public void setHorizontalDiameter(Integer newHorizontalDiameter) {
         Integer oldHorizontalDiameter = horizontalDiameter;
         horizontalDiameter = newHorizontalDiameter;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.ELLIPSE__HORIZONTAL_DIAMETER, oldHorizontalDiameter, horizontalDiameter));
+        }
     }
 
     /**
@@ -147,6 +150,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * 
      * @generated
      */
+    @Override
     public Integer getVerticalDiameter() {
         return verticalDiameter;
     }
@@ -156,11 +160,13 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * 
      * @generated
      */
+    @Override
     public void setVerticalDiameter(Integer newVerticalDiameter) {
         Integer oldVerticalDiameter = verticalDiameter;
         verticalDiameter = newVerticalDiameter;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.ELLIPSE__VERTICAL_DIAMETER, oldVerticalDiameter, verticalDiameter));
+        }
     }
 
     /**
@@ -168,6 +174,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * 
      * @generated
      */
+    @Override
     public RGBValues getColor() {
         return color;
     }
@@ -177,11 +184,13 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * 
      * @generated
      */
+    @Override
     public void setColor(RGBValues newColor) {
         RGBValues oldColor = color;
         color = newColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.ELLIPSE__COLOR, oldColor, color));
+        }
     }
 
     /**
@@ -232,13 +241,13 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.ELLIPSE__HORIZONTAL_DIAMETER:
-            setHorizontalDiameter(HORIZONTAL_DIAMETER_EDEFAULT);
+            setHorizontalDiameter(EllipseImpl.HORIZONTAL_DIAMETER_EDEFAULT);
             return;
         case DiagramPackage.ELLIPSE__VERTICAL_DIAMETER:
-            setVerticalDiameter(VERTICAL_DIAMETER_EDEFAULT);
+            setVerticalDiameter(EllipseImpl.VERTICAL_DIAMETER_EDEFAULT);
             return;
         case DiagramPackage.ELLIPSE__COLOR:
-            setColor(COLOR_EDEFAULT);
+            setColor(EllipseImpl.COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -253,11 +262,11 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.ELLIPSE__HORIZONTAL_DIAMETER:
-            return HORIZONTAL_DIAMETER_EDEFAULT == null ? horizontalDiameter != null : !HORIZONTAL_DIAMETER_EDEFAULT.equals(horizontalDiameter);
+            return EllipseImpl.HORIZONTAL_DIAMETER_EDEFAULT == null ? horizontalDiameter != null : !EllipseImpl.HORIZONTAL_DIAMETER_EDEFAULT.equals(horizontalDiameter);
         case DiagramPackage.ELLIPSE__VERTICAL_DIAMETER:
-            return VERTICAL_DIAMETER_EDEFAULT == null ? verticalDiameter != null : !VERTICAL_DIAMETER_EDEFAULT.equals(verticalDiameter);
+            return EllipseImpl.VERTICAL_DIAMETER_EDEFAULT == null ? verticalDiameter != null : !EllipseImpl.VERTICAL_DIAMETER_EDEFAULT.equals(verticalDiameter);
         case DiagramPackage.ELLIPSE__COLOR:
-            return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
+            return EllipseImpl.COLOR_EDEFAULT == null ? color != null : !EllipseImpl.COLOR_EDEFAULT.equals(color);
         }
         return super.eIsSet(featureID);
     }
@@ -269,8 +278,9 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (horizontalDiameter: ");

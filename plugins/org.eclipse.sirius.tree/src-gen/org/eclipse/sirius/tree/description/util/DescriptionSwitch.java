@@ -77,8 +77,8 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public DescriptionSwitch() {
-        if (modelPackage == null) {
-            modelPackage = DescriptionPackage.eINSTANCE;
+        if (DescriptionSwitch.modelPackage == null) {
+            DescriptionSwitch.modelPackage = DescriptionPackage.eINSTANCE;
         }
     }
 
@@ -105,7 +105,7 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == DescriptionSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -127,270 +127,357 @@ public class DescriptionSwitch<T> {
         case DescriptionPackage.TREE_DESCRIPTION: {
             TreeDescription treeDescription = (TreeDescription) theEObject;
             T result = caseTreeDescription(treeDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentationDescription(treeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTreeItemMappingContainer(treeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEndUserDocumentedElement(treeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_MAPPING: {
             TreeItemMapping treeItemMapping = (TreeItemMapping) theEObject;
             T result = caseTreeItemMapping(treeItemMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTreeMapping(treeItemMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleUpdater(treeItemMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTreeItemUpdater(treeItemMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTreeItemMappingContainer(treeItemMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(treeItemMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeItemMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION: {
             TreeItemStyleDescription treeItemStyleDescription = (TreeItemStyleDescription) theEObject;
             T result = caseTreeItemStyleDescription(treeItemStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseStyleDescription(treeItemStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(treeItemStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(treeItemStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION: {
             ConditionalTreeItemStyleDescription conditionalTreeItemStyleDescription = (ConditionalTreeItemStyleDescription) theEObject;
             T result = caseConditionalTreeItemStyleDescription(conditionalTreeItemStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseConditionalStyleDescription(conditionalTreeItemStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_TOOL: {
             TreeItemTool treeItemTool = (TreeItemTool) theEObject;
             T result = caseTreeItemTool(treeItemTool);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(treeItemTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(treeItemTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treeItemTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeItemTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_DRAG_TOOL: {
             TreeItemDragTool treeItemDragTool = (TreeItemDragTool) theEObject;
             T result = caseTreeItemDragTool(treeItemDragTool);
-            if (result == null)
+            if (result == null) {
                 result = caseMappingBasedToolDescription(treeItemDragTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTreeItemTool(treeItemDragTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(treeItemDragTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(treeItemDragTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treeItemDragTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeItemDragTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL: {
             TreeItemContainerDropTool treeItemContainerDropTool = (TreeItemContainerDropTool) theEObject;
             T result = caseTreeItemContainerDropTool(treeItemContainerDropTool);
-            if (result == null)
+            if (result == null) {
                 result = caseMappingBasedToolDescription(treeItemContainerDropTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTreeItemTool(treeItemContainerDropTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(treeItemContainerDropTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(treeItemContainerDropTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treeItemContainerDropTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeItemContainerDropTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_CREATION_TOOL: {
             TreeItemCreationTool treeItemCreationTool = (TreeItemCreationTool) theEObject;
             T result = caseTreeItemCreationTool(treeItemCreationTool);
-            if (result == null)
+            if (result == null) {
                 result = caseTreeItemTool(treeItemCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseMappingBasedToolDescription(treeItemCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(treeItemCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(treeItemCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treeItemCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeItemCreationTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_EDITION_TOOL: {
             TreeItemEditionTool treeItemEditionTool = (TreeItemEditionTool) theEObject;
             T result = caseTreeItemEditionTool(treeItemEditionTool);
-            if (result == null)
+            if (result == null) {
                 result = caseTreeItemTool(treeItemEditionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(treeItemEditionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(treeItemEditionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treeItemEditionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeItemEditionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_DELETION_TOOL: {
             TreeItemDeletionTool treeItemDeletionTool = (TreeItemDeletionTool) theEObject;
             T result = caseTreeItemDeletionTool(treeItemDeletionTool);
-            if (result == null)
+            if (result == null) {
                 result = caseTreeItemTool(treeItemDeletionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(treeItemDeletionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(treeItemDeletionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treeItemDeletionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeItemDeletionTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_CREATION_DESCRIPTION: {
             TreeCreationDescription treeCreationDescription = (TreeCreationDescription) theEObject;
             T result = caseTreeCreationDescription(treeCreationDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentationCreationDescription(treeCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(treeCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(treeCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treeCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_NAVIGATION_DESCRIPTION: {
             TreeNavigationDescription treeNavigationDescription = (TreeNavigationDescription) theEObject;
             T result = caseTreeNavigationDescription(treeNavigationDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentationNavigationDescription(treeNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(treeNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(treeNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treeNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_MAPPING: {
             TreeMapping treeMapping = (TreeMapping) theEObject;
             T result = caseTreeMapping(treeMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentationElementMapping(treeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.STYLE_UPDATER: {
             StyleUpdater styleUpdater = (StyleUpdater) theEObject;
             T result = caseStyleUpdater(styleUpdater);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_VARIABLE: {
             TreeVariable treeVariable = (TreeVariable) theEObject;
             T result = caseTreeVariable(treeVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(treeVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(treeVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_UPDATER: {
             TreeItemUpdater treeItemUpdater = (TreeItemUpdater) theEObject;
             T result = caseTreeItemUpdater(treeItemUpdater);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.PRECEDING_SIBLINGS_VARIABLES: {
             PrecedingSiblingsVariables precedingSiblingsVariables = (PrecedingSiblingsVariables) theEObject;
             T result = casePrecedingSiblingsVariables(precedingSiblingsVariables);
-            if (result == null)
+            if (result == null) {
                 result = caseTreeVariable(precedingSiblingsVariables);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractVariable(precedingSiblingsVariables);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(precedingSiblingsVariables);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_ITEM_MAPPING_CONTAINER: {
             TreeItemMappingContainer treeItemMappingContainer = (TreeItemMappingContainer) theEObject;
             T result = caseTreeItemMappingContainer(treeItemMappingContainer);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TREE_POPUP_MENU: {
             TreePopupMenu treePopupMenu = (TreePopupMenu) theEObject;
             T result = caseTreePopupMenu(treePopupMenu);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(treePopupMenu);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(treePopupMenu);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(treePopupMenu);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(treePopupMenu);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -174,9 +174,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DiagramDescription createDiagramDescription() {
         DiagramDescriptionImpl diagramDescription = new DiagramDescriptionSpec();
         return diagramDescription;
@@ -184,9 +185,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DiagramImportDescription createDiagramImportDescription() {
         DiagramImportDescription diagramImportDescription = new DiagramImportDescriptionSpec();
         return diagramImportDescription;
@@ -197,6 +199,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public DiagramExtensionDescription createDiagramExtensionDescription() {
         DiagramExtensionDescriptionImpl diagramExtensionDescription = new DiagramExtensionDescriptionImpl();
         return diagramExtensionDescription;
@@ -204,9 +207,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public NodeMapping createNodeMapping() {
         NodeMappingImpl nodeMapping = new NodeMappingSpec();
         return nodeMapping;
@@ -214,9 +218,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ContainerMapping createContainerMapping() {
         ContainerMappingImpl containerMapping = new ContainerMappingSpec();
         return containerMapping;
@@ -224,9 +229,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public NodeMappingImport createNodeMappingImport() {
         NodeMappingImport nodeMappingImport = new NodeMappingImportSpec();
         return nodeMappingImport;
@@ -234,9 +240,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ContainerMappingImport createContainerMappingImport() {
         ContainerMappingImport containerMappingImport = new ContainerMappingImportSpec();
         return containerMappingImport;
@@ -244,9 +251,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EdgeMapping createEdgeMapping() {
         EdgeMappingImpl edgeMapping = new EdgeMappingSpec();
         edgeMapping.setUseDomainElement(false);
@@ -255,9 +263,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EdgeMapping createEdgeMappingUsingDomainElement() {
         EdgeMappingImpl edgeMapping = new EdgeMappingSpec();
         edgeMapping.setUseDomainElement(true);
@@ -269,6 +278,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public EdgeMappingImport createEdgeMappingImport() {
         EdgeMappingImportImpl edgeMappingImport = new EdgeMappingImportImpl();
         return edgeMappingImport;
@@ -276,9 +286,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ConditionalNodeStyleDescription createConditionalNodeStyleDescription() {
         ConditionalNodeStyleDescriptionImpl conditionalNodeStyleDescription = new ConditionalNodeStyleDescriptionSpec();
         return conditionalNodeStyleDescription;
@@ -286,9 +297,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ConditionalEdgeStyleDescription createConditionalEdgeStyleDescription() {
         ConditionalEdgeStyleDescriptionImpl conditionalEdgeStyleDescription = new ConditionalEdgeStyleDescriptionSpec();
         return conditionalEdgeStyleDescription;
@@ -296,9 +308,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ConditionalContainerStyleDescription createConditionalContainerStyleDescription() {
         ConditionalContainerStyleDescriptionImpl conditionalContainerStyleDescription = new ConditionalContainerStyleDescriptionSpec();
         return conditionalContainerStyleDescription;
@@ -309,6 +322,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public OrderedTreeLayout createOrderedTreeLayout() {
         OrderedTreeLayoutImpl orderedTreeLayout = new OrderedTreeLayoutImpl();
         return orderedTreeLayout;
@@ -319,6 +333,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public CompositeLayout createCompositeLayout() {
         CompositeLayoutImpl compositeLayout = new CompositeLayoutImpl();
         return compositeLayout;
@@ -329,6 +344,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public MappingBasedDecoration createMappingBasedDecoration() {
         MappingBasedDecorationImpl mappingBasedDecoration = new MappingBasedDecorationImpl();
         return mappingBasedDecoration;
@@ -336,9 +352,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public Layer createLayer() {
         LayerImpl layer = new LayerSpec();
         return layer;
@@ -346,9 +363,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public AdditionalLayer createAdditionalLayer() {
         AdditionalLayerImpl additionalLayer = new AdditionalLayerSpec();
         return additionalLayer;
@@ -361,8 +379,9 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     public FoldingStyle createFoldingStyleFromString(EDataType eDataType, String initialValue) {
         FoldingStyle result = FoldingStyle.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -382,8 +401,9 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     public LayoutDirection createLayoutDirectionFromString(EDataType eDataType, String initialValue) {
         LayoutDirection result = LayoutDirection.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -403,8 +423,9 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     public CenteringStyle createCenteringStyleFromString(EDataType eDataType, String initialValue) {
         CenteringStyle result = CenteringStyle.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -422,6 +443,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public DescriptionPackage getDescriptionPackage() {
         return (DescriptionPackage) getEPackage();
     }

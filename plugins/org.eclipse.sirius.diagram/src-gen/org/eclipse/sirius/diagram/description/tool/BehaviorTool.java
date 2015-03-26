@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -43,7 +43,7 @@ public interface BehaviorTool extends AbstractToolDescription {
      * default value is <code>"EObject"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The type of elements on which
      * we want to appy the tool. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getBehaviorTool_DomainClass()
@@ -71,7 +71,7 @@ public interface BehaviorTool extends AbstractToolDescription {
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The first operation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)

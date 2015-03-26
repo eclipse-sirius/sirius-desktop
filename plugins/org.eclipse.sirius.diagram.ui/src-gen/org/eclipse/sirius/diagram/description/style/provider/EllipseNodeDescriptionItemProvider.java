@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.provider;
 
@@ -35,7 +35,7 @@ public class EllipseNodeDescriptionItemProvider extends NodeStyleDescriptionItem
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EllipseNodeDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class EllipseNodeDescriptionItemProvider extends NodeStyleDescriptionItem
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,7 +63,7 @@ public class EllipseNodeDescriptionItemProvider extends NodeStyleDescriptionItem
     /**
      * This adds a property descriptor for the Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
@@ -112,7 +112,7 @@ public class EllipseNodeDescriptionItemProvider extends NodeStyleDescriptionItem
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -121,10 +121,11 @@ public class EllipseNodeDescriptionItemProvider extends NodeStyleDescriptionItem
         String color = new ColorQuery(((EllipseNodeDescription) object).getColor()).getLabel();
         String label = getString("_UI_EllipseNodeDescription_type");
 
-        if (color != null)
+        if (color != null) {
             return label + " " + color;
-        else
+        } else {
             return label;
+        }
     }
 
     /**
@@ -153,7 +154,7 @@ public class EllipseNodeDescriptionItemProvider extends NodeStyleDescriptionItem
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

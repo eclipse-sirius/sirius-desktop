@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -77,7 +77,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -86,7 +86,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -95,7 +95,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -104,7 +104,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -131,7 +131,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Popup Menus</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -158,7 +158,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Section</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -178,7 +178,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -187,7 +187,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -196,7 +196,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -214,7 +214,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Group</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -235,7 +235,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Group</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -274,7 +274,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -283,7 +283,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -292,7 +292,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -301,7 +301,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -310,7 +310,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -364,7 +364,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -404,7 +404,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -413,7 +413,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -422,7 +422,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -431,7 +431,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -440,7 +440,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -512,7 +512,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -570,7 +570,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -579,7 +579,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -588,7 +588,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -597,7 +597,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -606,7 +606,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -660,7 +660,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -700,7 +700,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -709,7 +709,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -718,7 +718,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -727,7 +727,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -736,7 +736,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -790,7 +790,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hook</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -821,7 +821,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -830,7 +830,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -839,7 +839,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -848,7 +848,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -857,7 +857,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -875,7 +875,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -923,7 +923,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl
      * <em>Delete Hook</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteHook()
      * @generated
@@ -933,7 +933,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -972,7 +972,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -981,7 +981,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Value</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1011,7 +1011,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1020,7 +1020,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1029,7 +1029,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1038,7 +1038,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1047,7 +1047,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1159,7 +1159,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1168,7 +1168,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1177,7 +1177,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1186,7 +1186,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1195,7 +1195,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1213,7 +1213,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1243,7 +1243,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1252,7 +1252,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1261,7 +1261,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1270,7 +1270,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1279,7 +1279,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1297,7 +1297,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mask</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1335,7 +1335,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl
      * <em>Behavior Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getBehaviorTool()
      * @generated
@@ -1345,7 +1345,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1354,7 +1354,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1363,7 +1363,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1372,7 +1372,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1381,7 +1381,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1399,7 +1399,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1438,7 +1438,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1478,7 +1478,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1518,7 +1518,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1558,7 +1558,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1598,7 +1598,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1638,7 +1638,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1667,7 +1667,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl
      * <em>Create View</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getCreateView()
      * @generated
@@ -1686,7 +1686,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1704,7 +1704,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Variable Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1738,16 +1738,16 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_EDGE_VIEW__SUB_MODEL_OPERATIONS = CREATE_VIEW__SUB_MODEL_OPERATIONS;
+    int CREATE_EDGE_VIEW__SUB_MODEL_OPERATIONS = ToolPackage.CREATE_VIEW__SUB_MODEL_OPERATIONS;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_EDGE_VIEW__MAPPING = CREATE_VIEW__MAPPING;
+    int CREATE_EDGE_VIEW__MAPPING = ToolPackage.CREATE_VIEW__MAPPING;
 
     /**
      * The feature id for the '<em><b>Container View Expression</b></em>'
@@ -1756,16 +1756,16 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_EDGE_VIEW__CONTAINER_VIEW_EXPRESSION = CREATE_VIEW__CONTAINER_VIEW_EXPRESSION;
+    int CREATE_EDGE_VIEW__CONTAINER_VIEW_EXPRESSION = ToolPackage.CREATE_VIEW__CONTAINER_VIEW_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Variable Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_EDGE_VIEW__VARIABLE_NAME = CREATE_VIEW__VARIABLE_NAME;
+    int CREATE_EDGE_VIEW__VARIABLE_NAME = ToolPackage.CREATE_VIEW__VARIABLE_NAME;
 
     /**
      * The feature id for the '<em><b>Source Expression</b></em>' attribute.
@@ -1774,7 +1774,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_EDGE_VIEW__SOURCE_EXPRESSION = CREATE_VIEW_FEATURE_COUNT + 0;
+    int CREATE_EDGE_VIEW__SOURCE_EXPRESSION = ToolPackage.CREATE_VIEW_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Target Expression</b></em>' attribute.
@@ -1783,7 +1783,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_EDGE_VIEW__TARGET_EXPRESSION = CREATE_VIEW_FEATURE_COUNT + 1;
+    int CREATE_EDGE_VIEW__TARGET_EXPRESSION = ToolPackage.CREATE_VIEW_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Create Edge View</em>'
@@ -1792,14 +1792,14 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_EDGE_VIEW_FEATURE_COUNT = CREATE_VIEW_FEATURE_COUNT + 2;
+    int CREATE_EDGE_VIEW_FEATURE_COUNT = ToolPackage.CREATE_VIEW_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl
      * <em>Navigation</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNavigation()
      * @generated
@@ -1857,7 +1857,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1866,7 +1866,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1875,7 +1875,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1884,7 +1884,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1893,7 +1893,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1911,7 +1911,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1996,7 +1996,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2005,7 +2005,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2014,7 +2014,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2023,7 +2023,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2032,7 +2032,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2135,7 +2135,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2144,7 +2144,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2153,7 +2153,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2162,7 +2162,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2171,7 +2171,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2189,7 +2189,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2243,7 +2243,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drag Source</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2252,7 +2252,7 @@ public interface ToolPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Move Edges</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2358,7 +2358,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getGroupExtensions
      * <em>Group Extensions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Group Extensions</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolSection#getGroupExtensions()
@@ -2482,7 +2482,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getInitialOperation()
@@ -2598,7 +2598,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getInitialOperation()
@@ -2679,7 +2679,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getContainerMappings
      * <em>Container Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Container Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getContainerMappings()
@@ -2719,7 +2719,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getInitialOperation()
@@ -2807,7 +2807,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getInitialOperation()
@@ -2882,7 +2882,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation()
@@ -2980,7 +2980,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getReconnectionKind
      * <em>Reconnection Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Reconnection Kind</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getReconnectionKind()
      * @see #getReconnectEdgeDescription()
@@ -3055,7 +3055,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getInitialOperation()
@@ -3082,7 +3082,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.RequestDescription
      * <em>Request Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Request Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.RequestDescription
      * @generated
@@ -3106,7 +3106,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel
      * <em>Direct Edit Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Direct Edit Label</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DirectEditLabel
      * @generated
@@ -3130,7 +3130,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInitialOperation()
@@ -3181,7 +3181,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation()
@@ -3321,7 +3321,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView
      * <em>Create Edge View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Create Edge View</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateEdgeView
      * @generated
@@ -3333,7 +3333,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getSourceExpression
      * <em>Source Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Source Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getSourceExpression()
      * @see #getCreateEdgeView()
@@ -3346,7 +3346,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getTargetExpression
      * <em>Target Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Target Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getTargetExpression()
      * @see #getCreateEdgeView()
@@ -3384,7 +3384,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.Navigation#getDiagramDescription
      * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Diagram Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.Navigation#getDiagramDescription()
      * @see #getNavigation()
@@ -3410,7 +3410,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription#getDiagramDescription
      * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Diagram Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription#getDiagramDescription()
      * @see #getDiagramCreationDescription()
@@ -3436,7 +3436,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription
      * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Diagram Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription()
      * @see #getDiagramNavigationDescription()
@@ -3511,7 +3511,7 @@ public interface ToolPackage extends EPackage {
      * {@link ContainerDropDescription#getNewViewContainer
      * <em>New View Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>New View Container</em>'.
      * @see ContainerDropDescription#getNewViewContainer()
@@ -3525,7 +3525,7 @@ public interface ToolPackage extends EPackage {
      * {@link ContainerDropDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see ContainerDropDescription#getInitialOperation()
@@ -3563,7 +3563,7 @@ public interface ToolPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectionKind
      * <em>Reconnection Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Reconnection Kind</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectionKind
      * @generated
@@ -3573,7 +3573,7 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -3598,12 +3598,12 @@ public interface ToolPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl
          * <em>Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getToolSection()
          * @generated
          */
-        EClass TOOL_SECTION = eINSTANCE.getToolSection();
+        EClass TOOL_SECTION = ToolPackage.eINSTANCE.getToolSection();
 
         /**
          * The meta object literal for the '<em><b>Icon</b></em>' attribute
@@ -3611,7 +3611,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TOOL_SECTION__ICON = eINSTANCE.getToolSection_Icon();
+        EAttribute TOOL_SECTION__ICON = ToolPackage.eINSTANCE.getToolSection_Icon();
 
         /**
          * The meta object literal for the '<em><b>Owned Tools</b></em>'
@@ -3620,7 +3620,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TOOL_SECTION__OWNED_TOOLS = eINSTANCE.getToolSection_OwnedTools();
+        EReference TOOL_SECTION__OWNED_TOOLS = ToolPackage.eINSTANCE.getToolSection_OwnedTools();
 
         /**
          * The meta object literal for the '<em><b>Sub Sections</b></em>'
@@ -3629,7 +3629,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TOOL_SECTION__SUB_SECTIONS = eINSTANCE.getToolSection_SubSections();
+        EReference TOOL_SECTION__SUB_SECTIONS = ToolPackage.eINSTANCE.getToolSection_SubSections();
 
         /**
          * The meta object literal for the '<em><b>Popup Menus</b></em>'
@@ -3637,7 +3637,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TOOL_SECTION__POPUP_MENUS = eINSTANCE.getToolSection_PopupMenus();
+        EReference TOOL_SECTION__POPUP_MENUS = ToolPackage.eINSTANCE.getToolSection_PopupMenus();
 
         /**
          * The meta object literal for the '<em><b>Reused Tools</b></em>'
@@ -3645,7 +3645,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TOOL_SECTION__REUSED_TOOLS = eINSTANCE.getToolSection_ReusedTools();
+        EReference TOOL_SECTION__REUSED_TOOLS = ToolPackage.eINSTANCE.getToolSection_ReusedTools();
 
         /**
          * The meta object literal for the '<em><b>Group Extensions</b></em>'
@@ -3654,7 +3654,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TOOL_SECTION__GROUP_EXTENSIONS = eINSTANCE.getToolSection_GroupExtensions();
+        EReference TOOL_SECTION__GROUP_EXTENSIONS = ToolPackage.eINSTANCE.getToolSection_GroupExtensions();
 
         /**
          * The meta object literal for the '
@@ -3665,7 +3665,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getToolGroup()
          * @generated
          */
-        EClass TOOL_GROUP = eINSTANCE.getToolGroup();
+        EClass TOOL_GROUP = ToolPackage.eINSTANCE.getToolGroup();
 
         /**
          * The meta object literal for the '<em><b>Tools</b></em>' containment
@@ -3673,7 +3673,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TOOL_GROUP__TOOLS = eINSTANCE.getToolGroup_Tools();
+        EReference TOOL_GROUP__TOOLS = ToolPackage.eINSTANCE.getToolGroup_Tools();
 
         /**
          * The meta object literal for the '
@@ -3685,7 +3685,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getToolGroupExtension()
          * @generated
          */
-        EClass TOOL_GROUP_EXTENSION = eINSTANCE.getToolGroupExtension();
+        EClass TOOL_GROUP_EXTENSION = ToolPackage.eINSTANCE.getToolGroupExtension();
 
         /**
          * The meta object literal for the '<em><b>Group</b></em>' reference
@@ -3693,7 +3693,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TOOL_GROUP_EXTENSION__GROUP = eINSTANCE.getToolGroupExtension_Group();
+        EReference TOOL_GROUP_EXTENSION__GROUP = ToolPackage.eINSTANCE.getToolGroupExtension_Group();
 
         /**
          * The meta object literal for the '<em><b>Tools</b></em>' containment
@@ -3701,7 +3701,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TOOL_GROUP_EXTENSION__TOOLS = eINSTANCE.getToolGroupExtension_Tools();
+        EReference TOOL_GROUP_EXTENSION__TOOLS = ToolPackage.eINSTANCE.getToolGroupExtension_Tools();
 
         /**
          * The meta object literal for the '
@@ -3713,7 +3713,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNodeCreationDescription()
          * @generated
          */
-        EClass NODE_CREATION_DESCRIPTION = eINSTANCE.getNodeCreationDescription();
+        EClass NODE_CREATION_DESCRIPTION = ToolPackage.eINSTANCE.getNodeCreationDescription();
 
         /**
          * The meta object literal for the '<em><b>Node Mappings</b></em>'
@@ -3721,7 +3721,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference NODE_CREATION_DESCRIPTION__NODE_MAPPINGS = eINSTANCE.getNodeCreationDescription_NodeMappings();
+        EReference NODE_CREATION_DESCRIPTION__NODE_MAPPINGS = ToolPackage.eINSTANCE.getNodeCreationDescription_NodeMappings();
 
         /**
          * The meta object literal for the '<em><b>Variable</b></em>'
@@ -3730,7 +3730,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference NODE_CREATION_DESCRIPTION__VARIABLE = eINSTANCE.getNodeCreationDescription_Variable();
+        EReference NODE_CREATION_DESCRIPTION__VARIABLE = ToolPackage.eINSTANCE.getNodeCreationDescription_Variable();
 
         /**
          * The meta object literal for the '<em><b>View Variable</b></em>'
@@ -3739,7 +3739,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference NODE_CREATION_DESCRIPTION__VIEW_VARIABLE = eINSTANCE.getNodeCreationDescription_ViewVariable();
+        EReference NODE_CREATION_DESCRIPTION__VIEW_VARIABLE = ToolPackage.eINSTANCE.getNodeCreationDescription_ViewVariable();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -3748,7 +3748,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference NODE_CREATION_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getNodeCreationDescription_InitialOperation();
+        EReference NODE_CREATION_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getNodeCreationDescription_InitialOperation();
 
         /**
          * The meta object literal for the '<em><b>Icon Path</b></em>' attribute
@@ -3756,7 +3756,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute NODE_CREATION_DESCRIPTION__ICON_PATH = eINSTANCE.getNodeCreationDescription_IconPath();
+        EAttribute NODE_CREATION_DESCRIPTION__ICON_PATH = ToolPackage.eINSTANCE.getNodeCreationDescription_IconPath();
 
         /**
          * The meta object literal for the '<em><b>Extra Mappings</b></em>'
@@ -3764,7 +3764,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS = eINSTANCE.getNodeCreationDescription_ExtraMappings();
+        EReference NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS = ToolPackage.eINSTANCE.getNodeCreationDescription_ExtraMappings();
 
         /**
          * The meta object literal for the '
@@ -3776,7 +3776,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getEdgeCreationDescription()
          * @generated
          */
-        EClass EDGE_CREATION_DESCRIPTION = eINSTANCE.getEdgeCreationDescription();
+        EClass EDGE_CREATION_DESCRIPTION = ToolPackage.eINSTANCE.getEdgeCreationDescription();
 
         /**
          * The meta object literal for the '<em><b>Edge Mappings</b></em>'
@@ -3784,7 +3784,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS = eINSTANCE.getEdgeCreationDescription_EdgeMappings();
+        EReference EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS = ToolPackage.eINSTANCE.getEdgeCreationDescription_EdgeMappings();
 
         /**
          * The meta object literal for the '<em><b>Source Variable</b></em>'
@@ -3793,7 +3793,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE = eINSTANCE.getEdgeCreationDescription_SourceVariable();
+        EReference EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE = ToolPackage.eINSTANCE.getEdgeCreationDescription_SourceVariable();
 
         /**
          * The meta object literal for the '<em><b>Target Variable</b></em>'
@@ -3802,7 +3802,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE = eINSTANCE.getEdgeCreationDescription_TargetVariable();
+        EReference EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE = ToolPackage.eINSTANCE.getEdgeCreationDescription_TargetVariable();
 
         /**
          * The meta object literal for the '<em><b>Source View Variable</b></em>
@@ -3811,7 +3811,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE = eINSTANCE.getEdgeCreationDescription_SourceViewVariable();
+        EReference EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE = ToolPackage.eINSTANCE.getEdgeCreationDescription_SourceViewVariable();
 
         /**
          * The meta object literal for the '<em><b>Target View Variable</b></em>
@@ -3820,7 +3820,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE = eINSTANCE.getEdgeCreationDescription_TargetViewVariable();
+        EReference EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE = ToolPackage.eINSTANCE.getEdgeCreationDescription_TargetViewVariable();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -3829,7 +3829,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getEdgeCreationDescription_InitialOperation();
+        EReference EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getEdgeCreationDescription_InitialOperation();
 
         /**
          * The meta object literal for the '<em><b>Icon Path</b></em>' attribute
@@ -3837,25 +3837,25 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_CREATION_DESCRIPTION__ICON_PATH = eINSTANCE.getEdgeCreationDescription_IconPath();
+        EAttribute EDGE_CREATION_DESCRIPTION__ICON_PATH = ToolPackage.eINSTANCE.getEdgeCreationDescription_IconPath();
 
         /**
          * The meta object literal for the '
          * <em><b>Extra Source Mappings</b></em>' reference list feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS = eINSTANCE.getEdgeCreationDescription_ExtraSourceMappings();
+        EReference EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS = ToolPackage.eINSTANCE.getEdgeCreationDescription_ExtraSourceMappings();
 
         /**
          * The meta object literal for the '
          * <em><b>Extra Target Mappings</b></em>' reference list feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS = eINSTANCE.getEdgeCreationDescription_ExtraTargetMappings();
+        EReference EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS = ToolPackage.eINSTANCE.getEdgeCreationDescription_ExtraTargetMappings();
 
         /**
          * The meta object literal for the '
@@ -3864,7 +3864,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION = eINSTANCE.getEdgeCreationDescription_ConnectionStartPrecondition();
+        EAttribute EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION = ToolPackage.eINSTANCE.getEdgeCreationDescription_ConnectionStartPrecondition();
 
         /**
          * The meta object literal for the '
@@ -3876,7 +3876,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getContainerCreationDescription()
          * @generated
          */
-        EClass CONTAINER_CREATION_DESCRIPTION = eINSTANCE.getContainerCreationDescription();
+        EClass CONTAINER_CREATION_DESCRIPTION = ToolPackage.eINSTANCE.getContainerCreationDescription();
 
         /**
          * The meta object literal for the '<em><b>Container Mappings</b></em>'
@@ -3884,7 +3884,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS = eINSTANCE.getContainerCreationDescription_ContainerMappings();
+        EReference CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS = ToolPackage.eINSTANCE.getContainerCreationDescription_ContainerMappings();
 
         /**
          * The meta object literal for the '<em><b>Variable</b></em>'
@@ -3893,7 +3893,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_CREATION_DESCRIPTION__VARIABLE = eINSTANCE.getContainerCreationDescription_Variable();
+        EReference CONTAINER_CREATION_DESCRIPTION__VARIABLE = ToolPackage.eINSTANCE.getContainerCreationDescription_Variable();
 
         /**
          * The meta object literal for the '<em><b>View Variable</b></em>'
@@ -3902,7 +3902,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE = eINSTANCE.getContainerCreationDescription_ViewVariable();
+        EReference CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE = ToolPackage.eINSTANCE.getContainerCreationDescription_ViewVariable();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -3911,7 +3911,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getContainerCreationDescription_InitialOperation();
+        EReference CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getContainerCreationDescription_InitialOperation();
 
         /**
          * The meta object literal for the '<em><b>Icon Path</b></em>' attribute
@@ -3919,7 +3919,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CONTAINER_CREATION_DESCRIPTION__ICON_PATH = eINSTANCE.getContainerCreationDescription_IconPath();
+        EAttribute CONTAINER_CREATION_DESCRIPTION__ICON_PATH = ToolPackage.eINSTANCE.getContainerCreationDescription_IconPath();
 
         /**
          * The meta object literal for the '<em><b>Extra Mappings</b></em>'
@@ -3927,7 +3927,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS = eINSTANCE.getContainerCreationDescription_ExtraMappings();
+        EReference CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS = ToolPackage.eINSTANCE.getContainerCreationDescription_ExtraMappings();
 
         /**
          * The meta object literal for the '
@@ -3939,7 +3939,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteElementDescription()
          * @generated
          */
-        EClass DELETE_ELEMENT_DESCRIPTION = eINSTANCE.getDeleteElementDescription();
+        EClass DELETE_ELEMENT_DESCRIPTION = ToolPackage.eINSTANCE.getDeleteElementDescription();
 
         /**
          * The meta object literal for the '<em><b>Element</b></em>' containment
@@ -3947,7 +3947,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DELETE_ELEMENT_DESCRIPTION__ELEMENT = eINSTANCE.getDeleteElementDescription_Element();
+        EReference DELETE_ELEMENT_DESCRIPTION__ELEMENT = ToolPackage.eINSTANCE.getDeleteElementDescription_Element();
 
         /**
          * The meta object literal for the '<em><b>Element View</b></em>'
@@ -3956,7 +3956,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DELETE_ELEMENT_DESCRIPTION__ELEMENT_VIEW = eINSTANCE.getDeleteElementDescription_ElementView();
+        EReference DELETE_ELEMENT_DESCRIPTION__ELEMENT_VIEW = ToolPackage.eINSTANCE.getDeleteElementDescription_ElementView();
 
         /**
          * The meta object literal for the '<em><b>Container View</b></em>'
@@ -3965,7 +3965,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DELETE_ELEMENT_DESCRIPTION__CONTAINER_VIEW = eINSTANCE.getDeleteElementDescription_ContainerView();
+        EReference DELETE_ELEMENT_DESCRIPTION__CONTAINER_VIEW = ToolPackage.eINSTANCE.getDeleteElementDescription_ContainerView();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -3974,7 +3974,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DELETE_ELEMENT_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getDeleteElementDescription_InitialOperation();
+        EReference DELETE_ELEMENT_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getDeleteElementDescription_InitialOperation();
 
         /**
          * The meta object literal for the '<em><b>Hook</b></em>' containment
@@ -3982,7 +3982,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DELETE_ELEMENT_DESCRIPTION__HOOK = eINSTANCE.getDeleteElementDescription_Hook();
+        EReference DELETE_ELEMENT_DESCRIPTION__HOOK = ToolPackage.eINSTANCE.getDeleteElementDescription_Hook();
 
         /**
          * The meta object literal for the '
@@ -3994,7 +3994,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDoubleClickDescription()
          * @generated
          */
-        EClass DOUBLE_CLICK_DESCRIPTION = eINSTANCE.getDoubleClickDescription();
+        EClass DOUBLE_CLICK_DESCRIPTION = ToolPackage.eINSTANCE.getDoubleClickDescription();
 
         /**
          * The meta object literal for the '<em><b>Mappings</b></em>' reference
@@ -4002,7 +4002,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DOUBLE_CLICK_DESCRIPTION__MAPPINGS = eINSTANCE.getDoubleClickDescription_Mappings();
+        EReference DOUBLE_CLICK_DESCRIPTION__MAPPINGS = ToolPackage.eINSTANCE.getDoubleClickDescription_Mappings();
 
         /**
          * The meta object literal for the '<em><b>Element</b></em>' containment
@@ -4010,7 +4010,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DOUBLE_CLICK_DESCRIPTION__ELEMENT = eINSTANCE.getDoubleClickDescription_Element();
+        EReference DOUBLE_CLICK_DESCRIPTION__ELEMENT = ToolPackage.eINSTANCE.getDoubleClickDescription_Element();
 
         /**
          * The meta object literal for the '<em><b>Element View</b></em>'
@@ -4019,7 +4019,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW = eINSTANCE.getDoubleClickDescription_ElementView();
+        EReference DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW = ToolPackage.eINSTANCE.getDoubleClickDescription_ElementView();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -4028,7 +4028,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getDoubleClickDescription_InitialOperation();
+        EReference DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getDoubleClickDescription_InitialOperation();
 
         /**
          * The meta object literal for the '
@@ -4040,7 +4040,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteHook()
          * @generated
          */
-        EClass DELETE_HOOK = eINSTANCE.getDeleteHook();
+        EClass DELETE_HOOK = ToolPackage.eINSTANCE.getDeleteHook();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
@@ -4048,7 +4048,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DELETE_HOOK__ID = eINSTANCE.getDeleteHook_Id();
+        EAttribute DELETE_HOOK__ID = ToolPackage.eINSTANCE.getDeleteHook_Id();
 
         /**
          * The meta object literal for the '<em><b>Parameters</b></em>'
@@ -4057,7 +4057,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DELETE_HOOK__PARAMETERS = eINSTANCE.getDeleteHook_Parameters();
+        EReference DELETE_HOOK__PARAMETERS = ToolPackage.eINSTANCE.getDeleteHook_Parameters();
 
         /**
          * The meta object literal for the '
@@ -4069,7 +4069,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteHookParameter()
          * @generated
          */
-        EClass DELETE_HOOK_PARAMETER = eINSTANCE.getDeleteHookParameter();
+        EClass DELETE_HOOK_PARAMETER = ToolPackage.eINSTANCE.getDeleteHookParameter();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
@@ -4077,7 +4077,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DELETE_HOOK_PARAMETER__NAME = eINSTANCE.getDeleteHookParameter_Name();
+        EAttribute DELETE_HOOK_PARAMETER__NAME = ToolPackage.eINSTANCE.getDeleteHookParameter_Name();
 
         /**
          * The meta object literal for the '<em><b>Value</b></em>' attribute
@@ -4085,7 +4085,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DELETE_HOOK_PARAMETER__VALUE = eINSTANCE.getDeleteHookParameter_Value();
+        EAttribute DELETE_HOOK_PARAMETER__VALUE = ToolPackage.eINSTANCE.getDeleteHookParameter_Value();
 
         /**
          * The meta object literal for the '
@@ -4097,7 +4097,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getReconnectEdgeDescription()
          * @generated
          */
-        EClass RECONNECT_EDGE_DESCRIPTION = eINSTANCE.getReconnectEdgeDescription();
+        EClass RECONNECT_EDGE_DESCRIPTION = ToolPackage.eINSTANCE.getReconnectEdgeDescription();
 
         /**
          * The meta object literal for the '<em><b>Reconnection Kind</b></em>'
@@ -4105,7 +4105,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND = eINSTANCE.getReconnectEdgeDescription_ReconnectionKind();
+        EAttribute RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND = ToolPackage.eINSTANCE.getReconnectEdgeDescription_ReconnectionKind();
 
         /**
          * The meta object literal for the '<em><b>Source</b></em>' containment
@@ -4113,7 +4113,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference RECONNECT_EDGE_DESCRIPTION__SOURCE = eINSTANCE.getReconnectEdgeDescription_Source();
+        EReference RECONNECT_EDGE_DESCRIPTION__SOURCE = ToolPackage.eINSTANCE.getReconnectEdgeDescription_Source();
 
         /**
          * The meta object literal for the '<em><b>Target</b></em>' containment
@@ -4121,7 +4121,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference RECONNECT_EDGE_DESCRIPTION__TARGET = eINSTANCE.getReconnectEdgeDescription_Target();
+        EReference RECONNECT_EDGE_DESCRIPTION__TARGET = ToolPackage.eINSTANCE.getReconnectEdgeDescription_Target();
 
         /**
          * The meta object literal for the '<em><b>Source View</b></em>'
@@ -4130,7 +4130,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW = eINSTANCE.getReconnectEdgeDescription_SourceView();
+        EReference RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW = ToolPackage.eINSTANCE.getReconnectEdgeDescription_SourceView();
 
         /**
          * The meta object literal for the '<em><b>Target View</b></em>'
@@ -4139,7 +4139,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW = eINSTANCE.getReconnectEdgeDescription_TargetView();
+        EReference RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW = ToolPackage.eINSTANCE.getReconnectEdgeDescription_TargetView();
 
         /**
          * The meta object literal for the '<em><b>Element</b></em>' containment
@@ -4147,7 +4147,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference RECONNECT_EDGE_DESCRIPTION__ELEMENT = eINSTANCE.getReconnectEdgeDescription_Element();
+        EReference RECONNECT_EDGE_DESCRIPTION__ELEMENT = ToolPackage.eINSTANCE.getReconnectEdgeDescription_Element();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -4156,7 +4156,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getReconnectEdgeDescription_InitialOperation();
+        EReference RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getReconnectEdgeDescription_InitialOperation();
 
         /**
          * The meta object literal for the '<em><b>Edge View</b></em>'
@@ -4165,7 +4165,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW = eINSTANCE.getReconnectEdgeDescription_EdgeView();
+        EReference RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW = ToolPackage.eINSTANCE.getReconnectEdgeDescription_EdgeView();
 
         /**
          * The meta object literal for the '
@@ -4177,7 +4177,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getRequestDescription()
          * @generated
          */
-        EClass REQUEST_DESCRIPTION = eINSTANCE.getRequestDescription();
+        EClass REQUEST_DESCRIPTION = ToolPackage.eINSTANCE.getRequestDescription();
 
         /**
          * The meta object literal for the '<em><b>Type</b></em>' attribute
@@ -4185,7 +4185,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute REQUEST_DESCRIPTION__TYPE = eINSTANCE.getRequestDescription_Type();
+        EAttribute REQUEST_DESCRIPTION__TYPE = ToolPackage.eINSTANCE.getRequestDescription_Type();
 
         /**
          * The meta object literal for the '
@@ -4197,7 +4197,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDirectEditLabel()
          * @generated
          */
-        EClass DIRECT_EDIT_LABEL = eINSTANCE.getDirectEditLabel();
+        EClass DIRECT_EDIT_LABEL = ToolPackage.eINSTANCE.getDirectEditLabel();
 
         /**
          * The meta object literal for the '<em><b>Mask</b></em>' containment
@@ -4205,7 +4205,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIRECT_EDIT_LABEL__MASK = eINSTANCE.getDirectEditLabel_Mask();
+        EReference DIRECT_EDIT_LABEL__MASK = ToolPackage.eINSTANCE.getDirectEditLabel_Mask();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -4214,16 +4214,16 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIRECT_EDIT_LABEL__INITIAL_OPERATION = eINSTANCE.getDirectEditLabel_InitialOperation();
+        EReference DIRECT_EDIT_LABEL__INITIAL_OPERATION = ToolPackage.eINSTANCE.getDirectEditLabel_InitialOperation();
 
         /**
          * The meta object literal for the '
          * <em><b>Input Label Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION = eINSTANCE.getDirectEditLabel_InputLabelExpression();
+        EAttribute DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION = ToolPackage.eINSTANCE.getDirectEditLabel_InputLabelExpression();
 
         /**
          * The meta object literal for the '
@@ -4235,7 +4235,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getBehaviorTool()
          * @generated
          */
-        EClass BEHAVIOR_TOOL = eINSTANCE.getBehaviorTool();
+        EClass BEHAVIOR_TOOL = ToolPackage.eINSTANCE.getBehaviorTool();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -4243,7 +4243,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute BEHAVIOR_TOOL__DOMAIN_CLASS = eINSTANCE.getBehaviorTool_DomainClass();
+        EAttribute BEHAVIOR_TOOL__DOMAIN_CLASS = ToolPackage.eINSTANCE.getBehaviorTool_DomainClass();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -4252,7 +4252,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference BEHAVIOR_TOOL__INITIAL_OPERATION = eINSTANCE.getBehaviorTool_InitialOperation();
+        EReference BEHAVIOR_TOOL__INITIAL_OPERATION = ToolPackage.eINSTANCE.getBehaviorTool_InitialOperation();
 
         /**
          * The meta object literal for the '
@@ -4264,19 +4264,19 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getSourceEdgeCreationVariable()
          * @generated
          */
-        EClass SOURCE_EDGE_CREATION_VARIABLE = eINSTANCE.getSourceEdgeCreationVariable();
+        EClass SOURCE_EDGE_CREATION_VARIABLE = ToolPackage.eINSTANCE.getSourceEdgeCreationVariable();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeViewCreationVariableImpl
          * <em>Source Edge View Creation Variable</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeViewCreationVariableImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getSourceEdgeViewCreationVariable()
          * @generated
          */
-        EClass SOURCE_EDGE_VIEW_CREATION_VARIABLE = eINSTANCE.getSourceEdgeViewCreationVariable();
+        EClass SOURCE_EDGE_VIEW_CREATION_VARIABLE = ToolPackage.eINSTANCE.getSourceEdgeViewCreationVariable();
 
         /**
          * The meta object literal for the '
@@ -4288,19 +4288,19 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getTargetEdgeCreationVariable()
          * @generated
          */
-        EClass TARGET_EDGE_CREATION_VARIABLE = eINSTANCE.getTargetEdgeCreationVariable();
+        EClass TARGET_EDGE_CREATION_VARIABLE = ToolPackage.eINSTANCE.getTargetEdgeCreationVariable();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeViewCreationVariableImpl
          * <em>Target Edge View Creation Variable</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeViewCreationVariableImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getTargetEdgeViewCreationVariable()
          * @generated
          */
-        EClass TARGET_EDGE_VIEW_CREATION_VARIABLE = eINSTANCE.getTargetEdgeViewCreationVariable();
+        EClass TARGET_EDGE_VIEW_CREATION_VARIABLE = ToolPackage.eINSTANCE.getTargetEdgeViewCreationVariable();
 
         /**
          * The meta object literal for the '
@@ -4312,7 +4312,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getElementDoubleClickVariable()
          * @generated
          */
-        EClass ELEMENT_DOUBLE_CLICK_VARIABLE = eINSTANCE.getElementDoubleClickVariable();
+        EClass ELEMENT_DOUBLE_CLICK_VARIABLE = ToolPackage.eINSTANCE.getElementDoubleClickVariable();
 
         /**
          * The meta object literal for the '
@@ -4324,7 +4324,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNodeCreationVariable()
          * @generated
          */
-        EClass NODE_CREATION_VARIABLE = eINSTANCE.getNodeCreationVariable();
+        EClass NODE_CREATION_VARIABLE = ToolPackage.eINSTANCE.getNodeCreationVariable();
 
         /**
          * The meta object literal for the '
@@ -4336,7 +4336,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getCreateView()
          * @generated
          */
-        EClass CREATE_VIEW = eINSTANCE.getCreateView();
+        EClass CREATE_VIEW = ToolPackage.eINSTANCE.getCreateView();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' reference
@@ -4344,16 +4344,16 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CREATE_VIEW__MAPPING = eINSTANCE.getCreateView_Mapping();
+        EReference CREATE_VIEW__MAPPING = ToolPackage.eINSTANCE.getCreateView_Mapping();
 
         /**
          * The meta object literal for the '
          * <em><b>Container View Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute CREATE_VIEW__CONTAINER_VIEW_EXPRESSION = eINSTANCE.getCreateView_ContainerViewExpression();
+        EAttribute CREATE_VIEW__CONTAINER_VIEW_EXPRESSION = ToolPackage.eINSTANCE.getCreateView_ContainerViewExpression();
 
         /**
          * The meta object literal for the '<em><b>Variable Name</b></em>'
@@ -4361,7 +4361,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CREATE_VIEW__VARIABLE_NAME = eINSTANCE.getCreateView_VariableName();
+        EAttribute CREATE_VIEW__VARIABLE_NAME = ToolPackage.eINSTANCE.getCreateView_VariableName();
 
         /**
          * The meta object literal for the '
@@ -4373,7 +4373,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getCreateEdgeView()
          * @generated
          */
-        EClass CREATE_EDGE_VIEW = eINSTANCE.getCreateEdgeView();
+        EClass CREATE_EDGE_VIEW = ToolPackage.eINSTANCE.getCreateEdgeView();
 
         /**
          * The meta object literal for the '<em><b>Source Expression</b></em>'
@@ -4381,7 +4381,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CREATE_EDGE_VIEW__SOURCE_EXPRESSION = eINSTANCE.getCreateEdgeView_SourceExpression();
+        EAttribute CREATE_EDGE_VIEW__SOURCE_EXPRESSION = ToolPackage.eINSTANCE.getCreateEdgeView_SourceExpression();
 
         /**
          * The meta object literal for the '<em><b>Target Expression</b></em>'
@@ -4389,7 +4389,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CREATE_EDGE_VIEW__TARGET_EXPRESSION = eINSTANCE.getCreateEdgeView_TargetExpression();
+        EAttribute CREATE_EDGE_VIEW__TARGET_EXPRESSION = ToolPackage.eINSTANCE.getCreateEdgeView_TargetExpression();
 
         /**
          * The meta object literal for the '
@@ -4401,16 +4401,16 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNavigation()
          * @generated
          */
-        EClass NAVIGATION = eINSTANCE.getNavigation();
+        EClass NAVIGATION = ToolPackage.eINSTANCE.getNavigation();
 
         /**
          * The meta object literal for the '
          * <em><b>Create If Not Existent</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute NAVIGATION__CREATE_IF_NOT_EXISTENT = eINSTANCE.getNavigation_CreateIfNotExistent();
+        EAttribute NAVIGATION__CREATE_IF_NOT_EXISTENT = ToolPackage.eINSTANCE.getNavigation_CreateIfNotExistent();
 
         /**
          * The meta object literal for the '<em><b>Diagram Description</b></em>'
@@ -4418,7 +4418,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference NAVIGATION__DIAGRAM_DESCRIPTION = eINSTANCE.getNavigation_DiagramDescription();
+        EReference NAVIGATION__DIAGRAM_DESCRIPTION = ToolPackage.eINSTANCE.getNavigation_DiagramDescription();
 
         /**
          * The meta object literal for the '
@@ -4430,7 +4430,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDiagramCreationDescription()
          * @generated
          */
-        EClass DIAGRAM_CREATION_DESCRIPTION = eINSTANCE.getDiagramCreationDescription();
+        EClass DIAGRAM_CREATION_DESCRIPTION = ToolPackage.eINSTANCE.getDiagramCreationDescription();
 
         /**
          * The meta object literal for the '<em><b>Diagram Description</b></em>'
@@ -4438,7 +4438,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_CREATION_DESCRIPTION__DIAGRAM_DESCRIPTION = eINSTANCE.getDiagramCreationDescription_DiagramDescription();
+        EReference DIAGRAM_CREATION_DESCRIPTION__DIAGRAM_DESCRIPTION = ToolPackage.eINSTANCE.getDiagramCreationDescription_DiagramDescription();
 
         /**
          * The meta object literal for the '
@@ -4450,7 +4450,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDiagramNavigationDescription()
          * @generated
          */
-        EClass DIAGRAM_NAVIGATION_DESCRIPTION = eINSTANCE.getDiagramNavigationDescription();
+        EClass DIAGRAM_NAVIGATION_DESCRIPTION = ToolPackage.eINSTANCE.getDiagramNavigationDescription();
 
         /**
          * The meta object literal for the '<em><b>Diagram Description</b></em>'
@@ -4458,7 +4458,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_NAVIGATION_DESCRIPTION__DIAGRAM_DESCRIPTION = eINSTANCE.getDiagramNavigationDescription_DiagramDescription();
+        EReference DIAGRAM_NAVIGATION_DESCRIPTION__DIAGRAM_DESCRIPTION = ToolPackage.eINSTANCE.getDiagramNavigationDescription_DiagramDescription();
 
         /**
          * The meta object literal for the '
@@ -4470,7 +4470,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getContainerDropDescription()
          * @generated
          */
-        EClass CONTAINER_DROP_DESCRIPTION = eINSTANCE.getContainerDropDescription();
+        EClass CONTAINER_DROP_DESCRIPTION = ToolPackage.eINSTANCE.getContainerDropDescription();
 
         /**
          * The meta object literal for the '<em><b>Mappings</b></em>' reference
@@ -4478,7 +4478,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_DROP_DESCRIPTION__MAPPINGS = eINSTANCE.getContainerDropDescription_Mappings();
+        EReference CONTAINER_DROP_DESCRIPTION__MAPPINGS = ToolPackage.eINSTANCE.getContainerDropDescription_Mappings();
 
         /**
          * The meta object literal for the '<em><b>Old Container</b></em>'
@@ -4487,7 +4487,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER = eINSTANCE.getContainerDropDescription_OldContainer();
+        EReference CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER = ToolPackage.eINSTANCE.getContainerDropDescription_OldContainer();
 
         /**
          * The meta object literal for the '<em><b>New Container</b></em>'
@@ -4496,7 +4496,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER = eINSTANCE.getContainerDropDescription_NewContainer();
+        EReference CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER = ToolPackage.eINSTANCE.getContainerDropDescription_NewContainer();
 
         /**
          * The meta object literal for the '<em><b>Element</b></em>' containment
@@ -4504,7 +4504,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_DROP_DESCRIPTION__ELEMENT = eINSTANCE.getContainerDropDescription_Element();
+        EReference CONTAINER_DROP_DESCRIPTION__ELEMENT = ToolPackage.eINSTANCE.getContainerDropDescription_Element();
 
         /**
          * The meta object literal for the '<em><b>New View Container</b></em>'
@@ -4513,7 +4513,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER = eINSTANCE.getContainerDropDescription_NewViewContainer();
+        EReference CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER = ToolPackage.eINSTANCE.getContainerDropDescription_NewViewContainer();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -4522,7 +4522,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getContainerDropDescription_InitialOperation();
+        EReference CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getContainerDropDescription_InitialOperation();
 
         /**
          * The meta object literal for the '<em><b>Drag Source</b></em>'
@@ -4530,7 +4530,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE = eINSTANCE.getContainerDropDescription_DragSource();
+        EAttribute CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE = ToolPackage.eINSTANCE.getContainerDropDescription_DragSource();
 
         /**
          * The meta object literal for the '<em><b>Move Edges</b></em>'
@@ -4538,7 +4538,7 @@ public interface ToolPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CONTAINER_DROP_DESCRIPTION__MOVE_EDGES = eINSTANCE.getContainerDropDescription_MoveEdges();
+        EAttribute CONTAINER_DROP_DESCRIPTION__MOVE_EDGES = ToolPackage.eINSTANCE.getContainerDropDescription_MoveEdges();
 
         /**
          * The meta object literal for the '
@@ -4550,7 +4550,7 @@ public interface ToolPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getReconnectionKind()
          * @generated
          */
-        EEnum RECONNECTION_KIND = eINSTANCE.getReconnectionKind();
+        EEnum RECONNECTION_KIND = ToolPackage.eINSTANCE.getReconnectionKind();
 
     }
 

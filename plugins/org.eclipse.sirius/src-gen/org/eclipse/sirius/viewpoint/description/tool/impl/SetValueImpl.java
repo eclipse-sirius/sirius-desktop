@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -38,7 +38,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
     /**
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -48,18 +48,18 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
      */
-    protected String featureName = FEATURE_NAME_EDEFAULT;
+    protected String featureName = SetValueImpl.FEATURE_NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -70,16 +70,16 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
      * The cached value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
      */
-    protected String valueExpression = VALUE_EXPRESSION_EDEFAULT;
+    protected String valueExpression = SetValueImpl.VALUE_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SetValueImpl() {
@@ -88,7 +88,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,49 +98,55 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getFeatureName() {
         return featureName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setFeatureName(String newFeatureName) {
         String oldFeatureName = featureName;
         featureName = newFeatureName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SET_VALUE__FEATURE_NAME, oldFeatureName, featureName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getValueExpression() {
         return valueExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setValueExpression(String newValueExpression) {
         String oldValueExpression = valueExpression;
         valueExpression = newValueExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SET_VALUE__VALUE_EXPRESSION, oldValueExpression, valueExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +162,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,17 +180,17 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.SET_VALUE__FEATURE_NAME:
-            setFeatureName(FEATURE_NAME_EDEFAULT);
+            setFeatureName(SetValueImpl.FEATURE_NAME_EDEFAULT);
             return;
         case ToolPackage.SET_VALUE__VALUE_EXPRESSION:
-            setValueExpression(VALUE_EXPRESSION_EDEFAULT);
+            setValueExpression(SetValueImpl.VALUE_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -192,29 +198,30 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.SET_VALUE__FEATURE_NAME:
-            return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
+            return SetValueImpl.FEATURE_NAME_EDEFAULT == null ? featureName != null : !SetValueImpl.FEATURE_NAME_EDEFAULT.equals(featureName);
         case ToolPackage.SET_VALUE__VALUE_EXPRESSION:
-            return VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
+            return SetValueImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !SetValueImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (featureName: ");

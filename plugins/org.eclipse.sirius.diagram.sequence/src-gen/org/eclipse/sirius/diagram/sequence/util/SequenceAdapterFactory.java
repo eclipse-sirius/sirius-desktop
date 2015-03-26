@@ -49,8 +49,8 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public SequenceAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = SequencePackage.eINSTANCE;
+        if (SequenceAdapterFactory.modelPackage == null) {
+            SequenceAdapterFactory.modelPackage = SequencePackage.eINSTANCE;
         }
     }
 
@@ -65,11 +65,11 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == SequenceAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == SequenceAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -77,7 +77,7 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SequenceSwitch<Adapter> modelSwitch = new SequenceSwitch<Adapter>() {
@@ -158,7 +158,7 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.SequenceDDiagram
      * @generated
@@ -248,21 +248,6 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DValidable <em>DValidable</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DValidable
-     * @generated
-     */
-    public Adapter createDValidableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.DContainer <em>DContainer</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
@@ -282,7 +267,7 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.DDiagram
      * @generated

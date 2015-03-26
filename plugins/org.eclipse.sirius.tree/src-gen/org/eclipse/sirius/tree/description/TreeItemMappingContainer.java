@@ -44,7 +44,7 @@ public interface TreeItemMappingContainer extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Item Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMappingContainer_SubItemMappings()

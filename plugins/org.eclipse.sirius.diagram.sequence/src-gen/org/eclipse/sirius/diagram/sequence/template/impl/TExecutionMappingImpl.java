@@ -75,7 +75,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * @generated
      * @ordered
      */
-    protected String startingEndFinderExpression = STARTING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String startingEndFinderExpression = TExecutionMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFinishingEndFinderExpression()
@@ -97,7 +97,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * @generated
      * @ordered
      */
-    protected String finishingEndFinderExpression = FINISHING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String finishingEndFinderExpression = TExecutionMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isRecursive() <em>Recursive</em>}'
@@ -117,13 +117,13 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * @generated
      * @ordered
      */
-    protected boolean recursive = RECURSIVE_EDEFAULT;
+    protected boolean recursive = TExecutionMappingImpl.RECURSIVE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getExecutionMappings()
      * <em>Execution Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getExecutionMappings()
      * @generated
      * @ordered
@@ -144,7 +144,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * The cached value of the '{@link #getConditionalStyles()
      * <em>Conditional Styles</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -175,6 +175,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public String getStartingEndFinderExpression() {
         return startingEndFinderExpression;
     }
@@ -184,11 +185,13 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public void setStartingEndFinderExpression(String newStartingEndFinderExpression) {
         String oldStartingEndFinderExpression = startingEndFinderExpression;
         startingEndFinderExpression = newStartingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TEXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION, oldStartingEndFinderExpression, startingEndFinderExpression));
+        }
     }
 
     /**
@@ -196,6 +199,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public String getFinishingEndFinderExpression() {
         return finishingEndFinderExpression;
     }
@@ -205,11 +209,13 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public void setFinishingEndFinderExpression(String newFinishingEndFinderExpression) {
         String oldFinishingEndFinderExpression = finishingEndFinderExpression;
         finishingEndFinderExpression = newFinishingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TEXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION, oldFinishingEndFinderExpression, finishingEndFinderExpression));
+        }
     }
 
     /**
@@ -217,6 +223,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public boolean isRecursive() {
         return recursive;
     }
@@ -226,11 +233,13 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public void setRecursive(boolean newRecursive) {
         boolean oldRecursive = recursive;
         recursive = newRecursive;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TEXECUTION_MAPPING__RECURSIVE, oldRecursive, recursive));
+        }
     }
 
     /**
@@ -238,6 +247,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public EList<TExecutionMapping> getExecutionMappings() {
         if (executionMappings == null) {
             executionMappings = new EObjectContainmentEList<TExecutionMapping>(TExecutionMapping.class, this, TemplatePackage.TEXECUTION_MAPPING__EXECUTION_MAPPINGS);
@@ -250,6 +260,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public TExecutionStyle getStyle() {
         return style;
     }
@@ -264,10 +275,11 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
         style = newStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TemplatePackage.TEXECUTION_MAPPING__STYLE, oldStyle, newStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -277,18 +289,23 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public void setStyle(TExecutionStyle newStyle) {
         if (newStyle != style) {
             NotificationChain msgs = null;
-            if (style != null)
-                msgs = ((InternalEObject) style).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TEXECUTION_MAPPING__STYLE, null, msgs);
-            if (newStyle != null)
-                msgs = ((InternalEObject) newStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TEXECUTION_MAPPING__STYLE, null, msgs);
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TEXECUTION_MAPPING__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TEXECUTION_MAPPING__STYLE, null, msgs);
+            }
             msgs = basicSetStyle(newStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TEXECUTION_MAPPING__STYLE, newStyle, newStyle));
+        }
     }
 
     /**
@@ -296,6 +313,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      * 
      * @generated
      */
+    @Override
     public EList<TConditionalExecutionStyle> getConditionalStyles() {
         if (conditionalStyles == null) {
             conditionalStyles = new EObjectContainmentEList<TConditionalExecutionStyle>(TConditionalExecutionStyle.class, this, TemplatePackage.TEXECUTION_MAPPING__CONDITIONAL_STYLES);
@@ -387,13 +405,13 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     public void eUnset(int featureID) {
         switch (featureID) {
         case TemplatePackage.TEXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            setStartingEndFinderExpression(STARTING_END_FINDER_EXPRESSION_EDEFAULT);
+            setStartingEndFinderExpression(TExecutionMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         case TemplatePackage.TEXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            setFinishingEndFinderExpression(FINISHING_END_FINDER_EXPRESSION_EDEFAULT);
+            setFinishingEndFinderExpression(TExecutionMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         case TemplatePackage.TEXECUTION_MAPPING__RECURSIVE:
-            setRecursive(RECURSIVE_EDEFAULT);
+            setRecursive(TExecutionMappingImpl.RECURSIVE_EDEFAULT);
             return;
         case TemplatePackage.TEXECUTION_MAPPING__EXECUTION_MAPPINGS:
             getExecutionMappings().clear();
@@ -417,11 +435,13 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TemplatePackage.TEXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            return STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !STARTING_END_FINDER_EXPRESSION_EDEFAULT.equals(startingEndFinderExpression);
+            return TExecutionMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !TExecutionMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(startingEndFinderExpression);
         case TemplatePackage.TEXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            return FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null : !FINISHING_END_FINDER_EXPRESSION_EDEFAULT.equals(finishingEndFinderExpression);
+            return TExecutionMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null : !TExecutionMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(finishingEndFinderExpression);
         case TemplatePackage.TEXECUTION_MAPPING__RECURSIVE:
-            return recursive != RECURSIVE_EDEFAULT;
+            return recursive != TExecutionMappingImpl.RECURSIVE_EDEFAULT;
         case TemplatePackage.TEXECUTION_MAPPING__EXECUTION_MAPPINGS:
             return executionMappings != null && !executionMappings.isEmpty();
         case TemplatePackage.TEXECUTION_MAPPING__STYLE:
@@ -439,8 +459,9 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (startingEndFinderExpression: ");

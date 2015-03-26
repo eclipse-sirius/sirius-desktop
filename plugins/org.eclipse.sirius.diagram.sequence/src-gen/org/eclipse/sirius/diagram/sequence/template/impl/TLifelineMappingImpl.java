@@ -77,13 +77,13 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * @generated
      * @ordered
      */
-    protected String eolVisibleExpression = EOL_VISIBLE_EXPRESSION_EDEFAULT;
+    protected String eolVisibleExpression = TLifelineMappingImpl.EOL_VISIBLE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getExecutionMappings()
      * <em>Execution Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getExecutionMappings()
      * @generated
      * @ordered
@@ -127,7 +127,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * The cached value of the '{@link #getConditionalLifeLineStyles()
      * <em>Conditional Life Line Styles</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalLifeLineStyles()
      * @generated
      * @ordered
@@ -158,6 +158,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public String getEolVisibleExpression() {
         return eolVisibleExpression;
     }
@@ -167,11 +168,13 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public void setEolVisibleExpression(String newEolVisibleExpression) {
         String oldEolVisibleExpression = eolVisibleExpression;
         eolVisibleExpression = newEolVisibleExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION, oldEolVisibleExpression, eolVisibleExpression));
+        }
     }
 
     /**
@@ -179,6 +182,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public EList<TExecutionMapping> getExecutionMappings() {
         if (executionMappings == null) {
             executionMappings = new EObjectContainmentEList<TExecutionMapping>(TExecutionMapping.class, this, TemplatePackage.TLIFELINE_MAPPING__EXECUTION_MAPPINGS);
@@ -191,6 +195,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public NodeStyleDescription getInstanceRoleStyle() {
         return instanceRoleStyle;
     }
@@ -205,10 +210,11 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
         instanceRoleStyle = newInstanceRoleStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TemplatePackage.TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE, oldInstanceRoleStyle, newInstanceRoleStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -218,18 +224,23 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public void setInstanceRoleStyle(NodeStyleDescription newInstanceRoleStyle) {
         if (newInstanceRoleStyle != instanceRoleStyle) {
             NotificationChain msgs = null;
-            if (instanceRoleStyle != null)
-                msgs = ((InternalEObject) instanceRoleStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE, null, msgs);
-            if (newInstanceRoleStyle != null)
-                msgs = ((InternalEObject) newInstanceRoleStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE, null, msgs);
+            if (instanceRoleStyle != null) {
+                msgs = ((InternalEObject) instanceRoleStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE, null, msgs);
+            }
+            if (newInstanceRoleStyle != null) {
+                msgs = ((InternalEObject) newInstanceRoleStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE, null, msgs);
+            }
             msgs = basicSetInstanceRoleStyle(newInstanceRoleStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE, newInstanceRoleStyle, newInstanceRoleStyle));
+        }
     }
 
     /**
@@ -237,6 +248,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public TLifelineStyle getLifelineStyle() {
         return lifelineStyle;
     }
@@ -251,10 +263,11 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
         lifelineStyle = newLifelineStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TemplatePackage.TLIFELINE_MAPPING__LIFELINE_STYLE, oldLifelineStyle, newLifelineStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -264,18 +277,23 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public void setLifelineStyle(TLifelineStyle newLifelineStyle) {
         if (newLifelineStyle != lifelineStyle) {
             NotificationChain msgs = null;
-            if (lifelineStyle != null)
-                msgs = ((InternalEObject) lifelineStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__LIFELINE_STYLE, null, msgs);
-            if (newLifelineStyle != null)
-                msgs = ((InternalEObject) newLifelineStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__LIFELINE_STYLE, null, msgs);
+            if (lifelineStyle != null) {
+                msgs = ((InternalEObject) lifelineStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__LIFELINE_STYLE, null, msgs);
+            }
+            if (newLifelineStyle != null) {
+                msgs = ((InternalEObject) newLifelineStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__LIFELINE_STYLE, null, msgs);
+            }
             msgs = basicSetLifelineStyle(newLifelineStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TLIFELINE_MAPPING__LIFELINE_STYLE, newLifelineStyle, newLifelineStyle));
+        }
     }
 
     /**
@@ -283,6 +301,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public NodeStyleDescription getEndOfLifeStyle() {
         return endOfLifeStyle;
     }
@@ -297,10 +316,11 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
         endOfLifeStyle = newEndOfLifeStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TemplatePackage.TLIFELINE_MAPPING__END_OF_LIFE_STYLE, oldEndOfLifeStyle, newEndOfLifeStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -310,18 +330,23 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public void setEndOfLifeStyle(NodeStyleDescription newEndOfLifeStyle) {
         if (newEndOfLifeStyle != endOfLifeStyle) {
             NotificationChain msgs = null;
-            if (endOfLifeStyle != null)
-                msgs = ((InternalEObject) endOfLifeStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__END_OF_LIFE_STYLE, null, msgs);
-            if (newEndOfLifeStyle != null)
-                msgs = ((InternalEObject) newEndOfLifeStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__END_OF_LIFE_STYLE, null, msgs);
+            if (endOfLifeStyle != null) {
+                msgs = ((InternalEObject) endOfLifeStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__END_OF_LIFE_STYLE, null, msgs);
+            }
+            if (newEndOfLifeStyle != null) {
+                msgs = ((InternalEObject) newEndOfLifeStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TLIFELINE_MAPPING__END_OF_LIFE_STYLE, null, msgs);
+            }
             msgs = basicSetEndOfLifeStyle(newEndOfLifeStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TLIFELINE_MAPPING__END_OF_LIFE_STYLE, newEndOfLifeStyle, newEndOfLifeStyle));
+        }
     }
 
     /**
@@ -329,6 +354,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      * 
      * @generated
      */
+    @Override
     public EList<TConditionalLifelineStyle> getConditionalLifeLineStyles() {
         if (conditionalLifeLineStyles == null) {
             conditionalLifeLineStyles = new EObjectContainmentEList<TConditionalLifelineStyle>(TConditionalLifelineStyle.class, this, TemplatePackage.TLIFELINE_MAPPING__CONDITIONAL_LIFE_LINE_STYLES);
@@ -424,7 +450,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
     public void eUnset(int featureID) {
         switch (featureID) {
         case TemplatePackage.TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION:
-            setEolVisibleExpression(EOL_VISIBLE_EXPRESSION_EDEFAULT);
+            setEolVisibleExpression(TLifelineMappingImpl.EOL_VISIBLE_EXPRESSION_EDEFAULT);
             return;
         case TemplatePackage.TLIFELINE_MAPPING__EXECUTION_MAPPINGS:
             getExecutionMappings().clear();
@@ -454,7 +480,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TemplatePackage.TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION:
-            return EOL_VISIBLE_EXPRESSION_EDEFAULT == null ? eolVisibleExpression != null : !EOL_VISIBLE_EXPRESSION_EDEFAULT.equals(eolVisibleExpression);
+            return TLifelineMappingImpl.EOL_VISIBLE_EXPRESSION_EDEFAULT == null ? eolVisibleExpression != null : !TLifelineMappingImpl.EOL_VISIBLE_EXPRESSION_EDEFAULT.equals(eolVisibleExpression);
         case TemplatePackage.TLIFELINE_MAPPING__EXECUTION_MAPPINGS:
             return executionMappings != null && !executionMappings.isEmpty();
         case TemplatePackage.TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE:
@@ -476,8 +502,9 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (eolVisibleExpression: ");

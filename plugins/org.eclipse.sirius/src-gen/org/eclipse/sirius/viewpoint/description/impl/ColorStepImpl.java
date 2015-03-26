@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -42,7 +42,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
      * The default value of the '{@link #getAssociatedValue()
      * <em>Associated Value</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAssociatedValue()
      * @generated
      * @ordered
@@ -53,18 +53,18 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
      * The cached value of the '{@link #getAssociatedValue()
      * <em>Associated Value</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAssociatedValue()
      * @generated
      * @ordered
      */
-    protected String associatedValue = ASSOCIATED_VALUE_EDEFAULT;
+    protected String associatedValue = ColorStepImpl.ASSOCIATED_VALUE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getAssociatedColor()
      * <em>Associated Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAssociatedColor()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ColorStepImpl() {
@@ -82,7 +82,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,37 +92,42 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getAssociatedValue() {
         return associatedValue;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setAssociatedValue(String newAssociatedValue) {
         String oldAssociatedValue = associatedValue;
         associatedValue = newAssociatedValue;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.COLOR_STEP__ASSOCIATED_VALUE, oldAssociatedValue, associatedValue));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public FixedColor getAssociatedColor() {
         if (associatedColor != null && associatedColor.eIsProxy()) {
             InternalEObject oldAssociatedColor = (InternalEObject) associatedColor;
             associatedColor = (FixedColor) eResolveProxy(oldAssociatedColor);
             if (associatedColor != oldAssociatedColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.COLOR_STEP__ASSOCIATED_COLOR, oldAssociatedColor, associatedColor));
+                }
             }
         }
         return associatedColor;
@@ -130,7 +135,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FixedColor basicGetAssociatedColor() {
@@ -139,19 +144,21 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setAssociatedColor(FixedColor newAssociatedColor) {
         FixedColor oldAssociatedColor = associatedColor;
         associatedColor = newAssociatedColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.COLOR_STEP__ASSOCIATED_COLOR, oldAssociatedColor, associatedColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,8 +167,9 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
         case DescriptionPackage.COLOR_STEP__ASSOCIATED_VALUE:
             return getAssociatedValue();
         case DescriptionPackage.COLOR_STEP__ASSOCIATED_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getAssociatedColor();
+            }
             return basicGetAssociatedColor();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -169,7 +177,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,14 +195,14 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.COLOR_STEP__ASSOCIATED_VALUE:
-            setAssociatedValue(ASSOCIATED_VALUE_EDEFAULT);
+            setAssociatedValue(ColorStepImpl.ASSOCIATED_VALUE_EDEFAULT);
             return;
         case DescriptionPackage.COLOR_STEP__ASSOCIATED_COLOR:
             setAssociatedColor((FixedColor) null);
@@ -205,14 +213,14 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.COLOR_STEP__ASSOCIATED_VALUE:
-            return ASSOCIATED_VALUE_EDEFAULT == null ? associatedValue != null : !ASSOCIATED_VALUE_EDEFAULT.equals(associatedValue);
+            return ColorStepImpl.ASSOCIATED_VALUE_EDEFAULT == null ? associatedValue != null : !ColorStepImpl.ASSOCIATED_VALUE_EDEFAULT.equals(associatedValue);
         case DescriptionPackage.COLOR_STEP__ASSOCIATED_COLOR:
             return associatedColor != null;
         }
@@ -221,13 +229,14 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (associatedValue: ");

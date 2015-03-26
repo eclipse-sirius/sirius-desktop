@@ -75,9 +75,10 @@ public class SequenceFactoryImpl extends EFactoryImpl implements SequenceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public SequenceDDiagram createSequenceDDiagram() {
         SequenceDDiagramSpec sequenceDDiagram = new SequenceDDiagramSpec();
         EventEndsOrdering smo = OrderingFactory.eINSTANCE.createEventEndsOrdering();
@@ -96,6 +97,7 @@ public class SequenceFactoryImpl extends EFactoryImpl implements SequenceFactory
      * 
      * @generated
      */
+    @Override
     public SequencePackage getSequencePackage() {
         return (SequencePackage) getEPackage();
     }

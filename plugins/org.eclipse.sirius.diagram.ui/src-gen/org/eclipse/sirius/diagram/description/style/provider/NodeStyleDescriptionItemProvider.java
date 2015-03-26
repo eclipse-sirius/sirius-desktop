@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.provider;
 
@@ -39,11 +39,11 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * @generated
  */
 public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +53,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Border Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
@@ -108,7 +108,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Label Size feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelSizePropertyDescriptor(Object object) {
@@ -122,7 +122,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Label Format feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelFormatPropertyDescriptor(Object object) {
@@ -136,7 +136,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Show Icon feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addShowIconPropertyDescriptor(Object object) {
@@ -150,7 +150,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -164,22 +164,22 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Label Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_BasicLabelStyleDescription_labelColor_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyleDescription_labelColor_feature", "_UI_BasicLabelStyleDescription_type"),
-                        org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR, true, false, true, null,
-                        getString("_UI_ColorPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_BasicLabelStyleDescription_labelColor_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyleDescription_labelColor_feature", "_UI_BasicLabelStyleDescription_type"),
+                org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR, true, false, true, null,
+                getString("_UI_ColorPropertyCategory"), null));
     }
 
     /**
      * This adds a property descriptor for the Icon Path feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -192,7 +192,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Label Alignment feature. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
@@ -206,7 +206,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Tooltip Expression feature. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
@@ -234,7 +234,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Label Position feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPositionPropertyDescriptor(Object object) {
@@ -258,7 +258,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Resize Kind feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addResizeKindPropertyDescriptor(Object object) {
@@ -270,7 +270,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -315,7 +315,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -326,7 +326,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -336,7 +336,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getCreateChildText(java.lang.Object,
      *      java.lang.Object, java.lang.Object, java.util.Collection)
      * @not-generated

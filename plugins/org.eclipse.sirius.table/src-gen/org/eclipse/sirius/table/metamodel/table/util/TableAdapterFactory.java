@@ -59,8 +59,8 @@ public class TableAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public TableAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = TablePackage.eINSTANCE;
+        if (TableAdapterFactory.modelPackage == null) {
+            TableAdapterFactory.modelPackage = TablePackage.eINSTANCE;
         }
     }
 
@@ -75,11 +75,11 @@ public class TableAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == TableAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == TableAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -87,7 +87,7 @@ public class TableAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch the delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TableSwitch<Adapter> modelSwitch = new TableSwitch<Adapter>() {
@@ -468,7 +468,7 @@ public class TableAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DLabelled
      * @generated

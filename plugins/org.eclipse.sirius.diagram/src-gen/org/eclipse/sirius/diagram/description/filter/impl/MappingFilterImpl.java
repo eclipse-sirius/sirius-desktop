@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.impl;
 
@@ -73,7 +73,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * @generated
      * @ordered
      */
-    protected String semanticConditionExpression = SEMANTIC_CONDITION_EXPRESSION_EDEFAULT;
+    protected String semanticConditionExpression = MappingFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getViewConditionExpression()
@@ -95,7 +95,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * @generated
      * @ordered
      */
-    protected String viewConditionExpression = VIEW_CONDITION_EXPRESSION_EDEFAULT;
+    protected String viewConditionExpression = MappingFilterImpl.VIEW_CONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -121,6 +121,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getMappings() {
         if (mappings == null) {
             mappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, FilterPackage.MAPPING_FILTER__MAPPINGS);
@@ -133,6 +134,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * 
      * @generated
      */
+    @Override
     public String getSemanticConditionExpression() {
         return semanticConditionExpression;
     }
@@ -142,11 +144,13 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * 
      * @generated
      */
+    @Override
     public void setSemanticConditionExpression(String newSemanticConditionExpression) {
         String oldSemanticConditionExpression = semanticConditionExpression;
         semanticConditionExpression = newSemanticConditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION, oldSemanticConditionExpression, semanticConditionExpression));
+        }
     }
 
     /**
@@ -154,6 +158,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * 
      * @generated
      */
+    @Override
     public String getViewConditionExpression() {
         return viewConditionExpression;
     }
@@ -163,11 +168,13 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * 
      * @generated
      */
+    @Override
     public void setViewConditionExpression(String newViewConditionExpression) {
         String oldViewConditionExpression = viewConditionExpression;
         viewConditionExpression = newViewConditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION, oldViewConditionExpression, viewConditionExpression));
+        }
     }
 
     /**
@@ -223,10 +230,10 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
             getMappings().clear();
             return;
         case FilterPackage.MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION:
-            setSemanticConditionExpression(SEMANTIC_CONDITION_EXPRESSION_EDEFAULT);
+            setSemanticConditionExpression(MappingFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT);
             return;
         case FilterPackage.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION:
-            setViewConditionExpression(VIEW_CONDITION_EXPRESSION_EDEFAULT);
+            setViewConditionExpression(MappingFilterImpl.VIEW_CONDITION_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -243,9 +250,11 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
         case FilterPackage.MAPPING_FILTER__MAPPINGS:
             return mappings != null && !mappings.isEmpty();
         case FilterPackage.MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION:
-            return SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null : !SEMANTIC_CONDITION_EXPRESSION_EDEFAULT.equals(semanticConditionExpression);
+            return MappingFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null : !MappingFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT
+                    .equals(semanticConditionExpression);
         case FilterPackage.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION:
-            return VIEW_CONDITION_EXPRESSION_EDEFAULT == null ? viewConditionExpression != null : !VIEW_CONDITION_EXPRESSION_EDEFAULT.equals(viewConditionExpression);
+            return MappingFilterImpl.VIEW_CONDITION_EXPRESSION_EDEFAULT == null ? viewConditionExpression != null : !MappingFilterImpl.VIEW_CONDITION_EXPRESSION_EDEFAULT
+                    .equals(viewConditionExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -257,8 +266,9 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (semanticConditionExpression: ");

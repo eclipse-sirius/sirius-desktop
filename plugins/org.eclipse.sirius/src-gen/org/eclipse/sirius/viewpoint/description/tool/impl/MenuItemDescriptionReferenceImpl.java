@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -38,7 +38,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
     /**
      * The cached value of the '{@link #getItem() <em>Item</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getItem()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MenuItemDescriptionReferenceImpl() {
@@ -56,7 +56,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,16 +66,18 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public MenuItemDescription getItem() {
         if (item != null && item.eIsProxy()) {
             InternalEObject oldItem = (InternalEObject) item;
             item = (MenuItemDescription) eResolveProxy(oldItem);
             if (item != oldItem) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.MENU_ITEM_DESCRIPTION_REFERENCE__ITEM, oldItem, item));
+                }
             }
         }
         return item;
@@ -83,7 +85,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MenuItemDescription basicGetItem() {
@@ -92,27 +94,30 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setItem(MenuItemDescription newItem) {
         MenuItemDescription oldItem = item;
         item = newItem;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MENU_ITEM_DESCRIPTION_REFERENCE__ITEM, oldItem, item));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ToolPackage.MENU_ITEM_DESCRIPTION_REFERENCE__ITEM:
-            if (resolve)
+            if (resolve) {
                 return getItem();
+            }
             return basicGetItem();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -120,7 +125,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +140,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +155,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

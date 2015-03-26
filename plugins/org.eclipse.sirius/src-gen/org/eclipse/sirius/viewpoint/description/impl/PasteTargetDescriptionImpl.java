@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -40,7 +40,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
      * The cached value of the '{@link #getPasteDescriptions()
      * <em>Paste Descriptions</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPasteDescriptions()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PasteTargetDescriptionImpl() {
@@ -58,7 +58,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,9 +68,10 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<PasteDescription> getPasteDescriptions() {
         if (pasteDescriptions == null) {
             pasteDescriptions = new EObjectResolvingEList<PasteDescription>(PasteDescription.class, this, DescriptionPackage.PASTE_TARGET_DESCRIPTION__PASTE_DESCRIPTIONS);
@@ -80,7 +81,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +95,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -111,7 +112,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +127,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

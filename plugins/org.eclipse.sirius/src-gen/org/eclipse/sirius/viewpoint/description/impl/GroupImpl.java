@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -61,7 +61,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * The default value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -72,17 +72,17 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * The cached value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
      */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
+    protected String documentation = GroupImpl.DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -92,18 +92,18 @@ public class GroupImpl extends DModelElementImpl implements Group {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = GroupImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOwnedViewpoints()
      * <em>Owned Viewpoints</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedViewpoints()
      * @generated
      * @ordered
@@ -114,7 +114,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * The cached value of the '{@link #getSystemColorsPalette()
      * <em>System Colors Palette</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSystemColorsPalette()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * The cached value of the '{@link #getUserColorsPalettes()
      * <em>User Colors Palettes</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getUserColorsPalettes()
      * @generated
      * @ordered
@@ -135,7 +135,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     /**
      * The default value of the '{@link #getVersion() <em>Version</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
@@ -145,16 +145,16 @@ public class GroupImpl extends DModelElementImpl implements Group {
     /**
      * The cached value of the '{@link #getVersion() <em>Version</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
      */
-    protected String version = VERSION_EDEFAULT;
+    protected String version = GroupImpl.VERSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GroupImpl() {
@@ -163,7 +163,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,51 +173,58 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getDocumentation() {
         return documentation;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDocumentation(String newDocumentation) {
         String oldDocumentation = documentation;
         documentation = newDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.GROUP__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.GROUP__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Viewpoint> getOwnedViewpoints() {
         if (ownedViewpoints == null) {
             ownedViewpoints = new EObjectContainmentEList.Resolving<Viewpoint>(Viewpoint.class, this, DescriptionPackage.GROUP__OWNED_VIEWPOINTS);
@@ -227,16 +234,18 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SytemColorsPalette getSystemColorsPalette() {
         if (systemColorsPalette != null && systemColorsPalette.eIsProxy()) {
             InternalEObject oldSystemColorsPalette = (InternalEObject) systemColorsPalette;
             systemColorsPalette = (SytemColorsPalette) eResolveProxy(oldSystemColorsPalette);
             if (systemColorsPalette != oldSystemColorsPalette) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.GROUP__SYSTEM_COLORS_PALETTE, oldSystemColorsPalette, systemColorsPalette));
+                }
             }
         }
         return systemColorsPalette;
@@ -244,7 +253,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SytemColorsPalette basicGetSystemColorsPalette() {
@@ -253,21 +262,24 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSystemColorsPalette(SytemColorsPalette newSystemColorsPalette) {
         SytemColorsPalette oldSystemColorsPalette = systemColorsPalette;
         systemColorsPalette = newSystemColorsPalette;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.GROUP__SYSTEM_COLORS_PALETTE, oldSystemColorsPalette, systemColorsPalette));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<UserColorsPalette> getUserColorsPalettes() {
         if (userColorsPalettes == null) {
             userColorsPalettes = new EObjectContainmentEList.Resolving<UserColorsPalette>(UserColorsPalette.class, this, DescriptionPackage.GROUP__USER_COLORS_PALETTES);
@@ -277,28 +289,31 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getVersion() {
         return version;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setVersion(String newVersion) {
         String oldVersion = version;
         version = newVersion;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.GROUP__VERSION, oldVersion, version));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +329,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -327,8 +342,9 @@ public class GroupImpl extends DModelElementImpl implements Group {
         case DescriptionPackage.GROUP__OWNED_VIEWPOINTS:
             return getOwnedViewpoints();
         case DescriptionPackage.GROUP__SYSTEM_COLORS_PALETTE:
-            if (resolve)
+            if (resolve) {
                 return getSystemColorsPalette();
+            }
             return basicGetSystemColorsPalette();
         case DescriptionPackage.GROUP__USER_COLORS_PALETTES:
             return getUserColorsPalettes();
@@ -340,7 +356,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -373,17 +389,17 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.GROUP__DOCUMENTATION:
-            setDocumentation(DOCUMENTATION_EDEFAULT);
+            setDocumentation(GroupImpl.DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.GROUP__NAME:
-            setName(NAME_EDEFAULT);
+            setName(GroupImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.GROUP__OWNED_VIEWPOINTS:
             getOwnedViewpoints().clear();
@@ -395,7 +411,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
             getUserColorsPalettes().clear();
             return;
         case DescriptionPackage.GROUP__VERSION:
-            setVersion(VERSION_EDEFAULT);
+            setVersion(GroupImpl.VERSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -403,16 +419,16 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.GROUP__DOCUMENTATION:
-            return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+            return GroupImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !GroupImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case DescriptionPackage.GROUP__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return GroupImpl.NAME_EDEFAULT == null ? name != null : !GroupImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.GROUP__OWNED_VIEWPOINTS:
             return ownedViewpoints != null && !ownedViewpoints.isEmpty();
         case DescriptionPackage.GROUP__SYSTEM_COLORS_PALETTE:
@@ -420,14 +436,14 @@ public class GroupImpl extends DModelElementImpl implements Group {
         case DescriptionPackage.GROUP__USER_COLORS_PALETTES:
             return userColorsPalettes != null && !userColorsPalettes.isEmpty();
         case DescriptionPackage.GROUP__VERSION:
-            return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
+            return GroupImpl.VERSION_EDEFAULT == null ? version != null : !GroupImpl.VERSION_EDEFAULT.equals(version);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -445,7 +461,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -463,13 +479,14 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (documentation: ");

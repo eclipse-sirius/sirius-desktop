@@ -40,7 +40,7 @@ public interface TreeFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DTree Element</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DTree Element</em>'.
      * @generated
      */
@@ -67,7 +67,7 @@ public interface TreeFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DTree Element Synchronizer</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DTree Element Synchronizer</em>'.
      * @generated
      */

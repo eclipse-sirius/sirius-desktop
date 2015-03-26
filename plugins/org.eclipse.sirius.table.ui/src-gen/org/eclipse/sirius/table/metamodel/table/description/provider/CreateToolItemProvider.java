@@ -46,7 +46,7 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CreateToolItemProvider(AdapterFactory adapterFactory) {
@@ -56,7 +56,7 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
     /**
      * This returns CreateTool.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -150,7 +150,7 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -158,16 +158,17 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
         collectNewChildDescriptorsGen(newChildDescriptors, object);
         /* remove tool filters as they are not yet supported for table */
         CommandParameter firstDescriptor = (CommandParameter) newChildDescriptors.toArray()[0];
-        if (firstDescriptor.feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FILTERS)
+        if (firstDescriptor.feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FILTERS) {
             newChildDescriptors.remove(firstDescriptor);
-        ItemProviderHelper.filterChildDescriptorsByType(newChildDescriptors, TYPES_TO_HIDE);
+        }
+        ItemProviderHelper.filterChildDescriptorsByType(newChildDescriptors, CreateToolItemProvider.TYPES_TO_HIDE);
     }
 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -203,7 +204,7 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

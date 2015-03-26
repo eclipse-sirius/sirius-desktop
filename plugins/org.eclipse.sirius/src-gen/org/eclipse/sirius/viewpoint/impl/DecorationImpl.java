@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -37,7 +37,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DecorationImpl() {
@@ -55,7 +55,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,16 +65,18 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DecorationDescription getDescription() {
         if (description != null && description.eIsProxy()) {
             InternalEObject oldDescription = (InternalEObject) description;
             description = (DecorationDescription) eResolveProxy(oldDescription);
             if (description != oldDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DECORATION__DESCRIPTION, oldDescription, description));
+                }
             }
         }
         return description;
@@ -82,7 +84,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DecorationDescription basicGetDescription() {
@@ -91,27 +93,30 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDescription(DecorationDescription newDescription) {
         DecorationDescription oldDescription = description;
         description = newDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DECORATION__DESCRIPTION, oldDescription, description));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.DECORATION__DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDescription();
+            }
             return basicGetDescription();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -119,7 +124,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +139,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +154,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

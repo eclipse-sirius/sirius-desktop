@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -40,7 +40,7 @@ public interface ContainerMappingImport extends ContainerMapping, AbstractMappin
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The imported mapping used to define default values for the current
      * mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Imported Mapping</em>' reference.
      * @see #setImportedMapping(ContainerMapping)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMappingImport_ImportedMapping()

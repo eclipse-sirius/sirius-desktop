@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -43,7 +43,7 @@ public interface RepresentationTemplate extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationTemplate_Name()
@@ -56,7 +56,7 @@ public interface RepresentationTemplate extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -75,7 +75,7 @@ public interface RepresentationTemplate extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Representations</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationTemplate_OwnedRepresentations()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -41,7 +41,7 @@ public interface BorderedStyleDescription extends StyleDescription {
      * default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> An expression computing the
      * size of the border. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Size Computation Expression</em>'
      *         attribute.
      * @see #setBorderSizeComputationExpression(String)
@@ -59,7 +59,7 @@ public interface BorderedStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderSizeComputationExpression
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Border Size Computation Expression</em>' attribute.
@@ -76,7 +76,7 @@ public interface BorderedStyleDescription extends StyleDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Color</em>' reference.
      * @see #setBorderColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBorderedStyleDescription_BorderColor()

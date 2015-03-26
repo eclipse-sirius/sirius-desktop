@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -53,7 +53,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
      * The cached value of the '{@link #getOwnedRepresentations()
      * <em>Owned Representations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedRepresentations()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
      * The cached value of the '{@link #getOwnedExtensions()
      * <em>Owned Extensions</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedExtensions()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     /**
      * The default value of the '{@link #isInitialized() <em>Initialized</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isInitialized()
      * @generated
      * @ordered
@@ -84,17 +84,17 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     /**
      * The cached value of the '{@link #isInitialized() <em>Initialized</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isInitialized()
      * @generated
      * @ordered
      */
-    protected boolean initialized = INITIALIZED_EDEFAULT;
+    protected boolean initialized = DViewImpl.INITIALIZED_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getViewpoint()
      * @generated
      * @ordered
@@ -103,7 +103,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DViewImpl() {
@@ -112,7 +112,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,9 +122,10 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DRepresentation> getOwnedRepresentations() {
         if (ownedRepresentations == null) {
             ownedRepresentations = new EObjectContainmentEList.Resolving<DRepresentation>(DRepresentation.class, this, ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS);
@@ -134,23 +135,26 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public MetaModelExtension getOwnedExtensions() {
         if (ownedExtensions != null && ownedExtensions.eIsProxy()) {
             InternalEObject oldOwnedExtensions = (InternalEObject) ownedExtensions;
             ownedExtensions = (MetaModelExtension) eResolveProxy(oldOwnedExtensions);
             if (ownedExtensions != oldOwnedExtensions) {
                 InternalEObject newOwnedExtensions = (InternalEObject) ownedExtensions;
-                NotificationChain msgs = oldOwnedExtensions.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.DVIEW__OWNED_EXTENSIONS, null, null);
+                NotificationChain msgs = oldOwnedExtensions.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DVIEW__OWNED_EXTENSIONS, null, null);
                 if (newOwnedExtensions.eInternalContainer() == null) {
-                    msgs = newOwnedExtensions.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.DVIEW__OWNED_EXTENSIONS, null, msgs);
+                    msgs = newOwnedExtensions.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DVIEW__OWNED_EXTENSIONS, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DVIEW__OWNED_EXTENSIONS, oldOwnedExtensions, ownedExtensions));
+                }
             }
         }
         return ownedExtensions;
@@ -158,7 +162,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MetaModelExtension basicGetOwnedExtensions() {
@@ -167,7 +171,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetOwnedExtensions(MetaModelExtension newOwnedExtensions, NotificationChain msgs) {
@@ -175,66 +179,77 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
         ownedExtensions = newOwnedExtensions;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ViewpointPackage.DVIEW__OWNED_EXTENSIONS, oldOwnedExtensions, newOwnedExtensions);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setOwnedExtensions(MetaModelExtension newOwnedExtensions) {
         if (newOwnedExtensions != ownedExtensions) {
             NotificationChain msgs = null;
-            if (ownedExtensions != null)
-                msgs = ((InternalEObject) ownedExtensions).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.DVIEW__OWNED_EXTENSIONS, null, msgs);
-            if (newOwnedExtensions != null)
-                msgs = ((InternalEObject) newOwnedExtensions).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.DVIEW__OWNED_EXTENSIONS, null, msgs);
+            if (ownedExtensions != null) {
+                msgs = ((InternalEObject) ownedExtensions).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DVIEW__OWNED_EXTENSIONS, null, msgs);
+            }
+            if (newOwnedExtensions != null) {
+                msgs = ((InternalEObject) newOwnedExtensions).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DVIEW__OWNED_EXTENSIONS, null, msgs);
+            }
             msgs = basicSetOwnedExtensions(newOwnedExtensions, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DVIEW__OWNED_EXTENSIONS, newOwnedExtensions, newOwnedExtensions));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public boolean isInitialized() {
         return initialized;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setInitialized(boolean newInitialized) {
         boolean oldInitialized = initialized;
         initialized = newInitialized;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DVIEW__INITIALIZED, oldInitialized, initialized));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Viewpoint getViewpoint() {
         if (viewpoint != null && viewpoint.eIsProxy()) {
             InternalEObject oldViewpoint = (InternalEObject) viewpoint;
             viewpoint = (Viewpoint) eResolveProxy(oldViewpoint);
             if (viewpoint != oldViewpoint) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DVIEW__VIEWPOINT, oldViewpoint, viewpoint));
+                }
             }
         }
         return viewpoint;
@@ -242,7 +257,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Viewpoint basicGetViewpoint() {
@@ -251,21 +266,24 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setViewpoint(Viewpoint newViewpoint) {
         Viewpoint oldViewpoint = viewpoint;
         viewpoint = newViewpoint;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DVIEW__VIEWPOINT, oldViewpoint, viewpoint));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -274,7 +292,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -290,7 +308,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -299,14 +317,16 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
             return getOwnedRepresentations();
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
-            if (resolve)
+            if (resolve) {
                 return getOwnedExtensions();
+            }
             return basicGetOwnedExtensions();
         case ViewpointPackage.DVIEW__INITIALIZED:
             return isInitialized();
         case ViewpointPackage.DVIEW__VIEWPOINT:
-            if (resolve)
+            if (resolve) {
                 return getViewpoint();
+            }
             return basicGetViewpoint();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -314,7 +334,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -340,7 +360,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -353,7 +373,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
             setOwnedExtensions((MetaModelExtension) null);
             return;
         case ViewpointPackage.DVIEW__INITIALIZED:
-            setInitialized(INITIALIZED_EDEFAULT);
+            setInitialized(DViewImpl.INITIALIZED_EDEFAULT);
             return;
         case ViewpointPackage.DVIEW__VIEWPOINT:
             setViewpoint((Viewpoint) null);
@@ -364,7 +384,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -375,7 +395,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             return ownedExtensions != null;
         case ViewpointPackage.DVIEW__INITIALIZED:
-            return initialized != INITIALIZED_EDEFAULT;
+            return initialized != DViewImpl.INITIALIZED_EDEFAULT;
         case ViewpointPackage.DVIEW__VIEWPOINT:
             return viewpoint != null;
         }
@@ -384,13 +404,14 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (initialized: ");

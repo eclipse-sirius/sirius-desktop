@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -102,7 +102,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * @generated
      * @ordered
      */
-    protected String preconditionExpression = PRECONDITION_EXPRESSION_EDEFAULT;
+    protected String preconditionExpression = DiagramElementMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getDeletionDescription()
@@ -146,7 +146,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * @generated
      * @ordered
      */
-    protected String semanticCandidatesExpression = SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
+    protected String semanticCandidatesExpression = DiagramElementMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isCreateElements()
@@ -168,7 +168,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * @generated
      * @ordered
      */
-    protected boolean createElements = CREATE_ELEMENTS_EDEFAULT;
+    protected boolean createElements = DiagramElementMappingImpl.CREATE_ELEMENTS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSemanticElements()
@@ -190,7 +190,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * @generated
      * @ordered
      */
-    protected String semanticElements = SEMANTIC_ELEMENTS_EDEFAULT;
+    protected String semanticElements = DiagramElementMappingImpl.SEMANTIC_ELEMENTS_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getDoubleClickDescription()
@@ -223,7 +223,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * @generated
      * @ordered
      */
-    protected boolean synchronizationLock = SYNCHRONIZATION_LOCK_EDEFAULT;
+    protected boolean synchronizationLock = DiagramElementMappingImpl.SYNCHRONIZATION_LOCK_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -249,6 +249,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public EList<PasteDescription> getPasteDescriptions() {
         if (pasteDescriptions == null) {
             pasteDescriptions = new EObjectResolvingEList<PasteDescription>(PasteDescription.class, this, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PASTE_DESCRIPTIONS);
@@ -261,6 +262,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public String getPreconditionExpression() {
         return preconditionExpression;
     }
@@ -270,11 +272,13 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public void setPreconditionExpression(String newPreconditionExpression) {
         String oldPreconditionExpression = preconditionExpression;
         preconditionExpression = newPreconditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION, oldPreconditionExpression, preconditionExpression));
+        }
     }
 
     /**
@@ -282,13 +286,15 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public DeleteElementDescription getDeletionDescription() {
         if (deletionDescription != null && deletionDescription.eIsProxy()) {
             InternalEObject oldDeletionDescription = (InternalEObject) deletionDescription;
             deletionDescription = (DeleteElementDescription) eResolveProxy(oldDeletionDescription);
             if (deletionDescription != oldDeletionDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION, oldDeletionDescription, deletionDescription));
+                }
             }
         }
         return deletionDescription;
@@ -308,11 +314,13 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public void setDeletionDescription(DeleteElementDescription newDeletionDescription) {
         DeleteElementDescription oldDeletionDescription = deletionDescription;
         deletionDescription = newDeletionDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION, oldDeletionDescription, deletionDescription));
+        }
     }
 
     /**
@@ -320,13 +328,15 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public DirectEditLabel getLabelDirectEdit() {
         if (labelDirectEdit != null && labelDirectEdit.eIsProxy()) {
             InternalEObject oldLabelDirectEdit = (InternalEObject) labelDirectEdit;
             labelDirectEdit = (DirectEditLabel) eResolveProxy(oldLabelDirectEdit);
             if (labelDirectEdit != oldLabelDirectEdit) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT, oldLabelDirectEdit, labelDirectEdit));
+                }
             }
         }
         return labelDirectEdit;
@@ -346,11 +356,13 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public void setLabelDirectEdit(DirectEditLabel newLabelDirectEdit) {
         DirectEditLabel oldLabelDirectEdit = labelDirectEdit;
         labelDirectEdit = newLabelDirectEdit;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT, oldLabelDirectEdit, labelDirectEdit));
+        }
     }
 
     /**
@@ -358,6 +370,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public String getSemanticCandidatesExpression() {
         return semanticCandidatesExpression;
     }
@@ -367,12 +380,14 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public void setSemanticCandidatesExpression(String newSemanticCandidatesExpression) {
         String oldSemanticCandidatesExpression = semanticCandidatesExpression;
         semanticCandidatesExpression = newSemanticCandidatesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, oldSemanticCandidatesExpression,
                     semanticCandidatesExpression));
+        }
     }
 
     /**
@@ -380,6 +395,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public boolean isCreateElements() {
         return createElements;
     }
@@ -389,11 +405,13 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public void setCreateElements(boolean newCreateElements) {
         boolean oldCreateElements = createElements;
         createElements = newCreateElements;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__CREATE_ELEMENTS, oldCreateElements, createElements));
+        }
     }
 
     /**
@@ -401,6 +419,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public String getSemanticElements() {
         return semanticElements;
     }
@@ -410,11 +429,13 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public void setSemanticElements(String newSemanticElements) {
         String oldSemanticElements = semanticElements;
         semanticElements = newSemanticElements;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS, oldSemanticElements, semanticElements));
+        }
     }
 
     /**
@@ -422,13 +443,15 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public DoubleClickDescription getDoubleClickDescription() {
         if (doubleClickDescription != null && doubleClickDescription.eIsProxy()) {
             InternalEObject oldDoubleClickDescription = (InternalEObject) doubleClickDescription;
             doubleClickDescription = (DoubleClickDescription) eResolveProxy(oldDoubleClickDescription);
             if (doubleClickDescription != oldDoubleClickDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION, oldDoubleClickDescription, doubleClickDescription));
+                }
             }
         }
         return doubleClickDescription;
@@ -454,10 +477,11 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION, oldDoubleClickDescription,
                     newDoubleClickDescription);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -467,18 +491,23 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public void setDoubleClickDescription(DoubleClickDescription newDoubleClickDescription) {
         if (newDoubleClickDescription != doubleClickDescription) {
             NotificationChain msgs = null;
-            if (doubleClickDescription != null)
+            if (doubleClickDescription != null) {
                 msgs = ((InternalEObject) doubleClickDescription).eInverseRemove(this, ToolPackage.DOUBLE_CLICK_DESCRIPTION__MAPPINGS, DoubleClickDescription.class, msgs);
-            if (newDoubleClickDescription != null)
+            }
+            if (newDoubleClickDescription != null) {
                 msgs = ((InternalEObject) newDoubleClickDescription).eInverseAdd(this, ToolPackage.DOUBLE_CLICK_DESCRIPTION__MAPPINGS, DoubleClickDescription.class, msgs);
+            }
             msgs = basicSetDoubleClickDescription(newDoubleClickDescription, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION, newDoubleClickDescription, newDoubleClickDescription));
+        }
     }
 
     /**
@@ -486,6 +515,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public boolean isSynchronizationLock() {
         return synchronizationLock;
     }
@@ -495,11 +525,13 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public void setSynchronizationLock(boolean newSynchronizationLock) {
         boolean oldSynchronizationLock = synchronizationLock;
         synchronizationLock = newSynchronizationLock;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK, oldSynchronizationLock, synchronizationLock));
+        }
     }
 
     /**
@@ -507,6 +539,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public boolean checkPrecondition(EObject modelElement, EObject container, EObject containerView) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -518,6 +551,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getAllMappings() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -529,6 +563,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * 
      * @generated
      */
+    @Override
     public boolean isFrom(DMappingBased element) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -544,8 +579,9 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION:
-            if (doubleClickDescription != null)
+            if (doubleClickDescription != null) {
                 msgs = ((InternalEObject) doubleClickDescription).eInverseRemove(this, ToolPackage.DOUBLE_CLICK_DESCRIPTION__MAPPINGS, DoubleClickDescription.class, msgs);
+            }
             return basicSetDoubleClickDescription((DoubleClickDescription) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -578,12 +614,14 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION:
             return getPreconditionExpression();
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDeletionDescription();
+            }
             return basicGetDeletionDescription();
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT:
-            if (resolve)
+            if (resolve) {
                 return getLabelDirectEdit();
+            }
             return basicGetLabelDirectEdit();
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
             return getSemanticCandidatesExpression();
@@ -592,8 +630,9 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS:
             return getSemanticElements();
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDoubleClickDescription();
+            }
             return basicGetDoubleClickDescription();
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK:
             return isSynchronizationLock();
@@ -654,7 +693,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
             getPasteDescriptions().clear();
             return;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION:
-            setPreconditionExpression(PRECONDITION_EXPRESSION_EDEFAULT);
+            setPreconditionExpression(DiagramElementMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION:
             setDeletionDescription((DeleteElementDescription) null);
@@ -663,19 +702,19 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
             setLabelDirectEdit((DirectEditLabel) null);
             return;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            setSemanticCandidatesExpression(SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
+            setSemanticCandidatesExpression(DiagramElementMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__CREATE_ELEMENTS:
-            setCreateElements(CREATE_ELEMENTS_EDEFAULT);
+            setCreateElements(DiagramElementMappingImpl.CREATE_ELEMENTS_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS:
-            setSemanticElements(SEMANTIC_ELEMENTS_EDEFAULT);
+            setSemanticElements(DiagramElementMappingImpl.SEMANTIC_ELEMENTS_EDEFAULT);
             return;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION:
             setDoubleClickDescription((DoubleClickDescription) null);
             return;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK:
-            setSynchronizationLock(SYNCHRONIZATION_LOCK_EDEFAULT);
+            setSynchronizationLock(DiagramElementMappingImpl.SYNCHRONIZATION_LOCK_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -692,21 +731,23 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PASTE_DESCRIPTIONS:
             return pasteDescriptions != null && !pasteDescriptions.isEmpty();
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION:
-            return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
+            return DiagramElementMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !DiagramElementMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT
+                    .equals(preconditionExpression);
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION:
             return deletionDescription != null;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT:
             return labelDirectEdit != null;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            return SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
+            return DiagramElementMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null
+                    : !DiagramElementMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__CREATE_ELEMENTS:
-            return createElements != CREATE_ELEMENTS_EDEFAULT;
+            return createElements != DiagramElementMappingImpl.CREATE_ELEMENTS_EDEFAULT;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS:
-            return SEMANTIC_ELEMENTS_EDEFAULT == null ? semanticElements != null : !SEMANTIC_ELEMENTS_EDEFAULT.equals(semanticElements);
+            return DiagramElementMappingImpl.SEMANTIC_ELEMENTS_EDEFAULT == null ? semanticElements != null : !DiagramElementMappingImpl.SEMANTIC_ELEMENTS_EDEFAULT.equals(semanticElements);
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION:
             return doubleClickDescription != null;
         case DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK:
-            return synchronizationLock != SYNCHRONIZATION_LOCK_EDEFAULT;
+            return synchronizationLock != DiagramElementMappingImpl.SYNCHRONIZATION_LOCK_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -754,8 +795,9 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (preconditionExpression: ");

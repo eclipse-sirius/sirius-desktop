@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.style;
 
@@ -51,7 +51,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyleDescription_Id()
@@ -64,7 +64,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -80,7 +80,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyleDescription_Name()
@@ -93,7 +93,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -109,7 +109,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Corner Height</em>' attribute.
      * @see #setCornerHeight(int)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyleDescription_CornerHeight()
@@ -123,7 +123,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getCornerHeight
      * <em>Corner Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Corner Height</em>' attribute.
      * @see #getCornerHeight()
@@ -139,7 +139,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Corner Width</em>' attribute.
      * @see #setCornerWidth(int)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyleDescription_CornerWidth()
@@ -153,7 +153,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getCornerWidth
      * <em>Corner Width</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Corner Width</em>' attribute.
      * @see #getCornerWidth()

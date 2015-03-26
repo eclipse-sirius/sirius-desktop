@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -56,7 +56,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * @generated
      * @ordered
      */
-    protected Integer width = WIDTH_EDEFAULT;
+    protected Integer width = LozengeImpl.WIDTH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}'
@@ -76,7 +76,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * @generated
      * @ordered
      */
-    protected Integer height = HEIGHT_EDEFAULT;
+    protected Integer height = LozengeImpl.HEIGHT_EDEFAULT;
 
     /**
      * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
@@ -96,7 +96,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * @generated
      * @ordered
      */
-    protected RGBValues color = COLOR_EDEFAULT;
+    protected RGBValues color = LozengeImpl.COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -122,6 +122,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * 
      * @generated
      */
+    @Override
     public Integer getWidth() {
         return width;
     }
@@ -131,11 +132,13 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * 
      * @generated
      */
+    @Override
     public void setWidth(Integer newWidth) {
         Integer oldWidth = width;
         width = newWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.LOZENGE__WIDTH, oldWidth, width));
+        }
     }
 
     /**
@@ -143,6 +146,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * 
      * @generated
      */
+    @Override
     public Integer getHeight() {
         return height;
     }
@@ -152,11 +156,13 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * 
      * @generated
      */
+    @Override
     public void setHeight(Integer newHeight) {
         Integer oldHeight = height;
         height = newHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.LOZENGE__HEIGHT, oldHeight, height));
+        }
     }
 
     /**
@@ -164,6 +170,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * 
      * @generated
      */
+    @Override
     public RGBValues getColor() {
         return color;
     }
@@ -173,11 +180,13 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * 
      * @generated
      */
+    @Override
     public void setColor(RGBValues newColor) {
         RGBValues oldColor = color;
         color = newColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.LOZENGE__COLOR, oldColor, color));
+        }
     }
 
     /**
@@ -228,13 +237,13 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.LOZENGE__WIDTH:
-            setWidth(WIDTH_EDEFAULT);
+            setWidth(LozengeImpl.WIDTH_EDEFAULT);
             return;
         case DiagramPackage.LOZENGE__HEIGHT:
-            setHeight(HEIGHT_EDEFAULT);
+            setHeight(LozengeImpl.HEIGHT_EDEFAULT);
             return;
         case DiagramPackage.LOZENGE__COLOR:
-            setColor(COLOR_EDEFAULT);
+            setColor(LozengeImpl.COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -249,11 +258,11 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.LOZENGE__WIDTH:
-            return WIDTH_EDEFAULT == null ? width != null : !WIDTH_EDEFAULT.equals(width);
+            return LozengeImpl.WIDTH_EDEFAULT == null ? width != null : !LozengeImpl.WIDTH_EDEFAULT.equals(width);
         case DiagramPackage.LOZENGE__HEIGHT:
-            return HEIGHT_EDEFAULT == null ? height != null : !HEIGHT_EDEFAULT.equals(height);
+            return LozengeImpl.HEIGHT_EDEFAULT == null ? height != null : !LozengeImpl.HEIGHT_EDEFAULT.equals(height);
         case DiagramPackage.LOZENGE__COLOR:
-            return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
+            return LozengeImpl.COLOR_EDEFAULT == null ? color != null : !LozengeImpl.COLOR_EDEFAULT.equals(color);
         }
         return super.eIsSet(featureID);
     }
@@ -265,8 +274,9 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (width: ");

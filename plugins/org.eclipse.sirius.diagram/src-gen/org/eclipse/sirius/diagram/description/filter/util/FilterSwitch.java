@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.util;
 
@@ -52,8 +52,8 @@ public class FilterSwitch<T> {
      * @generated
      */
     public FilterSwitch() {
-        if (modelPackage == null) {
-            modelPackage = FilterPackage.eINSTANCE;
+        if (FilterSwitch.modelPackage == null) {
+            FilterSwitch.modelPackage = FilterPackage.eINSTANCE;
         }
     }
 
@@ -80,7 +80,7 @@ public class FilterSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == FilterSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -102,59 +102,73 @@ public class FilterSwitch<T> {
         case FilterPackage.FILTER_DESCRIPTION: {
             FilterDescription filterDescription = (FilterDescription) theEObject;
             T result = caseFilterDescription(filterDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseDocumentedElement(filterDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(filterDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case FilterPackage.FILTER: {
             Filter filter = (Filter) theEObject;
             T result = caseFilter(filter);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case FilterPackage.MAPPING_FILTER: {
             MappingFilter mappingFilter = (MappingFilter) theEObject;
             T result = caseMappingFilter(mappingFilter);
-            if (result == null)
+            if (result == null) {
                 result = caseFilter(mappingFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case FilterPackage.COMPOSITE_FILTER_DESCRIPTION: {
             CompositeFilterDescription compositeFilterDescription = (CompositeFilterDescription) theEObject;
             T result = caseCompositeFilterDescription(compositeFilterDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseFilterDescription(compositeFilterDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(compositeFilterDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(compositeFilterDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case FilterPackage.VARIABLE_FILTER: {
             VariableFilter variableFilter = (VariableFilter) theEObject;
             T result = caseVariableFilter(variableFilter);
-            if (result == null)
+            if (result == null) {
                 result = caseFilter(variableFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case FilterPackage.FILTER_VARIABLE: {
             FilterVariable filterVariable = (FilterVariable) theEObject;
             T result = caseFilterVariable(filterVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseSelectionDescription(filterVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

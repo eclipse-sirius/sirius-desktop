@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -49,7 +49,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
      * The cached value of the '{@link #getSubModelOperations()
      * <em>Sub Model Operations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubModelOperations()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
     /**
      * The cached value of the '{@link #getAction() <em>Action</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAction()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExternalJavaActionCallImpl() {
@@ -77,7 +77,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,9 +87,10 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ModelOperation> getSubModelOperations() {
         if (subModelOperations == null) {
             subModelOperations = new EObjectContainmentEList.Resolving<ModelOperation>(ModelOperation.class, this, ToolPackage.EXTERNAL_JAVA_ACTION_CALL__SUB_MODEL_OPERATIONS);
@@ -99,16 +100,18 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ExternalJavaAction getAction() {
         if (action != null && action.eIsProxy()) {
             InternalEObject oldAction = (InternalEObject) action;
             action = (ExternalJavaAction) eResolveProxy(oldAction);
             if (action != oldAction) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.EXTERNAL_JAVA_ACTION_CALL__ACTION, oldAction, action));
+                }
             }
         }
         return action;
@@ -116,7 +119,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ExternalJavaAction basicGetAction() {
@@ -125,19 +128,21 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setAction(ExternalJavaAction newAction) {
         ExternalJavaAction oldAction = action;
         action = newAction;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.EXTERNAL_JAVA_ACTION_CALL__ACTION, oldAction, action));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +156,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,8 +165,9 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
         case ToolPackage.EXTERNAL_JAVA_ACTION_CALL__SUB_MODEL_OPERATIONS:
             return getSubModelOperations();
         case ToolPackage.EXTERNAL_JAVA_ACTION_CALL__ACTION:
-            if (resolve)
+            if (resolve) {
                 return getAction();
+            }
             return basicGetAction();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -169,7 +175,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -189,7 +195,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +213,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +229,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +253,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

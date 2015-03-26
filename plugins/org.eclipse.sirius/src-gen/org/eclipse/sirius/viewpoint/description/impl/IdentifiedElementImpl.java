@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -39,7 +39,7 @@ public class IdentifiedElementImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -49,17 +49,17 @@ public class IdentifiedElementImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = IdentifiedElementImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -69,16 +69,16 @@ public class IdentifiedElementImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = IdentifiedElementImpl.LABEL_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IdentifiedElementImpl() {
@@ -87,7 +87,7 @@ public class IdentifiedElementImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,49 +97,55 @@ public class IdentifiedElementImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.IDENTIFIED_ELEMENT__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.IDENTIFIED_ELEMENT__LABEL, oldLabel, label));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +161,7 @@ public class IdentifiedElementImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,17 +179,17 @@ public class IdentifiedElementImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.IDENTIFIED_ELEMENT__NAME:
-            setName(NAME_EDEFAULT);
+            setName(IdentifiedElementImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.IDENTIFIED_ELEMENT__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(IdentifiedElementImpl.LABEL_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -191,29 +197,30 @@ public class IdentifiedElementImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.IDENTIFIED_ELEMENT__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return IdentifiedElementImpl.NAME_EDEFAULT == null ? name != null : !IdentifiedElementImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.IDENTIFIED_ELEMENT__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return IdentifiedElementImpl.LABEL_EDEFAULT == null ? label != null : !IdentifiedElementImpl.LABEL_EDEFAULT.equals(label);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

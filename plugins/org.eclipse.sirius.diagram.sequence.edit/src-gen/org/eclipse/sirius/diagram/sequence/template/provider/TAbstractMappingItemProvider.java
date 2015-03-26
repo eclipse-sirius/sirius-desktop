@@ -33,7 +33,7 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TAbstractMappingItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
     /**
      * This adds a property descriptor for the Domain Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -144,7 +144,7 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

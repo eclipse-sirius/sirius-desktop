@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.provider;
 
@@ -60,7 +60,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -85,7 +85,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public DescriptionItemProviderAdapterFactory() {
@@ -100,7 +100,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.Group} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GroupItemProvider groupItemProvider;
@@ -109,7 +109,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.Group}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.Viewpoint}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.JavaExtension}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.DAnnotation}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.Customization}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,7 +409,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.SystemColor}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -434,7 +434,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.InterpolatedColor}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -459,7 +459,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.ColorStep}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.FixedColor}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -509,7 +509,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.UserFixedColor}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -534,7 +534,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.Environment}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -559,7 +559,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.SytemColorsPalette}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -584,7 +584,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.UserColorsPalette}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -609,7 +609,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.AnnotationEntry}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -634,7 +634,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -659,7 +659,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.ComputedColor}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -684,7 +684,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.DAnnotationEntry}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -699,9 +699,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -709,9 +710,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -768,6 +770,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
         return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
     }
@@ -777,6 +780,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public ResourceLocator getResourceLocator() {
         return childCreationExtenderManager;
     }
@@ -786,6 +790,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -795,6 +800,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -803,9 +809,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -817,58 +824,83 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (groupItemProvider != null)
+        if (groupItemProvider != null) {
             groupItemProvider.dispose();
-        if (viewpointItemProvider != null)
+        }
+        if (viewpointItemProvider != null) {
             viewpointItemProvider.dispose();
-        if (metamodelExtensionSettingItemProvider != null)
+        }
+        if (metamodelExtensionSettingItemProvider != null) {
             metamodelExtensionSettingItemProvider.dispose();
-        if (javaExtensionItemProvider != null)
+        }
+        if (javaExtensionItemProvider != null) {
             javaExtensionItemProvider.dispose();
-        if (dAnnotationItemProvider != null)
+        }
+        if (dAnnotationItemProvider != null) {
             dAnnotationItemProvider.dispose();
-        if (decorationDescriptionsSetItemProvider != null)
+        }
+        if (decorationDescriptionsSetItemProvider != null) {
             decorationDescriptionsSetItemProvider.dispose();
-        if (semanticBasedDecorationItemProvider != null)
+        }
+        if (semanticBasedDecorationItemProvider != null) {
             semanticBasedDecorationItemProvider.dispose();
-        if (customizationItemProvider != null)
+        }
+        if (customizationItemProvider != null) {
             customizationItemProvider.dispose();
-        if (vsmElementCustomizationItemProvider != null)
+        }
+        if (vsmElementCustomizationItemProvider != null) {
             vsmElementCustomizationItemProvider.dispose();
-        if (vsmElementCustomizationReuseItemProvider != null)
+        }
+        if (vsmElementCustomizationReuseItemProvider != null) {
             vsmElementCustomizationReuseItemProvider.dispose();
-        if (eAttributeCustomizationItemProvider != null)
+        }
+        if (eAttributeCustomizationItemProvider != null) {
             eAttributeCustomizationItemProvider.dispose();
-        if (eReferenceCustomizationItemProvider != null)
+        }
+        if (eReferenceCustomizationItemProvider != null) {
             eReferenceCustomizationItemProvider.dispose();
-        if (systemColorItemProvider != null)
+        }
+        if (systemColorItemProvider != null) {
             systemColorItemProvider.dispose();
-        if (interpolatedColorItemProvider != null)
+        }
+        if (interpolatedColorItemProvider != null) {
             interpolatedColorItemProvider.dispose();
-        if (colorStepItemProvider != null)
+        }
+        if (colorStepItemProvider != null) {
             colorStepItemProvider.dispose();
-        if (fixedColorItemProvider != null)
+        }
+        if (fixedColorItemProvider != null) {
             fixedColorItemProvider.dispose();
-        if (userFixedColorItemProvider != null)
+        }
+        if (userFixedColorItemProvider != null) {
             userFixedColorItemProvider.dispose();
-        if (environmentItemProvider != null)
+        }
+        if (environmentItemProvider != null) {
             environmentItemProvider.dispose();
-        if (sytemColorsPaletteItemProvider != null)
+        }
+        if (sytemColorsPaletteItemProvider != null) {
             sytemColorsPaletteItemProvider.dispose();
-        if (userColorsPaletteItemProvider != null)
+        }
+        if (userColorsPaletteItemProvider != null) {
             userColorsPaletteItemProvider.dispose();
-        if (annotationEntryItemProvider != null)
+        }
+        if (annotationEntryItemProvider != null) {
             annotationEntryItemProvider.dispose();
-        if (identifiedElementItemProvider != null)
+        }
+        if (identifiedElementItemProvider != null) {
             identifiedElementItemProvider.dispose();
-        if (computedColorItemProvider != null)
+        }
+        if (computedColorItemProvider != null) {
             computedColorItemProvider.dispose();
-        if (dAnnotationEntryItemProvider != null)
+        }
+        if (dAnnotationEntryItemProvider != null) {
             dAnnotationEntryItemProvider.dispose();
+        }
     }
 
 }

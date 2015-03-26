@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -60,7 +60,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     /**
      * The default value of the '{@link #isOpen() <em>Open</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isOpen()
      * @generated
      * @ordered
@@ -70,17 +70,17 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     /**
      * The cached value of the '{@link #isOpen() <em>Open</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isOpen()
      * @generated
      * @ordered
      */
-    protected boolean open = OPEN_EDEFAULT;
+    protected boolean open = DAnalysisSessionEObjectImpl.OPEN_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getResources() <em>Resources</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getResources()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getControlledResources()
      * <em>Controlled Resources</em>}' attribute list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getControlledResources()
      * @generated
      * @ordered
@@ -102,7 +102,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getActivatedViewpoints()
      * <em>Activated Viewpoints</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getActivatedViewpoints()
      * @generated
      * @ordered
@@ -112,7 +112,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     /**
      * The cached value of the '{@link #getAnalyses() <em>Analyses</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAnalyses()
      * @generated
      * @ordered
@@ -123,7 +123,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getSynchronizationStatus()
      * <em>Synchronization Status</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSynchronizationStatus()
      * @generated
      * @ordered
@@ -134,16 +134,16 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getSynchronizationStatus()
      * <em>Synchronization Status</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSynchronizationStatus()
      * @generated
      * @ordered
      */
-    protected SyncStatus synchronizationStatus = SYNCHRONIZATION_STATUS_EDEFAULT;
+    protected SyncStatus synchronizationStatus = DAnalysisSessionEObjectImpl.SYNCHRONIZATION_STATUS_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnalysisSessionEObjectImpl() {
@@ -152,7 +152,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,30 +162,34 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public boolean isOpen() {
         return open;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setOpen(boolean newOpen) {
         boolean oldOpen = open;
         open = newOpen;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__OPEN, oldOpen, open));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Resource> getResources() {
         if (resources == null) {
             resources = new EDataTypeUniqueEList<Resource>(Resource.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES);
@@ -195,9 +199,10 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Resource> getControlledResources() {
         if (controlledResources == null) {
             controlledResources = new EDataTypeUniqueEList<Resource>(Resource.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES);
@@ -207,9 +212,10 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Viewpoint> getActivatedViewpoints() {
         if (activatedViewpoints == null) {
             activatedViewpoints = new EObjectResolvingEList<Viewpoint>(Viewpoint.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__ACTIVATED_VIEWPOINTS);
@@ -219,9 +225,10 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DAnalysis> getAnalyses() {
         if (analyses == null) {
             analyses = new EObjectResolvingEList<DAnalysis>(DAnalysis.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__ANALYSES);
@@ -231,28 +238,31 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SyncStatus getSynchronizationStatus() {
         return synchronizationStatus;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSynchronizationStatus(SyncStatus newSynchronizationStatus) {
         SyncStatus oldSynchronizationStatus = synchronizationStatus;
-        synchronizationStatus = newSynchronizationStatus == null ? SYNCHRONIZATION_STATUS_EDEFAULT : newSynchronizationStatus;
-        if (eNotificationRequired())
+        synchronizationStatus = newSynchronizationStatus == null ? DAnalysisSessionEObjectImpl.SYNCHRONIZATION_STATUS_EDEFAULT : newSynchronizationStatus;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__SYNCHRONIZATION_STATUS, oldSynchronizationStatus, synchronizationStatus));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +286,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -311,14 +321,14 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__OPEN:
-            setOpen(OPEN_EDEFAULT);
+            setOpen(DAnalysisSessionEObjectImpl.OPEN_EDEFAULT);
             return;
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES:
             getResources().clear();
@@ -333,7 +343,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
             getAnalyses().clear();
             return;
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__SYNCHRONIZATION_STATUS:
-            setSynchronizationStatus(SYNCHRONIZATION_STATUS_EDEFAULT);
+            setSynchronizationStatus(DAnalysisSessionEObjectImpl.SYNCHRONIZATION_STATUS_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -341,14 +351,14 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__OPEN:
-            return open != OPEN_EDEFAULT;
+            return open != DAnalysisSessionEObjectImpl.OPEN_EDEFAULT;
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES:
             return resources != null && !resources.isEmpty();
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES:
@@ -358,20 +368,21 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__ANALYSES:
             return analyses != null && !analyses.isEmpty();
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__SYNCHRONIZATION_STATUS:
-            return synchronizationStatus != SYNCHRONIZATION_STATUS_EDEFAULT;
+            return synchronizationStatus != DAnalysisSessionEObjectImpl.SYNCHRONIZATION_STATUS_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (open: ");

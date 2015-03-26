@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -127,9 +127,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public BorderedStyleDescription createBorderedStyleDescription() {
         BorderedStyleDescriptionImpl borderedStyleDescription = new BorderedStyleDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(borderedStyleDescription);
@@ -138,9 +139,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CustomStyleDescription createCustomStyleDescription() {
         CustomStyleDescriptionImpl customStyleDescription = new CustomStyleDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(customStyleDescription);
@@ -149,9 +151,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public SquareDescription createSquareDescription() {
         SquareDescriptionImpl squareDescription = new SquareDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(squareDescription);
@@ -160,9 +163,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public LozengeNodeDescription createLozengeNodeDescription() {
         LozengeNodeDescriptionImpl lozengeNodeDescription = new LozengeNodeDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(lozengeNodeDescription);
@@ -171,9 +175,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EllipseNodeDescription createEllipseNodeDescription() {
         EllipseNodeDescriptionImpl ellipseNodeDescription = new EllipseNodeDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(ellipseNodeDescription);
@@ -182,9 +187,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public BundledImageDescription createBundledImageDescription() {
         BundledImageDescriptionImpl bundledImageDescription = new BundledImageDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(bundledImageDescription);
@@ -193,9 +199,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public NoteDescription createNoteDescription() {
         NoteDescriptionImpl noteDescription = new NoteDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(noteDescription);
@@ -204,9 +211,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DotDescription createDotDescription() {
         DotDescriptionImpl dotDescription = new DotDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(dotDescription);
@@ -215,9 +223,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public GaugeCompositeStyleDescription createGaugeCompositeStyleDescription() {
         GaugeCompositeStyleDescriptionImpl gaugeCompositeStyleDescription = new GaugeCompositeStyleDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(gaugeCompositeStyleDescription);
@@ -226,9 +235,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public GaugeSectionDescription createGaugeSectionDescription() {
         GaugeSectionDescriptionImpl gaugeSectionDescription = new GaugeSectionDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(gaugeSectionDescription);
@@ -237,9 +247,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public FlatContainerStyleDescription createFlatContainerStyleDescription() {
         FlatContainerStyleDescriptionImpl flatContainerStyleDescription = new FlatContainerStyleDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(flatContainerStyleDescription);
@@ -248,9 +259,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ShapeContainerStyleDescription createShapeContainerStyleDescription() {
         ShapeContainerStyleDescriptionImpl shapeContainerStyleDescription = new ShapeContainerStyleDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(shapeContainerStyleDescription);
@@ -259,9 +271,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public WorkspaceImageDescription createWorkspaceImageDescription() {
         WorkspaceImageDescriptionImpl workspaceImageDescription = new WorkspaceImageDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(workspaceImageDescription);
@@ -270,9 +283,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EdgeStyleDescription createEdgeStyleDescription() {
         EdgeStyleDescriptionImpl edgeStyleDescription = new EdgeStyleDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(edgeStyleDescription);
@@ -281,9 +295,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public BeginLabelStyleDescription createBeginLabelStyleDescription() {
         BeginLabelStyleDescriptionImpl beginLabelStyleDescription = new BeginLabelStyleDescriptionSpec();
         new DiagramDefaultColorStyleDescription().setDefaultColors(beginLabelStyleDescription);
@@ -292,9 +307,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CenterLabelStyleDescription createCenterLabelStyleDescription() {
         CenterLabelStyleDescriptionImpl centerLabelStyleDescription = new CenterLabelStyleDescriptionSpec();
         new DiagramDefaultColorStyleDescription().setDefaultColors(centerLabelStyleDescription);
@@ -303,9 +319,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EndLabelStyleDescription createEndLabelStyleDescription() {
         EndLabelStyleDescriptionImpl endLabelStyleDescription = new EndLabelStyleDescriptionSpec();
         new DiagramDefaultColorStyleDescription().setDefaultColors(endLabelStyleDescription);
@@ -314,9 +331,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public BracketEdgeStyleDescription createBracketEdgeStyleDescription() {
         BracketEdgeStyleDescriptionImpl bracketEdgeStyleDescription = new BracketEdgeStyleDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(bracketEdgeStyleDescription);
@@ -328,6 +346,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      * 
      * @generated
      */
+    @Override
     public StylePackage getStylePackage() {
         return (StylePackage) getEPackage();
     }

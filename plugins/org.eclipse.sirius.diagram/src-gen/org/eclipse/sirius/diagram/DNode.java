@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -54,7 +54,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode_Width()
@@ -82,7 +82,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode_Height()
@@ -95,7 +95,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DNode#getHeight
      * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -107,7 +107,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * Returns the value of the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The style of the node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(NodeStyle)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode_OwnedStyle()
@@ -137,7 +137,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * <!-- end-user-doc --> <!-- begin-model-doc --> The position of the label
      * : BORDER : The label is around the node, on the border. NODE : the label
      * is in the node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition
      * @see #setLabelPosition(LabelPosition)
@@ -167,7 +167,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * enumeration {@link org.eclipse.sirius.diagram.ResizeKind}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * <code>true</code> if the node is resizable. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Resize Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.ResizeKind
      * @see #setResizeKind(ResizeKind)
@@ -196,7 +196,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * instance of style that is contained by the mapping. The ownedStyle
      * reference should be a copy of this style. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Original Style</em>' reference.
      * @see #setOriginalStyle(Style)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode_OriginalStyle()
@@ -222,7 +222,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * actual mapping of this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Actual Mapping</em>' reference.
      * @see #setActualMapping(NodeMapping)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode_ActualMapping()
@@ -250,7 +250,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * candidates mapping of this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Candidates Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode_CandidatesMapping()
      * @model annotation=

@@ -70,7 +70,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * The cached value of the '{@link #getStartingEndPredecessorBefore()
      * <em>Starting End Predecessor Before</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessorBefore()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * The cached value of the '{@link #getStartingEndPredecessorAfter()
      * <em>Starting End Predecessor After</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessorAfter()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * The cached value of the '{@link #getFinishingEndPredecessorBefore()
      * <em>Finishing End Predecessor Before</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessorBefore()
      * @generated
      * @ordered
@@ -103,7 +103,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * The cached value of the '{@link #getFinishingEndPredecessorAfter()
      * <em>Finishing End Predecessor After</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessorAfter()
      * @generated
      * @ordered
@@ -114,7 +114,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * The cached value of the '{@link #getOnEventMovedOperation()
      * <em>On Event Moved Operation</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOnEventMovedOperation()
      * @generated
      * @ordered
@@ -145,6 +145,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public EList<EventMapping> getMappings() {
         if (mappings == null) {
             mappings = new EObjectResolvingEList<EventMapping>(EventMapping.class, this, ToolPackage.REORDER_TOOL__MAPPINGS);
@@ -157,6 +158,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getStartingEndPredecessorBefore() {
         return startingEndPredecessorBefore;
     }
@@ -172,10 +174,11 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_BEFORE, oldStartingEndPredecessorBefore,
                     newStartingEndPredecessorBefore);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -185,18 +188,25 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public void setStartingEndPredecessorBefore(MessageEndVariable newStartingEndPredecessorBefore) {
         if (newStartingEndPredecessorBefore != startingEndPredecessorBefore) {
             NotificationChain msgs = null;
-            if (startingEndPredecessorBefore != null)
-                msgs = ((InternalEObject) startingEndPredecessorBefore).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_BEFORE, null, msgs);
-            if (newStartingEndPredecessorBefore != null)
-                msgs = ((InternalEObject) newStartingEndPredecessorBefore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_BEFORE, null, msgs);
+            if (startingEndPredecessorBefore != null) {
+                msgs = ((InternalEObject) startingEndPredecessorBefore).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_BEFORE, null,
+                        msgs);
+            }
+            if (newStartingEndPredecessorBefore != null) {
+                msgs = ((InternalEObject) newStartingEndPredecessorBefore).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_BEFORE, null,
+                        msgs);
+            }
             msgs = basicSetStartingEndPredecessorBefore(newStartingEndPredecessorBefore, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_BEFORE, newStartingEndPredecessorBefore, newStartingEndPredecessorBefore));
+        }
     }
 
     /**
@@ -204,6 +214,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getStartingEndPredecessorAfter() {
         return startingEndPredecessorAfter;
     }
@@ -219,10 +230,11 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_AFTER, oldStartingEndPredecessorAfter,
                     newStartingEndPredecessorAfter);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -232,18 +244,25 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public void setStartingEndPredecessorAfter(MessageEndVariable newStartingEndPredecessorAfter) {
         if (newStartingEndPredecessorAfter != startingEndPredecessorAfter) {
             NotificationChain msgs = null;
-            if (startingEndPredecessorAfter != null)
-                msgs = ((InternalEObject) startingEndPredecessorAfter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_AFTER, null, msgs);
-            if (newStartingEndPredecessorAfter != null)
-                msgs = ((InternalEObject) newStartingEndPredecessorAfter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_AFTER, null, msgs);
+            if (startingEndPredecessorAfter != null) {
+                msgs = ((InternalEObject) startingEndPredecessorAfter).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_AFTER, null,
+                        msgs);
+            }
+            if (newStartingEndPredecessorAfter != null) {
+                msgs = ((InternalEObject) newStartingEndPredecessorAfter).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_AFTER, null,
+                        msgs);
+            }
             msgs = basicSetStartingEndPredecessorAfter(newStartingEndPredecessorAfter, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__STARTING_END_PREDECESSOR_AFTER, newStartingEndPredecessorAfter, newStartingEndPredecessorAfter));
+        }
     }
 
     /**
@@ -251,6 +270,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getFinishingEndPredecessorBefore() {
         return finishingEndPredecessorBefore;
     }
@@ -266,10 +286,11 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_BEFORE, oldFinishingEndPredecessorBefore,
                     newFinishingEndPredecessorBefore);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -279,18 +300,25 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public void setFinishingEndPredecessorBefore(MessageEndVariable newFinishingEndPredecessorBefore) {
         if (newFinishingEndPredecessorBefore != finishingEndPredecessorBefore) {
             NotificationChain msgs = null;
-            if (finishingEndPredecessorBefore != null)
-                msgs = ((InternalEObject) finishingEndPredecessorBefore).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_BEFORE, null, msgs);
-            if (newFinishingEndPredecessorBefore != null)
-                msgs = ((InternalEObject) newFinishingEndPredecessorBefore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_BEFORE, null, msgs);
+            if (finishingEndPredecessorBefore != null) {
+                msgs = ((InternalEObject) finishingEndPredecessorBefore).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_BEFORE,
+                        null, msgs);
+            }
+            if (newFinishingEndPredecessorBefore != null) {
+                msgs = ((InternalEObject) newFinishingEndPredecessorBefore).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_BEFORE,
+                        null, msgs);
+            }
             msgs = basicSetFinishingEndPredecessorBefore(newFinishingEndPredecessorBefore, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_BEFORE, newFinishingEndPredecessorBefore, newFinishingEndPredecessorBefore));
+        }
     }
 
     /**
@@ -298,6 +326,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getFinishingEndPredecessorAfter() {
         return finishingEndPredecessorAfter;
     }
@@ -313,10 +342,11 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_AFTER, oldFinishingEndPredecessorAfter,
                     newFinishingEndPredecessorAfter);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -326,18 +356,25 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public void setFinishingEndPredecessorAfter(MessageEndVariable newFinishingEndPredecessorAfter) {
         if (newFinishingEndPredecessorAfter != finishingEndPredecessorAfter) {
             NotificationChain msgs = null;
-            if (finishingEndPredecessorAfter != null)
-                msgs = ((InternalEObject) finishingEndPredecessorAfter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_AFTER, null, msgs);
-            if (newFinishingEndPredecessorAfter != null)
-                msgs = ((InternalEObject) newFinishingEndPredecessorAfter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_AFTER, null, msgs);
+            if (finishingEndPredecessorAfter != null) {
+                msgs = ((InternalEObject) finishingEndPredecessorAfter).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_AFTER, null,
+                        msgs);
+            }
+            if (newFinishingEndPredecessorAfter != null) {
+                msgs = ((InternalEObject) newFinishingEndPredecessorAfter).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_AFTER, null,
+                        msgs);
+            }
             msgs = basicSetFinishingEndPredecessorAfter(newFinishingEndPredecessorAfter, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__FINISHING_END_PREDECESSOR_AFTER, newFinishingEndPredecessorAfter, newFinishingEndPredecessorAfter));
+        }
     }
 
     /**
@@ -345,6 +382,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public InitialOperation getOnEventMovedOperation() {
         return onEventMovedOperation;
     }
@@ -359,10 +397,11 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
         onEventMovedOperation = newOnEventMovedOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__ON_EVENT_MOVED_OPERATION, oldOnEventMovedOperation, newOnEventMovedOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -372,18 +411,23 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
      * 
      * @generated
      */
+    @Override
     public void setOnEventMovedOperation(InitialOperation newOnEventMovedOperation) {
         if (newOnEventMovedOperation != onEventMovedOperation) {
             NotificationChain msgs = null;
-            if (onEventMovedOperation != null)
-                msgs = ((InternalEObject) onEventMovedOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__ON_EVENT_MOVED_OPERATION, null, msgs);
-            if (newOnEventMovedOperation != null)
-                msgs = ((InternalEObject) newOnEventMovedOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__ON_EVENT_MOVED_OPERATION, null, msgs);
+            if (onEventMovedOperation != null) {
+                msgs = ((InternalEObject) onEventMovedOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__ON_EVENT_MOVED_OPERATION, null, msgs);
+            }
+            if (newOnEventMovedOperation != null) {
+                msgs = ((InternalEObject) newOnEventMovedOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REORDER_TOOL__ON_EVENT_MOVED_OPERATION, null, msgs);
+            }
             msgs = basicSetOnEventMovedOperation(newOnEventMovedOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REORDER_TOOL__ON_EVENT_MOVED_OPERATION, newOnEventMovedOperation, newOnEventMovedOperation));
+        }
     }
 
     /**

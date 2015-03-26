@@ -42,7 +42,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
      * The cached value of the '{@link #getStartingEndPredecessor()
      * <em>Starting End Predecessor</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
      * The cached value of the '{@link #getFinishingEndPredecessor()
      * <em>Finishing End Predecessor</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -84,6 +84,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getStartingEndPredecessor() {
         return startingEndPredecessor;
     }
@@ -99,10 +100,11 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR, oldStartingEndPredecessor,
                     newStartingEndPredecessor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -112,18 +114,25 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
      * 
      * @generated
      */
+    @Override
     public void setStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor) {
         if (newStartingEndPredecessor != startingEndPredecessor) {
             NotificationChain msgs = null;
-            if (startingEndPredecessor != null)
-                msgs = ((InternalEObject) startingEndPredecessor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
-            if (newStartingEndPredecessor != null)
-                msgs = ((InternalEObject) newStartingEndPredecessor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
+            if (startingEndPredecessor != null) {
+                msgs = ((InternalEObject) startingEndPredecessor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR,
+                        null, msgs);
+            }
+            if (newStartingEndPredecessor != null) {
+                msgs = ((InternalEObject) newStartingEndPredecessor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR,
+                        null, msgs);
+            }
             msgs = basicSetStartingEndPredecessor(newStartingEndPredecessor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR, newStartingEndPredecessor, newStartingEndPredecessor));
+        }
     }
 
     /**
@@ -131,6 +140,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getFinishingEndPredecessor() {
         return finishingEndPredecessor;
     }
@@ -146,10 +156,11 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, oldFinishingEndPredecessor,
                     newFinishingEndPredecessor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -159,18 +170,25 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
      * 
      * @generated
      */
+    @Override
     public void setFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor) {
         if (newFinishingEndPredecessor != finishingEndPredecessor) {
             NotificationChain msgs = null;
-            if (finishingEndPredecessor != null)
-                msgs = ((InternalEObject) finishingEndPredecessor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, null, msgs);
-            if (newFinishingEndPredecessor != null)
-                msgs = ((InternalEObject) newFinishingEndPredecessor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, null, msgs);
+            if (finishingEndPredecessor != null) {
+                msgs = ((InternalEObject) finishingEndPredecessor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR,
+                        null, msgs);
+            }
+            if (newFinishingEndPredecessor != null) {
+                msgs = ((InternalEObject) newFinishingEndPredecessor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR,
+                        null, msgs);
+            }
             msgs = basicSetFinishingEndPredecessor(newFinishingEndPredecessor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, newFinishingEndPredecessor, newFinishingEndPredecessor));
+        }
     }
 
     /**

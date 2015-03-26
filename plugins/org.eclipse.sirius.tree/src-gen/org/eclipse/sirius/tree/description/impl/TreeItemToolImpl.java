@@ -48,7 +48,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
      * The cached value of the '{@link #getFirstModelOperation()
      * <em>First Model Operation</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFirstModelOperation()
      * @generated
      * @ordered
@@ -89,6 +89,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
      * 
      * @generated
      */
+    @Override
     public ModelOperation getFirstModelOperation() {
         return firstModelOperation;
     }
@@ -103,10 +104,11 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
         firstModelOperation = newFirstModelOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, oldFirstModelOperation, newFirstModelOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -116,18 +118,23 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
      * 
      * @generated
      */
+    @Override
     public void setFirstModelOperation(ModelOperation newFirstModelOperation) {
         if (newFirstModelOperation != firstModelOperation) {
             NotificationChain msgs = null;
-            if (firstModelOperation != null)
-                msgs = ((InternalEObject) firstModelOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, null, msgs);
-            if (newFirstModelOperation != null)
-                msgs = ((InternalEObject) newFirstModelOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, null, msgs);
+            if (firstModelOperation != null) {
+                msgs = ((InternalEObject) firstModelOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, null, msgs);
+            }
+            if (newFirstModelOperation != null) {
+                msgs = ((InternalEObject) newFirstModelOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, null, msgs);
+            }
             msgs = basicSetFirstModelOperation(newFirstModelOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, newFirstModelOperation, newFirstModelOperation));
+        }
     }
 
     /**
@@ -135,6 +142,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
      * 
      * @generated
      */
+    @Override
     public EList<TreeVariable> getVariables() {
         if (variables == null) {
             variables = new EObjectContainmentEList<TreeVariable>(TreeVariable.class, this, DescriptionPackage.TREE_ITEM_TOOL__VARIABLES);

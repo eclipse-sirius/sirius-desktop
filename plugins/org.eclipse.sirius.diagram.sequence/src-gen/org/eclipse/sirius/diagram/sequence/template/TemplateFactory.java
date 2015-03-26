@@ -31,7 +31,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TSequence Diagram</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TSequence Diagram</em>'.
      * @generated
      */
@@ -40,7 +40,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TLifeline Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TLifeline Mapping</em>'.
      * @generated
      */
@@ -49,7 +49,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TLifeline Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TLifeline Style</em>'.
      * @generated
      */
@@ -67,7 +67,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TTransformer</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TTransformer</em>'.
      * @generated
      */
@@ -76,7 +76,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TExecution Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TExecution Mapping</em>'.
      * @generated
      */
@@ -85,7 +85,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TExecution Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TExecution Style</em>'.
      * @generated
      */
@@ -103,7 +103,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TMessage Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TMessage Style</em>'.
      * @generated
      */
@@ -112,7 +112,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TConditional Message Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TConditional Message Style</em>'.
      * @generated
      */
@@ -121,7 +121,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TBasic Message Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TBasic Message Mapping</em>'.
      * @generated
      */
@@ -130,7 +130,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TReturn Message Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TReturn Message Mapping</em>'.
      * @generated
      */
@@ -139,7 +139,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TCreation Message Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TCreation Message Mapping</em>'.
      * @generated
      */
@@ -157,7 +157,7 @@ public interface TemplateFactory extends EFactory {
     /**
      * Returns a new object of class '<em>TAbstract Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>TAbstract Mapping</em>'.
      * @generated
      */

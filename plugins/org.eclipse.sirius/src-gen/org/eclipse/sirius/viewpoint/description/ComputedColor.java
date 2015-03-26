@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -40,7 +40,7 @@ public interface ComputedColor extends UserColor, ColorDescription {
      * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> An expression computing the value of the color.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Red</em>' attribute.
      * @see #setRed(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getComputedColor_Red()
@@ -56,7 +56,7 @@ public interface ComputedColor extends UserColor, ColorDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.ComputedColor#getRed
      * <em>Red</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Red</em>' attribute.
      * @see #getRed()
@@ -72,7 +72,7 @@ public interface ComputedColor extends UserColor, ColorDescription {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Green</em>' attribute.
      * @see #setGreen(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getComputedColor_Green()
@@ -88,7 +88,7 @@ public interface ComputedColor extends UserColor, ColorDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.ComputedColor#getGreen
      * <em>Green</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Green</em>' attribute.
      * @see #getGreen()
@@ -104,7 +104,7 @@ public interface ComputedColor extends UserColor, ColorDescription {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Blue</em>' attribute.
      * @see #setBlue(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getComputedColor_Blue()
@@ -120,7 +120,7 @@ public interface ComputedColor extends UserColor, ColorDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.ComputedColor#getBlue
      * <em>Blue</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Blue</em>' attribute.
      * @see #getBlue()

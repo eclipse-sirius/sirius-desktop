@@ -48,7 +48,7 @@ public interface TSequenceDiagram extends RepresentationTemplate, TTransformer {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Ends Ordering</em>' attribute.
      * @see #setEndsOrdering(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSequenceDiagram_EndsOrdering()
@@ -113,7 +113,7 @@ public interface TSequenceDiagram extends RepresentationTemplate, TTransformer {
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * domain class of the mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSequenceDiagram_DomainClass()

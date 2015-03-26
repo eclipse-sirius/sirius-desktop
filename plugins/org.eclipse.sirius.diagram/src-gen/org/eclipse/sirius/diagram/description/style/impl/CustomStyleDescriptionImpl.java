@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -35,7 +35,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -45,12 +45,12 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = CustomStyleDescriptionImpl.ID_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -76,6 +76,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
@@ -85,11 +86,13 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CUSTOM_STYLE_DESCRIPTION__ID, oldId, id));
+        }
     }
 
     /**
@@ -130,7 +133,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.CUSTOM_STYLE_DESCRIPTION__ID:
-            setId(ID_EDEFAULT);
+            setId(CustomStyleDescriptionImpl.ID_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -145,7 +148,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.CUSTOM_STYLE_DESCRIPTION__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return CustomStyleDescriptionImpl.ID_EDEFAULT == null ? id != null : !CustomStyleDescriptionImpl.ID_EDEFAULT.equals(id);
         }
         return super.eIsSet(featureID);
     }
@@ -157,8 +160,9 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");

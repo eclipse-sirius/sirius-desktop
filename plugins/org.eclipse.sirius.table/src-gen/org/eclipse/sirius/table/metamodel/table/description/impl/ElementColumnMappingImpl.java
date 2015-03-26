@@ -82,7 +82,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * The cached value of the '{@link #getForegroundConditionalStyle()
      * <em>Foreground Conditional Style</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundConditionalStyle()
      * @generated
      * @ordered
@@ -104,7 +104,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * The cached value of the '{@link #getBackgroundConditionalStyle()
      * <em>Background Conditional Style</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundConditionalStyle()
      * @generated
      * @ordered
@@ -129,7 +129,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = ElementColumnMappingImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSemanticCandidatesExpression()
@@ -151,7 +151,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * @generated
      * @ordered
      */
-    protected String semanticCandidatesExpression = SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
+    protected String semanticCandidatesExpression = ElementColumnMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCreate() <em>Create</em>}'
@@ -197,6 +197,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public ForegroundStyleDescription getDefaultForeground() {
         return defaultForeground;
     }
@@ -211,10 +212,11 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
         defaultForeground = newDefaultForeground;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_FOREGROUND, oldDefaultForeground, newDefaultForeground);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -224,18 +226,23 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public void setDefaultForeground(ForegroundStyleDescription newDefaultForeground) {
         if (newDefaultForeground != defaultForeground) {
             NotificationChain msgs = null;
-            if (defaultForeground != null)
-                msgs = ((InternalEObject) defaultForeground).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_FOREGROUND, null, msgs);
-            if (newDefaultForeground != null)
-                msgs = ((InternalEObject) newDefaultForeground).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_FOREGROUND, null, msgs);
+            if (defaultForeground != null) {
+                msgs = ((InternalEObject) defaultForeground).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_FOREGROUND, null, msgs);
+            }
+            if (newDefaultForeground != null) {
+                msgs = ((InternalEObject) newDefaultForeground).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_FOREGROUND, null, msgs);
+            }
             msgs = basicSetDefaultForeground(newDefaultForeground, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_FOREGROUND, newDefaultForeground, newDefaultForeground));
+        }
     }
 
     /**
@@ -243,6 +250,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
             foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this,
@@ -256,6 +264,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public BackgroundStyleDescription getDefaultBackground() {
         return defaultBackground;
     }
@@ -270,10 +279,11 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
         defaultBackground = newDefaultBackground;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_BACKGROUND, oldDefaultBackground, newDefaultBackground);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -283,18 +293,23 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public void setDefaultBackground(BackgroundStyleDescription newDefaultBackground) {
         if (newDefaultBackground != defaultBackground) {
             NotificationChain msgs = null;
-            if (defaultBackground != null)
-                msgs = ((InternalEObject) defaultBackground).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_BACKGROUND, null, msgs);
-            if (newDefaultBackground != null)
-                msgs = ((InternalEObject) newDefaultBackground).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_BACKGROUND, null, msgs);
+            if (defaultBackground != null) {
+                msgs = ((InternalEObject) defaultBackground).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_BACKGROUND, null, msgs);
+            }
+            if (newDefaultBackground != null) {
+                msgs = ((InternalEObject) newDefaultBackground).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_BACKGROUND, null, msgs);
+            }
             msgs = basicSetDefaultBackground(newDefaultBackground, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ELEMENT_COLUMN_MAPPING__DEFAULT_BACKGROUND, newDefaultBackground, newDefaultBackground));
+        }
     }
 
     /**
@@ -302,6 +317,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
             backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this,
@@ -315,6 +331,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -324,11 +341,13 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -336,6 +355,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public String getSemanticCandidatesExpression() {
         return semanticCandidatesExpression;
     }
@@ -345,12 +365,14 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public void setSemanticCandidatesExpression(String newSemanticCandidatesExpression) {
         String oldSemanticCandidatesExpression = semanticCandidatesExpression;
         semanticCandidatesExpression = newSemanticCandidatesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, oldSemanticCandidatesExpression,
                     semanticCandidatesExpression));
+        }
     }
 
     /**
@@ -358,6 +380,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public EList<CreateColumnTool> getCreate() {
         if (create == null) {
             create = new EObjectContainmentWithInverseEList<CreateColumnTool>(CreateColumnTool.class, this, DescriptionPackage.ELEMENT_COLUMN_MAPPING__CREATE,
@@ -371,6 +394,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public DeleteColumnTool getDelete() {
         return delete;
     }
@@ -385,10 +409,11 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
         delete = newDelete;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.ELEMENT_COLUMN_MAPPING__DELETE, oldDelete, newDelete);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -398,18 +423,23 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * 
      * @generated
      */
+    @Override
     public void setDelete(DeleteColumnTool newDelete) {
         if (newDelete != delete) {
             NotificationChain msgs = null;
-            if (delete != null)
+            if (delete != null) {
                 msgs = ((InternalEObject) delete).eInverseRemove(this, DescriptionPackage.DELETE_COLUMN_TOOL__MAPPING, DeleteColumnTool.class, msgs);
-            if (newDelete != null)
+            }
+            if (newDelete != null) {
                 msgs = ((InternalEObject) newDelete).eInverseAdd(this, DescriptionPackage.DELETE_COLUMN_TOOL__MAPPING, DeleteColumnTool.class, msgs);
+            }
             msgs = basicSetDelete(newDelete, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ELEMENT_COLUMN_MAPPING__DELETE, newDelete, newDelete));
+        }
     }
 
     /**
@@ -424,8 +454,9 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__CREATE:
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getCreate()).basicAdd(otherEnd, msgs);
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__DELETE:
-            if (delete != null)
-                msgs = ((InternalEObject) delete).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DELETE, null, msgs);
+            if (delete != null) {
+                msgs = ((InternalEObject) delete).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ELEMENT_COLUMN_MAPPING__DELETE, null, msgs);
+            }
             return basicSetDelete((DeleteColumnTool) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -544,10 +575,10 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
             getBackgroundConditionalStyle().clear();
             return;
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(ElementColumnMappingImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            setSemanticCandidatesExpression(SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
+            setSemanticCandidatesExpression(ElementColumnMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__CREATE:
             getCreate().clear();
@@ -576,9 +607,10 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE:
             return backgroundConditionalStyle != null && !backgroundConditionalStyle.isEmpty();
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return ElementColumnMappingImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !ElementColumnMappingImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            return SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
+            return ElementColumnMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !ElementColumnMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT
+                    .equals(semanticCandidatesExpression);
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__CREATE:
             return create != null && !create.isEmpty();
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__DELETE:
@@ -642,8 +674,9 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (domainClass: ");

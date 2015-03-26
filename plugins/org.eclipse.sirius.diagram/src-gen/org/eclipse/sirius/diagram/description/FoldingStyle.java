@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -105,7 +105,7 @@ public enum FoldingStyle implements Enumerator {
     /**
      * An array of all the '<em><b>Folding Style</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final FoldingStyle[] VALUES_ARRAY = new FoldingStyle[] { NONE_LITERAL, SOURCE_LITERAL, TARGET_LITERAL, };
@@ -116,7 +116,7 @@ public enum FoldingStyle implements Enumerator {
      * 
      * @generated
      */
-    public static final List<FoldingStyle> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<FoldingStyle> VALUES = Collections.unmodifiableList(Arrays.asList(FoldingStyle.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Folding Style</b></em>' literal with the specified
@@ -125,8 +125,7 @@ public enum FoldingStyle implements Enumerator {
      * @generated
      */
     public static FoldingStyle get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            FoldingStyle result = VALUES_ARRAY[i];
+        for (FoldingStyle result : FoldingStyle.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -141,8 +140,7 @@ public enum FoldingStyle implements Enumerator {
      * @generated
      */
     public static FoldingStyle getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            FoldingStyle result = VALUES_ARRAY[i];
+        for (FoldingStyle result : FoldingStyle.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -206,6 +204,7 @@ public enum FoldingStyle implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -215,6 +214,7 @@ public enum FoldingStyle implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -224,6 +224,7 @@ public enum FoldingStyle implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

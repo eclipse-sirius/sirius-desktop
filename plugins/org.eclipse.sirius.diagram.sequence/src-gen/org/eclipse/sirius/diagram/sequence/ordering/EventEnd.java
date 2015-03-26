@@ -38,7 +38,7 @@ public interface EventEnd extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic End</em>' reference.
      * @see #setSemanticEnd(EObject)
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getEventEnd_SemanticEnd()

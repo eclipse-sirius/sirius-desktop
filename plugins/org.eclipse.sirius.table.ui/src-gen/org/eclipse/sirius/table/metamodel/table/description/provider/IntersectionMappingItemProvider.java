@@ -47,7 +47,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IntersectionMappingItemProvider(AdapterFactory adapterFactory) {
@@ -57,7 +57,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Can Edit feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCanEditPropertyDescriptor(Object object) {
@@ -95,7 +95,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Line Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLineMappingPropertyDescriptor(Object object) {
@@ -107,7 +107,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Column Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addColumnMappingPropertyDescriptor(Object object) {
@@ -119,7 +119,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -131,16 +131,16 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Use Domain Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addUseDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_IntersectionMapping_useDomainClass_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_useDomainClass_feature", "_UI_IntersectionMapping_type"),
-                        DescriptionPackage.Literals.INTERSECTION_MAPPING__USE_DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                        getString("_UI_DomainBasedPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_IntersectionMapping_useDomainClass_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_useDomainClass_feature", "_UI_IntersectionMapping_type"),
+                DescriptionPackage.Literals.INTERSECTION_MAPPING__USE_DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                getString("_UI_DomainBasedPropertyCategory"), null));
     }
 
     /**
@@ -187,7 +187,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Domain Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -212,7 +212,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Create feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCreatePropertyDescriptor(Object object) {
@@ -273,7 +273,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -321,7 +321,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -344,9 +344,9 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * Add the variables to the labelEditTool
-     * 
+     *
      * @not-generated
      */
     @Override

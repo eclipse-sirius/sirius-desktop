@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -118,6 +118,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getMappings() {
         if (mappings == null) {
             mappings = new EObjectWithInverseResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.DOUBLE_CLICK_DESCRIPTION__MAPPINGS,
@@ -131,20 +132,23 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public ElementDoubleClickVariable getElement() {
         if (element != null && element.eIsProxy()) {
             InternalEObject oldElement = (InternalEObject) element;
             element = (ElementDoubleClickVariable) eResolveProxy(oldElement);
             if (element != oldElement) {
                 InternalEObject newElement = (InternalEObject) element;
-                NotificationChain msgs = oldElement.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, null, null);
+                NotificationChain msgs = oldElement.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, null, null);
                 if (newElement.eInternalContainer() == null) {
-                    msgs = newElement.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, null, msgs);
+                    msgs = newElement.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, oldElement, element));
+                }
             }
         }
         return element;
@@ -169,10 +173,11 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
         element = newElement;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, oldElement, newElement);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -182,18 +187,23 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setElement(ElementDoubleClickVariable newElement) {
         if (newElement != element) {
             NotificationChain msgs = null;
-            if (element != null)
-                msgs = ((InternalEObject) element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, null, msgs);
-            if (newElement != null)
-                msgs = ((InternalEObject) newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, null, msgs);
+            if (element != null) {
+                msgs = ((InternalEObject) element).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, null, msgs);
+            }
+            if (newElement != null) {
+                msgs = ((InternalEObject) newElement).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, null, msgs);
+            }
             msgs = basicSetElement(newElement, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT, newElement, newElement));
+        }
     }
 
     /**
@@ -201,20 +211,23 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public ElementDoubleClickVariable getElementView() {
         if (elementView != null && elementView.eIsProxy()) {
             InternalEObject oldElementView = (InternalEObject) elementView;
             elementView = (ElementDoubleClickVariable) eResolveProxy(oldElementView);
             if (elementView != oldElementView) {
                 InternalEObject newElementView = (InternalEObject) elementView;
-                NotificationChain msgs = oldElementView.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, null, null);
+                NotificationChain msgs = oldElementView.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, null, null);
                 if (newElementView.eInternalContainer() == null) {
-                    msgs = newElementView.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, null, msgs);
+                    msgs = newElementView.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, oldElementView, elementView));
+                }
             }
         }
         return elementView;
@@ -239,10 +252,11 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
         elementView = newElementView;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, oldElementView, newElementView);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -252,18 +266,23 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setElementView(ElementDoubleClickVariable newElementView) {
         if (newElementView != elementView) {
             NotificationChain msgs = null;
-            if (elementView != null)
-                msgs = ((InternalEObject) elementView).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, null, msgs);
-            if (newElementView != null)
-                msgs = ((InternalEObject) newElementView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, null, msgs);
+            if (elementView != null) {
+                msgs = ((InternalEObject) elementView).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, null, msgs);
+            }
+            if (newElementView != null) {
+                msgs = ((InternalEObject) newElementView).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, null, msgs);
+            }
             msgs = basicSetElementView(newElementView, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, newElementView, newElementView));
+        }
     }
 
     /**
@@ -271,20 +290,23 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
             initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -309,10 +331,11 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -322,18 +345,23 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -382,16 +410,19 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
         case ToolPackage.DOUBLE_CLICK_DESCRIPTION__MAPPINGS:
             return getMappings();
         case ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT:
-            if (resolve)
+            if (resolve) {
                 return getElement();
+            }
             return basicGetElement();
         case ToolPackage.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW:
-            if (resolve)
+            if (resolve) {
                 return getElementView();
+            }
             return basicGetElementView();
         case ToolPackage.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         }
         return super.eGet(featureID, resolve, coreType);

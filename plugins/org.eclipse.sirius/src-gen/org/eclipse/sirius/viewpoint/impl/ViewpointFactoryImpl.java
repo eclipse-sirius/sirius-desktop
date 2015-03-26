@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -48,14 +48,14 @@ import com.google.common.base.Splitter;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static ViewpointFactory init() {
@@ -73,7 +73,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ViewpointFactoryImpl() {
@@ -82,7 +82,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -189,7 +189,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -211,7 +211,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -244,7 +244,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -277,7 +277,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -288,7 +288,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -310,7 +310,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -321,7 +321,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -332,19 +332,20 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FontFormat createFontFormatFromString(EDataType eDataType, String initialValue) {
         FontFormat result = FontFormat.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertFontFormatToString(EDataType eDataType, Object instanceValue) {
@@ -353,20 +354,21 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     public LabelAlignment createLabelAlignmentFromString(EDataType eDataType, String initialValue) {
         LabelAlignment result = LabelAlignment.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
@@ -376,19 +378,20 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SyncStatus createSyncStatusFromString(EDataType eDataType, String initialValue) {
         SyncStatus result = SyncStatus.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertSyncStatusToString(EDataType eDataType, Object instanceValue) {
@@ -397,7 +400,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     public RGBValues createRGBValuesFromString(EDataType eDataType, String initialValue) {
@@ -432,7 +435,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     public String convertRGBValuesToString(EDataType eDataType, Object instanceValue) {
@@ -444,7 +447,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -454,7 +457,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */
@@ -465,7 +468,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override

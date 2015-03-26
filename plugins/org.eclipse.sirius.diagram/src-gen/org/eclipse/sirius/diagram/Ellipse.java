@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -41,7 +41,7 @@ public interface Ellipse extends NodeStyle {
      * The default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The horizontal diameter size of
      * the ellipse. (Semimajor axis) <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Horizontal Diameter</em>' attribute.
      * @see #setHorizontalDiameter(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEllipse_HorizontalDiameter()
@@ -68,7 +68,7 @@ public interface Ellipse extends NodeStyle {
      * The default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The vertical diameter of the
      * ellipse. (Semiminor axis) <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Vertical Diameter</em>' attribute.
      * @see #setVerticalDiameter(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEllipse_VerticalDiameter()
@@ -98,7 +98,7 @@ public interface Ellipse extends NodeStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' attribute.
      * @see #setColor(RGBValues)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEllipse_Color()

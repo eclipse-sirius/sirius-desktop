@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -52,7 +52,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
      * @generated
      * @ordered
      */
-    protected int width = WIDTH_EDEFAULT;
+    protected int width = CollapseFilterImpl.WIDTH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}'
@@ -72,7 +72,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
      * @generated
      * @ordered
      */
-    protected int height = HEIGHT_EDEFAULT;
+    protected int height = CollapseFilterImpl.HEIGHT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -98,6 +98,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public int getWidth() {
         return width;
     }
@@ -107,11 +108,13 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public void setWidth(int newWidth) {
         int oldWidth = width;
         width = newWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.COLLAPSE_FILTER__WIDTH, oldWidth, width));
+        }
     }
 
     /**
@@ -119,6 +122,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public int getHeight() {
         return height;
     }
@@ -128,11 +132,13 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
      * 
      * @generated
      */
+    @Override
     public void setHeight(int newHeight) {
         int oldHeight = height;
         height = newHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.COLLAPSE_FILTER__HEIGHT, oldHeight, height));
+        }
     }
 
     /**
@@ -178,10 +184,10 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.COLLAPSE_FILTER__WIDTH:
-            setWidth(WIDTH_EDEFAULT);
+            setWidth(CollapseFilterImpl.WIDTH_EDEFAULT);
             return;
         case DiagramPackage.COLLAPSE_FILTER__HEIGHT:
-            setHeight(HEIGHT_EDEFAULT);
+            setHeight(CollapseFilterImpl.HEIGHT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -196,9 +202,9 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.COLLAPSE_FILTER__WIDTH:
-            return width != WIDTH_EDEFAULT;
+            return width != CollapseFilterImpl.WIDTH_EDEFAULT;
         case DiagramPackage.COLLAPSE_FILTER__HEIGHT:
-            return height != HEIGHT_EDEFAULT;
+            return height != CollapseFilterImpl.HEIGHT_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -210,8 +216,9 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (width: ");

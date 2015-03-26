@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -151,7 +151,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * @generated
      * @ordered
      */
-    protected DragSource dragSource = DRAG_SOURCE_EDEFAULT;
+    protected DragSource dragSource = ContainerDropDescriptionImpl.DRAG_SOURCE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isMoveEdges() <em>Move Edges</em>}'
@@ -171,7 +171,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * @generated
      * @ordered
      */
-    protected boolean moveEdges = MOVE_EDGES_EDEFAULT;
+    protected boolean moveEdges = ContainerDropDescriptionImpl.MOVE_EDGES_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -197,6 +197,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getMappings() {
         if (mappings == null) {
             mappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.CONTAINER_DROP_DESCRIPTION__MAPPINGS);
@@ -209,20 +210,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public DropContainerVariable getOldContainer() {
         if (oldContainer != null && oldContainer.eIsProxy()) {
             InternalEObject oldOldContainer = (InternalEObject) oldContainer;
             oldContainer = (DropContainerVariable) eResolveProxy(oldOldContainer);
             if (oldContainer != oldOldContainer) {
                 InternalEObject newOldContainer = (InternalEObject) oldContainer;
-                NotificationChain msgs = oldOldContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, null, null);
+                NotificationChain msgs = oldOldContainer.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, null, null);
                 if (newOldContainer.eInternalContainer() == null) {
-                    msgs = newOldContainer.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, null, msgs);
+                    msgs = newOldContainer.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, oldOldContainer, oldContainer));
+                }
             }
         }
         return oldContainer;
@@ -247,10 +251,11 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
         oldContainer = newOldContainer;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, oldOldContainer, newOldContainer);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -260,18 +265,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setOldContainer(DropContainerVariable newOldContainer) {
         if (newOldContainer != oldContainer) {
             NotificationChain msgs = null;
-            if (oldContainer != null)
-                msgs = ((InternalEObject) oldContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, null, msgs);
-            if (newOldContainer != null)
-                msgs = ((InternalEObject) newOldContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, null, msgs);
+            if (oldContainer != null) {
+                msgs = ((InternalEObject) oldContainer).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, null, msgs);
+            }
+            if (newOldContainer != null) {
+                msgs = ((InternalEObject) newOldContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, null, msgs);
+            }
             msgs = basicSetOldContainer(newOldContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER, newOldContainer, newOldContainer));
+        }
     }
 
     /**
@@ -279,20 +289,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public DropContainerVariable getNewContainer() {
         if (newContainer != null && newContainer.eIsProxy()) {
             InternalEObject oldNewContainer = (InternalEObject) newContainer;
             newContainer = (DropContainerVariable) eResolveProxy(oldNewContainer);
             if (newContainer != oldNewContainer) {
                 InternalEObject newNewContainer = (InternalEObject) newContainer;
-                NotificationChain msgs = oldNewContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, null, null);
+                NotificationChain msgs = oldNewContainer.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, null, null);
                 if (newNewContainer.eInternalContainer() == null) {
-                    msgs = newNewContainer.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, null, msgs);
+                    msgs = newNewContainer.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, oldNewContainer, newContainer));
+                }
             }
         }
         return newContainer;
@@ -317,10 +330,11 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
         newContainer = newNewContainer;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, oldNewContainer, newNewContainer);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -330,18 +344,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setNewContainer(DropContainerVariable newNewContainer) {
         if (newNewContainer != newContainer) {
             NotificationChain msgs = null;
-            if (newContainer != null)
-                msgs = ((InternalEObject) newContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, null, msgs);
-            if (newNewContainer != null)
-                msgs = ((InternalEObject) newNewContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, null, msgs);
+            if (newContainer != null) {
+                msgs = ((InternalEObject) newContainer).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, null, msgs);
+            }
+            if (newNewContainer != null) {
+                msgs = ((InternalEObject) newNewContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, null, msgs);
+            }
             msgs = basicSetNewContainer(newNewContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER, newNewContainer, newNewContainer));
+        }
     }
 
     /**
@@ -349,20 +368,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public ElementDropVariable getElement() {
         if (element != null && element.eIsProxy()) {
             InternalEObject oldElement = (InternalEObject) element;
             element = (ElementDropVariable) eResolveProxy(oldElement);
             if (element != oldElement) {
                 InternalEObject newElement = (InternalEObject) element;
-                NotificationChain msgs = oldElement.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, null, null);
+                NotificationChain msgs = oldElement.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, null, null);
                 if (newElement.eInternalContainer() == null) {
-                    msgs = newElement.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, null, msgs);
+                    msgs = newElement.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, oldElement, element));
+                }
             }
         }
         return element;
@@ -387,10 +409,11 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
         element = newElement;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, oldElement, newElement);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -400,18 +423,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setElement(ElementDropVariable newElement) {
         if (newElement != element) {
             NotificationChain msgs = null;
-            if (element != null)
-                msgs = ((InternalEObject) element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, null, msgs);
-            if (newElement != null)
-                msgs = ((InternalEObject) newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, null, msgs);
+            if (element != null) {
+                msgs = ((InternalEObject) element).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, null, msgs);
+            }
+            if (newElement != null) {
+                msgs = ((InternalEObject) newElement).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, null, msgs);
+            }
             msgs = basicSetElement(newElement, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT, newElement, newElement));
+        }
     }
 
     /**
@@ -419,20 +447,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public ContainerViewVariable getNewViewContainer() {
         if (newViewContainer != null && newViewContainer.eIsProxy()) {
             InternalEObject oldNewViewContainer = (InternalEObject) newViewContainer;
             newViewContainer = (ContainerViewVariable) eResolveProxy(oldNewViewContainer);
             if (newViewContainer != oldNewViewContainer) {
                 InternalEObject newNewViewContainer = (InternalEObject) newViewContainer;
-                NotificationChain msgs = oldNewViewContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, null, null);
+                NotificationChain msgs = oldNewViewContainer.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, null, null);
                 if (newNewViewContainer.eInternalContainer() == null) {
-                    msgs = newNewViewContainer.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, null, msgs);
+                    msgs = newNewViewContainer.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, oldNewViewContainer, newViewContainer));
+                }
             }
         }
         return newViewContainer;
@@ -457,10 +488,11 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
         newViewContainer = newNewViewContainer;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, oldNewViewContainer, newNewViewContainer);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -470,18 +502,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setNewViewContainer(ContainerViewVariable newNewViewContainer) {
         if (newNewViewContainer != newViewContainer) {
             NotificationChain msgs = null;
-            if (newViewContainer != null)
-                msgs = ((InternalEObject) newViewContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, null, msgs);
-            if (newNewViewContainer != null)
-                msgs = ((InternalEObject) newNewViewContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, null, msgs);
+            if (newViewContainer != null) {
+                msgs = ((InternalEObject) newViewContainer).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, null, msgs);
+            }
+            if (newNewViewContainer != null) {
+                msgs = ((InternalEObject) newNewViewContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, null, msgs);
+            }
             msgs = basicSetNewViewContainer(newNewViewContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER, newNewViewContainer, newNewViewContainer));
+        }
     }
 
     /**
@@ -489,20 +526,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public InitialContainerDropOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
             initialOperation = (InitialContainerDropOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -527,10 +567,11 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -540,18 +581,23 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialContainerDropOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -559,6 +605,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public DragSource getDragSource() {
         return dragSource;
     }
@@ -568,11 +615,13 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setDragSource(DragSource newDragSource) {
         DragSource oldDragSource = dragSource;
-        dragSource = newDragSource == null ? DRAG_SOURCE_EDEFAULT : newDragSource;
-        if (eNotificationRequired())
+        dragSource = newDragSource == null ? ContainerDropDescriptionImpl.DRAG_SOURCE_EDEFAULT : newDragSource;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE, oldDragSource, dragSource));
+        }
     }
 
     /**
@@ -580,6 +629,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public boolean isMoveEdges() {
         return moveEdges;
     }
@@ -589,11 +639,13 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public void setMoveEdges(boolean newMoveEdges) {
         boolean oldMoveEdges = moveEdges;
         moveEdges = newMoveEdges;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_DROP_DESCRIPTION__MOVE_EDGES, oldMoveEdges, moveEdges));
+        }
     }
 
     /**
@@ -601,6 +653,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public DiagramElementMapping getBestMapping(DragAndDropTarget targetContainer, EObject droppedElement) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -612,6 +665,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
+    @Override
     public EList<DragAndDropTargetDescription> getContainers() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -651,24 +705,29 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__MAPPINGS:
             return getMappings();
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER:
-            if (resolve)
+            if (resolve) {
                 return getOldContainer();
+            }
             return basicGetOldContainer();
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER:
-            if (resolve)
+            if (resolve) {
                 return getNewContainer();
+            }
             return basicGetNewContainer();
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__ELEMENT:
-            if (resolve)
+            if (resolve) {
                 return getElement();
+            }
             return basicGetElement();
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER:
-            if (resolve)
+            if (resolve) {
                 return getNewViewContainer();
+            }
             return basicGetNewViewContainer();
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE:
             return getDragSource();
@@ -743,10 +802,10 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
             setInitialOperation((InitialContainerDropOperation) null);
             return;
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE:
-            setDragSource(DRAG_SOURCE_EDEFAULT);
+            setDragSource(ContainerDropDescriptionImpl.DRAG_SOURCE_EDEFAULT);
             return;
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__MOVE_EDGES:
-            setMoveEdges(MOVE_EDGES_EDEFAULT);
+            setMoveEdges(ContainerDropDescriptionImpl.MOVE_EDGES_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -773,9 +832,9 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE:
-            return dragSource != DRAG_SOURCE_EDEFAULT;
+            return dragSource != ContainerDropDescriptionImpl.DRAG_SOURCE_EDEFAULT;
         case ToolPackage.CONTAINER_DROP_DESCRIPTION__MOVE_EDGES:
-            return moveEdges != MOVE_EDGES_EDEFAULT;
+            return moveEdges != ContainerDropDescriptionImpl.MOVE_EDGES_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -787,8 +846,9 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (dragSource: ");

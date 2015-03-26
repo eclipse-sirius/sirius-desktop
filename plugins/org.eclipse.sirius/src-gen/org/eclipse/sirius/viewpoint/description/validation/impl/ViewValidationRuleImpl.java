@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.validation.impl;
 
@@ -38,7 +38,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
     /**
      * The cached value of the '{@link #getTargets() <em>Targets</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargets()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ViewValidationRuleImpl() {
@@ -56,7 +56,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,9 +66,10 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<RepresentationElementMapping> getTargets() {
         if (targets == null) {
             targets = new EObjectResolvingEList<RepresentationElementMapping>(RepresentationElementMapping.class, this, ValidationPackage.VIEW_VALIDATION_RULE__TARGETS);
@@ -78,7 +79,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +93,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -109,7 +110,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +125,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

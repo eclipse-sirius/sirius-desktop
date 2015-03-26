@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint;
 
@@ -52,7 +52,7 @@ public interface DView extends DRefreshable {
      * {@link org.eclipse.sirius.viewpoint.DRepresentation}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> The viewpoints that
      * are owned by this analysis. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Representations</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_OwnedRepresentations()
@@ -66,7 +66,7 @@ public interface DView extends DRefreshable {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The Meta Model extension for this analysis. It may be
      * null. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Extensions</em>' containment
      *         reference.
      * @see #setOwnedExtensions(MetaModelExtension)
@@ -81,7 +81,7 @@ public interface DView extends DRefreshable {
      * {@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions
      * <em>Owned Extensions</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Extensions</em>' containment
      *            reference.
@@ -98,7 +98,7 @@ public interface DView extends DRefreshable {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initialized</em>' attribute.
      * @see #setInitialized(boolean)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_Initialized()
@@ -112,7 +112,7 @@ public interface DView extends DRefreshable {
      * {@link org.eclipse.sirius.viewpoint.DView#isInitialized
      * <em>Initialized</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initialized</em>' attribute.
      * @see #isInitialized()
@@ -124,7 +124,7 @@ public interface DView extends DRefreshable {
      * Returns the value of the '<em><b>Viewpoint</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * viewpoint that is used for this view <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Viewpoint</em>' reference.
      * @see #setViewpoint(Viewpoint)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_Viewpoint()
@@ -138,7 +138,7 @@ public interface DView extends DRefreshable {
      * {@link org.eclipse.sirius.viewpoint.DView#getViewpoint
      * <em>Viewpoint</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Viewpoint</em>' reference.
      * @see #getViewpoint()

@@ -52,7 +52,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -69,7 +69,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public DescriptionItemProviderAdapterFactory() {
@@ -683,9 +683,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -693,9 +694,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -743,6 +745,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -752,6 +755,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -760,9 +764,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -774,58 +779,83 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (editionTableDescriptionItemProvider != null)
+        if (editionTableDescriptionItemProvider != null) {
             editionTableDescriptionItemProvider.dispose();
-        if (crossTableDescriptionItemProvider != null)
+        }
+        if (crossTableDescriptionItemProvider != null) {
             crossTableDescriptionItemProvider.dispose();
-        if (tableMappingItemProvider != null)
+        }
+        if (tableMappingItemProvider != null) {
             tableMappingItemProvider.dispose();
-        if (lineMappingItemProvider != null)
+        }
+        if (lineMappingItemProvider != null) {
             lineMappingItemProvider.dispose();
-        if (columnMappingItemProvider != null)
+        }
+        if (columnMappingItemProvider != null) {
             columnMappingItemProvider.dispose();
-        if (elementColumnMappingItemProvider != null)
+        }
+        if (elementColumnMappingItemProvider != null) {
             elementColumnMappingItemProvider.dispose();
-        if (featureColumnMappingItemProvider != null)
+        }
+        if (featureColumnMappingItemProvider != null) {
             featureColumnMappingItemProvider.dispose();
-        if (cellUpdaterItemProvider != null)
+        }
+        if (cellUpdaterItemProvider != null) {
             cellUpdaterItemProvider.dispose();
-        if (intersectionMappingItemProvider != null)
+        }
+        if (intersectionMappingItemProvider != null) {
             intersectionMappingItemProvider.dispose();
-        if (tableToolItemProvider != null)
+        }
+        if (tableToolItemProvider != null) {
             tableToolItemProvider.dispose();
-        if (labelEditToolItemProvider != null)
+        }
+        if (labelEditToolItemProvider != null) {
             labelEditToolItemProvider.dispose();
-        if (createColumnToolItemProvider != null)
+        }
+        if (createColumnToolItemProvider != null) {
             createColumnToolItemProvider.dispose();
-        if (createCrossColumnToolItemProvider != null)
+        }
+        if (createCrossColumnToolItemProvider != null) {
             createCrossColumnToolItemProvider.dispose();
-        if (createLineToolItemProvider != null)
+        }
+        if (createLineToolItemProvider != null) {
             createLineToolItemProvider.dispose();
-        if (createCellToolItemProvider != null)
+        }
+        if (createCellToolItemProvider != null) {
             createCellToolItemProvider.dispose();
-        if (deleteColumnToolItemProvider != null)
+        }
+        if (deleteColumnToolItemProvider != null) {
             deleteColumnToolItemProvider.dispose();
-        if (deleteLineToolItemProvider != null)
+        }
+        if (deleteLineToolItemProvider != null) {
             deleteLineToolItemProvider.dispose();
-        if (foregroundStyleDescriptionItemProvider != null)
+        }
+        if (foregroundStyleDescriptionItemProvider != null) {
             foregroundStyleDescriptionItemProvider.dispose();
-        if (backgroundStyleDescriptionItemProvider != null)
+        }
+        if (backgroundStyleDescriptionItemProvider != null) {
             backgroundStyleDescriptionItemProvider.dispose();
-        if (foregroundConditionalStyleItemProvider != null)
+        }
+        if (foregroundConditionalStyleItemProvider != null) {
             foregroundConditionalStyleItemProvider.dispose();
-        if (backgroundConditionalStyleItemProvider != null)
+        }
+        if (backgroundConditionalStyleItemProvider != null) {
             backgroundConditionalStyleItemProvider.dispose();
-        if (tableVariableItemProvider != null)
+        }
+        if (tableVariableItemProvider != null) {
             tableVariableItemProvider.dispose();
-        if (tableCreationDescriptionItemProvider != null)
+        }
+        if (tableCreationDescriptionItemProvider != null) {
             tableCreationDescriptionItemProvider.dispose();
-        if (tableNavigationDescriptionItemProvider != null)
+        }
+        if (tableNavigationDescriptionItemProvider != null) {
             tableNavigationDescriptionItemProvider.dispose();
+        }
     }
 
 }

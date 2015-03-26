@@ -39,7 +39,7 @@ public enum TreeDragSource implements Enumerator {
     /**
      * The '<em><b>PROJECT EXPLORER</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #PROJECT_EXPLORER_VALUE
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public enum TreeDragSource implements Enumerator {
     /**
      * An array of all the '<em><b>Tree Drag Source</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final TreeDragSource[] VALUES_ARRAY = new TreeDragSource[] { TREE, PROJECT_EXPLORER, BOTH, };
@@ -116,7 +116,7 @@ public enum TreeDragSource implements Enumerator {
      * 
      * @generated
      */
-    public static final List<TreeDragSource> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<TreeDragSource> VALUES = Collections.unmodifiableList(Arrays.asList(TreeDragSource.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Tree Drag Source</b></em>' literal with the specified
@@ -125,8 +125,7 @@ public enum TreeDragSource implements Enumerator {
      * @generated
      */
     public static TreeDragSource get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            TreeDragSource result = VALUES_ARRAY[i];
+        for (TreeDragSource result : TreeDragSource.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -141,8 +140,7 @@ public enum TreeDragSource implements Enumerator {
      * @generated
      */
     public static TreeDragSource getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            TreeDragSource result = VALUES_ARRAY[i];
+        for (TreeDragSource result : TreeDragSource.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -206,6 +204,7 @@ public enum TreeDragSource implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -215,6 +214,7 @@ public enum TreeDragSource implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -224,6 +224,7 @@ public enum TreeDragSource implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

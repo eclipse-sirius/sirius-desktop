@@ -84,7 +84,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = TSequenceDiagramImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getEndsOrdering()
@@ -106,13 +106,13 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * @generated
      * @ordered
      */
-    protected String endsOrdering = ENDS_ORDERING_EDEFAULT;
+    protected String endsOrdering = TSequenceDiagramImpl.ENDS_ORDERING_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getLifelineMappings()
      * <em>Lifeline Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLifelineMappings()
      * @generated
      * @ordered
@@ -123,7 +123,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * The cached value of the '{@link #getMessageMappings()
      * <em>Message Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessageMappings()
      * @generated
      * @ordered
@@ -154,6 +154,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getOutputs() {
         if (outputs == null) {
             outputs = new EObjectResolvingEList<EObject>(EObject.class, this, TemplatePackage.TSEQUENCE_DIAGRAM__OUTPUTS);
@@ -166,6 +167,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * 
      * @generated
      */
+    @Override
     public String getEndsOrdering() {
         return endsOrdering;
     }
@@ -175,11 +177,13 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * 
      * @generated
      */
+    @Override
     public void setEndsOrdering(String newEndsOrdering) {
         String oldEndsOrdering = endsOrdering;
         endsOrdering = newEndsOrdering;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TSEQUENCE_DIAGRAM__ENDS_ORDERING, oldEndsOrdering, endsOrdering));
+        }
     }
 
     /**
@@ -187,6 +191,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * 
      * @generated
      */
+    @Override
     public EList<TLifelineMapping> getLifelineMappings() {
         if (lifelineMappings == null) {
             lifelineMappings = new EObjectContainmentEList<TLifelineMapping>(TLifelineMapping.class, this, TemplatePackage.TSEQUENCE_DIAGRAM__LIFELINE_MAPPINGS);
@@ -199,6 +204,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * 
      * @generated
      */
+    @Override
     public EList<TMessageMapping> getMessageMappings() {
         if (messageMappings == null) {
             messageMappings = new EObjectContainmentEList<TMessageMapping>(TMessageMapping.class, this, TemplatePackage.TSEQUENCE_DIAGRAM__MESSAGE_MAPPINGS);
@@ -211,6 +217,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -220,11 +227,13 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TSEQUENCE_DIAGRAM__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -308,10 +317,10 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
             getOutputs().clear();
             return;
         case TemplatePackage.TSEQUENCE_DIAGRAM__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(TSequenceDiagramImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case TemplatePackage.TSEQUENCE_DIAGRAM__ENDS_ORDERING:
-            setEndsOrdering(ENDS_ORDERING_EDEFAULT);
+            setEndsOrdering(TSequenceDiagramImpl.ENDS_ORDERING_EDEFAULT);
             return;
         case TemplatePackage.TSEQUENCE_DIAGRAM__LIFELINE_MAPPINGS:
             getLifelineMappings().clear();
@@ -334,9 +343,9 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
         case TemplatePackage.TSEQUENCE_DIAGRAM__OUTPUTS:
             return outputs != null && !outputs.isEmpty();
         case TemplatePackage.TSEQUENCE_DIAGRAM__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return TSequenceDiagramImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !TSequenceDiagramImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case TemplatePackage.TSEQUENCE_DIAGRAM__ENDS_ORDERING:
-            return ENDS_ORDERING_EDEFAULT == null ? endsOrdering != null : !ENDS_ORDERING_EDEFAULT.equals(endsOrdering);
+            return TSequenceDiagramImpl.ENDS_ORDERING_EDEFAULT == null ? endsOrdering != null : !TSequenceDiagramImpl.ENDS_ORDERING_EDEFAULT.equals(endsOrdering);
         case TemplatePackage.TSEQUENCE_DIAGRAM__LIFELINE_MAPPINGS:
             return lifelineMappings != null && !lifelineMappings.isEmpty();
         case TemplatePackage.TSEQUENCE_DIAGRAM__MESSAGE_MAPPINGS:
@@ -388,8 +397,9 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (domainClass: ");

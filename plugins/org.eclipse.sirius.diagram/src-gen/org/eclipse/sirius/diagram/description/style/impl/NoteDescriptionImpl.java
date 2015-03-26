@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -68,13 +68,15 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
      * 
      * @generated
      */
+    @Override
     public ColorDescription getColor() {
         if (color != null && color.eIsProxy()) {
             InternalEObject oldColor = (InternalEObject) color;
             color = (ColorDescription) eResolveProxy(oldColor);
             if (color != oldColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.NOTE_DESCRIPTION__COLOR, oldColor, color));
+                }
             }
         }
         return color;
@@ -94,11 +96,13 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
      * 
      * @generated
      */
+    @Override
     public void setColor(ColorDescription newColor) {
         ColorDescription oldColor = color;
         color = newColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NOTE_DESCRIPTION__COLOR, oldColor, color));
+        }
     }
 
     /**
@@ -110,8 +114,9 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case StylePackage.NOTE_DESCRIPTION__COLOR:
-            if (resolve)
+            if (resolve) {
                 return getColor();
+            }
             return basicGetColor();
         }
         return super.eGet(featureID, resolve, coreType);

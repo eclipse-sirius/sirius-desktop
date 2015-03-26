@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -78,11 +78,11 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * The list contents are of type
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc --> <!-- begin-model-doc --> The mapping
      *        that creates EdgeTargets that are the sources of the ViewEdges
      *        that are created by this EdgeMapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_SourceMapping()
      * @model required="true"
@@ -95,11 +95,11 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * The list contents are of type
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc --> <!-- begin-model-doc --> The mapping
      *        that creates EdgeTargets that are the targets of the ViewEdges
      *        that are created by this EdgeMapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_TargetMapping()
      * @model required="true"
@@ -119,7 +119,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * are in the enclosing viewpoint's rootContent subtree. If the
      * semanticCandidatesExpression is filled in then all the objects will be
      * the objects of the returned list. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Finder Expression</em>' attribute.
      * @see #setTargetFinderExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_TargetFinderExpression()
@@ -157,7 +157,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * then all the objects will be the objects of the returned list. This
      * attribute is taking in account only if the useDomainElement is true. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source Finder Expression</em>' attribute.
      * @see #setSourceFinderExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_SourceFinderExpression()
@@ -189,7 +189,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * Returns the value of the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The style of the edge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(EdgeStyleDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_Style()
@@ -217,7 +217,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * {@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All conditional styles. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditionnal Styles</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_ConditionnalStyles()
@@ -234,7 +234,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * element of the source node if useDomainElement is false. - The object
      * that is an instance of domainClass value if useDomainElement is true.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Expression</em>' attribute.
      * @see #setTargetExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_TargetExpression()
@@ -266,7 +266,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * type of the target elements that are represented by this edge. Useful
      * only if useDomainElement is true. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_DomainClass()
@@ -381,7 +381,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Path Node Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_PathNodeMapping()
      * @model
@@ -413,6 +413,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * @model
      * @generated
      */
+    @Override
     EdgeStyle getBestStyle(EObject modelElement, EObject viewVariable, EObject containerVariable);
 
     /**

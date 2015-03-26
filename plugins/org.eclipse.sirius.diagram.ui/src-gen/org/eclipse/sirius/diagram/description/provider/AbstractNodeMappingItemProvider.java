@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.provider;
 
@@ -39,7 +39,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractNodeMappingItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
     /**
      * This adds a property descriptor for the Documentation feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
     /**
      * This adds a property descriptor for the Domain Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -139,7 +139,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -176,7 +176,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated : adding default value for semantic candidate expression.
      */
     @Override
@@ -195,7 +195,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -215,7 +215,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      * This returns the feature label prefix text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     protected String getFeaturePrefixText(Object feature) {

@@ -36,7 +36,7 @@ public interface TConditionalExecutionStyle extends TTransformer {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> This expression will get evaluated and if it returns
      * true the contained style will be choosen. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTConditionalExecutionStyle_PredicateExpression()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -43,7 +43,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
      * The cached value of the '{@link #getSubVariables()
      * <em>Sub Variables</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubVariables()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementDropVariableImpl() {
@@ -61,7 +61,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,9 +71,10 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<SubVariable> getSubVariables() {
         if (subVariables == null) {
             subVariables = new EObjectContainmentEList.Resolving<SubVariable>(SubVariable.class, this, ToolPackage.ELEMENT_DROP_VARIABLE__SUB_VARIABLES);
@@ -83,7 +84,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +98,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +112,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -128,7 +129,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +144,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +158,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +176,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

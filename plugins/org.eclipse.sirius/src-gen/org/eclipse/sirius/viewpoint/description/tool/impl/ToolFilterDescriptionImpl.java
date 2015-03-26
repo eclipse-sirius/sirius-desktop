@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -51,7 +51,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
      * The default value of the '{@link #getPrecondition()
      * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -61,18 +61,18 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
      */
-    protected String precondition = PRECONDITION_EDEFAULT;
+    protected String precondition = ToolFilterDescriptionImpl.PRECONDITION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getElementsToListen()
      * <em>Elements To Listen</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getElementsToListen()
      * @generated
      * @ordered
@@ -83,17 +83,17 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
      * The cached value of the '{@link #getElementsToListen()
      * <em>Elements To Listen</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getElementsToListen()
      * @generated
      * @ordered
      */
-    protected String elementsToListen = ELEMENTS_TO_LISTEN_EDEFAULT;
+    protected String elementsToListen = ToolFilterDescriptionImpl.ELEMENTS_TO_LISTEN_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getListeners() <em>Listeners</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getListeners()
      * @generated
      * @ordered
@@ -102,7 +102,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolFilterDescriptionImpl() {
@@ -111,7 +111,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,51 +121,58 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getPrecondition() {
         return precondition;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setPrecondition(String newPrecondition) {
         String oldPrecondition = precondition;
         precondition = newPrecondition;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.TOOL_FILTER_DESCRIPTION__PRECONDITION, oldPrecondition, precondition));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getElementsToListen() {
         return elementsToListen;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setElementsToListen(String newElementsToListen) {
         String oldElementsToListen = elementsToListen;
         elementsToListen = newElementsToListen;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.TOOL_FILTER_DESCRIPTION__ELEMENTS_TO_LISTEN, oldElementsToListen, elementsToListen));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<FeatureChangeListener> getListeners() {
         if (listeners == null) {
             listeners = new EObjectContainmentEList.Resolving<FeatureChangeListener>(FeatureChangeListener.class, this, ToolPackage.TOOL_FILTER_DESCRIPTION__LISTENERS);
@@ -175,7 +182,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +196,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +214,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -230,17 +237,17 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.TOOL_FILTER_DESCRIPTION__PRECONDITION:
-            setPrecondition(PRECONDITION_EDEFAULT);
+            setPrecondition(ToolFilterDescriptionImpl.PRECONDITION_EDEFAULT);
             return;
         case ToolPackage.TOOL_FILTER_DESCRIPTION__ELEMENTS_TO_LISTEN:
-            setElementsToListen(ELEMENTS_TO_LISTEN_EDEFAULT);
+            setElementsToListen(ToolFilterDescriptionImpl.ELEMENTS_TO_LISTEN_EDEFAULT);
             return;
         case ToolPackage.TOOL_FILTER_DESCRIPTION__LISTENERS:
             getListeners().clear();
@@ -251,16 +258,16 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.TOOL_FILTER_DESCRIPTION__PRECONDITION:
-            return PRECONDITION_EDEFAULT == null ? precondition != null : !PRECONDITION_EDEFAULT.equals(precondition);
+            return ToolFilterDescriptionImpl.PRECONDITION_EDEFAULT == null ? precondition != null : !ToolFilterDescriptionImpl.PRECONDITION_EDEFAULT.equals(precondition);
         case ToolPackage.TOOL_FILTER_DESCRIPTION__ELEMENTS_TO_LISTEN:
-            return ELEMENTS_TO_LISTEN_EDEFAULT == null ? elementsToListen != null : !ELEMENTS_TO_LISTEN_EDEFAULT.equals(elementsToListen);
+            return ToolFilterDescriptionImpl.ELEMENTS_TO_LISTEN_EDEFAULT == null ? elementsToListen != null : !ToolFilterDescriptionImpl.ELEMENTS_TO_LISTEN_EDEFAULT.equals(elementsToListen);
         case ToolPackage.TOOL_FILTER_DESCRIPTION__LISTENERS:
             return listeners != null && !listeners.isEmpty();
         }
@@ -269,13 +276,14 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (precondition: ");

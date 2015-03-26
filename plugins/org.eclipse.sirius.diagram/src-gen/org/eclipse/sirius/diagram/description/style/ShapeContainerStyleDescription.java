@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -72,7 +72,7 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
      * Returns the value of the '<em><b>Background Color</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The color to use. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getShapeContainerStyleDescription_BackgroundColor()

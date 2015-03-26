@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter;
 
@@ -43,7 +43,7 @@ public interface Filter extends EObject {
      * filter might hide elements or just shrink them. In the case of the
      * shrink, the edges going to this element will be kept. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Filter Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.filter.FilterKind
      * @see #setFilterKind(FilterKind)
@@ -71,7 +71,7 @@ public interface Filter extends EObject {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return true if the specified viewpoint element is visible for this
      * filter.
-     * 
+     *
      * @param element
      *            The element to test. <!-- end-model-doc -->
      * @model

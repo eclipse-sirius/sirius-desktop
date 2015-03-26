@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -41,7 +41,7 @@ public interface DAnnotation extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source</em>' attribute.
      * @see #setSource(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_Source()
@@ -55,7 +55,7 @@ public interface DAnnotation extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.DAnnotation#getSource
      * <em>Source</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source</em>' attribute.
      * @see #getSource()
@@ -72,7 +72,7 @@ public interface DAnnotation extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Details</em>' map.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_Details()
      * @model mapType=

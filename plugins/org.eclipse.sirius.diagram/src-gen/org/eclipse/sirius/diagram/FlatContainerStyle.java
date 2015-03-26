@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -40,7 +40,7 @@ public interface FlatContainerStyle extends ContainerStyle {
      * {@link org.eclipse.sirius.diagram.BackgroundStyle}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> The background style.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.BackgroundStyle
      * @see #setBackgroundStyle(BackgroundStyle)
@@ -68,7 +68,7 @@ public interface FlatContainerStyle extends ContainerStyle {
      * Returns the value of the '<em><b>Background Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The background color. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' containment
      *         reference.
      * @see #setBackgroundColor(RGBValues)
@@ -95,7 +95,7 @@ public interface FlatContainerStyle extends ContainerStyle {
      * Returns the value of the '<em><b>Foreground Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The foreground color. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreground Color</em>' containment
      *         reference.
      * @see #setForegroundColor(RGBValues)

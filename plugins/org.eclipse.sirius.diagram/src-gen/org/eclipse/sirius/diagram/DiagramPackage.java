@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -77,7 +77,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -113,7 +113,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -149,7 +149,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -158,7 +158,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Edges</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -167,7 +167,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Nodes</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -185,7 +185,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Containers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -194,7 +194,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Current Concern</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -212,7 +212,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Filters</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -257,7 +257,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronized</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -284,7 +284,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Header Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -293,7 +293,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The number of structural features of the '<em>DDiagram</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -314,11 +314,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__DOCUMENTATION = DDIAGRAM__DOCUMENTATION;
+    int DSEMANTIC_DIAGRAM__DOCUMENTATION = DiagramPackage.DDIAGRAM__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment
@@ -327,7 +327,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__EANNOTATIONS = DDIAGRAM__EANNOTATIONS;
+    int DSEMANTIC_DIAGRAM__EANNOTATIONS = DiagramPackage.DDIAGRAM__EANNOTATIONS;
 
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>'
@@ -336,7 +336,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__OWNED_REPRESENTATION_ELEMENTS = DDIAGRAM__OWNED_REPRESENTATION_ELEMENTS;
+    int DSEMANTIC_DIAGRAM__OWNED_REPRESENTATION_ELEMENTS = DiagramPackage.DDIAGRAM__OWNED_REPRESENTATION_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Representation Elements</b></em>'
@@ -345,16 +345,16 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__REPRESENTATION_ELEMENTS = DDIAGRAM__REPRESENTATION_ELEMENTS;
+    int DSEMANTIC_DIAGRAM__REPRESENTATION_ELEMENTS = DiagramPackage.DDIAGRAM__REPRESENTATION_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__NAME = DDIAGRAM__NAME;
+    int DSEMANTIC_DIAGRAM__NAME = DiagramPackage.DDIAGRAM__NAME;
 
     /**
      * The feature id for the '<em><b>Owned Annotation Entries</b></em>'
@@ -363,7 +363,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__OWNED_ANNOTATION_ENTRIES = DDIAGRAM__OWNED_ANNOTATION_ENTRIES;
+    int DSEMANTIC_DIAGRAM__OWNED_ANNOTATION_ENTRIES = DiagramPackage.DDIAGRAM__OWNED_ANNOTATION_ENTRIES;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>'
@@ -372,7 +372,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__OWNED_DIAGRAM_ELEMENTS = DDIAGRAM__OWNED_DIAGRAM_ELEMENTS;
+    int DSEMANTIC_DIAGRAM__OWNED_DIAGRAM_ELEMENTS = DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Diagram Elements</b></em>' reference list.
@@ -381,34 +381,34 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__DIAGRAM_ELEMENTS = DDIAGRAM__DIAGRAM_ELEMENTS;
+    int DSEMANTIC_DIAGRAM__DIAGRAM_ELEMENTS = DiagramPackage.DDIAGRAM__DIAGRAM_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__DESCRIPTION = DDIAGRAM__DESCRIPTION;
+    int DSEMANTIC_DIAGRAM__DESCRIPTION = DiagramPackage.DDIAGRAM__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Edges</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__EDGES = DDIAGRAM__EDGES;
+    int DSEMANTIC_DIAGRAM__EDGES = DiagramPackage.DDIAGRAM__EDGES;
 
     /**
      * The feature id for the '<em><b>Nodes</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__NODES = DDIAGRAM__NODES;
+    int DSEMANTIC_DIAGRAM__NODES = DiagramPackage.DDIAGRAM__NODES;
 
     /**
      * The feature id for the '<em><b>Node List Elements</b></em>' reference
@@ -417,25 +417,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__NODE_LIST_ELEMENTS = DDIAGRAM__NODE_LIST_ELEMENTS;
+    int DSEMANTIC_DIAGRAM__NODE_LIST_ELEMENTS = DiagramPackage.DDIAGRAM__NODE_LIST_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Containers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__CONTAINERS = DDIAGRAM__CONTAINERS;
+    int DSEMANTIC_DIAGRAM__CONTAINERS = DiagramPackage.DDIAGRAM__CONTAINERS;
 
     /**
      * The feature id for the '<em><b>Current Concern</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__CURRENT_CONCERN = DDIAGRAM__CURRENT_CONCERN;
+    int DSEMANTIC_DIAGRAM__CURRENT_CONCERN = DiagramPackage.DDIAGRAM__CURRENT_CONCERN;
 
     /**
      * The feature id for the '<em><b>Activated Filters</b></em>' reference
@@ -444,16 +444,16 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__ACTIVATED_FILTERS = DDIAGRAM__ACTIVATED_FILTERS;
+    int DSEMANTIC_DIAGRAM__ACTIVATED_FILTERS = DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS;
 
     /**
      * The feature id for the '<em><b>All Filters</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__ALL_FILTERS = DDIAGRAM__ALL_FILTERS;
+    int DSEMANTIC_DIAGRAM__ALL_FILTERS = DiagramPackage.DDIAGRAM__ALL_FILTERS;
 
     /**
      * The feature id for the '<em><b>Activated Rules</b></em>' reference list.
@@ -462,7 +462,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__ACTIVATED_RULES = DDIAGRAM__ACTIVATED_RULES;
+    int DSEMANTIC_DIAGRAM__ACTIVATED_RULES = DiagramPackage.DDIAGRAM__ACTIVATED_RULES;
 
     /**
      * The feature id for the '<em><b>Activate Behaviors</b></em>' reference
@@ -471,7 +471,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__ACTIVATE_BEHAVIORS = DDIAGRAM__ACTIVATE_BEHAVIORS;
+    int DSEMANTIC_DIAGRAM__ACTIVATE_BEHAVIORS = DiagramPackage.DDIAGRAM__ACTIVATE_BEHAVIORS;
 
     /**
      * The feature id for the '<em><b>Filter Variable History</b></em>'
@@ -480,7 +480,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__FILTER_VARIABLE_HISTORY = DDIAGRAM__FILTER_VARIABLE_HISTORY;
+    int DSEMANTIC_DIAGRAM__FILTER_VARIABLE_HISTORY = DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY;
 
     /**
      * The feature id for the '<em><b>Activated Layers</b></em>' reference list.
@@ -489,16 +489,16 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__ACTIVATED_LAYERS = DDIAGRAM__ACTIVATED_LAYERS;
+    int DSEMANTIC_DIAGRAM__ACTIVATED_LAYERS = DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS;
 
     /**
      * The feature id for the '<em><b>Synchronized</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__SYNCHRONIZED = DDIAGRAM__SYNCHRONIZED;
+    int DSEMANTIC_DIAGRAM__SYNCHRONIZED = DiagramPackage.DDIAGRAM__SYNCHRONIZED;
 
     /**
      * The feature id for the '<em><b>Hidden Elements</b></em>' reference list.
@@ -507,7 +507,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__HIDDEN_ELEMENTS = DDIAGRAM__HIDDEN_ELEMENTS;
+    int DSEMANTIC_DIAGRAM__HIDDEN_ELEMENTS = DiagramPackage.DDIAGRAM__HIDDEN_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Is In Layouting Mode</b></em>' attribute.
@@ -516,25 +516,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__IS_IN_LAYOUTING_MODE = DDIAGRAM__IS_IN_LAYOUTING_MODE;
+    int DSEMANTIC_DIAGRAM__IS_IN_LAYOUTING_MODE = DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE;
 
     /**
      * The feature id for the '<em><b>Header Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__HEADER_HEIGHT = DDIAGRAM__HEADER_HEIGHT;
+    int DSEMANTIC_DIAGRAM__HEADER_HEIGHT = DiagramPackage.DDIAGRAM__HEADER_HEIGHT;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__TARGET = DDIAGRAM_FEATURE_COUNT + 0;
+    int DSEMANTIC_DIAGRAM__TARGET = DiagramPackage.DDIAGRAM_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>DSemantic Diagram</em>'
@@ -543,7 +543,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM_FEATURE_COUNT = DDIAGRAM_FEATURE_COUNT + 1;
+    int DSEMANTIC_DIAGRAM_FEATURE_COUNT = DiagramPackage.DDIAGRAM_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -560,7 +560,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -569,7 +569,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -587,7 +587,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -596,7 +596,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tooltip Text</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -673,7 +673,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.impl.HideFilterImpl
      * <em>Hide Filter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.impl.HideFilterImpl
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getHideFilter()
      * @generated
@@ -687,7 +687,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HIDE_FILTER_FEATURE_COUNT = GRAPHICAL_FILTER_FEATURE_COUNT + 0;
+    int HIDE_FILTER_FEATURE_COUNT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -708,7 +708,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HIDE_LABEL_FILTER_FEATURE_COUNT = GRAPHICAL_FILTER_FEATURE_COUNT + 0;
+    int HIDE_LABEL_FILTER_FEATURE_COUNT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -729,7 +729,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FOLDING_POINT_FILTER_FEATURE_COUNT = GRAPHICAL_FILTER_FEATURE_COUNT + 0;
+    int FOLDING_POINT_FILTER_FEATURE_COUNT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -750,7 +750,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FOLDING_FILTER_FEATURE_COUNT = GRAPHICAL_FILTER_FEATURE_COUNT + 0;
+    int FOLDING_FILTER_FEATURE_COUNT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -771,7 +771,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int APPLIED_COMPOSITE_FILTERS__COMPOSITE_FILTER_DESCRIPTIONS = GRAPHICAL_FILTER_FEATURE_COUNT + 0;
+    int APPLIED_COMPOSITE_FILTERS__COMPOSITE_FILTER_DESCRIPTIONS = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -781,7 +781,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int APPLIED_COMPOSITE_FILTERS_FEATURE_COUNT = GRAPHICAL_FILTER_FEATURE_COUNT + 1;
+    int APPLIED_COMPOSITE_FILTERS_FEATURE_COUNT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -802,7 +802,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSOLUTE_BOUNDS_FILTER__X = GRAPHICAL_FILTER_FEATURE_COUNT + 0;
+    int ABSOLUTE_BOUNDS_FILTER__X = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Y</b></em>' attribute. <!-- begin-user-doc
@@ -811,25 +811,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSOLUTE_BOUNDS_FILTER__Y = GRAPHICAL_FILTER_FEATURE_COUNT + 1;
+    int ABSOLUTE_BOUNDS_FILTER__Y = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSOLUTE_BOUNDS_FILTER__HEIGHT = GRAPHICAL_FILTER_FEATURE_COUNT + 2;
+    int ABSOLUTE_BOUNDS_FILTER__HEIGHT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSOLUTE_BOUNDS_FILTER__WIDTH = GRAPHICAL_FILTER_FEATURE_COUNT + 3;
+    int ABSOLUTE_BOUNDS_FILTER__WIDTH = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>Absolute Bounds Filter</em>
@@ -838,7 +838,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSOLUTE_BOUNDS_FILTER_FEATURE_COUNT = GRAPHICAL_FILTER_FEATURE_COUNT + 4;
+    int ABSOLUTE_BOUNDS_FILTER_FEATURE_COUNT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -854,20 +854,20 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__TARGET = DDIAGRAM_ELEMENT__TARGET;
+    int ABSTRACT_DNODE__TARGET = DiagramPackage.DDIAGRAM_ELEMENT__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__NAME = DDIAGRAM_ELEMENT__NAME;
+    int ABSTRACT_DNODE__NAME = DiagramPackage.DDIAGRAM_ELEMENT__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -876,25 +876,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__SEMANTIC_ELEMENTS = DDIAGRAM_ELEMENT__SEMANTIC_ELEMENTS;
+    int ABSTRACT_DNODE__SEMANTIC_ELEMENTS = DiagramPackage.DDIAGRAM_ELEMENT__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__VISIBLE = DDIAGRAM_ELEMENT__VISIBLE;
+    int ABSTRACT_DNODE__VISIBLE = DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE;
 
     /**
      * The feature id for the '<em><b>Tooltip Text</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__TOOLTIP_TEXT = DDIAGRAM_ELEMENT__TOOLTIP_TEXT;
+    int ABSTRACT_DNODE__TOOLTIP_TEXT = DiagramPackage.DDIAGRAM_ELEMENT__TOOLTIP_TEXT;
 
     /**
      * The feature id for the '<em><b>Parent Layers</b></em>' reference list.
@@ -903,7 +903,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__PARENT_LAYERS = DDIAGRAM_ELEMENT__PARENT_LAYERS;
+    int ABSTRACT_DNODE__PARENT_LAYERS = DiagramPackage.DDIAGRAM_ELEMENT__PARENT_LAYERS;
 
     /**
      * The feature id for the '<em><b>Decorations</b></em>' containment
@@ -912,7 +912,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__DECORATIONS = DDIAGRAM_ELEMENT__DECORATIONS;
+    int ABSTRACT_DNODE__DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>'
@@ -921,7 +921,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__DIAGRAM_ELEMENT_MAPPING = DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING;
+    int ABSTRACT_DNODE__DIAGRAM_ELEMENT_MAPPING = DiagramPackage.DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING;
 
     /**
      * The feature id for the '<em><b>Graphical Filters</b></em>' containment
@@ -930,7 +930,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__GRAPHICAL_FILTERS = DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS;
+    int ABSTRACT_DNODE__GRAPHICAL_FILTERS = DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS;
 
     /**
      * The feature id for the '<em><b>Owned Bordered Nodes</b></em>' containment
@@ -939,7 +939,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__OWNED_BORDERED_NODES = DDIAGRAM_ELEMENT_FEATURE_COUNT + 0;
+    int ABSTRACT_DNODE__OWNED_BORDERED_NODES = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Arrange Constraints</b></em>' attribute
@@ -948,7 +948,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE__ARRANGE_CONSTRAINTS = DDIAGRAM_ELEMENT_FEATURE_COUNT + 1;
+    int ABSTRACT_DNODE__ARRANGE_CONSTRAINTS = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Abstract DNode</em>' class.
@@ -957,7 +957,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DNODE_FEATURE_COUNT = DDIAGRAM_ELEMENT_FEATURE_COUNT + 2;
+    int ABSTRACT_DNODE_FEATURE_COUNT = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -973,20 +973,20 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__TARGET = ABSTRACT_DNODE__TARGET;
+    int DNODE__TARGET = DiagramPackage.ABSTRACT_DNODE__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__NAME = ABSTRACT_DNODE__NAME;
+    int DNODE__NAME = DiagramPackage.ABSTRACT_DNODE__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -995,25 +995,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__SEMANTIC_ELEMENTS = ABSTRACT_DNODE__SEMANTIC_ELEMENTS;
+    int DNODE__SEMANTIC_ELEMENTS = DiagramPackage.ABSTRACT_DNODE__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__VISIBLE = ABSTRACT_DNODE__VISIBLE;
+    int DNODE__VISIBLE = DiagramPackage.ABSTRACT_DNODE__VISIBLE;
 
     /**
      * The feature id for the '<em><b>Tooltip Text</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__TOOLTIP_TEXT = ABSTRACT_DNODE__TOOLTIP_TEXT;
+    int DNODE__TOOLTIP_TEXT = DiagramPackage.ABSTRACT_DNODE__TOOLTIP_TEXT;
 
     /**
      * The feature id for the '<em><b>Parent Layers</b></em>' reference list.
@@ -1022,7 +1022,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__PARENT_LAYERS = ABSTRACT_DNODE__PARENT_LAYERS;
+    int DNODE__PARENT_LAYERS = DiagramPackage.ABSTRACT_DNODE__PARENT_LAYERS;
 
     /**
      * The feature id for the '<em><b>Decorations</b></em>' containment
@@ -1031,7 +1031,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__DECORATIONS = ABSTRACT_DNODE__DECORATIONS;
+    int DNODE__DECORATIONS = DiagramPackage.ABSTRACT_DNODE__DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>'
@@ -1040,7 +1040,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__DIAGRAM_ELEMENT_MAPPING = ABSTRACT_DNODE__DIAGRAM_ELEMENT_MAPPING;
+    int DNODE__DIAGRAM_ELEMENT_MAPPING = DiagramPackage.ABSTRACT_DNODE__DIAGRAM_ELEMENT_MAPPING;
 
     /**
      * The feature id for the '<em><b>Graphical Filters</b></em>' containment
@@ -1049,7 +1049,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__GRAPHICAL_FILTERS = ABSTRACT_DNODE__GRAPHICAL_FILTERS;
+    int DNODE__GRAPHICAL_FILTERS = DiagramPackage.ABSTRACT_DNODE__GRAPHICAL_FILTERS;
 
     /**
      * The feature id for the '<em><b>Owned Bordered Nodes</b></em>' containment
@@ -1058,7 +1058,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__OWNED_BORDERED_NODES = ABSTRACT_DNODE__OWNED_BORDERED_NODES;
+    int DNODE__OWNED_BORDERED_NODES = DiagramPackage.ABSTRACT_DNODE__OWNED_BORDERED_NODES;
 
     /**
      * The feature id for the '<em><b>Arrange Constraints</b></em>' attribute
@@ -1067,7 +1067,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__ARRANGE_CONSTRAINTS = ABSTRACT_DNODE__ARRANGE_CONSTRAINTS;
+    int DNODE__ARRANGE_CONSTRAINTS = DiagramPackage.ABSTRACT_DNODE__ARRANGE_CONSTRAINTS;
 
     /**
      * The feature id for the '<em><b>Outgoing Edges</b></em>' reference list.
@@ -1076,7 +1076,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__OUTGOING_EDGES = ABSTRACT_DNODE_FEATURE_COUNT + 0;
+    int DNODE__OUTGOING_EDGES = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Incoming Edges</b></em>' reference list.
@@ -1085,25 +1085,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__INCOMING_EDGES = ABSTRACT_DNODE_FEATURE_COUNT + 1;
+    int DNODE__INCOMING_EDGES = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__WIDTH = ABSTRACT_DNODE_FEATURE_COUNT + 2;
+    int DNODE__WIDTH = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__HEIGHT = ABSTRACT_DNODE_FEATURE_COUNT + 3;
+    int DNODE__HEIGHT = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
@@ -1112,43 +1112,43 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__OWNED_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 4;
+    int DNODE__OWNED_STYLE = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__LABEL_POSITION = ABSTRACT_DNODE_FEATURE_COUNT + 5;
+    int DNODE__LABEL_POSITION = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__RESIZE_KIND = ABSTRACT_DNODE_FEATURE_COUNT + 6;
+    int DNODE__RESIZE_KIND = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__ORIGINAL_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 7;
+    int DNODE__ORIGINAL_STYLE = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE__ACTUAL_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 8;
+    int DNODE__ACTUAL_MAPPING = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Candidates Mapping</b></em>' reference
@@ -1157,16 +1157,16 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__CANDIDATES_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 9;
+    int DNODE__CANDIDATES_MAPPING = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 9;
 
     /**
      * The number of structural features of the '<em>DNode</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_FEATURE_COUNT = ABSTRACT_DNODE_FEATURE_COUNT + 10;
+    int DNODE_FEATURE_COUNT = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 10;
 
     /**
      * The meta object id for the '
@@ -1183,20 +1183,20 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__TARGET = ABSTRACT_DNODE__TARGET;
+    int DDIAGRAM_ELEMENT_CONTAINER__TARGET = DiagramPackage.ABSTRACT_DNODE__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__NAME = ABSTRACT_DNODE__NAME;
+    int DDIAGRAM_ELEMENT_CONTAINER__NAME = DiagramPackage.ABSTRACT_DNODE__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -1205,25 +1205,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__SEMANTIC_ELEMENTS = ABSTRACT_DNODE__SEMANTIC_ELEMENTS;
+    int DDIAGRAM_ELEMENT_CONTAINER__SEMANTIC_ELEMENTS = DiagramPackage.ABSTRACT_DNODE__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__VISIBLE = ABSTRACT_DNODE__VISIBLE;
+    int DDIAGRAM_ELEMENT_CONTAINER__VISIBLE = DiagramPackage.ABSTRACT_DNODE__VISIBLE;
 
     /**
      * The feature id for the '<em><b>Tooltip Text</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__TOOLTIP_TEXT = ABSTRACT_DNODE__TOOLTIP_TEXT;
+    int DDIAGRAM_ELEMENT_CONTAINER__TOOLTIP_TEXT = DiagramPackage.ABSTRACT_DNODE__TOOLTIP_TEXT;
 
     /**
      * The feature id for the '<em><b>Parent Layers</b></em>' reference list.
@@ -1232,7 +1232,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__PARENT_LAYERS = ABSTRACT_DNODE__PARENT_LAYERS;
+    int DDIAGRAM_ELEMENT_CONTAINER__PARENT_LAYERS = DiagramPackage.ABSTRACT_DNODE__PARENT_LAYERS;
 
     /**
      * The feature id for the '<em><b>Decorations</b></em>' containment
@@ -1241,7 +1241,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__DECORATIONS = ABSTRACT_DNODE__DECORATIONS;
+    int DDIAGRAM_ELEMENT_CONTAINER__DECORATIONS = DiagramPackage.ABSTRACT_DNODE__DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>'
@@ -1250,7 +1250,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__DIAGRAM_ELEMENT_MAPPING = ABSTRACT_DNODE__DIAGRAM_ELEMENT_MAPPING;
+    int DDIAGRAM_ELEMENT_CONTAINER__DIAGRAM_ELEMENT_MAPPING = DiagramPackage.ABSTRACT_DNODE__DIAGRAM_ELEMENT_MAPPING;
 
     /**
      * The feature id for the '<em><b>Graphical Filters</b></em>' containment
@@ -1259,7 +1259,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__GRAPHICAL_FILTERS = ABSTRACT_DNODE__GRAPHICAL_FILTERS;
+    int DDIAGRAM_ELEMENT_CONTAINER__GRAPHICAL_FILTERS = DiagramPackage.ABSTRACT_DNODE__GRAPHICAL_FILTERS;
 
     /**
      * The feature id for the '<em><b>Owned Bordered Nodes</b></em>' containment
@@ -1268,7 +1268,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES = ABSTRACT_DNODE__OWNED_BORDERED_NODES;
+    int DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES = DiagramPackage.ABSTRACT_DNODE__OWNED_BORDERED_NODES;
 
     /**
      * The feature id for the '<em><b>Arrange Constraints</b></em>' attribute
@@ -1277,7 +1277,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__ARRANGE_CONSTRAINTS = ABSTRACT_DNODE__ARRANGE_CONSTRAINTS;
+    int DDIAGRAM_ELEMENT_CONTAINER__ARRANGE_CONSTRAINTS = DiagramPackage.ABSTRACT_DNODE__ARRANGE_CONSTRAINTS;
 
     /**
      * The feature id for the '<em><b>Outgoing Edges</b></em>' reference list.
@@ -1286,7 +1286,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES = ABSTRACT_DNODE_FEATURE_COUNT + 0;
+    int DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Incoming Edges</b></em>' reference list.
@@ -1295,34 +1295,34 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES = ABSTRACT_DNODE_FEATURE_COUNT + 1;
+    int DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Nodes</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__NODES = ABSTRACT_DNODE_FEATURE_COUNT + 2;
+    int DDIAGRAM_ELEMENT_CONTAINER__NODES = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Containers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS = ABSTRACT_DNODE_FEATURE_COUNT + 3;
+    int DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Elements</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS = ABSTRACT_DNODE_FEATURE_COUNT + 4;
+    int DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
@@ -1331,25 +1331,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 5;
+    int DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 6;
+    int DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 7;
+    int DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Candidates Mapping</b></em>' reference
@@ -1358,25 +1358,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 8;
+    int DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__WIDTH = ABSTRACT_DNODE_FEATURE_COUNT + 9;
+    int DDIAGRAM_ELEMENT_CONTAINER__WIDTH = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__HEIGHT = ABSTRACT_DNODE_FEATURE_COUNT + 10;
+    int DDIAGRAM_ELEMENT_CONTAINER__HEIGHT = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 10;
 
     /**
      * The number of structural features of the '
@@ -1386,7 +1386,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT = ABSTRACT_DNODE_FEATURE_COUNT + 11;
+    int DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 11;
 
     /**
      * The meta object id for the '
@@ -1403,20 +1403,20 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__TARGET = DDIAGRAM_ELEMENT_CONTAINER__TARGET;
+    int DNODE_CONTAINER__TARGET = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__NAME = DDIAGRAM_ELEMENT_CONTAINER__NAME;
+    int DNODE_CONTAINER__NAME = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -1425,25 +1425,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__SEMANTIC_ELEMENTS = DDIAGRAM_ELEMENT_CONTAINER__SEMANTIC_ELEMENTS;
+    int DNODE_CONTAINER__SEMANTIC_ELEMENTS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__VISIBLE = DDIAGRAM_ELEMENT_CONTAINER__VISIBLE;
+    int DNODE_CONTAINER__VISIBLE = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__VISIBLE;
 
     /**
      * The feature id for the '<em><b>Tooltip Text</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__TOOLTIP_TEXT = DDIAGRAM_ELEMENT_CONTAINER__TOOLTIP_TEXT;
+    int DNODE_CONTAINER__TOOLTIP_TEXT = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__TOOLTIP_TEXT;
 
     /**
      * The feature id for the '<em><b>Parent Layers</b></em>' reference list.
@@ -1452,7 +1452,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__PARENT_LAYERS = DDIAGRAM_ELEMENT_CONTAINER__PARENT_LAYERS;
+    int DNODE_CONTAINER__PARENT_LAYERS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__PARENT_LAYERS;
 
     /**
      * The feature id for the '<em><b>Decorations</b></em>' containment
@@ -1461,7 +1461,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__DECORATIONS = DDIAGRAM_ELEMENT_CONTAINER__DECORATIONS;
+    int DNODE_CONTAINER__DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>'
@@ -1470,7 +1470,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__DIAGRAM_ELEMENT_MAPPING = DDIAGRAM_ELEMENT_CONTAINER__DIAGRAM_ELEMENT_MAPPING;
+    int DNODE_CONTAINER__DIAGRAM_ELEMENT_MAPPING = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__DIAGRAM_ELEMENT_MAPPING;
 
     /**
      * The feature id for the '<em><b>Graphical Filters</b></em>' containment
@@ -1479,7 +1479,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__GRAPHICAL_FILTERS = DDIAGRAM_ELEMENT_CONTAINER__GRAPHICAL_FILTERS;
+    int DNODE_CONTAINER__GRAPHICAL_FILTERS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__GRAPHICAL_FILTERS;
 
     /**
      * The feature id for the '<em><b>Owned Bordered Nodes</b></em>' containment
@@ -1488,7 +1488,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__OWNED_BORDERED_NODES = DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES;
+    int DNODE_CONTAINER__OWNED_BORDERED_NODES = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES;
 
     /**
      * The feature id for the '<em><b>Arrange Constraints</b></em>' attribute
@@ -1497,7 +1497,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__ARRANGE_CONSTRAINTS = DDIAGRAM_ELEMENT_CONTAINER__ARRANGE_CONSTRAINTS;
+    int DNODE_CONTAINER__ARRANGE_CONSTRAINTS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ARRANGE_CONSTRAINTS;
 
     /**
      * The feature id for the '<em><b>Outgoing Edges</b></em>' reference list.
@@ -1506,7 +1506,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__OUTGOING_EDGES = DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES;
+    int DNODE_CONTAINER__OUTGOING_EDGES = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES;
 
     /**
      * The feature id for the '<em><b>Incoming Edges</b></em>' reference list.
@@ -1515,34 +1515,34 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__INCOMING_EDGES = DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES;
+    int DNODE_CONTAINER__INCOMING_EDGES = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES;
 
     /**
      * The feature id for the '<em><b>Nodes</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__NODES = DDIAGRAM_ELEMENT_CONTAINER__NODES;
+    int DNODE_CONTAINER__NODES = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__NODES;
 
     /**
      * The feature id for the '<em><b>Containers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__CONTAINERS = DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS;
+    int DNODE_CONTAINER__CONTAINERS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS;
 
     /**
      * The feature id for the '<em><b>Elements</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__ELEMENTS = DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS;
+    int DNODE_CONTAINER__ELEMENTS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
@@ -1551,25 +1551,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__OWNED_STYLE = DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE;
+    int DNODE_CONTAINER__OWNED_STYLE = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE;
 
     /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__ORIGINAL_STYLE = DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE;
+    int DNODE_CONTAINER__ORIGINAL_STYLE = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE;
 
     /**
      * The feature id for the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__ACTUAL_MAPPING = DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING;
+    int DNODE_CONTAINER__ACTUAL_MAPPING = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING;
 
     /**
      * The feature id for the '<em><b>Candidates Mapping</b></em>' reference
@@ -1578,25 +1578,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__CANDIDATES_MAPPING = DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING;
+    int DNODE_CONTAINER__CANDIDATES_MAPPING = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__WIDTH = DDIAGRAM_ELEMENT_CONTAINER__WIDTH;
+    int DNODE_CONTAINER__WIDTH = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__WIDTH;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__HEIGHT = DDIAGRAM_ELEMENT_CONTAINER__HEIGHT;
+    int DNODE_CONTAINER__HEIGHT = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__HEIGHT;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>'
@@ -1605,7 +1605,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS = DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 0;
+    int DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute.
@@ -1614,7 +1614,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER__CHILDREN_PRESENTATION = DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 1;
+    int DNODE_CONTAINER__CHILDREN_PRESENTATION = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>DNode Container</em>'
@@ -1623,7 +1623,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_CONTAINER_FEATURE_COUNT = DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 2;
+    int DNODE_CONTAINER_FEATURE_COUNT = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -1639,20 +1639,20 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__TARGET = DDIAGRAM_ELEMENT_CONTAINER__TARGET;
+    int DNODE_LIST__TARGET = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__NAME = DDIAGRAM_ELEMENT_CONTAINER__NAME;
+    int DNODE_LIST__NAME = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -1661,25 +1661,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__SEMANTIC_ELEMENTS = DDIAGRAM_ELEMENT_CONTAINER__SEMANTIC_ELEMENTS;
+    int DNODE_LIST__SEMANTIC_ELEMENTS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__VISIBLE = DDIAGRAM_ELEMENT_CONTAINER__VISIBLE;
+    int DNODE_LIST__VISIBLE = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__VISIBLE;
 
     /**
      * The feature id for the '<em><b>Tooltip Text</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__TOOLTIP_TEXT = DDIAGRAM_ELEMENT_CONTAINER__TOOLTIP_TEXT;
+    int DNODE_LIST__TOOLTIP_TEXT = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__TOOLTIP_TEXT;
 
     /**
      * The feature id for the '<em><b>Parent Layers</b></em>' reference list.
@@ -1688,7 +1688,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__PARENT_LAYERS = DDIAGRAM_ELEMENT_CONTAINER__PARENT_LAYERS;
+    int DNODE_LIST__PARENT_LAYERS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__PARENT_LAYERS;
 
     /**
      * The feature id for the '<em><b>Decorations</b></em>' containment
@@ -1697,7 +1697,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__DECORATIONS = DDIAGRAM_ELEMENT_CONTAINER__DECORATIONS;
+    int DNODE_LIST__DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>'
@@ -1706,7 +1706,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__DIAGRAM_ELEMENT_MAPPING = DDIAGRAM_ELEMENT_CONTAINER__DIAGRAM_ELEMENT_MAPPING;
+    int DNODE_LIST__DIAGRAM_ELEMENT_MAPPING = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__DIAGRAM_ELEMENT_MAPPING;
 
     /**
      * The feature id for the '<em><b>Graphical Filters</b></em>' containment
@@ -1715,7 +1715,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__GRAPHICAL_FILTERS = DDIAGRAM_ELEMENT_CONTAINER__GRAPHICAL_FILTERS;
+    int DNODE_LIST__GRAPHICAL_FILTERS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__GRAPHICAL_FILTERS;
 
     /**
      * The feature id for the '<em><b>Owned Bordered Nodes</b></em>' containment
@@ -1724,7 +1724,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__OWNED_BORDERED_NODES = DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES;
+    int DNODE_LIST__OWNED_BORDERED_NODES = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES;
 
     /**
      * The feature id for the '<em><b>Arrange Constraints</b></em>' attribute
@@ -1733,7 +1733,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__ARRANGE_CONSTRAINTS = DDIAGRAM_ELEMENT_CONTAINER__ARRANGE_CONSTRAINTS;
+    int DNODE_LIST__ARRANGE_CONSTRAINTS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ARRANGE_CONSTRAINTS;
 
     /**
      * The feature id for the '<em><b>Outgoing Edges</b></em>' reference list.
@@ -1742,7 +1742,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__OUTGOING_EDGES = DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES;
+    int DNODE_LIST__OUTGOING_EDGES = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES;
 
     /**
      * The feature id for the '<em><b>Incoming Edges</b></em>' reference list.
@@ -1751,34 +1751,34 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__INCOMING_EDGES = DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES;
+    int DNODE_LIST__INCOMING_EDGES = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES;
 
     /**
      * The feature id for the '<em><b>Nodes</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__NODES = DDIAGRAM_ELEMENT_CONTAINER__NODES;
+    int DNODE_LIST__NODES = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__NODES;
 
     /**
      * The feature id for the '<em><b>Containers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__CONTAINERS = DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS;
+    int DNODE_LIST__CONTAINERS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS;
 
     /**
      * The feature id for the '<em><b>Elements</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__ELEMENTS = DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS;
+    int DNODE_LIST__ELEMENTS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
@@ -1787,25 +1787,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__OWNED_STYLE = DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE;
+    int DNODE_LIST__OWNED_STYLE = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE;
 
     /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__ORIGINAL_STYLE = DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE;
+    int DNODE_LIST__ORIGINAL_STYLE = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE;
 
     /**
      * The feature id for the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__ACTUAL_MAPPING = DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING;
+    int DNODE_LIST__ACTUAL_MAPPING = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING;
 
     /**
      * The feature id for the '<em><b>Candidates Mapping</b></em>' reference
@@ -1814,25 +1814,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__CANDIDATES_MAPPING = DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING;
+    int DNODE_LIST__CANDIDATES_MAPPING = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__WIDTH = DDIAGRAM_ELEMENT_CONTAINER__WIDTH;
+    int DNODE_LIST__WIDTH = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__WIDTH;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST__HEIGHT = DDIAGRAM_ELEMENT_CONTAINER__HEIGHT;
+    int DNODE_LIST__HEIGHT = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__HEIGHT;
 
     /**
      * The feature id for the '<em><b>Owned Elements</b></em>' containment
@@ -1841,7 +1841,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST__OWNED_ELEMENTS = DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 0;
+    int DNODE_LIST__OWNED_ELEMENTS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>DNode List</em>' class.
@@ -1850,7 +1850,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_FEATURE_COUNT = DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 1;
+    int DNODE_LIST_FEATURE_COUNT = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1867,20 +1867,20 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__TARGET = ABSTRACT_DNODE__TARGET;
+    int DNODE_LIST_ELEMENT__TARGET = DiagramPackage.ABSTRACT_DNODE__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__NAME = ABSTRACT_DNODE__NAME;
+    int DNODE_LIST_ELEMENT__NAME = DiagramPackage.ABSTRACT_DNODE__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -1889,25 +1889,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__SEMANTIC_ELEMENTS = ABSTRACT_DNODE__SEMANTIC_ELEMENTS;
+    int DNODE_LIST_ELEMENT__SEMANTIC_ELEMENTS = DiagramPackage.ABSTRACT_DNODE__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__VISIBLE = ABSTRACT_DNODE__VISIBLE;
+    int DNODE_LIST_ELEMENT__VISIBLE = DiagramPackage.ABSTRACT_DNODE__VISIBLE;
 
     /**
      * The feature id for the '<em><b>Tooltip Text</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__TOOLTIP_TEXT = ABSTRACT_DNODE__TOOLTIP_TEXT;
+    int DNODE_LIST_ELEMENT__TOOLTIP_TEXT = DiagramPackage.ABSTRACT_DNODE__TOOLTIP_TEXT;
 
     /**
      * The feature id for the '<em><b>Parent Layers</b></em>' reference list.
@@ -1916,7 +1916,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__PARENT_LAYERS = ABSTRACT_DNODE__PARENT_LAYERS;
+    int DNODE_LIST_ELEMENT__PARENT_LAYERS = DiagramPackage.ABSTRACT_DNODE__PARENT_LAYERS;
 
     /**
      * The feature id for the '<em><b>Decorations</b></em>' containment
@@ -1925,7 +1925,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__DECORATIONS = ABSTRACT_DNODE__DECORATIONS;
+    int DNODE_LIST_ELEMENT__DECORATIONS = DiagramPackage.ABSTRACT_DNODE__DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>'
@@ -1934,7 +1934,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__DIAGRAM_ELEMENT_MAPPING = ABSTRACT_DNODE__DIAGRAM_ELEMENT_MAPPING;
+    int DNODE_LIST_ELEMENT__DIAGRAM_ELEMENT_MAPPING = DiagramPackage.ABSTRACT_DNODE__DIAGRAM_ELEMENT_MAPPING;
 
     /**
      * The feature id for the '<em><b>Graphical Filters</b></em>' containment
@@ -1943,7 +1943,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__GRAPHICAL_FILTERS = ABSTRACT_DNODE__GRAPHICAL_FILTERS;
+    int DNODE_LIST_ELEMENT__GRAPHICAL_FILTERS = DiagramPackage.ABSTRACT_DNODE__GRAPHICAL_FILTERS;
 
     /**
      * The feature id for the '<em><b>Owned Bordered Nodes</b></em>' containment
@@ -1952,7 +1952,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__OWNED_BORDERED_NODES = ABSTRACT_DNODE__OWNED_BORDERED_NODES;
+    int DNODE_LIST_ELEMENT__OWNED_BORDERED_NODES = DiagramPackage.ABSTRACT_DNODE__OWNED_BORDERED_NODES;
 
     /**
      * The feature id for the '<em><b>Arrange Constraints</b></em>' attribute
@@ -1961,7 +1961,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__ARRANGE_CONSTRAINTS = ABSTRACT_DNODE__ARRANGE_CONSTRAINTS;
+    int DNODE_LIST_ELEMENT__ARRANGE_CONSTRAINTS = DiagramPackage.ABSTRACT_DNODE__ARRANGE_CONSTRAINTS;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
@@ -1970,25 +1970,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__OWNED_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 0;
+    int DNODE_LIST_ELEMENT__OWNED_STYLE = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__ORIGINAL_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 1;
+    int DNODE_LIST_ELEMENT__ORIGINAL_STYLE = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__ACTUAL_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 2;
+    int DNODE_LIST_ELEMENT__ACTUAL_MAPPING = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Candidates Mapping</b></em>' reference
@@ -1997,7 +1997,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT__CANDIDATES_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 3;
+    int DNODE_LIST_ELEMENT__CANDIDATES_MAPPING = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>DNode List Element</em>'
@@ -2006,7 +2006,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_LIST_ELEMENT_FEATURE_COUNT = ABSTRACT_DNODE_FEATURE_COUNT + 4;
+    int DNODE_LIST_ELEMENT_FEATURE_COUNT = DiagramPackage.ABSTRACT_DNODE_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -2022,20 +2022,20 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__TARGET = DDIAGRAM_ELEMENT__TARGET;
+    int DEDGE__TARGET = DiagramPackage.DDIAGRAM_ELEMENT__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__NAME = DDIAGRAM_ELEMENT__NAME;
+    int DEDGE__NAME = DiagramPackage.DDIAGRAM_ELEMENT__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -2044,25 +2044,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DEDGE__SEMANTIC_ELEMENTS = DDIAGRAM_ELEMENT__SEMANTIC_ELEMENTS;
+    int DEDGE__SEMANTIC_ELEMENTS = DiagramPackage.DDIAGRAM_ELEMENT__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__VISIBLE = DDIAGRAM_ELEMENT__VISIBLE;
+    int DEDGE__VISIBLE = DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE;
 
     /**
      * The feature id for the '<em><b>Tooltip Text</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__TOOLTIP_TEXT = DDIAGRAM_ELEMENT__TOOLTIP_TEXT;
+    int DEDGE__TOOLTIP_TEXT = DiagramPackage.DDIAGRAM_ELEMENT__TOOLTIP_TEXT;
 
     /**
      * The feature id for the '<em><b>Parent Layers</b></em>' reference list.
@@ -2071,7 +2071,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DEDGE__PARENT_LAYERS = DDIAGRAM_ELEMENT__PARENT_LAYERS;
+    int DEDGE__PARENT_LAYERS = DiagramPackage.DDIAGRAM_ELEMENT__PARENT_LAYERS;
 
     /**
      * The feature id for the '<em><b>Decorations</b></em>' containment
@@ -2080,7 +2080,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DEDGE__DECORATIONS = DDIAGRAM_ELEMENT__DECORATIONS;
+    int DEDGE__DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>'
@@ -2089,7 +2089,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DEDGE__DIAGRAM_ELEMENT_MAPPING = DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING;
+    int DEDGE__DIAGRAM_ELEMENT_MAPPING = DiagramPackage.DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING;
 
     /**
      * The feature id for the '<em><b>Graphical Filters</b></em>' containment
@@ -2098,7 +2098,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DEDGE__GRAPHICAL_FILTERS = DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS;
+    int DEDGE__GRAPHICAL_FILTERS = DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS;
 
     /**
      * The feature id for the '<em><b>Outgoing Edges</b></em>' reference list.
@@ -2107,7 +2107,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DEDGE__OUTGOING_EDGES = DDIAGRAM_ELEMENT_FEATURE_COUNT + 0;
+    int DEDGE__OUTGOING_EDGES = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Incoming Edges</b></em>' reference list.
@@ -2116,7 +2116,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DEDGE__INCOMING_EDGES = DDIAGRAM_ELEMENT_FEATURE_COUNT + 1;
+    int DEDGE__INCOMING_EDGES = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
@@ -2125,88 +2125,88 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DEDGE__OWNED_STYLE = DDIAGRAM_ELEMENT_FEATURE_COUNT + 2;
+    int DEDGE__OWNED_STYLE = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__SIZE = DDIAGRAM_ELEMENT_FEATURE_COUNT + 3;
+    int DEDGE__SIZE = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Source Node</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__SOURCE_NODE = DDIAGRAM_ELEMENT_FEATURE_COUNT + 4;
+    int DEDGE__SOURCE_NODE = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Target Node</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__TARGET_NODE = DDIAGRAM_ELEMENT_FEATURE_COUNT + 5;
+    int DEDGE__TARGET_NODE = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__ACTUAL_MAPPING = DDIAGRAM_ELEMENT_FEATURE_COUNT + 6;
+    int DEDGE__ACTUAL_MAPPING = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Routing Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__ROUTING_STYLE = DDIAGRAM_ELEMENT_FEATURE_COUNT + 7;
+    int DEDGE__ROUTING_STYLE = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Is Fold</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__IS_FOLD = DDIAGRAM_ELEMENT_FEATURE_COUNT + 8;
+    int DEDGE__IS_FOLD = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Is Mock Edge</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__IS_MOCK_EDGE = DDIAGRAM_ELEMENT_FEATURE_COUNT + 9;
+    int DEDGE__IS_MOCK_EDGE = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__ORIGINAL_STYLE = DDIAGRAM_ELEMENT_FEATURE_COUNT + 10;
+    int DEDGE__ORIGINAL_STYLE = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Path</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__PATH = DDIAGRAM_ELEMENT_FEATURE_COUNT + 11;
+    int DEDGE__PATH = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Arrange Constraints</b></em>' attribute
@@ -2215,34 +2215,34 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DEDGE__ARRANGE_CONSTRAINTS = DDIAGRAM_ELEMENT_FEATURE_COUNT + 12;
+    int DEDGE__ARRANGE_CONSTRAINTS = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Begin Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__BEGIN_LABEL = DDIAGRAM_ELEMENT_FEATURE_COUNT + 13;
+    int DEDGE__BEGIN_LABEL = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>End Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE__END_LABEL = DDIAGRAM_ELEMENT_FEATURE_COUNT + 14;
+    int DEDGE__END_LABEL = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 14;
 
     /**
      * The number of structural features of the '<em>DEdge</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DEDGE_FEATURE_COUNT = DDIAGRAM_ELEMENT_FEATURE_COUNT + 15;
+    int DEDGE_FEATURE_COUNT = DiagramPackage.DDIAGRAM_ELEMENT_FEATURE_COUNT + 15;
 
     /**
      * The meta object id for the '
@@ -2267,7 +2267,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2276,7 +2276,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2285,7 +2285,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2294,7 +2294,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2303,7 +2303,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2312,7 +2312,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2321,7 +2321,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2330,7 +2330,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2340,7 +2340,7 @@ public interface DiagramPackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2349,7 +2349,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2358,7 +2358,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2386,7 +2386,7 @@ public interface DiagramPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.impl.DotImpl <em>Dot</em>}' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.impl.DotImpl
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDot()
      * @generated
@@ -2400,107 +2400,107 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DOT__CUSTOM_FEATURES = NODE_STYLE__CUSTOM_FEATURES;
+    int DOT__CUSTOM_FEATURES = DiagramPackage.NODE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int DOT__LABEL_SIZE = DiagramPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int DOT__LABEL_FORMAT = DiagramPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int DOT__SHOW_ICON = DiagramPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int DOT__ICON_PATH = DiagramPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int DOT__LABEL_COLOR = DiagramPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int DOT__LABEL_ALIGNMENT = DiagramPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__DESCRIPTION = NODE_STYLE__DESCRIPTION;
+    int DOT__DESCRIPTION = DiagramPackage.NODE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int DOT__BORDER_SIZE = DiagramPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int DOT__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int DOT__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int DOT__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -2509,42 +2509,42 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DOT__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int DOT__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '
      * <em><b>Stroke Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__STROKE_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_FEATURE_COUNT + 0;
+    int DOT__STROKE_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__BACKGROUND_COLOR = NODE_STYLE_FEATURE_COUNT + 1;
+    int DOT__BACKGROUND_COLOR = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Dot</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 2;
+    int DOT_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl
      * <em>Gauge Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.impl.GaugeSectionImpl
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getGaugeSection()
      * @generated
@@ -2563,7 +2563,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Min</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2572,7 +2572,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Max</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2581,7 +2581,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Value</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2590,7 +2590,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2599,7 +2599,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2608,7 +2608,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2647,7 +2647,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2656,7 +2656,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2665,7 +2665,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2674,7 +2674,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2683,7 +2683,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2692,7 +2692,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2701,7 +2701,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2710,7 +2710,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2720,7 +2720,7 @@ public interface DiagramPackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2729,7 +2729,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2763,125 +2763,125 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__CUSTOM_FEATURES = CONTAINER_STYLE__CUSTOM_FEATURES;
+    int FLAT_CONTAINER_STYLE__CUSTOM_FEATURES = DiagramPackage.CONTAINER_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__LABEL_SIZE = CONTAINER_STYLE__LABEL_SIZE;
+    int FLAT_CONTAINER_STYLE__LABEL_SIZE = DiagramPackage.CONTAINER_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__LABEL_FORMAT = CONTAINER_STYLE__LABEL_FORMAT;
+    int FLAT_CONTAINER_STYLE__LABEL_FORMAT = DiagramPackage.CONTAINER_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__SHOW_ICON = CONTAINER_STYLE__SHOW_ICON;
+    int FLAT_CONTAINER_STYLE__SHOW_ICON = DiagramPackage.CONTAINER_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__ICON_PATH = CONTAINER_STYLE__ICON_PATH;
+    int FLAT_CONTAINER_STYLE__ICON_PATH = DiagramPackage.CONTAINER_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__LABEL_COLOR = CONTAINER_STYLE__LABEL_COLOR;
+    int FLAT_CONTAINER_STYLE__LABEL_COLOR = DiagramPackage.CONTAINER_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__LABEL_ALIGNMENT = CONTAINER_STYLE__LABEL_ALIGNMENT;
+    int FLAT_CONTAINER_STYLE__LABEL_ALIGNMENT = DiagramPackage.CONTAINER_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__DESCRIPTION = CONTAINER_STYLE__DESCRIPTION;
+    int FLAT_CONTAINER_STYLE__DESCRIPTION = DiagramPackage.CONTAINER_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__BORDER_SIZE = CONTAINER_STYLE__BORDER_SIZE;
+    int FLAT_CONTAINER_STYLE__BORDER_SIZE = DiagramPackage.CONTAINER_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int FLAT_CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__BORDER_COLOR = CONTAINER_STYLE__BORDER_COLOR;
+    int FLAT_CONTAINER_STYLE__BORDER_COLOR = DiagramPackage.CONTAINER_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Background Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__BACKGROUND_STYLE = CONTAINER_STYLE_FEATURE_COUNT + 0;
+    int FLAT_CONTAINER_STYLE__BACKGROUND_STYLE = DiagramPackage.CONTAINER_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = CONTAINER_STYLE_FEATURE_COUNT + 1;
+    int FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = DiagramPackage.CONTAINER_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = CONTAINER_STYLE_FEATURE_COUNT + 2;
+    int FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = DiagramPackage.CONTAINER_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Flat Container Style</em>'
@@ -2890,7 +2890,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_FEATURE_COUNT = CONTAINER_STYLE_FEATURE_COUNT + 3;
+    int FLAT_CONTAINER_STYLE_FEATURE_COUNT = DiagramPackage.CONTAINER_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -2911,116 +2911,116 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__CUSTOM_FEATURES = CONTAINER_STYLE__CUSTOM_FEATURES;
+    int SHAPE_CONTAINER_STYLE__CUSTOM_FEATURES = DiagramPackage.CONTAINER_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__LABEL_SIZE = CONTAINER_STYLE__LABEL_SIZE;
+    int SHAPE_CONTAINER_STYLE__LABEL_SIZE = DiagramPackage.CONTAINER_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__LABEL_FORMAT = CONTAINER_STYLE__LABEL_FORMAT;
+    int SHAPE_CONTAINER_STYLE__LABEL_FORMAT = DiagramPackage.CONTAINER_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__SHOW_ICON = CONTAINER_STYLE__SHOW_ICON;
+    int SHAPE_CONTAINER_STYLE__SHOW_ICON = DiagramPackage.CONTAINER_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__ICON_PATH = CONTAINER_STYLE__ICON_PATH;
+    int SHAPE_CONTAINER_STYLE__ICON_PATH = DiagramPackage.CONTAINER_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__LABEL_COLOR = CONTAINER_STYLE__LABEL_COLOR;
+    int SHAPE_CONTAINER_STYLE__LABEL_COLOR = DiagramPackage.CONTAINER_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__LABEL_ALIGNMENT = CONTAINER_STYLE__LABEL_ALIGNMENT;
+    int SHAPE_CONTAINER_STYLE__LABEL_ALIGNMENT = DiagramPackage.CONTAINER_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__DESCRIPTION = CONTAINER_STYLE__DESCRIPTION;
+    int SHAPE_CONTAINER_STYLE__DESCRIPTION = DiagramPackage.CONTAINER_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__BORDER_SIZE = CONTAINER_STYLE__BORDER_SIZE;
+    int SHAPE_CONTAINER_STYLE__BORDER_SIZE = DiagramPackage.CONTAINER_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int SHAPE_CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__BORDER_COLOR = CONTAINER_STYLE__BORDER_COLOR;
+    int SHAPE_CONTAINER_STYLE__BORDER_COLOR = DiagramPackage.CONTAINER_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__SHAPE = CONTAINER_STYLE_FEATURE_COUNT + 0;
+    int SHAPE_CONTAINER_STYLE__SHAPE = DiagramPackage.CONTAINER_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = CONTAINER_STYLE_FEATURE_COUNT + 1;
+    int SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = DiagramPackage.CONTAINER_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Shape Container Style</em>'
@@ -3029,7 +3029,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_FEATURE_COUNT = CONTAINER_STYLE_FEATURE_COUNT + 2;
+    int SHAPE_CONTAINER_STYLE_FEATURE_COUNT = DiagramPackage.CONTAINER_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -3049,107 +3049,107 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SQUARE__CUSTOM_FEATURES = NODE_STYLE__CUSTOM_FEATURES;
+    int SQUARE__CUSTOM_FEATURES = DiagramPackage.NODE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int SQUARE__LABEL_SIZE = DiagramPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int SQUARE__LABEL_FORMAT = DiagramPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int SQUARE__SHOW_ICON = DiagramPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int SQUARE__ICON_PATH = DiagramPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int SQUARE__LABEL_COLOR = DiagramPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int SQUARE__LABEL_ALIGNMENT = DiagramPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__DESCRIPTION = NODE_STYLE__DESCRIPTION;
+    int SQUARE__DESCRIPTION = DiagramPackage.NODE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int SQUARE__BORDER_SIZE = DiagramPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int SQUARE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int SQUARE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int SQUARE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -3158,43 +3158,43 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SQUARE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int SQUARE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__WIDTH = NODE_STYLE_FEATURE_COUNT + 0;
+    int SQUARE__WIDTH = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__HEIGHT = NODE_STYLE_FEATURE_COUNT + 1;
+    int SQUARE__HEIGHT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__COLOR = NODE_STYLE_FEATURE_COUNT + 2;
+    int SQUARE__COLOR = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Square</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 3;
+    int SQUARE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -3214,107 +3214,107 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELLIPSE__CUSTOM_FEATURES = NODE_STYLE__CUSTOM_FEATURES;
+    int ELLIPSE__CUSTOM_FEATURES = DiagramPackage.NODE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int ELLIPSE__LABEL_SIZE = DiagramPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int ELLIPSE__LABEL_FORMAT = DiagramPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int ELLIPSE__SHOW_ICON = DiagramPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int ELLIPSE__ICON_PATH = DiagramPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int ELLIPSE__LABEL_COLOR = DiagramPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int ELLIPSE__LABEL_ALIGNMENT = DiagramPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__DESCRIPTION = NODE_STYLE__DESCRIPTION;
+    int ELLIPSE__DESCRIPTION = DiagramPackage.NODE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int ELLIPSE__BORDER_SIZE = DiagramPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int ELLIPSE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int ELLIPSE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int ELLIPSE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -3323,7 +3323,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELLIPSE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int ELLIPSE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Horizontal Diameter</b></em>' attribute.
@@ -3332,7 +3332,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELLIPSE__HORIZONTAL_DIAMETER = NODE_STYLE_FEATURE_COUNT + 0;
+    int ELLIPSE__HORIZONTAL_DIAMETER = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Vertical Diameter</b></em>' attribute.
@@ -3341,25 +3341,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELLIPSE__VERTICAL_DIAMETER = NODE_STYLE_FEATURE_COUNT + 1;
+    int ELLIPSE__VERTICAL_DIAMETER = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__COLOR = NODE_STYLE_FEATURE_COUNT + 2;
+    int ELLIPSE__COLOR = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Ellipse</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 3;
+    int ELLIPSE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -3379,107 +3379,107 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LOZENGE__CUSTOM_FEATURES = NODE_STYLE__CUSTOM_FEATURES;
+    int LOZENGE__CUSTOM_FEATURES = DiagramPackage.NODE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int LOZENGE__LABEL_SIZE = DiagramPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int LOZENGE__LABEL_FORMAT = DiagramPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int LOZENGE__SHOW_ICON = DiagramPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int LOZENGE__ICON_PATH = DiagramPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int LOZENGE__LABEL_COLOR = DiagramPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int LOZENGE__LABEL_ALIGNMENT = DiagramPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__DESCRIPTION = NODE_STYLE__DESCRIPTION;
+    int LOZENGE__DESCRIPTION = DiagramPackage.NODE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int LOZENGE__BORDER_SIZE = DiagramPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int LOZENGE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int LOZENGE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int LOZENGE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -3488,50 +3488,50 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LOZENGE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int LOZENGE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__WIDTH = NODE_STYLE_FEATURE_COUNT + 0;
+    int LOZENGE__WIDTH = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__HEIGHT = NODE_STYLE_FEATURE_COUNT + 1;
+    int LOZENGE__HEIGHT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__COLOR = NODE_STYLE_FEATURE_COUNT + 2;
+    int LOZENGE__COLOR = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Lozenge</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 3;
+    int LOZENGE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.impl.BundledImageImpl
      * <em>Bundled Image</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.impl.BundledImageImpl
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBundledImage()
      * @generated
@@ -3545,107 +3545,107 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__CUSTOM_FEATURES = NODE_STYLE__CUSTOM_FEATURES;
+    int BUNDLED_IMAGE__CUSTOM_FEATURES = DiagramPackage.NODE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int BUNDLED_IMAGE__LABEL_SIZE = DiagramPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int BUNDLED_IMAGE__LABEL_FORMAT = DiagramPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int BUNDLED_IMAGE__SHOW_ICON = DiagramPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int BUNDLED_IMAGE__ICON_PATH = DiagramPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int BUNDLED_IMAGE__LABEL_COLOR = DiagramPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int BUNDLED_IMAGE__LABEL_ALIGNMENT = DiagramPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__DESCRIPTION = NODE_STYLE__DESCRIPTION;
+    int BUNDLED_IMAGE__DESCRIPTION = DiagramPackage.NODE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int BUNDLED_IMAGE__BORDER_SIZE = DiagramPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int BUNDLED_IMAGE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int BUNDLED_IMAGE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int BUNDLED_IMAGE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -3654,25 +3654,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int BUNDLED_IMAGE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__SHAPE = NODE_STYLE_FEATURE_COUNT + 0;
+    int BUNDLED_IMAGE__SHAPE = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__COLOR = NODE_STYLE_FEATURE_COUNT + 1;
+    int BUNDLED_IMAGE__COLOR = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Bundled Image</em>' class.
@@ -3681,7 +3681,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 2;
+    int BUNDLED_IMAGE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -3702,107 +3702,107 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__CUSTOM_FEATURES = NODE_STYLE__CUSTOM_FEATURES;
+    int WORKSPACE_IMAGE__CUSTOM_FEATURES = DiagramPackage.NODE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int WORKSPACE_IMAGE__LABEL_SIZE = DiagramPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int WORKSPACE_IMAGE__LABEL_FORMAT = DiagramPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int WORKSPACE_IMAGE__SHOW_ICON = DiagramPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int WORKSPACE_IMAGE__ICON_PATH = DiagramPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int WORKSPACE_IMAGE__LABEL_COLOR = DiagramPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int WORKSPACE_IMAGE__LABEL_ALIGNMENT = DiagramPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__DESCRIPTION = NODE_STYLE__DESCRIPTION;
+    int WORKSPACE_IMAGE__DESCRIPTION = DiagramPackage.NODE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int WORKSPACE_IMAGE__BORDER_SIZE = DiagramPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int WORKSPACE_IMAGE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int WORKSPACE_IMAGE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int WORKSPACE_IMAGE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -3811,16 +3811,16 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int WORKSPACE_IMAGE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Workspace Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__WORKSPACE_PATH = NODE_STYLE_FEATURE_COUNT + 0;
+    int WORKSPACE_IMAGE__WORKSPACE_PATH = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Workspace Image</em>'
@@ -3829,14 +3829,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 1;
+    int WORKSPACE_IMAGE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.impl.CustomStyleImpl
      * <em>Custom Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.impl.CustomStyleImpl
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getCustomStyle()
      * @generated
@@ -3850,107 +3850,107 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__CUSTOM_FEATURES = NODE_STYLE__CUSTOM_FEATURES;
+    int CUSTOM_STYLE__CUSTOM_FEATURES = DiagramPackage.NODE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int CUSTOM_STYLE__LABEL_SIZE = DiagramPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int CUSTOM_STYLE__LABEL_FORMAT = DiagramPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int CUSTOM_STYLE__SHOW_ICON = DiagramPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int CUSTOM_STYLE__ICON_PATH = DiagramPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int CUSTOM_STYLE__LABEL_COLOR = DiagramPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int CUSTOM_STYLE__LABEL_ALIGNMENT = DiagramPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__DESCRIPTION = NODE_STYLE__DESCRIPTION;
+    int CUSTOM_STYLE__DESCRIPTION = DiagramPackage.NODE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int CUSTOM_STYLE__BORDER_SIZE = DiagramPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int CUSTOM_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int CUSTOM_STYLE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int CUSTOM_STYLE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -3959,16 +3959,16 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int CUSTOM_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE__ID = NODE_STYLE_FEATURE_COUNT + 0;
+    int CUSTOM_STYLE__ID = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Custom Style</em>' class.
@@ -3977,14 +3977,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 1;
+    int CUSTOM_STYLE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.impl.EdgeTargetImpl
      * <em>Edge Target</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.impl.EdgeTargetImpl
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeTarget()
      * @generated
@@ -4041,7 +4041,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4050,7 +4050,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Line Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4059,7 +4059,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4068,7 +4068,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4077,7 +4077,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Folding Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4086,7 +4086,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4095,7 +4095,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Routing Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4131,7 +4131,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Centered</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4140,7 +4140,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Stroke Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4174,107 +4174,107 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__CUSTOM_FEATURES = NODE_STYLE__CUSTOM_FEATURES;
+    int GAUGE_COMPOSITE_STYLE__CUSTOM_FEATURES = DiagramPackage.NODE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int GAUGE_COMPOSITE_STYLE__LABEL_SIZE = DiagramPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int GAUGE_COMPOSITE_STYLE__LABEL_FORMAT = DiagramPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int GAUGE_COMPOSITE_STYLE__SHOW_ICON = DiagramPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int GAUGE_COMPOSITE_STYLE__ICON_PATH = DiagramPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int GAUGE_COMPOSITE_STYLE__LABEL_COLOR = DiagramPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int GAUGE_COMPOSITE_STYLE__LABEL_ALIGNMENT = DiagramPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__DESCRIPTION = NODE_STYLE__DESCRIPTION;
+    int GAUGE_COMPOSITE_STYLE__DESCRIPTION = DiagramPackage.NODE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int GAUGE_COMPOSITE_STYLE__BORDER_SIZE = DiagramPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int GAUGE_COMPOSITE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int GAUGE_COMPOSITE_STYLE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int GAUGE_COMPOSITE_STYLE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -4283,16 +4283,16 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int GAUGE_COMPOSITE_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__ALIGNMENT = NODE_STYLE_FEATURE_COUNT + 0;
+    int GAUGE_COMPOSITE_STYLE__ALIGNMENT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Sections</b></em>' containment reference
@@ -4301,7 +4301,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__SECTIONS = NODE_STYLE_FEATURE_COUNT + 1;
+    int GAUGE_COMPOSITE_STYLE__SECTIONS = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Gauge Composite Style</em>'
@@ -4310,7 +4310,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 2;
+    int GAUGE_COMPOSITE_STYLE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -4336,7 +4336,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4345,7 +4345,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4355,7 +4355,7 @@ public interface DiagramPackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4364,7 +4364,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4397,107 +4397,107 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NOTE__CUSTOM_FEATURES = NODE_STYLE__CUSTOM_FEATURES;
+    int NOTE__CUSTOM_FEATURES = DiagramPackage.NODE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int NOTE__LABEL_SIZE = DiagramPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int NOTE__LABEL_FORMAT = DiagramPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int NOTE__SHOW_ICON = DiagramPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int NOTE__ICON_PATH = DiagramPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int NOTE__LABEL_COLOR = DiagramPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int NOTE__LABEL_ALIGNMENT = DiagramPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__DESCRIPTION = NODE_STYLE__DESCRIPTION;
+    int NOTE__DESCRIPTION = DiagramPackage.NODE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int NOTE__BORDER_SIZE = DiagramPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int NOTE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int NOTE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int NOTE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -4506,25 +4506,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NOTE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int NOTE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__COLOR = NODE_STYLE_FEATURE_COUNT + 0;
+    int NOTE__COLOR = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Note</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 1;
+    int NOTE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -4581,7 +4581,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Model Element</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4611,20 +4611,20 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COLLAPSE_FILTER__WIDTH = GRAPHICAL_FILTER_FEATURE_COUNT + 0;
+    int COLLAPSE_FILTER__WIDTH = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COLLAPSE_FILTER__HEIGHT = GRAPHICAL_FILTER_FEATURE_COUNT + 1;
+    int COLLAPSE_FILTER__HEIGHT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Collapse Filter</em>'
@@ -4633,7 +4633,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLLAPSE_FILTER_FEATURE_COUNT = GRAPHICAL_FILTER_FEATURE_COUNT + 2;
+    int COLLAPSE_FILTER_FEATURE_COUNT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -4650,20 +4650,20 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INDIRECTLY_COLLAPSE_FILTER__WIDTH = COLLAPSE_FILTER__WIDTH;
+    int INDIRECTLY_COLLAPSE_FILTER__WIDTH = DiagramPackage.COLLAPSE_FILTER__WIDTH;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INDIRECTLY_COLLAPSE_FILTER__HEIGHT = COLLAPSE_FILTER__HEIGHT;
+    int INDIRECTLY_COLLAPSE_FILTER__HEIGHT = DiagramPackage.COLLAPSE_FILTER__HEIGHT;
 
     /**
      * The number of structural features of the '
@@ -4673,7 +4673,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INDIRECTLY_COLLAPSE_FILTER_FEATURE_COUNT = COLLAPSE_FILTER_FEATURE_COUNT + 0;
+    int INDIRECTLY_COLLAPSE_FILTER_FEATURE_COUNT = DiagramPackage.COLLAPSE_FILTER_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -4699,7 +4699,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4708,7 +4708,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4717,7 +4717,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4726,7 +4726,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4735,7 +4735,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4774,7 +4774,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4783,7 +4783,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4792,7 +4792,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4801,7 +4801,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4810,7 +4810,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4849,7 +4849,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4858,7 +4858,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4867,7 +4867,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4876,7 +4876,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4885,7 +4885,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4919,70 +4919,70 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__CUSTOM_FEATURES = EDGE_STYLE__CUSTOM_FEATURES;
+    int BRACKET_EDGE_STYLE__CUSTOM_FEATURES = DiagramPackage.EDGE_STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__DESCRIPTION = EDGE_STYLE__DESCRIPTION;
+    int BRACKET_EDGE_STYLE__DESCRIPTION = DiagramPackage.EDGE_STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Line Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__LINE_STYLE = EDGE_STYLE__LINE_STYLE;
+    int BRACKET_EDGE_STYLE__LINE_STYLE = DiagramPackage.EDGE_STYLE__LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Source Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__SOURCE_ARROW = EDGE_STYLE__SOURCE_ARROW;
+    int BRACKET_EDGE_STYLE__SOURCE_ARROW = DiagramPackage.EDGE_STYLE__SOURCE_ARROW;
 
     /**
      * The feature id for the '<em><b>Target Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__TARGET_ARROW = EDGE_STYLE__TARGET_ARROW;
+    int BRACKET_EDGE_STYLE__TARGET_ARROW = DiagramPackage.EDGE_STYLE__TARGET_ARROW;
 
     /**
      * The feature id for the '<em><b>Folding Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__FOLDING_STYLE = EDGE_STYLE__FOLDING_STYLE;
+    int BRACKET_EDGE_STYLE__FOLDING_STYLE = DiagramPackage.EDGE_STYLE__FOLDING_STYLE;
 
     /**
      * The feature id for the '<em><b>Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__SIZE = EDGE_STYLE__SIZE;
+    int BRACKET_EDGE_STYLE__SIZE = DiagramPackage.EDGE_STYLE__SIZE;
 
     /**
      * The feature id for the '<em><b>Routing Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__ROUTING_STYLE = EDGE_STYLE__ROUTING_STYLE;
+    int BRACKET_EDGE_STYLE__ROUTING_STYLE = DiagramPackage.EDGE_STYLE__ROUTING_STYLE;
 
     /**
      * The feature id for the '<em><b>Begin Label Style</b></em>' containment
@@ -4991,7 +4991,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__BEGIN_LABEL_STYLE = EDGE_STYLE__BEGIN_LABEL_STYLE;
+    int BRACKET_EDGE_STYLE__BEGIN_LABEL_STYLE = DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE;
 
     /**
      * The feature id for the '<em><b>Center Label Style</b></em>' containment
@@ -5000,7 +5000,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__CENTER_LABEL_STYLE = EDGE_STYLE__CENTER_LABEL_STYLE;
+    int BRACKET_EDGE_STYLE__CENTER_LABEL_STYLE = DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE;
 
     /**
      * The feature id for the '<em><b>End Label Style</b></em>' containment
@@ -5009,25 +5009,25 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__END_LABEL_STYLE = EDGE_STYLE__END_LABEL_STYLE;
+    int BRACKET_EDGE_STYLE__END_LABEL_STYLE = DiagramPackage.EDGE_STYLE__END_LABEL_STYLE;
 
     /**
      * The feature id for the '<em><b>Centered</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__CENTERED = EDGE_STYLE__CENTERED;
+    int BRACKET_EDGE_STYLE__CENTERED = DiagramPackage.EDGE_STYLE__CENTERED;
 
     /**
      * The feature id for the '<em><b>Stroke Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE__STROKE_COLOR = EDGE_STYLE__STROKE_COLOR;
+    int BRACKET_EDGE_STYLE__STROKE_COLOR = DiagramPackage.EDGE_STYLE__STROKE_COLOR;
 
     /**
      * The number of structural features of the '<em>Bracket Edge Style</em>'
@@ -5036,7 +5036,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_FEATURE_COUNT = EDGE_STYLE_FEATURE_COUNT + 0;
+    int BRACKET_EDGE_STYLE_FEATURE_COUNT = DiagramPackage.EDGE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -5163,7 +5163,7 @@ public interface DiagramPackage extends EPackage {
      * The meta object id for the '{@link org.eclipse.sirius.diagram.EdgeArrows
      * <em>Edge Arrows</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeArrows()
      * @generated
@@ -5196,7 +5196,7 @@ public interface DiagramPackage extends EPackage {
      * The meta object id for the '{@link org.eclipse.sirius.diagram.ResizeKind
      * <em>Resize Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ResizeKind
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getResizeKind()
      * @generated
@@ -5219,7 +5219,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.DDiagram <em>DDiagram</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DDiagram</em>'.
      * @see org.eclipse.sirius.diagram.DDiagram
      * @generated
@@ -5245,7 +5245,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DDiagram#getDiagramElements
      * <em>Diagram Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Diagram Elements</em>
      *         '.
      * @see org.eclipse.sirius.diagram.DDiagram#getDiagramElements()
@@ -5295,7 +5295,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DDiagram#getNodeListElements
      * <em>Node List Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Node List Elements</em>'.
      * @see org.eclipse.sirius.diagram.DDiagram#getNodeListElements()
@@ -5333,7 +5333,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DDiagram#getActivatedFilters
      * <em>Activated Filters</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Activated Filters</em>'.
      * @see org.eclipse.sirius.diagram.DDiagram#getActivatedFilters()
@@ -5372,7 +5372,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DDiagram#getActivateBehaviors
      * <em>Activate Behaviors</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Activate Behaviors</em>'.
      * @see org.eclipse.sirius.diagram.DDiagram#getActivateBehaviors()
@@ -5400,7 +5400,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DDiagram#getActivatedLayers
      * <em>Activated Layers</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Activated Layers</em>
      *         '.
      * @see org.eclipse.sirius.diagram.DDiagram#getActivatedLayers()
@@ -5465,7 +5465,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DSemanticDiagram
      * <em>DSemantic Diagram</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>DSemantic Diagram</em>'.
      * @see org.eclipse.sirius.diagram.DSemanticDiagram
      * @generated
@@ -5477,7 +5477,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DDiagramElement
      * <em>DDiagram Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>DDiagram Element</em>'.
      * @see org.eclipse.sirius.diagram.DDiagramElement
      * @generated
@@ -5552,7 +5552,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DDiagramElement#getGraphicalFilters
      * <em>Graphical Filters</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Graphical Filters</em>'.
      * @see org.eclipse.sirius.diagram.DDiagramElement#getGraphicalFilters()
@@ -5566,7 +5566,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.GraphicalFilter
      * <em>Graphical Filter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Graphical Filter</em>'.
      * @see org.eclipse.sirius.diagram.GraphicalFilter
      * @generated
@@ -5577,7 +5577,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.HideFilter <em>Hide Filter</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Hide Filter</em>'.
      * @see org.eclipse.sirius.diagram.HideFilter
      * @generated
@@ -5589,7 +5589,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.HideLabelFilter
      * <em>Hide Label Filter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Hide Label Filter</em>'.
      * @see org.eclipse.sirius.diagram.HideLabelFilter
      * @generated
@@ -5735,7 +5735,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.AbstractDNode#getArrangeConstraints
      * <em>Arrange Constraints</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Arrange Constraints</em>'.
      * @see org.eclipse.sirius.diagram.AbstractDNode#getArrangeConstraints()
@@ -5748,7 +5748,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.DNode <em>DNode</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DNode</em>'.
      * @see org.eclipse.sirius.diagram.DNode
      * @generated
@@ -5759,7 +5759,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.DNode#getWidth <em>Width</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Width</em>'.
      * @see org.eclipse.sirius.diagram.DNode#getWidth()
      * @see #getDNode()
@@ -5771,7 +5771,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.DNode#getHeight <em>Height</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Height</em>'.
      * @see org.eclipse.sirius.diagram.DNode#getHeight()
      * @see #getDNode()
@@ -5845,7 +5845,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DNode#getCandidatesMapping
      * <em>Candidates Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Candidates Mapping</em>'.
      * @see org.eclipse.sirius.diagram.DNode#getCandidatesMapping()
@@ -5944,7 +5944,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getCandidatesMapping
      * <em>Candidates Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Candidates Mapping</em>'.
      * @see org.eclipse.sirius.diagram.DDiagramElementContainer#getCandidatesMapping()
@@ -6020,7 +6020,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.DNodeList <em>DNode List</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DNode List</em>'.
      * @see org.eclipse.sirius.diagram.DNodeList
      * @generated
@@ -6045,7 +6045,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DNodeListElement
      * <em>DNode List Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>DNode List Element</em>'.
      * @see org.eclipse.sirius.diagram.DNodeListElement
      * @generated
@@ -6094,7 +6094,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DNodeListElement#getCandidatesMapping
      * <em>Candidates Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Candidates Mapping</em>'.
      * @see org.eclipse.sirius.diagram.DNodeListElement#getCandidatesMapping()
@@ -6107,7 +6107,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.DEdge <em>DEdge</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DEdge</em>'.
      * @see org.eclipse.sirius.diagram.DEdge
      * @generated
@@ -6131,7 +6131,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.DEdge#getSize <em>Size</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Size</em>'.
      * @see org.eclipse.sirius.diagram.DEdge#getSize()
      * @see #getDEdge()
@@ -6191,7 +6191,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.DEdge#isIsFold <em>Is Fold</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Is Fold</em>'.
      * @see org.eclipse.sirius.diagram.DEdge#isIsFold()
      * @see #getDEdge()
@@ -6227,7 +6227,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.DEdge#getPath <em>Path</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Path</em>'.
      * @see org.eclipse.sirius.diagram.DEdge#getPath()
      * @see #getDEdge()
@@ -6240,7 +6240,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.DEdge#getArrangeConstraints
      * <em>Arrange Constraints</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Arrange Constraints</em>'.
      * @see org.eclipse.sirius.diagram.DEdge#getArrangeConstraints()
@@ -6277,7 +6277,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.NodeStyle <em>Node Style</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Node Style</em>'.
      * @see org.eclipse.sirius.diagram.NodeStyle
      * @generated
@@ -6325,7 +6325,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.Dot#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.Dot#getBackgroundColor()
@@ -6412,7 +6412,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.GaugeSection#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.GaugeSection#getBackgroundColor()
@@ -6426,7 +6426,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.GaugeSection#getForegroundColor
      * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Foreground Color</em>'.
      * @see org.eclipse.sirius.diagram.GaugeSection#getForegroundColor()
@@ -6463,7 +6463,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundStyle
      * <em>Background Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Background Style</em>'.
      * @see org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundStyle()
      * @see #getFlatContainerStyle()
@@ -6476,7 +6476,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundColor()
@@ -6490,7 +6490,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.FlatContainerStyle#getForegroundColor
      * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Foreground Color</em>'.
      * @see org.eclipse.sirius.diagram.FlatContainerStyle#getForegroundColor()
@@ -6528,7 +6528,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.ShapeContainerStyle#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.ShapeContainerStyle#getBackgroundColor()
@@ -6541,7 +6541,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.Square <em>Square</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Square</em>'.
      * @see org.eclipse.sirius.diagram.Square
      * @generated
@@ -6552,7 +6552,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.Square#getWidth <em>Width</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Width</em>'.
      * @see org.eclipse.sirius.diagram.Square#getWidth()
      * @see #getSquare()
@@ -6576,7 +6576,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.Square#getColor <em>Color</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.Square#getColor()
      * @see #getSquare()
@@ -6588,7 +6588,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.Ellipse <em>Ellipse</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Ellipse</em>'.
      * @see org.eclipse.sirius.diagram.Ellipse
      * @generated
@@ -6600,7 +6600,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.Ellipse#getHorizontalDiameter
      * <em>Horizontal Diameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Horizontal Diameter</em>'.
      * @see org.eclipse.sirius.diagram.Ellipse#getHorizontalDiameter()
      * @see #getEllipse()
@@ -6613,7 +6613,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.Ellipse#getVerticalDiameter
      * <em>Vertical Diameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Vertical Diameter</em>'.
      * @see org.eclipse.sirius.diagram.Ellipse#getVerticalDiameter()
      * @see #getEllipse()
@@ -6625,7 +6625,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.Ellipse#getColor <em>Color</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.Ellipse#getColor()
      * @see #getEllipse()
@@ -6637,7 +6637,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.Lozenge <em>Lozenge</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Lozenge</em>'.
      * @see org.eclipse.sirius.diagram.Lozenge
      * @generated
@@ -6648,7 +6648,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.Lozenge#getWidth <em>Width</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Width</em>'.
      * @see org.eclipse.sirius.diagram.Lozenge#getWidth()
      * @see #getLozenge()
@@ -6672,7 +6672,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.Lozenge#getColor <em>Color</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.Lozenge#getColor()
      * @see #getLozenge()
@@ -6753,7 +6753,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.CustomStyle#getId <em>Id</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.diagram.CustomStyle#getId()
      * @see #getCustomStyle()
@@ -6765,7 +6765,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.EdgeTarget <em>Edge Target</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Edge Target</em>'.
      * @see org.eclipse.sirius.diagram.EdgeTarget
      * @generated
@@ -6800,7 +6800,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.EdgeStyle <em>Edge Style</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Edge Style</em>'.
      * @see org.eclipse.sirius.diagram.EdgeStyle
      * @generated
@@ -6871,7 +6871,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.EdgeStyle#getSize <em>Size</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Size</em>'.
      * @see org.eclipse.sirius.diagram.EdgeStyle#getSize()
      * @see #getEdgeStyle()
@@ -6896,7 +6896,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.EdgeStyle#getBeginLabelStyle
      * <em>Begin Label Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Begin Label Style</em>'.
      * @see org.eclipse.sirius.diagram.EdgeStyle#getBeginLabelStyle()
@@ -6910,7 +6910,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.EdgeStyle#getCenterLabelStyle
      * <em>Center Label Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Center Label Style</em>'.
      * @see org.eclipse.sirius.diagram.EdgeStyle#getCenterLabelStyle()
@@ -7034,7 +7034,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.Note <em>Note</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Note</em>'.
      * @see org.eclipse.sirius.diagram.Note
      * @generated
@@ -7045,7 +7045,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.Note#getColor <em>Color</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.Note#getColor()
      * @see #getNote()
@@ -7095,7 +7095,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.FilterVariableValue#getVariableDefinition
      * <em>Variable Definition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Variable Definition</em>'.
      * @see org.eclipse.sirius.diagram.FilterVariableValue#getVariableDefinition()
      * @see #getFilterVariableValue()
@@ -7167,7 +7167,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.BeginLabelStyle
      * <em>Begin Label Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Begin Label Style</em>'.
      * @see org.eclipse.sirius.diagram.BeginLabelStyle
      * @generated
@@ -7179,7 +7179,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.CenterLabelStyle
      * <em>Center Label Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Center Label Style</em>'.
      * @see org.eclipse.sirius.diagram.CenterLabelStyle
      * @generated
@@ -7202,7 +7202,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.BracketEdgeStyle
      * <em>Bracket Edge Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Bracket Edge Style</em>'.
      * @see org.eclipse.sirius.diagram.BracketEdgeStyle
      * @generated
@@ -7253,7 +7253,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.ContainerLayout
      * <em>Container Layout</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Container Layout</em>'.
      * @see org.eclipse.sirius.diagram.ContainerLayout
      * @generated
@@ -7287,7 +7287,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.BackgroundStyle
      * <em>Background Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Background Style</em>'.
      * @see org.eclipse.sirius.diagram.BackgroundStyle
      * @generated
@@ -7299,7 +7299,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.BundledImageShape
      * <em>Bundled Image Shape</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Bundled Image Shape</em>'.
      * @see org.eclipse.sirius.diagram.BundledImageShape
      * @generated
@@ -7310,7 +7310,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.diagram.LineStyle <em>Line Style</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Line Style</em>'.
      * @see org.eclipse.sirius.diagram.LineStyle
      * @generated
@@ -7321,7 +7321,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.diagram.EdgeArrows <em>Edge Arrows</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Edge Arrows</em>'.
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @generated
@@ -7354,7 +7354,7 @@ public interface DiagramPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.diagram.ResizeKind <em>Resize Kind</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Resize Kind</em>'.
      * @see org.eclipse.sirius.diagram.ResizeKind
      * @generated
@@ -7366,7 +7366,7 @@ public interface DiagramPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.ArrangeConstraint
      * <em>Arrange Constraint</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Arrange Constraint</em>'.
      * @see org.eclipse.sirius.diagram.ArrangeConstraint
      * @generated
@@ -7376,7 +7376,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -7401,12 +7401,12 @@ public interface DiagramPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.impl.DDiagramImpl
          * <em>DDiagram</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.impl.DDiagramImpl
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDDiagram()
          * @generated
          */
-        EClass DDIAGRAM = eINSTANCE.getDDiagram();
+        EClass DDIAGRAM = DiagramPackage.eINSTANCE.getDDiagram();
 
         /**
          * The meta object literal for the '
@@ -7415,7 +7415,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__OWNED_DIAGRAM_ELEMENTS = eINSTANCE.getDDiagram_OwnedDiagramElements();
+        EReference DDIAGRAM__OWNED_DIAGRAM_ELEMENTS = DiagramPackage.eINSTANCE.getDDiagram_OwnedDiagramElements();
 
         /**
          * The meta object literal for the '<em><b>Diagram Elements</b></em>'
@@ -7423,7 +7423,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__DIAGRAM_ELEMENTS = eINSTANCE.getDDiagram_DiagramElements();
+        EReference DDIAGRAM__DIAGRAM_ELEMENTS = DiagramPackage.eINSTANCE.getDDiagram_DiagramElements();
 
         /**
          * The meta object literal for the '<em><b>Description</b></em>'
@@ -7431,7 +7431,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__DESCRIPTION = eINSTANCE.getDDiagram_Description();
+        EReference DDIAGRAM__DESCRIPTION = DiagramPackage.eINSTANCE.getDDiagram_Description();
 
         /**
          * The meta object literal for the '<em><b>Edges</b></em>' reference
@@ -7439,7 +7439,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__EDGES = eINSTANCE.getDDiagram_Edges();
+        EReference DDIAGRAM__EDGES = DiagramPackage.eINSTANCE.getDDiagram_Edges();
 
         /**
          * The meta object literal for the '<em><b>Nodes</b></em>' reference
@@ -7447,7 +7447,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__NODES = eINSTANCE.getDDiagram_Nodes();
+        EReference DDIAGRAM__NODES = DiagramPackage.eINSTANCE.getDDiagram_Nodes();
 
         /**
          * The meta object literal for the '<em><b>Node List Elements</b></em>'
@@ -7455,7 +7455,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__NODE_LIST_ELEMENTS = eINSTANCE.getDDiagram_NodeListElements();
+        EReference DDIAGRAM__NODE_LIST_ELEMENTS = DiagramPackage.eINSTANCE.getDDiagram_NodeListElements();
 
         /**
          * The meta object literal for the '<em><b>Containers</b></em>'
@@ -7463,7 +7463,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__CONTAINERS = eINSTANCE.getDDiagram_Containers();
+        EReference DDIAGRAM__CONTAINERS = DiagramPackage.eINSTANCE.getDDiagram_Containers();
 
         /**
          * The meta object literal for the '<em><b>Current Concern</b></em>'
@@ -7471,7 +7471,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__CURRENT_CONCERN = eINSTANCE.getDDiagram_CurrentConcern();
+        EReference DDIAGRAM__CURRENT_CONCERN = DiagramPackage.eINSTANCE.getDDiagram_CurrentConcern();
 
         /**
          * The meta object literal for the '<em><b>Activated Filters</b></em>'
@@ -7479,7 +7479,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__ACTIVATED_FILTERS = eINSTANCE.getDDiagram_ActivatedFilters();
+        EReference DDIAGRAM__ACTIVATED_FILTERS = DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters();
 
         /**
          * The meta object literal for the '<em><b>All Filters</b></em>'
@@ -7487,7 +7487,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__ALL_FILTERS = eINSTANCE.getDDiagram_AllFilters();
+        EReference DDIAGRAM__ALL_FILTERS = DiagramPackage.eINSTANCE.getDDiagram_AllFilters();
 
         /**
          * The meta object literal for the '<em><b>Activated Rules</b></em>'
@@ -7495,7 +7495,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__ACTIVATED_RULES = eINSTANCE.getDDiagram_ActivatedRules();
+        EReference DDIAGRAM__ACTIVATED_RULES = DiagramPackage.eINSTANCE.getDDiagram_ActivatedRules();
 
         /**
          * The meta object literal for the '<em><b>Activate Behaviors</b></em>'
@@ -7503,7 +7503,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__ACTIVATE_BEHAVIORS = eINSTANCE.getDDiagram_ActivateBehaviors();
+        EReference DDIAGRAM__ACTIVATE_BEHAVIORS = DiagramPackage.eINSTANCE.getDDiagram_ActivateBehaviors();
 
         /**
          * The meta object literal for the '
@@ -7512,7 +7512,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__FILTER_VARIABLE_HISTORY = eINSTANCE.getDDiagram_FilterVariableHistory();
+        EReference DDIAGRAM__FILTER_VARIABLE_HISTORY = DiagramPackage.eINSTANCE.getDDiagram_FilterVariableHistory();
 
         /**
          * The meta object literal for the '<em><b>Activated Layers</b></em>'
@@ -7520,7 +7520,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__ACTIVATED_LAYERS = eINSTANCE.getDDiagram_ActivatedLayers();
+        EReference DDIAGRAM__ACTIVATED_LAYERS = DiagramPackage.eINSTANCE.getDDiagram_ActivatedLayers();
 
         /**
          * The meta object literal for the '<em><b>Synchronized</b></em>'
@@ -7528,7 +7528,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DDIAGRAM__SYNCHRONIZED = eINSTANCE.getDDiagram_Synchronized();
+        EAttribute DDIAGRAM__SYNCHRONIZED = DiagramPackage.eINSTANCE.getDDiagram_Synchronized();
 
         /**
          * The meta object literal for the '<em><b>Hidden Elements</b></em>'
@@ -7536,7 +7536,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM__HIDDEN_ELEMENTS = eINSTANCE.getDDiagram_HiddenElements();
+        EReference DDIAGRAM__HIDDEN_ELEMENTS = DiagramPackage.eINSTANCE.getDDiagram_HiddenElements();
 
         /**
          * The meta object literal for the '<em><b>Is In Layouting Mode</b></em>
@@ -7544,7 +7544,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DDIAGRAM__IS_IN_LAYOUTING_MODE = eINSTANCE.getDDiagram_IsInLayoutingMode();
+        EAttribute DDIAGRAM__IS_IN_LAYOUTING_MODE = DiagramPackage.eINSTANCE.getDDiagram_IsInLayoutingMode();
 
         /**
          * The meta object literal for the '<em><b>Header Height</b></em>'
@@ -7552,7 +7552,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DDIAGRAM__HEADER_HEIGHT = eINSTANCE.getDDiagram_HeaderHeight();
+        EAttribute DDIAGRAM__HEADER_HEIGHT = DiagramPackage.eINSTANCE.getDDiagram_HeaderHeight();
 
         /**
          * The meta object literal for the '
@@ -7564,7 +7564,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDSemanticDiagram()
          * @generated
          */
-        EClass DSEMANTIC_DIAGRAM = eINSTANCE.getDSemanticDiagram();
+        EClass DSEMANTIC_DIAGRAM = DiagramPackage.eINSTANCE.getDSemanticDiagram();
 
         /**
          * The meta object literal for the '
@@ -7576,7 +7576,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDDiagramElement()
          * @generated
          */
-        EClass DDIAGRAM_ELEMENT = eINSTANCE.getDDiagramElement();
+        EClass DDIAGRAM_ELEMENT = DiagramPackage.eINSTANCE.getDDiagramElement();
 
         /**
          * The meta object literal for the '<em><b>Visible</b></em>' attribute
@@ -7584,7 +7584,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DDIAGRAM_ELEMENT__VISIBLE = eINSTANCE.getDDiagramElement_Visible();
+        EAttribute DDIAGRAM_ELEMENT__VISIBLE = DiagramPackage.eINSTANCE.getDDiagramElement_Visible();
 
         /**
          * The meta object literal for the '<em><b>Tooltip Text</b></em>'
@@ -7592,7 +7592,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DDIAGRAM_ELEMENT__TOOLTIP_TEXT = eINSTANCE.getDDiagramElement_TooltipText();
+        EAttribute DDIAGRAM_ELEMENT__TOOLTIP_TEXT = DiagramPackage.eINSTANCE.getDDiagramElement_TooltipText();
 
         /**
          * The meta object literal for the '<em><b>Parent Layers</b></em>'
@@ -7600,7 +7600,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT__PARENT_LAYERS = eINSTANCE.getDDiagramElement_ParentLayers();
+        EReference DDIAGRAM_ELEMENT__PARENT_LAYERS = DiagramPackage.eINSTANCE.getDDiagramElement_ParentLayers();
 
         /**
          * The meta object literal for the '<em><b>Decorations</b></em>'
@@ -7609,16 +7609,16 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT__DECORATIONS = eINSTANCE.getDDiagramElement_Decorations();
+        EReference DDIAGRAM_ELEMENT__DECORATIONS = DiagramPackage.eINSTANCE.getDDiagramElement_Decorations();
 
         /**
          * The meta object literal for the '
          * <em><b>Diagram Element Mapping</b></em>' reference feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING = eINSTANCE.getDDiagramElement_DiagramElementMapping();
+        EReference DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING = DiagramPackage.eINSTANCE.getDDiagramElement_DiagramElementMapping();
 
         /**
          * The meta object literal for the '<em><b>Graphical Filters</b></em>'
@@ -7627,7 +7627,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS = eINSTANCE.getDDiagramElement_GraphicalFilters();
+        EReference DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS = DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters();
 
         /**
          * The meta object literal for the '
@@ -7639,7 +7639,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getGraphicalFilter()
          * @generated
          */
-        EClass GRAPHICAL_FILTER = eINSTANCE.getGraphicalFilter();
+        EClass GRAPHICAL_FILTER = DiagramPackage.eINSTANCE.getGraphicalFilter();
 
         /**
          * The meta object literal for the '
@@ -7651,7 +7651,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getHideFilter()
          * @generated
          */
-        EClass HIDE_FILTER = eINSTANCE.getHideFilter();
+        EClass HIDE_FILTER = DiagramPackage.eINSTANCE.getHideFilter();
 
         /**
          * The meta object literal for the '
@@ -7663,7 +7663,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getHideLabelFilter()
          * @generated
          */
-        EClass HIDE_LABEL_FILTER = eINSTANCE.getHideLabelFilter();
+        EClass HIDE_LABEL_FILTER = DiagramPackage.eINSTANCE.getHideLabelFilter();
 
         /**
          * The meta object literal for the '
@@ -7675,7 +7675,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFoldingPointFilter()
          * @generated
          */
-        EClass FOLDING_POINT_FILTER = eINSTANCE.getFoldingPointFilter();
+        EClass FOLDING_POINT_FILTER = DiagramPackage.eINSTANCE.getFoldingPointFilter();
 
         /**
          * The meta object literal for the '
@@ -7687,7 +7687,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFoldingFilter()
          * @generated
          */
-        EClass FOLDING_FILTER = eINSTANCE.getFoldingFilter();
+        EClass FOLDING_FILTER = DiagramPackage.eINSTANCE.getFoldingFilter();
 
         /**
          * The meta object literal for the '
@@ -7699,7 +7699,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAppliedCompositeFilters()
          * @generated
          */
-        EClass APPLIED_COMPOSITE_FILTERS = eINSTANCE.getAppliedCompositeFilters();
+        EClass APPLIED_COMPOSITE_FILTERS = DiagramPackage.eINSTANCE.getAppliedCompositeFilters();
 
         /**
          * The meta object literal for the '
@@ -7708,7 +7708,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference APPLIED_COMPOSITE_FILTERS__COMPOSITE_FILTER_DESCRIPTIONS = eINSTANCE.getAppliedCompositeFilters_CompositeFilterDescriptions();
+        EReference APPLIED_COMPOSITE_FILTERS__COMPOSITE_FILTER_DESCRIPTIONS = DiagramPackage.eINSTANCE.getAppliedCompositeFilters_CompositeFilterDescriptions();
 
         /**
          * The meta object literal for the '
@@ -7720,7 +7720,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAbsoluteBoundsFilter()
          * @generated
          */
-        EClass ABSOLUTE_BOUNDS_FILTER = eINSTANCE.getAbsoluteBoundsFilter();
+        EClass ABSOLUTE_BOUNDS_FILTER = DiagramPackage.eINSTANCE.getAbsoluteBoundsFilter();
 
         /**
          * The meta object literal for the '<em><b>X</b></em>' attribute
@@ -7728,7 +7728,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ABSOLUTE_BOUNDS_FILTER__X = eINSTANCE.getAbsoluteBoundsFilter_X();
+        EAttribute ABSOLUTE_BOUNDS_FILTER__X = DiagramPackage.eINSTANCE.getAbsoluteBoundsFilter_X();
 
         /**
          * The meta object literal for the '<em><b>Y</b></em>' attribute
@@ -7736,7 +7736,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ABSOLUTE_BOUNDS_FILTER__Y = eINSTANCE.getAbsoluteBoundsFilter_Y();
+        EAttribute ABSOLUTE_BOUNDS_FILTER__Y = DiagramPackage.eINSTANCE.getAbsoluteBoundsFilter_Y();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
@@ -7744,7 +7744,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ABSOLUTE_BOUNDS_FILTER__HEIGHT = eINSTANCE.getAbsoluteBoundsFilter_Height();
+        EAttribute ABSOLUTE_BOUNDS_FILTER__HEIGHT = DiagramPackage.eINSTANCE.getAbsoluteBoundsFilter_Height();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
@@ -7752,7 +7752,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ABSOLUTE_BOUNDS_FILTER__WIDTH = eINSTANCE.getAbsoluteBoundsFilter_Width();
+        EAttribute ABSOLUTE_BOUNDS_FILTER__WIDTH = DiagramPackage.eINSTANCE.getAbsoluteBoundsFilter_Width();
 
         /**
          * The meta object literal for the '
@@ -7764,7 +7764,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAbstractDNode()
          * @generated
          */
-        EClass ABSTRACT_DNODE = eINSTANCE.getAbstractDNode();
+        EClass ABSTRACT_DNODE = DiagramPackage.eINSTANCE.getAbstractDNode();
 
         /**
          * The meta object literal for the '<em><b>Owned Bordered Nodes</b></em>
@@ -7773,7 +7773,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference ABSTRACT_DNODE__OWNED_BORDERED_NODES = eINSTANCE.getAbstractDNode_OwnedBorderedNodes();
+        EReference ABSTRACT_DNODE__OWNED_BORDERED_NODES = DiagramPackage.eINSTANCE.getAbstractDNode_OwnedBorderedNodes();
 
         /**
          * The meta object literal for the '<em><b>Arrange Constraints</b></em>'
@@ -7781,7 +7781,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ABSTRACT_DNODE__ARRANGE_CONSTRAINTS = eINSTANCE.getAbstractDNode_ArrangeConstraints();
+        EAttribute ABSTRACT_DNODE__ARRANGE_CONSTRAINTS = DiagramPackage.eINSTANCE.getAbstractDNode_ArrangeConstraints();
 
         /**
          * The meta object literal for the '
@@ -7792,7 +7792,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDNode()
          * @generated
          */
-        EClass DNODE = eINSTANCE.getDNode();
+        EClass DNODE = DiagramPackage.eINSTANCE.getDNode();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
@@ -7800,7 +7800,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DNODE__WIDTH = eINSTANCE.getDNode_Width();
+        EAttribute DNODE__WIDTH = DiagramPackage.eINSTANCE.getDNode_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
@@ -7808,7 +7808,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DNODE__HEIGHT = eINSTANCE.getDNode_Height();
+        EAttribute DNODE__HEIGHT = DiagramPackage.eINSTANCE.getDNode_Height();
 
         /**
          * The meta object literal for the '<em><b>Owned Style</b></em>'
@@ -7817,7 +7817,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE__OWNED_STYLE = eINSTANCE.getDNode_OwnedStyle();
+        EReference DNODE__OWNED_STYLE = DiagramPackage.eINSTANCE.getDNode_OwnedStyle();
 
         /**
          * The meta object literal for the '<em><b>Label Position</b></em>'
@@ -7825,7 +7825,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DNODE__LABEL_POSITION = eINSTANCE.getDNode_LabelPosition();
+        EAttribute DNODE__LABEL_POSITION = DiagramPackage.eINSTANCE.getDNode_LabelPosition();
 
         /**
          * The meta object literal for the '<em><b>Resize Kind</b></em>'
@@ -7833,7 +7833,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DNODE__RESIZE_KIND = eINSTANCE.getDNode_ResizeKind();
+        EAttribute DNODE__RESIZE_KIND = DiagramPackage.eINSTANCE.getDNode_ResizeKind();
 
         /**
          * The meta object literal for the '<em><b>Original Style</b></em>'
@@ -7841,7 +7841,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE__ORIGINAL_STYLE = eINSTANCE.getDNode_OriginalStyle();
+        EReference DNODE__ORIGINAL_STYLE = DiagramPackage.eINSTANCE.getDNode_OriginalStyle();
 
         /**
          * The meta object literal for the '<em><b>Actual Mapping</b></em>'
@@ -7849,7 +7849,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE__ACTUAL_MAPPING = eINSTANCE.getDNode_ActualMapping();
+        EReference DNODE__ACTUAL_MAPPING = DiagramPackage.eINSTANCE.getDNode_ActualMapping();
 
         /**
          * The meta object literal for the '<em><b>Candidates Mapping</b></em>'
@@ -7857,7 +7857,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE__CANDIDATES_MAPPING = eINSTANCE.getDNode_CandidatesMapping();
+        EReference DNODE__CANDIDATES_MAPPING = DiagramPackage.eINSTANCE.getDNode_CandidatesMapping();
 
         /**
          * The meta object literal for the '
@@ -7869,7 +7869,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDDiagramElementContainer()
          * @generated
          */
-        EClass DDIAGRAM_ELEMENT_CONTAINER = eINSTANCE.getDDiagramElementContainer();
+        EClass DDIAGRAM_ELEMENT_CONTAINER = DiagramPackage.eINSTANCE.getDDiagramElementContainer();
 
         /**
          * The meta object literal for the '<em><b>Nodes</b></em>' reference
@@ -7877,7 +7877,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT_CONTAINER__NODES = eINSTANCE.getDDiagramElementContainer_Nodes();
+        EReference DDIAGRAM_ELEMENT_CONTAINER__NODES = DiagramPackage.eINSTANCE.getDDiagramElementContainer_Nodes();
 
         /**
          * The meta object literal for the '<em><b>Containers</b></em>'
@@ -7885,7 +7885,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS = eINSTANCE.getDDiagramElementContainer_Containers();
+        EReference DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS = DiagramPackage.eINSTANCE.getDDiagramElementContainer_Containers();
 
         /**
          * The meta object literal for the '<em><b>Elements</b></em>' reference
@@ -7893,7 +7893,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS = eINSTANCE.getDDiagramElementContainer_Elements();
+        EReference DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS = DiagramPackage.eINSTANCE.getDDiagramElementContainer_Elements();
 
         /**
          * The meta object literal for the '<em><b>Owned Style</b></em>'
@@ -7902,7 +7902,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE = eINSTANCE.getDDiagramElementContainer_OwnedStyle();
+        EReference DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE = DiagramPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle();
 
         /**
          * The meta object literal for the '<em><b>Original Style</b></em>'
@@ -7910,7 +7910,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE = eINSTANCE.getDDiagramElementContainer_OriginalStyle();
+        EReference DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE = DiagramPackage.eINSTANCE.getDDiagramElementContainer_OriginalStyle();
 
         /**
          * The meta object literal for the '<em><b>Actual Mapping</b></em>'
@@ -7918,7 +7918,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING = eINSTANCE.getDDiagramElementContainer_ActualMapping();
+        EReference DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING = DiagramPackage.eINSTANCE.getDDiagramElementContainer_ActualMapping();
 
         /**
          * The meta object literal for the '<em><b>Candidates Mapping</b></em>'
@@ -7926,7 +7926,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING = eINSTANCE.getDDiagramElementContainer_CandidatesMapping();
+        EReference DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING = DiagramPackage.eINSTANCE.getDDiagramElementContainer_CandidatesMapping();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
@@ -7934,7 +7934,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DDIAGRAM_ELEMENT_CONTAINER__WIDTH = eINSTANCE.getDDiagramElementContainer_Width();
+        EAttribute DDIAGRAM_ELEMENT_CONTAINER__WIDTH = DiagramPackage.eINSTANCE.getDDiagramElementContainer_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
@@ -7942,7 +7942,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DDIAGRAM_ELEMENT_CONTAINER__HEIGHT = eINSTANCE.getDDiagramElementContainer_Height();
+        EAttribute DDIAGRAM_ELEMENT_CONTAINER__HEIGHT = DiagramPackage.eINSTANCE.getDDiagramElementContainer_Height();
 
         /**
          * The meta object literal for the '
@@ -7954,7 +7954,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDNodeContainer()
          * @generated
          */
-        EClass DNODE_CONTAINER = eINSTANCE.getDNodeContainer();
+        EClass DNODE_CONTAINER = DiagramPackage.eINSTANCE.getDNodeContainer();
 
         /**
          * The meta object literal for the '
@@ -7963,16 +7963,16 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS = eINSTANCE.getDNodeContainer_OwnedDiagramElements();
+        EReference DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS = DiagramPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements();
 
         /**
          * The meta object literal for the '
          * <em><b>Children Presentation</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute DNODE_CONTAINER__CHILDREN_PRESENTATION = eINSTANCE.getDNodeContainer_ChildrenPresentation();
+        EAttribute DNODE_CONTAINER__CHILDREN_PRESENTATION = DiagramPackage.eINSTANCE.getDNodeContainer_ChildrenPresentation();
 
         /**
          * The meta object literal for the '
@@ -7984,7 +7984,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDNodeList()
          * @generated
          */
-        EClass DNODE_LIST = eINSTANCE.getDNodeList();
+        EClass DNODE_LIST = DiagramPackage.eINSTANCE.getDNodeList();
 
         /**
          * The meta object literal for the '<em><b>Owned Elements</b></em>'
@@ -7993,7 +7993,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE_LIST__OWNED_ELEMENTS = eINSTANCE.getDNodeList_OwnedElements();
+        EReference DNODE_LIST__OWNED_ELEMENTS = DiagramPackage.eINSTANCE.getDNodeList_OwnedElements();
 
         /**
          * The meta object literal for the '
@@ -8005,7 +8005,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDNodeListElement()
          * @generated
          */
-        EClass DNODE_LIST_ELEMENT = eINSTANCE.getDNodeListElement();
+        EClass DNODE_LIST_ELEMENT = DiagramPackage.eINSTANCE.getDNodeListElement();
 
         /**
          * The meta object literal for the '<em><b>Owned Style</b></em>'
@@ -8014,7 +8014,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE_LIST_ELEMENT__OWNED_STYLE = eINSTANCE.getDNodeListElement_OwnedStyle();
+        EReference DNODE_LIST_ELEMENT__OWNED_STYLE = DiagramPackage.eINSTANCE.getDNodeListElement_OwnedStyle();
 
         /**
          * The meta object literal for the '<em><b>Original Style</b></em>'
@@ -8022,7 +8022,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE_LIST_ELEMENT__ORIGINAL_STYLE = eINSTANCE.getDNodeListElement_OriginalStyle();
+        EReference DNODE_LIST_ELEMENT__ORIGINAL_STYLE = DiagramPackage.eINSTANCE.getDNodeListElement_OriginalStyle();
 
         /**
          * The meta object literal for the '<em><b>Actual Mapping</b></em>'
@@ -8030,7 +8030,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE_LIST_ELEMENT__ACTUAL_MAPPING = eINSTANCE.getDNodeListElement_ActualMapping();
+        EReference DNODE_LIST_ELEMENT__ACTUAL_MAPPING = DiagramPackage.eINSTANCE.getDNodeListElement_ActualMapping();
 
         /**
          * The meta object literal for the '<em><b>Candidates Mapping</b></em>'
@@ -8038,7 +8038,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DNODE_LIST_ELEMENT__CANDIDATES_MAPPING = eINSTANCE.getDNodeListElement_CandidatesMapping();
+        EReference DNODE_LIST_ELEMENT__CANDIDATES_MAPPING = DiagramPackage.eINSTANCE.getDNodeListElement_CandidatesMapping();
 
         /**
          * The meta object literal for the '
@@ -8049,7 +8049,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDEdge()
          * @generated
          */
-        EClass DEDGE = eINSTANCE.getDEdge();
+        EClass DEDGE = DiagramPackage.eINSTANCE.getDEdge();
 
         /**
          * The meta object literal for the '<em><b>Owned Style</b></em>'
@@ -8058,7 +8058,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DEDGE__OWNED_STYLE = eINSTANCE.getDEdge_OwnedStyle();
+        EReference DEDGE__OWNED_STYLE = DiagramPackage.eINSTANCE.getDEdge_OwnedStyle();
 
         /**
          * The meta object literal for the '<em><b>Size</b></em>' attribute
@@ -8066,7 +8066,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DEDGE__SIZE = eINSTANCE.getDEdge_Size();
+        EAttribute DEDGE__SIZE = DiagramPackage.eINSTANCE.getDEdge_Size();
 
         /**
          * The meta object literal for the '<em><b>Source Node</b></em>'
@@ -8074,7 +8074,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DEDGE__SOURCE_NODE = eINSTANCE.getDEdge_SourceNode();
+        EReference DEDGE__SOURCE_NODE = DiagramPackage.eINSTANCE.getDEdge_SourceNode();
 
         /**
          * The meta object literal for the '<em><b>Target Node</b></em>'
@@ -8082,7 +8082,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DEDGE__TARGET_NODE = eINSTANCE.getDEdge_TargetNode();
+        EReference DEDGE__TARGET_NODE = DiagramPackage.eINSTANCE.getDEdge_TargetNode();
 
         /**
          * The meta object literal for the '<em><b>Actual Mapping</b></em>'
@@ -8090,7 +8090,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DEDGE__ACTUAL_MAPPING = eINSTANCE.getDEdge_ActualMapping();
+        EReference DEDGE__ACTUAL_MAPPING = DiagramPackage.eINSTANCE.getDEdge_ActualMapping();
 
         /**
          * The meta object literal for the '<em><b>Routing Style</b></em>'
@@ -8098,7 +8098,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DEDGE__ROUTING_STYLE = eINSTANCE.getDEdge_RoutingStyle();
+        EAttribute DEDGE__ROUTING_STYLE = DiagramPackage.eINSTANCE.getDEdge_RoutingStyle();
 
         /**
          * The meta object literal for the '<em><b>Is Fold</b></em>' attribute
@@ -8106,7 +8106,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DEDGE__IS_FOLD = eINSTANCE.getDEdge_IsFold();
+        EAttribute DEDGE__IS_FOLD = DiagramPackage.eINSTANCE.getDEdge_IsFold();
 
         /**
          * The meta object literal for the '<em><b>Is Mock Edge</b></em>'
@@ -8114,7 +8114,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DEDGE__IS_MOCK_EDGE = eINSTANCE.getDEdge_IsMockEdge();
+        EAttribute DEDGE__IS_MOCK_EDGE = DiagramPackage.eINSTANCE.getDEdge_IsMockEdge();
 
         /**
          * The meta object literal for the '<em><b>Original Style</b></em>'
@@ -8122,7 +8122,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DEDGE__ORIGINAL_STYLE = eINSTANCE.getDEdge_OriginalStyle();
+        EReference DEDGE__ORIGINAL_STYLE = DiagramPackage.eINSTANCE.getDEdge_OriginalStyle();
 
         /**
          * The meta object literal for the '<em><b>Path</b></em>' reference list
@@ -8130,7 +8130,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DEDGE__PATH = eINSTANCE.getDEdge_Path();
+        EReference DEDGE__PATH = DiagramPackage.eINSTANCE.getDEdge_Path();
 
         /**
          * The meta object literal for the '<em><b>Arrange Constraints</b></em>'
@@ -8138,7 +8138,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DEDGE__ARRANGE_CONSTRAINTS = eINSTANCE.getDEdge_ArrangeConstraints();
+        EAttribute DEDGE__ARRANGE_CONSTRAINTS = DiagramPackage.eINSTANCE.getDEdge_ArrangeConstraints();
 
         /**
          * The meta object literal for the '<em><b>Begin Label</b></em>'
@@ -8146,7 +8146,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DEDGE__BEGIN_LABEL = eINSTANCE.getDEdge_BeginLabel();
+        EAttribute DEDGE__BEGIN_LABEL = DiagramPackage.eINSTANCE.getDEdge_BeginLabel();
 
         /**
          * The meta object literal for the '<em><b>End Label</b></em>' attribute
@@ -8154,7 +8154,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DEDGE__END_LABEL = eINSTANCE.getDEdge_EndLabel();
+        EAttribute DEDGE__END_LABEL = DiagramPackage.eINSTANCE.getDEdge_EndLabel();
 
         /**
          * The meta object literal for the '
@@ -8166,7 +8166,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getNodeStyle()
          * @generated
          */
-        EClass NODE_STYLE = eINSTANCE.getNodeStyle();
+        EClass NODE_STYLE = DiagramPackage.eINSTANCE.getNodeStyle();
 
         /**
          * The meta object literal for the '<em><b>Label Position</b></em>'
@@ -8174,16 +8174,16 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute NODE_STYLE__LABEL_POSITION = eINSTANCE.getNodeStyle_LabelPosition();
+        EAttribute NODE_STYLE__LABEL_POSITION = DiagramPackage.eINSTANCE.getNodeStyle_LabelPosition();
 
         /**
          * The meta object literal for the '
          * <em><b>Hide Label By Default</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute NODE_STYLE__HIDE_LABEL_BY_DEFAULT = eINSTANCE.getNodeStyle_HideLabelByDefault();
+        EAttribute NODE_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.eINSTANCE.getNodeStyle_HideLabelByDefault();
 
         /**
          * The meta object literal for the '
@@ -8194,7 +8194,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDot()
          * @generated
          */
-        EClass DOT = eINSTANCE.getDot();
+        EClass DOT = DiagramPackage.eINSTANCE.getDot();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -8202,7 +8202,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DOT__BACKGROUND_COLOR = eINSTANCE.getDot_BackgroundColor();
+        EAttribute DOT__BACKGROUND_COLOR = DiagramPackage.eINSTANCE.getDot_BackgroundColor();
 
         /**
          * The meta object literal for the '
@@ -8211,7 +8211,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DOT__STROKE_SIZE_COMPUTATION_EXPRESSION = eINSTANCE.getDot_StrokeSizeComputationExpression();
+        EAttribute DOT__STROKE_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.eINSTANCE.getDot_StrokeSizeComputationExpression();
 
         /**
          * The meta object literal for the '
@@ -8223,7 +8223,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getGaugeSection()
          * @generated
          */
-        EClass GAUGE_SECTION = eINSTANCE.getGaugeSection();
+        EClass GAUGE_SECTION = DiagramPackage.eINSTANCE.getGaugeSection();
 
         /**
          * The meta object literal for the '<em><b>Min</b></em>' attribute
@@ -8231,7 +8231,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION__MIN = eINSTANCE.getGaugeSection_Min();
+        EAttribute GAUGE_SECTION__MIN = DiagramPackage.eINSTANCE.getGaugeSection_Min();
 
         /**
          * The meta object literal for the '<em><b>Max</b></em>' attribute
@@ -8239,7 +8239,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION__MAX = eINSTANCE.getGaugeSection_Max();
+        EAttribute GAUGE_SECTION__MAX = DiagramPackage.eINSTANCE.getGaugeSection_Max();
 
         /**
          * The meta object literal for the '<em><b>Value</b></em>' attribute
@@ -8247,7 +8247,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION__VALUE = eINSTANCE.getGaugeSection_Value();
+        EAttribute GAUGE_SECTION__VALUE = DiagramPackage.eINSTANCE.getGaugeSection_Value();
 
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
@@ -8255,7 +8255,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION__LABEL = eINSTANCE.getGaugeSection_Label();
+        EAttribute GAUGE_SECTION__LABEL = DiagramPackage.eINSTANCE.getGaugeSection_Label();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -8263,7 +8263,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION__BACKGROUND_COLOR = eINSTANCE.getGaugeSection_BackgroundColor();
+        EAttribute GAUGE_SECTION__BACKGROUND_COLOR = DiagramPackage.eINSTANCE.getGaugeSection_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
@@ -8271,7 +8271,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION__FOREGROUND_COLOR = eINSTANCE.getGaugeSection_ForegroundColor();
+        EAttribute GAUGE_SECTION__FOREGROUND_COLOR = DiagramPackage.eINSTANCE.getGaugeSection_ForegroundColor();
 
         /**
          * The meta object literal for the '
@@ -8283,7 +8283,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerStyle()
          * @generated
          */
-        EClass CONTAINER_STYLE = eINSTANCE.getContainerStyle();
+        EClass CONTAINER_STYLE = DiagramPackage.eINSTANCE.getContainerStyle();
 
         /**
          * The meta object literal for the '
@@ -8295,7 +8295,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFlatContainerStyle()
          * @generated
          */
-        EClass FLAT_CONTAINER_STYLE = eINSTANCE.getFlatContainerStyle();
+        EClass FLAT_CONTAINER_STYLE = DiagramPackage.eINSTANCE.getFlatContainerStyle();
 
         /**
          * The meta object literal for the '<em><b>Background Style</b></em>'
@@ -8303,7 +8303,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FLAT_CONTAINER_STYLE__BACKGROUND_STYLE = eINSTANCE.getFlatContainerStyle_BackgroundStyle();
+        EAttribute FLAT_CONTAINER_STYLE__BACKGROUND_STYLE = DiagramPackage.eINSTANCE.getFlatContainerStyle_BackgroundStyle();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -8311,7 +8311,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = eINSTANCE.getFlatContainerStyle_BackgroundColor();
+        EAttribute FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = DiagramPackage.eINSTANCE.getFlatContainerStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
@@ -8319,7 +8319,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = eINSTANCE.getFlatContainerStyle_ForegroundColor();
+        EAttribute FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = DiagramPackage.eINSTANCE.getFlatContainerStyle_ForegroundColor();
 
         /**
          * The meta object literal for the '
@@ -8331,7 +8331,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getShapeContainerStyle()
          * @generated
          */
-        EClass SHAPE_CONTAINER_STYLE = eINSTANCE.getShapeContainerStyle();
+        EClass SHAPE_CONTAINER_STYLE = DiagramPackage.eINSTANCE.getShapeContainerStyle();
 
         /**
          * The meta object literal for the '<em><b>Shape</b></em>' attribute
@@ -8339,7 +8339,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SHAPE_CONTAINER_STYLE__SHAPE = eINSTANCE.getShapeContainerStyle_Shape();
+        EAttribute SHAPE_CONTAINER_STYLE__SHAPE = DiagramPackage.eINSTANCE.getShapeContainerStyle_Shape();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -8347,7 +8347,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = eINSTANCE.getShapeContainerStyle_BackgroundColor();
+        EAttribute SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = DiagramPackage.eINSTANCE.getShapeContainerStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '
@@ -8358,7 +8358,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getSquare()
          * @generated
          */
-        EClass SQUARE = eINSTANCE.getSquare();
+        EClass SQUARE = DiagramPackage.eINSTANCE.getSquare();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
@@ -8366,7 +8366,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SQUARE__WIDTH = eINSTANCE.getSquare_Width();
+        EAttribute SQUARE__WIDTH = DiagramPackage.eINSTANCE.getSquare_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
@@ -8374,7 +8374,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SQUARE__HEIGHT = eINSTANCE.getSquare_Height();
+        EAttribute SQUARE__HEIGHT = DiagramPackage.eINSTANCE.getSquare_Height();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' attribute
@@ -8382,7 +8382,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SQUARE__COLOR = eINSTANCE.getSquare_Color();
+        EAttribute SQUARE__COLOR = DiagramPackage.eINSTANCE.getSquare_Color();
 
         /**
          * The meta object literal for the '
@@ -8393,7 +8393,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEllipse()
          * @generated
          */
-        EClass ELLIPSE = eINSTANCE.getEllipse();
+        EClass ELLIPSE = DiagramPackage.eINSTANCE.getEllipse();
 
         /**
          * The meta object literal for the '<em><b>Horizontal Diameter</b></em>'
@@ -8401,7 +8401,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ELLIPSE__HORIZONTAL_DIAMETER = eINSTANCE.getEllipse_HorizontalDiameter();
+        EAttribute ELLIPSE__HORIZONTAL_DIAMETER = DiagramPackage.eINSTANCE.getEllipse_HorizontalDiameter();
 
         /**
          * The meta object literal for the '<em><b>Vertical Diameter</b></em>'
@@ -8409,7 +8409,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ELLIPSE__VERTICAL_DIAMETER = eINSTANCE.getEllipse_VerticalDiameter();
+        EAttribute ELLIPSE__VERTICAL_DIAMETER = DiagramPackage.eINSTANCE.getEllipse_VerticalDiameter();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' attribute
@@ -8417,7 +8417,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ELLIPSE__COLOR = eINSTANCE.getEllipse_Color();
+        EAttribute ELLIPSE__COLOR = DiagramPackage.eINSTANCE.getEllipse_Color();
 
         /**
          * The meta object literal for the '
@@ -8428,7 +8428,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLozenge()
          * @generated
          */
-        EClass LOZENGE = eINSTANCE.getLozenge();
+        EClass LOZENGE = DiagramPackage.eINSTANCE.getLozenge();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
@@ -8436,7 +8436,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute LOZENGE__WIDTH = eINSTANCE.getLozenge_Width();
+        EAttribute LOZENGE__WIDTH = DiagramPackage.eINSTANCE.getLozenge_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
@@ -8444,7 +8444,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute LOZENGE__HEIGHT = eINSTANCE.getLozenge_Height();
+        EAttribute LOZENGE__HEIGHT = DiagramPackage.eINSTANCE.getLozenge_Height();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' attribute
@@ -8452,7 +8452,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute LOZENGE__COLOR = eINSTANCE.getLozenge_Color();
+        EAttribute LOZENGE__COLOR = DiagramPackage.eINSTANCE.getLozenge_Color();
 
         /**
          * The meta object literal for the '
@@ -8464,7 +8464,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBundledImage()
          * @generated
          */
-        EClass BUNDLED_IMAGE = eINSTANCE.getBundledImage();
+        EClass BUNDLED_IMAGE = DiagramPackage.eINSTANCE.getBundledImage();
 
         /**
          * The meta object literal for the '<em><b>Shape</b></em>' attribute
@@ -8472,7 +8472,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute BUNDLED_IMAGE__SHAPE = eINSTANCE.getBundledImage_Shape();
+        EAttribute BUNDLED_IMAGE__SHAPE = DiagramPackage.eINSTANCE.getBundledImage_Shape();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' attribute
@@ -8480,7 +8480,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute BUNDLED_IMAGE__COLOR = eINSTANCE.getBundledImage_Color();
+        EAttribute BUNDLED_IMAGE__COLOR = DiagramPackage.eINSTANCE.getBundledImage_Color();
 
         /**
          * The meta object literal for the '
@@ -8492,7 +8492,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getWorkspaceImage()
          * @generated
          */
-        EClass WORKSPACE_IMAGE = eINSTANCE.getWorkspaceImage();
+        EClass WORKSPACE_IMAGE = DiagramPackage.eINSTANCE.getWorkspaceImage();
 
         /**
          * The meta object literal for the '<em><b>Workspace Path</b></em>'
@@ -8500,7 +8500,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute WORKSPACE_IMAGE__WORKSPACE_PATH = eINSTANCE.getWorkspaceImage_WorkspacePath();
+        EAttribute WORKSPACE_IMAGE__WORKSPACE_PATH = DiagramPackage.eINSTANCE.getWorkspaceImage_WorkspacePath();
 
         /**
          * The meta object literal for the '
@@ -8512,7 +8512,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getCustomStyle()
          * @generated
          */
-        EClass CUSTOM_STYLE = eINSTANCE.getCustomStyle();
+        EClass CUSTOM_STYLE = DiagramPackage.eINSTANCE.getCustomStyle();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
@@ -8520,7 +8520,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CUSTOM_STYLE__ID = eINSTANCE.getCustomStyle_Id();
+        EAttribute CUSTOM_STYLE__ID = DiagramPackage.eINSTANCE.getCustomStyle_Id();
 
         /**
          * The meta object literal for the '
@@ -8532,7 +8532,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeTarget()
          * @generated
          */
-        EClass EDGE_TARGET = eINSTANCE.getEdgeTarget();
+        EClass EDGE_TARGET = DiagramPackage.eINSTANCE.getEdgeTarget();
 
         /**
          * The meta object literal for the '<em><b>Outgoing Edges</b></em>'
@@ -8540,7 +8540,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_TARGET__OUTGOING_EDGES = eINSTANCE.getEdgeTarget_OutgoingEdges();
+        EReference EDGE_TARGET__OUTGOING_EDGES = DiagramPackage.eINSTANCE.getEdgeTarget_OutgoingEdges();
 
         /**
          * The meta object literal for the '<em><b>Incoming Edges</b></em>'
@@ -8548,7 +8548,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_TARGET__INCOMING_EDGES = eINSTANCE.getEdgeTarget_IncomingEdges();
+        EReference EDGE_TARGET__INCOMING_EDGES = DiagramPackage.eINSTANCE.getEdgeTarget_IncomingEdges();
 
         /**
          * The meta object literal for the '
@@ -8560,7 +8560,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeStyle()
          * @generated
          */
-        EClass EDGE_STYLE = eINSTANCE.getEdgeStyle();
+        EClass EDGE_STYLE = DiagramPackage.eINSTANCE.getEdgeStyle();
 
         /**
          * The meta object literal for the '<em><b>Stroke Color</b></em>'
@@ -8568,7 +8568,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE__STROKE_COLOR = eINSTANCE.getEdgeStyle_StrokeColor();
+        EAttribute EDGE_STYLE__STROKE_COLOR = DiagramPackage.eINSTANCE.getEdgeStyle_StrokeColor();
 
         /**
          * The meta object literal for the '<em><b>Line Style</b></em>'
@@ -8576,7 +8576,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE__LINE_STYLE = eINSTANCE.getEdgeStyle_LineStyle();
+        EAttribute EDGE_STYLE__LINE_STYLE = DiagramPackage.eINSTANCE.getEdgeStyle_LineStyle();
 
         /**
          * The meta object literal for the '<em><b>Source Arrow</b></em>'
@@ -8584,7 +8584,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE__SOURCE_ARROW = eINSTANCE.getEdgeStyle_SourceArrow();
+        EAttribute EDGE_STYLE__SOURCE_ARROW = DiagramPackage.eINSTANCE.getEdgeStyle_SourceArrow();
 
         /**
          * The meta object literal for the '<em><b>Target Arrow</b></em>'
@@ -8592,7 +8592,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE__TARGET_ARROW = eINSTANCE.getEdgeStyle_TargetArrow();
+        EAttribute EDGE_STYLE__TARGET_ARROW = DiagramPackage.eINSTANCE.getEdgeStyle_TargetArrow();
 
         /**
          * The meta object literal for the '<em><b>Folding Style</b></em>'
@@ -8600,7 +8600,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE__FOLDING_STYLE = eINSTANCE.getEdgeStyle_FoldingStyle();
+        EAttribute EDGE_STYLE__FOLDING_STYLE = DiagramPackage.eINSTANCE.getEdgeStyle_FoldingStyle();
 
         /**
          * The meta object literal for the '<em><b>Size</b></em>' attribute
@@ -8608,7 +8608,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE__SIZE = eINSTANCE.getEdgeStyle_Size();
+        EAttribute EDGE_STYLE__SIZE = DiagramPackage.eINSTANCE.getEdgeStyle_Size();
 
         /**
          * The meta object literal for the '<em><b>Routing Style</b></em>'
@@ -8616,7 +8616,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE__ROUTING_STYLE = eINSTANCE.getEdgeStyle_RoutingStyle();
+        EAttribute EDGE_STYLE__ROUTING_STYLE = DiagramPackage.eINSTANCE.getEdgeStyle_RoutingStyle();
 
         /**
          * The meta object literal for the '<em><b>Begin Label Style</b></em>'
@@ -8625,7 +8625,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_STYLE__BEGIN_LABEL_STYLE = eINSTANCE.getEdgeStyle_BeginLabelStyle();
+        EReference EDGE_STYLE__BEGIN_LABEL_STYLE = DiagramPackage.eINSTANCE.getEdgeStyle_BeginLabelStyle();
 
         /**
          * The meta object literal for the '<em><b>Center Label Style</b></em>'
@@ -8634,7 +8634,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_STYLE__CENTER_LABEL_STYLE = eINSTANCE.getEdgeStyle_CenterLabelStyle();
+        EReference EDGE_STYLE__CENTER_LABEL_STYLE = DiagramPackage.eINSTANCE.getEdgeStyle_CenterLabelStyle();
 
         /**
          * The meta object literal for the '<em><b>End Label Style</b></em>'
@@ -8643,7 +8643,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_STYLE__END_LABEL_STYLE = eINSTANCE.getEdgeStyle_EndLabelStyle();
+        EReference EDGE_STYLE__END_LABEL_STYLE = DiagramPackage.eINSTANCE.getEdgeStyle_EndLabelStyle();
 
         /**
          * The meta object literal for the '<em><b>Centered</b></em>' attribute
@@ -8651,7 +8651,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE__CENTERED = eINSTANCE.getEdgeStyle_Centered();
+        EAttribute EDGE_STYLE__CENTERED = DiagramPackage.eINSTANCE.getEdgeStyle_Centered();
 
         /**
          * The meta object literal for the '
@@ -8663,7 +8663,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getGaugeCompositeStyle()
          * @generated
          */
-        EClass GAUGE_COMPOSITE_STYLE = eINSTANCE.getGaugeCompositeStyle();
+        EClass GAUGE_COMPOSITE_STYLE = DiagramPackage.eINSTANCE.getGaugeCompositeStyle();
 
         /**
          * The meta object literal for the '<em><b>Alignment</b></em>' attribute
@@ -8671,7 +8671,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_COMPOSITE_STYLE__ALIGNMENT = eINSTANCE.getGaugeCompositeStyle_Alignment();
+        EAttribute GAUGE_COMPOSITE_STYLE__ALIGNMENT = DiagramPackage.eINSTANCE.getGaugeCompositeStyle_Alignment();
 
         /**
          * The meta object literal for the '<em><b>Sections</b></em>'
@@ -8680,7 +8680,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference GAUGE_COMPOSITE_STYLE__SECTIONS = eINSTANCE.getGaugeCompositeStyle_Sections();
+        EReference GAUGE_COMPOSITE_STYLE__SECTIONS = DiagramPackage.eINSTANCE.getGaugeCompositeStyle_Sections();
 
         /**
          * The meta object literal for the '
@@ -8692,7 +8692,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBorderedStyle()
          * @generated
          */
-        EClass BORDERED_STYLE = eINSTANCE.getBorderedStyle();
+        EClass BORDERED_STYLE = DiagramPackage.eINSTANCE.getBorderedStyle();
 
         /**
          * The meta object literal for the '<em><b>Border Size</b></em>'
@@ -8700,7 +8700,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute BORDERED_STYLE__BORDER_SIZE = eINSTANCE.getBorderedStyle_BorderSize();
+        EAttribute BORDERED_STYLE__BORDER_SIZE = DiagramPackage.eINSTANCE.getBorderedStyle_BorderSize();
 
         /**
          * The meta object literal for the '
@@ -8709,7 +8709,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = eINSTANCE.getBorderedStyle_BorderSizeComputationExpression();
+        EAttribute BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = DiagramPackage.eINSTANCE.getBorderedStyle_BorderSizeComputationExpression();
 
         /**
          * The meta object literal for the '<em><b>Border Color</b></em>'
@@ -8717,7 +8717,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute BORDERED_STYLE__BORDER_COLOR = eINSTANCE.getBorderedStyle_BorderColor();
+        EAttribute BORDERED_STYLE__BORDER_COLOR = DiagramPackage.eINSTANCE.getBorderedStyle_BorderColor();
 
         /**
          * The meta object literal for the '
@@ -8728,7 +8728,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getNote()
          * @generated
          */
-        EClass NOTE = eINSTANCE.getNote();
+        EClass NOTE = DiagramPackage.eINSTANCE.getNote();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' attribute
@@ -8736,7 +8736,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute NOTE__COLOR = eINSTANCE.getNote_Color();
+        EAttribute NOTE__COLOR = DiagramPackage.eINSTANCE.getNote_Color();
 
         /**
          * The meta object literal for the '
@@ -8748,7 +8748,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFilterVariableHistory()
          * @generated
          */
-        EClass FILTER_VARIABLE_HISTORY = eINSTANCE.getFilterVariableHistory();
+        EClass FILTER_VARIABLE_HISTORY = DiagramPackage.eINSTANCE.getFilterVariableHistory();
 
         /**
          * The meta object literal for the '<em><b>Owned Values</b></em>'
@@ -8757,7 +8757,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference FILTER_VARIABLE_HISTORY__OWNED_VALUES = eINSTANCE.getFilterVariableHistory_OwnedValues();
+        EReference FILTER_VARIABLE_HISTORY__OWNED_VALUES = DiagramPackage.eINSTANCE.getFilterVariableHistory_OwnedValues();
 
         /**
          * The meta object literal for the '
@@ -8769,7 +8769,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFilterVariableValue()
          * @generated
          */
-        EClass FILTER_VARIABLE_VALUE = eINSTANCE.getFilterVariableValue();
+        EClass FILTER_VARIABLE_VALUE = DiagramPackage.eINSTANCE.getFilterVariableValue();
 
         /**
          * The meta object literal for the '<em><b>Variable Definition</b></em>'
@@ -8777,7 +8777,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION = eINSTANCE.getFilterVariableValue_VariableDefinition();
+        EReference FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION = DiagramPackage.eINSTANCE.getFilterVariableValue_VariableDefinition();
 
         /**
          * The meta object literal for the '<em><b>Model Element</b></em>'
@@ -8785,7 +8785,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference FILTER_VARIABLE_VALUE__MODEL_ELEMENT = eINSTANCE.getFilterVariableValue_ModelElement();
+        EReference FILTER_VARIABLE_VALUE__MODEL_ELEMENT = DiagramPackage.eINSTANCE.getFilterVariableValue_ModelElement();
 
         /**
          * The meta object literal for the '
@@ -8797,7 +8797,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getCollapseFilter()
          * @generated
          */
-        EClass COLLAPSE_FILTER = eINSTANCE.getCollapseFilter();
+        EClass COLLAPSE_FILTER = DiagramPackage.eINSTANCE.getCollapseFilter();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
@@ -8805,7 +8805,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute COLLAPSE_FILTER__WIDTH = eINSTANCE.getCollapseFilter_Width();
+        EAttribute COLLAPSE_FILTER__WIDTH = DiagramPackage.eINSTANCE.getCollapseFilter_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
@@ -8813,7 +8813,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute COLLAPSE_FILTER__HEIGHT = eINSTANCE.getCollapseFilter_Height();
+        EAttribute COLLAPSE_FILTER__HEIGHT = DiagramPackage.eINSTANCE.getCollapseFilter_Height();
 
         /**
          * The meta object literal for the '
@@ -8825,7 +8825,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getIndirectlyCollapseFilter()
          * @generated
          */
-        EClass INDIRECTLY_COLLAPSE_FILTER = eINSTANCE.getIndirectlyCollapseFilter();
+        EClass INDIRECTLY_COLLAPSE_FILTER = DiagramPackage.eINSTANCE.getIndirectlyCollapseFilter();
 
         /**
          * The meta object literal for the '
@@ -8837,7 +8837,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBeginLabelStyle()
          * @generated
          */
-        EClass BEGIN_LABEL_STYLE = eINSTANCE.getBeginLabelStyle();
+        EClass BEGIN_LABEL_STYLE = DiagramPackage.eINSTANCE.getBeginLabelStyle();
 
         /**
          * The meta object literal for the '
@@ -8849,7 +8849,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getCenterLabelStyle()
          * @generated
          */
-        EClass CENTER_LABEL_STYLE = eINSTANCE.getCenterLabelStyle();
+        EClass CENTER_LABEL_STYLE = DiagramPackage.eINSTANCE.getCenterLabelStyle();
 
         /**
          * The meta object literal for the '
@@ -8861,7 +8861,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEndLabelStyle()
          * @generated
          */
-        EClass END_LABEL_STYLE = eINSTANCE.getEndLabelStyle();
+        EClass END_LABEL_STYLE = DiagramPackage.eINSTANCE.getEndLabelStyle();
 
         /**
          * The meta object literal for the '
@@ -8873,19 +8873,19 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBracketEdgeStyle()
          * @generated
          */
-        EClass BRACKET_EDGE_STYLE = eINSTANCE.getBracketEdgeStyle();
+        EClass BRACKET_EDGE_STYLE = DiagramPackage.eINSTANCE.getBracketEdgeStyle();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.impl.ComputedStyleDescriptionRegistryImpl
          * <em>Computed Style Description Registry</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.impl.ComputedStyleDescriptionRegistryImpl
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getComputedStyleDescriptionRegistry()
          * @generated
          */
-        EClass COMPUTED_STYLE_DESCRIPTION_REGISTRY = eINSTANCE.getComputedStyleDescriptionRegistry();
+        EClass COMPUTED_STYLE_DESCRIPTION_REGISTRY = DiagramPackage.eINSTANCE.getComputedStyleDescriptionRegistry();
 
         /**
          * The meta object literal for the '
@@ -8894,7 +8894,7 @@ public interface DiagramPackage extends EPackage {
          * 
          * @generated
          */
-        EReference COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS = eINSTANCE.getComputedStyleDescriptionRegistry_ComputedStyleDescriptions();
+        EReference COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS = DiagramPackage.eINSTANCE.getComputedStyleDescriptionRegistry_ComputedStyleDescriptions();
 
         /**
          * The meta object literal for the '
@@ -8906,7 +8906,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDragAndDropTarget()
          * @generated
          */
-        EClass DRAG_AND_DROP_TARGET = eINSTANCE.getDragAndDropTarget();
+        EClass DRAG_AND_DROP_TARGET = DiagramPackage.eINSTANCE.getDragAndDropTarget();
 
         /**
          * The meta object literal for the '
@@ -8918,7 +8918,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerLayout()
          * @generated
          */
-        EEnum CONTAINER_LAYOUT = eINSTANCE.getContainerLayout();
+        EEnum CONTAINER_LAYOUT = DiagramPackage.eINSTANCE.getContainerLayout();
 
         /**
          * The meta object literal for the '
@@ -8930,7 +8930,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLabelPosition()
          * @generated
          */
-        EEnum LABEL_POSITION = eINSTANCE.getLabelPosition();
+        EEnum LABEL_POSITION = DiagramPackage.eINSTANCE.getLabelPosition();
 
         /**
          * The meta object literal for the '
@@ -8942,7 +8942,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerShape()
          * @generated
          */
-        EEnum CONTAINER_SHAPE = eINSTANCE.getContainerShape();
+        EEnum CONTAINER_SHAPE = DiagramPackage.eINSTANCE.getContainerShape();
 
         /**
          * The meta object literal for the '
@@ -8954,7 +8954,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBackgroundStyle()
          * @generated
          */
-        EEnum BACKGROUND_STYLE = eINSTANCE.getBackgroundStyle();
+        EEnum BACKGROUND_STYLE = DiagramPackage.eINSTANCE.getBackgroundStyle();
 
         /**
          * The meta object literal for the '
@@ -8966,7 +8966,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBundledImageShape()
          * @generated
          */
-        EEnum BUNDLED_IMAGE_SHAPE = eINSTANCE.getBundledImageShape();
+        EEnum BUNDLED_IMAGE_SHAPE = DiagramPackage.eINSTANCE.getBundledImageShape();
 
         /**
          * The meta object literal for the '
@@ -8977,7 +8977,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLineStyle()
          * @generated
          */
-        EEnum LINE_STYLE = eINSTANCE.getLineStyle();
+        EEnum LINE_STYLE = DiagramPackage.eINSTANCE.getLineStyle();
 
         /**
          * The meta object literal for the '
@@ -8988,7 +8988,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeArrows()
          * @generated
          */
-        EEnum EDGE_ARROWS = eINSTANCE.getEdgeArrows();
+        EEnum EDGE_ARROWS = DiagramPackage.eINSTANCE.getEdgeArrows();
 
         /**
          * The meta object literal for the '
@@ -8999,7 +8999,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeRouting()
          * @generated
          */
-        EEnum EDGE_ROUTING = eINSTANCE.getEdgeRouting();
+        EEnum EDGE_ROUTING = DiagramPackage.eINSTANCE.getEdgeRouting();
 
         /**
          * The meta object literal for the '
@@ -9011,7 +9011,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAlignmentKind()
          * @generated
          */
-        EEnum ALIGNMENT_KIND = eINSTANCE.getAlignmentKind();
+        EEnum ALIGNMENT_KIND = DiagramPackage.eINSTANCE.getAlignmentKind();
 
         /**
          * The meta object literal for the '
@@ -9022,7 +9022,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getResizeKind()
          * @generated
          */
-        EEnum RESIZE_KIND = eINSTANCE.getResizeKind();
+        EEnum RESIZE_KIND = DiagramPackage.eINSTANCE.getResizeKind();
 
         /**
          * The meta object literal for the '
@@ -9034,7 +9034,7 @@ public interface DiagramPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getArrangeConstraint()
          * @generated
          */
-        EEnum ARRANGE_CONSTRAINT = eINSTANCE.getArrangeConstraint();
+        EEnum ARRANGE_CONSTRAINT = DiagramPackage.eINSTANCE.getArrangeConstraint();
 
     }
 

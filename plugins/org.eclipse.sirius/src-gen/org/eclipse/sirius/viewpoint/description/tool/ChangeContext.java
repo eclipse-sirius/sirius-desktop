@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -37,7 +37,7 @@ public interface ChangeContext extends ContainerModelOperation {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Expression to browse to a new context (kind of a GOTO for models). <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Browse Expression</em>' attribute.
      * @see #setBrowseExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getChangeContext_BrowseExpression()
@@ -56,7 +56,7 @@ public interface ChangeContext extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ChangeContext#getBrowseExpression
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Browse Expression</em>' attribute.
      * @see #getBrowseExpression()

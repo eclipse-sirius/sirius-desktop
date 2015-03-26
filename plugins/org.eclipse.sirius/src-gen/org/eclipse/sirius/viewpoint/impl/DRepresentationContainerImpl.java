@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class DRepresentationContainerImpl extends DViewImpl implements DRepresentationContainer {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DRepresentationContainerImpl() {
@@ -43,7 +43,7 @@ public class DRepresentationContainerImpl extends DViewImpl implements DRepresen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -53,9 +53,10 @@ public class DRepresentationContainerImpl extends DViewImpl implements DRepresen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<EObject> getModels() {
         // TODO: implement this method to return the 'Models' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -69,7 +70,7 @@ public class DRepresentationContainerImpl extends DViewImpl implements DRepresen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +84,7 @@ public class DRepresentationContainerImpl extends DViewImpl implements DRepresen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

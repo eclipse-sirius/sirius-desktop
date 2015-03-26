@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -56,7 +56,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -66,18 +66,18 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = InterpolatedColorImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getColorValueComputationExpression()
      * <em>Color Value Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColorValueComputationExpression()
      * @generated
      * @ordered
@@ -88,18 +88,18 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * The cached value of the '{@link #getColorValueComputationExpression()
      * <em>Color Value Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColorValueComputationExpression()
      * @generated
      * @ordered
      */
-    protected String colorValueComputationExpression = COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String colorValueComputationExpression = InterpolatedColorImpl.COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getMinValueComputationExpression()
      * <em>Min Value Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMinValueComputationExpression()
      * @generated
      * @ordered
@@ -110,18 +110,18 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * The cached value of the '{@link #getMinValueComputationExpression()
      * <em>Min Value Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMinValueComputationExpression()
      * @generated
      * @ordered
      */
-    protected String minValueComputationExpression = MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String minValueComputationExpression = InterpolatedColorImpl.MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getMaxValueComputationExpression()
      * <em>Max Value Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMaxValueComputationExpression()
      * @generated
      * @ordered
@@ -132,17 +132,17 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * The cached value of the '{@link #getMaxValueComputationExpression()
      * <em>Max Value Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMaxValueComputationExpression()
      * @generated
      * @ordered
      */
-    protected String maxValueComputationExpression = MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String maxValueComputationExpression = InterpolatedColorImpl.MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getColorSteps() <em>Color Steps</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColorSteps()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InterpolatedColorImpl() {
@@ -160,7 +160,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getName() {
@@ -179,19 +179,20 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.INTERPOLATED_COLOR__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getColorValueComputationExpression() {
@@ -200,20 +201,21 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setColorValueComputationExpression(String newColorValueComputationExpression) {
         String oldColorValueComputationExpression = colorValueComputationExpression;
         colorValueComputationExpression = newColorValueComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.INTERPOLATED_COLOR__COLOR_VALUE_COMPUTATION_EXPRESSION, oldColorValueComputationExpression,
                     colorValueComputationExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getMinValueComputationExpression() {
@@ -222,20 +224,21 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setMinValueComputationExpression(String newMinValueComputationExpression) {
         String oldMinValueComputationExpression = minValueComputationExpression;
         minValueComputationExpression = newMinValueComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.INTERPOLATED_COLOR__MIN_VALUE_COMPUTATION_EXPRESSION, oldMinValueComputationExpression,
                     minValueComputationExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getMaxValueComputationExpression() {
@@ -244,20 +247,21 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setMaxValueComputationExpression(String newMaxValueComputationExpression) {
         String oldMaxValueComputationExpression = maxValueComputationExpression;
         maxValueComputationExpression = newMaxValueComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.INTERPOLATED_COLOR__MAX_VALUE_COMPUTATION_EXPRESSION, oldMaxValueComputationExpression,
                     maxValueComputationExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EList<ColorStep> getColorSteps() {
@@ -269,7 +273,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -283,7 +287,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -305,7 +309,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -334,23 +338,23 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.INTERPOLATED_COLOR__NAME:
-            setName(NAME_EDEFAULT);
+            setName(InterpolatedColorImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.INTERPOLATED_COLOR__COLOR_VALUE_COMPUTATION_EXPRESSION:
-            setColorValueComputationExpression(COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setColorValueComputationExpression(InterpolatedColorImpl.COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.INTERPOLATED_COLOR__MIN_VALUE_COMPUTATION_EXPRESSION:
-            setMinValueComputationExpression(MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setMinValueComputationExpression(InterpolatedColorImpl.MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.INTERPOLATED_COLOR__MAX_VALUE_COMPUTATION_EXPRESSION:
-            setMaxValueComputationExpression(MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setMaxValueComputationExpression(InterpolatedColorImpl.MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.INTERPOLATED_COLOR__COLOR_STEPS:
             getColorSteps().clear();
@@ -361,14 +365,14 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.INTERPOLATED_COLOR__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return InterpolatedColorImpl.NAME_EDEFAULT == null ? name != null : !InterpolatedColorImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.INTERPOLATED_COLOR__COLOR_VALUE_COMPUTATION_EXPRESSION:
             return COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT == null ? colorValueComputationExpression != null : !COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT.equals(colorValueComputationExpression);
         case DescriptionPackage.INTERPOLATED_COLOR__MIN_VALUE_COMPUTATION_EXPRESSION:
@@ -383,7 +387,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -401,7 +405,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,13 +423,14 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

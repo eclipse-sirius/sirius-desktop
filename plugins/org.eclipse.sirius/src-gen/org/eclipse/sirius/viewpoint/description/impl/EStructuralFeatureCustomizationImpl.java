@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -44,7 +44,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
     /**
      * The cached value of the '{@link #getAppliedOn() <em>Applied On</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAppliedOn()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
     /**
      * The default value of the '{@link #isApplyOnAll() <em>Apply On All</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isApplyOnAll()
      * @generated
      * @ordered
@@ -64,16 +64,16 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
     /**
      * The cached value of the '{@link #isApplyOnAll() <em>Apply On All</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isApplyOnAll()
      * @generated
      * @ordered
      */
-    protected boolean applyOnAll = APPLY_ON_ALL_EDEFAULT;
+    protected boolean applyOnAll = EStructuralFeatureCustomizationImpl.APPLY_ON_ALL_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EStructuralFeatureCustomizationImpl() {
@@ -82,7 +82,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,9 +92,10 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<EObject> getAppliedOn() {
         if (appliedOn == null) {
             appliedOn = new EObjectResolvingEList<EObject>(EObject.class, this, DescriptionPackage.ESTRUCTURAL_FEATURE_CUSTOMIZATION__APPLIED_ON);
@@ -104,28 +105,31 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public boolean isApplyOnAll() {
         return applyOnAll;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setApplyOnAll(boolean newApplyOnAll) {
         boolean oldApplyOnAll = applyOnAll;
         applyOnAll = newApplyOnAll;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ESTRUCTURAL_FEATURE_CUSTOMIZATION__APPLY_ON_ALL, oldApplyOnAll, applyOnAll));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +145,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -161,7 +165,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +175,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
             getAppliedOn().clear();
             return;
         case DescriptionPackage.ESTRUCTURAL_FEATURE_CUSTOMIZATION__APPLY_ON_ALL:
-            setApplyOnAll(APPLY_ON_ALL_EDEFAULT);
+            setApplyOnAll(EStructuralFeatureCustomizationImpl.APPLY_ON_ALL_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -179,7 +183,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,20 +192,21 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
         case DescriptionPackage.ESTRUCTURAL_FEATURE_CUSTOMIZATION__APPLIED_ON:
             return appliedOn != null && !appliedOn.isEmpty();
         case DescriptionPackage.ESTRUCTURAL_FEATURE_CUSTOMIZATION__APPLY_ON_ALL:
-            return applyOnAll != APPLY_ON_ALL_EDEFAULT;
+            return applyOnAll != EStructuralFeatureCustomizationImpl.APPLY_ON_ALL_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (applyOnAll: ");

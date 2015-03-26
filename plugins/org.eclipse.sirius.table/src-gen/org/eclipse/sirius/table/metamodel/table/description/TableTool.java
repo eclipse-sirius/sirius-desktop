@@ -77,7 +77,7 @@ public interface TableTool extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation
      * <em>First Model Operation</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>First Model Operation</em>'
      *            containment reference.

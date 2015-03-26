@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -38,7 +38,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
      * The default value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -49,16 +49,16 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
      * The cached value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
      */
-    protected String predicateExpression = PREDICATE_EXPRESSION_EDEFAULT;
+    protected String predicateExpression = ConditionalStyleDescriptionImpl.PREDICATE_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConditionalStyleDescriptionImpl() {
@@ -67,7 +67,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getPredicateExpression() {
@@ -86,19 +86,20 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setPredicateExpression(String newPredicateExpression) {
         String oldPredicateExpression = predicateExpression;
         predicateExpression = newPredicateExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION, oldPredicateExpression, predicateExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public boolean checkPredicate(EObject modelElement, EObject viewVariable, EObject containerVariable) {
@@ -109,7 +110,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +124,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,14 +139,14 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION:
-            setPredicateExpression(PREDICATE_EXPRESSION_EDEFAULT);
+            setPredicateExpression(ConditionalStyleDescriptionImpl.PREDICATE_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -153,7 +154,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,13 +168,14 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (predicateExpression: ");

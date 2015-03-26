@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -45,7 +45,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
      * Returns the value of the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The style of the node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(NodeStyleDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getNodeMapping_Style()
@@ -73,7 +73,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
      * {@link org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All conditional styles. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditionnal Styles</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getNodeMapping_ConditionnalStyles()
@@ -85,7 +85,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Create a node for the specified element.
-     * 
+     *
      * @param modelElement
      *            The element.
      * @param container
@@ -98,7 +98,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Update the node.
-     * 
+     *
      * @param node
      *            The node to update. <!-- end-model-doc -->
      * @model
@@ -110,7 +110,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Update a ViewNodeListElement.
-     * 
+     *
      * @param listElement
      *            The view node list element to update <!-- end-model-doc -->
      * @model
@@ -122,7 +122,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return all semantic elements that are candidates for the mapping.
-     * 
+     *
      * @param semanticOrigin
      *            The root element.
      * @param container
@@ -136,7 +136,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return all semantic elements that are candidates for the mapping.
-     * 
+     *
      * @param semanticOrigin
      *            The root element.
      * @param container

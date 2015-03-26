@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -54,7 +54,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
      * @generated
      * @ordered
      */
-    protected Integer arcWidth = ARC_WIDTH_EDEFAULT;
+    protected Integer arcWidth = RoundedCornerStyleDescriptionImpl.ARC_WIDTH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getArcHeight() <em>Arc Height</em>}'
@@ -74,7 +74,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
      * @generated
      * @ordered
      */
-    protected Integer arcHeight = ARC_HEIGHT_EDEFAULT;
+    protected Integer arcHeight = RoundedCornerStyleDescriptionImpl.ARC_HEIGHT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -100,6 +100,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
      * 
      * @generated
      */
+    @Override
     public Integer getArcWidth() {
         return arcWidth;
     }
@@ -109,11 +110,13 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
      * 
      * @generated
      */
+    @Override
     public void setArcWidth(Integer newArcWidth) {
         Integer oldArcWidth = arcWidth;
         arcWidth = newArcWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH, oldArcWidth, arcWidth));
+        }
     }
 
     /**
@@ -121,6 +124,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
      * 
      * @generated
      */
+    @Override
     public Integer getArcHeight() {
         return arcHeight;
     }
@@ -130,11 +134,13 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
      * 
      * @generated
      */
+    @Override
     public void setArcHeight(Integer newArcHeight) {
         Integer oldArcHeight = arcHeight;
         arcHeight = newArcHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT, oldArcHeight, arcHeight));
+        }
     }
 
     /**
@@ -180,10 +186,10 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH:
-            setArcWidth(ARC_WIDTH_EDEFAULT);
+            setArcWidth(RoundedCornerStyleDescriptionImpl.ARC_WIDTH_EDEFAULT);
             return;
         case StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT:
-            setArcHeight(ARC_HEIGHT_EDEFAULT);
+            setArcHeight(RoundedCornerStyleDescriptionImpl.ARC_HEIGHT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -198,9 +204,9 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH:
-            return ARC_WIDTH_EDEFAULT == null ? arcWidth != null : !ARC_WIDTH_EDEFAULT.equals(arcWidth);
+            return RoundedCornerStyleDescriptionImpl.ARC_WIDTH_EDEFAULT == null ? arcWidth != null : !RoundedCornerStyleDescriptionImpl.ARC_WIDTH_EDEFAULT.equals(arcWidth);
         case StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT:
-            return ARC_HEIGHT_EDEFAULT == null ? arcHeight != null : !ARC_HEIGHT_EDEFAULT.equals(arcHeight);
+            return RoundedCornerStyleDescriptionImpl.ARC_HEIGHT_EDEFAULT == null ? arcHeight != null : !RoundedCornerStyleDescriptionImpl.ARC_HEIGHT_EDEFAULT.equals(arcHeight);
         }
         return super.eIsSet(featureID);
     }
@@ -212,8 +218,9 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (arcWidth: ");

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
@@ -54,7 +54,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -64,17 +64,17 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
      */
-    protected int labelSize = LABEL_SIZE_EDEFAULT;
+    protected int labelSize = BasicLabelStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -84,17 +84,17 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelFormat()
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = LABEL_FORMAT_EDEFAULT;
+    protected FontFormat labelFormat = BasicLabelStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
 
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -104,18 +104,18 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isShowIcon()
      * @generated
      * @ordered
      */
-    protected boolean showIcon = SHOW_ICON_EDEFAULT;
+    protected boolean showIcon = BasicLabelStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -126,17 +126,17 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
      */
-    protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
+    protected String labelExpression = BasicLabelStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelColor()
      * @generated
      * @ordered
@@ -146,7 +146,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -156,16 +156,16 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
      */
-    protected String iconPath = ICON_PATH_EDEFAULT;
+    protected String iconPath = BasicLabelStyleDescriptionImpl.ICON_PATH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BasicLabelStyleDescriptionImpl() {
@@ -174,7 +174,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,100 +184,114 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getLabelSize() {
         return labelSize;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabelSize(int newLabelSize) {
         int oldLabelSize = labelSize;
         labelSize = newLabelSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public FontFormat getLabelFormat() {
         return labelFormat;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabelFormat(FontFormat newLabelFormat) {
         FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired())
+        labelFormat = newLabelFormat == null ? BasicLabelStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public boolean isShowIcon() {
         return showIcon;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setShowIcon(boolean newShowIcon) {
         boolean oldShowIcon = showIcon;
         showIcon = newShowIcon;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON, oldShowIcon, showIcon));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabelExpression(String newLabelExpression) {
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ColorDescription getLabelColor() {
         if (labelColor != null && labelColor.eIsProxy()) {
             InternalEObject oldLabelColor = (InternalEObject) labelColor;
             labelColor = (ColorDescription) eResolveProxy(oldLabelColor);
             if (labelColor != oldLabelColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
+                }
             }
         }
         return labelColor;
@@ -285,7 +299,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetLabelColor() {
@@ -294,40 +308,45 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabelColor(ColorDescription newLabelColor) {
         ColorDescription oldLabelColor = labelColor;
         labelColor = newLabelColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getIconPath() {
         return iconPath;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setIconPath(String newIconPath) {
         String oldIconPath = iconPath;
         iconPath = newIconPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -342,8 +361,9 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             return getLabelExpression();
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getLabelColor();
+            }
             return basicGetLabelColor();
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH:
             return getIconPath();
@@ -353,7 +373,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -383,29 +403,29 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE:
-            setLabelSize(LABEL_SIZE_EDEFAULT);
+            setLabelSize(BasicLabelStyleDescriptionImpl.LABEL_SIZE_EDEFAULT);
             return;
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat(LABEL_FORMAT_EDEFAULT);
+            setLabelFormat(BasicLabelStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT);
             return;
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON:
-            setShowIcon(SHOW_ICON_EDEFAULT);
+            setShowIcon(BasicLabelStyleDescriptionImpl.SHOW_ICON_EDEFAULT);
             return;
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
+            setLabelExpression(BasicLabelStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR:
             setLabelColor((ColorDescription) null);
             return;
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH:
-            setIconPath(ICON_PATH_EDEFAULT);
+            setIconPath(BasicLabelStyleDescriptionImpl.ICON_PATH_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -413,37 +433,38 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE:
-            return labelSize != LABEL_SIZE_EDEFAULT;
+            return labelSize != BasicLabelStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT:
-            return labelFormat != LABEL_FORMAT_EDEFAULT;
+            return labelFormat != BasicLabelStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON:
-            return showIcon != SHOW_ICON_EDEFAULT;
+            return showIcon != BasicLabelStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-            return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+            return BasicLabelStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !BasicLabelStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR:
             return labelColor != null;
         case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH:
-            return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+            return BasicLabelStyleDescriptionImpl.ICON_PATH_EDEFAULT == null ? iconPath != null : !BasicLabelStyleDescriptionImpl.ICON_PATH_EDEFAULT.equals(iconPath);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (labelSize: ");

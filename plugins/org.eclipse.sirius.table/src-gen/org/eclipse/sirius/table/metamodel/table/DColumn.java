@@ -52,7 +52,7 @@ public interface DColumn extends DTableElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_Label()
@@ -87,7 +87,7 @@ public interface DColumn extends DTableElement {
      * <!-- end-user-doc --> <!-- begin-model-doc --> List of cells of this
      * column. This list does not necessarily have as many cells as there are
      * lines. Indeed, the ?blank cells? are not created. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Cells</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_Cells()
      * @see org.eclipse.sirius.table.metamodel.table.DCell#getColumn
@@ -104,7 +104,7 @@ public interface DColumn extends DTableElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Origin Mapping</em>' reference.
      * @see #setOriginMapping(ColumnMapping)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_OriginMapping()
@@ -169,7 +169,7 @@ public interface DColumn extends DTableElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Ordered Cells</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_OrderedCells()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -199,7 +199,7 @@ public interface DColumn extends DTableElement {
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#isVisible
      * <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Visible</em>' attribute.
      * @see #isVisible()
@@ -215,7 +215,7 @@ public interface DColumn extends DTableElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(int)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_Width()
@@ -246,7 +246,7 @@ public interface DColumn extends DTableElement {
      * the result of the conditional styles (foreground and background) because
      * the predicateExpression depend on the semantic element of each line. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Current Style</em>' containment reference.
      * @see #setCurrentStyle(DTableElementStyle)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_CurrentStyle()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -83,7 +83,7 @@ public interface AdditionalLayer extends Layer {
      * {@link org.eclipse.sirius.diagram.description.AdditionalLayer#isOptional
      * <em>Optional</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Optional</em>' attribute.
      * @see #isOptional()

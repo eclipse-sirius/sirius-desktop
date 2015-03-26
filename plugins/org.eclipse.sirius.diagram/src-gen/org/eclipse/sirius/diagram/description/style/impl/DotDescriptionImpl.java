@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -52,7 +52,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
      * The default value of the '{@link #getStrokeSizeComputationExpression()
      * <em>Stroke Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStrokeSizeComputationExpression()
      * @generated
      * @ordered
@@ -63,12 +63,12 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
      * The cached value of the '{@link #getStrokeSizeComputationExpression()
      * <em>Stroke Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStrokeSizeComputationExpression()
      * @generated
      * @ordered
      */
-    protected String strokeSizeComputationExpression = STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String strokeSizeComputationExpression = DotDescriptionImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -94,13 +94,15 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
      * 
      * @generated
      */
+    @Override
     public ColorDescription getBackgroundColor() {
         if (backgroundColor != null && backgroundColor.eIsProxy()) {
             InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
             backgroundColor = (ColorDescription) eResolveProxy(oldBackgroundColor);
             if (backgroundColor != oldBackgroundColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.DOT_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+                }
             }
         }
         return backgroundColor;
@@ -120,11 +122,13 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(ColorDescription newBackgroundColor) {
         ColorDescription oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.DOT_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -132,6 +136,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
      * 
      * @generated
      */
+    @Override
     public String getStrokeSizeComputationExpression() {
         return strokeSizeComputationExpression;
     }
@@ -141,11 +146,13 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
      * 
      * @generated
      */
+    @Override
     public void setStrokeSizeComputationExpression(String newStrokeSizeComputationExpression) {
         String oldStrokeSizeComputationExpression = strokeSizeComputationExpression;
         strokeSizeComputationExpression = newStrokeSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION, oldStrokeSizeComputationExpression, strokeSizeComputationExpression));
+        }
     }
 
     /**
@@ -157,8 +164,9 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case StylePackage.DOT_DESCRIPTION__BACKGROUND_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getBackgroundColor();
+            }
             return basicGetBackgroundColor();
         case StylePackage.DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION:
             return getStrokeSizeComputationExpression();
@@ -196,7 +204,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
             setBackgroundColor((ColorDescription) null);
             return;
         case StylePackage.DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION:
-            setStrokeSizeComputationExpression(STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setStrokeSizeComputationExpression(DotDescriptionImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -213,7 +221,8 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
         case StylePackage.DOT_DESCRIPTION__BACKGROUND_COLOR:
             return backgroundColor != null;
         case StylePackage.DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION:
-            return STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? strokeSizeComputationExpression != null : !STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(strokeSizeComputationExpression);
+            return DotDescriptionImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? strokeSizeComputationExpression != null : !DotDescriptionImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(strokeSizeComputationExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -225,8 +234,9 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (strokeSizeComputationExpression: ");

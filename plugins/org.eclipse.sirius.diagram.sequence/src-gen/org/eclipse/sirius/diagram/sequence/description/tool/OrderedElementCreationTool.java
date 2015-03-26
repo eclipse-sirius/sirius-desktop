@@ -59,7 +59,7 @@ public interface OrderedElementCreationTool extends EObject {
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool#getStartingEndPredecessor
      * <em>Starting End Predecessor</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Starting End Predecessor</em>'
      *            containment reference.
@@ -93,7 +93,7 @@ public interface OrderedElementCreationTool extends EObject {
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool#getFinishingEndPredecessor
      * <em>Finishing End Predecessor</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Finishing End Predecessor</em>'
      *            containment reference.

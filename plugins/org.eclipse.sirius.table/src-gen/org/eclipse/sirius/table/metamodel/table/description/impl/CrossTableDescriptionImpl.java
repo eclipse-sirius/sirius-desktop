@@ -49,7 +49,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
      * The cached value of the '{@link #getOwnedColumnMappings()
      * <em>Owned Column Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedColumnMappings()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
      * The cached value of the '{@link #getIntersection() <em>Intersection</em>}
      * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getIntersection()
      * @generated
      * @ordered
@@ -102,6 +102,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
      * 
      * @generated
      */
+    @Override
     public EList<ElementColumnMapping> getOwnedColumnMappings() {
         if (ownedColumnMappings == null) {
             ownedColumnMappings = new EObjectContainmentEList<ElementColumnMapping>(ElementColumnMapping.class, this, DescriptionPackage.CROSS_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS);
@@ -114,6 +115,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
      * 
      * @generated
      */
+    @Override
     public EList<IntersectionMapping> getIntersection() {
         if (intersection == null) {
             intersection = new EObjectContainmentEList<IntersectionMapping>(IntersectionMapping.class, this, DescriptionPackage.CROSS_TABLE_DESCRIPTION__INTERSECTION);
@@ -126,6 +128,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
      * 
      * @generated
      */
+    @Override
     public EList<CreateCrossColumnTool> getCreateColumn() {
         if (createColumn == null) {
             createColumn = new EObjectContainmentEList<CreateCrossColumnTool>(CreateCrossColumnTool.class, this, DescriptionPackage.CROSS_TABLE_DESCRIPTION__CREATE_COLUMN);

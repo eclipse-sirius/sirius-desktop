@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -73,6 +73,7 @@ public class FilterVariableHistoryImpl extends MinimalEObjectImpl.Container impl
      * 
      * @generated
      */
+    @Override
     public EList<FilterVariableValue> getOwnedValues() {
         if (ownedValues == null) {
             ownedValues = new EObjectContainmentEList.Resolving<FilterVariableValue>(FilterVariableValue.class, this, DiagramPackage.FILTER_VARIABLE_HISTORY__OWNED_VALUES);

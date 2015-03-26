@@ -68,7 +68,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
      * The cached value of the '{@link #getInstanceRoleSemanticOrdering()
      * <em>Instance Role Semantic Ordering</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInstanceRoleSemanticOrdering()
      * @generated
      * @ordered
@@ -99,6 +99,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
      * 
      * @generated
      */
+    @Override
     public EventEndsOrdering getSemanticOrdering() {
         return semanticOrdering;
     }
@@ -113,10 +114,11 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
         semanticOrdering = newSemanticOrdering;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SequencePackage.SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING, oldSemanticOrdering, newSemanticOrdering);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -126,18 +128,23 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
      * 
      * @generated
      */
+    @Override
     public void setSemanticOrdering(EventEndsOrdering newSemanticOrdering) {
         if (newSemanticOrdering != semanticOrdering) {
             NotificationChain msgs = null;
-            if (semanticOrdering != null)
-                msgs = ((InternalEObject) semanticOrdering).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING, null, msgs);
-            if (newSemanticOrdering != null)
-                msgs = ((InternalEObject) newSemanticOrdering).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING, null, msgs);
+            if (semanticOrdering != null) {
+                msgs = ((InternalEObject) semanticOrdering).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING, null, msgs);
+            }
+            if (newSemanticOrdering != null) {
+                msgs = ((InternalEObject) newSemanticOrdering).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING, null, msgs);
+            }
             msgs = basicSetSemanticOrdering(newSemanticOrdering, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, SequencePackage.SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING, newSemanticOrdering, newSemanticOrdering));
+        }
     }
 
     /**
@@ -145,6 +152,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
      * 
      * @generated
      */
+    @Override
     public EventEndsOrdering getGraphicalOrdering() {
         return graphicalOrdering;
     }
@@ -159,10 +167,11 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
         graphicalOrdering = newGraphicalOrdering;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SequencePackage.SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING, oldGraphicalOrdering, newGraphicalOrdering);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -172,18 +181,23 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
      * 
      * @generated
      */
+    @Override
     public void setGraphicalOrdering(EventEndsOrdering newGraphicalOrdering) {
         if (newGraphicalOrdering != graphicalOrdering) {
             NotificationChain msgs = null;
-            if (graphicalOrdering != null)
-                msgs = ((InternalEObject) graphicalOrdering).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING, null, msgs);
-            if (newGraphicalOrdering != null)
-                msgs = ((InternalEObject) newGraphicalOrdering).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING, null, msgs);
+            if (graphicalOrdering != null) {
+                msgs = ((InternalEObject) graphicalOrdering).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING, null, msgs);
+            }
+            if (newGraphicalOrdering != null) {
+                msgs = ((InternalEObject) newGraphicalOrdering).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING, null, msgs);
+            }
             msgs = basicSetGraphicalOrdering(newGraphicalOrdering, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, SequencePackage.SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING, newGraphicalOrdering, newGraphicalOrdering));
+        }
     }
 
     /**
@@ -191,6 +205,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
      * 
      * @generated
      */
+    @Override
     public InstanceRolesOrdering getInstanceRoleSemanticOrdering() {
         return instanceRoleSemanticOrdering;
     }
@@ -206,10 +221,11 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SequencePackage.SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING, oldInstanceRoleSemanticOrdering,
                     newInstanceRoleSemanticOrdering);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -219,18 +235,25 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
      * 
      * @generated
      */
+    @Override
     public void setInstanceRoleSemanticOrdering(InstanceRolesOrdering newInstanceRoleSemanticOrdering) {
         if (newInstanceRoleSemanticOrdering != instanceRoleSemanticOrdering) {
             NotificationChain msgs = null;
-            if (instanceRoleSemanticOrdering != null)
-                msgs = ((InternalEObject) instanceRoleSemanticOrdering).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING, null, msgs);
-            if (newInstanceRoleSemanticOrdering != null)
-                msgs = ((InternalEObject) newInstanceRoleSemanticOrdering).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SequencePackage.SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING, null, msgs);
+            if (instanceRoleSemanticOrdering != null) {
+                msgs = ((InternalEObject) instanceRoleSemanticOrdering).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - SequencePackage.SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING, null, msgs);
+            }
+            if (newInstanceRoleSemanticOrdering != null) {
+                msgs = ((InternalEObject) newInstanceRoleSemanticOrdering).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - SequencePackage.SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING, null, msgs);
+            }
             msgs = basicSetInstanceRoleSemanticOrdering(newInstanceRoleSemanticOrdering, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, SequencePackage.SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING, newInstanceRoleSemanticOrdering, newInstanceRoleSemanticOrdering));
+        }
     }
 
     /**

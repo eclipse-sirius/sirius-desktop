@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.provider;
 
@@ -42,11 +42,11 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * @generated
  */
 public class SwitchChildItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SwitchChildItemProvider(AdapterFactory adapterFactory) {
@@ -56,7 +56,7 @@ public class SwitchChildItemProvider extends ItemProviderAdapter implements IEdi
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class SwitchChildItemProvider extends ItemProviderAdapter implements IEdi
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -180,7 +180,7 @@ public class SwitchChildItemProvider extends ItemProviderAdapter implements IEdi
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -216,7 +216,7 @@ public class SwitchChildItemProvider extends ItemProviderAdapter implements IEdi
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescription
  * <em>Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDescriptionImpl implements ConditionalTreeItemStyleDescription {
@@ -70,6 +70,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
      * 
      * @generated
      */
+    @Override
     public TreeItemStyleDescription getStyle() {
         return style;
     }
@@ -84,10 +85,11 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
         style = newStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE, oldStyle, newStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -97,18 +99,23 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
      * 
      * @generated
      */
+    @Override
     public void setStyle(TreeItemStyleDescription newStyle) {
         if (newStyle != style) {
             NotificationChain msgs = null;
-            if (style != null)
-                msgs = ((InternalEObject) style).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE, null, msgs);
-            if (newStyle != null)
-                msgs = ((InternalEObject) newStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE, null, msgs);
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE, null, msgs);
+            }
             msgs = basicSetStyle(newStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE, newStyle, newStyle));
+        }
     }
 
     /**

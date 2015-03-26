@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint;
 
@@ -40,7 +40,7 @@ public interface DRepresentationContainer extends DView {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Models</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationContainer_Models()
      * @model transient="true" changeable="false" volatile="true" derived="true"

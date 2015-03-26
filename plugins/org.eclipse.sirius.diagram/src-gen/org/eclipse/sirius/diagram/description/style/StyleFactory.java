@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -32,7 +32,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Bordered Style Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Bordered Style Description</em>'.
      * @generated
      */
@@ -41,7 +41,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Custom Style Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Custom Style Description</em>'.
      * @generated
      */
@@ -50,7 +50,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Square Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Square Description</em>'.
      * @generated
      */
@@ -59,7 +59,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Lozenge Node Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Lozenge Node Description</em>'.
      * @generated
      */
@@ -68,7 +68,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Ellipse Node Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Ellipse Node Description</em>'.
      * @generated
      */
@@ -77,7 +77,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Bundled Image Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Bundled Image Description</em>'.
      * @generated
      */
@@ -86,7 +86,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Note Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Note Description</em>'.
      * @generated
      */
@@ -95,7 +95,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Dot Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Dot Description</em>'.
      * @generated
      */
@@ -114,7 +114,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Gauge Section Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Gauge Section Description</em>'.
      * @generated
      */
@@ -152,7 +152,7 @@ public interface StyleFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Edge Style Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Edge Style Description</em>'.
      * @generated
      */

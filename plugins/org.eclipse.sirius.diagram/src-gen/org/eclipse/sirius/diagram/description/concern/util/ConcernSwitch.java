@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.concern.util;
 
@@ -47,8 +47,8 @@ public class ConcernSwitch<T> {
      * @generated
      */
     public ConcernSwitch() {
-        if (modelPackage == null) {
-            modelPackage = ConcernPackage.eINSTANCE;
+        if (ConcernSwitch.modelPackage == null) {
+            ConcernSwitch.modelPackage = ConcernPackage.eINSTANCE;
         }
     }
 
@@ -75,7 +75,7 @@ public class ConcernSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == ConcernSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -97,21 +97,26 @@ public class ConcernSwitch<T> {
         case ConcernPackage.CONCERN_SET: {
             ConcernSet concernSet = (ConcernSet) theEObject;
             T result = caseConcernSet(concernSet);
-            if (result == null)
+            if (result == null) {
                 result = caseDocumentedElement(concernSet);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ConcernPackage.CONCERN_DESCRIPTION: {
             ConcernDescription concernDescription = (ConcernDescription) theEObject;
             T result = caseConcernDescription(concernDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseDocumentedElement(concernDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(concernDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -124,7 +129,7 @@ public class ConcernSwitch<T> {
      * <em>Set</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

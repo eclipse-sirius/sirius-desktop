@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -40,7 +40,7 @@ public interface FixedColor extends ColorDescription {
      * value is <code>"125"</code>. <!-- begin-user-doc --> <!-- end-user-doc
      * --> <!-- begin-model-doc --> The red value of the RGB color. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Red</em>' attribute.
      * @see #setRed(int)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getFixedColor_Red()
@@ -53,7 +53,7 @@ public interface FixedColor extends ColorDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.FixedColor#getRed
      * <em>Red</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Red</em>' attribute.
      * @see #getRed()
@@ -66,7 +66,7 @@ public interface FixedColor extends ColorDescription {
      * value is <code>"125"</code>. <!-- begin-user-doc --> <!-- end-user-doc
      * --> <!-- begin-model-doc --> The green value of the RGB color. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Green</em>' attribute.
      * @see #setGreen(int)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getFixedColor_Green()
@@ -79,7 +79,7 @@ public interface FixedColor extends ColorDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.FixedColor#getGreen
      * <em>Green</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Green</em>' attribute.
      * @see #getGreen()
@@ -92,7 +92,7 @@ public interface FixedColor extends ColorDescription {
      * value is <code>"125"</code>. <!-- begin-user-doc --> <!-- end-user-doc
      * --> <!-- begin-model-doc --> The blue value of the RGB color. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Blue</em>' attribute.
      * @see #setBlue(int)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getFixedColor_Blue()
@@ -105,7 +105,7 @@ public interface FixedColor extends ColorDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.FixedColor#getBlue
      * <em>Blue</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Blue</em>' attribute.
      * @see #getBlue()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -78,12 +78,12 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * @generated
      * @ordered
      */
-    protected boolean visible = VISIBLE_EDEFAULT;
+    protected boolean visible = DDiagramElementImpl.VISIBLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTooltipText() <em>Tooltip Text</em>}
      * ' attribute. <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @see #getTooltipText()
      * @generated
@@ -94,13 +94,13 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * The cached value of the '{@link #getTooltipText() <em>Tooltip Text</em>}'
      * attribute. <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @see #getTooltipText()
      * @generated
      * @ordered
      */
-    protected String tooltipText = TOOLTIP_TEXT_EDEFAULT;
+    protected String tooltipText = DDiagramElementImpl.TOOLTIP_TEXT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getParentLayers()
@@ -127,7 +127,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * The cached value of the '{@link #getGraphicalFilters()
      * <em>Graphical Filters</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGraphicalFilters()
      * @generated
      * @ordered
@@ -158,6 +158,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
+    @Override
     public boolean isVisible() {
         return visible;
     }
@@ -167,34 +168,39 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
+    @Override
     public void setVisible(boolean newVisible) {
         boolean oldVisible = visible;
         visible = newVisible;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE, oldVisible, visible));
+        }
     }
 
     /**
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getTooltipText() {
         return tooltipText;
     }
 
     /**
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setTooltipText(String newTooltipText) {
         String oldTooltipText = tooltipText;
         tooltipText = newTooltipText;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM_ELEMENT__TOOLTIP_TEXT, oldTooltipText, tooltipText));
+        }
     }
 
     /**
@@ -202,6 +208,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<Layer> getParentLayers() {
         if (parentLayers == null) {
             parentLayers = new EObjectResolvingEList<Layer>(Layer.class, this, DiagramPackage.DDIAGRAM_ELEMENT__PARENT_LAYERS);
@@ -214,6 +221,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<Decoration> getDecorations() {
         if (decorations == null) {
             decorations = new EObjectContainmentEList.Resolving<Decoration>(Decoration.class, this, DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS);
@@ -223,9 +231,10 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated (for CDO native compatibility reason)
      */
+    @Override
     public DiagramElementMapping getDiagramElementMapping() {
         DiagramElementMapping diagramElementMapping = basicGetDiagramElementMapping();
         return diagramElementMapping != null && diagramElementMapping.eIsProxy() ? (DiagramElementMapping) eResolveProxy((InternalEObject) diagramElementMapping) : diagramElementMapping;
@@ -233,7 +242,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     public DiagramElementMapping basicGetDiagramElementMapping() {
@@ -245,6 +254,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
+    @Override
     public EList<GraphicalFilter> getGraphicalFilters() {
         if (graphicalFilters == null) {
             graphicalFilters = new EObjectContainmentEList.Resolving<GraphicalFilter>(GraphicalFilter.class, this, DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS);
@@ -257,6 +267,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
+    @Override
     public DDiagram getParentDiagram() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -296,8 +307,9 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
         case DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS:
             return getDecorations();
         case DiagramPackage.DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getDiagramElementMapping();
+            }
             return basicGetDiagramElementMapping();
         case DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS:
             return getGraphicalFilters();
@@ -345,10 +357,10 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE:
-            setVisible(VISIBLE_EDEFAULT);
+            setVisible(DDiagramElementImpl.VISIBLE_EDEFAULT);
             return;
         case DiagramPackage.DDIAGRAM_ELEMENT__TOOLTIP_TEXT:
-            setTooltipText(TOOLTIP_TEXT_EDEFAULT);
+            setTooltipText(DDiagramElementImpl.TOOLTIP_TEXT_EDEFAULT);
             return;
         case DiagramPackage.DDIAGRAM_ELEMENT__PARENT_LAYERS:
             getParentLayers().clear();
@@ -372,9 +384,9 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE:
-            return visible != VISIBLE_EDEFAULT;
+            return visible != DDiagramElementImpl.VISIBLE_EDEFAULT;
         case DiagramPackage.DDIAGRAM_ELEMENT__TOOLTIP_TEXT:
-            return TOOLTIP_TEXT_EDEFAULT == null ? tooltipText != null : !TOOLTIP_TEXT_EDEFAULT.equals(tooltipText);
+            return DDiagramElementImpl.TOOLTIP_TEXT_EDEFAULT == null ? tooltipText != null : !DDiagramElementImpl.TOOLTIP_TEXT_EDEFAULT.equals(tooltipText);
         case DiagramPackage.DDIAGRAM_ELEMENT__PARENT_LAYERS:
             return parentLayers != null && !parentLayers.isEmpty();
         case DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS:
@@ -394,8 +406,9 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (visible: ");

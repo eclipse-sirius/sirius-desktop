@@ -62,8 +62,8 @@ public class TableSwitch<T> {
      * @generated
      */
     public TableSwitch() {
-        if (modelPackage == null) {
-            modelPackage = TablePackage.eINSTANCE;
+        if (TableSwitch.modelPackage == null) {
+            TableSwitch.modelPackage = TablePackage.eINSTANCE;
         }
     }
 
@@ -90,7 +90,7 @@ public class TableSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == TableSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -112,182 +112,245 @@ public class TableSwitch<T> {
         case TablePackage.DTABLE: {
             DTable dTable = (DTable) theEObject;
             T result = caseDTable(dTable);
-            if (result == null)
+            if (result == null) {
                 result = caseDRepresentation(dTable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLineContainer(dTable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(dTable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dTable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDModelElement(dTable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dTable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.DTABLE_ELEMENT: {
             DTableElement dTableElement = (DTableElement) theEObject;
             T result = caseDTableElement(dTableElement);
-            if (result == null)
+            if (result == null) {
                 result = caseDRepresentationElement(dTableElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dTableElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dTableElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dTableElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dTableElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dTableElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.LINE_CONTAINER: {
             LineContainer lineContainer = (LineContainer) theEObject;
             T result = caseLineContainer(lineContainer);
-            if (result == null)
+            if (result == null) {
                 result = caseDSemanticDecorator(lineContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.DLINE: {
             DLine dLine = (DLine) theEObject;
             T result = caseDLine(dLine);
-            if (result == null)
+            if (result == null) {
                 result = caseLineContainer(dLine);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDTableElement(dLine);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dLine);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dLine);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dLine);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dLine);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dLine);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dLine);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.DCELL: {
             DCell dCell = (DCell) theEObject;
             T result = caseDCell(dCell);
-            if (result == null)
+            if (result == null) {
                 result = caseDTableElement(dCell);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dCell);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dCell);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dCell);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dCell);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dCell);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dCell);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.DCELL_STYLE: {
             DCellStyle dCellStyle = (DCellStyle) theEObject;
             T result = caseDCellStyle(dCellStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseDTableElementStyle(dCellStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.DCOLUMN: {
             DColumn dColumn = (DColumn) theEObject;
             T result = caseDColumn(dColumn);
-            if (result == null)
+            if (result == null) {
                 result = caseDTableElement(dColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.DTARGET_COLUMN: {
             DTargetColumn dTargetColumn = (DTargetColumn) theEObject;
             T result = caseDTargetColumn(dTargetColumn);
-            if (result == null)
+            if (result == null) {
                 result = caseDColumn(dTargetColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDTableElement(dTargetColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dTargetColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dTargetColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dTargetColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dTargetColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dTargetColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dTargetColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.DFEATURE_COLUMN: {
             DFeatureColumn dFeatureColumn = (DFeatureColumn) theEObject;
             T result = caseDFeatureColumn(dFeatureColumn);
-            if (result == null)
+            if (result == null) {
                 result = caseDColumn(dFeatureColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDTableElement(dFeatureColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dFeatureColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dFeatureColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dFeatureColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dFeatureColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dFeatureColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dFeatureColumn);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.DTABLE_ELEMENT_SYNCHRONIZER: {
             DTableElementSynchronizer dTableElementSynchronizer = (DTableElementSynchronizer) theEObject;
             T result = caseDTableElementSynchronizer(dTableElementSynchronizer);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TablePackage.DTABLE_ELEMENT_STYLE: {
             DTableElementStyle dTableElementStyle = (DTableElementStyle) theEObject;
             T result = caseDTableElementStyle(dTableElementStyle);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

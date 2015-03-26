@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.validation;
 
@@ -47,7 +47,7 @@ public interface ValidationSet extends DocumentedElement {
      * Returns the value of the '<em><b>Name</b></em>' attribute. The default
      * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The name of the set. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_Name()
@@ -60,7 +60,7 @@ public interface ValidationSet extends DocumentedElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -74,7 +74,7 @@ public interface ValidationSet extends DocumentedElement {
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The validation rules owned by this set. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Rules</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_OwnedRules()
@@ -89,7 +89,7 @@ public interface ValidationSet extends DocumentedElement {
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The validations rules that are reused by this set. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Rules</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_ReusedRules()
      * @model
@@ -103,7 +103,7 @@ public interface ValidationSet extends DocumentedElement {
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All rules of the set. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>All Rules</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_AllRules()
      * @model transient="true" changeable="false" volatile="true" derived="true"

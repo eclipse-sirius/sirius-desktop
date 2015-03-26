@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -52,7 +52,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * Returns the value of the '<em><b>Browse Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Expression returning the navigation target. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Browse Expression</em>' attribute.
      * @see #setBrowseExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationNavigationDescription_BrowseExpression()
@@ -69,7 +69,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription#getBrowseExpression
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Browse Expression</em>' attribute.
      * @see #getBrowseExpression()
@@ -85,7 +85,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Navigation Name Expression</em>' attribute.
      * @see #setNavigationNameExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationNavigationDescription_NavigationNameExpression()
@@ -104,7 +104,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription#getNavigationNameExpression
      * <em>Navigation Name Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Navigation Name Expression</em>'
      *            attribute.
@@ -121,7 +121,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Representation Description</em>' reference.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationNavigationDescription_RepresentationDescription()
      * @model required="true" transient="true" changeable="false"
@@ -136,7 +136,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * begin-model-doc --> The variable containerView that represents the
      * clickedView (instance of ViewPoint or ViewPointElement). <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Container View Variable</em>' containment
      *         reference.
      * @see #setContainerViewVariable(ContainerViewVariable)
@@ -153,7 +153,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription#getContainerViewVariable
      * <em>Container View Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Container View Variable</em>'
      *            containment reference.
@@ -167,7 +167,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The variable container that represents the semantic
      * element of the clicked view. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Container Variable</em>' containment
      *         reference.
      * @see #setContainerVariable(ElementSelectVariable)
@@ -184,7 +184,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription#getContainerVariable
      * <em>Container Variable</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Container Variable</em>' containment
      *            reference.
@@ -198,7 +198,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The variable representationName that represents the
      * name of the representation to open. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Representation Name Variable</em>'
      *         containment reference.
      * @see #setRepresentationNameVariable(NameVariable)
@@ -215,7 +215,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription#getRepresentationNameVariable
      * <em>Representation Name Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Representation Name Variable</em>'
      *            containment reference.
@@ -226,7 +226,7 @@ public interface RepresentationNavigationDescription extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" required="true"
      * @generated
      */

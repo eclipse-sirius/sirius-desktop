@@ -50,7 +50,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCell_Label()
@@ -129,7 +129,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * {@link org.eclipse.sirius.table.metamodel.table.DCell#getColumn
      * <em>Column</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Column</em>' reference.
      * @see #getColumn()
@@ -173,7 +173,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * background style of the column. In this case the backgroundStyleOrigin
      * references the column mapping and the defaultBackgroundStyle is equal
      * true. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Current Style</em>' containment reference.
      * @see #setCurrentStyle(DCellStyle)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCell_CurrentStyle()
@@ -204,7 +204,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Updater</em>' reference.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCell_Updater()
      * @model transient="true" changeable="false" volatile="true"
@@ -217,7 +217,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * {@link org.eclipse.sirius.table.metamodel.table.DCell#getUpdater
      * <em>Updater</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Updater</em>' reference.
      * @see #getUpdater()

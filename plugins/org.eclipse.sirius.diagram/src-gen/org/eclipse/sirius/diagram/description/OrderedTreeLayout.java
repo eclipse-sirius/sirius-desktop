@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -40,7 +40,7 @@ public interface OrderedTreeLayout extends Layout {
      * expression returning the semantic children of an element, the result of
      * this expression is used to compute a hiearchical tree for the layout.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Children Expression</em>' attribute.
      * @see #setChildrenExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getOrderedTreeLayout_ChildrenExpression()
@@ -72,7 +72,7 @@ public interface OrderedTreeLayout extends Layout {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * list of mappings affected by the ordered tree routing. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Node Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getOrderedTreeLayout_NodeMapping()
      * @model required="true"

@@ -76,8 +76,8 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public DescriptionSwitch() {
-        if (modelPackage == null) {
-            modelPackage = DescriptionPackage.eINSTANCE;
+        if (DescriptionSwitch.modelPackage == null) {
+            DescriptionSwitch.modelPackage = DescriptionPackage.eINSTANCE;
         }
     }
 
@@ -104,7 +104,7 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == DescriptionSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -126,414 +126,573 @@ public class DescriptionSwitch<T> {
         case DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION: {
             SequenceDiagramDescription sequenceDiagramDescription = (SequenceDiagramDescription) theEObject;
             T result = caseSequenceDiagramDescription(sequenceDiagramDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseDiagramDescription(sequenceDiagramDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(sequenceDiagramDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationDescription(sequenceDiagramDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(sequenceDiagramDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(sequenceDiagramDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEndUserDocumentedElement(sequenceDiagramDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(sequenceDiagramDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.INSTANCE_ROLE_MAPPING: {
             InstanceRoleMapping instanceRoleMapping = (InstanceRoleMapping) theEObject;
             T result = caseInstanceRoleMapping(instanceRoleMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeMapping(instanceRoleMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractNodeMapping(instanceRoleMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(instanceRoleMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(instanceRoleMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(instanceRoleMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(instanceRoleMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(instanceRoleMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(instanceRoleMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.EVENT_MAPPING: {
             EventMapping eventMapping = (EventMapping) theEObject;
             T result = caseEventMapping(eventMapping);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.DELIMITED_EVENT_MAPPING: {
             DelimitedEventMapping delimitedEventMapping = (DelimitedEventMapping) theEObject;
             T result = caseDelimitedEventMapping(delimitedEventMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseEventMapping(delimitedEventMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.EXECUTION_MAPPING: {
             ExecutionMapping executionMapping = (ExecutionMapping) theEObject;
             T result = caseExecutionMapping(executionMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeMapping(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDelimitedEventMapping(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractNodeMapping(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(executionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.STATE_MAPPING: {
             StateMapping stateMapping = (StateMapping) theEObject;
             T result = caseStateMapping(stateMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeMapping(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDelimitedEventMapping(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractNodeMapping(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(stateMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.END_OF_LIFE_MAPPING: {
             EndOfLifeMapping endOfLifeMapping = (EndOfLifeMapping) theEObject;
             T result = caseEndOfLifeMapping(endOfLifeMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeMapping(endOfLifeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractNodeMapping(endOfLifeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(endOfLifeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(endOfLifeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(endOfLifeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(endOfLifeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(endOfLifeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(endOfLifeMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.MESSAGE_MAPPING: {
             MessageMapping messageMapping = (MessageMapping) theEObject;
             T result = caseMessageMapping(messageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseEdgeMapping(messageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(messageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(messageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(messageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIEdgeMapping(messageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(messageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(messageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(messageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.BASIC_MESSAGE_MAPPING: {
             BasicMessageMapping basicMessageMapping = (BasicMessageMapping) theEObject;
             T result = caseBasicMessageMapping(basicMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseMessageMapping(basicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeMapping(basicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(basicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(basicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(basicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIEdgeMapping(basicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(basicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(basicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(basicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.RETURN_MESSAGE_MAPPING: {
             ReturnMessageMapping returnMessageMapping = (ReturnMessageMapping) theEObject;
             T result = caseReturnMessageMapping(returnMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseMessageMapping(returnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeMapping(returnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(returnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(returnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(returnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIEdgeMapping(returnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(returnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(returnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(returnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.CREATION_MESSAGE_MAPPING: {
             CreationMessageMapping creationMessageMapping = (CreationMessageMapping) theEObject;
             T result = caseCreationMessageMapping(creationMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseMessageMapping(creationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeMapping(creationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(creationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(creationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(creationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIEdgeMapping(creationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(creationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(creationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(creationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.DESTRUCTION_MESSAGE_MAPPING: {
             DestructionMessageMapping destructionMessageMapping = (DestructionMessageMapping) theEObject;
             T result = caseDestructionMessageMapping(destructionMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseMessageMapping(destructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeMapping(destructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(destructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(destructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(destructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIEdgeMapping(destructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(destructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(destructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(destructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.MESSAGE_END_VARIABLE: {
             MessageEndVariable messageEndVariable = (MessageEndVariable) theEObject;
             T result = caseMessageEndVariable(messageEndVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(messageEndVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.COVERED_LIFELINES_VARIABLE: {
             CoveredLifelinesVariable coveredLifelinesVariable = (CoveredLifelinesVariable) theEObject;
             T result = caseCoveredLifelinesVariable(coveredLifelinesVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(coveredLifelinesVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.FRAME_MAPPING: {
             FrameMapping frameMapping = (FrameMapping) theEObject;
             T result = caseFrameMapping(frameMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerMapping(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDelimitedEventMapping(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractNodeMapping(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(frameMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.INTERACTION_USE_MAPPING: {
             InteractionUseMapping interactionUseMapping = (InteractionUseMapping) theEObject;
             T result = caseInteractionUseMapping(interactionUseMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseFrameMapping(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseContainerMapping(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDelimitedEventMapping(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractNodeMapping(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(interactionUseMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.COMBINED_FRAGMENT_MAPPING: {
             CombinedFragmentMapping combinedFragmentMapping = (CombinedFragmentMapping) theEObject;
             T result = caseCombinedFragmentMapping(combinedFragmentMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseFrameMapping(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseContainerMapping(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDelimitedEventMapping(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractNodeMapping(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(combinedFragmentMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.OPERAND_MAPPING: {
             OperandMapping operandMapping = (OperandMapping) theEObject;
             T result = caseOperandMapping(operandMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerMapping(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDelimitedEventMapping(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractNodeMapping(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEventMapping(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(operandMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.OBSERVATION_POINT_MAPPING: {
             ObservationPointMapping observationPointMapping = (ObservationPointMapping) theEObject;
             T result = caseObservationPointMapping(observationPointMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeMapping(observationPointMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractNodeMapping(observationPointMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTargetDescription(observationPointMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDiagramElementMapping(observationPointMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(observationPointMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(observationPointMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = casePasteTargetDescription(observationPointMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(observationPointMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

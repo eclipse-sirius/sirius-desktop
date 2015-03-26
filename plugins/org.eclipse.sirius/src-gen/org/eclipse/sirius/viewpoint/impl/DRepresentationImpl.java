@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -61,7 +61,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getEAnnotations() <em>EAnnotations</em>}
      * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getEAnnotations()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -81,18 +81,18 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DRepresentationImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOwnedAnnotationEntries()
      * <em>Owned Annotation Entries</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedAnnotationEntries()
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DRepresentationImpl() {
@@ -110,7 +110,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,9 +120,10 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DAnnotation> getEAnnotations() {
         if (eAnnotations == null) {
             eAnnotations = new EObjectContainmentEList<DAnnotation>(DAnnotation.class, this, ViewpointPackage.DREPRESENTATION__EANNOTATIONS);
@@ -132,9 +133,10 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DRepresentationElement> getOwnedRepresentationElements() {
         // TODO: implement this method to return the 'Owned Representation
         // Elements' reference list
@@ -149,9 +151,10 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DRepresentationElement> getRepresentationElements() {
         // TODO: implement this method to return the 'Representation Elements'
         // reference list
@@ -166,30 +169,34 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<AnnotationEntry> getOwnedAnnotationEntries() {
         if (ownedAnnotationEntries == null) {
             ownedAnnotationEntries = new EObjectContainmentEList.Resolving<AnnotationEntry>(AnnotationEntry.class, this, ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES);
@@ -199,9 +206,10 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DAnnotation getDAnnotation(String source) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -210,9 +218,10 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -221,7 +230,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -237,7 +246,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +268,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -283,7 +292,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -293,7 +302,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
             getEAnnotations().clear();
             return;
         case ViewpointPackage.DREPRESENTATION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DRepresentationImpl.NAME_EDEFAULT);
             return;
         case ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES:
             getOwnedAnnotationEntries().clear();
@@ -304,7 +313,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +326,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
         case ViewpointPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS:
             return !getRepresentationElements().isEmpty();
         case ViewpointPackage.DREPRESENTATION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DRepresentationImpl.NAME_EDEFAULT == null ? name != null : !DRepresentationImpl.NAME_EDEFAULT.equals(name);
         case ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES:
             return ownedAnnotationEntries != null && !ownedAnnotationEntries.isEmpty();
         }
@@ -326,7 +335,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -350,7 +359,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -374,13 +383,14 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

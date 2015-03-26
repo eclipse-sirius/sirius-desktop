@@ -107,7 +107,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * The cached value of the '{@link #getConditionalStyles()
      * <em>Conditional Styles</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -128,7 +128,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * The cached value of the '{@link #getSubItemMappings()
      * <em>Sub Item Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubItemMappings()
      * @generated
      * @ordered
@@ -163,7 +163,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = TreeItemMappingImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPreconditionExpression()
@@ -185,7 +185,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * @generated
      * @ordered
      */
-    protected String preconditionExpression = PRECONDITION_EXPRESSION_EDEFAULT;
+    protected String preconditionExpression = TreeItemMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSemanticCandidatesExpression()
@@ -207,7 +207,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * @generated
      * @ordered
      */
-    protected String semanticCandidatesExpression = SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
+    protected String semanticCandidatesExpression = TreeItemMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getReusedTreeItemMappings()
@@ -294,6 +294,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public TreeItemStyleDescription getDefaultStyle() {
         return defaultStyle;
     }
@@ -308,10 +309,11 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
         defaultStyle = newDefaultStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__DEFAULT_STYLE, oldDefaultStyle, newDefaultStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -321,18 +323,23 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public void setDefaultStyle(TreeItemStyleDescription newDefaultStyle) {
         if (newDefaultStyle != defaultStyle) {
             NotificationChain msgs = null;
-            if (defaultStyle != null)
-                msgs = ((InternalEObject) defaultStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DEFAULT_STYLE, null, msgs);
-            if (newDefaultStyle != null)
-                msgs = ((InternalEObject) newDefaultStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DEFAULT_STYLE, null, msgs);
+            if (defaultStyle != null) {
+                msgs = ((InternalEObject) defaultStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DEFAULT_STYLE, null, msgs);
+            }
+            if (newDefaultStyle != null) {
+                msgs = ((InternalEObject) newDefaultStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DEFAULT_STYLE, null, msgs);
+            }
             msgs = basicSetDefaultStyle(newDefaultStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__DEFAULT_STYLE, newDefaultStyle, newDefaultStyle));
+        }
     }
 
     /**
@@ -340,6 +347,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -349,11 +357,13 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -361,6 +371,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public String getPreconditionExpression() {
         return preconditionExpression;
     }
@@ -370,11 +381,13 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public void setPreconditionExpression(String newPreconditionExpression) {
         String oldPreconditionExpression = preconditionExpression;
         preconditionExpression = newPreconditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION, oldPreconditionExpression, preconditionExpression));
+        }
     }
 
     /**
@@ -382,6 +395,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemMapping> getSubItemMappings() {
         if (subItemMappings == null) {
             subItemMappings = new EObjectContainmentEList<TreeItemMapping>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_MAPPING__SUB_ITEM_MAPPINGS);
@@ -394,6 +408,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemContainerDropTool> getDropTools() {
         if (dropTools == null) {
             dropTools = new EObjectContainmentEList<TreeItemContainerDropTool>(TreeItemContainerDropTool.class, this, DescriptionPackage.TREE_ITEM_MAPPING__DROP_TOOLS);
@@ -406,6 +421,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public EList<ConditionalTreeItemStyleDescription> getConditionalStyles() {
         if (conditionalStyles == null) {
             conditionalStyles = new EObjectContainmentEList<ConditionalTreeItemStyleDescription>(ConditionalTreeItemStyleDescription.class, this,
@@ -419,6 +435,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public TreeItemEditionTool getDirectEdit() {
         return directEdit;
     }
@@ -433,10 +450,11 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
         directEdit = newDirectEdit;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__DIRECT_EDIT, oldDirectEdit, newDirectEdit);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -446,18 +464,23 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public void setDirectEdit(TreeItemEditionTool newDirectEdit) {
         if (newDirectEdit != directEdit) {
             NotificationChain msgs = null;
-            if (directEdit != null)
-                msgs = ((InternalEObject) directEdit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DIRECT_EDIT, null, msgs);
-            if (newDirectEdit != null)
-                msgs = ((InternalEObject) newDirectEdit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DIRECT_EDIT, null, msgs);
+            if (directEdit != null) {
+                msgs = ((InternalEObject) directEdit).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DIRECT_EDIT, null, msgs);
+            }
+            if (newDirectEdit != null) {
+                msgs = ((InternalEObject) newDirectEdit).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DIRECT_EDIT, null, msgs);
+            }
             msgs = basicSetDirectEdit(newDirectEdit, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__DIRECT_EDIT, newDirectEdit, newDirectEdit));
+        }
     }
 
     /**
@@ -465,6 +488,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public String getSemanticCandidatesExpression() {
         return semanticCandidatesExpression;
     }
@@ -474,11 +498,13 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public void setSemanticCandidatesExpression(String newSemanticCandidatesExpression) {
         String oldSemanticCandidatesExpression = semanticCandidatesExpression;
         semanticCandidatesExpression = newSemanticCandidatesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, oldSemanticCandidatesExpression, semanticCandidatesExpression));
+        }
     }
 
     /**
@@ -486,6 +512,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemMapping> getReusedTreeItemMappings() {
         if (reusedTreeItemMappings == null) {
             reusedTreeItemMappings = new EObjectResolvingEList<TreeItemMapping>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS);
@@ -498,6 +525,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemMapping> getAllSubMappings() {
         // TODO: implement this method to return the 'All Sub Mappings'
         // reference list
@@ -515,13 +543,15 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public TreeItemMapping getSpecialize() {
         if (specialize != null && specialize.eIsProxy()) {
             InternalEObject oldSpecialize = (InternalEObject) specialize;
             specialize = (TreeItemMapping) eResolveProxy(oldSpecialize);
             if (specialize != oldSpecialize) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.TREE_ITEM_MAPPING__SPECIALIZE, oldSpecialize, specialize));
+                }
             }
         }
         return specialize;
@@ -541,11 +571,13 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public void setSpecialize(TreeItemMapping newSpecialize) {
         TreeItemMapping oldSpecialize = specialize;
         specialize = newSpecialize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__SPECIALIZE, oldSpecialize, specialize));
+        }
     }
 
     /**
@@ -553,6 +585,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public TreeItemDeletionTool getDelete() {
         return delete;
     }
@@ -567,10 +600,11 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
         delete = newDelete;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__DELETE, oldDelete, newDelete);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -580,18 +614,23 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public void setDelete(TreeItemDeletionTool newDelete) {
         if (newDelete != delete) {
             NotificationChain msgs = null;
-            if (delete != null)
+            if (delete != null) {
                 msgs = ((InternalEObject) delete).eInverseRemove(this, DescriptionPackage.TREE_ITEM_DELETION_TOOL__MAPPING, TreeItemDeletionTool.class, msgs);
-            if (newDelete != null)
+            }
+            if (newDelete != null) {
                 msgs = ((InternalEObject) newDelete).eInverseAdd(this, DescriptionPackage.TREE_ITEM_DELETION_TOOL__MAPPING, TreeItemDeletionTool.class, msgs);
+            }
             msgs = basicSetDelete(newDelete, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_MAPPING__DELETE, newDelete, newDelete));
+        }
     }
 
     /**
@@ -599,6 +638,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemCreationTool> getCreate() {
         if (create == null) {
             create = new EObjectContainmentEList<TreeItemCreationTool>(TreeItemCreationTool.class, this, DescriptionPackage.TREE_ITEM_MAPPING__CREATE);
@@ -611,6 +651,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemDragTool> getDndTools() {
         if (dndTools == null) {
             dndTools = new EObjectContainmentEList<TreeItemDragTool>(TreeItemDragTool.class, this, DescriptionPackage.TREE_ITEM_MAPPING__DND_TOOLS);
@@ -623,6 +664,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public EList<TreePopupMenu> getPopupMenus() {
         if (popupMenus == null) {
             popupMenus = new EObjectContainmentEList<TreePopupMenu>(TreePopupMenu.class, this, DescriptionPackage.TREE_ITEM_MAPPING__POPUP_MENUS);
@@ -635,6 +677,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public String getLabelComputationExpression() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -646,6 +689,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * 
      * @generated
      */
+    @Override
     public TreeItemCreationTool getCreateTreeItem() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -661,8 +705,9 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case DescriptionPackage.TREE_ITEM_MAPPING__DELETE:
-            if (delete != null)
-                msgs = ((InternalEObject) delete).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DELETE, null, msgs);
+            if (delete != null) {
+                msgs = ((InternalEObject) delete).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_MAPPING__DELETE, null, msgs);
+            }
             return basicSetDelete((TreeItemDeletionTool) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -727,8 +772,9 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
         case DescriptionPackage.TREE_ITEM_MAPPING__ALL_SUB_MAPPINGS:
             return getAllSubMappings();
         case DescriptionPackage.TREE_ITEM_MAPPING__SPECIALIZE:
-            if (resolve)
+            if (resolve) {
                 return getSpecialize();
+            }
             return basicGetSpecialize();
         case DescriptionPackage.TREE_ITEM_MAPPING__DELETE:
             return getDelete();
@@ -828,13 +874,13 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
             getDropTools().clear();
             return;
         case DescriptionPackage.TREE_ITEM_MAPPING__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(TreeItemMappingImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case DescriptionPackage.TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION:
-            setPreconditionExpression(PRECONDITION_EXPRESSION_EDEFAULT);
+            setPreconditionExpression(TreeItemMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            setSemanticCandidatesExpression(SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
+            setSemanticCandidatesExpression(TreeItemMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS:
             getReusedTreeItemMappings().clear();
@@ -877,11 +923,12 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
         case DescriptionPackage.TREE_ITEM_MAPPING__DROP_TOOLS:
             return dropTools != null && !dropTools.isEmpty();
         case DescriptionPackage.TREE_ITEM_MAPPING__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return TreeItemMappingImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !TreeItemMappingImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION:
-            return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
+            return TreeItemMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !TreeItemMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
         case DescriptionPackage.TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            return SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
+            return TreeItemMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !TreeItemMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT
+                    .equals(semanticCandidatesExpression);
         case DescriptionPackage.TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS:
             return reusedTreeItemMappings != null && !reusedTreeItemMappings.isEmpty();
         case DescriptionPackage.TREE_ITEM_MAPPING__ALL_SUB_MAPPINGS:
@@ -983,8 +1030,9 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (domainClass: ");

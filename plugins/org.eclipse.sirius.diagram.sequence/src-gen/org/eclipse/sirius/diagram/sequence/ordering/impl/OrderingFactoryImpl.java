@@ -85,6 +85,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
      * 
      * @generated
      */
+    @Override
     public EventEndsOrdering createEventEndsOrdering() {
         EventEndsOrderingImpl eventEndsOrdering = new EventEndsOrderingImpl();
         return eventEndsOrdering;
@@ -92,9 +93,10 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public SingleEventEnd createSingleEventEnd() {
         SingleEventEndImpl singleEventEnd = new SingleEventEndSpec();
         return singleEventEnd;
@@ -102,9 +104,10 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CompoundEventEnd createCompoundEventEnd() {
         CompoundEventEndImpl compoundEventEnd = new CompoundEventEndSpec();
         return compoundEventEnd;
@@ -115,6 +118,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
      * 
      * @generated
      */
+    @Override
     public InstanceRolesOrdering createInstanceRolesOrdering() {
         InstanceRolesOrderingImpl instanceRolesOrdering = new InstanceRolesOrderingImpl();
         return instanceRolesOrdering;
@@ -125,6 +129,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
      * 
      * @generated
      */
+    @Override
     public OrderingPackage getOrderingPackage() {
         return (OrderingPackage) getEPackage();
     }

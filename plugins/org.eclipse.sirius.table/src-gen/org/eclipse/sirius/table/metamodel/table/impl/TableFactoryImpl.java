@@ -94,9 +94,10 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DTable createDTable() {
         DTableImpl dTable = new DTableSpec();
         return dTable;
@@ -104,9 +105,10 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DLine createDLine() {
         DLineImpl dLine = new DLineSpec();
         return dLine;
@@ -114,9 +116,10 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DCell createDCell() {
         DCellImpl dCell = new DCellSpec();
         return dCell;
@@ -129,6 +132,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
      * 
      * @generated
      */
+    @Override
     public DCellStyle createDCellStyle() {
         DCellStyleImpl dCellStyle = new DCellStyleImpl();
         return dCellStyle;
@@ -136,9 +140,10 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DTargetColumn createDTargetColumn() {
         DTargetColumnImpl dTargetColumn = new DTargetColumnSpec();
         return dTargetColumn;
@@ -146,9 +151,10 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DFeatureColumn createDFeatureColumn() {
         DFeatureColumnImpl dFeatureColumn = new DFeatureColumnSpec();
         return dFeatureColumn;
@@ -159,6 +165,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
      * 
      * @generated
      */
+    @Override
     public DTableElementStyle createDTableElementStyle() {
         DTableElementStyleImpl dTableElementStyle = new DTableElementStyleImpl();
         return dTableElementStyle;
@@ -169,6 +176,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
      * 
      * @generated
      */
+    @Override
     public TablePackage getTablePackage() {
         return (TablePackage) getEPackage();
     }

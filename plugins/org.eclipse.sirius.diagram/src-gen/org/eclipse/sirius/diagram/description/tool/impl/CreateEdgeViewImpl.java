@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -55,7 +55,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * @generated
      * @ordered
      */
-    protected String sourceExpression = SOURCE_EXPRESSION_EDEFAULT;
+    protected String sourceExpression = CreateEdgeViewImpl.SOURCE_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTargetExpression()
@@ -77,7 +77,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * @generated
      * @ordered
      */
-    protected String targetExpression = TARGET_EXPRESSION_EDEFAULT;
+    protected String targetExpression = CreateEdgeViewImpl.TARGET_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -103,6 +103,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * 
      * @generated
      */
+    @Override
     public String getSourceExpression() {
         return sourceExpression;
     }
@@ -112,11 +113,13 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * 
      * @generated
      */
+    @Override
     public void setSourceExpression(String newSourceExpression) {
         String oldSourceExpression = sourceExpression;
         sourceExpression = newSourceExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CREATE_EDGE_VIEW__SOURCE_EXPRESSION, oldSourceExpression, sourceExpression));
+        }
     }
 
     /**
@@ -124,6 +127,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * 
      * @generated
      */
+    @Override
     public String getTargetExpression() {
         return targetExpression;
     }
@@ -133,11 +137,13 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * 
      * @generated
      */
+    @Override
     public void setTargetExpression(String newTargetExpression) {
         String oldTargetExpression = targetExpression;
         targetExpression = newTargetExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CREATE_EDGE_VIEW__TARGET_EXPRESSION, oldTargetExpression, targetExpression));
+        }
     }
 
     /**
@@ -183,10 +189,10 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.CREATE_EDGE_VIEW__SOURCE_EXPRESSION:
-            setSourceExpression(SOURCE_EXPRESSION_EDEFAULT);
+            setSourceExpression(CreateEdgeViewImpl.SOURCE_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.CREATE_EDGE_VIEW__TARGET_EXPRESSION:
-            setTargetExpression(TARGET_EXPRESSION_EDEFAULT);
+            setTargetExpression(CreateEdgeViewImpl.TARGET_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -201,9 +207,9 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.CREATE_EDGE_VIEW__SOURCE_EXPRESSION:
-            return SOURCE_EXPRESSION_EDEFAULT == null ? sourceExpression != null : !SOURCE_EXPRESSION_EDEFAULT.equals(sourceExpression);
+            return CreateEdgeViewImpl.SOURCE_EXPRESSION_EDEFAULT == null ? sourceExpression != null : !CreateEdgeViewImpl.SOURCE_EXPRESSION_EDEFAULT.equals(sourceExpression);
         case ToolPackage.CREATE_EDGE_VIEW__TARGET_EXPRESSION:
-            return TARGET_EXPRESSION_EDEFAULT == null ? targetExpression != null : !TARGET_EXPRESSION_EDEFAULT.equals(targetExpression);
+            return CreateEdgeViewImpl.TARGET_EXPRESSION_EDEFAULT == null ? targetExpression != null : !CreateEdgeViewImpl.TARGET_EXPRESSION_EDEFAULT.equals(targetExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -215,8 +221,9 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (sourceExpression: ");

@@ -39,7 +39,7 @@ public interface TableVariable extends AbstractVariable, VariableContainer {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Documentation</em>' attribute.
      * @see #setDocumentation(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableVariable_Documentation()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.validation.impl;
 
@@ -35,7 +35,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
     /**
      * The default value of the '{@link #getTargetClass() <em>Target Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetClass()
      * @generated
      * @ordered
@@ -45,16 +45,16 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
     /**
      * The cached value of the '{@link #getTargetClass() <em>Target Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetClass()
      * @generated
      * @ordered
      */
-    protected String targetClass = TARGET_CLASS_EDEFAULT;
+    protected String targetClass = SemanticValidationRuleImpl.TARGET_CLASS_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SemanticValidationRuleImpl() {
@@ -63,7 +63,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,28 +73,31 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getTargetClass() {
         return targetClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTargetClass(String newTargetClass) {
         String oldTargetClass = targetClass;
         targetClass = newTargetClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ValidationPackage.SEMANTIC_VALIDATION_RULE__TARGET_CLASS, oldTargetClass, targetClass));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +111,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,14 +126,14 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ValidationPackage.SEMANTIC_VALIDATION_RULE__TARGET_CLASS:
-            setTargetClass(TARGET_CLASS_EDEFAULT);
+            setTargetClass(SemanticValidationRuleImpl.TARGET_CLASS_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -138,27 +141,28 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ValidationPackage.SEMANTIC_VALIDATION_RULE__TARGET_CLASS:
-            return TARGET_CLASS_EDEFAULT == null ? targetClass != null : !TARGET_CLASS_EDEFAULT.equals(targetClass);
+            return SemanticValidationRuleImpl.TARGET_CLASS_EDEFAULT == null ? targetClass != null : !SemanticValidationRuleImpl.TARGET_CLASS_EDEFAULT.equals(targetClass);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (targetClass: ");

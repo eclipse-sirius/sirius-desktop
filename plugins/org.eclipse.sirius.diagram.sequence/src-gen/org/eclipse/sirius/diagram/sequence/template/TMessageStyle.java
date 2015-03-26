@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.sequence.template;
 
@@ -49,7 +49,7 @@ public interface TMessageStyle extends TTransformer {
      * Returns the value of the '<em><b>Stroke Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * color of the edge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Stroke Color</em>' reference.
      * @see #setStrokeColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_StrokeColor()
@@ -77,7 +77,7 @@ public interface TMessageStyle extends TTransformer {
      * {@link org.eclipse.sirius.diagram.LineStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the line.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Line Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.LineStyle
      * @see #setLineStyle(LineStyle)
@@ -107,7 +107,7 @@ public interface TMessageStyle extends TTransformer {
      * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * source decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setSourceArrow(EdgeArrows)
@@ -137,7 +137,7 @@ public interface TMessageStyle extends TTransformer {
      * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * target decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setTargetArrow(EdgeArrows)
@@ -166,7 +166,7 @@ public interface TMessageStyle extends TTransformer {
      * The default value is <code>"feature:name"</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> Expression that computes
      * the name of a node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_LabelExpression()

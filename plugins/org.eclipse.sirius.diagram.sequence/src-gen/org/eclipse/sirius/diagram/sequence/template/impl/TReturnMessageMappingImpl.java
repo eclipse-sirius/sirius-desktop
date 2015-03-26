@@ -51,7 +51,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
      * The default value of the '{@link #getInvocationMessageFinderExpression()
      * <em>Invocation Message Finder Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInvocationMessageFinderExpression()
      * @generated
      * @ordered
@@ -62,12 +62,12 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
      * The cached value of the '{@link #getInvocationMessageFinderExpression()
      * <em>Invocation Message Finder Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInvocationMessageFinderExpression()
      * @generated
      * @ordered
      */
-    protected String invocationMessageFinderExpression = INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT;
+    protected String invocationMessageFinderExpression = TReturnMessageMappingImpl.INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -93,13 +93,15 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
      * 
      * @generated
      */
+    @Override
     public TBasicMessageMapping getInvocationMapping() {
         if (invocationMapping != null && invocationMapping.eIsProxy()) {
             InternalEObject oldInvocationMapping = (InternalEObject) invocationMapping;
             invocationMapping = (TBasicMessageMapping) eResolveProxy(oldInvocationMapping);
             if (invocationMapping != oldInvocationMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TemplatePackage.TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING, oldInvocationMapping, invocationMapping));
+                }
             }
         }
         return invocationMapping;
@@ -119,11 +121,13 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
      * 
      * @generated
      */
+    @Override
     public void setInvocationMapping(TBasicMessageMapping newInvocationMapping) {
         TBasicMessageMapping oldInvocationMapping = invocationMapping;
         invocationMapping = newInvocationMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING, oldInvocationMapping, invocationMapping));
+        }
     }
 
     /**
@@ -131,6 +135,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
      * 
      * @generated
      */
+    @Override
     public String getInvocationMessageFinderExpression() {
         return invocationMessageFinderExpression;
     }
@@ -140,12 +145,14 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
      * 
      * @generated
      */
+    @Override
     public void setInvocationMessageFinderExpression(String newInvocationMessageFinderExpression) {
         String oldInvocationMessageFinderExpression = invocationMessageFinderExpression;
         invocationMessageFinderExpression = newInvocationMessageFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION, oldInvocationMessageFinderExpression,
                     invocationMessageFinderExpression));
+        }
     }
 
     /**
@@ -157,8 +164,9 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TemplatePackage.TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getInvocationMapping();
+            }
             return basicGetInvocationMapping();
         case TemplatePackage.TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION:
             return getInvocationMessageFinderExpression();
@@ -196,7 +204,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
             setInvocationMapping((TBasicMessageMapping) null);
             return;
         case TemplatePackage.TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION:
-            setInvocationMessageFinderExpression(INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT);
+            setInvocationMessageFinderExpression(TReturnMessageMappingImpl.INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -213,8 +221,8 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
         case TemplatePackage.TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING:
             return invocationMapping != null;
         case TemplatePackage.TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION:
-            return INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT == null ? invocationMessageFinderExpression != null : !INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT
-                    .equals(invocationMessageFinderExpression);
+            return TReturnMessageMappingImpl.INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT == null ? invocationMessageFinderExpression != null
+                    : !TReturnMessageMappingImpl.INVOCATION_MESSAGE_FINDER_EXPRESSION_EDEFAULT.equals(invocationMessageFinderExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -226,8 +234,9 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (invocationMessageFinderExpression: ");

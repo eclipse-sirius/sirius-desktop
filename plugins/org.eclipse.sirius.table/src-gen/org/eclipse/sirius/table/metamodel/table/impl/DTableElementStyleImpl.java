@@ -69,7 +69,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      * @ordered
      */
-    protected int labelSize = LABEL_SIZE_EDEFAULT;
+    protected int labelSize = DTableElementStyleImpl.LABEL_SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
@@ -89,7 +89,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = LABEL_FORMAT_EDEFAULT;
+    protected FontFormat labelFormat = DTableElementStyleImpl.LABEL_FORMAT_EDEFAULT;
 
     /**
      * The default value of the '{@link #isDefaultForegroundStyle()
@@ -111,7 +111,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      * @ordered
      */
-    protected boolean defaultForegroundStyle = DEFAULT_FOREGROUND_STYLE_EDEFAULT;
+    protected boolean defaultForegroundStyle = DTableElementStyleImpl.DEFAULT_FOREGROUND_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isDefaultBackgroundStyle()
@@ -133,7 +133,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      * @ordered
      */
-    protected boolean defaultBackgroundStyle = DEFAULT_BACKGROUND_STYLE_EDEFAULT;
+    protected boolean defaultBackgroundStyle = DTableElementStyleImpl.DEFAULT_BACKGROUND_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getForegroundColor()
@@ -155,7 +155,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      * @ordered
      */
-    protected RGBValues foregroundColor = FOREGROUND_COLOR_EDEFAULT;
+    protected RGBValues foregroundColor = DTableElementStyleImpl.FOREGROUND_COLOR_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBackgroundColor()
@@ -177,7 +177,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      * @ordered
      */
-    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
+    protected RGBValues backgroundColor = DTableElementStyleImpl.BACKGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -203,6 +203,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public int getLabelSize() {
         return labelSize;
     }
@@ -212,11 +213,13 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public void setLabelSize(int newLabelSize) {
         int oldLabelSize = labelSize;
         labelSize = newLabelSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__LABEL_SIZE, oldLabelSize, labelSize));
+        }
     }
 
     /**
@@ -224,6 +227,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public FontFormat getLabelFormat() {
         return labelFormat;
     }
@@ -233,11 +237,13 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public void setLabelFormat(FontFormat newLabelFormat) {
         FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired())
+        labelFormat = newLabelFormat == null ? DTableElementStyleImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, oldLabelFormat, labelFormat));
+        }
     }
 
     /**
@@ -245,6 +251,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public RGBValues getForegroundColor() {
         return foregroundColor;
     }
@@ -254,11 +261,13 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public void setForegroundColor(RGBValues newForegroundColor) {
         RGBValues oldForegroundColor = foregroundColor;
         foregroundColor = newForegroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
+        }
     }
 
     /**
@@ -266,6 +275,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public RGBValues getBackgroundColor() {
         return backgroundColor;
     }
@@ -275,11 +285,13 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(RGBValues newBackgroundColor) {
         RGBValues oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -287,6 +299,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public boolean isDefaultForegroundStyle() {
         return defaultForegroundStyle;
     }
@@ -296,11 +309,13 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public void setDefaultForegroundStyle(boolean newDefaultForegroundStyle) {
         boolean oldDefaultForegroundStyle = defaultForegroundStyle;
         defaultForegroundStyle = newDefaultForegroundStyle;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE, oldDefaultForegroundStyle, defaultForegroundStyle));
+        }
     }
 
     /**
@@ -308,6 +323,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public boolean isDefaultBackgroundStyle() {
         return defaultBackgroundStyle;
     }
@@ -317,11 +333,13 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public void setDefaultBackgroundStyle(boolean newDefaultBackgroundStyle) {
         boolean oldDefaultBackgroundStyle = defaultBackgroundStyle;
         defaultBackgroundStyle = newDefaultBackgroundStyle;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE, oldDefaultBackgroundStyle, defaultBackgroundStyle));
+        }
     }
 
     /**
@@ -387,22 +405,22 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     public void eUnset(int featureID) {
         switch (featureID) {
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_SIZE:
-            setLabelSize(LABEL_SIZE_EDEFAULT);
+            setLabelSize(DTableElementStyleImpl.LABEL_SIZE_EDEFAULT);
             return;
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT:
-            setLabelFormat(LABEL_FORMAT_EDEFAULT);
+            setLabelFormat(DTableElementStyleImpl.LABEL_FORMAT_EDEFAULT);
             return;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE:
-            setDefaultForegroundStyle(DEFAULT_FOREGROUND_STYLE_EDEFAULT);
+            setDefaultForegroundStyle(DTableElementStyleImpl.DEFAULT_FOREGROUND_STYLE_EDEFAULT);
             return;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE:
-            setDefaultBackgroundStyle(DEFAULT_BACKGROUND_STYLE_EDEFAULT);
+            setDefaultBackgroundStyle(DTableElementStyleImpl.DEFAULT_BACKGROUND_STYLE_EDEFAULT);
             return;
         case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
-            setForegroundColor(FOREGROUND_COLOR_EDEFAULT);
+            setForegroundColor(DTableElementStyleImpl.FOREGROUND_COLOR_EDEFAULT);
             return;
         case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
-            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
+            setBackgroundColor(DTableElementStyleImpl.BACKGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -417,17 +435,17 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_SIZE:
-            return labelSize != LABEL_SIZE_EDEFAULT;
+            return labelSize != DTableElementStyleImpl.LABEL_SIZE_EDEFAULT;
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT:
-            return labelFormat != LABEL_FORMAT_EDEFAULT;
+            return labelFormat != DTableElementStyleImpl.LABEL_FORMAT_EDEFAULT;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE:
-            return defaultForegroundStyle != DEFAULT_FOREGROUND_STYLE_EDEFAULT;
+            return defaultForegroundStyle != DTableElementStyleImpl.DEFAULT_FOREGROUND_STYLE_EDEFAULT;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE:
-            return defaultBackgroundStyle != DEFAULT_BACKGROUND_STYLE_EDEFAULT;
+            return defaultBackgroundStyle != DTableElementStyleImpl.DEFAULT_BACKGROUND_STYLE_EDEFAULT;
         case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
-            return FOREGROUND_COLOR_EDEFAULT == null ? foregroundColor != null : !FOREGROUND_COLOR_EDEFAULT.equals(foregroundColor);
+            return DTableElementStyleImpl.FOREGROUND_COLOR_EDEFAULT == null ? foregroundColor != null : !DTableElementStyleImpl.FOREGROUND_COLOR_EDEFAULT.equals(foregroundColor);
         case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
-            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
+            return DTableElementStyleImpl.BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !DTableElementStyleImpl.BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -439,8 +457,9 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (labelSize: ");

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -38,7 +38,7 @@ public interface WorkspaceImageDescription extends NodeStyleDescription, Contain
      * path of the image to use in the form of /myProjectID/path/to/image.png,
      * if the image is not found in the workspace it will be looked for in the
      * plugins. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Workspace Path</em>' attribute.
      * @see #setWorkspacePath(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getWorkspaceImageDescription_WorkspacePath()

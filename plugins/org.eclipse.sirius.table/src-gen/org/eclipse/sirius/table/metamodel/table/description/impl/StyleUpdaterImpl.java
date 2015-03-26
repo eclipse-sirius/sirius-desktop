@@ -67,7 +67,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * The cached value of the '{@link #getForegroundConditionalStyle()
      * <em>Foreground Conditional Style</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundConditionalStyle()
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * The cached value of the '{@link #getBackgroundConditionalStyle()
      * <em>Background Conditional Style</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundConditionalStyle()
      * @generated
      * @ordered
@@ -120,6 +120,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * 
      * @generated
      */
+    @Override
     public ForegroundStyleDescription getDefaultForeground() {
         return defaultForeground;
     }
@@ -134,10 +135,11 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
         defaultForeground = newDefaultForeground;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.STYLE_UPDATER__DEFAULT_FOREGROUND, oldDefaultForeground, newDefaultForeground);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -147,18 +149,23 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * 
      * @generated
      */
+    @Override
     public void setDefaultForeground(ForegroundStyleDescription newDefaultForeground) {
         if (newDefaultForeground != defaultForeground) {
             NotificationChain msgs = null;
-            if (defaultForeground != null)
-                msgs = ((InternalEObject) defaultForeground).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_FOREGROUND, null, msgs);
-            if (newDefaultForeground != null)
-                msgs = ((InternalEObject) newDefaultForeground).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_FOREGROUND, null, msgs);
+            if (defaultForeground != null) {
+                msgs = ((InternalEObject) defaultForeground).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_FOREGROUND, null, msgs);
+            }
+            if (newDefaultForeground != null) {
+                msgs = ((InternalEObject) newDefaultForeground).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_FOREGROUND, null, msgs);
+            }
             msgs = basicSetDefaultForeground(newDefaultForeground, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.STYLE_UPDATER__DEFAULT_FOREGROUND, newDefaultForeground, newDefaultForeground));
+        }
     }
 
     /**
@@ -166,6 +173,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * 
      * @generated
      */
+    @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
             foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this, DescriptionPackage.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE);
@@ -178,6 +186,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * 
      * @generated
      */
+    @Override
     public BackgroundStyleDescription getDefaultBackground() {
         return defaultBackground;
     }
@@ -192,10 +201,11 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
         defaultBackground = newDefaultBackground;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.STYLE_UPDATER__DEFAULT_BACKGROUND, oldDefaultBackground, newDefaultBackground);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -205,18 +215,23 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * 
      * @generated
      */
+    @Override
     public void setDefaultBackground(BackgroundStyleDescription newDefaultBackground) {
         if (newDefaultBackground != defaultBackground) {
             NotificationChain msgs = null;
-            if (defaultBackground != null)
-                msgs = ((InternalEObject) defaultBackground).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_BACKGROUND, null, msgs);
-            if (newDefaultBackground != null)
-                msgs = ((InternalEObject) newDefaultBackground).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_BACKGROUND, null, msgs);
+            if (defaultBackground != null) {
+                msgs = ((InternalEObject) defaultBackground).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_BACKGROUND, null, msgs);
+            }
+            if (newDefaultBackground != null) {
+                msgs = ((InternalEObject) newDefaultBackground).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_BACKGROUND, null, msgs);
+            }
             msgs = basicSetDefaultBackground(newDefaultBackground, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.STYLE_UPDATER__DEFAULT_BACKGROUND, newDefaultBackground, newDefaultBackground));
+        }
     }
 
     /**
@@ -224,6 +239,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * 
      * @generated
      */
+    @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
             backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this, DescriptionPackage.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE);

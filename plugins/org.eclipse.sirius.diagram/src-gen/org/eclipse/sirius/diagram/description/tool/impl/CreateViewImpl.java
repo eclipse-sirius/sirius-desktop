@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -71,7 +71,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * @generated
      * @ordered
      */
-    protected String containerViewExpression = CONTAINER_VIEW_EXPRESSION_EDEFAULT;
+    protected String containerViewExpression = CreateViewImpl.CONTAINER_VIEW_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getVariableName()
@@ -93,7 +93,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * @generated
      * @ordered
      */
-    protected String variableName = VARIABLE_NAME_EDEFAULT;
+    protected String variableName = CreateViewImpl.VARIABLE_NAME_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -119,13 +119,15 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * 
      * @generated
      */
+    @Override
     public DiagramElementMapping getMapping() {
         if (mapping != null && mapping.eIsProxy()) {
             InternalEObject oldMapping = (InternalEObject) mapping;
             mapping = (DiagramElementMapping) eResolveProxy(oldMapping);
             if (mapping != oldMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.CREATE_VIEW__MAPPING, oldMapping, mapping));
+                }
             }
         }
         return mapping;
@@ -145,11 +147,13 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * 
      * @generated
      */
+    @Override
     public void setMapping(DiagramElementMapping newMapping) {
         DiagramElementMapping oldMapping = mapping;
         mapping = newMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CREATE_VIEW__MAPPING, oldMapping, mapping));
+        }
     }
 
     /**
@@ -157,6 +161,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * 
      * @generated
      */
+    @Override
     public String getContainerViewExpression() {
         return containerViewExpression;
     }
@@ -166,11 +171,13 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * 
      * @generated
      */
+    @Override
     public void setContainerViewExpression(String newContainerViewExpression) {
         String oldContainerViewExpression = containerViewExpression;
         containerViewExpression = newContainerViewExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CREATE_VIEW__CONTAINER_VIEW_EXPRESSION, oldContainerViewExpression, containerViewExpression));
+        }
     }
 
     /**
@@ -178,6 +185,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * 
      * @generated
      */
+    @Override
     public String getVariableName() {
         return variableName;
     }
@@ -187,11 +195,13 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * 
      * @generated
      */
+    @Override
     public void setVariableName(String newVariableName) {
         String oldVariableName = variableName;
         variableName = newVariableName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CREATE_VIEW__VARIABLE_NAME, oldVariableName, variableName));
+        }
     }
 
     /**
@@ -203,8 +213,9 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ToolPackage.CREATE_VIEW__MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getMapping();
+            }
             return basicGetMapping();
         case ToolPackage.CREATE_VIEW__CONTAINER_VIEW_EXPRESSION:
             return getContainerViewExpression();
@@ -247,10 +258,10 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
             setMapping((DiagramElementMapping) null);
             return;
         case ToolPackage.CREATE_VIEW__CONTAINER_VIEW_EXPRESSION:
-            setContainerViewExpression(CONTAINER_VIEW_EXPRESSION_EDEFAULT);
+            setContainerViewExpression(CreateViewImpl.CONTAINER_VIEW_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.CREATE_VIEW__VARIABLE_NAME:
-            setVariableName(VARIABLE_NAME_EDEFAULT);
+            setVariableName(CreateViewImpl.VARIABLE_NAME_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -267,9 +278,9 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
         case ToolPackage.CREATE_VIEW__MAPPING:
             return mapping != null;
         case ToolPackage.CREATE_VIEW__CONTAINER_VIEW_EXPRESSION:
-            return CONTAINER_VIEW_EXPRESSION_EDEFAULT == null ? containerViewExpression != null : !CONTAINER_VIEW_EXPRESSION_EDEFAULT.equals(containerViewExpression);
+            return CreateViewImpl.CONTAINER_VIEW_EXPRESSION_EDEFAULT == null ? containerViewExpression != null : !CreateViewImpl.CONTAINER_VIEW_EXPRESSION_EDEFAULT.equals(containerViewExpression);
         case ToolPackage.CREATE_VIEW__VARIABLE_NAME:
-            return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
+            return CreateViewImpl.VARIABLE_NAME_EDEFAULT == null ? variableName != null : !CreateViewImpl.VARIABLE_NAME_EDEFAULT.equals(variableName);
         }
         return super.eIsSet(featureID);
     }
@@ -281,8 +292,9 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (containerViewExpression: ");

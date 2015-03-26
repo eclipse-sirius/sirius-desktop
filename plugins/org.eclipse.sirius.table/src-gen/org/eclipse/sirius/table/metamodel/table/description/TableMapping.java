@@ -34,7 +34,7 @@ public interface TableMapping extends RepresentationElementMapping {
      * Returns the value of the '<em><b>Semantic Elements</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The elements that are represented by this mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Elements</em>' attribute.
      * @see #setSemanticElements(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableMapping_SemanticElements()

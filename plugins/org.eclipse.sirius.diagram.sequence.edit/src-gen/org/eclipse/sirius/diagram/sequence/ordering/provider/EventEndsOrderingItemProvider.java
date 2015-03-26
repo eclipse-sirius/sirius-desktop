@@ -35,11 +35,11 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
  * @generated
  */
 public class EventEndsOrderingItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EventEndsOrderingItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class EventEndsOrderingItemProvider extends ItemProviderAdapter implement
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class EventEndsOrderingItemProvider extends ItemProviderAdapter implement
     /**
      * This adds a property descriptor for the Sequence Diagram feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSequenceDiagramPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class EventEndsOrderingItemProvider extends ItemProviderAdapter implement
     /**
      * This adds a property descriptor for the Event Ends feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEventEndsPropertyDescriptor(Object object) {
@@ -128,7 +128,7 @@ public class EventEndsOrderingItemProvider extends ItemProviderAdapter implement
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class EventEndsOrderingItemProvider extends ItemProviderAdapter implement
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

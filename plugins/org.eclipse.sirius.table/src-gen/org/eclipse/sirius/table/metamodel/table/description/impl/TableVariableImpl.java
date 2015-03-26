@@ -76,7 +76,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
      * @generated
      * @ordered
      */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
+    protected String documentation = TableVariableImpl.DOCUMENTATION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -102,6 +102,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
      * 
      * @generated
      */
+    @Override
     public EList<SubVariable> getSubVariables() {
         if (subVariables == null) {
             subVariables = new EObjectContainmentEList.Resolving<SubVariable>(SubVariable.class, this, DescriptionPackage.TABLE_VARIABLE__SUB_VARIABLES);
@@ -114,6 +115,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
      * 
      * @generated
      */
+    @Override
     public String getDocumentation() {
         return documentation;
     }
@@ -123,11 +125,13 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
      * 
      * @generated
      */
+    @Override
     public void setDocumentation(String newDocumentation) {
         String oldDocumentation = documentation;
         documentation = newDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_VARIABLE__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
@@ -192,7 +196,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
             getSubVariables().clear();
             return;
         case DescriptionPackage.TABLE_VARIABLE__DOCUMENTATION:
-            setDocumentation(DOCUMENTATION_EDEFAULT);
+            setDocumentation(TableVariableImpl.DOCUMENTATION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -209,7 +213,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
         case DescriptionPackage.TABLE_VARIABLE__SUB_VARIABLES:
             return subVariables != null && !subVariables.isEmpty();
         case DescriptionPackage.TABLE_VARIABLE__DOCUMENTATION:
-            return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+            return TableVariableImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !TableVariableImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         }
         return super.eIsSet(featureID);
     }
@@ -257,8 +261,9 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (documentation: ");

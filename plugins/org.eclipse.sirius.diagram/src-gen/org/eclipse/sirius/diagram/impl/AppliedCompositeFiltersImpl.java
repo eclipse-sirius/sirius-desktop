@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -40,7 +40,7 @@ public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getCompositeFilterDescriptions()
      * <em>Composite Filter Descriptions</em>}' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCompositeFilterDescriptions()
      * @generated
      * @ordered
@@ -71,6 +71,7 @@ public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container im
      * 
      * @generated
      */
+    @Override
     public EList<CompositeFilterDescription> getCompositeFilterDescriptions() {
         if (compositeFilterDescriptions == null) {
             compositeFilterDescriptions = new EObjectResolvingEList<CompositeFilterDescription>(CompositeFilterDescription.class, this,

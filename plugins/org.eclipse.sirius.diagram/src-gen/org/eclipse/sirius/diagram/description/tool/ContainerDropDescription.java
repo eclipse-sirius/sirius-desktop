@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -71,7 +71,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All mapping that can create the target view. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_Mappings()
      * @model
@@ -84,7 +84,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The semantic element of the old container view. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Old Container</em>' containment reference.
      * @see #setOldContainer(DropContainerVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_OldContainer()
@@ -114,7 +114,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The semantic element of the new container view. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>New Container</em>' containment reference.
      * @see #setNewContainer(DropContainerVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_NewContainer()
@@ -143,7 +143,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Element</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The semantic element that is dragged and dropped. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementDropVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_Element()
@@ -170,7 +170,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The new view container (instance of ViewPoint or
      * ViewPointElement). <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>New View Container</em>' containment
      *         reference.
      * @see #setNewViewContainer(ContainerViewVariable)
@@ -200,7 +200,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The first operation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialContainerDropOperation)
@@ -230,7 +230,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.DragSource}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Authorized sources of the drag. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Drag Source</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.tool.DragSource
      * @see #setDragSource(DragSource)
@@ -259,7 +259,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to
      * true if you want to automatically move the edges associated with a node.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Move Edges</em>' attribute.
      * @see #setMoveEdges(boolean)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_MoveEdges()

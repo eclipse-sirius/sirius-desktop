@@ -76,7 +76,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -94,7 +94,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -103,7 +103,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -112,7 +112,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -121,7 +121,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -130,7 +130,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -139,7 +139,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -157,7 +157,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -319,11 +319,11 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__DOCUMENTATION = TABLE_DESCRIPTION__DOCUMENTATION;
+    int EDITION_TABLE_DESCRIPTION__DOCUMENTATION = DescriptionPackage.TABLE_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>'
@@ -332,61 +332,61 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__END_USER_DOCUMENTATION = TABLE_DESCRIPTION__END_USER_DOCUMENTATION;
+    int EDITION_TABLE_DESCRIPTION__END_USER_DOCUMENTATION = DescriptionPackage.TABLE_DESCRIPTION__END_USER_DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__NAME = TABLE_DESCRIPTION__NAME;
+    int EDITION_TABLE_DESCRIPTION__NAME = DescriptionPackage.TABLE_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__LABEL = TABLE_DESCRIPTION__LABEL;
+    int EDITION_TABLE_DESCRIPTION__LABEL = DescriptionPackage.TABLE_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__TITLE_EXPRESSION = TABLE_DESCRIPTION__TITLE_EXPRESSION;
+    int EDITION_TABLE_DESCRIPTION__TITLE_EXPRESSION = DescriptionPackage.TABLE_DESCRIPTION__TITLE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__INITIALISATION = TABLE_DESCRIPTION__INITIALISATION;
+    int EDITION_TABLE_DESCRIPTION__INITIALISATION = DescriptionPackage.TABLE_DESCRIPTION__INITIALISATION;
 
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__METAMODEL = TABLE_DESCRIPTION__METAMODEL;
+    int EDITION_TABLE_DESCRIPTION__METAMODEL = DescriptionPackage.TABLE_DESCRIPTION__METAMODEL;
 
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__SHOW_ON_STARTUP = TABLE_DESCRIPTION__SHOW_ON_STARTUP;
+    int EDITION_TABLE_DESCRIPTION__SHOW_ON_STARTUP = DescriptionPackage.TABLE_DESCRIPTION__SHOW_ON_STARTUP;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -395,16 +395,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__PRECONDITION_EXPRESSION = TABLE_DESCRIPTION__PRECONDITION_EXPRESSION;
+    int EDITION_TABLE_DESCRIPTION__PRECONDITION_EXPRESSION = DescriptionPackage.TABLE_DESCRIPTION__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__DOMAIN_CLASS = TABLE_DESCRIPTION__DOMAIN_CLASS;
+    int EDITION_TABLE_DESCRIPTION__DOMAIN_CLASS = DescriptionPackage.TABLE_DESCRIPTION__DOMAIN_CLASS;
 
     /**
      * The feature id for the '
@@ -414,7 +414,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS;
+    int EDITION_TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -424,7 +424,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS = TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS;
+    int EDITION_TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -434,7 +434,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS = TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS;
+    int EDITION_TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -444,7 +444,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
+    int EDITION_TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -454,7 +454,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
+    int EDITION_TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -464,7 +464,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS = TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
+    int EDITION_TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Owned Line Mappings</b></em>' containment
@@ -473,7 +473,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS = TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS;
+    int EDITION_TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Line Mappings</b></em>' reference
@@ -482,7 +482,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS = TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS;
+    int EDITION_TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Line Mappings</b></em>' reference
@@ -491,7 +491,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__ALL_LINE_MAPPINGS = TABLE_DESCRIPTION__ALL_LINE_MAPPINGS;
+    int EDITION_TABLE_DESCRIPTION__ALL_LINE_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION__ALL_LINE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Owned Create Line</b></em>' containment
@@ -500,7 +500,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__OWNED_CREATE_LINE = TABLE_DESCRIPTION__OWNED_CREATE_LINE;
+    int EDITION_TABLE_DESCRIPTION__OWNED_CREATE_LINE = DescriptionPackage.TABLE_DESCRIPTION__OWNED_CREATE_LINE;
 
     /**
      * The feature id for the '<em><b>Reused Create Line</b></em>' reference
@@ -509,7 +509,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__REUSED_CREATE_LINE = TABLE_DESCRIPTION__REUSED_CREATE_LINE;
+    int EDITION_TABLE_DESCRIPTION__REUSED_CREATE_LINE = DescriptionPackage.TABLE_DESCRIPTION__REUSED_CREATE_LINE;
 
     /**
      * The feature id for the '<em><b>All Create Line</b></em>' reference list.
@@ -518,7 +518,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__ALL_CREATE_LINE = TABLE_DESCRIPTION__ALL_CREATE_LINE;
+    int EDITION_TABLE_DESCRIPTION__ALL_CREATE_LINE = DescriptionPackage.TABLE_DESCRIPTION__ALL_CREATE_LINE;
 
     /**
      * The feature id for the '<em><b>Initial Header Column Width</b></em>'
@@ -527,7 +527,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH = TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH;
+    int EDITION_TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH = DescriptionPackage.TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH;
 
     /**
      * The feature id for the '<em><b>Imported Elements</b></em>' containment
@@ -536,7 +536,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__IMPORTED_ELEMENTS = TABLE_DESCRIPTION__IMPORTED_ELEMENTS;
+    int EDITION_TABLE_DESCRIPTION__IMPORTED_ELEMENTS = DescriptionPackage.TABLE_DESCRIPTION__IMPORTED_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Owned Column Mappings</b></em>'
@@ -545,7 +545,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Reused Column Mappings</b></em>' reference
@@ -554,7 +554,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>All Column Mappings</b></em>' reference
@@ -563,7 +563,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__ALL_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int EDITION_TABLE_DESCRIPTION__ALL_COLUMN_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '
@@ -573,7 +573,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION_FEATURE_COUNT = TABLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int EDITION_TABLE_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.TABLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -590,11 +590,11 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__DOCUMENTATION = TABLE_DESCRIPTION__DOCUMENTATION;
+    int CROSS_TABLE_DESCRIPTION__DOCUMENTATION = DescriptionPackage.TABLE_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>'
@@ -603,61 +603,61 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__END_USER_DOCUMENTATION = TABLE_DESCRIPTION__END_USER_DOCUMENTATION;
+    int CROSS_TABLE_DESCRIPTION__END_USER_DOCUMENTATION = DescriptionPackage.TABLE_DESCRIPTION__END_USER_DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__NAME = TABLE_DESCRIPTION__NAME;
+    int CROSS_TABLE_DESCRIPTION__NAME = DescriptionPackage.TABLE_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__LABEL = TABLE_DESCRIPTION__LABEL;
+    int CROSS_TABLE_DESCRIPTION__LABEL = DescriptionPackage.TABLE_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__TITLE_EXPRESSION = TABLE_DESCRIPTION__TITLE_EXPRESSION;
+    int CROSS_TABLE_DESCRIPTION__TITLE_EXPRESSION = DescriptionPackage.TABLE_DESCRIPTION__TITLE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__INITIALISATION = TABLE_DESCRIPTION__INITIALISATION;
+    int CROSS_TABLE_DESCRIPTION__INITIALISATION = DescriptionPackage.TABLE_DESCRIPTION__INITIALISATION;
 
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__METAMODEL = TABLE_DESCRIPTION__METAMODEL;
+    int CROSS_TABLE_DESCRIPTION__METAMODEL = DescriptionPackage.TABLE_DESCRIPTION__METAMODEL;
 
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__SHOW_ON_STARTUP = TABLE_DESCRIPTION__SHOW_ON_STARTUP;
+    int CROSS_TABLE_DESCRIPTION__SHOW_ON_STARTUP = DescriptionPackage.TABLE_DESCRIPTION__SHOW_ON_STARTUP;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -666,16 +666,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__PRECONDITION_EXPRESSION = TABLE_DESCRIPTION__PRECONDITION_EXPRESSION;
+    int CROSS_TABLE_DESCRIPTION__PRECONDITION_EXPRESSION = DescriptionPackage.TABLE_DESCRIPTION__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__DOMAIN_CLASS = TABLE_DESCRIPTION__DOMAIN_CLASS;
+    int CROSS_TABLE_DESCRIPTION__DOMAIN_CLASS = DescriptionPackage.TABLE_DESCRIPTION__DOMAIN_CLASS;
 
     /**
      * The feature id for the '
@@ -685,7 +685,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS;
+    int CROSS_TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -695,7 +695,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS = TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS;
+    int CROSS_TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -705,7 +705,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS = TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS;
+    int CROSS_TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -715,7 +715,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
+    int CROSS_TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -725,7 +725,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
+    int CROSS_TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '
@@ -735,7 +735,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS = TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
+    int CROSS_TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Owned Line Mappings</b></em>' containment
@@ -744,7 +744,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS = TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS;
+    int CROSS_TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Line Mappings</b></em>' reference
@@ -753,7 +753,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS = TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS;
+    int CROSS_TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Line Mappings</b></em>' reference
@@ -762,7 +762,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__ALL_LINE_MAPPINGS = TABLE_DESCRIPTION__ALL_LINE_MAPPINGS;
+    int CROSS_TABLE_DESCRIPTION__ALL_LINE_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION__ALL_LINE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Owned Create Line</b></em>' containment
@@ -771,7 +771,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__OWNED_CREATE_LINE = TABLE_DESCRIPTION__OWNED_CREATE_LINE;
+    int CROSS_TABLE_DESCRIPTION__OWNED_CREATE_LINE = DescriptionPackage.TABLE_DESCRIPTION__OWNED_CREATE_LINE;
 
     /**
      * The feature id for the '<em><b>Reused Create Line</b></em>' reference
@@ -780,7 +780,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__REUSED_CREATE_LINE = TABLE_DESCRIPTION__REUSED_CREATE_LINE;
+    int CROSS_TABLE_DESCRIPTION__REUSED_CREATE_LINE = DescriptionPackage.TABLE_DESCRIPTION__REUSED_CREATE_LINE;
 
     /**
      * The feature id for the '<em><b>All Create Line</b></em>' reference list.
@@ -789,7 +789,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__ALL_CREATE_LINE = TABLE_DESCRIPTION__ALL_CREATE_LINE;
+    int CROSS_TABLE_DESCRIPTION__ALL_CREATE_LINE = DescriptionPackage.TABLE_DESCRIPTION__ALL_CREATE_LINE;
 
     /**
      * The feature id for the '<em><b>Initial Header Column Width</b></em>'
@@ -798,7 +798,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH = TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH;
+    int CROSS_TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH = DescriptionPackage.TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH;
 
     /**
      * The feature id for the '<em><b>Imported Elements</b></em>' containment
@@ -807,7 +807,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__IMPORTED_ELEMENTS = TABLE_DESCRIPTION__IMPORTED_ELEMENTS;
+    int CROSS_TABLE_DESCRIPTION__IMPORTED_ELEMENTS = DescriptionPackage.TABLE_DESCRIPTION__IMPORTED_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Owned Column Mappings</b></em>'
@@ -816,7 +816,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int CROSS_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = DescriptionPackage.TABLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Intersection</b></em>' containment
@@ -825,7 +825,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__INTERSECTION = TABLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int CROSS_TABLE_DESCRIPTION__INTERSECTION = DescriptionPackage.TABLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Create Column</b></em>' containment
@@ -834,7 +834,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION__CREATE_COLUMN = TABLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int CROSS_TABLE_DESCRIPTION__CREATE_COLUMN = DescriptionPackage.TABLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '
@@ -844,14 +844,14 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CROSS_TABLE_DESCRIPTION_FEATURE_COUNT = TABLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int CROSS_TABLE_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.TABLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableMappingImpl
      * <em>Table Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableMappingImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableMapping()
      * @generated
@@ -861,7 +861,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -870,7 +870,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -917,7 +917,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl
      * <em>Line Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getLineMapping()
      * @generated
@@ -927,20 +927,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__NAME = TABLE_MAPPING__NAME;
+    int LINE_MAPPING__NAME = DescriptionPackage.TABLE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__LABEL = TABLE_MAPPING__LABEL;
+    int LINE_MAPPING__LABEL = DescriptionPackage.TABLE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -949,7 +949,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__DETAIL_DESCRIPTIONS = TABLE_MAPPING__DETAIL_DESCRIPTIONS;
+    int LINE_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.TABLE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -958,7 +958,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__NAVIGATION_DESCRIPTIONS = TABLE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int LINE_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.TABLE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -967,7 +967,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__SEMANTIC_ELEMENTS = TABLE_MAPPING__SEMANTIC_ELEMENTS;
+    int LINE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.TABLE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Default Foreground</b></em>' containment
@@ -976,7 +976,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__DEFAULT_FOREGROUND = TABLE_MAPPING_FEATURE_COUNT + 0;
+    int LINE_MAPPING__DEFAULT_FOREGROUND = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Foreground Conditional Style</b></em>'
@@ -985,7 +985,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__FOREGROUND_CONDITIONAL_STYLE = TABLE_MAPPING_FEATURE_COUNT + 1;
+    int LINE_MAPPING__FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Default Background</b></em>' containment
@@ -994,7 +994,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__DEFAULT_BACKGROUND = TABLE_MAPPING_FEATURE_COUNT + 2;
+    int LINE_MAPPING__DEFAULT_BACKGROUND = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Background Conditional Style</b></em>'
@@ -1003,7 +1003,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__BACKGROUND_CONDITIONAL_STYLE = TABLE_MAPPING_FEATURE_COUNT + 3;
+    int LINE_MAPPING__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Owned Sub Lines</b></em>' containment
@@ -1012,7 +1012,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__OWNED_SUB_LINES = TABLE_MAPPING_FEATURE_COUNT + 4;
+    int LINE_MAPPING__OWNED_SUB_LINES = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Reused Sub Lines</b></em>' reference list.
@@ -1021,7 +1021,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__REUSED_SUB_LINES = TABLE_MAPPING_FEATURE_COUNT + 5;
+    int LINE_MAPPING__REUSED_SUB_LINES = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>All Sub Lines</b></em>' reference list.
@@ -1030,7 +1030,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__ALL_SUB_LINES = TABLE_MAPPING_FEATURE_COUNT + 6;
+    int LINE_MAPPING__ALL_SUB_LINES = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Reused In Mappings</b></em>' reference
@@ -1039,16 +1039,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__REUSED_IN_MAPPINGS = TABLE_MAPPING_FEATURE_COUNT + 7;
+    int LINE_MAPPING__REUSED_IN_MAPPINGS = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__DOMAIN_CLASS = TABLE_MAPPING_FEATURE_COUNT + 8;
+    int LINE_MAPPING__DOMAIN_CLASS = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Create</b></em>' containment reference
@@ -1057,7 +1057,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__CREATE = TABLE_MAPPING_FEATURE_COUNT + 9;
+    int LINE_MAPPING__CREATE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Delete</b></em>' containment reference.
@@ -1066,7 +1066,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__DELETE = TABLE_MAPPING_FEATURE_COUNT + 10;
+    int LINE_MAPPING__DELETE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1075,7 +1075,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TABLE_MAPPING_FEATURE_COUNT + 11;
+    int LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Header Label Expression</b></em>'
@@ -1084,7 +1084,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING__HEADER_LABEL_EXPRESSION = TABLE_MAPPING_FEATURE_COUNT + 12;
+    int LINE_MAPPING__HEADER_LABEL_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 12;
 
     /**
      * The number of structural features of the '<em>Line Mapping</em>' class.
@@ -1093,7 +1093,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_MAPPING_FEATURE_COUNT = TABLE_MAPPING_FEATURE_COUNT + 13;
+    int LINE_MAPPING_FEATURE_COUNT = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 13;
 
     /**
      * The meta object id for the '
@@ -1110,20 +1110,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COLUMN_MAPPING__NAME = TABLE_MAPPING__NAME;
+    int COLUMN_MAPPING__NAME = DescriptionPackage.TABLE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COLUMN_MAPPING__LABEL = TABLE_MAPPING__LABEL;
+    int COLUMN_MAPPING__LABEL = DescriptionPackage.TABLE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1132,7 +1132,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_MAPPING__DETAIL_DESCRIPTIONS = TABLE_MAPPING__DETAIL_DESCRIPTIONS;
+    int COLUMN_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.TABLE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1141,7 +1141,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS = TABLE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.TABLE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1150,7 +1150,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_MAPPING__SEMANTIC_ELEMENTS = TABLE_MAPPING__SEMANTIC_ELEMENTS;
+    int COLUMN_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.TABLE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Header Label Expression</b></em>'
@@ -1159,16 +1159,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_MAPPING__HEADER_LABEL_EXPRESSION = TABLE_MAPPING_FEATURE_COUNT + 0;
+    int COLUMN_MAPPING__HEADER_LABEL_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Initial Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COLUMN_MAPPING__INITIAL_WIDTH = TABLE_MAPPING_FEATURE_COUNT + 1;
+    int COLUMN_MAPPING__INITIAL_WIDTH = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Column Mapping</em>' class.
@@ -1177,7 +1177,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_MAPPING_FEATURE_COUNT = TABLE_MAPPING_FEATURE_COUNT + 2;
+    int COLUMN_MAPPING_FEATURE_COUNT = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -1194,20 +1194,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__NAME = COLUMN_MAPPING__NAME;
+    int ELEMENT_COLUMN_MAPPING__NAME = DescriptionPackage.COLUMN_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__LABEL = COLUMN_MAPPING__LABEL;
+    int ELEMENT_COLUMN_MAPPING__LABEL = DescriptionPackage.COLUMN_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1216,7 +1216,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__DETAIL_DESCRIPTIONS = COLUMN_MAPPING__DETAIL_DESCRIPTIONS;
+    int ELEMENT_COLUMN_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.COLUMN_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1225,7 +1225,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS = COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int ELEMENT_COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1234,7 +1234,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__SEMANTIC_ELEMENTS = COLUMN_MAPPING__SEMANTIC_ELEMENTS;
+    int ELEMENT_COLUMN_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.COLUMN_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Header Label Expression</b></em>'
@@ -1243,16 +1243,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__HEADER_LABEL_EXPRESSION = COLUMN_MAPPING__HEADER_LABEL_EXPRESSION;
+    int ELEMENT_COLUMN_MAPPING__HEADER_LABEL_EXPRESSION = DescriptionPackage.COLUMN_MAPPING__HEADER_LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Initial Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__INITIAL_WIDTH = COLUMN_MAPPING__INITIAL_WIDTH;
+    int ELEMENT_COLUMN_MAPPING__INITIAL_WIDTH = DescriptionPackage.COLUMN_MAPPING__INITIAL_WIDTH;
 
     /**
      * The feature id for the '<em><b>Default Foreground</b></em>' containment
@@ -1261,7 +1261,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__DEFAULT_FOREGROUND = COLUMN_MAPPING_FEATURE_COUNT + 0;
+    int ELEMENT_COLUMN_MAPPING__DEFAULT_FOREGROUND = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Foreground Conditional Style</b></em>'
@@ -1270,7 +1270,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE = COLUMN_MAPPING_FEATURE_COUNT + 1;
+    int ELEMENT_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Default Background</b></em>' containment
@@ -1279,7 +1279,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__DEFAULT_BACKGROUND = COLUMN_MAPPING_FEATURE_COUNT + 2;
+    int ELEMENT_COLUMN_MAPPING__DEFAULT_BACKGROUND = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Background Conditional Style</b></em>'
@@ -1288,16 +1288,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE = COLUMN_MAPPING_FEATURE_COUNT + 3;
+    int ELEMENT_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS = COLUMN_MAPPING_FEATURE_COUNT + 4;
+    int ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1306,7 +1306,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = COLUMN_MAPPING_FEATURE_COUNT + 5;
+    int ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Create</b></em>' containment reference
@@ -1315,7 +1315,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__CREATE = COLUMN_MAPPING_FEATURE_COUNT + 6;
+    int ELEMENT_COLUMN_MAPPING__CREATE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Delete</b></em>' containment reference.
@@ -1324,7 +1324,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING__DELETE = COLUMN_MAPPING_FEATURE_COUNT + 7;
+    int ELEMENT_COLUMN_MAPPING__DELETE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 7;
 
     /**
      * The number of structural features of the '<em>Element Column Mapping</em>
@@ -1333,7 +1333,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_COLUMN_MAPPING_FEATURE_COUNT = COLUMN_MAPPING_FEATURE_COUNT + 8;
+    int ELEMENT_COLUMN_MAPPING_FEATURE_COUNT = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 8;
 
     /**
      * The meta object id for the '
@@ -1350,20 +1350,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__NAME = COLUMN_MAPPING__NAME;
+    int FEATURE_COLUMN_MAPPING__NAME = DescriptionPackage.COLUMN_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__LABEL = COLUMN_MAPPING__LABEL;
+    int FEATURE_COLUMN_MAPPING__LABEL = DescriptionPackage.COLUMN_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1372,7 +1372,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__DETAIL_DESCRIPTIONS = COLUMN_MAPPING__DETAIL_DESCRIPTIONS;
+    int FEATURE_COLUMN_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.COLUMN_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1381,7 +1381,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS = COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int FEATURE_COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.COLUMN_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1390,7 +1390,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__SEMANTIC_ELEMENTS = COLUMN_MAPPING__SEMANTIC_ELEMENTS;
+    int FEATURE_COLUMN_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.COLUMN_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Header Label Expression</b></em>'
@@ -1399,16 +1399,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__HEADER_LABEL_EXPRESSION = COLUMN_MAPPING__HEADER_LABEL_EXPRESSION;
+    int FEATURE_COLUMN_MAPPING__HEADER_LABEL_EXPRESSION = DescriptionPackage.COLUMN_MAPPING__HEADER_LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Initial Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__INITIAL_WIDTH = COLUMN_MAPPING__INITIAL_WIDTH;
+    int FEATURE_COLUMN_MAPPING__INITIAL_WIDTH = DescriptionPackage.COLUMN_MAPPING__INITIAL_WIDTH;
 
     /**
      * The feature id for the '<em><b>Direct Edit</b></em>' containment
@@ -1417,16 +1417,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__DIRECT_EDIT = COLUMN_MAPPING_FEATURE_COUNT + 0;
+    int FEATURE_COLUMN_MAPPING__DIRECT_EDIT = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Can Edit</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__CAN_EDIT = COLUMN_MAPPING_FEATURE_COUNT + 1;
+    int FEATURE_COLUMN_MAPPING__CAN_EDIT = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Default Foreground</b></em>' containment
@@ -1435,7 +1435,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND = COLUMN_MAPPING_FEATURE_COUNT + 2;
+    int FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Foreground Conditional Style</b></em>'
@@ -1444,7 +1444,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE = COLUMN_MAPPING_FEATURE_COUNT + 3;
+    int FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Default Background</b></em>' containment
@@ -1453,7 +1453,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND = COLUMN_MAPPING_FEATURE_COUNT + 4;
+    int FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Background Conditional Style</b></em>'
@@ -1462,25 +1462,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE = COLUMN_MAPPING_FEATURE_COUNT + 5;
+    int FEATURE_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Feature Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__FEATURE_NAME = COLUMN_MAPPING_FEATURE_COUNT + 6;
+    int FEATURE_COLUMN_MAPPING__FEATURE_NAME = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION = COLUMN_MAPPING_FEATURE_COUNT + 7;
+    int FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Feature Parent Expression</b></em>'
@@ -1489,7 +1489,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION = COLUMN_MAPPING_FEATURE_COUNT + 8;
+    int FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 8;
 
     /**
      * The number of structural features of the '<em>Feature Column Mapping</em>
@@ -1498,14 +1498,14 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING_FEATURE_COUNT = COLUMN_MAPPING_FEATURE_COUNT + 9;
+    int FEATURE_COLUMN_MAPPING_FEATURE_COUNT = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 9;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl
      * <em>Cell Updater</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCellUpdater()
      * @generated
@@ -1524,7 +1524,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Can Edit</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1544,7 +1544,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.impl.StyleUpdaterImpl
      * <em>Style Updater</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.StyleUpdaterImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getStyleUpdater()
      * @generated
@@ -1611,20 +1611,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__NAME = TABLE_MAPPING__NAME;
+    int INTERSECTION_MAPPING__NAME = DescriptionPackage.TABLE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__LABEL = TABLE_MAPPING__LABEL;
+    int INTERSECTION_MAPPING__LABEL = DescriptionPackage.TABLE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1633,7 +1633,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__DETAIL_DESCRIPTIONS = TABLE_MAPPING__DETAIL_DESCRIPTIONS;
+    int INTERSECTION_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.TABLE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1642,7 +1642,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__NAVIGATION_DESCRIPTIONS = TABLE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int INTERSECTION_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.TABLE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1651,7 +1651,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__SEMANTIC_ELEMENTS = TABLE_MAPPING__SEMANTIC_ELEMENTS;
+    int INTERSECTION_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.TABLE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Direct Edit</b></em>' containment
@@ -1660,16 +1660,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__DIRECT_EDIT = TABLE_MAPPING_FEATURE_COUNT + 0;
+    int INTERSECTION_MAPPING__DIRECT_EDIT = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Can Edit</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__CAN_EDIT = TABLE_MAPPING_FEATURE_COUNT + 1;
+    int INTERSECTION_MAPPING__CAN_EDIT = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Default Foreground</b></em>' containment
@@ -1678,7 +1678,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__DEFAULT_FOREGROUND = TABLE_MAPPING_FEATURE_COUNT + 2;
+    int INTERSECTION_MAPPING__DEFAULT_FOREGROUND = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Foreground Conditional Style</b></em>'
@@ -1687,7 +1687,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__FOREGROUND_CONDITIONAL_STYLE = TABLE_MAPPING_FEATURE_COUNT + 3;
+    int INTERSECTION_MAPPING__FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Default Background</b></em>' containment
@@ -1696,7 +1696,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__DEFAULT_BACKGROUND = TABLE_MAPPING_FEATURE_COUNT + 4;
+    int INTERSECTION_MAPPING__DEFAULT_BACKGROUND = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Background Conditional Style</b></em>'
@@ -1705,7 +1705,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__BACKGROUND_CONDITIONAL_STYLE = TABLE_MAPPING_FEATURE_COUNT + 5;
+    int INTERSECTION_MAPPING__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Line Mapping</b></em>' reference list.
@@ -1714,34 +1714,34 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__LINE_MAPPING = TABLE_MAPPING_FEATURE_COUNT + 6;
+    int INTERSECTION_MAPPING__LINE_MAPPING = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Column Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__COLUMN_MAPPING = TABLE_MAPPING_FEATURE_COUNT + 7;
+    int INTERSECTION_MAPPING__COLUMN_MAPPING = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__LABEL_EXPRESSION = TABLE_MAPPING_FEATURE_COUNT + 8;
+    int INTERSECTION_MAPPING__LABEL_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Use Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__USE_DOMAIN_CLASS = TABLE_MAPPING_FEATURE_COUNT + 9;
+    int INTERSECTION_MAPPING__USE_DOMAIN_CLASS = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Column Finder Expression</b></em>'
@@ -1750,7 +1750,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__COLUMN_FINDER_EXPRESSION = TABLE_MAPPING_FEATURE_COUNT + 10;
+    int INTERSECTION_MAPPING__COLUMN_FINDER_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Line Finder Expression</b></em>'
@@ -1759,7 +1759,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__LINE_FINDER_EXPRESSION = TABLE_MAPPING_FEATURE_COUNT + 11;
+    int INTERSECTION_MAPPING__LINE_FINDER_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1768,16 +1768,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TABLE_MAPPING_FEATURE_COUNT + 12;
+    int INTERSECTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__DOMAIN_CLASS = TABLE_MAPPING_FEATURE_COUNT + 13;
+    int INTERSECTION_MAPPING__DOMAIN_CLASS = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1786,7 +1786,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__PRECONDITION_EXPRESSION = TABLE_MAPPING_FEATURE_COUNT + 14;
+    int INTERSECTION_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 14;
 
     /**
      * The feature id for the '<em><b>Create</b></em>' containment reference.
@@ -1795,7 +1795,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__CREATE = TABLE_MAPPING_FEATURE_COUNT + 15;
+    int INTERSECTION_MAPPING__CREATE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 15;
 
     /**
      * The number of structural features of the '<em>Intersection Mapping</em>'
@@ -1804,14 +1804,14 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING_FEATURE_COUNT = TABLE_MAPPING_FEATURE_COUNT + 16;
+    int INTERSECTION_MAPPING_FEATURE_COUNT = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 16;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl
      * <em>Table Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableTool()
      * @generated
@@ -1864,7 +1864,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LABEL_EDIT_TOOL__VARIABLES = TABLE_TOOL__VARIABLES;
+    int LABEL_EDIT_TOOL__VARIABLES = DescriptionPackage.TABLE_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -1873,16 +1873,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LABEL_EDIT_TOOL__FIRST_MODEL_OPERATION = TABLE_TOOL__FIRST_MODEL_OPERATION;
+    int LABEL_EDIT_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.TABLE_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Mask</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_EDIT_TOOL__MASK = TABLE_TOOL_FEATURE_COUNT + 0;
+    int LABEL_EDIT_TOOL__MASK = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Label Edit Tool</em>'
@@ -1891,14 +1891,14 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LABEL_EDIT_TOOL_FEATURE_COUNT = TABLE_TOOL_FEATURE_COUNT + 1;
+    int LABEL_EDIT_TOOL_FEATURE_COUNT = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateToolImpl
      * <em>Create Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.CreateToolImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateTool()
      * @generated
@@ -1908,7 +1908,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1917,7 +1917,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1926,7 +1926,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1935,7 +1935,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1944,7 +1944,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2001,47 +2001,47 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL__DOCUMENTATION = CREATE_TOOL__DOCUMENTATION;
+    int CREATE_COLUMN_TOOL__DOCUMENTATION = DescriptionPackage.CREATE_TOOL__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL__NAME = CREATE_TOOL__NAME;
+    int CREATE_COLUMN_TOOL__NAME = DescriptionPackage.CREATE_TOOL__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL__LABEL = CREATE_TOOL__LABEL;
+    int CREATE_COLUMN_TOOL__LABEL = DescriptionPackage.CREATE_TOOL__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL__PRECONDITION = CREATE_TOOL__PRECONDITION;
+    int CREATE_COLUMN_TOOL__PRECONDITION = DescriptionPackage.CREATE_TOOL__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL__FORCE_REFRESH = CREATE_TOOL__FORCE_REFRESH;
+    int CREATE_COLUMN_TOOL__FORCE_REFRESH = DescriptionPackage.CREATE_TOOL__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -2050,7 +2050,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL__FILTERS = CREATE_TOOL__FILTERS;
+    int CREATE_COLUMN_TOOL__FILTERS = DescriptionPackage.CREATE_TOOL__FILTERS;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2059,7 +2059,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL__VARIABLES = CREATE_TOOL__VARIABLES;
+    int CREATE_COLUMN_TOOL__VARIABLES = DescriptionPackage.CREATE_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -2068,7 +2068,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL__FIRST_MODEL_OPERATION = CREATE_TOOL__FIRST_MODEL_OPERATION;
+    int CREATE_COLUMN_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.CREATE_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' container reference.
@@ -2077,7 +2077,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL__MAPPING = CREATE_TOOL_FEATURE_COUNT + 0;
+    int CREATE_COLUMN_TOOL__MAPPING = DescriptionPackage.CREATE_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Create Column Tool</em>'
@@ -2086,7 +2086,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_COLUMN_TOOL_FEATURE_COUNT = CREATE_TOOL_FEATURE_COUNT + 1;
+    int CREATE_COLUMN_TOOL_FEATURE_COUNT = DescriptionPackage.CREATE_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2103,47 +2103,47 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL__DOCUMENTATION = CREATE_TOOL__DOCUMENTATION;
+    int CREATE_CROSS_COLUMN_TOOL__DOCUMENTATION = DescriptionPackage.CREATE_TOOL__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL__NAME = CREATE_TOOL__NAME;
+    int CREATE_CROSS_COLUMN_TOOL__NAME = DescriptionPackage.CREATE_TOOL__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL__LABEL = CREATE_TOOL__LABEL;
+    int CREATE_CROSS_COLUMN_TOOL__LABEL = DescriptionPackage.CREATE_TOOL__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL__PRECONDITION = CREATE_TOOL__PRECONDITION;
+    int CREATE_CROSS_COLUMN_TOOL__PRECONDITION = DescriptionPackage.CREATE_TOOL__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL__FORCE_REFRESH = CREATE_TOOL__FORCE_REFRESH;
+    int CREATE_CROSS_COLUMN_TOOL__FORCE_REFRESH = DescriptionPackage.CREATE_TOOL__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -2152,7 +2152,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL__FILTERS = CREATE_TOOL__FILTERS;
+    int CREATE_CROSS_COLUMN_TOOL__FILTERS = DescriptionPackage.CREATE_TOOL__FILTERS;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2161,7 +2161,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL__VARIABLES = CREATE_TOOL__VARIABLES;
+    int CREATE_CROSS_COLUMN_TOOL__VARIABLES = DescriptionPackage.CREATE_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -2170,16 +2170,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL__FIRST_MODEL_OPERATION = CREATE_TOOL__FIRST_MODEL_OPERATION;
+    int CREATE_CROSS_COLUMN_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.CREATE_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL__MAPPING = CREATE_TOOL_FEATURE_COUNT + 0;
+    int CREATE_CROSS_COLUMN_TOOL__MAPPING = DescriptionPackage.CREATE_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -2189,7 +2189,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CROSS_COLUMN_TOOL_FEATURE_COUNT = CREATE_TOOL_FEATURE_COUNT + 1;
+    int CREATE_CROSS_COLUMN_TOOL_FEATURE_COUNT = DescriptionPackage.CREATE_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2206,47 +2206,47 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL__DOCUMENTATION = CREATE_TOOL__DOCUMENTATION;
+    int CREATE_LINE_TOOL__DOCUMENTATION = DescriptionPackage.CREATE_TOOL__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL__NAME = CREATE_TOOL__NAME;
+    int CREATE_LINE_TOOL__NAME = DescriptionPackage.CREATE_TOOL__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL__LABEL = CREATE_TOOL__LABEL;
+    int CREATE_LINE_TOOL__LABEL = DescriptionPackage.CREATE_TOOL__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL__PRECONDITION = CREATE_TOOL__PRECONDITION;
+    int CREATE_LINE_TOOL__PRECONDITION = DescriptionPackage.CREATE_TOOL__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL__FORCE_REFRESH = CREATE_TOOL__FORCE_REFRESH;
+    int CREATE_LINE_TOOL__FORCE_REFRESH = DescriptionPackage.CREATE_TOOL__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -2255,7 +2255,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL__FILTERS = CREATE_TOOL__FILTERS;
+    int CREATE_LINE_TOOL__FILTERS = DescriptionPackage.CREATE_TOOL__FILTERS;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2264,7 +2264,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL__VARIABLES = CREATE_TOOL__VARIABLES;
+    int CREATE_LINE_TOOL__VARIABLES = DescriptionPackage.CREATE_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -2273,16 +2273,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL__FIRST_MODEL_OPERATION = CREATE_TOOL__FIRST_MODEL_OPERATION;
+    int CREATE_LINE_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.CREATE_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL__MAPPING = CREATE_TOOL_FEATURE_COUNT + 0;
+    int CREATE_LINE_TOOL__MAPPING = DescriptionPackage.CREATE_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Create Line Tool</em>'
@@ -2291,7 +2291,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_LINE_TOOL_FEATURE_COUNT = CREATE_TOOL_FEATURE_COUNT + 1;
+    int CREATE_LINE_TOOL_FEATURE_COUNT = DescriptionPackage.CREATE_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2312,7 +2312,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__VARIABLES = TABLE_TOOL__VARIABLES;
+    int CREATE_CELL_TOOL__VARIABLES = DescriptionPackage.TABLE_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -2321,52 +2321,52 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__FIRST_MODEL_OPERATION = TABLE_TOOL__FIRST_MODEL_OPERATION;
+    int CREATE_CELL_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.TABLE_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__DOCUMENTATION = TABLE_TOOL_FEATURE_COUNT + 0;
+    int CREATE_CELL_TOOL__DOCUMENTATION = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__NAME = TABLE_TOOL_FEATURE_COUNT + 1;
+    int CREATE_CELL_TOOL__NAME = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__LABEL = TABLE_TOOL_FEATURE_COUNT + 2;
+    int CREATE_CELL_TOOL__LABEL = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__PRECONDITION = TABLE_TOOL_FEATURE_COUNT + 3;
+    int CREATE_CELL_TOOL__PRECONDITION = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__FORCE_REFRESH = TABLE_TOOL_FEATURE_COUNT + 4;
+    int CREATE_CELL_TOOL__FORCE_REFRESH = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -2375,16 +2375,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__FILTERS = TABLE_TOOL_FEATURE_COUNT + 5;
+    int CREATE_CELL_TOOL__FILTERS = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Mask</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__MASK = TABLE_TOOL_FEATURE_COUNT + 6;
+    int CREATE_CELL_TOOL__MASK = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' container reference.
@@ -2393,7 +2393,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__MAPPING = TABLE_TOOL_FEATURE_COUNT + 7;
+    int CREATE_CELL_TOOL__MAPPING = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 7;
 
     /**
      * The number of structural features of the '<em>Create Cell Tool</em>'
@@ -2402,14 +2402,14 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL_FEATURE_COUNT = TABLE_TOOL_FEATURE_COUNT + 8;
+    int CREATE_CELL_TOOL_FEATURE_COUNT = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 8;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteToolImpl
      * <em>Delete Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DeleteToolImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteTool()
      * @generated
@@ -2419,7 +2419,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2428,7 +2428,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2437,7 +2437,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2446,7 +2446,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2455,7 +2455,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2512,47 +2512,47 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL__DOCUMENTATION = DELETE_TOOL__DOCUMENTATION;
+    int DELETE_COLUMN_TOOL__DOCUMENTATION = DescriptionPackage.DELETE_TOOL__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL__NAME = DELETE_TOOL__NAME;
+    int DELETE_COLUMN_TOOL__NAME = DescriptionPackage.DELETE_TOOL__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL__LABEL = DELETE_TOOL__LABEL;
+    int DELETE_COLUMN_TOOL__LABEL = DescriptionPackage.DELETE_TOOL__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL__PRECONDITION = DELETE_TOOL__PRECONDITION;
+    int DELETE_COLUMN_TOOL__PRECONDITION = DescriptionPackage.DELETE_TOOL__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL__FORCE_REFRESH = DELETE_TOOL__FORCE_REFRESH;
+    int DELETE_COLUMN_TOOL__FORCE_REFRESH = DescriptionPackage.DELETE_TOOL__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -2561,7 +2561,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL__FILTERS = DELETE_TOOL__FILTERS;
+    int DELETE_COLUMN_TOOL__FILTERS = DescriptionPackage.DELETE_TOOL__FILTERS;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2570,7 +2570,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL__VARIABLES = DELETE_TOOL__VARIABLES;
+    int DELETE_COLUMN_TOOL__VARIABLES = DescriptionPackage.DELETE_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -2579,7 +2579,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL__FIRST_MODEL_OPERATION = DELETE_TOOL__FIRST_MODEL_OPERATION;
+    int DELETE_COLUMN_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.DELETE_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' container reference.
@@ -2588,7 +2588,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL__MAPPING = DELETE_TOOL_FEATURE_COUNT + 0;
+    int DELETE_COLUMN_TOOL__MAPPING = DescriptionPackage.DELETE_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Delete Column Tool</em>'
@@ -2597,7 +2597,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_COLUMN_TOOL_FEATURE_COUNT = DELETE_TOOL_FEATURE_COUNT + 1;
+    int DELETE_COLUMN_TOOL_FEATURE_COUNT = DescriptionPackage.DELETE_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2614,47 +2614,47 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL__DOCUMENTATION = DELETE_TOOL__DOCUMENTATION;
+    int DELETE_LINE_TOOL__DOCUMENTATION = DescriptionPackage.DELETE_TOOL__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL__NAME = DELETE_TOOL__NAME;
+    int DELETE_LINE_TOOL__NAME = DescriptionPackage.DELETE_TOOL__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL__LABEL = DELETE_TOOL__LABEL;
+    int DELETE_LINE_TOOL__LABEL = DescriptionPackage.DELETE_TOOL__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL__PRECONDITION = DELETE_TOOL__PRECONDITION;
+    int DELETE_LINE_TOOL__PRECONDITION = DescriptionPackage.DELETE_TOOL__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL__FORCE_REFRESH = DELETE_TOOL__FORCE_REFRESH;
+    int DELETE_LINE_TOOL__FORCE_REFRESH = DescriptionPackage.DELETE_TOOL__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -2663,7 +2663,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL__FILTERS = DELETE_TOOL__FILTERS;
+    int DELETE_LINE_TOOL__FILTERS = DescriptionPackage.DELETE_TOOL__FILTERS;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2672,7 +2672,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL__VARIABLES = DELETE_TOOL__VARIABLES;
+    int DELETE_LINE_TOOL__VARIABLES = DescriptionPackage.DELETE_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -2681,7 +2681,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL__FIRST_MODEL_OPERATION = DELETE_TOOL__FIRST_MODEL_OPERATION;
+    int DELETE_LINE_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.DELETE_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' container reference.
@@ -2690,7 +2690,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL__MAPPING = DELETE_TOOL_FEATURE_COUNT + 0;
+    int DELETE_LINE_TOOL__MAPPING = DescriptionPackage.DELETE_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Delete Line Tool</em>'
@@ -2699,7 +2699,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELETE_LINE_TOOL_FEATURE_COUNT = DELETE_TOOL_FEATURE_COUNT + 1;
+    int DELETE_LINE_TOOL_FEATURE_COUNT = DescriptionPackage.DELETE_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2716,7 +2716,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2725,7 +2725,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2765,7 +2765,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2876,7 +2876,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2894,7 +2894,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2924,7 +2924,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2933,7 +2933,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2942,7 +2942,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2951,7 +2951,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2960,7 +2960,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2978,7 +2978,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3063,7 +3063,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3072,7 +3072,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3081,7 +3081,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3090,7 +3090,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3099,7 +3099,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3192,7 +3192,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription
      * <em>Table Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Table Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription
      * @generated
@@ -3230,7 +3230,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedRepresentationCreationDescriptions
      * <em>Owned Representation Creation Descriptions</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Representation Creation Descriptions</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedRepresentationCreationDescriptions()
@@ -3244,7 +3244,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedRepresentationCreationDescriptions
      * <em>Reused Representation Creation Descriptions</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Reused Representation Creation Descriptions</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedRepresentationCreationDescriptions()
@@ -3272,7 +3272,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedRepresentationNavigationDescriptions
      * <em>Owned Representation Navigation Descriptions</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Representation Navigation Descriptions</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedRepresentationNavigationDescriptions()
@@ -3286,7 +3286,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedRepresentationNavigationDescriptions
      * <em>Reused Representation Navigation Descriptions</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Reused Representation Navigation Descriptions</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedRepresentationNavigationDescriptions()
@@ -3300,7 +3300,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllRepresentationNavigationDescriptions
      * <em>All Representation Navigation Descriptions</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>All Representation Navigation Descriptions</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllRepresentationNavigationDescriptions()
@@ -3314,7 +3314,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedLineMappings
      * <em>Owned Line Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Line Mappings</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedLineMappings()
@@ -3342,7 +3342,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllLineMappings
      * <em>All Line Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>All Line Mappings</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllLineMappings()
@@ -3356,7 +3356,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedCreateLine
      * <em>Owned Create Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Create Line</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedCreateLine()
@@ -3370,7 +3370,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedCreateLine
      * <em>Reused Create Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Reused Create Line</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedCreateLine()
@@ -3411,7 +3411,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getImportedElements
      * <em>Imported Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Imported Elements</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getImportedElements()
@@ -3465,7 +3465,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getAllColumnMappings
      * <em>All Column Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>All Column Mappings</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getAllColumnMappings()
@@ -3542,7 +3542,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements
      * <em>Semantic Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Semantic Elements</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements()
      * @see #getTableMapping()
@@ -3579,7 +3579,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines
      * <em>Reused Sub Lines</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Reused Sub Lines</em>
      *         '.
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines()
@@ -3670,7 +3670,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings
      * <em>Reused In Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Reused In Mappings</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings()
@@ -3808,7 +3808,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression
      * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression()
      * @see #getFeatureColumnMapping()
@@ -3882,7 +3882,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground
      * <em>Default Foreground</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Default Foreground</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground()
@@ -3910,7 +3910,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground
      * <em>Default Background</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Default Background</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground()
@@ -3974,7 +3974,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLabelExpression
      * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLabelExpression()
      * @see #getIntersectionMapping()
@@ -3987,7 +3987,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#isUseDomainClass
      * <em>Use Domain Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Use Domain Class</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#isUseDomainClass()
      * @see #getIntersectionMapping()
@@ -4152,7 +4152,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool
      * <em>Create Column Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Create Column Tool</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool
      * @generated
@@ -4200,7 +4200,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateLineTool
      * <em>Create Line Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Create Line Tool</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.CreateLineTool
      * @generated
@@ -4224,7 +4224,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
      * <em>Create Cell Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Create Cell Tool</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
      * @generated
@@ -4271,7 +4271,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool
      * <em>Delete Column Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Delete Column Tool</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool
      * @generated
@@ -4295,7 +4295,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool
      * <em>Delete Line Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Delete Line Tool</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool
      * @generated
@@ -4356,7 +4356,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
      * <em>Fore Ground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Fore Ground Color</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor()
      * @see #getForegroundStyleDescription()
@@ -4382,7 +4382,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Background Color</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription#getBackgroundColor()
      * @see #getBackgroundStyleDescription()
@@ -4508,7 +4508,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription
      * <em>Table Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Table Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription()
      * @see #getTableCreationDescription()
@@ -4534,7 +4534,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription#getTableDescription
      * <em>Table Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Table Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription#getTableDescription()
      * @see #getTableNavigationDescription()
@@ -4545,7 +4545,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -4575,16 +4575,16 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableDescription()
          * @generated
          */
-        EClass TABLE_DESCRIPTION = eINSTANCE.getTableDescription();
+        EClass TABLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getTableDescription();
 
         /**
          * The meta object literal for the '
          * <em><b>Precondition Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute TABLE_DESCRIPTION__PRECONDITION_EXPRESSION = eINSTANCE.getTableDescription_PreconditionExpression();
+        EAttribute TABLE_DESCRIPTION__PRECONDITION_EXPRESSION = DescriptionPackage.eINSTANCE.getTableDescription_PreconditionExpression();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -4592,7 +4592,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TABLE_DESCRIPTION__DOMAIN_CLASS = eINSTANCE.getTableDescription_DomainClass();
+        EAttribute TABLE_DESCRIPTION__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getTableDescription_DomainClass();
 
         /**
          * The meta object literal for the '
@@ -4602,7 +4602,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = eINSTANCE.getTableDescription_OwnedRepresentationCreationDescriptions();
+        EReference TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getTableDescription_OwnedRepresentationCreationDescriptions();
 
         /**
          * The meta object literal for the '
@@ -4611,7 +4611,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS = eINSTANCE.getTableDescription_ReusedRepresentationCreationDescriptions();
+        EReference TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getTableDescription_ReusedRepresentationCreationDescriptions();
 
         /**
          * The meta object literal for the '
@@ -4620,7 +4620,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS = eINSTANCE.getTableDescription_AllRepresentationCreationDescriptions();
+        EReference TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getTableDescription_AllRepresentationCreationDescriptions();
 
         /**
          * The meta object literal for the '
@@ -4630,7 +4630,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = eINSTANCE.getTableDescription_OwnedRepresentationNavigationDescriptions();
+        EReference TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getTableDescription_OwnedRepresentationNavigationDescriptions();
 
         /**
          * The meta object literal for the '
@@ -4639,7 +4639,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = eINSTANCE.getTableDescription_ReusedRepresentationNavigationDescriptions();
+        EReference TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getTableDescription_ReusedRepresentationNavigationDescriptions();
 
         /**
          * The meta object literal for the '
@@ -4648,7 +4648,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS = eINSTANCE.getTableDescription_AllRepresentationNavigationDescriptions();
+        EReference TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getTableDescription_AllRepresentationNavigationDescriptions();
 
         /**
          * The meta object literal for the '<em><b>Owned Line Mappings</b></em>'
@@ -4657,16 +4657,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS = eINSTANCE.getTableDescription_OwnedLineMappings();
+        EReference TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS = DescriptionPackage.eINSTANCE.getTableDescription_OwnedLineMappings();
 
         /**
          * The meta object literal for the '<em><b>Reused Line Mappings</b></em>
          * ' reference list feature. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @generated
          */
-        EReference TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS = eINSTANCE.getTableDescription_ReusedLineMappings();
+        EReference TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS = DescriptionPackage.eINSTANCE.getTableDescription_ReusedLineMappings();
 
         /**
          * The meta object literal for the '<em><b>All Line Mappings</b></em>'
@@ -4674,7 +4674,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__ALL_LINE_MAPPINGS = eINSTANCE.getTableDescription_AllLineMappings();
+        EReference TABLE_DESCRIPTION__ALL_LINE_MAPPINGS = DescriptionPackage.eINSTANCE.getTableDescription_AllLineMappings();
 
         /**
          * The meta object literal for the '<em><b>Owned Create Line</b></em>'
@@ -4683,7 +4683,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__OWNED_CREATE_LINE = eINSTANCE.getTableDescription_OwnedCreateLine();
+        EReference TABLE_DESCRIPTION__OWNED_CREATE_LINE = DescriptionPackage.eINSTANCE.getTableDescription_OwnedCreateLine();
 
         /**
          * The meta object literal for the '<em><b>Reused Create Line</b></em>'
@@ -4691,7 +4691,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__REUSED_CREATE_LINE = eINSTANCE.getTableDescription_ReusedCreateLine();
+        EReference TABLE_DESCRIPTION__REUSED_CREATE_LINE = DescriptionPackage.eINSTANCE.getTableDescription_ReusedCreateLine();
 
         /**
          * The meta object literal for the '<em><b>All Create Line</b></em>'
@@ -4699,16 +4699,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__ALL_CREATE_LINE = eINSTANCE.getTableDescription_AllCreateLine();
+        EReference TABLE_DESCRIPTION__ALL_CREATE_LINE = DescriptionPackage.eINSTANCE.getTableDescription_AllCreateLine();
 
         /**
          * The meta object literal for the '
          * <em><b>Initial Header Column Width</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH = eINSTANCE.getTableDescription_InitialHeaderColumnWidth();
+        EAttribute TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH = DescriptionPackage.eINSTANCE.getTableDescription_InitialHeaderColumnWidth();
 
         /**
          * The meta object literal for the '<em><b>Imported Elements</b></em>'
@@ -4717,7 +4717,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_DESCRIPTION__IMPORTED_ELEMENTS = eINSTANCE.getTableDescription_ImportedElements();
+        EReference TABLE_DESCRIPTION__IMPORTED_ELEMENTS = DescriptionPackage.eINSTANCE.getTableDescription_ImportedElements();
 
         /**
          * The meta object literal for the '
@@ -4729,7 +4729,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getEditionTableDescription()
          * @generated
          */
-        EClass EDITION_TABLE_DESCRIPTION = eINSTANCE.getEditionTableDescription();
+        EClass EDITION_TABLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getEditionTableDescription();
 
         /**
          * The meta object literal for the '
@@ -4738,16 +4738,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = eINSTANCE.getEditionTableDescription_OwnedColumnMappings();
+        EReference EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = DescriptionPackage.eINSTANCE.getEditionTableDescription_OwnedColumnMappings();
 
         /**
          * The meta object literal for the '
          * <em><b>Reused Column Mappings</b></em>' reference list feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS = eINSTANCE.getEditionTableDescription_ReusedColumnMappings();
+        EReference EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS = DescriptionPackage.eINSTANCE.getEditionTableDescription_ReusedColumnMappings();
 
         /**
          * The meta object literal for the '<em><b>All Column Mappings</b></em>'
@@ -4755,7 +4755,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDITION_TABLE_DESCRIPTION__ALL_COLUMN_MAPPINGS = eINSTANCE.getEditionTableDescription_AllColumnMappings();
+        EReference EDITION_TABLE_DESCRIPTION__ALL_COLUMN_MAPPINGS = DescriptionPackage.eINSTANCE.getEditionTableDescription_AllColumnMappings();
 
         /**
          * The meta object literal for the '
@@ -4767,7 +4767,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCrossTableDescription()
          * @generated
          */
-        EClass CROSS_TABLE_DESCRIPTION = eINSTANCE.getCrossTableDescription();
+        EClass CROSS_TABLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getCrossTableDescription();
 
         /**
          * The meta object literal for the '
@@ -4776,7 +4776,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CROSS_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = eINSTANCE.getCrossTableDescription_OwnedColumnMappings();
+        EReference CROSS_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = DescriptionPackage.eINSTANCE.getCrossTableDescription_OwnedColumnMappings();
 
         /**
          * The meta object literal for the '<em><b>Intersection</b></em>'
@@ -4785,7 +4785,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CROSS_TABLE_DESCRIPTION__INTERSECTION = eINSTANCE.getCrossTableDescription_Intersection();
+        EReference CROSS_TABLE_DESCRIPTION__INTERSECTION = DescriptionPackage.eINSTANCE.getCrossTableDescription_Intersection();
 
         /**
          * The meta object literal for the '<em><b>Create Column</b></em>'
@@ -4794,7 +4794,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CROSS_TABLE_DESCRIPTION__CREATE_COLUMN = eINSTANCE.getCrossTableDescription_CreateColumn();
+        EReference CROSS_TABLE_DESCRIPTION__CREATE_COLUMN = DescriptionPackage.eINSTANCE.getCrossTableDescription_CreateColumn();
 
         /**
          * The meta object literal for the '
@@ -4806,7 +4806,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableMapping()
          * @generated
          */
-        EClass TABLE_MAPPING = eINSTANCE.getTableMapping();
+        EClass TABLE_MAPPING = DescriptionPackage.eINSTANCE.getTableMapping();
 
         /**
          * The meta object literal for the '<em><b>Semantic Elements</b></em>'
@@ -4814,7 +4814,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TABLE_MAPPING__SEMANTIC_ELEMENTS = eINSTANCE.getTableMapping_SemanticElements();
+        EAttribute TABLE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.eINSTANCE.getTableMapping_SemanticElements();
 
         /**
          * The meta object literal for the '
@@ -4826,7 +4826,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getLineMapping()
          * @generated
          */
-        EClass LINE_MAPPING = eINSTANCE.getLineMapping();
+        EClass LINE_MAPPING = DescriptionPackage.eINSTANCE.getLineMapping();
 
         /**
          * The meta object literal for the '<em><b>Owned Sub Lines</b></em>'
@@ -4835,7 +4835,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LINE_MAPPING__OWNED_SUB_LINES = eINSTANCE.getLineMapping_OwnedSubLines();
+        EReference LINE_MAPPING__OWNED_SUB_LINES = DescriptionPackage.eINSTANCE.getLineMapping_OwnedSubLines();
 
         /**
          * The meta object literal for the '<em><b>Reused Sub Lines</b></em>'
@@ -4843,7 +4843,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LINE_MAPPING__REUSED_SUB_LINES = eINSTANCE.getLineMapping_ReusedSubLines();
+        EReference LINE_MAPPING__REUSED_SUB_LINES = DescriptionPackage.eINSTANCE.getLineMapping_ReusedSubLines();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -4851,7 +4851,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute LINE_MAPPING__DOMAIN_CLASS = eINSTANCE.getLineMapping_DomainClass();
+        EAttribute LINE_MAPPING__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getLineMapping_DomainClass();
 
         /**
          * The meta object literal for the '<em><b>Create</b></em>' containment
@@ -4859,7 +4859,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LINE_MAPPING__CREATE = eINSTANCE.getLineMapping_Create();
+        EReference LINE_MAPPING__CREATE = DescriptionPackage.eINSTANCE.getLineMapping_Create();
 
         /**
          * The meta object literal for the '<em><b>Delete</b></em>' containment
@@ -4867,7 +4867,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LINE_MAPPING__DELETE = eINSTANCE.getLineMapping_Delete();
+        EReference LINE_MAPPING__DELETE = DescriptionPackage.eINSTANCE.getLineMapping_Delete();
 
         /**
          * The meta object literal for the '
@@ -4876,16 +4876,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = eINSTANCE.getLineMapping_SemanticCandidatesExpression();
+        EAttribute LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.eINSTANCE.getLineMapping_SemanticCandidatesExpression();
 
         /**
          * The meta object literal for the '
          * <em><b>Header Label Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LINE_MAPPING__HEADER_LABEL_EXPRESSION = eINSTANCE.getLineMapping_HeaderLabelExpression();
+        EAttribute LINE_MAPPING__HEADER_LABEL_EXPRESSION = DescriptionPackage.eINSTANCE.getLineMapping_HeaderLabelExpression();
 
         /**
          * The meta object literal for the '<em><b>All Sub Lines</b></em>'
@@ -4893,7 +4893,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LINE_MAPPING__ALL_SUB_LINES = eINSTANCE.getLineMapping_AllSubLines();
+        EReference LINE_MAPPING__ALL_SUB_LINES = DescriptionPackage.eINSTANCE.getLineMapping_AllSubLines();
 
         /**
          * The meta object literal for the '<em><b>Reused In Mappings</b></em>'
@@ -4901,7 +4901,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LINE_MAPPING__REUSED_IN_MAPPINGS = eINSTANCE.getLineMapping_ReusedInMappings();
+        EReference LINE_MAPPING__REUSED_IN_MAPPINGS = DescriptionPackage.eINSTANCE.getLineMapping_ReusedInMappings();
 
         /**
          * The meta object literal for the '
@@ -4913,16 +4913,16 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getColumnMapping()
          * @generated
          */
-        EClass COLUMN_MAPPING = eINSTANCE.getColumnMapping();
+        EClass COLUMN_MAPPING = DescriptionPackage.eINSTANCE.getColumnMapping();
 
         /**
          * The meta object literal for the '
          * <em><b>Header Label Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute COLUMN_MAPPING__HEADER_LABEL_EXPRESSION = eINSTANCE.getColumnMapping_HeaderLabelExpression();
+        EAttribute COLUMN_MAPPING__HEADER_LABEL_EXPRESSION = DescriptionPackage.eINSTANCE.getColumnMapping_HeaderLabelExpression();
 
         /**
          * The meta object literal for the '<em><b>Initial Width</b></em>'
@@ -4930,7 +4930,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute COLUMN_MAPPING__INITIAL_WIDTH = eINSTANCE.getColumnMapping_InitialWidth();
+        EAttribute COLUMN_MAPPING__INITIAL_WIDTH = DescriptionPackage.eINSTANCE.getColumnMapping_InitialWidth();
 
         /**
          * The meta object literal for the '
@@ -4942,7 +4942,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getElementColumnMapping()
          * @generated
          */
-        EClass ELEMENT_COLUMN_MAPPING = eINSTANCE.getElementColumnMapping();
+        EClass ELEMENT_COLUMN_MAPPING = DescriptionPackage.eINSTANCE.getElementColumnMapping();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -4950,7 +4950,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS = eINSTANCE.getElementColumnMapping_DomainClass();
+        EAttribute ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getElementColumnMapping_DomainClass();
 
         /**
          * The meta object literal for the '
@@ -4959,7 +4959,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = eINSTANCE.getElementColumnMapping_SemanticCandidatesExpression();
+        EAttribute ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.eINSTANCE.getElementColumnMapping_SemanticCandidatesExpression();
 
         /**
          * The meta object literal for the '<em><b>Create</b></em>' containment
@@ -4967,7 +4967,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference ELEMENT_COLUMN_MAPPING__CREATE = eINSTANCE.getElementColumnMapping_Create();
+        EReference ELEMENT_COLUMN_MAPPING__CREATE = DescriptionPackage.eINSTANCE.getElementColumnMapping_Create();
 
         /**
          * The meta object literal for the '<em><b>Delete</b></em>' containment
@@ -4975,7 +4975,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference ELEMENT_COLUMN_MAPPING__DELETE = eINSTANCE.getElementColumnMapping_Delete();
+        EReference ELEMENT_COLUMN_MAPPING__DELETE = DescriptionPackage.eINSTANCE.getElementColumnMapping_Delete();
 
         /**
          * The meta object literal for the '
@@ -4987,7 +4987,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getFeatureColumnMapping()
          * @generated
          */
-        EClass FEATURE_COLUMN_MAPPING = eINSTANCE.getFeatureColumnMapping();
+        EClass FEATURE_COLUMN_MAPPING = DescriptionPackage.eINSTANCE.getFeatureColumnMapping();
 
         /**
          * The meta object literal for the '<em><b>Feature Name</b></em>'
@@ -4995,7 +4995,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FEATURE_COLUMN_MAPPING__FEATURE_NAME = eINSTANCE.getFeatureColumnMapping_FeatureName();
+        EAttribute FEATURE_COLUMN_MAPPING__FEATURE_NAME = DescriptionPackage.eINSTANCE.getFeatureColumnMapping_FeatureName();
 
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
@@ -5003,16 +5003,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION = eINSTANCE.getFeatureColumnMapping_LabelExpression();
+        EAttribute FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION = DescriptionPackage.eINSTANCE.getFeatureColumnMapping_LabelExpression();
 
         /**
          * The meta object literal for the '
          * <em><b>Feature Parent Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION = eINSTANCE.getFeatureColumnMapping_FeatureParentExpression();
+        EAttribute FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION = DescriptionPackage.eINSTANCE.getFeatureColumnMapping_FeatureParentExpression();
 
         /**
          * The meta object literal for the '
@@ -5024,7 +5024,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCellUpdater()
          * @generated
          */
-        EClass CELL_UPDATER = eINSTANCE.getCellUpdater();
+        EClass CELL_UPDATER = DescriptionPackage.eINSTANCE.getCellUpdater();
 
         /**
          * The meta object literal for the '<em><b>Direct Edit</b></em>'
@@ -5033,7 +5033,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CELL_UPDATER__DIRECT_EDIT = eINSTANCE.getCellUpdater_DirectEdit();
+        EReference CELL_UPDATER__DIRECT_EDIT = DescriptionPackage.eINSTANCE.getCellUpdater_DirectEdit();
 
         /**
          * The meta object literal for the '<em><b>Can Edit</b></em>' attribute
@@ -5041,7 +5041,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CELL_UPDATER__CAN_EDIT = eINSTANCE.getCellUpdater_CanEdit();
+        EAttribute CELL_UPDATER__CAN_EDIT = DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit();
 
         /**
          * The meta object literal for the '
@@ -5053,7 +5053,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getStyleUpdater()
          * @generated
          */
-        EClass STYLE_UPDATER = eINSTANCE.getStyleUpdater();
+        EClass STYLE_UPDATER = DescriptionPackage.eINSTANCE.getStyleUpdater();
 
         /**
          * The meta object literal for the '<em><b>Default Foreground</b></em>'
@@ -5062,7 +5062,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference STYLE_UPDATER__DEFAULT_FOREGROUND = eINSTANCE.getStyleUpdater_DefaultForeground();
+        EReference STYLE_UPDATER__DEFAULT_FOREGROUND = DescriptionPackage.eINSTANCE.getStyleUpdater_DefaultForeground();
 
         /**
          * The meta object literal for the '
@@ -5071,7 +5071,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE = eINSTANCE.getStyleUpdater_ForegroundConditionalStyle();
+        EReference STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.eINSTANCE.getStyleUpdater_ForegroundConditionalStyle();
 
         /**
          * The meta object literal for the '<em><b>Default Background</b></em>'
@@ -5080,7 +5080,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference STYLE_UPDATER__DEFAULT_BACKGROUND = eINSTANCE.getStyleUpdater_DefaultBackground();
+        EReference STYLE_UPDATER__DEFAULT_BACKGROUND = DescriptionPackage.eINSTANCE.getStyleUpdater_DefaultBackground();
 
         /**
          * The meta object literal for the '
@@ -5089,7 +5089,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE = eINSTANCE.getStyleUpdater_BackgroundConditionalStyle();
+        EReference STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.eINSTANCE.getStyleUpdater_BackgroundConditionalStyle();
 
         /**
          * The meta object literal for the '
@@ -5101,7 +5101,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getIntersectionMapping()
          * @generated
          */
-        EClass INTERSECTION_MAPPING = eINSTANCE.getIntersectionMapping();
+        EClass INTERSECTION_MAPPING = DescriptionPackage.eINSTANCE.getIntersectionMapping();
 
         /**
          * The meta object literal for the '<em><b>Line Mapping</b></em>'
@@ -5109,7 +5109,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference INTERSECTION_MAPPING__LINE_MAPPING = eINSTANCE.getIntersectionMapping_LineMapping();
+        EReference INTERSECTION_MAPPING__LINE_MAPPING = DescriptionPackage.eINSTANCE.getIntersectionMapping_LineMapping();
 
         /**
          * The meta object literal for the '<em><b>Column Mapping</b></em>'
@@ -5117,7 +5117,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference INTERSECTION_MAPPING__COLUMN_MAPPING = eINSTANCE.getIntersectionMapping_ColumnMapping();
+        EReference INTERSECTION_MAPPING__COLUMN_MAPPING = DescriptionPackage.eINSTANCE.getIntersectionMapping_ColumnMapping();
 
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
@@ -5125,7 +5125,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute INTERSECTION_MAPPING__LABEL_EXPRESSION = eINSTANCE.getIntersectionMapping_LabelExpression();
+        EAttribute INTERSECTION_MAPPING__LABEL_EXPRESSION = DescriptionPackage.eINSTANCE.getIntersectionMapping_LabelExpression();
 
         /**
          * The meta object literal for the '<em><b>Use Domain Class</b></em>'
@@ -5133,25 +5133,25 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute INTERSECTION_MAPPING__USE_DOMAIN_CLASS = eINSTANCE.getIntersectionMapping_UseDomainClass();
+        EAttribute INTERSECTION_MAPPING__USE_DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getIntersectionMapping_UseDomainClass();
 
         /**
          * The meta object literal for the '
          * <em><b>Column Finder Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute INTERSECTION_MAPPING__COLUMN_FINDER_EXPRESSION = eINSTANCE.getIntersectionMapping_ColumnFinderExpression();
+        EAttribute INTERSECTION_MAPPING__COLUMN_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getIntersectionMapping_ColumnFinderExpression();
 
         /**
          * The meta object literal for the '
          * <em><b>Line Finder Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute INTERSECTION_MAPPING__LINE_FINDER_EXPRESSION = eINSTANCE.getIntersectionMapping_LineFinderExpression();
+        EAttribute INTERSECTION_MAPPING__LINE_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getIntersectionMapping_LineFinderExpression();
 
         /**
          * The meta object literal for the '
@@ -5160,7 +5160,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute INTERSECTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = eINSTANCE.getIntersectionMapping_SemanticCandidatesExpression();
+        EAttribute INTERSECTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.eINSTANCE.getIntersectionMapping_SemanticCandidatesExpression();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -5168,16 +5168,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute INTERSECTION_MAPPING__DOMAIN_CLASS = eINSTANCE.getIntersectionMapping_DomainClass();
+        EAttribute INTERSECTION_MAPPING__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getIntersectionMapping_DomainClass();
 
         /**
          * The meta object literal for the '
          * <em><b>Precondition Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute INTERSECTION_MAPPING__PRECONDITION_EXPRESSION = eINSTANCE.getIntersectionMapping_PreconditionExpression();
+        EAttribute INTERSECTION_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.eINSTANCE.getIntersectionMapping_PreconditionExpression();
 
         /**
          * The meta object literal for the '<em><b>Create</b></em>' containment
@@ -5185,7 +5185,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference INTERSECTION_MAPPING__CREATE = eINSTANCE.getIntersectionMapping_Create();
+        EReference INTERSECTION_MAPPING__CREATE = DescriptionPackage.eINSTANCE.getIntersectionMapping_Create();
 
         /**
          * The meta object literal for the '
@@ -5197,7 +5197,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableTool()
          * @generated
          */
-        EClass TABLE_TOOL = eINSTANCE.getTableTool();
+        EClass TABLE_TOOL = DescriptionPackage.eINSTANCE.getTableTool();
 
         /**
          * The meta object literal for the '<em><b>Variables</b></em>'
@@ -5206,7 +5206,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_TOOL__VARIABLES = eINSTANCE.getTableTool_Variables();
+        EReference TABLE_TOOL__VARIABLES = DescriptionPackage.eINSTANCE.getTableTool_Variables();
 
         /**
          * The meta object literal for the '
@@ -5215,7 +5215,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_TOOL__FIRST_MODEL_OPERATION = eINSTANCE.getTableTool_FirstModelOperation();
+        EReference TABLE_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.eINSTANCE.getTableTool_FirstModelOperation();
 
         /**
          * The meta object literal for the '
@@ -5227,7 +5227,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getLabelEditTool()
          * @generated
          */
-        EClass LABEL_EDIT_TOOL = eINSTANCE.getLabelEditTool();
+        EClass LABEL_EDIT_TOOL = DescriptionPackage.eINSTANCE.getLabelEditTool();
 
         /**
          * The meta object literal for the '<em><b>Mask</b></em>' containment
@@ -5235,7 +5235,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LABEL_EDIT_TOOL__MASK = eINSTANCE.getLabelEditTool_Mask();
+        EReference LABEL_EDIT_TOOL__MASK = DescriptionPackage.eINSTANCE.getLabelEditTool_Mask();
 
         /**
          * The meta object literal for the '
@@ -5247,7 +5247,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateTool()
          * @generated
          */
-        EClass CREATE_TOOL = eINSTANCE.getCreateTool();
+        EClass CREATE_TOOL = DescriptionPackage.eINSTANCE.getCreateTool();
 
         /**
          * The meta object literal for the '
@@ -5259,7 +5259,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateColumnTool()
          * @generated
          */
-        EClass CREATE_COLUMN_TOOL = eINSTANCE.getCreateColumnTool();
+        EClass CREATE_COLUMN_TOOL = DescriptionPackage.eINSTANCE.getCreateColumnTool();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' container
@@ -5267,7 +5267,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CREATE_COLUMN_TOOL__MAPPING = eINSTANCE.getCreateColumnTool_Mapping();
+        EReference CREATE_COLUMN_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getCreateColumnTool_Mapping();
 
         /**
          * The meta object literal for the '
@@ -5279,7 +5279,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateCrossColumnTool()
          * @generated
          */
-        EClass CREATE_CROSS_COLUMN_TOOL = eINSTANCE.getCreateCrossColumnTool();
+        EClass CREATE_CROSS_COLUMN_TOOL = DescriptionPackage.eINSTANCE.getCreateCrossColumnTool();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' reference
@@ -5287,7 +5287,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CREATE_CROSS_COLUMN_TOOL__MAPPING = eINSTANCE.getCreateCrossColumnTool_Mapping();
+        EReference CREATE_CROSS_COLUMN_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getCreateCrossColumnTool_Mapping();
 
         /**
          * The meta object literal for the '
@@ -5299,7 +5299,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateLineTool()
          * @generated
          */
-        EClass CREATE_LINE_TOOL = eINSTANCE.getCreateLineTool();
+        EClass CREATE_LINE_TOOL = DescriptionPackage.eINSTANCE.getCreateLineTool();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' reference
@@ -5307,7 +5307,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CREATE_LINE_TOOL__MAPPING = eINSTANCE.getCreateLineTool_Mapping();
+        EReference CREATE_LINE_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getCreateLineTool_Mapping();
 
         /**
          * The meta object literal for the '
@@ -5319,7 +5319,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateCellTool()
          * @generated
          */
-        EClass CREATE_CELL_TOOL = eINSTANCE.getCreateCellTool();
+        EClass CREATE_CELL_TOOL = DescriptionPackage.eINSTANCE.getCreateCellTool();
 
         /**
          * The meta object literal for the '<em><b>Mask</b></em>' containment
@@ -5327,7 +5327,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CREATE_CELL_TOOL__MASK = eINSTANCE.getCreateCellTool_Mask();
+        EReference CREATE_CELL_TOOL__MASK = DescriptionPackage.eINSTANCE.getCreateCellTool_Mask();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' container
@@ -5335,7 +5335,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CREATE_CELL_TOOL__MAPPING = eINSTANCE.getCreateCellTool_Mapping();
+        EReference CREATE_CELL_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getCreateCellTool_Mapping();
 
         /**
          * The meta object literal for the '
@@ -5347,7 +5347,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteTool()
          * @generated
          */
-        EClass DELETE_TOOL = eINSTANCE.getDeleteTool();
+        EClass DELETE_TOOL = DescriptionPackage.eINSTANCE.getDeleteTool();
 
         /**
          * The meta object literal for the '
@@ -5359,7 +5359,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteColumnTool()
          * @generated
          */
-        EClass DELETE_COLUMN_TOOL = eINSTANCE.getDeleteColumnTool();
+        EClass DELETE_COLUMN_TOOL = DescriptionPackage.eINSTANCE.getDeleteColumnTool();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' container
@@ -5367,7 +5367,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DELETE_COLUMN_TOOL__MAPPING = eINSTANCE.getDeleteColumnTool_Mapping();
+        EReference DELETE_COLUMN_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getDeleteColumnTool_Mapping();
 
         /**
          * The meta object literal for the '
@@ -5379,7 +5379,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteLineTool()
          * @generated
          */
-        EClass DELETE_LINE_TOOL = eINSTANCE.getDeleteLineTool();
+        EClass DELETE_LINE_TOOL = DescriptionPackage.eINSTANCE.getDeleteLineTool();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' container
@@ -5387,7 +5387,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DELETE_LINE_TOOL__MAPPING = eINSTANCE.getDeleteLineTool_Mapping();
+        EReference DELETE_LINE_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getDeleteLineTool_Mapping();
 
         /**
          * The meta object literal for the '
@@ -5399,7 +5399,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getForegroundStyleDescription()
          * @generated
          */
-        EClass FOREGROUND_STYLE_DESCRIPTION = eINSTANCE.getForegroundStyleDescription();
+        EClass FOREGROUND_STYLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getForegroundStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Label Size</b></em>'
@@ -5407,7 +5407,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FOREGROUND_STYLE_DESCRIPTION__LABEL_SIZE = eINSTANCE.getForegroundStyleDescription_LabelSize();
+        EAttribute FOREGROUND_STYLE_DESCRIPTION__LABEL_SIZE = DescriptionPackage.eINSTANCE.getForegroundStyleDescription_LabelSize();
 
         /**
          * The meta object literal for the '<em><b>Label Format</b></em>'
@@ -5415,7 +5415,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT = eINSTANCE.getForegroundStyleDescription_LabelFormat();
+        EAttribute FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT = DescriptionPackage.eINSTANCE.getForegroundStyleDescription_LabelFormat();
 
         /**
          * The meta object literal for the '<em><b>Fore Ground Color</b></em>'
@@ -5423,7 +5423,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR = eINSTANCE.getForegroundStyleDescription_ForeGroundColor();
+        EReference FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR = DescriptionPackage.eINSTANCE.getForegroundStyleDescription_ForeGroundColor();
 
         /**
          * The meta object literal for the '
@@ -5435,7 +5435,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getBackgroundStyleDescription()
          * @generated
          */
-        EClass BACKGROUND_STYLE_DESCRIPTION = eINSTANCE.getBackgroundStyleDescription();
+        EClass BACKGROUND_STYLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getBackgroundStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -5443,7 +5443,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference BACKGROUND_STYLE_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getBackgroundStyleDescription_BackgroundColor();
+        EReference BACKGROUND_STYLE_DESCRIPTION__BACKGROUND_COLOR = DescriptionPackage.eINSTANCE.getBackgroundStyleDescription_BackgroundColor();
 
         /**
          * The meta object literal for the '
@@ -5455,7 +5455,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getForegroundConditionalStyle()
          * @generated
          */
-        EClass FOREGROUND_CONDITIONAL_STYLE = eINSTANCE.getForegroundConditionalStyle();
+        EClass FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.eINSTANCE.getForegroundConditionalStyle();
 
         /**
          * The meta object literal for the '<em><b>Predicate Expression</b></em>
@@ -5463,7 +5463,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FOREGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION = eINSTANCE.getForegroundConditionalStyle_PredicateExpression();
+        EAttribute FOREGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION = DescriptionPackage.eINSTANCE.getForegroundConditionalStyle_PredicateExpression();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -5471,7 +5471,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference FOREGROUND_CONDITIONAL_STYLE__STYLE = eINSTANCE.getForegroundConditionalStyle_Style();
+        EReference FOREGROUND_CONDITIONAL_STYLE__STYLE = DescriptionPackage.eINSTANCE.getForegroundConditionalStyle_Style();
 
         /**
          * The meta object literal for the '
@@ -5483,7 +5483,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getBackgroundConditionalStyle()
          * @generated
          */
-        EClass BACKGROUND_CONDITIONAL_STYLE = eINSTANCE.getBackgroundConditionalStyle();
+        EClass BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.eINSTANCE.getBackgroundConditionalStyle();
 
         /**
          * The meta object literal for the '<em><b>Predicate Expression</b></em>
@@ -5491,7 +5491,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute BACKGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION = eINSTANCE.getBackgroundConditionalStyle_PredicateExpression();
+        EAttribute BACKGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION = DescriptionPackage.eINSTANCE.getBackgroundConditionalStyle_PredicateExpression();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -5499,7 +5499,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference BACKGROUND_CONDITIONAL_STYLE__STYLE = eINSTANCE.getBackgroundConditionalStyle_Style();
+        EReference BACKGROUND_CONDITIONAL_STYLE__STYLE = DescriptionPackage.eINSTANCE.getBackgroundConditionalStyle_Style();
 
         /**
          * The meta object literal for the '
@@ -5511,7 +5511,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableVariable()
          * @generated
          */
-        EClass TABLE_VARIABLE = eINSTANCE.getTableVariable();
+        EClass TABLE_VARIABLE = DescriptionPackage.eINSTANCE.getTableVariable();
 
         /**
          * The meta object literal for the '<em><b>Documentation</b></em>'
@@ -5519,7 +5519,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TABLE_VARIABLE__DOCUMENTATION = eINSTANCE.getTableVariable_Documentation();
+        EAttribute TABLE_VARIABLE__DOCUMENTATION = DescriptionPackage.eINSTANCE.getTableVariable_Documentation();
 
         /**
          * The meta object literal for the '
@@ -5531,7 +5531,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableCreationDescription()
          * @generated
          */
-        EClass TABLE_CREATION_DESCRIPTION = eINSTANCE.getTableCreationDescription();
+        EClass TABLE_CREATION_DESCRIPTION = DescriptionPackage.eINSTANCE.getTableCreationDescription();
 
         /**
          * The meta object literal for the '<em><b>Table Description</b></em>'
@@ -5539,7 +5539,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_CREATION_DESCRIPTION__TABLE_DESCRIPTION = eINSTANCE.getTableCreationDescription_TableDescription();
+        EReference TABLE_CREATION_DESCRIPTION__TABLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getTableCreationDescription_TableDescription();
 
         /**
          * The meta object literal for the '
@@ -5551,7 +5551,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableNavigationDescription()
          * @generated
          */
-        EClass TABLE_NAVIGATION_DESCRIPTION = eINSTANCE.getTableNavigationDescription();
+        EClass TABLE_NAVIGATION_DESCRIPTION = DescriptionPackage.eINSTANCE.getTableNavigationDescription();
 
         /**
          * The meta object literal for the '<em><b>Table Description</b></em>'
@@ -5559,7 +5559,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TABLE_NAVIGATION_DESCRIPTION__TABLE_DESCRIPTION = eINSTANCE.getTableNavigationDescription_TableDescription();
+        EReference TABLE_NAVIGATION_DESCRIPTION__TABLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getTableNavigationDescription_TableDescription();
 
     }
 

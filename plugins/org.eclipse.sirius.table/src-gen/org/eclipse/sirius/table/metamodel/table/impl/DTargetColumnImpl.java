@@ -105,7 +105,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DTargetColumnImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSemanticElements()
@@ -136,7 +136,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = DTargetColumnImpl.LABEL_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCells() <em>Cells</em>}' reference
@@ -177,7 +177,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * @generated
      * @ordered
      */
-    protected boolean visible = VISIBLE_EDEFAULT;
+    protected boolean visible = DTargetColumnImpl.VISIBLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -197,7 +197,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * @generated
      * @ordered
      */
-    protected int width = WIDTH_EDEFAULT;
+    protected int width = DTargetColumnImpl.WIDTH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCurrentStyle()
@@ -234,6 +234,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -243,11 +244,13 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTARGET_COLUMN__NAME, oldName, name));
+        }
     }
 
     /**
@@ -255,6 +258,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
             semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, TablePackage.DTARGET_COLUMN__SEMANTIC_ELEMENTS);
@@ -267,6 +271,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public TableMapping getTableElementMapping() {
         TableMapping tableElementMapping = basicGetTableElementMapping();
         return tableElementMapping != null && tableElementMapping.eIsProxy() ? (TableMapping) eResolveProxy((InternalEObject) tableElementMapping) : tableElementMapping;
@@ -274,7 +279,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     public TableMapping basicGetTableElementMapping() {
@@ -286,6 +291,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -295,11 +301,13 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTARGET_COLUMN__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -307,6 +315,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public EList<DCell> getCells() {
         if (cells == null) {
             cells = new EObjectWithInverseResolvingEList<DCell>(DCell.class, this, TablePackage.DTARGET_COLUMN__CELLS, TablePackage.DCELL__COLUMN);
@@ -319,13 +328,15 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public ColumnMapping getOriginMapping() {
         if (originMapping != null && originMapping.eIsProxy()) {
             InternalEObject oldOriginMapping = (InternalEObject) originMapping;
             originMapping = (ColumnMapping) eResolveProxy(oldOriginMapping);
             if (originMapping != oldOriginMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TablePackage.DTARGET_COLUMN__ORIGIN_MAPPING, oldOriginMapping, originMapping));
+                }
             }
         }
         return originMapping;
@@ -345,11 +356,13 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public void setOriginMapping(ColumnMapping newOriginMapping) {
         ColumnMapping oldOriginMapping = originMapping;
         originMapping = newOriginMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTARGET_COLUMN__ORIGIN_MAPPING, oldOriginMapping, originMapping));
+        }
     }
 
     /**
@@ -357,9 +370,11 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public DTable getTable() {
-        if (eContainerFeatureID() != TablePackage.DTARGET_COLUMN__TABLE)
+        if (eContainerFeatureID() != TablePackage.DTARGET_COLUMN__TABLE) {
             return null;
+        }
         return (DTable) eInternalContainer();
     }
 
@@ -378,20 +393,26 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public void setTable(DTable newTable) {
         if (newTable != eInternalContainer() || (eContainerFeatureID() != TablePackage.DTARGET_COLUMN__TABLE && newTable != null)) {
-            if (EcoreUtil.isAncestor(this, newTable))
+            if (EcoreUtil.isAncestor(this, newTable)) {
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            }
             NotificationChain msgs = null;
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
-            if (newTable != null)
+            }
+            if (newTable != null) {
                 msgs = ((InternalEObject) newTable).eInverseAdd(this, TablePackage.DTABLE__COLUMNS, DTable.class, msgs);
+            }
             msgs = basicSetTable(newTable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTARGET_COLUMN__TABLE, newTable, newTable));
+        }
     }
 
     /**
@@ -399,6 +420,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public EList<DCell> getOrderedCells() {
         // TODO: implement this method to return the 'Ordered Cells' reference
         // list
@@ -416,6 +438,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public boolean isVisible() {
         return visible;
     }
@@ -425,11 +448,13 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public void setVisible(boolean newVisible) {
         boolean oldVisible = visible;
         visible = newVisible;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTARGET_COLUMN__VISIBLE, oldVisible, visible));
+        }
     }
 
     /**
@@ -437,6 +462,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public int getWidth() {
         return width;
     }
@@ -446,11 +472,13 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public void setWidth(int newWidth) {
         int oldWidth = width;
         width = newWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTARGET_COLUMN__WIDTH, oldWidth, width));
+        }
     }
 
     /**
@@ -458,6 +486,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public DTableElementStyle getCurrentStyle() {
         return currentStyle;
     }
@@ -472,10 +501,11 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
         currentStyle = newCurrentStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TablePackage.DTARGET_COLUMN__CURRENT_STYLE, oldCurrentStyle, newCurrentStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -485,18 +515,23 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public void setCurrentStyle(DTableElementStyle newCurrentStyle) {
         if (newCurrentStyle != currentStyle) {
             NotificationChain msgs = null;
-            if (currentStyle != null)
-                msgs = ((InternalEObject) currentStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTARGET_COLUMN__CURRENT_STYLE, null, msgs);
-            if (newCurrentStyle != null)
-                msgs = ((InternalEObject) newCurrentStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTARGET_COLUMN__CURRENT_STYLE, null, msgs);
+            if (currentStyle != null) {
+                msgs = ((InternalEObject) currentStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TablePackage.DTARGET_COLUMN__CURRENT_STYLE, null, msgs);
+            }
+            if (newCurrentStyle != null) {
+                msgs = ((InternalEObject) newCurrentStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TablePackage.DTARGET_COLUMN__CURRENT_STYLE, null, msgs);
+            }
             msgs = basicSetCurrentStyle(newCurrentStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTARGET_COLUMN__CURRENT_STYLE, newCurrentStyle, newCurrentStyle));
+        }
     }
 
     /**
@@ -504,6 +539,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -515,6 +551,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public Style getStyle() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -526,6 +563,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
+    @Override
     public RepresentationElementMapping getMapping() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -544,8 +582,9 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
         case TablePackage.DTARGET_COLUMN__CELLS:
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getCells()).basicAdd(otherEnd, msgs);
         case TablePackage.DTARGET_COLUMN__TABLE:
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
+            }
             return basicSetTable((DTable) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -596,16 +635,18 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
         case TablePackage.DTARGET_COLUMN__SEMANTIC_ELEMENTS:
             return getSemanticElements();
         case TablePackage.DTARGET_COLUMN__TABLE_ELEMENT_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getTableElementMapping();
+            }
             return basicGetTableElementMapping();
         case TablePackage.DTARGET_COLUMN__LABEL:
             return getLabel();
         case TablePackage.DTARGET_COLUMN__CELLS:
             return getCells();
         case TablePackage.DTARGET_COLUMN__ORIGIN_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getOriginMapping();
+            }
             return basicGetOriginMapping();
         case TablePackage.DTARGET_COLUMN__TABLE:
             return getTable();
@@ -672,13 +713,13 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     public void eUnset(int featureID) {
         switch (featureID) {
         case TablePackage.DTARGET_COLUMN__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DTargetColumnImpl.NAME_EDEFAULT);
             return;
         case TablePackage.DTARGET_COLUMN__SEMANTIC_ELEMENTS:
             getSemanticElements().clear();
             return;
         case TablePackage.DTARGET_COLUMN__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(DTargetColumnImpl.LABEL_EDEFAULT);
             return;
         case TablePackage.DTARGET_COLUMN__CELLS:
             getCells().clear();
@@ -690,10 +731,10 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
             setTable((DTable) null);
             return;
         case TablePackage.DTARGET_COLUMN__VISIBLE:
-            setVisible(VISIBLE_EDEFAULT);
+            setVisible(DTargetColumnImpl.VISIBLE_EDEFAULT);
             return;
         case TablePackage.DTARGET_COLUMN__WIDTH:
-            setWidth(WIDTH_EDEFAULT);
+            setWidth(DTargetColumnImpl.WIDTH_EDEFAULT);
             return;
         case TablePackage.DTARGET_COLUMN__CURRENT_STYLE:
             setCurrentStyle((DTableElementStyle) null);
@@ -711,13 +752,13 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TablePackage.DTARGET_COLUMN__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DTargetColumnImpl.NAME_EDEFAULT == null ? name != null : !DTargetColumnImpl.NAME_EDEFAULT.equals(name);
         case TablePackage.DTARGET_COLUMN__SEMANTIC_ELEMENTS:
             return semanticElements != null && !semanticElements.isEmpty();
         case TablePackage.DTARGET_COLUMN__TABLE_ELEMENT_MAPPING:
             return basicGetTableElementMapping() != null;
         case TablePackage.DTARGET_COLUMN__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return DTargetColumnImpl.LABEL_EDEFAULT == null ? label != null : !DTargetColumnImpl.LABEL_EDEFAULT.equals(label);
         case TablePackage.DTARGET_COLUMN__CELLS:
             return cells != null && !cells.isEmpty();
         case TablePackage.DTARGET_COLUMN__ORIGIN_MAPPING:
@@ -727,9 +768,9 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
         case TablePackage.DTARGET_COLUMN__ORDERED_CELLS:
             return !getOrderedCells().isEmpty();
         case TablePackage.DTARGET_COLUMN__VISIBLE:
-            return visible != VISIBLE_EDEFAULT;
+            return visible != DTargetColumnImpl.VISIBLE_EDEFAULT;
         case TablePackage.DTARGET_COLUMN__WIDTH:
-            return width != WIDTH_EDEFAULT;
+            return width != DTargetColumnImpl.WIDTH_EDEFAULT;
         case TablePackage.DTARGET_COLUMN__CURRENT_STYLE:
             return currentStyle != null;
         }
@@ -891,8 +932,9 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

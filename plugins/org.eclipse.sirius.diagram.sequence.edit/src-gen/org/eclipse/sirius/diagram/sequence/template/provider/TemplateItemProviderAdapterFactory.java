@@ -52,7 +52,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -69,7 +69,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public TemplateItemProviderAdapterFactory() {
@@ -143,7 +143,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TTransformer}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -293,7 +293,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -458,9 +458,10 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -468,9 +469,10 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -518,6 +520,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -527,6 +530,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -535,9 +539,10 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -549,40 +554,56 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (tTransformerItemProvider != null)
+        if (tTransformerItemProvider != null) {
             tTransformerItemProvider.dispose();
-        if (tAbstractMappingItemProvider != null)
+        }
+        if (tAbstractMappingItemProvider != null) {
             tAbstractMappingItemProvider.dispose();
-        if (tSequenceDiagramItemProvider != null)
+        }
+        if (tSequenceDiagramItemProvider != null) {
             tSequenceDiagramItemProvider.dispose();
-        if (tLifelineMappingItemProvider != null)
+        }
+        if (tLifelineMappingItemProvider != null) {
             tLifelineMappingItemProvider.dispose();
-        if (tLifelineStyleItemProvider != null)
+        }
+        if (tLifelineStyleItemProvider != null) {
             tLifelineStyleItemProvider.dispose();
-        if (tConditionalLifelineStyleItemProvider != null)
+        }
+        if (tConditionalLifelineStyleItemProvider != null) {
             tConditionalLifelineStyleItemProvider.dispose();
-        if (tExecutionMappingItemProvider != null)
+        }
+        if (tExecutionMappingItemProvider != null) {
             tExecutionMappingItemProvider.dispose();
-        if (tExecutionStyleItemProvider != null)
+        }
+        if (tExecutionStyleItemProvider != null) {
             tExecutionStyleItemProvider.dispose();
-        if (tConditionalExecutionStyleItemProvider != null)
+        }
+        if (tConditionalExecutionStyleItemProvider != null) {
             tConditionalExecutionStyleItemProvider.dispose();
-        if (tMessageStyleItemProvider != null)
+        }
+        if (tMessageStyleItemProvider != null) {
             tMessageStyleItemProvider.dispose();
-        if (tConditionalMessageStyleItemProvider != null)
+        }
+        if (tConditionalMessageStyleItemProvider != null) {
             tConditionalMessageStyleItemProvider.dispose();
-        if (tBasicMessageMappingItemProvider != null)
+        }
+        if (tBasicMessageMappingItemProvider != null) {
             tBasicMessageMappingItemProvider.dispose();
-        if (tReturnMessageMappingItemProvider != null)
+        }
+        if (tReturnMessageMappingItemProvider != null) {
             tReturnMessageMappingItemProvider.dispose();
-        if (tCreationMessageMappingItemProvider != null)
+        }
+        if (tCreationMessageMappingItemProvider != null) {
             tCreationMessageMappingItemProvider.dispose();
-        if (tDestructionMessageMappingItemProvider != null)
+        }
+        if (tDestructionMessageMappingItemProvider != null) {
             tDestructionMessageMappingItemProvider.dispose();
+        }
     }
 
 }

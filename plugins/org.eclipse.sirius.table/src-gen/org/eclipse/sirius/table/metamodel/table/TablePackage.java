@@ -75,7 +75,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -111,7 +111,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -129,7 +129,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -165,7 +165,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -174,7 +174,7 @@ public interface TablePackage extends EPackage {
     /**
      * The number of structural features of the '<em>DTable</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -195,7 +195,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -204,7 +204,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -252,7 +252,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -290,11 +290,11 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DLINE__TARGET = LINE_CONTAINER__TARGET;
+    int DLINE__TARGET = TablePackage.LINE_CONTAINER__TARGET;
 
     /**
      * The feature id for the '<em><b>Lines</b></em>' containment reference
@@ -303,16 +303,16 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DLINE__LINES = LINE_CONTAINER__LINES;
+    int DLINE__LINES = TablePackage.LINE_CONTAINER__LINES;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DLINE__NAME = LINE_CONTAINER_FEATURE_COUNT + 0;
+    int DLINE__NAME = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -321,7 +321,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DLINE__SEMANTIC_ELEMENTS = LINE_CONTAINER_FEATURE_COUNT + 1;
+    int DLINE__SEMANTIC_ELEMENTS = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
@@ -330,43 +330,43 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DLINE__TABLE_ELEMENT_MAPPING = LINE_CONTAINER_FEATURE_COUNT + 2;
+    int DLINE__TABLE_ELEMENT_MAPPING = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DLINE__LABEL = LINE_CONTAINER_FEATURE_COUNT + 3;
+    int DLINE__LABEL = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Origin Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DLINE__ORIGIN_MAPPING = LINE_CONTAINER_FEATURE_COUNT + 4;
+    int DLINE__ORIGIN_MAPPING = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DLINE__VISIBLE = LINE_CONTAINER_FEATURE_COUNT + 5;
+    int DLINE__VISIBLE = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Collapsed</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DLINE__COLLAPSED = LINE_CONTAINER_FEATURE_COUNT + 6;
+    int DLINE__COLLAPSED = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Cells</b></em>' containment reference
@@ -375,7 +375,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DLINE__CELLS = LINE_CONTAINER_FEATURE_COUNT + 7;
+    int DLINE__CELLS = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Container</b></em>' container reference.
@@ -384,7 +384,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DLINE__CONTAINER = LINE_CONTAINER_FEATURE_COUNT + 8;
+    int DLINE__CONTAINER = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Ordered Cells</b></em>' reference list.
@@ -393,7 +393,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DLINE__ORDERED_CELLS = LINE_CONTAINER_FEATURE_COUNT + 9;
+    int DLINE__ORDERED_CELLS = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
@@ -402,16 +402,16 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DLINE__CURRENT_STYLE = LINE_CONTAINER_FEATURE_COUNT + 10;
+    int DLINE__CURRENT_STYLE = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 10;
 
     /**
      * The number of structural features of the '<em>DLine</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DLINE_FEATURE_COUNT = LINE_CONTAINER_FEATURE_COUNT + 11;
+    int DLINE_FEATURE_COUNT = TablePackage.LINE_CONTAINER_FEATURE_COUNT + 11;
 
     /**
      * The meta object id for the '
@@ -427,7 +427,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -436,7 +436,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -463,7 +463,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -472,7 +472,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Line</b></em>' container reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -481,7 +481,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Column</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -499,7 +499,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Updater</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -517,7 +517,7 @@ public interface TablePackage extends EPackage {
     /**
      * The number of structural features of the '<em>DCell</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -538,7 +538,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -547,7 +547,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -574,7 +574,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -583,7 +583,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -603,7 +603,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl
      * <em>DCell Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDCellStyle()
      * @generated
@@ -613,20 +613,20 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCELL_STYLE__LABEL_SIZE = DTABLE_ELEMENT_STYLE__LABEL_SIZE;
+    int DCELL_STYLE__LABEL_SIZE = TablePackage.DTABLE_ELEMENT_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCELL_STYLE__LABEL_FORMAT = DTABLE_ELEMENT_STYLE__LABEL_FORMAT;
+    int DCELL_STYLE__LABEL_FORMAT = TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Default Foreground Style</b></em>'
@@ -635,7 +635,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL_STYLE__DEFAULT_FOREGROUND_STYLE = DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE;
+    int DCELL_STYLE__DEFAULT_FOREGROUND_STYLE = TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE;
 
     /**
      * The feature id for the '<em><b>Default Background Style</b></em>'
@@ -644,25 +644,25 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL_STYLE__DEFAULT_BACKGROUND_STYLE = DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE;
+    int DCELL_STYLE__DEFAULT_BACKGROUND_STYLE = TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE;
 
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCELL_STYLE__FOREGROUND_COLOR = DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR;
+    int DCELL_STYLE__FOREGROUND_COLOR = TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCELL_STYLE__BACKGROUND_COLOR = DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR;
+    int DCELL_STYLE__BACKGROUND_COLOR = TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR;
 
     /**
      * The feature id for the '<em><b>Foreground Style Origin</b></em>'
@@ -671,7 +671,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL_STYLE__FOREGROUND_STYLE_ORIGIN = DTABLE_ELEMENT_STYLE_FEATURE_COUNT + 0;
+    int DCELL_STYLE__FOREGROUND_STYLE_ORIGIN = TablePackage.DTABLE_ELEMENT_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Background Style Origin</b></em>'
@@ -680,7 +680,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL_STYLE__BACKGROUND_STYLE_ORIGIN = DTABLE_ELEMENT_STYLE_FEATURE_COUNT + 1;
+    int DCELL_STYLE__BACKGROUND_STYLE_ORIGIN = TablePackage.DTABLE_ELEMENT_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>DCell Style</em>' class.
@@ -689,7 +689,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL_STYLE_FEATURE_COUNT = DTABLE_ELEMENT_STYLE_FEATURE_COUNT + 2;
+    int DCELL_STYLE_FEATURE_COUNT = TablePackage.DTABLE_ELEMENT_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -705,20 +705,20 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCOLUMN__TARGET = DTABLE_ELEMENT__TARGET;
+    int DCOLUMN__TARGET = TablePackage.DTABLE_ELEMENT__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCOLUMN__NAME = DTABLE_ELEMENT__NAME;
+    int DCOLUMN__NAME = TablePackage.DTABLE_ELEMENT__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -727,7 +727,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCOLUMN__SEMANTIC_ELEMENTS = DTABLE_ELEMENT__SEMANTIC_ELEMENTS;
+    int DCOLUMN__SEMANTIC_ELEMENTS = TablePackage.DTABLE_ELEMENT__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
@@ -736,43 +736,43 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCOLUMN__TABLE_ELEMENT_MAPPING = DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING;
+    int DCOLUMN__TABLE_ELEMENT_MAPPING = TablePackage.DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCOLUMN__LABEL = DTABLE_ELEMENT_FEATURE_COUNT + 0;
+    int DCOLUMN__LABEL = TablePackage.DTABLE_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Cells</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCOLUMN__CELLS = DTABLE_ELEMENT_FEATURE_COUNT + 1;
+    int DCOLUMN__CELLS = TablePackage.DTABLE_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Origin Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCOLUMN__ORIGIN_MAPPING = DTABLE_ELEMENT_FEATURE_COUNT + 2;
+    int DCOLUMN__ORIGIN_MAPPING = TablePackage.DTABLE_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Table</b></em>' container reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCOLUMN__TABLE = DTABLE_ELEMENT_FEATURE_COUNT + 3;
+    int DCOLUMN__TABLE = TablePackage.DTABLE_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Ordered Cells</b></em>' reference list.
@@ -781,25 +781,25 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCOLUMN__ORDERED_CELLS = DTABLE_ELEMENT_FEATURE_COUNT + 4;
+    int DCOLUMN__ORDERED_CELLS = TablePackage.DTABLE_ELEMENT_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCOLUMN__VISIBLE = DTABLE_ELEMENT_FEATURE_COUNT + 5;
+    int DCOLUMN__VISIBLE = TablePackage.DTABLE_ELEMENT_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCOLUMN__WIDTH = DTABLE_ELEMENT_FEATURE_COUNT + 6;
+    int DCOLUMN__WIDTH = TablePackage.DTABLE_ELEMENT_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
@@ -808,16 +808,16 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCOLUMN__CURRENT_STYLE = DTABLE_ELEMENT_FEATURE_COUNT + 7;
+    int DCOLUMN__CURRENT_STYLE = TablePackage.DTABLE_ELEMENT_FEATURE_COUNT + 7;
 
     /**
      * The number of structural features of the '<em>DColumn</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DCOLUMN_FEATURE_COUNT = DTABLE_ELEMENT_FEATURE_COUNT + 8;
+    int DCOLUMN_FEATURE_COUNT = TablePackage.DTABLE_ELEMENT_FEATURE_COUNT + 8;
 
     /**
      * The meta object id for the '
@@ -834,7 +834,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -843,7 +843,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -870,7 +870,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -879,7 +879,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cells</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -888,7 +888,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Origin Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -897,7 +897,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Table</b></em>' container reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -915,7 +915,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -924,7 +924,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -963,20 +963,20 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__TARGET = DCOLUMN__TARGET;
+    int DFEATURE_COLUMN__TARGET = TablePackage.DCOLUMN__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__NAME = DCOLUMN__NAME;
+    int DFEATURE_COLUMN__NAME = TablePackage.DCOLUMN__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -985,7 +985,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__SEMANTIC_ELEMENTS = DCOLUMN__SEMANTIC_ELEMENTS;
+    int DFEATURE_COLUMN__SEMANTIC_ELEMENTS = TablePackage.DCOLUMN__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
@@ -994,43 +994,43 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__TABLE_ELEMENT_MAPPING = DCOLUMN__TABLE_ELEMENT_MAPPING;
+    int DFEATURE_COLUMN__TABLE_ELEMENT_MAPPING = TablePackage.DCOLUMN__TABLE_ELEMENT_MAPPING;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__LABEL = DCOLUMN__LABEL;
+    int DFEATURE_COLUMN__LABEL = TablePackage.DCOLUMN__LABEL;
 
     /**
      * The feature id for the '<em><b>Cells</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__CELLS = DCOLUMN__CELLS;
+    int DFEATURE_COLUMN__CELLS = TablePackage.DCOLUMN__CELLS;
 
     /**
      * The feature id for the '<em><b>Origin Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__ORIGIN_MAPPING = DCOLUMN__ORIGIN_MAPPING;
+    int DFEATURE_COLUMN__ORIGIN_MAPPING = TablePackage.DCOLUMN__ORIGIN_MAPPING;
 
     /**
      * The feature id for the '<em><b>Table</b></em>' container reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__TABLE = DCOLUMN__TABLE;
+    int DFEATURE_COLUMN__TABLE = TablePackage.DCOLUMN__TABLE;
 
     /**
      * The feature id for the '<em><b>Ordered Cells</b></em>' reference list.
@@ -1039,25 +1039,25 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__ORDERED_CELLS = DCOLUMN__ORDERED_CELLS;
+    int DFEATURE_COLUMN__ORDERED_CELLS = TablePackage.DCOLUMN__ORDERED_CELLS;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__VISIBLE = DCOLUMN__VISIBLE;
+    int DFEATURE_COLUMN__VISIBLE = TablePackage.DCOLUMN__VISIBLE;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__WIDTH = DCOLUMN__WIDTH;
+    int DFEATURE_COLUMN__WIDTH = TablePackage.DCOLUMN__WIDTH;
 
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
@@ -1066,16 +1066,16 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__CURRENT_STYLE = DCOLUMN__CURRENT_STYLE;
+    int DFEATURE_COLUMN__CURRENT_STYLE = TablePackage.DCOLUMN__CURRENT_STYLE;
 
     /**
      * The feature id for the '<em><b>Feature Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN__FEATURE_NAME = DCOLUMN_FEATURE_COUNT + 0;
+    int DFEATURE_COLUMN__FEATURE_NAME = TablePackage.DCOLUMN_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>DFeature Column</em>'
@@ -1084,7 +1084,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DFEATURE_COLUMN_FEATURE_COUNT = DCOLUMN_FEATURE_COUNT + 1;
+    int DFEATURE_COLUMN_FEATURE_COUNT = TablePackage.DCOLUMN_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1149,7 +1149,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DTable#getHeaderColumnWidth
      * <em>Header Column Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Header Column Width</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTable#getHeaderColumnWidth()
      * @see #getDTable()
@@ -1635,7 +1635,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor
      * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Foreground Color</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor()
@@ -1649,7 +1649,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Background Color</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor()
@@ -1689,7 +1689,7 @@ public interface TablePackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -1714,12 +1714,12 @@ public interface TablePackage extends EPackage {
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl
          * <em>DTable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DTableImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTable()
          * @generated
          */
-        EClass DTABLE = eINSTANCE.getDTable();
+        EClass DTABLE = TablePackage.eINSTANCE.getDTable();
 
         /**
          * The meta object literal for the '<em><b>Columns</b></em>' containment
@@ -1727,7 +1727,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DTABLE__COLUMNS = eINSTANCE.getDTable_Columns();
+        EReference DTABLE__COLUMNS = TablePackage.eINSTANCE.getDTable_Columns();
 
         /**
          * The meta object literal for the '<em><b>Description</b></em>'
@@ -1735,7 +1735,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DTABLE__DESCRIPTION = eINSTANCE.getDTable_Description();
+        EReference DTABLE__DESCRIPTION = TablePackage.eINSTANCE.getDTable_Description();
 
         /**
          * The meta object literal for the '<em><b>Header Column Width</b></em>'
@@ -1743,7 +1743,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DTABLE__HEADER_COLUMN_WIDTH = eINSTANCE.getDTable_HeaderColumnWidth();
+        EAttribute DTABLE__HEADER_COLUMN_WIDTH = TablePackage.eINSTANCE.getDTable_HeaderColumnWidth();
 
         /**
          * The meta object literal for the '
@@ -1755,16 +1755,16 @@ public interface TablePackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElement()
          * @generated
          */
-        EClass DTABLE_ELEMENT = eINSTANCE.getDTableElement();
+        EClass DTABLE_ELEMENT = TablePackage.eINSTANCE.getDTableElement();
 
         /**
          * The meta object literal for the '
          * <em><b>Table Element Mapping</b></em>' reference feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING = eINSTANCE.getDTableElement_TableElementMapping();
+        EReference DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING = TablePackage.eINSTANCE.getDTableElement_TableElementMapping();
 
         /**
          * The meta object literal for the '
@@ -1776,7 +1776,7 @@ public interface TablePackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getLineContainer()
          * @generated
          */
-        EClass LINE_CONTAINER = eINSTANCE.getLineContainer();
+        EClass LINE_CONTAINER = TablePackage.eINSTANCE.getLineContainer();
 
         /**
          * The meta object literal for the '<em><b>Lines</b></em>' containment
@@ -1784,7 +1784,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference LINE_CONTAINER__LINES = eINSTANCE.getLineContainer_Lines();
+        EReference LINE_CONTAINER__LINES = TablePackage.eINSTANCE.getLineContainer_Lines();
 
         /**
          * The meta object literal for the '
@@ -1795,7 +1795,7 @@ public interface TablePackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDLine()
          * @generated
          */
-        EClass DLINE = eINSTANCE.getDLine();
+        EClass DLINE = TablePackage.eINSTANCE.getDLine();
 
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
@@ -1803,7 +1803,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DLINE__LABEL = eINSTANCE.getDLine_Label();
+        EAttribute DLINE__LABEL = TablePackage.eINSTANCE.getDLine_Label();
 
         /**
          * The meta object literal for the '<em><b>Origin Mapping</b></em>'
@@ -1811,7 +1811,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DLINE__ORIGIN_MAPPING = eINSTANCE.getDLine_OriginMapping();
+        EReference DLINE__ORIGIN_MAPPING = TablePackage.eINSTANCE.getDLine_OriginMapping();
 
         /**
          * The meta object literal for the '<em><b>Visible</b></em>' attribute
@@ -1819,7 +1819,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DLINE__VISIBLE = eINSTANCE.getDLine_Visible();
+        EAttribute DLINE__VISIBLE = TablePackage.eINSTANCE.getDLine_Visible();
 
         /**
          * The meta object literal for the '<em><b>Collapsed</b></em>' attribute
@@ -1827,7 +1827,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DLINE__COLLAPSED = eINSTANCE.getDLine_Collapsed();
+        EAttribute DLINE__COLLAPSED = TablePackage.eINSTANCE.getDLine_Collapsed();
 
         /**
          * The meta object literal for the '<em><b>Cells</b></em>' containment
@@ -1835,7 +1835,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DLINE__CELLS = eINSTANCE.getDLine_Cells();
+        EReference DLINE__CELLS = TablePackage.eINSTANCE.getDLine_Cells();
 
         /**
          * The meta object literal for the '<em><b>Container</b></em>' container
@@ -1843,7 +1843,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DLINE__CONTAINER = eINSTANCE.getDLine_Container();
+        EReference DLINE__CONTAINER = TablePackage.eINSTANCE.getDLine_Container();
 
         /**
          * The meta object literal for the '<em><b>Ordered Cells</b></em>'
@@ -1851,7 +1851,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DLINE__ORDERED_CELLS = eINSTANCE.getDLine_OrderedCells();
+        EReference DLINE__ORDERED_CELLS = TablePackage.eINSTANCE.getDLine_OrderedCells();
 
         /**
          * The meta object literal for the '<em><b>Current Style</b></em>'
@@ -1860,7 +1860,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DLINE__CURRENT_STYLE = eINSTANCE.getDLine_CurrentStyle();
+        EReference DLINE__CURRENT_STYLE = TablePackage.eINSTANCE.getDLine_CurrentStyle();
 
         /**
          * The meta object literal for the '
@@ -1871,7 +1871,7 @@ public interface TablePackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDCell()
          * @generated
          */
-        EClass DCELL = eINSTANCE.getDCell();
+        EClass DCELL = TablePackage.eINSTANCE.getDCell();
 
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
@@ -1879,7 +1879,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DCELL__LABEL = eINSTANCE.getDCell_Label();
+        EAttribute DCELL__LABEL = TablePackage.eINSTANCE.getDCell_Label();
 
         /**
          * The meta object literal for the '<em><b>Line</b></em>' container
@@ -1887,7 +1887,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCELL__LINE = eINSTANCE.getDCell_Line();
+        EReference DCELL__LINE = TablePackage.eINSTANCE.getDCell_Line();
 
         /**
          * The meta object literal for the '<em><b>Column</b></em>' reference
@@ -1895,7 +1895,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCELL__COLUMN = eINSTANCE.getDCell_Column();
+        EReference DCELL__COLUMN = TablePackage.eINSTANCE.getDCell_Column();
 
         /**
          * The meta object literal for the '<em><b>Current Style</b></em>'
@@ -1904,7 +1904,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCELL__CURRENT_STYLE = eINSTANCE.getDCell_CurrentStyle();
+        EReference DCELL__CURRENT_STYLE = TablePackage.eINSTANCE.getDCell_CurrentStyle();
 
         /**
          * The meta object literal for the '<em><b>Updater</b></em>' reference
@@ -1912,7 +1912,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCELL__UPDATER = eINSTANCE.getDCell_Updater();
+        EReference DCELL__UPDATER = TablePackage.eINSTANCE.getDCell_Updater();
 
         /**
          * The meta object literal for the '<em><b>Intersection Mapping</b></em>
@@ -1920,7 +1920,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCELL__INTERSECTION_MAPPING = eINSTANCE.getDCell_IntersectionMapping();
+        EReference DCELL__INTERSECTION_MAPPING = TablePackage.eINSTANCE.getDCell_IntersectionMapping();
 
         /**
          * The meta object literal for the '
@@ -1932,37 +1932,37 @@ public interface TablePackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDCellStyle()
          * @generated
          */
-        EClass DCELL_STYLE = eINSTANCE.getDCellStyle();
+        EClass DCELL_STYLE = TablePackage.eINSTANCE.getDCellStyle();
 
         /**
          * The meta object literal for the '
          * <em><b>Foreground Style Origin</b></em>' reference feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DCELL_STYLE__FOREGROUND_STYLE_ORIGIN = eINSTANCE.getDCellStyle_ForegroundStyleOrigin();
+        EReference DCELL_STYLE__FOREGROUND_STYLE_ORIGIN = TablePackage.eINSTANCE.getDCellStyle_ForegroundStyleOrigin();
 
         /**
          * The meta object literal for the '
          * <em><b>Background Style Origin</b></em>' reference feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DCELL_STYLE__BACKGROUND_STYLE_ORIGIN = eINSTANCE.getDCellStyle_BackgroundStyleOrigin();
+        EReference DCELL_STYLE__BACKGROUND_STYLE_ORIGIN = TablePackage.eINSTANCE.getDCellStyle_BackgroundStyleOrigin();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl
          * <em>DColumn</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDColumn()
          * @generated
          */
-        EClass DCOLUMN = eINSTANCE.getDColumn();
+        EClass DCOLUMN = TablePackage.eINSTANCE.getDColumn();
 
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
@@ -1970,7 +1970,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DCOLUMN__LABEL = eINSTANCE.getDColumn_Label();
+        EAttribute DCOLUMN__LABEL = TablePackage.eINSTANCE.getDColumn_Label();
 
         /**
          * The meta object literal for the '<em><b>Cells</b></em>' reference
@@ -1978,7 +1978,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCOLUMN__CELLS = eINSTANCE.getDColumn_Cells();
+        EReference DCOLUMN__CELLS = TablePackage.eINSTANCE.getDColumn_Cells();
 
         /**
          * The meta object literal for the '<em><b>Origin Mapping</b></em>'
@@ -1986,7 +1986,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCOLUMN__ORIGIN_MAPPING = eINSTANCE.getDColumn_OriginMapping();
+        EReference DCOLUMN__ORIGIN_MAPPING = TablePackage.eINSTANCE.getDColumn_OriginMapping();
 
         /**
          * The meta object literal for the '<em><b>Table</b></em>' container
@@ -1994,7 +1994,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCOLUMN__TABLE = eINSTANCE.getDColumn_Table();
+        EReference DCOLUMN__TABLE = TablePackage.eINSTANCE.getDColumn_Table();
 
         /**
          * The meta object literal for the '<em><b>Ordered Cells</b></em>'
@@ -2002,7 +2002,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCOLUMN__ORDERED_CELLS = eINSTANCE.getDColumn_OrderedCells();
+        EReference DCOLUMN__ORDERED_CELLS = TablePackage.eINSTANCE.getDColumn_OrderedCells();
 
         /**
          * The meta object literal for the '<em><b>Visible</b></em>' attribute
@@ -2010,7 +2010,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DCOLUMN__VISIBLE = eINSTANCE.getDColumn_Visible();
+        EAttribute DCOLUMN__VISIBLE = TablePackage.eINSTANCE.getDColumn_Visible();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
@@ -2018,7 +2018,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DCOLUMN__WIDTH = eINSTANCE.getDColumn_Width();
+        EAttribute DCOLUMN__WIDTH = TablePackage.eINSTANCE.getDColumn_Width();
 
         /**
          * The meta object literal for the '<em><b>Current Style</b></em>'
@@ -2027,7 +2027,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DCOLUMN__CURRENT_STYLE = eINSTANCE.getDColumn_CurrentStyle();
+        EReference DCOLUMN__CURRENT_STYLE = TablePackage.eINSTANCE.getDColumn_CurrentStyle();
 
         /**
          * The meta object literal for the '
@@ -2039,7 +2039,7 @@ public interface TablePackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTargetColumn()
          * @generated
          */
-        EClass DTARGET_COLUMN = eINSTANCE.getDTargetColumn();
+        EClass DTARGET_COLUMN = TablePackage.eINSTANCE.getDTargetColumn();
 
         /**
          * The meta object literal for the '
@@ -2051,7 +2051,7 @@ public interface TablePackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDFeatureColumn()
          * @generated
          */
-        EClass DFEATURE_COLUMN = eINSTANCE.getDFeatureColumn();
+        EClass DFEATURE_COLUMN = TablePackage.eINSTANCE.getDFeatureColumn();
 
         /**
          * The meta object literal for the '<em><b>Feature Name</b></em>'
@@ -2059,7 +2059,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DFEATURE_COLUMN__FEATURE_NAME = eINSTANCE.getDFeatureColumn_FeatureName();
+        EAttribute DFEATURE_COLUMN__FEATURE_NAME = TablePackage.eINSTANCE.getDFeatureColumn_FeatureName();
 
         /**
          * The meta object literal for the '
@@ -2071,7 +2071,7 @@ public interface TablePackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementSynchronizer()
          * @generated
          */
-        EClass DTABLE_ELEMENT_SYNCHRONIZER = eINSTANCE.getDTableElementSynchronizer();
+        EClass DTABLE_ELEMENT_SYNCHRONIZER = TablePackage.eINSTANCE.getDTableElementSynchronizer();
 
         /**
          * The meta object literal for the '
@@ -2083,7 +2083,7 @@ public interface TablePackage extends EPackage {
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementStyle()
          * @generated
          */
-        EClass DTABLE_ELEMENT_STYLE = eINSTANCE.getDTableElementStyle();
+        EClass DTABLE_ELEMENT_STYLE = TablePackage.eINSTANCE.getDTableElementStyle();
 
         /**
          * The meta object literal for the '<em><b>Label Size</b></em>'
@@ -2091,7 +2091,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DTABLE_ELEMENT_STYLE__LABEL_SIZE = eINSTANCE.getDTableElementStyle_LabelSize();
+        EAttribute DTABLE_ELEMENT_STYLE__LABEL_SIZE = TablePackage.eINSTANCE.getDTableElementStyle_LabelSize();
 
         /**
          * The meta object literal for the '<em><b>Label Format</b></em>'
@@ -2099,7 +2099,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DTABLE_ELEMENT_STYLE__LABEL_FORMAT = eINSTANCE.getDTableElementStyle_LabelFormat();
+        EAttribute DTABLE_ELEMENT_STYLE__LABEL_FORMAT = TablePackage.eINSTANCE.getDTableElementStyle_LabelFormat();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
@@ -2107,7 +2107,7 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR = eINSTANCE.getDTableElementStyle_ForegroundColor();
+        EAttribute DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR = TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -2115,25 +2115,25 @@ public interface TablePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR = eINSTANCE.getDTableElementStyle_BackgroundColor();
+        EAttribute DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR = TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '
          * <em><b>Default Foreground Style</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE = eINSTANCE.getDTableElementStyle_DefaultForegroundStyle();
+        EAttribute DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE = TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle();
 
         /**
          * The meta object literal for the '
          * <em><b>Default Background Style</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE = eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle();
+        EAttribute DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE = TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle();
 
     }
 

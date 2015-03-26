@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.provider;
 
@@ -38,7 +38,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ExternalJavaActionItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -158,7 +158,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

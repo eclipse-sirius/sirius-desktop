@@ -74,8 +74,8 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public DescriptionAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = DescriptionPackage.eINSTANCE;
+        if (DescriptionAdapterFactory.modelPackage == null) {
+            DescriptionAdapterFactory.modelPackage = DescriptionPackage.eINSTANCE;
         }
     }
 
@@ -90,11 +90,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == DescriptionAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == DescriptionAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -102,7 +102,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DescriptionSwitch<Adapter> modelSwitch = new DescriptionSwitch<Adapter>() {
@@ -756,7 +756,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolEntry
      * @generated

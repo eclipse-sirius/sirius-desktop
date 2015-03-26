@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -71,6 +71,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
      * 
      * @generated
      */
+    @Override
     public EList<ContainerDropDescription> getDropDescriptions() {
         if (dropDescriptions == null) {
             dropDescriptions = new EObjectResolvingEList<ContainerDropDescription>(ContainerDropDescription.class, this, DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS);

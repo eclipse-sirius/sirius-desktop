@@ -49,7 +49,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
      * The cached value of the '{@link #getStartingEndPredecessor()
      * <em>Starting End Predecessor</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
      * The cached value of the '{@link #getFinishingEndPredecessor()
      * <em>Finishing End Predecessor</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -102,6 +102,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getStartingEndPredecessor() {
         return startingEndPredecessor;
     }
@@ -117,10 +118,11 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__STARTING_END_PREDECESSOR, oldStartingEndPredecessor,
                     newStartingEndPredecessor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -130,18 +132,25 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
      * 
      * @generated
      */
+    @Override
     public void setStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor) {
         if (newStartingEndPredecessor != startingEndPredecessor) {
             NotificationChain msgs = null;
-            if (startingEndPredecessor != null)
-                msgs = ((InternalEObject) startingEndPredecessor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
-            if (newStartingEndPredecessor != null)
-                msgs = ((InternalEObject) newStartingEndPredecessor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
+            if (startingEndPredecessor != null) {
+                msgs = ((InternalEObject) startingEndPredecessor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__STARTING_END_PREDECESSOR,
+                        null, msgs);
+            }
+            if (newStartingEndPredecessor != null) {
+                msgs = ((InternalEObject) newStartingEndPredecessor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__STARTING_END_PREDECESSOR,
+                        null, msgs);
+            }
             msgs = basicSetStartingEndPredecessor(newStartingEndPredecessor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__STARTING_END_PREDECESSOR, newStartingEndPredecessor, newStartingEndPredecessor));
+        }
     }
 
     /**
@@ -149,6 +158,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getFinishingEndPredecessor() {
         return finishingEndPredecessor;
     }
@@ -164,10 +174,11 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, oldFinishingEndPredecessor,
                     newFinishingEndPredecessor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -177,18 +188,25 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
      * 
      * @generated
      */
+    @Override
     public void setFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor) {
         if (newFinishingEndPredecessor != finishingEndPredecessor) {
             NotificationChain msgs = null;
-            if (finishingEndPredecessor != null)
-                msgs = ((InternalEObject) finishingEndPredecessor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, null, msgs);
-            if (newFinishingEndPredecessor != null)
-                msgs = ((InternalEObject) newFinishingEndPredecessor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, null, msgs);
+            if (finishingEndPredecessor != null) {
+                msgs = ((InternalEObject) finishingEndPredecessor).eInverseRemove(this,
+                        InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, null, msgs);
+            }
+            if (newFinishingEndPredecessor != null) {
+                msgs = ((InternalEObject) newFinishingEndPredecessor).eInverseAdd(this,
+                        InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, null, msgs);
+            }
             msgs = basicSetFinishingEndPredecessor(newFinishingEndPredecessor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR, newFinishingEndPredecessor, newFinishingEndPredecessor));
+        }
     }
 
     /**
@@ -196,6 +214,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
      * 
      * @generated
      */
+    @Override
     public CoveredLifelinesVariable getCoveredLifelines() {
         return coveredLifelines;
     }
@@ -210,10 +229,11 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
         coveredLifelines = newCoveredLifelines;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__COVERED_LIFELINES, oldCoveredLifelines, newCoveredLifelines);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -223,18 +243,23 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
      * 
      * @generated
      */
+    @Override
     public void setCoveredLifelines(CoveredLifelinesVariable newCoveredLifelines) {
         if (newCoveredLifelines != coveredLifelines) {
             NotificationChain msgs = null;
-            if (coveredLifelines != null)
-                msgs = ((InternalEObject) coveredLifelines).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__COVERED_LIFELINES, null, msgs);
-            if (newCoveredLifelines != null)
-                msgs = ((InternalEObject) newCoveredLifelines).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__COVERED_LIFELINES, null, msgs);
+            if (coveredLifelines != null) {
+                msgs = ((InternalEObject) coveredLifelines).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__COVERED_LIFELINES, null, msgs);
+            }
+            if (newCoveredLifelines != null) {
+                msgs = ((InternalEObject) newCoveredLifelines).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__COVERED_LIFELINES, null, msgs);
+            }
             msgs = basicSetCoveredLifelines(newCoveredLifelines, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.COMBINED_FRAGMENT_CREATION_TOOL__COVERED_LIFELINES, newCoveredLifelines, newCoveredLifelines));
+        }
     }
 
     /**

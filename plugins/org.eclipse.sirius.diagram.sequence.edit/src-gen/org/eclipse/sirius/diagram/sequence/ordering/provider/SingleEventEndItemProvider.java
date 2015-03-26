@@ -33,7 +33,7 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SingleEventEndItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
     /**
      * This adds a property descriptor for the Start feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addStartPropertyDescriptor(Object object) {
@@ -72,7 +72,7 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
     /**
      * This adds a property descriptor for the Semantic Event feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticEventPropertyDescriptor(Object object) {
@@ -117,7 +117,7 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

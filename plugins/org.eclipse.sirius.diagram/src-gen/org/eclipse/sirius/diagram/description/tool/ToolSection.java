@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -57,7 +57,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> image
      * path used for presenting the section with this icon in the palette <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon</em>' attribute.
      * @see #setIcon(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_Icon()
@@ -84,7 +84,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolEntry}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * tools of the section. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Tools</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_OwnedTools()
@@ -99,7 +99,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * {@link org.eclipse.sirius.diagram.description.tool.ToolSection}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All sub
      * sections <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Sections</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_SubSections()
@@ -114,7 +114,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Popup
      * menus available on this layer. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Popup Menus</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_PopupMenus()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -128,7 +128,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolEntry}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Tools
      * that are reused by this viewpoint. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Tools</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_ReusedTools()
      * @model

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -44,7 +44,7 @@ public interface DNodeListElement extends AbstractDNode {
      * Returns the value of the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The style of this element. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(NodeStyle)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeListElement_OwnedStyle()
@@ -72,7 +72,7 @@ public interface DNodeListElement extends AbstractDNode {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * instance of style that is contained by the mapping. The ownedStyle
      * reference should be a copy of this style. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Original Style</em>' reference.
      * @see #setOriginalStyle(Style)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeListElement_OriginalStyle()
@@ -98,7 +98,7 @@ public interface DNodeListElement extends AbstractDNode {
      * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * actual mapping of this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Actual Mapping</em>' reference.
      * @see #setActualMapping(NodeMapping)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeListElement_ActualMapping()
@@ -126,7 +126,7 @@ public interface DNodeListElement extends AbstractDNode {
      * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * candidates mapping of this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Candidates Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeListElement_CandidatesMapping()
      * @model annotation=

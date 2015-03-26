@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -84,7 +84,7 @@ public interface SquareDescription extends NodeStyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getHeight
      * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -100,7 +100,7 @@ public interface SquareDescription extends NodeStyleDescription {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSquareDescription_Color()

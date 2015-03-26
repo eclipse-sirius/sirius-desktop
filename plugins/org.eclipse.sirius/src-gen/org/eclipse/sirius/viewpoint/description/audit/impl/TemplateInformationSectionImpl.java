@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.audit.impl;
 
@@ -36,7 +36,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
      * The default value of the '{@link #getTemplatePath()
      * <em>Template Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTemplatePath()
      * @generated
      * @ordered
@@ -47,16 +47,16 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
      * The cached value of the '{@link #getTemplatePath()
      * <em>Template Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTemplatePath()
      * @generated
      * @ordered
      */
-    protected String templatePath = TEMPLATE_PATH_EDEFAULT;
+    protected String templatePath = TemplateInformationSectionImpl.TEMPLATE_PATH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TemplateInformationSectionImpl() {
@@ -65,7 +65,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,28 +75,31 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getTemplatePath() {
         return templatePath;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTemplatePath(String newTemplatePath) {
         String oldTemplatePath = templatePath;
         templatePath = newTemplatePath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, AuditPackage.TEMPLATE_INFORMATION_SECTION__TEMPLATE_PATH, oldTemplatePath, templatePath));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +113,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,14 +128,14 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case AuditPackage.TEMPLATE_INFORMATION_SECTION__TEMPLATE_PATH:
-            setTemplatePath(TEMPLATE_PATH_EDEFAULT);
+            setTemplatePath(TemplateInformationSectionImpl.TEMPLATE_PATH_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -140,27 +143,28 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case AuditPackage.TEMPLATE_INFORMATION_SECTION__TEMPLATE_PATH:
-            return TEMPLATE_PATH_EDEFAULT == null ? templatePath != null : !TEMPLATE_PATH_EDEFAULT.equals(templatePath);
+            return TemplateInformationSectionImpl.TEMPLATE_PATH_EDEFAULT == null ? templatePath != null : !TemplateInformationSectionImpl.TEMPLATE_PATH_EDEFAULT.equals(templatePath);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (templatePath: ");

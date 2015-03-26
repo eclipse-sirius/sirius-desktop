@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.audit.impl;
 
@@ -23,14 +23,14 @@ import org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static AuditFactory init() {
@@ -48,7 +48,7 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AuditFactoryImpl() {
@@ -57,7 +57,7 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,9 +72,10 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public TemplateInformationSection createTemplateInformationSection() {
         TemplateInformationSectionImpl templateInformationSection = new TemplateInformationSectionImpl();
         return templateInformationSection;
@@ -82,16 +83,17 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public AuditPackage getAuditPackage() {
         return (AuditPackage) getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

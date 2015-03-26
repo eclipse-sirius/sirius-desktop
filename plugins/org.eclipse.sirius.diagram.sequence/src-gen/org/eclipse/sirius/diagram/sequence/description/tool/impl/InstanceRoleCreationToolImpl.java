@@ -69,6 +69,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
      * 
      * @generated
      */
+    @Override
     public ElementVariable getPredecessor() {
         return predecessor;
     }
@@ -83,10 +84,11 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
         predecessor = newPredecessor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR, oldPredecessor, newPredecessor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -96,18 +98,23 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
      * 
      * @generated
      */
+    @Override
     public void setPredecessor(ElementVariable newPredecessor) {
         if (newPredecessor != predecessor) {
             NotificationChain msgs = null;
-            if (predecessor != null)
-                msgs = ((InternalEObject) predecessor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR, null, msgs);
-            if (newPredecessor != null)
-                msgs = ((InternalEObject) newPredecessor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR, null, msgs);
+            if (predecessor != null) {
+                msgs = ((InternalEObject) predecessor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR, null, msgs);
+            }
+            if (newPredecessor != null) {
+                msgs = ((InternalEObject) newPredecessor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR, null, msgs);
+            }
             msgs = basicSetPredecessor(newPredecessor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR, newPredecessor, newPredecessor));
+        }
     }
 
     /**

@@ -35,7 +35,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TExecutionMappingItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This adds a property descriptor for the Recursive feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRecursivePropertyDescriptor(Object object) {
@@ -147,7 +147,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -187,7 +187,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

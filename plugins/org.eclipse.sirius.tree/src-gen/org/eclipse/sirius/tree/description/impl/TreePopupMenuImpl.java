@@ -42,7 +42,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
      * The cached value of the '{@link #getMenuItemDescriptions()
      * <em>Menu Item Descriptions</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMenuItemDescriptions()
      * @generated
      * @ordered
@@ -73,6 +73,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
      * 
      * @generated
      */
+    @Override
     public EList<MenuItemOrRef> getMenuItemDescriptions() {
         if (menuItemDescriptions == null) {
             menuItemDescriptions = new EObjectContainmentEList<MenuItemOrRef>(MenuItemOrRef.class, this, DescriptionPackage.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS);

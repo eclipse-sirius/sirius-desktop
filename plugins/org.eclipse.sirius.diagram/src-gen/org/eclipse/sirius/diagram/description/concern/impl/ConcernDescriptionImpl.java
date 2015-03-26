@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.concern.impl;
 
@@ -72,7 +72,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = ConcernDescriptionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -92,7 +92,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = ConcernDescriptionImpl.LABEL_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}'
@@ -148,6 +148,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -157,11 +158,13 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ConcernPackage.CONCERN_DESCRIPTION__NAME, oldName, name));
+        }
     }
 
     /**
@@ -169,6 +172,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -178,11 +182,13 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ConcernPackage.CONCERN_DESCRIPTION__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -190,6 +196,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<FilterDescription> getFilters() {
         if (filters == null) {
             filters = new EObjectResolvingEList<FilterDescription>(FilterDescription.class, this, ConcernPackage.CONCERN_DESCRIPTION__FILTERS);
@@ -202,6 +209,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<ValidationRule> getRules() {
         if (rules == null) {
             rules = new EObjectResolvingEList<ValidationRule>(ValidationRule.class, this, ConcernPackage.CONCERN_DESCRIPTION__RULES);
@@ -214,6 +222,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<BehaviorTool> getBehaviors() {
         if (behaviors == null) {
             behaviors = new EObjectResolvingEList<BehaviorTool>(BehaviorTool.class, this, ConcernPackage.CONCERN_DESCRIPTION__BEHAVIORS);
@@ -283,10 +292,10 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     public void eUnset(int featureID) {
         switch (featureID) {
         case ConcernPackage.CONCERN_DESCRIPTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(ConcernDescriptionImpl.NAME_EDEFAULT);
             return;
         case ConcernPackage.CONCERN_DESCRIPTION__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(ConcernDescriptionImpl.LABEL_EDEFAULT);
             return;
         case ConcernPackage.CONCERN_DESCRIPTION__FILTERS:
             getFilters().clear();
@@ -310,9 +319,9 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ConcernPackage.CONCERN_DESCRIPTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return ConcernDescriptionImpl.NAME_EDEFAULT == null ? name != null : !ConcernDescriptionImpl.NAME_EDEFAULT.equals(name);
         case ConcernPackage.CONCERN_DESCRIPTION__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return ConcernDescriptionImpl.LABEL_EDEFAULT == null ? label != null : !ConcernDescriptionImpl.LABEL_EDEFAULT.equals(label);
         case ConcernPackage.CONCERN_DESCRIPTION__FILTERS:
             return filters != null && !filters.isEmpty();
         case ConcernPackage.CONCERN_DESCRIPTION__RULES:
@@ -370,8 +379,9 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -65,7 +65,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * @generated
      * @ordered
      */
-    protected String widthComputationExpression = WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String widthComputationExpression = ShapeContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeightComputationExpression()
@@ -87,7 +87,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * @generated
      * @ordered
      */
-    protected String heightComputationExpression = HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String heightComputationExpression = ShapeContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getShape() <em>Shape</em>}' attribute.
@@ -107,7 +107,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * @generated
      * @ordered
      */
-    protected ContainerShape shape = SHAPE_EDEFAULT;
+    protected ContainerShape shape = ShapeContainerStyleDescriptionImpl.SHAPE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -144,6 +144,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * 
      * @generated
      */
+    @Override
     public String getWidthComputationExpression() {
         return widthComputationExpression;
     }
@@ -153,12 +154,14 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * 
      * @generated
      */
+    @Override
     public void setWidthComputationExpression(String newWidthComputationExpression) {
         String oldWidthComputationExpression = widthComputationExpression;
         widthComputationExpression = newWidthComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, oldWidthComputationExpression,
                     widthComputationExpression));
+        }
     }
 
     /**
@@ -166,6 +169,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * 
      * @generated
      */
+    @Override
     public String getHeightComputationExpression() {
         return heightComputationExpression;
     }
@@ -175,12 +179,14 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * 
      * @generated
      */
+    @Override
     public void setHeightComputationExpression(String newHeightComputationExpression) {
         String oldHeightComputationExpression = heightComputationExpression;
         heightComputationExpression = newHeightComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, oldHeightComputationExpression,
                     heightComputationExpression));
+        }
     }
 
     /**
@@ -188,6 +194,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * 
      * @generated
      */
+    @Override
     public ContainerShape getShape() {
         return shape;
     }
@@ -197,11 +204,13 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * 
      * @generated
      */
+    @Override
     public void setShape(ContainerShape newShape) {
         ContainerShape oldShape = shape;
-        shape = newShape == null ? SHAPE_EDEFAULT : newShape;
-        if (eNotificationRequired())
+        shape = newShape == null ? ShapeContainerStyleDescriptionImpl.SHAPE_EDEFAULT : newShape;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE, oldShape, shape));
+        }
     }
 
     /**
@@ -209,13 +218,15 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * 
      * @generated
      */
+    @Override
     public ColorDescription getBackgroundColor() {
         if (backgroundColor != null && backgroundColor.eIsProxy()) {
             InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
             backgroundColor = (ColorDescription) eResolveProxy(oldBackgroundColor);
             if (backgroundColor != oldBackgroundColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+                }
             }
         }
         return backgroundColor;
@@ -235,11 +246,13 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(ColorDescription newBackgroundColor) {
         ColorDescription oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -257,8 +270,9 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE:
             return getShape();
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getBackgroundColor();
+            }
             return basicGetBackgroundColor();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -297,13 +311,13 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
-            setWidthComputationExpression(WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
+            setWidthComputationExpression(ShapeContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
-            setHeightComputationExpression(HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT);
+            setHeightComputationExpression(ShapeContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE:
-            setShape(SHAPE_EDEFAULT);
+            setShape(ShapeContainerStyleDescriptionImpl.SHAPE_EDEFAULT);
             return;
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) null);
@@ -321,11 +335,13 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
-            return WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null : !WIDTH_COMPUTATION_EXPRESSION_EDEFAULT.equals(widthComputationExpression);
+            return ShapeContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null
+                    : !ShapeContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT.equals(widthComputationExpression);
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
-            return HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null : !HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT.equals(heightComputationExpression);
+            return ShapeContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null
+                    : !ShapeContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT.equals(heightComputationExpression);
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE:
-            return shape != SHAPE_EDEFAULT;
+            return shape != ShapeContainerStyleDescriptionImpl.SHAPE_EDEFAULT;
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR:
             return backgroundColor != null;
         }
@@ -379,8 +395,9 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (widthComputationExpression: ");

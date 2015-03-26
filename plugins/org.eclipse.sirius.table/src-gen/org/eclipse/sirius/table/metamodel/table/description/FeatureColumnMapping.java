@@ -42,7 +42,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getFeatureColumnMapping_FeatureName()
@@ -105,7 +105,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * begin-model-doc --> An expression to get the parent of the feature. By
      * default, the parent of the feature is the semantic element of the line.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature Parent Expression</em>' attribute.
      * @see #setFeatureParentExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getFeatureColumnMapping_FeatureParentExpression()

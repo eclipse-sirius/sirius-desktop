@@ -68,6 +68,7 @@ public class TDestructionMessageMappingImpl extends TSourceTargetMessageMappingI
      * 
      * @generated
      */
+    @Override
     public EList<TLifelineMapping> getTarget() {
         if (target == null) {
             target = new EObjectResolvingEList<TLifelineMapping>(TLifelineMapping.class, this, TemplatePackage.TDESTRUCTION_MESSAGE_MAPPING__TARGET);

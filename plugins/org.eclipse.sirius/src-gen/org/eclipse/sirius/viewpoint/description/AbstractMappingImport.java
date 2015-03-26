@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -40,7 +40,7 @@ public interface AbstractMappingImport extends EObject {
      * end-user-doc --> <!-- begin-model-doc --> Set to true if you don't want
      * to inherit the sub mappings of the imported mapping. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Hide Sub Mappings</em>' attribute.
      * @see #setHideSubMappings(boolean)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractMappingImport_HideSubMappings()
@@ -54,7 +54,7 @@ public interface AbstractMappingImport extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings
      * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Hide Sub Mappings</em>' attribute.
      * @see #isHideSubMappings()
@@ -68,7 +68,7 @@ public interface AbstractMappingImport extends EObject {
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if you
      * want the filters applying on the imported mappings apply on this one.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Inherits Ancestor Filters</em>' attribute.
      * @see #setInheritsAncestorFilters(boolean)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractMappingImport_InheritsAncestorFilters()
@@ -82,7 +82,7 @@ public interface AbstractMappingImport extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters
      * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Inherits Ancestor Filters</em>'
      *            attribute.

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.provider;
 
@@ -35,7 +35,7 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FlatContainerStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,12 +71,12 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
      */
     protected void addWidthComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(
-                        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(),
-                        getString("_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature",
-                                "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false,
+        .add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature",
+                        "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false,
                         false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
     }
 
@@ -88,19 +88,19 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
      */
     protected void addHeightComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(
-                        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(),
-                        getString("_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature",
-                                "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false,
+        .add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature",
+                        "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false,
                         false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**
      * This adds a property descriptor for the Background Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundStylePropertyDescriptor(Object object) {
@@ -114,7 +114,7 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
     /**
      * This adds a property descriptor for the Background Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -127,7 +127,7 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
     /**
      * This adds a property descriptor for the Foreground Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForegroundColorPropertyDescriptor(Object object) {
@@ -140,7 +140,7 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
     /**
      * This adds a property descriptor for the Label Border Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelBorderStylePropertyDescriptor(Object object) {
@@ -164,9 +164,9 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
-     * 
+     *
      */
     @Override
     public String getText(Object object) {
@@ -175,10 +175,11 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
 
         String label = getString("_UI_FlatContainerStyleDescription_type");
 
-        if (fgColor != null & bgColor != null)
+        if (fgColor != null & bgColor != null) {
             return label + " " + bgColor + " to " + fgColor;
-        else
+        } else {
             return label;
+        }
     }
 
     /**
@@ -209,7 +210,7 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

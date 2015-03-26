@@ -113,6 +113,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
      * 
      * @generated
      */
+    @Override
     public EditMaskVariables getMask() {
         return mask;
     }
@@ -127,10 +128,11 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
         mask = newMask;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_EDITION_TOOL__MASK, oldMask, newMask);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -140,18 +142,23 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
      * 
      * @generated
      */
+    @Override
     public void setMask(EditMaskVariables newMask) {
         if (newMask != mask) {
             NotificationChain msgs = null;
-            if (mask != null)
-                msgs = ((InternalEObject) mask).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__MASK, null, msgs);
-            if (newMask != null)
-                msgs = ((InternalEObject) newMask).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__MASK, null, msgs);
+            if (mask != null) {
+                msgs = ((InternalEObject) mask).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__MASK, null, msgs);
+            }
+            if (newMask != null) {
+                msgs = ((InternalEObject) newMask).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__MASK, null, msgs);
+            }
             msgs = basicSetMask(newMask, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_EDITION_TOOL__MASK, newMask, newMask));
+        }
     }
 
     /**
@@ -159,6 +166,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemMapping> getMapping() {
         if (mapping == null) {
             mapping = new EObjectResolvingEList<TreeItemMapping>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_EDITION_TOOL__MAPPING);
@@ -171,6 +179,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
      * 
      * @generated
      */
+    @Override
     public ElementDropVariable getElement() {
         return element;
     }
@@ -185,10 +194,11 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
         element = newElement;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_EDITION_TOOL__ELEMENT, oldElement, newElement);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -198,18 +208,23 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
      * 
      * @generated
      */
+    @Override
     public void setElement(ElementDropVariable newElement) {
         if (newElement != element) {
             NotificationChain msgs = null;
-            if (element != null)
-                msgs = ((InternalEObject) element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__ELEMENT, null, msgs);
-            if (newElement != null)
-                msgs = ((InternalEObject) newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__ELEMENT, null, msgs);
+            if (element != null) {
+                msgs = ((InternalEObject) element).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__ELEMENT, null, msgs);
+            }
+            if (newElement != null) {
+                msgs = ((InternalEObject) newElement).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__ELEMENT, null, msgs);
+            }
             msgs = basicSetElement(newElement, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_EDITION_TOOL__ELEMENT, newElement, newElement));
+        }
     }
 
     /**
@@ -217,6 +232,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
      * 
      * @generated
      */
+    @Override
     public ElementDropVariable getRoot() {
         return root;
     }
@@ -231,10 +247,11 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
         root = newRoot;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_EDITION_TOOL__ROOT, oldRoot, newRoot);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -244,18 +261,23 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
      * 
      * @generated
      */
+    @Override
     public void setRoot(ElementDropVariable newRoot) {
         if (newRoot != root) {
             NotificationChain msgs = null;
-            if (root != null)
-                msgs = ((InternalEObject) root).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__ROOT, null, msgs);
-            if (newRoot != null)
-                msgs = ((InternalEObject) newRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__ROOT, null, msgs);
+            if (root != null) {
+                msgs = ((InternalEObject) root).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__ROOT, null, msgs);
+            }
+            if (newRoot != null) {
+                msgs = ((InternalEObject) newRoot).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_EDITION_TOOL__ROOT, null, msgs);
+            }
             msgs = basicSetRoot(newRoot, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_EDITION_TOOL__ROOT, newRoot, newRoot));
+        }
     }
 
     /**

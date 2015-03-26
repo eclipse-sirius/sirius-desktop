@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -85,13 +85,15 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public FilterVariable getVariableDefinition() {
         if (variableDefinition != null && variableDefinition.eIsProxy()) {
             InternalEObject oldVariableDefinition = (InternalEObject) variableDefinition;
             variableDefinition = (FilterVariable) eResolveProxy(oldVariableDefinition);
             if (variableDefinition != oldVariableDefinition) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION, oldVariableDefinition, variableDefinition));
+                }
             }
         }
         return variableDefinition;
@@ -111,11 +113,13 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public void setVariableDefinition(FilterVariable newVariableDefinition) {
         FilterVariable oldVariableDefinition = variableDefinition;
         variableDefinition = newVariableDefinition;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION, oldVariableDefinition, variableDefinition));
+        }
     }
 
     /**
@@ -123,13 +127,15 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public EObject getModelElement() {
         if (modelElement != null && modelElement.eIsProxy()) {
             InternalEObject oldModelElement = (InternalEObject) modelElement;
             modelElement = eResolveProxy(oldModelElement);
             if (modelElement != oldModelElement) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.FILTER_VARIABLE_VALUE__MODEL_ELEMENT, oldModelElement, modelElement));
+                }
             }
         }
         return modelElement;
@@ -149,11 +155,13 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
      * 
      * @generated
      */
+    @Override
     public void setModelElement(EObject newModelElement) {
         EObject oldModelElement = modelElement;
         modelElement = newModelElement;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.FILTER_VARIABLE_VALUE__MODEL_ELEMENT, oldModelElement, modelElement));
+        }
     }
 
     /**
@@ -165,12 +173,14 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DiagramPackage.FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION:
-            if (resolve)
+            if (resolve) {
                 return getVariableDefinition();
+            }
             return basicGetVariableDefinition();
         case DiagramPackage.FILTER_VARIABLE_VALUE__MODEL_ELEMENT:
-            if (resolve)
+            if (resolve) {
                 return getModelElement();
+            }
             return basicGetModelElement();
         }
         return super.eGet(featureID, resolve, coreType);

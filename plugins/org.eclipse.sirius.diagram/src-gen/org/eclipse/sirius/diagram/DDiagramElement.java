@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -50,7 +50,7 @@ public interface DDiagramElement extends DRepresentationElement {
      * value is <code>"true"</code>. <!-- begin-user-doc --> <!-- end-user-doc
      * --> <!-- begin-model-doc --> True if the element is visible, false
      * otherwise. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Visible</em>' attribute.
      * @see #setVisible(boolean)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement_Visible()
@@ -64,7 +64,7 @@ public interface DDiagramElement extends DRepresentationElement {
      * {@link org.eclipse.sirius.diagram.DDiagramElement#isVisible
      * <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Visible</em>' attribute.
      * @see #isVisible()
@@ -76,7 +76,7 @@ public interface DDiagramElement extends DRepresentationElement {
      * Returns the value of the '<em><b>Tooltip Text</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * text to show in the element's tooltip. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Tooltip Text</em>' attribute.
      * @see #setTooltipText(String)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement_TooltipText()
@@ -138,7 +138,7 @@ public interface DDiagramElement extends DRepresentationElement {
      * Returns the value of the '<em><b>Diagram Element Mapping</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The mapping of the element. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Diagram Element Mapping</em>' reference.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement_DiagramElementMapping()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -152,7 +152,7 @@ public interface DDiagramElement extends DRepresentationElement {
      * {@link org.eclipse.sirius.diagram.GraphicalFilter}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> Graphical filters
      * allowing to handle this element. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Graphical Filters</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement_GraphicalFilters()
@@ -164,7 +164,7 @@ public interface DDiagramElement extends DRepresentationElement {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return the parent of this ViewPointElement. <!-- end-model-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.validation;
 
@@ -41,7 +41,7 @@ public interface ViewValidationRule extends ValidationRule {
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The mapping to validate. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Targets</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getViewValidationRule_Targets()
      * @model

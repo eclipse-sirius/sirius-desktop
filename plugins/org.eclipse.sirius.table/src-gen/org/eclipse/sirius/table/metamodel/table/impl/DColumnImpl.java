@@ -82,7 +82,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = DColumnImpl.LABEL_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCells() <em>Cells</em>}' reference
@@ -123,7 +123,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * @generated
      * @ordered
      */
-    protected boolean visible = VISIBLE_EDEFAULT;
+    protected boolean visible = DColumnImpl.VISIBLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -143,7 +143,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * @generated
      * @ordered
      */
-    protected int width = WIDTH_EDEFAULT;
+    protected int width = DColumnImpl.WIDTH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCurrentStyle()
@@ -180,6 +180,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -189,11 +190,13 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DCOLUMN__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -201,6 +204,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public EList<DCell> getCells() {
         if (cells == null) {
             cells = new EObjectWithInverseResolvingEList<DCell>(DCell.class, this, TablePackage.DCOLUMN__CELLS, TablePackage.DCELL__COLUMN);
@@ -213,13 +217,15 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public ColumnMapping getOriginMapping() {
         if (originMapping != null && originMapping.eIsProxy()) {
             InternalEObject oldOriginMapping = (InternalEObject) originMapping;
             originMapping = (ColumnMapping) eResolveProxy(oldOriginMapping);
             if (originMapping != oldOriginMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TablePackage.DCOLUMN__ORIGIN_MAPPING, oldOriginMapping, originMapping));
+                }
             }
         }
         return originMapping;
@@ -239,11 +245,13 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public void setOriginMapping(ColumnMapping newOriginMapping) {
         ColumnMapping oldOriginMapping = originMapping;
         originMapping = newOriginMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DCOLUMN__ORIGIN_MAPPING, oldOriginMapping, originMapping));
+        }
     }
 
     /**
@@ -251,9 +259,11 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public DTable getTable() {
-        if (eContainerFeatureID() != TablePackage.DCOLUMN__TABLE)
+        if (eContainerFeatureID() != TablePackage.DCOLUMN__TABLE) {
             return null;
+        }
         return (DTable) eInternalContainer();
     }
 
@@ -272,20 +282,26 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public void setTable(DTable newTable) {
         if (newTable != eInternalContainer() || (eContainerFeatureID() != TablePackage.DCOLUMN__TABLE && newTable != null)) {
-            if (EcoreUtil.isAncestor(this, newTable))
+            if (EcoreUtil.isAncestor(this, newTable)) {
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            }
             NotificationChain msgs = null;
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
-            if (newTable != null)
+            }
+            if (newTable != null) {
                 msgs = ((InternalEObject) newTable).eInverseAdd(this, TablePackage.DTABLE__COLUMNS, DTable.class, msgs);
+            }
             msgs = basicSetTable(newTable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DCOLUMN__TABLE, newTable, newTable));
+        }
     }
 
     /**
@@ -293,6 +309,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public EList<DCell> getOrderedCells() {
         // TODO: implement this method to return the 'Ordered Cells' reference
         // list
@@ -310,6 +327,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public boolean isVisible() {
         return visible;
     }
@@ -319,11 +337,13 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public void setVisible(boolean newVisible) {
         boolean oldVisible = visible;
         visible = newVisible;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DCOLUMN__VISIBLE, oldVisible, visible));
+        }
     }
 
     /**
@@ -331,6 +351,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public int getWidth() {
         return width;
     }
@@ -340,11 +361,13 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public void setWidth(int newWidth) {
         int oldWidth = width;
         width = newWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DCOLUMN__WIDTH, oldWidth, width));
+        }
     }
 
     /**
@@ -352,6 +375,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public DTableElementStyle getCurrentStyle() {
         return currentStyle;
     }
@@ -366,10 +390,11 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
         currentStyle = newCurrentStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TablePackage.DCOLUMN__CURRENT_STYLE, oldCurrentStyle, newCurrentStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -379,18 +404,23 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      * 
      * @generated
      */
+    @Override
     public void setCurrentStyle(DTableElementStyle newCurrentStyle) {
         if (newCurrentStyle != currentStyle) {
             NotificationChain msgs = null;
-            if (currentStyle != null)
-                msgs = ((InternalEObject) currentStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TablePackage.DCOLUMN__CURRENT_STYLE, null, msgs);
-            if (newCurrentStyle != null)
-                msgs = ((InternalEObject) newCurrentStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TablePackage.DCOLUMN__CURRENT_STYLE, null, msgs);
+            if (currentStyle != null) {
+                msgs = ((InternalEObject) currentStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TablePackage.DCOLUMN__CURRENT_STYLE, null, msgs);
+            }
+            if (newCurrentStyle != null) {
+                msgs = ((InternalEObject) newCurrentStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TablePackage.DCOLUMN__CURRENT_STYLE, null, msgs);
+            }
             msgs = basicSetCurrentStyle(newCurrentStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DCOLUMN__CURRENT_STYLE, newCurrentStyle, newCurrentStyle));
+        }
     }
 
     /**
@@ -405,8 +435,9 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
         case TablePackage.DCOLUMN__CELLS:
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getCells()).basicAdd(otherEnd, msgs);
         case TablePackage.DCOLUMN__TABLE:
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
+            }
             return basicSetTable((DTable) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -457,8 +488,9 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
         case TablePackage.DCOLUMN__CELLS:
             return getCells();
         case TablePackage.DCOLUMN__ORIGIN_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getOriginMapping();
+            }
             return basicGetOriginMapping();
         case TablePackage.DCOLUMN__TABLE:
             return getTable();
@@ -518,7 +550,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     public void eUnset(int featureID) {
         switch (featureID) {
         case TablePackage.DCOLUMN__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(DColumnImpl.LABEL_EDEFAULT);
             return;
         case TablePackage.DCOLUMN__CELLS:
             getCells().clear();
@@ -530,10 +562,10 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
             setTable((DTable) null);
             return;
         case TablePackage.DCOLUMN__VISIBLE:
-            setVisible(VISIBLE_EDEFAULT);
+            setVisible(DColumnImpl.VISIBLE_EDEFAULT);
             return;
         case TablePackage.DCOLUMN__WIDTH:
-            setWidth(WIDTH_EDEFAULT);
+            setWidth(DColumnImpl.WIDTH_EDEFAULT);
             return;
         case TablePackage.DCOLUMN__CURRENT_STYLE:
             setCurrentStyle((DTableElementStyle) null);
@@ -551,7 +583,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TablePackage.DCOLUMN__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return DColumnImpl.LABEL_EDEFAULT == null ? label != null : !DColumnImpl.LABEL_EDEFAULT.equals(label);
         case TablePackage.DCOLUMN__CELLS:
             return cells != null && !cells.isEmpty();
         case TablePackage.DCOLUMN__ORIGIN_MAPPING:
@@ -561,9 +593,9 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
         case TablePackage.DCOLUMN__ORDERED_CELLS:
             return !getOrderedCells().isEmpty();
         case TablePackage.DCOLUMN__VISIBLE:
-            return visible != VISIBLE_EDEFAULT;
+            return visible != DColumnImpl.VISIBLE_EDEFAULT;
         case TablePackage.DCOLUMN__WIDTH:
-            return width != WIDTH_EDEFAULT;
+            return width != DColumnImpl.WIDTH_EDEFAULT;
         case TablePackage.DCOLUMN__CURRENT_STYLE:
             return currentStyle != null;
         }
@@ -577,8 +609,9 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (label: ");

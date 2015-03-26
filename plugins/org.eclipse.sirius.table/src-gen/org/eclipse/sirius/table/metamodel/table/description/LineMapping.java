@@ -102,7 +102,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_DomainClass()

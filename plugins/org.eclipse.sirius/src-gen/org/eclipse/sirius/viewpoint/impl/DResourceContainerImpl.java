@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -48,7 +48,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -58,17 +58,17 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DResourceContainerImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPath()
      * @generated
      * @ordered
@@ -78,17 +78,17 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPath()
      * @generated
      * @ordered
      */
-    protected String path = PATH_EDEFAULT;
+    protected String path = DResourceContainerImpl.PATH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getMembers() <em>Members</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMembers()
      * @generated
      * @ordered
@@ -97,7 +97,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DResourceContainerImpl() {
@@ -106,7 +106,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,51 +116,58 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DRESOURCE_CONTAINER__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getPath() {
         return path;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setPath(String newPath) {
         String oldPath = path;
         path = newPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DRESOURCE_CONTAINER__PATH, oldPath, path));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DResource> getMembers() {
         if (members == null) {
             members = new EObjectContainmentEList.Resolving<DResource>(DResource.class, this, ViewpointPackage.DRESOURCE_CONTAINER__MEMBERS);
@@ -170,7 +177,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +191,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +209,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -225,17 +232,17 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ViewpointPackage.DRESOURCE_CONTAINER__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DResourceContainerImpl.NAME_EDEFAULT);
             return;
         case ViewpointPackage.DRESOURCE_CONTAINER__PATH:
-            setPath(PATH_EDEFAULT);
+            setPath(DResourceContainerImpl.PATH_EDEFAULT);
             return;
         case ViewpointPackage.DRESOURCE_CONTAINER__MEMBERS:
             getMembers().clear();
@@ -246,16 +253,16 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ViewpointPackage.DRESOURCE_CONTAINER__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DResourceContainerImpl.NAME_EDEFAULT == null ? name != null : !DResourceContainerImpl.NAME_EDEFAULT.equals(name);
         case ViewpointPackage.DRESOURCE_CONTAINER__PATH:
-            return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+            return DResourceContainerImpl.PATH_EDEFAULT == null ? path != null : !DResourceContainerImpl.PATH_EDEFAULT.equals(path);
         case ViewpointPackage.DRESOURCE_CONTAINER__MEMBERS:
             return members != null && !members.isEmpty();
         }
@@ -264,13 +271,14 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

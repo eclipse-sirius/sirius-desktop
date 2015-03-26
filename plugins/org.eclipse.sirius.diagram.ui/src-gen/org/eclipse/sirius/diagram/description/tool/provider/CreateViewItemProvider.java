@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.provider;
 
@@ -31,14 +31,14 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.ContainerModelOper
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.CreateView} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CreateViewItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CreateViewItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
     /**
      * This adds a property descriptor for the Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMappingPropertyDescriptor(Object object) {
@@ -90,7 +90,7 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
     /**
      * This adds a property descriptor for the Variable Name feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addVariableNamePropertyDescriptor(Object object) {
@@ -102,7 +102,7 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
     /**
      * This returns CreateView.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

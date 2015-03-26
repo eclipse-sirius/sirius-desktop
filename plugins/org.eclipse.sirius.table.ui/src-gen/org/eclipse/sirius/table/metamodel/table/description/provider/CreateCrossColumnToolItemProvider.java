@@ -33,7 +33,7 @@ public class CreateCrossColumnToolItemProvider extends CreateToolItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CreateCrossColumnToolItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class CreateCrossColumnToolItemProvider extends CreateToolItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -59,7 +59,7 @@ public class CreateCrossColumnToolItemProvider extends CreateToolItemProvider {
     /**
      * This adds a property descriptor for the Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMappingPropertyDescriptor(Object object) {
@@ -82,7 +82,7 @@ public class CreateCrossColumnToolItemProvider extends CreateToolItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -109,7 +109,7 @@ public class CreateCrossColumnToolItemProvider extends CreateToolItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -71,7 +71,7 @@ public interface TReturnMessageMapping extends TMessageMapping {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Invocation Message Finder Expression</em>'
      *         attribute.
      * @see #setInvocationMessageFinderExpression(String)
@@ -87,7 +87,7 @@ public interface TReturnMessageMapping extends TMessageMapping {
      * {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping#getInvocationMessageFinderExpression
      * <em>Invocation Message Finder Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Invocation Message Finder Expression</em>' attribute.

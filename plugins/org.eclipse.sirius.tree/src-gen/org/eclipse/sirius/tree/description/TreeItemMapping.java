@@ -60,7 +60,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_DomainClass()
@@ -91,7 +91,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> The elements that are
      * represented by this mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_PreconditionExpression()
@@ -125,7 +125,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The elements that are represented by this mapping.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Candidates Expression</em>'
      *         attribute.
      * @see #setSemanticCandidatesExpression(String)
@@ -165,7 +165,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Tree Item Mappings</em>' reference
      *         list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_ReusedTreeItemMappings()
@@ -184,7 +184,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Sub Mappings</em>' reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_AllSubMappings()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -200,7 +200,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Specialize</em>' reference.
      * @see #setSpecialize(TreeItemMapping)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_Specialize()
@@ -265,7 +265,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Create</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_Create()
      * @model containment="true"
@@ -283,7 +283,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Dnd Tools</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_DndTools()
      * @model containment="true"
@@ -302,7 +302,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Popup Menus</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_PopupMenus()

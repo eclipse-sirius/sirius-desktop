@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -36,7 +36,7 @@ public interface ExternalJavaActionCall extends MenuItemDescription, ContainerMo
      * Returns the value of the '<em><b>Action</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * action to call. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Action</em>' reference.
      * @see #setAction(ExternalJavaAction)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaActionCall_Action()
@@ -50,7 +50,7 @@ public interface ExternalJavaActionCall extends MenuItemDescription, ContainerMo
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall#getAction
      * <em>Action</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Action</em>' reference.
      * @see #getAction()

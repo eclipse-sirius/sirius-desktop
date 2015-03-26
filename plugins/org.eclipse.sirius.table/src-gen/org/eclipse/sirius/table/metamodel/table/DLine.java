@@ -52,7 +52,7 @@ public interface DLine extends LineContainer, DTableElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_Label()
@@ -81,7 +81,7 @@ public interface DLine extends LineContainer, DTableElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Origin Mapping</em>' reference.
      * @see #setOriginMapping(LineMapping)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_OriginMapping()
@@ -125,7 +125,7 @@ public interface DLine extends LineContainer, DTableElement {
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#isVisible
      * <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Visible</em>' attribute.
      * @see #isVisible()
@@ -155,7 +155,7 @@ public interface DLine extends LineContainer, DTableElement {
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#isCollapsed
      * <em>Collapsed</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Collapsed</em>' attribute.
      * @see #isCollapsed()
@@ -178,7 +178,7 @@ public interface DLine extends LineContainer, DTableElement {
      * line. This list does not necessarily have as many cells as there are
      * columns. Indeed, the ?blank cells? are not created. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Cells</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_Cells()
      * @see org.eclipse.sirius.table.metamodel.table.DCell#getLine
@@ -230,7 +230,7 @@ public interface DLine extends LineContainer, DTableElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Ordered Cells</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_OrderedCells()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -247,7 +247,7 @@ public interface DLine extends LineContainer, DTableElement {
      * The first conditional background style (with predicate expression that
      * returns true), otherwise the default background style. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Current Style</em>' containment reference.
      * @see #setCurrentStyle(DTableElementStyle)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_CurrentStyle()

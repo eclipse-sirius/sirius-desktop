@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -50,18 +50,20 @@ public class EndLabelStyleImpl extends BasicLabelStyleImpl implements EndLabelSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public BasicLabelStyleDescription getDescription() {
         return ((EdgeStyleDescription) ((EdgeStyle) eContainer()).getDescription()).getEndLabelStyleDescription();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public void setDescription(BasicLabelStyleDescription description) {
         ((EdgeStyleDescription) ((EdgeStyle) eContainer()).getDescription()).setEndLabelStyleDescription((EndLabelStyleDescription) description);
     }

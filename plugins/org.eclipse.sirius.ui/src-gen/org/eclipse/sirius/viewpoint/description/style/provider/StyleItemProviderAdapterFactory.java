@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.style.provider;
 
@@ -60,7 +60,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -85,7 +85,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public StyleItemProviderAdapterFactory() {
@@ -200,7 +200,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription}
      * instances. <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
@@ -225,9 +225,10 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -235,9 +236,10 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -294,6 +296,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
         return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
     }
@@ -303,6 +306,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public ResourceLocator getResourceLocator() {
         return childCreationExtenderManager;
     }
@@ -312,6 +316,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -321,6 +326,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -329,9 +335,10 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -343,20 +350,26 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (basicLabelStyleDescriptionItemProvider != null)
+        if (basicLabelStyleDescriptionItemProvider != null) {
             basicLabelStyleDescriptionItemProvider.dispose();
-        if (labelStyleDescriptionItemProvider != null)
+        }
+        if (labelStyleDescriptionItemProvider != null) {
             labelStyleDescriptionItemProvider.dispose();
-        if (labelBorderStylesItemProvider != null)
+        }
+        if (labelBorderStylesItemProvider != null) {
             labelBorderStylesItemProvider.dispose();
-        if (labelBorderStyleDescriptionItemProvider != null)
+        }
+        if (labelBorderStyleDescriptionItemProvider != null) {
             labelBorderStyleDescriptionItemProvider.dispose();
-        if (tooltipStyleDescriptionItemProvider != null)
+        }
+        if (tooltipStyleDescriptionItemProvider != null) {
             tooltipStyleDescriptionItemProvider.dispose();
+        }
     }
 
 }

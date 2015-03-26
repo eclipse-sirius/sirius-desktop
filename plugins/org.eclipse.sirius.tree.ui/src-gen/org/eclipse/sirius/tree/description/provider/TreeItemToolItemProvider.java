@@ -36,7 +36,7 @@ import com.google.common.collect.Lists;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.description.TreeItemTool} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvider {
@@ -45,7 +45,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemToolItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +55,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -104,7 +104,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -138,19 +138,20 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         collectNewChildDescriptorsGen(newChildDescriptors, object);
-        ItemProviderHelper.filterChildDescriptorsByType(newChildDescriptors, TYPES_TO_HIDE);
+        ItemProviderHelper.filterChildDescriptorsByType(newChildDescriptors, TreeItemToolItemProvider.TYPES_TO_HIDE);
     }
 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -186,7 +187,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

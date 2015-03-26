@@ -55,7 +55,7 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
      * @generated
      * @ordered
      */
-    protected String endsOrdering = ENDS_ORDERING_EDEFAULT;
+    protected String endsOrdering = SequenceDiagramDescriptionImpl.ENDS_ORDERING_EDEFAULT;
 
     /**
      * The default value of the '{@link #getInstanceRolesOrdering()
@@ -77,7 +77,7 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
      * @generated
      * @ordered
      */
-    protected String instanceRolesOrdering = INSTANCE_ROLES_ORDERING_EDEFAULT;
+    protected String instanceRolesOrdering = SequenceDiagramDescriptionImpl.INSTANCE_ROLES_ORDERING_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -103,6 +103,7 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
      * 
      * @generated
      */
+    @Override
     public String getEndsOrdering() {
         return endsOrdering;
     }
@@ -112,11 +113,13 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
      * 
      * @generated
      */
+    @Override
     public void setEndsOrdering(String newEndsOrdering) {
         String oldEndsOrdering = endsOrdering;
         endsOrdering = newEndsOrdering;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING, oldEndsOrdering, endsOrdering));
+        }
     }
 
     /**
@@ -124,6 +127,7 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
      * 
      * @generated
      */
+    @Override
     public String getInstanceRolesOrdering() {
         return instanceRolesOrdering;
     }
@@ -133,11 +137,13 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
      * 
      * @generated
      */
+    @Override
     public void setInstanceRolesOrdering(String newInstanceRolesOrdering) {
         String oldInstanceRolesOrdering = instanceRolesOrdering;
         instanceRolesOrdering = newInstanceRolesOrdering;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING, oldInstanceRolesOrdering, instanceRolesOrdering));
+        }
     }
 
     /**
@@ -183,10 +189,10 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING:
-            setEndsOrdering(ENDS_ORDERING_EDEFAULT);
+            setEndsOrdering(SequenceDiagramDescriptionImpl.ENDS_ORDERING_EDEFAULT);
             return;
         case DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING:
-            setInstanceRolesOrdering(INSTANCE_ROLES_ORDERING_EDEFAULT);
+            setInstanceRolesOrdering(SequenceDiagramDescriptionImpl.INSTANCE_ROLES_ORDERING_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -201,9 +207,10 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING:
-            return ENDS_ORDERING_EDEFAULT == null ? endsOrdering != null : !ENDS_ORDERING_EDEFAULT.equals(endsOrdering);
+            return SequenceDiagramDescriptionImpl.ENDS_ORDERING_EDEFAULT == null ? endsOrdering != null : !SequenceDiagramDescriptionImpl.ENDS_ORDERING_EDEFAULT.equals(endsOrdering);
         case DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING:
-            return INSTANCE_ROLES_ORDERING_EDEFAULT == null ? instanceRolesOrdering != null : !INSTANCE_ROLES_ORDERING_EDEFAULT.equals(instanceRolesOrdering);
+            return SequenceDiagramDescriptionImpl.INSTANCE_ROLES_ORDERING_EDEFAULT == null ? instanceRolesOrdering != null : !SequenceDiagramDescriptionImpl.INSTANCE_ROLES_ORDERING_EDEFAULT
+                    .equals(instanceRolesOrdering);
         }
         return super.eIsSet(featureID);
     }
@@ -215,8 +222,9 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (endsOrdering: ");

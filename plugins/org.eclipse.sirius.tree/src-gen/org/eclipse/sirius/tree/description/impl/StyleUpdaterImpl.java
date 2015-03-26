@@ -59,7 +59,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
      * The cached value of the '{@link #getConditionalStyles()
      * <em>Conditional Styles</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -90,6 +90,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
      * 
      * @generated
      */
+    @Override
     public TreeItemStyleDescription getDefaultStyle() {
         return defaultStyle;
     }
@@ -104,10 +105,11 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
         defaultStyle = newDefaultStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.STYLE_UPDATER__DEFAULT_STYLE, oldDefaultStyle, newDefaultStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -117,18 +119,23 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
      * 
      * @generated
      */
+    @Override
     public void setDefaultStyle(TreeItemStyleDescription newDefaultStyle) {
         if (newDefaultStyle != defaultStyle) {
             NotificationChain msgs = null;
-            if (defaultStyle != null)
-                msgs = ((InternalEObject) defaultStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_STYLE, null, msgs);
-            if (newDefaultStyle != null)
-                msgs = ((InternalEObject) newDefaultStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_STYLE, null, msgs);
+            if (defaultStyle != null) {
+                msgs = ((InternalEObject) defaultStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_STYLE, null, msgs);
+            }
+            if (newDefaultStyle != null) {
+                msgs = ((InternalEObject) newDefaultStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.STYLE_UPDATER__DEFAULT_STYLE, null, msgs);
+            }
             msgs = basicSetDefaultStyle(newDefaultStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.STYLE_UPDATER__DEFAULT_STYLE, newDefaultStyle, newDefaultStyle));
+        }
     }
 
     /**
@@ -136,6 +143,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
      * 
      * @generated
      */
+    @Override
     public EList<ConditionalTreeItemStyleDescription> getConditionalStyles() {
         if (conditionalStyles == null) {
             conditionalStyles = new EObjectContainmentEList<ConditionalTreeItemStyleDescription>(ConditionalTreeItemStyleDescription.class, this, DescriptionPackage.STYLE_UPDATER__CONDITIONAL_STYLES);

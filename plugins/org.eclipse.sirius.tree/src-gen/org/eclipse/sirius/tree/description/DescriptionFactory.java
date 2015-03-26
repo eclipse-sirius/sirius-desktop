@@ -31,7 +31,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Description</em>'.
      * @generated
      */
@@ -40,7 +40,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Item Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Item Mapping</em>'.
      * @generated
      */
@@ -69,7 +69,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Item Drag Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Item Drag Tool</em>'.
      * @generated
      */
@@ -88,7 +88,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Item Creation Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Item Creation Tool</em>'.
      * @generated
      */
@@ -97,7 +97,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Item Edition Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Item Edition Tool</em>'.
      * @generated
      */
@@ -106,7 +106,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Item Deletion Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Item Deletion Tool</em>'.
      * @generated
      */
@@ -115,7 +115,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Creation Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Creation Description</em>'.
      * @generated
      */
@@ -133,7 +133,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Mapping</em>'.
      * @generated
      */
@@ -142,7 +142,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Style Updater</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Style Updater</em>'.
      * @generated
      */
@@ -151,7 +151,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Variable</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Variable</em>'.
      * @generated
      */
@@ -160,7 +160,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Item Updater</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Item Updater</em>'.
      * @generated
      */
@@ -178,7 +178,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Tree Popup Menu</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Tree Popup Menu</em>'.
      * @generated
      */

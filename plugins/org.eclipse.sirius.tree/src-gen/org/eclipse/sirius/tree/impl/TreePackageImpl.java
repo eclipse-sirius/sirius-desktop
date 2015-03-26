@@ -87,14 +87,14 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.tree.TreePackage#eNS_URI
      * @see #init()
      * @generated
      */
     private TreePackageImpl() {
-        super(eNS_URI, TreeFactory.eINSTANCE);
+        super(TreePackage.eNS_URI, TreeFactory.eINSTANCE);
     }
 
     /**
@@ -107,26 +107,28 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link TreePackage#eINSTANCE} when that
      * field is accessed. Clients should not invoke it directly. Instead, they
      * should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static TreePackage init() {
-        if (isInited)
+        if (TreePackageImpl.isInited) {
             return (TreePackage) EPackage.Registry.INSTANCE.getEPackage(TreePackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        TreePackageImpl theTreePackage = (TreePackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof TreePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new TreePackageImpl());
+        TreePackageImpl theTreePackage = (TreePackageImpl) (EPackage.Registry.INSTANCE.get(TreePackage.eNS_URI) instanceof TreePackageImpl ? EPackage.Registry.INSTANCE.get(TreePackage.eNS_URI)
+                : new TreePackageImpl());
 
-        isInited = true;
+        TreePackageImpl.isInited = true;
 
         // Initialize simple dependencies
         ViewpointPackage.eINSTANCE.eClass();
@@ -156,6 +158,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTreeItemContainer() {
         return dTreeItemContainerEClass;
     }
@@ -165,6 +168,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTreeItemContainer_OwnedTreeItems() {
         return (EReference) dTreeItemContainerEClass.getEStructuralFeatures().get(0);
     }
@@ -174,6 +178,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTree() {
         return dTreeEClass;
     }
@@ -183,6 +188,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTree_SemanticElements() {
         return (EReference) dTreeEClass.getEStructuralFeatures().get(0);
     }
@@ -192,6 +198,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTree_Description() {
         return (EReference) dTreeEClass.getEStructuralFeatures().get(1);
     }
@@ -201,6 +208,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTreeElement() {
         return dTreeElementEClass;
     }
@@ -210,6 +218,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTreeElement_TreeElementMapping() {
         return (EReference) dTreeElementEClass.getEStructuralFeatures().get(0);
     }
@@ -219,6 +228,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTreeItem() {
         return dTreeItemEClass;
     }
@@ -228,6 +238,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getDTreeItem_Expanded() {
         return (EAttribute) dTreeItemEClass.getEStructuralFeatures().get(0);
     }
@@ -237,6 +248,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTreeItem_OwnedStyle() {
         return (EReference) dTreeItemEClass.getEStructuralFeatures().get(1);
     }
@@ -246,6 +258,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTreeItem_ActualMapping() {
         return (EReference) dTreeItemEClass.getEStructuralFeatures().get(2);
     }
@@ -255,6 +268,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTreeItem_Container() {
         return (EReference) dTreeItemEClass.getEStructuralFeatures().get(3);
     }
@@ -264,6 +278,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTreeItem_StyleUpdater() {
         return (EReference) dTreeItemEClass.getEStructuralFeatures().get(4);
     }
@@ -273,6 +288,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EReference getDTreeItem_Updater() {
         return (EReference) dTreeItemEClass.getEStructuralFeatures().get(5);
     }
@@ -282,6 +298,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getTreeItemStyle() {
         return treeItemStyleEClass;
     }
@@ -291,6 +308,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EAttribute getTreeItemStyle_BackgroundColor() {
         return (EAttribute) treeItemStyleEClass.getEStructuralFeatures().get(0);
     }
@@ -300,6 +318,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public EClass getDTreeElementSynchronizer() {
         return dTreeElementSynchronizerEClass;
     }
@@ -309,6 +328,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
+    @Override
     public TreeFactory getTreeFactory() {
         return (TreeFactory) getEFactoryInstance();
     }
@@ -328,33 +348,34 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        dTreeEClass = createEClass(DTREE);
-        createEReference(dTreeEClass, DTREE__SEMANTIC_ELEMENTS);
-        createEReference(dTreeEClass, DTREE__DESCRIPTION);
+        dTreeEClass = createEClass(TreePackage.DTREE);
+        createEReference(dTreeEClass, TreePackage.DTREE__SEMANTIC_ELEMENTS);
+        createEReference(dTreeEClass, TreePackage.DTREE__DESCRIPTION);
 
-        dTreeElementEClass = createEClass(DTREE_ELEMENT);
-        createEReference(dTreeElementEClass, DTREE_ELEMENT__TREE_ELEMENT_MAPPING);
+        dTreeElementEClass = createEClass(TreePackage.DTREE_ELEMENT);
+        createEReference(dTreeElementEClass, TreePackage.DTREE_ELEMENT__TREE_ELEMENT_MAPPING);
 
-        dTreeItemContainerEClass = createEClass(DTREE_ITEM_CONTAINER);
-        createEReference(dTreeItemContainerEClass, DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS);
+        dTreeItemContainerEClass = createEClass(TreePackage.DTREE_ITEM_CONTAINER);
+        createEReference(dTreeItemContainerEClass, TreePackage.DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS);
 
-        dTreeItemEClass = createEClass(DTREE_ITEM);
-        createEAttribute(dTreeItemEClass, DTREE_ITEM__EXPANDED);
-        createEReference(dTreeItemEClass, DTREE_ITEM__OWNED_STYLE);
-        createEReference(dTreeItemEClass, DTREE_ITEM__ACTUAL_MAPPING);
-        createEReference(dTreeItemEClass, DTREE_ITEM__CONTAINER);
-        createEReference(dTreeItemEClass, DTREE_ITEM__STYLE_UPDATER);
-        createEReference(dTreeItemEClass, DTREE_ITEM__UPDATER);
+        dTreeItemEClass = createEClass(TreePackage.DTREE_ITEM);
+        createEAttribute(dTreeItemEClass, TreePackage.DTREE_ITEM__EXPANDED);
+        createEReference(dTreeItemEClass, TreePackage.DTREE_ITEM__OWNED_STYLE);
+        createEReference(dTreeItemEClass, TreePackage.DTREE_ITEM__ACTUAL_MAPPING);
+        createEReference(dTreeItemEClass, TreePackage.DTREE_ITEM__CONTAINER);
+        createEReference(dTreeItemEClass, TreePackage.DTREE_ITEM__STYLE_UPDATER);
+        createEReference(dTreeItemEClass, TreePackage.DTREE_ITEM__UPDATER);
 
-        treeItemStyleEClass = createEClass(TREE_ITEM_STYLE);
-        createEAttribute(treeItemStyleEClass, TREE_ITEM_STYLE__BACKGROUND_COLOR);
+        treeItemStyleEClass = createEClass(TreePackage.TREE_ITEM_STYLE);
+        createEAttribute(treeItemStyleEClass, TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR);
 
-        dTreeElementSynchronizerEClass = createEClass(DTREE_ELEMENT_SYNCHRONIZER);
+        dTreeElementSynchronizerEClass = createEClass(TreePackage.DTREE_ELEMENT_SYNCHRONIZER);
     }
 
     /**
@@ -368,18 +389,19 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(TreePackage.eNAME);
+        setNsPrefix(TreePackage.eNS_PREFIX);
+        setNsURI(TreePackage.eNS_URI);
 
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
@@ -404,45 +426,55 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         treeItemStyleEClass.getESuperTypes().add(theViewpointPackage.getLabelStyle());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(dTreeEClass, DTree.class, "DTree", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDTree_SemanticElements(), theEcorePackage.getEObject(), null, "semanticElements", null, 0, -1, DTree.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTree_Description(), theDescriptionPackage.getTreeDescription(), null, "description", null, 1, 1, DTree.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dTreeEClass, DTree.class, "DTree", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDTree_SemanticElements(), theEcorePackage.getEObject(), null, "semanticElements", null, 0, -1, DTree.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDTree_Description(), theDescriptionPackage.getTreeDescription(), null, "description", null, 1, 1, DTree.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dTreeElementEClass, DTreeElement.class, "DTreeElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDTreeElement_TreeElementMapping(), theDescriptionPackage.getTreeMapping(), null, "treeElementMapping", null, 0, 1, DTreeElement.class, IS_TRANSIENT, IS_VOLATILE,
-                !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEClass(dTreeElementEClass, DTreeElement.class, "DTreeElement", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDTreeElement_TreeElementMapping(), theDescriptionPackage.getTreeMapping(), null, "treeElementMapping", null, 0, 1, DTreeElement.class, EPackageImpl.IS_TRANSIENT,
+                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dTreeItemContainerEClass, DTreeItemContainer.class, "DTreeItemContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDTreeItemContainer_OwnedTreeItems(), this.getDTreeItem(), this.getDTreeItem_Container(), "ownedTreeItems", null, 0, -1, DTreeItemContainer.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dTreeItemContainerEClass, DTreeItemContainer.class, "DTreeItemContainer", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDTreeItemContainer_OwnedTreeItems(), this.getDTreeItem(), this.getDTreeItem_Container(), "ownedTreeItems", null, 0, -1, DTreeItemContainer.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dTreeItemEClass, DTreeItem.class, "DTreeItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDTreeItem_Expanded(), theEcorePackage.getEBoolean(), "expanded", null, 1, 1, DTreeItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTreeItem_OwnedStyle(), this.getTreeItemStyle(), null, "ownedStyle", null, 1, 1, DTreeItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTreeItem_ActualMapping(), theDescriptionPackage.getTreeItemMapping(), null, "actualMapping", null, 1, 1, DTreeItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTreeItem_Container(), this.getDTreeItemContainer(), this.getDTreeItemContainer_OwnedTreeItems(), "container", null, 0, 1, DTreeItem.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTreeItem_StyleUpdater(), theDescriptionPackage.getStyleUpdater(), null, "styleUpdater", null, 0, 1, DTreeItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTreeItem_Updater(), theDescriptionPackage.getTreeItemUpdater(), null, "updater", null, 0, 1, DTreeItem.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEClass(dTreeItemEClass, DTreeItem.class, "DTreeItem", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDTreeItem_Expanded(), theEcorePackage.getEBoolean(), "expanded", null, 1, 1, DTreeItem.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDTreeItem_OwnedStyle(), this.getTreeItemStyle(), null, "ownedStyle", null, 1, 1, DTreeItem.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDTreeItem_ActualMapping(), theDescriptionPackage.getTreeItemMapping(), null, "actualMapping", null, 1, 1, DTreeItem.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDTreeItem_Container(), this.getDTreeItemContainer(), this.getDTreeItemContainer_OwnedTreeItems(), "container", null, 0, 1, DTreeItem.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDTreeItem_StyleUpdater(), theDescriptionPackage.getStyleUpdater(), null, "styleUpdater", null, 0, 1, DTreeItem.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE,
+                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDTreeItem_Updater(), theDescriptionPackage.getTreeItemUpdater(), null, "updater", null, 0, 1, DTreeItem.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(treeItemStyleEClass, TreeItemStyle.class, "TreeItemStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTreeItemStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "255,255,255", 0, 1, TreeItemStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(treeItemStyleEClass, TreeItemStyle.class, "TreeItemStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTreeItemStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "255,255,255", 0, 1, TreeItemStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dTreeElementSynchronizerEClass, DTreeElementSynchronizer.class, "DTreeElementSynchronizer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dTreeElementSynchronizerEClass, DTreeElementSynchronizer.class, "DTreeElementSynchronizer", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        EOperation op = addEOperation(dTreeElementSynchronizerEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, this.getDTreeItem(), "DTreeItem", 1, 1, IS_UNIQUE, IS_ORDERED);
+        EOperation op = addEOperation(dTreeElementSynchronizerEClass, null, "refresh", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
+        addEParameter(op, this.getDTreeItem(), "DTreeItem", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
         // Create resource
-        createResource(eNS_URI);
+        createResource(TreePackage.eNS_URI);
     }
 
 } // TreePackageImpl

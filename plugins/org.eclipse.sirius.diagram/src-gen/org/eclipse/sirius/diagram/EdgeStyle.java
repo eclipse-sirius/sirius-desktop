@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -58,7 +58,7 @@ public interface EdgeStyle extends Style {
      * Returns the value of the '<em><b>Stroke Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The color of the edge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Stroke Color</em>' containment reference.
      * @see #setStrokeColor(RGBValues)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEdgeStyle_StrokeColor()
@@ -86,7 +86,7 @@ public interface EdgeStyle extends Style {
      * {@link org.eclipse.sirius.diagram.LineStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the line.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Line Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.LineStyle
      * @see #setLineStyle(LineStyle)
@@ -116,7 +116,7 @@ public interface EdgeStyle extends Style {
      * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * source decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setSourceArrow(EdgeArrows)
@@ -146,7 +146,7 @@ public interface EdgeStyle extends Style {
      * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * target decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setTargetArrow(EdgeArrows)
@@ -235,7 +235,7 @@ public interface EdgeStyle extends Style {
      * enumeration {@link org.eclipse.sirius.diagram.EdgeRouting}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * routing style of the edge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeRouting
      * @see #setRoutingStyle(EdgeRouting)
@@ -380,7 +380,7 @@ public interface EdgeStyle extends Style {
      * {@link org.eclipse.sirius.diagram.EdgeStyle#getCentered
      * <em>Centered</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Centered</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.CenteringStyle

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.provider;
 
@@ -53,7 +53,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -70,7 +70,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public StyleItemProviderAdapterFactory() {
@@ -269,7 +269,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.style.DotDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -534,9 +534,10 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -544,9 +545,10 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -594,6 +596,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -603,6 +606,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -611,9 +615,10 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -625,46 +630,65 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (borderedStyleDescriptionItemProvider != null)
+        if (borderedStyleDescriptionItemProvider != null) {
             borderedStyleDescriptionItemProvider.dispose();
-        if (customStyleDescriptionItemProvider != null)
+        }
+        if (customStyleDescriptionItemProvider != null) {
             customStyleDescriptionItemProvider.dispose();
-        if (squareDescriptionItemProvider != null)
+        }
+        if (squareDescriptionItemProvider != null) {
             squareDescriptionItemProvider.dispose();
-        if (lozengeNodeDescriptionItemProvider != null)
+        }
+        if (lozengeNodeDescriptionItemProvider != null) {
             lozengeNodeDescriptionItemProvider.dispose();
-        if (ellipseNodeDescriptionItemProvider != null)
+        }
+        if (ellipseNodeDescriptionItemProvider != null) {
             ellipseNodeDescriptionItemProvider.dispose();
-        if (bundledImageDescriptionItemProvider != null)
+        }
+        if (bundledImageDescriptionItemProvider != null) {
             bundledImageDescriptionItemProvider.dispose();
-        if (noteDescriptionItemProvider != null)
+        }
+        if (noteDescriptionItemProvider != null) {
             noteDescriptionItemProvider.dispose();
-        if (dotDescriptionItemProvider != null)
+        }
+        if (dotDescriptionItemProvider != null) {
             dotDescriptionItemProvider.dispose();
-        if (gaugeCompositeStyleDescriptionItemProvider != null)
+        }
+        if (gaugeCompositeStyleDescriptionItemProvider != null) {
             gaugeCompositeStyleDescriptionItemProvider.dispose();
-        if (gaugeSectionDescriptionItemProvider != null)
+        }
+        if (gaugeSectionDescriptionItemProvider != null) {
             gaugeSectionDescriptionItemProvider.dispose();
-        if (flatContainerStyleDescriptionItemProvider != null)
+        }
+        if (flatContainerStyleDescriptionItemProvider != null) {
             flatContainerStyleDescriptionItemProvider.dispose();
-        if (shapeContainerStyleDescriptionItemProvider != null)
+        }
+        if (shapeContainerStyleDescriptionItemProvider != null) {
             shapeContainerStyleDescriptionItemProvider.dispose();
-        if (workspaceImageDescriptionItemProvider != null)
+        }
+        if (workspaceImageDescriptionItemProvider != null) {
             workspaceImageDescriptionItemProvider.dispose();
-        if (edgeStyleDescriptionItemProvider != null)
+        }
+        if (edgeStyleDescriptionItemProvider != null) {
             edgeStyleDescriptionItemProvider.dispose();
-        if (beginLabelStyleDescriptionItemProvider != null)
+        }
+        if (beginLabelStyleDescriptionItemProvider != null) {
             beginLabelStyleDescriptionItemProvider.dispose();
-        if (centerLabelStyleDescriptionItemProvider != null)
+        }
+        if (centerLabelStyleDescriptionItemProvider != null) {
             centerLabelStyleDescriptionItemProvider.dispose();
-        if (endLabelStyleDescriptionItemProvider != null)
+        }
+        if (endLabelStyleDescriptionItemProvider != null) {
             endLabelStyleDescriptionItemProvider.dispose();
-        if (bracketEdgeStyleDescriptionItemProvider != null)
+        }
+        if (bracketEdgeStyleDescriptionItemProvider != null) {
             bracketEdgeStyleDescriptionItemProvider.dispose();
+        }
     }
 
 }

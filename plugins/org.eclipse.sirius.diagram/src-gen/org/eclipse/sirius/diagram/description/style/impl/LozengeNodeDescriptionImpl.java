@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -60,7 +60,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * @generated
      * @ordered
      */
-    protected String widthComputationExpression = WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String widthComputationExpression = LozengeNodeDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeightComputationExpression()
@@ -82,7 +82,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * @generated
      * @ordered
      */
-    protected String heightComputationExpression = HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String heightComputationExpression = LozengeNodeDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' reference.
@@ -118,6 +118,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getWidthComputationExpression() {
         return widthComputationExpression;
     }
@@ -127,11 +128,13 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setWidthComputationExpression(String newWidthComputationExpression) {
         String oldWidthComputationExpression = widthComputationExpression;
         widthComputationExpression = newWidthComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, oldWidthComputationExpression, widthComputationExpression));
+        }
     }
 
     /**
@@ -139,6 +142,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getHeightComputationExpression() {
         return heightComputationExpression;
     }
@@ -148,11 +152,13 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setHeightComputationExpression(String newHeightComputationExpression) {
         String oldHeightComputationExpression = heightComputationExpression;
         heightComputationExpression = newHeightComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, oldHeightComputationExpression, heightComputationExpression));
+        }
     }
 
     /**
@@ -160,13 +166,15 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public ColorDescription getColor() {
         if (color != null && color.eIsProxy()) {
             InternalEObject oldColor = (InternalEObject) color;
             color = (ColorDescription) eResolveProxy(oldColor);
             if (color != oldColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.LOZENGE_NODE_DESCRIPTION__COLOR, oldColor, color));
+                }
             }
         }
         return color;
@@ -186,11 +194,13 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setColor(ColorDescription newColor) {
         ColorDescription oldColor = color;
         color = newColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.LOZENGE_NODE_DESCRIPTION__COLOR, oldColor, color));
+        }
     }
 
     /**
@@ -206,8 +216,9 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
         case StylePackage.LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
             return getHeightComputationExpression();
         case StylePackage.LOZENGE_NODE_DESCRIPTION__COLOR:
-            if (resolve)
+            if (resolve) {
                 return getColor();
+            }
             return basicGetColor();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -243,10 +254,10 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
-            setWidthComputationExpression(WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
+            setWidthComputationExpression(LozengeNodeDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
-            setHeightComputationExpression(HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT);
+            setHeightComputationExpression(LozengeNodeDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.LOZENGE_NODE_DESCRIPTION__COLOR:
             setColor((ColorDescription) null);
@@ -264,9 +275,11 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
-            return WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null : !WIDTH_COMPUTATION_EXPRESSION_EDEFAULT.equals(widthComputationExpression);
+            return LozengeNodeDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null : !LozengeNodeDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(widthComputationExpression);
         case StylePackage.LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
-            return HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null : !HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT.equals(heightComputationExpression);
+            return LozengeNodeDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null : !LozengeNodeDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(heightComputationExpression);
         case StylePackage.LOZENGE_NODE_DESCRIPTION__COLOR:
             return color != null;
         }
@@ -280,8 +293,9 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (widthComputationExpression: ");

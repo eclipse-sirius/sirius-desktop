@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.provider;
 
@@ -41,7 +41,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeCreationDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * This adds a property descriptor for the Edge Mappings feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEdgeMappingsPropertyDescriptor(Object object) {
@@ -83,7 +83,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * This adds a property descriptor for the Icon Path feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -134,9 +134,10 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * This adds a property descriptor for the Connection Completion
      * Precondition ( feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated-not
      */
+    @Override
     protected void addPreconditionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_EdgeCreationDescription_precondition_feature"),
@@ -196,7 +197,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -237,7 +238,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +260,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

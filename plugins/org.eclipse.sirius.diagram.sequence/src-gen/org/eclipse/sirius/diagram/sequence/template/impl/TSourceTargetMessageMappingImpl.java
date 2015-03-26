@@ -75,7 +75,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * @generated
      * @ordered
      */
-    protected String sourceFinderExpression = SOURCE_FINDER_EXPRESSION_EDEFAULT;
+    protected String sourceFinderExpression = TSourceTargetMessageMappingImpl.SOURCE_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTargetFinderExpression()
@@ -97,7 +97,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * @generated
      * @ordered
      */
-    protected String targetFinderExpression = TARGET_FINDER_EXPRESSION_EDEFAULT;
+    protected String targetFinderExpression = TSourceTargetMessageMappingImpl.TARGET_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isUseDomainElement()
@@ -119,7 +119,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * @generated
      * @ordered
      */
-    protected boolean useDomainElement = USE_DOMAIN_ELEMENT_EDEFAULT;
+    protected boolean useDomainElement = TSourceTargetMessageMappingImpl.USE_DOMAIN_ELEMENT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -145,6 +145,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * 
      * @generated
      */
+    @Override
     public EList<TMessageExtremity> getSource() {
         if (source == null) {
             source = new EObjectResolvingEList<TMessageExtremity>(TMessageExtremity.class, this, TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE);
@@ -157,6 +158,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * 
      * @generated
      */
+    @Override
     public String getSourceFinderExpression() {
         return sourceFinderExpression;
     }
@@ -166,11 +168,13 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * 
      * @generated
      */
+    @Override
     public void setSourceFinderExpression(String newSourceFinderExpression) {
         String oldSourceFinderExpression = sourceFinderExpression;
         sourceFinderExpression = newSourceFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION, oldSourceFinderExpression, sourceFinderExpression));
+        }
     }
 
     /**
@@ -178,6 +182,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * 
      * @generated
      */
+    @Override
     public String getTargetFinderExpression() {
         return targetFinderExpression;
     }
@@ -187,11 +192,13 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * 
      * @generated
      */
+    @Override
     public void setTargetFinderExpression(String newTargetFinderExpression) {
         String oldTargetFinderExpression = targetFinderExpression;
         targetFinderExpression = newTargetFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION, oldTargetFinderExpression, targetFinderExpression));
+        }
     }
 
     /**
@@ -199,6 +206,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * 
      * @generated
      */
+    @Override
     public boolean isUseDomainElement() {
         return useDomainElement;
     }
@@ -208,11 +216,13 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      * 
      * @generated
      */
+    @Override
     public void setUseDomainElement(boolean newUseDomainElement) {
         boolean oldUseDomainElement = useDomainElement;
         useDomainElement = newUseDomainElement;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT, oldUseDomainElement, useDomainElement));
+        }
     }
 
     /**
@@ -273,13 +283,13 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
             getSource().clear();
             return;
         case TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION:
-            setSourceFinderExpression(SOURCE_FINDER_EXPRESSION_EDEFAULT);
+            setSourceFinderExpression(TSourceTargetMessageMappingImpl.SOURCE_FINDER_EXPRESSION_EDEFAULT);
             return;
         case TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION:
-            setTargetFinderExpression(TARGET_FINDER_EXPRESSION_EDEFAULT);
+            setTargetFinderExpression(TSourceTargetMessageMappingImpl.TARGET_FINDER_EXPRESSION_EDEFAULT);
             return;
         case TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT:
-            setUseDomainElement(USE_DOMAIN_ELEMENT_EDEFAULT);
+            setUseDomainElement(TSourceTargetMessageMappingImpl.USE_DOMAIN_ELEMENT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -296,11 +306,13 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
         case TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE:
             return source != null && !source.isEmpty();
         case TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION:
-            return SOURCE_FINDER_EXPRESSION_EDEFAULT == null ? sourceFinderExpression != null : !SOURCE_FINDER_EXPRESSION_EDEFAULT.equals(sourceFinderExpression);
+            return TSourceTargetMessageMappingImpl.SOURCE_FINDER_EXPRESSION_EDEFAULT == null ? sourceFinderExpression != null : !TSourceTargetMessageMappingImpl.SOURCE_FINDER_EXPRESSION_EDEFAULT
+                    .equals(sourceFinderExpression);
         case TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION:
-            return TARGET_FINDER_EXPRESSION_EDEFAULT == null ? targetFinderExpression != null : !TARGET_FINDER_EXPRESSION_EDEFAULT.equals(targetFinderExpression);
+            return TSourceTargetMessageMappingImpl.TARGET_FINDER_EXPRESSION_EDEFAULT == null ? targetFinderExpression != null : !TSourceTargetMessageMappingImpl.TARGET_FINDER_EXPRESSION_EDEFAULT
+                    .equals(targetFinderExpression);
         case TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT:
-            return useDomainElement != USE_DOMAIN_ELEMENT_EDEFAULT;
+            return useDomainElement != TSourceTargetMessageMappingImpl.USE_DOMAIN_ELEMENT_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -312,8 +324,9 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (sourceFinderExpression: ");

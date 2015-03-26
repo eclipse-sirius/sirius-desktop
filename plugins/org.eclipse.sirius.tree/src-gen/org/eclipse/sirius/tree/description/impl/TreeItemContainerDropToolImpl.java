@@ -72,7 +72,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * The cached value of the '{@link #getFirstModelOperation()
      * <em>First Model Operation</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFirstModelOperation()
      * @generated
      * @ordered
@@ -161,7 +161,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * @generated
      * @ordered
      */
-    protected TreeDragSource dragSource = DRAG_SOURCE_EDEFAULT;
+    protected TreeDragSource dragSource = TreeItemContainerDropToolImpl.DRAG_SOURCE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -187,6 +187,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public ModelOperation getFirstModelOperation() {
         return firstModelOperation;
     }
@@ -202,10 +203,11 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__FIRST_MODEL_OPERATION, oldFirstModelOperation,
                     newFirstModelOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -215,18 +217,25 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public void setFirstModelOperation(ModelOperation newFirstModelOperation) {
         if (newFirstModelOperation != firstModelOperation) {
             NotificationChain msgs = null;
-            if (firstModelOperation != null)
-                msgs = ((InternalEObject) firstModelOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__FIRST_MODEL_OPERATION, null, msgs);
-            if (newFirstModelOperation != null)
-                msgs = ((InternalEObject) newFirstModelOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__FIRST_MODEL_OPERATION, null, msgs);
+            if (firstModelOperation != null) {
+                msgs = ((InternalEObject) firstModelOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__FIRST_MODEL_OPERATION,
+                        null, msgs);
+            }
+            if (newFirstModelOperation != null) {
+                msgs = ((InternalEObject) newFirstModelOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__FIRST_MODEL_OPERATION,
+                        null, msgs);
+            }
             msgs = basicSetFirstModelOperation(newFirstModelOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__FIRST_MODEL_OPERATION, newFirstModelOperation, newFirstModelOperation));
+        }
     }
 
     /**
@@ -234,6 +243,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public EList<TreeVariable> getVariables() {
         if (variables == null) {
             variables = new EObjectContainmentEList<TreeVariable>(TreeVariable.class, this, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__VARIABLES);
@@ -246,6 +256,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public DropContainerVariable getOldContainer() {
         return oldContainer;
     }
@@ -260,10 +271,11 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
         oldContainer = newOldContainer;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER, oldOldContainer, newOldContainer);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -273,18 +285,23 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public void setOldContainer(DropContainerVariable newOldContainer) {
         if (newOldContainer != oldContainer) {
             NotificationChain msgs = null;
-            if (oldContainer != null)
-                msgs = ((InternalEObject) oldContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER, null, msgs);
-            if (newOldContainer != null)
-                msgs = ((InternalEObject) newOldContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER, null, msgs);
+            if (oldContainer != null) {
+                msgs = ((InternalEObject) oldContainer).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER, null, msgs);
+            }
+            if (newOldContainer != null) {
+                msgs = ((InternalEObject) newOldContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER, null, msgs);
+            }
             msgs = basicSetOldContainer(newOldContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER, newOldContainer, newOldContainer));
+        }
     }
 
     /**
@@ -292,6 +309,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public DropContainerVariable getNewContainer() {
         return newContainer;
     }
@@ -306,10 +324,11 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
         newContainer = newNewContainer;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER, oldNewContainer, newNewContainer);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -319,18 +338,23 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public void setNewContainer(DropContainerVariable newNewContainer) {
         if (newNewContainer != newContainer) {
             NotificationChain msgs = null;
-            if (newContainer != null)
-                msgs = ((InternalEObject) newContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER, null, msgs);
-            if (newNewContainer != null)
-                msgs = ((InternalEObject) newNewContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER, null, msgs);
+            if (newContainer != null) {
+                msgs = ((InternalEObject) newContainer).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER, null, msgs);
+            }
+            if (newNewContainer != null) {
+                msgs = ((InternalEObject) newNewContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER, null, msgs);
+            }
             msgs = basicSetNewContainer(newNewContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER, newNewContainer, newNewContainer));
+        }
     }
 
     /**
@@ -338,6 +362,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public ElementDropVariable getElement() {
         return element;
     }
@@ -352,10 +377,11 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
         element = newElement;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT, oldElement, newElement);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -365,18 +391,23 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public void setElement(ElementDropVariable newElement) {
         if (newElement != element) {
             NotificationChain msgs = null;
-            if (element != null)
-                msgs = ((InternalEObject) element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT, null, msgs);
-            if (newElement != null)
-                msgs = ((InternalEObject) newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT, null, msgs);
+            if (element != null) {
+                msgs = ((InternalEObject) element).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT, null, msgs);
+            }
+            if (newElement != null) {
+                msgs = ((InternalEObject) newElement).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT, null, msgs);
+            }
             msgs = basicSetElement(newElement, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT, newElement, newElement));
+        }
     }
 
     /**
@@ -384,6 +415,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public ContainerViewVariable getNewViewContainer() {
         return newViewContainer;
     }
@@ -399,10 +431,11 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER, oldNewViewContainer,
                     newNewViewContainer);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -412,18 +445,25 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public void setNewViewContainer(ContainerViewVariable newNewViewContainer) {
         if (newNewViewContainer != newViewContainer) {
             NotificationChain msgs = null;
-            if (newViewContainer != null)
-                msgs = ((InternalEObject) newViewContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER, null, msgs);
-            if (newNewViewContainer != null)
-                msgs = ((InternalEObject) newNewViewContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER, null, msgs);
+            if (newViewContainer != null) {
+                msgs = ((InternalEObject) newViewContainer).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER, null,
+                        msgs);
+            }
+            if (newNewViewContainer != null) {
+                msgs = ((InternalEObject) newNewViewContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER, null,
+                        msgs);
+            }
             msgs = basicSetNewViewContainer(newNewViewContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER, newNewViewContainer, newNewViewContainer));
+        }
     }
 
     /**
@@ -431,6 +471,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public PrecedingSiblingsVariables getPrecedingSiblings() {
         return precedingSiblings;
     }
@@ -446,10 +487,11 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS, oldPrecedingSiblings,
                     newPrecedingSiblings);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -459,18 +501,25 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public void setPrecedingSiblings(PrecedingSiblingsVariables newPrecedingSiblings) {
         if (newPrecedingSiblings != precedingSiblings) {
             NotificationChain msgs = null;
-            if (precedingSiblings != null)
-                msgs = ((InternalEObject) precedingSiblings).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS, null, msgs);
-            if (newPrecedingSiblings != null)
-                msgs = ((InternalEObject) newPrecedingSiblings).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS, null, msgs);
+            if (precedingSiblings != null) {
+                msgs = ((InternalEObject) precedingSiblings).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS, null,
+                        msgs);
+            }
+            if (newPrecedingSiblings != null) {
+                msgs = ((InternalEObject) newPrecedingSiblings).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS, null,
+                        msgs);
+            }
             msgs = basicSetPrecedingSiblings(newPrecedingSiblings, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS, newPrecedingSiblings, newPrecedingSiblings));
+        }
     }
 
     /**
@@ -478,6 +527,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public TreeDragSource getDragSource() {
         return dragSource;
     }
@@ -487,11 +537,13 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      * 
      * @generated
      */
+    @Override
     public void setDragSource(TreeDragSource newDragSource) {
         TreeDragSource oldDragSource = dragSource;
-        dragSource = newDragSource == null ? DRAG_SOURCE_EDEFAULT : newDragSource;
-        if (eNotificationRequired())
+        dragSource = newDragSource == null ? TreeItemContainerDropToolImpl.DRAG_SOURCE_EDEFAULT : newDragSource;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE, oldDragSource, dragSource));
+        }
     }
 
     /**
@@ -616,7 +668,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
             setPrecedingSiblings((PrecedingSiblingsVariables) null);
             return;
         case DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE:
-            setDragSource(DRAG_SOURCE_EDEFAULT);
+            setDragSource(TreeItemContainerDropToolImpl.DRAG_SOURCE_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -645,7 +697,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
         case DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS:
             return precedingSiblings != null;
         case DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE:
-            return dragSource != DRAG_SOURCE_EDEFAULT;
+            return dragSource != TreeItemContainerDropToolImpl.DRAG_SOURCE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -697,8 +749,9 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (dragSource: ");

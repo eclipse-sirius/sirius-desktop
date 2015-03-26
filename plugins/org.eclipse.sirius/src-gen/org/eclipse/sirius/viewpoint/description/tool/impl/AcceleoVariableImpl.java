@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -40,7 +40,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -50,18 +50,18 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = AcceleoVariableImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getComputationExpression()
      * <em>Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getComputationExpression()
      * @generated
      * @ordered
@@ -72,16 +72,16 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
      * The cached value of the '{@link #getComputationExpression()
      * <em>Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getComputationExpression()
      * @generated
      * @ordered
      */
-    protected String computationExpression = COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String computationExpression = AcceleoVariableImpl.COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AcceleoVariableImpl() {
@@ -90,7 +90,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,49 +100,55 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ACCELEO_VARIABLE__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getComputationExpression() {
         return computationExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setComputationExpression(String newComputationExpression) {
         String oldComputationExpression = computationExpression;
         computationExpression = newComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION, oldComputationExpression, computationExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +164,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,17 +182,17 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.ACCELEO_VARIABLE__NAME:
-            setName(NAME_EDEFAULT);
+            setName(AcceleoVariableImpl.NAME_EDEFAULT);
             return;
         case ToolPackage.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION:
-            setComputationExpression(COMPUTATION_EXPRESSION_EDEFAULT);
+            setComputationExpression(AcceleoVariableImpl.COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -194,23 +200,23 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.ACCELEO_VARIABLE__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return AcceleoVariableImpl.NAME_EDEFAULT == null ? name != null : !AcceleoVariableImpl.NAME_EDEFAULT.equals(name);
         case ToolPackage.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION:
-            return COMPUTATION_EXPRESSION_EDEFAULT == null ? computationExpression != null : !COMPUTATION_EXPRESSION_EDEFAULT.equals(computationExpression);
+            return AcceleoVariableImpl.COMPUTATION_EXPRESSION_EDEFAULT == null ? computationExpression != null : !AcceleoVariableImpl.COMPUTATION_EXPRESSION_EDEFAULT.equals(computationExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +240,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -258,13 +264,14 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

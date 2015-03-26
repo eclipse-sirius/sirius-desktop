@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.concern.impl;
 
@@ -62,14 +62,14 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#eNS_URI
      * @see #init()
      * @generated
      */
     private ConcernPackageImpl() {
-        super(eNS_URI, ConcernFactory.eINSTANCE);
+        super(ConcernPackage.eNS_URI, ConcernFactory.eINSTANCE);
     }
 
     /**
@@ -82,27 +82,28 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link ConcernPackage#eINSTANCE} when
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static ConcernPackage init() {
-        if (isInited)
+        if (ConcernPackageImpl.isInited) {
             return (ConcernPackage) EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-                : new ConcernPackageImpl());
+        ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.get(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
+                .get(ConcernPackage.eNS_URI) : new ConcernPackageImpl());
 
-        isInited = true;
+        ConcernPackageImpl.isInited = true;
 
         // Initialize simple dependencies
         ViewpointPackage.eINSTANCE.eClass();
@@ -148,6 +149,7 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getConcernSet() {
         return concernSetEClass;
     }
@@ -157,6 +159,7 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getConcernSet_OwnedConcernDescriptions() {
         return (EReference) concernSetEClass.getEStructuralFeatures().get(0);
     }
@@ -166,6 +169,7 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * 
      * @generated
      */
+    @Override
     public EClass getConcernDescription() {
         return concernDescriptionEClass;
     }
@@ -175,6 +179,7 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getConcernDescription_Filters() {
         return (EReference) concernDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -184,6 +189,7 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getConcernDescription_Rules() {
         return (EReference) concernDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -193,6 +199,7 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * 
      * @generated
      */
+    @Override
     public EReference getConcernDescription_Behaviors() {
         return (EReference) concernDescriptionEClass.getEStructuralFeatures().get(2);
     }
@@ -202,6 +209,7 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * 
      * @generated
      */
+    @Override
     public ConcernFactory getConcernFactory() {
         return (ConcernFactory) getEFactoryInstance();
     }
@@ -221,18 +229,19 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        concernSetEClass = createEClass(CONCERN_SET);
-        createEReference(concernSetEClass, CONCERN_SET__OWNED_CONCERN_DESCRIPTIONS);
+        concernSetEClass = createEClass(ConcernPackage.CONCERN_SET);
+        createEReference(concernSetEClass, ConcernPackage.CONCERN_SET__OWNED_CONCERN_DESCRIPTIONS);
 
-        concernDescriptionEClass = createEClass(CONCERN_DESCRIPTION);
-        createEReference(concernDescriptionEClass, CONCERN_DESCRIPTION__FILTERS);
-        createEReference(concernDescriptionEClass, CONCERN_DESCRIPTION__RULES);
-        createEReference(concernDescriptionEClass, CONCERN_DESCRIPTION__BEHAVIORS);
+        concernDescriptionEClass = createEClass(ConcernPackage.CONCERN_DESCRIPTION);
+        createEReference(concernDescriptionEClass, ConcernPackage.CONCERN_DESCRIPTION__FILTERS);
+        createEReference(concernDescriptionEClass, ConcernPackage.CONCERN_DESCRIPTION__RULES);
+        createEReference(concernDescriptionEClass, ConcernPackage.CONCERN_DESCRIPTION__BEHAVIORS);
     }
 
     /**
@@ -246,18 +255,19 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(ConcernPackage.eNAME);
+        setNsPrefix(ConcernPackage.eNS_PREFIX);
+        setNsURI(ConcernPackage.eNS_URI);
 
         // Obtain other dependent packages
         org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
@@ -276,17 +286,21 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
         concernDescriptionEClass.getESuperTypes().add(theDescriptionPackage_1.getIdentifiedElement());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(concernSetEClass, ConcernSet.class, "ConcernSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getConcernSet_OwnedConcernDescriptions(), this.getConcernDescription(), null, "ownedConcernDescriptions", null, 0, -1, ConcernSet.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(concernSetEClass, ConcernSet.class, "ConcernSet", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getConcernSet_OwnedConcernDescriptions(), this.getConcernDescription(), null, "ownedConcernDescriptions", null, 0, -1, ConcernSet.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(concernDescriptionEClass, ConcernDescription.class, "ConcernDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getConcernDescription_Filters(), theFilterPackage.getFilterDescription(), null, "filters", null, 0, -1, ConcernDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getConcernDescription_Rules(), theValidationPackage.getValidationRule(), null, "rules", null, 0, -1, ConcernDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getConcernDescription_Behaviors(), theToolPackage.getBehaviorTool(), null, "behaviors", null, 0, -1, ConcernDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(concernDescriptionEClass, ConcernDescription.class, "ConcernDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getConcernDescription_Filters(), theFilterPackage.getFilterDescription(), null, "filters", null, 0, -1, ConcernDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getConcernDescription_Rules(), theValidationPackage.getValidationRule(), null, "rules", null, 0, -1, ConcernDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getConcernDescription_Behaviors(), theToolPackage.getBehaviorTool(), null, "behaviors", null, 0, -1, ConcernDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create annotations
         // TagValues

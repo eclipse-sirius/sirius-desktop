@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -71,7 +71,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Node Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_SubNodeMappings()
@@ -90,7 +90,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Node Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_AllNodeMappings()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -108,7 +108,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Node Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_ReusedNodeMappings()
      * @model
@@ -127,7 +127,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Container Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_SubContainerMappings()
@@ -146,7 +146,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Container Mappings</em>' reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_ReusedContainerMappings()
@@ -165,7 +165,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Container Mappings</em>' reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_AllContainerMappings()
@@ -231,7 +231,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Set to List if you want a container acting like a list. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Children Presentation</em>' attribute.
      * @see org.eclipse.sirius.diagram.ContainerLayout
      * @see #setChildrenPresentation(ContainerLayout)

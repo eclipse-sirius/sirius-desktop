@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -108,7 +108,7 @@ public enum LayoutDirection implements Enumerator {
     /**
      * An array of all the '<em><b>Layout Direction</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final LayoutDirection[] VALUES_ARRAY = new LayoutDirection[] { TOP_TO_BOTTOM, LEFT_TO_RIGHT, BOTTOM_TO_TOP, };
@@ -119,7 +119,7 @@ public enum LayoutDirection implements Enumerator {
      * 
      * @generated
      */
-    public static final List<LayoutDirection> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<LayoutDirection> VALUES = Collections.unmodifiableList(Arrays.asList(LayoutDirection.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Layout Direction</b></em>' literal with the specified
@@ -128,8 +128,7 @@ public enum LayoutDirection implements Enumerator {
      * @generated
      */
     public static LayoutDirection get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            LayoutDirection result = VALUES_ARRAY[i];
+        for (LayoutDirection result : LayoutDirection.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -144,8 +143,7 @@ public enum LayoutDirection implements Enumerator {
      * @generated
      */
     public static LayoutDirection getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            LayoutDirection result = VALUES_ARRAY[i];
+        for (LayoutDirection result : LayoutDirection.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -209,6 +207,7 @@ public enum LayoutDirection implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -218,6 +217,7 @@ public enum LayoutDirection implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -227,6 +227,7 @@ public enum LayoutDirection implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.provider;
 
@@ -35,7 +35,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BundledImageDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
     /**
      * This adds a property descriptor for the Shape feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addShapePropertyDescriptor(Object object) {
@@ -75,7 +75,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
     /**
      * This adds a property descriptor for the Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
@@ -98,7 +98,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -108,10 +108,11 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
         String shape = ((BundledImageDescription) object).getShape().getName();
         String label = getString("_UI_BundledImageDescription_type");
 
-        if (shape != null && color != null)
+        if (shape != null && color != null) {
             return label + " " + color + " " + shape;
-        else
+        } else {
             return label;
+        }
     }
 
     /**
@@ -139,7 +140,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

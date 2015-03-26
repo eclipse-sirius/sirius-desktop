@@ -55,7 +55,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
      * @generated
      * @ordered
      */
-    protected String sendingEndFinderExpression = SENDING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String sendingEndFinderExpression = MessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getReceivingEndFinderExpression()
@@ -77,7 +77,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
      * @generated
      * @ordered
      */
-    protected String receivingEndFinderExpression = RECEIVING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String receivingEndFinderExpression = MessageMappingImpl.RECEIVING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -103,6 +103,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
      * 
      * @generated
      */
+    @Override
     public String getSendingEndFinderExpression() {
         return sendingEndFinderExpression;
     }
@@ -112,11 +113,13 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
      * 
      * @generated
      */
+    @Override
     public void setSendingEndFinderExpression(String newSendingEndFinderExpression) {
         String oldSendingEndFinderExpression = sendingEndFinderExpression;
         sendingEndFinderExpression = newSendingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION, oldSendingEndFinderExpression, sendingEndFinderExpression));
+        }
     }
 
     /**
@@ -124,6 +127,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
      * 
      * @generated
      */
+    @Override
     public String getReceivingEndFinderExpression() {
         return receivingEndFinderExpression;
     }
@@ -133,11 +137,13 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
      * 
      * @generated
      */
+    @Override
     public void setReceivingEndFinderExpression(String newReceivingEndFinderExpression) {
         String oldReceivingEndFinderExpression = receivingEndFinderExpression;
         receivingEndFinderExpression = newReceivingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION, oldReceivingEndFinderExpression, receivingEndFinderExpression));
+        }
     }
 
     /**
@@ -183,10 +189,10 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION:
-            setSendingEndFinderExpression(SENDING_END_FINDER_EXPRESSION_EDEFAULT);
+            setSendingEndFinderExpression(MessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION:
-            setReceivingEndFinderExpression(RECEIVING_END_FINDER_EXPRESSION_EDEFAULT);
+            setReceivingEndFinderExpression(MessageMappingImpl.RECEIVING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -201,9 +207,11 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION:
-            return SENDING_END_FINDER_EXPRESSION_EDEFAULT == null ? sendingEndFinderExpression != null : !SENDING_END_FINDER_EXPRESSION_EDEFAULT.equals(sendingEndFinderExpression);
+            return MessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT == null ? sendingEndFinderExpression != null : !MessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(sendingEndFinderExpression);
         case DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION:
-            return RECEIVING_END_FINDER_EXPRESSION_EDEFAULT == null ? receivingEndFinderExpression != null : !RECEIVING_END_FINDER_EXPRESSION_EDEFAULT.equals(receivingEndFinderExpression);
+            return MessageMappingImpl.RECEIVING_END_FINDER_EXPRESSION_EDEFAULT == null ? receivingEndFinderExpression != null : !MessageMappingImpl.RECEIVING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(receivingEndFinderExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -215,8 +223,9 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (sendingEndFinderExpression: ");

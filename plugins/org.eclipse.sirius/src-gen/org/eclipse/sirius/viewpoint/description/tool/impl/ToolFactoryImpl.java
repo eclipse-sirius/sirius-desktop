@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -67,14 +67,14 @@ import org.eclipse.sirius.viewpoint.description.tool.Unset;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static ToolFactory init() {
@@ -92,7 +92,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ToolFactoryImpl() {
@@ -101,7 +101,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -211,7 +211,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,9 +226,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ToolDescription createToolDescription() {
         ToolDescriptionImpl toolDescription = new ToolDescriptionImpl();
         ElementVariable elementVar = createElementVariable();
@@ -243,9 +244,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public PasteDescription createPasteDescription() {
         PasteDescriptionImpl pasteDescription = new PasteDescriptionSpec();
 
@@ -274,9 +276,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public SelectionWizardDescription createSelectionWizardDescription() {
         SelectionWizardDescriptionImpl selectionWizardDescription = new SelectionWizardDescriptionImpl();
         ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
@@ -295,9 +298,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public PaneBasedSelectionWizardDescription createPaneBasedSelectionWizardDescription() {
         PaneBasedSelectionWizardDescriptionImpl paneBasedSelectionWizardDescription = new PaneBasedSelectionWizardDescriptionImpl();
         ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
@@ -316,9 +320,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public MenuItemDescriptionReference createMenuItemDescriptionReference() {
         MenuItemDescriptionReferenceImpl menuItemDescriptionReference = new MenuItemDescriptionReferenceImpl();
         return menuItemDescriptionReference;
@@ -326,9 +331,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public OperationAction createOperationAction() {
         OperationActionImpl operationAction = new OperationActionImpl();
         ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
@@ -341,9 +347,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ExternalJavaAction createExternalJavaAction() {
         ExternalJavaActionImpl externalJavaAction = new ExternalJavaActionImpl();
         return externalJavaAction;
@@ -351,9 +358,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ExternalJavaActionCall createExternalJavaActionCall() {
         ExternalJavaActionCallImpl externalJavaActionCall = new ExternalJavaActionCallImpl();
         return externalJavaActionCall;
@@ -361,9 +369,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public PopupMenu createPopupMenu() {
         PopupMenuImpl popupMenu = new PopupMenuImpl();
         return popupMenu;
@@ -371,9 +380,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public AcceleoVariable createAcceleoVariable() {
         AcceleoVariableImpl acceleoVariable = new AcceleoVariableImpl();
         return acceleoVariable;
@@ -381,9 +391,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ElementDropVariable createElementDropVariable() {
         ElementDropVariableImpl elementDropVariable = new ElementDropVariableImpl();
         return elementDropVariable;
@@ -391,9 +402,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ElementSelectVariable createElementSelectVariable() {
         ElementSelectVariableImpl elementSelectVariable = new ElementSelectVariableImpl();
         return elementSelectVariable;
@@ -401,9 +413,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ElementVariable createElementVariable() {
         ElementVariableImpl elementVariable = new ElementVariableImpl();
         return elementVariable;
@@ -411,9 +424,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ElementViewVariable createElementViewVariable() {
         ElementViewVariableImpl elementViewVariable = new ElementViewVariableImpl();
         return elementViewVariable;
@@ -421,9 +435,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ElementDeleteVariable createElementDeleteVariable() {
         ElementDeleteVariableImpl elementDeleteVariable = new ElementDeleteVariableImpl();
         return elementDeleteVariable;
@@ -431,9 +446,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DropContainerVariable createDropContainerVariable() {
         DropContainerVariableImpl dropContainerVariable = new DropContainerVariableImpl();
         return dropContainerVariable;
@@ -441,9 +457,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SelectContainerVariable createSelectContainerVariable() {
         SelectContainerVariableImpl selectContainerVariable = new SelectContainerVariableImpl();
         return selectContainerVariable;
@@ -451,9 +468,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ContainerViewVariable createContainerViewVariable() {
         ContainerViewVariableImpl containerViewVariable = new ContainerViewVariableImpl();
         return containerViewVariable;
@@ -461,9 +479,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SelectModelElementVariable createSelectModelElementVariable() {
         SelectModelElementVariableImpl selectModelElementVariable = new SelectModelElementVariableImpl();
         return selectModelElementVariable;
@@ -471,9 +490,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EditMaskVariables createEditMaskVariables() {
         EditMaskVariablesImpl editMaskVariables = new EditMaskVariablesImpl();
         editMaskVariables.setMask("{0}");
@@ -482,9 +502,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public InitialNodeCreationOperation createInitialNodeCreationOperation() {
         InitialNodeCreationOperationImpl initialNodeCreationOperation = new InitialNodeCreationOperationImpl();
         return initialNodeCreationOperation;
@@ -492,9 +513,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public InitialOperation createInitialOperation() {
         InitialOperationImpl initialOperation = new InitialOperationImpl();
         return initialOperation;
@@ -502,9 +524,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public InitEdgeCreationOperation createInitEdgeCreationOperation() {
         InitEdgeCreationOperationImpl initEdgeCreationOperation = new InitEdgeCreationOperationImpl();
         return initEdgeCreationOperation;
@@ -512,9 +535,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public InitialContainerDropOperation createInitialContainerDropOperation() {
         InitialContainerDropOperationImpl initialContainerDropOperation = new InitialContainerDropOperationImpl();
         return initialContainerDropOperation;
@@ -522,9 +546,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public CreateInstance createCreateInstance() {
         CreateInstanceImpl createInstance = new CreateInstanceImpl();
         return createInstance;
@@ -532,9 +557,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ChangeContext createChangeContext() {
         ChangeContextImpl changeContext = new ChangeContextImpl();
         return changeContext;
@@ -542,9 +568,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SetValue createSetValue() {
         SetValueImpl setValue = new SetValueImpl();
         return setValue;
@@ -552,9 +579,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SetObject createSetObject() {
         SetObjectImpl setObject = new SetObjectImpl();
         return setObject;
@@ -562,9 +590,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Unset createUnset() {
         UnsetImpl unset = new UnsetImpl();
         return unset;
@@ -572,9 +601,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public MoveElement createMoveElement() {
         MoveElementImpl moveElement = new MoveElementImpl();
         return moveElement;
@@ -582,9 +612,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public RemoveElement createRemoveElement() {
         RemoveElementImpl removeElement = new RemoveElementImpl();
         return removeElement;
@@ -592,9 +623,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public For createFor() {
         ForImpl for_ = new ForImpl();
         return for_;
@@ -602,9 +634,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public If createIf() {
         IfImpl if_ = new IfImpl();
         return if_;
@@ -612,9 +645,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DeleteView createDeleteView() {
         DeleteViewImpl deleteView = new DeleteViewImpl();
         return deleteView;
@@ -622,9 +656,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public NameVariable createNameVariable() {
         NameVariableImpl nameVariable = new NameVariableImpl();
         return nameVariable;
@@ -632,9 +667,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ExternalJavaActionParameter createExternalJavaActionParameter() {
         ExternalJavaActionParameterImpl externalJavaActionParameter = new ExternalJavaActionParameterImpl();
         return externalJavaActionParameter;
@@ -642,9 +678,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ToolFilterDescription createToolFilterDescription() {
         ToolFilterDescriptionImpl toolFilterDescription = new ToolFilterDescriptionImpl();
         return toolFilterDescription;
@@ -652,9 +689,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public FeatureChangeListener createFeatureChangeListener() {
         FeatureChangeListenerImpl featureChangeListener = new FeatureChangeListenerImpl();
         return featureChangeListener;
@@ -662,9 +700,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Case createCase() {
         CaseImpl case_ = new CaseImpl();
         return case_;
@@ -672,9 +711,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Default createDefault() {
         DefaultImpl default_ = new DefaultImpl();
         return default_;
@@ -682,9 +722,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Switch createSwitch() {
         SwitchImpl switch_ = new SwitchImpl();
         return switch_;
@@ -692,19 +733,20 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DragSource createDragSourceFromString(EDataType eDataType, String initialValue) {
         DragSource result = DragSource.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertDragSourceToString(EDataType eDataType, Object instanceValue) {
@@ -713,16 +755,17 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ToolPackage getToolPackage() {
         return (ToolPackage) getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

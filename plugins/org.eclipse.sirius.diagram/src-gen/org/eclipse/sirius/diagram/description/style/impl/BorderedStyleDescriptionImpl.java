@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -42,7 +42,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -53,12 +53,12 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * The cached value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
      */
-    protected String borderSizeComputationExpression = BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String borderSizeComputationExpression = BorderedStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
@@ -94,6 +94,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public String getBorderSizeComputationExpression() {
         return borderSizeComputationExpression;
     }
@@ -103,12 +104,14 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public void setBorderSizeComputationExpression(String newBorderSizeComputationExpression) {
         String oldBorderSizeComputationExpression = borderSizeComputationExpression;
         borderSizeComputationExpression = newBorderSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION, oldBorderSizeComputationExpression,
                     borderSizeComputationExpression));
+        }
     }
 
     /**
@@ -116,13 +119,15 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public ColorDescription getBorderColor() {
         if (borderColor != null && borderColor.eIsProxy()) {
             InternalEObject oldBorderColor = (InternalEObject) borderColor;
             borderColor = (ColorDescription) eResolveProxy(oldBorderColor);
             if (borderColor != oldBorderColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
+                }
             }
         }
         return borderColor;
@@ -142,11 +147,13 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public void setBorderColor(ColorDescription newBorderColor) {
         ColorDescription oldBorderColor = borderColor;
         borderColor = newBorderColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
+        }
     }
 
     /**
@@ -160,8 +167,9 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return getBorderSizeComputationExpression();
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getBorderColor();
+            }
             return basicGetBorderColor();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -194,7 +202,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setBorderSizeComputationExpression(BorderedStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) null);
@@ -212,7 +220,8 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
+            return BorderedStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null
+                    : !BorderedStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
             return borderColor != null;
         }
@@ -226,8 +235,9 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSizeComputationExpression: ");

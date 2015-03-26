@@ -67,13 +67,15 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
      * 
      * @generated
      */
+    @Override
     public LineMapping getMapping() {
         if (mapping != null && mapping.eIsProxy()) {
             InternalEObject oldMapping = (InternalEObject) mapping;
             mapping = (LineMapping) eResolveProxy(oldMapping);
             if (mapping != oldMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.CREATE_LINE_TOOL__MAPPING, oldMapping, mapping));
+                }
             }
         }
         return mapping;
@@ -93,11 +95,13 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
      * 
      * @generated
      */
+    @Override
     public void setMapping(LineMapping newMapping) {
         LineMapping oldMapping = mapping;
         mapping = newMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_LINE_TOOL__MAPPING, oldMapping, mapping));
+        }
     }
 
     /**
@@ -109,8 +113,9 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DescriptionPackage.CREATE_LINE_TOOL__MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getMapping();
+            }
             return basicGetMapping();
         }
         return super.eGet(featureID, resolve, coreType);

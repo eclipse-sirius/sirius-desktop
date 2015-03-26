@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint;
 
@@ -48,7 +48,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * {@link org.eclipse.sirius.viewpoint.DRepresentationElement}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * directly contained representation elements <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Representation Elements</em>'
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_OwnedRepresentationElements()
@@ -64,7 +64,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * directly and indirectly contained representation elements <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Representation Elements</em>' reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_RepresentationElements()
@@ -78,7 +78,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The name of the representation. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_Name()
@@ -91,7 +91,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.DRepresentation#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -110,7 +110,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Annotation Entries</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_OwnedAnnotationEntries()

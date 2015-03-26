@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint;
 
@@ -39,7 +39,7 @@ public interface DFeatureExtension extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(FeatureExtensionDescription)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDFeatureExtension_Description()
@@ -53,7 +53,7 @@ public interface DFeatureExtension extends EObject {
      * {@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription
      * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

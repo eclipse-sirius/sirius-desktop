@@ -78,7 +78,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -96,7 +96,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -105,7 +105,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -114,7 +114,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -123,7 +123,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -132,7 +132,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -141,7 +141,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -168,7 +168,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -226,7 +226,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.impl.TreeMappingImpl
      * <em>Tree Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tree.description.impl.TreeMappingImpl
      * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeMapping()
      * @generated
@@ -236,7 +236,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -245,7 +245,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -302,20 +302,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__NAME = TREE_MAPPING__NAME;
+    int TREE_ITEM_MAPPING__NAME = DescriptionPackage.TREE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__LABEL = TREE_MAPPING__LABEL;
+    int TREE_ITEM_MAPPING__LABEL = DescriptionPackage.TREE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -324,7 +324,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__DETAIL_DESCRIPTIONS = TREE_MAPPING__DETAIL_DESCRIPTIONS;
+    int TREE_ITEM_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.TREE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -333,7 +333,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__NAVIGATION_DESCRIPTIONS = TREE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int TREE_ITEM_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.TREE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -342,7 +342,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__SEMANTIC_ELEMENTS = TREE_MAPPING__SEMANTIC_ELEMENTS;
+    int TREE_ITEM_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.TREE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Default Style</b></em>' containment
@@ -351,7 +351,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__DEFAULT_STYLE = TREE_MAPPING_FEATURE_COUNT + 0;
+    int TREE_ITEM_MAPPING__DEFAULT_STYLE = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
@@ -360,7 +360,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__CONDITIONAL_STYLES = TREE_MAPPING_FEATURE_COUNT + 1;
+    int TREE_ITEM_MAPPING__CONDITIONAL_STYLES = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Direct Edit</b></em>' containment
@@ -369,7 +369,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__DIRECT_EDIT = TREE_MAPPING_FEATURE_COUNT + 2;
+    int TREE_ITEM_MAPPING__DIRECT_EDIT = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Sub Item Mappings</b></em>' containment
@@ -378,7 +378,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__SUB_ITEM_MAPPINGS = TREE_MAPPING_FEATURE_COUNT + 3;
+    int TREE_ITEM_MAPPING__SUB_ITEM_MAPPINGS = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Drop Tools</b></em>' containment reference
@@ -387,16 +387,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__DROP_TOOLS = TREE_MAPPING_FEATURE_COUNT + 4;
+    int TREE_ITEM_MAPPING__DROP_TOOLS = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__DOMAIN_CLASS = TREE_MAPPING_FEATURE_COUNT + 5;
+    int TREE_ITEM_MAPPING__DOMAIN_CLASS = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -405,7 +405,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION = TREE_MAPPING_FEATURE_COUNT + 6;
+    int TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -414,7 +414,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TREE_MAPPING_FEATURE_COUNT + 7;
+    int TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Reused Tree Item Mappings</b></em>'
@@ -423,7 +423,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS = TREE_MAPPING_FEATURE_COUNT + 8;
+    int TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>All Sub Mappings</b></em>' reference list.
@@ -432,16 +432,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__ALL_SUB_MAPPINGS = TREE_MAPPING_FEATURE_COUNT + 9;
+    int TREE_ITEM_MAPPING__ALL_SUB_MAPPINGS = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Specialize</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__SPECIALIZE = TREE_MAPPING_FEATURE_COUNT + 10;
+    int TREE_ITEM_MAPPING__SPECIALIZE = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Delete</b></em>' containment reference.
@@ -450,7 +450,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__DELETE = TREE_MAPPING_FEATURE_COUNT + 11;
+    int TREE_ITEM_MAPPING__DELETE = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Create</b></em>' containment reference
@@ -459,7 +459,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__CREATE = TREE_MAPPING_FEATURE_COUNT + 12;
+    int TREE_ITEM_MAPPING__CREATE = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Dnd Tools</b></em>' containment reference
@@ -468,7 +468,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__DND_TOOLS = TREE_MAPPING_FEATURE_COUNT + 13;
+    int TREE_ITEM_MAPPING__DND_TOOLS = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Popup Menus</b></em>' containment
@@ -477,7 +477,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING__POPUP_MENUS = TREE_MAPPING_FEATURE_COUNT + 14;
+    int TREE_ITEM_MAPPING__POPUP_MENUS = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 14;
 
     /**
      * The number of structural features of the '<em>Tree Item Mapping</em>'
@@ -486,7 +486,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_MAPPING_FEATURE_COUNT = TREE_MAPPING_FEATURE_COUNT + 15;
+    int TREE_ITEM_MAPPING_FEATURE_COUNT = DescriptionPackage.TREE_MAPPING_FEATURE_COUNT + 15;
 
     /**
      * The meta object id for the '
@@ -503,7 +503,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -512,7 +512,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -521,7 +521,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -530,7 +530,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -539,7 +539,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -548,7 +548,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -557,7 +557,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -566,7 +566,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -587,7 +587,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.impl.ConditionalTreeItemStyleDescriptionImpl
      * <em>Conditional Tree Item Style Description</em>}' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tree.description.impl.ConditionalTreeItemStyleDescriptionImpl
      * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getConditionalTreeItemStyleDescription()
      * @generated
@@ -616,7 +616,7 @@ public interface DescriptionPackage extends EPackage {
      * The number of structural features of the '
      * <em>Conditional Tree Item Style Description</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -637,7 +637,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -646,7 +646,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -655,7 +655,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -664,7 +664,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -673,7 +673,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -730,7 +730,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -739,7 +739,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -748,7 +748,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -757,7 +757,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -766,7 +766,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -838,7 +838,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Containers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -847,7 +847,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drag Source Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -886,7 +886,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -895,7 +895,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -904,7 +904,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -913,7 +913,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -922,7 +922,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1003,7 +1003,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drag Source</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1034,47 +1034,47 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL__DOCUMENTATION = TREE_ITEM_TOOL__DOCUMENTATION;
+    int TREE_ITEM_CREATION_TOOL__DOCUMENTATION = DescriptionPackage.TREE_ITEM_TOOL__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL__NAME = TREE_ITEM_TOOL__NAME;
+    int TREE_ITEM_CREATION_TOOL__NAME = DescriptionPackage.TREE_ITEM_TOOL__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL__LABEL = TREE_ITEM_TOOL__LABEL;
+    int TREE_ITEM_CREATION_TOOL__LABEL = DescriptionPackage.TREE_ITEM_TOOL__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL__PRECONDITION = TREE_ITEM_TOOL__PRECONDITION;
+    int TREE_ITEM_CREATION_TOOL__PRECONDITION = DescriptionPackage.TREE_ITEM_TOOL__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL__FORCE_REFRESH = TREE_ITEM_TOOL__FORCE_REFRESH;
+    int TREE_ITEM_CREATION_TOOL__FORCE_REFRESH = DescriptionPackage.TREE_ITEM_TOOL__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -1083,7 +1083,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL__FILTERS = TREE_ITEM_TOOL__FILTERS;
+    int TREE_ITEM_CREATION_TOOL__FILTERS = DescriptionPackage.TREE_ITEM_TOOL__FILTERS;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -1092,7 +1092,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL__FIRST_MODEL_OPERATION = TREE_ITEM_TOOL__FIRST_MODEL_OPERATION;
+    int TREE_ITEM_CREATION_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -1101,16 +1101,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL__VARIABLES = TREE_ITEM_TOOL__VARIABLES;
+    int TREE_ITEM_CREATION_TOOL__VARIABLES = DescriptionPackage.TREE_ITEM_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL__MAPPING = TREE_ITEM_TOOL_FEATURE_COUNT + 0;
+    int TREE_ITEM_CREATION_TOOL__MAPPING = DescriptionPackage.TREE_ITEM_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -1120,7 +1120,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_CREATION_TOOL_FEATURE_COUNT = TREE_ITEM_TOOL_FEATURE_COUNT + 1;
+    int TREE_ITEM_CREATION_TOOL_FEATURE_COUNT = DescriptionPackage.TREE_ITEM_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1137,47 +1137,47 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__DOCUMENTATION = TREE_ITEM_TOOL__DOCUMENTATION;
+    int TREE_ITEM_EDITION_TOOL__DOCUMENTATION = DescriptionPackage.TREE_ITEM_TOOL__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__NAME = TREE_ITEM_TOOL__NAME;
+    int TREE_ITEM_EDITION_TOOL__NAME = DescriptionPackage.TREE_ITEM_TOOL__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__LABEL = TREE_ITEM_TOOL__LABEL;
+    int TREE_ITEM_EDITION_TOOL__LABEL = DescriptionPackage.TREE_ITEM_TOOL__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__PRECONDITION = TREE_ITEM_TOOL__PRECONDITION;
+    int TREE_ITEM_EDITION_TOOL__PRECONDITION = DescriptionPackage.TREE_ITEM_TOOL__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__FORCE_REFRESH = TREE_ITEM_TOOL__FORCE_REFRESH;
+    int TREE_ITEM_EDITION_TOOL__FORCE_REFRESH = DescriptionPackage.TREE_ITEM_TOOL__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -1186,7 +1186,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__FILTERS = TREE_ITEM_TOOL__FILTERS;
+    int TREE_ITEM_EDITION_TOOL__FILTERS = DescriptionPackage.TREE_ITEM_TOOL__FILTERS;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -1195,7 +1195,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__FIRST_MODEL_OPERATION = TREE_ITEM_TOOL__FIRST_MODEL_OPERATION;
+    int TREE_ITEM_EDITION_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -1204,25 +1204,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__VARIABLES = TREE_ITEM_TOOL__VARIABLES;
+    int TREE_ITEM_EDITION_TOOL__VARIABLES = DescriptionPackage.TREE_ITEM_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>Mask</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__MASK = TREE_ITEM_TOOL_FEATURE_COUNT + 0;
+    int TREE_ITEM_EDITION_TOOL__MASK = DescriptionPackage.TREE_ITEM_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__MAPPING = TREE_ITEM_TOOL_FEATURE_COUNT + 1;
+    int TREE_ITEM_EDITION_TOOL__MAPPING = DescriptionPackage.TREE_ITEM_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -1231,16 +1231,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__ELEMENT = TREE_ITEM_TOOL_FEATURE_COUNT + 2;
+    int TREE_ITEM_EDITION_TOOL__ELEMENT = DescriptionPackage.TREE_ITEM_TOOL_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Root</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL__ROOT = TREE_ITEM_TOOL_FEATURE_COUNT + 3;
+    int TREE_ITEM_EDITION_TOOL__ROOT = DescriptionPackage.TREE_ITEM_TOOL_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>Tree Item Edition Tool</em>
@@ -1249,7 +1249,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_EDITION_TOOL_FEATURE_COUNT = TREE_ITEM_TOOL_FEATURE_COUNT + 4;
+    int TREE_ITEM_EDITION_TOOL_FEATURE_COUNT = DescriptionPackage.TREE_ITEM_TOOL_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -1266,47 +1266,47 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL__DOCUMENTATION = TREE_ITEM_TOOL__DOCUMENTATION;
+    int TREE_ITEM_DELETION_TOOL__DOCUMENTATION = DescriptionPackage.TREE_ITEM_TOOL__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL__NAME = TREE_ITEM_TOOL__NAME;
+    int TREE_ITEM_DELETION_TOOL__NAME = DescriptionPackage.TREE_ITEM_TOOL__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL__LABEL = TREE_ITEM_TOOL__LABEL;
+    int TREE_ITEM_DELETION_TOOL__LABEL = DescriptionPackage.TREE_ITEM_TOOL__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL__PRECONDITION = TREE_ITEM_TOOL__PRECONDITION;
+    int TREE_ITEM_DELETION_TOOL__PRECONDITION = DescriptionPackage.TREE_ITEM_TOOL__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL__FORCE_REFRESH = TREE_ITEM_TOOL__FORCE_REFRESH;
+    int TREE_ITEM_DELETION_TOOL__FORCE_REFRESH = DescriptionPackage.TREE_ITEM_TOOL__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -1315,7 +1315,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL__FILTERS = TREE_ITEM_TOOL__FILTERS;
+    int TREE_ITEM_DELETION_TOOL__FILTERS = DescriptionPackage.TREE_ITEM_TOOL__FILTERS;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -1324,7 +1324,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL__FIRST_MODEL_OPERATION = TREE_ITEM_TOOL__FIRST_MODEL_OPERATION;
+    int TREE_ITEM_DELETION_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -1333,7 +1333,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL__VARIABLES = TREE_ITEM_TOOL__VARIABLES;
+    int TREE_ITEM_DELETION_TOOL__VARIABLES = DescriptionPackage.TREE_ITEM_TOOL__VARIABLES;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' container reference.
@@ -1342,7 +1342,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL__MAPPING = TREE_ITEM_TOOL_FEATURE_COUNT + 0;
+    int TREE_ITEM_DELETION_TOOL__MAPPING = DescriptionPackage.TREE_ITEM_TOOL_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -1352,7 +1352,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_DELETION_TOOL_FEATURE_COUNT = TREE_ITEM_TOOL_FEATURE_COUNT + 1;
+    int TREE_ITEM_DELETION_TOOL_FEATURE_COUNT = DescriptionPackage.TREE_ITEM_TOOL_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1369,7 +1369,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1378,7 +1378,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1387,7 +1387,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1396,7 +1396,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1405,7 +1405,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1423,7 +1423,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1477,7 +1477,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tree Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1508,7 +1508,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1517,7 +1517,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1526,7 +1526,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1535,7 +1535,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1544,7 +1544,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1616,7 +1616,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tree Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1637,7 +1637,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.impl.StyleUpdaterImpl
      * <em>Style Updater</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tree.description.impl.StyleUpdaterImpl
      * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getStyleUpdater()
      * @generated
@@ -1676,7 +1676,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.impl.TreeVariableImpl
      * <em>Tree Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tree.description.impl.TreeVariableImpl
      * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeVariable()
      * @generated
@@ -1686,7 +1686,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1704,7 +1704,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1764,11 +1764,11 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int PRECEDING_SIBLINGS_VARIABLES__NAME = TREE_VARIABLE__NAME;
+    int PRECEDING_SIBLINGS_VARIABLES__NAME = DescriptionPackage.TREE_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1777,16 +1777,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PRECEDING_SIBLINGS_VARIABLES__SUB_VARIABLES = TREE_VARIABLE__SUB_VARIABLES;
+    int PRECEDING_SIBLINGS_VARIABLES__SUB_VARIABLES = DescriptionPackage.TREE_VARIABLE__SUB_VARIABLES;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int PRECEDING_SIBLINGS_VARIABLES__DOCUMENTATION = TREE_VARIABLE__DOCUMENTATION;
+    int PRECEDING_SIBLINGS_VARIABLES__DOCUMENTATION = DescriptionPackage.TREE_VARIABLE__DOCUMENTATION;
 
     /**
      * The number of structural features of the '
@@ -1796,7 +1796,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PRECEDING_SIBLINGS_VARIABLES_FEATURE_COUNT = TREE_VARIABLE_FEATURE_COUNT + 0;
+    int PRECEDING_SIBLINGS_VARIABLES_FEATURE_COUNT = DescriptionPackage.TREE_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -1853,7 +1853,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1862,7 +1862,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1871,7 +1871,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1880,7 +1880,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1889,7 +1889,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1939,7 +1939,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeDescription
      * <em>Tree Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Tree Description</em>'.
      * @see org.eclipse.sirius.tree.description.TreeDescription
      * @generated
@@ -1977,7 +1977,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeDescription#getCreateTreeItem
      * <em>Create Tree Item</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Create Tree Item</em>'.
      * @see org.eclipse.sirius.tree.description.TreeDescription#getCreateTreeItem()
@@ -1991,7 +1991,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeDescription#getOwnedRepresentationCreationDescriptions
      * <em>Owned Representation Creation Descriptions</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Representation Creation Descriptions</em>'.
      * @see org.eclipse.sirius.tree.description.TreeDescription#getOwnedRepresentationCreationDescriptions()
@@ -2005,7 +2005,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeDescription#getOwnedRepresentationNavigationDescriptions
      * <em>Owned Representation Navigation Descriptions</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Representation Navigation Descriptions</em>'.
      * @see org.eclipse.sirius.tree.description.TreeDescription#getOwnedRepresentationNavigationDescriptions()
@@ -2019,7 +2019,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemMapping
      * <em>Tree Item Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Tree Item Mapping</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemMapping
      * @generated
@@ -2085,7 +2085,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getAllSubMappings
      * <em>All Sub Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '<em>All Sub Mappings</em>
      *         '.
      * @see org.eclipse.sirius.tree.description.TreeItemMapping#getAllSubMappings()
@@ -2174,7 +2174,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemStyleDescription#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Background Color</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemStyleDescription#getBackgroundColor()
      * @see #getTreeItemStyleDescription()
@@ -2250,7 +2250,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemDragTool
      * <em>Tree Item Drag Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Tree Item Drag Tool</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemDragTool
      * @generated
@@ -2300,7 +2300,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemDragTool#getNewViewContainer
      * <em>New View Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>New View Container</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemDragTool#getNewViewContainer()
@@ -2326,7 +2326,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemDragTool#getDragSourceType
      * <em>Drag Source Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Drag Source Type</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemDragTool#getDragSourceType()
      * @see #getTreeItemDragTool()
@@ -2339,7 +2339,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemDragTool#getPrecedingSiblings
      * <em>Preceding Siblings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Preceding Siblings</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemDragTool#getPrecedingSiblings()
@@ -2404,7 +2404,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getNewViewContainer
      * <em>New View Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>New View Container</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getNewViewContainer()
@@ -2418,7 +2418,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getPrecedingSiblings
      * <em>Preceding Siblings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Preceding Siblings</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getPrecedingSiblings()
@@ -2564,7 +2564,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeCreationDescription#getTreeDescription
      * <em>Tree Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Tree Description</em>'.
      * @see org.eclipse.sirius.tree.description.TreeCreationDescription#getTreeDescription()
      * @see #getTreeCreationDescription()
@@ -2589,7 +2589,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeNavigationDescription#getTreeDescription
      * <em>Tree Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Tree Description</em>'.
      * @see org.eclipse.sirius.tree.description.TreeNavigationDescription#getTreeDescription()
      * @see #getTreeNavigationDescription()
@@ -2613,7 +2613,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeMapping#getSemanticElements
      * <em>Semantic Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Semantic Elements</em>'.
      * @see org.eclipse.sirius.tree.description.TreeMapping#getSemanticElements()
      * @see #getTreeMapping()
@@ -2650,7 +2650,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.StyleUpdater#getConditionalStyles
      * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Conditional Styles</em>'.
      * @see org.eclipse.sirius.tree.description.StyleUpdater#getConditionalStyles()
@@ -2687,7 +2687,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemUpdater
      * <em>Tree Item Updater</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Tree Item Updater</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemUpdater
      * @generated
@@ -2737,7 +2737,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeItemMappingContainer#getSubItemMappings
      * <em>Sub Item Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Sub Item Mappings</em>'.
      * @see org.eclipse.sirius.tree.description.TreeItemMappingContainer#getSubItemMappings()
@@ -2789,7 +2789,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.tree.description.TreeDragSource
      * <em>Tree Drag Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Tree Drag Source</em>'.
      * @see org.eclipse.sirius.tree.description.TreeDragSource
      * @generated
@@ -2799,7 +2799,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -2829,7 +2829,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeDescription()
          * @generated
          */
-        EClass TREE_DESCRIPTION = eINSTANCE.getTreeDescription();
+        EClass TREE_DESCRIPTION = DescriptionPackage.eINSTANCE.getTreeDescription();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -2837,16 +2837,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TREE_DESCRIPTION__DOMAIN_CLASS = eINSTANCE.getTreeDescription_DomainClass();
+        EAttribute TREE_DESCRIPTION__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getTreeDescription_DomainClass();
 
         /**
          * The meta object literal for the '
          * <em><b>Precondition Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute TREE_DESCRIPTION__PRECONDITION_EXPRESSION = eINSTANCE.getTreeDescription_PreconditionExpression();
+        EAttribute TREE_DESCRIPTION__PRECONDITION_EXPRESSION = DescriptionPackage.eINSTANCE.getTreeDescription_PreconditionExpression();
 
         /**
          * The meta object literal for the '<em><b>Create Tree Item</b></em>'
@@ -2855,7 +2855,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_DESCRIPTION__CREATE_TREE_ITEM = eINSTANCE.getTreeDescription_CreateTreeItem();
+        EReference TREE_DESCRIPTION__CREATE_TREE_ITEM = DescriptionPackage.eINSTANCE.getTreeDescription_CreateTreeItem();
 
         /**
          * The meta object literal for the '
@@ -2865,7 +2865,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = eINSTANCE.getTreeDescription_OwnedRepresentationCreationDescriptions();
+        EReference TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getTreeDescription_OwnedRepresentationCreationDescriptions();
 
         /**
          * The meta object literal for the '
@@ -2875,7 +2875,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = eINSTANCE.getTreeDescription_OwnedRepresentationNavigationDescriptions();
+        EReference TREE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getTreeDescription_OwnedRepresentationNavigationDescriptions();
 
         /**
          * The meta object literal for the '
@@ -2887,7 +2887,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemMapping()
          * @generated
          */
-        EClass TREE_ITEM_MAPPING = eINSTANCE.getTreeItemMapping();
+        EClass TREE_ITEM_MAPPING = DescriptionPackage.eINSTANCE.getTreeItemMapping();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -2895,16 +2895,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TREE_ITEM_MAPPING__DOMAIN_CLASS = eINSTANCE.getTreeItemMapping_DomainClass();
+        EAttribute TREE_ITEM_MAPPING__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getTreeItemMapping_DomainClass();
 
         /**
          * The meta object literal for the '
          * <em><b>Precondition Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION = eINSTANCE.getTreeItemMapping_PreconditionExpression();
+        EAttribute TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.eINSTANCE.getTreeItemMapping_PreconditionExpression();
 
         /**
          * The meta object literal for the '
@@ -2913,7 +2913,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = eINSTANCE.getTreeItemMapping_SemanticCandidatesExpression();
+        EAttribute TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.eINSTANCE.getTreeItemMapping_SemanticCandidatesExpression();
 
         /**
          * The meta object literal for the '
@@ -2922,7 +2922,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS = eINSTANCE.getTreeItemMapping_ReusedTreeItemMappings();
+        EReference TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS = DescriptionPackage.eINSTANCE.getTreeItemMapping_ReusedTreeItemMappings();
 
         /**
          * The meta object literal for the '<em><b>All Sub Mappings</b></em>'
@@ -2930,7 +2930,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_MAPPING__ALL_SUB_MAPPINGS = eINSTANCE.getTreeItemMapping_AllSubMappings();
+        EReference TREE_ITEM_MAPPING__ALL_SUB_MAPPINGS = DescriptionPackage.eINSTANCE.getTreeItemMapping_AllSubMappings();
 
         /**
          * The meta object literal for the '<em><b>Specialize</b></em>'
@@ -2938,7 +2938,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_MAPPING__SPECIALIZE = eINSTANCE.getTreeItemMapping_Specialize();
+        EReference TREE_ITEM_MAPPING__SPECIALIZE = DescriptionPackage.eINSTANCE.getTreeItemMapping_Specialize();
 
         /**
          * The meta object literal for the '<em><b>Delete</b></em>' containment
@@ -2946,7 +2946,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_MAPPING__DELETE = eINSTANCE.getTreeItemMapping_Delete();
+        EReference TREE_ITEM_MAPPING__DELETE = DescriptionPackage.eINSTANCE.getTreeItemMapping_Delete();
 
         /**
          * The meta object literal for the '<em><b>Create</b></em>' containment
@@ -2954,7 +2954,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_MAPPING__CREATE = eINSTANCE.getTreeItemMapping_Create();
+        EReference TREE_ITEM_MAPPING__CREATE = DescriptionPackage.eINSTANCE.getTreeItemMapping_Create();
 
         /**
          * The meta object literal for the '<em><b>Dnd Tools</b></em>'
@@ -2963,7 +2963,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_MAPPING__DND_TOOLS = eINSTANCE.getTreeItemMapping_DndTools();
+        EReference TREE_ITEM_MAPPING__DND_TOOLS = DescriptionPackage.eINSTANCE.getTreeItemMapping_DndTools();
 
         /**
          * The meta object literal for the '<em><b>Popup Menus</b></em>'
@@ -2972,7 +2972,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_MAPPING__POPUP_MENUS = eINSTANCE.getTreeItemMapping_PopupMenus();
+        EReference TREE_ITEM_MAPPING__POPUP_MENUS = DescriptionPackage.eINSTANCE.getTreeItemMapping_PopupMenus();
 
         /**
          * The meta object literal for the '
@@ -2984,7 +2984,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemStyleDescription()
          * @generated
          */
-        EClass TREE_ITEM_STYLE_DESCRIPTION = eINSTANCE.getTreeItemStyleDescription();
+        EClass TREE_ITEM_STYLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getTreeItemStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -2992,19 +2992,19 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_STYLE_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getTreeItemStyleDescription_BackgroundColor();
+        EReference TREE_ITEM_STYLE_DESCRIPTION__BACKGROUND_COLOR = DescriptionPackage.eINSTANCE.getTreeItemStyleDescription_BackgroundColor();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tree.description.impl.ConditionalTreeItemStyleDescriptionImpl
          * <em>Conditional Tree Item Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tree.description.impl.ConditionalTreeItemStyleDescriptionImpl
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getConditionalTreeItemStyleDescription()
          * @generated
          */
-        EClass CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION = eINSTANCE.getConditionalTreeItemStyleDescription();
+        EClass CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getConditionalTreeItemStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -3012,7 +3012,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE = eINSTANCE.getConditionalTreeItemStyleDescription_Style();
+        EReference CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE = DescriptionPackage.eINSTANCE.getConditionalTreeItemStyleDescription_Style();
 
         /**
          * The meta object literal for the '
@@ -3024,7 +3024,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemTool()
          * @generated
          */
-        EClass TREE_ITEM_TOOL = eINSTANCE.getTreeItemTool();
+        EClass TREE_ITEM_TOOL = DescriptionPackage.eINSTANCE.getTreeItemTool();
 
         /**
          * The meta object literal for the '
@@ -3033,7 +3033,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_TOOL__FIRST_MODEL_OPERATION = eINSTANCE.getTreeItemTool_FirstModelOperation();
+        EReference TREE_ITEM_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.eINSTANCE.getTreeItemTool_FirstModelOperation();
 
         /**
          * The meta object literal for the '<em><b>Variables</b></em>'
@@ -3042,7 +3042,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_TOOL__VARIABLES = eINSTANCE.getTreeItemTool_Variables();
+        EReference TREE_ITEM_TOOL__VARIABLES = DescriptionPackage.eINSTANCE.getTreeItemTool_Variables();
 
         /**
          * The meta object literal for the '
@@ -3054,7 +3054,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemDragTool()
          * @generated
          */
-        EClass TREE_ITEM_DRAG_TOOL = eINSTANCE.getTreeItemDragTool();
+        EClass TREE_ITEM_DRAG_TOOL = DescriptionPackage.eINSTANCE.getTreeItemDragTool();
 
         /**
          * The meta object literal for the '<em><b>Old Container</b></em>'
@@ -3063,7 +3063,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_DRAG_TOOL__OLD_CONTAINER = eINSTANCE.getTreeItemDragTool_OldContainer();
+        EReference TREE_ITEM_DRAG_TOOL__OLD_CONTAINER = DescriptionPackage.eINSTANCE.getTreeItemDragTool_OldContainer();
 
         /**
          * The meta object literal for the '<em><b>New Container</b></em>'
@@ -3072,7 +3072,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_DRAG_TOOL__NEW_CONTAINER = eINSTANCE.getTreeItemDragTool_NewContainer();
+        EReference TREE_ITEM_DRAG_TOOL__NEW_CONTAINER = DescriptionPackage.eINSTANCE.getTreeItemDragTool_NewContainer();
 
         /**
          * The meta object literal for the '<em><b>Element</b></em>' containment
@@ -3080,7 +3080,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_DRAG_TOOL__ELEMENT = eINSTANCE.getTreeItemDragTool_Element();
+        EReference TREE_ITEM_DRAG_TOOL__ELEMENT = DescriptionPackage.eINSTANCE.getTreeItemDragTool_Element();
 
         /**
          * The meta object literal for the '<em><b>New View Container</b></em>'
@@ -3089,7 +3089,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_DRAG_TOOL__NEW_VIEW_CONTAINER = eINSTANCE.getTreeItemDragTool_NewViewContainer();
+        EReference TREE_ITEM_DRAG_TOOL__NEW_VIEW_CONTAINER = DescriptionPackage.eINSTANCE.getTreeItemDragTool_NewViewContainer();
 
         /**
          * The meta object literal for the '<em><b>Containers</b></em>'
@@ -3097,7 +3097,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_DRAG_TOOL__CONTAINERS = eINSTANCE.getTreeItemDragTool_Containers();
+        EReference TREE_ITEM_DRAG_TOOL__CONTAINERS = DescriptionPackage.eINSTANCE.getTreeItemDragTool_Containers();
 
         /**
          * The meta object literal for the '<em><b>Drag Source Type</b></em>'
@@ -3105,7 +3105,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TREE_ITEM_DRAG_TOOL__DRAG_SOURCE_TYPE = eINSTANCE.getTreeItemDragTool_DragSourceType();
+        EAttribute TREE_ITEM_DRAG_TOOL__DRAG_SOURCE_TYPE = DescriptionPackage.eINSTANCE.getTreeItemDragTool_DragSourceType();
 
         /**
          * The meta object literal for the '<em><b>Preceding Siblings</b></em>'
@@ -3114,7 +3114,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_DRAG_TOOL__PRECEDING_SIBLINGS = eINSTANCE.getTreeItemDragTool_PrecedingSiblings();
+        EReference TREE_ITEM_DRAG_TOOL__PRECEDING_SIBLINGS = DescriptionPackage.eINSTANCE.getTreeItemDragTool_PrecedingSiblings();
 
         /**
          * The meta object literal for the '
@@ -3126,7 +3126,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemContainerDropTool()
          * @generated
          */
-        EClass TREE_ITEM_CONTAINER_DROP_TOOL = eINSTANCE.getTreeItemContainerDropTool();
+        EClass TREE_ITEM_CONTAINER_DROP_TOOL = DescriptionPackage.eINSTANCE.getTreeItemContainerDropTool();
 
         /**
          * The meta object literal for the '<em><b>Old Container</b></em>'
@@ -3135,7 +3135,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER = eINSTANCE.getTreeItemContainerDropTool_OldContainer();
+        EReference TREE_ITEM_CONTAINER_DROP_TOOL__OLD_CONTAINER = DescriptionPackage.eINSTANCE.getTreeItemContainerDropTool_OldContainer();
 
         /**
          * The meta object literal for the '<em><b>New Container</b></em>'
@@ -3144,7 +3144,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER = eINSTANCE.getTreeItemContainerDropTool_NewContainer();
+        EReference TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER = DescriptionPackage.eINSTANCE.getTreeItemContainerDropTool_NewContainer();
 
         /**
          * The meta object literal for the '<em><b>Element</b></em>' containment
@@ -3152,7 +3152,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT = eINSTANCE.getTreeItemContainerDropTool_Element();
+        EReference TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENT = DescriptionPackage.eINSTANCE.getTreeItemContainerDropTool_Element();
 
         /**
          * The meta object literal for the '<em><b>New View Container</b></em>'
@@ -3161,7 +3161,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER = eINSTANCE.getTreeItemContainerDropTool_NewViewContainer();
+        EReference TREE_ITEM_CONTAINER_DROP_TOOL__NEW_VIEW_CONTAINER = DescriptionPackage.eINSTANCE.getTreeItemContainerDropTool_NewViewContainer();
 
         /**
          * The meta object literal for the '<em><b>Preceding Siblings</b></em>'
@@ -3170,7 +3170,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS = eINSTANCE.getTreeItemContainerDropTool_PrecedingSiblings();
+        EReference TREE_ITEM_CONTAINER_DROP_TOOL__PRECEDING_SIBLINGS = DescriptionPackage.eINSTANCE.getTreeItemContainerDropTool_PrecedingSiblings();
 
         /**
          * The meta object literal for the '<em><b>Drag Source</b></em>'
@@ -3178,7 +3178,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE = eINSTANCE.getTreeItemContainerDropTool_DragSource();
+        EAttribute TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE = DescriptionPackage.eINSTANCE.getTreeItemContainerDropTool_DragSource();
 
         /**
          * The meta object literal for the '
@@ -3190,7 +3190,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemCreationTool()
          * @generated
          */
-        EClass TREE_ITEM_CREATION_TOOL = eINSTANCE.getTreeItemCreationTool();
+        EClass TREE_ITEM_CREATION_TOOL = DescriptionPackage.eINSTANCE.getTreeItemCreationTool();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' reference
@@ -3198,7 +3198,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_CREATION_TOOL__MAPPING = eINSTANCE.getTreeItemCreationTool_Mapping();
+        EReference TREE_ITEM_CREATION_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getTreeItemCreationTool_Mapping();
 
         /**
          * The meta object literal for the '
@@ -3210,7 +3210,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemEditionTool()
          * @generated
          */
-        EClass TREE_ITEM_EDITION_TOOL = eINSTANCE.getTreeItemEditionTool();
+        EClass TREE_ITEM_EDITION_TOOL = DescriptionPackage.eINSTANCE.getTreeItemEditionTool();
 
         /**
          * The meta object literal for the '<em><b>Mask</b></em>' containment
@@ -3218,7 +3218,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_EDITION_TOOL__MASK = eINSTANCE.getTreeItemEditionTool_Mask();
+        EReference TREE_ITEM_EDITION_TOOL__MASK = DescriptionPackage.eINSTANCE.getTreeItemEditionTool_Mask();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' reference
@@ -3226,7 +3226,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_EDITION_TOOL__MAPPING = eINSTANCE.getTreeItemEditionTool_Mapping();
+        EReference TREE_ITEM_EDITION_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getTreeItemEditionTool_Mapping();
 
         /**
          * The meta object literal for the '<em><b>Element</b></em>' containment
@@ -3234,7 +3234,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_EDITION_TOOL__ELEMENT = eINSTANCE.getTreeItemEditionTool_Element();
+        EReference TREE_ITEM_EDITION_TOOL__ELEMENT = DescriptionPackage.eINSTANCE.getTreeItemEditionTool_Element();
 
         /**
          * The meta object literal for the '<em><b>Root</b></em>' containment
@@ -3242,7 +3242,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_EDITION_TOOL__ROOT = eINSTANCE.getTreeItemEditionTool_Root();
+        EReference TREE_ITEM_EDITION_TOOL__ROOT = DescriptionPackage.eINSTANCE.getTreeItemEditionTool_Root();
 
         /**
          * The meta object literal for the '
@@ -3254,7 +3254,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemDeletionTool()
          * @generated
          */
-        EClass TREE_ITEM_DELETION_TOOL = eINSTANCE.getTreeItemDeletionTool();
+        EClass TREE_ITEM_DELETION_TOOL = DescriptionPackage.eINSTANCE.getTreeItemDeletionTool();
 
         /**
          * The meta object literal for the '<em><b>Mapping</b></em>' container
@@ -3262,7 +3262,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_DELETION_TOOL__MAPPING = eINSTANCE.getTreeItemDeletionTool_Mapping();
+        EReference TREE_ITEM_DELETION_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getTreeItemDeletionTool_Mapping();
 
         /**
          * The meta object literal for the '
@@ -3274,7 +3274,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeCreationDescription()
          * @generated
          */
-        EClass TREE_CREATION_DESCRIPTION = eINSTANCE.getTreeCreationDescription();
+        EClass TREE_CREATION_DESCRIPTION = DescriptionPackage.eINSTANCE.getTreeCreationDescription();
 
         /**
          * The meta object literal for the '<em><b>Tree Description</b></em>'
@@ -3282,7 +3282,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_CREATION_DESCRIPTION__TREE_DESCRIPTION = eINSTANCE.getTreeCreationDescription_TreeDescription();
+        EReference TREE_CREATION_DESCRIPTION__TREE_DESCRIPTION = DescriptionPackage.eINSTANCE.getTreeCreationDescription_TreeDescription();
 
         /**
          * The meta object literal for the '
@@ -3294,7 +3294,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeNavigationDescription()
          * @generated
          */
-        EClass TREE_NAVIGATION_DESCRIPTION = eINSTANCE.getTreeNavigationDescription();
+        EClass TREE_NAVIGATION_DESCRIPTION = DescriptionPackage.eINSTANCE.getTreeNavigationDescription();
 
         /**
          * The meta object literal for the '<em><b>Tree Description</b></em>'
@@ -3302,7 +3302,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_NAVIGATION_DESCRIPTION__TREE_DESCRIPTION = eINSTANCE.getTreeNavigationDescription_TreeDescription();
+        EReference TREE_NAVIGATION_DESCRIPTION__TREE_DESCRIPTION = DescriptionPackage.eINSTANCE.getTreeNavigationDescription_TreeDescription();
 
         /**
          * The meta object literal for the '
@@ -3314,7 +3314,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeMapping()
          * @generated
          */
-        EClass TREE_MAPPING = eINSTANCE.getTreeMapping();
+        EClass TREE_MAPPING = DescriptionPackage.eINSTANCE.getTreeMapping();
 
         /**
          * The meta object literal for the '<em><b>Semantic Elements</b></em>'
@@ -3322,7 +3322,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TREE_MAPPING__SEMANTIC_ELEMENTS = eINSTANCE.getTreeMapping_SemanticElements();
+        EAttribute TREE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.eINSTANCE.getTreeMapping_SemanticElements();
 
         /**
          * The meta object literal for the '
@@ -3334,7 +3334,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getStyleUpdater()
          * @generated
          */
-        EClass STYLE_UPDATER = eINSTANCE.getStyleUpdater();
+        EClass STYLE_UPDATER = DescriptionPackage.eINSTANCE.getStyleUpdater();
 
         /**
          * The meta object literal for the '<em><b>Default Style</b></em>'
@@ -3343,7 +3343,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference STYLE_UPDATER__DEFAULT_STYLE = eINSTANCE.getStyleUpdater_DefaultStyle();
+        EReference STYLE_UPDATER__DEFAULT_STYLE = DescriptionPackage.eINSTANCE.getStyleUpdater_DefaultStyle();
 
         /**
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
@@ -3352,7 +3352,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference STYLE_UPDATER__CONDITIONAL_STYLES = eINSTANCE.getStyleUpdater_ConditionalStyles();
+        EReference STYLE_UPDATER__CONDITIONAL_STYLES = DescriptionPackage.eINSTANCE.getStyleUpdater_ConditionalStyles();
 
         /**
          * The meta object literal for the '
@@ -3364,7 +3364,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeVariable()
          * @generated
          */
-        EClass TREE_VARIABLE = eINSTANCE.getTreeVariable();
+        EClass TREE_VARIABLE = DescriptionPackage.eINSTANCE.getTreeVariable();
 
         /**
          * The meta object literal for the '<em><b>Documentation</b></em>'
@@ -3372,7 +3372,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TREE_VARIABLE__DOCUMENTATION = eINSTANCE.getTreeVariable_Documentation();
+        EAttribute TREE_VARIABLE__DOCUMENTATION = DescriptionPackage.eINSTANCE.getTreeVariable_Documentation();
 
         /**
          * The meta object literal for the '
@@ -3384,7 +3384,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemUpdater()
          * @generated
          */
-        EClass TREE_ITEM_UPDATER = eINSTANCE.getTreeItemUpdater();
+        EClass TREE_ITEM_UPDATER = DescriptionPackage.eINSTANCE.getTreeItemUpdater();
 
         /**
          * The meta object literal for the '<em><b>Direct Edit</b></em>'
@@ -3393,7 +3393,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_UPDATER__DIRECT_EDIT = eINSTANCE.getTreeItemUpdater_DirectEdit();
+        EReference TREE_ITEM_UPDATER__DIRECT_EDIT = DescriptionPackage.eINSTANCE.getTreeItemUpdater_DirectEdit();
 
         /**
          * The meta object literal for the '
@@ -3405,7 +3405,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getPrecedingSiblingsVariables()
          * @generated
          */
-        EClass PRECEDING_SIBLINGS_VARIABLES = eINSTANCE.getPrecedingSiblingsVariables();
+        EClass PRECEDING_SIBLINGS_VARIABLES = DescriptionPackage.eINSTANCE.getPrecedingSiblingsVariables();
 
         /**
          * The meta object literal for the '
@@ -3417,7 +3417,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeItemMappingContainer()
          * @generated
          */
-        EClass TREE_ITEM_MAPPING_CONTAINER = eINSTANCE.getTreeItemMappingContainer();
+        EClass TREE_ITEM_MAPPING_CONTAINER = DescriptionPackage.eINSTANCE.getTreeItemMappingContainer();
 
         /**
          * The meta object literal for the '<em><b>Sub Item Mappings</b></em>'
@@ -3426,7 +3426,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_MAPPING_CONTAINER__SUB_ITEM_MAPPINGS = eINSTANCE.getTreeItemMappingContainer_SubItemMappings();
+        EReference TREE_ITEM_MAPPING_CONTAINER__SUB_ITEM_MAPPINGS = DescriptionPackage.eINSTANCE.getTreeItemMappingContainer_SubItemMappings();
 
         /**
          * The meta object literal for the '<em><b>Drop Tools</b></em>'
@@ -3435,7 +3435,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_ITEM_MAPPING_CONTAINER__DROP_TOOLS = eINSTANCE.getTreeItemMappingContainer_DropTools();
+        EReference TREE_ITEM_MAPPING_CONTAINER__DROP_TOOLS = DescriptionPackage.eINSTANCE.getTreeItemMappingContainer_DropTools();
 
         /**
          * The meta object literal for the '
@@ -3447,7 +3447,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreePopupMenu()
          * @generated
          */
-        EClass TREE_POPUP_MENU = eINSTANCE.getTreePopupMenu();
+        EClass TREE_POPUP_MENU = DescriptionPackage.eINSTANCE.getTreePopupMenu();
 
         /**
          * The meta object literal for the '
@@ -3456,7 +3456,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS = eINSTANCE.getTreePopupMenu_MenuItemDescriptions();
+        EReference TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getTreePopupMenu_MenuItemDescriptions();
 
         /**
          * The meta object literal for the '
@@ -3468,7 +3468,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl#getTreeDragSource()
          * @generated
          */
-        EEnum TREE_DRAG_SOURCE = eINSTANCE.getTreeDragSource();
+        EEnum TREE_DRAG_SOURCE = DescriptionPackage.eINSTANCE.getTreeDragSource();
 
     }
 

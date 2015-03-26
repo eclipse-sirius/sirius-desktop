@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -36,7 +36,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The default value of the '{@link #getMask() <em>Mask</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMask()
      * @generated
      * @ordered
@@ -46,16 +46,16 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The cached value of the '{@link #getMask() <em>Mask</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMask()
      * @generated
      * @ordered
      */
-    protected String mask = MASK_EDEFAULT;
+    protected String mask = EditMaskVariablesImpl.MASK_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EditMaskVariablesImpl() {
@@ -64,7 +64,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,28 +74,31 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getMask() {
         return mask;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setMask(String newMask) {
         String oldMask = mask;
         mask = newMask;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.EDIT_MASK_VARIABLES__MASK, oldMask, mask));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +112,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,14 +127,14 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.EDIT_MASK_VARIABLES__MASK:
-            setMask(MASK_EDEFAULT);
+            setMask(EditMaskVariablesImpl.MASK_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -139,27 +142,28 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.EDIT_MASK_VARIABLES__MASK:
-            return MASK_EDEFAULT == null ? mask != null : !MASK_EDEFAULT.equals(mask);
+            return EditMaskVariablesImpl.MASK_EDEFAULT == null ? mask != null : !EditMaskVariablesImpl.MASK_EDEFAULT.equals(mask);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (mask: ");

@@ -48,7 +48,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
      * The cached value of the '{@link #getOwnedColumnMappings()
      * <em>Owned Column Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedColumnMappings()
      * @generated
      * @ordered
@@ -90,6 +90,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
      * 
      * @generated
      */
+    @Override
     public EList<FeatureColumnMapping> getOwnedColumnMappings() {
         if (ownedColumnMappings == null) {
             ownedColumnMappings = new EObjectContainmentEList<FeatureColumnMapping>(FeatureColumnMapping.class, this, DescriptionPackage.EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS);
@@ -102,6 +103,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
      * 
      * @generated
      */
+    @Override
     public EList<FeatureColumnMapping> getReusedColumnMappings() {
         if (reusedColumnMappings == null) {
             reusedColumnMappings = new EObjectResolvingEList<FeatureColumnMapping>(FeatureColumnMapping.class, this, DescriptionPackage.EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS);
@@ -114,6 +116,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
      * 
      * @generated
      */
+    @Override
     public EList<FeatureColumnMapping> getAllColumnMappings() {
         // TODO: implement this method to return the 'All Column Mappings'
         // reference list

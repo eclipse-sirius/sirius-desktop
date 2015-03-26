@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.impl;
 
@@ -57,7 +57,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = FilterDescriptionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -77,7 +77,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = FilterDescriptionImpl.LABEL_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -103,6 +103,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -112,11 +113,13 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_DESCRIPTION__NAME, oldName, name));
+        }
     }
 
     /**
@@ -124,6 +127,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -133,11 +137,13 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_DESCRIPTION__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -145,6 +151,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
      * 
      * @generated
      */
+    @Override
     public boolean isVisible(DDiagramElement element) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -194,10 +201,10 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
     public void eUnset(int featureID) {
         switch (featureID) {
         case FilterPackage.FILTER_DESCRIPTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(FilterDescriptionImpl.NAME_EDEFAULT);
             return;
         case FilterPackage.FILTER_DESCRIPTION__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(FilterDescriptionImpl.LABEL_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -212,9 +219,9 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case FilterPackage.FILTER_DESCRIPTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return FilterDescriptionImpl.NAME_EDEFAULT == null ? name != null : !FilterDescriptionImpl.NAME_EDEFAULT.equals(name);
         case FilterPackage.FILTER_DESCRIPTION__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return FilterDescriptionImpl.LABEL_EDEFAULT == null ? label != null : !FilterDescriptionImpl.LABEL_EDEFAULT.equals(label);
         }
         return super.eIsSet(featureID);
     }
@@ -266,8 +273,9 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

@@ -31,7 +31,7 @@ public interface OrderingFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Event Ends Ordering</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Event Ends Ordering</em>'.
      * @generated
      */
@@ -40,7 +40,7 @@ public interface OrderingFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Single Event End</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Single Event End</em>'.
      * @generated
      */
@@ -49,7 +49,7 @@ public interface OrderingFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Compound Event End</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Compound Event End</em>'.
      * @generated
      */
@@ -58,7 +58,7 @@ public interface OrderingFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Instance Roles Ordering</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Instance Roles Ordering</em>'.
      * @generated
      */

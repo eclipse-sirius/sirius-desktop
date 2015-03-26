@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -69,13 +69,15 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
      * 
      * @generated
      */
+    @Override
     public EObject getTarget() {
         if (target != null && target.eIsProxy()) {
             InternalEObject oldTarget = (InternalEObject) target;
             target = eResolveProxy(oldTarget);
             if (target != oldTarget) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DSEMANTIC_DIAGRAM__TARGET, oldTarget, target));
+                }
             }
         }
         return target;
@@ -95,11 +97,13 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
      * 
      * @generated
      */
+    @Override
     public void setTarget(EObject newTarget) {
         EObject oldTarget = target;
         target = newTarget;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DSEMANTIC_DIAGRAM__TARGET, oldTarget, target));
+        }
     }
 
     /**
@@ -111,8 +115,9 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DiagramPackage.DSEMANTIC_DIAGRAM__TARGET:
-            if (resolve)
+            if (resolve) {
                 return getTarget();
+            }
             return basicGetTarget();
         }
         return super.eGet(featureID, resolve, coreType);

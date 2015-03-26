@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -117,7 +117,7 @@ public enum ArrangeConstraint implements Enumerator {
      * 
      * @generated
      */
-    public static final List<ArrangeConstraint> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<ArrangeConstraint> VALUES = Collections.unmodifiableList(Arrays.asList(ArrangeConstraint.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Arrange Constraint</b></em>' literal with the
@@ -126,8 +126,7 @@ public enum ArrangeConstraint implements Enumerator {
      * @generated
      */
     public static ArrangeConstraint get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ArrangeConstraint result = VALUES_ARRAY[i];
+        for (ArrangeConstraint result : ArrangeConstraint.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -142,8 +141,7 @@ public enum ArrangeConstraint implements Enumerator {
      * @generated
      */
     public static ArrangeConstraint getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ArrangeConstraint result = VALUES_ARRAY[i];
+        for (ArrangeConstraint result : ArrangeConstraint.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -207,6 +205,7 @@ public enum ArrangeConstraint implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -216,6 +215,7 @@ public enum ArrangeConstraint implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -225,6 +225,7 @@ public enum ArrangeConstraint implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

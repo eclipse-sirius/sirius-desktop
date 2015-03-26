@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -35,7 +35,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
     /**
      * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -45,16 +45,16 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
     /**
      * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
      */
-    protected String icon = ICON_EDEFAULT;
+    protected String icon = MenuItemDescriptionImpl.ICON_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MenuItemDescriptionImpl() {
@@ -63,7 +63,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,28 +73,31 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getIcon() {
         return icon;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setIcon(String newIcon) {
         String oldIcon = icon;
         icon = newIcon;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MENU_ITEM_DESCRIPTION__ICON, oldIcon, icon));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +111,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,14 +126,14 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.MENU_ITEM_DESCRIPTION__ICON:
-            setIcon(ICON_EDEFAULT);
+            setIcon(MenuItemDescriptionImpl.ICON_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -138,27 +141,28 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.MENU_ITEM_DESCRIPTION__ICON:
-            return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
+            return MenuItemDescriptionImpl.ICON_EDEFAULT == null ? icon != null : !MenuItemDescriptionImpl.ICON_EDEFAULT.equals(icon);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (icon: ");

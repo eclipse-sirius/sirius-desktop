@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.provider;
 
@@ -68,14 +68,14 @@ import org.osgi.framework.BundleContext;
 /**
  * This is the central singleton for the Viewpoint edit plugin. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public final class SiriusEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public static final SiriusEditPlugin INSTANCE = new SiriusEditPlugin();
@@ -85,7 +85,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
@@ -102,25 +102,26 @@ public final class SiriusEditPlugin extends EMFPlugin {
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @not-generated
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
         final List<ResourceLocator> overridingLocator = EclipseUtil.getExtensionPlugins(ResourceLocator.class, "org.eclipse.sirius.ui.resourcelocator", "class");
-        if (overridingLocator.size() > 0)
+        if (overridingLocator.size() > 0) {
             return overridingLocator.get(0);
-        return plugin;
+        }
+        return SiriusEditPlugin.plugin;
     }
 
     /**
      * return the original (non overriden) resource locator.
-     * 
+     *
      * @return the original (non overriden) resource locator.
      */
     public ResourceLocator getOriginalResourceLocator() {
-        return plugin;
+        return SiriusEditPlugin.plugin;
     }
 
     /**
@@ -131,13 +132,13 @@ public final class SiriusEditPlugin extends EMFPlugin {
      * @generated
      */
     public static Implementation getPlugin() {
-        return plugin;
+        return SiriusEditPlugin.plugin;
     }
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!--
      * begin-user-doc --> Extend UI plug-in<!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     public static class Implementation extends EclipseUIPlugin {
@@ -174,14 +175,15 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
             // Remember the static instance.
             //
-            plugin = this;
+            SiriusEditPlugin.plugin = this;
         }
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
          */
+        @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);
             initPreferences();
@@ -228,19 +230,22 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Starts the management of the Preferences of the core of Designer.
-         * 
+         *
          */
         private void startDesignerCorePreferencesManagement() {
             reflectAllPreferencesOnCore();
             getPreferenceStore().addPropertyChangeListener(new IPropertyChangeListener() {
+                @Override
                 public void propertyChange(PropertyChangeEvent event) {
                     SiriusPreferencesKeys key = null;
                     for (SiriusPreferencesKeys currentKey : SiriusPreferencesKeys.values()) {
-                        if (currentKey.name().equals(event.getProperty()))
+                        if (currentKey.name().equals(event.getProperty())) {
                             key = currentKey;
+                        }
                     }
-                    if (key != null)
+                    if (key != null) {
                         reflectPreferencesOnCore(key);
+                    }
                 }
             });
         }
@@ -254,14 +259,14 @@ public final class SiriusEditPlugin extends EMFPlugin {
         private void initPreferences() {
             final IPreferencesService service = Platform.getPreferencesService();
             /* init the visual binding manager cache with the max sizes */
-            final int maxColorSize = service.getInt(ID, DCorePreferences.COLOR_REGISTRY_MAX_SIZE, DCorePreferences.COLOR_REGISTRY_MAX_SIZE_DEFAULT_VALUE, null);
-            final int maxFontSize = service.getInt(ID, DCorePreferences.FONT_REGISTRY_MAX_SIZE, DCorePreferences.FONT_REGISTRY_MAX_SIZE_DEFAULT_VALUE, null);
+            final int maxColorSize = service.getInt(SiriusEditPlugin.ID, DCorePreferences.COLOR_REGISTRY_MAX_SIZE, DCorePreferences.COLOR_REGISTRY_MAX_SIZE_DEFAULT_VALUE, null);
+            final int maxFontSize = service.getInt(SiriusEditPlugin.ID, DCorePreferences.FONT_REGISTRY_MAX_SIZE, DCorePreferences.FONT_REGISTRY_MAX_SIZE_DEFAULT_VALUE, null);
             VisualBindingManager.getDefault().init(maxColorSize, maxFontSize);
         }
 
         /**
          * should not be necessary
-         * 
+         *
          * @param key
          */
         private void reflectPreferencesOnCore(final SiriusPreferencesKeys key) {
@@ -291,11 +296,12 @@ public final class SiriusEditPlugin extends EMFPlugin {
         }
 
         /**
-         * 
+         *
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
          */
+        @Override
         public void stop(BundleContext context) throws Exception {
 
             try {
@@ -311,8 +317,9 @@ public final class SiriusEditPlugin extends EMFPlugin {
             Iterator<Image> it = descriptorsToImages.values().iterator();
             while (it.hasNext()) {
                 Image img = it.next();
-                if (img != null)
+                if (img != null) {
                     img.dispose();
+                }
             }
 
             tabRegistryListener.dispose();
@@ -337,20 +344,20 @@ public final class SiriusEditPlugin extends EMFPlugin {
         /**
          * Returns an image descriptor for the image file at the given plug-in
          * relative path.
-         * 
+         *
          * @param path
          *            the path
          * @return the image descriptor
          */
         public static ImageDescriptor getBundledImageDescriptor(String path) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin(ID, path);
+            return AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, path);
         }
 
         /**
          * Respects images residing in any plug-in. If path is relative, then
          * this bundle is looked up for the image, otherwise, for absolute path,
          * first segment is taken as id of plug-in with image
-         * 
+         *
          * @param path
          *            the path to image, either absolute (with plug-in id as
          *            first segment), or relative for bundled images
@@ -361,7 +368,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
             if (p.isAbsolute() && p.segmentCount() > 1) {
                 return AbstractUIPlugin.imageDescriptorFromPlugin(p.segment(0), p.removeFirstSegments(1).makeAbsolute().toString());
             } else {
-                return getBundledImageDescriptor(p.makeAbsolute().toString());
+                return Implementation.getBundledImageDescriptor(p.makeAbsolute().toString());
             }
         }
 
@@ -369,7 +376,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
          * Returns an image for the image file at the given plug-in relative
          * path. Client do not need to dispose this image. Images will be
          * disposed automatically.
-         * 
+         *
          * @param path
          *            the path
          * @return image instance
@@ -377,7 +384,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
         public Image getBundledImage(String path) {
             Image image = getImageRegistry().get(path);
             if (image == null) {
-                getImageRegistry().put(path, getBundledImageDescriptor(path));
+                getImageRegistry().put(path, Implementation.getBundledImageDescriptor(path));
                 image = getImageRegistry().get(path);
             }
             return image;
@@ -385,7 +392,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Get an item descriptor
-         * 
+         *
          * @param item
          *            the object item
          * @return an image descriptor.
@@ -400,7 +407,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Get the text of an item.
-         * 
+         *
          * @param item
          *            the object item.
          * @return the label.
@@ -415,7 +422,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Create the adapter factories.
-         * 
+         *
          * @return the created adapter factories
          */
         protected ComposedAdapterFactory createAdapterFactory() {
@@ -438,13 +445,14 @@ public final class SiriusEditPlugin extends EMFPlugin {
         }
 
         public AdapterFactory getItemProvidersAdapterFactory() {
-            if (adapterFactory == null)
+            if (adapterFactory == null) {
                 adapterFactory = createAdapterFactory();
+            }
             return adapterFactory;
         }
 
         /**
-         * 
+         *
          * @param desc
          *            an image descriptor.
          * @return an Image instance
@@ -458,7 +466,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Return callBack.
-         * 
+         *
          * @return the uiCallback
          */
         public UICallBack getUiCallback() {
@@ -467,7 +475,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Modify callBack.
-         * 
+         *
          * @param uiCallback
          *            the uiCallback to set
          */
@@ -481,7 +489,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
      * Returns the ImageDescriptor that can be used to create the image resource
      * associated with the key. The description will typically be in the form of
      * a URL to the image data.
-     * 
+     *
      * @param key
      *            the key of the image resource.
      * @return the ImageDescriptor on the image resource.

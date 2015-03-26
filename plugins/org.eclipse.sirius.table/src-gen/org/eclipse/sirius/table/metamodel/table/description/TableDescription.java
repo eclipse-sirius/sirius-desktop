@@ -87,7 +87,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * attribute. The default value is <code>""</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> The precondition (Acceleo
      * Expression). <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_PreconditionExpression()
@@ -119,7 +119,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_DomainClass()
@@ -148,7 +148,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the section. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '
      *         <em>Owned Representation Creation Descriptions</em>' containment
      *         reference list.
@@ -165,7 +165,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the section. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '
      *         <em>Reused Representation Creation Descriptions</em>' reference
      *         list.
@@ -182,7 +182,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the section. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '
      *         <em>All Representation Creation Descriptions</em>' reference
      *         list.
@@ -200,7 +200,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All navigation tools. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '
      *         <em>Owned Representation Navigation Descriptions</em>'
      *         containment reference list.
@@ -217,7 +217,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All navigation tools. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '
      *         <em>Reused Representation Navigation Descriptions</em>' reference
      *         list.
@@ -234,7 +234,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All navigation tools. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '
      *         <em>All Representation Navigation Descriptions</em>' reference
      *         list.
@@ -362,7 +362,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The initial width of the column header (calculated if
      * not available). <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Header Column Width</em>'
      *         attribute.
      * @see #setInitialHeaderColumnWidth(int)

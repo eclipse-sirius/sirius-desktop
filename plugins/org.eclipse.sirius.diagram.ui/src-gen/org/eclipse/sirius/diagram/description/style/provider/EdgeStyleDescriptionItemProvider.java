@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.provider;
 
@@ -42,11 +42,11 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * @generated
  */
 public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -56,7 +56,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Stroke Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addStrokeColorPropertyDescriptor(Object object) {
@@ -94,7 +94,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Line Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLineStylePropertyDescriptor(Object object) {
@@ -107,7 +107,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Source Arrow feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSourceArrowPropertyDescriptor(Object object) {
@@ -120,7 +120,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Target Arrow feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetArrowPropertyDescriptor(Object object) {
@@ -147,7 +147,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Routing Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRoutingStylePropertyDescriptor(Object object) {
@@ -160,7 +160,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Folding Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFoldingStylePropertyDescriptor(Object object) {
@@ -173,7 +173,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the Ends Centering feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEndsCenteringPropertyDescriptor(Object object) {
@@ -301,7 +301,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -318,7 +318,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -62,7 +62,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
      * The cached value of the '{@link #getReferencedAnalysis()
      * <em>Referenced Analysis</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getReferencedAnalysis()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
     /**
      * The cached value of the '{@link #getModels() <em>Models</em>}' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getModels()
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
      * The cached value of the '{@link #getEAnnotations() <em>EAnnotations</em>}
      * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getEAnnotations()
      * @generated
      * @ordered
@@ -93,7 +93,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
     /**
      * The cached value of the '{@link #getOwnedViews() <em>Owned Views</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedViews()
      * @generated
      * @ordered
@@ -104,7 +104,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
      * The cached value of the '{@link #getSelectedViews()
      * <em>Selected Views</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSelectedViews()
      * @generated
      * @ordered
@@ -115,7 +115,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
      * The cached value of the '{@link #getOwnedFeatureExtensions()
      * <em>Owned Feature Extensions</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedFeatureExtensions()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
     /**
      * The default value of the '{@link #getVersion() <em>Version</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
@@ -135,16 +135,16 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
     /**
      * The cached value of the '{@link #getVersion() <em>Version</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
      */
-    protected String version = VERSION_EDEFAULT;
+    protected String version = DAnalysisImpl.VERSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnalysisImpl() {
@@ -153,7 +153,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,9 +163,10 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DAnalysis> getReferencedAnalysis() {
         if (referencedAnalysis == null) {
             referencedAnalysis = new EObjectResolvingEList<DAnalysis>(DAnalysis.class, this, ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS);
@@ -175,9 +176,10 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<EObject> getModels() {
         if (models == null) {
             models = new EObjectResolvingEList<EObject>(EObject.class, this, ViewpointPackage.DANALYSIS__MODELS);
@@ -187,9 +189,10 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DAnnotationEntry> getEAnnotations() {
         if (eAnnotations == null) {
             eAnnotations = new EObjectContainmentEList<DAnnotationEntry>(DAnnotationEntry.class, this, ViewpointPackage.DANALYSIS__EANNOTATIONS);
@@ -199,9 +202,10 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DView> getOwnedViews() {
         if (ownedViews == null) {
             ownedViews = new EObjectContainmentEList.Resolving<DView>(DView.class, this, ViewpointPackage.DANALYSIS__OWNED_VIEWS);
@@ -211,9 +215,10 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DView> getSelectedViews() {
         if (selectedViews == null) {
             selectedViews = new EObjectResolvingEList<DView>(DView.class, this, ViewpointPackage.DANALYSIS__SELECTED_VIEWS);
@@ -223,9 +228,10 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DFeatureExtension> getOwnedFeatureExtensions() {
         if (ownedFeatureExtensions == null) {
             ownedFeatureExtensions = new EObjectContainmentEList.Resolving<DFeatureExtension>(DFeatureExtension.class, this, ViewpointPackage.DANALYSIS__OWNED_FEATURE_EXTENSIONS);
@@ -235,28 +241,31 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getVersion() {
         return version;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setVersion(String newVersion) {
         String oldVersion = version;
         version = newVersion;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DANALYSIS__VERSION, oldVersion, version));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +283,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +309,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -340,7 +349,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -365,7 +374,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
             getOwnedFeatureExtensions().clear();
             return;
         case ViewpointPackage.DANALYSIS__VERSION:
-            setVersion(VERSION_EDEFAULT);
+            setVersion(DAnalysisImpl.VERSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -373,7 +382,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -392,20 +401,21 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
         case ViewpointPackage.DANALYSIS__OWNED_FEATURE_EXTENSIONS:
             return ownedFeatureExtensions != null && !ownedFeatureExtensions.isEmpty();
         case ViewpointPackage.DANALYSIS__VERSION:
-            return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
+            return DAnalysisImpl.VERSION_EDEFAULT == null ? version != null : !DAnalysisImpl.VERSION_EDEFAULT.equals(version);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (version: ");

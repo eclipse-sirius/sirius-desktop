@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -40,7 +40,7 @@ public interface InitialNodeCreationOperation extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>First Model Operations</em>' containment
      *         reference.
      * @see #setFirstModelOperations(ModelOperation)
@@ -55,7 +55,7 @@ public interface InitialNodeCreationOperation extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation#getFirstModelOperations
      * <em>First Model Operations</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>First Model Operations</em>'
      *            containment reference.

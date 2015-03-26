@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -77,7 +77,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -86,7 +86,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -118,7 +118,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -127,7 +127,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -136,7 +136,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -145,7 +145,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -154,7 +154,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -163,7 +163,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -172,7 +172,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -181,7 +181,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -190,7 +190,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
@@ -200,7 +200,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
@@ -219,7 +219,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -237,7 +237,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -268,94 +268,94 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int CUSTOM_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__BORDER_COLOR = NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+    int CUSTOM_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__LABEL_SIZE = NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+    int CUSTOM_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__LABEL_FORMAT = NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int CUSTOM_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__SHOW_ICON = NODE_STYLE_DESCRIPTION__SHOW_ICON;
+    int CUSTOM_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__LABEL_EXPRESSION = NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int CUSTOM_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__LABEL_COLOR = NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+    int CUSTOM_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__ICON_PATH = NODE_STYLE_DESCRIPTION__ICON_PATH;
+    int CUSTOM_STYLE_DESCRIPTION__ICON_PATH = StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__LABEL_ALIGNMENT = NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int CUSTOM_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int CUSTOM_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -364,16 +364,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int CUSTOM_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__LABEL_POSITION = NODE_STYLE_DESCRIPTION__LABEL_POSITION;
+    int CUSTOM_STYLE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -382,25 +382,25 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+    int CUSTOM_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+    int CUSTOM_STYLE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION__ID = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int CUSTOM_STYLE_DESCRIPTION__ID = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -410,7 +410,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CUSTOM_STYLE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int CUSTOM_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -428,94 +428,94 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int SQUARE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__BORDER_COLOR = NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+    int SQUARE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__LABEL_SIZE = NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+    int SQUARE_DESCRIPTION__LABEL_SIZE = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__LABEL_FORMAT = NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int SQUARE_DESCRIPTION__LABEL_FORMAT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__SHOW_ICON = NODE_STYLE_DESCRIPTION__SHOW_ICON;
+    int SQUARE_DESCRIPTION__SHOW_ICON = StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__LABEL_EXPRESSION = NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int SQUARE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__LABEL_COLOR = NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+    int SQUARE_DESCRIPTION__LABEL_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__ICON_PATH = NODE_STYLE_DESCRIPTION__ICON_PATH;
+    int SQUARE_DESCRIPTION__ICON_PATH = StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__LABEL_ALIGNMENT = NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int SQUARE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__TOOLTIP_EXPRESSION = NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int SQUARE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -524,16 +524,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int SQUARE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__LABEL_POSITION = NODE_STYLE_DESCRIPTION__LABEL_POSITION;
+    int SQUARE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -542,43 +542,43 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+    int SQUARE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+    int SQUARE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__WIDTH = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int SQUARE_DESCRIPTION__WIDTH = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__HEIGHT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int SQUARE_DESCRIPTION__HEIGHT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION__COLOR = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int SQUARE_DESCRIPTION__COLOR = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Square Description</em>'
@@ -587,7 +587,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SQUARE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int SQUARE_DESCRIPTION_FEATURE_COUNT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -605,84 +605,84 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int LOZENGE_NODE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__BORDER_COLOR = NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+    int LOZENGE_NODE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__LABEL_SIZE = NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+    int LOZENGE_NODE_DESCRIPTION__LABEL_SIZE = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__LABEL_FORMAT = NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int LOZENGE_NODE_DESCRIPTION__LABEL_FORMAT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__SHOW_ICON = NODE_STYLE_DESCRIPTION__SHOW_ICON;
+    int LOZENGE_NODE_DESCRIPTION__SHOW_ICON = StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__LABEL_EXPRESSION = NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int LOZENGE_NODE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__LABEL_COLOR = NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+    int LOZENGE_NODE_DESCRIPTION__LABEL_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__ICON_PATH = NODE_STYLE_DESCRIPTION__ICON_PATH;
+    int LOZENGE_NODE_DESCRIPTION__ICON_PATH = StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__LABEL_ALIGNMENT = NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int LOZENGE_NODE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
@@ -691,7 +691,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__TOOLTIP_EXPRESSION = NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int LOZENGE_NODE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -700,16 +700,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int LOZENGE_NODE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__LABEL_POSITION = NODE_STYLE_DESCRIPTION__LABEL_POSITION;
+    int LOZENGE_NODE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -718,16 +718,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+    int LOZENGE_NODE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+    int LOZENGE_NODE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
      * The feature id for the '<em><b>Width Computation Expression</b></em>'
@@ -736,7 +736,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height Computation Expression</b></em>'
@@ -745,16 +745,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION__COLOR = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int LOZENGE_NODE_DESCRIPTION__COLOR = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '
@@ -764,7 +764,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LOZENGE_NODE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int LOZENGE_NODE_DESCRIPTION_FEATURE_COUNT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -782,83 +782,83 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int ELLIPSE_NODE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__BORDER_COLOR = NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+    int ELLIPSE_NODE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__LABEL_SIZE = NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+    int ELLIPSE_NODE_DESCRIPTION__LABEL_SIZE = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__LABEL_FORMAT = NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int ELLIPSE_NODE_DESCRIPTION__LABEL_FORMAT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__SHOW_ICON = NODE_STYLE_DESCRIPTION__SHOW_ICON;
+    int ELLIPSE_NODE_DESCRIPTION__SHOW_ICON = StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__LABEL_EXPRESSION = NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int ELLIPSE_NODE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__LABEL_COLOR = NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+    int ELLIPSE_NODE_DESCRIPTION__LABEL_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__ICON_PATH = NODE_STYLE_DESCRIPTION__ICON_PATH;
+    int ELLIPSE_NODE_DESCRIPTION__ICON_PATH = StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__LABEL_ALIGNMENT = NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int ELLIPSE_NODE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
@@ -867,7 +867,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__TOOLTIP_EXPRESSION = NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int ELLIPSE_NODE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -876,16 +876,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int ELLIPSE_NODE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__LABEL_POSITION = NODE_STYLE_DESCRIPTION__LABEL_POSITION;
+    int ELLIPSE_NODE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -894,25 +894,25 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+    int ELLIPSE_NODE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+    int ELLIPSE_NODE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__COLOR = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int ELLIPSE_NODE_DESCRIPTION__COLOR = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '
@@ -922,17 +922,17 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '
      * <em><b>Vertical Diameter Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '
@@ -942,7 +942,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELLIPSE_NODE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int ELLIPSE_NODE_DESCRIPTION_FEATURE_COUNT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -960,83 +960,83 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int BUNDLED_IMAGE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__BORDER_COLOR = NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+    int BUNDLED_IMAGE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__LABEL_SIZE = NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+    int BUNDLED_IMAGE_DESCRIPTION__LABEL_SIZE = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__LABEL_FORMAT = NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int BUNDLED_IMAGE_DESCRIPTION__LABEL_FORMAT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__SHOW_ICON = NODE_STYLE_DESCRIPTION__SHOW_ICON;
+    int BUNDLED_IMAGE_DESCRIPTION__SHOW_ICON = StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__LABEL_EXPRESSION = NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int BUNDLED_IMAGE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__LABEL_COLOR = NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+    int BUNDLED_IMAGE_DESCRIPTION__LABEL_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__ICON_PATH = NODE_STYLE_DESCRIPTION__ICON_PATH;
+    int BUNDLED_IMAGE_DESCRIPTION__ICON_PATH = StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__LABEL_ALIGNMENT = NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int BUNDLED_IMAGE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
@@ -1045,7 +1045,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__TOOLTIP_EXPRESSION = NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int BUNDLED_IMAGE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -1054,16 +1054,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int BUNDLED_IMAGE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__LABEL_POSITION = NODE_STYLE_DESCRIPTION__LABEL_POSITION;
+    int BUNDLED_IMAGE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -1072,34 +1072,34 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+    int BUNDLED_IMAGE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+    int BUNDLED_IMAGE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__SHAPE = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int BUNDLED_IMAGE_DESCRIPTION__SHAPE = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__COLOR = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int BUNDLED_IMAGE_DESCRIPTION__COLOR = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -1109,7 +1109,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int BUNDLED_IMAGE_DESCRIPTION_FEATURE_COUNT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -1127,83 +1127,83 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int NOTE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__BORDER_COLOR = NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+    int NOTE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__LABEL_SIZE = NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+    int NOTE_DESCRIPTION__LABEL_SIZE = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__LABEL_FORMAT = NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int NOTE_DESCRIPTION__LABEL_FORMAT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__SHOW_ICON = NODE_STYLE_DESCRIPTION__SHOW_ICON;
+    int NOTE_DESCRIPTION__SHOW_ICON = StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__LABEL_EXPRESSION = NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int NOTE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__LABEL_COLOR = NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+    int NOTE_DESCRIPTION__LABEL_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__ICON_PATH = NODE_STYLE_DESCRIPTION__ICON_PATH;
+    int NOTE_DESCRIPTION__ICON_PATH = StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__LABEL_ALIGNMENT = NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int NOTE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
@@ -1212,7 +1212,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__TOOLTIP_EXPRESSION = NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int NOTE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -1221,16 +1221,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int NOTE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__LABEL_POSITION = NODE_STYLE_DESCRIPTION__LABEL_POSITION;
+    int NOTE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -1239,25 +1239,25 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+    int NOTE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+    int NOTE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION__COLOR = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int NOTE_DESCRIPTION__COLOR = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Note Description</em>'
@@ -1266,7 +1266,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NOTE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int NOTE_DESCRIPTION_FEATURE_COUNT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1284,94 +1284,94 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int DOT_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__BORDER_COLOR = NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+    int DOT_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__LABEL_SIZE = NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+    int DOT_DESCRIPTION__LABEL_SIZE = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__LABEL_FORMAT = NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int DOT_DESCRIPTION__LABEL_FORMAT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__SHOW_ICON = NODE_STYLE_DESCRIPTION__SHOW_ICON;
+    int DOT_DESCRIPTION__SHOW_ICON = StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__LABEL_EXPRESSION = NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int DOT_DESCRIPTION__LABEL_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__LABEL_COLOR = NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+    int DOT_DESCRIPTION__LABEL_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__ICON_PATH = NODE_STYLE_DESCRIPTION__ICON_PATH;
+    int DOT_DESCRIPTION__ICON_PATH = StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__LABEL_ALIGNMENT = NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int DOT_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__TOOLTIP_EXPRESSION = NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int DOT_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -1380,16 +1380,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int DOT_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__LABEL_POSITION = NODE_STYLE_DESCRIPTION__LABEL_POSITION;
+    int DOT_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -1398,35 +1398,35 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+    int DOT_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+    int DOT_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__BACKGROUND_COLOR = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int DOT_DESCRIPTION__BACKGROUND_COLOR = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '
      * <em><b>Stroke Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Dot Description</em>'
@@ -1435,7 +1435,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DOT_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int DOT_DESCRIPTION_FEATURE_COUNT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -1453,94 +1453,94 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__BORDER_COLOR = NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_SIZE = NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_FORMAT = NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__SHOW_ICON = NODE_STYLE_DESCRIPTION__SHOW_ICON;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_EXPRESSION = NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_COLOR = NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__ICON_PATH = NODE_STYLE_DESCRIPTION__ICON_PATH;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__ICON_PATH = StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_ALIGNMENT = NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -1549,16 +1549,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_POSITION = NODE_STYLE_DESCRIPTION__LABEL_POSITION;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -1567,25 +1567,25 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
      * The feature id for the '<em><b>Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__ALIGNMENT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Sections</b></em>' containment reference
@@ -1594,7 +1594,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__SECTIONS = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__SECTIONS = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -1604,7 +1604,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -1639,7 +1639,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1648,7 +1648,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1657,7 +1657,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1666,7 +1666,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1687,7 +1687,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
      * <em>Size Computation Container Style Description</em>}' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
      * @generated
@@ -1716,7 +1716,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Size Computation Container Style Description</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1737,7 +1737,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1746,7 +1746,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Arc Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1777,103 +1777,103 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH = ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH;
+    int CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH;
 
     /**
      * The feature id for the '<em><b>Arc Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT = ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT;
+    int CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+    int CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 5;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__ICON_PATH = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 7;
+    int CONTAINER_STYLE_DESCRIPTION__ICON_PATH = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 8;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
@@ -1882,16 +1882,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 9;
+    int CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Rounded Corner</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+    int CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The number of structural features of the '
@@ -1901,7 +1901,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
+    int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The meta object id for the '
@@ -1918,122 +1918,122 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH = CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH = StylePackage.CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH;
 
     /**
      * The feature id for the '<em><b>Arc Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT = CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT = StylePackage.CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = CONTAINER_STYLE_DESCRIPTION__SHOW_ICON;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__ICON_PATH = CONTAINER_STYLE_DESCRIPTION__ICON_PATH;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__ICON_PATH = StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Rounded Corner</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER;
 
     /**
      * The feature id for the '<em><b>Width Computation Expression</b></em>'
@@ -2042,7 +2042,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height Computation Expression</b></em>'
@@ -2051,34 +2051,34 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Background Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Label Border Style</b></em>' reference.
@@ -2087,7 +2087,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 5;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '
@@ -2097,7 +2097,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '
@@ -2114,122 +2114,122 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH = CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH = StylePackage.CONTAINER_STYLE_DESCRIPTION__ARC_WIDTH;
 
     /**
      * The feature id for the '<em><b>Arc Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT = CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT = StylePackage.CONTAINER_STYLE_DESCRIPTION__ARC_HEIGHT;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = CONTAINER_STYLE_DESCRIPTION__SHOW_ICON;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__ICON_PATH = CONTAINER_STYLE_DESCRIPTION__ICON_PATH;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__ICON_PATH = StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Rounded Corner</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER;
 
     /**
      * The feature id for the '<em><b>Width Computation Expression</b></em>'
@@ -2238,7 +2238,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height Computation Expression</b></em>'
@@ -2247,25 +2247,25 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '
@@ -2275,7 +2275,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -2293,94 +2293,94 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+    int WORKSPACE_IMAGE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__BORDER_COLOR = NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+    int WORKSPACE_IMAGE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_SIZE = NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_SIZE = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_FORMAT = NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_FORMAT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__SHOW_ICON = NODE_STYLE_DESCRIPTION__SHOW_ICON;
+    int WORKSPACE_IMAGE_DESCRIPTION__SHOW_ICON = StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_EXPRESSION = NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_COLOR = NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__ICON_PATH = NODE_STYLE_DESCRIPTION__ICON_PATH;
+    int WORKSPACE_IMAGE_DESCRIPTION__ICON_PATH = StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_ALIGNMENT = NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__TOOLTIP_EXPRESSION = NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+    int WORKSPACE_IMAGE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -2389,16 +2389,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int WORKSPACE_IMAGE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_POSITION = NODE_STYLE_DESCRIPTION__LABEL_POSITION;
+    int WORKSPACE_IMAGE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -2407,52 +2407,52 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+    int WORKSPACE_IMAGE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+    int WORKSPACE_IMAGE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__ARC_WIDTH = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int WORKSPACE_IMAGE_DESCRIPTION__ARC_WIDTH = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Arc Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__ARC_HEIGHT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int WORKSPACE_IMAGE_DESCRIPTION__ARC_HEIGHT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Rounded Corner</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__ROUNDED_CORNER = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int WORKSPACE_IMAGE_DESCRIPTION__ROUNDED_CORNER = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Workspace Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '
@@ -2462,7 +2462,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+    int WORKSPACE_IMAGE_DESCRIPTION_FEATURE_COUNT = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -2479,7 +2479,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Stroke Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2488,7 +2488,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Line Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2497,7 +2497,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2506,7 +2506,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2524,7 +2524,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Routing Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2533,7 +2533,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Folding Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2569,7 +2569,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ends Centering</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2617,7 +2617,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2626,7 +2626,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2635,7 +2635,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2644,7 +2644,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2653,7 +2653,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2662,7 +2662,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2693,7 +2693,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2702,7 +2702,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2711,7 +2711,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2720,7 +2720,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2729,7 +2729,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2738,7 +2738,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2769,7 +2769,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2778,7 +2778,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2787,7 +2787,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2796,7 +2796,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2805,7 +2805,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2814,7 +2814,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2845,38 +2845,38 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Stroke Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__STROKE_COLOR = EDGE_STYLE_DESCRIPTION__STROKE_COLOR;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__STROKE_COLOR = StylePackage.EDGE_STYLE_DESCRIPTION__STROKE_COLOR;
 
     /**
      * The feature id for the '<em><b>Line Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__LINE_STYLE = EDGE_STYLE_DESCRIPTION__LINE_STYLE;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__LINE_STYLE = StylePackage.EDGE_STYLE_DESCRIPTION__LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Source Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__SOURCE_ARROW = EDGE_STYLE_DESCRIPTION__SOURCE_ARROW;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__SOURCE_ARROW = StylePackage.EDGE_STYLE_DESCRIPTION__SOURCE_ARROW;
 
     /**
      * The feature id for the '<em><b>Target Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__TARGET_ARROW = EDGE_STYLE_DESCRIPTION__TARGET_ARROW;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__TARGET_ARROW = StylePackage.EDGE_STYLE_DESCRIPTION__TARGET_ARROW;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -2885,25 +2885,25 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Routing Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__ROUTING_STYLE = EDGE_STYLE_DESCRIPTION__ROUTING_STYLE;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__ROUTING_STYLE = StylePackage.EDGE_STYLE_DESCRIPTION__ROUTING_STYLE;
 
     /**
      * The feature id for the '<em><b>Folding Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__FOLDING_STYLE = EDGE_STYLE_DESCRIPTION__FOLDING_STYLE;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__FOLDING_STYLE = StylePackage.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE;
 
     /**
      * The feature id for the '<em><b>Begin Label Style Description</b></em>'
@@ -2912,7 +2912,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION = EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION = StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Center Label Style Description</b></em>'
@@ -2921,7 +2921,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION = EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION = StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>End Label Style Description</b></em>'
@@ -2930,16 +2930,16 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION = EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION = StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Ends Centering</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__ENDS_CENTERING = EDGE_STYLE_DESCRIPTION__ENDS_CENTERING;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__ENDS_CENTERING = StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING;
 
     /**
      * The feature id for the '<em><b>Centered Source Mappings</b></em>'
@@ -2948,7 +2948,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS = EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS = StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Centered Target Mappings</b></em>'
@@ -2957,7 +2957,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS = EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS;
+    int BRACKET_EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS = StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS;
 
     /**
      * The number of structural features of the '
@@ -2967,7 +2967,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BRACKET_EDGE_STYLE_DESCRIPTION_FEATURE_COUNT = EDGE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int BRACKET_EDGE_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.EDGE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * Returns the meta object for class '
@@ -3100,7 +3100,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.SquareDescription
      * <em>Square Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Square Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.SquareDescription
      * @generated
@@ -3224,7 +3224,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression
      * <em>Horizontal Diameter Computation Expression</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Horizontal Diameter Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression()
@@ -3288,7 +3288,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.NoteDescription
      * <em>Note Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Note Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.NoteDescription
      * @generated
@@ -3323,7 +3323,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.DotDescription#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.DotDescription#getBackgroundColor()
      * @see #getDotDescription()
@@ -3428,7 +3428,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression
      * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Value Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression()
      * @see #getGaugeSectionDescription()
@@ -3441,7 +3441,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor()
      * @see #getGaugeSectionDescription()
@@ -3454,7 +3454,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor
      * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Foreground Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor()
      * @see #getGaugeSectionDescription()
@@ -3479,7 +3479,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
      * <em>Size Computation Container Style Description</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Size Computation Container Style Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
@@ -3594,7 +3594,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundStyle
      * <em>Background Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Background Style</em>'.
      * @see org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundStyle()
      * @see #getFlatContainerStyleDescription()
@@ -3607,7 +3607,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundColor()
      * @see #getFlatContainerStyleDescription()
@@ -3620,7 +3620,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getForegroundColor
      * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Foreground Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getForegroundColor()
      * @see #getFlatContainerStyleDescription()
@@ -3633,7 +3633,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getLabelBorderStyle
      * <em>Label Border Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Label Border Style</em>'.
      * @see org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getLabelBorderStyle()
      * @see #getFlatContainerStyleDescription()
@@ -3671,7 +3671,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getBackgroundColor()
      * @see #getShapeContainerStyleDescription()
@@ -3937,7 +3937,7 @@ public interface StylePackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -3967,7 +3967,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBorderedStyleDescription()
          * @generated
          */
-        EClass BORDERED_STYLE_DESCRIPTION = eINSTANCE.getBorderedStyleDescription();
+        EClass BORDERED_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getBorderedStyleDescription();
 
         /**
          * The meta object literal for the '
@@ -3976,7 +3976,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = eINSTANCE.getBorderedStyleDescription_BorderSizeComputationExpression();
+        EAttribute BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getBorderedStyleDescription_BorderSizeComputationExpression();
 
         /**
          * The meta object literal for the '<em><b>Border Color</b></em>'
@@ -3984,7 +3984,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference BORDERED_STYLE_DESCRIPTION__BORDER_COLOR = eINSTANCE.getBorderedStyleDescription_BorderColor();
+        EReference BORDERED_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.eINSTANCE.getBorderedStyleDescription_BorderColor();
 
         /**
          * The meta object literal for the '
@@ -3996,16 +3996,16 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getNodeStyleDescription()
          * @generated
          */
-        EClass NODE_STYLE_DESCRIPTION = eINSTANCE.getNodeStyleDescription();
+        EClass NODE_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getNodeStyleDescription();
 
         /**
          * The meta object literal for the '
          * <em><b>Size Computation Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = eINSTANCE.getNodeStyleDescription_SizeComputationExpression();
+        EAttribute NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getNodeStyleDescription_SizeComputationExpression();
 
         /**
          * The meta object literal for the '<em><b>Label Position</b></em>'
@@ -4013,16 +4013,16 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute NODE_STYLE_DESCRIPTION__LABEL_POSITION = eINSTANCE.getNodeStyleDescription_LabelPosition();
+        EAttribute NODE_STYLE_DESCRIPTION__LABEL_POSITION = StylePackage.eINSTANCE.getNodeStyleDescription_LabelPosition();
 
         /**
          * The meta object literal for the '
          * <em><b>Hide Label By Default</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = eINSTANCE.getNodeStyleDescription_HideLabelByDefault();
+        EAttribute NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.eINSTANCE.getNodeStyleDescription_HideLabelByDefault();
 
         /**
          * The meta object literal for the '<em><b>Resize Kind</b></em>'
@@ -4030,7 +4030,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute NODE_STYLE_DESCRIPTION__RESIZE_KIND = eINSTANCE.getNodeStyleDescription_ResizeKind();
+        EAttribute NODE_STYLE_DESCRIPTION__RESIZE_KIND = StylePackage.eINSTANCE.getNodeStyleDescription_ResizeKind();
 
         /**
          * The meta object literal for the '
@@ -4042,7 +4042,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getCustomStyleDescription()
          * @generated
          */
-        EClass CUSTOM_STYLE_DESCRIPTION = eINSTANCE.getCustomStyleDescription();
+        EClass CUSTOM_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getCustomStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
@@ -4050,7 +4050,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CUSTOM_STYLE_DESCRIPTION__ID = eINSTANCE.getCustomStyleDescription_Id();
+        EAttribute CUSTOM_STYLE_DESCRIPTION__ID = StylePackage.eINSTANCE.getCustomStyleDescription_Id();
 
         /**
          * The meta object literal for the '
@@ -4062,7 +4062,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSquareDescription()
          * @generated
          */
-        EClass SQUARE_DESCRIPTION = eINSTANCE.getSquareDescription();
+        EClass SQUARE_DESCRIPTION = StylePackage.eINSTANCE.getSquareDescription();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
@@ -4070,7 +4070,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SQUARE_DESCRIPTION__WIDTH = eINSTANCE.getSquareDescription_Width();
+        EAttribute SQUARE_DESCRIPTION__WIDTH = StylePackage.eINSTANCE.getSquareDescription_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
@@ -4078,7 +4078,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SQUARE_DESCRIPTION__HEIGHT = eINSTANCE.getSquareDescription_Height();
+        EAttribute SQUARE_DESCRIPTION__HEIGHT = StylePackage.eINSTANCE.getSquareDescription_Height();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
@@ -4086,7 +4086,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference SQUARE_DESCRIPTION__COLOR = eINSTANCE.getSquareDescription_Color();
+        EReference SQUARE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getSquareDescription_Color();
 
         /**
          * The meta object literal for the '
@@ -4098,16 +4098,16 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getLozengeNodeDescription()
          * @generated
          */
-        EClass LOZENGE_NODE_DESCRIPTION = eINSTANCE.getLozengeNodeDescription();
+        EClass LOZENGE_NODE_DESCRIPTION = StylePackage.eINSTANCE.getLozengeNodeDescription();
 
         /**
          * The meta object literal for the '
          * <em><b>Width Computation Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getLozengeNodeDescription_WidthComputationExpression();
+        EAttribute LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getLozengeNodeDescription_WidthComputationExpression();
 
         /**
          * The meta object literal for the '
@@ -4116,7 +4116,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = eINSTANCE.getLozengeNodeDescription_HeightComputationExpression();
+        EAttribute LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getLozengeNodeDescription_HeightComputationExpression();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
@@ -4124,7 +4124,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference LOZENGE_NODE_DESCRIPTION__COLOR = eINSTANCE.getLozengeNodeDescription_Color();
+        EReference LOZENGE_NODE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getLozengeNodeDescription_Color();
 
         /**
          * The meta object literal for the '
@@ -4136,7 +4136,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEllipseNodeDescription()
          * @generated
          */
-        EClass ELLIPSE_NODE_DESCRIPTION = eINSTANCE.getEllipseNodeDescription();
+        EClass ELLIPSE_NODE_DESCRIPTION = StylePackage.eINSTANCE.getEllipseNodeDescription();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
@@ -4144,7 +4144,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference ELLIPSE_NODE_DESCRIPTION__COLOR = eINSTANCE.getEllipseNodeDescription_Color();
+        EReference ELLIPSE_NODE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getEllipseNodeDescription_Color();
 
         /**
          * The meta object literal for the '
@@ -4153,7 +4153,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION = eINSTANCE.getEllipseNodeDescription_HorizontalDiameterComputationExpression();
+        EAttribute ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getEllipseNodeDescription_HorizontalDiameterComputationExpression();
 
         /**
          * The meta object literal for the '
@@ -4162,7 +4162,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION = eINSTANCE.getEllipseNodeDescription_VerticalDiameterComputationExpression();
+        EAttribute ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getEllipseNodeDescription_VerticalDiameterComputationExpression();
 
         /**
          * The meta object literal for the '
@@ -4174,7 +4174,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBundledImageDescription()
          * @generated
          */
-        EClass BUNDLED_IMAGE_DESCRIPTION = eINSTANCE.getBundledImageDescription();
+        EClass BUNDLED_IMAGE_DESCRIPTION = StylePackage.eINSTANCE.getBundledImageDescription();
 
         /**
          * The meta object literal for the '<em><b>Shape</b></em>' attribute
@@ -4182,7 +4182,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute BUNDLED_IMAGE_DESCRIPTION__SHAPE = eINSTANCE.getBundledImageDescription_Shape();
+        EAttribute BUNDLED_IMAGE_DESCRIPTION__SHAPE = StylePackage.eINSTANCE.getBundledImageDescription_Shape();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
@@ -4190,7 +4190,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference BUNDLED_IMAGE_DESCRIPTION__COLOR = eINSTANCE.getBundledImageDescription_Color();
+        EReference BUNDLED_IMAGE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getBundledImageDescription_Color();
 
         /**
          * The meta object literal for the '
@@ -4202,7 +4202,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getNoteDescription()
          * @generated
          */
-        EClass NOTE_DESCRIPTION = eINSTANCE.getNoteDescription();
+        EClass NOTE_DESCRIPTION = StylePackage.eINSTANCE.getNoteDescription();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
@@ -4210,7 +4210,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference NOTE_DESCRIPTION__COLOR = eINSTANCE.getNoteDescription_Color();
+        EReference NOTE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getNoteDescription_Color();
 
         /**
          * The meta object literal for the '
@@ -4222,7 +4222,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getDotDescription()
          * @generated
          */
-        EClass DOT_DESCRIPTION = eINSTANCE.getDotDescription();
+        EClass DOT_DESCRIPTION = StylePackage.eINSTANCE.getDotDescription();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -4230,7 +4230,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference DOT_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getDotDescription_BackgroundColor();
+        EReference DOT_DESCRIPTION__BACKGROUND_COLOR = StylePackage.eINSTANCE.getDotDescription_BackgroundColor();
 
         /**
          * The meta object literal for the '
@@ -4239,19 +4239,19 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION = eINSTANCE.getDotDescription_StrokeSizeComputationExpression();
+        EAttribute DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getDotDescription_StrokeSizeComputationExpression();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl
          * <em>Gauge Composite Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getGaugeCompositeStyleDescription()
          * @generated
          */
-        EClass GAUGE_COMPOSITE_STYLE_DESCRIPTION = eINSTANCE.getGaugeCompositeStyleDescription();
+        EClass GAUGE_COMPOSITE_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getGaugeCompositeStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Alignment</b></em>' attribute
@@ -4259,7 +4259,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_COMPOSITE_STYLE_DESCRIPTION__ALIGNMENT = eINSTANCE.getGaugeCompositeStyleDescription_Alignment();
+        EAttribute GAUGE_COMPOSITE_STYLE_DESCRIPTION__ALIGNMENT = StylePackage.eINSTANCE.getGaugeCompositeStyleDescription_Alignment();
 
         /**
          * The meta object literal for the '<em><b>Sections</b></em>'
@@ -4268,7 +4268,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference GAUGE_COMPOSITE_STYLE_DESCRIPTION__SECTIONS = eINSTANCE.getGaugeCompositeStyleDescription_Sections();
+        EReference GAUGE_COMPOSITE_STYLE_DESCRIPTION__SECTIONS = StylePackage.eINSTANCE.getGaugeCompositeStyleDescription_Sections();
 
         /**
          * The meta object literal for the '
@@ -4280,7 +4280,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getGaugeSectionDescription()
          * @generated
          */
-        EClass GAUGE_SECTION_DESCRIPTION = eINSTANCE.getGaugeSectionDescription();
+        EClass GAUGE_SECTION_DESCRIPTION = StylePackage.eINSTANCE.getGaugeSectionDescription();
 
         /**
          * The meta object literal for the '<em><b>Min Value Expression</b></em>
@@ -4288,7 +4288,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION_DESCRIPTION__MIN_VALUE_EXPRESSION = eINSTANCE.getGaugeSectionDescription_MinValueExpression();
+        EAttribute GAUGE_SECTION_DESCRIPTION__MIN_VALUE_EXPRESSION = StylePackage.eINSTANCE.getGaugeSectionDescription_MinValueExpression();
 
         /**
          * The meta object literal for the '<em><b>Max Value Expression</b></em>
@@ -4296,7 +4296,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION_DESCRIPTION__MAX_VALUE_EXPRESSION = eINSTANCE.getGaugeSectionDescription_MaxValueExpression();
+        EAttribute GAUGE_SECTION_DESCRIPTION__MAX_VALUE_EXPRESSION = StylePackage.eINSTANCE.getGaugeSectionDescription_MaxValueExpression();
 
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
@@ -4304,7 +4304,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION_DESCRIPTION__VALUE_EXPRESSION = eINSTANCE.getGaugeSectionDescription_ValueExpression();
+        EAttribute GAUGE_SECTION_DESCRIPTION__VALUE_EXPRESSION = StylePackage.eINSTANCE.getGaugeSectionDescription_ValueExpression();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -4312,7 +4312,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference GAUGE_SECTION_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getGaugeSectionDescription_BackgroundColor();
+        EReference GAUGE_SECTION_DESCRIPTION__BACKGROUND_COLOR = StylePackage.eINSTANCE.getGaugeSectionDescription_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
@@ -4320,7 +4320,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference GAUGE_SECTION_DESCRIPTION__FOREGROUND_COLOR = eINSTANCE.getGaugeSectionDescription_ForegroundColor();
+        EReference GAUGE_SECTION_DESCRIPTION__FOREGROUND_COLOR = StylePackage.eINSTANCE.getGaugeSectionDescription_ForegroundColor();
 
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
@@ -4328,28 +4328,28 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GAUGE_SECTION_DESCRIPTION__LABEL = eINSTANCE.getGaugeSectionDescription_Label();
+        EAttribute GAUGE_SECTION_DESCRIPTION__LABEL = StylePackage.eINSTANCE.getGaugeSectionDescription_Label();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
          * <em>Size Computation Container Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
          * @generated
          */
-        EClass SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getSizeComputationContainerStyleDescription();
+        EClass SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getSizeComputationContainerStyleDescription();
 
         /**
          * The meta object literal for the '
          * <em><b>Width Computation Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_WidthComputationExpression();
+        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getSizeComputationContainerStyleDescription_WidthComputationExpression();
 
         /**
          * The meta object literal for the '
@@ -4358,19 +4358,19 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_HeightComputationExpression();
+        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getSizeComputationContainerStyleDescription_HeightComputationExpression();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
          * <em>Rounded Corner Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getRoundedCornerStyleDescription()
          * @generated
          */
-        EClass ROUNDED_CORNER_STYLE_DESCRIPTION = eINSTANCE.getRoundedCornerStyleDescription();
+        EClass ROUNDED_CORNER_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getRoundedCornerStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Arc Width</b></em>' attribute
@@ -4378,7 +4378,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH = eINSTANCE.getRoundedCornerStyleDescription_ArcWidth();
+        EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH = StylePackage.eINSTANCE.getRoundedCornerStyleDescription_ArcWidth();
 
         /**
          * The meta object literal for the '<em><b>Arc Height</b></em>'
@@ -4386,7 +4386,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT = eINSTANCE.getRoundedCornerStyleDescription_ArcHeight();
+        EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT = StylePackage.eINSTANCE.getRoundedCornerStyleDescription_ArcHeight();
 
         /**
          * The meta object literal for the '
@@ -4398,7 +4398,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getContainerStyleDescription()
          * @generated
          */
-        EClass CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getContainerStyleDescription();
+        EClass CONTAINER_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getContainerStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Rounded Corner</b></em>'
@@ -4406,19 +4406,19 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = eINSTANCE.getContainerStyleDescription_RoundedCorner();
+        EAttribute CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.eINSTANCE.getContainerStyleDescription_RoundedCorner();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl
          * <em>Flat Container Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getFlatContainerStyleDescription()
          * @generated
          */
-        EClass FLAT_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getFlatContainerStyleDescription();
+        EClass FLAT_CONTAINER_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getFlatContainerStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Background Style</b></em>'
@@ -4426,7 +4426,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE = eINSTANCE.getFlatContainerStyleDescription_BackgroundStyle();
+        EAttribute FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE = StylePackage.eINSTANCE.getFlatContainerStyleDescription_BackgroundStyle();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -4434,7 +4434,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getFlatContainerStyleDescription_BackgroundColor();
+        EReference FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = StylePackage.eINSTANCE.getFlatContainerStyleDescription_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
@@ -4442,7 +4442,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR = eINSTANCE.getFlatContainerStyleDescription_ForegroundColor();
+        EReference FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR = StylePackage.eINSTANCE.getFlatContainerStyleDescription_ForegroundColor();
 
         /**
          * The meta object literal for the '<em><b>Label Border Style</b></em>'
@@ -4450,19 +4450,19 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE = eINSTANCE.getFlatContainerStyleDescription_LabelBorderStyle();
+        EReference FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE = StylePackage.eINSTANCE.getFlatContainerStyleDescription_LabelBorderStyle();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl
          * <em>Shape Container Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getShapeContainerStyleDescription()
          * @generated
          */
-        EClass SHAPE_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getShapeContainerStyleDescription();
+        EClass SHAPE_CONTAINER_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getShapeContainerStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Shape</b></em>' attribute
@@ -4470,7 +4470,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE = eINSTANCE.getShapeContainerStyleDescription_Shape();
+        EAttribute SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE = StylePackage.eINSTANCE.getShapeContainerStyleDescription_Shape();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -4478,7 +4478,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getShapeContainerStyleDescription_BackgroundColor();
+        EReference SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = StylePackage.eINSTANCE.getShapeContainerStyleDescription_BackgroundColor();
 
         /**
          * The meta object literal for the '
@@ -4490,7 +4490,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getWorkspaceImageDescription()
          * @generated
          */
-        EClass WORKSPACE_IMAGE_DESCRIPTION = eINSTANCE.getWorkspaceImageDescription();
+        EClass WORKSPACE_IMAGE_DESCRIPTION = StylePackage.eINSTANCE.getWorkspaceImageDescription();
 
         /**
          * The meta object literal for the '<em><b>Workspace Path</b></em>'
@@ -4498,7 +4498,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH = eINSTANCE.getWorkspaceImageDescription_WorkspacePath();
+        EAttribute WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH = StylePackage.eINSTANCE.getWorkspaceImageDescription_WorkspacePath();
 
         /**
          * The meta object literal for the '
@@ -4510,7 +4510,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEdgeStyleDescription()
          * @generated
          */
-        EClass EDGE_STYLE_DESCRIPTION = eINSTANCE.getEdgeStyleDescription();
+        EClass EDGE_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getEdgeStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Stroke Color</b></em>'
@@ -4518,7 +4518,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_STYLE_DESCRIPTION__STROKE_COLOR = eINSTANCE.getEdgeStyleDescription_StrokeColor();
+        EReference EDGE_STYLE_DESCRIPTION__STROKE_COLOR = StylePackage.eINSTANCE.getEdgeStyleDescription_StrokeColor();
 
         /**
          * The meta object literal for the '<em><b>Line Style</b></em>'
@@ -4526,7 +4526,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE_DESCRIPTION__LINE_STYLE = eINSTANCE.getEdgeStyleDescription_LineStyle();
+        EAttribute EDGE_STYLE_DESCRIPTION__LINE_STYLE = StylePackage.eINSTANCE.getEdgeStyleDescription_LineStyle();
 
         /**
          * The meta object literal for the '<em><b>Source Arrow</b></em>'
@@ -4534,7 +4534,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE_DESCRIPTION__SOURCE_ARROW = eINSTANCE.getEdgeStyleDescription_SourceArrow();
+        EAttribute EDGE_STYLE_DESCRIPTION__SOURCE_ARROW = StylePackage.eINSTANCE.getEdgeStyleDescription_SourceArrow();
 
         /**
          * The meta object literal for the '<em><b>Target Arrow</b></em>'
@@ -4542,16 +4542,16 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE_DESCRIPTION__TARGET_ARROW = eINSTANCE.getEdgeStyleDescription_TargetArrow();
+        EAttribute EDGE_STYLE_DESCRIPTION__TARGET_ARROW = StylePackage.eINSTANCE.getEdgeStyleDescription_TargetArrow();
 
         /**
          * The meta object literal for the '
          * <em><b>Size Computation Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = eINSTANCE.getEdgeStyleDescription_SizeComputationExpression();
+        EAttribute EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getEdgeStyleDescription_SizeComputationExpression();
 
         /**
          * The meta object literal for the '<em><b>Routing Style</b></em>'
@@ -4559,7 +4559,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE_DESCRIPTION__ROUTING_STYLE = eINSTANCE.getEdgeStyleDescription_RoutingStyle();
+        EAttribute EDGE_STYLE_DESCRIPTION__ROUTING_STYLE = StylePackage.eINSTANCE.getEdgeStyleDescription_RoutingStyle();
 
         /**
          * The meta object literal for the '<em><b>Folding Style</b></em>'
@@ -4567,7 +4567,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE_DESCRIPTION__FOLDING_STYLE = eINSTANCE.getEdgeStyleDescription_FoldingStyle();
+        EAttribute EDGE_STYLE_DESCRIPTION__FOLDING_STYLE = StylePackage.eINSTANCE.getEdgeStyleDescription_FoldingStyle();
 
         /**
          * The meta object literal for the '
@@ -4576,7 +4576,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION = eINSTANCE.getEdgeStyleDescription_BeginLabelStyleDescription();
+        EReference EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getEdgeStyleDescription_BeginLabelStyleDescription();
 
         /**
          * The meta object literal for the '
@@ -4585,7 +4585,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION = eINSTANCE.getEdgeStyleDescription_CenterLabelStyleDescription();
+        EReference EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getEdgeStyleDescription_CenterLabelStyleDescription();
 
         /**
          * The meta object literal for the '
@@ -4594,7 +4594,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION = eINSTANCE.getEdgeStyleDescription_EndLabelStyleDescription();
+        EReference EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getEdgeStyleDescription_EndLabelStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Ends Centering</b></em>'
@@ -4602,7 +4602,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_STYLE_DESCRIPTION__ENDS_CENTERING = eINSTANCE.getEdgeStyleDescription_EndsCentering();
+        EAttribute EDGE_STYLE_DESCRIPTION__ENDS_CENTERING = StylePackage.eINSTANCE.getEdgeStyleDescription_EndsCentering();
 
         /**
          * The meta object literal for the '
@@ -4611,7 +4611,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS = eINSTANCE.getEdgeStyleDescription_CenteredSourceMappings();
+        EReference EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS = StylePackage.eINSTANCE.getEdgeStyleDescription_CenteredSourceMappings();
 
         /**
          * The meta object literal for the '
@@ -4620,7 +4620,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS = eINSTANCE.getEdgeStyleDescription_CenteredTargetMappings();
+        EReference EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS = StylePackage.eINSTANCE.getEdgeStyleDescription_CenteredTargetMappings();
 
         /**
          * The meta object literal for the '
@@ -4632,7 +4632,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBeginLabelStyleDescription()
          * @generated
          */
-        EClass BEGIN_LABEL_STYLE_DESCRIPTION = eINSTANCE.getBeginLabelStyleDescription();
+        EClass BEGIN_LABEL_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getBeginLabelStyleDescription();
 
         /**
          * The meta object literal for the '
@@ -4644,7 +4644,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getCenterLabelStyleDescription()
          * @generated
          */
-        EClass CENTER_LABEL_STYLE_DESCRIPTION = eINSTANCE.getCenterLabelStyleDescription();
+        EClass CENTER_LABEL_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getCenterLabelStyleDescription();
 
         /**
          * The meta object literal for the '
@@ -4656,7 +4656,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEndLabelStyleDescription()
          * @generated
          */
-        EClass END_LABEL_STYLE_DESCRIPTION = eINSTANCE.getEndLabelStyleDescription();
+        EClass END_LABEL_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getEndLabelStyleDescription();
 
         /**
          * The meta object literal for the '
@@ -4668,7 +4668,7 @@ public interface StylePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBracketEdgeStyleDescription()
          * @generated
          */
-        EClass BRACKET_EDGE_STYLE_DESCRIPTION = eINSTANCE.getBracketEdgeStyleDescription();
+        EClass BRACKET_EDGE_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getBracketEdgeStyleDescription();
 
     }
 

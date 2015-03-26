@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -94,7 +94,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * The cached value of the '{@link #getOwnedBorderedNodes()
      * <em>Owned Bordered Nodes</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedBorderedNodes()
      * @generated
      * @ordered
@@ -195,7 +195,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * @generated
      * @ordered
      */
-    protected Integer width = WIDTH_EDEFAULT;
+    protected Integer width = DDiagramElementContainerImpl.WIDTH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}'
@@ -215,7 +215,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * @generated
      * @ordered
      */
-    protected Integer height = HEIGHT_EDEFAULT;
+    protected Integer height = DDiagramElementContainerImpl.HEIGHT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -241,6 +241,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<DNode> getOwnedBorderedNodes() {
         if (ownedBorderedNodes == null) {
             ownedBorderedNodes = new EObjectContainmentEList.Resolving<DNode>(DNode.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES);
@@ -253,6 +254,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<ArrangeConstraint> getArrangeConstraints() {
         if (arrangeConstraints == null) {
             arrangeConstraints = new EDataTypeUniqueEList<ArrangeConstraint>(ArrangeConstraint.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ARRANGE_CONSTRAINTS);
@@ -265,6 +267,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getOutgoingEdges() {
         if (outgoingEdges == null) {
             outgoingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
@@ -277,6 +280,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getIncomingEdges() {
         if (incomingEdges == null) {
             incomingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);
@@ -289,6 +293,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<DNode> getNodes() {
         // TODO: implement this method to return the 'Nodes' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -305,6 +310,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElementContainer> getContainers() {
         // TODO: implement this method to return the 'Containers' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -321,6 +327,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElement> getElements() {
         // TODO: implement this method to return the 'Elements' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -337,20 +344,23 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public ContainerStyle getOwnedStyle() {
         if (ownedStyle != null && ownedStyle.eIsProxy()) {
             InternalEObject oldOwnedStyle = (InternalEObject) ownedStyle;
             ownedStyle = (ContainerStyle) eResolveProxy(oldOwnedStyle);
             if (ownedStyle != oldOwnedStyle) {
                 InternalEObject newOwnedStyle = (InternalEObject) ownedStyle;
-                NotificationChain msgs = oldOwnedStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, null, null);
+                NotificationChain msgs = oldOwnedStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, null, null);
                 if (newOwnedStyle.eInternalContainer() == null) {
-                    msgs = newOwnedStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, null, msgs);
+                    msgs = newOwnedStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, oldOwnedStyle, ownedStyle));
+                }
             }
         }
         return ownedStyle;
@@ -375,10 +385,11 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
         ownedStyle = newOwnedStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, oldOwnedStyle, newOwnedStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -388,18 +399,23 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public void setOwnedStyle(ContainerStyle newOwnedStyle) {
         if (newOwnedStyle != ownedStyle) {
             NotificationChain msgs = null;
-            if (ownedStyle != null)
-                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, null, msgs);
-            if (newOwnedStyle != null)
-                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, null, msgs);
+            if (ownedStyle != null) {
+                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, null, msgs);
+            }
+            if (newOwnedStyle != null) {
+                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, null, msgs);
+            }
             msgs = basicSetOwnedStyle(newOwnedStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, newOwnedStyle, newOwnedStyle));
+        }
     }
 
     /**
@@ -407,13 +423,15 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public Style getOriginalStyle() {
         if (originalStyle != null && originalStyle.eIsProxy()) {
             InternalEObject oldOriginalStyle = (InternalEObject) originalStyle;
             originalStyle = (Style) eResolveProxy(oldOriginalStyle);
             if (originalStyle != oldOriginalStyle) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE, oldOriginalStyle, originalStyle));
+                }
             }
         }
         return originalStyle;
@@ -433,11 +451,13 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public void setOriginalStyle(Style newOriginalStyle) {
         Style oldOriginalStyle = originalStyle;
         originalStyle = newOriginalStyle;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE, oldOriginalStyle, originalStyle));
+        }
     }
 
     /**
@@ -445,13 +465,15 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public ContainerMapping getActualMapping() {
         if (actualMapping != null && actualMapping.eIsProxy()) {
             InternalEObject oldActualMapping = (InternalEObject) actualMapping;
             actualMapping = (ContainerMapping) eResolveProxy(oldActualMapping);
             if (actualMapping != oldActualMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+                }
             }
         }
         return actualMapping;
@@ -471,11 +493,13 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public void setActualMapping(ContainerMapping newActualMapping) {
         ContainerMapping oldActualMapping = actualMapping;
         actualMapping = newActualMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+        }
     }
 
     /**
@@ -483,6 +507,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<ContainerMapping> getCandidatesMapping() {
         if (candidatesMapping == null) {
             candidatesMapping = new EObjectResolvingEList<ContainerMapping>(ContainerMapping.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING);
@@ -495,6 +520,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public Integer getWidth() {
         return width;
     }
@@ -504,11 +530,13 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public void setWidth(Integer newWidth) {
         Integer oldWidth = width;
         width = newWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__WIDTH, oldWidth, width));
+        }
     }
 
     /**
@@ -516,6 +544,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public Integer getHeight() {
         return height;
     }
@@ -525,11 +554,13 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public void setHeight(Integer newHeight) {
         Integer oldHeight = height;
         height = newHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__HEIGHT, oldHeight, height));
+        }
     }
 
     /**
@@ -537,6 +568,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<DNode> getNodesFromMapping(NodeMapping mapping) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -548,6 +580,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElementContainer> getContainersFromMapping(ContainerMapping mapping) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -559,6 +592,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    @Override
     public DragAndDropTargetDescription getDragAndDropDescription() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -625,16 +659,19 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS:
             return getElements();
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getOwnedStyle();
+            }
             return basicGetOwnedStyle();
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getOriginalStyle();
+            }
             return basicGetOriginalStyle();
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getActualMapping();
+            }
             return basicGetActualMapping();
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING:
             return getCandidatesMapping();
@@ -727,10 +764,10 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
             getCandidatesMapping().clear();
             return;
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__WIDTH:
-            setWidth(WIDTH_EDEFAULT);
+            setWidth(DDiagramElementContainerImpl.WIDTH_EDEFAULT);
             return;
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__HEIGHT:
-            setHeight(HEIGHT_EDEFAULT);
+            setHeight(DDiagramElementContainerImpl.HEIGHT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -767,9 +804,9 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING:
             return candidatesMapping != null && !candidatesMapping.isEmpty();
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__WIDTH:
-            return WIDTH_EDEFAULT == null ? width != null : !WIDTH_EDEFAULT.equals(width);
+            return DDiagramElementContainerImpl.WIDTH_EDEFAULT == null ? width != null : !DDiagramElementContainerImpl.WIDTH_EDEFAULT.equals(width);
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__HEIGHT:
-            return HEIGHT_EDEFAULT == null ? height != null : !HEIGHT_EDEFAULT.equals(height);
+            return DDiagramElementContainerImpl.HEIGHT_EDEFAULT == null ? height != null : !DDiagramElementContainerImpl.HEIGHT_EDEFAULT.equals(height);
         }
         return super.eIsSet(featureID);
     }
@@ -845,8 +882,9 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (arrangeConstraints: ");

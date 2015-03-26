@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.provider;
 
@@ -36,11 +36,11 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * @generated
  */
 public class CustomizableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CustomizableItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class CustomizableItemProvider extends ItemProviderAdapter implements IEd
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class CustomizableItemProvider extends ItemProviderAdapter implements IEd
     /**
      * This adds a property descriptor for the Custom Features feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCustomFeaturesPropertyDescriptor(Object object) {
@@ -104,7 +104,7 @@ public class CustomizableItemProvider extends ItemProviderAdapter implements IEd
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class CustomizableItemProvider extends ItemProviderAdapter implements IEd
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

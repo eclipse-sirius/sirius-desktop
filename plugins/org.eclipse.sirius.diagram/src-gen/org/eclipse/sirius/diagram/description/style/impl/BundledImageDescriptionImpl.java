@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -56,7 +56,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
      * @generated
      * @ordered
      */
-    protected BundledImageShape shape = SHAPE_EDEFAULT;
+    protected BundledImageShape shape = BundledImageDescriptionImpl.SHAPE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' reference.
@@ -92,6 +92,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
      * 
      * @generated
      */
+    @Override
     public BundledImageShape getShape() {
         return shape;
     }
@@ -101,11 +102,13 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
      * 
      * @generated
      */
+    @Override
     public void setShape(BundledImageShape newShape) {
         BundledImageShape oldShape = shape;
-        shape = newShape == null ? SHAPE_EDEFAULT : newShape;
-        if (eNotificationRequired())
+        shape = newShape == null ? BundledImageDescriptionImpl.SHAPE_EDEFAULT : newShape;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BUNDLED_IMAGE_DESCRIPTION__SHAPE, oldShape, shape));
+        }
     }
 
     /**
@@ -113,13 +116,15 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
      * 
      * @generated
      */
+    @Override
     public ColorDescription getColor() {
         if (color != null && color.eIsProxy()) {
             InternalEObject oldColor = (InternalEObject) color;
             color = (ColorDescription) eResolveProxy(oldColor);
             if (color != oldColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR, oldColor, color));
+                }
             }
         }
         return color;
@@ -139,11 +144,13 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
      * 
      * @generated
      */
+    @Override
     public void setColor(ColorDescription newColor) {
         ColorDescription oldColor = color;
         color = newColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR, oldColor, color));
+        }
     }
 
     /**
@@ -157,8 +164,9 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__SHAPE:
             return getShape();
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR:
-            if (resolve)
+            if (resolve) {
                 return getColor();
+            }
             return basicGetColor();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -191,7 +199,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__SHAPE:
-            setShape(SHAPE_EDEFAULT);
+            setShape(BundledImageDescriptionImpl.SHAPE_EDEFAULT);
             return;
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR:
             setColor((ColorDescription) null);
@@ -209,7 +217,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__SHAPE:
-            return shape != SHAPE_EDEFAULT;
+            return shape != BundledImageDescriptionImpl.SHAPE_EDEFAULT;
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR:
             return color != null;
         }
@@ -223,8 +231,9 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (shape: ");

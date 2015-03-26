@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.util;
 
@@ -98,8 +98,8 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public DiagramAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = DiagramPackage.eINSTANCE;
+        if (DiagramAdapterFactory.modelPackage == null) {
+            DiagramAdapterFactory.modelPackage = DiagramPackage.eINSTANCE;
         }
     }
 
@@ -114,11 +114,11 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == DiagramAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == DiagramAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -126,7 +126,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DiagramSwitch<Adapter> modelSwitch = new DiagramSwitch<Adapter>() {
@@ -446,7 +446,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.DDiagram
      * @generated
@@ -509,7 +509,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.HideFilter
      * @generated
@@ -618,7 +618,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.DNode
      * @generated
@@ -665,7 +665,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.DNodeList
      * @generated
@@ -696,7 +696,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.DEdge
      * @generated
@@ -711,7 +711,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.NodeStyle
      * @generated
@@ -804,7 +804,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.Square
      * @generated
@@ -819,7 +819,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.Ellipse
      * @generated
@@ -834,7 +834,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.Lozenge
      * @generated
@@ -895,7 +895,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.EdgeTarget
      * @generated
@@ -910,7 +910,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.EdgeStyle
      * @generated
@@ -956,7 +956,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.Note
      * @generated
@@ -1224,7 +1224,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DLabelled
      * @generated
@@ -1332,7 +1332,7 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.Style
      * @generated

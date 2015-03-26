@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -38,7 +38,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
     /**
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -48,18 +48,18 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
      */
-    protected String featureName = FEATURE_NAME_EDEFAULT;
+    protected String featureName = UnsetImpl.FEATURE_NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getElementExpression()
      * <em>Element Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getElementExpression()
      * @generated
      * @ordered
@@ -70,16 +70,16 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
      * The cached value of the '{@link #getElementExpression()
      * <em>Element Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getElementExpression()
      * @generated
      * @ordered
      */
-    protected String elementExpression = ELEMENT_EXPRESSION_EDEFAULT;
+    protected String elementExpression = UnsetImpl.ELEMENT_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected UnsetImpl() {
@@ -88,7 +88,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,49 +98,55 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getFeatureName() {
         return featureName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setFeatureName(String newFeatureName) {
         String oldFeatureName = featureName;
         featureName = newFeatureName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.UNSET__FEATURE_NAME, oldFeatureName, featureName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getElementExpression() {
         return elementExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setElementExpression(String newElementExpression) {
         String oldElementExpression = elementExpression;
         elementExpression = newElementExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.UNSET__ELEMENT_EXPRESSION, oldElementExpression, elementExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +162,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,17 +180,17 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.UNSET__FEATURE_NAME:
-            setFeatureName(FEATURE_NAME_EDEFAULT);
+            setFeatureName(UnsetImpl.FEATURE_NAME_EDEFAULT);
             return;
         case ToolPackage.UNSET__ELEMENT_EXPRESSION:
-            setElementExpression(ELEMENT_EXPRESSION_EDEFAULT);
+            setElementExpression(UnsetImpl.ELEMENT_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -192,29 +198,30 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.UNSET__FEATURE_NAME:
-            return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
+            return UnsetImpl.FEATURE_NAME_EDEFAULT == null ? featureName != null : !UnsetImpl.FEATURE_NAME_EDEFAULT.equals(featureName);
         case ToolPackage.UNSET__ELEMENT_EXPRESSION:
-            return ELEMENT_EXPRESSION_EDEFAULT == null ? elementExpression != null : !ELEMENT_EXPRESSION_EDEFAULT.equals(elementExpression);
+            return UnsetImpl.ELEMENT_EXPRESSION_EDEFAULT == null ? elementExpression != null : !UnsetImpl.ELEMENT_EXPRESSION_EDEFAULT.equals(elementExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (featureName: ");

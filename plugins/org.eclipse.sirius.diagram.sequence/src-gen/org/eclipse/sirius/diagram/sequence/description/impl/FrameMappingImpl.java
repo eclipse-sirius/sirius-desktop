@@ -63,7 +63,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * @generated
      * @ordered
      */
-    protected String startingEndFinderExpression = STARTING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String startingEndFinderExpression = FrameMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFinishingEndFinderExpression()
@@ -85,7 +85,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * @generated
      * @ordered
      */
-    protected String finishingEndFinderExpression = FINISHING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String finishingEndFinderExpression = FrameMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getCoveredLifelinesExpression()
@@ -107,7 +107,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * @generated
      * @ordered
      */
-    protected String coveredLifelinesExpression = COVERED_LIFELINES_EXPRESSION_EDEFAULT;
+    protected String coveredLifelinesExpression = FrameMappingImpl.COVERED_LIFELINES_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getCenterLabelExpression()
@@ -129,7 +129,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * @generated
      * @ordered
      */
-    protected String centerLabelExpression = CENTER_LABEL_EXPRESSION_EDEFAULT;
+    protected String centerLabelExpression = FrameMappingImpl.CENTER_LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -155,6 +155,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * 
      * @generated
      */
+    @Override
     public String getStartingEndFinderExpression() {
         return startingEndFinderExpression;
     }
@@ -164,11 +165,13 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * 
      * @generated
      */
+    @Override
     public void setStartingEndFinderExpression(String newStartingEndFinderExpression) {
         String oldStartingEndFinderExpression = startingEndFinderExpression;
         startingEndFinderExpression = newStartingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FRAME_MAPPING__STARTING_END_FINDER_EXPRESSION, oldStartingEndFinderExpression, startingEndFinderExpression));
+        }
     }
 
     /**
@@ -176,6 +179,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * 
      * @generated
      */
+    @Override
     public String getFinishingEndFinderExpression() {
         return finishingEndFinderExpression;
     }
@@ -185,11 +189,13 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * 
      * @generated
      */
+    @Override
     public void setFinishingEndFinderExpression(String newFinishingEndFinderExpression) {
         String oldFinishingEndFinderExpression = finishingEndFinderExpression;
         finishingEndFinderExpression = newFinishingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FRAME_MAPPING__FINISHING_END_FINDER_EXPRESSION, oldFinishingEndFinderExpression, finishingEndFinderExpression));
+        }
     }
 
     /**
@@ -197,6 +203,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * 
      * @generated
      */
+    @Override
     public String getCoveredLifelinesExpression() {
         return coveredLifelinesExpression;
     }
@@ -206,11 +213,13 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * 
      * @generated
      */
+    @Override
     public void setCoveredLifelinesExpression(String newCoveredLifelinesExpression) {
         String oldCoveredLifelinesExpression = coveredLifelinesExpression;
         coveredLifelinesExpression = newCoveredLifelinesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION, oldCoveredLifelinesExpression, coveredLifelinesExpression));
+        }
     }
 
     /**
@@ -218,6 +227,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * 
      * @generated
      */
+    @Override
     public String getCenterLabelExpression() {
         return centerLabelExpression;
     }
@@ -227,11 +237,13 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      * 
      * @generated
      */
+    @Override
     public void setCenterLabelExpression(String newCenterLabelExpression) {
         String oldCenterLabelExpression = centerLabelExpression;
         centerLabelExpression = newCenterLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FRAME_MAPPING__CENTER_LABEL_EXPRESSION, oldCenterLabelExpression, centerLabelExpression));
+        }
     }
 
     /**
@@ -287,16 +299,16 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.FRAME_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            setStartingEndFinderExpression(STARTING_END_FINDER_EXPRESSION_EDEFAULT);
+            setStartingEndFinderExpression(FrameMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.FRAME_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            setFinishingEndFinderExpression(FINISHING_END_FINDER_EXPRESSION_EDEFAULT);
+            setFinishingEndFinderExpression(FrameMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION:
-            setCoveredLifelinesExpression(COVERED_LIFELINES_EXPRESSION_EDEFAULT);
+            setCoveredLifelinesExpression(FrameMappingImpl.COVERED_LIFELINES_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.FRAME_MAPPING__CENTER_LABEL_EXPRESSION:
-            setCenterLabelExpression(CENTER_LABEL_EXPRESSION_EDEFAULT);
+            setCenterLabelExpression(FrameMappingImpl.CENTER_LABEL_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -311,13 +323,16 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.FRAME_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            return STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !STARTING_END_FINDER_EXPRESSION_EDEFAULT.equals(startingEndFinderExpression);
+            return FrameMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !FrameMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(startingEndFinderExpression);
         case DescriptionPackage.FRAME_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            return FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null : !FINISHING_END_FINDER_EXPRESSION_EDEFAULT.equals(finishingEndFinderExpression);
+            return FrameMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null : !FrameMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(finishingEndFinderExpression);
         case DescriptionPackage.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION:
-            return COVERED_LIFELINES_EXPRESSION_EDEFAULT == null ? coveredLifelinesExpression != null : !COVERED_LIFELINES_EXPRESSION_EDEFAULT.equals(coveredLifelinesExpression);
+            return FrameMappingImpl.COVERED_LIFELINES_EXPRESSION_EDEFAULT == null ? coveredLifelinesExpression != null : !FrameMappingImpl.COVERED_LIFELINES_EXPRESSION_EDEFAULT
+                    .equals(coveredLifelinesExpression);
         case DescriptionPackage.FRAME_MAPPING__CENTER_LABEL_EXPRESSION:
-            return CENTER_LABEL_EXPRESSION_EDEFAULT == null ? centerLabelExpression != null : !CENTER_LABEL_EXPRESSION_EDEFAULT.equals(centerLabelExpression);
+            return FrameMappingImpl.CENTER_LABEL_EXPRESSION_EDEFAULT == null ? centerLabelExpression != null : !FrameMappingImpl.CENTER_LABEL_EXPRESSION_EDEFAULT.equals(centerLabelExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -381,8 +396,9 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (startingEndFinderExpression: ");

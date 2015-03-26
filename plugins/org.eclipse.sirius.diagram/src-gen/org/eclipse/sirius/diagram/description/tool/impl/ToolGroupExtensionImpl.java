@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -89,13 +89,15 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public ToolGroup getGroup() {
         if (group != null && group.eIsProxy()) {
             InternalEObject oldGroup = (InternalEObject) group;
             group = (ToolGroup) eResolveProxy(oldGroup);
             if (group != oldGroup) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.TOOL_GROUP_EXTENSION__GROUP, oldGroup, group));
+                }
             }
         }
         return group;
@@ -115,11 +117,13 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public void setGroup(ToolGroup newGroup) {
         ToolGroup oldGroup = group;
         group = newGroup;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.TOOL_GROUP_EXTENSION__GROUP, oldGroup, group));
+        }
     }
 
     /**
@@ -127,6 +131,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public EList<AbstractToolDescription> getTools() {
         if (tools == null) {
             tools = new EObjectContainmentEList.Resolving<AbstractToolDescription>(AbstractToolDescription.class, this, ToolPackage.TOOL_GROUP_EXTENSION__TOOLS);
@@ -157,8 +162,9 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ToolPackage.TOOL_GROUP_EXTENSION__GROUP:
-            if (resolve)
+            if (resolve) {
                 return getGroup();
+            }
             return basicGetGroup();
         case ToolPackage.TOOL_GROUP_EXTENSION__TOOLS:
             return getTools();

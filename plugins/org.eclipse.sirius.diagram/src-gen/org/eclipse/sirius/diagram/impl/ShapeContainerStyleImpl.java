@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -56,7 +56,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
      * @generated
      * @ordered
      */
-    protected ContainerShape shape = SHAPE_EDEFAULT;
+    protected ContainerShape shape = ShapeContainerStyleImpl.SHAPE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBackgroundColor()
@@ -78,7 +78,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
      * @generated
      * @ordered
      */
-    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
+    protected RGBValues backgroundColor = ShapeContainerStyleImpl.BACKGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -104,6 +104,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
      * 
      * @generated
      */
+    @Override
     public ContainerShape getShape() {
         return shape;
     }
@@ -113,11 +114,13 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
      * 
      * @generated
      */
+    @Override
     public void setShape(ContainerShape newShape) {
         ContainerShape oldShape = shape;
-        shape = newShape == null ? SHAPE_EDEFAULT : newShape;
-        if (eNotificationRequired())
+        shape = newShape == null ? ShapeContainerStyleImpl.SHAPE_EDEFAULT : newShape;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.SHAPE_CONTAINER_STYLE__SHAPE, oldShape, shape));
+        }
     }
 
     /**
@@ -125,6 +128,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
      * 
      * @generated
      */
+    @Override
     public RGBValues getBackgroundColor() {
         return backgroundColor;
     }
@@ -134,11 +138,13 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(RGBValues newBackgroundColor) {
         RGBValues oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -184,10 +190,10 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.SHAPE_CONTAINER_STYLE__SHAPE:
-            setShape(SHAPE_EDEFAULT);
+            setShape(ShapeContainerStyleImpl.SHAPE_EDEFAULT);
             return;
         case DiagramPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR:
-            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
+            setBackgroundColor(ShapeContainerStyleImpl.BACKGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -202,9 +208,9 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.SHAPE_CONTAINER_STYLE__SHAPE:
-            return shape != SHAPE_EDEFAULT;
+            return shape != ShapeContainerStyleImpl.SHAPE_EDEFAULT;
         case DiagramPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR:
-            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
+            return ShapeContainerStyleImpl.BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !ShapeContainerStyleImpl.BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -216,8 +222,9 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (shape: ");

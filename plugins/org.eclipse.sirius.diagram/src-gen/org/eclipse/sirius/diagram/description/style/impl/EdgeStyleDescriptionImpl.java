@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -113,7 +113,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected LineStyle lineStyle = LINE_STYLE_EDEFAULT;
+    protected LineStyle lineStyle = EdgeStyleDescriptionImpl.LINE_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSourceArrow() <em>Source Arrow</em>}
@@ -133,7 +133,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected EdgeArrows sourceArrow = SOURCE_ARROW_EDEFAULT;
+    protected EdgeArrows sourceArrow = EdgeStyleDescriptionImpl.SOURCE_ARROW_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTargetArrow() <em>Target Arrow</em>}
@@ -153,7 +153,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected EdgeArrows targetArrow = TARGET_ARROW_EDEFAULT;
+    protected EdgeArrows targetArrow = EdgeStyleDescriptionImpl.TARGET_ARROW_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSizeComputationExpression()
@@ -175,7 +175,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected String sizeComputationExpression = SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String sizeComputationExpression = EdgeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRoutingStyle()
@@ -197,7 +197,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected EdgeRouting routingStyle = ROUTING_STYLE_EDEFAULT;
+    protected EdgeRouting routingStyle = EdgeStyleDescriptionImpl.ROUTING_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFoldingStyle()
@@ -219,13 +219,13 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected FoldingStyle foldingStyle = FOLDING_STYLE_EDEFAULT;
+    protected FoldingStyle foldingStyle = EdgeStyleDescriptionImpl.FOLDING_STYLE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBeginLabelStyleDescription()
      * <em>Begin Label Style Description</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBeginLabelStyleDescription()
      * @generated
      * @ordered
@@ -236,7 +236,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * The cached value of the '{@link #getCenterLabelStyleDescription()
      * <em>Center Label Style Description</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCenterLabelStyleDescription()
      * @generated
      * @ordered
@@ -247,7 +247,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * The cached value of the '{@link #getEndLabelStyleDescription()
      * <em>End Label Style Description</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEndLabelStyleDescription()
      * @generated
      * @ordered
@@ -274,7 +274,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected CenteringStyle endsCentering = ENDS_CENTERING_EDEFAULT;
+    protected CenteringStyle endsCentering = EdgeStyleDescriptionImpl.ENDS_CENTERING_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCenteredSourceMappings()
@@ -322,13 +322,15 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public ColorDescription getStrokeColor() {
         if (strokeColor != null && strokeColor.eIsProxy()) {
             InternalEObject oldStrokeColor = (InternalEObject) strokeColor;
             strokeColor = (ColorDescription) eResolveProxy(oldStrokeColor);
             if (strokeColor != oldStrokeColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.EDGE_STYLE_DESCRIPTION__STROKE_COLOR, oldStrokeColor, strokeColor));
+                }
             }
         }
         return strokeColor;
@@ -348,11 +350,13 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setStrokeColor(ColorDescription newStrokeColor) {
         ColorDescription oldStrokeColor = strokeColor;
         strokeColor = newStrokeColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__STROKE_COLOR, oldStrokeColor, strokeColor));
+        }
     }
 
     /**
@@ -360,6 +364,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public LineStyle getLineStyle() {
         return lineStyle;
     }
@@ -369,11 +374,13 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setLineStyle(LineStyle newLineStyle) {
         LineStyle oldLineStyle = lineStyle;
-        lineStyle = newLineStyle == null ? LINE_STYLE_EDEFAULT : newLineStyle;
-        if (eNotificationRequired())
+        lineStyle = newLineStyle == null ? EdgeStyleDescriptionImpl.LINE_STYLE_EDEFAULT : newLineStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__LINE_STYLE, oldLineStyle, lineStyle));
+        }
     }
 
     /**
@@ -381,6 +388,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public EdgeArrows getSourceArrow() {
         return sourceArrow;
     }
@@ -390,11 +398,13 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setSourceArrow(EdgeArrows newSourceArrow) {
         EdgeArrows oldSourceArrow = sourceArrow;
-        sourceArrow = newSourceArrow == null ? SOURCE_ARROW_EDEFAULT : newSourceArrow;
-        if (eNotificationRequired())
+        sourceArrow = newSourceArrow == null ? EdgeStyleDescriptionImpl.SOURCE_ARROW_EDEFAULT : newSourceArrow;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__SOURCE_ARROW, oldSourceArrow, sourceArrow));
+        }
     }
 
     /**
@@ -402,6 +412,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public EdgeArrows getTargetArrow() {
         return targetArrow;
     }
@@ -411,11 +422,13 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setTargetArrow(EdgeArrows newTargetArrow) {
         EdgeArrows oldTargetArrow = targetArrow;
-        targetArrow = newTargetArrow == null ? TARGET_ARROW_EDEFAULT : newTargetArrow;
-        if (eNotificationRequired())
+        targetArrow = newTargetArrow == null ? EdgeStyleDescriptionImpl.TARGET_ARROW_EDEFAULT : newTargetArrow;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__TARGET_ARROW, oldTargetArrow, targetArrow));
+        }
     }
 
     /**
@@ -423,6 +436,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public String getSizeComputationExpression() {
         return sizeComputationExpression;
     }
@@ -432,11 +446,13 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setSizeComputationExpression(String newSizeComputationExpression) {
         String oldSizeComputationExpression = sizeComputationExpression;
         sizeComputationExpression = newSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION, oldSizeComputationExpression, sizeComputationExpression));
+        }
     }
 
     /**
@@ -444,6 +460,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public EdgeRouting getRoutingStyle() {
         return routingStyle;
     }
@@ -453,11 +470,13 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setRoutingStyle(EdgeRouting newRoutingStyle) {
         EdgeRouting oldRoutingStyle = routingStyle;
-        routingStyle = newRoutingStyle == null ? ROUTING_STYLE_EDEFAULT : newRoutingStyle;
-        if (eNotificationRequired())
+        routingStyle = newRoutingStyle == null ? EdgeStyleDescriptionImpl.ROUTING_STYLE_EDEFAULT : newRoutingStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__ROUTING_STYLE, oldRoutingStyle, routingStyle));
+        }
     }
 
     /**
@@ -465,6 +484,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public FoldingStyle getFoldingStyle() {
         return foldingStyle;
     }
@@ -474,11 +494,13 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setFoldingStyle(FoldingStyle newFoldingStyle) {
         FoldingStyle oldFoldingStyle = foldingStyle;
-        foldingStyle = newFoldingStyle == null ? FOLDING_STYLE_EDEFAULT : newFoldingStyle;
-        if (eNotificationRequired())
+        foldingStyle = newFoldingStyle == null ? EdgeStyleDescriptionImpl.FOLDING_STYLE_EDEFAULT : newFoldingStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE, oldFoldingStyle, foldingStyle));
+        }
     }
 
     /**
@@ -486,21 +508,25 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public BeginLabelStyleDescription getBeginLabelStyleDescription() {
         if (beginLabelStyleDescription != null && beginLabelStyleDescription.eIsProxy()) {
             InternalEObject oldBeginLabelStyleDescription = (InternalEObject) beginLabelStyleDescription;
             beginLabelStyleDescription = (BeginLabelStyleDescription) eResolveProxy(oldBeginLabelStyleDescription);
             if (beginLabelStyleDescription != oldBeginLabelStyleDescription) {
                 InternalEObject newBeginLabelStyleDescription = (InternalEObject) beginLabelStyleDescription;
-                NotificationChain msgs = oldBeginLabelStyleDescription.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION, null, null);
+                NotificationChain msgs = oldBeginLabelStyleDescription.eInverseRemove(this,
+                        InternalEObject.EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION, null, null);
                 if (newBeginLabelStyleDescription.eInternalContainer() == null) {
-                    msgs = newBeginLabelStyleDescription.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION, null, msgs);
+                    msgs = newBeginLabelStyleDescription.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION, oldBeginLabelStyleDescription,
                             beginLabelStyleDescription));
+                }
             }
         }
         return beginLabelStyleDescription;
@@ -526,10 +552,11 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION, oldBeginLabelStyleDescription,
                     newBeginLabelStyleDescription);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -539,18 +566,25 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setBeginLabelStyleDescription(BeginLabelStyleDescription newBeginLabelStyleDescription) {
         if (newBeginLabelStyleDescription != beginLabelStyleDescription) {
             NotificationChain msgs = null;
-            if (beginLabelStyleDescription != null)
-                msgs = ((InternalEObject) beginLabelStyleDescription).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION, null, msgs);
-            if (newBeginLabelStyleDescription != null)
-                msgs = ((InternalEObject) newBeginLabelStyleDescription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION, null, msgs);
+            if (beginLabelStyleDescription != null) {
+                msgs = ((InternalEObject) beginLabelStyleDescription).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION,
+                        null, msgs);
+            }
+            if (newBeginLabelStyleDescription != null) {
+                msgs = ((InternalEObject) newBeginLabelStyleDescription).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION,
+                        null, msgs);
+            }
             msgs = basicSetBeginLabelStyleDescription(newBeginLabelStyleDescription, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION, newBeginLabelStyleDescription, newBeginLabelStyleDescription));
+        }
     }
 
     /**
@@ -558,21 +592,25 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public CenterLabelStyleDescription getCenterLabelStyleDescription() {
         if (centerLabelStyleDescription != null && centerLabelStyleDescription.eIsProxy()) {
             InternalEObject oldCenterLabelStyleDescription = (InternalEObject) centerLabelStyleDescription;
             centerLabelStyleDescription = (CenterLabelStyleDescription) eResolveProxy(oldCenterLabelStyleDescription);
             if (centerLabelStyleDescription != oldCenterLabelStyleDescription) {
                 InternalEObject newCenterLabelStyleDescription = (InternalEObject) centerLabelStyleDescription;
-                NotificationChain msgs = oldCenterLabelStyleDescription.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, null, null);
+                NotificationChain msgs = oldCenterLabelStyleDescription.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, null, null);
                 if (newCenterLabelStyleDescription.eInternalContainer() == null) {
-                    msgs = newCenterLabelStyleDescription.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, null, msgs);
+                    msgs = newCenterLabelStyleDescription.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, oldCenterLabelStyleDescription,
                             centerLabelStyleDescription));
+                }
             }
         }
         return centerLabelStyleDescription;
@@ -598,10 +636,11 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, oldCenterLabelStyleDescription,
                     newCenterLabelStyleDescription);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -611,18 +650,25 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setCenterLabelStyleDescription(CenterLabelStyleDescription newCenterLabelStyleDescription) {
         if (newCenterLabelStyleDescription != centerLabelStyleDescription) {
             NotificationChain msgs = null;
-            if (centerLabelStyleDescription != null)
-                msgs = ((InternalEObject) centerLabelStyleDescription).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, null, msgs);
-            if (newCenterLabelStyleDescription != null)
-                msgs = ((InternalEObject) newCenterLabelStyleDescription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, null, msgs);
+            if (centerLabelStyleDescription != null) {
+                msgs = ((InternalEObject) centerLabelStyleDescription).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, null, msgs);
+            }
+            if (newCenterLabelStyleDescription != null) {
+                msgs = ((InternalEObject) newCenterLabelStyleDescription).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, null, msgs);
+            }
             msgs = basicSetCenterLabelStyleDescription(newCenterLabelStyleDescription, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION, newCenterLabelStyleDescription, newCenterLabelStyleDescription));
+        }
     }
 
     /**
@@ -630,20 +676,24 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public EndLabelStyleDescription getEndLabelStyleDescription() {
         if (endLabelStyleDescription != null && endLabelStyleDescription.eIsProxy()) {
             InternalEObject oldEndLabelStyleDescription = (InternalEObject) endLabelStyleDescription;
             endLabelStyleDescription = (EndLabelStyleDescription) eResolveProxy(oldEndLabelStyleDescription);
             if (endLabelStyleDescription != oldEndLabelStyleDescription) {
                 InternalEObject newEndLabelStyleDescription = (InternalEObject) endLabelStyleDescription;
-                NotificationChain msgs = oldEndLabelStyleDescription.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION, null, null);
+                NotificationChain msgs = oldEndLabelStyleDescription.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION,
+                        null, null);
                 if (newEndLabelStyleDescription.eInternalContainer() == null) {
-                    msgs = newEndLabelStyleDescription.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION, null, msgs);
+                    msgs = newEndLabelStyleDescription.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION, oldEndLabelStyleDescription, endLabelStyleDescription));
+                }
             }
         }
         return endLabelStyleDescription;
@@ -669,10 +719,11 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION, oldEndLabelStyleDescription,
                     newEndLabelStyleDescription);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -682,18 +733,25 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setEndLabelStyleDescription(EndLabelStyleDescription newEndLabelStyleDescription) {
         if (newEndLabelStyleDescription != endLabelStyleDescription) {
             NotificationChain msgs = null;
-            if (endLabelStyleDescription != null)
-                msgs = ((InternalEObject) endLabelStyleDescription).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION, null, msgs);
-            if (newEndLabelStyleDescription != null)
-                msgs = ((InternalEObject) newEndLabelStyleDescription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION, null, msgs);
+            if (endLabelStyleDescription != null) {
+                msgs = ((InternalEObject) endLabelStyleDescription).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION,
+                        null, msgs);
+            }
+            if (newEndLabelStyleDescription != null) {
+                msgs = ((InternalEObject) newEndLabelStyleDescription).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION,
+                        null, msgs);
+            }
             msgs = basicSetEndLabelStyleDescription(newEndLabelStyleDescription, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION, newEndLabelStyleDescription, newEndLabelStyleDescription));
+        }
     }
 
     /**
@@ -701,6 +759,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public CenteringStyle getEndsCentering() {
         return endsCentering;
     }
@@ -710,11 +769,13 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setEndsCentering(CenteringStyle newEndsCentering) {
         CenteringStyle oldEndsCentering = endsCentering;
-        endsCentering = newEndsCentering == null ? ENDS_CENTERING_EDEFAULT : newEndsCentering;
-        if (eNotificationRequired())
+        endsCentering = newEndsCentering == null ? EdgeStyleDescriptionImpl.ENDS_CENTERING_EDEFAULT : newEndsCentering;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING, oldEndsCentering, endsCentering));
+        }
     }
 
     /**
@@ -722,6 +783,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getCenteredSourceMappings() {
         if (centeredSourceMappings == null) {
             centeredSourceMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS);
@@ -734,6 +796,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getCenteredTargetMappings() {
         if (centeredTargetMappings == null) {
             centeredTargetMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS);
@@ -768,8 +831,9 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case StylePackage.EDGE_STYLE_DESCRIPTION__STROKE_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getStrokeColor();
+            }
             return basicGetStrokeColor();
         case StylePackage.EDGE_STYLE_DESCRIPTION__LINE_STYLE:
             return getLineStyle();
@@ -784,16 +848,19 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
         case StylePackage.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE:
             return getFoldingStyle();
         case StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getBeginLabelStyleDescription();
+            }
             return basicGetBeginLabelStyleDescription();
         case StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getCenterLabelStyleDescription();
+            }
             return basicGetCenterLabelStyleDescription();
         case StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getEndLabelStyleDescription();
+            }
             return basicGetEndLabelStyleDescription();
         case StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING:
             return getEndsCentering();
@@ -871,22 +938,22 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
             setStrokeColor((ColorDescription) null);
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__LINE_STYLE:
-            setLineStyle(LINE_STYLE_EDEFAULT);
+            setLineStyle(EdgeStyleDescriptionImpl.LINE_STYLE_EDEFAULT);
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__SOURCE_ARROW:
-            setSourceArrow(SOURCE_ARROW_EDEFAULT);
+            setSourceArrow(EdgeStyleDescriptionImpl.SOURCE_ARROW_EDEFAULT);
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__TARGET_ARROW:
-            setTargetArrow(TARGET_ARROW_EDEFAULT);
+            setTargetArrow(EdgeStyleDescriptionImpl.TARGET_ARROW_EDEFAULT);
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
-            setSizeComputationExpression(SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setSizeComputationExpression(EdgeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__ROUTING_STYLE:
-            setRoutingStyle(ROUTING_STYLE_EDEFAULT);
+            setRoutingStyle(EdgeStyleDescriptionImpl.ROUTING_STYLE_EDEFAULT);
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE:
-            setFoldingStyle(FOLDING_STYLE_EDEFAULT);
+            setFoldingStyle(EdgeStyleDescriptionImpl.FOLDING_STYLE_EDEFAULT);
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION:
             setBeginLabelStyleDescription((BeginLabelStyleDescription) null);
@@ -898,7 +965,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
             setEndLabelStyleDescription((EndLabelStyleDescription) null);
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING:
-            setEndsCentering(ENDS_CENTERING_EDEFAULT);
+            setEndsCentering(EdgeStyleDescriptionImpl.ENDS_CENTERING_EDEFAULT);
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS:
             getCenteredSourceMappings().clear();
@@ -921,17 +988,18 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
         case StylePackage.EDGE_STYLE_DESCRIPTION__STROKE_COLOR:
             return strokeColor != null;
         case StylePackage.EDGE_STYLE_DESCRIPTION__LINE_STYLE:
-            return lineStyle != LINE_STYLE_EDEFAULT;
+            return lineStyle != EdgeStyleDescriptionImpl.LINE_STYLE_EDEFAULT;
         case StylePackage.EDGE_STYLE_DESCRIPTION__SOURCE_ARROW:
-            return sourceArrow != SOURCE_ARROW_EDEFAULT;
+            return sourceArrow != EdgeStyleDescriptionImpl.SOURCE_ARROW_EDEFAULT;
         case StylePackage.EDGE_STYLE_DESCRIPTION__TARGET_ARROW:
-            return targetArrow != TARGET_ARROW_EDEFAULT;
+            return targetArrow != EdgeStyleDescriptionImpl.TARGET_ARROW_EDEFAULT;
         case StylePackage.EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
-            return SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? sizeComputationExpression != null : !SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(sizeComputationExpression);
+            return EdgeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? sizeComputationExpression != null : !EdgeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(sizeComputationExpression);
         case StylePackage.EDGE_STYLE_DESCRIPTION__ROUTING_STYLE:
-            return routingStyle != ROUTING_STYLE_EDEFAULT;
+            return routingStyle != EdgeStyleDescriptionImpl.ROUTING_STYLE_EDEFAULT;
         case StylePackage.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE:
-            return foldingStyle != FOLDING_STYLE_EDEFAULT;
+            return foldingStyle != EdgeStyleDescriptionImpl.FOLDING_STYLE_EDEFAULT;
         case StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION:
             return beginLabelStyleDescription != null;
         case StylePackage.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION:
@@ -939,7 +1007,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
         case StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION:
             return endLabelStyleDescription != null;
         case StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING:
-            return endsCentering != ENDS_CENTERING_EDEFAULT;
+            return endsCentering != EdgeStyleDescriptionImpl.ENDS_CENTERING_EDEFAULT;
         case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS:
             return centeredSourceMappings != null && !centeredSourceMappings.isEmpty();
         case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS:
@@ -955,8 +1023,9 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (lineStyle: ");

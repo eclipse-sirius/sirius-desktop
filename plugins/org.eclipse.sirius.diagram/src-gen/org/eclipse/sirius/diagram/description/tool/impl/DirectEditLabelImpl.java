@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -86,7 +86,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
      * @generated
      * @ordered
      */
-    protected String inputLabelExpression = INPUT_LABEL_EXPRESSION_EDEFAULT;
+    protected String inputLabelExpression = DirectEditLabelImpl.INPUT_LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -112,20 +112,23 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public EditMaskVariables getMask() {
         if (mask != null && mask.eIsProxy()) {
             InternalEObject oldMask = (InternalEObject) mask;
             mask = (EditMaskVariables) eResolveProxy(oldMask);
             if (mask != oldMask) {
                 InternalEObject newMask = (InternalEObject) mask;
-                NotificationChain msgs = oldMask.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__MASK, null, null);
+                NotificationChain msgs = oldMask.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__MASK, null, null);
                 if (newMask.eInternalContainer() == null) {
-                    msgs = newMask.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__MASK, null, msgs);
+                    msgs = newMask.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__MASK, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.DIRECT_EDIT_LABEL__MASK, oldMask, mask));
+                }
             }
         }
         return mask;
@@ -150,10 +153,11 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
         mask = newMask;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.DIRECT_EDIT_LABEL__MASK, oldMask, newMask);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -163,18 +167,23 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setMask(EditMaskVariables newMask) {
         if (newMask != mask) {
             NotificationChain msgs = null;
-            if (mask != null)
-                msgs = ((InternalEObject) mask).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__MASK, null, msgs);
-            if (newMask != null)
-                msgs = ((InternalEObject) newMask).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__MASK, null, msgs);
+            if (mask != null) {
+                msgs = ((InternalEObject) mask).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__MASK, null, msgs);
+            }
+            if (newMask != null) {
+                msgs = ((InternalEObject) newMask).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__MASK, null, msgs);
+            }
             msgs = basicSetMask(newMask, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DIRECT_EDIT_LABEL__MASK, newMask, newMask));
+        }
     }
 
     /**
@@ -182,20 +191,23 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
             initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -220,10 +232,11 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -233,18 +246,23 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -252,6 +270,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getInputLabelExpression() {
         return inputLabelExpression;
     }
@@ -261,11 +280,13 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setInputLabelExpression(String newInputLabelExpression) {
         String oldInputLabelExpression = inputLabelExpression;
         inputLabelExpression = newInputLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION, oldInputLabelExpression, inputLabelExpression));
+        }
     }
 
     /**
@@ -273,6 +294,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getMapping() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -304,12 +326,14 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ToolPackage.DIRECT_EDIT_LABEL__MASK:
-            if (resolve)
+            if (resolve) {
                 return getMask();
+            }
             return basicGetMask();
         case ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         case ToolPackage.DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION:
             return getInputLabelExpression();
@@ -353,7 +377,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
             setInitialOperation((InitialOperation) null);
             return;
         case ToolPackage.DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION:
-            setInputLabelExpression(INPUT_LABEL_EXPRESSION_EDEFAULT);
+            setInputLabelExpression(DirectEditLabelImpl.INPUT_LABEL_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -372,7 +396,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
         case ToolPackage.DIRECT_EDIT_LABEL__INITIAL_OPERATION:
             return initialOperation != null;
         case ToolPackage.DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION:
-            return INPUT_LABEL_EXPRESSION_EDEFAULT == null ? inputLabelExpression != null : !INPUT_LABEL_EXPRESSION_EDEFAULT.equals(inputLabelExpression);
+            return DirectEditLabelImpl.INPUT_LABEL_EXPRESSION_EDEFAULT == null ? inputLabelExpression != null : !DirectEditLabelImpl.INPUT_LABEL_EXPRESSION_EDEFAULT.equals(inputLabelExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -384,8 +408,9 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (inputLabelExpression: ");

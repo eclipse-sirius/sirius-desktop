@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <em><b>Label Position</b></em>', and utility methods for working with them.
  * <!-- end-user-doc --> <!-- begin-model-doc --> Position of the label. <!--
  * end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getLabelPosition()
  * @model
  * @generated
@@ -52,7 +52,7 @@ public enum LabelPosition implements Enumerator {
      * The '<em><b>Border</b></em>' literal value. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The label is on border. <!--
      * end-model-doc -->
-     * 
+     *
      * @see #BORDER_LITERAL
      * @model name="border"
      * @generated
@@ -64,7 +64,7 @@ public enum LabelPosition implements Enumerator {
      * The '<em><b>Node</b></em>' literal value. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The label is on the node. <!--
      * end-model-doc -->
-     * 
+     *
      * @see #NODE_LITERAL
      * @model name="node"
      * @generated
@@ -75,7 +75,7 @@ public enum LabelPosition implements Enumerator {
     /**
      * An array of all the '<em><b>Label Position</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final LabelPosition[] VALUES_ARRAY = new LabelPosition[] { BORDER_LITERAL, NODE_LITERAL, };
@@ -86,7 +86,7 @@ public enum LabelPosition implements Enumerator {
      * 
      * @generated
      */
-    public static final List<LabelPosition> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<LabelPosition> VALUES = Collections.unmodifiableList(Arrays.asList(LabelPosition.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Label Position</b></em>' literal with the specified
@@ -95,8 +95,7 @@ public enum LabelPosition implements Enumerator {
      * @generated
      */
     public static LabelPosition get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            LabelPosition result = VALUES_ARRAY[i];
+        for (LabelPosition result : LabelPosition.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -111,8 +110,7 @@ public enum LabelPosition implements Enumerator {
      * @generated
      */
     public static LabelPosition getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            LabelPosition result = VALUES_ARRAY[i];
+        for (LabelPosition result : LabelPosition.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -174,6 +172,7 @@ public enum LabelPosition implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -183,6 +182,7 @@ public enum LabelPosition implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -192,6 +192,7 @@ public enum LabelPosition implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

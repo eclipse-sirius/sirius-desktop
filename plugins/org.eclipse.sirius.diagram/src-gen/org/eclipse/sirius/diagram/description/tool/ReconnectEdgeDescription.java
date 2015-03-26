@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -68,9 +68,9 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * The kind of reconnection : SOURCE : the source of the ViewEdge can be
      * reconnected but not the target. TARGET : the target of the ViewEdge can
      * be reconnected but not the source.
-     * 
+     *
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Reconnection Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectionKind
      * @see #setReconnectionKind(ReconnectionKind)
@@ -99,7 +99,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The semantic element of the source view of the reconnection operation.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source</em>' containment reference.
      * @see #setSource(SourceEdgeCreationVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getReconnectEdgeDescription_Source()
@@ -126,7 +126,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The semantic element of the target view of the reconnection operation.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target</em>' containment reference.
      * @see #setTarget(TargetEdgeCreationVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getReconnectEdgeDescription_Target()
@@ -153,7 +153,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The source view of the reconnection operation. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source View</em>' containment reference.
      * @see #setSourceView(SourceEdgeViewCreationVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getReconnectEdgeDescription_SourceView()
@@ -181,7 +181,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The target view of the reconnection operation. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target View</em>' containment reference.
      * @see #setTargetView(TargetEdgeViewCreationVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getReconnectEdgeDescription_TargetView()
@@ -208,7 +208,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Element</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The semantic element of the ViewEdge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementSelectVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getReconnectEdgeDescription_Element()
@@ -234,7 +234,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The first operation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)

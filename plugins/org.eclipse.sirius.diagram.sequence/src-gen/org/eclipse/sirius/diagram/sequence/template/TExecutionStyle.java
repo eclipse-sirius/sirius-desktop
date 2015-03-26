@@ -42,7 +42,7 @@ public interface TExecutionStyle extends TTransformer {
      * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> An expression computing the
      * size of the border. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Size Computation Expression</em>'
      *         attribute.
      * @see #setBorderSizeComputationExpression(String)
@@ -60,7 +60,7 @@ public interface TExecutionStyle extends TTransformer {
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderSizeComputationExpression
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Border Size Computation Expression</em>' attribute.
@@ -77,7 +77,7 @@ public interface TExecutionStyle extends TTransformer {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Color</em>' reference.
      * @see #setBorderColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionStyle_BorderColor()

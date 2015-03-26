@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -40,7 +40,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
      * The cached value of the '{@link #getFirstModelOperations()
      * <em>First Model Operations</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFirstModelOperations()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InitialNodeCreationOperationImpl() {
@@ -58,7 +58,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,23 +68,27 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ModelOperation getFirstModelOperations() {
         if (firstModelOperations != null && firstModelOperations.eIsProxy()) {
             InternalEObject oldFirstModelOperations = (InternalEObject) firstModelOperations;
             firstModelOperations = (ModelOperation) eResolveProxy(oldFirstModelOperations);
             if (firstModelOperations != oldFirstModelOperations) {
                 InternalEObject newFirstModelOperations = (InternalEObject) firstModelOperations;
-                NotificationChain msgs = oldFirstModelOperations.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, null, null);
+                NotificationChain msgs = oldFirstModelOperations.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS,
+                        null, null);
                 if (newFirstModelOperations.eInternalContainer() == null) {
-                    msgs = newFirstModelOperations.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, null, msgs);
+                    msgs = newFirstModelOperations.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, oldFirstModelOperations, firstModelOperations));
+                }
             }
         }
         return firstModelOperations;
@@ -92,7 +96,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ModelOperation basicGetFirstModelOperations() {
@@ -101,7 +105,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFirstModelOperations(ModelOperation newFirstModelOperations, NotificationChain msgs) {
@@ -110,36 +114,44 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, oldFirstModelOperations,
                     newFirstModelOperations);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setFirstModelOperations(ModelOperation newFirstModelOperations) {
         if (newFirstModelOperations != firstModelOperations) {
             NotificationChain msgs = null;
-            if (firstModelOperations != null)
-                msgs = ((InternalEObject) firstModelOperations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, null, msgs);
-            if (newFirstModelOperations != null)
-                msgs = ((InternalEObject) newFirstModelOperations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, null, msgs);
+            if (firstModelOperations != null) {
+                msgs = ((InternalEObject) firstModelOperations).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS,
+                        null, msgs);
+            }
+            if (newFirstModelOperations != null) {
+                msgs = ((InternalEObject) newFirstModelOperations).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS,
+                        null, msgs);
+            }
             msgs = basicSetFirstModelOperations(newFirstModelOperations, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, newFirstModelOperations, newFirstModelOperations));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,15 +165,16 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ToolPackage.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS:
-            if (resolve)
+            if (resolve) {
                 return getFirstModelOperations();
+            }
             return basicGetFirstModelOperations();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -169,7 +182,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +197,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -199,7 +212,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

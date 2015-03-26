@@ -37,7 +37,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FrameMappingItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,11 +97,11 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
      */
     protected void addCoveredLifelinesExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_FrameMapping_coveredLifelinesExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_FrameMapping_coveredLifelinesExpression_feature", "_UI_FrameMapping_type"),
-                        DescriptionPackage.Literals.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_FrameMapping_coveredLifelinesExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_FrameMapping_coveredLifelinesExpression_feature", "_UI_FrameMapping_type"),
+                DescriptionPackage.Literals.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -120,7 +120,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     /**
      * This returns FrameMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -167,7 +167,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getCreateChildTextGen(Object owner, Object feature, Object child, Collection<?> selection) {
@@ -238,7 +238,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -258,7 +258,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

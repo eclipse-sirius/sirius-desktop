@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.audit.impl;
 
@@ -35,20 +35,20 @@ import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass informationSectionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass templateInformationSectionEClass = null;
@@ -62,19 +62,19 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.viewpoint.description.audit.AuditPackage#eNS_URI
      * @see #init()
      * @generated
      */
     private AuditPackageImpl() {
-        super(eNS_URI, AuditFactory.eINSTANCE);
+        super(AuditPackage.eNS_URI, AuditFactory.eINSTANCE);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -82,26 +82,28 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link AuditPackage#eINSTANCE} when
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static AuditPackage init() {
-        if (isInited)
+        if (AuditPackageImpl.isInited) {
             return (AuditPackage) EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new AuditPackageImpl());
+        AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.get(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE.get(AuditPackage.eNS_URI)
+                : new AuditPackageImpl());
 
-        isInited = true;
+        AuditPackageImpl.isInited = true;
 
         // Initialize simple dependencies
         EcorePackage.eINSTANCE.eClass();
@@ -144,43 +146,47 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getInformationSection() {
         return informationSectionEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getTemplateInformationSection() {
         return templateInformationSectionEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getTemplateInformationSection_TemplatePath() {
         return (EAttribute) templateInformationSectionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public AuditFactory getAuditFactory() {
         return (AuditFactory) getEFactoryInstance();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -189,24 +195,25 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        informationSectionEClass = createEClass(INFORMATION_SECTION);
+        informationSectionEClass = createEClass(AuditPackage.INFORMATION_SECTION);
 
-        templateInformationSectionEClass = createEClass(TEMPLATE_INFORMATION_SECTION);
-        createEAttribute(templateInformationSectionEClass, TEMPLATE_INFORMATION_SECTION__TEMPLATE_PATH);
+        templateInformationSectionEClass = createEClass(AuditPackage.TEMPLATE_INFORMATION_SECTION);
+        createEAttribute(templateInformationSectionEClass, AuditPackage.TEMPLATE_INFORMATION_SECTION__TEMPLATE_PATH);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -215,18 +222,19 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(AuditPackage.eNAME);
+        setNsPrefix(AuditPackage.eNS_PREFIX);
+        setNsURI(AuditPackage.eNS_URI);
 
         // Obtain other dependent packages
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
@@ -239,14 +247,15 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
         templateInformationSectionEClass.getESuperTypes().add(this.getInformationSection());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(informationSectionEClass, InformationSection.class, "InformationSection", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(informationSectionEClass, InformationSection.class, "InformationSection", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        EOperation op = addEOperation(informationSectionEClass, theEcorePackage.getEString(), "getContent", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "eObj", 0, 1, IS_UNIQUE, IS_ORDERED);
+        EOperation op = addEOperation(informationSectionEClass, theEcorePackage.getEString(), "getContent", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
+        addEParameter(op, theEcorePackage.getEObject(), "eObj", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(templateInformationSectionEClass, TemplateInformationSection.class, "TemplateInformationSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTemplateInformationSection_TemplatePath(), theEcorePackage.getEString(), "templatePath", null, 0, 1, TemplateInformationSection.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(templateInformationSectionEClass, TemplateInformationSection.class, "TemplateInformationSection", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTemplateInformationSection_TemplatePath(), theEcorePackage.getEString(), "templatePath", null, 0, 1, TemplateInformationSection.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
     }
 
 } // AuditPackageImpl

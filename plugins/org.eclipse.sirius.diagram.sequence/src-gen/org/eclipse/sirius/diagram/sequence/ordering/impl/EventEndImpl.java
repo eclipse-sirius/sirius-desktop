@@ -68,13 +68,15 @@ public abstract class EventEndImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public EObject getSemanticEnd() {
         if (semanticEnd != null && semanticEnd.eIsProxy()) {
             InternalEObject oldSemanticEnd = (InternalEObject) semanticEnd;
             semanticEnd = eResolveProxy(oldSemanticEnd);
             if (semanticEnd != oldSemanticEnd) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrderingPackage.EVENT_END__SEMANTIC_END, oldSemanticEnd, semanticEnd));
+                }
             }
         }
         return semanticEnd;
@@ -94,11 +96,13 @@ public abstract class EventEndImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public void setSemanticEnd(EObject newSemanticEnd) {
         EObject oldSemanticEnd = semanticEnd;
         semanticEnd = newSemanticEnd;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, OrderingPackage.EVENT_END__SEMANTIC_END, oldSemanticEnd, semanticEnd));
+        }
     }
 
     /**
@@ -110,8 +114,9 @@ public abstract class EventEndImpl extends MinimalEObjectImpl.Container implemen
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case OrderingPackage.EVENT_END__SEMANTIC_END:
-            if (resolve)
+            if (resolve) {
                 return getSemanticEnd();
+            }
             return basicGetSemanticEnd();
         }
         return super.eGet(featureID, resolve, coreType);

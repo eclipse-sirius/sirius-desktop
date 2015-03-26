@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -38,7 +38,7 @@ public interface AbstractDNode extends DDiagramElement {
      * {@link org.eclipse.sirius.diagram.DNode}. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The nodes that are on the
      * border of the container. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Bordered Nodes</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbstractDNode_OwnedBorderedNodes()

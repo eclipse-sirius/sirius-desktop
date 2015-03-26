@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.provider;
 
@@ -47,7 +47,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramImportDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -57,7 +57,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -133,7 +133,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Title Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTitleExpressionPropertyDescriptor(Object object) {
@@ -146,21 +146,21 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Initialisation feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInitialisationPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_RepresentationDescription_initialisation_feature"), getString("_UI_RepresentationDescription_initialisation_description"),
-                        DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__INITIALISATION, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RepresentationDescription_initialisation_feature"), getString("_UI_RepresentationDescription_initialisation_description"),
+                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__INITIALISATION, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
      * This adds a property descriptor for the Metamodel feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMetamodelPropertyDescriptor(Object object) {
@@ -172,22 +172,22 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Show On Startup feature. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     protected void addShowOnStartupPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_RepresentationDescription_showOnStartup_feature"), getString("_UI_RepresentationDescription_showOnStartup_description"),
-                        DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RepresentationDescription_showOnStartup_feature"), getString("_UI_RepresentationDescription_showOnStartup_description"),
+                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
      * This adds a property descriptor for the Drop Descriptions feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
@@ -200,7 +200,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Paste Descriptions feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPasteDescriptionsPropertyDescriptor(Object object) {
@@ -212,7 +212,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the All Edge Mappings feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllEdgeMappingsPropertyDescriptor(Object object) {
@@ -225,7 +225,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the All Node Mappings feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllNodeMappingsPropertyDescriptor(Object object) {
@@ -251,7 +251,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the All Tools feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllToolsPropertyDescriptor(Object object) {
@@ -263,7 +263,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Domain Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -289,7 +289,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Default Concern feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDefaultConcernPropertyDescriptor(Object object) {
@@ -301,7 +301,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Root Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRootExpressionPropertyDescriptor(Object object) {
@@ -326,7 +326,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the All Layers feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllLayersPropertyDescriptor(Object object) {
@@ -338,7 +338,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the All Activated Tools feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllActivatedToolsPropertyDescriptor(Object object) {
@@ -351,7 +351,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Reused Mappings feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedMappingsPropertyDescriptor(Object object) {
@@ -364,7 +364,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Reused Tools feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedToolsPropertyDescriptor(Object object) {
@@ -376,7 +376,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Enable Popup Bars feature. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
@@ -390,7 +390,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This adds a property descriptor for the Imported Diagram feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addImportedDiagramPropertyDescriptor(Object object) {
@@ -458,7 +458,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -514,7 +514,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -578,7 +578,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * 
+     *
      * @param newChildDescriptors
      * @param object
      * @generated
@@ -604,7 +604,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
                 org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors
-                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
+        .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER,
                 DescriptionFactory.eINSTANCE.createAdditionalLayer()));
@@ -637,7 +637,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -672,7 +672,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

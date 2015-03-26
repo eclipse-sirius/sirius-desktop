@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter;
 
@@ -80,7 +80,7 @@ public enum FilterKind implements Enumerator {
     /**
      * An array of all the '<em><b>Kind</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final FilterKind[] VALUES_ARRAY = new FilterKind[] { HIDE_LITERAL, COLLAPSE_LITERAL, };
@@ -91,7 +91,7 @@ public enum FilterKind implements Enumerator {
      * 
      * @generated
      */
-    public static final List<FilterKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<FilterKind> VALUES = Collections.unmodifiableList(Arrays.asList(FilterKind.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Kind</b></em>' literal with the specified literal
@@ -100,8 +100,7 @@ public enum FilterKind implements Enumerator {
      * @generated
      */
     public static FilterKind get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            FilterKind result = VALUES_ARRAY[i];
+        for (FilterKind result : FilterKind.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -112,12 +111,11 @@ public enum FilterKind implements Enumerator {
     /**
      * Returns the '<em><b>Kind</b></em>' literal with the specified name. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static FilterKind getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            FilterKind result = VALUES_ARRAY[i];
+        for (FilterKind result : FilterKind.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -179,6 +177,7 @@ public enum FilterKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -188,6 +187,7 @@ public enum FilterKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -197,6 +197,7 @@ public enum FilterKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

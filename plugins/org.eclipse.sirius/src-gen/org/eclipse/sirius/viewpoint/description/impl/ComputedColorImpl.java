@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -41,7 +41,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
     /**
      * The default value of the '{@link #getRed() <em>Red</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRed()
      * @generated
      * @ordered
@@ -51,17 +51,17 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
     /**
      * The cached value of the '{@link #getRed() <em>Red</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRed()
      * @generated
      * @ordered
      */
-    protected String red = RED_EDEFAULT;
+    protected String red = ComputedColorImpl.RED_EDEFAULT;
 
     /**
      * The default value of the '{@link #getGreen() <em>Green</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGreen()
      * @generated
      * @ordered
@@ -71,17 +71,17 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
     /**
      * The cached value of the '{@link #getGreen() <em>Green</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGreen()
      * @generated
      * @ordered
      */
-    protected String green = GREEN_EDEFAULT;
+    protected String green = ComputedColorImpl.GREEN_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBlue() <em>Blue</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBlue()
      * @generated
      * @ordered
@@ -91,16 +91,16 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
     /**
      * The cached value of the '{@link #getBlue() <em>Blue</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBlue()
      * @generated
      * @ordered
      */
-    protected String blue = BLUE_EDEFAULT;
+    protected String blue = ComputedColorImpl.BLUE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComputedColorImpl() {
@@ -109,7 +109,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,70 +119,79 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getRed() {
         return red;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setRed(String newRed) {
         String oldRed = red;
         red = newRed;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.COMPUTED_COLOR__RED, oldRed, red));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getGreen() {
         return green;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setGreen(String newGreen) {
         String oldGreen = green;
         green = newGreen;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.COMPUTED_COLOR__GREEN, oldGreen, green));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getBlue() {
         return blue;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBlue(String newBlue) {
         String oldBlue = blue;
         blue = newBlue;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.COMPUTED_COLOR__BLUE, oldBlue, blue));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +209,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,20 +230,20 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.COMPUTED_COLOR__RED:
-            setRed(RED_EDEFAULT);
+            setRed(ComputedColorImpl.RED_EDEFAULT);
             return;
         case DescriptionPackage.COMPUTED_COLOR__GREEN:
-            setGreen(GREEN_EDEFAULT);
+            setGreen(ComputedColorImpl.GREEN_EDEFAULT);
             return;
         case DescriptionPackage.COMPUTED_COLOR__BLUE:
-            setBlue(BLUE_EDEFAULT);
+            setBlue(ComputedColorImpl.BLUE_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -242,31 +251,32 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.COMPUTED_COLOR__RED:
-            return RED_EDEFAULT == null ? red != null : !RED_EDEFAULT.equals(red);
+            return ComputedColorImpl.RED_EDEFAULT == null ? red != null : !ComputedColorImpl.RED_EDEFAULT.equals(red);
         case DescriptionPackage.COMPUTED_COLOR__GREEN:
-            return GREEN_EDEFAULT == null ? green != null : !GREEN_EDEFAULT.equals(green);
+            return ComputedColorImpl.GREEN_EDEFAULT == null ? green != null : !ComputedColorImpl.GREEN_EDEFAULT.equals(green);
         case DescriptionPackage.COMPUTED_COLOR__BLUE:
-            return BLUE_EDEFAULT == null ? blue != null : !BLUE_EDEFAULT.equals(blue);
+            return ComputedColorImpl.BLUE_EDEFAULT == null ? blue != null : !ComputedColorImpl.BLUE_EDEFAULT.equals(blue);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (red: ");

@@ -42,7 +42,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +52,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -101,7 +101,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This adds a property descriptor for the Title Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTitleExpressionPropertyDescriptor(Object object) {
@@ -114,21 +114,21 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This adds a property descriptor for the Initialisation feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInitialisationPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_RepresentationDescription_initialisation_feature"), getString("_UI_RepresentationDescription_initialisation_description"),
-                        DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__INITIALISATION, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RepresentationDescription_initialisation_feature"), getString("_UI_RepresentationDescription_initialisation_description"),
+                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__INITIALISATION, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
      * This adds a property descriptor for the Metamodel feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMetamodelPropertyDescriptor(Object object) {
@@ -140,16 +140,16 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This adds a property descriptor for the Show On Startup feature. <!--
      * begin-user-doc -->
-     * 
+     *
      * @since 0.9.0
      * @generated
      */
     protected void addShowOnStartupPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_RepresentationDescription_showOnStartup_feature"), getString("_UI_RepresentationDescription_showOnStartup_description"),
-                        DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RepresentationDescription_showOnStartup_feature"), getString("_UI_RepresentationDescription_showOnStartup_description"),
+                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -181,7 +181,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This adds a property descriptor for the Domain Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -254,9 +254,10 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public String getText(final Object object) {
         final String label = new IdentifiedElementQuery((TableDescription) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_TableDescription_type") : label;
@@ -301,7 +302,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -313,19 +314,19 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
         // add creation description tools for known representations
         newChildDescriptors
-                .addAll(DialectUIManager.INSTANCE
-                        .provideRepresentationCreationToolDescriptors(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS));
+        .addAll(DialectUIManager.INSTANCE
+                .provideRepresentationCreationToolDescriptors(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS));
         // add navigation description tools for known representations
         newChildDescriptors
-                .addAll(DialectUIManager.INSTANCE
-                        .provideRepresentationNavigationToolDescriptors(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS));
+        .addAll(DialectUIManager.INSTANCE
+                .provideRepresentationNavigationToolDescriptors(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS));
 
         collectCreateLineTool(newChildDescriptors);
 
     }
 
     /**
-     * 
+     *
      * @param newChildDescriptors
      * @param object
      * @generated
@@ -355,7 +356,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

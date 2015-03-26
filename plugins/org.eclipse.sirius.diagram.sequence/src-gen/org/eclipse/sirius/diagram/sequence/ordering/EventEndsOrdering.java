@@ -75,7 +75,7 @@ public interface EventEndsOrdering extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Event Ends</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getEventEndsOrdering_EventEnds()
      * @model

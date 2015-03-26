@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -39,7 +39,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -49,17 +49,17 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = FeatureChangeListenerImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -69,16 +69,16 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
      */
-    protected String featureName = FEATURE_NAME_EDEFAULT;
+    protected String featureName = FeatureChangeListenerImpl.FEATURE_NAME_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FeatureChangeListenerImpl() {
@@ -87,7 +87,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,49 +97,55 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.FEATURE_CHANGE_LISTENER__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getFeatureName() {
         return featureName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setFeatureName(String newFeatureName) {
         String oldFeatureName = featureName;
         featureName = newFeatureName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.FEATURE_CHANGE_LISTENER__FEATURE_NAME, oldFeatureName, featureName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +161,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,17 +179,17 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.FEATURE_CHANGE_LISTENER__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(FeatureChangeListenerImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case ToolPackage.FEATURE_CHANGE_LISTENER__FEATURE_NAME:
-            setFeatureName(FEATURE_NAME_EDEFAULT);
+            setFeatureName(FeatureChangeListenerImpl.FEATURE_NAME_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -191,29 +197,30 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.FEATURE_CHANGE_LISTENER__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return FeatureChangeListenerImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !FeatureChangeListenerImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case ToolPackage.FEATURE_CHANGE_LISTENER__FEATURE_NAME:
-            return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
+            return FeatureChangeListenerImpl.FEATURE_NAME_EDEFAULT == null ? featureName != null : !FeatureChangeListenerImpl.FEATURE_NAME_EDEFAULT.equals(featureName);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (domainClass: ");

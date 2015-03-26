@@ -52,7 +52,7 @@ public interface DTableElementStyle extends EObject {
      * default value is <code>"8"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The font size. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Size</em>' attribute.
      * @see #setLabelSize(int)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle_LabelSize()
@@ -80,7 +80,7 @@ public interface DTableElementStyle extends EObject {
      * enumeration {@link org.eclipse.sirius.viewpoint.FontFormat}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * font format. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
      * @see #setLabelFormat(FontFormat)
@@ -171,7 +171,7 @@ public interface DTableElementStyle extends EObject {
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> Determine if the
      * foreground part of the style is computed from a conditional style or not
      * (default style). <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Default Foreground Style</em>' attribute.
      * @see #setDefaultForegroundStyle(boolean)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle_DefaultForegroundStyle()
@@ -200,7 +200,7 @@ public interface DTableElementStyle extends EObject {
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> Determine if the
      * background part of the style is computed from a conditional style or not
      * (default style). <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Default Background Style</em>' attribute.
      * @see #setDefaultBackgroundStyle(boolean)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle_DefaultBackgroundStyle()

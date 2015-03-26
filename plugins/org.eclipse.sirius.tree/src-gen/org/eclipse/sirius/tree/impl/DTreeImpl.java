@@ -64,7 +64,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
      * The cached value of the '{@link #getOwnedTreeItems()
      * <em>Owned Tree Items</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedTreeItems()
      * @generated
      * @ordered
@@ -116,13 +116,15 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
      * 
      * @generated
      */
+    @Override
     public EObject getTarget() {
         if (target != null && target.eIsProxy()) {
             InternalEObject oldTarget = (InternalEObject) target;
             target = eResolveProxy(oldTarget);
             if (target != oldTarget) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TreePackage.DTREE__TARGET, oldTarget, target));
+                }
             }
         }
         return target;
@@ -142,11 +144,13 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
      * 
      * @generated
      */
+    @Override
     public void setTarget(EObject newTarget) {
         EObject oldTarget = target;
         target = newTarget;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.DTREE__TARGET, oldTarget, target));
+        }
     }
 
     /**
@@ -154,6 +158,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
      * 
      * @generated
      */
+    @Override
     public EList<DTreeItem> getOwnedTreeItems() {
         if (ownedTreeItems == null) {
             ownedTreeItems = new EObjectContainmentWithInverseEList<DTreeItem>(DTreeItem.class, this, TreePackage.DTREE__OWNED_TREE_ITEMS, TreePackage.DTREE_ITEM__CONTAINER);
@@ -166,6 +171,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
             semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, TreePackage.DTREE__SEMANTIC_ELEMENTS);
@@ -178,13 +184,15 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
      * 
      * @generated
      */
+    @Override
     public TreeDescription getDescription() {
         if (description != null && description.eIsProxy()) {
             InternalEObject oldDescription = (InternalEObject) description;
             description = (TreeDescription) eResolveProxy(oldDescription);
             if (description != oldDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TreePackage.DTREE__DESCRIPTION, oldDescription, description));
+                }
             }
         }
         return description;
@@ -204,11 +212,13 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
      * 
      * @generated
      */
+    @Override
     public void setDescription(TreeDescription newDescription) {
         TreeDescription oldDescription = description;
         description = newDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.DTREE__DESCRIPTION, oldDescription, description));
+        }
     }
 
     /**
@@ -249,16 +259,18 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TreePackage.DTREE__TARGET:
-            if (resolve)
+            if (resolve) {
                 return getTarget();
+            }
             return basicGetTarget();
         case TreePackage.DTREE__OWNED_TREE_ITEMS:
             return getOwnedTreeItems();
         case TreePackage.DTREE__SEMANTIC_ELEMENTS:
             return getSemanticElements();
         case TreePackage.DTREE__DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDescription();
+            }
             return basicGetDescription();
         }
         return super.eGet(featureID, resolve, coreType);

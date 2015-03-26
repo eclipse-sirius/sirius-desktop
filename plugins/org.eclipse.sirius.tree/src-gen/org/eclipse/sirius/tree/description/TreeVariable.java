@@ -38,7 +38,7 @@ public interface TreeVariable extends AbstractVariable, VariableContainer {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Documentation</em>' attribute.
      * @see #setDocumentation(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeVariable_Documentation()

@@ -47,8 +47,8 @@ public class OrderingSwitch<T> {
      * @generated
      */
     public OrderingSwitch() {
-        if (modelPackage == null) {
-            modelPackage = OrderingPackage.eINSTANCE;
+        if (OrderingSwitch.modelPackage == null) {
+            OrderingSwitch.modelPackage = OrderingPackage.eINSTANCE;
         }
     }
 
@@ -75,7 +75,7 @@ public class OrderingSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == OrderingSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -97,40 +97,47 @@ public class OrderingSwitch<T> {
         case OrderingPackage.EVENT_ENDS_ORDERING: {
             EventEndsOrdering eventEndsOrdering = (EventEndsOrdering) theEObject;
             T result = caseEventEndsOrdering(eventEndsOrdering);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case OrderingPackage.EVENT_END: {
             EventEnd eventEnd = (EventEnd) theEObject;
             T result = caseEventEnd(eventEnd);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case OrderingPackage.SINGLE_EVENT_END: {
             SingleEventEnd singleEventEnd = (SingleEventEnd) theEObject;
             T result = caseSingleEventEnd(singleEventEnd);
-            if (result == null)
+            if (result == null) {
                 result = caseEventEnd(singleEventEnd);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case OrderingPackage.COMPOUND_EVENT_END: {
             CompoundEventEnd compoundEventEnd = (CompoundEventEnd) theEObject;
             T result = caseCompoundEventEnd(compoundEventEnd);
-            if (result == null)
+            if (result == null) {
                 result = caseEventEnd(compoundEventEnd);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case OrderingPackage.INSTANCE_ROLES_ORDERING: {
             InstanceRolesOrdering instanceRolesOrdering = (InstanceRolesOrdering) theEObject;
             T result = caseInstanceRolesOrdering(instanceRolesOrdering);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <!-- begin-model-doc --> A ColorStep is identified by its associatedValue and
  * references an associatedColor (FixedColor).
- * 
+ *
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,7 +47,7 @@ public interface ColorStep extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Associated Value</em>' attribute.
      * @see #setAssociatedValue(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getColorStep_AssociatedValue()
@@ -64,7 +64,7 @@ public interface ColorStep extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.ColorStep#getAssociatedValue
      * <em>Associated Value</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Associated Value</em>' attribute.
      * @see #getAssociatedValue()
@@ -80,7 +80,7 @@ public interface ColorStep extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Associated Color</em>' reference.
      * @see #setAssociatedColor(FixedColor)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getColorStep_AssociatedColor()
@@ -94,7 +94,7 @@ public interface ColorStep extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.ColorStep#getAssociatedColor
      * <em>Associated Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Associated Color</em>' reference.
      * @see #getAssociatedColor()

@@ -57,7 +57,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * @generated
      * @ordered
      */
-    protected String startingEndFinderExpression = STARTING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String startingEndFinderExpression = StateMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFinishingEndFinderExpression()
@@ -79,7 +79,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * @generated
      * @ordered
      */
-    protected String finishingEndFinderExpression = FINISHING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String finishingEndFinderExpression = StateMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -105,6 +105,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * 
      * @generated
      */
+    @Override
     public String getStartingEndFinderExpression() {
         return startingEndFinderExpression;
     }
@@ -114,11 +115,13 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * 
      * @generated
      */
+    @Override
     public void setStartingEndFinderExpression(String newStartingEndFinderExpression) {
         String oldStartingEndFinderExpression = startingEndFinderExpression;
         startingEndFinderExpression = newStartingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.STATE_MAPPING__STARTING_END_FINDER_EXPRESSION, oldStartingEndFinderExpression, startingEndFinderExpression));
+        }
     }
 
     /**
@@ -126,6 +129,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * 
      * @generated
      */
+    @Override
     public String getFinishingEndFinderExpression() {
         return finishingEndFinderExpression;
     }
@@ -135,11 +139,13 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * 
      * @generated
      */
+    @Override
     public void setFinishingEndFinderExpression(String newFinishingEndFinderExpression) {
         String oldFinishingEndFinderExpression = finishingEndFinderExpression;
         finishingEndFinderExpression = newFinishingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.STATE_MAPPING__FINISHING_END_FINDER_EXPRESSION, oldFinishingEndFinderExpression, finishingEndFinderExpression));
+        }
     }
 
     /**
@@ -185,10 +191,10 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.STATE_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            setStartingEndFinderExpression(STARTING_END_FINDER_EXPRESSION_EDEFAULT);
+            setStartingEndFinderExpression(StateMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.STATE_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            setFinishingEndFinderExpression(FINISHING_END_FINDER_EXPRESSION_EDEFAULT);
+            setFinishingEndFinderExpression(StateMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -203,9 +209,11 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.STATE_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            return STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !STARTING_END_FINDER_EXPRESSION_EDEFAULT.equals(startingEndFinderExpression);
+            return StateMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !StateMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(startingEndFinderExpression);
         case DescriptionPackage.STATE_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            return FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null : !FINISHING_END_FINDER_EXPRESSION_EDEFAULT.equals(finishingEndFinderExpression);
+            return StateMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null : !StateMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(finishingEndFinderExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -269,8 +277,9 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (startingEndFinderExpression: ");

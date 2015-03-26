@@ -51,6 +51,7 @@ public abstract class DTableElementSynchronizerImpl extends MinimalEObjectImpl.C
      * 
      * @generated
      */
+    @Override
     public void refresh(DCell cell) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -62,6 +63,7 @@ public abstract class DTableElementSynchronizerImpl extends MinimalEObjectImpl.C
      * 
      * @generated
      */
+    @Override
     public void refresh(DColumn column) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -73,6 +75,7 @@ public abstract class DTableElementSynchronizerImpl extends MinimalEObjectImpl.C
      * 
      * @generated
      */
+    @Override
     public void refresh(DLine line) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT

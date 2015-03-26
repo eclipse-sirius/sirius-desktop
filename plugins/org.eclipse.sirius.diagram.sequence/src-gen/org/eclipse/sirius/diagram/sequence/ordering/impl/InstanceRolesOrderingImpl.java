@@ -70,6 +70,7 @@ public class InstanceRolesOrderingImpl extends MinimalEObjectImpl.Container impl
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getSemanticInstanceRoles() {
         if (semanticInstanceRoles == null) {
             semanticInstanceRoles = new EObjectResolvingEList<EObject>(EObject.class, this, OrderingPackage.INSTANCE_ROLES_ORDERING__SEMANTIC_INSTANCE_ROLES);

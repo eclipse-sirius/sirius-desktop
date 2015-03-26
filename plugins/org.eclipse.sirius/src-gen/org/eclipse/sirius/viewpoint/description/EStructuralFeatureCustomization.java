@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -44,7 +44,7 @@ public interface EStructuralFeatureCustomization extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Applied On</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEStructuralFeatureCustomization_AppliedOn()
      * @model
@@ -60,7 +60,7 @@ public interface EStructuralFeatureCustomization extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Apply On All</em>' attribute.
      * @see #setApplyOnAll(boolean)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEStructuralFeatureCustomization_ApplyOnAll()
@@ -74,7 +74,7 @@ public interface EStructuralFeatureCustomization extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization#isApplyOnAll
      * <em>Apply On All</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Apply On All</em>' attribute.
      * @see #isApplyOnAll()

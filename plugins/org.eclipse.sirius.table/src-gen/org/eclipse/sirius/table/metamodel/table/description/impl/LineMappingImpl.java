@@ -97,7 +97,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The cached value of the '{@link #getForegroundConditionalStyle()
      * <em>Foreground Conditional Style</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundConditionalStyle()
      * @generated
      * @ordered
@@ -119,7 +119,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The cached value of the '{@link #getBackgroundConditionalStyle()
      * <em>Background Conditional Style</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundConditionalStyle()
      * @generated
      * @ordered
@@ -130,7 +130,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The cached value of the '{@link #getOwnedSubLines()
      * <em>Owned Sub Lines</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedSubLines()
      * @generated
      * @ordered
@@ -177,7 +177,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = LineMappingImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCreate() <em>Create</em>}'
@@ -219,7 +219,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * @generated
      * @ordered
      */
-    protected String semanticCandidatesExpression = SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
+    protected String semanticCandidatesExpression = LineMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeaderLabelExpression()
@@ -241,7 +241,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * @generated
      * @ordered
      */
-    protected String headerLabelExpression = HEADER_LABEL_EXPRESSION_EDEFAULT;
+    protected String headerLabelExpression = LineMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -267,6 +267,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public ForegroundStyleDescription getDefaultForeground() {
         return defaultForeground;
     }
@@ -281,10 +282,11 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
         defaultForeground = newDefaultForeground;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.LINE_MAPPING__DEFAULT_FOREGROUND, oldDefaultForeground, newDefaultForeground);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -294,18 +296,23 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public void setDefaultForeground(ForegroundStyleDescription newDefaultForeground) {
         if (newDefaultForeground != defaultForeground) {
             NotificationChain msgs = null;
-            if (defaultForeground != null)
-                msgs = ((InternalEObject) defaultForeground).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DEFAULT_FOREGROUND, null, msgs);
-            if (newDefaultForeground != null)
-                msgs = ((InternalEObject) newDefaultForeground).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DEFAULT_FOREGROUND, null, msgs);
+            if (defaultForeground != null) {
+                msgs = ((InternalEObject) defaultForeground).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DEFAULT_FOREGROUND, null, msgs);
+            }
+            if (newDefaultForeground != null) {
+                msgs = ((InternalEObject) newDefaultForeground).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DEFAULT_FOREGROUND, null, msgs);
+            }
             msgs = basicSetDefaultForeground(newDefaultForeground, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LINE_MAPPING__DEFAULT_FOREGROUND, newDefaultForeground, newDefaultForeground));
+        }
     }
 
     /**
@@ -313,6 +320,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
             foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this, DescriptionPackage.LINE_MAPPING__FOREGROUND_CONDITIONAL_STYLE);
@@ -325,6 +333,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public BackgroundStyleDescription getDefaultBackground() {
         return defaultBackground;
     }
@@ -339,10 +348,11 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
         defaultBackground = newDefaultBackground;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.LINE_MAPPING__DEFAULT_BACKGROUND, oldDefaultBackground, newDefaultBackground);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -352,18 +362,23 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public void setDefaultBackground(BackgroundStyleDescription newDefaultBackground) {
         if (newDefaultBackground != defaultBackground) {
             NotificationChain msgs = null;
-            if (defaultBackground != null)
-                msgs = ((InternalEObject) defaultBackground).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DEFAULT_BACKGROUND, null, msgs);
-            if (newDefaultBackground != null)
-                msgs = ((InternalEObject) newDefaultBackground).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DEFAULT_BACKGROUND, null, msgs);
+            if (defaultBackground != null) {
+                msgs = ((InternalEObject) defaultBackground).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DEFAULT_BACKGROUND, null, msgs);
+            }
+            if (newDefaultBackground != null) {
+                msgs = ((InternalEObject) newDefaultBackground).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DEFAULT_BACKGROUND, null, msgs);
+            }
             msgs = basicSetDefaultBackground(newDefaultBackground, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LINE_MAPPING__DEFAULT_BACKGROUND, newDefaultBackground, newDefaultBackground));
+        }
     }
 
     /**
@@ -371,6 +386,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
             backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this, DescriptionPackage.LINE_MAPPING__BACKGROUND_CONDITIONAL_STYLE);
@@ -383,6 +399,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public EList<LineMapping> getOwnedSubLines() {
         if (ownedSubLines == null) {
             ownedSubLines = new EObjectContainmentEList<LineMapping>(LineMapping.class, this, DescriptionPackage.LINE_MAPPING__OWNED_SUB_LINES);
@@ -395,6 +412,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public EList<LineMapping> getReusedSubLines() {
         if (reusedSubLines == null) {
             reusedSubLines = new EObjectWithInverseResolvingEList.ManyInverse<LineMapping>(LineMapping.class, this, DescriptionPackage.LINE_MAPPING__REUSED_SUB_LINES,
@@ -408,6 +426,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -417,11 +436,13 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LINE_MAPPING__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -429,6 +450,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public EList<CreateLineTool> getCreate() {
         if (create == null) {
             create = new EObjectContainmentEList<CreateLineTool>(CreateLineTool.class, this, DescriptionPackage.LINE_MAPPING__CREATE);
@@ -441,6 +463,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public DeleteLineTool getDelete() {
         return delete;
     }
@@ -455,10 +478,11 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
         delete = newDelete;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.LINE_MAPPING__DELETE, oldDelete, newDelete);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -468,18 +492,23 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public void setDelete(DeleteLineTool newDelete) {
         if (newDelete != delete) {
             NotificationChain msgs = null;
-            if (delete != null)
+            if (delete != null) {
                 msgs = ((InternalEObject) delete).eInverseRemove(this, DescriptionPackage.DELETE_LINE_TOOL__MAPPING, DeleteLineTool.class, msgs);
-            if (newDelete != null)
+            }
+            if (newDelete != null) {
                 msgs = ((InternalEObject) newDelete).eInverseAdd(this, DescriptionPackage.DELETE_LINE_TOOL__MAPPING, DeleteLineTool.class, msgs);
+            }
             msgs = basicSetDelete(newDelete, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LINE_MAPPING__DELETE, newDelete, newDelete));
+        }
     }
 
     /**
@@ -487,6 +516,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public String getSemanticCandidatesExpression() {
         return semanticCandidatesExpression;
     }
@@ -496,11 +526,13 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public void setSemanticCandidatesExpression(String newSemanticCandidatesExpression) {
         String oldSemanticCandidatesExpression = semanticCandidatesExpression;
         semanticCandidatesExpression = newSemanticCandidatesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, oldSemanticCandidatesExpression, semanticCandidatesExpression));
+        }
     }
 
     /**
@@ -508,6 +540,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public String getHeaderLabelExpression() {
         return headerLabelExpression;
     }
@@ -517,11 +550,13 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public void setHeaderLabelExpression(String newHeaderLabelExpression) {
         String oldHeaderLabelExpression = headerLabelExpression;
         headerLabelExpression = newHeaderLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LINE_MAPPING__HEADER_LABEL_EXPRESSION, oldHeaderLabelExpression, headerLabelExpression));
+        }
     }
 
     /**
@@ -529,6 +564,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public EList<LineMapping> getAllSubLines() {
         // TODO: implement this method to return the 'All Sub Lines' reference
         // list
@@ -546,6 +582,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * 
      * @generated
      */
+    @Override
     public EList<LineMapping> getReusedInMappings() {
         if (reusedInMappings == null) {
             reusedInMappings = new EObjectWithInverseResolvingEList.ManyInverse<LineMapping>(LineMapping.class, this, DescriptionPackage.LINE_MAPPING__REUSED_IN_MAPPINGS,
@@ -568,8 +605,9 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
         case DescriptionPackage.LINE_MAPPING__REUSED_IN_MAPPINGS:
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getReusedInMappings()).basicAdd(otherEnd, msgs);
         case DescriptionPackage.LINE_MAPPING__DELETE:
-            if (delete != null)
-                msgs = ((InternalEObject) delete).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DELETE, null, msgs);
+            if (delete != null) {
+                msgs = ((InternalEObject) delete).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LINE_MAPPING__DELETE, null, msgs);
+            }
             return basicSetDelete((DeleteLineTool) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -728,7 +766,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
             getReusedInMappings().clear();
             return;
         case DescriptionPackage.LINE_MAPPING__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(LineMappingImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case DescriptionPackage.LINE_MAPPING__CREATE:
             getCreate().clear();
@@ -737,10 +775,10 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
             setDelete((DeleteLineTool) null);
             return;
         case DescriptionPackage.LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            setSemanticCandidatesExpression(SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
+            setSemanticCandidatesExpression(LineMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.LINE_MAPPING__HEADER_LABEL_EXPRESSION:
-            setHeaderLabelExpression(HEADER_LABEL_EXPRESSION_EDEFAULT);
+            setHeaderLabelExpression(LineMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -771,15 +809,16 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
         case DescriptionPackage.LINE_MAPPING__REUSED_IN_MAPPINGS:
             return reusedInMappings != null && !reusedInMappings.isEmpty();
         case DescriptionPackage.LINE_MAPPING__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return LineMappingImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !LineMappingImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.LINE_MAPPING__CREATE:
             return create != null && !create.isEmpty();
         case DescriptionPackage.LINE_MAPPING__DELETE:
             return delete != null;
         case DescriptionPackage.LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            return SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
+            return LineMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !LineMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT
+                    .equals(semanticCandidatesExpression);
         case DescriptionPackage.LINE_MAPPING__HEADER_LABEL_EXPRESSION:
-            return HEADER_LABEL_EXPRESSION_EDEFAULT == null ? headerLabelExpression != null : !HEADER_LABEL_EXPRESSION_EDEFAULT.equals(headerLabelExpression);
+            return LineMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT == null ? headerLabelExpression != null : !LineMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT.equals(headerLabelExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -839,8 +878,9 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (domainClass: ");

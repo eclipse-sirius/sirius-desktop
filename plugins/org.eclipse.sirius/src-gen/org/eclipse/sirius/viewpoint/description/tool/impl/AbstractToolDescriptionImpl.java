@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -58,7 +58,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -68,17 +68,17 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = AbstractToolDescriptionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -88,18 +88,18 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = AbstractToolDescriptionImpl.LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPrecondition()
      * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -109,18 +109,18 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
      */
-    protected String precondition = PRECONDITION_EDEFAULT;
+    protected String precondition = AbstractToolDescriptionImpl.PRECONDITION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isForceRefresh()
      * <em>Force Refresh</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -130,17 +130,17 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The cached value of the '{@link #isForceRefresh() <em>Force Refresh</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isForceRefresh()
      * @generated
      * @ordered
      */
-    protected boolean forceRefresh = FORCE_REFRESH_EDEFAULT;
+    protected boolean forceRefresh = AbstractToolDescriptionImpl.FORCE_REFRESH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilters()
      * @generated
      * @ordered
@@ -149,7 +149,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractToolDescriptionImpl() {
@@ -158,7 +158,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,93 +168,106 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__LABEL, oldLabel, label));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getPrecondition() {
         return precondition;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setPrecondition(String newPrecondition) {
         String oldPrecondition = precondition;
         precondition = newPrecondition;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION, oldPrecondition, precondition));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public boolean isForceRefresh() {
         return forceRefresh;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setForceRefresh(boolean newForceRefresh) {
         boolean oldForceRefresh = forceRefresh;
         forceRefresh = newForceRefresh;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH, oldForceRefresh, forceRefresh));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ToolFilterDescription> getFilters() {
         if (filters == null) {
             filters = new EObjectContainmentEList.Resolving<ToolFilterDescription>(ToolFilterDescription.class, this, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS);
@@ -264,7 +277,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -278,7 +291,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +313,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -329,23 +342,23 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(AbstractToolDescriptionImpl.NAME_EDEFAULT);
             return;
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(AbstractToolDescriptionImpl.LABEL_EDEFAULT);
             return;
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION:
-            setPrecondition(PRECONDITION_EDEFAULT);
+            setPrecondition(AbstractToolDescriptionImpl.PRECONDITION_EDEFAULT);
             return;
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH:
-            setForceRefresh(FORCE_REFRESH_EDEFAULT);
+            setForceRefresh(AbstractToolDescriptionImpl.FORCE_REFRESH_EDEFAULT);
             return;
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
             getFilters().clear();
@@ -356,20 +369,20 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return AbstractToolDescriptionImpl.NAME_EDEFAULT == null ? name != null : !AbstractToolDescriptionImpl.NAME_EDEFAULT.equals(name);
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return AbstractToolDescriptionImpl.LABEL_EDEFAULT == null ? label != null : !AbstractToolDescriptionImpl.LABEL_EDEFAULT.equals(label);
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION:
-            return PRECONDITION_EDEFAULT == null ? precondition != null : !PRECONDITION_EDEFAULT.equals(precondition);
+            return AbstractToolDescriptionImpl.PRECONDITION_EDEFAULT == null ? precondition != null : !AbstractToolDescriptionImpl.PRECONDITION_EDEFAULT.equals(precondition);
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH:
-            return forceRefresh != FORCE_REFRESH_EDEFAULT;
+            return forceRefresh != AbstractToolDescriptionImpl.FORCE_REFRESH_EDEFAULT;
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
             return filters != null && !filters.isEmpty();
         }
@@ -378,7 +391,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -398,7 +411,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -418,13 +431,14 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

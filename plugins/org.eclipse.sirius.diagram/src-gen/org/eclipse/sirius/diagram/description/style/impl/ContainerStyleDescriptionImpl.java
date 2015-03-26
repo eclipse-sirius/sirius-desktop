@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -74,7 +74,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -85,12 +85,12 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * The cached value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
      */
-    protected String borderSizeComputationExpression = BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String borderSizeComputationExpression = ContainerStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
@@ -120,7 +120,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected int labelSize = LABEL_SIZE_EDEFAULT;
+    protected int labelSize = ContainerStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelFormat() <em>Label Format</em>}
@@ -140,7 +140,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected FontFormat labelFormat = LABEL_FORMAT_EDEFAULT;
+    protected FontFormat labelFormat = ContainerStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
 
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
@@ -160,7 +160,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected boolean showIcon = SHOW_ICON_EDEFAULT;
+    protected boolean showIcon = ContainerStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelExpression()
@@ -182,7 +182,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
+    protected String labelExpression = ContainerStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
@@ -212,7 +212,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected String iconPath = ICON_PATH_EDEFAULT;
+    protected String iconPath = ContainerStyleDescriptionImpl.ICON_PATH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelAlignment()
@@ -234,7 +234,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected LabelAlignment labelAlignment = LABEL_ALIGNMENT_EDEFAULT;
+    protected LabelAlignment labelAlignment = ContainerStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTooltipExpression()
@@ -256,7 +256,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected String tooltipExpression = TOOLTIP_EXPRESSION_EDEFAULT;
+    protected String tooltipExpression = ContainerStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isRoundedCorner()
@@ -278,7 +278,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected boolean roundedCorner = ROUNDED_CORNER_EDEFAULT;
+    protected boolean roundedCorner = ContainerStyleDescriptionImpl.ROUNDED_CORNER_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -304,6 +304,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public String getBorderSizeComputationExpression() {
         return borderSizeComputationExpression;
     }
@@ -313,12 +314,14 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setBorderSizeComputationExpression(String newBorderSizeComputationExpression) {
         String oldBorderSizeComputationExpression = borderSizeComputationExpression;
         borderSizeComputationExpression = newBorderSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION, oldBorderSizeComputationExpression,
                     borderSizeComputationExpression));
+        }
     }
 
     /**
@@ -326,13 +329,15 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public ColorDescription getBorderColor() {
         if (borderColor != null && borderColor.eIsProxy()) {
             InternalEObject oldBorderColor = (InternalEObject) borderColor;
             borderColor = (ColorDescription) eResolveProxy(oldBorderColor);
             if (borderColor != oldBorderColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
+                }
             }
         }
         return borderColor;
@@ -352,11 +357,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setBorderColor(ColorDescription newBorderColor) {
         ColorDescription oldBorderColor = borderColor;
         borderColor = newBorderColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
+        }
     }
 
     /**
@@ -364,6 +371,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public int getLabelSize() {
         return labelSize;
     }
@@ -373,11 +381,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setLabelSize(int newLabelSize) {
         int oldLabelSize = labelSize;
         labelSize = newLabelSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
+        }
     }
 
     /**
@@ -385,6 +395,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public FontFormat getLabelFormat() {
         return labelFormat;
     }
@@ -394,11 +405,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setLabelFormat(FontFormat newLabelFormat) {
         FontFormat oldLabelFormat = labelFormat;
-        labelFormat = newLabelFormat == null ? LABEL_FORMAT_EDEFAULT : newLabelFormat;
-        if (eNotificationRequired())
+        labelFormat = newLabelFormat == null ? ContainerStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT : newLabelFormat;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
+        }
     }
 
     /**
@@ -406,6 +419,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public boolean isShowIcon() {
         return showIcon;
     }
@@ -415,11 +429,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setShowIcon(boolean newShowIcon) {
         boolean oldShowIcon = showIcon;
         showIcon = newShowIcon;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON, oldShowIcon, showIcon));
+        }
     }
 
     /**
@@ -427,6 +443,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
@@ -436,11 +453,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setLabelExpression(String newLabelExpression) {
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
     }
 
     /**
@@ -448,13 +467,15 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public ColorDescription getLabelColor() {
         if (labelColor != null && labelColor.eIsProxy()) {
             InternalEObject oldLabelColor = (InternalEObject) labelColor;
             labelColor = (ColorDescription) eResolveProxy(oldLabelColor);
             if (labelColor != oldLabelColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
+                }
             }
         }
         return labelColor;
@@ -474,11 +495,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setLabelColor(ColorDescription newLabelColor) {
         ColorDescription oldLabelColor = labelColor;
         labelColor = newLabelColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
+        }
     }
 
     /**
@@ -486,6 +509,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public String getIconPath() {
         return iconPath;
     }
@@ -495,11 +519,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setIconPath(String newIconPath) {
         String oldIconPath = iconPath;
         iconPath = newIconPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
+        }
     }
 
     /**
@@ -507,6 +533,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public LabelAlignment getLabelAlignment() {
         return labelAlignment;
     }
@@ -516,11 +543,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setLabelAlignment(LabelAlignment newLabelAlignment) {
         LabelAlignment oldLabelAlignment = labelAlignment;
-        labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
-        if (eNotificationRequired())
+        labelAlignment = newLabelAlignment == null ? ContainerStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
+        }
     }
 
     /**
@@ -528,6 +557,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public String getTooltipExpression() {
         return tooltipExpression;
     }
@@ -537,11 +567,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setTooltipExpression(String newTooltipExpression) {
         String oldTooltipExpression = tooltipExpression;
         tooltipExpression = newTooltipExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, oldTooltipExpression, tooltipExpression));
+        }
     }
 
     /**
@@ -549,6 +581,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public boolean isRoundedCorner() {
         return roundedCorner;
     }
@@ -558,11 +591,13 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
+    @Override
     public void setRoundedCorner(boolean newRoundedCorner) {
         boolean oldRoundedCorner = roundedCorner;
         roundedCorner = newRoundedCorner;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER, oldRoundedCorner, roundedCorner));
+        }
     }
 
     /**
@@ -576,8 +611,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return getBorderSizeComputationExpression();
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getBorderColor();
+            }
             return basicGetBorderColor();
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             return getLabelSize();
@@ -588,8 +624,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             return getLabelExpression();
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getLabelColor();
+            }
             return basicGetLabelColor();
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
             return getIconPath();
@@ -657,37 +694,37 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setBorderSizeComputationExpression(ContainerStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) null);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
-            setLabelSize(LABEL_SIZE_EDEFAULT);
+            setLabelSize(ContainerStyleDescriptionImpl.LABEL_SIZE_EDEFAULT);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
-            setLabelFormat(LABEL_FORMAT_EDEFAULT);
+            setLabelFormat(ContainerStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
-            setShowIcon(SHOW_ICON_EDEFAULT);
+            setShowIcon(ContainerStyleDescriptionImpl.SHOW_ICON_EDEFAULT);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
+            setLabelExpression(ContainerStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
             setLabelColor((ColorDescription) null);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
-            setIconPath(ICON_PATH_EDEFAULT);
+            setIconPath(ContainerStyleDescriptionImpl.ICON_PATH_EDEFAULT);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-            setLabelAlignment(LABEL_ALIGNMENT_EDEFAULT);
+            setLabelAlignment(ContainerStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-            setTooltipExpression(TOOLTIP_EXPRESSION_EDEFAULT);
+            setTooltipExpression(ContainerStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
-            setRoundedCorner(ROUNDED_CORNER_EDEFAULT);
+            setRoundedCorner(ContainerStyleDescriptionImpl.ROUNDED_CORNER_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -702,27 +739,28 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
+            return ContainerStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null
+                    : !ContainerStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
             return borderColor != null;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
-            return labelSize != LABEL_SIZE_EDEFAULT;
+            return labelSize != ContainerStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
-            return labelFormat != LABEL_FORMAT_EDEFAULT;
+            return labelFormat != ContainerStyleDescriptionImpl.LABEL_FORMAT_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
-            return showIcon != SHOW_ICON_EDEFAULT;
+            return showIcon != ContainerStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-            return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+            return ContainerStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !ContainerStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
             return labelColor != null;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
-            return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+            return ContainerStyleDescriptionImpl.ICON_PATH_EDEFAULT == null ? iconPath != null : !ContainerStyleDescriptionImpl.ICON_PATH_EDEFAULT.equals(iconPath);
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-            return labelAlignment != LABEL_ALIGNMENT_EDEFAULT;
+            return labelAlignment != ContainerStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-            return TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
+            return ContainerStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !ContainerStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
-            return roundedCorner != ROUNDED_CORNER_EDEFAULT;
+            return roundedCorner != ContainerStyleDescriptionImpl.ROUNDED_CORNER_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -842,8 +880,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSizeComputationExpression: ");

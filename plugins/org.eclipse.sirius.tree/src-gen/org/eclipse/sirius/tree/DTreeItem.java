@@ -47,7 +47,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Expanded</em>' attribute.
      * @see #setExpanded(boolean)
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_Expanded()
@@ -107,7 +107,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Actual Mapping</em>' reference.
      * @see #setActualMapping(TreeItemMapping)
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_ActualMapping()
@@ -169,7 +169,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style Updater</em>' reference.
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_StyleUpdater()
      * @model transient="true" changeable="false" volatile="true"
@@ -185,7 +185,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Updater</em>' reference.
      * @see #setUpdater(TreeItemUpdater)
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_Updater()

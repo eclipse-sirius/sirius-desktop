@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -38,7 +38,7 @@ public interface DeleteHookParameter extends EObject {
      * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Name of
      * the parameter <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteHookParameter_Name()
@@ -63,7 +63,7 @@ public interface DeleteHookParameter extends EObject {
      * Returns the value of the '<em><b>Value</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Value
      * of the parameter. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteHookParameter_Value()

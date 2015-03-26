@@ -33,7 +33,7 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TSourceTargetMessageMappingItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
     /**
      * This adds a property descriptor for the Source feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSourcePropertyDescriptor(Object object) {
@@ -101,7 +101,7 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
     /**
      * This adds a property descriptor for the Use Domain Element feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addUseDomainElementPropertyDescriptor(Object object) {
@@ -149,7 +149,7 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

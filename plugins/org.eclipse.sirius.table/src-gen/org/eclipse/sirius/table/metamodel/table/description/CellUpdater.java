@@ -72,7 +72,7 @@ public interface CellUpdater extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Can Edit</em>' attribute.
      * @see #setCanEdit(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCellUpdater_CanEdit()
@@ -86,7 +86,7 @@ public interface CellUpdater extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getCanEdit
      * <em>Can Edit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Can Edit</em>' attribute.
      * @see #getCanEdit()

@@ -111,6 +111,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public SequenceDiagramToolDescription createSequenceDiagramToolDescription() {
         SequenceDiagramToolDescriptionImpl sequenceDiagramToolDescription = new SequenceDiagramToolDescriptionImpl();
         return sequenceDiagramToolDescription;
@@ -118,9 +119,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @noy-generated
      */
+    @Override
     public InstanceRoleCreationTool createInstanceRoleCreationTool() {
         InstanceRoleCreationToolImpl instanceRoleCreationTool = new InstanceRoleCreationToolImpl();
         final InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
@@ -133,6 +135,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public LifelineCreationTool createLifelineCreationTool() {
         LifelineCreationToolImpl lifelineCreationTool = new LifelineCreationToolImpl();
         return lifelineCreationTool;
@@ -140,9 +143,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated Create a MessageCreationToolSpec instead.
      */
+    @Override
     public MessageCreationTool createMessageCreationTool() {
         MessageCreationToolImpl messageCreationTool = new MessageCreationToolSpec();
         final InitEdgeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitEdgeCreationOperation();
@@ -152,9 +156,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ExecutionCreationTool createExecutionCreationTool() {
         ExecutionCreationToolImpl executionCreationTool = new ExecutionCreationToolImpl();
         final InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
@@ -164,9 +169,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public StateCreationTool createStateCreationTool() {
         StateCreationToolImpl stateCreationTool = new StateCreationToolImpl();
         final InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
@@ -176,9 +182,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ReorderTool createReorderTool() {
         ReorderToolImpl reorderTool = new ReorderToolImpl();
         InitialOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
@@ -188,9 +195,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public InstanceRoleReorderTool createInstanceRoleReorderTool() {
         InstanceRoleReorderToolImpl instanceRoleReorderTool = new InstanceRoleReorderToolImpl();
         InitialOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
@@ -203,6 +211,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public ObservationPointCreationTool createObservationPointCreationTool() {
         ObservationPointCreationToolImpl observationPointCreationTool = new ObservationPointCreationToolImpl();
         return observationPointCreationTool;
@@ -210,9 +219,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public InteractionUseCreationTool createInteractionUseCreationTool() {
         InteractionUseCreationToolImpl interactionUseCreationTool = new InteractionUseCreationToolImpl();
         InitialNodeCreationOperation initalOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
@@ -222,9 +232,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CombinedFragmentCreationTool createCombinedFragmentCreationTool() {
         CombinedFragmentCreationToolImpl combinedFragmentCreationTool = new CombinedFragmentCreationToolImpl();
         InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
@@ -234,9 +245,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public OperandCreationTool createOperandCreationTool() {
         OperandCreationToolImpl operandCreationTool = new OperandCreationToolImpl();
         InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
@@ -249,6 +261,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public ToolPackage getToolPackage() {
         return (ToolPackage) getEPackage();
     }

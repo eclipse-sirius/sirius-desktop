@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -30,7 +30,7 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * The '<em><b>RECONNECT TARGET</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #RECONNECT_TARGET
      * @generated
      * @ordered
@@ -40,7 +40,7 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * The '<em><b>RECONNECT SOURCE</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #RECONNECT_SOURCE
      * @generated
      * @ordered
@@ -108,7 +108,7 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * An array of all the '<em><b>Reconnection Kind</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final ReconnectionKind[] VALUES_ARRAY = new ReconnectionKind[] { RECONNECT_TARGET_LITERAL, RECONNECT_SOURCE_LITERAL, RECONNECT_BOTH_LITERAL, };
@@ -119,7 +119,7 @@ public enum ReconnectionKind implements Enumerator {
      * 
      * @generated
      */
-    public static final List<ReconnectionKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<ReconnectionKind> VALUES = Collections.unmodifiableList(Arrays.asList(ReconnectionKind.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Reconnection Kind</b></em>' literal with the
@@ -128,8 +128,7 @@ public enum ReconnectionKind implements Enumerator {
      * @generated
      */
     public static ReconnectionKind get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ReconnectionKind result = VALUES_ARRAY[i];
+        for (ReconnectionKind result : ReconnectionKind.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -144,8 +143,7 @@ public enum ReconnectionKind implements Enumerator {
      * @generated
      */
     public static ReconnectionKind getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ReconnectionKind result = VALUES_ARRAY[i];
+        for (ReconnectionKind result : ReconnectionKind.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -209,6 +207,7 @@ public enum ReconnectionKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -218,6 +217,7 @@ public enum ReconnectionKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -227,6 +227,7 @@ public enum ReconnectionKind implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

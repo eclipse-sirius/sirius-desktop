@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -98,7 +98,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The default value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -109,17 +109,17 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
      */
-    protected String endUserDocumentation = END_USER_DOCUMENTATION_EDEFAULT;
+    protected String endUserDocumentation = ViewpointImpl.END_USER_DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -129,17 +129,17 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = ViewpointImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -149,18 +149,18 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = ViewpointImpl.LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getModelFileExtension()
      * <em>Model File Extension</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getModelFileExtension()
      * @generated
      * @ordered
@@ -171,18 +171,18 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getModelFileExtension()
      * <em>Model File Extension</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getModelFileExtension()
      * @generated
      * @ordered
      */
-    protected String modelFileExtension = MODEL_FILE_EXTENSION_EDEFAULT;
+    protected String modelFileExtension = ViewpointImpl.MODEL_FILE_EXTENSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getValidationSet()
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getValidationSet()
      * @generated
      * @ordered
@@ -193,7 +193,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getOwnedRepresentations()
      * <em>Owned Representations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedRepresentations()
      * @generated
      * @ordered
@@ -204,7 +204,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getOwnedRepresentationExtensions()
      * <em>Owned Representation Extensions</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedRepresentationExtensions()
      * @generated
      * @ordered
@@ -215,7 +215,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getOwnedJavaExtensions()
      * <em>Owned Java Extensions</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedJavaExtensions()
      * @generated
      * @ordered
@@ -226,7 +226,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getOwnedMMExtensions()
      * <em>Owned MM Extensions</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedMMExtensions()
      * @generated
      * @ordered
@@ -237,7 +237,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getOwnedFeatureExtensions()
      * <em>Owned Feature Extensions</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedFeatureExtensions()
      * @generated
      * @ordered
@@ -247,7 +247,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -257,18 +257,18 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
      */
-    protected String icon = ICON_EDEFAULT;
+    protected String icon = ViewpointImpl.ICON_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOwnedTemplates()
      * <em>Owned Templates</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedTemplates()
      * @generated
      * @ordered
@@ -278,7 +278,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getConflicts() <em>Conflicts</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConflicts()
      * @generated
      * @ordered
@@ -288,7 +288,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getReuses() <em>Reuses</em>}' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReuses()
      * @generated
      * @ordered
@@ -298,7 +298,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getCustomizes() <em>Customizes</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCustomizes()
      * @generated
      * @ordered
@@ -307,7 +307,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ViewpointImpl() {
@@ -316,7 +316,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -326,107 +326,122 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getEndUserDocumentation() {
         return endUserDocumentation;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setEndUserDocumentation(String newEndUserDocumentation) {
         String oldEndUserDocumentation = endUserDocumentation;
         endUserDocumentation = newEndUserDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.VIEWPOINT__END_USER_DOCUMENTATION, oldEndUserDocumentation, endUserDocumentation));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.VIEWPOINT__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.VIEWPOINT__LABEL, oldLabel, label));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getModelFileExtension() {
         return modelFileExtension;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setModelFileExtension(String newModelFileExtension) {
         String oldModelFileExtension = modelFileExtension;
         modelFileExtension = newModelFileExtension;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.VIEWPOINT__MODEL_FILE_EXTENSION, oldModelFileExtension, modelFileExtension));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ValidationSet getValidationSet() {
         if (validationSet != null && validationSet.eIsProxy()) {
             InternalEObject oldValidationSet = (InternalEObject) validationSet;
             validationSet = (ValidationSet) eResolveProxy(oldValidationSet);
             if (validationSet != oldValidationSet) {
                 InternalEObject newValidationSet = (InternalEObject) validationSet;
-                NotificationChain msgs = oldValidationSet.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.VIEWPOINT__VALIDATION_SET, null, null);
+                NotificationChain msgs = oldValidationSet.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.VIEWPOINT__VALIDATION_SET, null, null);
                 if (newValidationSet.eInternalContainer() == null) {
-                    msgs = newValidationSet.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.VIEWPOINT__VALIDATION_SET, null, msgs);
+                    msgs = newValidationSet.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.VIEWPOINT__VALIDATION_SET, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.VIEWPOINT__VALIDATION_SET, oldValidationSet, validationSet));
+                }
             }
         }
         return validationSet;
@@ -434,7 +449,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ValidationSet basicGetValidationSet() {
@@ -443,7 +458,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetValidationSet(ValidationSet newValidationSet, NotificationChain msgs) {
@@ -451,38 +466,45 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
         validationSet = newValidationSet;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.VIEWPOINT__VALIDATION_SET, oldValidationSet, newValidationSet);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setValidationSet(ValidationSet newValidationSet) {
         if (newValidationSet != validationSet) {
             NotificationChain msgs = null;
-            if (validationSet != null)
-                msgs = ((InternalEObject) validationSet).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.VIEWPOINT__VALIDATION_SET, null, msgs);
-            if (newValidationSet != null)
-                msgs = ((InternalEObject) newValidationSet).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.VIEWPOINT__VALIDATION_SET, null, msgs);
+            if (validationSet != null) {
+                msgs = ((InternalEObject) validationSet).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.VIEWPOINT__VALIDATION_SET, null, msgs);
+            }
+            if (newValidationSet != null) {
+                msgs = ((InternalEObject) newValidationSet).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.VIEWPOINT__VALIDATION_SET, null, msgs);
+            }
             msgs = basicSetValidationSet(newValidationSet, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.VIEWPOINT__VALIDATION_SET, newValidationSet, newValidationSet));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<RepresentationDescription> getOwnedRepresentations() {
         if (ownedRepresentations == null) {
             ownedRepresentations = new EObjectContainmentEList.Resolving<RepresentationDescription>(RepresentationDescription.class, this, DescriptionPackage.VIEWPOINT__OWNED_REPRESENTATIONS);
@@ -492,9 +514,10 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<RepresentationExtensionDescription> getOwnedRepresentationExtensions() {
         if (ownedRepresentationExtensions == null) {
             ownedRepresentationExtensions = new EObjectContainmentEList.Resolving<RepresentationExtensionDescription>(RepresentationExtensionDescription.class, this,
@@ -505,9 +528,10 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<JavaExtension> getOwnedJavaExtensions() {
         if (ownedJavaExtensions == null) {
             ownedJavaExtensions = new EObjectContainmentEList.Resolving<JavaExtension>(JavaExtension.class, this, DescriptionPackage.VIEWPOINT__OWNED_JAVA_EXTENSIONS);
@@ -517,9 +541,10 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<MetamodelExtensionSetting> getOwnedMMExtensions() {
         if (ownedMMExtensions == null) {
             ownedMMExtensions = new EObjectContainmentEList.Resolving<MetamodelExtensionSetting>(MetamodelExtensionSetting.class, this, DescriptionPackage.VIEWPOINT__OWNED_MM_EXTENSIONS);
@@ -529,9 +554,10 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<FeatureExtensionDescription> getOwnedFeatureExtensions() {
         if (ownedFeatureExtensions == null) {
             ownedFeatureExtensions = new EObjectContainmentEList.Resolving<FeatureExtensionDescription>(FeatureExtensionDescription.class, this, DescriptionPackage.VIEWPOINT__OWNED_FEATURE_EXTENSIONS);
@@ -541,30 +567,34 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getIcon() {
         return icon;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setIcon(String newIcon) {
         String oldIcon = icon;
         icon = newIcon;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.VIEWPOINT__ICON, oldIcon, icon));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<RepresentationTemplate> getOwnedTemplates() {
         if (ownedTemplates == null) {
             ownedTemplates = new EObjectContainmentEList.Resolving<RepresentationTemplate>(RepresentationTemplate.class, this, DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES);
@@ -574,9 +604,10 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<URI> getConflicts() {
         if (conflicts == null) {
             conflicts = new EDataTypeUniqueEList<URI>(URI.class, this, DescriptionPackage.VIEWPOINT__CONFLICTS);
@@ -586,9 +617,10 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<URI> getReuses() {
         if (reuses == null) {
             reuses = new EDataTypeUniqueEList<URI>(URI.class, this, DescriptionPackage.VIEWPOINT__REUSES);
@@ -598,9 +630,10 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<URI> getCustomizes() {
         if (customizes == null) {
             customizes = new EDataTypeUniqueEList<URI>(URI.class, this, DescriptionPackage.VIEWPOINT__CUSTOMIZES);
@@ -610,9 +643,10 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void initView(EObject model) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -621,7 +655,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -647,7 +681,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -662,8 +696,9 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
         case DescriptionPackage.VIEWPOINT__MODEL_FILE_EXTENSION:
             return getModelFileExtension();
         case DescriptionPackage.VIEWPOINT__VALIDATION_SET:
-            if (resolve)
+            if (resolve) {
                 return getValidationSet();
+            }
             return basicGetValidationSet();
         case DescriptionPackage.VIEWPOINT__OWNED_REPRESENTATIONS:
             return getOwnedRepresentations();
@@ -691,7 +726,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -758,23 +793,23 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.VIEWPOINT__END_USER_DOCUMENTATION:
-            setEndUserDocumentation(END_USER_DOCUMENTATION_EDEFAULT);
+            setEndUserDocumentation(ViewpointImpl.END_USER_DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.VIEWPOINT__NAME:
-            setName(NAME_EDEFAULT);
+            setName(ViewpointImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.VIEWPOINT__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(ViewpointImpl.LABEL_EDEFAULT);
             return;
         case DescriptionPackage.VIEWPOINT__MODEL_FILE_EXTENSION:
-            setModelFileExtension(MODEL_FILE_EXTENSION_EDEFAULT);
+            setModelFileExtension(ViewpointImpl.MODEL_FILE_EXTENSION_EDEFAULT);
             return;
         case DescriptionPackage.VIEWPOINT__VALIDATION_SET:
             setValidationSet((ValidationSet) null);
@@ -795,7 +830,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
             getOwnedFeatureExtensions().clear();
             return;
         case DescriptionPackage.VIEWPOINT__ICON:
-            setIcon(ICON_EDEFAULT);
+            setIcon(ViewpointImpl.ICON_EDEFAULT);
             return;
         case DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES:
             getOwnedTemplates().clear();
@@ -815,20 +850,20 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.VIEWPOINT__END_USER_DOCUMENTATION:
-            return END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
+            return ViewpointImpl.END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !ViewpointImpl.END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
         case DescriptionPackage.VIEWPOINT__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return ViewpointImpl.NAME_EDEFAULT == null ? name != null : !ViewpointImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.VIEWPOINT__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return ViewpointImpl.LABEL_EDEFAULT == null ? label != null : !ViewpointImpl.LABEL_EDEFAULT.equals(label);
         case DescriptionPackage.VIEWPOINT__MODEL_FILE_EXTENSION:
-            return MODEL_FILE_EXTENSION_EDEFAULT == null ? modelFileExtension != null : !MODEL_FILE_EXTENSION_EDEFAULT.equals(modelFileExtension);
+            return ViewpointImpl.MODEL_FILE_EXTENSION_EDEFAULT == null ? modelFileExtension != null : !ViewpointImpl.MODEL_FILE_EXTENSION_EDEFAULT.equals(modelFileExtension);
         case DescriptionPackage.VIEWPOINT__VALIDATION_SET:
             return validationSet != null;
         case DescriptionPackage.VIEWPOINT__OWNED_REPRESENTATIONS:
@@ -842,7 +877,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
         case DescriptionPackage.VIEWPOINT__OWNED_FEATURE_EXTENSIONS:
             return ownedFeatureExtensions != null && !ownedFeatureExtensions.isEmpty();
         case DescriptionPackage.VIEWPOINT__ICON:
-            return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
+            return ViewpointImpl.ICON_EDEFAULT == null ? icon != null : !ViewpointImpl.ICON_EDEFAULT.equals(icon);
         case DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES:
             return ownedTemplates != null && !ownedTemplates.isEmpty();
         case DescriptionPackage.VIEWPOINT__CONFLICTS:
@@ -857,7 +892,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -891,7 +926,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -925,13 +960,14 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (endUserDocumentation: ");

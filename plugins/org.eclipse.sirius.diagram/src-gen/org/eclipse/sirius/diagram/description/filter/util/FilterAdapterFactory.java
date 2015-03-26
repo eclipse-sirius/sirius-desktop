@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.util;
 
@@ -49,8 +49,8 @@ public class FilterAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public FilterAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = FilterPackage.eINSTANCE;
+        if (FilterAdapterFactory.modelPackage == null) {
+            FilterAdapterFactory.modelPackage = FilterPackage.eINSTANCE;
         }
     }
 
@@ -65,11 +65,11 @@ public class FilterAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == FilterAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == FilterAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -77,7 +77,7 @@ public class FilterAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FilterSwitch<Adapter> modelSwitch = new FilterSwitch<Adapter>() {
@@ -169,7 +169,7 @@ public class FilterAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.filter.Filter
      * @generated
@@ -233,7 +233,7 @@ public class FilterAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.filter.FilterVariable
      * @generated

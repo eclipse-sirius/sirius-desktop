@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -81,13 +81,13 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      * @ordered
      */
-    protected Integer borderSize = BORDER_SIZE_EDEFAULT;
+    protected Integer borderSize = NodeStyleImpl.BORDER_SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -98,12 +98,12 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * The cached value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
      */
-    protected String borderSizeComputationExpression = BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String borderSizeComputationExpression = NodeStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBorderColor() <em>Border Color</em>}
@@ -123,7 +123,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      * @ordered
      */
-    protected RGBValues borderColor = BORDER_COLOR_EDEFAULT;
+    protected RGBValues borderColor = NodeStyleImpl.BORDER_COLOR_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelPosition()
@@ -145,7 +145,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      * @ordered
      */
-    protected LabelPosition labelPosition = LABEL_POSITION_EDEFAULT;
+    protected LabelPosition labelPosition = NodeStyleImpl.LABEL_POSITION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isHideLabelByDefault()
@@ -167,7 +167,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      * @ordered
      */
-    protected boolean hideLabelByDefault = HIDE_LABEL_BY_DEFAULT_EDEFAULT;
+    protected boolean hideLabelByDefault = NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -193,13 +193,15 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public StyleDescription getDescription() {
         if (description != null && description.eIsProxy()) {
             InternalEObject oldDescription = (InternalEObject) description;
             description = (StyleDescription) eResolveProxy(oldDescription);
             if (description != oldDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.NODE_STYLE__DESCRIPTION, oldDescription, description));
+                }
             }
         }
         return description;
@@ -219,11 +221,13 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public void setDescription(StyleDescription newDescription) {
         StyleDescription oldDescription = description;
         description = newDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NODE_STYLE__DESCRIPTION, oldDescription, description));
+        }
     }
 
     /**
@@ -231,6 +235,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public Integer getBorderSize() {
         return borderSize;
     }
@@ -240,11 +245,13 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public void setBorderSize(Integer newBorderSize) {
         Integer oldBorderSize = borderSize;
         borderSize = newBorderSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NODE_STYLE__BORDER_SIZE, oldBorderSize, borderSize));
+        }
     }
 
     /**
@@ -252,6 +259,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public String getBorderSizeComputationExpression() {
         return borderSizeComputationExpression;
     }
@@ -261,11 +269,13 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public void setBorderSizeComputationExpression(String newBorderSizeComputationExpression) {
         String oldBorderSizeComputationExpression = borderSizeComputationExpression;
         borderSizeComputationExpression = newBorderSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION, oldBorderSizeComputationExpression, borderSizeComputationExpression));
+        }
     }
 
     /**
@@ -273,6 +283,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public RGBValues getBorderColor() {
         return borderColor;
     }
@@ -282,11 +293,13 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public void setBorderColor(RGBValues newBorderColor) {
         RGBValues oldBorderColor = borderColor;
         borderColor = newBorderColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NODE_STYLE__BORDER_COLOR, oldBorderColor, borderColor));
+        }
     }
 
     /**
@@ -294,6 +307,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public LabelPosition getLabelPosition() {
         return labelPosition;
     }
@@ -303,11 +317,13 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public void setLabelPosition(LabelPosition newLabelPosition) {
         LabelPosition oldLabelPosition = labelPosition;
-        labelPosition = newLabelPosition == null ? LABEL_POSITION_EDEFAULT : newLabelPosition;
-        if (eNotificationRequired())
+        labelPosition = newLabelPosition == null ? NodeStyleImpl.LABEL_POSITION_EDEFAULT : newLabelPosition;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NODE_STYLE__LABEL_POSITION, oldLabelPosition, labelPosition));
+        }
     }
 
     /**
@@ -315,6 +331,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public boolean isHideLabelByDefault() {
         return hideLabelByDefault;
     }
@@ -324,11 +341,13 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public void setHideLabelByDefault(boolean newHideLabelByDefault) {
         boolean oldHideLabelByDefault = hideLabelByDefault;
         hideLabelByDefault = newHideLabelByDefault;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT, oldHideLabelByDefault, hideLabelByDefault));
+        }
     }
 
     /**
@@ -336,6 +355,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * 
      * @generated
      */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -351,8 +371,9 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DiagramPackage.NODE_STYLE__DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDescription();
+            }
             return basicGetDescription();
         case DiagramPackage.NODE_STYLE__BORDER_SIZE:
             return getBorderSize();
@@ -410,19 +431,19 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
             setDescription((StyleDescription) null);
             return;
         case DiagramPackage.NODE_STYLE__BORDER_SIZE:
-            setBorderSize(BORDER_SIZE_EDEFAULT);
+            setBorderSize(NodeStyleImpl.BORDER_SIZE_EDEFAULT);
             return;
         case DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setBorderSizeComputationExpression(NodeStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
-            setBorderColor(BORDER_COLOR_EDEFAULT);
+            setBorderColor(NodeStyleImpl.BORDER_COLOR_EDEFAULT);
             return;
         case DiagramPackage.NODE_STYLE__LABEL_POSITION:
-            setLabelPosition(LABEL_POSITION_EDEFAULT);
+            setLabelPosition(NodeStyleImpl.LABEL_POSITION_EDEFAULT);
             return;
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
-            setHideLabelByDefault(HIDE_LABEL_BY_DEFAULT_EDEFAULT);
+            setHideLabelByDefault(NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -439,15 +460,16 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
         case DiagramPackage.NODE_STYLE__DESCRIPTION:
             return description != null;
         case DiagramPackage.NODE_STYLE__BORDER_SIZE:
-            return BORDER_SIZE_EDEFAULT == null ? borderSize != null : !BORDER_SIZE_EDEFAULT.equals(borderSize);
+            return NodeStyleImpl.BORDER_SIZE_EDEFAULT == null ? borderSize != null : !NodeStyleImpl.BORDER_SIZE_EDEFAULT.equals(borderSize);
         case DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
+            return NodeStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !NodeStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(borderSizeComputationExpression);
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
-            return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
+            return NodeStyleImpl.BORDER_COLOR_EDEFAULT == null ? borderColor != null : !NodeStyleImpl.BORDER_COLOR_EDEFAULT.equals(borderColor);
         case DiagramPackage.NODE_STYLE__LABEL_POSITION:
-            return labelPosition != LABEL_POSITION_EDEFAULT;
+            return labelPosition != NodeStyleImpl.LABEL_POSITION_EDEFAULT;
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
-            return hideLabelByDefault != HIDE_LABEL_BY_DEFAULT_EDEFAULT;
+            return hideLabelByDefault != NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -531,8 +553,9 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSize: ");

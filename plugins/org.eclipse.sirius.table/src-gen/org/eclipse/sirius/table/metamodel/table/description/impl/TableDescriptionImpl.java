@@ -134,7 +134,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * @generated
      * @ordered
      */
-    protected String endUserDocumentation = END_USER_DOCUMENTATION_EDEFAULT;
+    protected String endUserDocumentation = TableDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -154,7 +154,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = TableDescriptionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -174,7 +174,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = TableDescriptionImpl.LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTitleExpression()
@@ -196,7 +196,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * @generated
      * @ordered
      */
-    protected String titleExpression = TITLE_EXPRESSION_EDEFAULT;
+    protected String titleExpression = TableDescriptionImpl.TITLE_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isInitialisation()
@@ -218,7 +218,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * @generated
      * @ordered
      */
-    protected boolean initialisation = INITIALISATION_EDEFAULT;
+    protected boolean initialisation = TableDescriptionImpl.INITIALISATION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}'
@@ -250,7 +250,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * @generated
      * @ordered
      */
-    protected boolean showOnStartup = SHOW_ON_STARTUP_EDEFAULT;
+    protected boolean showOnStartup = TableDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPreconditionExpression()
@@ -272,7 +272,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * @generated
      * @ordered
      */
-    protected String preconditionExpression = PRECONDITION_EXPRESSION_EDEFAULT;
+    protected String preconditionExpression = TableDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
@@ -292,7 +292,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = TableDescriptionImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The cached value of the '
@@ -346,7 +346,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * The cached value of the '{@link #getOwnedLineMappings()
      * <em>Owned Line Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedLineMappings()
      * @generated
      * @ordered
@@ -368,7 +368,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * The cached value of the '{@link #getOwnedCreateLine()
      * <em>Owned Create Line</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedCreateLine()
      * @generated
      * @ordered
@@ -406,13 +406,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * @generated
      * @ordered
      */
-    protected int initialHeaderColumnWidth = INITIAL_HEADER_COLUMN_WIDTH_EDEFAULT;
+    protected int initialHeaderColumnWidth = TableDescriptionImpl.INITIAL_HEADER_COLUMN_WIDTH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getImportedElements()
      * <em>Imported Elements</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getImportedElements()
      * @generated
      * @ordered
@@ -443,6 +443,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -452,11 +453,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_DESCRIPTION__NAME, oldName, name));
+        }
     }
 
     /**
@@ -464,6 +467,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -473,11 +477,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_DESCRIPTION__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -485,6 +491,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getTitleExpression() {
         return titleExpression;
     }
@@ -494,11 +501,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setTitleExpression(String newTitleExpression) {
         String oldTitleExpression = titleExpression;
         titleExpression = newTitleExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_DESCRIPTION__TITLE_EXPRESSION, oldTitleExpression, titleExpression));
+        }
     }
 
     /**
@@ -506,6 +515,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public boolean isInitialisation() {
         return initialisation;
     }
@@ -515,11 +525,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setInitialisation(boolean newInitialisation) {
         boolean oldInitialisation = initialisation;
         initialisation = newInitialisation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_DESCRIPTION__INITIALISATION, oldInitialisation, initialisation));
+        }
     }
 
     /**
@@ -527,6 +539,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<EPackage> getMetamodel() {
         if (metamodel == null) {
             metamodel = new EObjectResolvingEList<EPackage>(EPackage.class, this, DescriptionPackage.TABLE_DESCRIPTION__METAMODEL);
@@ -539,6 +552,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public boolean isShowOnStartup() {
         return showOnStartup;
     }
@@ -548,11 +562,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setShowOnStartup(boolean newShowOnStartup) {
         boolean oldShowOnStartup = showOnStartup;
         showOnStartup = newShowOnStartup;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_DESCRIPTION__SHOW_ON_STARTUP, oldShowOnStartup, showOnStartup));
+        }
     }
 
     /**
@@ -560,6 +576,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getEndUserDocumentation() {
         return endUserDocumentation;
     }
@@ -569,11 +586,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setEndUserDocumentation(String newEndUserDocumentation) {
         String oldEndUserDocumentation = endUserDocumentation;
         endUserDocumentation = newEndUserDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_DESCRIPTION__END_USER_DOCUMENTATION, oldEndUserDocumentation, endUserDocumentation));
+        }
     }
 
     /**
@@ -581,6 +600,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getPreconditionExpression() {
         return preconditionExpression;
     }
@@ -590,11 +610,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setPreconditionExpression(String newPreconditionExpression) {
         String oldPreconditionExpression = preconditionExpression;
         preconditionExpression = newPreconditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_DESCRIPTION__PRECONDITION_EXPRESSION, oldPreconditionExpression, preconditionExpression));
+        }
     }
 
     /**
@@ -602,6 +624,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -611,11 +634,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_DESCRIPTION__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -623,6 +648,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<RepresentationCreationDescription> getOwnedRepresentationCreationDescriptions() {
         if (ownedRepresentationCreationDescriptions == null) {
             ownedRepresentationCreationDescriptions = new EObjectContainmentEList<RepresentationCreationDescription>(RepresentationCreationDescription.class, this,
@@ -636,6 +662,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<RepresentationCreationDescription> getReusedRepresentationCreationDescriptions() {
         if (reusedRepresentationCreationDescriptions == null) {
             reusedRepresentationCreationDescriptions = new EObjectResolvingEList<RepresentationCreationDescription>(RepresentationCreationDescription.class, this,
@@ -649,6 +676,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<RepresentationCreationDescription> getAllRepresentationCreationDescriptions() {
         // TODO: implement this method to return the 'All Representation
         // Creation Descriptions' reference list
@@ -666,6 +694,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<RepresentationNavigationDescription> getOwnedRepresentationNavigationDescriptions() {
         if (ownedRepresentationNavigationDescriptions == null) {
             ownedRepresentationNavigationDescriptions = new EObjectContainmentEList<RepresentationNavigationDescription>(RepresentationNavigationDescription.class, this,
@@ -679,6 +708,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<RepresentationNavigationDescription> getReusedRepresentationNavigationDescriptions() {
         if (reusedRepresentationNavigationDescriptions == null) {
             reusedRepresentationNavigationDescriptions = new EObjectResolvingEList<RepresentationNavigationDescription>(RepresentationNavigationDescription.class, this,
@@ -692,6 +722,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<RepresentationNavigationDescription> getAllRepresentationNavigationDescriptions() {
         // TODO: implement this method to return the 'All Representation
         // Navigation Descriptions' reference list
@@ -709,6 +740,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<LineMapping> getOwnedLineMappings() {
         if (ownedLineMappings == null) {
             ownedLineMappings = new EObjectContainmentEList<LineMapping>(LineMapping.class, this, DescriptionPackage.TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS);
@@ -721,6 +753,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<LineMapping> getReusedLineMappings() {
         if (reusedLineMappings == null) {
             reusedLineMappings = new EObjectResolvingEList<LineMapping>(LineMapping.class, this, DescriptionPackage.TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS);
@@ -733,6 +766,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<LineMapping> getAllLineMappings() {
         // TODO: implement this method to return the 'All Line Mappings'
         // reference list
@@ -750,6 +784,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<CreateLineTool> getOwnedCreateLine() {
         if (ownedCreateLine == null) {
             ownedCreateLine = new EObjectContainmentEList<CreateLineTool>(CreateLineTool.class, this, DescriptionPackage.TABLE_DESCRIPTION__OWNED_CREATE_LINE);
@@ -762,6 +797,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<CreateLineTool> getReusedCreateLine() {
         if (reusedCreateLine == null) {
             reusedCreateLine = new EObjectResolvingEList<CreateLineTool>(CreateLineTool.class, this, DescriptionPackage.TABLE_DESCRIPTION__REUSED_CREATE_LINE);
@@ -774,6 +810,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<CreateLineTool> getAllCreateLine() {
         // TODO: implement this method to return the 'All Create Line' reference
         // list
@@ -791,6 +828,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public int getInitialHeaderColumnWidth() {
         return initialHeaderColumnWidth;
     }
@@ -800,11 +838,13 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setInitialHeaderColumnWidth(int newInitialHeaderColumnWidth) {
         int oldInitialHeaderColumnWidth = initialHeaderColumnWidth;
         initialHeaderColumnWidth = newInitialHeaderColumnWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH, oldInitialHeaderColumnWidth, initialHeaderColumnWidth));
+        }
     }
 
     /**
@@ -812,6 +852,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getImportedElements() {
         if (importedElements == null) {
             importedElements = new EObjectContainmentEList<EObject>(EObject.class, this, DescriptionPackage.TABLE_DESCRIPTION__IMPORTED_ELEMENTS);
@@ -988,31 +1029,31 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.TABLE_DESCRIPTION__END_USER_DOCUMENTATION:
-            setEndUserDocumentation(END_USER_DOCUMENTATION_EDEFAULT);
+            setEndUserDocumentation(TableDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(TableDescriptionImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(TableDescriptionImpl.LABEL_EDEFAULT);
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__TITLE_EXPRESSION:
-            setTitleExpression(TITLE_EXPRESSION_EDEFAULT);
+            setTitleExpression(TableDescriptionImpl.TITLE_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__INITIALISATION:
-            setInitialisation(INITIALISATION_EDEFAULT);
+            setInitialisation(TableDescriptionImpl.INITIALISATION_EDEFAULT);
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__METAMODEL:
             getMetamodel().clear();
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__SHOW_ON_STARTUP:
-            setShowOnStartup(SHOW_ON_STARTUP_EDEFAULT);
+            setShowOnStartup(TableDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT);
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__PRECONDITION_EXPRESSION:
-            setPreconditionExpression(PRECONDITION_EXPRESSION_EDEFAULT);
+            setPreconditionExpression(TableDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(TableDescriptionImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS:
             getOwnedRepresentationCreationDescriptions().clear();
@@ -1039,7 +1080,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
             getReusedCreateLine().clear();
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH:
-            setInitialHeaderColumnWidth(INITIAL_HEADER_COLUMN_WIDTH_EDEFAULT);
+            setInitialHeaderColumnWidth(TableDescriptionImpl.INITIAL_HEADER_COLUMN_WIDTH_EDEFAULT);
             return;
         case DescriptionPackage.TABLE_DESCRIPTION__IMPORTED_ELEMENTS:
             getImportedElements().clear();
@@ -1057,23 +1098,24 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.TABLE_DESCRIPTION__END_USER_DOCUMENTATION:
-            return END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
+            return TableDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !TableDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
         case DescriptionPackage.TABLE_DESCRIPTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return TableDescriptionImpl.NAME_EDEFAULT == null ? name != null : !TableDescriptionImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.TABLE_DESCRIPTION__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return TableDescriptionImpl.LABEL_EDEFAULT == null ? label != null : !TableDescriptionImpl.LABEL_EDEFAULT.equals(label);
         case DescriptionPackage.TABLE_DESCRIPTION__TITLE_EXPRESSION:
-            return TITLE_EXPRESSION_EDEFAULT == null ? titleExpression != null : !TITLE_EXPRESSION_EDEFAULT.equals(titleExpression);
+            return TableDescriptionImpl.TITLE_EXPRESSION_EDEFAULT == null ? titleExpression != null : !TableDescriptionImpl.TITLE_EXPRESSION_EDEFAULT.equals(titleExpression);
         case DescriptionPackage.TABLE_DESCRIPTION__INITIALISATION:
-            return initialisation != INITIALISATION_EDEFAULT;
+            return initialisation != TableDescriptionImpl.INITIALISATION_EDEFAULT;
         case DescriptionPackage.TABLE_DESCRIPTION__METAMODEL:
             return metamodel != null && !metamodel.isEmpty();
         case DescriptionPackage.TABLE_DESCRIPTION__SHOW_ON_STARTUP:
-            return showOnStartup != SHOW_ON_STARTUP_EDEFAULT;
+            return showOnStartup != TableDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT;
         case DescriptionPackage.TABLE_DESCRIPTION__PRECONDITION_EXPRESSION:
-            return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
+            return TableDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !TableDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT
+                    .equals(preconditionExpression);
         case DescriptionPackage.TABLE_DESCRIPTION__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return TableDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !TableDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS:
             return ownedRepresentationCreationDescriptions != null && !ownedRepresentationCreationDescriptions.isEmpty();
         case DescriptionPackage.TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS:
@@ -1099,7 +1141,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
         case DescriptionPackage.TABLE_DESCRIPTION__ALL_CREATE_LINE:
             return !getAllCreateLine().isEmpty();
         case DescriptionPackage.TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH:
-            return initialHeaderColumnWidth != INITIAL_HEADER_COLUMN_WIDTH_EDEFAULT;
+            return initialHeaderColumnWidth != TableDescriptionImpl.INITIAL_HEADER_COLUMN_WIDTH_EDEFAULT;
         case DescriptionPackage.TABLE_DESCRIPTION__IMPORTED_ELEMENTS:
             return importedElements != null && !importedElements.isEmpty();
         }
@@ -1169,8 +1211,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (endUserDocumentation: ");

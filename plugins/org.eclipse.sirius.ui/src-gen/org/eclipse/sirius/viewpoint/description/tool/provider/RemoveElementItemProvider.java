@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.provider;
 
@@ -29,7 +29,7 @@ public class RemoveElementItemProvider extends ContainerModelOperationItemProvid
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RemoveElementItemProvider(AdapterFactory adapterFactory) {
@@ -39,7 +39,7 @@ public class RemoveElementItemProvider extends ContainerModelOperationItemProvid
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -54,7 +54,7 @@ public class RemoveElementItemProvider extends ContainerModelOperationItemProvid
     /**
      * This returns RemoveElement.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class RemoveElementItemProvider extends ContainerModelOperationItemProvid
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

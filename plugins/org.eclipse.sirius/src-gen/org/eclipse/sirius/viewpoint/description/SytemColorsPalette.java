@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -42,7 +42,7 @@ public interface SytemColorsPalette extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Entries</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSytemColorsPalette_Entries()
      * @model containment="true" resolveProxies="true" keys="name"

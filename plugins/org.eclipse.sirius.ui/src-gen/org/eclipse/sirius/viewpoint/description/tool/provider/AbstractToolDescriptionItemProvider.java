@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.provider;
 
@@ -40,7 +40,7 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractToolDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -93,7 +93,7 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     /**
      * This adds a property descriptor for the Precondition feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionPropertyDescriptor(Object object) {
@@ -106,7 +106,7 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     /**
      * This adds a property descriptor for the Force Refresh feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForceRefreshPropertyDescriptor(Object object) {
@@ -152,7 +152,7 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -191,7 +191,7 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -50,7 +50,7 @@ public enum ContainerLayout implements Enumerator {
     /**
      * The '<em><b>Horizontal Stack</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #HORIZONTAL_STACK_VALUE
      * @generated
      * @ordered
@@ -132,7 +132,7 @@ public enum ContainerLayout implements Enumerator {
     /**
      * An array of all the '<em><b>Container Layout</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final ContainerLayout[] VALUES_ARRAY = new ContainerLayout[] { FREE_FORM, LIST, HORIZONTAL_STACK, VERTICAL_STACK, };
@@ -143,7 +143,7 @@ public enum ContainerLayout implements Enumerator {
      * 
      * @generated
      */
-    public static final List<ContainerLayout> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<ContainerLayout> VALUES = Collections.unmodifiableList(Arrays.asList(ContainerLayout.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Container Layout</b></em>' literal with the specified
@@ -152,8 +152,7 @@ public enum ContainerLayout implements Enumerator {
      * @generated
      */
     public static ContainerLayout get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ContainerLayout result = VALUES_ARRAY[i];
+        for (ContainerLayout result : ContainerLayout.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -168,8 +167,7 @@ public enum ContainerLayout implements Enumerator {
      * @generated
      */
     public static ContainerLayout getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ContainerLayout result = VALUES_ARRAY[i];
+        for (ContainerLayout result : ContainerLayout.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -235,6 +233,7 @@ public enum ContainerLayout implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -244,6 +243,7 @@ public enum ContainerLayout implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -253,6 +253,7 @@ public enum ContainerLayout implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

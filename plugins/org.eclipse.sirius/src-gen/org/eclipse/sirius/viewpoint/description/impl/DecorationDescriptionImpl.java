@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -46,7 +46,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -56,17 +56,17 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DecorationDescriptionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPosition() <em>Position</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPosition()
      * @generated
      * @ordered
@@ -76,18 +76,18 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
     /**
      * The cached value of the '{@link #getPosition() <em>Position</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPosition()
      * @generated
      * @ordered
      */
-    protected Position position = POSITION_EDEFAULT;
+    protected Position position = DecorationDescriptionImpl.POSITION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getDecoratorPath()
      * <em>Decorator Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDecoratorPath()
      * @generated
      * @ordered
@@ -98,18 +98,18 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
      * The cached value of the '{@link #getDecoratorPath()
      * <em>Decorator Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDecoratorPath()
      * @generated
      * @ordered
      */
-    protected String decoratorPath = DECORATOR_PATH_EDEFAULT;
+    protected String decoratorPath = DecorationDescriptionImpl.DECORATOR_PATH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -120,16 +120,16 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
      * The cached value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
      */
-    protected String preconditionExpression = PRECONDITION_EXPRESSION_EDEFAULT;
+    protected String preconditionExpression = DecorationDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DecorationDescriptionImpl() {
@@ -138,7 +138,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getName() {
@@ -157,19 +157,20 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DECORATION_DESCRIPTION__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Position getPosition() {
@@ -178,19 +179,20 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setPosition(Position newPosition) {
         Position oldPosition = position;
-        position = newPosition == null ? POSITION_EDEFAULT : newPosition;
-        if (eNotificationRequired())
+        position = newPosition == null ? DecorationDescriptionImpl.POSITION_EDEFAULT : newPosition;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DECORATION_DESCRIPTION__POSITION, oldPosition, position));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getDecoratorPath() {
@@ -199,19 +201,20 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setDecoratorPath(String newDecoratorPath) {
         String oldDecoratorPath = decoratorPath;
         decoratorPath = newDecoratorPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DECORATION_DESCRIPTION__DECORATOR_PATH, oldDecoratorPath, decoratorPath));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getPreconditionExpression() {
@@ -220,19 +223,20 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setPreconditionExpression(String newPreconditionExpression) {
         String oldPreconditionExpression = preconditionExpression;
         preconditionExpression = newPreconditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION, oldPreconditionExpression, preconditionExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -252,7 +256,7 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,23 +280,23 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DECORATION_DESCRIPTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DecorationDescriptionImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.DECORATION_DESCRIPTION__POSITION:
-            setPosition(POSITION_EDEFAULT);
+            setPosition(DecorationDescriptionImpl.POSITION_EDEFAULT);
             return;
         case DescriptionPackage.DECORATION_DESCRIPTION__DECORATOR_PATH:
-            setDecoratorPath(DECORATOR_PATH_EDEFAULT);
+            setDecoratorPath(DecorationDescriptionImpl.DECORATOR_PATH_EDEFAULT);
             return;
         case DescriptionPackage.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION:
-            setPreconditionExpression(PRECONDITION_EXPRESSION_EDEFAULT);
+            setPreconditionExpression(DecorationDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -300,18 +304,18 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DECORATION_DESCRIPTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DecorationDescriptionImpl.NAME_EDEFAULT == null ? name != null : !DecorationDescriptionImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.DECORATION_DESCRIPTION__POSITION:
-            return position != POSITION_EDEFAULT;
+            return position != DecorationDescriptionImpl.POSITION_EDEFAULT;
         case DescriptionPackage.DECORATION_DESCRIPTION__DECORATOR_PATH:
-            return DECORATOR_PATH_EDEFAULT == null ? decoratorPath != null : !DECORATOR_PATH_EDEFAULT.equals(decoratorPath);
+            return DecorationDescriptionImpl.DECORATOR_PATH_EDEFAULT == null ? decoratorPath != null : !DecorationDescriptionImpl.DECORATOR_PATH_EDEFAULT.equals(decoratorPath);
         case DescriptionPackage.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION:
             return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
         }
@@ -320,13 +324,14 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

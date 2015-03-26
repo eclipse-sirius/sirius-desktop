@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -77,7 +77,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * The cached value of the '{@link #getOwnedBorderedNodes()
      * <em>Owned Bordered Nodes</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedBorderedNodes()
      * @generated
      * @ordered
@@ -135,7 +135,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * @generated
      * @ordered
      */
-    protected Integer width = WIDTH_EDEFAULT;
+    protected Integer width = DNodeImpl.WIDTH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}'
@@ -155,7 +155,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * @generated
      * @ordered
      */
-    protected Integer height = HEIGHT_EDEFAULT;
+    protected Integer height = DNodeImpl.HEIGHT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}'
@@ -188,7 +188,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * @ordered
      */
     @Deprecated
-    protected LabelPosition labelPosition = LABEL_POSITION_EDEFAULT;
+    protected LabelPosition labelPosition = DNodeImpl.LABEL_POSITION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getResizeKind() <em>Resize Kind</em>}'
@@ -208,7 +208,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * @generated
      * @ordered
      */
-    protected ResizeKind resizeKind = RESIZE_KIND_EDEFAULT;
+    protected ResizeKind resizeKind = DNodeImpl.RESIZE_KIND_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOriginalStyle()
@@ -267,6 +267,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public EList<DNode> getOwnedBorderedNodes() {
         if (ownedBorderedNodes == null) {
             ownedBorderedNodes = new EObjectContainmentEList.Resolving<DNode>(DNode.class, this, DiagramPackage.DNODE__OWNED_BORDERED_NODES);
@@ -279,6 +280,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public EList<ArrangeConstraint> getArrangeConstraints() {
         if (arrangeConstraints == null) {
             arrangeConstraints = new EDataTypeUniqueEList<ArrangeConstraint>(ArrangeConstraint.class, this, DiagramPackage.DNODE__ARRANGE_CONSTRAINTS);
@@ -291,6 +293,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getOutgoingEdges() {
         if (outgoingEdges == null) {
             outgoingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DNODE__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
@@ -303,6 +306,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getIncomingEdges() {
         if (incomingEdges == null) {
             incomingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DNODE__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);
@@ -315,6 +319,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public Integer getWidth() {
         return width;
     }
@@ -324,11 +329,13 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public void setWidth(Integer newWidth) {
         Integer oldWidth = width;
         width = newWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE__WIDTH, oldWidth, width));
+        }
     }
 
     /**
@@ -336,6 +343,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public Integer getHeight() {
         return height;
     }
@@ -345,11 +353,13 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public void setHeight(Integer newHeight) {
         Integer oldHeight = height;
         height = newHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE__HEIGHT, oldHeight, height));
+        }
     }
 
     /**
@@ -357,20 +367,23 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public NodeStyle getOwnedStyle() {
         if (ownedStyle != null && ownedStyle.eIsProxy()) {
             InternalEObject oldOwnedStyle = (InternalEObject) ownedStyle;
             ownedStyle = (NodeStyle) eResolveProxy(oldOwnedStyle);
             if (ownedStyle != oldOwnedStyle) {
                 InternalEObject newOwnedStyle = (InternalEObject) ownedStyle;
-                NotificationChain msgs = oldOwnedStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE__OWNED_STYLE, null, null);
+                NotificationChain msgs = oldOwnedStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE__OWNED_STYLE, null, null);
                 if (newOwnedStyle.eInternalContainer() == null) {
-                    msgs = newOwnedStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE__OWNED_STYLE, null, msgs);
+                    msgs = newOwnedStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE__OWNED_STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DNODE__OWNED_STYLE, oldOwnedStyle, ownedStyle));
+                }
             }
         }
         return ownedStyle;
@@ -395,10 +408,11 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
         ownedStyle = newOwnedStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE__OWNED_STYLE, oldOwnedStyle, newOwnedStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -408,18 +422,23 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public void setOwnedStyle(NodeStyle newOwnedStyle) {
         if (newOwnedStyle != ownedStyle) {
             NotificationChain msgs = null;
-            if (ownedStyle != null)
-                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE__OWNED_STYLE, null, msgs);
-            if (newOwnedStyle != null)
-                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE__OWNED_STYLE, null, msgs);
+            if (ownedStyle != null) {
+                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE__OWNED_STYLE, null, msgs);
+            }
+            if (newOwnedStyle != null) {
+                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE__OWNED_STYLE, null, msgs);
+            }
             msgs = basicSetOwnedStyle(newOwnedStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE__OWNED_STYLE, newOwnedStyle, newOwnedStyle));
+        }
     }
 
     /**
@@ -427,6 +446,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public LabelPosition getLabelPosition() {
         return labelPosition;
     }
@@ -436,11 +456,13 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public void setLabelPosition(LabelPosition newLabelPosition) {
         LabelPosition oldLabelPosition = labelPosition;
-        labelPosition = newLabelPosition == null ? LABEL_POSITION_EDEFAULT : newLabelPosition;
-        if (eNotificationRequired())
+        labelPosition = newLabelPosition == null ? DNodeImpl.LABEL_POSITION_EDEFAULT : newLabelPosition;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE__LABEL_POSITION, oldLabelPosition, labelPosition));
+        }
     }
 
     /**
@@ -448,6 +470,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public ResizeKind getResizeKind() {
         return resizeKind;
     }
@@ -457,11 +480,13 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public void setResizeKind(ResizeKind newResizeKind) {
         ResizeKind oldResizeKind = resizeKind;
-        resizeKind = newResizeKind == null ? RESIZE_KIND_EDEFAULT : newResizeKind;
-        if (eNotificationRequired())
+        resizeKind = newResizeKind == null ? DNodeImpl.RESIZE_KIND_EDEFAULT : newResizeKind;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE__RESIZE_KIND, oldResizeKind, resizeKind));
+        }
     }
 
     /**
@@ -469,13 +494,15 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public Style getOriginalStyle() {
         if (originalStyle != null && originalStyle.eIsProxy()) {
             InternalEObject oldOriginalStyle = (InternalEObject) originalStyle;
             originalStyle = (Style) eResolveProxy(oldOriginalStyle);
             if (originalStyle != oldOriginalStyle) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DNODE__ORIGINAL_STYLE, oldOriginalStyle, originalStyle));
+                }
             }
         }
         return originalStyle;
@@ -495,11 +522,13 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public void setOriginalStyle(Style newOriginalStyle) {
         Style oldOriginalStyle = originalStyle;
         originalStyle = newOriginalStyle;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE__ORIGINAL_STYLE, oldOriginalStyle, originalStyle));
+        }
     }
 
     /**
@@ -507,13 +536,15 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public NodeMapping getActualMapping() {
         if (actualMapping != null && actualMapping.eIsProxy()) {
             InternalEObject oldActualMapping = (InternalEObject) actualMapping;
             actualMapping = (NodeMapping) eResolveProxy(oldActualMapping);
             if (actualMapping != oldActualMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DNODE__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+                }
             }
         }
         return actualMapping;
@@ -533,11 +564,13 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public void setActualMapping(NodeMapping newActualMapping) {
         NodeMapping oldActualMapping = actualMapping;
         actualMapping = newActualMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+        }
     }
 
     /**
@@ -545,6 +578,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getCandidatesMapping() {
         if (candidatesMapping == null) {
             candidatesMapping = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, DiagramPackage.DNODE__CANDIDATES_MAPPING);
@@ -557,6 +591,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    @Override
     public DragAndDropTargetDescription getDragAndDropDescription() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -621,20 +656,23 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
         case DiagramPackage.DNODE__HEIGHT:
             return getHeight();
         case DiagramPackage.DNODE__OWNED_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getOwnedStyle();
+            }
             return basicGetOwnedStyle();
         case DiagramPackage.DNODE__LABEL_POSITION:
             return getLabelPosition();
         case DiagramPackage.DNODE__RESIZE_KIND:
             return getResizeKind();
         case DiagramPackage.DNODE__ORIGINAL_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getOriginalStyle();
+            }
             return basicGetOriginalStyle();
         case DiagramPackage.DNODE__ACTUAL_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getActualMapping();
+            }
             return basicGetActualMapping();
         case DiagramPackage.DNODE__CANDIDATES_MAPPING:
             return getCandidatesMapping();
@@ -717,19 +755,19 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
             getIncomingEdges().clear();
             return;
         case DiagramPackage.DNODE__WIDTH:
-            setWidth(WIDTH_EDEFAULT);
+            setWidth(DNodeImpl.WIDTH_EDEFAULT);
             return;
         case DiagramPackage.DNODE__HEIGHT:
-            setHeight(HEIGHT_EDEFAULT);
+            setHeight(DNodeImpl.HEIGHT_EDEFAULT);
             return;
         case DiagramPackage.DNODE__OWNED_STYLE:
             setOwnedStyle((NodeStyle) null);
             return;
         case DiagramPackage.DNODE__LABEL_POSITION:
-            setLabelPosition(LABEL_POSITION_EDEFAULT);
+            setLabelPosition(DNodeImpl.LABEL_POSITION_EDEFAULT);
             return;
         case DiagramPackage.DNODE__RESIZE_KIND:
-            setResizeKind(RESIZE_KIND_EDEFAULT);
+            setResizeKind(DNodeImpl.RESIZE_KIND_EDEFAULT);
             return;
         case DiagramPackage.DNODE__ORIGINAL_STYLE:
             setOriginalStyle((Style) null);
@@ -761,15 +799,15 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
         case DiagramPackage.DNODE__INCOMING_EDGES:
             return incomingEdges != null && !incomingEdges.isEmpty();
         case DiagramPackage.DNODE__WIDTH:
-            return WIDTH_EDEFAULT == null ? width != null : !WIDTH_EDEFAULT.equals(width);
+            return DNodeImpl.WIDTH_EDEFAULT == null ? width != null : !DNodeImpl.WIDTH_EDEFAULT.equals(width);
         case DiagramPackage.DNODE__HEIGHT:
-            return HEIGHT_EDEFAULT == null ? height != null : !HEIGHT_EDEFAULT.equals(height);
+            return DNodeImpl.HEIGHT_EDEFAULT == null ? height != null : !DNodeImpl.HEIGHT_EDEFAULT.equals(height);
         case DiagramPackage.DNODE__OWNED_STYLE:
             return ownedStyle != null;
         case DiagramPackage.DNODE__LABEL_POSITION:
-            return labelPosition != LABEL_POSITION_EDEFAULT;
+            return labelPosition != DNodeImpl.LABEL_POSITION_EDEFAULT;
         case DiagramPackage.DNODE__RESIZE_KIND:
-            return resizeKind != RESIZE_KIND_EDEFAULT;
+            return resizeKind != DNodeImpl.RESIZE_KIND_EDEFAULT;
         case DiagramPackage.DNODE__ORIGINAL_STYLE:
             return originalStyle != null;
         case DiagramPackage.DNODE__ACTUAL_MAPPING:
@@ -839,8 +877,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (arrangeConstraints: ");

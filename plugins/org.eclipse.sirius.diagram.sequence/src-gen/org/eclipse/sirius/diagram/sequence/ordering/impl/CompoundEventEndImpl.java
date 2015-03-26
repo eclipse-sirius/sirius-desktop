@@ -72,6 +72,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
      * 
      * @generated
      */
+    @Override
     public EList<SingleEventEnd> getEventEnds() {
         if (eventEnds == null) {
             eventEnds = new EObjectContainmentEList<SingleEventEnd>(SingleEventEnd.class, this, OrderingPackage.COMPOUND_EVENT_END__EVENT_ENDS);
@@ -84,6 +85,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getSemanticEvents() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT

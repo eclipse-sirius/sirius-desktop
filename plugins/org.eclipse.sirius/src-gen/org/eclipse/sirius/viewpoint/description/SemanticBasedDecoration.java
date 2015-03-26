@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -36,7 +36,7 @@ public interface SemanticBasedDecoration extends DecorationDescription {
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * path of the icon of the decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSemanticBasedDecoration_DomainClass()
@@ -50,7 +50,7 @@ public interface SemanticBasedDecoration extends DecorationDescription {
      * {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()

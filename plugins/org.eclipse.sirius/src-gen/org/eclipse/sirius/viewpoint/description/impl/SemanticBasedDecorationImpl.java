@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -35,7 +35,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -45,16 +45,16 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = SemanticBasedDecorationImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SemanticBasedDecorationImpl() {
@@ -63,7 +63,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,28 +73,31 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.SEMANTIC_BASED_DECORATION__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +111,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,14 +126,14 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.SEMANTIC_BASED_DECORATION__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(SemanticBasedDecorationImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -138,27 +141,28 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.SEMANTIC_BASED_DECORATION__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return SemanticBasedDecorationImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !SemanticBasedDecorationImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (domainClass: ");

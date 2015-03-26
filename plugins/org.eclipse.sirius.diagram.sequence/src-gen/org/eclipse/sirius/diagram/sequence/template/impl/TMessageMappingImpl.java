@@ -69,7 +69,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * @generated
      * @ordered
      */
-    protected String sendingEndFinderExpression = SENDING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String sendingEndFinderExpression = TMessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getReceivingEndFinderExpression()
@@ -91,7 +91,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * @generated
      * @ordered
      */
-    protected String receivingEndFinderExpression = RECEIVING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String receivingEndFinderExpression = TMessageMappingImpl.RECEIVING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
@@ -107,7 +107,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * The cached value of the '{@link #getConditionalStyle()
      * <em>Conditional Style</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyle()
      * @generated
      * @ordered
@@ -138,6 +138,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * 
      * @generated
      */
+    @Override
     public String getSendingEndFinderExpression() {
         return sendingEndFinderExpression;
     }
@@ -147,11 +148,13 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * 
      * @generated
      */
+    @Override
     public void setSendingEndFinderExpression(String newSendingEndFinderExpression) {
         String oldSendingEndFinderExpression = sendingEndFinderExpression;
         sendingEndFinderExpression = newSendingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION, oldSendingEndFinderExpression, sendingEndFinderExpression));
+        }
     }
 
     /**
@@ -159,6 +162,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * 
      * @generated
      */
+    @Override
     public String getReceivingEndFinderExpression() {
         return receivingEndFinderExpression;
     }
@@ -168,11 +172,13 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * 
      * @generated
      */
+    @Override
     public void setReceivingEndFinderExpression(String newReceivingEndFinderExpression) {
         String oldReceivingEndFinderExpression = receivingEndFinderExpression;
         receivingEndFinderExpression = newReceivingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION, oldReceivingEndFinderExpression, receivingEndFinderExpression));
+        }
     }
 
     /**
@@ -180,6 +186,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * 
      * @generated
      */
+    @Override
     public TMessageStyle getStyle() {
         return style;
     }
@@ -194,10 +201,11 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
         style = newStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_MAPPING__STYLE, oldStyle, newStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -207,18 +215,23 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * 
      * @generated
      */
+    @Override
     public void setStyle(TMessageStyle newStyle) {
         if (newStyle != style) {
             NotificationChain msgs = null;
-            if (style != null)
-                msgs = ((InternalEObject) style).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TMESSAGE_MAPPING__STYLE, null, msgs);
-            if (newStyle != null)
-                msgs = ((InternalEObject) newStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TemplatePackage.TMESSAGE_MAPPING__STYLE, null, msgs);
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TMESSAGE_MAPPING__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - TemplatePackage.TMESSAGE_MAPPING__STYLE, null, msgs);
+            }
             msgs = basicSetStyle(newStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_MAPPING__STYLE, newStyle, newStyle));
+        }
     }
 
     /**
@@ -226,6 +239,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      * 
      * @generated
      */
+    @Override
     public EList<TConditionalMessageStyle> getConditionalStyle() {
         if (conditionalStyle == null) {
             conditionalStyle = new EObjectContainmentEList<TConditionalMessageStyle>(TConditionalMessageStyle.class, this, TemplatePackage.TMESSAGE_MAPPING__CONDITIONAL_STYLE);
@@ -304,10 +318,10 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
     public void eUnset(int featureID) {
         switch (featureID) {
         case TemplatePackage.TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION:
-            setSendingEndFinderExpression(SENDING_END_FINDER_EXPRESSION_EDEFAULT);
+            setSendingEndFinderExpression(TMessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         case TemplatePackage.TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION:
-            setReceivingEndFinderExpression(RECEIVING_END_FINDER_EXPRESSION_EDEFAULT);
+            setReceivingEndFinderExpression(TMessageMappingImpl.RECEIVING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         case TemplatePackage.TMESSAGE_MAPPING__STYLE:
             setStyle((TMessageStyle) null);
@@ -328,9 +342,11 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TemplatePackage.TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION:
-            return SENDING_END_FINDER_EXPRESSION_EDEFAULT == null ? sendingEndFinderExpression != null : !SENDING_END_FINDER_EXPRESSION_EDEFAULT.equals(sendingEndFinderExpression);
+            return TMessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT == null ? sendingEndFinderExpression != null : !TMessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(sendingEndFinderExpression);
         case TemplatePackage.TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION:
-            return RECEIVING_END_FINDER_EXPRESSION_EDEFAULT == null ? receivingEndFinderExpression != null : !RECEIVING_END_FINDER_EXPRESSION_EDEFAULT.equals(receivingEndFinderExpression);
+            return TMessageMappingImpl.RECEIVING_END_FINDER_EXPRESSION_EDEFAULT == null ? receivingEndFinderExpression != null : !TMessageMappingImpl.RECEIVING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(receivingEndFinderExpression);
         case TemplatePackage.TMESSAGE_MAPPING__STYLE:
             return style != null;
         case TemplatePackage.TMESSAGE_MAPPING__CONDITIONAL_STYLE:
@@ -346,8 +362,9 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (sendingEndFinderExpression: ");

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -42,7 +42,7 @@ public interface FeatureChangeListener extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFeatureChangeListener_DomainClass()
@@ -57,7 +57,7 @@ public interface FeatureChangeListener extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -73,7 +73,7 @@ public interface FeatureChangeListener extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFeatureChangeListener_FeatureName()
@@ -88,7 +88,7 @@ public interface FeatureChangeListener extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

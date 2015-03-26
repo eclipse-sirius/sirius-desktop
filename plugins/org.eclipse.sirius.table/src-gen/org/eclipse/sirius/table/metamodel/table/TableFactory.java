@@ -67,7 +67,7 @@ public interface TableFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DTarget Column</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DTarget Column</em>'.
      * @generated
      */
@@ -76,7 +76,7 @@ public interface TableFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DFeature Column</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DFeature Column</em>'.
      * @generated
      */
@@ -85,7 +85,7 @@ public interface TableFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DTable Element Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DTable Element Style</em>'.
      * @generated
      */

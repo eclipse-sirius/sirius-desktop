@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -38,7 +38,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DSemanticDecoratorImpl() {
@@ -56,7 +56,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,16 +66,18 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObject getTarget() {
         if (target != null && target.eIsProxy()) {
             InternalEObject oldTarget = (InternalEObject) target;
             target = eResolveProxy(oldTarget);
             if (target != oldTarget) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DSEMANTIC_DECORATOR__TARGET, oldTarget, target));
+                }
             }
         }
         return target;
@@ -83,7 +85,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetTarget() {
@@ -92,27 +94,30 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTarget(EObject newTarget) {
         EObject oldTarget = target;
         target = newTarget;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DSEMANTIC_DECORATOR__TARGET, oldTarget, target));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.DSEMANTIC_DECORATOR__TARGET:
-            if (resolve)
+            if (resolve) {
                 return getTarget();
+            }
             return basicGetTarget();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -120,7 +125,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +140,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +155,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -80,7 +80,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The default value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -91,17 +91,17 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
      */
-    protected String candidatesExpression = CANDIDATES_EXPRESSION_EDEFAULT;
+    protected String candidatesExpression = SelectionWizardDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -111,17 +111,17 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isMultiple()
      * @generated
      * @ordered
      */
-    protected boolean multiple = MULTIPLE_EDEFAULT;
+    protected boolean multiple = SelectionWizardDescriptionImpl.MULTIPLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isTree() <em>Tree</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isTree()
      * @generated
      * @ordered
@@ -131,18 +131,18 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #isTree() <em>Tree</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isTree()
      * @generated
      * @ordered
      */
-    protected boolean tree = TREE_EDEFAULT;
+    protected boolean tree = SelectionWizardDescriptionImpl.TREE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -153,18 +153,18 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
      */
-    protected String rootExpression = ROOT_EXPRESSION_EDEFAULT;
+    protected String rootExpression = SelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getChildrenExpression()
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getChildrenExpression()
      * @generated
      * @ordered
@@ -175,17 +175,17 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getChildrenExpression()
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getChildrenExpression()
      * @generated
      * @ordered
      */
-    protected String childrenExpression = CHILDREN_EXPRESSION_EDEFAULT;
+    protected String childrenExpression = SelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
@@ -195,17 +195,17 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
      */
-    protected String message = MESSAGE_EDEFAULT;
+    protected String message = SelectionWizardDescriptionImpl.MESSAGE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getElement() <em>Element</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getElement()
      * @generated
      * @ordered
@@ -216,7 +216,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getContainerView()
      * <em>Container View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerView()
      * @generated
      * @ordered
@@ -226,7 +226,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getContainer() <em>Container</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainer()
      * @generated
      * @ordered
@@ -237,7 +237,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -247,7 +247,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -257,17 +257,17 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
      */
-    protected String iconPath = ICON_PATH_EDEFAULT;
+    protected String iconPath = SelectionWizardDescriptionImpl.ICON_PATH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getWindowTitle() <em>Window Title</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWindowTitle()
      * @generated
      * @ordered
@@ -277,18 +277,18 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getWindowTitle() <em>Window Title</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWindowTitle()
      * @generated
      * @ordered
      */
-    protected String windowTitle = WINDOW_TITLE_EDEFAULT;
+    protected String windowTitle = SelectionWizardDescriptionImpl.WINDOW_TITLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getWindowImagePath()
      * <em>Window Image Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWindowImagePath()
      * @generated
      * @ordered
@@ -299,16 +299,16 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * The cached value of the '{@link #getWindowImagePath()
      * <em>Window Image Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWindowImagePath()
      * @generated
      * @ordered
      */
-    protected String windowImagePath = WINDOW_IMAGE_PATH_EDEFAULT;
+    protected String windowImagePath = SelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectionWizardDescriptionImpl() {
@@ -317,7 +317,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -327,7 +327,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getCandidatesExpression() {
@@ -336,19 +336,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setCandidatesExpression(String newCandidatesExpression) {
         String oldCandidatesExpression = candidatesExpression;
         candidatesExpression = newCandidatesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__CANDIDATES_EXPRESSION, oldCandidatesExpression, candidatesExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public boolean isMultiple() {
@@ -357,19 +358,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setMultiple(boolean newMultiple) {
         boolean oldMultiple = multiple;
         multiple = newMultiple;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__MULTIPLE, oldMultiple, multiple));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public boolean isTree() {
@@ -378,19 +380,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setTree(boolean newTree) {
         boolean oldTree = tree;
         tree = newTree;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__TREE, oldTree, tree));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getRootExpression() {
@@ -399,19 +402,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setRootExpression(String newRootExpression) {
         String oldRootExpression = rootExpression;
         rootExpression = newRootExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION, oldRootExpression, rootExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getChildrenExpression() {
@@ -420,19 +424,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setChildrenExpression(String newChildrenExpression) {
         String oldChildrenExpression = childrenExpression;
         childrenExpression = newChildrenExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION, oldChildrenExpression, childrenExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getMessage() {
@@ -441,19 +446,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setMessage(String newMessage) {
         String oldMessage = message;
         message = newMessage;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__MESSAGE, oldMessage, message));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementSelectVariable getElement() {
@@ -462,14 +468,16 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
             element = (ElementSelectVariable) eResolveProxy(oldElement);
             if (element != oldElement) {
                 InternalEObject newElement = (InternalEObject) element;
-                NotificationChain msgs = oldElement.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, null, null);
+                NotificationChain msgs = oldElement.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, null, null);
                 if (newElement.eInternalContainer() == null) {
-                    msgs = newElement.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, null, msgs);
+                    msgs = newElement.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, oldElement, element));
+                }
             }
         }
         return element;
@@ -477,7 +485,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementSelectVariable basicGetElement() {
@@ -486,7 +494,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetElement(ElementSelectVariable newElement, NotificationChain msgs) {
@@ -494,36 +502,41 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         element = newElement;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, oldElement, newElement);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setElement(ElementSelectVariable newElement) {
         if (newElement != element) {
             NotificationChain msgs = null;
-            if (element != null)
-                msgs = ((InternalEObject) element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, null, msgs);
-            if (newElement != null)
-                msgs = ((InternalEObject) newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, null, msgs);
+            if (element != null) {
+                msgs = ((InternalEObject) element).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, null, msgs);
+            }
+            if (newElement != null) {
+                msgs = ((InternalEObject) newElement).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, null, msgs);
+            }
             msgs = basicSetElement(newElement, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT, newElement, newElement));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable getContainerView() {
@@ -532,14 +545,16 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
             containerView = (ContainerViewVariable) eResolveProxy(oldContainerView);
             if (containerView != oldContainerView) {
                 InternalEObject newContainerView = (InternalEObject) containerView;
-                NotificationChain msgs = oldContainerView.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, null);
+                NotificationChain msgs = oldContainerView.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, null);
                 if (newContainerView.eInternalContainer() == null) {
-                    msgs = newContainerView.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, msgs);
+                    msgs = newContainerView.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, oldContainerView, containerView));
+                }
             }
         }
         return containerView;
@@ -547,7 +562,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable basicGetContainerView() {
@@ -556,7 +571,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainerView(ContainerViewVariable newContainerView, NotificationChain msgs) {
@@ -564,36 +579,41 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         containerView = newContainerView;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, oldContainerView, newContainerView);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setContainerView(ContainerViewVariable newContainerView) {
         if (newContainerView != containerView) {
             NotificationChain msgs = null;
-            if (containerView != null)
-                msgs = ((InternalEObject) containerView).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, msgs);
-            if (newContainerView != null)
-                msgs = ((InternalEObject) newContainerView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, msgs);
+            if (containerView != null) {
+                msgs = ((InternalEObject) containerView).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, msgs);
+            }
+            if (newContainerView != null) {
+                msgs = ((InternalEObject) newContainerView).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, msgs);
+            }
             msgs = basicSetContainerView(newContainerView, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, newContainerView, newContainerView));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SelectContainerVariable getContainer() {
@@ -602,14 +622,16 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
             container = (SelectContainerVariable) eResolveProxy(oldContainer);
             if (container != oldContainer) {
                 InternalEObject newContainer = (InternalEObject) container;
-                NotificationChain msgs = oldContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, null, null);
+                NotificationChain msgs = oldContainer.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, null, null);
                 if (newContainer.eInternalContainer() == null) {
-                    msgs = newContainer.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, null, msgs);
+                    msgs = newContainer.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, oldContainer, container));
+                }
             }
         }
         return container;
@@ -617,7 +639,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SelectContainerVariable basicGetContainer() {
@@ -626,7 +648,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainer(SelectContainerVariable newContainer, NotificationChain msgs) {
@@ -634,36 +656,41 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         container = newContainer;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, oldContainer, newContainer);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setContainer(SelectContainerVariable newContainer) {
         if (newContainer != container) {
             NotificationChain msgs = null;
-            if (container != null)
-                msgs = ((InternalEObject) container).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, null, msgs);
-            if (newContainer != null)
-                msgs = ((InternalEObject) newContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, null, msgs);
+            if (container != null) {
+                msgs = ((InternalEObject) container).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, null, msgs);
+            }
+            if (newContainer != null) {
+                msgs = ((InternalEObject) newContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, null, msgs);
+            }
             msgs = basicSetContainer(newContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, newContainer, newContainer));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation getInitialOperation() {
@@ -672,14 +699,16 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
             initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -687,7 +716,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -696,7 +725,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -704,36 +733,41 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getIconPath() {
@@ -742,19 +776,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setIconPath(String newIconPath) {
         String oldIconPath = iconPath;
         iconPath = newIconPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getWindowTitle() {
@@ -763,19 +798,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setWindowTitle(String newWindowTitle) {
         String oldWindowTitle = windowTitle;
         windowTitle = newWindowTitle;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE, oldWindowTitle, windowTitle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getWindowImagePath() {
@@ -784,19 +820,20 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setWindowImagePath(String newWindowImagePath) {
         String oldWindowImagePath = windowImagePath;
         windowImagePath = newWindowImagePath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH, oldWindowImagePath, windowImagePath));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -816,7 +853,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -835,20 +872,24 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__MESSAGE:
             return getMessage();
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT:
-            if (resolve)
+            if (resolve) {
                 return getElement();
+            }
             return basicGetElement();
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW:
-            if (resolve)
+            if (resolve) {
                 return getContainerView();
+            }
             return basicGetContainerView();
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER:
-            if (resolve)
+            if (resolve) {
                 return getContainer();
+            }
             return basicGetContainer();
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ICON_PATH:
             return getIconPath();
@@ -862,7 +903,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -913,29 +954,29 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CANDIDATES_EXPRESSION:
-            setCandidatesExpression(CANDIDATES_EXPRESSION_EDEFAULT);
+            setCandidatesExpression(SelectionWizardDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__MULTIPLE:
-            setMultiple(MULTIPLE_EDEFAULT);
+            setMultiple(SelectionWizardDescriptionImpl.MULTIPLE_EDEFAULT);
             return;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__TREE:
-            setTree(TREE_EDEFAULT);
+            setTree(SelectionWizardDescriptionImpl.TREE_EDEFAULT);
             return;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION:
-            setRootExpression(ROOT_EXPRESSION_EDEFAULT);
+            setRootExpression(SelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION:
-            setChildrenExpression(CHILDREN_EXPRESSION_EDEFAULT);
+            setChildrenExpression(SelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__MESSAGE:
-            setMessage(MESSAGE_EDEFAULT);
+            setMessage(SelectionWizardDescriptionImpl.MESSAGE_EDEFAULT);
             return;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT:
             setElement((ElementSelectVariable) null);
@@ -950,13 +991,13 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
             setInitialOperation((InitialOperation) null);
             return;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ICON_PATH:
-            setIconPath(ICON_PATH_EDEFAULT);
+            setIconPath(SelectionWizardDescriptionImpl.ICON_PATH_EDEFAULT);
             return;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE:
-            setWindowTitle(WINDOW_TITLE_EDEFAULT);
+            setWindowTitle(SelectionWizardDescriptionImpl.WINDOW_TITLE_EDEFAULT);
             return;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH:
-            setWindowImagePath(WINDOW_IMAGE_PATH_EDEFAULT);
+            setWindowImagePath(SelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -964,7 +1005,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -973,15 +1014,15 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CANDIDATES_EXPRESSION:
             return CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !CANDIDATES_EXPRESSION_EDEFAULT.equals(candidatesExpression);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__MULTIPLE:
-            return multiple != MULTIPLE_EDEFAULT;
+            return multiple != SelectionWizardDescriptionImpl.MULTIPLE_EDEFAULT;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__TREE:
-            return tree != TREE_EDEFAULT;
+            return tree != SelectionWizardDescriptionImpl.TREE_EDEFAULT;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION:
-            return ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
+            return SelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !SelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION:
             return CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__MESSAGE:
-            return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
+            return SelectionWizardDescriptionImpl.MESSAGE_EDEFAULT == null ? message != null : !SelectionWizardDescriptionImpl.MESSAGE_EDEFAULT.equals(message);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT:
             return element != null;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW:
@@ -991,18 +1032,18 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ICON_PATH:
-            return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+            return SelectionWizardDescriptionImpl.ICON_PATH_EDEFAULT == null ? iconPath != null : !SelectionWizardDescriptionImpl.ICON_PATH_EDEFAULT.equals(iconPath);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE:
-            return WINDOW_TITLE_EDEFAULT == null ? windowTitle != null : !WINDOW_TITLE_EDEFAULT.equals(windowTitle);
+            return SelectionWizardDescriptionImpl.WINDOW_TITLE_EDEFAULT == null ? windowTitle != null : !SelectionWizardDescriptionImpl.WINDOW_TITLE_EDEFAULT.equals(windowTitle);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH:
-            return WINDOW_IMAGE_PATH_EDEFAULT == null ? windowImagePath != null : !WINDOW_IMAGE_PATH_EDEFAULT.equals(windowImagePath);
+            return SelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT == null ? windowImagePath != null : !SelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT.equals(windowImagePath);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1030,7 +1071,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1058,13 +1099,14 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (candidatesExpression: ");

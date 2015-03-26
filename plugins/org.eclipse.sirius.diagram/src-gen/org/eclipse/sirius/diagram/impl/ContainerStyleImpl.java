@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -75,13 +75,13 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * @generated
      * @ordered
      */
-    protected Integer borderSize = BORDER_SIZE_EDEFAULT;
+    protected Integer borderSize = ContainerStyleImpl.BORDER_SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -92,12 +92,12 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * The cached value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
      */
-    protected String borderSizeComputationExpression = BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String borderSizeComputationExpression = ContainerStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBorderColor() <em>Border Color</em>}
@@ -117,7 +117,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * @generated
      * @ordered
      */
-    protected RGBValues borderColor = BORDER_COLOR_EDEFAULT;
+    protected RGBValues borderColor = ContainerStyleImpl.BORDER_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -143,13 +143,15 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
+    @Override
     public StyleDescription getDescription() {
         if (description != null && description.eIsProxy()) {
             InternalEObject oldDescription = (InternalEObject) description;
             description = (StyleDescription) eResolveProxy(oldDescription);
             if (description != oldDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.CONTAINER_STYLE__DESCRIPTION, oldDescription, description));
+                }
             }
         }
         return description;
@@ -169,11 +171,13 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
+    @Override
     public void setDescription(StyleDescription newDescription) {
         StyleDescription oldDescription = description;
         description = newDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.CONTAINER_STYLE__DESCRIPTION, oldDescription, description));
+        }
     }
 
     /**
@@ -181,6 +185,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
+    @Override
     public Integer getBorderSize() {
         return borderSize;
     }
@@ -190,11 +195,13 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
+    @Override
     public void setBorderSize(Integer newBorderSize) {
         Integer oldBorderSize = borderSize;
         borderSize = newBorderSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.CONTAINER_STYLE__BORDER_SIZE, oldBorderSize, borderSize));
+        }
     }
 
     /**
@@ -202,6 +209,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
+    @Override
     public String getBorderSizeComputationExpression() {
         return borderSizeComputationExpression;
     }
@@ -211,12 +219,14 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
+    @Override
     public void setBorderSizeComputationExpression(String newBorderSizeComputationExpression) {
         String oldBorderSizeComputationExpression = borderSizeComputationExpression;
         borderSizeComputationExpression = newBorderSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION, oldBorderSizeComputationExpression,
                     borderSizeComputationExpression));
+        }
     }
 
     /**
@@ -224,6 +234,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
+    @Override
     public RGBValues getBorderColor() {
         return borderColor;
     }
@@ -233,11 +244,13 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
+    @Override
     public void setBorderColor(RGBValues newBorderColor) {
         RGBValues oldBorderColor = borderColor;
         borderColor = newBorderColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.CONTAINER_STYLE__BORDER_COLOR, oldBorderColor, borderColor));
+        }
     }
 
     /**
@@ -245,6 +258,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -260,8 +274,9 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DiagramPackage.CONTAINER_STYLE__DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDescription();
+            }
             return basicGetDescription();
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE:
             return getBorderSize();
@@ -309,13 +324,13 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
             setDescription((StyleDescription) null);
             return;
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE:
-            setBorderSize(BORDER_SIZE_EDEFAULT);
+            setBorderSize(ContainerStyleImpl.BORDER_SIZE_EDEFAULT);
             return;
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setBorderSizeComputationExpression(ContainerStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
-            setBorderColor(BORDER_COLOR_EDEFAULT);
+            setBorderColor(ContainerStyleImpl.BORDER_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -332,11 +347,12 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
         case DiagramPackage.CONTAINER_STYLE__DESCRIPTION:
             return description != null;
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE:
-            return BORDER_SIZE_EDEFAULT == null ? borderSize != null : !BORDER_SIZE_EDEFAULT.equals(borderSize);
+            return ContainerStyleImpl.BORDER_SIZE_EDEFAULT == null ? borderSize != null : !ContainerStyleImpl.BORDER_SIZE_EDEFAULT.equals(borderSize);
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
+            return ContainerStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !ContainerStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(borderSizeComputationExpression);
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
-            return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
+            return ContainerStyleImpl.BORDER_COLOR_EDEFAULT == null ? borderColor != null : !ContainerStyleImpl.BORDER_COLOR_EDEFAULT.equals(borderColor);
         }
         return super.eIsSet(featureID);
     }
@@ -420,8 +436,9 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSize: ");

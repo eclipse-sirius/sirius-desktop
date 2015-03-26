@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -50,7 +50,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     /**
      * The default value of the '{@link #getMin() <em>Min</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMin()
      * @generated
      * @ordered
@@ -60,17 +60,17 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     /**
      * The cached value of the '{@link #getMin() <em>Min</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMin()
      * @generated
      * @ordered
      */
-    protected Integer min = MIN_EDEFAULT;
+    protected Integer min = GaugeSectionImpl.MIN_EDEFAULT;
 
     /**
      * The default value of the '{@link #getMax() <em>Max</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMax()
      * @generated
      * @ordered
@@ -80,12 +80,12 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     /**
      * The cached value of the '{@link #getMax() <em>Max</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMax()
      * @generated
      * @ordered
      */
-    protected Integer max = MAX_EDEFAULT;
+    protected Integer max = GaugeSectionImpl.MAX_EDEFAULT;
 
     /**
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -105,7 +105,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * @generated
      * @ordered
      */
-    protected Integer value = VALUE_EDEFAULT;
+    protected Integer value = GaugeSectionImpl.VALUE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -125,7 +125,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = GaugeSectionImpl.LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBackgroundColor()
@@ -147,7 +147,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * @generated
      * @ordered
      */
-    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
+    protected RGBValues backgroundColor = GaugeSectionImpl.BACKGROUND_COLOR_EDEFAULT;
 
     /**
      * The default value of the '{@link #getForegroundColor()
@@ -169,7 +169,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * @generated
      * @ordered
      */
-    protected RGBValues foregroundColor = FOREGROUND_COLOR_EDEFAULT;
+    protected RGBValues foregroundColor = GaugeSectionImpl.FOREGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -195,6 +195,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public Integer getMin() {
         return min;
     }
@@ -204,11 +205,13 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public void setMin(Integer newMin) {
         Integer oldMin = min;
         min = newMin;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.GAUGE_SECTION__MIN, oldMin, min));
+        }
     }
 
     /**
@@ -216,6 +219,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public Integer getMax() {
         return max;
     }
@@ -225,11 +229,13 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public void setMax(Integer newMax) {
         Integer oldMax = max;
         max = newMax;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.GAUGE_SECTION__MAX, oldMax, max));
+        }
     }
 
     /**
@@ -237,6 +243,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public Integer getValue() {
         return value;
     }
@@ -246,11 +253,13 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public void setValue(Integer newValue) {
         Integer oldValue = value;
         value = newValue;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.GAUGE_SECTION__VALUE, oldValue, value));
+        }
     }
 
     /**
@@ -258,6 +267,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -267,11 +277,13 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.GAUGE_SECTION__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -279,6 +291,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public RGBValues getBackgroundColor() {
         return backgroundColor;
     }
@@ -288,11 +301,13 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(RGBValues newBackgroundColor) {
         RGBValues oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.GAUGE_SECTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -300,6 +315,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public RGBValues getForegroundColor() {
         return foregroundColor;
     }
@@ -309,11 +325,13 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * 
      * @generated
      */
+    @Override
     public void setForegroundColor(RGBValues newForegroundColor) {
         RGBValues oldForegroundColor = foregroundColor;
         foregroundColor = newForegroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.GAUGE_SECTION__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
+        }
     }
 
     /**
@@ -379,22 +397,22 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.GAUGE_SECTION__MIN:
-            setMin(MIN_EDEFAULT);
+            setMin(GaugeSectionImpl.MIN_EDEFAULT);
             return;
         case DiagramPackage.GAUGE_SECTION__MAX:
-            setMax(MAX_EDEFAULT);
+            setMax(GaugeSectionImpl.MAX_EDEFAULT);
             return;
         case DiagramPackage.GAUGE_SECTION__VALUE:
-            setValue(VALUE_EDEFAULT);
+            setValue(GaugeSectionImpl.VALUE_EDEFAULT);
             return;
         case DiagramPackage.GAUGE_SECTION__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(GaugeSectionImpl.LABEL_EDEFAULT);
             return;
         case DiagramPackage.GAUGE_SECTION__BACKGROUND_COLOR:
-            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
+            setBackgroundColor(GaugeSectionImpl.BACKGROUND_COLOR_EDEFAULT);
             return;
         case DiagramPackage.GAUGE_SECTION__FOREGROUND_COLOR:
-            setForegroundColor(FOREGROUND_COLOR_EDEFAULT);
+            setForegroundColor(GaugeSectionImpl.FOREGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -409,17 +427,17 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.GAUGE_SECTION__MIN:
-            return MIN_EDEFAULT == null ? min != null : !MIN_EDEFAULT.equals(min);
+            return GaugeSectionImpl.MIN_EDEFAULT == null ? min != null : !GaugeSectionImpl.MIN_EDEFAULT.equals(min);
         case DiagramPackage.GAUGE_SECTION__MAX:
-            return MAX_EDEFAULT == null ? max != null : !MAX_EDEFAULT.equals(max);
+            return GaugeSectionImpl.MAX_EDEFAULT == null ? max != null : !GaugeSectionImpl.MAX_EDEFAULT.equals(max);
         case DiagramPackage.GAUGE_SECTION__VALUE:
-            return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+            return GaugeSectionImpl.VALUE_EDEFAULT == null ? value != null : !GaugeSectionImpl.VALUE_EDEFAULT.equals(value);
         case DiagramPackage.GAUGE_SECTION__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return GaugeSectionImpl.LABEL_EDEFAULT == null ? label != null : !GaugeSectionImpl.LABEL_EDEFAULT.equals(label);
         case DiagramPackage.GAUGE_SECTION__BACKGROUND_COLOR:
-            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
+            return GaugeSectionImpl.BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !GaugeSectionImpl.BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         case DiagramPackage.GAUGE_SECTION__FOREGROUND_COLOR:
-            return FOREGROUND_COLOR_EDEFAULT == null ? foregroundColor != null : !FOREGROUND_COLOR_EDEFAULT.equals(foregroundColor);
+            return GaugeSectionImpl.FOREGROUND_COLOR_EDEFAULT == null ? foregroundColor != null : !GaugeSectionImpl.FOREGROUND_COLOR_EDEFAULT.equals(foregroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -431,8 +449,9 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (min: ");

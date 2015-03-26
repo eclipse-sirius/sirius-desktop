@@ -81,8 +81,8 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public DescriptionSwitch() {
-        if (modelPackage == null) {
-            modelPackage = DescriptionPackage.eINSTANCE;
+        if (DescriptionSwitch.modelPackage == null) {
+            DescriptionSwitch.modelPackage = DescriptionPackage.eINSTANCE;
         }
     }
 
@@ -109,7 +109,7 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == DescriptionSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -131,391 +131,516 @@ public class DescriptionSwitch<T> {
         case DescriptionPackage.TABLE_DESCRIPTION: {
             TableDescription tableDescription = (TableDescription) theEObject;
             T result = caseTableDescription(tableDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentationDescription(tableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(tableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEndUserDocumentedElement(tableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(tableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.EDITION_TABLE_DESCRIPTION: {
             EditionTableDescription editionTableDescription = (EditionTableDescription) theEObject;
             T result = caseEditionTableDescription(editionTableDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseTableDescription(editionTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationDescription(editionTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(editionTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEndUserDocumentedElement(editionTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(editionTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.CROSS_TABLE_DESCRIPTION: {
             CrossTableDescription crossTableDescription = (CrossTableDescription) theEObject;
             T result = caseCrossTableDescription(crossTableDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseTableDescription(crossTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationDescription(crossTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(crossTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEndUserDocumentedElement(crossTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(crossTableDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TABLE_MAPPING: {
             TableMapping tableMapping = (TableMapping) theEObject;
             T result = caseTableMapping(tableMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentationElementMapping(tableMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(tableMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.LINE_MAPPING: {
             LineMapping lineMapping = (LineMapping) theEObject;
             T result = caseLineMapping(lineMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTableMapping(lineMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleUpdater(lineMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(lineMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(lineMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.COLUMN_MAPPING: {
             ColumnMapping columnMapping = (ColumnMapping) theEObject;
             T result = caseColumnMapping(columnMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTableMapping(columnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(columnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(columnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING: {
             ElementColumnMapping elementColumnMapping = (ElementColumnMapping) theEObject;
             T result = caseElementColumnMapping(elementColumnMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseColumnMapping(elementColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleUpdater(elementColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTableMapping(elementColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(elementColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(elementColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.FEATURE_COLUMN_MAPPING: {
             FeatureColumnMapping featureColumnMapping = (FeatureColumnMapping) theEObject;
             T result = caseFeatureColumnMapping(featureColumnMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseColumnMapping(featureColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCellUpdater(featureColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleUpdater(featureColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTableMapping(featureColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(featureColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(featureColumnMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.CELL_UPDATER: {
             CellUpdater cellUpdater = (CellUpdater) theEObject;
             T result = caseCellUpdater(cellUpdater);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.STYLE_UPDATER: {
             StyleUpdater styleUpdater = (StyleUpdater) theEObject;
             T result = caseStyleUpdater(styleUpdater);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.INTERSECTION_MAPPING: {
             IntersectionMapping intersectionMapping = (IntersectionMapping) theEObject;
             T result = caseIntersectionMapping(intersectionMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTableMapping(intersectionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCellUpdater(intersectionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleUpdater(intersectionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRepresentationElementMapping(intersectionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(intersectionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TABLE_TOOL: {
             TableTool tableTool = (TableTool) theEObject;
             T result = caseTableTool(tableTool);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.LABEL_EDIT_TOOL: {
             LabelEditTool labelEditTool = (LabelEditTool) theEObject;
             T result = caseLabelEditTool(labelEditTool);
-            if (result == null)
+            if (result == null) {
                 result = caseTableTool(labelEditTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.CREATE_TOOL: {
             CreateTool createTool = (CreateTool) theEObject;
             T result = caseCreateTool(createTool);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(createTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTableTool(createTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(createTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(createTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(createTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.CREATE_COLUMN_TOOL: {
             CreateColumnTool createColumnTool = (CreateColumnTool) theEObject;
             T result = caseCreateColumnTool(createColumnTool);
-            if (result == null)
+            if (result == null) {
                 result = caseCreateTool(createColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(createColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTableTool(createColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(createColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(createColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(createColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.CREATE_CROSS_COLUMN_TOOL: {
             CreateCrossColumnTool createCrossColumnTool = (CreateCrossColumnTool) theEObject;
             T result = caseCreateCrossColumnTool(createCrossColumnTool);
-            if (result == null)
+            if (result == null) {
                 result = caseCreateTool(createCrossColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(createCrossColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTableTool(createCrossColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(createCrossColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(createCrossColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(createCrossColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.CREATE_LINE_TOOL: {
             CreateLineTool createLineTool = (CreateLineTool) theEObject;
             T result = caseCreateLineTool(createLineTool);
-            if (result == null)
+            if (result == null) {
                 result = caseCreateTool(createLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(createLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTableTool(createLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(createLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(createLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(createLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.CREATE_CELL_TOOL: {
             CreateCellTool createCellTool = (CreateCellTool) theEObject;
             T result = caseCreateCellTool(createCellTool);
-            if (result == null)
+            if (result == null) {
                 result = caseTableTool(createCellTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(createCellTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(createCellTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(createCellTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(createCellTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.DELETE_TOOL: {
             DeleteTool deleteTool = (DeleteTool) theEObject;
             T result = caseDeleteTool(deleteTool);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractToolDescription(deleteTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTableTool(deleteTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(deleteTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(deleteTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(deleteTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.DELETE_COLUMN_TOOL: {
             DeleteColumnTool deleteColumnTool = (DeleteColumnTool) theEObject;
             T result = caseDeleteColumnTool(deleteColumnTool);
-            if (result == null)
+            if (result == null) {
                 result = caseDeleteTool(deleteColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(deleteColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTableTool(deleteColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(deleteColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(deleteColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(deleteColumnTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.DELETE_LINE_TOOL: {
             DeleteLineTool deleteLineTool = (DeleteLineTool) theEObject;
             T result = caseDeleteLineTool(deleteLineTool);
-            if (result == null)
+            if (result == null) {
                 result = caseDeleteTool(deleteLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(deleteLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTableTool(deleteLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(deleteLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(deleteLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(deleteLineTool);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION: {
             ForegroundStyleDescription foregroundStyleDescription = (ForegroundStyleDescription) theEObject;
             T result = caseForegroundStyleDescription(foregroundStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.BACKGROUND_STYLE_DESCRIPTION: {
             BackgroundStyleDescription backgroundStyleDescription = (BackgroundStyleDescription) theEObject;
             T result = caseBackgroundStyleDescription(backgroundStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.FOREGROUND_CONDITIONAL_STYLE: {
             ForegroundConditionalStyle foregroundConditionalStyle = (ForegroundConditionalStyle) theEObject;
             T result = caseForegroundConditionalStyle(foregroundConditionalStyle);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE: {
             BackgroundConditionalStyle backgroundConditionalStyle = (BackgroundConditionalStyle) theEObject;
             T result = caseBackgroundConditionalStyle(backgroundConditionalStyle);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TABLE_VARIABLE: {
             TableVariable tableVariable = (TableVariable) theEObject;
             T result = caseTableVariable(tableVariable);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractVariable(tableVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseVariableContainer(tableVariable);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TABLE_CREATION_DESCRIPTION: {
             TableCreationDescription tableCreationDescription = (TableCreationDescription) theEObject;
             T result = caseTableCreationDescription(tableCreationDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentationCreationDescription(tableCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(tableCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(tableCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(tableCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(tableCreationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DescriptionPackage.TABLE_NAVIGATION_DESCRIPTION: {
             TableNavigationDescription tableNavigationDescription = (TableNavigationDescription) theEObject;
             T result = caseTableNavigationDescription(tableNavigationDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentationNavigationDescription(tableNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(tableNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseToolEntry(tableNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(tableNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseIdentifiedElement(tableNavigationDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

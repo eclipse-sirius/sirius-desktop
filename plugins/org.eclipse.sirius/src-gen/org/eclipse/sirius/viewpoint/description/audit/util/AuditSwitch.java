@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.audit.util;
 
@@ -26,14 +26,14 @@ import org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.audit.AuditPackage
  * @generated
  */
 public class AuditSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static AuditPackage modelPackage;
@@ -41,12 +41,12 @@ public class AuditSwitch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AuditSwitch() {
-        if (modelPackage == null) {
-            modelPackage = AuditPackage.eINSTANCE;
+        if (AuditSwitch.modelPackage == null) {
+            AuditSwitch.modelPackage = AuditPackage.eINSTANCE;
         }
     }
 
@@ -54,7 +54,7 @@ public class AuditSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -67,13 +67,13 @@ public class AuditSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == AuditSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -85,7 +85,7 @@ public class AuditSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -95,17 +95,20 @@ public class AuditSwitch<T> {
         case AuditPackage.INFORMATION_SECTION: {
             InformationSection informationSection = (InformationSection) theEObject;
             T result = caseInformationSection(informationSection);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case AuditPackage.TEMPLATE_INFORMATION_SECTION: {
             TemplateInformationSection templateInformationSection = (TemplateInformationSection) theEObject;
             T result = caseTemplateInformationSection(templateInformationSection);
-            if (result == null)
+            if (result == null) {
                 result = caseInformationSection(templateInformationSection);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -118,7 +121,7 @@ public class AuditSwitch<T> {
      * <em>Information Section</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -135,7 +138,7 @@ public class AuditSwitch<T> {
      * <em>Template Information Section</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -152,7 +155,7 @@ public class AuditSwitch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

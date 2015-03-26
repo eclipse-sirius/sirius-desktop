@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -62,7 +62,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
      * @generated
      * @ordered
      */
-    protected AlignmentKind alignment = ALIGNMENT_EDEFAULT;
+    protected AlignmentKind alignment = GaugeCompositeStyleImpl.ALIGNMENT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSections() <em>Sections</em>}'
@@ -98,6 +98,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
      * 
      * @generated
      */
+    @Override
     public AlignmentKind getAlignment() {
         return alignment;
     }
@@ -107,11 +108,13 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
      * 
      * @generated
      */
+    @Override
     public void setAlignment(AlignmentKind newAlignment) {
         AlignmentKind oldAlignment = alignment;
-        alignment = newAlignment == null ? ALIGNMENT_EDEFAULT : newAlignment;
-        if (eNotificationRequired())
+        alignment = newAlignment == null ? GaugeCompositeStyleImpl.ALIGNMENT_EDEFAULT : newAlignment;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.GAUGE_COMPOSITE_STYLE__ALIGNMENT, oldAlignment, alignment));
+        }
     }
 
     /**
@@ -119,6 +122,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
      * 
      * @generated
      */
+    @Override
     public EList<GaugeSection> getSections() {
         if (sections == null) {
             sections = new EObjectContainmentEList.Resolving<GaugeSection>(GaugeSection.class, this, DiagramPackage.GAUGE_COMPOSITE_STYLE__SECTIONS);
@@ -185,7 +189,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.GAUGE_COMPOSITE_STYLE__ALIGNMENT:
-            setAlignment(ALIGNMENT_EDEFAULT);
+            setAlignment(GaugeCompositeStyleImpl.ALIGNMENT_EDEFAULT);
             return;
         case DiagramPackage.GAUGE_COMPOSITE_STYLE__SECTIONS:
             getSections().clear();
@@ -203,7 +207,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.GAUGE_COMPOSITE_STYLE__ALIGNMENT:
-            return alignment != ALIGNMENT_EDEFAULT;
+            return alignment != GaugeCompositeStyleImpl.ALIGNMENT_EDEFAULT;
         case DiagramPackage.GAUGE_COMPOSITE_STYLE__SECTIONS:
             return sections != null && !sections.isEmpty();
         }
@@ -217,8 +221,9 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (alignment: ");

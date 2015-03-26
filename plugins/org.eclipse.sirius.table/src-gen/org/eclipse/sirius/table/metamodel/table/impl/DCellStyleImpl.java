@@ -82,13 +82,15 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
      * 
      * @generated
      */
+    @Override
     public TableMapping getForegroundStyleOrigin() {
         if (foregroundStyleOrigin != null && foregroundStyleOrigin.eIsProxy()) {
             InternalEObject oldForegroundStyleOrigin = (InternalEObject) foregroundStyleOrigin;
             foregroundStyleOrigin = (TableMapping) eResolveProxy(oldForegroundStyleOrigin);
             if (foregroundStyleOrigin != oldForegroundStyleOrigin) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TablePackage.DCELL_STYLE__FOREGROUND_STYLE_ORIGIN, oldForegroundStyleOrigin, foregroundStyleOrigin));
+                }
             }
         }
         return foregroundStyleOrigin;
@@ -108,11 +110,13 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
      * 
      * @generated
      */
+    @Override
     public void setForegroundStyleOrigin(TableMapping newForegroundStyleOrigin) {
         TableMapping oldForegroundStyleOrigin = foregroundStyleOrigin;
         foregroundStyleOrigin = newForegroundStyleOrigin;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DCELL_STYLE__FOREGROUND_STYLE_ORIGIN, oldForegroundStyleOrigin, foregroundStyleOrigin));
+        }
     }
 
     /**
@@ -120,13 +124,15 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
      * 
      * @generated
      */
+    @Override
     public TableMapping getBackgroundStyleOrigin() {
         if (backgroundStyleOrigin != null && backgroundStyleOrigin.eIsProxy()) {
             InternalEObject oldBackgroundStyleOrigin = (InternalEObject) backgroundStyleOrigin;
             backgroundStyleOrigin = (TableMapping) eResolveProxy(oldBackgroundStyleOrigin);
             if (backgroundStyleOrigin != oldBackgroundStyleOrigin) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TablePackage.DCELL_STYLE__BACKGROUND_STYLE_ORIGIN, oldBackgroundStyleOrigin, backgroundStyleOrigin));
+                }
             }
         }
         return backgroundStyleOrigin;
@@ -146,11 +152,13 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
      * 
      * @generated
      */
+    @Override
     public void setBackgroundStyleOrigin(TableMapping newBackgroundStyleOrigin) {
         TableMapping oldBackgroundStyleOrigin = backgroundStyleOrigin;
         backgroundStyleOrigin = newBackgroundStyleOrigin;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DCELL_STYLE__BACKGROUND_STYLE_ORIGIN, oldBackgroundStyleOrigin, backgroundStyleOrigin));
+        }
     }
 
     /**
@@ -162,12 +170,14 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TablePackage.DCELL_STYLE__FOREGROUND_STYLE_ORIGIN:
-            if (resolve)
+            if (resolve) {
                 return getForegroundStyleOrigin();
+            }
             return basicGetForegroundStyleOrigin();
         case TablePackage.DCELL_STYLE__BACKGROUND_STYLE_ORIGIN:
-            if (resolve)
+            if (resolve) {
                 return getBackgroundStyleOrigin();
+            }
             return basicGetBackgroundStyleOrigin();
         }
         return super.eGet(featureID, resolve, coreType);

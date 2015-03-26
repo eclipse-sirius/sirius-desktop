@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -41,7 +41,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
     /**
      * The default value of the '{@link #getTypeName() <em>Type Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTypeName()
      * @generated
      * @ordered
@@ -51,18 +51,18 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
     /**
      * The cached value of the '{@link #getTypeName() <em>Type Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTypeName()
      * @generated
      * @ordered
      */
-    protected String typeName = TYPE_NAME_EDEFAULT;
+    protected String typeName = CreateInstanceImpl.TYPE_NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getReferenceName()
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReferenceName()
      * @generated
      * @ordered
@@ -73,18 +73,18 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
      * The cached value of the '{@link #getReferenceName()
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReferenceName()
      * @generated
      * @ordered
      */
-    protected String referenceName = REFERENCE_NAME_EDEFAULT;
+    protected String referenceName = CreateInstanceImpl.REFERENCE_NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getVariableName()
      * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVariableName()
      * @generated
      * @ordered
@@ -95,16 +95,16 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
      * The cached value of the '{@link #getVariableName()
      * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVariableName()
      * @generated
      * @ordered
      */
-    protected String variableName = VARIABLE_NAME_EDEFAULT;
+    protected String variableName = CreateInstanceImpl.VARIABLE_NAME_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateInstanceImpl() {
@@ -113,7 +113,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,70 +123,79 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getTypeName() {
         return typeName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTypeName(String newTypeName) {
         String oldTypeName = typeName;
         typeName = newTypeName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CREATE_INSTANCE__TYPE_NAME, oldTypeName, typeName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getReferenceName() {
         return referenceName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setReferenceName(String newReferenceName) {
         String oldReferenceName = referenceName;
         referenceName = newReferenceName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CREATE_INSTANCE__REFERENCE_NAME, oldReferenceName, referenceName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getVariableName() {
         return variableName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setVariableName(String newVariableName) {
         String oldVariableName = variableName;
         variableName = newVariableName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CREATE_INSTANCE__VARIABLE_NAME, oldVariableName, variableName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +213,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -225,20 +234,20 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.CREATE_INSTANCE__TYPE_NAME:
-            setTypeName(TYPE_NAME_EDEFAULT);
+            setTypeName(CreateInstanceImpl.TYPE_NAME_EDEFAULT);
             return;
         case ToolPackage.CREATE_INSTANCE__REFERENCE_NAME:
-            setReferenceName(REFERENCE_NAME_EDEFAULT);
+            setReferenceName(CreateInstanceImpl.REFERENCE_NAME_EDEFAULT);
             return;
         case ToolPackage.CREATE_INSTANCE__VARIABLE_NAME:
-            setVariableName(VARIABLE_NAME_EDEFAULT);
+            setVariableName(CreateInstanceImpl.VARIABLE_NAME_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -246,31 +255,32 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.CREATE_INSTANCE__TYPE_NAME:
-            return TYPE_NAME_EDEFAULT == null ? typeName != null : !TYPE_NAME_EDEFAULT.equals(typeName);
+            return CreateInstanceImpl.TYPE_NAME_EDEFAULT == null ? typeName != null : !CreateInstanceImpl.TYPE_NAME_EDEFAULT.equals(typeName);
         case ToolPackage.CREATE_INSTANCE__REFERENCE_NAME:
-            return REFERENCE_NAME_EDEFAULT == null ? referenceName != null : !REFERENCE_NAME_EDEFAULT.equals(referenceName);
+            return CreateInstanceImpl.REFERENCE_NAME_EDEFAULT == null ? referenceName != null : !CreateInstanceImpl.REFERENCE_NAME_EDEFAULT.equals(referenceName);
         case ToolPackage.CREATE_INSTANCE__VARIABLE_NAME:
-            return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
+            return CreateInstanceImpl.VARIABLE_NAME_EDEFAULT == null ? variableName != null : !CreateInstanceImpl.VARIABLE_NAME_EDEFAULT.equals(variableName);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (typeName: ");

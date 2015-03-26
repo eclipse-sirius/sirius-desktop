@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -43,7 +43,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
     /**
      * The cached value of the '{@link #getReuse() <em>Reuse</em>}' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReuse()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
     /**
      * The cached value of the '{@link #getAppliedOn() <em>Applied On</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAppliedOn()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected VSMElementCustomizationReuseImpl() {
@@ -71,7 +71,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,9 +81,10 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<EStructuralFeatureCustomization> getReuse() {
         if (reuse == null) {
             reuse = new EObjectResolvingEList<EStructuralFeatureCustomization>(EStructuralFeatureCustomization.class, this, DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION_REUSE__REUSE);
@@ -93,9 +94,10 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<EObject> getAppliedOn() {
         if (appliedOn == null) {
             appliedOn = new EObjectResolvingEList<EObject>(EObject.class, this, DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION_REUSE__APPLIED_ON);
@@ -105,7 +107,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +123,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -142,7 +144,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +162,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

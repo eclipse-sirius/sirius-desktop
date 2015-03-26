@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -40,7 +40,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
     /**
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -50,17 +50,17 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
      */
-    protected String featureName = FEATURE_NAME_EDEFAULT;
+    protected String featureName = SetObjectImpl.FEATURE_NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getObject() <em>Object</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getObject()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SetObjectImpl() {
@@ -78,7 +78,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,37 +88,42 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getFeatureName() {
         return featureName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setFeatureName(String newFeatureName) {
         String oldFeatureName = featureName;
         featureName = newFeatureName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SET_OBJECT__FEATURE_NAME, oldFeatureName, featureName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObject getObject() {
         if (object != null && object.eIsProxy()) {
             InternalEObject oldObject = (InternalEObject) object;
             object = eResolveProxy(oldObject);
             if (object != oldObject) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.SET_OBJECT__OBJECT, oldObject, object));
+                }
             }
         }
         return object;
@@ -126,7 +131,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetObject() {
@@ -135,19 +140,21 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setObject(EObject newObject) {
         EObject oldObject = object;
         object = newObject;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SET_OBJECT__OBJECT, oldObject, object));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,8 +163,9 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
         case ToolPackage.SET_OBJECT__FEATURE_NAME:
             return getFeatureName();
         case ToolPackage.SET_OBJECT__OBJECT:
-            if (resolve)
+            if (resolve) {
                 return getObject();
+            }
             return basicGetObject();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -165,7 +173,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,14 +191,14 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.SET_OBJECT__FEATURE_NAME:
-            setFeatureName(FEATURE_NAME_EDEFAULT);
+            setFeatureName(SetObjectImpl.FEATURE_NAME_EDEFAULT);
             return;
         case ToolPackage.SET_OBJECT__OBJECT:
             setObject((EObject) null);
@@ -201,14 +209,14 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.SET_OBJECT__FEATURE_NAME:
-            return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
+            return SetObjectImpl.FEATURE_NAME_EDEFAULT == null ? featureName != null : !SetObjectImpl.FEATURE_NAME_EDEFAULT.equals(featureName);
         case ToolPackage.SET_OBJECT__OBJECT:
             return object != null;
         }
@@ -217,13 +225,14 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (featureName: ");

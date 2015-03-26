@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -39,7 +39,7 @@ public interface BundledImage extends NodeStyle {
      * {@link org.eclipse.sirius.diagram.BundledImageShape}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> The shape to use. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.BundledImageShape
      * @see #setShape(BundledImageShape)
@@ -70,7 +70,7 @@ public interface BundledImage extends NodeStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' attribute.
      * @see #setColor(RGBValues)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImage_Color()

@@ -52,7 +52,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -69,7 +69,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public TreeItemProviderAdapterFactory() {
@@ -92,7 +92,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.DTree}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.DTreeElement} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTreeElementItemProvider dTreeElementItemProvider;
@@ -157,7 +157,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.TreeItemStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemStyleItemProvider treeItemStyleItemProvider;
@@ -182,7 +182,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.DTreeElementSynchronizer} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTreeElementSynchronizerItemProvider dTreeElementSynchronizerItemProvider;
@@ -191,7 +191,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.tree.DTreeElementSynchronizer}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,9 +206,10 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -216,9 +217,10 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -266,6 +268,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -275,6 +278,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -283,9 +287,10 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -297,20 +302,26 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (dTreeItemProvider != null)
+        if (dTreeItemProvider != null) {
             dTreeItemProvider.dispose();
-        if (dTreeElementItemProvider != null)
+        }
+        if (dTreeElementItemProvider != null) {
             dTreeElementItemProvider.dispose();
-        if (dTreeItemItemProvider != null)
+        }
+        if (dTreeItemItemProvider != null) {
             dTreeItemItemProvider.dispose();
-        if (treeItemStyleItemProvider != null)
+        }
+        if (treeItemStyleItemProvider != null) {
             treeItemStyleItemProvider.dispose();
-        if (dTreeElementSynchronizerItemProvider != null)
+        }
+        if (dTreeElementSynchronizerItemProvider != null) {
             dTreeElementSynchronizerItemProvider.dispose();
+        }
     }
 
 }

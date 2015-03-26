@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.impl;
 
@@ -116,9 +116,10 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public MappingFilter createMappingFilter() {
         MappingFilterImpl mappingFilter = new MappingFilterSpec();
         return mappingFilter;
@@ -126,9 +127,10 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CompositeFilterDescription createCompositeFilterDescription() {
         CompositeFilterDescriptionImpl compositeFilterDescription = new CompositeFilterDescriptionSpec();
         return compositeFilterDescription;
@@ -136,9 +138,10 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public VariableFilter createVariableFilter() {
         VariableFilterImpl variableFilter = new VariableFilterSpec();
         return variableFilter;
@@ -149,6 +152,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
      * 
      * @generated
      */
+    @Override
     public FilterVariable createFilterVariable() {
         FilterVariableImpl filterVariable = new FilterVariableImpl();
         return filterVariable;
@@ -161,8 +165,9 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
      */
     public FilterKind createFilterKindFromString(EDataType eDataType, String initialValue) {
         FilterKind result = FilterKind.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -180,6 +185,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
      * 
      * @generated
      */
+    @Override
     public FilterPackage getFilterPackage() {
         return (FilterPackage) getEPackage();
     }

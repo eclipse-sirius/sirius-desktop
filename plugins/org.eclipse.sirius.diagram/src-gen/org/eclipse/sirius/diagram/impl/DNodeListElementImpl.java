@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -65,7 +65,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * The cached value of the '{@link #getOwnedBorderedNodes()
      * <em>Owned Bordered Nodes</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedBorderedNodes()
      * @generated
      * @ordered
@@ -150,6 +150,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * 
      * @generated
      */
+    @Override
     public EList<DNode> getOwnedBorderedNodes() {
         if (ownedBorderedNodes == null) {
             ownedBorderedNodes = new EObjectContainmentEList.Resolving<DNode>(DNode.class, this, DiagramPackage.DNODE_LIST_ELEMENT__OWNED_BORDERED_NODES);
@@ -162,6 +163,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * 
      * @generated
      */
+    @Override
     public EList<ArrangeConstraint> getArrangeConstraints() {
         if (arrangeConstraints == null) {
             arrangeConstraints = new EDataTypeUniqueEList<ArrangeConstraint>(ArrangeConstraint.class, this, DiagramPackage.DNODE_LIST_ELEMENT__ARRANGE_CONSTRAINTS);
@@ -174,20 +176,23 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * 
      * @generated
      */
+    @Override
     public NodeStyle getOwnedStyle() {
         if (ownedStyle != null && ownedStyle.eIsProxy()) {
             InternalEObject oldOwnedStyle = (InternalEObject) ownedStyle;
             ownedStyle = (NodeStyle) eResolveProxy(oldOwnedStyle);
             if (ownedStyle != oldOwnedStyle) {
                 InternalEObject newOwnedStyle = (InternalEObject) ownedStyle;
-                NotificationChain msgs = oldOwnedStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, null, null);
+                NotificationChain msgs = oldOwnedStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, null, null);
                 if (newOwnedStyle.eInternalContainer() == null) {
-                    msgs = newOwnedStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, null, msgs);
+                    msgs = newOwnedStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, oldOwnedStyle, ownedStyle));
+                }
             }
         }
         return ownedStyle;
@@ -212,10 +217,11 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
         ownedStyle = newOwnedStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, oldOwnedStyle, newOwnedStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -225,18 +231,23 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * 
      * @generated
      */
+    @Override
     public void setOwnedStyle(NodeStyle newOwnedStyle) {
         if (newOwnedStyle != ownedStyle) {
             NotificationChain msgs = null;
-            if (ownedStyle != null)
-                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, null, msgs);
-            if (newOwnedStyle != null)
-                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, null, msgs);
+            if (ownedStyle != null) {
+                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, null, msgs);
+            }
+            if (newOwnedStyle != null) {
+                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, null, msgs);
+            }
             msgs = basicSetOwnedStyle(newOwnedStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE, newOwnedStyle, newOwnedStyle));
+        }
     }
 
     /**
@@ -244,13 +255,15 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * 
      * @generated
      */
+    @Override
     public Style getOriginalStyle() {
         if (originalStyle != null && originalStyle.eIsProxy()) {
             InternalEObject oldOriginalStyle = (InternalEObject) originalStyle;
             originalStyle = (Style) eResolveProxy(oldOriginalStyle);
             if (originalStyle != oldOriginalStyle) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DNODE_LIST_ELEMENT__ORIGINAL_STYLE, oldOriginalStyle, originalStyle));
+                }
             }
         }
         return originalStyle;
@@ -270,11 +283,13 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * 
      * @generated
      */
+    @Override
     public void setOriginalStyle(Style newOriginalStyle) {
         Style oldOriginalStyle = originalStyle;
         originalStyle = newOriginalStyle;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE_LIST_ELEMENT__ORIGINAL_STYLE, oldOriginalStyle, originalStyle));
+        }
     }
 
     /**
@@ -282,13 +297,15 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * 
      * @generated
      */
+    @Override
     public NodeMapping getActualMapping() {
         if (actualMapping != null && actualMapping.eIsProxy()) {
             InternalEObject oldActualMapping = (InternalEObject) actualMapping;
             actualMapping = (NodeMapping) eResolveProxy(oldActualMapping);
             if (actualMapping != oldActualMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DNODE_LIST_ELEMENT__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+                }
             }
         }
         return actualMapping;
@@ -308,11 +325,13 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * 
      * @generated
      */
+    @Override
     public void setActualMapping(NodeMapping newActualMapping) {
         NodeMapping oldActualMapping = actualMapping;
         actualMapping = newActualMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE_LIST_ELEMENT__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+        }
     }
 
     /**
@@ -320,6 +339,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getCandidatesMapping() {
         if (candidatesMapping == null) {
             candidatesMapping = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, DiagramPackage.DNODE_LIST_ELEMENT__CANDIDATES_MAPPING);
@@ -356,16 +376,19 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
         case DiagramPackage.DNODE_LIST_ELEMENT__ARRANGE_CONSTRAINTS:
             return getArrangeConstraints();
         case DiagramPackage.DNODE_LIST_ELEMENT__OWNED_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getOwnedStyle();
+            }
             return basicGetOwnedStyle();
         case DiagramPackage.DNODE_LIST_ELEMENT__ORIGINAL_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getOriginalStyle();
+            }
             return basicGetOriginalStyle();
         case DiagramPackage.DNODE_LIST_ELEMENT__ACTUAL_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getActualMapping();
+            }
             return basicGetActualMapping();
         case DiagramPackage.DNODE_LIST_ELEMENT__CANDIDATES_MAPPING:
             return getCandidatesMapping();
@@ -468,8 +491,9 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (arrangeConstraints: ");

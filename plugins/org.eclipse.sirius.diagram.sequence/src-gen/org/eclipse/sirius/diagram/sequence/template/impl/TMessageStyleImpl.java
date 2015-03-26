@@ -75,7 +75,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected LineStyle lineStyle = LINE_STYLE_EDEFAULT;
+    protected LineStyle lineStyle = TMessageStyleImpl.LINE_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSourceArrow() <em>Source Arrow</em>}
@@ -95,7 +95,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected EdgeArrows sourceArrow = SOURCE_ARROW_EDEFAULT;
+    protected EdgeArrows sourceArrow = TMessageStyleImpl.SOURCE_ARROW_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTargetArrow() <em>Target Arrow</em>}
@@ -115,7 +115,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected EdgeArrows targetArrow = TARGET_ARROW_EDEFAULT;
+    protected EdgeArrows targetArrow = TMessageStyleImpl.TARGET_ARROW_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelExpression()
@@ -137,7 +137,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
+    protected String labelExpression = TMessageStyleImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -163,13 +163,15 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public ColorDescription getStrokeColor() {
         if (strokeColor != null && strokeColor.eIsProxy()) {
             InternalEObject oldStrokeColor = (InternalEObject) strokeColor;
             strokeColor = (ColorDescription) eResolveProxy(oldStrokeColor);
             if (strokeColor != oldStrokeColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TemplatePackage.TMESSAGE_STYLE__STROKE_COLOR, oldStrokeColor, strokeColor));
+                }
             }
         }
         return strokeColor;
@@ -189,11 +191,13 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public void setStrokeColor(ColorDescription newStrokeColor) {
         ColorDescription oldStrokeColor = strokeColor;
         strokeColor = newStrokeColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_STYLE__STROKE_COLOR, oldStrokeColor, strokeColor));
+        }
     }
 
     /**
@@ -201,6 +205,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public LineStyle getLineStyle() {
         return lineStyle;
     }
@@ -210,11 +215,13 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public void setLineStyle(LineStyle newLineStyle) {
         LineStyle oldLineStyle = lineStyle;
-        lineStyle = newLineStyle == null ? LINE_STYLE_EDEFAULT : newLineStyle;
-        if (eNotificationRequired())
+        lineStyle = newLineStyle == null ? TMessageStyleImpl.LINE_STYLE_EDEFAULT : newLineStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_STYLE__LINE_STYLE, oldLineStyle, lineStyle));
+        }
     }
 
     /**
@@ -222,6 +229,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public EdgeArrows getSourceArrow() {
         return sourceArrow;
     }
@@ -231,11 +239,13 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public void setSourceArrow(EdgeArrows newSourceArrow) {
         EdgeArrows oldSourceArrow = sourceArrow;
-        sourceArrow = newSourceArrow == null ? SOURCE_ARROW_EDEFAULT : newSourceArrow;
-        if (eNotificationRequired())
+        sourceArrow = newSourceArrow == null ? TMessageStyleImpl.SOURCE_ARROW_EDEFAULT : newSourceArrow;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_STYLE__SOURCE_ARROW, oldSourceArrow, sourceArrow));
+        }
     }
 
     /**
@@ -243,6 +253,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public EdgeArrows getTargetArrow() {
         return targetArrow;
     }
@@ -252,11 +263,13 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public void setTargetArrow(EdgeArrows newTargetArrow) {
         EdgeArrows oldTargetArrow = targetArrow;
-        targetArrow = newTargetArrow == null ? TARGET_ARROW_EDEFAULT : newTargetArrow;
-        if (eNotificationRequired())
+        targetArrow = newTargetArrow == null ? TMessageStyleImpl.TARGET_ARROW_EDEFAULT : newTargetArrow;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_STYLE__TARGET_ARROW, oldTargetArrow, targetArrow));
+        }
     }
 
     /**
@@ -264,6 +277,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
@@ -273,11 +287,13 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
+    @Override
     public void setLabelExpression(String newLabelExpression) {
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_STYLE__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
     }
 
     /**
@@ -289,8 +305,9 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TemplatePackage.TMESSAGE_STYLE__STROKE_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getStrokeColor();
+            }
             return basicGetStrokeColor();
         case TemplatePackage.TMESSAGE_STYLE__LINE_STYLE:
             return getLineStyle();
@@ -343,16 +360,16 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
             setStrokeColor((ColorDescription) null);
             return;
         case TemplatePackage.TMESSAGE_STYLE__LINE_STYLE:
-            setLineStyle(LINE_STYLE_EDEFAULT);
+            setLineStyle(TMessageStyleImpl.LINE_STYLE_EDEFAULT);
             return;
         case TemplatePackage.TMESSAGE_STYLE__SOURCE_ARROW:
-            setSourceArrow(SOURCE_ARROW_EDEFAULT);
+            setSourceArrow(TMessageStyleImpl.SOURCE_ARROW_EDEFAULT);
             return;
         case TemplatePackage.TMESSAGE_STYLE__TARGET_ARROW:
-            setTargetArrow(TARGET_ARROW_EDEFAULT);
+            setTargetArrow(TMessageStyleImpl.TARGET_ARROW_EDEFAULT);
             return;
         case TemplatePackage.TMESSAGE_STYLE__LABEL_EXPRESSION:
-            setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
+            setLabelExpression(TMessageStyleImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -369,13 +386,13 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
         case TemplatePackage.TMESSAGE_STYLE__STROKE_COLOR:
             return strokeColor != null;
         case TemplatePackage.TMESSAGE_STYLE__LINE_STYLE:
-            return lineStyle != LINE_STYLE_EDEFAULT;
+            return lineStyle != TMessageStyleImpl.LINE_STYLE_EDEFAULT;
         case TemplatePackage.TMESSAGE_STYLE__SOURCE_ARROW:
-            return sourceArrow != SOURCE_ARROW_EDEFAULT;
+            return sourceArrow != TMessageStyleImpl.SOURCE_ARROW_EDEFAULT;
         case TemplatePackage.TMESSAGE_STYLE__TARGET_ARROW:
-            return targetArrow != TARGET_ARROW_EDEFAULT;
+            return targetArrow != TMessageStyleImpl.TARGET_ARROW_EDEFAULT;
         case TemplatePackage.TMESSAGE_STYLE__LABEL_EXPRESSION:
-            return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+            return TMessageStyleImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !TMessageStyleImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -387,8 +404,9 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (lineStyle: ");

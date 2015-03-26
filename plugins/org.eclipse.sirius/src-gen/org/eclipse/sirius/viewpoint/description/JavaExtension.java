@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -40,7 +40,7 @@ public interface JavaExtension extends EObject {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The name of the class to import. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Qualified Class Name</em>' attribute.
      * @see #setQualifiedClassName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getJavaExtension_QualifiedClassName()
@@ -54,7 +54,7 @@ public interface JavaExtension extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.JavaExtension#getQualifiedClassName
      * <em>Qualified Class Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Qualified Class Name</em>'
      *            attribute.

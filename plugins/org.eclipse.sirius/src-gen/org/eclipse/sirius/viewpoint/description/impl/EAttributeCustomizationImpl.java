@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -39,7 +39,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
      * The default value of the '{@link #getAttributeName()
      * <em>Attribute Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAttributeName()
      * @generated
      * @ordered
@@ -50,17 +50,17 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
      * The cached value of the '{@link #getAttributeName()
      * <em>Attribute Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAttributeName()
      * @generated
      * @ordered
      */
-    protected String attributeName = ATTRIBUTE_NAME_EDEFAULT;
+    protected String attributeName = EAttributeCustomizationImpl.ATTRIBUTE_NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValue()
      * @generated
      * @ordered
@@ -70,16 +70,16 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
     /**
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValue()
      * @generated
      * @ordered
      */
-    protected String value = VALUE_EDEFAULT;
+    protected String value = EAttributeCustomizationImpl.VALUE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EAttributeCustomizationImpl() {
@@ -88,7 +88,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,49 +98,55 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getAttributeName() {
         return attributeName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setAttributeName(String newAttributeName) {
         String oldAttributeName = attributeName;
         attributeName = newAttributeName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EATTRIBUTE_CUSTOMIZATION__ATTRIBUTE_NAME, oldAttributeName, attributeName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getValue() {
         return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setValue(String newValue) {
         String oldValue = value;
         value = newValue;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EATTRIBUTE_CUSTOMIZATION__VALUE, oldValue, value));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +162,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,17 +180,17 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.EATTRIBUTE_CUSTOMIZATION__ATTRIBUTE_NAME:
-            setAttributeName(ATTRIBUTE_NAME_EDEFAULT);
+            setAttributeName(EAttributeCustomizationImpl.ATTRIBUTE_NAME_EDEFAULT);
             return;
         case DescriptionPackage.EATTRIBUTE_CUSTOMIZATION__VALUE:
-            setValue(VALUE_EDEFAULT);
+            setValue(EAttributeCustomizationImpl.VALUE_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -192,29 +198,30 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.EATTRIBUTE_CUSTOMIZATION__ATTRIBUTE_NAME:
-            return ATTRIBUTE_NAME_EDEFAULT == null ? attributeName != null : !ATTRIBUTE_NAME_EDEFAULT.equals(attributeName);
+            return EAttributeCustomizationImpl.ATTRIBUTE_NAME_EDEFAULT == null ? attributeName != null : !EAttributeCustomizationImpl.ATTRIBUTE_NAME_EDEFAULT.equals(attributeName);
         case DescriptionPackage.EATTRIBUTE_CUSTOMIZATION__VALUE:
-            return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+            return EAttributeCustomizationImpl.VALUE_EDEFAULT == null ? value != null : !EAttributeCustomizationImpl.VALUE_EDEFAULT.equals(value);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (attributeName: ");

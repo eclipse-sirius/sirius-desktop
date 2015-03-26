@@ -71,7 +71,7 @@ public interface ColumnMapping extends TableMapping {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * initial width of the column (calculated if not available). <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Width</em>' attribute.
      * @see #setInitialWidth(int)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getColumnMapping_InitialWidth()

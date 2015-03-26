@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.provider;
 
@@ -72,7 +72,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -89,7 +89,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public ToolItemProviderAdapterFactory() {
@@ -113,7 +113,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.ToolSection}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.ToolGroup}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -413,7 +413,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -438,7 +438,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -613,7 +613,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.CreateView}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -638,7 +638,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -663,7 +663,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.Navigation}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -753,9 +753,10 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -763,9 +764,10 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -813,6 +815,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -822,6 +825,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -830,9 +834,10 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -844,68 +849,95 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (toolSectionItemProvider != null)
+        if (toolSectionItemProvider != null) {
             toolSectionItemProvider.dispose();
-        if (toolGroupItemProvider != null)
+        }
+        if (toolGroupItemProvider != null) {
             toolGroupItemProvider.dispose();
-        if (toolGroupExtensionItemProvider != null)
+        }
+        if (toolGroupExtensionItemProvider != null) {
             toolGroupExtensionItemProvider.dispose();
-        if (nodeCreationDescriptionItemProvider != null)
+        }
+        if (nodeCreationDescriptionItemProvider != null) {
             nodeCreationDescriptionItemProvider.dispose();
-        if (edgeCreationDescriptionItemProvider != null)
+        }
+        if (edgeCreationDescriptionItemProvider != null) {
             edgeCreationDescriptionItemProvider.dispose();
-        if (containerCreationDescriptionItemProvider != null)
+        }
+        if (containerCreationDescriptionItemProvider != null) {
             containerCreationDescriptionItemProvider.dispose();
-        if (deleteElementDescriptionItemProvider != null)
+        }
+        if (deleteElementDescriptionItemProvider != null) {
             deleteElementDescriptionItemProvider.dispose();
-        if (doubleClickDescriptionItemProvider != null)
+        }
+        if (doubleClickDescriptionItemProvider != null) {
             doubleClickDescriptionItemProvider.dispose();
-        if (deleteHookItemProvider != null)
+        }
+        if (deleteHookItemProvider != null) {
             deleteHookItemProvider.dispose();
-        if (deleteHookParameterItemProvider != null)
+        }
+        if (deleteHookParameterItemProvider != null) {
             deleteHookParameterItemProvider.dispose();
-        if (reconnectEdgeDescriptionItemProvider != null)
+        }
+        if (reconnectEdgeDescriptionItemProvider != null) {
             reconnectEdgeDescriptionItemProvider.dispose();
-        if (requestDescriptionItemProvider != null)
+        }
+        if (requestDescriptionItemProvider != null) {
             requestDescriptionItemProvider.dispose();
-        if (directEditLabelItemProvider != null)
+        }
+        if (directEditLabelItemProvider != null) {
             directEditLabelItemProvider.dispose();
-        if (behaviorToolItemProvider != null)
+        }
+        if (behaviorToolItemProvider != null) {
             behaviorToolItemProvider.dispose();
-        if (sourceEdgeCreationVariableItemProvider != null)
+        }
+        if (sourceEdgeCreationVariableItemProvider != null) {
             sourceEdgeCreationVariableItemProvider.dispose();
-        if (sourceEdgeViewCreationVariableItemProvider != null)
+        }
+        if (sourceEdgeViewCreationVariableItemProvider != null) {
             sourceEdgeViewCreationVariableItemProvider.dispose();
-        if (targetEdgeCreationVariableItemProvider != null)
+        }
+        if (targetEdgeCreationVariableItemProvider != null) {
             targetEdgeCreationVariableItemProvider.dispose();
-        if (targetEdgeViewCreationVariableItemProvider != null)
+        }
+        if (targetEdgeViewCreationVariableItemProvider != null) {
             targetEdgeViewCreationVariableItemProvider.dispose();
-        if (elementDoubleClickVariableItemProvider != null)
+        }
+        if (elementDoubleClickVariableItemProvider != null) {
             elementDoubleClickVariableItemProvider.dispose();
-        if (nodeCreationVariableItemProvider != null)
+        }
+        if (nodeCreationVariableItemProvider != null) {
             nodeCreationVariableItemProvider.dispose();
-        if (createViewItemProvider != null)
+        }
+        if (createViewItemProvider != null) {
             createViewItemProvider.dispose();
-        if (createEdgeViewItemProvider != null)
+        }
+        if (createEdgeViewItemProvider != null) {
             createEdgeViewItemProvider.dispose();
-        if (navigationItemProvider != null)
+        }
+        if (navigationItemProvider != null) {
             navigationItemProvider.dispose();
-        if (diagramCreationDescriptionItemProvider != null)
+        }
+        if (diagramCreationDescriptionItemProvider != null) {
             diagramCreationDescriptionItemProvider.dispose();
-        if (diagramNavigationDescriptionItemProvider != null)
+        }
+        if (diagramNavigationDescriptionItemProvider != null) {
             diagramNavigationDescriptionItemProvider.dispose();
-        if (containerDropDescriptionItemProvider != null)
+        }
+        if (containerDropDescriptionItemProvider != null) {
             containerDropDescriptionItemProvider.dispose();
+        }
     }
 
     /**
      * A child creation extender for the {@link DescriptionPackage}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static class DescriptionChildCreationExtender implements IChildCreationExtender {
@@ -995,6 +1027,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
          * 
          * @generated
          */
+        @Override
         public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
             ArrayList<Object> result = new ArrayList<Object>();
             new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
@@ -1006,6 +1039,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
          * 
          * @generated
          */
+        @Override
         public ResourceLocator getResourceLocator() {
             return DiagramUIPlugin.INSTANCE;
         }
@@ -1014,7 +1048,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * A child creation extender for the {@link ToolPackage}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static class ToolChildCreationExtender implements IChildCreationExtender {
@@ -1164,6 +1198,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
          * 
          * @generated
          */
+        @Override
         public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
             ArrayList<Object> result = new ArrayList<Object>();
             new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
@@ -1175,6 +1210,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
          * 
          * @generated
          */
+        @Override
         public ResourceLocator getResourceLocator() {
             return DiagramUIPlugin.INSTANCE;
         }

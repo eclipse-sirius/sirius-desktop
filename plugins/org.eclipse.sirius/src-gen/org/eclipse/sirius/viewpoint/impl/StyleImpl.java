@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -45,7 +45,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
      * The cached value of the '{@link #getCustomFeatures()
      * <em>Custom Features</em>}' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCustomFeatures()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StyleImpl() {
@@ -73,7 +73,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,9 +83,10 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<String> getCustomFeatures() {
         if (customFeatures == null) {
             customFeatures = new EDataTypeUniqueEList<String>(String.class, this, ViewpointPackage.STYLE__CUSTOM_FEATURES);
@@ -95,16 +96,18 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public StyleDescription getDescription() {
         if (description != null && description.eIsProxy()) {
             InternalEObject oldDescription = (InternalEObject) description;
             description = (StyleDescription) eResolveProxy(oldDescription);
             if (description != oldDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.STYLE__DESCRIPTION, oldDescription, description));
+                }
             }
         }
         return description;
@@ -112,7 +115,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public StyleDescription basicGetDescription() {
@@ -121,21 +124,24 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDescription(StyleDescription newDescription) {
         StyleDescription oldDescription = description;
         description = newDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.STYLE__DESCRIPTION, oldDescription, description));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -144,7 +150,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,8 +159,9 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
         case ViewpointPackage.STYLE__CUSTOM_FEATURES:
             return getCustomFeatures();
         case ViewpointPackage.STYLE__DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDescription();
+            }
             return basicGetDescription();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -162,7 +169,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -182,7 +189,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +207,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +223,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +241,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -252,13 +259,14 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (customFeatures: ");

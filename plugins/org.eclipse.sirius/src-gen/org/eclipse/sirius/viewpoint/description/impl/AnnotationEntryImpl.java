@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -42,7 +42,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
     /**
      * The default value of the '{@link #getSource() <em>Source</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
@@ -52,17 +52,17 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
     /**
      * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
      */
-    protected String source = SOURCE_EDEFAULT;
+    protected String source = AnnotationEntryImpl.SOURCE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getData() <em>Data</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getData()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AnnotationEntryImpl() {
@@ -80,7 +80,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,37 +90,41 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getSource() {
         return source;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSource(String newSource) {
         String oldSource = source;
         source = newSource;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ANNOTATION_ENTRY__SOURCE, oldSource, source));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObject getData() {
         return data;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetData(EObject newData, NotificationChain msgs) {
@@ -128,36 +132,42 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
         data = newData;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.ANNOTATION_ENTRY__DATA, oldData, newData);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setData(EObject newData) {
         if (newData != data) {
             NotificationChain msgs = null;
-            if (data != null)
-                msgs = ((InternalEObject) data).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ANNOTATION_ENTRY__DATA, null, msgs);
-            if (newData != null)
-                msgs = ((InternalEObject) newData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ANNOTATION_ENTRY__DATA, null, msgs);
+            if (data != null) {
+                msgs = ((InternalEObject) data).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ANNOTATION_ENTRY__DATA, null, msgs);
+            }
+            if (newData != null) {
+                msgs = ((InternalEObject) newData).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ANNOTATION_ENTRY__DATA, null, msgs);
+            }
             msgs = basicSetData(newData, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ANNOTATION_ENTRY__DATA, newData, newData));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +181,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,7 +197,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,14 +215,14 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.ANNOTATION_ENTRY__SOURCE:
-            setSource(SOURCE_EDEFAULT);
+            setSource(AnnotationEntryImpl.SOURCE_EDEFAULT);
             return;
         case DescriptionPackage.ANNOTATION_ENTRY__DATA:
             setData((EObject) null);
@@ -223,14 +233,14 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.ANNOTATION_ENTRY__SOURCE:
-            return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
+            return AnnotationEntryImpl.SOURCE_EDEFAULT == null ? source != null : !AnnotationEntryImpl.SOURCE_EDEFAULT.equals(source);
         case DescriptionPackage.ANNOTATION_ENTRY__DATA:
             return data != null;
         }
@@ -239,13 +249,14 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (source: ");

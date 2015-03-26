@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.ui.provider;
 
@@ -67,7 +67,7 @@ import org.osgi.framework.BundleContext;
 /**
  * This is the central singleton for the Diagram edit plugin. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated-not
  */
 public final class DiagramUIPlugin extends EMFPlugin {
@@ -79,12 +79,12 @@ public final class DiagramUIPlugin extends EMFPlugin {
     /**
      * @was-generated
      */
-    public static final PreferencesHint DIAGRAM_PREFERENCES_HINT = new PreferencesHint(ID);
+    public static final PreferencesHint DIAGRAM_PREFERENCES_HINT = new PreferencesHint(DiagramUIPlugin.ID);
 
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public static final DiagramUIPlugin INSTANCE = new DiagramUIPlugin();
@@ -92,7 +92,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
@@ -115,7 +115,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
-        return plugin;
+        return DiagramUIPlugin.plugin;
     }
 
     /**
@@ -126,13 +126,13 @@ public final class DiagramUIPlugin extends EMFPlugin {
      * @generated
      */
     public static Implementation getPlugin() {
-        return plugin;
+        return DiagramUIPlugin.plugin;
     }
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated-not
      */
     public static class Implementation extends EclipseUIPlugin {
@@ -161,15 +161,16 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
             // Remember the static instance.
             //
-            plugin = this;
+            DiagramUIPlugin.plugin = this;
         }
 
         /**
          * @not-generated create the image registry
          */
+        @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);
-            PreferencesHint.registerPreferenceStore(DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
+            PreferencesHint.registerPreferenceStore(DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
             adapterFactory = createAdapterFactory();
             descriptorsToImages = new HashMap<ImageWithDimensionDescriptor, Image>();
             ressourceMissingDocumentProvider = new ResourceMissingDocumentProvider();
@@ -189,7 +190,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
                     ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(ICommandService.class);
                     Command command = commandService.getCommand("org.eclipse.sirius.diagram.ui.command.synchronizedDiagram");
                     command.isEnabled();
-                    return new Status(IStatus.OK, ID, "Init synchronized command performed succesfully");
+                    return new Status(IStatus.OK, DiagramUIPlugin.ID, "Init synchronized command performed succesfully");
                 }
 
             };
@@ -199,6 +200,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         /**
          * @not-generated disposing the images
          */
+        @Override
         public void stop(BundleContext context) throws Exception {
             try {
                 disposeLabelProvider();
@@ -227,8 +229,9 @@ public final class DiagramUIPlugin extends EMFPlugin {
             Iterator<Image> it = descriptorsToImages.values().iterator();
             while (it.hasNext()) {
                 Image img = it.next();
-                if (img != null)
+                if (img != null) {
                     img.dispose();
+                }
             }
             /* dispose missing resources creation */
             this.ressourceMissingDocumentProvider.dispose();
@@ -255,7 +258,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         /**
          * Return a new adapter factory.
-         * 
+         *
          * @return A new adapter factory
          */
         public ComposedAdapterFactory getNewAdapterFactory() {
@@ -299,19 +302,21 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * @not-generated : recreate adapter factory if destroyed..
          */
         public AdapterFactory getItemProvidersAdapterFactory() {
-            if (adapterFactory == null)
+            if (adapterFactory == null) {
                 adapterFactory = createAdapterFactory();
+            }
             return adapterFactory;
         }
 
         /**
          * Get the default label provider.
-         * 
+         *
          * @return the label provider single instance
          */
         public ILabelProvider getLabelProvider() {
-            if (labelProvider == null)
+            if (labelProvider == null) {
                 createLabelProvider();
+            }
             return labelProvider;
         }
 
@@ -329,19 +334,19 @@ public final class DiagramUIPlugin extends EMFPlugin {
         /**
          * Returns an image descriptor for the image file at the given plug-in
          * relative path.
-         * 
+         *
          * @was-generated
          * @param path
          *            the path
          * @return the image descriptor
          */
         public static ImageDescriptor getBundledImageDescriptor(String path) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin(ID, path);
+            return AbstractUIPlugin.imageDescriptorFromPlugin(DiagramUIPlugin.ID, path);
         }
 
         /**
          * Returns an image descriptor for the image file at the given url.
-         * 
+         *
          * @param url
          *            the url
          * @return the image descriptor
@@ -354,7 +359,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * Respects images residing in any plug-in. If path is relative, then
          * this bundle is looked up for the image, otherwise, for absolute path,
          * first segment is taken as id of plug-in with image
-         * 
+         *
          * @was-generated
          * @param path
          *            the path to image, either absolute (with plug-in id as
@@ -366,7 +371,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
             if (p.isAbsolute() && p.segmentCount() > 1) {
                 return AbstractUIPlugin.imageDescriptorFromPlugin(p.segment(0), p.removeFirstSegments(1).makeAbsolute().toString());
             } else {
-                return getBundledImageDescriptor(p.makeAbsolute().toString());
+                return Implementation.getBundledImageDescriptor(p.makeAbsolute().toString());
             }
         }
 
@@ -374,16 +379,17 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * Respects images residing in any plug-in. If path is relative, then
          * this bundle is looked up for the image, otherwise, for absolute path,
          * first segment is taken as id of plug-in with image
-         * 
+         *
          * @param path
          *            the path to image, either absolute (with plug-in id as
          *            first segment), or relative for bundled images
          * @return the image descriptor
          */
         public static ImageWithDimensionDescriptor findImageWithDimensionDescriptor(String path, final Dimension dimension) {
-            ImageDescriptor desc = findImageDescriptor(path);
-            if (desc != null)
+            ImageDescriptor desc = Implementation.findImageDescriptor(path);
+            if (desc != null) {
                 return new ImageWithDimensionDescriptorImpl(desc, dimension);
+            }
             return null;
         }
 
@@ -391,25 +397,25 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * Respects images residing in any plug-in. If path is relative, then
          * this bundle is looked up for the image, otherwise, for absolute path,
          * first segment is taken as id of plug-in with image
-         * 
+         *
          * @param path
          *            the path to image, either absolute (with plug-in id as
          *            first segment), or relative for bundled images
          * @return the image descriptor
          */
         public static ImageWithDimensionDescriptor findImageWithDimensionDescriptor(String path) {
-            return findImageWithDimensionDescriptor(path, ImageWithDimensionDescriptor.NO_RESIZE);
+            return Implementation.findImageWithDimensionDescriptor(path, ImageWithDimensionDescriptor.NO_RESIZE);
         }
 
         /**
          * Returns an image descriptor for the image file at the given URL.
-         * 
+         *
          * @param url
          *            the URL.
          * @return the image descriptor.
          */
         public static ImageDescriptor findImageDescriptor(URL url) {
-            return getURLImageDescriptor(url);
+            return Implementation.getURLImageDescriptor(url);
         }
 
         /**
@@ -417,7 +423,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * @return the image descriptor with the check decorator
          */
         public static ImageDescriptor getDecoratedCheckedImageDescriptor(final ImageDescriptor imageDescriptor) {
-            return getDecoratedImageDescriptor(imageDescriptor, DECORATOR_CHECK_PATH);
+            return Implementation.getDecoratedImageDescriptor(imageDescriptor, DiagramUIPlugin.DECORATOR_CHECK_PATH);
         }
 
         /**
@@ -425,7 +431,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * @return the image with the check decorator
          */
         public static Image getDecoratedCheckedImage(final ImageDescriptor imageDescriptor) {
-            return getDecoratedImage(imageDescriptor, DECORATOR_CHECK_PATH);
+            return Implementation.getDecoratedImage(imageDescriptor, DiagramUIPlugin.DECORATOR_CHECK_PATH);
         }
 
         /**
@@ -435,7 +441,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public static ImageDescriptor getDecoratedImageDescriptor(final ImageDescriptor imageDescriptor, String decoratorPath) {
             if (imageDescriptor != null) {
-                return getOverlayedDescriptor(DiagramUIPlugin.getPlugin().getImage(imageDescriptor), decoratorPath);
+                return Implementation.getOverlayedDescriptor(DiagramUIPlugin.getPlugin().getImage(imageDescriptor), decoratorPath);
             }
             return imageDescriptor;
         }
@@ -446,7 +452,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * @return the image descriptor decorated
          */
         public static ImageDescriptor getDecoratedImageDescriptor(final String imagePath, String decoratorPath) {
-            return getDecoratedImageDescriptor(getBundledImageDescriptor(imagePath), decoratorPath);
+            return Implementation.getDecoratedImageDescriptor(Implementation.getBundledImageDescriptor(imagePath), decoratorPath);
         }
 
         /**
@@ -457,7 +463,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         public static Image getDecoratedImage(final ImageDescriptor imageDescriptor, String decoratorPath) {
             Image image = DiagramUIPlugin.getPlugin().getImage(imageDescriptor);
             if (image != null) {
-                return DiagramUIPlugin.getPlugin().getImage(getOverlayedDescriptor(image, decoratorPath));
+                return DiagramUIPlugin.getPlugin().getImage(Implementation.getOverlayedDescriptor(image, decoratorPath));
             }
             return image;
         }
@@ -469,7 +475,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public static Image getDecoratedImage(Image image, String decoratorPath) {
             if (image != null) {
-                return DiagramUIPlugin.getPlugin().getImage(getOverlayedDescriptor(image, decoratorPath));
+                return DiagramUIPlugin.getPlugin().getImage(Implementation.getOverlayedDescriptor(image, decoratorPath));
             }
             return image;
         }
@@ -483,7 +489,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * Returns an image for the image file at the given plug-in relative
          * path. Client do not need to dispose this image. Images will be
          * disposed automatically.
-         * 
+         *
          * @was-generated
          * @param path
          *            the path
@@ -492,14 +498,14 @@ public final class DiagramUIPlugin extends EMFPlugin {
         public Image getBundledImage(String path) {
             Image image = getImageRegistry().get(path);
             if (image == null) {
-                getImageRegistry().put(path, getBundledImageDescriptor(path));
+                getImageRegistry().put(path, Implementation.getBundledImageDescriptor(path));
                 image = getImageRegistry().get(path);
             }
             return image;
         }
 
         /**
-         * 
+         *
          * @param desc
          *            an image descriptor.
          * @return an Image instance
@@ -521,7 +527,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         }
 
         /**
-         * 
+         *
          * @param desc
          *            an image descriptor.
          * @return an Image instance
@@ -535,7 +541,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         }
 
         /**
-         * 
+         *
          * @param desc
          *            an image descriptor.
          * @return an Image instance
@@ -551,7 +557,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         /**
          * Get the missing resource document provider.
-         * 
+         *
          * @return the single instance to handle missing document
          */
         public ResourceMissingDocumentProvider getResourceMissingDocumentProvider() {

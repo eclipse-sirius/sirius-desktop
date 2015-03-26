@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.provider;
 
@@ -38,14 +38,14 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.Viewpoint} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ViewpointItemProvider extends DocumentedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ViewpointItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +55,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -139,7 +139,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Conflicts feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addConflictsPropertyDescriptor(Object object) {
@@ -151,7 +151,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Reuses feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusesPropertyDescriptor(Object object) {
@@ -163,7 +163,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Customizes feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCustomizesPropertyDescriptor(Object object) {
@@ -213,7 +213,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This returns Sirius.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -230,7 +230,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -279,7 +279,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated call the dialectUImanager to retrieve the contributed new
      *                childs.
      */
@@ -315,7 +315,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     }
 
     /**
-     * 
+     *
      * @param newChildDescriptors
      * @param object
      * @generated

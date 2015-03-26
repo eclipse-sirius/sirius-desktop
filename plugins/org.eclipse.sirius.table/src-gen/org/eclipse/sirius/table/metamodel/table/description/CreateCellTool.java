@@ -39,7 +39,7 @@ public interface CreateCellTool extends TableTool, AbstractToolDescription {
      * Returns the value of the '<em><b>Mask</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The edit mask. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Mask</em>' containment reference.
      * @see #setMask(EditMaskVariables)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateCellTool_Mask()

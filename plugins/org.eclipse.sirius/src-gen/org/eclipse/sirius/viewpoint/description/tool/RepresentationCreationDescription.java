@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -53,7 +53,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * The default value is <code>""</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The default title of the
      * representation to create. (new + name if empty) <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Title Expression</em>' attribute.
      * @see #setTitleExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationCreationDescription_TitleExpression()
@@ -70,7 +70,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getTitleExpression
      * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Title Expression</em>' attribute.
      * @see #getTitleExpression()
@@ -83,7 +83,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * You might put here an expression to browse the semantic model to get to a
      * new place before creating the representation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Browse Expression</em>' attribute.
      * @see #setBrowseExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationCreationDescription_BrowseExpression()
@@ -100,7 +100,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getBrowseExpression
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Browse Expression</em>' attribute.
      * @see #getBrowseExpression()
@@ -116,7 +116,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Representation Description</em>' reference.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationCreationDescription_RepresentationDescription()
      * @model required="true" transient="true" changeable="false"
@@ -133,7 +133,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -148,7 +148,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -163,7 +163,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * begin-model-doc --> The variable containerView that represents the
      * clickedView (instance of ViewPoint or ViewPointElement). <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Container View Variable</em>' containment
      *         reference.
      * @see #setContainerViewVariable(ContainerViewVariable)
@@ -180,7 +180,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getContainerViewVariable
      * <em>Container View Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Container View Variable</em>'
      *            containment reference.
@@ -194,7 +194,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The variable representationName that represents the
      * name of the created representation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Representation Name Variable</em>'
      *         containment reference.
      * @see #setRepresentationNameVariable(NameVariable)
@@ -211,7 +211,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getRepresentationNameVariable
      * <em>Representation Name Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Representation Name Variable</em>'
      *            containment reference.
@@ -222,7 +222,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" required="true"
      * @generated
      */

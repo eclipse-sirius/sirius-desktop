@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.style;
 
@@ -55,7 +55,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * default value is <code>"8"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The font size. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Size</em>' attribute.
      * @see #setLabelSize(int)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBasicLabelStyleDescription_LabelSize()
@@ -69,7 +69,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelSize
      * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -83,7 +83,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * enumeration {@link org.eclipse.sirius.viewpoint.FontFormat}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * font format. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
      * @see #setLabelFormat(FontFormat)
@@ -98,7 +98,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelFormat
      * <em>Label Format</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
@@ -112,7 +112,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * default value is <code>"true"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> True, if the icon shoud be
      * dispayed on the element. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Show Icon</em>' attribute.
      * @see #setShowIcon(boolean)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBasicLabelStyleDescription_ShowIcon()
@@ -126,7 +126,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#isShowIcon
      * <em>Show Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Show Icon</em>' attribute.
      * @see #isShowIcon()
@@ -139,7 +139,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * The default value is <code>"feature:name"</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> Expression that computes
      * the name of a node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBasicLabelStyleDescription_LabelExpression()
@@ -160,7 +160,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelExpression
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -176,7 +176,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Color</em>' reference.
      * @see #setLabelColor(ColorDescription)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBasicLabelStyleDescription_LabelColor()
@@ -190,7 +190,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelColor
      * <em>Label Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Color</em>' reference.
      * @see #getLabelColor()
@@ -204,7 +204,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * end-user-doc --> <!-- begin-model-doc --> The path of the icon to display
      * on the element. If unset, the icon corresponding to the semantic element
      * will be displayed. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBasicLabelStyleDescription_IconPath()
@@ -218,7 +218,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getIconPath
      * <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.provider;
 
@@ -29,14 +29,14 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PopupMenuItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -137,7 +137,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -145,15 +145,16 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
         collectNewChildDescriptorsGen(newChildDescriptors, object);
         /* remove tool filters as they are not yet supported for table */
         CommandParameter firstDescriptor = (CommandParameter) newChildDescriptors.toArray()[0];
-        if (firstDescriptor.feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FILTERS)
+        if (firstDescriptor.feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FILTERS) {
             newChildDescriptors.remove(firstDescriptor);
+        }
     }
 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

@@ -70,6 +70,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public TreeItemEditionTool getDirectEdit() {
         return directEdit;
     }
@@ -84,10 +85,11 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
         directEdit = newDirectEdit;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_UPDATER__DIRECT_EDIT, oldDirectEdit, newDirectEdit);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -97,18 +99,23 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public void setDirectEdit(TreeItemEditionTool newDirectEdit) {
         if (newDirectEdit != directEdit) {
             NotificationChain msgs = null;
-            if (directEdit != null)
-                msgs = ((InternalEObject) directEdit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_UPDATER__DIRECT_EDIT, null, msgs);
-            if (newDirectEdit != null)
-                msgs = ((InternalEObject) newDirectEdit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_UPDATER__DIRECT_EDIT, null, msgs);
+            if (directEdit != null) {
+                msgs = ((InternalEObject) directEdit).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_UPDATER__DIRECT_EDIT, null, msgs);
+            }
+            if (newDirectEdit != null) {
+                msgs = ((InternalEObject) newDirectEdit).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TREE_ITEM_UPDATER__DIRECT_EDIT, null, msgs);
+            }
             msgs = basicSetDirectEdit(newDirectEdit, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_ITEM_UPDATER__DIRECT_EDIT, newDirectEdit, newDirectEdit));
+        }
     }
 
     /**
@@ -116,6 +123,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public String getLabelComputationExpression() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -127,6 +135,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public TreeItemCreationTool getCreateTreeItem() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT

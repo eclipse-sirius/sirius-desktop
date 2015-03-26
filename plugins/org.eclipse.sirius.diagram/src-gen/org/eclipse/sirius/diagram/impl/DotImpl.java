@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -41,7 +41,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * The default value of the '{@link #getStrokeSizeComputationExpression()
      * <em>Stroke Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStrokeSizeComputationExpression()
      * @generated
      * @ordered
@@ -52,12 +52,12 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * The cached value of the '{@link #getStrokeSizeComputationExpression()
      * <em>Stroke Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStrokeSizeComputationExpression()
      * @generated
      * @ordered
      */
-    protected String strokeSizeComputationExpression = STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String strokeSizeComputationExpression = DotImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBackgroundColor()
@@ -79,7 +79,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * @generated
      * @ordered
      */
-    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
+    protected RGBValues backgroundColor = DotImpl.BACKGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -105,6 +105,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
+    @Override
     public RGBValues getBackgroundColor() {
         return backgroundColor;
     }
@@ -114,11 +115,13 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(RGBValues newBackgroundColor) {
         RGBValues oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DOT__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -126,6 +129,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
+    @Override
     public String getStrokeSizeComputationExpression() {
         return strokeSizeComputationExpression;
     }
@@ -135,11 +139,13 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
+    @Override
     public void setStrokeSizeComputationExpression(String newStrokeSizeComputationExpression) {
         String oldStrokeSizeComputationExpression = strokeSizeComputationExpression;
         strokeSizeComputationExpression = newStrokeSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION, oldStrokeSizeComputationExpression, strokeSizeComputationExpression));
+        }
     }
 
     /**
@@ -185,10 +191,10 @@ public class DotImpl extends NodeStyleImpl implements Dot {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION:
-            setStrokeSizeComputationExpression(STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setStrokeSizeComputationExpression(DotImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case DiagramPackage.DOT__BACKGROUND_COLOR:
-            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
+            setBackgroundColor(DotImpl.BACKGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -203,9 +209,10 @@ public class DotImpl extends NodeStyleImpl implements Dot {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION:
-            return STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? strokeSizeComputationExpression != null : !STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(strokeSizeComputationExpression);
+            return DotImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? strokeSizeComputationExpression != null : !DotImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(strokeSizeComputationExpression);
         case DiagramPackage.DOT__BACKGROUND_COLOR:
-            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
+            return DotImpl.BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !DotImpl.BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -217,8 +224,9 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (strokeSizeComputationExpression: ");

@@ -28,14 +28,14 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.description.TreeItemEditionTool} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemEditionToolItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @gnot-enerated
      */
     @Override
@@ -110,7 +110,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -145,7 +145,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

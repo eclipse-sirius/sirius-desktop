@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -37,7 +37,7 @@ public interface For extends ContainerModelOperation {
      * Returns the value of the '<em><b>Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Expression returning the elements to iterate on. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Expression</em>' attribute.
      * @see #setExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFor_Expression()
@@ -56,7 +56,7 @@ public interface For extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.For#getExpression
      * <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Expression</em>' attribute.
      * @see #getExpression()
@@ -69,7 +69,7 @@ public interface For extends ContainerModelOperation {
      * default value is <code>"i"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> On every iteration, the current
      * element will be binded with the given name. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Iterator Name</em>' attribute.
      * @see #setIteratorName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFor_IteratorName()
@@ -83,7 +83,7 @@ public interface For extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.For#getIteratorName
      * <em>Iterator Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Iterator Name</em>' attribute.
      * @see #getIteratorName()

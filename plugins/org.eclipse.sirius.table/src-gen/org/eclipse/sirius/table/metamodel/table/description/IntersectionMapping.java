@@ -83,7 +83,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Column Mapping</em>' reference.
      * @see #setColumnMapping(ColumnMapping)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_ColumnMapping()
@@ -281,7 +281,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_DomainClass()
@@ -312,7 +312,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> An expression guarding the
      * effect if evaluated to false. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_PreconditionExpression()

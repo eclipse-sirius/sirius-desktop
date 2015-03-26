@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -50,7 +50,7 @@ public interface DiagramExtensionDescription extends RepresentationExtensionDesc
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Layers</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramExtensionDescription_Layers()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -62,7 +62,7 @@ public interface DiagramExtensionDescription extends RepresentationExtensionDesc
      * Returns the value of the '<em><b>Validation Set</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The validations rules to add <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Validation Set</em>' containment reference.
      * @see #setValidationSet(ValidationSet)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramExtensionDescription_ValidationSet()
@@ -90,7 +90,7 @@ public interface DiagramExtensionDescription extends RepresentationExtensionDesc
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> All concerns of the diagrams to add. A concern is a
      * set of filters, validations and behaviors. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Concerns</em>' containment reference.
      * @see #setConcerns(ConcernSet)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramExtensionDescription_Concerns()

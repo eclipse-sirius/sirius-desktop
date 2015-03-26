@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -57,7 +57,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = BehaviorToolImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getInitialOperation()
@@ -94,6 +94,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -103,11 +104,13 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.BEHAVIOR_TOOL__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -115,20 +118,23 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
      * 
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
             initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -153,10 +159,11 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -166,18 +173,23 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -205,8 +217,9 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
         case ToolPackage.BEHAVIOR_TOOL__DOMAIN_CLASS:
             return getDomainClass();
         case ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -239,7 +252,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.BEHAVIOR_TOOL__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(BehaviorToolImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
@@ -257,7 +270,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.BEHAVIOR_TOOL__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return BehaviorToolImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !BehaviorToolImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case ToolPackage.BEHAVIOR_TOOL__INITIAL_OPERATION:
             return initialOperation != null;
         }
@@ -271,8 +284,9 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (domainClass: ");

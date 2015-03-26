@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -123,7 +123,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @ordered
      */
     @Deprecated
-    protected Integer size = SIZE_EDEFAULT;
+    protected Integer size = DEdgeImpl.SIZE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSourceNode() <em>Source Node</em>}'
@@ -177,7 +177,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @ordered
      */
     @Deprecated
-    protected EdgeRouting routingStyle = ROUTING_STYLE_EDEFAULT;
+    protected EdgeRouting routingStyle = DEdgeImpl.ROUTING_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isIsFold() <em>Is Fold</em>}'
@@ -197,7 +197,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @generated
      * @ordered
      */
-    protected boolean isFold = IS_FOLD_EDEFAULT;
+    protected boolean isFold = DEdgeImpl.IS_FOLD_EDEFAULT;
 
     /**
      * The default value of the '{@link #isIsMockEdge() <em>Is Mock Edge</em>}'
@@ -217,7 +217,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @generated
      * @ordered
      */
-    protected boolean isMockEdge = IS_MOCK_EDGE_EDEFAULT;
+    protected boolean isMockEdge = DEdgeImpl.IS_MOCK_EDGE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOriginalStyle()
@@ -269,7 +269,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @generated
      * @ordered
      */
-    protected String beginLabel = BEGIN_LABEL_EDEFAULT;
+    protected String beginLabel = DEdgeImpl.BEGIN_LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getEndLabel() <em>End Label</em>}'
@@ -289,7 +289,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @generated
      * @ordered
      */
-    protected String endLabel = END_LABEL_EDEFAULT;
+    protected String endLabel = DEdgeImpl.END_LABEL_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -315,6 +315,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getOutgoingEdges() {
         if (outgoingEdges == null) {
             outgoingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DEDGE__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
@@ -327,6 +328,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getIncomingEdges() {
         if (incomingEdges == null) {
             incomingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DEDGE__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);
@@ -339,20 +341,23 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public EdgeStyle getOwnedStyle() {
         if (ownedStyle != null && ownedStyle.eIsProxy()) {
             InternalEObject oldOwnedStyle = (InternalEObject) ownedStyle;
             ownedStyle = (EdgeStyle) eResolveProxy(oldOwnedStyle);
             if (ownedStyle != oldOwnedStyle) {
                 InternalEObject newOwnedStyle = (InternalEObject) ownedStyle;
-                NotificationChain msgs = oldOwnedStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DEDGE__OWNED_STYLE, null, null);
+                NotificationChain msgs = oldOwnedStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DEDGE__OWNED_STYLE, null, null);
                 if (newOwnedStyle.eInternalContainer() == null) {
-                    msgs = newOwnedStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DEDGE__OWNED_STYLE, null, msgs);
+                    msgs = newOwnedStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DEDGE__OWNED_STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DEDGE__OWNED_STYLE, oldOwnedStyle, ownedStyle));
+                }
             }
         }
         return ownedStyle;
@@ -377,10 +382,11 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         ownedStyle = newOwnedStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__OWNED_STYLE, oldOwnedStyle, newOwnedStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -390,18 +396,23 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public void setOwnedStyle(EdgeStyle newOwnedStyle) {
         if (newOwnedStyle != ownedStyle) {
             NotificationChain msgs = null;
-            if (ownedStyle != null)
-                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DEDGE__OWNED_STYLE, null, msgs);
-            if (newOwnedStyle != null)
-                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DEDGE__OWNED_STYLE, null, msgs);
+            if (ownedStyle != null) {
+                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DEDGE__OWNED_STYLE, null, msgs);
+            }
+            if (newOwnedStyle != null) {
+                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DEDGE__OWNED_STYLE, null, msgs);
+            }
             msgs = basicSetOwnedStyle(newOwnedStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__OWNED_STYLE, newOwnedStyle, newOwnedStyle));
+        }
     }
 
     /**
@@ -409,6 +420,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public Integer getSize() {
         return size;
     }
@@ -418,11 +430,13 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public void setSize(Integer newSize) {
         Integer oldSize = size;
         size = newSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__SIZE, oldSize, size));
+        }
     }
 
     /**
@@ -430,13 +444,15 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public EdgeTarget getSourceNode() {
         if (sourceNode != null && sourceNode.eIsProxy()) {
             InternalEObject oldSourceNode = (InternalEObject) sourceNode;
             sourceNode = (EdgeTarget) eResolveProxy(oldSourceNode);
             if (sourceNode != oldSourceNode) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DEDGE__SOURCE_NODE, oldSourceNode, sourceNode));
+                }
             }
         }
         return sourceNode;
@@ -461,10 +477,11 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         sourceNode = newSourceNode;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__SOURCE_NODE, oldSourceNode, newSourceNode);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -474,18 +491,23 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public void setSourceNode(EdgeTarget newSourceNode) {
         if (newSourceNode != sourceNode) {
             NotificationChain msgs = null;
-            if (sourceNode != null)
+            if (sourceNode != null) {
                 msgs = ((InternalEObject) sourceNode).eInverseRemove(this, DiagramPackage.EDGE_TARGET__OUTGOING_EDGES, EdgeTarget.class, msgs);
-            if (newSourceNode != null)
+            }
+            if (newSourceNode != null) {
                 msgs = ((InternalEObject) newSourceNode).eInverseAdd(this, DiagramPackage.EDGE_TARGET__OUTGOING_EDGES, EdgeTarget.class, msgs);
+            }
             msgs = basicSetSourceNode(newSourceNode, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__SOURCE_NODE, newSourceNode, newSourceNode));
+        }
     }
 
     /**
@@ -493,13 +515,15 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public EdgeTarget getTargetNode() {
         if (targetNode != null && targetNode.eIsProxy()) {
             InternalEObject oldTargetNode = (InternalEObject) targetNode;
             targetNode = (EdgeTarget) eResolveProxy(oldTargetNode);
             if (targetNode != oldTargetNode) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DEDGE__TARGET_NODE, oldTargetNode, targetNode));
+                }
             }
         }
         return targetNode;
@@ -524,10 +548,11 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         targetNode = newTargetNode;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__TARGET_NODE, oldTargetNode, newTargetNode);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -537,18 +562,23 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public void setTargetNode(EdgeTarget newTargetNode) {
         if (newTargetNode != targetNode) {
             NotificationChain msgs = null;
-            if (targetNode != null)
+            if (targetNode != null) {
                 msgs = ((InternalEObject) targetNode).eInverseRemove(this, DiagramPackage.EDGE_TARGET__INCOMING_EDGES, EdgeTarget.class, msgs);
-            if (newTargetNode != null)
+            }
+            if (newTargetNode != null) {
                 msgs = ((InternalEObject) newTargetNode).eInverseAdd(this, DiagramPackage.EDGE_TARGET__INCOMING_EDGES, EdgeTarget.class, msgs);
+            }
             msgs = basicSetTargetNode(newTargetNode, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__TARGET_NODE, newTargetNode, newTargetNode));
+        }
     }
 
     /**
@@ -556,13 +586,15 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public IEdgeMapping getActualMapping() {
         if (actualMapping != null && actualMapping.eIsProxy()) {
             InternalEObject oldActualMapping = (InternalEObject) actualMapping;
             actualMapping = (IEdgeMapping) eResolveProxy(oldActualMapping);
             if (actualMapping != oldActualMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DEDGE__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+                }
             }
         }
         return actualMapping;
@@ -582,11 +614,13 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public void setActualMapping(IEdgeMapping newActualMapping) {
         IEdgeMapping oldActualMapping = actualMapping;
         actualMapping = newActualMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+        }
     }
 
     /**
@@ -594,6 +628,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public EdgeRouting getRoutingStyle() {
         return routingStyle;
     }
@@ -603,11 +638,13 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public void setRoutingStyle(EdgeRouting newRoutingStyle) {
         EdgeRouting oldRoutingStyle = routingStyle;
-        routingStyle = newRoutingStyle == null ? ROUTING_STYLE_EDEFAULT : newRoutingStyle;
-        if (eNotificationRequired())
+        routingStyle = newRoutingStyle == null ? DEdgeImpl.ROUTING_STYLE_EDEFAULT : newRoutingStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__ROUTING_STYLE, oldRoutingStyle, routingStyle));
+        }
     }
 
     /**
@@ -615,6 +652,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     @Deprecated
     public boolean isIsFold() {
         return isFold;
@@ -625,12 +663,14 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     @Deprecated
     public void setIsFold(boolean newIsFold) {
         boolean oldIsFold = isFold;
         isFold = newIsFold;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__IS_FOLD, oldIsFold, isFold));
+        }
     }
 
     /**
@@ -638,6 +678,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     @Deprecated
     public boolean isIsMockEdge() {
         return isMockEdge;
@@ -648,12 +689,14 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     @Deprecated
     public void setIsMockEdge(boolean newIsMockEdge) {
         boolean oldIsMockEdge = isMockEdge;
         isMockEdge = newIsMockEdge;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__IS_MOCK_EDGE, oldIsMockEdge, isMockEdge));
+        }
     }
 
     /**
@@ -661,13 +704,15 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public Style getOriginalStyle() {
         if (originalStyle != null && originalStyle.eIsProxy()) {
             InternalEObject oldOriginalStyle = (InternalEObject) originalStyle;
             originalStyle = (Style) eResolveProxy(oldOriginalStyle);
             if (originalStyle != oldOriginalStyle) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DEDGE__ORIGINAL_STYLE, oldOriginalStyle, originalStyle));
+                }
             }
         }
         return originalStyle;
@@ -687,11 +732,13 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public void setOriginalStyle(Style newOriginalStyle) {
         Style oldOriginalStyle = originalStyle;
         originalStyle = newOriginalStyle;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__ORIGINAL_STYLE, oldOriginalStyle, originalStyle));
+        }
     }
 
     /**
@@ -699,6 +746,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public EList<EdgeTarget> getPath() {
         if (path == null) {
             path = new EObjectResolvingEList<EdgeTarget>(EdgeTarget.class, this, DiagramPackage.DEDGE__PATH);
@@ -711,6 +759,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public EList<ArrangeConstraint> getArrangeConstraints() {
         if (arrangeConstraints == null) {
             arrangeConstraints = new EDataTypeUniqueEList<ArrangeConstraint>(ArrangeConstraint.class, this, DiagramPackage.DEDGE__ARRANGE_CONSTRAINTS);
@@ -723,6 +772,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public String getBeginLabel() {
         return beginLabel;
     }
@@ -732,11 +782,13 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public void setBeginLabel(String newBeginLabel) {
         String oldBeginLabel = beginLabel;
         beginLabel = newBeginLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__BEGIN_LABEL, oldBeginLabel, beginLabel));
+        }
     }
 
     /**
@@ -744,6 +796,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public String getEndLabel() {
         return endLabel;
     }
@@ -753,11 +806,13 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public void setEndLabel(String newEndLabel) {
         String oldEndLabel = endLabel;
         endLabel = newEndLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DEDGE__END_LABEL, oldEndLabel, endLabel));
+        }
     }
 
     /**
@@ -765,6 +820,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
+    @Override
     public boolean isRootFolding() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -785,12 +841,14 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         case DiagramPackage.DEDGE__INCOMING_EDGES:
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomingEdges()).basicAdd(otherEnd, msgs);
         case DiagramPackage.DEDGE__SOURCE_NODE:
-            if (sourceNode != null)
+            if (sourceNode != null) {
                 msgs = ((InternalEObject) sourceNode).eInverseRemove(this, DiagramPackage.EDGE_TARGET__OUTGOING_EDGES, EdgeTarget.class, msgs);
+            }
             return basicSetSourceNode((EdgeTarget) otherEnd, msgs);
         case DiagramPackage.DEDGE__TARGET_NODE:
-            if (targetNode != null)
+            if (targetNode != null) {
                 msgs = ((InternalEObject) targetNode).eInverseRemove(this, DiagramPackage.EDGE_TARGET__INCOMING_EDGES, EdgeTarget.class, msgs);
+            }
             return basicSetTargetNode((EdgeTarget) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -831,22 +889,26 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         case DiagramPackage.DEDGE__INCOMING_EDGES:
             return getIncomingEdges();
         case DiagramPackage.DEDGE__OWNED_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getOwnedStyle();
+            }
             return basicGetOwnedStyle();
         case DiagramPackage.DEDGE__SIZE:
             return getSize();
         case DiagramPackage.DEDGE__SOURCE_NODE:
-            if (resolve)
+            if (resolve) {
                 return getSourceNode();
+            }
             return basicGetSourceNode();
         case DiagramPackage.DEDGE__TARGET_NODE:
-            if (resolve)
+            if (resolve) {
                 return getTargetNode();
+            }
             return basicGetTargetNode();
         case DiagramPackage.DEDGE__ACTUAL_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getActualMapping();
+            }
             return basicGetActualMapping();
         case DiagramPackage.DEDGE__ROUTING_STYLE:
             return getRoutingStyle();
@@ -855,8 +917,9 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         case DiagramPackage.DEDGE__IS_MOCK_EDGE:
             return isIsMockEdge();
         case DiagramPackage.DEDGE__ORIGINAL_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getOriginalStyle();
+            }
             return basicGetOriginalStyle();
         case DiagramPackage.DEDGE__PATH:
             return getPath();
@@ -950,7 +1013,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
             setOwnedStyle((EdgeStyle) null);
             return;
         case DiagramPackage.DEDGE__SIZE:
-            setSize(SIZE_EDEFAULT);
+            setSize(DEdgeImpl.SIZE_EDEFAULT);
             return;
         case DiagramPackage.DEDGE__SOURCE_NODE:
             setSourceNode((EdgeTarget) null);
@@ -962,13 +1025,13 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
             setActualMapping((IEdgeMapping) null);
             return;
         case DiagramPackage.DEDGE__ROUTING_STYLE:
-            setRoutingStyle(ROUTING_STYLE_EDEFAULT);
+            setRoutingStyle(DEdgeImpl.ROUTING_STYLE_EDEFAULT);
             return;
         case DiagramPackage.DEDGE__IS_FOLD:
-            setIsFold(IS_FOLD_EDEFAULT);
+            setIsFold(DEdgeImpl.IS_FOLD_EDEFAULT);
             return;
         case DiagramPackage.DEDGE__IS_MOCK_EDGE:
-            setIsMockEdge(IS_MOCK_EDGE_EDEFAULT);
+            setIsMockEdge(DEdgeImpl.IS_MOCK_EDGE_EDEFAULT);
             return;
         case DiagramPackage.DEDGE__ORIGINAL_STYLE:
             setOriginalStyle((Style) null);
@@ -980,10 +1043,10 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
             getArrangeConstraints().clear();
             return;
         case DiagramPackage.DEDGE__BEGIN_LABEL:
-            setBeginLabel(BEGIN_LABEL_EDEFAULT);
+            setBeginLabel(DEdgeImpl.BEGIN_LABEL_EDEFAULT);
             return;
         case DiagramPackage.DEDGE__END_LABEL:
-            setEndLabel(END_LABEL_EDEFAULT);
+            setEndLabel(DEdgeImpl.END_LABEL_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -1004,7 +1067,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         case DiagramPackage.DEDGE__OWNED_STYLE:
             return ownedStyle != null;
         case DiagramPackage.DEDGE__SIZE:
-            return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
+            return DEdgeImpl.SIZE_EDEFAULT == null ? size != null : !DEdgeImpl.SIZE_EDEFAULT.equals(size);
         case DiagramPackage.DEDGE__SOURCE_NODE:
             return sourceNode != null;
         case DiagramPackage.DEDGE__TARGET_NODE:
@@ -1012,11 +1075,11 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         case DiagramPackage.DEDGE__ACTUAL_MAPPING:
             return actualMapping != null;
         case DiagramPackage.DEDGE__ROUTING_STYLE:
-            return routingStyle != ROUTING_STYLE_EDEFAULT;
+            return routingStyle != DEdgeImpl.ROUTING_STYLE_EDEFAULT;
         case DiagramPackage.DEDGE__IS_FOLD:
-            return isFold != IS_FOLD_EDEFAULT;
+            return isFold != DEdgeImpl.IS_FOLD_EDEFAULT;
         case DiagramPackage.DEDGE__IS_MOCK_EDGE:
-            return isMockEdge != IS_MOCK_EDGE_EDEFAULT;
+            return isMockEdge != DEdgeImpl.IS_MOCK_EDGE_EDEFAULT;
         case DiagramPackage.DEDGE__ORIGINAL_STYLE:
             return originalStyle != null;
         case DiagramPackage.DEDGE__PATH:
@@ -1024,9 +1087,9 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         case DiagramPackage.DEDGE__ARRANGE_CONSTRAINTS:
             return arrangeConstraints != null && !arrangeConstraints.isEmpty();
         case DiagramPackage.DEDGE__BEGIN_LABEL:
-            return BEGIN_LABEL_EDEFAULT == null ? beginLabel != null : !BEGIN_LABEL_EDEFAULT.equals(beginLabel);
+            return DEdgeImpl.BEGIN_LABEL_EDEFAULT == null ? beginLabel != null : !DEdgeImpl.BEGIN_LABEL_EDEFAULT.equals(beginLabel);
         case DiagramPackage.DEDGE__END_LABEL:
-            return END_LABEL_EDEFAULT == null ? endLabel != null : !END_LABEL_EDEFAULT.equals(endLabel);
+            return DEdgeImpl.END_LABEL_EDEFAULT == null ? endLabel != null : !DEdgeImpl.END_LABEL_EDEFAULT.equals(endLabel);
         }
         return super.eIsSet(featureID);
     }
@@ -1078,8 +1141,9 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (size: ");

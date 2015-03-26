@@ -43,7 +43,7 @@ public interface ForegroundStyleDescription extends EObject {
      * default value is <code>"12"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The font size. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Size</em>' attribute.
      * @see #setLabelSize(int)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundStyleDescription_LabelSize()
@@ -71,7 +71,7 @@ public interface ForegroundStyleDescription extends EObject {
      * enumeration {@link org.eclipse.sirius.viewpoint.FontFormat}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * font format. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
      * @see #setLabelFormat(FontFormat)

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -61,7 +61,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * @generated
      * @ordered
      */
-    protected Integer arcWidth = ARC_WIDTH_EDEFAULT;
+    protected Integer arcWidth = WorkspaceImageDescriptionImpl.ARC_WIDTH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getArcHeight() <em>Arc Height</em>}'
@@ -81,7 +81,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * @generated
      * @ordered
      */
-    protected Integer arcHeight = ARC_HEIGHT_EDEFAULT;
+    protected Integer arcHeight = WorkspaceImageDescriptionImpl.ARC_HEIGHT_EDEFAULT;
 
     /**
      * The default value of the '{@link #isRoundedCorner()
@@ -103,7 +103,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * @generated
      * @ordered
      */
-    protected boolean roundedCorner = ROUNDED_CORNER_EDEFAULT;
+    protected boolean roundedCorner = WorkspaceImageDescriptionImpl.ROUNDED_CORNER_EDEFAULT;
 
     /**
      * The default value of the '{@link #getWorkspacePath()
@@ -125,7 +125,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * @generated
      * @ordered
      */
-    protected String workspacePath = WORKSPACE_PATH_EDEFAULT;
+    protected String workspacePath = WorkspaceImageDescriptionImpl.WORKSPACE_PATH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -151,6 +151,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * 
      * @generated
      */
+    @Override
     public Integer getArcWidth() {
         return arcWidth;
     }
@@ -160,11 +161,13 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * 
      * @generated
      */
+    @Override
     public void setArcWidth(Integer newArcWidth) {
         Integer oldArcWidth = arcWidth;
         arcWidth = newArcWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.WORKSPACE_IMAGE_DESCRIPTION__ARC_WIDTH, oldArcWidth, arcWidth));
+        }
     }
 
     /**
@@ -172,6 +175,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * 
      * @generated
      */
+    @Override
     public Integer getArcHeight() {
         return arcHeight;
     }
@@ -181,11 +185,13 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * 
      * @generated
      */
+    @Override
     public void setArcHeight(Integer newArcHeight) {
         Integer oldArcHeight = arcHeight;
         arcHeight = newArcHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.WORKSPACE_IMAGE_DESCRIPTION__ARC_HEIGHT, oldArcHeight, arcHeight));
+        }
     }
 
     /**
@@ -193,6 +199,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * 
      * @generated
      */
+    @Override
     public boolean isRoundedCorner() {
         return roundedCorner;
     }
@@ -202,11 +209,13 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * 
      * @generated
      */
+    @Override
     public void setRoundedCorner(boolean newRoundedCorner) {
         boolean oldRoundedCorner = roundedCorner;
         roundedCorner = newRoundedCorner;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.WORKSPACE_IMAGE_DESCRIPTION__ROUNDED_CORNER, oldRoundedCorner, roundedCorner));
+        }
     }
 
     /**
@@ -214,6 +223,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * 
      * @generated
      */
+    @Override
     public String getWorkspacePath() {
         return workspacePath;
     }
@@ -223,11 +233,13 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * 
      * @generated
      */
+    @Override
     public void setWorkspacePath(String newWorkspacePath) {
         String oldWorkspacePath = workspacePath;
         workspacePath = newWorkspacePath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH, oldWorkspacePath, workspacePath));
+        }
     }
 
     /**
@@ -283,16 +295,16 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.WORKSPACE_IMAGE_DESCRIPTION__ARC_WIDTH:
-            setArcWidth(ARC_WIDTH_EDEFAULT);
+            setArcWidth(WorkspaceImageDescriptionImpl.ARC_WIDTH_EDEFAULT);
             return;
         case StylePackage.WORKSPACE_IMAGE_DESCRIPTION__ARC_HEIGHT:
-            setArcHeight(ARC_HEIGHT_EDEFAULT);
+            setArcHeight(WorkspaceImageDescriptionImpl.ARC_HEIGHT_EDEFAULT);
             return;
         case StylePackage.WORKSPACE_IMAGE_DESCRIPTION__ROUNDED_CORNER:
-            setRoundedCorner(ROUNDED_CORNER_EDEFAULT);
+            setRoundedCorner(WorkspaceImageDescriptionImpl.ROUNDED_CORNER_EDEFAULT);
             return;
         case StylePackage.WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH:
-            setWorkspacePath(WORKSPACE_PATH_EDEFAULT);
+            setWorkspacePath(WorkspaceImageDescriptionImpl.WORKSPACE_PATH_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -307,13 +319,13 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.WORKSPACE_IMAGE_DESCRIPTION__ARC_WIDTH:
-            return ARC_WIDTH_EDEFAULT == null ? arcWidth != null : !ARC_WIDTH_EDEFAULT.equals(arcWidth);
+            return WorkspaceImageDescriptionImpl.ARC_WIDTH_EDEFAULT == null ? arcWidth != null : !WorkspaceImageDescriptionImpl.ARC_WIDTH_EDEFAULT.equals(arcWidth);
         case StylePackage.WORKSPACE_IMAGE_DESCRIPTION__ARC_HEIGHT:
-            return ARC_HEIGHT_EDEFAULT == null ? arcHeight != null : !ARC_HEIGHT_EDEFAULT.equals(arcHeight);
+            return WorkspaceImageDescriptionImpl.ARC_HEIGHT_EDEFAULT == null ? arcHeight != null : !WorkspaceImageDescriptionImpl.ARC_HEIGHT_EDEFAULT.equals(arcHeight);
         case StylePackage.WORKSPACE_IMAGE_DESCRIPTION__ROUNDED_CORNER:
-            return roundedCorner != ROUNDED_CORNER_EDEFAULT;
+            return roundedCorner != WorkspaceImageDescriptionImpl.ROUNDED_CORNER_EDEFAULT;
         case StylePackage.WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH:
-            return WORKSPACE_PATH_EDEFAULT == null ? workspacePath != null : !WORKSPACE_PATH_EDEFAULT.equals(workspacePath);
+            return WorkspaceImageDescriptionImpl.WORKSPACE_PATH_EDEFAULT == null ? workspacePath != null : !WorkspaceImageDescriptionImpl.WORKSPACE_PATH_EDEFAULT.equals(workspacePath);
         }
         return super.eIsSet(featureID);
     }
@@ -381,8 +393,9 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (arcWidth: ");

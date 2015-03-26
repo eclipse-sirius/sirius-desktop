@@ -69,13 +69,15 @@ public class BackgroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public ColorDescription getBackgroundColor() {
         if (backgroundColor != null && backgroundColor.eIsProxy()) {
             InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
             backgroundColor = (ColorDescription) eResolveProxy(oldBackgroundColor);
             if (backgroundColor != oldBackgroundColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.BACKGROUND_STYLE_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+                }
             }
         }
         return backgroundColor;
@@ -95,11 +97,13 @@ public class BackgroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(ColorDescription newBackgroundColor) {
         ColorDescription oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.BACKGROUND_STYLE_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -111,8 +115,9 @@ public class BackgroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DescriptionPackage.BACKGROUND_STYLE_DESCRIPTION__BACKGROUND_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getBackgroundColor();
+            }
             return basicGetBackgroundColor();
         }
         return super.eGet(featureID, resolve, coreType);

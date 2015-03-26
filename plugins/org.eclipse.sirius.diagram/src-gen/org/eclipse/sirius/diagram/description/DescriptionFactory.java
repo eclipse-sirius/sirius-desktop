@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -32,7 +32,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Diagram Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Diagram Description</em>'.
      * @generated
      */
@@ -41,7 +41,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Diagram Import Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Diagram Import Description</em>'.
      * @generated
      */
@@ -59,7 +59,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Node Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Node Mapping</em>'.
      * @generated
      */
@@ -68,7 +68,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Container Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Container Mapping</em>'.
      * @generated
      */
@@ -77,7 +77,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Node Mapping Import</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Node Mapping Import</em>'.
      * @generated
      */
@@ -86,7 +86,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Container Mapping Import</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Container Mapping Import</em>'.
      * @generated
      */
@@ -95,7 +95,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Edge Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Edge Mapping</em>'.
      * @generated
      */
@@ -104,7 +104,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Edge Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Edge Mapping</em>'.
      * @not-generated
      */
@@ -113,7 +113,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Edge Mapping Import</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Edge Mapping Import</em>'.
      * @generated
      */
@@ -155,7 +155,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Ordered Tree Layout</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Ordered Tree Layout</em>'.
      * @generated
      */
@@ -164,7 +164,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Composite Layout</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Composite Layout</em>'.
      * @generated
      */
@@ -173,7 +173,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Mapping Based Decoration</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Mapping Based Decoration</em>'.
      * @generated
      */
@@ -191,7 +191,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Additional Layer</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Additional Layer</em>'.
      * @generated
      */

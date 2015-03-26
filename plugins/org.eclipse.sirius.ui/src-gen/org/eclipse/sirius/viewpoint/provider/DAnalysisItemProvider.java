@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.provider;
 
@@ -44,7 +44,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DAnalysisItemProvider(AdapterFactory adapterFactory) {
@@ -54,7 +54,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This adds a property descriptor for the Referenced Analysis feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReferencedAnalysisPropertyDescriptor(Object object) {
@@ -85,20 +85,20 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This adds a property descriptor for the Models feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addModelsPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysis_models_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_models_feature", "_UI_DAnalysis_type"), ViewpointPackage.Literals.DANALYSIS__MODELS, true, false, true, null,
-                        null, null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysis_models_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_models_feature", "_UI_DAnalysis_type"), ViewpointPackage.Literals.DANALYSIS__MODELS, true, false, true, null,
+                null, null));
     }
 
     /**
      * This adds a property descriptor for the Selected Views feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSelectedViewsPropertyDescriptor(Object object) {
@@ -110,7 +110,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This adds a property descriptor for the Version feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addVersionPropertyDescriptor(Object object) {
@@ -205,7 +205,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

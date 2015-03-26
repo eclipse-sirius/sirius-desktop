@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -58,13 +58,13 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * @generated
      * @ordered
      */
-    protected Integer borderSize = BORDER_SIZE_EDEFAULT;
+    protected Integer borderSize = BorderedStyleImpl.BORDER_SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -75,12 +75,12 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * The cached value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
      */
-    protected String borderSizeComputationExpression = BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String borderSizeComputationExpression = BorderedStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBorderColor() <em>Border Color</em>}
@@ -100,7 +100,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * @generated
      * @ordered
      */
-    protected RGBValues borderColor = BORDER_COLOR_EDEFAULT;
+    protected RGBValues borderColor = BorderedStyleImpl.BORDER_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -126,6 +126,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * 
      * @generated
      */
+    @Override
     public Integer getBorderSize() {
         return borderSize;
     }
@@ -135,11 +136,13 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * 
      * @generated
      */
+    @Override
     public void setBorderSize(Integer newBorderSize) {
         Integer oldBorderSize = borderSize;
         borderSize = newBorderSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BORDERED_STYLE__BORDER_SIZE, oldBorderSize, borderSize));
+        }
     }
 
     /**
@@ -147,6 +150,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * 
      * @generated
      */
+    @Override
     public String getBorderSizeComputationExpression() {
         return borderSizeComputationExpression;
     }
@@ -156,12 +160,14 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * 
      * @generated
      */
+    @Override
     public void setBorderSizeComputationExpression(String newBorderSizeComputationExpression) {
         String oldBorderSizeComputationExpression = borderSizeComputationExpression;
         borderSizeComputationExpression = newBorderSizeComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION, oldBorderSizeComputationExpression,
                     borderSizeComputationExpression));
+        }
     }
 
     /**
@@ -169,6 +175,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * 
      * @generated
      */
+    @Override
     public RGBValues getBorderColor() {
         return borderColor;
     }
@@ -178,11 +185,13 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * 
      * @generated
      */
+    @Override
     public void setBorderColor(RGBValues newBorderColor) {
         RGBValues oldBorderColor = borderColor;
         borderColor = newBorderColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BORDERED_STYLE__BORDER_COLOR, oldBorderColor, borderColor));
+        }
     }
 
     /**
@@ -233,13 +242,13 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.BORDERED_STYLE__BORDER_SIZE:
-            setBorderSize(BORDER_SIZE_EDEFAULT);
+            setBorderSize(BorderedStyleImpl.BORDER_SIZE_EDEFAULT);
             return;
         case DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            setBorderSizeComputationExpression(BorderedStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case DiagramPackage.BORDERED_STYLE__BORDER_COLOR:
-            setBorderColor(BORDER_COLOR_EDEFAULT);
+            setBorderColor(BorderedStyleImpl.BORDER_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -254,11 +263,12 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.BORDERED_STYLE__BORDER_SIZE:
-            return BORDER_SIZE_EDEFAULT == null ? borderSize != null : !BORDER_SIZE_EDEFAULT.equals(borderSize);
+            return BorderedStyleImpl.BORDER_SIZE_EDEFAULT == null ? borderSize != null : !BorderedStyleImpl.BORDER_SIZE_EDEFAULT.equals(borderSize);
         case DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
+            return BorderedStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BorderedStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT
+                    .equals(borderSizeComputationExpression);
         case DiagramPackage.BORDERED_STYLE__BORDER_COLOR:
-            return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
+            return BorderedStyleImpl.BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BorderedStyleImpl.BORDER_COLOR_EDEFAULT.equals(borderColor);
         }
         return super.eIsSet(featureID);
     }
@@ -270,8 +280,9 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSize: ");

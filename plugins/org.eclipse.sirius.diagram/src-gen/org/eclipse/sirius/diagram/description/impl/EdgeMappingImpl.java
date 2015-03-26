@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -108,7 +108,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
+    protected String documentation = EdgeMappingImpl.DOCUMENTATION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSourceMapping()
@@ -152,7 +152,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected String targetFinderExpression = TARGET_FINDER_EXPRESSION_EDEFAULT;
+    protected String targetFinderExpression = EdgeMappingImpl.TARGET_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSourceFinderExpression()
@@ -174,7 +174,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected String sourceFinderExpression = SOURCE_FINDER_EXPRESSION_EDEFAULT;
+    protected String sourceFinderExpression = EdgeMappingImpl.SOURCE_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
@@ -190,7 +190,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * The cached value of the '{@link #getConditionnalStyles()
      * <em>Conditionnal Styles</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionnalStyles()
      * @generated
      * @ordered
@@ -217,7 +217,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected String targetExpression = TARGET_EXPRESSION_EDEFAULT;
+    protected String targetExpression = EdgeMappingImpl.TARGET_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
@@ -237,7 +237,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = EdgeMappingImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The default value of the '{@link #isUseDomainElement()
@@ -259,7 +259,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected boolean useDomainElement = USE_DOMAIN_ELEMENT_EDEFAULT;
+    protected boolean useDomainElement = EdgeMappingImpl.USE_DOMAIN_ELEMENT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getReconnections()
@@ -292,7 +292,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected String pathExpression = PATH_EXPRESSION_EDEFAULT;
+    protected String pathExpression = EdgeMappingImpl.PATH_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getPathNodeMapping()
@@ -329,6 +329,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public String getDocumentation() {
         return documentation;
     }
@@ -338,19 +339,22 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public void setDocumentation(String newDocumentation) {
         String oldDocumentation = documentation;
         documentation = newDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0<!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getSourceMapping() {
         if (sourceMapping == null) {
             sourceMapping = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, DescriptionPackage.EDGE_MAPPING__SOURCE_MAPPING);
@@ -360,10 +364,11 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc -->
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getTargetMapping() {
         if (targetMapping == null) {
             targetMapping = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, DescriptionPackage.EDGE_MAPPING__TARGET_MAPPING);
@@ -376,6 +381,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public String getTargetFinderExpression() {
         return targetFinderExpression;
     }
@@ -385,11 +391,13 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public void setTargetFinderExpression(String newTargetFinderExpression) {
         String oldTargetFinderExpression = targetFinderExpression;
         targetFinderExpression = newTargetFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING__TARGET_FINDER_EXPRESSION, oldTargetFinderExpression, targetFinderExpression));
+        }
     }
 
     /**
@@ -397,6 +405,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public String getSourceFinderExpression() {
         return sourceFinderExpression;
     }
@@ -406,11 +415,13 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public void setSourceFinderExpression(String newSourceFinderExpression) {
         String oldSourceFinderExpression = sourceFinderExpression;
         sourceFinderExpression = newSourceFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION, oldSourceFinderExpression, sourceFinderExpression));
+        }
     }
 
     /**
@@ -418,20 +429,23 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public EdgeStyleDescription getStyle() {
         if (style != null && style.eIsProxy()) {
             InternalEObject oldStyle = (InternalEObject) style;
             style = (EdgeStyleDescription) eResolveProxy(oldStyle);
             if (style != oldStyle) {
                 InternalEObject newStyle = (InternalEObject) style;
-                NotificationChain msgs = oldStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.EDGE_MAPPING__STYLE, null, null);
+                NotificationChain msgs = oldStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.EDGE_MAPPING__STYLE, null, null);
                 if (newStyle.eInternalContainer() == null) {
-                    msgs = newStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.EDGE_MAPPING__STYLE, null, msgs);
+                    msgs = newStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.EDGE_MAPPING__STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.EDGE_MAPPING__STYLE, oldStyle, style));
+                }
             }
         }
         return style;
@@ -456,10 +470,11 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
         style = newStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING__STYLE, oldStyle, newStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -469,18 +484,23 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public void setStyle(EdgeStyleDescription newStyle) {
         if (newStyle != style) {
             NotificationChain msgs = null;
-            if (style != null)
-                msgs = ((InternalEObject) style).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.EDGE_MAPPING__STYLE, null, msgs);
-            if (newStyle != null)
-                msgs = ((InternalEObject) newStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.EDGE_MAPPING__STYLE, null, msgs);
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.EDGE_MAPPING__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.EDGE_MAPPING__STYLE, null, msgs);
+            }
             msgs = basicSetStyle(newStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING__STYLE, newStyle, newStyle));
+        }
     }
 
     /**
@@ -488,6 +508,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public EList<ConditionalEdgeStyleDescription> getConditionnalStyles() {
         if (conditionnalStyles == null) {
             conditionnalStyles = new EObjectContainmentEList.Resolving<ConditionalEdgeStyleDescription>(ConditionalEdgeStyleDescription.class, this,
@@ -501,6 +522,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public String getTargetExpression() {
         return targetExpression;
     }
@@ -510,11 +532,13 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public void setTargetExpression(String newTargetExpression) {
         String oldTargetExpression = targetExpression;
         targetExpression = newTargetExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING__TARGET_EXPRESSION, oldTargetExpression, targetExpression));
+        }
     }
 
     /**
@@ -522,6 +546,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -531,11 +556,13 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -543,6 +570,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public boolean isUseDomainElement() {
         return useDomainElement;
     }
@@ -552,11 +580,13 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public void setUseDomainElement(boolean newUseDomainElement) {
         boolean oldUseDomainElement = useDomainElement;
         useDomainElement = newUseDomainElement;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING__USE_DOMAIN_ELEMENT, oldUseDomainElement, useDomainElement));
+        }
     }
 
     /**
@@ -564,6 +594,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public EList<ReconnectEdgeDescription> getReconnections() {
         if (reconnections == null) {
             reconnections = new EObjectResolvingEList<ReconnectEdgeDescription>(ReconnectEdgeDescription.class, this, DescriptionPackage.EDGE_MAPPING__RECONNECTIONS);
@@ -576,6 +607,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public String getPathExpression() {
         return pathExpression;
     }
@@ -585,11 +617,13 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public void setPathExpression(String newPathExpression) {
         String oldPathExpression = pathExpression;
         pathExpression = newPathExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING__PATH_EXPRESSION, oldPathExpression, pathExpression));
+        }
     }
 
     /**
@@ -597,6 +631,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public EList<AbstractNodeMapping> getPathNodeMapping() {
         if (pathNodeMapping == null) {
             pathNodeMapping = new EObjectResolvingEList<AbstractNodeMapping>(AbstractNodeMapping.class, this, DescriptionPackage.EDGE_MAPPING__PATH_NODE_MAPPING);
@@ -609,6 +644,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public DEdge createEdge(EdgeTarget source, EdgeTarget target, EObject semanticTarget) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -620,6 +656,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public DEdge createEdge(EdgeTarget source, EdgeTarget target, EObject container, EObject semanticTarget) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -631,6 +668,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public EdgeStyle getBestStyle(EObject modelElement, EObject viewVariable, EObject containerVariable) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -642,6 +680,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public void updateEdge(DEdge viewEdge) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -653,6 +692,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getEdgeTargetCandidates(EObject semanticOrigin, DDiagram viewPoint) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -664,6 +704,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getEdgeSourceCandidates(EObject semanticOrigin, DDiagram viewPoint) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -675,6 +716,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getEdgeTargetCandidates(EObject semanticOrigin, EObject container, EObject containerView) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -716,8 +758,9 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
         case DescriptionPackage.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION:
             return getSourceFinderExpression();
         case DescriptionPackage.EDGE_MAPPING__STYLE:
-            if (resolve)
+            if (resolve) {
                 return getStyle();
+            }
             return basicGetStyle();
         case DescriptionPackage.EDGE_MAPPING__CONDITIONNAL_STYLES:
             return getConditionnalStyles();
@@ -803,7 +846,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.EDGE_MAPPING__DOCUMENTATION:
-            setDocumentation(DOCUMENTATION_EDEFAULT);
+            setDocumentation(EdgeMappingImpl.DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.EDGE_MAPPING__SOURCE_MAPPING:
             getSourceMapping().clear();
@@ -812,10 +855,10 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
             getTargetMapping().clear();
             return;
         case DescriptionPackage.EDGE_MAPPING__TARGET_FINDER_EXPRESSION:
-            setTargetFinderExpression(TARGET_FINDER_EXPRESSION_EDEFAULT);
+            setTargetFinderExpression(EdgeMappingImpl.TARGET_FINDER_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION:
-            setSourceFinderExpression(SOURCE_FINDER_EXPRESSION_EDEFAULT);
+            setSourceFinderExpression(EdgeMappingImpl.SOURCE_FINDER_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.EDGE_MAPPING__STYLE:
             setStyle((EdgeStyleDescription) null);
@@ -824,19 +867,19 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
             getConditionnalStyles().clear();
             return;
         case DescriptionPackage.EDGE_MAPPING__TARGET_EXPRESSION:
-            setTargetExpression(TARGET_EXPRESSION_EDEFAULT);
+            setTargetExpression(EdgeMappingImpl.TARGET_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.EDGE_MAPPING__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(EdgeMappingImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case DescriptionPackage.EDGE_MAPPING__USE_DOMAIN_ELEMENT:
-            setUseDomainElement(USE_DOMAIN_ELEMENT_EDEFAULT);
+            setUseDomainElement(EdgeMappingImpl.USE_DOMAIN_ELEMENT_EDEFAULT);
             return;
         case DescriptionPackage.EDGE_MAPPING__RECONNECTIONS:
             getReconnections().clear();
             return;
         case DescriptionPackage.EDGE_MAPPING__PATH_EXPRESSION:
-            setPathExpression(PATH_EXPRESSION_EDEFAULT);
+            setPathExpression(EdgeMappingImpl.PATH_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.EDGE_MAPPING__PATH_NODE_MAPPING:
             getPathNodeMapping().clear();
@@ -854,29 +897,29 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.EDGE_MAPPING__DOCUMENTATION:
-            return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+            return EdgeMappingImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !EdgeMappingImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case DescriptionPackage.EDGE_MAPPING__SOURCE_MAPPING:
             return sourceMapping != null && !sourceMapping.isEmpty();
         case DescriptionPackage.EDGE_MAPPING__TARGET_MAPPING:
             return targetMapping != null && !targetMapping.isEmpty();
         case DescriptionPackage.EDGE_MAPPING__TARGET_FINDER_EXPRESSION:
-            return TARGET_FINDER_EXPRESSION_EDEFAULT == null ? targetFinderExpression != null : !TARGET_FINDER_EXPRESSION_EDEFAULT.equals(targetFinderExpression);
+            return EdgeMappingImpl.TARGET_FINDER_EXPRESSION_EDEFAULT == null ? targetFinderExpression != null : !EdgeMappingImpl.TARGET_FINDER_EXPRESSION_EDEFAULT.equals(targetFinderExpression);
         case DescriptionPackage.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION:
-            return SOURCE_FINDER_EXPRESSION_EDEFAULT == null ? sourceFinderExpression != null : !SOURCE_FINDER_EXPRESSION_EDEFAULT.equals(sourceFinderExpression);
+            return EdgeMappingImpl.SOURCE_FINDER_EXPRESSION_EDEFAULT == null ? sourceFinderExpression != null : !EdgeMappingImpl.SOURCE_FINDER_EXPRESSION_EDEFAULT.equals(sourceFinderExpression);
         case DescriptionPackage.EDGE_MAPPING__STYLE:
             return style != null;
         case DescriptionPackage.EDGE_MAPPING__CONDITIONNAL_STYLES:
             return conditionnalStyles != null && !conditionnalStyles.isEmpty();
         case DescriptionPackage.EDGE_MAPPING__TARGET_EXPRESSION:
-            return TARGET_EXPRESSION_EDEFAULT == null ? targetExpression != null : !TARGET_EXPRESSION_EDEFAULT.equals(targetExpression);
+            return EdgeMappingImpl.TARGET_EXPRESSION_EDEFAULT == null ? targetExpression != null : !EdgeMappingImpl.TARGET_EXPRESSION_EDEFAULT.equals(targetExpression);
         case DescriptionPackage.EDGE_MAPPING__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return EdgeMappingImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !EdgeMappingImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.EDGE_MAPPING__USE_DOMAIN_ELEMENT:
-            return useDomainElement != USE_DOMAIN_ELEMENT_EDEFAULT;
+            return useDomainElement != EdgeMappingImpl.USE_DOMAIN_ELEMENT_EDEFAULT;
         case DescriptionPackage.EDGE_MAPPING__RECONNECTIONS:
             return reconnections != null && !reconnections.isEmpty();
         case DescriptionPackage.EDGE_MAPPING__PATH_EXPRESSION:
-            return PATH_EXPRESSION_EDEFAULT == null ? pathExpression != null : !PATH_EXPRESSION_EDEFAULT.equals(pathExpression);
+            return EdgeMappingImpl.PATH_EXPRESSION_EDEFAULT == null ? pathExpression != null : !EdgeMappingImpl.PATH_EXPRESSION_EDEFAULT.equals(pathExpression);
         case DescriptionPackage.EDGE_MAPPING__PATH_NODE_MAPPING:
             return pathNodeMapping != null && !pathNodeMapping.isEmpty();
         }
@@ -938,8 +981,9 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (documentation: ");

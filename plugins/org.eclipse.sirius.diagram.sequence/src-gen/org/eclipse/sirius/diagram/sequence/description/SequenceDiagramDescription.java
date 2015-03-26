@@ -41,7 +41,7 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Ends Ordering</em>' attribute.
      * @see #setEndsOrdering(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription_EndsOrdering()

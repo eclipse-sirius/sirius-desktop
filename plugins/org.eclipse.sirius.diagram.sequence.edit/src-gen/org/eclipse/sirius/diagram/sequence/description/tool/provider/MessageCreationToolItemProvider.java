@@ -38,7 +38,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MessageCreationToolItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     /**
      * This adds a property descriptor for the Documentation feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
@@ -97,7 +97,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -109,7 +109,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     /**
      * This adds a property descriptor for the Connection Completion
      * Precondition ( feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated-not
      */
     protected void addPreconditionPropertyDescriptor(Object object) {
@@ -122,7 +122,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     /**
      * This adds a property descriptor for the Force Refresh feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForceRefreshPropertyDescriptor(Object object) {
@@ -135,7 +135,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     /**
      * This adds a property descriptor for the Edge Mappings feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEdgeMappingsPropertyDescriptor(Object object) {
@@ -147,7 +147,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     /**
      * This adds a property descriptor for the Icon Path feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -252,7 +252,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -301,7 +301,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -336,7 +336,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

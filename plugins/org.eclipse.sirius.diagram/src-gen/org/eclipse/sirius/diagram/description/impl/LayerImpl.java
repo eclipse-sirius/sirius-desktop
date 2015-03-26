@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -110,7 +110,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * @generated
      * @ordered
      */
-    protected String endUserDocumentation = END_USER_DOCUMENTATION_EDEFAULT;
+    protected String endUserDocumentation = LayerImpl.END_USER_DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -130,7 +130,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = LayerImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -150,7 +150,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = LayerImpl.LABEL_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getNodeMappings()
@@ -178,7 +178,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * The cached value of the '{@link #getEdgeMappingImports()
      * <em>Edge Mapping Imports</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEdgeMappingImports()
      * @generated
      * @ordered
@@ -189,7 +189,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * The cached value of the '{@link #getContainerMappings()
      * <em>Container Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerMappings()
      * @generated
      * @ordered
@@ -232,7 +232,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * The cached value of the '{@link #getDecorationDescriptionsSet()
      * <em>Decoration Descriptions Set</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDecorationDescriptionsSet()
      * @generated
      * @ordered
@@ -257,7 +257,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * @generated
      * @ordered
      */
-    protected String icon = ICON_EDEFAULT;
+    protected String icon = LayerImpl.ICON_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCustomization()
@@ -294,6 +294,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public String getEndUserDocumentation() {
         return endUserDocumentation;
     }
@@ -303,11 +304,13 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public void setEndUserDocumentation(String newEndUserDocumentation) {
         String oldEndUserDocumentation = endUserDocumentation;
         endUserDocumentation = newEndUserDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYER__END_USER_DOCUMENTATION, oldEndUserDocumentation, endUserDocumentation));
+        }
     }
 
     /**
@@ -315,6 +318,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -324,11 +328,13 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYER__NAME, oldName, name));
+        }
     }
 
     /**
@@ -336,6 +342,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -345,11 +352,13 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYER__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -357,6 +366,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getNodeMappings() {
         if (nodeMappings == null) {
             nodeMappings = new EObjectContainmentEList.Resolving<NodeMapping>(NodeMapping.class, this, DescriptionPackage.LAYER__NODE_MAPPINGS);
@@ -369,6 +379,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public EList<EdgeMapping> getEdgeMappings() {
         if (edgeMappings == null) {
             edgeMappings = new EObjectContainmentEList.Resolving<EdgeMapping>(EdgeMapping.class, this, DescriptionPackage.LAYER__EDGE_MAPPINGS);
@@ -381,6 +392,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public EList<EdgeMappingImport> getEdgeMappingImports() {
         if (edgeMappingImports == null) {
             edgeMappingImports = new EObjectContainmentEList.Resolving<EdgeMappingImport>(EdgeMappingImport.class, this, DescriptionPackage.LAYER__EDGE_MAPPING_IMPORTS);
@@ -393,6 +405,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public EList<ContainerMapping> getContainerMappings() {
         if (containerMappings == null) {
             containerMappings = new EObjectContainmentEList.Resolving<ContainerMapping>(ContainerMapping.class, this, DescriptionPackage.LAYER__CONTAINER_MAPPINGS);
@@ -405,6 +418,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getReusedMappings() {
         if (reusedMappings == null) {
             reusedMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, DescriptionPackage.LAYER__REUSED_MAPPINGS);
@@ -417,6 +431,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public EList<AbstractToolDescription> getAllTools() {
         // TODO: implement this method to return the 'All Tools' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -433,6 +448,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public EList<ToolSection> getToolSections() {
         if (toolSections == null) {
             toolSections = new EObjectContainmentEList.Resolving<ToolSection>(ToolSection.class, this, DescriptionPackage.LAYER__TOOL_SECTIONS);
@@ -445,6 +461,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public EList<AbstractToolDescription> getReusedTools() {
         if (reusedTools == null) {
             reusedTools = new EObjectResolvingEList<AbstractToolDescription>(AbstractToolDescription.class, this, DescriptionPackage.LAYER__REUSED_TOOLS);
@@ -457,20 +474,23 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public DecorationDescriptionsSet getDecorationDescriptionsSet() {
         if (decorationDescriptionsSet != null && decorationDescriptionsSet.eIsProxy()) {
             InternalEObject oldDecorationDescriptionsSet = (InternalEObject) decorationDescriptionsSet;
             decorationDescriptionsSet = (DecorationDescriptionsSet) eResolveProxy(oldDecorationDescriptionsSet);
             if (decorationDescriptionsSet != oldDecorationDescriptionsSet) {
                 InternalEObject newDecorationDescriptionsSet = (InternalEObject) decorationDescriptionsSet;
-                NotificationChain msgs = oldDecorationDescriptionsSet.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, null, null);
+                NotificationChain msgs = oldDecorationDescriptionsSet.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, null, null);
                 if (newDecorationDescriptionsSet.eInternalContainer() == null) {
-                    msgs = newDecorationDescriptionsSet.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, null, msgs);
+                    msgs = newDecorationDescriptionsSet.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, oldDecorationDescriptionsSet, decorationDescriptionsSet));
+                }
             }
         }
         return decorationDescriptionsSet;
@@ -496,10 +516,11 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, oldDecorationDescriptionsSet,
                     newDecorationDescriptionsSet);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -509,18 +530,23 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public void setDecorationDescriptionsSet(DecorationDescriptionsSet newDecorationDescriptionsSet) {
         if (newDecorationDescriptionsSet != decorationDescriptionsSet) {
             NotificationChain msgs = null;
-            if (decorationDescriptionsSet != null)
-                msgs = ((InternalEObject) decorationDescriptionsSet).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, null, msgs);
-            if (newDecorationDescriptionsSet != null)
-                msgs = ((InternalEObject) newDecorationDescriptionsSet).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, null, msgs);
+            if (decorationDescriptionsSet != null) {
+                msgs = ((InternalEObject) decorationDescriptionsSet).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, null, msgs);
+            }
+            if (newDecorationDescriptionsSet != null) {
+                msgs = ((InternalEObject) newDecorationDescriptionsSet).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, null, msgs);
+            }
             msgs = basicSetDecorationDescriptionsSet(newDecorationDescriptionsSet, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET, newDecorationDescriptionsSet, newDecorationDescriptionsSet));
+        }
     }
 
     /**
@@ -528,6 +554,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public String getIcon() {
         return icon;
     }
@@ -537,11 +564,13 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public void setIcon(String newIcon) {
         String oldIcon = icon;
         icon = newIcon;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYER__ICON, oldIcon, icon));
+        }
     }
 
     /**
@@ -549,6 +578,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public EList<EdgeMapping> getAllEdgeMappings() {
         // TODO: implement this method to return the 'All Edge Mappings'
         // reference list
@@ -566,20 +596,23 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public Customization getCustomization() {
         if (customization != null && customization.eIsProxy()) {
             InternalEObject oldCustomization = (InternalEObject) customization;
             customization = (Customization) eResolveProxy(oldCustomization);
             if (customization != oldCustomization) {
                 InternalEObject newCustomization = (InternalEObject) customization;
-                NotificationChain msgs = oldCustomization.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__CUSTOMIZATION, null, null);
+                NotificationChain msgs = oldCustomization.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__CUSTOMIZATION, null, null);
                 if (newCustomization.eInternalContainer() == null) {
-                    msgs = newCustomization.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__CUSTOMIZATION, null, msgs);
+                    msgs = newCustomization.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__CUSTOMIZATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.LAYER__CUSTOMIZATION, oldCustomization, customization));
+                }
             }
         }
         return customization;
@@ -604,10 +637,11 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
         customization = newCustomization;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYER__CUSTOMIZATION, oldCustomization, newCustomization);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -617,18 +651,23 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
+    @Override
     public void setCustomization(Customization newCustomization) {
         if (newCustomization != customization) {
             NotificationChain msgs = null;
-            if (customization != null)
-                msgs = ((InternalEObject) customization).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__CUSTOMIZATION, null, msgs);
-            if (newCustomization != null)
-                msgs = ((InternalEObject) newCustomization).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__CUSTOMIZATION, null, msgs);
+            if (customization != null) {
+                msgs = ((InternalEObject) customization).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__CUSTOMIZATION, null, msgs);
+            }
+            if (newCustomization != null) {
+                msgs = ((InternalEObject) newCustomization).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LAYER__CUSTOMIZATION, null, msgs);
+            }
             msgs = basicSetCustomization(newCustomization, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYER__CUSTOMIZATION, newCustomization, newCustomization));
+        }
     }
 
     /**
@@ -688,16 +727,18 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
         case DescriptionPackage.LAYER__REUSED_TOOLS:
             return getReusedTools();
         case DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET:
-            if (resolve)
+            if (resolve) {
                 return getDecorationDescriptionsSet();
+            }
             return basicGetDecorationDescriptionsSet();
         case DescriptionPackage.LAYER__ICON:
             return getIcon();
         case DescriptionPackage.LAYER__ALL_EDGE_MAPPINGS:
             return getAllEdgeMappings();
         case DescriptionPackage.LAYER__CUSTOMIZATION:
-            if (resolve)
+            if (resolve) {
                 return getCustomization();
+            }
             return basicGetCustomization();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -771,13 +812,13 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.LAYER__END_USER_DOCUMENTATION:
-            setEndUserDocumentation(END_USER_DOCUMENTATION_EDEFAULT);
+            setEndUserDocumentation(LayerImpl.END_USER_DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.LAYER__NAME:
-            setName(NAME_EDEFAULT);
+            setName(LayerImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.LAYER__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(LayerImpl.LABEL_EDEFAULT);
             return;
         case DescriptionPackage.LAYER__NODE_MAPPINGS:
             getNodeMappings().clear();
@@ -804,7 +845,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
             setDecorationDescriptionsSet((DecorationDescriptionsSet) null);
             return;
         case DescriptionPackage.LAYER__ICON:
-            setIcon(ICON_EDEFAULT);
+            setIcon(LayerImpl.ICON_EDEFAULT);
             return;
         case DescriptionPackage.LAYER__CUSTOMIZATION:
             setCustomization((Customization) null);
@@ -822,11 +863,11 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.LAYER__END_USER_DOCUMENTATION:
-            return END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
+            return LayerImpl.END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !LayerImpl.END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
         case DescriptionPackage.LAYER__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return LayerImpl.NAME_EDEFAULT == null ? name != null : !LayerImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.LAYER__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return LayerImpl.LABEL_EDEFAULT == null ? label != null : !LayerImpl.LABEL_EDEFAULT.equals(label);
         case DescriptionPackage.LAYER__NODE_MAPPINGS:
             return nodeMappings != null && !nodeMappings.isEmpty();
         case DescriptionPackage.LAYER__EDGE_MAPPINGS:
@@ -846,7 +887,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
         case DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET:
             return decorationDescriptionsSet != null;
         case DescriptionPackage.LAYER__ICON:
-            return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
+            return LayerImpl.ICON_EDEFAULT == null ? icon != null : !LayerImpl.ICON_EDEFAULT.equals(icon);
         case DescriptionPackage.LAYER__ALL_EDGE_MAPPINGS:
             return !getAllEdgeMappings().isEmpty();
         case DescriptionPackage.LAYER__CUSTOMIZATION:
@@ -918,8 +959,9 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (endUserDocumentation: ");

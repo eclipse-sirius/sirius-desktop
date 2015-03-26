@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -59,7 +59,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The default value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBrowseExpression()
      * @generated
      * @ordered
@@ -70,18 +70,18 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The cached value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBrowseExpression()
      * @generated
      * @ordered
      */
-    protected String browseExpression = BROWSE_EXPRESSION_EDEFAULT;
+    protected String browseExpression = RepresentationNavigationDescriptionImpl.BROWSE_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getNavigationNameExpression()
      * <em>Navigation Name Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getNavigationNameExpression()
      * @generated
      * @ordered
@@ -92,18 +92,18 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The cached value of the '{@link #getNavigationNameExpression()
      * <em>Navigation Name Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getNavigationNameExpression()
      * @generated
      * @ordered
      */
-    protected String navigationNameExpression = NAVIGATION_NAME_EXPRESSION_EDEFAULT;
+    protected String navigationNameExpression = RepresentationNavigationDescriptionImpl.NAVIGATION_NAME_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getContainerViewVariable()
      * <em>Container View Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerViewVariable()
      * @generated
      * @ordered
@@ -114,7 +114,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The cached value of the '{@link #getContainerVariable()
      * <em>Container Variable</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerVariable()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
      * The cached value of the '{@link #getRepresentationNameVariable()
      * <em>Representation Name Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRepresentationNameVariable()
      * @generated
      * @ordered
@@ -134,7 +134,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RepresentationNavigationDescriptionImpl() {
@@ -143,7 +143,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getBrowseExpression() {
@@ -162,19 +162,20 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setBrowseExpression(String newBrowseExpression) {
         String oldBrowseExpression = browseExpression;
         browseExpression = newBrowseExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION, oldBrowseExpression, browseExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getNavigationNameExpression() {
@@ -183,19 +184,20 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setNavigationNameExpression(String newNavigationNameExpression) {
         String oldNavigationNameExpression = navigationNameExpression;
         navigationNameExpression = newNavigationNameExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION, oldNavigationNameExpression, navigationNameExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RepresentationDescription getRepresentationDescription() {
@@ -206,7 +208,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RepresentationDescription basicGetRepresentationDescription() {
@@ -219,7 +221,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable getContainerViewVariable() {
@@ -228,15 +230,18 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
             containerViewVariable = (ContainerViewVariable) eResolveProxy(oldContainerViewVariable);
             if (containerViewVariable != oldContainerViewVariable) {
                 InternalEObject newContainerViewVariable = (InternalEObject) containerViewVariable;
-                NotificationChain msgs = oldContainerViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, null);
+                NotificationChain msgs = oldContainerViewVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, null);
                 if (newContainerViewVariable.eInternalContainer() == null) {
-                    msgs = newContainerViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
+                    msgs = newContainerViewVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, oldContainerViewVariable,
                             containerViewVariable));
+                }
             }
         }
         return containerViewVariable;
@@ -244,7 +249,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable basicGetContainerViewVariable() {
@@ -253,7 +258,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainerViewVariable(ContainerViewVariable newContainerViewVariable, NotificationChain msgs) {
@@ -262,36 +267,43 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, oldContainerViewVariable,
                     newContainerViewVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setContainerViewVariable(ContainerViewVariable newContainerViewVariable) {
         if (newContainerViewVariable != containerViewVariable) {
             NotificationChain msgs = null;
-            if (containerViewVariable != null)
-                msgs = ((InternalEObject) containerViewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
-            if (newContainerViewVariable != null)
-                msgs = ((InternalEObject) newContainerViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
+            if (containerViewVariable != null) {
+                msgs = ((InternalEObject) containerViewVariable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
+            }
+            if (newContainerViewVariable != null) {
+                msgs = ((InternalEObject) newContainerViewVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, null, msgs);
+            }
             msgs = basicSetContainerViewVariable(newContainerViewVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE, newContainerViewVariable, newContainerViewVariable));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementSelectVariable getContainerVariable() {
@@ -300,14 +312,17 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
             containerVariable = (ElementSelectVariable) eResolveProxy(oldContainerVariable);
             if (containerVariable != oldContainerVariable) {
                 InternalEObject newContainerVariable = (InternalEObject) containerVariable;
-                NotificationChain msgs = oldContainerVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, null, null);
+                NotificationChain msgs = oldContainerVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE,
+                        null, null);
                 if (newContainerVariable.eInternalContainer() == null) {
-                    msgs = newContainerVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, null, msgs);
+                    msgs = newContainerVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, oldContainerVariable, containerVariable));
+                }
             }
         }
         return containerVariable;
@@ -315,7 +330,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementSelectVariable basicGetContainerVariable() {
@@ -324,7 +339,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainerVariable(ElementSelectVariable newContainerVariable, NotificationChain msgs) {
@@ -333,36 +348,43 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, oldContainerVariable,
                     newContainerVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setContainerVariable(ElementSelectVariable newContainerVariable) {
         if (newContainerVariable != containerVariable) {
             NotificationChain msgs = null;
-            if (containerVariable != null)
-                msgs = ((InternalEObject) containerVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, null, msgs);
-            if (newContainerVariable != null)
-                msgs = ((InternalEObject) newContainerVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, null, msgs);
+            if (containerVariable != null) {
+                msgs = ((InternalEObject) containerVariable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, null,
+                        msgs);
+            }
+            if (newContainerVariable != null) {
+                msgs = ((InternalEObject) newContainerVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, null,
+                        msgs);
+            }
             msgs = basicSetContainerVariable(newContainerVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE, newContainerVariable, newContainerVariable));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NameVariable getRepresentationNameVariable() {
@@ -371,16 +393,19 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
             representationNameVariable = (NameVariable) eResolveProxy(oldRepresentationNameVariable);
             if (representationNameVariable != oldRepresentationNameVariable) {
                 InternalEObject newRepresentationNameVariable = (InternalEObject) representationNameVariable;
-                NotificationChain msgs = oldRepresentationNameVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
-                        null, null);
+                NotificationChain msgs = oldRepresentationNameVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, null, null);
                 if (newRepresentationNameVariable.eInternalContainer() == null) {
-                    msgs = newRepresentationNameVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, null, msgs);
+                    msgs = newRepresentationNameVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
+                            null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, oldRepresentationNameVariable,
                             representationNameVariable));
+                }
             }
         }
         return representationNameVariable;
@@ -388,7 +413,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NameVariable basicGetRepresentationNameVariable() {
@@ -397,7 +422,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetRepresentationNameVariable(NameVariable newRepresentationNameVariable, NotificationChain msgs) {
@@ -406,39 +431,44 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
                     oldRepresentationNameVariable, newRepresentationNameVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setRepresentationNameVariable(NameVariable newRepresentationNameVariable) {
         if (newRepresentationNameVariable != representationNameVariable) {
             NotificationChain msgs = null;
-            if (representationNameVariable != null)
-                msgs = ((InternalEObject) representationNameVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
-                        null, msgs);
-            if (newRepresentationNameVariable != null)
-                msgs = ((InternalEObject) newRepresentationNameVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE,
-                        null, msgs);
+            if (representationNameVariable != null) {
+                msgs = ((InternalEObject) representationNameVariable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, null, msgs);
+            }
+            if (newRepresentationNameVariable != null) {
+                msgs = ((InternalEObject) newRepresentationNameVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+                        - ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, null, msgs);
+            }
             msgs = basicSetRepresentationNameVariable(newRepresentationNameVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE, newRepresentationNameVariable,
                     newRepresentationNameVariable));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EList<RepresentationElementMapping> getMappings() {
@@ -449,7 +479,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -467,7 +497,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -478,20 +508,24 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION:
             return getNavigationNameExpression();
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getRepresentationDescription();
+            }
             return basicGetRepresentationDescription();
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getContainerViewVariable();
+            }
             return basicGetContainerViewVariable();
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getContainerVariable();
+            }
             return basicGetContainerVariable();
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getRepresentationNameVariable();
+            }
             return basicGetRepresentationNameVariable();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -499,7 +533,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -526,17 +560,17 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION:
-            setBrowseExpression(BROWSE_EXPRESSION_EDEFAULT);
+            setBrowseExpression(RepresentationNavigationDescriptionImpl.BROWSE_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION:
-            setNavigationNameExpression(NAVIGATION_NAME_EXPRESSION_EDEFAULT);
+            setNavigationNameExpression(RepresentationNavigationDescriptionImpl.NAVIGATION_NAME_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE:
             setContainerViewVariable((ContainerViewVariable) null);
@@ -553,7 +587,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -577,13 +611,14 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (browseExpression: ");

@@ -68,6 +68,7 @@ public class TCreationMessageMappingImpl extends TSourceTargetMessageMappingImpl
      * 
      * @generated
      */
+    @Override
     public EList<TLifelineMapping> getTarget() {
         if (target == null) {
             target = new EObjectResolvingEList<TLifelineMapping>(TLifelineMapping.class, this, TemplatePackage.TCREATION_MESSAGE_MAPPING__TARGET);

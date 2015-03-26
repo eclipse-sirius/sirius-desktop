@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -43,7 +43,7 @@ public interface IdentifiedElement extends EObject {
      * <!-- begin-model-doc --> The identifier of this element. Must be unique.
      * Changing this identifier will break existing user models which reference
      * the old identifier. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getIdentifiedElement_Name()
@@ -56,7 +56,7 @@ public interface IdentifiedElement extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -69,7 +69,7 @@ public interface IdentifiedElement extends EObject {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * label used to display this viewpoint to the end-user. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getIdentifiedElement_Label()
@@ -82,7 +82,7 @@ public interface IdentifiedElement extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement#getLabel
      * <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()

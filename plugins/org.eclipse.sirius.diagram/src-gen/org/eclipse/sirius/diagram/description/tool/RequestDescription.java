@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -37,7 +37,7 @@ public interface RequestDescription extends AbstractToolDescription {
      * Identifier for your request. This request will be send through GEF and
      * any EditPolicy handling this request will then be able to perform
      * commands. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Type</em>' attribute.
      * @see #setType(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getRequestDescription_Type()

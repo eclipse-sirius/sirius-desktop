@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.provider;
 
@@ -32,14 +32,14 @@ import org.eclipse.sirius.diagram.description.style.StyleFactory;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.ContainerMapping} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerMappingItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     /**
      * This adds a property descriptor for the Drop Descriptions feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
@@ -82,7 +82,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     /**
      * This adds a property descriptor for the All Node Mappings feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllNodeMappingsPropertyDescriptor(Object object) {
@@ -165,7 +165,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -196,7 +196,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -235,7 +235,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated : adding a default semantic candidate expression at
      *                creation time.
      */
@@ -274,7 +274,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override

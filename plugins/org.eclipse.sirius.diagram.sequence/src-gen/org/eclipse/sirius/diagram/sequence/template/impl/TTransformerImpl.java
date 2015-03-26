@@ -69,6 +69,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
      * 
      * @generated
      */
+    @Override
     public EList<EObject> getOutputs() {
         if (outputs == null) {
             outputs = new EObjectResolvingEList<EObject>(EObject.class, this, TemplatePackage.TTRANSFORMER__OUTPUTS);

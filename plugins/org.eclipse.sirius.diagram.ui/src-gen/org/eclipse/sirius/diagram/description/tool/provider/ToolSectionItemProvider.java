@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.provider;
 
@@ -40,14 +40,14 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.ToolSection} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ToolSectionItemProvider(AdapterFactory adapterFactory) {
@@ -57,7 +57,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Popup Menus feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPopupMenusPropertyDescriptor(Object object) {
@@ -125,7 +125,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Reused Tools feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedToolsPropertyDescriptor(Object object) {
@@ -172,7 +172,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     /**
      * This returns ToolSection.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -223,7 +223,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated : hooking call to add specific tools from the diagram
      *                types.
      */
@@ -248,7 +248,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     /**
      * Remove the descriptor which have a value instance of
      * <code>classOfValue</code>.
-     * 
+     *
      * @param newChildDescriptors
      *            List of child descriptors
      * @param classOfValue
@@ -267,7 +267,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -314,7 +314,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaAction()));
 
         newChildDescriptors
-                .add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaActionCall()));
+        .add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaActionCall()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPopupMenu()));
 
@@ -326,7 +326,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

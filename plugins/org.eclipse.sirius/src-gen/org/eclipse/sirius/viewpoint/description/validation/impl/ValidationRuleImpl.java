@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.validation.impl;
 
@@ -56,7 +56,7 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
     /**
      * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLevel()
      * @generated
      * @ordered
@@ -66,17 +66,17 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
     /**
      * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLevel()
      * @generated
      * @ordered
      */
-    protected ERROR_LEVEL level = LEVEL_EDEFAULT;
+    protected ERROR_LEVEL level = ValidationRuleImpl.LEVEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
@@ -86,17 +86,17 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
      */
-    protected String message = MESSAGE_EDEFAULT;
+    protected String message = ValidationRuleImpl.MESSAGE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getAudits() <em>Audits</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAudits()
      * @generated
      * @ordered
@@ -106,7 +106,7 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
     /**
      * The cached value of the '{@link #getFixes() <em>Fixes</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFixes()
      * @generated
      * @ordered
@@ -115,7 +115,7 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ValidationRuleImpl() {
@@ -124,7 +124,7 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,51 +134,58 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ERROR_LEVEL getLevel() {
         return level;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLevel(ERROR_LEVEL newLevel) {
         ERROR_LEVEL oldLevel = level;
-        level = newLevel == null ? LEVEL_EDEFAULT : newLevel;
-        if (eNotificationRequired())
+        level = newLevel == null ? ValidationRuleImpl.LEVEL_EDEFAULT : newLevel;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ValidationPackage.VALIDATION_RULE__LEVEL, oldLevel, level));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getMessage() {
         return message;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setMessage(String newMessage) {
         String oldMessage = message;
         message = newMessage;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ValidationPackage.VALIDATION_RULE__MESSAGE, oldMessage, message));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<RuleAudit> getAudits() {
         if (audits == null) {
             audits = new EObjectContainmentEList.Resolving<RuleAudit>(RuleAudit.class, this, ValidationPackage.VALIDATION_RULE__AUDITS);
@@ -188,9 +195,10 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ValidationFix> getFixes() {
         if (fixes == null) {
             fixes = new EObjectContainmentEList.Resolving<ValidationFix>(ValidationFix.class, this, ValidationPackage.VALIDATION_RULE__FIXES);
@@ -200,9 +208,10 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public boolean checkRule(EObject eObj) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -211,9 +220,10 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getMessage(EObject eObj) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -222,7 +232,7 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -238,7 +248,7 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -258,7 +268,7 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -285,17 +295,17 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ValidationPackage.VALIDATION_RULE__LEVEL:
-            setLevel(LEVEL_EDEFAULT);
+            setLevel(ValidationRuleImpl.LEVEL_EDEFAULT);
             return;
         case ValidationPackage.VALIDATION_RULE__MESSAGE:
-            setMessage(MESSAGE_EDEFAULT);
+            setMessage(ValidationRuleImpl.MESSAGE_EDEFAULT);
             return;
         case ValidationPackage.VALIDATION_RULE__AUDITS:
             getAudits().clear();
@@ -309,16 +319,16 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ValidationPackage.VALIDATION_RULE__LEVEL:
-            return level != LEVEL_EDEFAULT;
+            return level != ValidationRuleImpl.LEVEL_EDEFAULT;
         case ValidationPackage.VALIDATION_RULE__MESSAGE:
-            return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
+            return ValidationRuleImpl.MESSAGE_EDEFAULT == null ? message != null : !ValidationRuleImpl.MESSAGE_EDEFAULT.equals(message);
         case ValidationPackage.VALIDATION_RULE__AUDITS:
             return audits != null && !audits.isEmpty();
         case ValidationPackage.VALIDATION_RULE__FIXES:
@@ -329,13 +339,14 @@ public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (level: ");

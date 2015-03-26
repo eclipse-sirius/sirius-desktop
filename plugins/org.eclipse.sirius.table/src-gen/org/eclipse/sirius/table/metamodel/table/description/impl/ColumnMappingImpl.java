@@ -54,7 +54,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
      * @generated
      * @ordered
      */
-    protected String headerLabelExpression = HEADER_LABEL_EXPRESSION_EDEFAULT;
+    protected String headerLabelExpression = ColumnMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getInitialWidth()
@@ -76,7 +76,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
      * @generated
      * @ordered
      */
-    protected int initialWidth = INITIAL_WIDTH_EDEFAULT;
+    protected int initialWidth = ColumnMappingImpl.INITIAL_WIDTH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -102,6 +102,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
      * 
      * @generated
      */
+    @Override
     public String getHeaderLabelExpression() {
         return headerLabelExpression;
     }
@@ -111,11 +112,13 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
      * 
      * @generated
      */
+    @Override
     public void setHeaderLabelExpression(String newHeaderLabelExpression) {
         String oldHeaderLabelExpression = headerLabelExpression;
         headerLabelExpression = newHeaderLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.COLUMN_MAPPING__HEADER_LABEL_EXPRESSION, oldHeaderLabelExpression, headerLabelExpression));
+        }
     }
 
     /**
@@ -123,6 +126,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
      * 
      * @generated
      */
+    @Override
     public int getInitialWidth() {
         return initialWidth;
     }
@@ -132,11 +136,13 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
      * 
      * @generated
      */
+    @Override
     public void setInitialWidth(int newInitialWidth) {
         int oldInitialWidth = initialWidth;
         initialWidth = newInitialWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.COLUMN_MAPPING__INITIAL_WIDTH, oldInitialWidth, initialWidth));
+        }
     }
 
     /**
@@ -182,10 +188,10 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.COLUMN_MAPPING__HEADER_LABEL_EXPRESSION:
-            setHeaderLabelExpression(HEADER_LABEL_EXPRESSION_EDEFAULT);
+            setHeaderLabelExpression(ColumnMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.COLUMN_MAPPING__INITIAL_WIDTH:
-            setInitialWidth(INITIAL_WIDTH_EDEFAULT);
+            setInitialWidth(ColumnMappingImpl.INITIAL_WIDTH_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -200,9 +206,9 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.COLUMN_MAPPING__HEADER_LABEL_EXPRESSION:
-            return HEADER_LABEL_EXPRESSION_EDEFAULT == null ? headerLabelExpression != null : !HEADER_LABEL_EXPRESSION_EDEFAULT.equals(headerLabelExpression);
+            return ColumnMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT == null ? headerLabelExpression != null : !ColumnMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT.equals(headerLabelExpression);
         case DescriptionPackage.COLUMN_MAPPING__INITIAL_WIDTH:
-            return initialWidth != INITIAL_WIDTH_EDEFAULT;
+            return initialWidth != ColumnMappingImpl.INITIAL_WIDTH_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -214,8 +220,9 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (headerLabelExpression: ");

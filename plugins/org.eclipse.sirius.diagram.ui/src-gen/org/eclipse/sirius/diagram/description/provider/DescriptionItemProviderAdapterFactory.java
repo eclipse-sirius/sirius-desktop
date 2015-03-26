@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.provider;
 
@@ -67,7 +67,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -84,7 +84,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public DescriptionItemProviderAdapterFactory() {
@@ -108,7 +108,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -208,7 +208,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.ContainerMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.NodeMappingImport}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -283,7 +283,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -308,7 +308,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -408,7 +408,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.OrderedTreeLayout}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -433,7 +433,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.CompositeLayout}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -474,7 +474,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.Layer} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LayerItemProvider layerItemProvider;
@@ -508,7 +508,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.AdditionalLayer}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -523,9 +523,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -533,9 +534,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -583,6 +585,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -592,6 +595,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -600,9 +604,10 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -614,50 +619,68 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (diagramDescriptionItemProvider != null)
+        if (diagramDescriptionItemProvider != null) {
             diagramDescriptionItemProvider.dispose();
-        if (diagramImportDescriptionItemProvider != null)
+        }
+        if (diagramImportDescriptionItemProvider != null) {
             diagramImportDescriptionItemProvider.dispose();
-        if (diagramExtensionDescriptionItemProvider != null)
+        }
+        if (diagramExtensionDescriptionItemProvider != null) {
             diagramExtensionDescriptionItemProvider.dispose();
-        if (nodeMappingItemProvider != null)
+        }
+        if (nodeMappingItemProvider != null) {
             nodeMappingItemProvider.dispose();
-        if (containerMappingItemProvider != null)
+        }
+        if (containerMappingItemProvider != null) {
             containerMappingItemProvider.dispose();
-        if (nodeMappingImportItemProvider != null)
+        }
+        if (nodeMappingImportItemProvider != null) {
             nodeMappingImportItemProvider.dispose();
-        if (containerMappingImportItemProvider != null)
+        }
+        if (containerMappingImportItemProvider != null) {
             containerMappingImportItemProvider.dispose();
-        if (edgeMappingItemProvider != null)
+        }
+        if (edgeMappingItemProvider != null) {
             edgeMappingItemProvider.dispose();
-        if (edgeMappingImportItemProvider != null)
+        }
+        if (edgeMappingImportItemProvider != null) {
             edgeMappingImportItemProvider.dispose();
-        if (conditionalNodeStyleDescriptionItemProvider != null)
+        }
+        if (conditionalNodeStyleDescriptionItemProvider != null) {
             conditionalNodeStyleDescriptionItemProvider.dispose();
-        if (conditionalEdgeStyleDescriptionItemProvider != null)
+        }
+        if (conditionalEdgeStyleDescriptionItemProvider != null) {
             conditionalEdgeStyleDescriptionItemProvider.dispose();
-        if (conditionalContainerStyleDescriptionItemProvider != null)
+        }
+        if (conditionalContainerStyleDescriptionItemProvider != null) {
             conditionalContainerStyleDescriptionItemProvider.dispose();
-        if (orderedTreeLayoutItemProvider != null)
+        }
+        if (orderedTreeLayoutItemProvider != null) {
             orderedTreeLayoutItemProvider.dispose();
-        if (compositeLayoutItemProvider != null)
+        }
+        if (compositeLayoutItemProvider != null) {
             compositeLayoutItemProvider.dispose();
-        if (mappingBasedDecorationItemProvider != null)
+        }
+        if (mappingBasedDecorationItemProvider != null) {
             mappingBasedDecorationItemProvider.dispose();
-        if (layerItemProvider != null)
+        }
+        if (layerItemProvider != null) {
             layerItemProvider.dispose();
-        if (additionalLayerItemProvider != null)
+        }
+        if (additionalLayerItemProvider != null) {
             additionalLayerItemProvider.dispose();
+        }
     }
 
     /**
      * A child creation extender for the {@link DescriptionPackage}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static class DescriptionChildCreationExtender implements IChildCreationExtender {
@@ -759,6 +782,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
          * 
          * @generated
          */
+        @Override
         public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
             ArrayList<Object> result = new ArrayList<Object>();
             new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
@@ -770,6 +794,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
          * 
          * @generated
          */
+        @Override
         public ResourceLocator getResourceLocator() {
             return DiagramUIPlugin.INSTANCE;
         }

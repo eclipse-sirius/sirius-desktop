@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -90,7 +90,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * The cached value of the '{@link #getSubNodeMappings()
      * <em>Sub Node Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubNodeMappings()
      * @generated
      * @ordered
@@ -112,7 +112,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * The cached value of the '{@link #getSubContainerMappings()
      * <em>Sub Container Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubContainerMappings()
      * @generated
      * @ordered
@@ -144,7 +144,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * The cached value of the '{@link #getConditionnalStyles()
      * <em>Conditionnal Styles</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionnalStyles()
      * @generated
      * @ordered
@@ -171,7 +171,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * @generated
      * @ordered
      */
-    protected ContainerLayout childrenPresentation = CHILDREN_PRESENTATION_EDEFAULT;
+    protected ContainerLayout childrenPresentation = ContainerMappingImpl.CHILDREN_PRESENTATION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -197,6 +197,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<ContainerDropDescription> getDropDescriptions() {
         if (dropDescriptions == null) {
             dropDescriptions = new EObjectResolvingEList<ContainerDropDescription>(ContainerDropDescription.class, this, DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS);
@@ -209,6 +210,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getSubNodeMappings() {
         if (subNodeMappings == null) {
             subNodeMappings = new EObjectContainmentEList.Resolving<NodeMapping>(NodeMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS);
@@ -221,6 +223,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getAllNodeMappings() {
         // TODO: implement this method to return the 'All Node Mappings'
         // reference list
@@ -238,6 +241,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<NodeMapping> getReusedNodeMappings() {
         if (reusedNodeMappings == null) {
             reusedNodeMappings = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS);
@@ -250,6 +254,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<ContainerMapping> getSubContainerMappings() {
         if (subContainerMappings == null) {
             subContainerMappings = new EObjectContainmentEList.Resolving<ContainerMapping>(ContainerMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS);
@@ -262,6 +267,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<ContainerMapping> getReusedContainerMappings() {
         if (reusedContainerMappings == null) {
             reusedContainerMappings = new EObjectResolvingEList<ContainerMapping>(ContainerMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS);
@@ -274,6 +280,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<ContainerMapping> getAllContainerMappings() {
         // TODO: implement this method to return the 'All Container Mappings'
         // reference list
@@ -291,20 +298,23 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public ContainerStyleDescription getStyle() {
         if (style != null && style.eIsProxy()) {
             InternalEObject oldStyle = (InternalEObject) style;
             style = (ContainerStyleDescription) eResolveProxy(oldStyle);
             if (style != oldStyle) {
                 InternalEObject newStyle = (InternalEObject) style;
-                NotificationChain msgs = oldStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONTAINER_MAPPING__STYLE, null, null);
+                NotificationChain msgs = oldStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONTAINER_MAPPING__STYLE, null, null);
                 if (newStyle.eInternalContainer() == null) {
-                    msgs = newStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONTAINER_MAPPING__STYLE, null, msgs);
+                    msgs = newStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONTAINER_MAPPING__STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.CONTAINER_MAPPING__STYLE, oldStyle, style));
+                }
             }
         }
         return style;
@@ -329,10 +339,11 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
         style = newStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONTAINER_MAPPING__STYLE, oldStyle, newStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -342,18 +353,23 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public void setStyle(ContainerStyleDescription newStyle) {
         if (newStyle != style) {
             NotificationChain msgs = null;
-            if (style != null)
-                msgs = ((InternalEObject) style).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONTAINER_MAPPING__STYLE, null, msgs);
-            if (newStyle != null)
-                msgs = ((InternalEObject) newStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONTAINER_MAPPING__STYLE, null, msgs);
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONTAINER_MAPPING__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONTAINER_MAPPING__STYLE, null, msgs);
+            }
             msgs = basicSetStyle(newStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONTAINER_MAPPING__STYLE, newStyle, newStyle));
+        }
     }
 
     /**
@@ -361,6 +377,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public EList<ConditionalContainerStyleDescription> getConditionnalStyles() {
         if (conditionnalStyles == null) {
             conditionnalStyles = new EObjectContainmentEList.Resolving<ConditionalContainerStyleDescription>(ConditionalContainerStyleDescription.class, this,
@@ -374,6 +391,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public ContainerLayout getChildrenPresentation() {
         return childrenPresentation;
     }
@@ -383,11 +401,13 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public void setChildrenPresentation(ContainerLayout newChildrenPresentation) {
         ContainerLayout oldChildrenPresentation = childrenPresentation;
-        childrenPresentation = newChildrenPresentation == null ? CHILDREN_PRESENTATION_EDEFAULT : newChildrenPresentation;
-        if (eNotificationRequired())
+        childrenPresentation = newChildrenPresentation == null ? ContainerMappingImpl.CHILDREN_PRESENTATION_EDEFAULT : newChildrenPresentation;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION, oldChildrenPresentation, childrenPresentation));
+        }
     }
 
     /**
@@ -395,6 +415,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * 
      * @generated
      */
+    @Override
     public ContainerStyle getBestStyle(EObject modelElement, EObject viewVariable, EObject containerVariable) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -444,8 +465,9 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
         case DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS:
             return getAllContainerMappings();
         case DescriptionPackage.CONTAINER_MAPPING__STYLE:
-            if (resolve)
+            if (resolve) {
                 return getStyle();
+            }
             return basicGetStyle();
         case DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES:
             return getConditionnalStyles();
@@ -528,7 +550,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
             getConditionnalStyles().clear();
             return;
         case DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION:
-            setChildrenPresentation(CHILDREN_PRESENTATION_EDEFAULT);
+            setChildrenPresentation(ContainerMappingImpl.CHILDREN_PRESENTATION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -561,7 +583,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
         case DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES:
             return conditionnalStyles != null && !conditionnalStyles.isEmpty();
         case DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION:
-            return childrenPresentation != CHILDREN_PRESENTATION_EDEFAULT;
+            return childrenPresentation != ContainerMappingImpl.CHILDREN_PRESENTATION_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -609,8 +631,9 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (childrenPresentation: ");

@@ -49,7 +49,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
      * @generated
      * @ordered
      */
-    protected String featureName = FEATURE_NAME_EDEFAULT;
+    protected String featureName = DFeatureColumnImpl.FEATURE_NAME_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -75,6 +75,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
      * 
      * @generated
      */
+    @Override
     public String getFeatureName() {
         return featureName;
     }
@@ -84,11 +85,13 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
      * 
      * @generated
      */
+    @Override
     public void setFeatureName(String newFeatureName) {
         String oldFeatureName = featureName;
         featureName = newFeatureName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DFEATURE_COLUMN__FEATURE_NAME, oldFeatureName, featureName));
+        }
     }
 
     /**
@@ -129,7 +132,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
     public void eUnset(int featureID) {
         switch (featureID) {
         case TablePackage.DFEATURE_COLUMN__FEATURE_NAME:
-            setFeatureName(FEATURE_NAME_EDEFAULT);
+            setFeatureName(DFeatureColumnImpl.FEATURE_NAME_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -144,7 +147,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TablePackage.DFEATURE_COLUMN__FEATURE_NAME:
-            return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
+            return DFeatureColumnImpl.FEATURE_NAME_EDEFAULT == null ? featureName != null : !DFeatureColumnImpl.FEATURE_NAME_EDEFAULT.equals(featureName);
         }
         return super.eIsSet(featureID);
     }
@@ -156,8 +159,9 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (featureName: ");

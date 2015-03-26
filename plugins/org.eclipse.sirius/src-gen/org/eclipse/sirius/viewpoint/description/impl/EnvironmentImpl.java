@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -53,7 +53,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
      * The cached value of the '{@link #getSystemColors()
      * <em>System Colors</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getSystemColors()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
      * The cached value of the '{@link #getDefaultTools()
      * <em>Default Tools</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefaultTools()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
      * The cached value of the '{@link #getLabelBorderStyles()
      * <em>Label Border Styles</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelBorderStyles()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EnvironmentImpl() {
@@ -93,7 +93,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,23 +103,26 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SytemColorsPalette getSystemColors() {
         if (systemColors != null && systemColors.eIsProxy()) {
             InternalEObject oldSystemColors = (InternalEObject) systemColors;
             systemColors = (SytemColorsPalette) eResolveProxy(oldSystemColors);
             if (systemColors != oldSystemColors) {
                 InternalEObject newSystemColors = (InternalEObject) systemColors;
-                NotificationChain msgs = oldSystemColors.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, null, null);
+                NotificationChain msgs = oldSystemColors.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, null, null);
                 if (newSystemColors.eInternalContainer() == null) {
-                    msgs = newSystemColors.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, null, msgs);
+                    msgs = newSystemColors.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, oldSystemColors, systemColors));
+                }
             }
         }
         return systemColors;
@@ -127,7 +130,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SytemColorsPalette basicGetSystemColors() {
@@ -136,7 +139,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSystemColors(SytemColorsPalette newSystemColors, NotificationChain msgs) {
@@ -144,38 +147,45 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
         systemColors = newSystemColors;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, oldSystemColors, newSystemColors);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSystemColors(SytemColorsPalette newSystemColors) {
         if (newSystemColors != systemColors) {
             NotificationChain msgs = null;
-            if (systemColors != null)
-                msgs = ((InternalEObject) systemColors).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, null, msgs);
-            if (newSystemColors != null)
-                msgs = ((InternalEObject) newSystemColors).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, null, msgs);
+            if (systemColors != null) {
+                msgs = ((InternalEObject) systemColors).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, null, msgs);
+            }
+            if (newSystemColors != null) {
+                msgs = ((InternalEObject) newSystemColors).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, null, msgs);
+            }
             msgs = basicSetSystemColors(newSystemColors, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS, newSystemColors, newSystemColors));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ToolEntry> getDefaultTools() {
         if (defaultTools == null) {
             defaultTools = new EObjectContainmentEList.Resolving<ToolEntry>(ToolEntry.class, this, DescriptionPackage.ENVIRONMENT__DEFAULT_TOOLS);
@@ -185,23 +195,26 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public LabelBorderStyles getLabelBorderStyles() {
         if (labelBorderStyles != null && labelBorderStyles.eIsProxy()) {
             InternalEObject oldLabelBorderStyles = (InternalEObject) labelBorderStyles;
             labelBorderStyles = (LabelBorderStyles) eResolveProxy(oldLabelBorderStyles);
             if (labelBorderStyles != oldLabelBorderStyles) {
                 InternalEObject newLabelBorderStyles = (InternalEObject) labelBorderStyles;
-                NotificationChain msgs = oldLabelBorderStyles.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, null, null);
+                NotificationChain msgs = oldLabelBorderStyles.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, null, null);
                 if (newLabelBorderStyles.eInternalContainer() == null) {
-                    msgs = newLabelBorderStyles.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, null, msgs);
+                    msgs = newLabelBorderStyles.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, oldLabelBorderStyles, labelBorderStyles));
+                }
             }
         }
         return labelBorderStyles;
@@ -209,7 +222,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LabelBorderStyles basicGetLabelBorderStyles() {
@@ -218,7 +231,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetLabelBorderStyles(LabelBorderStyles newLabelBorderStyles, NotificationChain msgs) {
@@ -226,36 +239,42 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
         labelBorderStyles = newLabelBorderStyles;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, oldLabelBorderStyles, newLabelBorderStyles);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabelBorderStyles(LabelBorderStyles newLabelBorderStyles) {
         if (newLabelBorderStyles != labelBorderStyles) {
             NotificationChain msgs = null;
-            if (labelBorderStyles != null)
-                msgs = ((InternalEObject) labelBorderStyles).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, null, msgs);
-            if (newLabelBorderStyles != null)
-                msgs = ((InternalEObject) newLabelBorderStyles).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, null, msgs);
+            if (labelBorderStyles != null) {
+                msgs = ((InternalEObject) labelBorderStyles).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, null, msgs);
+            }
+            if (newLabelBorderStyles != null) {
+                msgs = ((InternalEObject) newLabelBorderStyles).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, null, msgs);
+            }
             msgs = basicSetLabelBorderStyles(newLabelBorderStyles, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES, newLabelBorderStyles, newLabelBorderStyles));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,21 +292,23 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DescriptionPackage.ENVIRONMENT__SYSTEM_COLORS:
-            if (resolve)
+            if (resolve) {
                 return getSystemColors();
+            }
             return basicGetSystemColors();
         case DescriptionPackage.ENVIRONMENT__DEFAULT_TOOLS:
             return getDefaultTools();
         case DescriptionPackage.ENVIRONMENT__LABEL_BORDER_STYLES:
-            if (resolve)
+            if (resolve) {
                 return getLabelBorderStyles();
+            }
             return basicGetLabelBorderStyles();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -295,7 +316,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -318,7 +339,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -339,7 +360,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

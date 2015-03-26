@@ -76,7 +76,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
      * @generated
      * @ordered
      */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
+    protected String documentation = TreeVariableImpl.DOCUMENTATION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -102,6 +102,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
      * 
      * @generated
      */
+    @Override
     public EList<SubVariable> getSubVariables() {
         if (subVariables == null) {
             subVariables = new EObjectContainmentEList.Resolving<SubVariable>(SubVariable.class, this, DescriptionPackage.TREE_VARIABLE__SUB_VARIABLES);
@@ -114,6 +115,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
      * 
      * @generated
      */
+    @Override
     public String getDocumentation() {
         return documentation;
     }
@@ -123,11 +125,13 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
      * 
      * @generated
      */
+    @Override
     public void setDocumentation(String newDocumentation) {
         String oldDocumentation = documentation;
         documentation = newDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_VARIABLE__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
@@ -192,7 +196,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
             getSubVariables().clear();
             return;
         case DescriptionPackage.TREE_VARIABLE__DOCUMENTATION:
-            setDocumentation(DOCUMENTATION_EDEFAULT);
+            setDocumentation(TreeVariableImpl.DOCUMENTATION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -209,7 +213,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
         case DescriptionPackage.TREE_VARIABLE__SUB_VARIABLES:
             return subVariables != null && !subVariables.isEmpty();
         case DescriptionPackage.TREE_VARIABLE__DOCUMENTATION:
-            return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+            return TreeVariableImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !TreeVariableImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         }
         return super.eIsSet(featureID);
     }
@@ -257,8 +261,9 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (documentation: ");

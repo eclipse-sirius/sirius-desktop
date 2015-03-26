@@ -58,7 +58,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
      * @generated
      * @ordered
      */
-    protected String predicateExpression = PREDICATE_EXPRESSION_EDEFAULT;
+    protected String predicateExpression = BackgroundConditionalStyleImpl.PREDICATE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
@@ -94,6 +94,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public String getPredicateExpression() {
         return predicateExpression;
     }
@@ -103,11 +104,13 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public void setPredicateExpression(String newPredicateExpression) {
         String oldPredicateExpression = predicateExpression;
         predicateExpression = newPredicateExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION, oldPredicateExpression, predicateExpression));
+        }
     }
 
     /**
@@ -115,6 +118,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public BackgroundStyleDescription getStyle() {
         return style;
     }
@@ -129,10 +133,11 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
         style = newStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__STYLE, oldStyle, newStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -142,18 +147,23 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public void setStyle(BackgroundStyleDescription newStyle) {
         if (newStyle != style) {
             NotificationChain msgs = null;
-            if (style != null)
-                msgs = ((InternalEObject) style).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__STYLE, null, msgs);
-            if (newStyle != null)
-                msgs = ((InternalEObject) newStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__STYLE, null, msgs);
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__STYLE, null, msgs);
+            }
             msgs = basicSetStyle(newStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__STYLE, newStyle, newStyle));
+        }
     }
 
     /**
@@ -213,7 +223,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION:
-            setPredicateExpression(PREDICATE_EXPRESSION_EDEFAULT);
+            setPredicateExpression(BackgroundConditionalStyleImpl.PREDICATE_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__STYLE:
             setStyle((BackgroundStyleDescription) null);
@@ -231,7 +241,8 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION:
-            return PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !PREDICATE_EXPRESSION_EDEFAULT.equals(predicateExpression);
+            return BackgroundConditionalStyleImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !BackgroundConditionalStyleImpl.PREDICATE_EXPRESSION_EDEFAULT
+                    .equals(predicateExpression);
         case DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__STYLE:
             return style != null;
         }
@@ -245,8 +256,9 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (predicateExpression: ");

@@ -49,6 +49,7 @@ public class DTreeElementSynchronizerImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public void refresh(DTreeItem DTreeItem) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT

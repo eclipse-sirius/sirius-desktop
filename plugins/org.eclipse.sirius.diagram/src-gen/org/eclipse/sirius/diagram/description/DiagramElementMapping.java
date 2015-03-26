@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -67,7 +67,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * attribute. The default value is <code>""</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> An expression guarding the
      * effect if evaluated to false. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_PreconditionExpression()
@@ -102,7 +102,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The tool that describes how to delete this element.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Deletion Description</em>' reference.
      * @see #setDeletionDescription(DeleteElementDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_DeletionDescription()
@@ -130,7 +130,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The tool that describes what to do when the user edits the label of the
      * elements. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Direct Edit</em>' reference.
      * @see #setLabelDirectEdit(DirectEditLabel)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_LabelDirectEdit()
@@ -161,7 +161,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * EObject that are candidates of the mapping instead of the candidates of
      * the default case. The context of the expression is the semantic element
      * of the view container. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Candidates Expression</em>'
      *         attribute.
      * @see #setSemanticCandidatesExpression(String)
@@ -198,7 +198,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * end-user-doc --> <!-- begin-model-doc --> true if the init/refresh
      * operations should create elements for this mapping. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Create Elements</em>' attribute.
      * @see #setCreateElements(boolean)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_CreateElements()
@@ -225,7 +225,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The elements that are represented by this connection. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Semantic Elements</em>' attribute.
      * @see #setSemanticElements(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_SemanticElements()
@@ -296,7 +296,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * diagram is in an unsynchronized mode. This option is used only if
      * createElements is true and the diagram which contain the elements of this
      * mapping is unsynchronized. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Synchronization Lock</em>' attribute.
      * @see #setSynchronizationLock(boolean)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_SynchronizationLock()
@@ -323,7 +323,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Check the precondition of the mapping. Return true if the condition is
      * checked, false otherwise.
-     * 
+     *
      * @param modelElement
      *            The element to test.
      * @param container
@@ -340,7 +340,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return all sub mappings. <!-- end-model-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */
@@ -350,7 +350,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Returns true if the given ViewPointElement has been produced from this
      * Mapping or any imported mapping.
-     * 
+     *
      * @param element
      *            Any ViewPointElement <!-- end-model-doc -->
      * @model

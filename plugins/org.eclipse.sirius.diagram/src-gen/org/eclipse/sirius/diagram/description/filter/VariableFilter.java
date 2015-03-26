@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc --> A filter that filters viewpoint elements considering
  * an expression and some variables defined by the user.
- * 
+ *
  * <!-- end-model-doc -->
  *
  * <p>
@@ -65,7 +65,7 @@ public interface VariableFilter extends Filter {
      * attribute. The default value is <code>""</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> The condition to apply on
      * the semantic element. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Condition Expression</em>'
      *         attribute.
      * @see #setSemanticConditionExpression(String)
@@ -96,7 +96,7 @@ public interface VariableFilter extends Filter {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Set the couple (name,value) of variables to consider while evaluating the
      * filter.
-     * 
+     *
      * @param variables
      *            (name,value) couples where name is a String and value is an
      *            EObject <!-- end-model-doc -->

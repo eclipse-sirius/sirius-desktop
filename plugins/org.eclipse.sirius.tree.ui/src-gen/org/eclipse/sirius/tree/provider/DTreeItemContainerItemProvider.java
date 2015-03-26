@@ -29,14 +29,14 @@ import org.eclipse.sirius.viewpoint.provider.DSemanticDecoratorItemProvider;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.DTreeItemContainer} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DTreeItemContainerItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DTreeItemContainerItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class DTreeItemContainerItemProvider extends DSemanticDecoratorItemProvid
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class DTreeItemContainerItemProvider extends DSemanticDecoratorItemProvid
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class DTreeItemContainerItemProvider extends DSemanticDecoratorItemProvid
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

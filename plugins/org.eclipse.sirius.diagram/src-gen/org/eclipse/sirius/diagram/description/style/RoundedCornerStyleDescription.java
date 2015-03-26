@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -39,7 +39,7 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
      * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The width of the ellipse used
      * to draw the corners. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Arc Width</em>' attribute.
      * @see #setArcWidth(Integer)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getRoundedCornerStyleDescription_ArcWidth()
@@ -53,7 +53,7 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth
      * <em>Arc Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Arc Width</em>' attribute.
      * @see #getArcWidth()
@@ -66,7 +66,7 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
      * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The height of the ellipse used
      * to draw the corners. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Arc Height</em>' attribute.
      * @see #setArcHeight(Integer)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getRoundedCornerStyleDescription_ArcHeight()

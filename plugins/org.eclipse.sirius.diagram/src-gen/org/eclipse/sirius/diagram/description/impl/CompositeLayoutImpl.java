@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -55,7 +55,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
      * @generated
      * @ordered
      */
-    protected int padding = PADDING_EDEFAULT;
+    protected int padding = CompositeLayoutImpl.PADDING_EDEFAULT;
 
     /**
      * The default value of the '{@link #getDirection() <em>Direction</em>}'
@@ -75,7 +75,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
      * @generated
      * @ordered
      */
-    protected LayoutDirection direction = DIRECTION_EDEFAULT;
+    protected LayoutDirection direction = CompositeLayoutImpl.DIRECTION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -101,6 +101,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
      * 
      * @generated
      */
+    @Override
     public int getPadding() {
         return padding;
     }
@@ -110,11 +111,13 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
      * 
      * @generated
      */
+    @Override
     public void setPadding(int newPadding) {
         int oldPadding = padding;
         padding = newPadding;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.COMPOSITE_LAYOUT__PADDING, oldPadding, padding));
+        }
     }
 
     /**
@@ -122,6 +125,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
      * 
      * @generated
      */
+    @Override
     public LayoutDirection getDirection() {
         return direction;
     }
@@ -131,11 +135,13 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
      * 
      * @generated
      */
+    @Override
     public void setDirection(LayoutDirection newDirection) {
         LayoutDirection oldDirection = direction;
-        direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
-        if (eNotificationRequired())
+        direction = newDirection == null ? CompositeLayoutImpl.DIRECTION_EDEFAULT : newDirection;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.COMPOSITE_LAYOUT__DIRECTION, oldDirection, direction));
+        }
     }
 
     /**
@@ -181,10 +187,10 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.COMPOSITE_LAYOUT__PADDING:
-            setPadding(PADDING_EDEFAULT);
+            setPadding(CompositeLayoutImpl.PADDING_EDEFAULT);
             return;
         case DescriptionPackage.COMPOSITE_LAYOUT__DIRECTION:
-            setDirection(DIRECTION_EDEFAULT);
+            setDirection(CompositeLayoutImpl.DIRECTION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -199,9 +205,9 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.COMPOSITE_LAYOUT__PADDING:
-            return padding != PADDING_EDEFAULT;
+            return padding != CompositeLayoutImpl.PADDING_EDEFAULT;
         case DescriptionPackage.COMPOSITE_LAYOUT__DIRECTION:
-            return direction != DIRECTION_EDEFAULT;
+            return direction != CompositeLayoutImpl.DIRECTION_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -213,8 +219,9 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (padding: ");

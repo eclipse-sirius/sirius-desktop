@@ -61,8 +61,8 @@ public class TemplateSwitch<T> {
      * @generated
      */
     public TemplateSwitch() {
-        if (modelPackage == null) {
-            modelPackage = TemplatePackage.eINSTANCE;
+        if (TemplateSwitch.modelPackage == null) {
+            TemplateSwitch.modelPackage = TemplatePackage.eINSTANCE;
         }
     }
 
@@ -89,7 +89,7 @@ public class TemplateSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == TemplateSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -111,197 +111,250 @@ public class TemplateSwitch<T> {
         case TemplatePackage.TTRANSFORMER: {
             TTransformer tTransformer = (TTransformer) theEObject;
             T result = caseTTransformer(tTransformer);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TABSTRACT_MAPPING: {
             TAbstractMapping tAbstractMapping = (TAbstractMapping) theEObject;
             T result = caseTAbstractMapping(tAbstractMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTTransformer(tAbstractMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TSEQUENCE_DIAGRAM: {
             TSequenceDiagram tSequenceDiagram = (TSequenceDiagram) theEObject;
             T result = caseTSequenceDiagram(tSequenceDiagram);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentationTemplate(tSequenceDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTTransformer(tSequenceDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TMESSAGE_EXTREMITY: {
             TMessageExtremity tMessageExtremity = (TMessageExtremity) theEObject;
             T result = caseTMessageExtremity(tMessageExtremity);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TLIFELINE_MAPPING: {
             TLifelineMapping tLifelineMapping = (TLifelineMapping) theEObject;
             T result = caseTLifelineMapping(tLifelineMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTAbstractMapping(tLifelineMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTMessageExtremity(tLifelineMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTTransformer(tLifelineMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TLIFELINE_STYLE: {
             TLifelineStyle tLifelineStyle = (TLifelineStyle) theEObject;
             T result = caseTLifelineStyle(tLifelineStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseTTransformer(tLifelineStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TCONDITIONAL_LIFELINE_STYLE: {
             TConditionalLifelineStyle tConditionalLifelineStyle = (TConditionalLifelineStyle) theEObject;
             T result = caseTConditionalLifelineStyle(tConditionalLifelineStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseTTransformer(tConditionalLifelineStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TEXECUTION_MAPPING: {
             TExecutionMapping tExecutionMapping = (TExecutionMapping) theEObject;
             T result = caseTExecutionMapping(tExecutionMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTAbstractMapping(tExecutionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTMessageExtremity(tExecutionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTTransformer(tExecutionMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TEXECUTION_STYLE: {
             TExecutionStyle tExecutionStyle = (TExecutionStyle) theEObject;
             T result = caseTExecutionStyle(tExecutionStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseTTransformer(tExecutionStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TCONDITIONAL_EXECUTION_STYLE: {
             TConditionalExecutionStyle tConditionalExecutionStyle = (TConditionalExecutionStyle) theEObject;
             T result = caseTConditionalExecutionStyle(tConditionalExecutionStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseTTransformer(tConditionalExecutionStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TMESSAGE_MAPPING: {
             TMessageMapping tMessageMapping = (TMessageMapping) theEObject;
             T result = caseTMessageMapping(tMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTAbstractMapping(tMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTTransformer(tMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TMESSAGE_STYLE: {
             TMessageStyle tMessageStyle = (TMessageStyle) theEObject;
             T result = caseTMessageStyle(tMessageStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseTTransformer(tMessageStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TCONDITIONAL_MESSAGE_STYLE: {
             TConditionalMessageStyle tConditionalMessageStyle = (TConditionalMessageStyle) theEObject;
             T result = caseTConditionalMessageStyle(tConditionalMessageStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseTTransformer(tConditionalMessageStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TBASIC_MESSAGE_MAPPING: {
             TBasicMessageMapping tBasicMessageMapping = (TBasicMessageMapping) theEObject;
             T result = caseTBasicMessageMapping(tBasicMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTSourceTargetMessageMapping(tBasicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTMessageMapping(tBasicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTAbstractMapping(tBasicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTTransformer(tBasicMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING: {
             TSourceTargetMessageMapping tSourceTargetMessageMapping = (TSourceTargetMessageMapping) theEObject;
             T result = caseTSourceTargetMessageMapping(tSourceTargetMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTMessageMapping(tSourceTargetMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTAbstractMapping(tSourceTargetMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTTransformer(tSourceTargetMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TRETURN_MESSAGE_MAPPING: {
             TReturnMessageMapping tReturnMessageMapping = (TReturnMessageMapping) theEObject;
             T result = caseTReturnMessageMapping(tReturnMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTMessageMapping(tReturnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTAbstractMapping(tReturnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTTransformer(tReturnMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TCREATION_MESSAGE_MAPPING: {
             TCreationMessageMapping tCreationMessageMapping = (TCreationMessageMapping) theEObject;
             T result = caseTCreationMessageMapping(tCreationMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTSourceTargetMessageMapping(tCreationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTMessageMapping(tCreationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTAbstractMapping(tCreationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTTransformer(tCreationMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case TemplatePackage.TDESTRUCTION_MESSAGE_MAPPING: {
             TDestructionMessageMapping tDestructionMessageMapping = (TDestructionMessageMapping) theEObject;
             T result = caseTDestructionMessageMapping(tDestructionMessageMapping);
-            if (result == null)
+            if (result == null) {
                 result = caseTSourceTargetMessageMapping(tDestructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTMessageMapping(tDestructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTAbstractMapping(tDestructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTTransformer(tDestructionMessageMapping);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:

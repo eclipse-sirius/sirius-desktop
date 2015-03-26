@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -37,7 +37,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
      * The default value of the '{@link #getQualifiedClassName()
      * <em>Qualified Class Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getQualifiedClassName()
      * @generated
      * @ordered
@@ -48,16 +48,16 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
      * The cached value of the '{@link #getQualifiedClassName()
      * <em>Qualified Class Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getQualifiedClassName()
      * @generated
      * @ordered
      */
-    protected String qualifiedClassName = QUALIFIED_CLASS_NAME_EDEFAULT;
+    protected String qualifiedClassName = JavaExtensionImpl.QUALIFIED_CLASS_NAME_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected JavaExtensionImpl() {
@@ -66,7 +66,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,28 +76,31 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getQualifiedClassName() {
         return qualifiedClassName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setQualifiedClassName(String newQualifiedClassName) {
         String oldQualifiedClassName = qualifiedClassName;
         qualifiedClassName = newQualifiedClassName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.JAVA_EXTENSION__QUALIFIED_CLASS_NAME, oldQualifiedClassName, qualifiedClassName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +114,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,14 +129,14 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.JAVA_EXTENSION__QUALIFIED_CLASS_NAME:
-            setQualifiedClassName(QUALIFIED_CLASS_NAME_EDEFAULT);
+            setQualifiedClassName(JavaExtensionImpl.QUALIFIED_CLASS_NAME_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -141,27 +144,28 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.JAVA_EXTENSION__QUALIFIED_CLASS_NAME:
-            return QUALIFIED_CLASS_NAME_EDEFAULT == null ? qualifiedClassName != null : !QUALIFIED_CLASS_NAME_EDEFAULT.equals(qualifiedClassName);
+            return JavaExtensionImpl.QUALIFIED_CLASS_NAME_EDEFAULT == null ? qualifiedClassName != null : !JavaExtensionImpl.QUALIFIED_CLASS_NAME_EDEFAULT.equals(qualifiedClassName);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (qualifiedClassName: ");

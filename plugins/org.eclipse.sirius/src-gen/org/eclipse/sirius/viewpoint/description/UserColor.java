@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -35,7 +35,7 @@ public interface UserColor extends EObject {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * name of the color description, as shown to the user in color palettes.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getUserColor_Name()
@@ -48,7 +48,7 @@ public interface UserColor extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.UserColor#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()

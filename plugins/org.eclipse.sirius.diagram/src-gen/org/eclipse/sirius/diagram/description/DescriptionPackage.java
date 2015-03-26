@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -112,16 +112,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DROP_DESCRIPTIONS = DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS;
+    int DIAGRAM_DESCRIPTION__DROP_DESCRIPTIONS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DOCUMENTATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 0;
+    int DIAGRAM_DESCRIPTION__DOCUMENTATION = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>'
@@ -130,61 +130,61 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__NAME = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int DIAGRAM_DESCRIPTION__NAME = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__LABEL = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int DIAGRAM_DESCRIPTION__LABEL = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__TITLE_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 4;
+    int DIAGRAM_DESCRIPTION__TITLE_EXPRESSION = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__INITIALISATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 5;
+    int DIAGRAM_DESCRIPTION__INITIALISATION = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__METAMODEL = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 6;
+    int DIAGRAM_DESCRIPTION__METAMODEL = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 7;
+    int DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -193,7 +193,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 8;
+    int DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -202,7 +202,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__FILTERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 9;
+    int DIAGRAM_DESCRIPTION__FILTERS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>All Edge Mappings</b></em>' reference
@@ -211,7 +211,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 10;
+    int DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
@@ -220,7 +220,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 11;
+    int DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -229,7 +229,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 12;
+    int DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment
@@ -238,7 +238,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__VALIDATION_SET = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 13;
+    int DIAGRAM_DESCRIPTION__VALIDATION_SET = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Concerns</b></em>' containment reference.
@@ -247,25 +247,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__CONCERNS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 14;
+    int DIAGRAM_DESCRIPTION__CONCERNS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 14;
 
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 15;
+    int DIAGRAM_DESCRIPTION__ALL_TOOLS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 15;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DOMAIN_CLASS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 16;
+    int DIAGRAM_DESCRIPTION__DOMAIN_CLASS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 16;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -274,34 +274,34 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 17;
+    int DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 17;
 
     /**
      * The feature id for the '<em><b>Default Concern</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 18;
+    int DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 18;
 
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 19;
+    int DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 19;
 
     /**
      * The feature id for the '<em><b>Init</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__INIT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 20;
+    int DIAGRAM_DESCRIPTION__INIT = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 20;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
@@ -310,7 +310,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__LAYOUT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 21;
+    int DIAGRAM_DESCRIPTION__LAYOUT = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 21;
 
     /**
      * The feature id for the '<em><b>Diagram Initialisation</b></em>'
@@ -319,7 +319,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 22;
+    int DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 22;
 
     /**
      * The feature id for the '<em><b>Default Layer</b></em>' containment
@@ -328,7 +328,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DEFAULT_LAYER = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 23;
+    int DIAGRAM_DESCRIPTION__DEFAULT_LAYER = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 23;
 
     /**
      * The feature id for the '<em><b>Additional Layers</b></em>' containment
@@ -337,16 +337,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 24;
+    int DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 24;
 
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 25;
+    int DIAGRAM_DESCRIPTION__ALL_LAYERS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 25;
 
     /**
      * The feature id for the '<em><b>All Activated Tools</b></em>' reference
@@ -355,7 +355,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 26;
+    int DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 26;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' containment
@@ -364,7 +364,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__NODE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 27;
+    int DIAGRAM_DESCRIPTION__NODE_MAPPINGS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 27;
 
     /**
      * The feature id for the '<em><b>Edge Mappings</b></em>' containment
@@ -373,7 +373,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 28;
+    int DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 28;
 
     /**
      * The feature id for the '<em><b>Edge Mapping Imports</b></em>' containment
@@ -382,7 +382,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 29;
+    int DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 29;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' containment
@@ -391,7 +391,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 30;
+    int DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 30;
 
     /**
      * The feature id for the '<em><b>Reused Mappings</b></em>' reference list.
@@ -400,7 +400,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 31;
+    int DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 31;
 
     /**
      * The feature id for the '<em><b>Tool Section</b></em>' containment
@@ -409,7 +409,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__TOOL_SECTION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 32;
+    int DIAGRAM_DESCRIPTION__TOOL_SECTION = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 32;
 
     /**
      * The feature id for the '<em><b>Reused Tools</b></em>' reference list.
@@ -418,7 +418,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__REUSED_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 33;
+    int DIAGRAM_DESCRIPTION__REUSED_TOOLS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 33;
 
     /**
      * The feature id for the '<em><b>Enable Popup Bars</b></em>' attribute.
@@ -427,7 +427,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 34;
+    int DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 34;
 
     /**
      * The number of structural features of the '<em>Diagram Description</em>'
@@ -436,7 +436,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION_FEATURE_COUNT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 35;
+    int DIAGRAM_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 35;
 
     /**
      * The meta object id for the '
@@ -453,7 +453,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -471,7 +471,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -480,7 +480,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -489,7 +489,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -498,7 +498,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -507,7 +507,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -516,7 +516,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -597,7 +597,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -606,7 +606,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -624,7 +624,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Default Concern</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -633,7 +633,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -642,7 +642,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Init</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -687,7 +687,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -777,7 +777,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Imported Diagram</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -808,7 +808,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -817,7 +817,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Viewpoint URI</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -835,7 +835,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -893,7 +893,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -902,7 +902,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -974,7 +974,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1032,20 +1032,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__NAME = DIAGRAM_ELEMENT_MAPPING__NAME;
+    int ABSTRACT_NODE_MAPPING__NAME = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__LABEL = DIAGRAM_ELEMENT_MAPPING__LABEL;
+    int ABSTRACT_NODE_MAPPING__LABEL = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1054,7 +1054,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__DETAIL_DESCRIPTIONS = DIAGRAM_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS;
+    int ABSTRACT_NODE_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1063,7 +1063,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__NAVIGATION_DESCRIPTIONS = DIAGRAM_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int ABSTRACT_NODE_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -1072,7 +1072,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__PASTE_DESCRIPTIONS = DIAGRAM_ELEMENT_MAPPING__PASTE_DESCRIPTIONS;
+    int ABSTRACT_NODE_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1081,7 +1081,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__PRECONDITION_EXPRESSION = DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION;
+    int ABSTRACT_NODE_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -1090,7 +1090,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__DELETION_DESCRIPTION = DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION;
+    int ABSTRACT_NODE_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -1099,7 +1099,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__LABEL_DIRECT_EDIT = DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT;
+    int ABSTRACT_NODE_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1108,16 +1108,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int ABSTRACT_NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__CREATE_ELEMENTS = DIAGRAM_ELEMENT_MAPPING__CREATE_ELEMENTS;
+    int ABSTRACT_NODE_MAPPING__CREATE_ELEMENTS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1126,7 +1126,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__SEMANTIC_ELEMENTS = DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS;
+    int ABSTRACT_NODE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -1135,7 +1135,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int ABSTRACT_NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -1144,25 +1144,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__SYNCHRONIZATION_LOCK = DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK;
+    int ABSTRACT_NODE_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__DOCUMENTATION = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 0;
+    int ABSTRACT_NODE_MAPPING__DOCUMENTATION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__DOMAIN_CLASS = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 1;
+    int ABSTRACT_NODE_MAPPING__DOMAIN_CLASS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -1171,7 +1171,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 2;
+    int ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -1180,7 +1180,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 3;
+    int ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>Abstract Node Mapping</em>'
@@ -1189,14 +1189,14 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_MAPPING_FEATURE_COUNT = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 4;
+    int ABSTRACT_NODE_MAPPING_FEATURE_COUNT = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.impl.NodeMappingImpl
      * <em>Node Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.impl.NodeMappingImpl
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getNodeMapping()
      * @generated
@@ -1206,20 +1206,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__NAME = ABSTRACT_NODE_MAPPING__NAME;
+    int NODE_MAPPING__NAME = DescriptionPackage.ABSTRACT_NODE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__LABEL = ABSTRACT_NODE_MAPPING__LABEL;
+    int NODE_MAPPING__LABEL = DescriptionPackage.ABSTRACT_NODE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1228,7 +1228,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__DETAIL_DESCRIPTIONS = ABSTRACT_NODE_MAPPING__DETAIL_DESCRIPTIONS;
+    int NODE_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.ABSTRACT_NODE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1237,7 +1237,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__NAVIGATION_DESCRIPTIONS = ABSTRACT_NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int NODE_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.ABSTRACT_NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -1246,7 +1246,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__PASTE_DESCRIPTIONS = ABSTRACT_NODE_MAPPING__PASTE_DESCRIPTIONS;
+    int NODE_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.ABSTRACT_NODE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1255,7 +1255,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__PRECONDITION_EXPRESSION = ABSTRACT_NODE_MAPPING__PRECONDITION_EXPRESSION;
+    int NODE_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.ABSTRACT_NODE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -1264,7 +1264,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__DELETION_DESCRIPTION = ABSTRACT_NODE_MAPPING__DELETION_DESCRIPTION;
+    int NODE_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.ABSTRACT_NODE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -1273,7 +1273,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__LABEL_DIRECT_EDIT = ABSTRACT_NODE_MAPPING__LABEL_DIRECT_EDIT;
+    int NODE_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.ABSTRACT_NODE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1282,16 +1282,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = ABSTRACT_NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.ABSTRACT_NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__CREATE_ELEMENTS = ABSTRACT_NODE_MAPPING__CREATE_ELEMENTS;
+    int NODE_MAPPING__CREATE_ELEMENTS = DescriptionPackage.ABSTRACT_NODE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1300,7 +1300,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__SEMANTIC_ELEMENTS = ABSTRACT_NODE_MAPPING__SEMANTIC_ELEMENTS;
+    int NODE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.ABSTRACT_NODE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -1309,7 +1309,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION = ABSTRACT_NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.ABSTRACT_NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -1318,25 +1318,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__SYNCHRONIZATION_LOCK = ABSTRACT_NODE_MAPPING__SYNCHRONIZATION_LOCK;
+    int NODE_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.ABSTRACT_NODE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__DOCUMENTATION = ABSTRACT_NODE_MAPPING__DOCUMENTATION;
+    int NODE_MAPPING__DOCUMENTATION = DescriptionPackage.ABSTRACT_NODE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__DOMAIN_CLASS = ABSTRACT_NODE_MAPPING__DOMAIN_CLASS;
+    int NODE_MAPPING__DOMAIN_CLASS = DescriptionPackage.ABSTRACT_NODE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -1345,7 +1345,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__BORDERED_NODE_MAPPINGS = ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+    int NODE_MAPPING__BORDERED_NODE_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -1354,7 +1354,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -1363,7 +1363,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__DROP_DESCRIPTIONS = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 0;
+    int NODE_MAPPING__DROP_DESCRIPTIONS = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1372,7 +1372,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__STYLE = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 1;
+    int NODE_MAPPING__STYLE = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -1381,7 +1381,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING__CONDITIONNAL_STYLES = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 2;
+    int NODE_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Node Mapping</em>' class.
@@ -1390,7 +1390,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_FEATURE_COUNT = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 3;
+    int NODE_MAPPING_FEATURE_COUNT = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -1407,20 +1407,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__NAME = ABSTRACT_NODE_MAPPING__NAME;
+    int CONTAINER_MAPPING__NAME = DescriptionPackage.ABSTRACT_NODE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__LABEL = ABSTRACT_NODE_MAPPING__LABEL;
+    int CONTAINER_MAPPING__LABEL = DescriptionPackage.ABSTRACT_NODE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1429,7 +1429,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__DETAIL_DESCRIPTIONS = ABSTRACT_NODE_MAPPING__DETAIL_DESCRIPTIONS;
+    int CONTAINER_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.ABSTRACT_NODE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1438,7 +1438,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS = ABSTRACT_NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.ABSTRACT_NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -1447,7 +1447,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__PASTE_DESCRIPTIONS = ABSTRACT_NODE_MAPPING__PASTE_DESCRIPTIONS;
+    int CONTAINER_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.ABSTRACT_NODE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1456,7 +1456,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__PRECONDITION_EXPRESSION = ABSTRACT_NODE_MAPPING__PRECONDITION_EXPRESSION;
+    int CONTAINER_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.ABSTRACT_NODE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -1465,7 +1465,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__DELETION_DESCRIPTION = ABSTRACT_NODE_MAPPING__DELETION_DESCRIPTION;
+    int CONTAINER_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.ABSTRACT_NODE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -1474,7 +1474,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__LABEL_DIRECT_EDIT = ABSTRACT_NODE_MAPPING__LABEL_DIRECT_EDIT;
+    int CONTAINER_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.ABSTRACT_NODE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1483,16 +1483,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = ABSTRACT_NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.ABSTRACT_NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__CREATE_ELEMENTS = ABSTRACT_NODE_MAPPING__CREATE_ELEMENTS;
+    int CONTAINER_MAPPING__CREATE_ELEMENTS = DescriptionPackage.ABSTRACT_NODE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1501,7 +1501,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__SEMANTIC_ELEMENTS = ABSTRACT_NODE_MAPPING__SEMANTIC_ELEMENTS;
+    int CONTAINER_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.ABSTRACT_NODE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -1510,7 +1510,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION = ABSTRACT_NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.ABSTRACT_NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -1519,25 +1519,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__SYNCHRONIZATION_LOCK = ABSTRACT_NODE_MAPPING__SYNCHRONIZATION_LOCK;
+    int CONTAINER_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.ABSTRACT_NODE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__DOCUMENTATION = ABSTRACT_NODE_MAPPING__DOCUMENTATION;
+    int CONTAINER_MAPPING__DOCUMENTATION = DescriptionPackage.ABSTRACT_NODE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__DOMAIN_CLASS = ABSTRACT_NODE_MAPPING__DOMAIN_CLASS;
+    int CONTAINER_MAPPING__DOMAIN_CLASS = DescriptionPackage.ABSTRACT_NODE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -1546,7 +1546,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS = ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+    int CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -1555,7 +1555,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -1564,7 +1564,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__DROP_DESCRIPTIONS = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 0;
+    int CONTAINER_MAPPING__DROP_DESCRIPTIONS = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment
@@ -1573,7 +1573,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__SUB_NODE_MAPPINGS = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 1;
+    int CONTAINER_MAPPING__SUB_NODE_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
@@ -1582,7 +1582,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__ALL_NODE_MAPPINGS = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 2;
+    int CONTAINER_MAPPING__ALL_NODE_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference
@@ -1591,7 +1591,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__REUSED_NODE_MAPPINGS = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 3;
+    int CONTAINER_MAPPING__REUSED_NODE_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>'
@@ -1600,7 +1600,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 4;
+    int CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>'
@@ -1609,7 +1609,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 5;
+    int CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -1618,7 +1618,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 6;
+    int CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1627,7 +1627,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__STYLE = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 7;
+    int CONTAINER_MAPPING__STYLE = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -1636,7 +1636,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__CONDITIONNAL_STYLES = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 8;
+    int CONTAINER_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute.
@@ -1645,7 +1645,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING__CHILDREN_PRESENTATION = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 9;
+    int CONTAINER_MAPPING__CHILDREN_PRESENTATION = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 9;
 
     /**
      * The number of structural features of the '<em>Container Mapping</em>'
@@ -1654,7 +1654,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_FEATURE_COUNT = ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 10;
+    int CONTAINER_MAPPING_FEATURE_COUNT = DescriptionPackage.ABSTRACT_NODE_MAPPING_FEATURE_COUNT + 10;
 
     /**
      * The meta object id for the '
@@ -1671,20 +1671,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__NAME = NODE_MAPPING__NAME;
+    int NODE_MAPPING_IMPORT__NAME = DescriptionPackage.NODE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__LABEL = NODE_MAPPING__LABEL;
+    int NODE_MAPPING_IMPORT__LABEL = DescriptionPackage.NODE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1693,7 +1693,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__DETAIL_DESCRIPTIONS = NODE_MAPPING__DETAIL_DESCRIPTIONS;
+    int NODE_MAPPING_IMPORT__DETAIL_DESCRIPTIONS = DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1702,7 +1702,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__NAVIGATION_DESCRIPTIONS = NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int NODE_MAPPING_IMPORT__NAVIGATION_DESCRIPTIONS = DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -1711,7 +1711,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__PASTE_DESCRIPTIONS = NODE_MAPPING__PASTE_DESCRIPTIONS;
+    int NODE_MAPPING_IMPORT__PASTE_DESCRIPTIONS = DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1720,7 +1720,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__PRECONDITION_EXPRESSION = NODE_MAPPING__PRECONDITION_EXPRESSION;
+    int NODE_MAPPING_IMPORT__PRECONDITION_EXPRESSION = DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -1729,7 +1729,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__DELETION_DESCRIPTION = NODE_MAPPING__DELETION_DESCRIPTION;
+    int NODE_MAPPING_IMPORT__DELETION_DESCRIPTION = DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -1738,7 +1738,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__LABEL_DIRECT_EDIT = NODE_MAPPING__LABEL_DIRECT_EDIT;
+    int NODE_MAPPING_IMPORT__LABEL_DIRECT_EDIT = DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1747,16 +1747,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__SEMANTIC_CANDIDATES_EXPRESSION = NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int NODE_MAPPING_IMPORT__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__CREATE_ELEMENTS = NODE_MAPPING__CREATE_ELEMENTS;
+    int NODE_MAPPING_IMPORT__CREATE_ELEMENTS = DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1765,7 +1765,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__SEMANTIC_ELEMENTS = NODE_MAPPING__SEMANTIC_ELEMENTS;
+    int NODE_MAPPING_IMPORT__SEMANTIC_ELEMENTS = DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -1774,7 +1774,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__DOUBLE_CLICK_DESCRIPTION = NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int NODE_MAPPING_IMPORT__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -1783,25 +1783,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__SYNCHRONIZATION_LOCK = NODE_MAPPING__SYNCHRONIZATION_LOCK;
+    int NODE_MAPPING_IMPORT__SYNCHRONIZATION_LOCK = DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__DOCUMENTATION = NODE_MAPPING__DOCUMENTATION;
+    int NODE_MAPPING_IMPORT__DOCUMENTATION = DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__DOMAIN_CLASS = NODE_MAPPING__DOMAIN_CLASS;
+    int NODE_MAPPING_IMPORT__DOMAIN_CLASS = DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -1810,7 +1810,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__BORDERED_NODE_MAPPINGS = NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+    int NODE_MAPPING_IMPORT__BORDERED_NODE_MAPPINGS = DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -1819,7 +1819,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__REUSED_BORDERED_NODE_MAPPINGS = NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int NODE_MAPPING_IMPORT__REUSED_BORDERED_NODE_MAPPINGS = DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -1828,7 +1828,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__DROP_DESCRIPTIONS = NODE_MAPPING__DROP_DESCRIPTIONS;
+    int NODE_MAPPING_IMPORT__DROP_DESCRIPTIONS = DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1837,7 +1837,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__STYLE = NODE_MAPPING__STYLE;
+    int NODE_MAPPING_IMPORT__STYLE = DescriptionPackage.NODE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -1846,7 +1846,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__CONDITIONNAL_STYLES = NODE_MAPPING__CONDITIONNAL_STYLES;
+    int NODE_MAPPING_IMPORT__CONDITIONNAL_STYLES = DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Hide Sub Mappings</b></em>' attribute.
@@ -1855,7 +1855,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__HIDE_SUB_MAPPINGS = NODE_MAPPING_FEATURE_COUNT + 0;
+    int NODE_MAPPING_IMPORT__HIDE_SUB_MAPPINGS = DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Inherits Ancestor Filters</b></em>'
@@ -1864,16 +1864,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS = NODE_MAPPING_FEATURE_COUNT + 1;
+    int NODE_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS = DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Imported Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT__IMPORTED_MAPPING = NODE_MAPPING_FEATURE_COUNT + 2;
+    int NODE_MAPPING_IMPORT__IMPORTED_MAPPING = DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Node Mapping Import</em>'
@@ -1882,7 +1882,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_MAPPING_IMPORT_FEATURE_COUNT = NODE_MAPPING_FEATURE_COUNT + 3;
+    int NODE_MAPPING_IMPORT_FEATURE_COUNT = DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -1899,20 +1899,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__NAME = CONTAINER_MAPPING__NAME;
+    int CONTAINER_MAPPING_IMPORT__NAME = DescriptionPackage.CONTAINER_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__LABEL = CONTAINER_MAPPING__LABEL;
+    int CONTAINER_MAPPING_IMPORT__LABEL = DescriptionPackage.CONTAINER_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1921,7 +1921,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__DETAIL_DESCRIPTIONS = CONTAINER_MAPPING__DETAIL_DESCRIPTIONS;
+    int CONTAINER_MAPPING_IMPORT__DETAIL_DESCRIPTIONS = DescriptionPackage.CONTAINER_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1930,7 +1930,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__NAVIGATION_DESCRIPTIONS = CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int CONTAINER_MAPPING_IMPORT__NAVIGATION_DESCRIPTIONS = DescriptionPackage.CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -1939,7 +1939,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__PASTE_DESCRIPTIONS = CONTAINER_MAPPING__PASTE_DESCRIPTIONS;
+    int CONTAINER_MAPPING_IMPORT__PASTE_DESCRIPTIONS = DescriptionPackage.CONTAINER_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1948,7 +1948,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__PRECONDITION_EXPRESSION = CONTAINER_MAPPING__PRECONDITION_EXPRESSION;
+    int CONTAINER_MAPPING_IMPORT__PRECONDITION_EXPRESSION = DescriptionPackage.CONTAINER_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -1957,7 +1957,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__DELETION_DESCRIPTION = CONTAINER_MAPPING__DELETION_DESCRIPTION;
+    int CONTAINER_MAPPING_IMPORT__DELETION_DESCRIPTION = DescriptionPackage.CONTAINER_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -1966,7 +1966,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__LABEL_DIRECT_EDIT = CONTAINER_MAPPING__LABEL_DIRECT_EDIT;
+    int CONTAINER_MAPPING_IMPORT__LABEL_DIRECT_EDIT = DescriptionPackage.CONTAINER_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1975,16 +1975,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__SEMANTIC_CANDIDATES_EXPRESSION = CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int CONTAINER_MAPPING_IMPORT__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__CREATE_ELEMENTS = CONTAINER_MAPPING__CREATE_ELEMENTS;
+    int CONTAINER_MAPPING_IMPORT__CREATE_ELEMENTS = DescriptionPackage.CONTAINER_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1993,7 +1993,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__SEMANTIC_ELEMENTS = CONTAINER_MAPPING__SEMANTIC_ELEMENTS;
+    int CONTAINER_MAPPING_IMPORT__SEMANTIC_ELEMENTS = DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -2002,7 +2002,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__DOUBLE_CLICK_DESCRIPTION = CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int CONTAINER_MAPPING_IMPORT__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -2011,25 +2011,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__SYNCHRONIZATION_LOCK = CONTAINER_MAPPING__SYNCHRONIZATION_LOCK;
+    int CONTAINER_MAPPING_IMPORT__SYNCHRONIZATION_LOCK = DescriptionPackage.CONTAINER_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__DOCUMENTATION = CONTAINER_MAPPING__DOCUMENTATION;
+    int CONTAINER_MAPPING_IMPORT__DOCUMENTATION = DescriptionPackage.CONTAINER_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__DOMAIN_CLASS = CONTAINER_MAPPING__DOMAIN_CLASS;
+    int CONTAINER_MAPPING_IMPORT__DOMAIN_CLASS = DescriptionPackage.CONTAINER_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -2038,7 +2038,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__BORDERED_NODE_MAPPINGS = CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS;
+    int CONTAINER_MAPPING_IMPORT__BORDERED_NODE_MAPPINGS = DescriptionPackage.CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -2047,7 +2047,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__REUSED_BORDERED_NODE_MAPPINGS = CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int CONTAINER_MAPPING_IMPORT__REUSED_BORDERED_NODE_MAPPINGS = DescriptionPackage.CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -2056,7 +2056,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__DROP_DESCRIPTIONS = CONTAINER_MAPPING__DROP_DESCRIPTIONS;
+    int CONTAINER_MAPPING_IMPORT__DROP_DESCRIPTIONS = DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment
@@ -2065,7 +2065,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__SUB_NODE_MAPPINGS = CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
+    int CONTAINER_MAPPING_IMPORT__SUB_NODE_MAPPINGS = DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
@@ -2074,7 +2074,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__ALL_NODE_MAPPINGS = CONTAINER_MAPPING__ALL_NODE_MAPPINGS;
+    int CONTAINER_MAPPING_IMPORT__ALL_NODE_MAPPINGS = DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference
@@ -2083,7 +2083,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__REUSED_NODE_MAPPINGS = CONTAINER_MAPPING__REUSED_NODE_MAPPINGS;
+    int CONTAINER_MAPPING_IMPORT__REUSED_NODE_MAPPINGS = DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>'
@@ -2092,7 +2092,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__SUB_CONTAINER_MAPPINGS = CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS;
+    int CONTAINER_MAPPING_IMPORT__SUB_CONTAINER_MAPPINGS = DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>'
@@ -2101,7 +2101,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__REUSED_CONTAINER_MAPPINGS = CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS;
+    int CONTAINER_MAPPING_IMPORT__REUSED_CONTAINER_MAPPINGS = DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -2110,7 +2110,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__ALL_CONTAINER_MAPPINGS = CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS;
+    int CONTAINER_MAPPING_IMPORT__ALL_CONTAINER_MAPPINGS = DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -2119,7 +2119,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__STYLE = CONTAINER_MAPPING__STYLE;
+    int CONTAINER_MAPPING_IMPORT__STYLE = DescriptionPackage.CONTAINER_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -2128,7 +2128,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__CONDITIONNAL_STYLES = CONTAINER_MAPPING__CONDITIONNAL_STYLES;
+    int CONTAINER_MAPPING_IMPORT__CONDITIONNAL_STYLES = DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute.
@@ -2137,7 +2137,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__CHILDREN_PRESENTATION = CONTAINER_MAPPING__CHILDREN_PRESENTATION;
+    int CONTAINER_MAPPING_IMPORT__CHILDREN_PRESENTATION = DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION;
 
     /**
      * The feature id for the '<em><b>Hide Sub Mappings</b></em>' attribute.
@@ -2146,7 +2146,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__HIDE_SUB_MAPPINGS = CONTAINER_MAPPING_FEATURE_COUNT + 0;
+    int CONTAINER_MAPPING_IMPORT__HIDE_SUB_MAPPINGS = DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Inherits Ancestor Filters</b></em>'
@@ -2155,16 +2155,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS = CONTAINER_MAPPING_FEATURE_COUNT + 1;
+    int CONTAINER_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS = DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Imported Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING = CONTAINER_MAPPING_FEATURE_COUNT + 2;
+    int CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING = DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '
@@ -2174,14 +2174,14 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_MAPPING_IMPORT_FEATURE_COUNT = CONTAINER_MAPPING_FEATURE_COUNT + 3;
+    int CONTAINER_MAPPING_IMPORT_FEATURE_COUNT = DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl
      * <em>Edge Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getEdgeMapping()
      * @generated
@@ -2191,20 +2191,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__NAME = DIAGRAM_ELEMENT_MAPPING__NAME;
+    int EDGE_MAPPING__NAME = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__LABEL = DIAGRAM_ELEMENT_MAPPING__LABEL;
+    int EDGE_MAPPING__LABEL = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -2213,7 +2213,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__DETAIL_DESCRIPTIONS = DIAGRAM_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS;
+    int EDGE_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -2222,7 +2222,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__NAVIGATION_DESCRIPTIONS = DIAGRAM_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int EDGE_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -2231,7 +2231,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__PASTE_DESCRIPTIONS = DIAGRAM_ELEMENT_MAPPING__PASTE_DESCRIPTIONS;
+    int EDGE_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2240,7 +2240,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__PRECONDITION_EXPRESSION = DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION;
+    int EDGE_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -2249,7 +2249,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__DELETION_DESCRIPTION = DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION;
+    int EDGE_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -2258,7 +2258,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__LABEL_DIRECT_EDIT = DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT;
+    int EDGE_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -2267,16 +2267,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int EDGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__CREATE_ELEMENTS = DIAGRAM_ELEMENT_MAPPING__CREATE_ELEMENTS;
+    int EDGE_MAPPING__CREATE_ELEMENTS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -2285,7 +2285,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__SEMANTIC_ELEMENTS = DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS;
+    int EDGE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -2294,7 +2294,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int EDGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -2303,16 +2303,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__SYNCHRONIZATION_LOCK = DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK;
+    int EDGE_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__DOCUMENTATION = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 0;
+    int EDGE_MAPPING__DOCUMENTATION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Source Mapping</b></em>' reference list.
@@ -2321,7 +2321,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__SOURCE_MAPPING = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 1;
+    int EDGE_MAPPING__SOURCE_MAPPING = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Target Mapping</b></em>' reference list.
@@ -2330,7 +2330,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__TARGET_MAPPING = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 2;
+    int EDGE_MAPPING__TARGET_MAPPING = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -2339,7 +2339,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__TARGET_FINDER_EXPRESSION = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 3;
+    int EDGE_MAPPING__TARGET_FINDER_EXPRESSION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -2348,7 +2348,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__SOURCE_FINDER_EXPRESSION = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 4;
+    int EDGE_MAPPING__SOURCE_FINDER_EXPRESSION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -2357,7 +2357,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__STYLE = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 5;
+    int EDGE_MAPPING__STYLE = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -2366,7 +2366,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__CONDITIONNAL_STYLES = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 6;
+    int EDGE_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Target Expression</b></em>' attribute.
@@ -2375,16 +2375,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__TARGET_EXPRESSION = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 7;
+    int EDGE_MAPPING__TARGET_EXPRESSION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__DOMAIN_CLASS = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 8;
+    int EDGE_MAPPING__DOMAIN_CLASS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -2393,7 +2393,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__USE_DOMAIN_ELEMENT = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 9;
+    int EDGE_MAPPING__USE_DOMAIN_ELEMENT = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Reconnections</b></em>' reference list.
@@ -2402,16 +2402,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__RECONNECTIONS = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 10;
+    int EDGE_MAPPING__RECONNECTIONS = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__PATH_EXPRESSION = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 11;
+    int EDGE_MAPPING__PATH_EXPRESSION = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference
@@ -2420,7 +2420,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING__PATH_NODE_MAPPING = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 12;
+    int EDGE_MAPPING__PATH_NODE_MAPPING = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 12;
 
     /**
      * The number of structural features of the '<em>Edge Mapping</em>' class.
@@ -2429,14 +2429,14 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_MAPPING_FEATURE_COUNT = DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 13;
+    int EDGE_MAPPING_FEATURE_COUNT = DescriptionPackage.DIAGRAM_ELEMENT_MAPPING_FEATURE_COUNT + 13;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.IEdgeMapping
      * <em>IEdge Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.IEdgeMapping
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getIEdgeMapping()
      * @generated
@@ -2467,7 +2467,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2476,7 +2476,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2485,7 +2485,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2494,7 +2494,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Imported Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2612,7 +2612,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.impl.ConditionalContainerStyleDescriptionImpl
      * <em>Conditional Container Style Description</em>}' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.impl.ConditionalContainerStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getConditionalContainerStyleDescription()
      * @generated
@@ -2641,7 +2641,7 @@ public interface DescriptionPackage extends EPackage {
      * The number of structural features of the '
      * <em>Conditional Container Style Description</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2661,7 +2661,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2670,7 +2670,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Layout</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2691,11 +2691,11 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ORDERED_TREE_LAYOUT__DOCUMENTATION = LAYOUT__DOCUMENTATION;
+    int ORDERED_TREE_LAYOUT__DOCUMENTATION = DescriptionPackage.LAYOUT__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Children Expression</b></em>' attribute.
@@ -2704,7 +2704,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION = LAYOUT_FEATURE_COUNT + 0;
+    int ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION = DescriptionPackage.LAYOUT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Node Mapping</b></em>' reference list.
@@ -2713,7 +2713,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ORDERED_TREE_LAYOUT__NODE_MAPPING = LAYOUT_FEATURE_COUNT + 1;
+    int ORDERED_TREE_LAYOUT__NODE_MAPPING = DescriptionPackage.LAYOUT_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Ordered Tree Layout</em>'
@@ -2722,7 +2722,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ORDERED_TREE_LAYOUT_FEATURE_COUNT = LAYOUT_FEATURE_COUNT + 2;
+    int ORDERED_TREE_LAYOUT_FEATURE_COUNT = DescriptionPackage.LAYOUT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -2739,29 +2739,29 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMPOSITE_LAYOUT__DOCUMENTATION = LAYOUT__DOCUMENTATION;
+    int COMPOSITE_LAYOUT__DOCUMENTATION = DescriptionPackage.LAYOUT__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Padding</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMPOSITE_LAYOUT__PADDING = LAYOUT_FEATURE_COUNT + 0;
+    int COMPOSITE_LAYOUT__PADDING = DescriptionPackage.LAYOUT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Direction</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMPOSITE_LAYOUT__DIRECTION = LAYOUT_FEATURE_COUNT + 1;
+    int COMPOSITE_LAYOUT__DIRECTION = DescriptionPackage.LAYOUT_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Composite Layout</em>'
@@ -2770,7 +2770,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMPOSITE_LAYOUT_FEATURE_COUNT = LAYOUT_FEATURE_COUNT + 2;
+    int COMPOSITE_LAYOUT_FEATURE_COUNT = DescriptionPackage.LAYOUT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -2787,7 +2787,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2796,7 +2796,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2805,7 +2805,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Decorator Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2823,7 +2823,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2853,7 +2853,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2871,7 +2871,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2880,7 +2880,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2934,7 +2934,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2970,7 +2970,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2997,7 +2997,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Layer</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3018,11 +3018,11 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__DOCUMENTATION = LAYER__DOCUMENTATION;
+    int ADDITIONAL_LAYER__DOCUMENTATION = DescriptionPackage.LAYER__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>'
@@ -3031,25 +3031,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__END_USER_DOCUMENTATION = LAYER__END_USER_DOCUMENTATION;
+    int ADDITIONAL_LAYER__END_USER_DOCUMENTATION = DescriptionPackage.LAYER__END_USER_DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__NAME = LAYER__NAME;
+    int ADDITIONAL_LAYER__NAME = DescriptionPackage.LAYER__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__LABEL = LAYER__LABEL;
+    int ADDITIONAL_LAYER__LABEL = DescriptionPackage.LAYER__LABEL;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' containment
@@ -3058,7 +3058,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__NODE_MAPPINGS = LAYER__NODE_MAPPINGS;
+    int ADDITIONAL_LAYER__NODE_MAPPINGS = DescriptionPackage.LAYER__NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Edge Mappings</b></em>' containment
@@ -3067,7 +3067,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__EDGE_MAPPINGS = LAYER__EDGE_MAPPINGS;
+    int ADDITIONAL_LAYER__EDGE_MAPPINGS = DescriptionPackage.LAYER__EDGE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Edge Mapping Imports</b></em>' containment
@@ -3076,7 +3076,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__EDGE_MAPPING_IMPORTS = LAYER__EDGE_MAPPING_IMPORTS;
+    int ADDITIONAL_LAYER__EDGE_MAPPING_IMPORTS = DescriptionPackage.LAYER__EDGE_MAPPING_IMPORTS;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' containment
@@ -3085,7 +3085,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__CONTAINER_MAPPINGS = LAYER__CONTAINER_MAPPINGS;
+    int ADDITIONAL_LAYER__CONTAINER_MAPPINGS = DescriptionPackage.LAYER__CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Mappings</b></em>' reference list.
@@ -3094,16 +3094,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__REUSED_MAPPINGS = LAYER__REUSED_MAPPINGS;
+    int ADDITIONAL_LAYER__REUSED_MAPPINGS = DescriptionPackage.LAYER__REUSED_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__ALL_TOOLS = LAYER__ALL_TOOLS;
+    int ADDITIONAL_LAYER__ALL_TOOLS = DescriptionPackage.LAYER__ALL_TOOLS;
 
     /**
      * The feature id for the '<em><b>Tool Sections</b></em>' containment
@@ -3112,7 +3112,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__TOOL_SECTIONS = LAYER__TOOL_SECTIONS;
+    int ADDITIONAL_LAYER__TOOL_SECTIONS = DescriptionPackage.LAYER__TOOL_SECTIONS;
 
     /**
      * The feature id for the '<em><b>Reused Tools</b></em>' reference list.
@@ -3121,7 +3121,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__REUSED_TOOLS = LAYER__REUSED_TOOLS;
+    int ADDITIONAL_LAYER__REUSED_TOOLS = DescriptionPackage.LAYER__REUSED_TOOLS;
 
     /**
      * The feature id for the '<em><b>Decoration Descriptions Set</b></em>'
@@ -3130,16 +3130,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__DECORATION_DESCRIPTIONS_SET = LAYER__DECORATION_DESCRIPTIONS_SET;
+    int ADDITIONAL_LAYER__DECORATION_DESCRIPTIONS_SET = DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET;
 
     /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__ICON = LAYER__ICON;
+    int ADDITIONAL_LAYER__ICON = DescriptionPackage.LAYER__ICON;
 
     /**
      * The feature id for the '<em><b>All Edge Mappings</b></em>' reference
@@ -3148,7 +3148,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__ALL_EDGE_MAPPINGS = LAYER__ALL_EDGE_MAPPINGS;
+    int ADDITIONAL_LAYER__ALL_EDGE_MAPPINGS = DescriptionPackage.LAYER__ALL_EDGE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Customization</b></em>' containment
@@ -3157,7 +3157,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__CUSTOMIZATION = LAYER__CUSTOMIZATION;
+    int ADDITIONAL_LAYER__CUSTOMIZATION = DescriptionPackage.LAYER__CUSTOMIZATION;
 
     /**
      * The feature id for the '<em><b>Active By Default</b></em>' attribute.
@@ -3166,16 +3166,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT = LAYER_FEATURE_COUNT + 0;
+    int ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT = DescriptionPackage.LAYER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Optional</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER__OPTIONAL = LAYER_FEATURE_COUNT + 1;
+    int ADDITIONAL_LAYER__OPTIONAL = DescriptionPackage.LAYER_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Additional Layer</em>'
@@ -3184,14 +3184,14 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ADDITIONAL_LAYER_FEATURE_COUNT = LAYER_FEATURE_COUNT + 2;
+    int ADDITIONAL_LAYER_FEATURE_COUNT = DescriptionPackage.LAYER_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.FoldingStyle
      * <em>Folding Style</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.FoldingStyle
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getFoldingStyle()
      * @generated
@@ -3227,7 +3227,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription
      * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Diagram Description</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramDescription
      * @generated
@@ -3252,7 +3252,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllEdgeMappings
      * <em>All Edge Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>All Edge Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramDescription#getAllEdgeMappings()
@@ -3266,7 +3266,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllNodeMappings
      * <em>All Node Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>All Node Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramDescription#getAllNodeMappings()
@@ -3433,7 +3433,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getAdditionalLayers
      * <em>Additional Layers</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Additional Layers</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramDescription#getAdditionalLayers()
@@ -3459,7 +3459,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllActivatedTools
      * <em>All Activated Tools</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>All Activated Tools</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramDescription#getAllActivatedTools()
@@ -3513,7 +3513,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getContainerMappings
      * <em>Container Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Container Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramDescription#getContainerMappings()
@@ -3565,7 +3565,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#isEnablePopupBars
      * <em>Enable Popup Bars</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Enable Popup Bars</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramDescription#isEnablePopupBars()
      * @see #getDiagramDescription()
@@ -3590,7 +3590,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram
      * <em>Imported Diagram</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Imported Diagram</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram()
      * @see #getDiagramImportDescription()
@@ -3695,7 +3695,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getLabelDirectEdit
      * <em>Label Direct Edit</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Label Direct Edit</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramElementMapping#getLabelDirectEdit()
      * @see #getDiagramElementMapping()
@@ -3734,7 +3734,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getSemanticElements
      * <em>Semantic Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Semantic Elements</em>'.
      * @see org.eclipse.sirius.diagram.description.DiagramElementMapping#getSemanticElements()
      * @see #getDiagramElementMapping()
@@ -3850,7 +3850,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.NodeMapping#getConditionnalStyles
      * <em>Conditionnal Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Conditionnal Styles</em>'.
      * @see org.eclipse.sirius.diagram.description.NodeMapping#getConditionnalStyles()
@@ -3864,7 +3864,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.ContainerMapping
      * <em>Container Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Container Mapping</em>'.
      * @see org.eclipse.sirius.diagram.description.ContainerMapping
      * @generated
@@ -3876,7 +3876,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.ContainerMapping#getSubNodeMappings
      * <em>Sub Node Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Sub Node Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.ContainerMapping#getSubNodeMappings()
@@ -3890,7 +3890,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.ContainerMapping#getAllNodeMappings
      * <em>All Node Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>All Node Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.ContainerMapping#getAllNodeMappings()
@@ -3972,7 +3972,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.ContainerMapping#getConditionnalStyles
      * <em>Conditionnal Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Conditionnal Styles</em>'.
      * @see org.eclipse.sirius.diagram.description.ContainerMapping#getConditionnalStyles()
@@ -4000,7 +4000,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.NodeMappingImport
      * <em>Node Mapping Import</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Node Mapping Import</em>'.
      * @see org.eclipse.sirius.diagram.description.NodeMappingImport
      * @generated
@@ -4012,7 +4012,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.NodeMappingImport#getImportedMapping
      * <em>Imported Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Imported Mapping</em>'.
      * @see org.eclipse.sirius.diagram.description.NodeMappingImport#getImportedMapping()
      * @see #getNodeMappingImport()
@@ -4037,7 +4037,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.ContainerMappingImport#getImportedMapping
      * <em>Imported Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Imported Mapping</em>'.
      * @see org.eclipse.sirius.diagram.description.ContainerMappingImport#getImportedMapping()
      * @see #getContainerMappingImport()
@@ -4125,7 +4125,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getConditionnalStyles
      * <em>Conditionnal Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Conditionnal Styles</em>'.
      * @see org.eclipse.sirius.diagram.description.EdgeMapping#getConditionnalStyles()
@@ -4139,7 +4139,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetExpression
      * <em>Target Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Target Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.EdgeMapping#getTargetExpression()
      * @see #getEdgeMapping()
@@ -4164,7 +4164,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#isUseDomainElement
      * <em>Use Domain Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Use Domain Element</em>'.
      * @see org.eclipse.sirius.diagram.description.EdgeMapping#isUseDomainElement()
      * @see #getEdgeMapping()
@@ -4201,7 +4201,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getPathNodeMapping
      * <em>Path Node Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Path Node Mapping</em>'.
      * @see org.eclipse.sirius.diagram.description.EdgeMapping#getPathNodeMapping()
@@ -4226,7 +4226,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport
      * <em>Edge Mapping Import</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Edge Mapping Import</em>'.
      * @see org.eclipse.sirius.diagram.description.EdgeMappingImport
      * @generated
@@ -4238,7 +4238,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getImportedMapping
      * <em>Imported Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Imported Mapping</em>'.
      * @see org.eclipse.sirius.diagram.description.EdgeMappingImport#getImportedMapping()
      * @see #getEdgeMappingImport()
@@ -4251,7 +4251,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getConditionnalStyles
      * <em>Conditionnal Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Conditionnal Styles</em>'.
      * @see org.eclipse.sirius.diagram.description.EdgeMappingImport#getConditionnalStyles()
@@ -4365,7 +4365,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.OrderedTreeLayout
      * <em>Ordered Tree Layout</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Ordered Tree Layout</em>'.
      * @see org.eclipse.sirius.diagram.description.OrderedTreeLayout
      * @generated
@@ -4377,7 +4377,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.OrderedTreeLayout#getChildrenExpression
      * <em>Children Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Children Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.OrderedTreeLayout#getChildrenExpression()
      * @see #getOrderedTreeLayout()
@@ -4402,7 +4402,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.CompositeLayout
      * <em>Composite Layout</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Composite Layout</em>'.
      * @see org.eclipse.sirius.diagram.description.CompositeLayout
      * @generated
@@ -4513,7 +4513,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.Layer#getContainerMappings
      * <em>Container Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Container Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.Layer#getContainerMappings()
@@ -4603,7 +4603,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.Layer#getAllEdgeMappings
      * <em>All Edge Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>All Edge Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.Layer#getAllEdgeMappings()
@@ -4630,7 +4630,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.AdditionalLayer
      * <em>Additional Layer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Additional Layer</em>'.
      * @see org.eclipse.sirius.diagram.description.AdditionalLayer
      * @generated
@@ -4642,7 +4642,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.AdditionalLayer#isActiveByDefault
      * <em>Active By Default</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Active By Default</em>'.
      * @see org.eclipse.sirius.diagram.description.AdditionalLayer#isActiveByDefault()
      * @see #getAdditionalLayer()
@@ -4680,7 +4680,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.DragAndDropTargetDescription#getDropDescriptions
      * <em>Drop Descriptions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Drop Descriptions</em>'.
      * @see org.eclipse.sirius.diagram.description.DragAndDropTargetDescription#getDropDescriptions()
@@ -4705,7 +4705,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.LayoutDirection
      * <em>Layout Direction</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Layout Direction</em>'.
      * @see org.eclipse.sirius.diagram.description.LayoutDirection
      * @generated
@@ -4726,7 +4726,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -4756,7 +4756,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getDiagramDescription()
          * @generated
          */
-        EClass DIAGRAM_DESCRIPTION = eINSTANCE.getDiagramDescription();
+        EClass DIAGRAM_DESCRIPTION = DescriptionPackage.eINSTANCE.getDiagramDescription();
 
         /**
          * The meta object literal for the '<em><b>Filters</b></em>' containment
@@ -4764,7 +4764,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__FILTERS = eINSTANCE.getDiagramDescription_Filters();
+        EReference DIAGRAM_DESCRIPTION__FILTERS = DescriptionPackage.eINSTANCE.getDiagramDescription_Filters();
 
         /**
          * The meta object literal for the '<em><b>All Edge Mappings</b></em>'
@@ -4772,7 +4772,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = eINSTANCE.getDiagramDescription_AllEdgeMappings();
+        EReference DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = DescriptionPackage.eINSTANCE.getDiagramDescription_AllEdgeMappings();
 
         /**
          * The meta object literal for the '<em><b>All Node Mappings</b></em>'
@@ -4780,16 +4780,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = eINSTANCE.getDiagramDescription_AllNodeMappings();
+        EReference DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = DescriptionPackage.eINSTANCE.getDiagramDescription_AllNodeMappings();
 
         /**
          * The meta object literal for the '
          * <em><b>All Container Mappings</b></em>' reference list feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = eINSTANCE.getDiagramDescription_AllContainerMappings();
+        EReference DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = DescriptionPackage.eINSTANCE.getDiagramDescription_AllContainerMappings();
 
         /**
          * The meta object literal for the '<em><b>Validation Set</b></em>'
@@ -4798,7 +4798,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__VALIDATION_SET = eINSTANCE.getDiagramDescription_ValidationSet();
+        EReference DIAGRAM_DESCRIPTION__VALIDATION_SET = DescriptionPackage.eINSTANCE.getDiagramDescription_ValidationSet();
 
         /**
          * The meta object literal for the '<em><b>Concerns</b></em>'
@@ -4807,7 +4807,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__CONCERNS = eINSTANCE.getDiagramDescription_Concerns();
+        EReference DIAGRAM_DESCRIPTION__CONCERNS = DescriptionPackage.eINSTANCE.getDiagramDescription_Concerns();
 
         /**
          * The meta object literal for the '<em><b>All Tools</b></em>' reference
@@ -4815,7 +4815,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__ALL_TOOLS = eINSTANCE.getDiagramDescription_AllTools();
+        EReference DIAGRAM_DESCRIPTION__ALL_TOOLS = DescriptionPackage.eINSTANCE.getDiagramDescription_AllTools();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -4823,16 +4823,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DIAGRAM_DESCRIPTION__DOMAIN_CLASS = eINSTANCE.getDiagramDescription_DomainClass();
+        EAttribute DIAGRAM_DESCRIPTION__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getDiagramDescription_DomainClass();
 
         /**
          * The meta object literal for the '
          * <em><b>Precondition Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = eINSTANCE.getDiagramDescription_PreconditionExpression();
+        EAttribute DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = DescriptionPackage.eINSTANCE.getDiagramDescription_PreconditionExpression();
 
         /**
          * The meta object literal for the '<em><b>Default Concern</b></em>'
@@ -4840,7 +4840,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = eINSTANCE.getDiagramDescription_DefaultConcern();
+        EReference DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = DescriptionPackage.eINSTANCE.getDiagramDescription_DefaultConcern();
 
         /**
          * The meta object literal for the '<em><b>Root Expression</b></em>'
@@ -4848,7 +4848,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = eINSTANCE.getDiagramDescription_RootExpression();
+        EAttribute DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = DescriptionPackage.eINSTANCE.getDiagramDescription_RootExpression();
 
         /**
          * The meta object literal for the '<em><b>Init</b></em>' reference
@@ -4856,7 +4856,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__INIT = eINSTANCE.getDiagramDescription_Init();
+        EReference DIAGRAM_DESCRIPTION__INIT = DescriptionPackage.eINSTANCE.getDiagramDescription_Init();
 
         /**
          * The meta object literal for the '<em><b>Layout</b></em>' containment
@@ -4864,7 +4864,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__LAYOUT = eINSTANCE.getDiagramDescription_Layout();
+        EReference DIAGRAM_DESCRIPTION__LAYOUT = DescriptionPackage.eINSTANCE.getDiagramDescription_Layout();
 
         /**
          * The meta object literal for the '
@@ -4873,7 +4873,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = eINSTANCE.getDiagramDescription_DiagramInitialisation();
+        EReference DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = DescriptionPackage.eINSTANCE.getDiagramDescription_DiagramInitialisation();
 
         /**
          * The meta object literal for the '<em><b>Default Layer</b></em>'
@@ -4882,7 +4882,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__DEFAULT_LAYER = eINSTANCE.getDiagramDescription_DefaultLayer();
+        EReference DIAGRAM_DESCRIPTION__DEFAULT_LAYER = DescriptionPackage.eINSTANCE.getDiagramDescription_DefaultLayer();
 
         /**
          * The meta object literal for the '<em><b>Additional Layers</b></em>'
@@ -4891,7 +4891,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = eINSTANCE.getDiagramDescription_AdditionalLayers();
+        EReference DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = DescriptionPackage.eINSTANCE.getDiagramDescription_AdditionalLayers();
 
         /**
          * The meta object literal for the '<em><b>All Layers</b></em>'
@@ -4899,7 +4899,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__ALL_LAYERS = eINSTANCE.getDiagramDescription_AllLayers();
+        EReference DIAGRAM_DESCRIPTION__ALL_LAYERS = DescriptionPackage.eINSTANCE.getDiagramDescription_AllLayers();
 
         /**
          * The meta object literal for the '<em><b>All Activated Tools</b></em>'
@@ -4907,7 +4907,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = eINSTANCE.getDiagramDescription_AllActivatedTools();
+        EReference DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = DescriptionPackage.eINSTANCE.getDiagramDescription_AllActivatedTools();
 
         /**
          * The meta object literal for the '<em><b>Node Mappings</b></em>'
@@ -4916,7 +4916,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__NODE_MAPPINGS = eINSTANCE.getDiagramDescription_NodeMappings();
+        EReference DIAGRAM_DESCRIPTION__NODE_MAPPINGS = DescriptionPackage.eINSTANCE.getDiagramDescription_NodeMappings();
 
         /**
          * The meta object literal for the '<em><b>Edge Mappings</b></em>'
@@ -4925,7 +4925,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = eINSTANCE.getDiagramDescription_EdgeMappings();
+        EReference DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = DescriptionPackage.eINSTANCE.getDiagramDescription_EdgeMappings();
 
         /**
          * The meta object literal for the '<em><b>Edge Mapping Imports</b></em>
@@ -4934,7 +4934,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = eINSTANCE.getDiagramDescription_EdgeMappingImports();
+        EReference DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = DescriptionPackage.eINSTANCE.getDiagramDescription_EdgeMappingImports();
 
         /**
          * The meta object literal for the '<em><b>Container Mappings</b></em>'
@@ -4943,7 +4943,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = eINSTANCE.getDiagramDescription_ContainerMappings();
+        EReference DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = DescriptionPackage.eINSTANCE.getDiagramDescription_ContainerMappings();
 
         /**
          * The meta object literal for the '<em><b>Reused Mappings</b></em>'
@@ -4951,7 +4951,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = eINSTANCE.getDiagramDescription_ReusedMappings();
+        EReference DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = DescriptionPackage.eINSTANCE.getDiagramDescription_ReusedMappings();
 
         /**
          * The meta object literal for the '<em><b>Tool Section</b></em>'
@@ -4960,7 +4960,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__TOOL_SECTION = eINSTANCE.getDiagramDescription_ToolSection();
+        EReference DIAGRAM_DESCRIPTION__TOOL_SECTION = DescriptionPackage.eINSTANCE.getDiagramDescription_ToolSection();
 
         /**
          * The meta object literal for the '<em><b>Reused Tools</b></em>'
@@ -4968,7 +4968,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__REUSED_TOOLS = eINSTANCE.getDiagramDescription_ReusedTools();
+        EReference DIAGRAM_DESCRIPTION__REUSED_TOOLS = DescriptionPackage.eINSTANCE.getDiagramDescription_ReusedTools();
 
         /**
          * The meta object literal for the '<em><b>Enable Popup Bars</b></em>'
@@ -4976,7 +4976,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = eINSTANCE.getDiagramDescription_EnablePopupBars();
+        EAttribute DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = DescriptionPackage.eINSTANCE.getDiagramDescription_EnablePopupBars();
 
         /**
          * The meta object literal for the '
@@ -4988,7 +4988,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getDiagramImportDescription()
          * @generated
          */
-        EClass DIAGRAM_IMPORT_DESCRIPTION = eINSTANCE.getDiagramImportDescription();
+        EClass DIAGRAM_IMPORT_DESCRIPTION = DescriptionPackage.eINSTANCE.getDiagramImportDescription();
 
         /**
          * The meta object literal for the '<em><b>Imported Diagram</b></em>'
@@ -4996,7 +4996,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM = eINSTANCE.getDiagramImportDescription_ImportedDiagram();
+        EReference DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM = DescriptionPackage.eINSTANCE.getDiagramImportDescription_ImportedDiagram();
 
         /**
          * The meta object literal for the '
@@ -5008,7 +5008,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getDiagramExtensionDescription()
          * @generated
          */
-        EClass DIAGRAM_EXTENSION_DESCRIPTION = eINSTANCE.getDiagramExtensionDescription();
+        EClass DIAGRAM_EXTENSION_DESCRIPTION = DescriptionPackage.eINSTANCE.getDiagramExtensionDescription();
 
         /**
          * The meta object literal for the '<em><b>Layers</b></em>' containment
@@ -5016,7 +5016,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_EXTENSION_DESCRIPTION__LAYERS = eINSTANCE.getDiagramExtensionDescription_Layers();
+        EReference DIAGRAM_EXTENSION_DESCRIPTION__LAYERS = DescriptionPackage.eINSTANCE.getDiagramExtensionDescription_Layers();
 
         /**
          * The meta object literal for the '<em><b>Validation Set</b></em>'
@@ -5025,7 +5025,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET = eINSTANCE.getDiagramExtensionDescription_ValidationSet();
+        EReference DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET = DescriptionPackage.eINSTANCE.getDiagramExtensionDescription_ValidationSet();
 
         /**
          * The meta object literal for the '<em><b>Concerns</b></em>'
@@ -5034,7 +5034,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS = eINSTANCE.getDiagramExtensionDescription_Concerns();
+        EReference DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS = DescriptionPackage.eINSTANCE.getDiagramExtensionDescription_Concerns();
 
         /**
          * The meta object literal for the '
@@ -5046,16 +5046,16 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getDiagramElementMapping()
          * @generated
          */
-        EClass DIAGRAM_ELEMENT_MAPPING = eINSTANCE.getDiagramElementMapping();
+        EClass DIAGRAM_ELEMENT_MAPPING = DescriptionPackage.eINSTANCE.getDiagramElementMapping();
 
         /**
          * The meta object literal for the '
          * <em><b>Precondition Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION = eINSTANCE.getDiagramElementMapping_PreconditionExpression();
+        EAttribute DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.eINSTANCE.getDiagramElementMapping_PreconditionExpression();
 
         /**
          * The meta object literal for the '<em><b>Deletion Description</b></em>
@@ -5063,7 +5063,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION = eINSTANCE.getDiagramElementMapping_DeletionDescription();
+        EReference DIAGRAM_ELEMENT_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.eINSTANCE.getDiagramElementMapping_DeletionDescription();
 
         /**
          * The meta object literal for the '<em><b>Label Direct Edit</b></em>'
@@ -5071,7 +5071,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT = eINSTANCE.getDiagramElementMapping_LabelDirectEdit();
+        EReference DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.eINSTANCE.getDiagramElementMapping_LabelDirectEdit();
 
         /**
          * The meta object literal for the '
@@ -5080,7 +5080,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = eINSTANCE.getDiagramElementMapping_SemanticCandidatesExpression();
+        EAttribute DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticCandidatesExpression();
 
         /**
          * The meta object literal for the '<em><b>Create Elements</b></em>'
@@ -5088,7 +5088,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DIAGRAM_ELEMENT_MAPPING__CREATE_ELEMENTS = eINSTANCE.getDiagramElementMapping_CreateElements();
+        EAttribute DIAGRAM_ELEMENT_MAPPING__CREATE_ELEMENTS = DescriptionPackage.eINSTANCE.getDiagramElementMapping_CreateElements();
 
         /**
          * The meta object literal for the '<em><b>Semantic Elements</b></em>'
@@ -5096,16 +5096,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS = eINSTANCE.getDiagramElementMapping_SemanticElements();
+        EAttribute DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticElements();
 
         /**
          * The meta object literal for the '
          * <em><b>Double Click Description</b></em>' reference feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION = eINSTANCE.getDiagramElementMapping_DoubleClickDescription();
+        EReference DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.eINSTANCE.getDiagramElementMapping_DoubleClickDescription();
 
         /**
          * The meta object literal for the '<em><b>Synchronization Lock</b></em>
@@ -5113,7 +5113,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK = eINSTANCE.getDiagramElementMapping_SynchronizationLock();
+        EAttribute DIAGRAM_ELEMENT_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.eINSTANCE.getDiagramElementMapping_SynchronizationLock();
 
         /**
          * The meta object literal for the '
@@ -5125,7 +5125,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getAbstractNodeMapping()
          * @generated
          */
-        EClass ABSTRACT_NODE_MAPPING = eINSTANCE.getAbstractNodeMapping();
+        EClass ABSTRACT_NODE_MAPPING = DescriptionPackage.eINSTANCE.getAbstractNodeMapping();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -5133,7 +5133,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ABSTRACT_NODE_MAPPING__DOMAIN_CLASS = eINSTANCE.getAbstractNodeMapping_DomainClass();
+        EAttribute ABSTRACT_NODE_MAPPING__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getAbstractNodeMapping_DomainClass();
 
         /**
          * The meta object literal for the '
@@ -5142,7 +5142,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS = eINSTANCE.getAbstractNodeMapping_BorderedNodeMappings();
+        EReference ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS = DescriptionPackage.eINSTANCE.getAbstractNodeMapping_BorderedNodeMappings();
 
         /**
          * The meta object literal for the '
@@ -5151,7 +5151,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = eINSTANCE.getAbstractNodeMapping_ReusedBorderedNodeMappings();
+        EReference ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = DescriptionPackage.eINSTANCE.getAbstractNodeMapping_ReusedBorderedNodeMappings();
 
         /**
          * The meta object literal for the '
@@ -5163,7 +5163,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getNodeMapping()
          * @generated
          */
-        EClass NODE_MAPPING = eINSTANCE.getNodeMapping();
+        EClass NODE_MAPPING = DescriptionPackage.eINSTANCE.getNodeMapping();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -5171,7 +5171,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference NODE_MAPPING__STYLE = eINSTANCE.getNodeMapping_Style();
+        EReference NODE_MAPPING__STYLE = DescriptionPackage.eINSTANCE.getNodeMapping_Style();
 
         /**
          * The meta object literal for the '<em><b>Conditionnal Styles</b></em>'
@@ -5180,7 +5180,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference NODE_MAPPING__CONDITIONNAL_STYLES = eINSTANCE.getNodeMapping_ConditionnalStyles();
+        EReference NODE_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.eINSTANCE.getNodeMapping_ConditionnalStyles();
 
         /**
          * The meta object literal for the '
@@ -5192,7 +5192,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getContainerMapping()
          * @generated
          */
-        EClass CONTAINER_MAPPING = eINSTANCE.getContainerMapping();
+        EClass CONTAINER_MAPPING = DescriptionPackage.eINSTANCE.getContainerMapping();
 
         /**
          * The meta object literal for the '<em><b>Sub Node Mappings</b></em>'
@@ -5201,7 +5201,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_MAPPING__SUB_NODE_MAPPINGS = eINSTANCE.getContainerMapping_SubNodeMappings();
+        EReference CONTAINER_MAPPING__SUB_NODE_MAPPINGS = DescriptionPackage.eINSTANCE.getContainerMapping_SubNodeMappings();
 
         /**
          * The meta object literal for the '<em><b>All Node Mappings</b></em>'
@@ -5209,16 +5209,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_MAPPING__ALL_NODE_MAPPINGS = eINSTANCE.getContainerMapping_AllNodeMappings();
+        EReference CONTAINER_MAPPING__ALL_NODE_MAPPINGS = DescriptionPackage.eINSTANCE.getContainerMapping_AllNodeMappings();
 
         /**
          * The meta object literal for the '<em><b>Reused Node Mappings</b></em>
          * ' reference list feature. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @generated
          */
-        EReference CONTAINER_MAPPING__REUSED_NODE_MAPPINGS = eINSTANCE.getContainerMapping_ReusedNodeMappings();
+        EReference CONTAINER_MAPPING__REUSED_NODE_MAPPINGS = DescriptionPackage.eINSTANCE.getContainerMapping_ReusedNodeMappings();
 
         /**
          * The meta object literal for the '
@@ -5227,7 +5227,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS = eINSTANCE.getContainerMapping_SubContainerMappings();
+        EReference CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS = DescriptionPackage.eINSTANCE.getContainerMapping_SubContainerMappings();
 
         /**
          * The meta object literal for the '
@@ -5236,16 +5236,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS = eINSTANCE.getContainerMapping_ReusedContainerMappings();
+        EReference CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS = DescriptionPackage.eINSTANCE.getContainerMapping_ReusedContainerMappings();
 
         /**
          * The meta object literal for the '
          * <em><b>All Container Mappings</b></em>' reference list feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS = eINSTANCE.getContainerMapping_AllContainerMappings();
+        EReference CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS = DescriptionPackage.eINSTANCE.getContainerMapping_AllContainerMappings();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -5253,7 +5253,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_MAPPING__STYLE = eINSTANCE.getContainerMapping_Style();
+        EReference CONTAINER_MAPPING__STYLE = DescriptionPackage.eINSTANCE.getContainerMapping_Style();
 
         /**
          * The meta object literal for the '<em><b>Conditionnal Styles</b></em>'
@@ -5262,16 +5262,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_MAPPING__CONDITIONNAL_STYLES = eINSTANCE.getContainerMapping_ConditionnalStyles();
+        EReference CONTAINER_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.eINSTANCE.getContainerMapping_ConditionnalStyles();
 
         /**
          * The meta object literal for the '
          * <em><b>Children Presentation</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute CONTAINER_MAPPING__CHILDREN_PRESENTATION = eINSTANCE.getContainerMapping_ChildrenPresentation();
+        EAttribute CONTAINER_MAPPING__CHILDREN_PRESENTATION = DescriptionPackage.eINSTANCE.getContainerMapping_ChildrenPresentation();
 
         /**
          * The meta object literal for the '
@@ -5283,7 +5283,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getNodeMappingImport()
          * @generated
          */
-        EClass NODE_MAPPING_IMPORT = eINSTANCE.getNodeMappingImport();
+        EClass NODE_MAPPING_IMPORT = DescriptionPackage.eINSTANCE.getNodeMappingImport();
 
         /**
          * The meta object literal for the '<em><b>Imported Mapping</b></em>'
@@ -5291,7 +5291,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference NODE_MAPPING_IMPORT__IMPORTED_MAPPING = eINSTANCE.getNodeMappingImport_ImportedMapping();
+        EReference NODE_MAPPING_IMPORT__IMPORTED_MAPPING = DescriptionPackage.eINSTANCE.getNodeMappingImport_ImportedMapping();
 
         /**
          * The meta object literal for the '
@@ -5303,7 +5303,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getContainerMappingImport()
          * @generated
          */
-        EClass CONTAINER_MAPPING_IMPORT = eINSTANCE.getContainerMappingImport();
+        EClass CONTAINER_MAPPING_IMPORT = DescriptionPackage.eINSTANCE.getContainerMappingImport();
 
         /**
          * The meta object literal for the '<em><b>Imported Mapping</b></em>'
@@ -5311,7 +5311,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING = eINSTANCE.getContainerMappingImport_ImportedMapping();
+        EReference CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING = DescriptionPackage.eINSTANCE.getContainerMappingImport_ImportedMapping();
 
         /**
          * The meta object literal for the '
@@ -5323,7 +5323,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getEdgeMapping()
          * @generated
          */
-        EClass EDGE_MAPPING = eINSTANCE.getEdgeMapping();
+        EClass EDGE_MAPPING = DescriptionPackage.eINSTANCE.getEdgeMapping();
 
         /**
          * The meta object literal for the '<em><b>Source Mapping</b></em>'
@@ -5331,7 +5331,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_MAPPING__SOURCE_MAPPING = eINSTANCE.getEdgeMapping_SourceMapping();
+        EReference EDGE_MAPPING__SOURCE_MAPPING = DescriptionPackage.eINSTANCE.getEdgeMapping_SourceMapping();
 
         /**
          * The meta object literal for the '<em><b>Target Mapping</b></em>'
@@ -5339,25 +5339,25 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_MAPPING__TARGET_MAPPING = eINSTANCE.getEdgeMapping_TargetMapping();
+        EReference EDGE_MAPPING__TARGET_MAPPING = DescriptionPackage.eINSTANCE.getEdgeMapping_TargetMapping();
 
         /**
          * The meta object literal for the '
          * <em><b>Target Finder Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_MAPPING__TARGET_FINDER_EXPRESSION = eINSTANCE.getEdgeMapping_TargetFinderExpression();
+        EAttribute EDGE_MAPPING__TARGET_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getEdgeMapping_TargetFinderExpression();
 
         /**
          * The meta object literal for the '
          * <em><b>Source Finder Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_MAPPING__SOURCE_FINDER_EXPRESSION = eINSTANCE.getEdgeMapping_SourceFinderExpression();
+        EAttribute EDGE_MAPPING__SOURCE_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getEdgeMapping_SourceFinderExpression();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -5365,7 +5365,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_MAPPING__STYLE = eINSTANCE.getEdgeMapping_Style();
+        EReference EDGE_MAPPING__STYLE = DescriptionPackage.eINSTANCE.getEdgeMapping_Style();
 
         /**
          * The meta object literal for the '<em><b>Conditionnal Styles</b></em>'
@@ -5374,7 +5374,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_MAPPING__CONDITIONNAL_STYLES = eINSTANCE.getEdgeMapping_ConditionnalStyles();
+        EReference EDGE_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.eINSTANCE.getEdgeMapping_ConditionnalStyles();
 
         /**
          * The meta object literal for the '<em><b>Target Expression</b></em>'
@@ -5382,7 +5382,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_MAPPING__TARGET_EXPRESSION = eINSTANCE.getEdgeMapping_TargetExpression();
+        EAttribute EDGE_MAPPING__TARGET_EXPRESSION = DescriptionPackage.eINSTANCE.getEdgeMapping_TargetExpression();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -5390,7 +5390,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_MAPPING__DOMAIN_CLASS = eINSTANCE.getEdgeMapping_DomainClass();
+        EAttribute EDGE_MAPPING__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getEdgeMapping_DomainClass();
 
         /**
          * The meta object literal for the '<em><b>Use Domain Element</b></em>'
@@ -5398,7 +5398,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_MAPPING__USE_DOMAIN_ELEMENT = eINSTANCE.getEdgeMapping_UseDomainElement();
+        EAttribute EDGE_MAPPING__USE_DOMAIN_ELEMENT = DescriptionPackage.eINSTANCE.getEdgeMapping_UseDomainElement();
 
         /**
          * The meta object literal for the '<em><b>Reconnections</b></em>'
@@ -5406,7 +5406,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_MAPPING__RECONNECTIONS = eINSTANCE.getEdgeMapping_Reconnections();
+        EReference EDGE_MAPPING__RECONNECTIONS = DescriptionPackage.eINSTANCE.getEdgeMapping_Reconnections();
 
         /**
          * The meta object literal for the '<em><b>Path Expression</b></em>'
@@ -5414,7 +5414,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute EDGE_MAPPING__PATH_EXPRESSION = eINSTANCE.getEdgeMapping_PathExpression();
+        EAttribute EDGE_MAPPING__PATH_EXPRESSION = DescriptionPackage.eINSTANCE.getEdgeMapping_PathExpression();
 
         /**
          * The meta object literal for the '<em><b>Path Node Mapping</b></em>'
@@ -5422,7 +5422,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_MAPPING__PATH_NODE_MAPPING = eINSTANCE.getEdgeMapping_PathNodeMapping();
+        EReference EDGE_MAPPING__PATH_NODE_MAPPING = DescriptionPackage.eINSTANCE.getEdgeMapping_PathNodeMapping();
 
         /**
          * The meta object literal for the '
@@ -5434,7 +5434,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getIEdgeMapping()
          * @generated
          */
-        EClass IEDGE_MAPPING = eINSTANCE.getIEdgeMapping();
+        EClass IEDGE_MAPPING = DescriptionPackage.eINSTANCE.getIEdgeMapping();
 
         /**
          * The meta object literal for the '
@@ -5446,7 +5446,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getEdgeMappingImport()
          * @generated
          */
-        EClass EDGE_MAPPING_IMPORT = eINSTANCE.getEdgeMappingImport();
+        EClass EDGE_MAPPING_IMPORT = DescriptionPackage.eINSTANCE.getEdgeMappingImport();
 
         /**
          * The meta object literal for the '<em><b>Imported Mapping</b></em>'
@@ -5454,7 +5454,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_MAPPING_IMPORT__IMPORTED_MAPPING = eINSTANCE.getEdgeMappingImport_ImportedMapping();
+        EReference EDGE_MAPPING_IMPORT__IMPORTED_MAPPING = DescriptionPackage.eINSTANCE.getEdgeMappingImport_ImportedMapping();
 
         /**
          * The meta object literal for the '<em><b>Conditionnal Styles</b></em>'
@@ -5463,28 +5463,28 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference EDGE_MAPPING_IMPORT__CONDITIONNAL_STYLES = eINSTANCE.getEdgeMappingImport_ConditionnalStyles();
+        EReference EDGE_MAPPING_IMPORT__CONDITIONNAL_STYLES = DescriptionPackage.eINSTANCE.getEdgeMappingImport_ConditionnalStyles();
 
         /**
          * The meta object literal for the '
          * <em><b>Inherits Ancestor Filters</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS = eINSTANCE.getEdgeMappingImport_InheritsAncestorFilters();
+        EAttribute EDGE_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS = DescriptionPackage.eINSTANCE.getEdgeMappingImport_InheritsAncestorFilters();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.impl.ConditionalNodeStyleDescriptionImpl
          * <em>Conditional Node Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.impl.ConditionalNodeStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getConditionalNodeStyleDescription()
          * @generated
          */
-        EClass CONDITIONAL_NODE_STYLE_DESCRIPTION = eINSTANCE.getConditionalNodeStyleDescription();
+        EClass CONDITIONAL_NODE_STYLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getConditionalNodeStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -5492,19 +5492,19 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONDITIONAL_NODE_STYLE_DESCRIPTION__STYLE = eINSTANCE.getConditionalNodeStyleDescription_Style();
+        EReference CONDITIONAL_NODE_STYLE_DESCRIPTION__STYLE = DescriptionPackage.eINSTANCE.getConditionalNodeStyleDescription_Style();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.impl.ConditionalEdgeStyleDescriptionImpl
          * <em>Conditional Edge Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.impl.ConditionalEdgeStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getConditionalEdgeStyleDescription()
          * @generated
          */
-        EClass CONDITIONAL_EDGE_STYLE_DESCRIPTION = eINSTANCE.getConditionalEdgeStyleDescription();
+        EClass CONDITIONAL_EDGE_STYLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getConditionalEdgeStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -5512,19 +5512,19 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE = eINSTANCE.getConditionalEdgeStyleDescription_Style();
+        EReference CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE = DescriptionPackage.eINSTANCE.getConditionalEdgeStyleDescription_Style();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.impl.ConditionalContainerStyleDescriptionImpl
          * <em>Conditional Container Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.impl.ConditionalContainerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getConditionalContainerStyleDescription()
          * @generated
          */
-        EClass CONDITIONAL_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getConditionalContainerStyleDescription();
+        EClass CONDITIONAL_CONTAINER_STYLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getConditionalContainerStyleDescription();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -5532,7 +5532,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONDITIONAL_CONTAINER_STYLE_DESCRIPTION__STYLE = eINSTANCE.getConditionalContainerStyleDescription_Style();
+        EReference CONDITIONAL_CONTAINER_STYLE_DESCRIPTION__STYLE = DescriptionPackage.eINSTANCE.getConditionalContainerStyleDescription_Style();
 
         /**
          * The meta object literal for the '
@@ -5543,7 +5543,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayout()
          * @generated
          */
-        EClass LAYOUT = eINSTANCE.getLayout();
+        EClass LAYOUT = DescriptionPackage.eINSTANCE.getLayout();
 
         /**
          * The meta object literal for the '
@@ -5555,7 +5555,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getOrderedTreeLayout()
          * @generated
          */
-        EClass ORDERED_TREE_LAYOUT = eINSTANCE.getOrderedTreeLayout();
+        EClass ORDERED_TREE_LAYOUT = DescriptionPackage.eINSTANCE.getOrderedTreeLayout();
 
         /**
          * The meta object literal for the '<em><b>Children Expression</b></em>'
@@ -5563,7 +5563,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION = eINSTANCE.getOrderedTreeLayout_ChildrenExpression();
+        EAttribute ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION = DescriptionPackage.eINSTANCE.getOrderedTreeLayout_ChildrenExpression();
 
         /**
          * The meta object literal for the '<em><b>Node Mapping</b></em>'
@@ -5571,7 +5571,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference ORDERED_TREE_LAYOUT__NODE_MAPPING = eINSTANCE.getOrderedTreeLayout_NodeMapping();
+        EReference ORDERED_TREE_LAYOUT__NODE_MAPPING = DescriptionPackage.eINSTANCE.getOrderedTreeLayout_NodeMapping();
 
         /**
          * The meta object literal for the '
@@ -5583,7 +5583,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getCompositeLayout()
          * @generated
          */
-        EClass COMPOSITE_LAYOUT = eINSTANCE.getCompositeLayout();
+        EClass COMPOSITE_LAYOUT = DescriptionPackage.eINSTANCE.getCompositeLayout();
 
         /**
          * The meta object literal for the '<em><b>Padding</b></em>' attribute
@@ -5591,7 +5591,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute COMPOSITE_LAYOUT__PADDING = eINSTANCE.getCompositeLayout_Padding();
+        EAttribute COMPOSITE_LAYOUT__PADDING = DescriptionPackage.eINSTANCE.getCompositeLayout_Padding();
 
         /**
          * The meta object literal for the '<em><b>Direction</b></em>' attribute
@@ -5599,7 +5599,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute COMPOSITE_LAYOUT__DIRECTION = eINSTANCE.getCompositeLayout_Direction();
+        EAttribute COMPOSITE_LAYOUT__DIRECTION = DescriptionPackage.eINSTANCE.getCompositeLayout_Direction();
 
         /**
          * The meta object literal for the '
@@ -5611,7 +5611,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getMappingBasedDecoration()
          * @generated
          */
-        EClass MAPPING_BASED_DECORATION = eINSTANCE.getMappingBasedDecoration();
+        EClass MAPPING_BASED_DECORATION = DescriptionPackage.eINSTANCE.getMappingBasedDecoration();
 
         /**
          * The meta object literal for the '<em><b>Mappings</b></em>' reference
@@ -5619,7 +5619,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference MAPPING_BASED_DECORATION__MAPPINGS = eINSTANCE.getMappingBasedDecoration_Mappings();
+        EReference MAPPING_BASED_DECORATION__MAPPINGS = DescriptionPackage.eINSTANCE.getMappingBasedDecoration_Mappings();
 
         /**
          * The meta object literal for the '
@@ -5630,7 +5630,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayer()
          * @generated
          */
-        EClass LAYER = eINSTANCE.getLayer();
+        EClass LAYER = DescriptionPackage.eINSTANCE.getLayer();
 
         /**
          * The meta object literal for the '<em><b>Node Mappings</b></em>'
@@ -5639,7 +5639,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__NODE_MAPPINGS = eINSTANCE.getLayer_NodeMappings();
+        EReference LAYER__NODE_MAPPINGS = DescriptionPackage.eINSTANCE.getLayer_NodeMappings();
 
         /**
          * The meta object literal for the '<em><b>Edge Mappings</b></em>'
@@ -5648,7 +5648,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__EDGE_MAPPINGS = eINSTANCE.getLayer_EdgeMappings();
+        EReference LAYER__EDGE_MAPPINGS = DescriptionPackage.eINSTANCE.getLayer_EdgeMappings();
 
         /**
          * The meta object literal for the '<em><b>Edge Mapping Imports</b></em>
@@ -5657,7 +5657,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__EDGE_MAPPING_IMPORTS = eINSTANCE.getLayer_EdgeMappingImports();
+        EReference LAYER__EDGE_MAPPING_IMPORTS = DescriptionPackage.eINSTANCE.getLayer_EdgeMappingImports();
 
         /**
          * The meta object literal for the '<em><b>Container Mappings</b></em>'
@@ -5666,7 +5666,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__CONTAINER_MAPPINGS = eINSTANCE.getLayer_ContainerMappings();
+        EReference LAYER__CONTAINER_MAPPINGS = DescriptionPackage.eINSTANCE.getLayer_ContainerMappings();
 
         /**
          * The meta object literal for the '<em><b>Reused Mappings</b></em>'
@@ -5674,7 +5674,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__REUSED_MAPPINGS = eINSTANCE.getLayer_ReusedMappings();
+        EReference LAYER__REUSED_MAPPINGS = DescriptionPackage.eINSTANCE.getLayer_ReusedMappings();
 
         /**
          * The meta object literal for the '<em><b>All Tools</b></em>' reference
@@ -5682,7 +5682,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__ALL_TOOLS = eINSTANCE.getLayer_AllTools();
+        EReference LAYER__ALL_TOOLS = DescriptionPackage.eINSTANCE.getLayer_AllTools();
 
         /**
          * The meta object literal for the '<em><b>Tool Sections</b></em>'
@@ -5691,7 +5691,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__TOOL_SECTIONS = eINSTANCE.getLayer_ToolSections();
+        EReference LAYER__TOOL_SECTIONS = DescriptionPackage.eINSTANCE.getLayer_ToolSections();
 
         /**
          * The meta object literal for the '<em><b>Reused Tools</b></em>'
@@ -5699,7 +5699,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__REUSED_TOOLS = eINSTANCE.getLayer_ReusedTools();
+        EReference LAYER__REUSED_TOOLS = DescriptionPackage.eINSTANCE.getLayer_ReusedTools();
 
         /**
          * The meta object literal for the '
@@ -5708,7 +5708,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__DECORATION_DESCRIPTIONS_SET = eINSTANCE.getLayer_DecorationDescriptionsSet();
+        EReference LAYER__DECORATION_DESCRIPTIONS_SET = DescriptionPackage.eINSTANCE.getLayer_DecorationDescriptionsSet();
 
         /**
          * The meta object literal for the '<em><b>Icon</b></em>' attribute
@@ -5716,7 +5716,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute LAYER__ICON = eINSTANCE.getLayer_Icon();
+        EAttribute LAYER__ICON = DescriptionPackage.eINSTANCE.getLayer_Icon();
 
         /**
          * The meta object literal for the '<em><b>All Edge Mappings</b></em>'
@@ -5724,7 +5724,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__ALL_EDGE_MAPPINGS = eINSTANCE.getLayer_AllEdgeMappings();
+        EReference LAYER__ALL_EDGE_MAPPINGS = DescriptionPackage.eINSTANCE.getLayer_AllEdgeMappings();
 
         /**
          * The meta object literal for the '<em><b>Customization</b></em>'
@@ -5733,7 +5733,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference LAYER__CUSTOMIZATION = eINSTANCE.getLayer_Customization();
+        EReference LAYER__CUSTOMIZATION = DescriptionPackage.eINSTANCE.getLayer_Customization();
 
         /**
          * The meta object literal for the '
@@ -5745,7 +5745,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getAdditionalLayer()
          * @generated
          */
-        EClass ADDITIONAL_LAYER = eINSTANCE.getAdditionalLayer();
+        EClass ADDITIONAL_LAYER = DescriptionPackage.eINSTANCE.getAdditionalLayer();
 
         /**
          * The meta object literal for the '<em><b>Active By Default</b></em>'
@@ -5753,7 +5753,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT = eINSTANCE.getAdditionalLayer_ActiveByDefault();
+        EAttribute ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT = DescriptionPackage.eINSTANCE.getAdditionalLayer_ActiveByDefault();
 
         /**
          * The meta object literal for the '<em><b>Optional</b></em>' attribute
@@ -5761,19 +5761,19 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute ADDITIONAL_LAYER__OPTIONAL = eINSTANCE.getAdditionalLayer_Optional();
+        EAttribute ADDITIONAL_LAYER__OPTIONAL = DescriptionPackage.eINSTANCE.getAdditionalLayer_Optional();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl
          * <em>Drag And Drop Target Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getDragAndDropTargetDescription()
          * @generated
          */
-        EClass DRAG_AND_DROP_TARGET_DESCRIPTION = eINSTANCE.getDragAndDropTargetDescription();
+        EClass DRAG_AND_DROP_TARGET_DESCRIPTION = DescriptionPackage.eINSTANCE.getDragAndDropTargetDescription();
 
         /**
          * The meta object literal for the '<em><b>Drop Descriptions</b></em>'
@@ -5781,7 +5781,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS = eINSTANCE.getDragAndDropTargetDescription_DropDescriptions();
+        EReference DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS = DescriptionPackage.eINSTANCE.getDragAndDropTargetDescription_DropDescriptions();
 
         /**
          * The meta object literal for the '
@@ -5793,7 +5793,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getFoldingStyle()
          * @generated
          */
-        EEnum FOLDING_STYLE = eINSTANCE.getFoldingStyle();
+        EEnum FOLDING_STYLE = DescriptionPackage.eINSTANCE.getFoldingStyle();
 
         /**
          * The meta object literal for the '
@@ -5805,7 +5805,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayoutDirection()
          * @generated
          */
-        EEnum LAYOUT_DIRECTION = eINSTANCE.getLayoutDirection();
+        EEnum LAYOUT_DIRECTION = DescriptionPackage.eINSTANCE.getLayoutDirection();
 
         /**
          * The meta object literal for the '
@@ -5817,7 +5817,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getCenteringStyle()
          * @generated
          */
-        EEnum CENTERING_STYLE = eINSTANCE.getCenteringStyle();
+        EEnum CENTERING_STYLE = DescriptionPackage.eINSTANCE.getCenteringStyle();
 
     }
 

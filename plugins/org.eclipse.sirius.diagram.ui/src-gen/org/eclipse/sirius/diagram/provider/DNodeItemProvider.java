@@ -4,17 +4,16 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -40,7 +39,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * The item provider used to simulate another child for Node that has label
      * on border.
-     * 
+     *
      * @not-generated
      */
     HashMap<Object, DNodeLabelItemProvider> nodeLabelItemProviders = new HashMap<Object, DNodeLabelItemProvider>();
@@ -48,7 +47,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DNodeItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +57,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +82,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Arrange Constraints feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addArrangeConstraintsPropertyDescriptor(Object object) {
@@ -95,7 +94,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Outgoing Edges feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
@@ -107,7 +106,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Incoming Edges feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
@@ -119,7 +118,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Width feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
@@ -131,7 +130,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Height feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeightPropertyDescriptor(Object object) {
@@ -143,7 +142,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Label Position feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPositionPropertyDescriptor(Object object) {
@@ -155,7 +154,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Resize Kind feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addResizeKindPropertyDescriptor(Object object) {
@@ -167,7 +166,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Original Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
@@ -179,7 +178,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Actual Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
@@ -191,7 +190,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Candidates Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidatesMappingPropertyDescriptor(Object object) {
@@ -247,7 +246,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -288,7 +287,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -318,11 +317,12 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * @not-generated
-     * 
+     *
      *                {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildren(java.lang.Object)
      */
+    @Override
     public Collection<?> getChildren(Object object) {
         Collection<Object> result = (Collection<Object>) super.getChildren(object);
         if (object instanceof DNode && DNodeLabelItemProvider.hasRelevantLabelItem((DNode) object)) {
@@ -341,16 +341,17 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#dispose()
      * @not-generated
      */
+    @Override
     public void dispose() {
         super.dispose();
         // Dispose all the DNodeLabelItemProvider to avoid potential memory
         // leak.
-        for (Iterator<Object> iterator = nodeLabelItemProviders.keySet().iterator(); iterator.hasNext();) {
-            nodeLabelItemProviders.get(iterator.next()).dispose();
+        for (Object object : nodeLabelItemProviders.keySet()) {
+            nodeLabelItemProviders.get(object).dispose();
         }
         nodeLabelItemProviders.clear();
     }

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -55,7 +55,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * @generated
      * @ordered
      */
-    protected BundledImageShape shape = SHAPE_EDEFAULT;
+    protected BundledImageShape shape = BundledImageImpl.SHAPE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
@@ -75,7 +75,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * @generated
      * @ordered
      */
-    protected RGBValues color = COLOR_EDEFAULT;
+    protected RGBValues color = BundledImageImpl.COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -101,6 +101,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * 
      * @generated
      */
+    @Override
     public BundledImageShape getShape() {
         return shape;
     }
@@ -110,11 +111,13 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * 
      * @generated
      */
+    @Override
     public void setShape(BundledImageShape newShape) {
         BundledImageShape oldShape = shape;
-        shape = newShape == null ? SHAPE_EDEFAULT : newShape;
-        if (eNotificationRequired())
+        shape = newShape == null ? BundledImageImpl.SHAPE_EDEFAULT : newShape;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BUNDLED_IMAGE__SHAPE, oldShape, shape));
+        }
     }
 
     /**
@@ -122,6 +125,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * 
      * @generated
      */
+    @Override
     public RGBValues getColor() {
         return color;
     }
@@ -131,11 +135,13 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * 
      * @generated
      */
+    @Override
     public void setColor(RGBValues newColor) {
         RGBValues oldColor = color;
         color = newColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BUNDLED_IMAGE__COLOR, oldColor, color));
+        }
     }
 
     /**
@@ -181,10 +187,10 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.BUNDLED_IMAGE__SHAPE:
-            setShape(SHAPE_EDEFAULT);
+            setShape(BundledImageImpl.SHAPE_EDEFAULT);
             return;
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
-            setColor(COLOR_EDEFAULT);
+            setColor(BundledImageImpl.COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -199,9 +205,9 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.BUNDLED_IMAGE__SHAPE:
-            return shape != SHAPE_EDEFAULT;
+            return shape != BundledImageImpl.SHAPE_EDEFAULT;
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
-            return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
+            return BundledImageImpl.COLOR_EDEFAULT == null ? color != null : !BundledImageImpl.COLOR_EDEFAULT.equals(color);
         }
         return super.eIsSet(featureID);
     }
@@ -213,8 +219,9 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (shape: ");

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -198,9 +198,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ToolSection createToolSection() {
         ToolSectionImpl toolSection = new ToolSectionSpec();
         return toolSection;
@@ -211,6 +212,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public ToolGroup createToolGroup() {
         ToolGroupImpl toolGroup = new ToolGroupImpl();
         return toolGroup;
@@ -221,6 +223,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public ToolGroupExtension createToolGroupExtension() {
         ToolGroupExtensionImpl toolGroupExtension = new ToolGroupExtensionImpl();
         return toolGroupExtension;
@@ -228,9 +231,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public NodeCreationDescription createNodeCreationDescription() {
         NodeCreationDescriptionImpl nodeCreationDescription = new NodeCreationDescriptionImpl();
         NodeCreationVariable defaultVariable = createNodeCreationVariable();
@@ -246,9 +250,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EdgeCreationDescription createEdgeCreationDescription() {
         EdgeCreationDescriptionImpl edgeCreationDescription = new EdgeCreationDescriptionSpec();
 
@@ -277,9 +282,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ContainerCreationDescription createContainerCreationDescription() {
         ContainerCreationDescriptionImpl containerCreationDescription = new ContainerCreationDescriptionImpl();
         NodeCreationVariable defaultVariable = createNodeCreationVariable();
@@ -295,9 +301,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DeleteElementDescription createDeleteElementDescription() {
         DeleteElementDescriptionImpl deleteElementDescription = new DeleteElementDescriptionSpec();
         ElementDeleteVariable elementDeleteVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementDeleteVariable();
@@ -316,9 +323,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DoubleClickDescription createDoubleClickDescription() {
         DoubleClickDescriptionImpl doubleClickDescription = new DoubleClickDescriptionImpl();
         ElementDoubleClickVariable elementDoubleClickVariable = createElementDoubleClickVariable();
@@ -337,6 +345,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public DeleteHook createDeleteHook() {
         DeleteHookImpl deleteHook = new DeleteHookImpl();
         return deleteHook;
@@ -347,6 +356,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public DeleteHookParameter createDeleteHookParameter() {
         DeleteHookParameterImpl deleteHookParameter = new DeleteHookParameterImpl();
         return deleteHookParameter;
@@ -354,9 +364,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ReconnectEdgeDescription createReconnectEdgeDescription() {
         ReconnectEdgeDescriptionImpl reconnectEdgeDescription = new ReconnectEdgeDescriptionSpec();
         ElementSelectVariable elementSelectVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable();
@@ -387,6 +398,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public RequestDescription createRequestDescription() {
         RequestDescriptionImpl requestDescription = new RequestDescriptionImpl();
         return requestDescription;
@@ -394,9 +406,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DirectEditLabel createDirectEditLabel() {
         DirectEditLabelImpl directEditLabel = new DirectEditLabelSpec();
         InitialOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
@@ -408,9 +421,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public BehaviorTool createBehaviorTool() {
         BehaviorToolImpl behaviorTool = new BehaviorToolImpl();
         InitialOperation init = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
@@ -423,6 +437,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public SourceEdgeCreationVariable createSourceEdgeCreationVariable() {
         SourceEdgeCreationVariableImpl sourceEdgeCreationVariable = new SourceEdgeCreationVariableImpl();
         return sourceEdgeCreationVariable;
@@ -433,6 +448,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public SourceEdgeViewCreationVariable createSourceEdgeViewCreationVariable() {
         SourceEdgeViewCreationVariableImpl sourceEdgeViewCreationVariable = new SourceEdgeViewCreationVariableImpl();
         return sourceEdgeViewCreationVariable;
@@ -443,6 +459,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public TargetEdgeCreationVariable createTargetEdgeCreationVariable() {
         TargetEdgeCreationVariableImpl targetEdgeCreationVariable = new TargetEdgeCreationVariableImpl();
         return targetEdgeCreationVariable;
@@ -453,6 +470,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public TargetEdgeViewCreationVariable createTargetEdgeViewCreationVariable() {
         TargetEdgeViewCreationVariableImpl targetEdgeViewCreationVariable = new TargetEdgeViewCreationVariableImpl();
         return targetEdgeViewCreationVariable;
@@ -463,6 +481,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public ElementDoubleClickVariable createElementDoubleClickVariable() {
         ElementDoubleClickVariableImpl elementDoubleClickVariable = new ElementDoubleClickVariableImpl();
         return elementDoubleClickVariable;
@@ -473,6 +492,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public NodeCreationVariable createNodeCreationVariable() {
         NodeCreationVariableImpl nodeCreationVariable = new NodeCreationVariableImpl();
         return nodeCreationVariable;
@@ -483,6 +503,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public CreateView createCreateView() {
         CreateViewImpl createView = new CreateViewImpl();
         return createView;
@@ -493,6 +514,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public CreateEdgeView createCreateEdgeView() {
         CreateEdgeViewImpl createEdgeView = new CreateEdgeViewImpl();
         return createEdgeView;
@@ -503,6 +525,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public Navigation createNavigation() {
         NavigationImpl navigation = new NavigationImpl();
         return navigation;
@@ -510,9 +533,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DiagramCreationDescription createDiagramCreationDescription() {
         DiagramCreationDescriptionImpl diagramCreationDescription = new DiagramCreationDescriptionSpec();
         ContainerViewVariable containerViewVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable();
@@ -528,9 +552,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DiagramNavigationDescription createDiagramNavigationDescription() {
         DiagramNavigationDescriptionImpl diagramNavigationDescription = new DiagramNavigationDescriptionSpec();
         ContainerViewVariable containerViewVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable();
@@ -547,9 +572,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ContainerDropDescription createContainerDropDescription() {
         ContainerDropDescriptionImpl containerDropDescription = new ContainerDropDescriptionSpec();
         DropContainerVariable oldContainerVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createDropContainerVariable();
@@ -579,8 +605,9 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public ReconnectionKind createReconnectionKindFromString(EDataType eDataType, String initialValue) {
         ReconnectionKind result = ReconnectionKind.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -598,6 +625,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
+    @Override
     public ToolPackage getToolPackage() {
         return (ToolPackage) getEPackage();
     }

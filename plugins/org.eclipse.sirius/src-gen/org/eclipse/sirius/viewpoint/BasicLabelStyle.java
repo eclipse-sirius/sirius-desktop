@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint;
 
@@ -43,7 +43,7 @@ public interface BasicLabelStyle extends Customizable {
      * default value is <code>"8"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The font size. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Size</em>' attribute.
      * @see #setLabelSize(int)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_LabelSize()
@@ -57,7 +57,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelSize
      * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -71,7 +71,7 @@ public interface BasicLabelStyle extends Customizable {
      * enumeration {@link org.eclipse.sirius.viewpoint.FontFormat}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * font format. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
      * @see #setLabelFormat(FontFormat)
@@ -86,7 +86,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelFormat
      * <em>Label Format</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
@@ -100,7 +100,7 @@ public interface BasicLabelStyle extends Customizable {
      * default value is <code>"true"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> True, if the icon shoud be
      * dispayed on the element. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Show Icon</em>' attribute.
      * @see #setShowIcon(boolean)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_ShowIcon()
@@ -114,7 +114,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#isShowIcon
      * <em>Show Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Show Icon</em>' attribute.
      * @see #isShowIcon()
@@ -130,7 +130,7 @@ public interface BasicLabelStyle extends Customizable {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Color</em>' attribute.
      * @see #setLabelColor(RGBValues)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_LabelColor()
@@ -144,7 +144,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor
      * <em>Label Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Color</em>' attribute.
      * @see #getLabelColor()
@@ -158,7 +158,7 @@ public interface BasicLabelStyle extends Customizable {
      * end-user-doc --> <!-- begin-model-doc --> The path of the icon to display
      * on the element. If unset, the icon corresponding to the semantic element
      * will be displayed. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_IconPath()
@@ -172,7 +172,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getIconPath
      * <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()

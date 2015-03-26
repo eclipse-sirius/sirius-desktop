@@ -84,7 +84,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -102,7 +102,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -111,7 +111,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -120,7 +120,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -129,7 +129,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -138,7 +138,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -147,7 +147,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -219,7 +219,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -228,7 +228,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -246,7 +246,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Default Concern</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -255,7 +255,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -264,7 +264,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Init</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -309,7 +309,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -399,7 +399,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ends Ordering</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -439,7 +439,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -448,7 +448,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -520,7 +520,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -556,7 +556,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -565,7 +565,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -630,7 +630,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.description.impl.EventMappingImpl
      * <em>Event Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.EventMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getEventMapping()
      * @generated
@@ -665,7 +665,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION = EVENT_MAPPING_FEATURE_COUNT + 0;
+    int DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION = DescriptionPackage.EVENT_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>'
@@ -674,7 +674,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION = EVENT_MAPPING_FEATURE_COUNT + 1;
+    int DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION = DescriptionPackage.EVENT_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -684,7 +684,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DELIMITED_EVENT_MAPPING_FEATURE_COUNT = EVENT_MAPPING_FEATURE_COUNT + 2;
+    int DELIMITED_EVENT_MAPPING_FEATURE_COUNT = DescriptionPackage.EVENT_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -701,7 +701,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -710,7 +710,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -782,7 +782,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -818,7 +818,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -827,7 +827,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -910,7 +910,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl
      * <em>State Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getStateMapping()
      * @generated
@@ -920,7 +920,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -929,7 +929,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1001,7 +1001,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1037,7 +1037,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1046,7 +1046,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1139,7 +1139,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1148,7 +1148,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1220,7 +1220,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1256,7 +1256,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1265,7 +1265,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1340,7 +1340,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1349,7 +1349,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1421,7 +1421,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1457,7 +1457,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1529,7 +1529,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1556,7 +1556,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1613,20 +1613,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__NAME = MESSAGE_MAPPING__NAME;
+    int BASIC_MESSAGE_MAPPING__NAME = DescriptionPackage.MESSAGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__LABEL = MESSAGE_MAPPING__LABEL;
+    int BASIC_MESSAGE_MAPPING__LABEL = DescriptionPackage.MESSAGE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1635,7 +1635,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = MESSAGE_MAPPING__DETAIL_DESCRIPTIONS;
+    int BASIC_MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1644,7 +1644,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int BASIC_MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -1653,7 +1653,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__PASTE_DESCRIPTIONS = MESSAGE_MAPPING__PASTE_DESCRIPTIONS;
+    int BASIC_MESSAGE_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1662,7 +1662,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__PRECONDITION_EXPRESSION = MESSAGE_MAPPING__PRECONDITION_EXPRESSION;
+    int BASIC_MESSAGE_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -1671,7 +1671,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__DELETION_DESCRIPTION = MESSAGE_MAPPING__DELETION_DESCRIPTION;
+    int BASIC_MESSAGE_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.MESSAGE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -1680,7 +1680,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__LABEL_DIRECT_EDIT = MESSAGE_MAPPING__LABEL_DIRECT_EDIT;
+    int BASIC_MESSAGE_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.MESSAGE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1689,16 +1689,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int BASIC_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__CREATE_ELEMENTS = MESSAGE_MAPPING__CREATE_ELEMENTS;
+    int BASIC_MESSAGE_MAPPING__CREATE_ELEMENTS = DescriptionPackage.MESSAGE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1707,7 +1707,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__SEMANTIC_ELEMENTS = MESSAGE_MAPPING__SEMANTIC_ELEMENTS;
+    int BASIC_MESSAGE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.MESSAGE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -1716,7 +1716,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int BASIC_MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -1725,16 +1725,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = MESSAGE_MAPPING__SYNCHRONIZATION_LOCK;
+    int BASIC_MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.MESSAGE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__DOCUMENTATION = MESSAGE_MAPPING__DOCUMENTATION;
+    int BASIC_MESSAGE_MAPPING__DOCUMENTATION = DescriptionPackage.MESSAGE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Source Mapping</b></em>' reference list.
@@ -1743,7 +1743,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__SOURCE_MAPPING = MESSAGE_MAPPING__SOURCE_MAPPING;
+    int BASIC_MESSAGE_MAPPING__SOURCE_MAPPING = DescriptionPackage.MESSAGE_MAPPING__SOURCE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Mapping</b></em>' reference list.
@@ -1752,7 +1752,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__TARGET_MAPPING = MESSAGE_MAPPING__TARGET_MAPPING;
+    int BASIC_MESSAGE_MAPPING__TARGET_MAPPING = DescriptionPackage.MESSAGE_MAPPING__TARGET_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -1761,7 +1761,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
+    int BASIC_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -1770,7 +1770,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
+    int BASIC_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1779,7 +1779,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__STYLE = MESSAGE_MAPPING__STYLE;
+    int BASIC_MESSAGE_MAPPING__STYLE = DescriptionPackage.MESSAGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -1788,7 +1788,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__CONDITIONNAL_STYLES = MESSAGE_MAPPING__CONDITIONNAL_STYLES;
+    int BASIC_MESSAGE_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.MESSAGE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Target Expression</b></em>' attribute.
@@ -1797,16 +1797,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__TARGET_EXPRESSION = MESSAGE_MAPPING__TARGET_EXPRESSION;
+    int BASIC_MESSAGE_MAPPING__TARGET_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__TARGET_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__DOMAIN_CLASS = MESSAGE_MAPPING__DOMAIN_CLASS;
+    int BASIC_MESSAGE_MAPPING__DOMAIN_CLASS = DescriptionPackage.MESSAGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -1815,7 +1815,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
+    int BASIC_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = DescriptionPackage.MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Reconnections</b></em>' reference list.
@@ -1824,16 +1824,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__RECONNECTIONS = MESSAGE_MAPPING__RECONNECTIONS;
+    int BASIC_MESSAGE_MAPPING__RECONNECTIONS = DescriptionPackage.MESSAGE_MAPPING__RECONNECTIONS;
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__PATH_EXPRESSION = MESSAGE_MAPPING__PATH_EXPRESSION;
+    int BASIC_MESSAGE_MAPPING__PATH_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__PATH_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference
@@ -1842,7 +1842,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__PATH_NODE_MAPPING = MESSAGE_MAPPING__PATH_NODE_MAPPING;
+    int BASIC_MESSAGE_MAPPING__PATH_NODE_MAPPING = DescriptionPackage.MESSAGE_MAPPING__PATH_NODE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -1851,7 +1851,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
+    int BASIC_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -1860,7 +1860,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
+    int BASIC_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
      * The number of structural features of the '<em>Basic Message Mapping</em>'
@@ -1869,7 +1869,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING_FEATURE_COUNT = MESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int BASIC_MESSAGE_MAPPING_FEATURE_COUNT = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -1886,20 +1886,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__NAME = MESSAGE_MAPPING__NAME;
+    int RETURN_MESSAGE_MAPPING__NAME = DescriptionPackage.MESSAGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__LABEL = MESSAGE_MAPPING__LABEL;
+    int RETURN_MESSAGE_MAPPING__LABEL = DescriptionPackage.MESSAGE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1908,7 +1908,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = MESSAGE_MAPPING__DETAIL_DESCRIPTIONS;
+    int RETURN_MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1917,7 +1917,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int RETURN_MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -1926,7 +1926,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__PASTE_DESCRIPTIONS = MESSAGE_MAPPING__PASTE_DESCRIPTIONS;
+    int RETURN_MESSAGE_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1935,7 +1935,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__PRECONDITION_EXPRESSION = MESSAGE_MAPPING__PRECONDITION_EXPRESSION;
+    int RETURN_MESSAGE_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -1944,7 +1944,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__DELETION_DESCRIPTION = MESSAGE_MAPPING__DELETION_DESCRIPTION;
+    int RETURN_MESSAGE_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.MESSAGE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -1953,7 +1953,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__LABEL_DIRECT_EDIT = MESSAGE_MAPPING__LABEL_DIRECT_EDIT;
+    int RETURN_MESSAGE_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.MESSAGE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1962,16 +1962,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int RETURN_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__CREATE_ELEMENTS = MESSAGE_MAPPING__CREATE_ELEMENTS;
+    int RETURN_MESSAGE_MAPPING__CREATE_ELEMENTS = DescriptionPackage.MESSAGE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1980,7 +1980,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__SEMANTIC_ELEMENTS = MESSAGE_MAPPING__SEMANTIC_ELEMENTS;
+    int RETURN_MESSAGE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.MESSAGE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -1989,7 +1989,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int RETURN_MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -1998,16 +1998,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = MESSAGE_MAPPING__SYNCHRONIZATION_LOCK;
+    int RETURN_MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.MESSAGE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__DOCUMENTATION = MESSAGE_MAPPING__DOCUMENTATION;
+    int RETURN_MESSAGE_MAPPING__DOCUMENTATION = DescriptionPackage.MESSAGE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Source Mapping</b></em>' reference list.
@@ -2016,7 +2016,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__SOURCE_MAPPING = MESSAGE_MAPPING__SOURCE_MAPPING;
+    int RETURN_MESSAGE_MAPPING__SOURCE_MAPPING = DescriptionPackage.MESSAGE_MAPPING__SOURCE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Mapping</b></em>' reference list.
@@ -2025,7 +2025,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__TARGET_MAPPING = MESSAGE_MAPPING__TARGET_MAPPING;
+    int RETURN_MESSAGE_MAPPING__TARGET_MAPPING = DescriptionPackage.MESSAGE_MAPPING__TARGET_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -2034,7 +2034,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
+    int RETURN_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -2043,7 +2043,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
+    int RETURN_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -2052,7 +2052,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__STYLE = MESSAGE_MAPPING__STYLE;
+    int RETURN_MESSAGE_MAPPING__STYLE = DescriptionPackage.MESSAGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -2061,7 +2061,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__CONDITIONNAL_STYLES = MESSAGE_MAPPING__CONDITIONNAL_STYLES;
+    int RETURN_MESSAGE_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.MESSAGE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Target Expression</b></em>' attribute.
@@ -2070,16 +2070,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__TARGET_EXPRESSION = MESSAGE_MAPPING__TARGET_EXPRESSION;
+    int RETURN_MESSAGE_MAPPING__TARGET_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__TARGET_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__DOMAIN_CLASS = MESSAGE_MAPPING__DOMAIN_CLASS;
+    int RETURN_MESSAGE_MAPPING__DOMAIN_CLASS = DescriptionPackage.MESSAGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -2088,7 +2088,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
+    int RETURN_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = DescriptionPackage.MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Reconnections</b></em>' reference list.
@@ -2097,16 +2097,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__RECONNECTIONS = MESSAGE_MAPPING__RECONNECTIONS;
+    int RETURN_MESSAGE_MAPPING__RECONNECTIONS = DescriptionPackage.MESSAGE_MAPPING__RECONNECTIONS;
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__PATH_EXPRESSION = MESSAGE_MAPPING__PATH_EXPRESSION;
+    int RETURN_MESSAGE_MAPPING__PATH_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__PATH_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference
@@ -2115,7 +2115,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__PATH_NODE_MAPPING = MESSAGE_MAPPING__PATH_NODE_MAPPING;
+    int RETURN_MESSAGE_MAPPING__PATH_NODE_MAPPING = DescriptionPackage.MESSAGE_MAPPING__PATH_NODE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -2124,7 +2124,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
+    int RETURN_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -2133,17 +2133,17 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
+    int RETURN_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '
      * <em><b>Invocation Message Finder Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = MESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Return Message Mapping</em>
@@ -2152,7 +2152,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_MAPPING_FEATURE_COUNT = MESSAGE_MAPPING_FEATURE_COUNT + 1;
+    int RETURN_MESSAGE_MAPPING_FEATURE_COUNT = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2169,20 +2169,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__NAME = MESSAGE_MAPPING__NAME;
+    int CREATION_MESSAGE_MAPPING__NAME = DescriptionPackage.MESSAGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__LABEL = MESSAGE_MAPPING__LABEL;
+    int CREATION_MESSAGE_MAPPING__LABEL = DescriptionPackage.MESSAGE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -2191,7 +2191,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = MESSAGE_MAPPING__DETAIL_DESCRIPTIONS;
+    int CREATION_MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -2200,7 +2200,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int CREATION_MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -2209,7 +2209,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__PASTE_DESCRIPTIONS = MESSAGE_MAPPING__PASTE_DESCRIPTIONS;
+    int CREATION_MESSAGE_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2218,7 +2218,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__PRECONDITION_EXPRESSION = MESSAGE_MAPPING__PRECONDITION_EXPRESSION;
+    int CREATION_MESSAGE_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -2227,7 +2227,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__DELETION_DESCRIPTION = MESSAGE_MAPPING__DELETION_DESCRIPTION;
+    int CREATION_MESSAGE_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.MESSAGE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -2236,7 +2236,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__LABEL_DIRECT_EDIT = MESSAGE_MAPPING__LABEL_DIRECT_EDIT;
+    int CREATION_MESSAGE_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.MESSAGE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -2245,16 +2245,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int CREATION_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__CREATE_ELEMENTS = MESSAGE_MAPPING__CREATE_ELEMENTS;
+    int CREATION_MESSAGE_MAPPING__CREATE_ELEMENTS = DescriptionPackage.MESSAGE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -2263,7 +2263,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__SEMANTIC_ELEMENTS = MESSAGE_MAPPING__SEMANTIC_ELEMENTS;
+    int CREATION_MESSAGE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.MESSAGE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -2272,7 +2272,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int CREATION_MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -2281,16 +2281,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = MESSAGE_MAPPING__SYNCHRONIZATION_LOCK;
+    int CREATION_MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.MESSAGE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__DOCUMENTATION = MESSAGE_MAPPING__DOCUMENTATION;
+    int CREATION_MESSAGE_MAPPING__DOCUMENTATION = DescriptionPackage.MESSAGE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Source Mapping</b></em>' reference list.
@@ -2299,7 +2299,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__SOURCE_MAPPING = MESSAGE_MAPPING__SOURCE_MAPPING;
+    int CREATION_MESSAGE_MAPPING__SOURCE_MAPPING = DescriptionPackage.MESSAGE_MAPPING__SOURCE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Mapping</b></em>' reference list.
@@ -2308,7 +2308,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__TARGET_MAPPING = MESSAGE_MAPPING__TARGET_MAPPING;
+    int CREATION_MESSAGE_MAPPING__TARGET_MAPPING = DescriptionPackage.MESSAGE_MAPPING__TARGET_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -2317,7 +2317,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
+    int CREATION_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -2326,7 +2326,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
+    int CREATION_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -2335,7 +2335,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__STYLE = MESSAGE_MAPPING__STYLE;
+    int CREATION_MESSAGE_MAPPING__STYLE = DescriptionPackage.MESSAGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -2344,7 +2344,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__CONDITIONNAL_STYLES = MESSAGE_MAPPING__CONDITIONNAL_STYLES;
+    int CREATION_MESSAGE_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.MESSAGE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Target Expression</b></em>' attribute.
@@ -2353,16 +2353,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__TARGET_EXPRESSION = MESSAGE_MAPPING__TARGET_EXPRESSION;
+    int CREATION_MESSAGE_MAPPING__TARGET_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__TARGET_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__DOMAIN_CLASS = MESSAGE_MAPPING__DOMAIN_CLASS;
+    int CREATION_MESSAGE_MAPPING__DOMAIN_CLASS = DescriptionPackage.MESSAGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -2371,7 +2371,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
+    int CREATION_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = DescriptionPackage.MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Reconnections</b></em>' reference list.
@@ -2380,16 +2380,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__RECONNECTIONS = MESSAGE_MAPPING__RECONNECTIONS;
+    int CREATION_MESSAGE_MAPPING__RECONNECTIONS = DescriptionPackage.MESSAGE_MAPPING__RECONNECTIONS;
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__PATH_EXPRESSION = MESSAGE_MAPPING__PATH_EXPRESSION;
+    int CREATION_MESSAGE_MAPPING__PATH_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__PATH_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference
@@ -2398,7 +2398,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__PATH_NODE_MAPPING = MESSAGE_MAPPING__PATH_NODE_MAPPING;
+    int CREATION_MESSAGE_MAPPING__PATH_NODE_MAPPING = DescriptionPackage.MESSAGE_MAPPING__PATH_NODE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -2407,7 +2407,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
+    int CREATION_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -2416,7 +2416,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
+    int CREATION_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
      * The number of structural features of the '
@@ -2426,7 +2426,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATION_MESSAGE_MAPPING_FEATURE_COUNT = MESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int CREATION_MESSAGE_MAPPING_FEATURE_COUNT = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -2443,20 +2443,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__NAME = MESSAGE_MAPPING__NAME;
+    int DESTRUCTION_MESSAGE_MAPPING__NAME = DescriptionPackage.MESSAGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__LABEL = MESSAGE_MAPPING__LABEL;
+    int DESTRUCTION_MESSAGE_MAPPING__LABEL = DescriptionPackage.MESSAGE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -2465,7 +2465,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = MESSAGE_MAPPING__DETAIL_DESCRIPTIONS;
+    int DESTRUCTION_MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -2474,7 +2474,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int DESTRUCTION_MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -2483,7 +2483,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__PASTE_DESCRIPTIONS = MESSAGE_MAPPING__PASTE_DESCRIPTIONS;
+    int DESTRUCTION_MESSAGE_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.MESSAGE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2492,7 +2492,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__PRECONDITION_EXPRESSION = MESSAGE_MAPPING__PRECONDITION_EXPRESSION;
+    int DESTRUCTION_MESSAGE_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -2501,7 +2501,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__DELETION_DESCRIPTION = MESSAGE_MAPPING__DELETION_DESCRIPTION;
+    int DESTRUCTION_MESSAGE_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.MESSAGE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -2510,7 +2510,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__LABEL_DIRECT_EDIT = MESSAGE_MAPPING__LABEL_DIRECT_EDIT;
+    int DESTRUCTION_MESSAGE_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.MESSAGE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -2519,16 +2519,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int DESTRUCTION_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__CREATE_ELEMENTS = MESSAGE_MAPPING__CREATE_ELEMENTS;
+    int DESTRUCTION_MESSAGE_MAPPING__CREATE_ELEMENTS = DescriptionPackage.MESSAGE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -2537,7 +2537,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__SEMANTIC_ELEMENTS = MESSAGE_MAPPING__SEMANTIC_ELEMENTS;
+    int DESTRUCTION_MESSAGE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.MESSAGE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -2546,7 +2546,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int DESTRUCTION_MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -2555,16 +2555,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = MESSAGE_MAPPING__SYNCHRONIZATION_LOCK;
+    int DESTRUCTION_MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.MESSAGE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__DOCUMENTATION = MESSAGE_MAPPING__DOCUMENTATION;
+    int DESTRUCTION_MESSAGE_MAPPING__DOCUMENTATION = DescriptionPackage.MESSAGE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Source Mapping</b></em>' reference list.
@@ -2573,7 +2573,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__SOURCE_MAPPING = MESSAGE_MAPPING__SOURCE_MAPPING;
+    int DESTRUCTION_MESSAGE_MAPPING__SOURCE_MAPPING = DescriptionPackage.MESSAGE_MAPPING__SOURCE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Mapping</b></em>' reference list.
@@ -2582,7 +2582,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__TARGET_MAPPING = MESSAGE_MAPPING__TARGET_MAPPING;
+    int DESTRUCTION_MESSAGE_MAPPING__TARGET_MAPPING = DescriptionPackage.MESSAGE_MAPPING__TARGET_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -2591,7 +2591,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
+    int DESTRUCTION_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -2600,7 +2600,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
+    int DESTRUCTION_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -2609,7 +2609,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__STYLE = MESSAGE_MAPPING__STYLE;
+    int DESTRUCTION_MESSAGE_MAPPING__STYLE = DescriptionPackage.MESSAGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -2618,7 +2618,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__CONDITIONNAL_STYLES = MESSAGE_MAPPING__CONDITIONNAL_STYLES;
+    int DESTRUCTION_MESSAGE_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.MESSAGE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Target Expression</b></em>' attribute.
@@ -2627,16 +2627,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__TARGET_EXPRESSION = MESSAGE_MAPPING__TARGET_EXPRESSION;
+    int DESTRUCTION_MESSAGE_MAPPING__TARGET_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__TARGET_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__DOMAIN_CLASS = MESSAGE_MAPPING__DOMAIN_CLASS;
+    int DESTRUCTION_MESSAGE_MAPPING__DOMAIN_CLASS = DescriptionPackage.MESSAGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -2645,7 +2645,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
+    int DESTRUCTION_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = DescriptionPackage.MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Reconnections</b></em>' reference list.
@@ -2654,16 +2654,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__RECONNECTIONS = MESSAGE_MAPPING__RECONNECTIONS;
+    int DESTRUCTION_MESSAGE_MAPPING__RECONNECTIONS = DescriptionPackage.MESSAGE_MAPPING__RECONNECTIONS;
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__PATH_EXPRESSION = MESSAGE_MAPPING__PATH_EXPRESSION;
+    int DESTRUCTION_MESSAGE_MAPPING__PATH_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__PATH_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference
@@ -2672,7 +2672,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__PATH_NODE_MAPPING = MESSAGE_MAPPING__PATH_NODE_MAPPING;
+    int DESTRUCTION_MESSAGE_MAPPING__PATH_NODE_MAPPING = DescriptionPackage.MESSAGE_MAPPING__PATH_NODE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -2681,7 +2681,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
+    int DESTRUCTION_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -2690,7 +2690,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
+    int DESTRUCTION_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
      * The number of structural features of the '
@@ -2700,7 +2700,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DESTRUCTION_MESSAGE_MAPPING_FEATURE_COUNT = MESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int DESTRUCTION_MESSAGE_MAPPING_FEATURE_COUNT = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -2717,7 +2717,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2747,7 +2747,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2768,7 +2768,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl
      * <em>Frame Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getFrameMapping()
      * @generated
@@ -2778,7 +2778,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2787,7 +2787,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2859,7 +2859,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2895,7 +2895,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2904,7 +2904,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3078,20 +3078,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__NAME = FRAME_MAPPING__NAME;
+    int INTERACTION_USE_MAPPING__NAME = DescriptionPackage.FRAME_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__LABEL = FRAME_MAPPING__LABEL;
+    int INTERACTION_USE_MAPPING__LABEL = DescriptionPackage.FRAME_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -3100,7 +3100,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__DETAIL_DESCRIPTIONS = FRAME_MAPPING__DETAIL_DESCRIPTIONS;
+    int INTERACTION_USE_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.FRAME_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -3109,7 +3109,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__NAVIGATION_DESCRIPTIONS = FRAME_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int INTERACTION_USE_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.FRAME_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -3118,7 +3118,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__PASTE_DESCRIPTIONS = FRAME_MAPPING__PASTE_DESCRIPTIONS;
+    int INTERACTION_USE_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.FRAME_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -3127,7 +3127,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__PRECONDITION_EXPRESSION = FRAME_MAPPING__PRECONDITION_EXPRESSION;
+    int INTERACTION_USE_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.FRAME_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -3136,7 +3136,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__DELETION_DESCRIPTION = FRAME_MAPPING__DELETION_DESCRIPTION;
+    int INTERACTION_USE_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.FRAME_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -3145,7 +3145,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__LABEL_DIRECT_EDIT = FRAME_MAPPING__LABEL_DIRECT_EDIT;
+    int INTERACTION_USE_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.FRAME_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -3154,16 +3154,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = FRAME_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int INTERACTION_USE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.FRAME_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__CREATE_ELEMENTS = FRAME_MAPPING__CREATE_ELEMENTS;
+    int INTERACTION_USE_MAPPING__CREATE_ELEMENTS = DescriptionPackage.FRAME_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -3172,7 +3172,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__SEMANTIC_ELEMENTS = FRAME_MAPPING__SEMANTIC_ELEMENTS;
+    int INTERACTION_USE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.FRAME_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -3181,7 +3181,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__DOUBLE_CLICK_DESCRIPTION = FRAME_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int INTERACTION_USE_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.FRAME_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -3190,25 +3190,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__SYNCHRONIZATION_LOCK = FRAME_MAPPING__SYNCHRONIZATION_LOCK;
+    int INTERACTION_USE_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.FRAME_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__DOCUMENTATION = FRAME_MAPPING__DOCUMENTATION;
+    int INTERACTION_USE_MAPPING__DOCUMENTATION = DescriptionPackage.FRAME_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__DOMAIN_CLASS = FRAME_MAPPING__DOMAIN_CLASS;
+    int INTERACTION_USE_MAPPING__DOMAIN_CLASS = DescriptionPackage.FRAME_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -3217,7 +3217,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__BORDERED_NODE_MAPPINGS = FRAME_MAPPING__BORDERED_NODE_MAPPINGS;
+    int INTERACTION_USE_MAPPING__BORDERED_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -3226,7 +3226,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = FRAME_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int INTERACTION_USE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -3235,7 +3235,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__DROP_DESCRIPTIONS = FRAME_MAPPING__DROP_DESCRIPTIONS;
+    int INTERACTION_USE_MAPPING__DROP_DESCRIPTIONS = DescriptionPackage.FRAME_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment
@@ -3244,7 +3244,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__SUB_NODE_MAPPINGS = FRAME_MAPPING__SUB_NODE_MAPPINGS;
+    int INTERACTION_USE_MAPPING__SUB_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__SUB_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
@@ -3253,7 +3253,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__ALL_NODE_MAPPINGS = FRAME_MAPPING__ALL_NODE_MAPPINGS;
+    int INTERACTION_USE_MAPPING__ALL_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__ALL_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference
@@ -3262,7 +3262,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__REUSED_NODE_MAPPINGS = FRAME_MAPPING__REUSED_NODE_MAPPINGS;
+    int INTERACTION_USE_MAPPING__REUSED_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__REUSED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>'
@@ -3271,7 +3271,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__SUB_CONTAINER_MAPPINGS = FRAME_MAPPING__SUB_CONTAINER_MAPPINGS;
+    int INTERACTION_USE_MAPPING__SUB_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__SUB_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>'
@@ -3280,7 +3280,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__REUSED_CONTAINER_MAPPINGS = FRAME_MAPPING__REUSED_CONTAINER_MAPPINGS;
+    int INTERACTION_USE_MAPPING__REUSED_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__REUSED_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -3289,7 +3289,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__ALL_CONTAINER_MAPPINGS = FRAME_MAPPING__ALL_CONTAINER_MAPPINGS;
+    int INTERACTION_USE_MAPPING__ALL_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -3298,7 +3298,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__STYLE = FRAME_MAPPING__STYLE;
+    int INTERACTION_USE_MAPPING__STYLE = DescriptionPackage.FRAME_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -3307,7 +3307,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__CONDITIONNAL_STYLES = FRAME_MAPPING__CONDITIONNAL_STYLES;
+    int INTERACTION_USE_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.FRAME_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute.
@@ -3316,7 +3316,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__CHILDREN_PRESENTATION = FRAME_MAPPING__CHILDREN_PRESENTATION;
+    int INTERACTION_USE_MAPPING__CHILDREN_PRESENTATION = DescriptionPackage.FRAME_MAPPING__CHILDREN_PRESENTATION;
 
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>'
@@ -3325,7 +3325,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__STARTING_END_FINDER_EXPRESSION = FRAME_MAPPING__STARTING_END_FINDER_EXPRESSION;
+    int INTERACTION_USE_MAPPING__STARTING_END_FINDER_EXPRESSION = DescriptionPackage.FRAME_MAPPING__STARTING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>'
@@ -3334,7 +3334,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__FINISHING_END_FINDER_EXPRESSION = FRAME_MAPPING__FINISHING_END_FINDER_EXPRESSION;
+    int INTERACTION_USE_MAPPING__FINISHING_END_FINDER_EXPRESSION = DescriptionPackage.FRAME_MAPPING__FINISHING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Covered Lifelines Expression</b></em>'
@@ -3343,7 +3343,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__COVERED_LIFELINES_EXPRESSION = FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION;
+    int INTERACTION_USE_MAPPING__COVERED_LIFELINES_EXPRESSION = DescriptionPackage.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Center Label Expression</b></em>'
@@ -3352,7 +3352,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING__CENTER_LABEL_EXPRESSION = FRAME_MAPPING__CENTER_LABEL_EXPRESSION;
+    int INTERACTION_USE_MAPPING__CENTER_LABEL_EXPRESSION = DescriptionPackage.FRAME_MAPPING__CENTER_LABEL_EXPRESSION;
 
     /**
      * The number of structural features of the '
@@ -3362,7 +3362,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_MAPPING_FEATURE_COUNT = FRAME_MAPPING_FEATURE_COUNT + 0;
+    int INTERACTION_USE_MAPPING_FEATURE_COUNT = DescriptionPackage.FRAME_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -3379,20 +3379,20 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__NAME = FRAME_MAPPING__NAME;
+    int COMBINED_FRAGMENT_MAPPING__NAME = DescriptionPackage.FRAME_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__LABEL = FRAME_MAPPING__LABEL;
+    int COMBINED_FRAGMENT_MAPPING__LABEL = DescriptionPackage.FRAME_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -3401,7 +3401,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__DETAIL_DESCRIPTIONS = FRAME_MAPPING__DETAIL_DESCRIPTIONS;
+    int COMBINED_FRAGMENT_MAPPING__DETAIL_DESCRIPTIONS = DescriptionPackage.FRAME_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -3410,7 +3410,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__NAVIGATION_DESCRIPTIONS = FRAME_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int COMBINED_FRAGMENT_MAPPING__NAVIGATION_DESCRIPTIONS = DescriptionPackage.FRAME_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -3419,7 +3419,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__PASTE_DESCRIPTIONS = FRAME_MAPPING__PASTE_DESCRIPTIONS;
+    int COMBINED_FRAGMENT_MAPPING__PASTE_DESCRIPTIONS = DescriptionPackage.FRAME_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -3428,7 +3428,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__PRECONDITION_EXPRESSION = FRAME_MAPPING__PRECONDITION_EXPRESSION;
+    int COMBINED_FRAGMENT_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.FRAME_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -3437,7 +3437,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__DELETION_DESCRIPTION = FRAME_MAPPING__DELETION_DESCRIPTION;
+    int COMBINED_FRAGMENT_MAPPING__DELETION_DESCRIPTION = DescriptionPackage.FRAME_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -3446,7 +3446,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__LABEL_DIRECT_EDIT = FRAME_MAPPING__LABEL_DIRECT_EDIT;
+    int COMBINED_FRAGMENT_MAPPING__LABEL_DIRECT_EDIT = DescriptionPackage.FRAME_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -3455,16 +3455,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = FRAME_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int COMBINED_FRAGMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.FRAME_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__CREATE_ELEMENTS = FRAME_MAPPING__CREATE_ELEMENTS;
+    int COMBINED_FRAGMENT_MAPPING__CREATE_ELEMENTS = DescriptionPackage.FRAME_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -3473,7 +3473,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__SEMANTIC_ELEMENTS = FRAME_MAPPING__SEMANTIC_ELEMENTS;
+    int COMBINED_FRAGMENT_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.FRAME_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -3482,7 +3482,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION = FRAME_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int COMBINED_FRAGMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION = DescriptionPackage.FRAME_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -3491,25 +3491,25 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__SYNCHRONIZATION_LOCK = FRAME_MAPPING__SYNCHRONIZATION_LOCK;
+    int COMBINED_FRAGMENT_MAPPING__SYNCHRONIZATION_LOCK = DescriptionPackage.FRAME_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__DOCUMENTATION = FRAME_MAPPING__DOCUMENTATION;
+    int COMBINED_FRAGMENT_MAPPING__DOCUMENTATION = DescriptionPackage.FRAME_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__DOMAIN_CLASS = FRAME_MAPPING__DOMAIN_CLASS;
+    int COMBINED_FRAGMENT_MAPPING__DOMAIN_CLASS = DescriptionPackage.FRAME_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -3518,7 +3518,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__BORDERED_NODE_MAPPINGS = FRAME_MAPPING__BORDERED_NODE_MAPPINGS;
+    int COMBINED_FRAGMENT_MAPPING__BORDERED_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -3527,7 +3527,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = FRAME_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int COMBINED_FRAGMENT_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -3536,7 +3536,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__DROP_DESCRIPTIONS = FRAME_MAPPING__DROP_DESCRIPTIONS;
+    int COMBINED_FRAGMENT_MAPPING__DROP_DESCRIPTIONS = DescriptionPackage.FRAME_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment
@@ -3545,7 +3545,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__SUB_NODE_MAPPINGS = FRAME_MAPPING__SUB_NODE_MAPPINGS;
+    int COMBINED_FRAGMENT_MAPPING__SUB_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__SUB_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
@@ -3554,7 +3554,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__ALL_NODE_MAPPINGS = FRAME_MAPPING__ALL_NODE_MAPPINGS;
+    int COMBINED_FRAGMENT_MAPPING__ALL_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__ALL_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference
@@ -3563,7 +3563,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__REUSED_NODE_MAPPINGS = FRAME_MAPPING__REUSED_NODE_MAPPINGS;
+    int COMBINED_FRAGMENT_MAPPING__REUSED_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__REUSED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>'
@@ -3572,7 +3572,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__SUB_CONTAINER_MAPPINGS = FRAME_MAPPING__SUB_CONTAINER_MAPPINGS;
+    int COMBINED_FRAGMENT_MAPPING__SUB_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__SUB_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>'
@@ -3581,7 +3581,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__REUSED_CONTAINER_MAPPINGS = FRAME_MAPPING__REUSED_CONTAINER_MAPPINGS;
+    int COMBINED_FRAGMENT_MAPPING__REUSED_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__REUSED_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -3590,7 +3590,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__ALL_CONTAINER_MAPPINGS = FRAME_MAPPING__ALL_CONTAINER_MAPPINGS;
+    int COMBINED_FRAGMENT_MAPPING__ALL_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -3599,7 +3599,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__STYLE = FRAME_MAPPING__STYLE;
+    int COMBINED_FRAGMENT_MAPPING__STYLE = DescriptionPackage.FRAME_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -3608,7 +3608,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__CONDITIONNAL_STYLES = FRAME_MAPPING__CONDITIONNAL_STYLES;
+    int COMBINED_FRAGMENT_MAPPING__CONDITIONNAL_STYLES = DescriptionPackage.FRAME_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute.
@@ -3617,7 +3617,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__CHILDREN_PRESENTATION = FRAME_MAPPING__CHILDREN_PRESENTATION;
+    int COMBINED_FRAGMENT_MAPPING__CHILDREN_PRESENTATION = DescriptionPackage.FRAME_MAPPING__CHILDREN_PRESENTATION;
 
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>'
@@ -3626,7 +3626,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__STARTING_END_FINDER_EXPRESSION = FRAME_MAPPING__STARTING_END_FINDER_EXPRESSION;
+    int COMBINED_FRAGMENT_MAPPING__STARTING_END_FINDER_EXPRESSION = DescriptionPackage.FRAME_MAPPING__STARTING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>'
@@ -3635,7 +3635,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__FINISHING_END_FINDER_EXPRESSION = FRAME_MAPPING__FINISHING_END_FINDER_EXPRESSION;
+    int COMBINED_FRAGMENT_MAPPING__FINISHING_END_FINDER_EXPRESSION = DescriptionPackage.FRAME_MAPPING__FINISHING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Covered Lifelines Expression</b></em>'
@@ -3644,7 +3644,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__COVERED_LIFELINES_EXPRESSION = FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION;
+    int COMBINED_FRAGMENT_MAPPING__COVERED_LIFELINES_EXPRESSION = DescriptionPackage.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Center Label Expression</b></em>'
@@ -3653,7 +3653,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING__CENTER_LABEL_EXPRESSION = FRAME_MAPPING__CENTER_LABEL_EXPRESSION;
+    int COMBINED_FRAGMENT_MAPPING__CENTER_LABEL_EXPRESSION = DescriptionPackage.FRAME_MAPPING__CENTER_LABEL_EXPRESSION;
 
     /**
      * The number of structural features of the '
@@ -3663,7 +3663,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_MAPPING_FEATURE_COUNT = FRAME_MAPPING_FEATURE_COUNT + 0;
+    int COMBINED_FRAGMENT_MAPPING_FEATURE_COUNT = DescriptionPackage.FRAME_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -3680,7 +3680,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3689,7 +3689,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3761,7 +3761,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3797,7 +3797,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3806,7 +3806,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3962,7 +3962,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3971,7 +3971,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4043,7 +4043,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4079,7 +4079,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4088,7 +4088,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4256,7 +4256,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.description.ExecutionMapping
      * <em>Execution Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Execution Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.ExecutionMapping
      * @generated
@@ -4279,7 +4279,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping
      * <em>End Of Life Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>End Of Life Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping
      * @generated
@@ -4500,7 +4500,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -4530,7 +4530,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getSequenceDiagramDescription()
          * @generated
          */
-        EClass SEQUENCE_DIAGRAM_DESCRIPTION = eINSTANCE.getSequenceDiagramDescription();
+        EClass SEQUENCE_DIAGRAM_DESCRIPTION = DescriptionPackage.eINSTANCE.getSequenceDiagramDescription();
 
         /**
          * The meta object literal for the '<em><b>Ends Ordering</b></em>'
@@ -4538,16 +4538,16 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING = eINSTANCE.getSequenceDiagramDescription_EndsOrdering();
+        EAttribute SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING = DescriptionPackage.eINSTANCE.getSequenceDiagramDescription_EndsOrdering();
 
         /**
          * The meta object literal for the '
          * <em><b>Instance Roles Ordering</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING = eINSTANCE.getSequenceDiagramDescription_InstanceRolesOrdering();
+        EAttribute SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING = DescriptionPackage.eINSTANCE.getSequenceDiagramDescription_InstanceRolesOrdering();
 
         /**
          * The meta object literal for the '
@@ -4559,7 +4559,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getInstanceRoleMapping()
          * @generated
          */
-        EClass INSTANCE_ROLE_MAPPING = eINSTANCE.getInstanceRoleMapping();
+        EClass INSTANCE_ROLE_MAPPING = DescriptionPackage.eINSTANCE.getInstanceRoleMapping();
 
         /**
          * The meta object literal for the '
@@ -4571,7 +4571,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getEventMapping()
          * @generated
          */
-        EClass EVENT_MAPPING = eINSTANCE.getEventMapping();
+        EClass EVENT_MAPPING = DescriptionPackage.eINSTANCE.getEventMapping();
 
         /**
          * The meta object literal for the '
@@ -4583,7 +4583,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getDelimitedEventMapping()
          * @generated
          */
-        EClass DELIMITED_EVENT_MAPPING = eINSTANCE.getDelimitedEventMapping();
+        EClass DELIMITED_EVENT_MAPPING = DescriptionPackage.eINSTANCE.getDelimitedEventMapping();
 
         /**
          * The meta object literal for the '
@@ -4592,7 +4592,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION = eINSTANCE.getDelimitedEventMapping_StartingEndFinderExpression();
+        EAttribute DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getDelimitedEventMapping_StartingEndFinderExpression();
 
         /**
          * The meta object literal for the '
@@ -4601,7 +4601,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION = eINSTANCE.getDelimitedEventMapping_FinishingEndFinderExpression();
+        EAttribute DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getDelimitedEventMapping_FinishingEndFinderExpression();
 
         /**
          * The meta object literal for the '
@@ -4613,7 +4613,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getExecutionMapping()
          * @generated
          */
-        EClass EXECUTION_MAPPING = eINSTANCE.getExecutionMapping();
+        EClass EXECUTION_MAPPING = DescriptionPackage.eINSTANCE.getExecutionMapping();
 
         /**
          * The meta object literal for the '
@@ -4625,7 +4625,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getStateMapping()
          * @generated
          */
-        EClass STATE_MAPPING = eINSTANCE.getStateMapping();
+        EClass STATE_MAPPING = DescriptionPackage.eINSTANCE.getStateMapping();
 
         /**
          * The meta object literal for the '
@@ -4637,7 +4637,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getEndOfLifeMapping()
          * @generated
          */
-        EClass END_OF_LIFE_MAPPING = eINSTANCE.getEndOfLifeMapping();
+        EClass END_OF_LIFE_MAPPING = DescriptionPackage.eINSTANCE.getEndOfLifeMapping();
 
         /**
          * The meta object literal for the '
@@ -4649,7 +4649,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getMessageMapping()
          * @generated
          */
-        EClass MESSAGE_MAPPING = eINSTANCE.getMessageMapping();
+        EClass MESSAGE_MAPPING = DescriptionPackage.eINSTANCE.getMessageMapping();
 
         /**
          * The meta object literal for the '
@@ -4658,7 +4658,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = eINSTANCE.getMessageMapping_SendingEndFinderExpression();
+        EAttribute MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getMessageMapping_SendingEndFinderExpression();
 
         /**
          * The meta object literal for the '
@@ -4667,7 +4667,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = eINSTANCE.getMessageMapping_ReceivingEndFinderExpression();
+        EAttribute MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getMessageMapping_ReceivingEndFinderExpression();
 
         /**
          * The meta object literal for the '
@@ -4679,7 +4679,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getBasicMessageMapping()
          * @generated
          */
-        EClass BASIC_MESSAGE_MAPPING = eINSTANCE.getBasicMessageMapping();
+        EClass BASIC_MESSAGE_MAPPING = DescriptionPackage.eINSTANCE.getBasicMessageMapping();
 
         /**
          * The meta object literal for the '
@@ -4691,7 +4691,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getReturnMessageMapping()
          * @generated
          */
-        EClass RETURN_MESSAGE_MAPPING = eINSTANCE.getReturnMessageMapping();
+        EClass RETURN_MESSAGE_MAPPING = DescriptionPackage.eINSTANCE.getReturnMessageMapping();
 
         /**
          * The meta object literal for the '
@@ -4700,7 +4700,7 @@ public interface DescriptionPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = eINSTANCE.getReturnMessageMapping_InvocationMessageFinderExpression();
+        EAttribute RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getReturnMessageMapping_InvocationMessageFinderExpression();
 
         /**
          * The meta object literal for the '
@@ -4712,7 +4712,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getCreationMessageMapping()
          * @generated
          */
-        EClass CREATION_MESSAGE_MAPPING = eINSTANCE.getCreationMessageMapping();
+        EClass CREATION_MESSAGE_MAPPING = DescriptionPackage.eINSTANCE.getCreationMessageMapping();
 
         /**
          * The meta object literal for the '
@@ -4724,7 +4724,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getDestructionMessageMapping()
          * @generated
          */
-        EClass DESTRUCTION_MESSAGE_MAPPING = eINSTANCE.getDestructionMessageMapping();
+        EClass DESTRUCTION_MESSAGE_MAPPING = DescriptionPackage.eINSTANCE.getDestructionMessageMapping();
 
         /**
          * The meta object literal for the '
@@ -4736,7 +4736,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getMessageEndVariable()
          * @generated
          */
-        EClass MESSAGE_END_VARIABLE = eINSTANCE.getMessageEndVariable();
+        EClass MESSAGE_END_VARIABLE = DescriptionPackage.eINSTANCE.getMessageEndVariable();
 
         /**
          * The meta object literal for the '
@@ -4748,7 +4748,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getCoveredLifelinesVariable()
          * @generated
          */
-        EClass COVERED_LIFELINES_VARIABLE = eINSTANCE.getCoveredLifelinesVariable();
+        EClass COVERED_LIFELINES_VARIABLE = DescriptionPackage.eINSTANCE.getCoveredLifelinesVariable();
 
         /**
          * The meta object literal for the '
@@ -4760,25 +4760,25 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getFrameMapping()
          * @generated
          */
-        EClass FRAME_MAPPING = eINSTANCE.getFrameMapping();
+        EClass FRAME_MAPPING = DescriptionPackage.eINSTANCE.getFrameMapping();
 
         /**
          * The meta object literal for the '
          * <em><b>Covered Lifelines Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION = eINSTANCE.getFrameMapping_CoveredLifelinesExpression();
+        EAttribute FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION = DescriptionPackage.eINSTANCE.getFrameMapping_CoveredLifelinesExpression();
 
         /**
          * The meta object literal for the '
          * <em><b>Center Label Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute FRAME_MAPPING__CENTER_LABEL_EXPRESSION = eINSTANCE.getFrameMapping_CenterLabelExpression();
+        EAttribute FRAME_MAPPING__CENTER_LABEL_EXPRESSION = DescriptionPackage.eINSTANCE.getFrameMapping_CenterLabelExpression();
 
         /**
          * The meta object literal for the '
@@ -4790,7 +4790,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getInteractionUseMapping()
          * @generated
          */
-        EClass INTERACTION_USE_MAPPING = eINSTANCE.getInteractionUseMapping();
+        EClass INTERACTION_USE_MAPPING = DescriptionPackage.eINSTANCE.getInteractionUseMapping();
 
         /**
          * The meta object literal for the '
@@ -4802,7 +4802,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getCombinedFragmentMapping()
          * @generated
          */
-        EClass COMBINED_FRAGMENT_MAPPING = eINSTANCE.getCombinedFragmentMapping();
+        EClass COMBINED_FRAGMENT_MAPPING = DescriptionPackage.eINSTANCE.getCombinedFragmentMapping();
 
         /**
          * The meta object literal for the '
@@ -4814,7 +4814,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getOperandMapping()
          * @generated
          */
-        EClass OPERAND_MAPPING = eINSTANCE.getOperandMapping();
+        EClass OPERAND_MAPPING = DescriptionPackage.eINSTANCE.getOperandMapping();
 
         /**
          * The meta object literal for the '
@@ -4826,7 +4826,7 @@ public interface DescriptionPackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getObservationPointMapping()
          * @generated
          */
-        EClass OBSERVATION_POINT_MAPPING = eINSTANCE.getObservationPointMapping();
+        EClass OBSERVATION_POINT_MAPPING = DescriptionPackage.eINSTANCE.getObservationPointMapping();
 
     }
 

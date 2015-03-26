@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -55,7 +55,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
      * @generated
      * @ordered
      */
-    protected boolean activeByDefault = ACTIVE_BY_DEFAULT_EDEFAULT;
+    protected boolean activeByDefault = AdditionalLayerImpl.ACTIVE_BY_DEFAULT_EDEFAULT;
 
     /**
      * The default value of the '{@link #isOptional() <em>Optional</em>}'
@@ -75,7 +75,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
      * @generated
      * @ordered
      */
-    protected boolean optional = OPTIONAL_EDEFAULT;
+    protected boolean optional = AdditionalLayerImpl.OPTIONAL_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -101,6 +101,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
      * 
      * @generated
      */
+    @Override
     public boolean isActiveByDefault() {
         return activeByDefault;
     }
@@ -110,11 +111,13 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
      * 
      * @generated
      */
+    @Override
     public void setActiveByDefault(boolean newActiveByDefault) {
         boolean oldActiveByDefault = activeByDefault;
         activeByDefault = newActiveByDefault;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT, oldActiveByDefault, activeByDefault));
+        }
     }
 
     /**
@@ -122,6 +125,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
      * 
      * @generated
      */
+    @Override
     public boolean isOptional() {
         return optional;
     }
@@ -131,11 +135,13 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
      * 
      * @generated
      */
+    @Override
     public void setOptional(boolean newOptional) {
         boolean oldOptional = optional;
         optional = newOptional;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ADDITIONAL_LAYER__OPTIONAL, oldOptional, optional));
+        }
     }
 
     /**
@@ -181,10 +187,10 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT:
-            setActiveByDefault(ACTIVE_BY_DEFAULT_EDEFAULT);
+            setActiveByDefault(AdditionalLayerImpl.ACTIVE_BY_DEFAULT_EDEFAULT);
             return;
         case DescriptionPackage.ADDITIONAL_LAYER__OPTIONAL:
-            setOptional(OPTIONAL_EDEFAULT);
+            setOptional(AdditionalLayerImpl.OPTIONAL_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -199,9 +205,9 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT:
-            return activeByDefault != ACTIVE_BY_DEFAULT_EDEFAULT;
+            return activeByDefault != AdditionalLayerImpl.ACTIVE_BY_DEFAULT_EDEFAULT;
         case DescriptionPackage.ADDITIONAL_LAYER__OPTIONAL:
-            return optional != OPTIONAL_EDEFAULT;
+            return optional != AdditionalLayerImpl.OPTIONAL_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -213,8 +219,9 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (activeByDefault: ");

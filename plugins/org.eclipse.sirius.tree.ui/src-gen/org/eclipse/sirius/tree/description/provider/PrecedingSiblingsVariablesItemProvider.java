@@ -29,7 +29,7 @@ public class PrecedingSiblingsVariablesItemProvider extends TreeVariableItemProv
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PrecedingSiblingsVariablesItemProvider(AdapterFactory adapterFactory) {
@@ -39,7 +39,7 @@ public class PrecedingSiblingsVariablesItemProvider extends TreeVariableItemProv
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class PrecedingSiblingsVariablesItemProvider extends TreeVariableItemProv
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

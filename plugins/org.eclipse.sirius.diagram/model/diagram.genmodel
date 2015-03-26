@@ -7,7 +7,8 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
     testsDirectory="" importerID="org.eclipse.emf.importer.ecore" containmentProxies="true"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sirius.diagram.ui"
-    runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint">
+    runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
+    importOrganizing="true" cleanup="true">
   <foreignModel>diagram.ecore</foreignModel>
   <genPackages prefix="Diagram" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
       ecorePackage="diagram.ecore#/">

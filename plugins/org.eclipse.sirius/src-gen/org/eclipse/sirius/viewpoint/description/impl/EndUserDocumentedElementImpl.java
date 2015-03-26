@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -37,7 +37,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
      * The default value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -48,16 +48,16 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
      * The cached value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
      */
-    protected String endUserDocumentation = END_USER_DOCUMENTATION_EDEFAULT;
+    protected String endUserDocumentation = EndUserDocumentedElementImpl.END_USER_DOCUMENTATION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EndUserDocumentedElementImpl() {
@@ -66,7 +66,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getEndUserDocumentation() {
@@ -85,19 +85,20 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setEndUserDocumentation(String newEndUserDocumentation) {
         String oldEndUserDocumentation = endUserDocumentation;
         endUserDocumentation = newEndUserDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, oldEndUserDocumentation, endUserDocumentation));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +112,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,14 +127,14 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION:
-            setEndUserDocumentation(END_USER_DOCUMENTATION_EDEFAULT);
+            setEndUserDocumentation(EndUserDocumentedElementImpl.END_USER_DOCUMENTATION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -141,7 +142,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,13 +156,14 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (endUserDocumentation: ");

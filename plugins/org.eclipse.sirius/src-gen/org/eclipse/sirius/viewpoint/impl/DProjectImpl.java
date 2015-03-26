@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class DProjectImpl extends DResourceContainerImpl implements DProject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DProjectImpl() {
@@ -35,7 +35,7 @@ public class DProjectImpl extends DResourceContainerImpl implements DProject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -37,7 +37,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
      * The default value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -48,16 +48,16 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
      * The cached value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
      */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
+    protected String documentation = DocumentedElementImpl.DOCUMENTATION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DocumentedElementImpl() {
@@ -66,7 +66,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,28 +76,31 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getDocumentation() {
         return documentation;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDocumentation(String newDocumentation) {
         String oldDocumentation = documentation;
         documentation = newDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +114,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,14 +129,14 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-            setDocumentation(DOCUMENTATION_EDEFAULT);
+            setDocumentation(DocumentedElementImpl.DOCUMENTATION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -141,27 +144,28 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-            return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+            return DocumentedElementImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !DocumentedElementImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (documentation: ");

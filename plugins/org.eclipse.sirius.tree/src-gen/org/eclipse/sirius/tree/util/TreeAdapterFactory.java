@@ -58,8 +58,8 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public TreeAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = TreePackage.eINSTANCE;
+        if (TreeAdapterFactory.modelPackage == null) {
+            TreeAdapterFactory.modelPackage = TreePackage.eINSTANCE;
         }
     }
 
@@ -74,11 +74,11 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == TreeAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == TreeAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -86,7 +86,7 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeSwitch<Adapter> modelSwitch = new TreeSwitch<Adapter>() {
@@ -227,7 +227,7 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tree.DTree
      * @generated
@@ -257,7 +257,7 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tree.DTreeItem
      * @generated
@@ -272,7 +272,7 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tree.TreeItemStyle
      * @generated
@@ -382,7 +382,7 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DLabelled
      * @generated
@@ -459,7 +459,7 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.Style
      * @generated

@@ -107,7 +107,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * @generated
      * @ordered
      */
-    protected int headerColumnWidth = HEADER_COLUMN_WIDTH_EDEFAULT;
+    protected int headerColumnWidth = DTableImpl.HEADER_COLUMN_WIDTH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}'
@@ -143,13 +143,15 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
+    @Override
     public EObject getTarget() {
         if (target != null && target.eIsProxy()) {
             InternalEObject oldTarget = (InternalEObject) target;
             target = eResolveProxy(oldTarget);
             if (target != oldTarget) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TablePackage.DTABLE__TARGET, oldTarget, target));
+                }
             }
         }
         return target;
@@ -169,11 +171,13 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
+    @Override
     public void setTarget(EObject newTarget) {
         EObject oldTarget = target;
         target = newTarget;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE__TARGET, oldTarget, target));
+        }
     }
 
     /**
@@ -181,6 +185,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
+    @Override
     public EList<DLine> getLines() {
         if (lines == null) {
             lines = new EObjectContainmentWithInverseEList<DLine>(DLine.class, this, TablePackage.DTABLE__LINES, TablePackage.DLINE__CONTAINER);
@@ -193,6 +198,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
+    @Override
     public EList<DColumn> getColumns() {
         if (columns == null) {
             columns = new EObjectContainmentWithInverseEList<DColumn>(DColumn.class, this, TablePackage.DTABLE__COLUMNS, TablePackage.DCOLUMN__TABLE);
@@ -205,13 +211,15 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
+    @Override
     public TableDescription getDescription() {
         if (description != null && description.eIsProxy()) {
             InternalEObject oldDescription = (InternalEObject) description;
             description = (TableDescription) eResolveProxy(oldDescription);
             if (description != oldDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TablePackage.DTABLE__DESCRIPTION, oldDescription, description));
+                }
             }
         }
         return description;
@@ -231,11 +239,13 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
+    @Override
     public void setDescription(TableDescription newDescription) {
         TableDescription oldDescription = description;
         description = newDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE__DESCRIPTION, oldDescription, description));
+        }
     }
 
     /**
@@ -243,6 +253,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
+    @Override
     public int getHeaderColumnWidth() {
         return headerColumnWidth;
     }
@@ -252,11 +263,13 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
+    @Override
     public void setHeaderColumnWidth(int newHeaderColumnWidth) {
         int oldHeaderColumnWidth = headerColumnWidth;
         headerColumnWidth = newHeaderColumnWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE__HEADER_COLUMN_WIDTH, oldHeaderColumnWidth, headerColumnWidth));
+        }
     }
 
     /**
@@ -301,8 +314,9 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TablePackage.DTABLE__TARGET:
-            if (resolve)
+            if (resolve) {
                 return getTarget();
+            }
             return basicGetTarget();
         case TablePackage.DTABLE__LINES:
             return getLines();
@@ -311,8 +325,9 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
         case TablePackage.DTABLE__HEADER_COLUMN_WIDTH:
             return getHeaderColumnWidth();
         case TablePackage.DTABLE__DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDescription();
+            }
             return basicGetDescription();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -366,7 +381,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
             getColumns().clear();
             return;
         case TablePackage.DTABLE__HEADER_COLUMN_WIDTH:
-            setHeaderColumnWidth(HEADER_COLUMN_WIDTH_EDEFAULT);
+            setHeaderColumnWidth(DTableImpl.HEADER_COLUMN_WIDTH_EDEFAULT);
             return;
         case TablePackage.DTABLE__DESCRIPTION:
             setDescription((TableDescription) null);
@@ -390,7 +405,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
         case TablePackage.DTABLE__COLUMNS:
             return columns != null && !columns.isEmpty();
         case TablePackage.DTABLE__HEADER_COLUMN_WIDTH:
-            return headerColumnWidth != HEADER_COLUMN_WIDTH_EDEFAULT;
+            return headerColumnWidth != DTableImpl.HEADER_COLUMN_WIDTH_EDEFAULT;
         case TablePackage.DTABLE__DESCRIPTION:
             return description != null;
         }
@@ -456,8 +471,9 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (headerColumnWidth: ");

@@ -42,7 +42,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
      * The cached value of the '{@link #getOwnedTreeItems()
      * <em>Owned Tree Items</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedTreeItems()
      * @generated
      * @ordered
@@ -73,6 +73,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
      * 
      * @generated
      */
+    @Override
     public EList<DTreeItem> getOwnedTreeItems() {
         if (ownedTreeItems == null) {
             ownedTreeItems = new EObjectContainmentWithInverseEList<DTreeItem>(DTreeItem.class, this, TreePackage.DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS, TreePackage.DTREE_ITEM__CONTAINER);

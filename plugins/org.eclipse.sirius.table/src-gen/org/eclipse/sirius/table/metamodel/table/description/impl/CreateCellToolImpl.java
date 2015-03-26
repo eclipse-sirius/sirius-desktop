@@ -88,7 +88,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @generated
      * @ordered
      */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
+    protected String documentation = CreateCellToolImpl.DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -108,7 +108,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = CreateCellToolImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -128,7 +128,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = CreateCellToolImpl.LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPrecondition()
@@ -149,7 +149,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @generated
      * @ordered
      */
-    protected String precondition = PRECONDITION_EDEFAULT;
+    protected String precondition = CreateCellToolImpl.PRECONDITION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isForceRefresh()
@@ -170,7 +170,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @generated
      * @ordered
      */
-    protected boolean forceRefresh = FORCE_REFRESH_EDEFAULT;
+    protected boolean forceRefresh = CreateCellToolImpl.FORCE_REFRESH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}'
@@ -216,6 +216,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public String getDocumentation() {
         return documentation;
     }
@@ -225,11 +226,13 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public void setDocumentation(String newDocumentation) {
         String oldDocumentation = documentation;
         documentation = newDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
@@ -237,6 +240,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -246,11 +250,13 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__NAME, oldName, name));
+        }
     }
 
     /**
@@ -258,6 +264,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -267,11 +274,13 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -279,6 +288,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public String getPrecondition() {
         return precondition;
     }
@@ -288,11 +298,13 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public void setPrecondition(String newPrecondition) {
         String oldPrecondition = precondition;
         precondition = newPrecondition;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__PRECONDITION, oldPrecondition, precondition));
+        }
     }
 
     /**
@@ -300,6 +312,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public boolean isForceRefresh() {
         return forceRefresh;
     }
@@ -309,11 +322,13 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public void setForceRefresh(boolean newForceRefresh) {
         boolean oldForceRefresh = forceRefresh;
         forceRefresh = newForceRefresh;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__FORCE_REFRESH, oldForceRefresh, forceRefresh));
+        }
     }
 
     /**
@@ -321,6 +336,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public EList<ToolFilterDescription> getFilters() {
         if (filters == null) {
             filters = new EObjectContainmentEList.Resolving<ToolFilterDescription>(ToolFilterDescription.class, this, DescriptionPackage.CREATE_CELL_TOOL__FILTERS);
@@ -333,6 +349,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public EditMaskVariables getMask() {
         return mask;
     }
@@ -347,10 +364,11 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
         mask = newMask;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__MASK, oldMask, newMask);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -360,18 +378,23 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public void setMask(EditMaskVariables newMask) {
         if (newMask != mask) {
             NotificationChain msgs = null;
-            if (mask != null)
-                msgs = ((InternalEObject) mask).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CREATE_CELL_TOOL__MASK, null, msgs);
-            if (newMask != null)
-                msgs = ((InternalEObject) newMask).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CREATE_CELL_TOOL__MASK, null, msgs);
+            if (mask != null) {
+                msgs = ((InternalEObject) mask).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CREATE_CELL_TOOL__MASK, null, msgs);
+            }
+            if (newMask != null) {
+                msgs = ((InternalEObject) newMask).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CREATE_CELL_TOOL__MASK, null, msgs);
+            }
             msgs = basicSetMask(newMask, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__MASK, newMask, newMask));
+        }
     }
 
     /**
@@ -379,9 +402,11 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public IntersectionMapping getMapping() {
-        if (eContainerFeatureID() != DescriptionPackage.CREATE_CELL_TOOL__MAPPING)
+        if (eContainerFeatureID() != DescriptionPackage.CREATE_CELL_TOOL__MAPPING) {
             return null;
+        }
         return (IntersectionMapping) eInternalContainer();
     }
 
@@ -400,20 +425,26 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
+    @Override
     public void setMapping(IntersectionMapping newMapping) {
         if (newMapping != eInternalContainer() || (eContainerFeatureID() != DescriptionPackage.CREATE_CELL_TOOL__MAPPING && newMapping != null)) {
-            if (EcoreUtil.isAncestor(this, newMapping))
+            if (EcoreUtil.isAncestor(this, newMapping)) {
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            }
             NotificationChain msgs = null;
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
-            if (newMapping != null)
+            }
+            if (newMapping != null) {
                 msgs = ((InternalEObject) newMapping).eInverseAdd(this, DescriptionPackage.INTERSECTION_MAPPING__CREATE, IntersectionMapping.class, msgs);
+            }
             msgs = basicSetMapping(newMapping, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__MAPPING, newMapping, newMapping));
+        }
     }
 
     /**
@@ -425,8 +456,9 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case DescriptionPackage.CREATE_CELL_TOOL__MAPPING:
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
+            }
             return basicSetMapping((IntersectionMapping) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -539,19 +571,19 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.CREATE_CELL_TOOL__DOCUMENTATION:
-            setDocumentation(DOCUMENTATION_EDEFAULT);
+            setDocumentation(CreateCellToolImpl.DOCUMENTATION_EDEFAULT);
             return;
         case DescriptionPackage.CREATE_CELL_TOOL__NAME:
-            setName(NAME_EDEFAULT);
+            setName(CreateCellToolImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.CREATE_CELL_TOOL__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(CreateCellToolImpl.LABEL_EDEFAULT);
             return;
         case DescriptionPackage.CREATE_CELL_TOOL__PRECONDITION:
-            setPrecondition(PRECONDITION_EDEFAULT);
+            setPrecondition(CreateCellToolImpl.PRECONDITION_EDEFAULT);
             return;
         case DescriptionPackage.CREATE_CELL_TOOL__FORCE_REFRESH:
-            setForceRefresh(FORCE_REFRESH_EDEFAULT);
+            setForceRefresh(CreateCellToolImpl.FORCE_REFRESH_EDEFAULT);
             return;
         case DescriptionPackage.CREATE_CELL_TOOL__FILTERS:
             getFilters().clear();
@@ -575,15 +607,15 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.CREATE_CELL_TOOL__DOCUMENTATION:
-            return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+            return CreateCellToolImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !CreateCellToolImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case DescriptionPackage.CREATE_CELL_TOOL__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return CreateCellToolImpl.NAME_EDEFAULT == null ? name != null : !CreateCellToolImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.CREATE_CELL_TOOL__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return CreateCellToolImpl.LABEL_EDEFAULT == null ? label != null : !CreateCellToolImpl.LABEL_EDEFAULT.equals(label);
         case DescriptionPackage.CREATE_CELL_TOOL__PRECONDITION:
-            return PRECONDITION_EDEFAULT == null ? precondition != null : !PRECONDITION_EDEFAULT.equals(precondition);
+            return CreateCellToolImpl.PRECONDITION_EDEFAULT == null ? precondition != null : !CreateCellToolImpl.PRECONDITION_EDEFAULT.equals(precondition);
         case DescriptionPackage.CREATE_CELL_TOOL__FORCE_REFRESH:
-            return forceRefresh != FORCE_REFRESH_EDEFAULT;
+            return forceRefresh != CreateCellToolImpl.FORCE_REFRESH_EDEFAULT;
         case DescriptionPackage.CREATE_CELL_TOOL__FILTERS:
             return filters != null && !filters.isEmpty();
         case DescriptionPackage.CREATE_CELL_TOOL__MASK:
@@ -693,8 +725,9 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (documentation: ");

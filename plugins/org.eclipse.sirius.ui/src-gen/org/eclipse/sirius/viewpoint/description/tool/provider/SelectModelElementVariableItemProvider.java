@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.provider;
 
@@ -35,7 +35,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SelectModelElementVariableItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     /**
      * This adds a property descriptor for the Multiple feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMultiplePropertyDescriptor(Object object) {
@@ -104,7 +104,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     /**
      * This adds a property descriptor for the Root Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRootExpressionPropertyDescriptor(Object object) {
@@ -117,22 +117,22 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     /**
      * This adds a property descriptor for the Children Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addChildrenExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_SelectionDescription_childrenExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_childrenExpression_feature", "_UI_SelectionDescription_type"),
-                        DescriptionPackage.Literals.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_SelectionDescription_childrenExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_childrenExpression_feature", "_UI_SelectionDescription_type"),
+                DescriptionPackage.Literals.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
      * This adds a property descriptor for the Message feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMessagePropertyDescriptor(Object object) {
@@ -193,7 +193,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

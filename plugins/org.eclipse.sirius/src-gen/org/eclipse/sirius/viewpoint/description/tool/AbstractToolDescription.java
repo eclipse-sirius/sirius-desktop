@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -44,7 +44,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * default value is <code>""</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The precondition of the tool.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Precondition</em>' attribute.
      * @see #setPrecondition(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_Precondition()
@@ -65,7 +65,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getPrecondition
      * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition</em>' attribute.
      * @see #getPrecondition()
@@ -79,7 +79,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * end-user-doc --> <!-- begin-model-doc --> If true then a refresh for the
      * whole representation is executed after every execution of the tool. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Force Refresh</em>' attribute.
      * @see #setForceRefresh(boolean)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_ForceRefresh()
@@ -93,7 +93,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isForceRefresh
      * <em>Force Refresh</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Force Refresh</em>' attribute.
      * @see #isForceRefresh()
@@ -111,7 +111,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filters</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_Filters()
      * @model containment="true" resolveProxies="true"

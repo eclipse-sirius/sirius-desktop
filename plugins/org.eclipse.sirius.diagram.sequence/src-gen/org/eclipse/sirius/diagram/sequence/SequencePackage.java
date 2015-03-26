@@ -74,7 +74,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -110,7 +110,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -146,7 +146,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -155,7 +155,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Edges</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -164,7 +164,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Nodes</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -182,7 +182,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Containers</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -191,7 +191,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Current Concern</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -209,7 +209,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Filters</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -254,7 +254,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronized</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -281,7 +281,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Header Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -290,7 +290,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -326,7 +326,7 @@ public interface SequencePackage extends EPackage {
     /**
      * The number of structural features of the '<em>DDiagram</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -348,7 +348,7 @@ public interface SequencePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getSemanticOrdering
      * <em>Semantic Ordering</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Semantic Ordering</em>'.
      * @see org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getSemanticOrdering()
@@ -362,7 +362,7 @@ public interface SequencePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getGraphicalOrdering
      * <em>Graphical Ordering</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Graphical Ordering</em>'.
      * @see org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getGraphicalOrdering()
@@ -388,7 +388,7 @@ public interface SequencePackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -413,12 +413,12 @@ public interface SequencePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.sequence.impl.SequenceDDiagramImpl
          * <em>DDiagram</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.impl.SequenceDDiagramImpl
          * @see org.eclipse.sirius.diagram.sequence.impl.SequencePackageImpl#getSequenceDDiagram()
          * @generated
          */
-        EClass SEQUENCE_DDIAGRAM = eINSTANCE.getSequenceDDiagram();
+        EClass SEQUENCE_DDIAGRAM = SequencePackage.eINSTANCE.getSequenceDDiagram();
 
         /**
          * The meta object literal for the '<em><b>Semantic Ordering</b></em>'
@@ -427,7 +427,7 @@ public interface SequencePackage extends EPackage {
          * 
          * @generated
          */
-        EReference SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING = eINSTANCE.getSequenceDDiagram_SemanticOrdering();
+        EReference SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING = SequencePackage.eINSTANCE.getSequenceDDiagram_SemanticOrdering();
 
         /**
          * The meta object literal for the '<em><b>Graphical Ordering</b></em>'
@@ -436,7 +436,7 @@ public interface SequencePackage extends EPackage {
          * 
          * @generated
          */
-        EReference SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING = eINSTANCE.getSequenceDDiagram_GraphicalOrdering();
+        EReference SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING = SequencePackage.eINSTANCE.getSequenceDDiagram_GraphicalOrdering();
 
         /**
          * The meta object literal for the '
@@ -445,7 +445,7 @@ public interface SequencePackage extends EPackage {
          * 
          * @generated
          */
-        EReference SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING = eINSTANCE.getSequenceDDiagram_InstanceRoleSemanticOrdering();
+        EReference SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING = SequencePackage.eINSTANCE.getSequenceDDiagram_InstanceRoleSemanticOrdering();
 
     }
 

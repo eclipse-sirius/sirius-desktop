@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.provider;
 
@@ -30,14 +30,14 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.NodeMappingImport} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeMappingImportItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     /**
      * This adds a property descriptor for the Hide Sub Mappings feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHideSubMappingsPropertyDescriptor(Object object) {
@@ -91,7 +91,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     /**
      * This adds a property descriptor for the Imported Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addImportedMappingPropertyDescriptor(Object object) {
@@ -103,29 +103,31 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     /**
      * This returns NodeMappingImport.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
     public Object getImage(Object object) {
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
-        if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS)
+        if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
             return overlayImage(object, getResourceLocator().getImage("obj16/BorderedNodeMappingImport"));
+        }
         return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeMappingImport"));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((NodeMappingImport) object).getLabel();
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
-        if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS)
+        if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
             return "Bordered " + label;
+        }
         return label == null || label.length() == 0 ? getString("_UI_NodeMappingImport_type") : label;
 
     }
@@ -136,6 +138,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
      * 
      * @generated
      */
+    @Override
     public String getTextGen(Object object) {
         String label = ((NodeMappingImport) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_NodeMappingImport_type") : getString("_UI_NodeMappingImport_type") + " " + label;
@@ -167,7 +170,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.provider;
 
@@ -37,15 +37,15 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.Environment} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EnvironmentItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EnvironmentItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +55,7 @@ public class EnvironmentItemProvider extends ItemProviderAdapter implements IEdi
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class EnvironmentItemProvider extends ItemProviderAdapter implements IEdi
     /**
      * This returns Environment.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class EnvironmentItemProvider extends ItemProviderAdapter implements IEdi
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +181,7 @@ public class EnvironmentItemProvider extends ItemProviderAdapter implements IEdi
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

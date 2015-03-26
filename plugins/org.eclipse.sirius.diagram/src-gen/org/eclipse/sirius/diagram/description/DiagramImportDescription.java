@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -35,7 +35,7 @@ public interface DiagramImportDescription extends RepresentationImportDescriptio
      * Returns the value of the '<em><b>Imported Diagram</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Diagram representation to import. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Imported Diagram</em>' reference.
      * @see #setImportedDiagram(DiagramDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramImportDescription_ImportedDiagram()

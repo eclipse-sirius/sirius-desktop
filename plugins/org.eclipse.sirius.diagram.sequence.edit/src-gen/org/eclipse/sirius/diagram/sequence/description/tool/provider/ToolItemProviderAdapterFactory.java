@@ -52,7 +52,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -69,7 +69,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public ToolItemProviderAdapterFactory() {
@@ -383,9 +383,10 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -393,9 +394,10 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -443,6 +445,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -452,6 +455,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -460,9 +464,10 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -474,34 +479,47 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (sequenceDiagramToolDescriptionItemProvider != null)
+        if (sequenceDiagramToolDescriptionItemProvider != null) {
             sequenceDiagramToolDescriptionItemProvider.dispose();
-        if (instanceRoleCreationToolItemProvider != null)
+        }
+        if (instanceRoleCreationToolItemProvider != null) {
             instanceRoleCreationToolItemProvider.dispose();
-        if (lifelineCreationToolItemProvider != null)
+        }
+        if (lifelineCreationToolItemProvider != null) {
             lifelineCreationToolItemProvider.dispose();
-        if (messageCreationToolItemProvider != null)
+        }
+        if (messageCreationToolItemProvider != null) {
             messageCreationToolItemProvider.dispose();
-        if (executionCreationToolItemProvider != null)
+        }
+        if (executionCreationToolItemProvider != null) {
             executionCreationToolItemProvider.dispose();
-        if (stateCreationToolItemProvider != null)
+        }
+        if (stateCreationToolItemProvider != null) {
             stateCreationToolItemProvider.dispose();
-        if (interactionUseCreationToolItemProvider != null)
+        }
+        if (interactionUseCreationToolItemProvider != null) {
             interactionUseCreationToolItemProvider.dispose();
-        if (combinedFragmentCreationToolItemProvider != null)
+        }
+        if (combinedFragmentCreationToolItemProvider != null) {
             combinedFragmentCreationToolItemProvider.dispose();
-        if (operandCreationToolItemProvider != null)
+        }
+        if (operandCreationToolItemProvider != null) {
             operandCreationToolItemProvider.dispose();
-        if (observationPointCreationToolItemProvider != null)
+        }
+        if (observationPointCreationToolItemProvider != null) {
             observationPointCreationToolItemProvider.dispose();
-        if (reorderToolItemProvider != null)
+        }
+        if (reorderToolItemProvider != null) {
             reorderToolItemProvider.dispose();
-        if (instanceRoleReorderToolItemProvider != null)
+        }
+        if (instanceRoleReorderToolItemProvider != null) {
             instanceRoleReorderToolItemProvider.dispose();
+        }
     }
 
 }

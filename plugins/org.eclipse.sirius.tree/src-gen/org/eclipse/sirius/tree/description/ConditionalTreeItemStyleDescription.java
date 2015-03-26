@@ -16,7 +16,7 @@ import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Conditional Tree Item Style Description</b></em>'. <!-- end-user-doc
  * -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
  * <em>Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getConditionalTreeItemStyleDescription()
  * @model
  * @generated

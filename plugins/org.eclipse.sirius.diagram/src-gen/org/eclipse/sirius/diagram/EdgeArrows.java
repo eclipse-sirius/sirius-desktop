@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <em><b>Edge Arrows</b></em>', and utility methods for working with them. <!--
  * end-user-doc --> <!-- begin-model-doc --> Decoration of a connection. <!--
  * end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getEdgeArrows()
  * @model
  * @generated
@@ -61,7 +61,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Output Closed Arrow</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #OUTPUT_CLOSED_ARROW
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Input Closed Arrow</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_CLOSED_ARROW
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Output Fill Closed Arrow</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #OUTPUT_FILL_CLOSED_ARROW
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Input Fill Closed Arrow</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_FILL_CLOSED_ARROW
      * @generated
      * @ordered
@@ -121,7 +121,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Input Arrow With Diamond</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_ARROW_WITH_DIAMOND
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Input Arrow With Fill Diamond</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_ARROW_WITH_FILL_DIAMOND
      * @generated
      * @ordered
@@ -195,7 +195,7 @@ public enum EdgeArrows implements Enumerator {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #OUTPUT_CLOSED_ARROW_LITERAL
      * @model name="OutputClosedArrow" annotation=
      *        "Sirius imagePath='icons/full/decorator/outputClosedArrow.gif'"
@@ -212,7 +212,7 @@ public enum EdgeArrows implements Enumerator {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_CLOSED_ARROW_LITERAL
      * @model name="InputClosedArrow" annotation=
      *        "Sirius imagePath='icons/full/decorator/inputClosedArrow.gif'"
@@ -229,7 +229,7 @@ public enum EdgeArrows implements Enumerator {
      * object isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #OUTPUT_FILL_CLOSED_ARROW_LITERAL
      * @model name="OutputFillClosedArrow" annotation=
      *        "Sirius imagePath='icons/full/decorator/outputFillClosedArrow.gif'"
@@ -246,7 +246,7 @@ public enum EdgeArrows implements Enumerator {
      * object isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_FILL_CLOSED_ARROW_LITERAL
      * @model name="InputFillClosedArrow" annotation=
      *        "Sirius imagePath='icons/full/decorator/inputFillClosedArrow.gif'"
@@ -295,7 +295,7 @@ public enum EdgeArrows implements Enumerator {
      * object isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_ARROW_WITH_DIAMOND_LITERAL
      * @model name="InputArrowWithDiamond" annotation=
      *        "Sirius imagePath='icons/full/decorator/inputArrowWithDiamond.gif'"
@@ -312,7 +312,7 @@ public enum EdgeArrows implements Enumerator {
      * object isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL
      * @model name="InputArrowWithFillDiamond" annotation=
      *        "Sirius imagePath='icons/full/decorator/inputArrowWithFillDiamond.gif'"
@@ -324,11 +324,11 @@ public enum EdgeArrows implements Enumerator {
     /**
      * An array of all the '<em><b>Edge Arrows</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final EdgeArrows[] VALUES_ARRAY = new EdgeArrows[] { NO_DECORATION_LITERAL, OUTPUT_ARROW_LITERAL, INPUT_ARROW_LITERAL, OUTPUT_CLOSED_ARROW_LITERAL, INPUT_CLOSED_ARROW_LITERAL,
-            OUTPUT_FILL_CLOSED_ARROW_LITERAL, INPUT_FILL_CLOSED_ARROW_LITERAL, DIAMOND_LITERAL, FILL_DIAMOND_LITERAL, INPUT_ARROW_WITH_DIAMOND_LITERAL, INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL, };
+        OUTPUT_FILL_CLOSED_ARROW_LITERAL, INPUT_FILL_CLOSED_ARROW_LITERAL, DIAMOND_LITERAL, FILL_DIAMOND_LITERAL, INPUT_ARROW_WITH_DIAMOND_LITERAL, INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL, };
 
     /**
      * A public read-only list of all the '<em><b>Edge Arrows</b></em>'
@@ -336,7 +336,7 @@ public enum EdgeArrows implements Enumerator {
      * 
      * @generated
      */
-    public static final List<EdgeArrows> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<EdgeArrows> VALUES = Collections.unmodifiableList(Arrays.asList(EdgeArrows.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Edge Arrows</b></em>' literal with the specified
@@ -345,8 +345,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      */
     public static EdgeArrows get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            EdgeArrows result = VALUES_ARRAY[i];
+        for (EdgeArrows result : EdgeArrows.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -361,8 +360,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      */
     public static EdgeArrows getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            EdgeArrows result = VALUES_ARRAY[i];
+        for (EdgeArrows result : EdgeArrows.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -442,6 +440,7 @@ public enum EdgeArrows implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -451,6 +450,7 @@ public enum EdgeArrows implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -460,6 +460,7 @@ public enum EdgeArrows implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

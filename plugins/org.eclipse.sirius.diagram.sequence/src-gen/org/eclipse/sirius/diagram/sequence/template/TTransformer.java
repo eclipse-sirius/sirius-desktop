@@ -40,7 +40,7 @@ public interface TTransformer extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Outputs</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTTransformer_Outputs()
      * @model

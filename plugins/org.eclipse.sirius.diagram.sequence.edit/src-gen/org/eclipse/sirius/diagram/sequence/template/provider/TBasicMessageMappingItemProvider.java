@@ -31,7 +31,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TBasicMessageMappingItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -57,7 +57,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
     /**
      * This adds a property descriptor for the Target feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
@@ -80,7 +80,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -107,7 +107,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

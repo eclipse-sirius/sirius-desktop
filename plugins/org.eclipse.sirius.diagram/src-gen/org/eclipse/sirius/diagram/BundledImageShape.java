@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <em><b>Bundled Image Shape</b></em>', and utility methods for working with
  * them. <!-- end-user-doc --> <!-- begin-model-doc --> Default shapes. <!--
  * end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImageShape()
  * @model
  * @generated
@@ -167,7 +167,7 @@ public enum BundledImageShape implements Enumerator {
      * 
      * @generated
      */
-    public static final List<BundledImageShape> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<BundledImageShape> VALUES = Collections.unmodifiableList(Arrays.asList(BundledImageShape.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Bundled Image Shape</b></em>' literal with the
@@ -176,8 +176,7 @@ public enum BundledImageShape implements Enumerator {
      * @generated
      */
     public static BundledImageShape get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            BundledImageShape result = VALUES_ARRAY[i];
+        for (BundledImageShape result : BundledImageShape.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -192,8 +191,7 @@ public enum BundledImageShape implements Enumerator {
      * @generated
      */
     public static BundledImageShape getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            BundledImageShape result = VALUES_ARRAY[i];
+        for (BundledImageShape result : BundledImageShape.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -261,6 +259,7 @@ public enum BundledImageShape implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -270,6 +269,7 @@ public enum BundledImageShape implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -279,6 +279,7 @@ public enum BundledImageShape implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

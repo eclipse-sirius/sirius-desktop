@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -39,7 +39,7 @@ public interface ExternalJavaAction extends MenuItemDescription, ContainerModelO
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Identifier for your External Java Action provided through extension
      * points. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaAction_Id()
@@ -52,7 +52,7 @@ public interface ExternalJavaAction extends MenuItemDescription, ContainerModelO
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -70,7 +70,7 @@ public interface ExternalJavaAction extends MenuItemDescription, ContainerModelO
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Parameters</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaAction_Parameters()

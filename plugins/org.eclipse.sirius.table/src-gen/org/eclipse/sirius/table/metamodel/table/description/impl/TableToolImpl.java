@@ -58,7 +58,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
      * The cached value of the '{@link #getFirstModelOperation()
      * <em>First Model Operation</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFirstModelOperation()
      * @generated
      * @ordered
@@ -89,6 +89,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
      * 
      * @generated
      */
+    @Override
     public EList<TableVariable> getVariables() {
         if (variables == null) {
             variables = new EObjectContainmentEList<TableVariable>(TableVariable.class, this, DescriptionPackage.TABLE_TOOL__VARIABLES);
@@ -101,6 +102,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
      * 
      * @generated
      */
+    @Override
     public ModelOperation getFirstModelOperation() {
         return firstModelOperation;
     }
@@ -115,10 +117,11 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
         firstModelOperation = newFirstModelOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_TOOL__FIRST_MODEL_OPERATION, oldFirstModelOperation, newFirstModelOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -128,18 +131,23 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
      * 
      * @generated
      */
+    @Override
     public void setFirstModelOperation(ModelOperation newFirstModelOperation) {
         if (newFirstModelOperation != firstModelOperation) {
             NotificationChain msgs = null;
-            if (firstModelOperation != null)
-                msgs = ((InternalEObject) firstModelOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TABLE_TOOL__FIRST_MODEL_OPERATION, null, msgs);
-            if (newFirstModelOperation != null)
-                msgs = ((InternalEObject) newFirstModelOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.TABLE_TOOL__FIRST_MODEL_OPERATION, null, msgs);
+            if (firstModelOperation != null) {
+                msgs = ((InternalEObject) firstModelOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TABLE_TOOL__FIRST_MODEL_OPERATION, null, msgs);
+            }
+            if (newFirstModelOperation != null) {
+                msgs = ((InternalEObject) newFirstModelOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.TABLE_TOOL__FIRST_MODEL_OPERATION, null, msgs);
+            }
             msgs = basicSetFirstModelOperation(newFirstModelOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TABLE_TOOL__FIRST_MODEL_OPERATION, newFirstModelOperation, newFirstModelOperation));
+        }
     }
 
     /**

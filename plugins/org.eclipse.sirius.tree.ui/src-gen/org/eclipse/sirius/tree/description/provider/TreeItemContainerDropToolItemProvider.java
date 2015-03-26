@@ -48,7 +48,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemContainerDropToolItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +58,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
     /**
      * This adds a property descriptor for the Drag Source feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDragSourcePropertyDescriptor(Object object) {
@@ -90,7 +90,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -136,7 +136,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -178,20 +178,20 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         collectNewChildDescriptorsGen(newChildDescriptors, object);
-        ItemProviderHelper.filterChildDescriptorsByType(newChildDescriptors, TYPES_TO_HIDE);
+        ItemProviderHelper.filterChildDescriptorsByType(newChildDescriptors, TreeItemContainerDropToolItemProvider.TYPES_TO_HIDE);
     }
 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -238,7 +238,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -258,7 +258,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

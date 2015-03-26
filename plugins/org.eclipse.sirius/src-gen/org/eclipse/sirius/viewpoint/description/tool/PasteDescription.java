@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -52,7 +52,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The semantic element of the new container view. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Container</em>' containment reference.
      * @see #setContainer(DropContainerVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPasteDescription_Container()
@@ -68,7 +68,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getContainer
      * <em>Container</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Container</em>' containment
      *            reference.
@@ -82,7 +82,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The new view container (DRepresentation of
      * DRepresentationElement). <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Container View</em>' containment reference.
      * @see #setContainerView(ContainerViewVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPasteDescription_ContainerView()
@@ -98,7 +98,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getContainerView
      * <em>Container View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Container View</em>' containment
      *            reference.
@@ -111,7 +111,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Copied View</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The copied view. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Copied View</em>' containment reference.
      * @see #setCopiedView(ElementViewVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPasteDescription_CopiedView()
@@ -127,7 +127,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getCopiedView
      * <em>Copied View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Copied View</em>' containment
      *            reference.
@@ -140,7 +140,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Copied Element</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The copied semantic element. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Copied Element</em>' containment reference.
      * @see #setCopiedElement(ElementVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPasteDescription_CopiedElement()
@@ -154,7 +154,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getCopiedElement
      * <em>Copied Element</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Copied Element</em>' containment
      *            reference.
@@ -167,7 +167,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The first operation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -182,7 +182,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -193,7 +193,7 @@ public interface PasteDescription extends MappingBasedToolDescription {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

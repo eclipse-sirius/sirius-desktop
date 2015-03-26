@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -36,7 +36,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
      * The default value of the '{@link #getConditionExpression()
      * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getConditionExpression()
      * @generated
      * @ordered
@@ -47,16 +47,16 @@ public class CaseImpl extends SwitchChildImpl implements Case {
      * The cached value of the '{@link #getConditionExpression()
      * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getConditionExpression()
      * @generated
      * @ordered
      */
-    protected String conditionExpression = CONDITION_EXPRESSION_EDEFAULT;
+    protected String conditionExpression = CaseImpl.CONDITION_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CaseImpl() {
@@ -65,7 +65,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,28 +75,31 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getConditionExpression() {
         return conditionExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setConditionExpression(String newConditionExpression) {
         String oldConditionExpression = conditionExpression;
         conditionExpression = newConditionExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CASE__CONDITION_EXPRESSION, oldConditionExpression, conditionExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +113,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,14 +128,14 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.CASE__CONDITION_EXPRESSION:
-            setConditionExpression(CONDITION_EXPRESSION_EDEFAULT);
+            setConditionExpression(CaseImpl.CONDITION_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -140,27 +143,28 @@ public class CaseImpl extends SwitchChildImpl implements Case {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.CASE__CONDITION_EXPRESSION:
-            return CONDITION_EXPRESSION_EDEFAULT == null ? conditionExpression != null : !CONDITION_EXPRESSION_EDEFAULT.equals(conditionExpression);
+            return CaseImpl.CONDITION_EXPRESSION_EDEFAULT == null ? conditionExpression != null : !CaseImpl.CONDITION_EXPRESSION_EDEFAULT.equals(conditionExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (conditionExpression: ");

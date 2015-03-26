@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -55,7 +55,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
      * <em>Double Click Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> Mappings associated with this
      * deletion behavior. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDoubleClickDescription_Mappings()
      * @see org.eclipse.sirius.diagram.description.DiagramElementMapping#getDoubleClickDescription
@@ -69,7 +69,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The semantic element of the ViewPointElement to delete. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementDoubleClickVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDoubleClickDescription_Element()
@@ -126,7 +126,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The first operation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -61,7 +61,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
      * @generated
      * @ordered
      */
-    protected String childrenExpression = CHILDREN_EXPRESSION_EDEFAULT;
+    protected String childrenExpression = OrderedTreeLayoutImpl.CHILDREN_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getNodeMapping() <em>Node Mapping</em>}'
@@ -97,6 +97,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
      * 
      * @generated
      */
+    @Override
     public String getChildrenExpression() {
         return childrenExpression;
     }
@@ -106,11 +107,13 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
      * 
      * @generated
      */
+    @Override
     public void setChildrenExpression(String newChildrenExpression) {
         String oldChildrenExpression = childrenExpression;
         childrenExpression = newChildrenExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION, oldChildrenExpression, childrenExpression));
+        }
     }
 
     /**
@@ -118,6 +121,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
      * 
      * @generated
      */
+    @Override
     public EList<AbstractNodeMapping> getNodeMapping() {
         if (nodeMapping == null) {
             nodeMapping = new EObjectResolvingEList<AbstractNodeMapping>(AbstractNodeMapping.class, this, DescriptionPackage.ORDERED_TREE_LAYOUT__NODE_MAPPING);
@@ -170,7 +174,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION:
-            setChildrenExpression(CHILDREN_EXPRESSION_EDEFAULT);
+            setChildrenExpression(OrderedTreeLayoutImpl.CHILDREN_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.ORDERED_TREE_LAYOUT__NODE_MAPPING:
             getNodeMapping().clear();
@@ -188,7 +192,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION:
-            return CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
+            return OrderedTreeLayoutImpl.CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !OrderedTreeLayoutImpl.CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
         case DescriptionPackage.ORDERED_TREE_LAYOUT__NODE_MAPPING:
             return nodeMapping != null && !nodeMapping.isEmpty();
         }
@@ -202,8 +206,9 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (childrenExpression: ");

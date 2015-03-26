@@ -31,14 +31,14 @@ import org.eclipse.sirius.viewpoint.provider.DSemanticDecoratorItemProvider;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.DCell} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DCellItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DCellItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -94,7 +94,7 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Semantic Elements feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
@@ -119,7 +119,7 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Column feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addColumnPropertyDescriptor(Object object) {
@@ -130,7 +130,7 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Updater feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addUpdaterPropertyDescriptor(Object object) {
@@ -233,7 +233,7 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

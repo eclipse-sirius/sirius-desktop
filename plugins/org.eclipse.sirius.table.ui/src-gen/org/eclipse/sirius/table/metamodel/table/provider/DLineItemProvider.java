@@ -29,14 +29,14 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.DLine} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DLineItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This adds a property descriptor for the Semantic Elements feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
@@ -106,7 +106,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -118,7 +118,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This adds a property descriptor for the Origin Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginMappingPropertyDescriptor(Object object) {
@@ -130,7 +130,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This adds a property descriptor for the Visible feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addVisiblePropertyDescriptor(Object object) {
@@ -142,7 +142,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This adds a property descriptor for the Collapsed feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCollapsedPropertyDescriptor(Object object) {
@@ -154,7 +154,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This adds a property descriptor for the Ordered Cells feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOrderedCellsPropertyDescriptor(Object object) {
@@ -250,7 +250,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

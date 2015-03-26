@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -50,7 +50,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Group Extension</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Group Extension</em>'.
      * @generated
      */
@@ -59,7 +59,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Node Creation Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Node Creation Description</em>'.
      * @generated
      */
@@ -68,7 +68,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Edge Creation Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Edge Creation Description</em>'.
      * @generated
      */
@@ -86,7 +86,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Delete Element Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Delete Element Description</em>'.
      * @generated
      */
@@ -95,7 +95,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Double Click Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Double Click Description</em>'.
      * @generated
      */
@@ -113,7 +113,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Delete Hook Parameter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Delete Hook Parameter</em>'.
      * @generated
      */
@@ -122,7 +122,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Reconnect Edge Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Reconnect Edge Description</em>'.
      * @generated
      */
@@ -131,7 +131,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Request Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Request Description</em>'.
      * @generated
      */
@@ -140,7 +140,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Direct Edit Label</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Direct Edit Label</em>'.
      * @generated
      */
@@ -149,7 +149,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Behavior Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Behavior Tool</em>'.
      * @generated
      */
@@ -207,7 +207,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Node Creation Variable</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Node Creation Variable</em>'.
      * @generated
      */
@@ -225,7 +225,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Create Edge View</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Create Edge View</em>'.
      * @generated
      */
@@ -261,7 +261,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Container Drop Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Container Drop Description</em>'.
      * @generated
      */

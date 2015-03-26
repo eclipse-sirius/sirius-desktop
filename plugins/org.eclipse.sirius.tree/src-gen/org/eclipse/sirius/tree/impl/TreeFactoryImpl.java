@@ -85,9 +85,10 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DTree createDTree() {
         DTreeImpl dTree = new DTreeSpec();
         return dTree;
@@ -98,6 +99,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
      * 
      * @generated
      */
+    @Override
     public DTreeElement createDTreeElement() {
         DTreeElementImpl dTreeElement = new DTreeElementImpl();
         return dTreeElement;
@@ -105,9 +107,10 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DTreeItem createDTreeItem() {
         DTreeItemImpl dTreeItem = new DTreeItemSpec();
         return dTreeItem;
@@ -118,6 +121,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
      * 
      * @generated
      */
+    @Override
     public TreeItemStyle createTreeItemStyle() {
         TreeItemStyleImpl treeItemStyle = new TreeItemStyleImpl();
         return treeItemStyle;
@@ -128,6 +132,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
      * 
      * @generated
      */
+    @Override
     public DTreeElementSynchronizer createDTreeElementSynchronizer() {
         DTreeElementSynchronizerImpl dTreeElementSynchronizer = new DTreeElementSynchronizerImpl();
         return dTreeElementSynchronizer;
@@ -138,6 +143,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
      * 
      * @generated
      */
+    @Override
     public TreePackage getTreePackage() {
         return (TreePackage) getEPackage();
     }

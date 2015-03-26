@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -55,7 +55,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * {@link #getHorizontalDiameterComputationExpression()
      * <em>Horizontal Diameter Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHorizontalDiameterComputationExpression()
      * @generated
      * @ordered
@@ -67,19 +67,19 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * {@link #getHorizontalDiameterComputationExpression()
      * <em>Horizontal Diameter Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHorizontalDiameterComputationExpression()
      * @generated
      * @ordered
      */
-    protected String horizontalDiameterComputationExpression = HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String horizontalDiameterComputationExpression = EllipseNodeDescriptionImpl.HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '
      * {@link #getVerticalDiameterComputationExpression()
      * <em>Vertical Diameter Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVerticalDiameterComputationExpression()
      * @generated
      * @ordered
@@ -91,12 +91,12 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * {@link #getVerticalDiameterComputationExpression()
      * <em>Vertical Diameter Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVerticalDiameterComputationExpression()
      * @generated
      * @ordered
      */
-    protected String verticalDiameterComputationExpression = VERTICAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String verticalDiameterComputationExpression = EllipseNodeDescriptionImpl.VERTICAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -122,13 +122,15 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public ColorDescription getColor() {
         if (color != null && color.eIsProxy()) {
             InternalEObject oldColor = (InternalEObject) color;
             color = (ColorDescription) eResolveProxy(oldColor);
             if (color != oldColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.ELLIPSE_NODE_DESCRIPTION__COLOR, oldColor, color));
+                }
             }
         }
         return color;
@@ -148,11 +150,13 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setColor(ColorDescription newColor) {
         ColorDescription oldColor = color;
         color = newColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.ELLIPSE_NODE_DESCRIPTION__COLOR, oldColor, color));
+        }
     }
 
     /**
@@ -160,6 +164,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getHorizontalDiameterComputationExpression() {
         return horizontalDiameterComputationExpression;
     }
@@ -169,12 +174,14 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setHorizontalDiameterComputationExpression(String newHorizontalDiameterComputationExpression) {
         String oldHorizontalDiameterComputationExpression = horizontalDiameterComputationExpression;
         horizontalDiameterComputationExpression = newHorizontalDiameterComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION, oldHorizontalDiameterComputationExpression,
                     horizontalDiameterComputationExpression));
+        }
     }
 
     /**
@@ -182,6 +189,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getVerticalDiameterComputationExpression() {
         return verticalDiameterComputationExpression;
     }
@@ -191,12 +199,14 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setVerticalDiameterComputationExpression(String newVerticalDiameterComputationExpression) {
         String oldVerticalDiameterComputationExpression = verticalDiameterComputationExpression;
         verticalDiameterComputationExpression = newVerticalDiameterComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION, oldVerticalDiameterComputationExpression,
                     verticalDiameterComputationExpression));
+        }
     }
 
     /**
@@ -208,8 +218,9 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case StylePackage.ELLIPSE_NODE_DESCRIPTION__COLOR:
-            if (resolve)
+            if (resolve) {
                 return getColor();
+            }
             return basicGetColor();
         case StylePackage.ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION:
             return getHorizontalDiameterComputationExpression();
@@ -252,10 +263,10 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
             setColor((ColorDescription) null);
             return;
         case StylePackage.ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION:
-            setHorizontalDiameterComputationExpression(HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT);
+            setHorizontalDiameterComputationExpression(EllipseNodeDescriptionImpl.HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION:
-            setVerticalDiameterComputationExpression(VERTICAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT);
+            setVerticalDiameterComputationExpression(EllipseNodeDescriptionImpl.VERTICAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -272,11 +283,11 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
         case StylePackage.ELLIPSE_NODE_DESCRIPTION__COLOR:
             return color != null;
         case StylePackage.ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION:
-            return HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT == null ? horizontalDiameterComputationExpression != null : !HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(horizontalDiameterComputationExpression);
+            return EllipseNodeDescriptionImpl.HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT == null ? horizontalDiameterComputationExpression != null
+                    : !EllipseNodeDescriptionImpl.HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT.equals(horizontalDiameterComputationExpression);
         case StylePackage.ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION:
-            return VERTICAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT == null ? verticalDiameterComputationExpression != null : !VERTICAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(verticalDiameterComputationExpression);
+            return EllipseNodeDescriptionImpl.VERTICAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT == null ? verticalDiameterComputationExpression != null
+                    : !EllipseNodeDescriptionImpl.VERTICAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT.equals(verticalDiameterComputationExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -288,8 +299,9 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (horizontalDiameterComputationExpression: ");

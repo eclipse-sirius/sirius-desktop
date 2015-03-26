@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description;
 
@@ -124,7 +124,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.filter.FilterDescription}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Filters that are owned by this simple mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Filters</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_Filters()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -139,7 +139,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * edge mappings (including import edge ampping) of this simple mapping.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>All Edge Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllEdgeMappings()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -153,7 +153,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * node mappings of this simple mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>All Node Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllNodeMappings()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -167,7 +167,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.ContainerMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * container mappings of this simple mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>All Container Mappings</em>' reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllContainerMappings()
@@ -180,7 +180,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * Returns the value of the '<em><b>Validation Set</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The validations rules <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Validation Set</em>' containment reference.
      * @see #setValidationSet(ValidationSet)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_ValidationSet()
@@ -208,7 +208,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> All concerns of the viewpoint. A concern is a set of
      * filters, validations and behaviors. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Concerns</em>' containment reference.
      * @see #setConcerns(ConcernSet)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_Concerns()
@@ -237,7 +237,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the viewpoint. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>All Tools</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllTools()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -249,7 +249,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * domain class of the viewpoint. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_DomainClass()
@@ -277,7 +277,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The predicate that allows (or not) to create a
      * viewpoint from a Meta Class. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_PreconditionExpression()
@@ -307,7 +307,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * Returns the value of the '<em><b>Default Concern</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The default concern to use. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Default Concern</em>' reference.
      * @see #setDefaultConcern(ConcernDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_DefaultConcern()
@@ -372,7 +372,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Init</em>' reference.
      * @see #setInit(RepresentationCreationDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_Init()
@@ -447,7 +447,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getDiagramInitialisation
      * <em>Diagram Initialisation</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Diagram Initialisation</em>'
      *            containment reference.
@@ -497,7 +497,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Additional Layers</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AdditionalLayers()
@@ -548,7 +548,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Node
      * mappings that are owned by this simple mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Node Mappings</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_NodeMappings()
@@ -563,7 +563,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Edge
      * mappings that are owned by this simple mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Edge Mappings</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_EdgeMappings()
@@ -579,7 +579,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Edge
      * mapping imports that are owned by this simple mapping. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Edge Mapping Imports</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_EdgeMappingImports()
@@ -595,7 +595,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * container mappings that are owned by this simple mapping. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Container Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_ContainerMappings()
@@ -610,7 +610,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The reused mappings. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_ReusedMappings()
      * @model
@@ -623,7 +623,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> A tool section encloses many tools <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Tool Section</em>' containment reference.
      * @see #setToolSection(ToolSection)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_ToolSection()
@@ -652,7 +652,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Tools that are reused by this viewpoint. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Tools</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_ReusedTools()
      * @model
@@ -665,7 +665,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Boolean indicating whether or not to show dynamic popup bars with
      * creation tools. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Enable Popup Bars</em>' attribute.
      * @see #setEnablePopupBars(boolean)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_EnablePopupBars()

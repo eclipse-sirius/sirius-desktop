@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -53,7 +53,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
      * The default value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -64,17 +64,17 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
      * The cached value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
      */
-    protected String candidatesExpression = CANDIDATES_EXPRESSION_EDEFAULT;
+    protected String candidatesExpression = SelectModelElementVariableImpl.CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -84,17 +84,17 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     /**
      * The cached value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isMultiple()
      * @generated
      * @ordered
      */
-    protected boolean multiple = MULTIPLE_EDEFAULT;
+    protected boolean multiple = SelectModelElementVariableImpl.MULTIPLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isTree() <em>Tree</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isTree()
      * @generated
      * @ordered
@@ -104,18 +104,18 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     /**
      * The cached value of the '{@link #isTree() <em>Tree</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isTree()
      * @generated
      * @ordered
      */
-    protected boolean tree = TREE_EDEFAULT;
+    protected boolean tree = SelectModelElementVariableImpl.TREE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -126,18 +126,18 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
      * The cached value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
      */
-    protected String rootExpression = ROOT_EXPRESSION_EDEFAULT;
+    protected String rootExpression = SelectModelElementVariableImpl.ROOT_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getChildrenExpression()
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getChildrenExpression()
      * @generated
      * @ordered
@@ -148,17 +148,17 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
      * The cached value of the '{@link #getChildrenExpression()
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getChildrenExpression()
      * @generated
      * @ordered
      */
-    protected String childrenExpression = CHILDREN_EXPRESSION_EDEFAULT;
+    protected String childrenExpression = SelectModelElementVariableImpl.CHILDREN_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
@@ -168,16 +168,16 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
      */
-    protected String message = MESSAGE_EDEFAULT;
+    protected String message = SelectModelElementVariableImpl.MESSAGE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectModelElementVariableImpl() {
@@ -186,7 +186,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getCandidatesExpression() {
@@ -205,19 +205,20 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setCandidatesExpression(String newCandidatesExpression) {
         String oldCandidatesExpression = candidatesExpression;
         candidatesExpression = newCandidatesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__CANDIDATES_EXPRESSION, oldCandidatesExpression, candidatesExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public boolean isMultiple() {
@@ -226,19 +227,20 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setMultiple(boolean newMultiple) {
         boolean oldMultiple = multiple;
         multiple = newMultiple;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MULTIPLE, oldMultiple, multiple));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public boolean isTree() {
@@ -247,19 +249,20 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setTree(boolean newTree) {
         boolean oldTree = tree;
         tree = newTree;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__TREE, oldTree, tree));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getRootExpression() {
@@ -268,19 +271,20 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setRootExpression(String newRootExpression) {
         String oldRootExpression = rootExpression;
         rootExpression = newRootExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__ROOT_EXPRESSION, oldRootExpression, rootExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getChildrenExpression() {
@@ -289,19 +293,20 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setChildrenExpression(String newChildrenExpression) {
         String oldChildrenExpression = childrenExpression;
         childrenExpression = newChildrenExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__CHILDREN_EXPRESSION, oldChildrenExpression, childrenExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getMessage() {
@@ -310,19 +315,20 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setMessage(String newMessage) {
         String oldMessage = message;
         message = newMessage;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE, oldMessage, message));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -346,7 +352,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -376,29 +382,29 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__CANDIDATES_EXPRESSION:
-            setCandidatesExpression(CANDIDATES_EXPRESSION_EDEFAULT);
+            setCandidatesExpression(SelectModelElementVariableImpl.CANDIDATES_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MULTIPLE:
-            setMultiple(MULTIPLE_EDEFAULT);
+            setMultiple(SelectModelElementVariableImpl.MULTIPLE_EDEFAULT);
             return;
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__TREE:
-            setTree(TREE_EDEFAULT);
+            setTree(SelectModelElementVariableImpl.TREE_EDEFAULT);
             return;
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__ROOT_EXPRESSION:
-            setRootExpression(ROOT_EXPRESSION_EDEFAULT);
+            setRootExpression(SelectModelElementVariableImpl.ROOT_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__CHILDREN_EXPRESSION:
-            setChildrenExpression(CHILDREN_EXPRESSION_EDEFAULT);
+            setChildrenExpression(SelectModelElementVariableImpl.CHILDREN_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE:
-            setMessage(MESSAGE_EDEFAULT);
+            setMessage(SelectModelElementVariableImpl.MESSAGE_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -406,7 +412,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -415,22 +421,22 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__CANDIDATES_EXPRESSION:
             return CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !CANDIDATES_EXPRESSION_EDEFAULT.equals(candidatesExpression);
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MULTIPLE:
-            return multiple != MULTIPLE_EDEFAULT;
+            return multiple != SelectModelElementVariableImpl.MULTIPLE_EDEFAULT;
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__TREE:
-            return tree != TREE_EDEFAULT;
+            return tree != SelectModelElementVariableImpl.TREE_EDEFAULT;
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__ROOT_EXPRESSION:
-            return ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
+            return SelectModelElementVariableImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !SelectModelElementVariableImpl.ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__CHILDREN_EXPRESSION:
             return CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE:
-            return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
+            return SelectModelElementVariableImpl.MESSAGE_EDEFAULT == null ? message != null : !SelectModelElementVariableImpl.MESSAGE_EDEFAULT.equals(message);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -458,7 +464,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -486,13 +492,14 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (candidatesExpression: ");

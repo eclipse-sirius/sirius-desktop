@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -36,7 +36,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
      * The default value of the '{@link #getDialogPrompt()
      * <em>Dialog Prompt</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDialogPrompt()
      * @generated
      * @ordered
@@ -47,16 +47,16 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
      * The cached value of the '{@link #getDialogPrompt()
      * <em>Dialog Prompt</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDialogPrompt()
      * @generated
      * @ordered
      */
-    protected String dialogPrompt = DIALOG_PROMPT_EDEFAULT;
+    protected String dialogPrompt = DialogVariableImpl.DIALOG_PROMPT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DialogVariableImpl() {
@@ -65,7 +65,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,28 +75,31 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getDialogPrompt() {
         return dialogPrompt;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDialogPrompt(String newDialogPrompt) {
         String oldDialogPrompt = dialogPrompt;
         dialogPrompt = newDialogPrompt;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DIALOG_VARIABLE__DIALOG_PROMPT, oldDialogPrompt, dialogPrompt));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +113,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,14 +128,14 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.DIALOG_VARIABLE__DIALOG_PROMPT:
-            setDialogPrompt(DIALOG_PROMPT_EDEFAULT);
+            setDialogPrompt(DialogVariableImpl.DIALOG_PROMPT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -140,27 +143,28 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.DIALOG_VARIABLE__DIALOG_PROMPT:
-            return DIALOG_PROMPT_EDEFAULT == null ? dialogPrompt != null : !DIALOG_PROMPT_EDEFAULT.equals(dialogPrompt);
+            return DialogVariableImpl.DIALOG_PROMPT_EDEFAULT == null ? dialogPrompt != null : !DialogVariableImpl.DIALOG_PROMPT_EDEFAULT.equals(dialogPrompt);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (dialogPrompt: ");

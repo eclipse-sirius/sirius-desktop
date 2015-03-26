@@ -59,9 +59,11 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
      * 
      * @generated
      */
+    @Override
     public ElementColumnMapping getMapping() {
-        if (eContainerFeatureID() != DescriptionPackage.CREATE_COLUMN_TOOL__MAPPING)
+        if (eContainerFeatureID() != DescriptionPackage.CREATE_COLUMN_TOOL__MAPPING) {
             return null;
+        }
         return (ElementColumnMapping) eInternalContainer();
     }
 
@@ -80,20 +82,26 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
      * 
      * @generated
      */
+    @Override
     public void setMapping(ElementColumnMapping newMapping) {
         if (newMapping != eInternalContainer() || (eContainerFeatureID() != DescriptionPackage.CREATE_COLUMN_TOOL__MAPPING && newMapping != null)) {
-            if (EcoreUtil.isAncestor(this, newMapping))
+            if (EcoreUtil.isAncestor(this, newMapping)) {
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            }
             NotificationChain msgs = null;
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
-            if (newMapping != null)
+            }
+            if (newMapping != null) {
                 msgs = ((InternalEObject) newMapping).eInverseAdd(this, DescriptionPackage.ELEMENT_COLUMN_MAPPING__CREATE, ElementColumnMapping.class, msgs);
+            }
             msgs = basicSetMapping(newMapping, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_COLUMN_TOOL__MAPPING, newMapping, newMapping));
+        }
     }
 
     /**
@@ -105,8 +113,9 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case DescriptionPackage.CREATE_COLUMN_TOOL__MAPPING:
-            if (eInternalContainer() != null)
+            if (eInternalContainer() != null) {
                 msgs = eBasicRemoveFromContainer(msgs);
+            }
             return basicSetMapping((ElementColumnMapping) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);

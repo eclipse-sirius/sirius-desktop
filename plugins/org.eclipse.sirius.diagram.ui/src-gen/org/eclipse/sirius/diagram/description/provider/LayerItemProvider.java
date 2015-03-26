@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.provider;
 
@@ -43,14 +43,14 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.Layer} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LayerItemProvider(AdapterFactory adapterFactory) {
@@ -60,7 +60,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -120,7 +120,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Reused Mappings feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedMappingsPropertyDescriptor(Object object) {
@@ -132,7 +132,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the All Tools feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllToolsPropertyDescriptor(Object object) {
@@ -144,7 +144,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Reused Tools feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedToolsPropertyDescriptor(Object object) {
@@ -168,7 +168,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the All Edge Mappings feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllEdgeMappingsPropertyDescriptor(Object object) {
@@ -218,7 +218,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This returns Layer.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -236,7 +236,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -281,7 +281,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -348,9 +348,10 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
         String createChildText = super.getCreateChildText(owner, feature, child, selection);
         if (child != null && isNormalEdgeMapping(child)) {
@@ -374,7 +375,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

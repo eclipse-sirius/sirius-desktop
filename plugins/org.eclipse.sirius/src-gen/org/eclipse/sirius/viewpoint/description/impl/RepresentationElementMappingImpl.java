@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -43,7 +43,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
      * The cached value of the '{@link #getDetailDescriptions()
      * <em>Detail Descriptions</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDetailDescriptions()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
      * The cached value of the '{@link #getNavigationDescriptions()
      * <em>Navigation Descriptions</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getNavigationDescriptions()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RepresentationElementMappingImpl() {
@@ -72,7 +72,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,9 +82,10 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<RepresentationCreationDescription> getDetailDescriptions() {
         if (detailDescriptions == null) {
             detailDescriptions = new EObjectResolvingEList<RepresentationCreationDescription>(RepresentationCreationDescription.class, this,
@@ -95,9 +96,10 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<RepresentationNavigationDescription> getNavigationDescriptions() {
         if (navigationDescriptions == null) {
             navigationDescriptions = new EObjectResolvingEList<RepresentationNavigationDescription>(RepresentationNavigationDescription.class, this,
@@ -108,7 +110,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +126,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -145,7 +147,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +165,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

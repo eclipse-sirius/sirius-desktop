@@ -54,7 +54,7 @@ public final class TableUIPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public static final TableUIPlugin INSTANCE = new TableUIPlugin();
@@ -62,7 +62,7 @@ public final class TableUIPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
@@ -92,7 +92,7 @@ public final class TableUIPlugin extends EMFPlugin {
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
-        return plugin;
+        return TableUIPlugin.plugin;
     }
 
     /**
@@ -103,13 +103,13 @@ public final class TableUIPlugin extends EMFPlugin {
      * @generated
      */
     public static Implementation getPlugin() {
-        return plugin;
+        return TableUIPlugin.plugin;
     }
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static class Implementation extends EclipsePlugin {
@@ -126,15 +126,16 @@ public final class TableUIPlugin extends EMFPlugin {
 
             // Remember the static instance.
             //
-            plugin = this;
+            TableUIPlugin.plugin = this;
         }
 
         /**
          * @not-generated : recreate adapter factory if destroyed..
          */
         public AdapterFactory getItemProvidersAdapterFactory() {
-            if (adapterFactory == null)
+            if (adapterFactory == null) {
                 adapterFactory = createAdapterFactory();
+            }
             return adapterFactory;
         }
 
@@ -165,7 +166,7 @@ public final class TableUIPlugin extends EMFPlugin {
 
         /**
          * Logs an error in the error log.
-         * 
+         *
          * @param message
          *            the message to log (optionnal).
          * @param e
@@ -185,23 +186,23 @@ public final class TableUIPlugin extends EMFPlugin {
 
         /**
          * Returns the image corresponding to the given ImageDescriptor.
-         * 
+         *
          * @param desc
          *            an image descriptor.
          * @return an Image instance corresponding to the given ImageDescriptor
          */
         public static Image getImage(ImageDescriptor desc) {
-            if (!descriptorsToImages.containsKey(desc)) {
-                descriptorsToImages.put(desc, desc.createImage());
+            if (!TableUIPlugin.descriptorsToImages.containsKey(desc)) {
+                TableUIPlugin.descriptorsToImages.put(desc, desc.createImage());
             }
-            return descriptorsToImages.get(desc);
+            return TableUIPlugin.descriptorsToImages.get(desc);
         }
 
         /**
          * Respects images residing in any plug-in. If path is relative, then
          * this bundle is looked up for the image, otherwise, for absolute path,
          * first segment is taken as id of plug-in with image
-         * 
+         *
          * @not-generated
          * @param path
          *            the path to image, either absolute (with plug-in id as
@@ -231,21 +232,21 @@ public final class TableUIPlugin extends EMFPlugin {
             if (p.isAbsolute() && p.segmentCount() > 1) {
                 return AbstractUIPlugin.imageDescriptorFromPlugin(p.segment(0), p.removeFirstSegments(1).makeAbsolute().toString());
             } else {
-                return getBundledImageDescriptor(p.makeAbsolute().toString());
+                return Implementation.getBundledImageDescriptor(p.makeAbsolute().toString());
             }
         }
 
         /**
          * Returns an image descriptor for the image file at the given plug-in
          * relative path.
-         * 
+         *
          * @not-generated
          * @param path
          *            the path
          * @return the image descriptor
          */
         public static ImageDescriptor getBundledImageDescriptor(String path) {
-            return AbstractUIPlugin.imageDescriptorFromPlugin(ID, path);
+            return AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID, path);
         }
 
     }

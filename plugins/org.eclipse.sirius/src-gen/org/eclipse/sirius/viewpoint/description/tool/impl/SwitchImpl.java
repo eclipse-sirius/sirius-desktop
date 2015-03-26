@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -47,7 +47,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
     /**
      * The cached value of the '{@link #getCases() <em>Cases</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCases()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
     /**
      * The cached value of the '{@link #getDefault() <em>Default</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefault()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SwitchImpl() {
@@ -75,7 +75,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,9 +85,10 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Case> getCases() {
         if (cases == null) {
             cases = new EObjectContainmentEList.Resolving<Case>(Case.class, this, ToolPackage.SWITCH__CASES);
@@ -97,23 +98,26 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Default getDefault() {
         if (default_ != null && default_.eIsProxy()) {
             InternalEObject oldDefault = (InternalEObject) default_;
             default_ = (Default) eResolveProxy(oldDefault);
             if (default_ != oldDefault) {
                 InternalEObject newDefault = (InternalEObject) default_;
-                NotificationChain msgs = oldDefault.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SWITCH__DEFAULT, null, null);
+                NotificationChain msgs = oldDefault.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SWITCH__DEFAULT, null, null);
                 if (newDefault.eInternalContainer() == null) {
-                    msgs = newDefault.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SWITCH__DEFAULT, null, msgs);
+                    msgs = newDefault.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SWITCH__DEFAULT, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.SWITCH__DEFAULT, oldDefault, default_));
+                }
             }
         }
         return default_;
@@ -121,7 +125,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Default basicGetDefault() {
@@ -130,7 +134,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefault(Default newDefault, NotificationChain msgs) {
@@ -138,36 +142,42 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
         default_ = newDefault;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.SWITCH__DEFAULT, oldDefault, newDefault);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDefault(Default newDefault) {
         if (newDefault != default_) {
             NotificationChain msgs = null;
-            if (default_ != null)
-                msgs = ((InternalEObject) default_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SWITCH__DEFAULT, null, msgs);
-            if (newDefault != null)
-                msgs = ((InternalEObject) newDefault).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SWITCH__DEFAULT, null, msgs);
+            if (default_ != null) {
+                msgs = ((InternalEObject) default_).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SWITCH__DEFAULT, null, msgs);
+            }
+            if (newDefault != null) {
+                msgs = ((InternalEObject) newDefault).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.SWITCH__DEFAULT, null, msgs);
+            }
             msgs = basicSetDefault(newDefault, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SWITCH__DEFAULT, newDefault, newDefault));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +193,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -192,8 +202,9 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
         case ToolPackage.SWITCH__CASES:
             return getCases();
         case ToolPackage.SWITCH__DEFAULT:
-            if (resolve)
+            if (resolve) {
                 return getDefault();
+            }
             return basicGetDefault();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -201,7 +212,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -221,7 +232,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +250,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

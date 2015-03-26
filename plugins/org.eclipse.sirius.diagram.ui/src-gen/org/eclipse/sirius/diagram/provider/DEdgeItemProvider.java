@@ -4,17 +4,16 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -40,7 +39,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * The item provider used to simulate another child for Edge that has label
      * on border.
-     * 
+     *
      * @not-generated
      */
     HashMap<Object, DEdgeLabelItemProvider> edgeLabelItemProviders = new HashMap<Object, DEdgeLabelItemProvider>();
@@ -48,7 +47,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DEdgeItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +57,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +86,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Outgoing Edges feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
@@ -99,7 +98,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Incoming Edges feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
@@ -123,7 +122,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Source Node feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSourceNodePropertyDescriptor(Object object) {
@@ -134,7 +133,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Target Node feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetNodePropertyDescriptor(Object object) {
@@ -145,7 +144,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Actual Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
@@ -157,7 +156,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Routing Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRoutingStylePropertyDescriptor(Object object) {
@@ -169,7 +168,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Is Fold feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIsFoldPropertyDescriptor(Object object) {
@@ -181,7 +180,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Is Mock Edge feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIsMockEdgePropertyDescriptor(Object object) {
@@ -193,7 +192,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Original Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
@@ -216,7 +215,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Arrange Constraints feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addArrangeConstraintsPropertyDescriptor(Object object) {
@@ -228,7 +227,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the Begin Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBeginLabelPropertyDescriptor(Object object) {
@@ -240,7 +239,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds a property descriptor for the End Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEndLabelPropertyDescriptor(Object object) {
@@ -295,7 +294,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -337,7 +336,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -351,11 +350,12 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * @not-generated
-     * 
+     *
      *                {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildren(java.lang.Object)
      */
+    @Override
     public Collection<?> getChildren(Object object) {
         Collection<Object> result = (Collection<Object>) super.getChildren(object);
         if (object instanceof DEdge && hasRelevantLabelItem(object)) {
@@ -402,42 +402,43 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
 
     private boolean hasRelevantLabelItem(Object object) {
         return DEdgeLabelItemProvider.hasRelevantLabelItem((DEdge) object); /*
-                                                                             * ||
-                                                                             * DEdgeBeginLabelItemProvider
-                                                                             * .
-                                                                             * hasRelevantLabelItem
-                                                                             * (
-                                                                             * (
-                                                                             * DEdge
-                                                                             * )
-                                                                             * object
-                                                                             * )
-                                                                             * ||
-                                                                             * DEdgeEndLabelItemProvider
-                                                                             * .
-                                                                             * hasRelevantLabelItem
-                                                                             * (
-                                                                             * (
-                                                                             * DEdge
-                                                                             * )
-                                                                             * object
-                                                                             * )
-                                                                             * ;
-                                                                             */
+         * ||
+         * DEdgeBeginLabelItemProvider
+         * .
+         * hasRelevantLabelItem
+         * (
+         * (
+         * DEdge
+         * )
+         * object
+         * )
+         * ||
+         * DEdgeEndLabelItemProvider
+         * .
+         * hasRelevantLabelItem
+         * (
+         * (
+         * DEdge
+         * )
+         * object
+         * )
+         * ;
+         */
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#dispose()
      * @not-generated
      */
+    @Override
     public void dispose() {
         super.dispose();
         // Dispose all the DEdgeLabelItemProvider to avoid potential memory
         // leak.
-        for (Iterator<Object> iterator = edgeLabelItemProviders.keySet().iterator(); iterator.hasNext();) {
-            edgeLabelItemProviders.get(iterator.next()).dispose();
+        for (Object object : edgeLabelItemProviders.keySet()) {
+            edgeLabelItemProviders.get(object).dispose();
         }
         edgeLabelItemProviders.clear();
     }

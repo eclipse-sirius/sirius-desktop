@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -48,7 +48,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
      * The cached value of the '{@link #getOwnedDiagramElements()
      * <em>Owned Diagram Elements</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedDiagramElements()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
      * @generated
      * @ordered
      */
-    protected ContainerLayout childrenPresentation = CHILDREN_PRESENTATION_EDEFAULT;
+    protected ContainerLayout childrenPresentation = DNodeContainerImpl.CHILDREN_PRESENTATION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -101,6 +101,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElement> getOwnedDiagramElements() {
         if (ownedDiagramElements == null) {
             ownedDiagramElements = new EObjectContainmentEList.Resolving<DDiagramElement>(DDiagramElement.class, this, DiagramPackage.DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS);
@@ -113,6 +114,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
      * 
      * @generated
      */
+    @Override
     public ContainerLayout getChildrenPresentation() {
         return childrenPresentation;
     }
@@ -122,11 +124,13 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
      * 
      * @generated
      */
+    @Override
     public void setChildrenPresentation(ContainerLayout newChildrenPresentation) {
         ContainerLayout oldChildrenPresentation = childrenPresentation;
-        childrenPresentation = newChildrenPresentation == null ? CHILDREN_PRESENTATION_EDEFAULT : newChildrenPresentation;
-        if (eNotificationRequired())
+        childrenPresentation = newChildrenPresentation == null ? DNodeContainerImpl.CHILDREN_PRESENTATION_EDEFAULT : newChildrenPresentation;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DNODE_CONTAINER__CHILDREN_PRESENTATION, oldChildrenPresentation, childrenPresentation));
+        }
     }
 
     /**
@@ -191,7 +195,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
             getOwnedDiagramElements().clear();
             return;
         case DiagramPackage.DNODE_CONTAINER__CHILDREN_PRESENTATION:
-            setChildrenPresentation(CHILDREN_PRESENTATION_EDEFAULT);
+            setChildrenPresentation(DNodeContainerImpl.CHILDREN_PRESENTATION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -208,7 +212,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
         case DiagramPackage.DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS:
             return ownedDiagramElements != null && !ownedDiagramElements.isEmpty();
         case DiagramPackage.DNODE_CONTAINER__CHILDREN_PRESENTATION:
-            return childrenPresentation != CHILDREN_PRESENTATION_EDEFAULT;
+            return childrenPresentation != DNodeContainerImpl.CHILDREN_PRESENTATION_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -220,8 +224,9 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (childrenPresentation: ");

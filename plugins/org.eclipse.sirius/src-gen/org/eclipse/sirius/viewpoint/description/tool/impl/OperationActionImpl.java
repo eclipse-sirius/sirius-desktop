@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -42,7 +42,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
     /**
      * The cached value of the '{@link #getView() <em>View</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getView()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperationActionImpl() {
@@ -71,7 +71,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,23 +81,26 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ContainerViewVariable getView() {
         if (view != null && view.eIsProxy()) {
             InternalEObject oldView = (InternalEObject) view;
             view = (ContainerViewVariable) eResolveProxy(oldView);
             if (view != oldView) {
                 InternalEObject newView = (InternalEObject) view;
-                NotificationChain msgs = oldView.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__VIEW, null, null);
+                NotificationChain msgs = oldView.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__VIEW, null, null);
                 if (newView.eInternalContainer() == null) {
-                    msgs = newView.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__VIEW, null, msgs);
+                    msgs = newView.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__VIEW, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.OPERATION_ACTION__VIEW, oldView, view));
+                }
             }
         }
         return view;
@@ -105,7 +108,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable basicGetView() {
@@ -114,7 +117,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetView(ContainerViewVariable newView, NotificationChain msgs) {
@@ -122,52 +125,61 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
         view = newView;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.OPERATION_ACTION__VIEW, oldView, newView);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setView(ContainerViewVariable newView) {
         if (newView != view) {
             NotificationChain msgs = null;
-            if (view != null)
-                msgs = ((InternalEObject) view).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__VIEW, null, msgs);
-            if (newView != null)
-                msgs = ((InternalEObject) newView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__VIEW, null, msgs);
+            if (view != null) {
+                msgs = ((InternalEObject) view).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__VIEW, null, msgs);
+            }
+            if (newView != null) {
+                msgs = ((InternalEObject) newView).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__VIEW, null, msgs);
+            }
             msgs = basicSetView(newView, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.OPERATION_ACTION__VIEW, newView, newView));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
             initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -175,7 +187,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -184,7 +196,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -192,36 +204,42 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.OPERATION_ACTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -237,19 +255,21 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ToolPackage.OPERATION_ACTION__VIEW:
-            if (resolve)
+            if (resolve) {
                 return getView();
+            }
             return basicGetView();
         case ToolPackage.OPERATION_ACTION__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -257,7 +277,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -275,7 +295,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -293,7 +313,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

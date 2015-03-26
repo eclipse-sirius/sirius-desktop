@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -37,7 +37,7 @@ public interface AcceleoVariable extends VariableContainer, SubVariable {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Computation Expression</em>' attribute.
      * @see #setComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAcceleoVariable_ComputationExpression()
@@ -54,7 +54,7 @@ public interface AcceleoVariable extends VariableContainer, SubVariable {
      * {@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable#getComputationExpression
      * <em>Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Computation Expression</em>'
      *            attribute.

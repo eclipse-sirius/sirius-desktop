@@ -45,7 +45,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FeatureColumnMappingItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +55,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
     /**
      * This adds a property descriptor for the Can Edit feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCanEditPropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
     /**
      * This adds a property descriptor for the Feature Name feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
@@ -98,7 +98,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
     /**
      * This adds a property descriptor for the Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -171,7 +171,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -214,7 +214,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -235,9 +235,9 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * Add the mask and the variables to the labelEditTool
-     * 
+     *
      * @not-generated
      */
     @Override

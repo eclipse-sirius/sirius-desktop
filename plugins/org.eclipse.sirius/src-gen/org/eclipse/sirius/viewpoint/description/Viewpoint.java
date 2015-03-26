@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -75,7 +75,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * <!-- end-user-doc --> <!-- begin-model-doc --> Might be used to restrict
      * your viewpoint to a set of file extensions, for instance "ecore" <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Model File Extension</em>' attribute.
      * @see #setModelFileExtension(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_ModelFileExtension()
@@ -89,7 +89,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * {@link org.eclipse.sirius.viewpoint.description.Viewpoint#getModelFileExtension
      * <em>Model File Extension</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Model File Extension</em>'
      *            attribute.
@@ -102,7 +102,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * Returns the value of the '<em><b>Validation Set</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The validations rules <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Validation Set</em>' containment reference.
      * @see #setValidationSet(ValidationSet)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_ValidationSet()
@@ -116,7 +116,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * {@link org.eclipse.sirius.viewpoint.description.Viewpoint#getValidationSet
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Validation Set</em>' containment
      *            reference.
@@ -136,7 +136,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Representations</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_OwnedRepresentations()
@@ -156,7 +156,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Representation Extensions</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_OwnedRepresentationExtensions()
@@ -176,7 +176,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Java Extensions</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_OwnedJavaExtensions()
@@ -196,7 +196,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned MM Extensions</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_OwnedMMExtensions()
@@ -216,7 +216,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Feature Extensions</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_OwnedFeatureExtensions()
@@ -229,7 +229,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * Returns the value of the '<em><b>Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> image
      * path to use as an icon for the viewpoint <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon</em>' attribute.
      * @see #setIcon(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_Icon()
@@ -242,7 +242,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.Viewpoint#getIcon
      * <em>Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon</em>' attribute.
      * @see #getIcon()
@@ -260,7 +260,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Templates</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_OwnedTemplates()
@@ -278,7 +278,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conflicts</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_Conflicts()
      * @model dataType="org.eclipse.sirius.viewpoint.description.URI"
@@ -295,7 +295,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reuses</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_Reuses()
      * @model dataType="org.eclipse.sirius.viewpoint.description.URI"
@@ -312,7 +312,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Customizes</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_Customizes()
      * @model dataType="org.eclipse.sirius.viewpoint.description.URI"
@@ -323,7 +323,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Initialize the analysis.
-     * 
+     *
      * @param model
      *            The root model element. <!-- end-model-doc -->
      * @model

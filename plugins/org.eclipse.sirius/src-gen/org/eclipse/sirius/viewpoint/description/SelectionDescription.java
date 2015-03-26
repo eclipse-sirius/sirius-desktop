@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -54,7 +54,7 @@ public interface SelectionDescription extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Candidates Expression</em>' attribute.
      * @see #setCandidatesExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_CandidatesExpression()
@@ -73,7 +73,7 @@ public interface SelectionDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getCandidatesExpression
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Candidates Expression</em>'
      *            attribute.
@@ -90,7 +90,7 @@ public interface SelectionDescription extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Multiple</em>' attribute.
      * @see #setMultiple(boolean)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_Multiple()
@@ -104,7 +104,7 @@ public interface SelectionDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.SelectionDescription#isMultiple
      * <em>Multiple</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Multiple</em>' attribute.
      * @see #isMultiple()
@@ -117,7 +117,7 @@ public interface SelectionDescription extends EObject {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to
      * true if you want a tree representation of the selection candidates. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Tree</em>' attribute.
      * @see #setTree(boolean)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_Tree()
@@ -130,7 +130,7 @@ public interface SelectionDescription extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.SelectionDescription#isTree
      * <em>Tree</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Tree</em>' attribute.
      * @see #isTree()
@@ -146,7 +146,7 @@ public interface SelectionDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Root Expression</em>' attribute.
      * @see #setRootExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_RootExpression()
@@ -165,7 +165,7 @@ public interface SelectionDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getRootExpression
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Root Expression</em>' attribute.
      * @see #getRootExpression()
@@ -181,7 +181,7 @@ public interface SelectionDescription extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Children Expression</em>' attribute.
      * @see #setChildrenExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_ChildrenExpression()
@@ -200,7 +200,7 @@ public interface SelectionDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getChildrenExpression
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Children Expression</em>' attribute.
      * @see #getChildrenExpression()
@@ -216,7 +216,7 @@ public interface SelectionDescription extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Message</em>' attribute.
      * @see #setMessage(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_Message()
@@ -230,7 +230,7 @@ public interface SelectionDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getMessage
      * <em>Message</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Message</em>' attribute.
      * @see #getMessage()

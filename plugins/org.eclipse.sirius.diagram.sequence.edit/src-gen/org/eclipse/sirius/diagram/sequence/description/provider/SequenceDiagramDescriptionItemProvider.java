@@ -37,7 +37,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SequenceDiagramDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,15 +64,15 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * This adds a property descriptor for the Ends Ordering feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEndsOrderingPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_SequenceDiagramDescription_endsOrdering_feature"), getString("_UI_SequenceDiagramDescription_endsOrdering_description"),
-                        DescriptionPackage.Literals.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_SequenceDiagramDescription_endsOrdering_feature"), getString("_UI_SequenceDiagramDescription_endsOrdering_description"),
+                DescriptionPackage.Literals.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -101,7 +101,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -135,7 +135,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
      * This returns the label text for
      * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

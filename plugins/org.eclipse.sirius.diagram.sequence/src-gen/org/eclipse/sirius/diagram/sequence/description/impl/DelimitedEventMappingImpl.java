@@ -54,7 +54,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * @generated
      * @ordered
      */
-    protected String startingEndFinderExpression = STARTING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String startingEndFinderExpression = DelimitedEventMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFinishingEndFinderExpression()
@@ -76,7 +76,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * @generated
      * @ordered
      */
-    protected String finishingEndFinderExpression = FINISHING_END_FINDER_EXPRESSION_EDEFAULT;
+    protected String finishingEndFinderExpression = DelimitedEventMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -102,6 +102,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getStartingEndFinderExpression() {
         return startingEndFinderExpression;
     }
@@ -111,12 +112,14 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setStartingEndFinderExpression(String newStartingEndFinderExpression) {
         String oldStartingEndFinderExpression = startingEndFinderExpression;
         startingEndFinderExpression = newStartingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION, oldStartingEndFinderExpression,
                     startingEndFinderExpression));
+        }
     }
 
     /**
@@ -124,6 +127,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * 
      * @generated
      */
+    @Override
     public String getFinishingEndFinderExpression() {
         return finishingEndFinderExpression;
     }
@@ -133,12 +137,14 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * 
      * @generated
      */
+    @Override
     public void setFinishingEndFinderExpression(String newFinishingEndFinderExpression) {
         String oldFinishingEndFinderExpression = finishingEndFinderExpression;
         finishingEndFinderExpression = newFinishingEndFinderExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION, oldFinishingEndFinderExpression,
                     finishingEndFinderExpression));
+        }
     }
 
     /**
@@ -184,10 +190,10 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            setStartingEndFinderExpression(STARTING_END_FINDER_EXPRESSION_EDEFAULT);
+            setStartingEndFinderExpression(DelimitedEventMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            setFinishingEndFinderExpression(FINISHING_END_FINDER_EXPRESSION_EDEFAULT);
+            setFinishingEndFinderExpression(DelimitedEventMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -202,9 +208,11 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            return STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !STARTING_END_FINDER_EXPRESSION_EDEFAULT.equals(startingEndFinderExpression);
+            return DelimitedEventMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !DelimitedEventMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT
+                    .equals(startingEndFinderExpression);
         case DescriptionPackage.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            return FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null : !FINISHING_END_FINDER_EXPRESSION_EDEFAULT.equals(finishingEndFinderExpression);
+            return DelimitedEventMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null
+                    : !DelimitedEventMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT.equals(finishingEndFinderExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -216,8 +224,9 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (startingEndFinderExpression: ");

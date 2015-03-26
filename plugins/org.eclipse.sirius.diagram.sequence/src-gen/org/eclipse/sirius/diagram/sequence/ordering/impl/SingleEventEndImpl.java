@@ -54,7 +54,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
      * @generated
      * @ordered
      */
-    protected boolean start = START_EDEFAULT;
+    protected boolean start = SingleEventEndImpl.START_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSemanticEvent()
@@ -91,6 +91,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
      * 
      * @generated
      */
+    @Override
     public boolean isStart() {
         return start;
     }
@@ -100,11 +101,13 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
      * 
      * @generated
      */
+    @Override
     public void setStart(boolean newStart) {
         boolean oldStart = start;
         start = newStart;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, OrderingPackage.SINGLE_EVENT_END__START, oldStart, start));
+        }
     }
 
     /**
@@ -112,13 +115,15 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
      * 
      * @generated
      */
+    @Override
     public EObject getSemanticEvent() {
         if (semanticEvent != null && semanticEvent.eIsProxy()) {
             InternalEObject oldSemanticEvent = (InternalEObject) semanticEvent;
             semanticEvent = eResolveProxy(oldSemanticEvent);
             if (semanticEvent != oldSemanticEvent) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrderingPackage.SINGLE_EVENT_END__SEMANTIC_EVENT, oldSemanticEvent, semanticEvent));
+                }
             }
         }
         return semanticEvent;
@@ -138,11 +143,13 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
      * 
      * @generated
      */
+    @Override
     public void setSemanticEvent(EObject newSemanticEvent) {
         EObject oldSemanticEvent = semanticEvent;
         semanticEvent = newSemanticEvent;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, OrderingPackage.SINGLE_EVENT_END__SEMANTIC_EVENT, oldSemanticEvent, semanticEvent));
+        }
     }
 
     /**
@@ -156,8 +163,9 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
         case OrderingPackage.SINGLE_EVENT_END__START:
             return isStart();
         case OrderingPackage.SINGLE_EVENT_END__SEMANTIC_EVENT:
-            if (resolve)
+            if (resolve) {
                 return getSemanticEvent();
+            }
             return basicGetSemanticEvent();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -190,7 +198,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
     public void eUnset(int featureID) {
         switch (featureID) {
         case OrderingPackage.SINGLE_EVENT_END__START:
-            setStart(START_EDEFAULT);
+            setStart(SingleEventEndImpl.START_EDEFAULT);
             return;
         case OrderingPackage.SINGLE_EVENT_END__SEMANTIC_EVENT:
             setSemanticEvent((EObject) null);
@@ -208,7 +216,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case OrderingPackage.SINGLE_EVENT_END__START:
-            return start != START_EDEFAULT;
+            return start != SingleEventEndImpl.START_EDEFAULT;
         case OrderingPackage.SINGLE_EVENT_END__SEMANTIC_EVENT:
             return semanticEvent != null;
         }
@@ -222,8 +230,9 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (start: ");

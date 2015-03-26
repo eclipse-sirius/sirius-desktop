@@ -36,7 +36,7 @@ public interface CreateLineTool extends CreateTool {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' reference.
      * @see #setMapping(LineMapping)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateLineTool_Mapping()
@@ -50,7 +50,7 @@ public interface CreateLineTool extends CreateTool {
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateLineTool#getMapping
      * <em>Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' reference.
      * @see #getMapping()

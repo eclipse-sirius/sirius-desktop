@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -66,223 +66,223 @@ import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackag
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dAnalysisEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dFeatureExtensionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dStylizableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dRefreshableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dLabelledEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dMappingBasedEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dRepresentationContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dSemanticDecoratorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dRepresentationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dRepresentationElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dViewEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass metaModelExtensionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass decorationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dAnalysisCustomDataEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass labelStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass styleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dAnalysisSessionEObjectEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass sessionManagerEObjectEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dResourceEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dFileEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dResourceContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dProjectEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dFolderEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dModelEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass basicLabelStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass customizableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum fontFormatEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum labelAlignmentEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum syncStatusEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EDataType rgbValuesEDataType = null;
@@ -296,19 +296,19 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#eNS_URI
      * @see #init()
      * @generated
      */
     private ViewpointPackageImpl() {
-        super(eNS_URI, ViewpointFactory.eINSTANCE);
+        super(ViewpointPackage.eNS_URI, ViewpointFactory.eINSTANCE);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -316,27 +316,28 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link ViewpointPackage#eINSTANCE} when
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static ViewpointPackage init() {
-        if (isInited)
+        if (ViewpointPackageImpl.isInited) {
             return (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ViewpointPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-                : new ViewpointPackageImpl());
+        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl ? EPackage.Registry.INSTANCE
+                .get(ViewpointPackage.eNS_URI) : new ViewpointPackageImpl());
 
-        isInited = true;
+        ViewpointPackageImpl.isInited = true;
 
         // Initialize simple dependencies
         EcorePackage.eINSTANCE.eClass();
@@ -379,673 +380,747 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDAnalysis() {
         return dAnalysisEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDAnalysis_ReferencedAnalysis() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDAnalysis_Models() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDAnalysis_EAnnotations() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(2);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDAnalysis_OwnedViews() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(3);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDAnalysis_SelectedViews() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(4);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDAnalysis_OwnedFeatureExtensions() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(5);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDAnalysis_Version() {
         return (EAttribute) dAnalysisEClass.getEStructuralFeatures().get(6);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDFeatureExtension() {
         return dFeatureExtensionEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDFeatureExtension_Description() {
         return (EReference) dFeatureExtensionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDStylizable() {
         return dStylizableEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDRefreshable() {
         return dRefreshableEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDLabelled() {
         return dLabelledEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDMappingBased() {
         return dMappingBasedEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDContainer() {
         return dContainerEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDRepresentationContainer() {
         return dRepresentationContainerEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDRepresentationContainer_Models() {
         return (EReference) dRepresentationContainerEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDSemanticDecorator() {
         return dSemanticDecoratorEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDSemanticDecorator_Target() {
         return (EReference) dSemanticDecoratorEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDRepresentation() {
         return dRepresentationEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDRepresentation_OwnedRepresentationElements() {
         return (EReference) dRepresentationEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDRepresentation_RepresentationElements() {
         return (EReference) dRepresentationEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDRepresentation_Name() {
         return (EAttribute) dRepresentationEClass.getEStructuralFeatures().get(2);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDRepresentation_OwnedAnnotationEntries() {
         return (EReference) dRepresentationEClass.getEStructuralFeatures().get(3);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDRepresentationElement() {
         return dRepresentationElementEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDRepresentationElement_Name() {
         return (EAttribute) dRepresentationElementEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDRepresentationElement_SemanticElements() {
         return (EReference) dRepresentationElementEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDView() {
         return dViewEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDView_OwnedRepresentations() {
         return (EReference) dViewEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDView_OwnedExtensions() {
         return (EReference) dViewEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDView_Initialized() {
         return (EAttribute) dViewEClass.getEStructuralFeatures().get(2);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDView_Viewpoint() {
         return (EReference) dViewEClass.getEStructuralFeatures().get(3);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getMetaModelExtension() {
         return metaModelExtensionEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getMetaModelExtension_ExtensionGroup() {
         return (EReference) metaModelExtensionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDecoration() {
         return decorationEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDecoration_Description() {
         return (EReference) decorationEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDAnalysisCustomData() {
         return dAnalysisCustomDataEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDAnalysisCustomData_Key() {
         return (EAttribute) dAnalysisCustomDataEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDAnalysisCustomData_Data() {
         return (EReference) dAnalysisCustomDataEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getLabelStyle() {
         return labelStyleEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getLabelStyle_LabelAlignment() {
         return (EAttribute) labelStyleEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getStyle() {
         return styleEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getStyle_Description() {
         return (EReference) styleEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EDataType getRGBValues() {
         return rgbValuesEDataType;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDAnalysisSessionEObject() {
         return dAnalysisSessionEObjectEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDAnalysisSessionEObject_Open() {
         return (EAttribute) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDAnalysisSessionEObject_Resources() {
         return (EAttribute) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDAnalysisSessionEObject_ControlledResources() {
         return (EAttribute) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(2);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDAnalysisSessionEObject_ActivatedViewpoints() {
         return (EReference) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(3);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDAnalysisSessionEObject_Analyses() {
         return (EReference) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(4);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDAnalysisSessionEObject_SynchronizationStatus() {
         return (EAttribute) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(5);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getSessionManagerEObject() {
         return sessionManagerEObjectEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getSessionManagerEObject_OwnedSessions() {
         return (EReference) sessionManagerEObjectEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDResource() {
         return dResourceEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDResource_Name() {
         return (EAttribute) dResourceEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getDResource_Path() {
         return (EAttribute) dResourceEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDFile() {
         return dFileEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDResourceContainer() {
         return dResourceContainerEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReference getDResourceContainer_Members() {
         return (EReference) dResourceContainerEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDProject() {
         return dProjectEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDFolder() {
         return dFolderEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getDModel() {
         return dModelEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getBasicLabelStyle() {
         return basicLabelStyleEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getBasicLabelStyle_LabelSize() {
         return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getBasicLabelStyle_LabelFormat() {
         return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getBasicLabelStyle_ShowIcon() {
         return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(2);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getBasicLabelStyle_LabelColor() {
         return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(4);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getBasicLabelStyle_IconPath() {
         return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(3);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EClass getCustomizable() {
         return customizableEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttribute getCustomizable_CustomFeatures() {
         return (EAttribute) customizableEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EEnum getFontFormat() {
         return fontFormatEEnum;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EEnum getLabelAlignment() {
         return labelAlignmentEEnum;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EEnum getSyncStatus() {
         return syncStatusEEnum;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ViewpointFactory getViewpointFactory() {
         return (ViewpointFactory) getEFactoryInstance();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -1054,123 +1129,124 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        dAnalysisEClass = createEClass(DANALYSIS);
-        createEReference(dAnalysisEClass, DANALYSIS__REFERENCED_ANALYSIS);
-        createEReference(dAnalysisEClass, DANALYSIS__MODELS);
-        createEReference(dAnalysisEClass, DANALYSIS__EANNOTATIONS);
-        createEReference(dAnalysisEClass, DANALYSIS__OWNED_VIEWS);
-        createEReference(dAnalysisEClass, DANALYSIS__SELECTED_VIEWS);
-        createEReference(dAnalysisEClass, DANALYSIS__OWNED_FEATURE_EXTENSIONS);
-        createEAttribute(dAnalysisEClass, DANALYSIS__VERSION);
+        dAnalysisEClass = createEClass(ViewpointPackage.DANALYSIS);
+        createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS);
+        createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__MODELS);
+        createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__EANNOTATIONS);
+        createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__OWNED_VIEWS);
+        createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__SELECTED_VIEWS);
+        createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__OWNED_FEATURE_EXTENSIONS);
+        createEAttribute(dAnalysisEClass, ViewpointPackage.DANALYSIS__VERSION);
 
-        dFeatureExtensionEClass = createEClass(DFEATURE_EXTENSION);
-        createEReference(dFeatureExtensionEClass, DFEATURE_EXTENSION__DESCRIPTION);
+        dFeatureExtensionEClass = createEClass(ViewpointPackage.DFEATURE_EXTENSION);
+        createEReference(dFeatureExtensionEClass, ViewpointPackage.DFEATURE_EXTENSION__DESCRIPTION);
 
-        dStylizableEClass = createEClass(DSTYLIZABLE);
+        dStylizableEClass = createEClass(ViewpointPackage.DSTYLIZABLE);
 
-        dRefreshableEClass = createEClass(DREFRESHABLE);
+        dRefreshableEClass = createEClass(ViewpointPackage.DREFRESHABLE);
 
-        dLabelledEClass = createEClass(DLABELLED);
+        dLabelledEClass = createEClass(ViewpointPackage.DLABELLED);
 
-        dMappingBasedEClass = createEClass(DMAPPING_BASED);
+        dMappingBasedEClass = createEClass(ViewpointPackage.DMAPPING_BASED);
 
-        dContainerEClass = createEClass(DCONTAINER);
+        dContainerEClass = createEClass(ViewpointPackage.DCONTAINER);
 
-        dRepresentationContainerEClass = createEClass(DREPRESENTATION_CONTAINER);
-        createEReference(dRepresentationContainerEClass, DREPRESENTATION_CONTAINER__MODELS);
+        dRepresentationContainerEClass = createEClass(ViewpointPackage.DREPRESENTATION_CONTAINER);
+        createEReference(dRepresentationContainerEClass, ViewpointPackage.DREPRESENTATION_CONTAINER__MODELS);
 
-        dSemanticDecoratorEClass = createEClass(DSEMANTIC_DECORATOR);
-        createEReference(dSemanticDecoratorEClass, DSEMANTIC_DECORATOR__TARGET);
+        dSemanticDecoratorEClass = createEClass(ViewpointPackage.DSEMANTIC_DECORATOR);
+        createEReference(dSemanticDecoratorEClass, ViewpointPackage.DSEMANTIC_DECORATOR__TARGET);
 
-        dRepresentationEClass = createEClass(DREPRESENTATION);
-        createEReference(dRepresentationEClass, DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS);
-        createEReference(dRepresentationEClass, DREPRESENTATION__REPRESENTATION_ELEMENTS);
-        createEAttribute(dRepresentationEClass, DREPRESENTATION__NAME);
-        createEReference(dRepresentationEClass, DREPRESENTATION__OWNED_ANNOTATION_ENTRIES);
+        dRepresentationEClass = createEClass(ViewpointPackage.DREPRESENTATION);
+        createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS);
+        createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS);
+        createEAttribute(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__NAME);
+        createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES);
 
-        dRepresentationElementEClass = createEClass(DREPRESENTATION_ELEMENT);
-        createEAttribute(dRepresentationElementEClass, DREPRESENTATION_ELEMENT__NAME);
-        createEReference(dRepresentationElementEClass, DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS);
+        dRepresentationElementEClass = createEClass(ViewpointPackage.DREPRESENTATION_ELEMENT);
+        createEAttribute(dRepresentationElementEClass, ViewpointPackage.DREPRESENTATION_ELEMENT__NAME);
+        createEReference(dRepresentationElementEClass, ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS);
 
-        dViewEClass = createEClass(DVIEW);
-        createEReference(dViewEClass, DVIEW__OWNED_REPRESENTATIONS);
-        createEReference(dViewEClass, DVIEW__OWNED_EXTENSIONS);
-        createEAttribute(dViewEClass, DVIEW__INITIALIZED);
-        createEReference(dViewEClass, DVIEW__VIEWPOINT);
+        dViewEClass = createEClass(ViewpointPackage.DVIEW);
+        createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS);
+        createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_EXTENSIONS);
+        createEAttribute(dViewEClass, ViewpointPackage.DVIEW__INITIALIZED);
+        createEReference(dViewEClass, ViewpointPackage.DVIEW__VIEWPOINT);
 
-        metaModelExtensionEClass = createEClass(META_MODEL_EXTENSION);
-        createEReference(metaModelExtensionEClass, META_MODEL_EXTENSION__EXTENSION_GROUP);
+        metaModelExtensionEClass = createEClass(ViewpointPackage.META_MODEL_EXTENSION);
+        createEReference(metaModelExtensionEClass, ViewpointPackage.META_MODEL_EXTENSION__EXTENSION_GROUP);
 
-        decorationEClass = createEClass(DECORATION);
-        createEReference(decorationEClass, DECORATION__DESCRIPTION);
+        decorationEClass = createEClass(ViewpointPackage.DECORATION);
+        createEReference(decorationEClass, ViewpointPackage.DECORATION__DESCRIPTION);
 
-        dAnalysisCustomDataEClass = createEClass(DANALYSIS_CUSTOM_DATA);
-        createEAttribute(dAnalysisCustomDataEClass, DANALYSIS_CUSTOM_DATA__KEY);
-        createEReference(dAnalysisCustomDataEClass, DANALYSIS_CUSTOM_DATA__DATA);
+        dAnalysisCustomDataEClass = createEClass(ViewpointPackage.DANALYSIS_CUSTOM_DATA);
+        createEAttribute(dAnalysisCustomDataEClass, ViewpointPackage.DANALYSIS_CUSTOM_DATA__KEY);
+        createEReference(dAnalysisCustomDataEClass, ViewpointPackage.DANALYSIS_CUSTOM_DATA__DATA);
 
-        labelStyleEClass = createEClass(LABEL_STYLE);
-        createEAttribute(labelStyleEClass, LABEL_STYLE__LABEL_ALIGNMENT);
+        labelStyleEClass = createEClass(ViewpointPackage.LABEL_STYLE);
+        createEAttribute(labelStyleEClass, ViewpointPackage.LABEL_STYLE__LABEL_ALIGNMENT);
 
-        styleEClass = createEClass(STYLE);
-        createEReference(styleEClass, STYLE__DESCRIPTION);
+        styleEClass = createEClass(ViewpointPackage.STYLE);
+        createEReference(styleEClass, ViewpointPackage.STYLE__DESCRIPTION);
 
-        dAnalysisSessionEObjectEClass = createEClass(DANALYSIS_SESSION_EOBJECT);
-        createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__OPEN);
-        createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__RESOURCES);
-        createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES);
-        createEReference(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__ACTIVATED_VIEWPOINTS);
-        createEReference(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__ANALYSES);
-        createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__SYNCHRONIZATION_STATUS);
+        dAnalysisSessionEObjectEClass = createEClass(ViewpointPackage.DANALYSIS_SESSION_EOBJECT);
+        createEAttribute(dAnalysisSessionEObjectEClass, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__OPEN);
+        createEAttribute(dAnalysisSessionEObjectEClass, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES);
+        createEAttribute(dAnalysisSessionEObjectEClass, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES);
+        createEReference(dAnalysisSessionEObjectEClass, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__ACTIVATED_VIEWPOINTS);
+        createEReference(dAnalysisSessionEObjectEClass, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__ANALYSES);
+        createEAttribute(dAnalysisSessionEObjectEClass, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__SYNCHRONIZATION_STATUS);
 
-        sessionManagerEObjectEClass = createEClass(SESSION_MANAGER_EOBJECT);
-        createEReference(sessionManagerEObjectEClass, SESSION_MANAGER_EOBJECT__OWNED_SESSIONS);
+        sessionManagerEObjectEClass = createEClass(ViewpointPackage.SESSION_MANAGER_EOBJECT);
+        createEReference(sessionManagerEObjectEClass, ViewpointPackage.SESSION_MANAGER_EOBJECT__OWNED_SESSIONS);
 
-        dResourceEClass = createEClass(DRESOURCE);
-        createEAttribute(dResourceEClass, DRESOURCE__NAME);
-        createEAttribute(dResourceEClass, DRESOURCE__PATH);
+        dResourceEClass = createEClass(ViewpointPackage.DRESOURCE);
+        createEAttribute(dResourceEClass, ViewpointPackage.DRESOURCE__NAME);
+        createEAttribute(dResourceEClass, ViewpointPackage.DRESOURCE__PATH);
 
-        dFileEClass = createEClass(DFILE);
+        dFileEClass = createEClass(ViewpointPackage.DFILE);
 
-        dResourceContainerEClass = createEClass(DRESOURCE_CONTAINER);
-        createEReference(dResourceContainerEClass, DRESOURCE_CONTAINER__MEMBERS);
+        dResourceContainerEClass = createEClass(ViewpointPackage.DRESOURCE_CONTAINER);
+        createEReference(dResourceContainerEClass, ViewpointPackage.DRESOURCE_CONTAINER__MEMBERS);
 
-        dProjectEClass = createEClass(DPROJECT);
+        dProjectEClass = createEClass(ViewpointPackage.DPROJECT);
 
-        dFolderEClass = createEClass(DFOLDER);
+        dFolderEClass = createEClass(ViewpointPackage.DFOLDER);
 
-        dModelEClass = createEClass(DMODEL);
+        dModelEClass = createEClass(ViewpointPackage.DMODEL);
 
-        basicLabelStyleEClass = createEClass(BASIC_LABEL_STYLE);
-        createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__LABEL_SIZE);
-        createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__LABEL_FORMAT);
-        createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__SHOW_ICON);
-        createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__ICON_PATH);
-        createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__LABEL_COLOR);
+        basicLabelStyleEClass = createEClass(ViewpointPackage.BASIC_LABEL_STYLE);
+        createEAttribute(basicLabelStyleEClass, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_SIZE);
+        createEAttribute(basicLabelStyleEClass, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        createEAttribute(basicLabelStyleEClass, ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON);
+        createEAttribute(basicLabelStyleEClass, ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH);
+        createEAttribute(basicLabelStyleEClass, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR);
 
-        customizableEClass = createEClass(CUSTOMIZABLE);
-        createEAttribute(customizableEClass, CUSTOMIZABLE__CUSTOM_FEATURES);
+        customizableEClass = createEClass(ViewpointPackage.CUSTOMIZABLE);
+        createEAttribute(customizableEClass, ViewpointPackage.CUSTOMIZABLE__CUSTOM_FEATURES);
 
         // Create enums
-        fontFormatEEnum = createEEnum(FONT_FORMAT);
-        labelAlignmentEEnum = createEEnum(LABEL_ALIGNMENT);
-        syncStatusEEnum = createEEnum(SYNC_STATUS);
+        fontFormatEEnum = createEEnum(ViewpointPackage.FONT_FORMAT);
+        labelAlignmentEEnum = createEEnum(ViewpointPackage.LABEL_ALIGNMENT);
+        syncStatusEEnum = createEEnum(ViewpointPackage.SYNC_STATUS);
 
         // Create data types
-        rgbValuesEDataType = createEDataType(RGB_VALUES);
+        rgbValuesEDataType = createEDataType(ViewpointPackage.RGB_VALUES);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -1179,18 +1255,19 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(ViewpointPackage.eNAME);
+        setNsPrefix(ViewpointPackage.eNS_PREFIX);
+        setNsURI(ViewpointPackage.eNS_URI);
 
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
@@ -1226,149 +1303,174 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         basicLabelStyleEClass.getESuperTypes().add(this.getCustomizable());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(dAnalysisEClass, DAnalysis.class, "DAnalysis", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDAnalysis_ReferencedAnalysis(), this.getDAnalysis(), null, "referencedAnalysis", null, 0, -1, DAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDAnalysis_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDAnalysis_EAnnotations(), theDescriptionPackage.getDAnnotationEntry(), null, "eAnnotations", null, 0, -1, DAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDAnalysis_OwnedViews(), this.getDView(), null, "ownedViews", null, 0, -1, DAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDAnalysis_SelectedViews(), this.getDView(), null, "selectedViews", null, 0, -1, DAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDAnalysis_OwnedFeatureExtensions(), this.getDFeatureExtension(), null, "ownedFeatureExtensions", null, 0, -1, DAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDAnalysis_Version(), theEcorePackage.getEString(), "version", null, 0, 1, DAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
+        initEClass(dAnalysisEClass, DAnalysis.class, "DAnalysis", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDAnalysis_ReferencedAnalysis(), this.getDAnalysis(), null, "referencedAnalysis", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_EAnnotations(), theDescriptionPackage.getDAnnotationEntry(), null, "eAnnotations", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_OwnedViews(), this.getDView(), null, "ownedViews", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_SelectedViews(), this.getDView(), null, "selectedViews", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_OwnedFeatureExtensions(), this.getDFeatureExtension(), null, "ownedFeatureExtensions", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysis_Version(), theEcorePackage.getEString(), "version", null, 0, 1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dFeatureExtensionEClass, DFeatureExtension.class, "DFeatureExtension", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDFeatureExtension_Description(), theDescriptionPackage.getFeatureExtensionDescription(), null, "description", null, 1, 1, DFeatureExtension.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dFeatureExtensionEClass, DFeatureExtension.class, "DFeatureExtension", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDFeatureExtension_Description(), theDescriptionPackage.getFeatureExtensionDescription(), null, "description", null, 1, 1, DFeatureExtension.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dStylizableEClass, DStylizable.class, "DStylizable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dStylizableEClass, DStylizable.class, "DStylizable", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        addEOperation(dStylizableEClass, this.getStyle(), "getStyle", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(dStylizableEClass, this.getStyle(), "getStyle", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(dRefreshableEClass, DRefreshable.class, "DRefreshable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dRefreshableEClass, DRefreshable.class, "DRefreshable", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        addEOperation(dRefreshableEClass, null, "refresh", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(dRefreshableEClass, null, "refresh", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(dLabelledEClass, DLabelled.class, "DLabelled", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dLabelledEClass, DLabelled.class, "DLabelled", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(dMappingBasedEClass, DMappingBased.class, "DMappingBased", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dMappingBasedEClass, DMappingBased.class, "DMappingBased", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        addEOperation(dMappingBasedEClass, theDescriptionPackage.getRepresentationElementMapping(), "getMapping", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(dMappingBasedEClass, theDescriptionPackage.getRepresentationElementMapping(), "getMapping", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(dContainerEClass, DContainer.class, "DContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dContainerEClass, DContainer.class, "DContainer", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(dRepresentationContainerEClass, DRepresentationContainer.class, "DRepresentationContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDRepresentationContainer_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DRepresentationContainer.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEClass(dRepresentationContainerEClass, DRepresentationContainer.class, "DRepresentationContainer", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDRepresentationContainer_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DRepresentationContainer.class, EPackageImpl.IS_TRANSIENT,
+                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dSemanticDecoratorEClass, DSemanticDecorator.class, "DSemanticDecorator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDSemanticDecorator_Target(), ecorePackage.getEObject(), null, "target", null, 1, 1, DSemanticDecorator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dSemanticDecoratorEClass, DSemanticDecorator.class, "DSemanticDecorator", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDSemanticDecorator_Target(), ecorePackage.getEObject(), null, "target", null, 1, 1, DSemanticDecorator.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dRepresentationEClass, DRepresentation.class, "DRepresentation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDRepresentation_OwnedRepresentationElements(), this.getDRepresentationElement(), null, "ownedRepresentationElements", null, 0, -1, DRepresentation.class, IS_TRANSIENT,
-                IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEReference(getDRepresentation_RepresentationElements(), this.getDRepresentationElement(), null, "representationElements", null, 0, -1, DRepresentation.class, IS_TRANSIENT, IS_VOLATILE,
-                !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDRepresentation_Name(), ecorePackage.getEString(), "name", "", 0, 1, DRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
-        initEReference(getDRepresentation_OwnedAnnotationEntries(), theDescriptionPackage.getAnnotationEntry(), null, "ownedAnnotationEntries", null, 0, -1, DRepresentation.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dRepresentationEClass, DRepresentation.class, "DRepresentation", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDRepresentation_OwnedRepresentationElements(), this.getDRepresentationElement(), null, "ownedRepresentationElements", null, 0, -1, DRepresentation.class,
+                EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentation_RepresentationElements(), this.getDRepresentationElement(), null, "representationElements", null, 0, -1, DRepresentation.class, EPackageImpl.IS_TRANSIENT,
+                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDRepresentation_Name(), ecorePackage.getEString(), "name", "", 0, 1, DRepresentation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentation_OwnedAnnotationEntries(), theDescriptionPackage.getAnnotationEntry(), null, "ownedAnnotationEntries", null, 0, -1, DRepresentation.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dRepresentationElementEClass, DRepresentationElement.class, "DRepresentationElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDRepresentationElement_Name(), ecorePackage.getEString(), "name", "", 0, 1, DRepresentationElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDRepresentationElement_SemanticElements(), theEcorePackage.getEObject(), null, "semanticElements", null, 0, -1, DRepresentationElement.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dRepresentationElementEClass, DRepresentationElement.class, "DRepresentationElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDRepresentationElement_Name(), ecorePackage.getEString(), "name", "", 0, 1, DRepresentationElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentationElement_SemanticElements(), theEcorePackage.getEObject(), null, "semanticElements", null, 0, -1, DRepresentationElement.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dViewEClass, DView.class, "DView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDView_OwnedRepresentations(), this.getDRepresentation(), null, "ownedRepresentations", null, 0, -1, DView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDView_OwnedExtensions(), this.getMetaModelExtension(), null, "ownedExtensions", null, 0, 1, DView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDView_Initialized(), theEcorePackage.getEBoolean(), "initialized", null, 1, 1, DView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
-        initEReference(getDView_Viewpoint(), theDescriptionPackage.getViewpoint(), null, "viewpoint", null, 1, 1, DView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dViewEClass, DView.class, "DView", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDView_OwnedRepresentations(), this.getDRepresentation(), null, "ownedRepresentations", null, 0, -1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDView_OwnedExtensions(), this.getMetaModelExtension(), null, "ownedExtensions", null, 0, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getDView_Initialized(), theEcorePackage.getEBoolean(), "initialized", null, 1, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDView_Viewpoint(), theDescriptionPackage.getViewpoint(), null, "viewpoint", null, 1, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(metaModelExtensionEClass, MetaModelExtension.class, "MetaModelExtension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getMetaModelExtension_ExtensionGroup(), theEcorePackage.getEObject(), null, "extensionGroup", null, 1, 1, MetaModelExtension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(metaModelExtensionEClass, MetaModelExtension.class, "MetaModelExtension", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getMetaModelExtension_ExtensionGroup(), theEcorePackage.getEObject(), null, "extensionGroup", null, 1, 1, MetaModelExtension.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(decorationEClass, Decoration.class, "Decoration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDecoration_Description(), theDescriptionPackage.getDecorationDescription(), null, "description", null, 1, 1, Decoration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(decorationEClass, Decoration.class, "Decoration", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDecoration_Description(), theDescriptionPackage.getDecorationDescription(), null, "description", null, 1, 1, Decoration.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dAnalysisCustomDataEClass, DAnalysisCustomData.class, "DAnalysisCustomData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDAnalysisCustomData_Key(), theEcorePackage.getEString(), "key", null, 1, 1, DAnalysisCustomData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDAnalysisCustomData_Data(), theEcorePackage.getEObject(), null, "data", null, 1, 1, DAnalysisCustomData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dAnalysisCustomDataEClass, DAnalysisCustomData.class, "DAnalysisCustomData", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDAnalysisCustomData_Key(), theEcorePackage.getEString(), "key", null, 1, 1, DAnalysisCustomData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysisCustomData_Data(), theEcorePackage.getEObject(), null, "data", null, 1, 1, DAnalysisCustomData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(labelStyleEClass, LabelStyle.class, "LabelStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getLabelStyle_LabelAlignment(), this.getLabelAlignment(), "labelAlignment", null, 0, 1, LabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(labelStyleEClass, LabelStyle.class, "LabelStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getLabelStyle_LabelAlignment(), this.getLabelAlignment(), "labelAlignment", null, 0, 1, LabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(styleEClass, Style.class, "Style", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getStyle_Description(), theStylePackage.getStyleDescription(), null, "description", null, 0, 1, Style.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(styleEClass, Style.class, "Style", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getStyle_Description(), theStylePackage.getStyleDescription(), null, "description", null, 0, 1, Style.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dAnalysisSessionEObjectEClass, DAnalysisSessionEObject.class, "DAnalysisSessionEObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDAnalysisSessionEObject_Open(), theEcorePackage.getEBoolean(), "open", null, 1, 1, DAnalysisSessionEObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDAnalysisSessionEObject_Resources(), theEcorePackage.getEResource(), "resources", null, 0, -1, DAnalysisSessionEObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDAnalysisSessionEObject_ControlledResources(), theEcorePackage.getEResource(), "controlledResources", null, 0, -1, DAnalysisSessionEObject.class, IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDAnalysisSessionEObject_ActivatedViewpoints(), theDescriptionPackage.getViewpoint(), null, "activatedViewpoints", null, 0, -1, DAnalysisSessionEObject.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDAnalysisSessionEObject_Analyses(), this.getDAnalysis(), null, "analyses", null, 0, -1, DAnalysisSessionEObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDAnalysisSessionEObject_SynchronizationStatus(), this.getSyncStatus(), "synchronizationStatus", "dirty", 1, 1, DAnalysisSessionEObject.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dAnalysisSessionEObjectEClass, DAnalysisSessionEObject.class, "DAnalysisSessionEObject", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDAnalysisSessionEObject_Open(), theEcorePackage.getEBoolean(), "open", null, 1, 1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysisSessionEObject_Resources(), theEcorePackage.getEResource(), "resources", null, 0, -1, DAnalysisSessionEObject.class, EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysisSessionEObject_ControlledResources(), theEcorePackage.getEResource(), "controlledResources", null, 0, -1, DAnalysisSessionEObject.class, EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysisSessionEObject_ActivatedViewpoints(), theDescriptionPackage.getViewpoint(), null, "activatedViewpoints", null, 0, -1, DAnalysisSessionEObject.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysisSessionEObject_Analyses(), this.getDAnalysis(), null, "analyses", null, 0, -1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysisSessionEObject_SynchronizationStatus(), this.getSyncStatus(), "synchronizationStatus", "dirty", 1, 1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(sessionManagerEObjectEClass, SessionManagerEObject.class, "SessionManagerEObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getSessionManagerEObject_OwnedSessions(), this.getDAnalysisSessionEObject(), null, "ownedSessions", null, 0, -1, SessionManagerEObject.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(sessionManagerEObjectEClass, SessionManagerEObject.class, "SessionManagerEObject", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getSessionManagerEObject_OwnedSessions(), this.getDAnalysisSessionEObject(), null, "ownedSessions", null, 0, -1, SessionManagerEObject.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dResourceEClass, DResource.class, "DResource", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDResource_Name(), ecorePackage.getEString(), "name", null, 1, 1, DResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
-        initEAttribute(getDResource_Path(), ecorePackage.getEString(), "path", null, 1, 1, DResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
+        initEClass(dResourceEClass, DResource.class, "DResource", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDResource_Name(), ecorePackage.getEString(), "name", null, 1, 1, DResource.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDResource_Path(), ecorePackage.getEString(), "path", null, 1, 1, DResource.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(dFileEClass, DFile.class, "DFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dFileEClass, DFile.class, "DFile", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(dResourceContainerEClass, DResourceContainer.class, "DResourceContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDResourceContainer_Members(), this.getDResource(), null, "members", null, 0, -1, DResourceContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dResourceContainerEClass, DResourceContainer.class, "DResourceContainer", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDResourceContainer_Members(), this.getDResource(), null, "members", null, 0, -1, DResourceContainer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dProjectEClass, DProject.class, "DProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dProjectEClass, DProject.class, "DProject", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(dFolderEClass, DFolder.class, "DFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dFolderEClass, DFolder.class, "DFolder", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(dModelEClass, DModel.class, "DModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(dModelEClass, DModel.class, "DModel", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(basicLabelStyleEClass, BasicLabelStyle.class, "BasicLabelStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getBasicLabelStyle_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, BasicLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getBasicLabelStyle_LabelFormat(), this.getFontFormat(), "labelFormat", "normal", 0, 1, BasicLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getBasicLabelStyle_ShowIcon(), ecorePackage.getEBoolean(), "showIcon", "true", 0, 1, BasicLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getBasicLabelStyle_IconPath(), theEcorePackage.getEString(), "iconPath", "", 0, 1, BasicLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getBasicLabelStyle_LabelColor(), this.getRGBValues(), "labelColor", "0,0,0", 0, 1, BasicLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(basicLabelStyleEClass, BasicLabelStyle.class, "BasicLabelStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getBasicLabelStyle_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBasicLabelStyle_LabelFormat(), this.getFontFormat(), "labelFormat", "normal", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBasicLabelStyle_ShowIcon(), ecorePackage.getEBoolean(), "showIcon", "true", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBasicLabelStyle_IconPath(), theEcorePackage.getEString(), "iconPath", "", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBasicLabelStyle_LabelColor(), this.getRGBValues(), "labelColor", "0,0,0", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(customizableEClass, Customizable.class, "Customizable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getCustomizable_CustomFeatures(), ecorePackage.getEString(), "customFeatures", null, 0, -1, Customizable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(customizableEClass, Customizable.class, "Customizable", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getCustomizable_CustomFeatures(), ecorePackage.getEString(), "customFeatures", null, 0, -1, Customizable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(fontFormatEEnum, FontFormat.class, "FontFormat");
@@ -1387,10 +1489,10 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         addEEnumLiteral(syncStatusEEnum, SyncStatus.SYNC);
 
         // Initialize data types
-        initEDataType(rgbValuesEDataType, RGBValues.class, "RGBValues", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(rgbValuesEDataType, RGBValues.class, "RGBValues", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
-        createResource(eNS_URI);
+        createResource(ViewpointPackage.eNS_URI);
 
         // Create annotations
         // Tags
@@ -1400,7 +1502,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     /**
      * Initializes the annotations for <b>Tags</b>. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void createTagsAnnotations() {

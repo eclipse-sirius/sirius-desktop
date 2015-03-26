@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -40,7 +40,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Attribute Name</em>' attribute.
      * @see #setAttributeName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEAttributeCustomization_AttributeName()
@@ -54,7 +54,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getAttributeName
      * <em>Attribute Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Attribute Name</em>' attribute.
      * @see #getAttributeName()
@@ -70,7 +70,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEAttributeCustomization_Value()
@@ -88,7 +88,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getValue
      * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

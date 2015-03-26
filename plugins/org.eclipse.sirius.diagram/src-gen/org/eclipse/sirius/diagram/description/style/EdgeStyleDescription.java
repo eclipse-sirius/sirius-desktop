@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -81,7 +81,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * Returns the value of the '<em><b>Stroke Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * color of the edge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Stroke Color</em>' reference.
      * @see #setStrokeColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_StrokeColor()
@@ -109,7 +109,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.LineStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the line.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Line Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.LineStyle
      * @see #setLineStyle(LineStyle)
@@ -139,7 +139,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * source decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Source Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setSourceArrow(EdgeArrows)
@@ -169,7 +169,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * target decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setTargetArrow(EdgeArrows)
@@ -198,7 +198,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * attribute. The default value is <code>"1"</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> An expression to compute
      * the thickness of the link. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Size Computation Expression</em>'
      *         attribute.
      * @see #setSizeComputationExpression(String)
@@ -233,7 +233,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * enumeration {@link org.eclipse.sirius.diagram.EdgeRouting}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * routing style for your edge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeRouting
      * @see #setRoutingStyle(EdgeRouting)
@@ -264,7 +264,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A
      * folding style allow to collapse the elements targeted by the edge. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Folding Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.FoldingStyle
      * @see #setFoldingStyle(FoldingStyle)
@@ -312,7 +312,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getBeginLabelStyleDescription
      * <em>Begin Label Style Description</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Begin Label Style Description</em>'
      *            containment reference.
@@ -345,7 +345,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenterLabelStyleDescription
      * <em>Center Label Style Description</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Center Label Style Description</em>'
      *            containment reference.
@@ -378,7 +378,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndLabelStyleDescription
      * <em>End Label Style Description</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>End Label Style Description</em>'
      *            containment reference.
@@ -394,7 +394,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Use this feature to generalize the centered edge behavior to all source
      * mappings, all target mappings or both. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Ends Centering</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.CenteringStyle
      * @see #setEndsCentering(CenteringStyle)
@@ -425,7 +425,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The mapping that creates EdgeTargets that are the sources of the
      * ViewEdges that are created by this EdgeMapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Centered Source Mappings</em>' reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_CenteredSourceMappings()
@@ -441,7 +441,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The mapping that creates EdgeTargets that are the targets of the
      * ViewEdges that are created by this EdgeMapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Centered Target Mappings</em>' reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_CenteredTargetMappings()

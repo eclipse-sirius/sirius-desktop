@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -58,7 +58,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
      * @generated
      * @ordered
      */
-    protected boolean createIfNotExistent = CREATE_IF_NOT_EXISTENT_EDEFAULT;
+    protected boolean createIfNotExistent = NavigationImpl.CREATE_IF_NOT_EXISTENT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getDiagramDescription()
@@ -95,6 +95,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
      * 
      * @generated
      */
+    @Override
     public boolean isCreateIfNotExistent() {
         return createIfNotExistent;
     }
@@ -104,11 +105,13 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
      * 
      * @generated
      */
+    @Override
     public void setCreateIfNotExistent(boolean newCreateIfNotExistent) {
         boolean oldCreateIfNotExistent = createIfNotExistent;
         createIfNotExistent = newCreateIfNotExistent;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.NAVIGATION__CREATE_IF_NOT_EXISTENT, oldCreateIfNotExistent, createIfNotExistent));
+        }
     }
 
     /**
@@ -116,13 +119,15 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
      * 
      * @generated
      */
+    @Override
     public DiagramDescription getDiagramDescription() {
         if (diagramDescription != null && diagramDescription.eIsProxy()) {
             InternalEObject oldDiagramDescription = (InternalEObject) diagramDescription;
             diagramDescription = (DiagramDescription) eResolveProxy(oldDiagramDescription);
             if (diagramDescription != oldDiagramDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.NAVIGATION__DIAGRAM_DESCRIPTION, oldDiagramDescription, diagramDescription));
+                }
             }
         }
         return diagramDescription;
@@ -142,11 +147,13 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
      * 
      * @generated
      */
+    @Override
     public void setDiagramDescription(DiagramDescription newDiagramDescription) {
         DiagramDescription oldDiagramDescription = diagramDescription;
         diagramDescription = newDiagramDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.NAVIGATION__DIAGRAM_DESCRIPTION, oldDiagramDescription, diagramDescription));
+        }
     }
 
     /**
@@ -160,8 +167,9 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
         case ToolPackage.NAVIGATION__CREATE_IF_NOT_EXISTENT:
             return isCreateIfNotExistent();
         case ToolPackage.NAVIGATION__DIAGRAM_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDiagramDescription();
+            }
             return basicGetDiagramDescription();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -194,7 +202,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.NAVIGATION__CREATE_IF_NOT_EXISTENT:
-            setCreateIfNotExistent(CREATE_IF_NOT_EXISTENT_EDEFAULT);
+            setCreateIfNotExistent(NavigationImpl.CREATE_IF_NOT_EXISTENT_EDEFAULT);
             return;
         case ToolPackage.NAVIGATION__DIAGRAM_DESCRIPTION:
             setDiagramDescription((DiagramDescription) null);
@@ -212,7 +220,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.NAVIGATION__CREATE_IF_NOT_EXISTENT:
-            return createIfNotExistent != CREATE_IF_NOT_EXISTENT_EDEFAULT;
+            return createIfNotExistent != NavigationImpl.CREATE_IF_NOT_EXISTENT_EDEFAULT;
         case ToolPackage.NAVIGATION__DIAGRAM_DESCRIPTION:
             return diagramDescription != null;
         }
@@ -226,8 +234,9 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (createIfNotExistent: ");

@@ -31,7 +31,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Edition Table Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Edition Table Description</em>'.
      * @generated
      */
@@ -40,7 +40,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Cross Table Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Cross Table Description</em>'.
      * @generated
      */
@@ -49,7 +49,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Table Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Table Mapping</em>'.
      * @generated
      */
@@ -58,7 +58,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Line Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Line Mapping</em>'.
      * @generated
      */
@@ -67,7 +67,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Column Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Column Mapping</em>'.
      * @generated
      */
@@ -76,7 +76,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Element Column Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Element Column Mapping</em>'.
      * @generated
      */
@@ -85,7 +85,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Feature Column Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Feature Column Mapping</em>'.
      * @generated
      */
@@ -94,7 +94,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Cell Updater</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Cell Updater</em>'.
      * @generated
      */
@@ -103,7 +103,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Intersection Mapping</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Intersection Mapping</em>'.
      * @generated
      */
@@ -121,7 +121,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Label Edit Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Label Edit Tool</em>'.
      * @generated
      */
@@ -130,7 +130,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Create Column Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Create Column Tool</em>'.
      * @generated
      */
@@ -139,7 +139,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Create Cross Column Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Create Cross Column Tool</em>'.
      * @generated
      */
@@ -148,7 +148,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Create Line Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Create Line Tool</em>'.
      * @generated
      */
@@ -157,7 +157,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Create Cell Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Create Cell Tool</em>'.
      * @generated
      */
@@ -166,7 +166,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Delete Column Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Delete Column Tool</em>'.
      * @generated
      */
@@ -175,7 +175,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Delete Line Tool</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Delete Line Tool</em>'.
      * @generated
      */
@@ -220,7 +220,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Table Variable</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Table Variable</em>'.
      * @generated
      */
@@ -229,7 +229,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Table Creation Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Table Creation Description</em>'.
      * @generated
      */

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -72,7 +72,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * @generated
      * @ordered
      */
-    protected String widthComputationExpression = WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String widthComputationExpression = FlatContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeightComputationExpression()
@@ -94,7 +94,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * @generated
      * @ordered
      */
-    protected String heightComputationExpression = HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String heightComputationExpression = FlatContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBackgroundStyle()
@@ -116,7 +116,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * @generated
      * @ordered
      */
-    protected BackgroundStyle backgroundStyle = BACKGROUND_STYLE_EDEFAULT;
+    protected BackgroundStyle backgroundStyle = FlatContainerStyleDescriptionImpl.BACKGROUND_STYLE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -175,6 +175,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public String getWidthComputationExpression() {
         return widthComputationExpression;
     }
@@ -184,12 +185,14 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public void setWidthComputationExpression(String newWidthComputationExpression) {
         String oldWidthComputationExpression = widthComputationExpression;
         widthComputationExpression = newWidthComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, oldWidthComputationExpression,
                     widthComputationExpression));
+        }
     }
 
     /**
@@ -197,6 +200,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public String getHeightComputationExpression() {
         return heightComputationExpression;
     }
@@ -206,12 +210,14 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public void setHeightComputationExpression(String newHeightComputationExpression) {
         String oldHeightComputationExpression = heightComputationExpression;
         heightComputationExpression = newHeightComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, oldHeightComputationExpression,
                     heightComputationExpression));
+        }
     }
 
     /**
@@ -219,6 +225,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public BackgroundStyle getBackgroundStyle() {
         return backgroundStyle;
     }
@@ -228,11 +235,13 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public void setBackgroundStyle(BackgroundStyle newBackgroundStyle) {
         BackgroundStyle oldBackgroundStyle = backgroundStyle;
-        backgroundStyle = newBackgroundStyle == null ? BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
-        if (eNotificationRequired())
+        backgroundStyle = newBackgroundStyle == null ? FlatContainerStyleDescriptionImpl.BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE, oldBackgroundStyle, backgroundStyle));
+        }
     }
 
     /**
@@ -240,13 +249,15 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public ColorDescription getBackgroundColor() {
         if (backgroundColor != null && backgroundColor.eIsProxy()) {
             InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
             backgroundColor = (ColorDescription) eResolveProxy(oldBackgroundColor);
             if (backgroundColor != oldBackgroundColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+                }
             }
         }
         return backgroundColor;
@@ -266,11 +277,13 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public void setBackgroundColor(ColorDescription newBackgroundColor) {
         ColorDescription oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
     }
 
     /**
@@ -278,13 +291,15 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public ColorDescription getForegroundColor() {
         if (foregroundColor != null && foregroundColor.eIsProxy()) {
             InternalEObject oldForegroundColor = (InternalEObject) foregroundColor;
             foregroundColor = (ColorDescription) eResolveProxy(oldForegroundColor);
             if (foregroundColor != oldForegroundColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
+                }
             }
         }
         return foregroundColor;
@@ -304,11 +319,13 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public void setForegroundColor(ColorDescription newForegroundColor) {
         ColorDescription oldForegroundColor = foregroundColor;
         foregroundColor = newForegroundColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
+        }
     }
 
     /**
@@ -316,13 +333,15 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public LabelBorderStyleDescription getLabelBorderStyle() {
         if (labelBorderStyle != null && labelBorderStyle.eIsProxy()) {
             InternalEObject oldLabelBorderStyle = (InternalEObject) labelBorderStyle;
             labelBorderStyle = (LabelBorderStyleDescription) eResolveProxy(oldLabelBorderStyle);
             if (labelBorderStyle != oldLabelBorderStyle) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE, oldLabelBorderStyle, labelBorderStyle));
+                }
             }
         }
         return labelBorderStyle;
@@ -342,11 +361,13 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    @Override
     public void setLabelBorderStyle(LabelBorderStyleDescription newLabelBorderStyle) {
         LabelBorderStyleDescription oldLabelBorderStyle = labelBorderStyle;
         labelBorderStyle = newLabelBorderStyle;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE, oldLabelBorderStyle, labelBorderStyle));
+        }
     }
 
     /**
@@ -364,16 +385,19 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE:
             return getBackgroundStyle();
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getBackgroundColor();
+            }
             return basicGetBackgroundColor();
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getForegroundColor();
+            }
             return basicGetForegroundColor();
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getLabelBorderStyle();
+            }
             return basicGetLabelBorderStyle();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -418,13 +442,13 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
-            setWidthComputationExpression(WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
+            setWidthComputationExpression(FlatContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
-            setHeightComputationExpression(HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT);
+            setHeightComputationExpression(FlatContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE:
-            setBackgroundStyle(BACKGROUND_STYLE_EDEFAULT);
+            setBackgroundStyle(FlatContainerStyleDescriptionImpl.BACKGROUND_STYLE_EDEFAULT);
             return;
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) null);
@@ -448,11 +472,13 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
-            return WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null : !WIDTH_COMPUTATION_EXPRESSION_EDEFAULT.equals(widthComputationExpression);
+            return FlatContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null
+                    : !FlatContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT.equals(widthComputationExpression);
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
-            return HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null : !HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT.equals(heightComputationExpression);
+            return FlatContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null
+                    : !FlatContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT.equals(heightComputationExpression);
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE:
-            return backgroundStyle != BACKGROUND_STYLE_EDEFAULT;
+            return backgroundStyle != FlatContainerStyleDescriptionImpl.BACKGROUND_STYLE_EDEFAULT;
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR:
             return backgroundColor != null;
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR:
@@ -510,8 +536,9 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (widthComputationExpression: ");

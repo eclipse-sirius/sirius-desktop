@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -36,7 +36,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
      * The default value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBrowseExpression()
      * @generated
      * @ordered
@@ -47,16 +47,16 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
      * The cached value of the '{@link #getBrowseExpression()
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBrowseExpression()
      * @generated
      * @ordered
      */
-    protected String browseExpression = BROWSE_EXPRESSION_EDEFAULT;
+    protected String browseExpression = ChangeContextImpl.BROWSE_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChangeContextImpl() {
@@ -65,7 +65,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,28 +75,31 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getBrowseExpression() {
         return browseExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBrowseExpression(String newBrowseExpression) {
         String oldBrowseExpression = browseExpression;
         browseExpression = newBrowseExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CHANGE_CONTEXT__BROWSE_EXPRESSION, oldBrowseExpression, browseExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +113,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,14 +128,14 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.CHANGE_CONTEXT__BROWSE_EXPRESSION:
-            setBrowseExpression(BROWSE_EXPRESSION_EDEFAULT);
+            setBrowseExpression(ChangeContextImpl.BROWSE_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -140,27 +143,28 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.CHANGE_CONTEXT__BROWSE_EXPRESSION:
-            return BROWSE_EXPRESSION_EDEFAULT == null ? browseExpression != null : !BROWSE_EXPRESSION_EDEFAULT.equals(browseExpression);
+            return ChangeContextImpl.BROWSE_EXPRESSION_EDEFAULT == null ? browseExpression != null : !ChangeContextImpl.BROWSE_EXPRESSION_EDEFAULT.equals(browseExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (browseExpression: ");

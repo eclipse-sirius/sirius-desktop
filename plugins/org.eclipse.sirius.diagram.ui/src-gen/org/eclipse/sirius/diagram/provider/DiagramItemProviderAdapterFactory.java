@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.provider;
 
@@ -53,7 +53,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -70,7 +70,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public DiagramItemProviderAdapterFactory() {
@@ -85,7 +85,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.DDiagram} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DDiagramItemProvider dDiagramItemProvider;
@@ -109,7 +109,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.DSemanticDiagram} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DSemanticDiagramItemProvider dSemanticDiagramItemProvider;
@@ -134,7 +134,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.HideFilter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected HideFilterItemProvider hideFilterItemProvider;
@@ -159,7 +159,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.HideLabelFilter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected HideLabelFilterItemProvider hideLabelFilterItemProvider;
@@ -184,7 +184,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.FoldingPointFilter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FoldingPointFilterItemProvider foldingPointFilterItemProvider;
@@ -193,7 +193,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.FoldingPointFilter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.FoldingFilter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FoldingFilterItemProvider foldingFilterItemProvider;
@@ -243,7 +243,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.AppliedCompositeFilters}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.AbsoluteBoundsFilter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbsoluteBoundsFilterItemProvider absoluteBoundsFilterItemProvider;
@@ -268,7 +268,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.AbsoluteBoundsFilter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -308,7 +308,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.DNodeContainer} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DNodeContainerItemProvider dNodeContainerItemProvider;
@@ -333,7 +333,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.DNodeList} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DNodeListItemProvider dNodeListItemProvider;
@@ -358,7 +358,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.DNodeListElement} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DNodeListElementItemProvider dNodeListElementItemProvider;
@@ -431,7 +431,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.GaugeSection} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GaugeSectionItemProvider gaugeSectionItemProvider;
@@ -456,7 +456,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.FlatContainerStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FlatContainerStyleItemProvider flatContainerStyleItemProvider;
@@ -465,7 +465,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.FlatContainerStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -481,7 +481,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.ShapeContainerStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ShapeContainerStyleItemProvider shapeContainerStyleItemProvider;
@@ -490,7 +490,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.ShapeContainerStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -578,7 +578,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.BundledImage} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BundledImageItemProvider bundledImageItemProvider;
@@ -603,7 +603,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.WorkspaceImage} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WorkspaceImageItemProvider workspaceImageItemProvider;
@@ -628,7 +628,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.CustomStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomStyleItemProvider customStyleItemProvider;
@@ -653,7 +653,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.EdgeStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeStyleItemProvider edgeStyleItemProvider;
@@ -678,7 +678,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.GaugeCompositeStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GaugeCompositeStyleItemProvider gaugeCompositeStyleItemProvider;
@@ -687,7 +687,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.GaugeCompositeStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -703,7 +703,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.BorderedStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BorderedStyleItemProvider borderedStyleItemProvider;
@@ -752,7 +752,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.FilterVariableHistory} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FilterVariableHistoryItemProvider filterVariableHistoryItemProvider;
@@ -761,7 +761,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.FilterVariableHistory}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -777,7 +777,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.FilterVariableValue} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FilterVariableValueItemProvider filterVariableValueItemProvider;
@@ -786,7 +786,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.FilterVariableValue}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -802,7 +802,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.CollapseFilter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CollapseFilterItemProvider collapseFilterItemProvider;
@@ -836,7 +836,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.IndirectlyCollapseFilter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -852,7 +852,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.BeginLabelStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BeginLabelStyleItemProvider beginLabelStyleItemProvider;
@@ -877,7 +877,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.CenterLabelStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CenterLabelStyleItemProvider centerLabelStyleItemProvider;
@@ -902,7 +902,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.EndLabelStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EndLabelStyleItemProvider endLabelStyleItemProvider;
@@ -927,7 +927,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.BracketEdgeStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BracketEdgeStyleItemProvider bracketEdgeStyleItemProvider;
@@ -961,7 +961,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -977,7 +977,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.DragAndDropTarget} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DragAndDropTargetItemProvider dragAndDropTargetItemProvider;
@@ -1001,9 +1001,10 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -1011,9 +1012,10 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -1061,6 +1063,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -1070,6 +1073,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -1078,9 +1082,10 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -1092,84 +1097,122 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (dDiagramItemProvider != null)
+        if (dDiagramItemProvider != null) {
             dDiagramItemProvider.dispose();
-        if (dSemanticDiagramItemProvider != null)
+        }
+        if (dSemanticDiagramItemProvider != null) {
             dSemanticDiagramItemProvider.dispose();
-        if (hideFilterItemProvider != null)
+        }
+        if (hideFilterItemProvider != null) {
             hideFilterItemProvider.dispose();
-        if (hideLabelFilterItemProvider != null)
+        }
+        if (hideLabelFilterItemProvider != null) {
             hideLabelFilterItemProvider.dispose();
-        if (foldingPointFilterItemProvider != null)
+        }
+        if (foldingPointFilterItemProvider != null) {
             foldingPointFilterItemProvider.dispose();
-        if (foldingFilterItemProvider != null)
+        }
+        if (foldingFilterItemProvider != null) {
             foldingFilterItemProvider.dispose();
-        if (appliedCompositeFiltersItemProvider != null)
+        }
+        if (appliedCompositeFiltersItemProvider != null) {
             appliedCompositeFiltersItemProvider.dispose();
-        if (absoluteBoundsFilterItemProvider != null)
+        }
+        if (absoluteBoundsFilterItemProvider != null) {
             absoluteBoundsFilterItemProvider.dispose();
-        if (dNodeItemProvider != null)
+        }
+        if (dNodeItemProvider != null) {
             dNodeItemProvider.dispose();
-        if (dNodeContainerItemProvider != null)
+        }
+        if (dNodeContainerItemProvider != null) {
             dNodeContainerItemProvider.dispose();
-        if (dNodeListItemProvider != null)
+        }
+        if (dNodeListItemProvider != null) {
             dNodeListItemProvider.dispose();
-        if (dNodeListElementItemProvider != null)
+        }
+        if (dNodeListElementItemProvider != null) {
             dNodeListElementItemProvider.dispose();
-        if (dEdgeItemProvider != null)
+        }
+        if (dEdgeItemProvider != null) {
             dEdgeItemProvider.dispose();
-        if (dotItemProvider != null)
+        }
+        if (dotItemProvider != null) {
             dotItemProvider.dispose();
-        if (gaugeSectionItemProvider != null)
+        }
+        if (gaugeSectionItemProvider != null) {
             gaugeSectionItemProvider.dispose();
-        if (flatContainerStyleItemProvider != null)
+        }
+        if (flatContainerStyleItemProvider != null) {
             flatContainerStyleItemProvider.dispose();
-        if (shapeContainerStyleItemProvider != null)
+        }
+        if (shapeContainerStyleItemProvider != null) {
             shapeContainerStyleItemProvider.dispose();
-        if (squareItemProvider != null)
+        }
+        if (squareItemProvider != null) {
             squareItemProvider.dispose();
-        if (ellipseItemProvider != null)
+        }
+        if (ellipseItemProvider != null) {
             ellipseItemProvider.dispose();
-        if (lozengeItemProvider != null)
+        }
+        if (lozengeItemProvider != null) {
             lozengeItemProvider.dispose();
-        if (bundledImageItemProvider != null)
+        }
+        if (bundledImageItemProvider != null) {
             bundledImageItemProvider.dispose();
-        if (workspaceImageItemProvider != null)
+        }
+        if (workspaceImageItemProvider != null) {
             workspaceImageItemProvider.dispose();
-        if (customStyleItemProvider != null)
+        }
+        if (customStyleItemProvider != null) {
             customStyleItemProvider.dispose();
-        if (edgeStyleItemProvider != null)
+        }
+        if (edgeStyleItemProvider != null) {
             edgeStyleItemProvider.dispose();
-        if (gaugeCompositeStyleItemProvider != null)
+        }
+        if (gaugeCompositeStyleItemProvider != null) {
             gaugeCompositeStyleItemProvider.dispose();
-        if (borderedStyleItemProvider != null)
+        }
+        if (borderedStyleItemProvider != null) {
             borderedStyleItemProvider.dispose();
-        if (noteItemProvider != null)
+        }
+        if (noteItemProvider != null) {
             noteItemProvider.dispose();
-        if (filterVariableHistoryItemProvider != null)
+        }
+        if (filterVariableHistoryItemProvider != null) {
             filterVariableHistoryItemProvider.dispose();
-        if (filterVariableValueItemProvider != null)
+        }
+        if (filterVariableValueItemProvider != null) {
             filterVariableValueItemProvider.dispose();
-        if (collapseFilterItemProvider != null)
+        }
+        if (collapseFilterItemProvider != null) {
             collapseFilterItemProvider.dispose();
-        if (indirectlyCollapseFilterItemProvider != null)
+        }
+        if (indirectlyCollapseFilterItemProvider != null) {
             indirectlyCollapseFilterItemProvider.dispose();
-        if (beginLabelStyleItemProvider != null)
+        }
+        if (beginLabelStyleItemProvider != null) {
             beginLabelStyleItemProvider.dispose();
-        if (centerLabelStyleItemProvider != null)
+        }
+        if (centerLabelStyleItemProvider != null) {
             centerLabelStyleItemProvider.dispose();
-        if (endLabelStyleItemProvider != null)
+        }
+        if (endLabelStyleItemProvider != null) {
             endLabelStyleItemProvider.dispose();
-        if (bracketEdgeStyleItemProvider != null)
+        }
+        if (bracketEdgeStyleItemProvider != null) {
             bracketEdgeStyleItemProvider.dispose();
-        if (computedStyleDescriptionRegistryItemProvider != null)
+        }
+        if (computedStyleDescriptionRegistryItemProvider != null) {
             computedStyleDescriptionRegistryItemProvider.dispose();
-        if (dragAndDropTargetItemProvider != null)
+        }
+        if (dragAndDropTargetItemProvider != null) {
             dragAndDropTargetItemProvider.dispose();
+        }
     }
 
 }

@@ -41,7 +41,7 @@ public interface TreeItemStyleDescription extends StyleDescription, LabelStyleDe
      * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> Color of background <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemStyleDescription_BackgroundColor()

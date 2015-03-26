@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -44,7 +44,7 @@ public interface DecorationDescription extends EObject {
      * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * name of the decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDecorationDescription_Name()
@@ -57,7 +57,7 @@ public interface DecorationDescription extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -75,7 +75,7 @@ public interface DecorationDescription extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Position</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.Position
      * @see #setPosition(Position)
@@ -90,7 +90,7 @@ public interface DecorationDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getPosition
      * <em>Position</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Position</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.Position
@@ -103,7 +103,7 @@ public interface DecorationDescription extends EObject {
      * Returns the value of the '<em><b>Decorator Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * path of the icon of the decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Decorator Path</em>' attribute.
      * @see #setDecoratorPath(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDecorationDescription_DecoratorPath()
@@ -117,7 +117,7 @@ public interface DecorationDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getDecoratorPath
      * <em>Decorator Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Decorator Path</em>' attribute.
      * @see #getDecoratorPath()
@@ -130,7 +130,7 @@ public interface DecorationDescription extends EObject {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> Expression that filters the elements on which we want
      * to display the decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDecorationDescription_PreconditionExpression()
@@ -149,7 +149,7 @@ public interface DecorationDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition Expression</em>'
      *            attribute.

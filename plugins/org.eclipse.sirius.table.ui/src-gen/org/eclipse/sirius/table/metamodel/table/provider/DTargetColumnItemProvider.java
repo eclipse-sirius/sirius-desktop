@@ -31,14 +31,14 @@ import org.eclipse.sirius.viewpoint.provider.DSemanticDecoratorItemProvider;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.DTargetColumn} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DTargetColumnItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Semantic Elements feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
@@ -109,7 +109,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Label feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -121,7 +121,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Cells feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCellsPropertyDescriptor(Object object) {
@@ -132,7 +132,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Origin Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginMappingPropertyDescriptor(Object object) {
@@ -144,7 +144,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Ordered Cells feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOrderedCellsPropertyDescriptor(Object object) {
@@ -156,7 +156,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Visible feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addVisiblePropertyDescriptor(Object object) {
@@ -168,7 +168,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This adds a property descriptor for the Width feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
@@ -213,7 +213,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * This returns DTargetColumn.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -278,7 +278,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

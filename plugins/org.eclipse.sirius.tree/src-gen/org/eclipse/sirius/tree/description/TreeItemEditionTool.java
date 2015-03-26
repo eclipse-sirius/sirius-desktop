@@ -79,7 +79,7 @@ public interface TreeItemEditionTool extends TreeItemTool {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemEditionTool_Mapping()
      * @model

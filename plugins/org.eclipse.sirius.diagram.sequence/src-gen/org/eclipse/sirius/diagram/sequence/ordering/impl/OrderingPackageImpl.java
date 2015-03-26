@@ -84,14 +84,14 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#eNS_URI
      * @see #init()
      * @generated
      */
     private OrderingPackageImpl() {
-        super(eNS_URI, OrderingFactory.eINSTANCE);
+        super(OrderingPackage.eNS_URI, OrderingFactory.eINSTANCE);
     }
 
     /**
@@ -104,27 +104,28 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link OrderingPackage#eINSTANCE} when
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static OrderingPackage init() {
-        if (isInited)
+        if (OrderingPackageImpl.isInited) {
             return (OrderingPackage) EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof OrderingPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-                : new OrderingPackageImpl());
+        OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (EPackage.Registry.INSTANCE.get(OrderingPackage.eNS_URI) instanceof OrderingPackageImpl ? EPackage.Registry.INSTANCE
+                .get(OrderingPackage.eNS_URI) : new OrderingPackageImpl());
 
-        isInited = true;
+        OrderingPackageImpl.isInited = true;
 
         // Initialize simple dependencies
         DiagramPackage.eINSTANCE.eClass();
@@ -166,6 +167,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EClass getEventEndsOrdering() {
         return eventEndsOrderingEClass;
     }
@@ -175,6 +177,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EReference getEventEndsOrdering_SequenceDiagram() {
         return (EReference) eventEndsOrderingEClass.getEStructuralFeatures().get(0);
     }
@@ -184,6 +187,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EReference getEventEndsOrdering_EventEnds() {
         return (EReference) eventEndsOrderingEClass.getEStructuralFeatures().get(1);
     }
@@ -193,6 +197,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EClass getEventEnd() {
         return eventEndEClass;
     }
@@ -202,6 +207,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EReference getEventEnd_SemanticEnd() {
         return (EReference) eventEndEClass.getEStructuralFeatures().get(0);
     }
@@ -211,6 +217,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EClass getSingleEventEnd() {
         return singleEventEndEClass;
     }
@@ -220,6 +227,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EAttribute getSingleEventEnd_Start() {
         return (EAttribute) singleEventEndEClass.getEStructuralFeatures().get(0);
     }
@@ -229,6 +237,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EReference getSingleEventEnd_SemanticEvent() {
         return (EReference) singleEventEndEClass.getEStructuralFeatures().get(1);
     }
@@ -238,6 +247,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EClass getCompoundEventEnd() {
         return compoundEventEndEClass;
     }
@@ -247,6 +257,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EReference getCompoundEventEnd_EventEnds() {
         return (EReference) compoundEventEndEClass.getEStructuralFeatures().get(0);
     }
@@ -256,6 +267,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EClass getInstanceRolesOrdering() {
         return instanceRolesOrderingEClass;
     }
@@ -265,6 +277,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public EReference getInstanceRolesOrdering_SemanticInstanceRoles() {
         return (EReference) instanceRolesOrderingEClass.getEStructuralFeatures().get(0);
     }
@@ -274,6 +287,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * 
      * @generated
      */
+    @Override
     public OrderingFactory getOrderingFactory() {
         return (OrderingFactory) getEFactoryInstance();
     }
@@ -293,27 +307,28 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        eventEndsOrderingEClass = createEClass(EVENT_ENDS_ORDERING);
-        createEReference(eventEndsOrderingEClass, EVENT_ENDS_ORDERING__SEQUENCE_DIAGRAM);
-        createEReference(eventEndsOrderingEClass, EVENT_ENDS_ORDERING__EVENT_ENDS);
+        eventEndsOrderingEClass = createEClass(OrderingPackage.EVENT_ENDS_ORDERING);
+        createEReference(eventEndsOrderingEClass, OrderingPackage.EVENT_ENDS_ORDERING__SEQUENCE_DIAGRAM);
+        createEReference(eventEndsOrderingEClass, OrderingPackage.EVENT_ENDS_ORDERING__EVENT_ENDS);
 
-        eventEndEClass = createEClass(EVENT_END);
-        createEReference(eventEndEClass, EVENT_END__SEMANTIC_END);
+        eventEndEClass = createEClass(OrderingPackage.EVENT_END);
+        createEReference(eventEndEClass, OrderingPackage.EVENT_END__SEMANTIC_END);
 
-        singleEventEndEClass = createEClass(SINGLE_EVENT_END);
-        createEAttribute(singleEventEndEClass, SINGLE_EVENT_END__START);
-        createEReference(singleEventEndEClass, SINGLE_EVENT_END__SEMANTIC_EVENT);
+        singleEventEndEClass = createEClass(OrderingPackage.SINGLE_EVENT_END);
+        createEAttribute(singleEventEndEClass, OrderingPackage.SINGLE_EVENT_END__START);
+        createEReference(singleEventEndEClass, OrderingPackage.SINGLE_EVENT_END__SEMANTIC_EVENT);
 
-        compoundEventEndEClass = createEClass(COMPOUND_EVENT_END);
-        createEReference(compoundEventEndEClass, COMPOUND_EVENT_END__EVENT_ENDS);
+        compoundEventEndEClass = createEClass(OrderingPackage.COMPOUND_EVENT_END);
+        createEReference(compoundEventEndEClass, OrderingPackage.COMPOUND_EVENT_END__EVENT_ENDS);
 
-        instanceRolesOrderingEClass = createEClass(INSTANCE_ROLES_ORDERING);
-        createEReference(instanceRolesOrderingEClass, INSTANCE_ROLES_ORDERING__SEMANTIC_INSTANCE_ROLES);
+        instanceRolesOrderingEClass = createEClass(OrderingPackage.INSTANCE_ROLES_ORDERING);
+        createEReference(instanceRolesOrderingEClass, OrderingPackage.INSTANCE_ROLES_ORDERING__SEMANTIC_INSTANCE_ROLES);
     }
 
     /**
@@ -327,18 +342,19 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(OrderingPackage.eNAME);
+        setNsPrefix(OrderingPackage.eNS_PREFIX);
+        setNsURI(OrderingPackage.eNS_URI);
 
         // Obtain other dependent packages
         SequencePackage theSequencePackage = (SequencePackage) EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI);
@@ -353,31 +369,37 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
         compoundEventEndEClass.getESuperTypes().add(this.getEventEnd());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(eventEndsOrderingEClass, EventEndsOrdering.class, "EventEndsOrdering", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getEventEndsOrdering_SequenceDiagram(), theSequencePackage.getSequenceDDiagram(), null, "sequenceDiagram", null, 0, 1, EventEndsOrdering.class, IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getEventEndsOrdering_EventEnds(), this.getEventEnd(), null, "eventEnds", null, 0, -1, EventEndsOrdering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(eventEndsOrderingEClass, EventEndsOrdering.class, "EventEndsOrdering", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getEventEndsOrdering_SequenceDiagram(), theSequencePackage.getSequenceDDiagram(), null, "sequenceDiagram", null, 0, 1, EventEndsOrdering.class, EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getEventEndsOrdering_EventEnds(), this.getEventEnd(), null, "eventEnds", null, 0, -1, EventEndsOrdering.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(eventEndEClass, EventEnd.class, "EventEnd", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getEventEnd_SemanticEnd(), theEcorePackage.getEObject(), null, "semanticEnd", null, 1, 1, EventEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(eventEndEClass, EventEnd.class, "EventEnd", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getEventEnd_SemanticEnd(), theEcorePackage.getEObject(), null, "semanticEnd", null, 1, 1, EventEnd.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(singleEventEndEClass, SingleEventEnd.class, "SingleEventEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getSingleEventEnd_Start(), theEcorePackage.getEBoolean(), "start", null, 1, 1, SingleEventEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getSingleEventEnd_SemanticEvent(), theEcorePackage.getEObject(), null, "semanticEvent", null, 1, 1, SingleEventEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(singleEventEndEClass, SingleEventEnd.class, "SingleEventEnd", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSingleEventEnd_Start(), theEcorePackage.getEBoolean(), "start", null, 1, 1, SingleEventEnd.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getSingleEventEnd_SemanticEvent(), theEcorePackage.getEObject(), null, "semanticEvent", null, 1, 1, SingleEventEnd.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(compoundEventEndEClass, CompoundEventEnd.class, "CompoundEventEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getCompoundEventEnd_EventEnds(), this.getSingleEventEnd(), null, "eventEnds", null, 1, -1, CompoundEventEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(compoundEventEndEClass, CompoundEventEnd.class, "CompoundEventEnd", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getCompoundEventEnd_EventEnds(), this.getSingleEventEnd(), null, "eventEnds", null, 1, -1, CompoundEventEnd.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        addEOperation(compoundEventEndEClass, theEcorePackage.getEObject(), "getSemanticEvents", 0, -1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(compoundEventEndEClass, theEcorePackage.getEObject(), "getSemanticEvents", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
 
-        initEClass(instanceRolesOrderingEClass, InstanceRolesOrdering.class, "InstanceRolesOrdering", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getInstanceRolesOrdering_SemanticInstanceRoles(), theEcorePackage.getEObject(), null, "semanticInstanceRoles", null, 0, -1, InstanceRolesOrdering.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(instanceRolesOrderingEClass, InstanceRolesOrdering.class, "InstanceRolesOrdering", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getInstanceRolesOrdering_SemanticInstanceRoles(), theEcorePackage.getEObject(), null, "semanticInstanceRoles", null, 0, -1, InstanceRolesOrdering.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
     }
 
 } // OrderingPackageImpl

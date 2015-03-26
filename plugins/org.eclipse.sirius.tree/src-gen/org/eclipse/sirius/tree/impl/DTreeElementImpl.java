@@ -56,6 +56,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
      * 
      * @generated
      */
+    @Override
     public TreeMapping getTreeElementMapping() {
         TreeMapping treeElementMapping = basicGetTreeElementMapping();
         return treeElementMapping != null && treeElementMapping.eIsProxy() ? (TreeMapping) eResolveProxy((InternalEObject) treeElementMapping) : treeElementMapping;
@@ -83,8 +84,9 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TreePackage.DTREE_ELEMENT__TREE_ELEMENT_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getTreeElementMapping();
+            }
             return basicGetTreeElementMapping();
         }
         return super.eGet(featureID, resolve, coreType);

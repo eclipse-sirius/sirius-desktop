@@ -117,6 +117,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TSequenceDiagram createTSequenceDiagram() {
         TSequenceDiagramImpl tSequenceDiagram = new TSequenceDiagramImpl();
         return tSequenceDiagram;
@@ -127,6 +128,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TLifelineMapping createTLifelineMapping() {
         TLifelineMappingImpl tLifelineMapping = new TLifelineMappingImpl();
         return tLifelineMapping;
@@ -134,9 +136,10 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TLifelineStyle createTLifelineStyle() {
         TLifelineStyleImpl tLifelineStyle = new TLifelineStyleImpl();
         new DefaultColorStyleDescription().setDefaultColors(tLifelineStyle);
@@ -148,6 +151,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TConditionalLifelineStyle createTConditionalLifelineStyle() {
         TConditionalLifelineStyleImpl tConditionalLifelineStyle = new TConditionalLifelineStyleImpl();
         return tConditionalLifelineStyle;
@@ -158,6 +162,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TTransformer createTTransformer() {
         TTransformerImpl tTransformer = new TTransformerImpl();
         return tTransformer;
@@ -168,6 +173,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TExecutionMapping createTExecutionMapping() {
         TExecutionMappingImpl tExecutionMapping = new TExecutionMappingImpl();
         return tExecutionMapping;
@@ -175,9 +181,10 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TExecutionStyle createTExecutionStyle() {
         TExecutionStyleImpl tExecutionStyle = new TExecutionStyleImpl();
         new DefaultColorStyleDescription().setDefaultColors(tExecutionStyle);
@@ -189,6 +196,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TConditionalExecutionStyle createTConditionalExecutionStyle() {
         TConditionalExecutionStyleImpl tConditionalExecutionStyle = new TConditionalExecutionStyleImpl();
         return tConditionalExecutionStyle;
@@ -196,9 +204,10 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TMessageStyle createTMessageStyle() {
         TMessageStyleImpl tMessageStyle = new TMessageStyleImpl();
         new DefaultColorStyleDescription().setDefaultColors(tMessageStyle);
@@ -210,6 +219,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TConditionalMessageStyle createTConditionalMessageStyle() {
         TConditionalMessageStyleImpl tConditionalMessageStyle = new TConditionalMessageStyleImpl();
         return tConditionalMessageStyle;
@@ -220,6 +230,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TBasicMessageMapping createTBasicMessageMapping() {
         TBasicMessageMappingImpl tBasicMessageMapping = new TBasicMessageMappingImpl();
         return tBasicMessageMapping;
@@ -230,6 +241,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TReturnMessageMapping createTReturnMessageMapping() {
         TReturnMessageMappingImpl tReturnMessageMapping = new TReturnMessageMappingImpl();
         return tReturnMessageMapping;
@@ -240,6 +252,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TCreationMessageMapping createTCreationMessageMapping() {
         TCreationMessageMappingImpl tCreationMessageMapping = new TCreationMessageMappingImpl();
         return tCreationMessageMapping;
@@ -250,6 +263,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TDestructionMessageMapping createTDestructionMessageMapping() {
         TDestructionMessageMappingImpl tDestructionMessageMapping = new TDestructionMessageMappingImpl();
         return tDestructionMessageMapping;
@@ -260,6 +274,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TAbstractMapping createTAbstractMapping() {
         TAbstractMappingImpl tAbstractMapping = new TAbstractMappingImpl();
         return tAbstractMapping;
@@ -270,6 +285,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      * 
      * @generated
      */
+    @Override
     public TemplatePackage getTemplatePackage() {
         return (TemplatePackage) getEPackage();
     }

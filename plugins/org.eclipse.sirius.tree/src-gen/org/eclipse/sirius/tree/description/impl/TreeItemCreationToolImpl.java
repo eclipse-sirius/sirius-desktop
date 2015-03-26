@@ -68,6 +68,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
      * 
      * @generated
      */
+    @Override
     public EList<TreeItemMapping> getMapping() {
         if (mapping == null) {
             mapping = new EObjectResolvingEList<TreeItemMapping>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_CREATION_TOOL__MAPPING);

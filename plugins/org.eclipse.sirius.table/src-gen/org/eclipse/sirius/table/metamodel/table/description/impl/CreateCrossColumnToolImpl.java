@@ -67,13 +67,15 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
      * 
      * @generated
      */
+    @Override
     public ElementColumnMapping getMapping() {
         if (mapping != null && mapping.eIsProxy()) {
             InternalEObject oldMapping = (InternalEObject) mapping;
             mapping = (ElementColumnMapping) eResolveProxy(oldMapping);
             if (mapping != oldMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.CREATE_CROSS_COLUMN_TOOL__MAPPING, oldMapping, mapping));
+                }
             }
         }
         return mapping;
@@ -93,11 +95,13 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
      * 
      * @generated
      */
+    @Override
     public void setMapping(ElementColumnMapping newMapping) {
         ElementColumnMapping oldMapping = mapping;
         mapping = newMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CROSS_COLUMN_TOOL__MAPPING, oldMapping, mapping));
+        }
     }
 
     /**
@@ -109,8 +113,9 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DescriptionPackage.CREATE_CROSS_COLUMN_TOOL__MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getMapping();
+            }
             return basicGetMapping();
         }
         return super.eGet(featureID, resolve, coreType);

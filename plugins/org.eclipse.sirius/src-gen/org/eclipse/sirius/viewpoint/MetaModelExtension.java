@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint;
 
@@ -39,7 +39,7 @@ public interface MetaModelExtension extends EObject {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The referenced meta model extension. It should be an instance of
      * ExtensionGroup. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Extension Group</em>' reference.
      * @see #setExtensionGroup(EObject)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getMetaModelExtension_ExtensionGroup()
@@ -53,7 +53,7 @@ public interface MetaModelExtension extends EObject {
      * {@link org.eclipse.sirius.viewpoint.MetaModelExtension#getExtensionGroup
      * <em>Extension Group</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Extension Group</em>' reference.
      * @see #getExtensionGroup()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -61,7 +61,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * @generated
      * @ordered
      */
-    protected boolean hideSubMappings = HIDE_SUB_MAPPINGS_EDEFAULT;
+    protected boolean hideSubMappings = ContainerMappingImportImpl.HIDE_SUB_MAPPINGS_EDEFAULT;
 
     /**
      * The default value of the '{@link #isInheritsAncestorFilters()
@@ -83,7 +83,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * @generated
      * @ordered
      */
-    protected boolean inheritsAncestorFilters = INHERITS_ANCESTOR_FILTERS_EDEFAULT;
+    protected boolean inheritsAncestorFilters = ContainerMappingImportImpl.INHERITS_ANCESTOR_FILTERS_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getImportedMapping()
@@ -120,6 +120,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * 
      * @generated
      */
+    @Override
     public boolean isHideSubMappings() {
         return hideSubMappings;
     }
@@ -129,11 +130,13 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * 
      * @generated
      */
+    @Override
     public void setHideSubMappings(boolean newHideSubMappings) {
         boolean oldHideSubMappings = hideSubMappings;
         hideSubMappings = newHideSubMappings;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONTAINER_MAPPING_IMPORT__HIDE_SUB_MAPPINGS, oldHideSubMappings, hideSubMappings));
+        }
     }
 
     /**
@@ -141,6 +144,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * 
      * @generated
      */
+    @Override
     public boolean isInheritsAncestorFilters() {
         return inheritsAncestorFilters;
     }
@@ -150,11 +154,13 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * 
      * @generated
      */
+    @Override
     public void setInheritsAncestorFilters(boolean newInheritsAncestorFilters) {
         boolean oldInheritsAncestorFilters = inheritsAncestorFilters;
         inheritsAncestorFilters = newInheritsAncestorFilters;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONTAINER_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS, oldInheritsAncestorFilters, inheritsAncestorFilters));
+        }
     }
 
     /**
@@ -162,13 +168,15 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * 
      * @generated
      */
+    @Override
     public ContainerMapping getImportedMapping() {
         if (importedMapping != null && importedMapping.eIsProxy()) {
             InternalEObject oldImportedMapping = (InternalEObject) importedMapping;
             importedMapping = (ContainerMapping) eResolveProxy(oldImportedMapping);
             if (importedMapping != oldImportedMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING, oldImportedMapping, importedMapping));
+                }
             }
         }
         return importedMapping;
@@ -188,11 +196,13 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * 
      * @generated
      */
+    @Override
     public void setImportedMapping(ContainerMapping newImportedMapping) {
         ContainerMapping oldImportedMapping = importedMapping;
         importedMapping = newImportedMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING, oldImportedMapping, importedMapping));
+        }
     }
 
     /**
@@ -208,8 +218,9 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
             return isInheritsAncestorFilters();
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getImportedMapping();
+            }
             return basicGetImportedMapping();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -245,10 +256,10 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__HIDE_SUB_MAPPINGS:
-            setHideSubMappings(HIDE_SUB_MAPPINGS_EDEFAULT);
+            setHideSubMappings(ContainerMappingImportImpl.HIDE_SUB_MAPPINGS_EDEFAULT);
             return;
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
-            setInheritsAncestorFilters(INHERITS_ANCESTOR_FILTERS_EDEFAULT);
+            setInheritsAncestorFilters(ContainerMappingImportImpl.INHERITS_ANCESTOR_FILTERS_EDEFAULT);
             return;
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING:
             setImportedMapping((ContainerMapping) null);
@@ -266,9 +277,9 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__HIDE_SUB_MAPPINGS:
-            return hideSubMappings != HIDE_SUB_MAPPINGS_EDEFAULT;
+            return hideSubMappings != ContainerMappingImportImpl.HIDE_SUB_MAPPINGS_EDEFAULT;
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
-            return inheritsAncestorFilters != INHERITS_ANCESTOR_FILTERS_EDEFAULT;
+            return inheritsAncestorFilters != ContainerMappingImportImpl.INHERITS_ANCESTOR_FILTERS_EDEFAULT;
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING:
             return importedMapping != null;
         }
@@ -322,8 +333,9 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (hideSubMappings: ");

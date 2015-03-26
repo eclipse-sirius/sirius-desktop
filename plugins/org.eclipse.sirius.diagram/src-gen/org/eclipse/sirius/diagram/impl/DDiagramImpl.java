@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -96,7 +96,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The cached value of the '{@link #getOwnedDiagramElements()
      * <em>Owned Diagram Elements</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedDiagramElements()
      * @generated
      * @ordered
@@ -161,7 +161,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The cached value of the '{@link #getFilterVariableHistory()
      * <em>Filter Variable History</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterVariableHistory()
      * @generated
      * @ordered
@@ -197,7 +197,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @generated
      * @ordered
      */
-    protected boolean synchronized_ = SYNCHRONIZED_EDEFAULT;
+    protected boolean synchronized_ = DDiagramImpl.SYNCHRONIZED_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getHiddenElements()
@@ -230,7 +230,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @generated
      * @ordered
      */
-    protected boolean isInLayoutingMode = IS_IN_LAYOUTING_MODE_EDEFAULT;
+    protected boolean isInLayoutingMode = DDiagramImpl.IS_IN_LAYOUTING_MODE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeaderHeight()
@@ -252,7 +252,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @generated
      * @ordered
      */
-    protected int headerHeight = HEADER_HEIGHT_EDEFAULT;
+    protected int headerHeight = DDiagramImpl.HEADER_HEIGHT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -278,6 +278,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElement> getOwnedDiagramElements() {
         if (ownedDiagramElements == null) {
             ownedDiagramElements = new EObjectContainmentEList.Resolving<DDiagramElement>(DDiagramElement.class, this, DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS);
@@ -290,6 +291,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElement> getDiagramElements() {
         // TODO: implement this method to return the 'Diagram Elements'
         // reference list
@@ -307,13 +309,15 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public DiagramDescription getDescription() {
         if (description != null && description.eIsProxy()) {
             InternalEObject oldDescription = (InternalEObject) description;
             description = (DiagramDescription) eResolveProxy(oldDescription);
             if (description != oldDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DDIAGRAM__DESCRIPTION, oldDescription, description));
+                }
             }
         }
         return description;
@@ -333,11 +337,13 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public void setDescription(DiagramDescription newDescription) {
         DiagramDescription oldDescription = description;
         description = newDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__DESCRIPTION, oldDescription, description));
+        }
     }
 
     /**
@@ -345,6 +351,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getEdges() {
         // TODO: implement this method to return the 'Edges' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -361,6 +368,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DNode> getNodes() {
         // TODO: implement this method to return the 'Nodes' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -377,6 +385,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DNodeListElement> getNodeListElements() {
         // TODO: implement this method to return the 'Node List Elements'
         // reference list
@@ -394,6 +403,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElementContainer> getContainers() {
         // TODO: implement this method to return the 'Containers' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -410,13 +420,15 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public ConcernDescription getCurrentConcern() {
         if (currentConcern != null && currentConcern.eIsProxy()) {
             InternalEObject oldCurrentConcern = (InternalEObject) currentConcern;
             currentConcern = (ConcernDescription) eResolveProxy(oldCurrentConcern);
             if (currentConcern != oldCurrentConcern) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DDIAGRAM__CURRENT_CONCERN, oldCurrentConcern, currentConcern));
+                }
             }
         }
         return currentConcern;
@@ -436,11 +448,13 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public void setCurrentConcern(ConcernDescription newCurrentConcern) {
         ConcernDescription oldCurrentConcern = currentConcern;
         currentConcern = newCurrentConcern;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__CURRENT_CONCERN, oldCurrentConcern, currentConcern));
+        }
     }
 
     /**
@@ -448,6 +462,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<FilterDescription> getActivatedFilters() {
         if (activatedFilters == null) {
             activatedFilters = new EObjectResolvingEList<FilterDescription>(FilterDescription.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS);
@@ -460,6 +475,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<FilterDescription> getAllFilters() {
         // TODO: implement this method to return the 'All Filters' reference
         // list
@@ -477,6 +493,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<ValidationRule> getActivatedRules() {
         if (activatedRules == null) {
             activatedRules = new EObjectResolvingEList<ValidationRule>(ValidationRule.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_RULES);
@@ -489,6 +506,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<BehaviorTool> getActivateBehaviors() {
         if (activateBehaviors == null) {
             activateBehaviors = new EObjectResolvingEList<BehaviorTool>(BehaviorTool.class, this, DiagramPackage.DDIAGRAM__ACTIVATE_BEHAVIORS);
@@ -501,20 +519,23 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public FilterVariableHistory getFilterVariableHistory() {
         if (filterVariableHistory != null && filterVariableHistory.eIsProxy()) {
             InternalEObject oldFilterVariableHistory = (InternalEObject) filterVariableHistory;
             filterVariableHistory = (FilterVariableHistory) eResolveProxy(oldFilterVariableHistory);
             if (filterVariableHistory != oldFilterVariableHistory) {
                 InternalEObject newFilterVariableHistory = (InternalEObject) filterVariableHistory;
-                NotificationChain msgs = oldFilterVariableHistory.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, null, null);
+                NotificationChain msgs = oldFilterVariableHistory.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, null, null);
                 if (newFilterVariableHistory.eInternalContainer() == null) {
-                    msgs = newFilterVariableHistory.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, null, msgs);
+                    msgs = newFilterVariableHistory.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, oldFilterVariableHistory, filterVariableHistory));
+                }
             }
         }
         return filterVariableHistory;
@@ -539,10 +560,11 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         filterVariableHistory = newFilterVariableHistory;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, oldFilterVariableHistory, newFilterVariableHistory);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -552,18 +574,23 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public void setFilterVariableHistory(FilterVariableHistory newFilterVariableHistory) {
         if (newFilterVariableHistory != filterVariableHistory) {
             NotificationChain msgs = null;
-            if (filterVariableHistory != null)
-                msgs = ((InternalEObject) filterVariableHistory).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, null, msgs);
-            if (newFilterVariableHistory != null)
-                msgs = ((InternalEObject) newFilterVariableHistory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, null, msgs);
+            if (filterVariableHistory != null) {
+                msgs = ((InternalEObject) filterVariableHistory).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, null, msgs);
+            }
+            if (newFilterVariableHistory != null) {
+                msgs = ((InternalEObject) newFilterVariableHistory).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, null, msgs);
+            }
             msgs = basicSetFilterVariableHistory(newFilterVariableHistory, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, newFilterVariableHistory, newFilterVariableHistory));
+        }
     }
 
     /**
@@ -571,6 +598,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<Layer> getActivatedLayers() {
         if (activatedLayers == null) {
             activatedLayers = new EObjectResolvingEList<Layer>(Layer.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS);
@@ -583,6 +611,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public boolean isSynchronized() {
         return synchronized_;
     }
@@ -592,11 +621,13 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public void setSynchronized(boolean newSynchronized) {
         boolean oldSynchronized = synchronized_;
         synchronized_ = newSynchronized;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__SYNCHRONIZED, oldSynchronized, synchronized_));
+        }
     }
 
     /**
@@ -604,6 +635,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElement> getHiddenElements() {
         if (hiddenElements == null) {
             hiddenElements = new EObjectResolvingEList<DDiagramElement>(DDiagramElement.class, this, DiagramPackage.DDIAGRAM__HIDDEN_ELEMENTS);
@@ -616,6 +648,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public boolean isIsInLayoutingMode() {
         return isInLayoutingMode;
     }
@@ -625,11 +658,13 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public void setIsInLayoutingMode(boolean newIsInLayoutingMode) {
         boolean oldIsInLayoutingMode = isInLayoutingMode;
         isInLayoutingMode = newIsInLayoutingMode;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE, oldIsInLayoutingMode, isInLayoutingMode));
+        }
     }
 
     /**
@@ -637,6 +672,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public int getHeaderHeight() {
         return headerHeight;
     }
@@ -646,11 +682,13 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public void setHeaderHeight(int newHeaderHeight) {
         int oldHeaderHeight = headerHeight;
         headerHeight = newHeaderHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__HEADER_HEIGHT, oldHeaderHeight, headerHeight));
+        }
     }
 
     /**
@@ -658,6 +696,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DNode> getNodesFromMapping(NodeMapping mapping) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -669,6 +708,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DEdge> getEdgesFromMapping(EdgeMapping mapping) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -680,6 +720,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public EList<DDiagramElementContainer> getContainersFromMapping(ContainerMapping mapping) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -691,6 +732,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
+    @Override
     public DragAndDropTargetDescription getDragAndDropDescription() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -726,8 +768,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         case DiagramPackage.DDIAGRAM__DIAGRAM_ELEMENTS:
             return getDiagramElements();
         case DiagramPackage.DDIAGRAM__DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getDescription();
+            }
             return basicGetDescription();
         case DiagramPackage.DDIAGRAM__EDGES:
             return getEdges();
@@ -738,8 +781,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         case DiagramPackage.DDIAGRAM__CONTAINERS:
             return getContainers();
         case DiagramPackage.DDIAGRAM__CURRENT_CONCERN:
-            if (resolve)
+            if (resolve) {
                 return getCurrentConcern();
+            }
             return basicGetCurrentConcern();
         case DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS:
             return getActivatedFilters();
@@ -750,8 +794,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         case DiagramPackage.DDIAGRAM__ACTIVATE_BEHAVIORS:
             return getActivateBehaviors();
         case DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY:
-            if (resolve)
+            if (resolve) {
                 return getFilterVariableHistory();
+            }
             return basicGetFilterVariableHistory();
         case DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS:
             return getActivatedLayers();
@@ -855,16 +900,16 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             getActivatedLayers().clear();
             return;
         case DiagramPackage.DDIAGRAM__SYNCHRONIZED:
-            setSynchronized(SYNCHRONIZED_EDEFAULT);
+            setSynchronized(DDiagramImpl.SYNCHRONIZED_EDEFAULT);
             return;
         case DiagramPackage.DDIAGRAM__HIDDEN_ELEMENTS:
             getHiddenElements().clear();
             return;
         case DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE:
-            setIsInLayoutingMode(IS_IN_LAYOUTING_MODE_EDEFAULT);
+            setIsInLayoutingMode(DDiagramImpl.IS_IN_LAYOUTING_MODE_EDEFAULT);
             return;
         case DiagramPackage.DDIAGRAM__HEADER_HEIGHT:
-            setHeaderHeight(HEADER_HEIGHT_EDEFAULT);
+            setHeaderHeight(DDiagramImpl.HEADER_HEIGHT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -907,13 +952,13 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         case DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS:
             return activatedLayers != null && !activatedLayers.isEmpty();
         case DiagramPackage.DDIAGRAM__SYNCHRONIZED:
-            return synchronized_ != SYNCHRONIZED_EDEFAULT;
+            return synchronized_ != DDiagramImpl.SYNCHRONIZED_EDEFAULT;
         case DiagramPackage.DDIAGRAM__HIDDEN_ELEMENTS:
             return hiddenElements != null && !hiddenElements.isEmpty();
         case DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE:
-            return isInLayoutingMode != IS_IN_LAYOUTING_MODE_EDEFAULT;
+            return isInLayoutingMode != DDiagramImpl.IS_IN_LAYOUTING_MODE_EDEFAULT;
         case DiagramPackage.DDIAGRAM__HEADER_HEIGHT:
-            return headerHeight != HEADER_HEIGHT_EDEFAULT;
+            return headerHeight != DDiagramImpl.HEADER_HEIGHT_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -925,8 +970,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (synchronized: ");

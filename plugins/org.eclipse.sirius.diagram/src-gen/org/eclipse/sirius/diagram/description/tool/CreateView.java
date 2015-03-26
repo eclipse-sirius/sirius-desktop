@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -44,7 +44,7 @@ public interface CreateView extends ContainerModelOperation {
      * Returns the value of the '<em><b>Mapping</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Mapping
      * to create a view from. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' reference.
      * @see #setMapping(DiagramElementMapping)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateView_Mapping()
@@ -58,7 +58,7 @@ public interface CreateView extends ContainerModelOperation {
      * {@link org.eclipse.sirius.diagram.description.tool.CreateView#getMapping
      * <em>Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' reference.
      * @see #getMapping()
@@ -108,7 +108,7 @@ public interface CreateView extends ContainerModelOperation {
      * end-user-doc --> <!-- begin-model-doc --> Once the view is created, a new
      * variable will be bound with the name given here and will be available to
      * any contained operation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Variable Name</em>' attribute.
      * @see #setVariableName(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateView_VariableName()

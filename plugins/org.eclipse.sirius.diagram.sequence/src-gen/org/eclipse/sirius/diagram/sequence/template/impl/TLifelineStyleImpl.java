@@ -41,7 +41,7 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
      * {@link #getLifelineWidthComputationExpression()
      * <em>Lifeline Width Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLifelineWidthComputationExpression()
      * @generated
      * @ordered
@@ -52,12 +52,12 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
      * The cached value of the '{@link #getLifelineWidthComputationExpression()
      * <em>Lifeline Width Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLifelineWidthComputationExpression()
      * @generated
      * @ordered
      */
-    protected String lifelineWidthComputationExpression = LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String lifelineWidthComputationExpression = TLifelineStyleImpl.LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getLifelineColor()
@@ -94,6 +94,7 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
      * 
      * @generated
      */
+    @Override
     public String getLifelineWidthComputationExpression() {
         return lifelineWidthComputationExpression;
     }
@@ -103,12 +104,14 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
      * 
      * @generated
      */
+    @Override
     public void setLifelineWidthComputationExpression(String newLifelineWidthComputationExpression) {
         String oldLifelineWidthComputationExpression = lifelineWidthComputationExpression;
         lifelineWidthComputationExpression = newLifelineWidthComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION, oldLifelineWidthComputationExpression,
                     lifelineWidthComputationExpression));
+        }
     }
 
     /**
@@ -116,13 +119,15 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
      * 
      * @generated
      */
+    @Override
     public ColorDescription getLifelineColor() {
         if (lifelineColor != null && lifelineColor.eIsProxy()) {
             InternalEObject oldLifelineColor = (InternalEObject) lifelineColor;
             lifelineColor = (ColorDescription) eResolveProxy(oldLifelineColor);
             if (lifelineColor != oldLifelineColor) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, TemplatePackage.TLIFELINE_STYLE__LIFELINE_COLOR, oldLifelineColor, lifelineColor));
+                }
             }
         }
         return lifelineColor;
@@ -142,11 +147,13 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
      * 
      * @generated
      */
+    @Override
     public void setLifelineColor(ColorDescription newLifelineColor) {
         ColorDescription oldLifelineColor = lifelineColor;
         lifelineColor = newLifelineColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TLIFELINE_STYLE__LIFELINE_COLOR, oldLifelineColor, lifelineColor));
+        }
     }
 
     /**
@@ -160,8 +167,9 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
         case TemplatePackage.TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION:
             return getLifelineWidthComputationExpression();
         case TemplatePackage.TLIFELINE_STYLE__LIFELINE_COLOR:
-            if (resolve)
+            if (resolve) {
                 return getLifelineColor();
+            }
             return basicGetLifelineColor();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -194,7 +202,7 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
     public void eUnset(int featureID) {
         switch (featureID) {
         case TemplatePackage.TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION:
-            setLifelineWidthComputationExpression(LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
+            setLifelineWidthComputationExpression(TLifelineStyleImpl.LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case TemplatePackage.TLIFELINE_STYLE__LIFELINE_COLOR:
             setLifelineColor((ColorDescription) null);
@@ -212,8 +220,8 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TemplatePackage.TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION:
-            return LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? lifelineWidthComputationExpression != null : !LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(lifelineWidthComputationExpression);
+            return TLifelineStyleImpl.LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? lifelineWidthComputationExpression != null
+                    : !TLifelineStyleImpl.LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT.equals(lifelineWidthComputationExpression);
         case TemplatePackage.TLIFELINE_STYLE__LIFELINE_COLOR:
             return lifelineColor != null;
         }
@@ -227,8 +235,9 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (lifelineWidthComputationExpression: ");

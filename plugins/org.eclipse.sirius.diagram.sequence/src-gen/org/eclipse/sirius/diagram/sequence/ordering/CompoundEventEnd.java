@@ -41,7 +41,7 @@ public interface CompoundEventEnd extends EventEnd {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Event Ends</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getCompoundEventEnd_EventEnds()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool.impl;
 
@@ -85,7 +85,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = ToolSectionImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -105,7 +105,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = ToolSectionImpl.LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
@@ -125,7 +125,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * @generated
      * @ordered
      */
-    protected String icon = ICON_EDEFAULT;
+    protected String icon = ToolSectionImpl.ICON_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOwnedTools() <em>Owned Tools</em>}'
@@ -161,7 +161,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * The cached value of the '{@link #getGroupExtensions()
      * <em>Group Extensions</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGroupExtensions()
      * @generated
      * @ordered
@@ -192,6 +192,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -201,11 +202,13 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.TOOL_SECTION__NAME, oldName, name));
+        }
     }
 
     /**
@@ -213,6 +216,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -222,11 +226,13 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.TOOL_SECTION__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -234,6 +240,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public String getIcon() {
         return icon;
     }
@@ -243,11 +250,13 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public void setIcon(String newIcon) {
         String oldIcon = icon;
         icon = newIcon;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.TOOL_SECTION__ICON, oldIcon, icon));
+        }
     }
 
     /**
@@ -255,6 +264,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public EList<ToolEntry> getOwnedTools() {
         if (ownedTools == null) {
             ownedTools = new EObjectContainmentEList.Resolving<ToolEntry>(ToolEntry.class, this, ToolPackage.TOOL_SECTION__OWNED_TOOLS);
@@ -267,6 +277,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public EList<ToolSection> getSubSections() {
         if (subSections == null) {
             subSections = new EObjectContainmentEList.Resolving<ToolSection>(ToolSection.class, this, ToolPackage.TOOL_SECTION__SUB_SECTIONS);
@@ -279,6 +290,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public EList<PopupMenu> getPopupMenus() {
         // TODO: implement this method to return the 'Popup Menus' reference
         // list
@@ -296,6 +308,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public EList<ToolEntry> getReusedTools() {
         if (reusedTools == null) {
             reusedTools = new EObjectResolvingEList<ToolEntry>(ToolEntry.class, this, ToolPackage.TOOL_SECTION__REUSED_TOOLS);
@@ -308,6 +321,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * 
      * @generated
      */
+    @Override
     public EList<ToolGroupExtension> getGroupExtensions() {
         if (groupExtensions == null) {
             groupExtensions = new EObjectContainmentEList.Resolving<ToolGroupExtension>(ToolGroupExtension.class, this, ToolPackage.TOOL_SECTION__GROUP_EXTENSIONS);
@@ -408,13 +422,13 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.TOOL_SECTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(ToolSectionImpl.NAME_EDEFAULT);
             return;
         case ToolPackage.TOOL_SECTION__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(ToolSectionImpl.LABEL_EDEFAULT);
             return;
         case ToolPackage.TOOL_SECTION__ICON:
-            setIcon(ICON_EDEFAULT);
+            setIcon(ToolSectionImpl.ICON_EDEFAULT);
             return;
         case ToolPackage.TOOL_SECTION__OWNED_TOOLS:
             getOwnedTools().clear();
@@ -441,11 +455,11 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.TOOL_SECTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return ToolSectionImpl.NAME_EDEFAULT == null ? name != null : !ToolSectionImpl.NAME_EDEFAULT.equals(name);
         case ToolPackage.TOOL_SECTION__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return ToolSectionImpl.LABEL_EDEFAULT == null ? label != null : !ToolSectionImpl.LABEL_EDEFAULT.equals(label);
         case ToolPackage.TOOL_SECTION__ICON:
-            return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
+            return ToolSectionImpl.ICON_EDEFAULT == null ? icon != null : !ToolSectionImpl.ICON_EDEFAULT.equals(icon);
         case ToolPackage.TOOL_SECTION__OWNED_TOOLS:
             return ownedTools != null && !ownedTools.isEmpty();
         case ToolPackage.TOOL_SECTION__SUB_SECTIONS:
@@ -507,8 +521,9 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

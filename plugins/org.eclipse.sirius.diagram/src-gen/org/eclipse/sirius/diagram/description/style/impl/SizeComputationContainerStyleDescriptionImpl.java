@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
@@ -57,7 +57,7 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
      * @generated
      * @ordered
      */
-    protected String widthComputationExpression = WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String widthComputationExpression = SizeComputationContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeightComputationExpression()
@@ -79,7 +79,7 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
      * @generated
      * @ordered
      */
-    protected String heightComputationExpression = HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
+    protected String heightComputationExpression = SizeComputationContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -105,6 +105,7 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
      * 
      * @generated
      */
+    @Override
     public String getWidthComputationExpression() {
         return widthComputationExpression;
     }
@@ -114,12 +115,14 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
      * 
      * @generated
      */
+    @Override
     public void setWidthComputationExpression(String newWidthComputationExpression) {
         String oldWidthComputationExpression = widthComputationExpression;
         widthComputationExpression = newWidthComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, oldWidthComputationExpression,
                     widthComputationExpression));
+        }
     }
 
     /**
@@ -127,6 +130,7 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
      * 
      * @generated
      */
+    @Override
     public String getHeightComputationExpression() {
         return heightComputationExpression;
     }
@@ -136,12 +140,14 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
      * 
      * @generated
      */
+    @Override
     public void setHeightComputationExpression(String newHeightComputationExpression) {
         String oldHeightComputationExpression = heightComputationExpression;
         heightComputationExpression = newHeightComputationExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, oldHeightComputationExpression,
                     heightComputationExpression));
+        }
     }
 
     /**
@@ -187,10 +193,10 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
-            setWidthComputationExpression(WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
+            setWidthComputationExpression(SizeComputationContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
-            setHeightComputationExpression(HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT);
+            setHeightComputationExpression(SizeComputationContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -205,9 +211,11 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
-            return WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null : !WIDTH_COMPUTATION_EXPRESSION_EDEFAULT.equals(widthComputationExpression);
+            return SizeComputationContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null
+                    : !SizeComputationContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT.equals(widthComputationExpression);
         case StylePackage.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
-            return HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null : !HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT.equals(heightComputationExpression);
+            return SizeComputationContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null
+                    : !SizeComputationContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT.equals(heightComputationExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -219,8 +227,9 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (widthComputationExpression: ");

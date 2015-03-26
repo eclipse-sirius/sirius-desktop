@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -42,7 +42,7 @@ public interface RepresentationElementMapping extends IdentifiedElement {
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All details that can be created from this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Detail Descriptions</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationElementMapping_DetailDescriptions()
      * @model
@@ -56,7 +56,7 @@ public interface RepresentationElementMapping extends IdentifiedElement {
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All details that can be created from this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Navigation Descriptions</em>' reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationElementMapping_NavigationDescriptions()

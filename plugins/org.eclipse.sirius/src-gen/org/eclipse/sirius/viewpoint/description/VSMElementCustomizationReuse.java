@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -45,7 +45,7 @@ public interface VSMElementCustomizationReuse extends IVSMElementCustomization {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reuse</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomizationReuse_Reuse()
      * @model required="true"
@@ -62,7 +62,7 @@ public interface VSMElementCustomizationReuse extends IVSMElementCustomization {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Applied On</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomizationReuse_AppliedOn()
      * @model required="true"

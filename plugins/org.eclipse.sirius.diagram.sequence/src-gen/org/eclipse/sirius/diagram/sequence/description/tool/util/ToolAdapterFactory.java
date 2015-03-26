@@ -61,8 +61,8 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public ToolAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = ToolPackage.eINSTANCE;
+        if (ToolAdapterFactory.modelPackage == null) {
+            ToolAdapterFactory.modelPackage = ToolPackage.eINSTANCE;
         }
     }
 
@@ -77,11 +77,11 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == ToolAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == ToolAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -89,7 +89,7 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolSwitch<Adapter> modelSwitch = new ToolSwitch<Adapter>() {
@@ -486,7 +486,7 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolEntry
      * @generated

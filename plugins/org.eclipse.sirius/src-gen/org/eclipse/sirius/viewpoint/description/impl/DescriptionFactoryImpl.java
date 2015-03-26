@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -60,14 +60,14 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static DescriptionFactory init() {
@@ -85,7 +85,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DescriptionFactoryImpl() {
@@ -94,7 +94,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,9 +209,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public Group createGroup() {
         GroupImpl group = new GroupImpl();
         group.setSystemColorsPalette(forgeSystemPaletteProxy());
@@ -227,9 +228,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public Viewpoint createViewpoint() {
         ViewpointImpl viewpoint = new ViewpointSpec();
         return viewpoint;
@@ -237,9 +239,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public MetamodelExtensionSetting createMetamodelExtensionSetting() {
         MetamodelExtensionSettingImpl metamodelExtensionSetting = new MetamodelExtensionSettingSpec();
         return metamodelExtensionSetting;
@@ -247,9 +250,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public JavaExtension createJavaExtension() {
         JavaExtensionImpl javaExtension = new JavaExtensionImpl();
         return javaExtension;
@@ -257,9 +261,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DAnnotation createDAnnotation() {
         DAnnotationImpl dAnnotation = new DAnnotationSpec();
         return dAnnotation;
@@ -267,9 +272,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DecorationDescriptionsSet createDecorationDescriptionsSet() {
         DecorationDescriptionsSetImpl decorationDescriptionsSet = new DecorationDescriptionsSetImpl();
         return decorationDescriptionsSet;
@@ -277,9 +283,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SemanticBasedDecoration createSemanticBasedDecoration() {
         SemanticBasedDecorationImpl semanticBasedDecoration = new SemanticBasedDecorationImpl();
         return semanticBasedDecoration;
@@ -287,9 +294,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Customization createCustomization() {
         CustomizationImpl customization = new CustomizationImpl();
         return customization;
@@ -297,9 +305,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public VSMElementCustomization createVSMElementCustomization() {
         VSMElementCustomizationImpl vsmElementCustomization = new VSMElementCustomizationImpl();
         return vsmElementCustomization;
@@ -307,9 +316,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public VSMElementCustomizationReuse createVSMElementCustomizationReuse() {
         VSMElementCustomizationReuseImpl vsmElementCustomizationReuse = new VSMElementCustomizationReuseImpl();
         return vsmElementCustomizationReuse;
@@ -317,9 +327,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EAttributeCustomization createEAttributeCustomization() {
         EAttributeCustomizationImpl eAttributeCustomization = new EAttributeCustomizationImpl();
         return eAttributeCustomization;
@@ -327,9 +338,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EReferenceCustomization createEReferenceCustomization() {
         EReferenceCustomizationImpl eReferenceCustomization = new EReferenceCustomizationImpl();
         return eReferenceCustomization;
@@ -337,9 +349,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SystemColor createSystemColor() {
         SystemColorImpl systemColor = new SystemColorImpl();
         return systemColor;
@@ -347,9 +360,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public InterpolatedColor createInterpolatedColor() {
         InterpolatedColorImpl interpolatedColor = new InterpolatedColorSpec();
         return interpolatedColor;
@@ -357,9 +371,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ColorStep createColorStep() {
         ColorStepImpl colorStep = new ColorStepImpl();
         FixedColor defaultColor = EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("black");
@@ -369,9 +384,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public FixedColor createFixedColor() {
         FixedColorImpl fixedColor = new FixedColorSpec();
         return fixedColor;
@@ -379,9 +395,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public UserFixedColor createUserFixedColor() {
         UserFixedColorImpl userFixedColor = new UserFixedColorImpl();
         return userFixedColor;
@@ -389,9 +406,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Environment createEnvironment() {
         EnvironmentImpl environment = new EnvironmentImpl();
         return environment;
@@ -399,9 +417,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SytemColorsPalette createSytemColorsPalette() {
         SytemColorsPaletteImpl sytemColorsPalette = new SytemColorsPaletteImpl();
         return sytemColorsPalette;
@@ -409,9 +428,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public UserColorsPalette createUserColorsPalette() {
         UserColorsPaletteImpl userColorsPalette = new UserColorsPaletteImpl();
         return userColorsPalette;
@@ -419,9 +439,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public AnnotationEntry createAnnotationEntry() {
         AnnotationEntryImpl annotationEntry = new AnnotationEntryImpl();
         return annotationEntry;
@@ -429,9 +450,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public IdentifiedElement createIdentifiedElement() {
         IdentifiedElementImpl identifiedElement = new IdentifiedElementImpl();
         return identifiedElement;
@@ -439,9 +461,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComputedColor createComputedColor() {
         ComputedColorImpl computedColor = new ComputedColorImpl();
         return computedColor;
@@ -449,9 +472,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DAnnotationEntry createDAnnotationEntry() {
         DAnnotationEntryImpl dAnnotationEntry = new DAnnotationEntryImpl();
         return dAnnotationEntry;
@@ -459,19 +483,20 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NavigationTargetType createNavigationTargetTypeFromString(EDataType eDataType, String initialValue) {
         NavigationTargetType result = NavigationTargetType.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertNavigationTargetTypeToString(EDataType eDataType, Object instanceValue) {
@@ -480,19 +505,20 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Position createPositionFromString(EDataType eDataType, String initialValue) {
         Position result = Position.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertPositionToString(EDataType eDataType, Object instanceValue) {
@@ -501,19 +527,20 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SystemColors createSystemColorsFromString(EDataType eDataType, String initialValue) {
         SystemColors result = SystemColors.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertSystemColorsToString(EDataType eDataType, Object instanceValue) {
@@ -522,7 +549,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String createTypeNameFromString(EDataType eDataType, String initialValue) {
@@ -531,7 +558,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertTypeNameToString(EDataType eDataType, Object instanceValue) {
@@ -540,7 +567,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String createInterpretedExpressionFromString(EDataType eDataType, String initialValue) {
@@ -549,7 +576,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertInterpretedExpressionToString(EDataType eDataType, Object instanceValue) {
@@ -558,7 +585,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String createFeatureNameFromString(EDataType eDataType, String initialValue) {
@@ -567,7 +594,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertFeatureNameToString(EDataType eDataType, Object instanceValue) {
@@ -576,7 +603,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     public URI createURIFromString(EDataType eDataType, String initialValue) {
@@ -585,7 +612,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     public String convertURIToString(EDataType eDataType, Object instanceValue) {
@@ -594,16 +621,17 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DescriptionPackage getDescriptionPackage() {
         return (DescriptionPackage) getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

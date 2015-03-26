@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <em><b>Edge Routing</b></em>', and utility methods for working with them.
  * <!-- end-user-doc --> <!-- begin-model-doc --> Routing style of edges. <!--
  * end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getEdgeRouting()
  * @model
  * @generated
@@ -106,7 +106,7 @@ public enum EdgeRouting implements Enumerator {
     /**
      * An array of all the '<em><b>Edge Routing</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final EdgeRouting[] VALUES_ARRAY = new EdgeRouting[] { STRAIGHT_LITERAL, MANHATTAN_LITERAL, TREE_LITERAL, };
@@ -117,7 +117,7 @@ public enum EdgeRouting implements Enumerator {
      * 
      * @generated
      */
-    public static final List<EdgeRouting> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<EdgeRouting> VALUES = Collections.unmodifiableList(Arrays.asList(EdgeRouting.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Edge Routing</b></em>' literal with the specified
@@ -126,8 +126,7 @@ public enum EdgeRouting implements Enumerator {
      * @generated
      */
     public static EdgeRouting get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            EdgeRouting result = VALUES_ARRAY[i];
+        for (EdgeRouting result : EdgeRouting.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -142,8 +141,7 @@ public enum EdgeRouting implements Enumerator {
      * @generated
      */
     public static EdgeRouting getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            EdgeRouting result = VALUES_ARRAY[i];
+        for (EdgeRouting result : EdgeRouting.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -207,6 +205,7 @@ public enum EdgeRouting implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -216,6 +215,7 @@ public enum EdgeRouting implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -225,6 +225,7 @@ public enum EdgeRouting implements Enumerator {
      * 
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }

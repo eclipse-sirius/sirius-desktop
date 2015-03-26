@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
@@ -37,7 +37,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getTooltipExpression()
      * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTooltipExpression()
      * @generated
      * @ordered
@@ -48,16 +48,16 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getTooltipExpression()
      * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTooltipExpression()
      * @generated
      * @ordered
      */
-    protected String tooltipExpression = TOOLTIP_EXPRESSION_EDEFAULT;
+    protected String tooltipExpression = TooltipStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TooltipStyleDescriptionImpl() {
@@ -66,7 +66,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,28 +76,31 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getTooltipExpression() {
         return tooltipExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTooltipExpression(String newTooltipExpression) {
         String oldTooltipExpression = tooltipExpression;
         tooltipExpression = newTooltipExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, oldTooltipExpression, tooltipExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +114,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,14 +129,14 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-            setTooltipExpression(TOOLTIP_EXPRESSION_EDEFAULT);
+            setTooltipExpression(TooltipStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -141,27 +144,28 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-            return TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
+            return TooltipStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !TooltipStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (tooltipExpression: ");

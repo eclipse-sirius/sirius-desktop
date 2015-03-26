@@ -211,7 +211,7 @@ public interface TreeItemDragTool extends MappingBasedToolDescription, TreeItemT
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Drag Source Type</em>' attribute.
      * @see org.eclipse.sirius.tree.description.TreeDragSource
      * @see #setDragSourceType(TreeDragSource)

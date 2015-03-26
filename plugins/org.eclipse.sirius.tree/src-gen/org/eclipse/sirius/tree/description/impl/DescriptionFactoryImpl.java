@@ -159,6 +159,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TreeDescription createTreeDescription() {
         TreeDescriptionImpl treeDescription = new TreeDescriptionImpl();
         return treeDescription;
@@ -166,9 +167,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TreeItemMapping createTreeItemMapping() {
         TreeItemMappingImpl treeItemMapping = new TreeItemMappingSpec();
         return treeItemMapping;
@@ -176,9 +178,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TreeItemStyleDescription createTreeItemStyleDescription() {
         TreeItemStyleDescriptionImpl treeItemStyleDescription = new TreeItemStyleDescriptionImpl();
         new DefaultColorStyleDescription().setDefaultColors(treeItemStyleDescription);
@@ -187,9 +190,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ConditionalTreeItemStyleDescription createConditionalTreeItemStyleDescription() {
         ConditionalTreeItemStyleDescriptionImpl conditionalTreeItemStyleDescription = new ConditionalTreeItemStyleDescriptionImpl();
         new DefaultColorStyleDescription().setDefaultColors(conditionalTreeItemStyleDescription);
@@ -201,6 +205,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TreeItemDragTool createTreeItemDragTool() {
         TreeItemDragToolImpl treeItemDragTool = new TreeItemDragToolImpl();
         return treeItemDragTool;
@@ -211,6 +216,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TreeItemContainerDropTool createTreeItemContainerDropTool() {
         TreeItemContainerDropToolImpl treeItemContainerDropTool = new TreeItemContainerDropToolImpl();
         return treeItemContainerDropTool;
@@ -221,6 +227,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TreeItemCreationTool createTreeItemCreationTool() {
         TreeItemCreationToolImpl treeItemCreationTool = new TreeItemCreationToolImpl();
         return treeItemCreationTool;
@@ -231,6 +238,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TreeItemEditionTool createTreeItemEditionTool() {
         TreeItemEditionToolImpl treeItemEditionTool = new TreeItemEditionToolImpl();
         return treeItemEditionTool;
@@ -238,9 +246,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TreeItemDeletionTool createTreeItemDeletionTool() {
         TreeItemDeletionToolImpl treeItemDeletionTool = new TreeItemDeletionToolSpec();
         return treeItemDeletionTool;
@@ -248,9 +257,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TreeCreationDescription createTreeCreationDescription() {
         TreeCreationDescriptionImpl treeCreationDescription = new TreeCreationDescriptionSpec();
         return treeCreationDescription;
@@ -258,9 +268,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public TreeNavigationDescription createTreeNavigationDescription() {
         TreeNavigationDescriptionImpl treeNavigationDescription = new TreeNavigationDescriptionSpec();
         return treeNavigationDescription;
@@ -271,6 +282,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TreeMapping createTreeMapping() {
         TreeMappingImpl treeMapping = new TreeMappingImpl();
         return treeMapping;
@@ -281,6 +293,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public StyleUpdater createStyleUpdater() {
         StyleUpdaterImpl styleUpdater = new StyleUpdaterImpl();
         return styleUpdater;
@@ -291,6 +304,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TreeVariable createTreeVariable() {
         TreeVariableImpl treeVariable = new TreeVariableImpl();
         return treeVariable;
@@ -301,6 +315,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TreeItemUpdater createTreeItemUpdater() {
         TreeItemUpdaterImpl treeItemUpdater = new TreeItemUpdaterImpl();
         return treeItemUpdater;
@@ -311,6 +326,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public PrecedingSiblingsVariables createPrecedingSiblingsVariables() {
         PrecedingSiblingsVariablesImpl precedingSiblingsVariables = new PrecedingSiblingsVariablesImpl();
         return precedingSiblingsVariables;
@@ -321,6 +337,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public TreePopupMenu createTreePopupMenu() {
         TreePopupMenuImpl treePopupMenu = new TreePopupMenuImpl();
         return treePopupMenu;
@@ -333,8 +350,9 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     public TreeDragSource createTreeDragSourceFromString(EDataType eDataType, String initialValue) {
         TreeDragSource result = TreeDragSource.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -352,6 +370,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
+    @Override
     public DescriptionPackage getDescriptionPackage() {
         return (DescriptionPackage) getEPackage();
     }

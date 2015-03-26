@@ -24,14 +24,14 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DCellStyleItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     /**
      * This returns DCellStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

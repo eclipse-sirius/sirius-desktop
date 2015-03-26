@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
@@ -37,7 +37,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
      * The default value of the '{@link #getLabelAlignment()
      * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -48,16 +48,16 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
      * The cached value of the '{@link #getLabelAlignment()
      * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelAlignment()
      * @generated
      * @ordered
      */
-    protected LabelAlignment labelAlignment = LABEL_ALIGNMENT_EDEFAULT;
+    protected LabelAlignment labelAlignment = LabelStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelStyleDescriptionImpl() {
@@ -66,7 +66,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,28 +76,31 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public LabelAlignment getLabelAlignment() {
         return labelAlignment;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabelAlignment(LabelAlignment newLabelAlignment) {
         LabelAlignment oldLabelAlignment = labelAlignment;
-        labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
-        if (eNotificationRequired())
+        labelAlignment = newLabelAlignment == null ? LabelStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +114,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,14 +129,14 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-            setLabelAlignment(LABEL_ALIGNMENT_EDEFAULT);
+            setLabelAlignment(LabelStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -141,27 +144,28 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-            return labelAlignment != LABEL_ALIGNMENT_EDEFAULT;
+            return labelAlignment != LabelStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (labelAlignment: ");

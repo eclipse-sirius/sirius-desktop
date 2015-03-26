@@ -32,14 +32,14 @@ import org.eclipse.sirius.viewpoint.provider.DRepresentationItemProvider;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.DTable} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DTableItemProvider extends DRepresentationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DTableItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
     /**
      * This adds a property descriptor for the Target feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
     /**
      * This adds a property descriptor for the Description feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
@@ -91,7 +91,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
     /**
      * This adds a property descriptor for the Header Column Width feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeaderColumnWidthPropertyDescriptor(Object object) {
@@ -136,9 +136,10 @@ public class DTableItemProvider extends DRepresentationItemProvider {
 
     /**
      * This returns DTable.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public Object getImage(final Object object) {
         if (object instanceof DTable && ((DTable) object).getDescription() instanceof CrossTableDescription) {
             return overlayImage(object, getResourceLocator().getImage("full/obj16/CrossTableDescription"));
@@ -149,9 +150,10 @@ public class DTableItemProvider extends DRepresentationItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public String getText(final Object object) {
         final String label = ((DTable) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DTable_type") : label;
@@ -185,7 +187,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +204,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

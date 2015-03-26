@@ -129,7 +129,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected String documentation = DOCUMENTATION_EDEFAULT;
+    protected String documentation = MessageCreationToolImpl.DOCUMENTATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -149,7 +149,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = MessageCreationToolImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -169,7 +169,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = MessageCreationToolImpl.LABEL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPrecondition()
@@ -190,7 +190,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected String precondition = PRECONDITION_EDEFAULT;
+    protected String precondition = MessageCreationToolImpl.PRECONDITION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isForceRefresh()
@@ -211,7 +211,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected boolean forceRefresh = FORCE_REFRESH_EDEFAULT;
+    protected boolean forceRefresh = MessageCreationToolImpl.FORCE_REFRESH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}'
@@ -260,7 +260,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * The cached value of the '{@link #getSourceViewVariable()
      * <em>Source View Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSourceViewVariable()
      * @generated
      * @ordered
@@ -271,7 +271,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * The cached value of the '{@link #getTargetViewVariable()
      * <em>Target View Variable</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetViewVariable()
      * @generated
      * @ordered
@@ -307,7 +307,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected String iconPath = ICON_PATH_EDEFAULT;
+    protected String iconPath = MessageCreationToolImpl.ICON_PATH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getExtraSourceMappings()
@@ -351,13 +351,13 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected String connectionStartPrecondition = CONNECTION_START_PRECONDITION_EDEFAULT;
+    protected String connectionStartPrecondition = MessageCreationToolImpl.CONNECTION_START_PRECONDITION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getStartingEndPredecessor()
      * <em>Starting End Predecessor</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -368,7 +368,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * The cached value of the '{@link #getFinishingEndPredecessor()
      * <em>Finishing End Predecessor</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -399,6 +399,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public String getDocumentation() {
         return documentation;
     }
@@ -408,11 +409,13 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setDocumentation(String newDocumentation) {
         String oldDocumentation = documentation;
         documentation = newDocumentation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
@@ -420,6 +423,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -429,11 +433,13 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__NAME, oldName, name));
+        }
     }
 
     /**
@@ -441,6 +447,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -450,11 +457,13 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -462,6 +471,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public String getPrecondition() {
         return precondition;
     }
@@ -471,11 +481,13 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setPrecondition(String newPrecondition) {
         String oldPrecondition = precondition;
         precondition = newPrecondition;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__PRECONDITION, oldPrecondition, precondition));
+        }
     }
 
     /**
@@ -483,6 +495,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public boolean isForceRefresh() {
         return forceRefresh;
     }
@@ -492,11 +505,13 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setForceRefresh(boolean newForceRefresh) {
         boolean oldForceRefresh = forceRefresh;
         forceRefresh = newForceRefresh;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__FORCE_REFRESH, oldForceRefresh, forceRefresh));
+        }
     }
 
     /**
@@ -504,6 +519,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public EList<ToolFilterDescription> getFilters() {
         if (filters == null) {
             filters = new EObjectContainmentEList.Resolving<ToolFilterDescription>(ToolFilterDescription.class, this, ToolPackage.MESSAGE_CREATION_TOOL__FILTERS);
@@ -516,6 +532,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public EList<EdgeMapping> getEdgeMappings() {
         if (edgeMappings == null) {
             edgeMappings = new EObjectResolvingEList<EdgeMapping>(EdgeMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS);
@@ -528,20 +545,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public SourceEdgeCreationVariable getSourceVariable() {
         if (sourceVariable != null && sourceVariable.eIsProxy()) {
             InternalEObject oldSourceVariable = (InternalEObject) sourceVariable;
             sourceVariable = (SourceEdgeCreationVariable) eResolveProxy(oldSourceVariable);
             if (sourceVariable != oldSourceVariable) {
                 InternalEObject newSourceVariable = (InternalEObject) sourceVariable;
-                NotificationChain msgs = oldSourceVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, null, null);
+                NotificationChain msgs = oldSourceVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, null, null);
                 if (newSourceVariable.eInternalContainer() == null) {
-                    msgs = newSourceVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, null, msgs);
+                    msgs = newSourceVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, oldSourceVariable, sourceVariable));
+                }
             }
         }
         return sourceVariable;
@@ -566,10 +586,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         sourceVariable = newSourceVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, oldSourceVariable, newSourceVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -579,18 +600,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setSourceVariable(SourceEdgeCreationVariable newSourceVariable) {
         if (newSourceVariable != sourceVariable) {
             NotificationChain msgs = null;
-            if (sourceVariable != null)
-                msgs = ((InternalEObject) sourceVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, null, msgs);
-            if (newSourceVariable != null)
-                msgs = ((InternalEObject) newSourceVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, null, msgs);
+            if (sourceVariable != null) {
+                msgs = ((InternalEObject) sourceVariable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, null, msgs);
+            }
+            if (newSourceVariable != null) {
+                msgs = ((InternalEObject) newSourceVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, null, msgs);
+            }
             msgs = basicSetSourceVariable(newSourceVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, newSourceVariable, newSourceVariable));
+        }
     }
 
     /**
@@ -598,20 +624,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public TargetEdgeCreationVariable getTargetVariable() {
         if (targetVariable != null && targetVariable.eIsProxy()) {
             InternalEObject oldTargetVariable = (InternalEObject) targetVariable;
             targetVariable = (TargetEdgeCreationVariable) eResolveProxy(oldTargetVariable);
             if (targetVariable != oldTargetVariable) {
                 InternalEObject newTargetVariable = (InternalEObject) targetVariable;
-                NotificationChain msgs = oldTargetVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, null, null);
+                NotificationChain msgs = oldTargetVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, null, null);
                 if (newTargetVariable.eInternalContainer() == null) {
-                    msgs = newTargetVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, null, msgs);
+                    msgs = newTargetVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, oldTargetVariable, targetVariable));
+                }
             }
         }
         return targetVariable;
@@ -636,10 +665,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         targetVariable = newTargetVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, oldTargetVariable, newTargetVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -649,18 +679,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setTargetVariable(TargetEdgeCreationVariable newTargetVariable) {
         if (newTargetVariable != targetVariable) {
             NotificationChain msgs = null;
-            if (targetVariable != null)
-                msgs = ((InternalEObject) targetVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, null, msgs);
-            if (newTargetVariable != null)
-                msgs = ((InternalEObject) newTargetVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, null, msgs);
+            if (targetVariable != null) {
+                msgs = ((InternalEObject) targetVariable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, null, msgs);
+            }
+            if (newTargetVariable != null) {
+                msgs = ((InternalEObject) newTargetVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, null, msgs);
+            }
             msgs = basicSetTargetVariable(newTargetVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, newTargetVariable, newTargetVariable));
+        }
     }
 
     /**
@@ -668,20 +703,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public SourceEdgeViewCreationVariable getSourceViewVariable() {
         if (sourceViewVariable != null && sourceViewVariable.eIsProxy()) {
             InternalEObject oldSourceViewVariable = (InternalEObject) sourceViewVariable;
             sourceViewVariable = (SourceEdgeViewCreationVariable) eResolveProxy(oldSourceViewVariable);
             if (sourceViewVariable != oldSourceViewVariable) {
                 InternalEObject newSourceViewVariable = (InternalEObject) sourceViewVariable;
-                NotificationChain msgs = oldSourceViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, null, null);
+                NotificationChain msgs = oldSourceViewVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, null, null);
                 if (newSourceViewVariable.eInternalContainer() == null) {
-                    msgs = newSourceViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, null, msgs);
+                    msgs = newSourceViewVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, oldSourceViewVariable, sourceViewVariable));
+                }
             }
         }
         return sourceViewVariable;
@@ -706,10 +744,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         sourceViewVariable = newSourceViewVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, oldSourceViewVariable, newSourceViewVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -719,18 +758,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setSourceViewVariable(SourceEdgeViewCreationVariable newSourceViewVariable) {
         if (newSourceViewVariable != sourceViewVariable) {
             NotificationChain msgs = null;
-            if (sourceViewVariable != null)
-                msgs = ((InternalEObject) sourceViewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, null, msgs);
-            if (newSourceViewVariable != null)
-                msgs = ((InternalEObject) newSourceViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, null, msgs);
+            if (sourceViewVariable != null) {
+                msgs = ((InternalEObject) sourceViewVariable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, null, msgs);
+            }
+            if (newSourceViewVariable != null) {
+                msgs = ((InternalEObject) newSourceViewVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, null, msgs);
+            }
             msgs = basicSetSourceViewVariable(newSourceViewVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, newSourceViewVariable, newSourceViewVariable));
+        }
     }
 
     /**
@@ -738,20 +782,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public TargetEdgeViewCreationVariable getTargetViewVariable() {
         if (targetViewVariable != null && targetViewVariable.eIsProxy()) {
             InternalEObject oldTargetViewVariable = (InternalEObject) targetViewVariable;
             targetViewVariable = (TargetEdgeViewCreationVariable) eResolveProxy(oldTargetViewVariable);
             if (targetViewVariable != oldTargetViewVariable) {
                 InternalEObject newTargetViewVariable = (InternalEObject) targetViewVariable;
-                NotificationChain msgs = oldTargetViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, null, null);
+                NotificationChain msgs = oldTargetViewVariable.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, null, null);
                 if (newTargetViewVariable.eInternalContainer() == null) {
-                    msgs = newTargetViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, null, msgs);
+                    msgs = newTargetViewVariable.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, oldTargetViewVariable, targetViewVariable));
+                }
             }
         }
         return targetViewVariable;
@@ -776,10 +823,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         targetViewVariable = newTargetViewVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, oldTargetViewVariable, newTargetViewVariable);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -789,18 +837,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setTargetViewVariable(TargetEdgeViewCreationVariable newTargetViewVariable) {
         if (newTargetViewVariable != targetViewVariable) {
             NotificationChain msgs = null;
-            if (targetViewVariable != null)
-                msgs = ((InternalEObject) targetViewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, null, msgs);
-            if (newTargetViewVariable != null)
-                msgs = ((InternalEObject) newTargetViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, null, msgs);
+            if (targetViewVariable != null) {
+                msgs = ((InternalEObject) targetViewVariable).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, null, msgs);
+            }
+            if (newTargetViewVariable != null) {
+                msgs = ((InternalEObject) newTargetViewVariable).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, null, msgs);
+            }
             msgs = basicSetTargetViewVariable(newTargetViewVariable, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, newTargetViewVariable, newTargetViewVariable));
+        }
     }
 
     /**
@@ -808,20 +861,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public InitEdgeCreationOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
             initialOperation = (InitEdgeCreationOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, null, msgs);
+                    msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+                }
             }
         }
         return initialOperation;
@@ -846,10 +902,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -859,18 +916,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitEdgeCreationOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -878,6 +940,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public String getIconPath() {
         return iconPath;
     }
@@ -887,11 +950,13 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setIconPath(String newIconPath) {
         String oldIconPath = iconPath;
         iconPath = newIconPath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__ICON_PATH, oldIconPath, iconPath));
+        }
     }
 
     /**
@@ -899,6 +964,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getExtraSourceMappings() {
         if (extraSourceMappings == null) {
             extraSourceMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS);
@@ -911,6 +977,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public EList<DiagramElementMapping> getExtraTargetMappings() {
         if (extraTargetMappings == null) {
             extraTargetMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS);
@@ -923,6 +990,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public String getConnectionStartPrecondition() {
         return connectionStartPrecondition;
     }
@@ -932,11 +1000,13 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setConnectionStartPrecondition(String newConnectionStartPrecondition) {
         String oldConnectionStartPrecondition = connectionStartPrecondition;
         connectionStartPrecondition = newConnectionStartPrecondition;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION, oldConnectionStartPrecondition, connectionStartPrecondition));
+        }
     }
 
     /**
@@ -944,6 +1014,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getStartingEndPredecessor() {
         return startingEndPredecessor;
     }
@@ -959,10 +1030,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR, oldStartingEndPredecessor,
                     newStartingEndPredecessor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -972,18 +1044,25 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor) {
         if (newStartingEndPredecessor != startingEndPredecessor) {
             NotificationChain msgs = null;
-            if (startingEndPredecessor != null)
-                msgs = ((InternalEObject) startingEndPredecessor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
-            if (newStartingEndPredecessor != null)
-                msgs = ((InternalEObject) newStartingEndPredecessor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
+            if (startingEndPredecessor != null) {
+                msgs = ((InternalEObject) startingEndPredecessor)
+                        .eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
+            }
+            if (newStartingEndPredecessor != null) {
+                msgs = ((InternalEObject) newStartingEndPredecessor)
+                        .eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
+            }
             msgs = basicSetStartingEndPredecessor(newStartingEndPredecessor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR, newStartingEndPredecessor, newStartingEndPredecessor));
+        }
     }
 
     /**
@@ -991,6 +1070,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public MessageEndVariable getFinishingEndPredecessor() {
         return finishingEndPredecessor;
     }
@@ -1006,10 +1086,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__FINISHING_END_PREDECESSOR, oldFinishingEndPredecessor,
                     newFinishingEndPredecessor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -1019,18 +1100,25 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public void setFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor) {
         if (newFinishingEndPredecessor != finishingEndPredecessor) {
             NotificationChain msgs = null;
-            if (finishingEndPredecessor != null)
-                msgs = ((InternalEObject) finishingEndPredecessor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__FINISHING_END_PREDECESSOR, null, msgs);
-            if (newFinishingEndPredecessor != null)
-                msgs = ((InternalEObject) newFinishingEndPredecessor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__FINISHING_END_PREDECESSOR, null, msgs);
+            if (finishingEndPredecessor != null) {
+                msgs = ((InternalEObject) finishingEndPredecessor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__FINISHING_END_PREDECESSOR, null,
+                        msgs);
+            }
+            if (newFinishingEndPredecessor != null) {
+                msgs = ((InternalEObject) newFinishingEndPredecessor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__FINISHING_END_PREDECESSOR, null,
+                        msgs);
+            }
             msgs = basicSetFinishingEndPredecessor(newFinishingEndPredecessor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__FINISHING_END_PREDECESSOR, newFinishingEndPredecessor, newFinishingEndPredecessor));
+        }
     }
 
     /**
@@ -1038,6 +1126,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
+    @Override
     public EdgeMapping getBestMapping(EdgeTarget source, EdgeTarget target, EList<EObject> createdElements) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -1095,24 +1184,29 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         case ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS:
             return getEdgeMappings();
         case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getSourceVariable();
+            }
             return basicGetSourceVariable();
         case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getTargetVariable();
+            }
             return basicGetTargetVariable();
         case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getSourceViewVariable();
+            }
             return basicGetSourceViewVariable();
         case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE:
-            if (resolve)
+            if (resolve) {
                 return getTargetViewVariable();
+            }
             return basicGetTargetViewVariable();
         case ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getInitialOperation();
+            }
             return basicGetInitialOperation();
         case ToolPackage.MESSAGE_CREATION_TOOL__ICON_PATH:
             return getIconPath();
@@ -1210,19 +1304,19 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.MESSAGE_CREATION_TOOL__DOCUMENTATION:
-            setDocumentation(DOCUMENTATION_EDEFAULT);
+            setDocumentation(MessageCreationToolImpl.DOCUMENTATION_EDEFAULT);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__NAME:
-            setName(NAME_EDEFAULT);
+            setName(MessageCreationToolImpl.NAME_EDEFAULT);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(MessageCreationToolImpl.LABEL_EDEFAULT);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__PRECONDITION:
-            setPrecondition(PRECONDITION_EDEFAULT);
+            setPrecondition(MessageCreationToolImpl.PRECONDITION_EDEFAULT);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__FORCE_REFRESH:
-            setForceRefresh(FORCE_REFRESH_EDEFAULT);
+            setForceRefresh(MessageCreationToolImpl.FORCE_REFRESH_EDEFAULT);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__FILTERS:
             getFilters().clear();
@@ -1246,7 +1340,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             setInitialOperation((InitEdgeCreationOperation) null);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__ICON_PATH:
-            setIconPath(ICON_PATH_EDEFAULT);
+            setIconPath(MessageCreationToolImpl.ICON_PATH_EDEFAULT);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS:
             getExtraSourceMappings().clear();
@@ -1255,7 +1349,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             getExtraTargetMappings().clear();
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION:
-            setConnectionStartPrecondition(CONNECTION_START_PRECONDITION_EDEFAULT);
+            setConnectionStartPrecondition(MessageCreationToolImpl.CONNECTION_START_PRECONDITION_EDEFAULT);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR:
             setStartingEndPredecessor((MessageEndVariable) null);
@@ -1276,15 +1370,15 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.MESSAGE_CREATION_TOOL__DOCUMENTATION:
-            return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+            return MessageCreationToolImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !MessageCreationToolImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case ToolPackage.MESSAGE_CREATION_TOOL__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return MessageCreationToolImpl.NAME_EDEFAULT == null ? name != null : !MessageCreationToolImpl.NAME_EDEFAULT.equals(name);
         case ToolPackage.MESSAGE_CREATION_TOOL__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return MessageCreationToolImpl.LABEL_EDEFAULT == null ? label != null : !MessageCreationToolImpl.LABEL_EDEFAULT.equals(label);
         case ToolPackage.MESSAGE_CREATION_TOOL__PRECONDITION:
-            return PRECONDITION_EDEFAULT == null ? precondition != null : !PRECONDITION_EDEFAULT.equals(precondition);
+            return MessageCreationToolImpl.PRECONDITION_EDEFAULT == null ? precondition != null : !MessageCreationToolImpl.PRECONDITION_EDEFAULT.equals(precondition);
         case ToolPackage.MESSAGE_CREATION_TOOL__FORCE_REFRESH:
-            return forceRefresh != FORCE_REFRESH_EDEFAULT;
+            return forceRefresh != MessageCreationToolImpl.FORCE_REFRESH_EDEFAULT;
         case ToolPackage.MESSAGE_CREATION_TOOL__FILTERS:
             return filters != null && !filters.isEmpty();
         case ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS:
@@ -1300,13 +1394,14 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         case ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION:
             return initialOperation != null;
         case ToolPackage.MESSAGE_CREATION_TOOL__ICON_PATH:
-            return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+            return MessageCreationToolImpl.ICON_PATH_EDEFAULT == null ? iconPath != null : !MessageCreationToolImpl.ICON_PATH_EDEFAULT.equals(iconPath);
         case ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS:
             return extraSourceMappings != null && !extraSourceMappings.isEmpty();
         case ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS:
             return extraTargetMappings != null && !extraTargetMappings.isEmpty();
         case ToolPackage.MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION:
-            return CONNECTION_START_PRECONDITION_EDEFAULT == null ? connectionStartPrecondition != null : !CONNECTION_START_PRECONDITION_EDEFAULT.equals(connectionStartPrecondition);
+            return MessageCreationToolImpl.CONNECTION_START_PRECONDITION_EDEFAULT == null ? connectionStartPrecondition != null : !MessageCreationToolImpl.CONNECTION_START_PRECONDITION_EDEFAULT
+                    .equals(connectionStartPrecondition);
         case ToolPackage.MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR:
             return startingEndPredecessor != null;
         case ToolPackage.MESSAGE_CREATION_TOOL__FINISHING_END_PREDECESSOR:
@@ -1498,8 +1593,9 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (documentation: ");

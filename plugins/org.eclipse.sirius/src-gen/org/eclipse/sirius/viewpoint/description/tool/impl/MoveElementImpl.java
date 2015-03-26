@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -39,7 +39,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
      * The default value of the '{@link #getNewContainerExpression()
      * <em>New Container Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getNewContainerExpression()
      * @generated
      * @ordered
@@ -50,17 +50,17 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
      * The cached value of the '{@link #getNewContainerExpression()
      * <em>New Container Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getNewContainerExpression()
      * @generated
      * @ordered
      */
-    protected String newContainerExpression = NEW_CONTAINER_EXPRESSION_EDEFAULT;
+    protected String newContainerExpression = MoveElementImpl.NEW_CONTAINER_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -70,16 +70,16 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
      */
-    protected String featureName = FEATURE_NAME_EDEFAULT;
+    protected String featureName = MoveElementImpl.FEATURE_NAME_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MoveElementImpl() {
@@ -88,7 +88,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,49 +98,55 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getNewContainerExpression() {
         return newContainerExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setNewContainerExpression(String newNewContainerExpression) {
         String oldNewContainerExpression = newContainerExpression;
         newContainerExpression = newNewContainerExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MOVE_ELEMENT__NEW_CONTAINER_EXPRESSION, oldNewContainerExpression, newContainerExpression));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getFeatureName() {
         return featureName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setFeatureName(String newFeatureName) {
         String oldFeatureName = featureName;
         featureName = newFeatureName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MOVE_ELEMENT__FEATURE_NAME, oldFeatureName, featureName));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +162,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,17 +180,17 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ToolPackage.MOVE_ELEMENT__NEW_CONTAINER_EXPRESSION:
-            setNewContainerExpression(NEW_CONTAINER_EXPRESSION_EDEFAULT);
+            setNewContainerExpression(MoveElementImpl.NEW_CONTAINER_EXPRESSION_EDEFAULT);
             return;
         case ToolPackage.MOVE_ELEMENT__FEATURE_NAME:
-            setFeatureName(FEATURE_NAME_EDEFAULT);
+            setFeatureName(MoveElementImpl.FEATURE_NAME_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -192,29 +198,30 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.MOVE_ELEMENT__NEW_CONTAINER_EXPRESSION:
-            return NEW_CONTAINER_EXPRESSION_EDEFAULT == null ? newContainerExpression != null : !NEW_CONTAINER_EXPRESSION_EDEFAULT.equals(newContainerExpression);
+            return MoveElementImpl.NEW_CONTAINER_EXPRESSION_EDEFAULT == null ? newContainerExpression != null : !MoveElementImpl.NEW_CONTAINER_EXPRESSION_EDEFAULT.equals(newContainerExpression);
         case ToolPackage.MOVE_ELEMENT__FEATURE_NAME:
-            return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
+            return MoveElementImpl.FEATURE_NAME_EDEFAULT == null ? featureName != null : !MoveElementImpl.FEATURE_NAME_EDEFAULT.equals(featureName);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (newContainerExpression: ");

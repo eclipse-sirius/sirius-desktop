@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.util;
 
@@ -101,8 +101,8 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public DiagramSwitch() {
-        if (modelPackage == null) {
-            modelPackage = DiagramPackage.eINSTANCE;
+        if (DiagramSwitch.modelPackage == null) {
+            DiagramSwitch.modelPackage = DiagramPackage.eINSTANCE;
         }
     }
 
@@ -129,7 +129,7 @@ public class DiagramSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == DiagramSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -151,717 +151,965 @@ public class DiagramSwitch<T> {
         case DiagramPackage.DDIAGRAM: {
             DDiagram dDiagram = (DDiagram) theEObject;
             T result = caseDDiagram(dDiagram);
-            if (result == null)
+            if (result == null) {
                 result = caseDRepresentation(dDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTarget(dDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDContainer(dDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(dDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDModelElement(dDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DSEMANTIC_DIAGRAM: {
             DSemanticDiagram dSemanticDiagram = (DSemanticDiagram) theEObject;
             T result = caseDSemanticDiagram(dSemanticDiagram);
-            if (result == null)
+            if (result == null) {
                 result = caseDDiagram(dSemanticDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dSemanticDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentation(dSemanticDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTarget(dSemanticDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDContainer(dSemanticDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDocumentedElement(dSemanticDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dSemanticDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDModelElement(dSemanticDiagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DDIAGRAM_ELEMENT: {
             DDiagramElement dDiagramElement = (DDiagramElement) theEObject;
             T result = caseDDiagramElement(dDiagramElement);
-            if (result == null)
+            if (result == null) {
                 result = caseDRepresentationElement(dDiagramElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dDiagramElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dDiagramElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dDiagramElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dDiagramElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dDiagramElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.GRAPHICAL_FILTER: {
             GraphicalFilter graphicalFilter = (GraphicalFilter) theEObject;
             T result = caseGraphicalFilter(graphicalFilter);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.HIDE_FILTER: {
             HideFilter hideFilter = (HideFilter) theEObject;
             T result = caseHideFilter(hideFilter);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalFilter(hideFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.HIDE_LABEL_FILTER: {
             HideLabelFilter hideLabelFilter = (HideLabelFilter) theEObject;
             T result = caseHideLabelFilter(hideLabelFilter);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalFilter(hideLabelFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.FOLDING_POINT_FILTER: {
             FoldingPointFilter foldingPointFilter = (FoldingPointFilter) theEObject;
             T result = caseFoldingPointFilter(foldingPointFilter);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalFilter(foldingPointFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.FOLDING_FILTER: {
             FoldingFilter foldingFilter = (FoldingFilter) theEObject;
             T result = caseFoldingFilter(foldingFilter);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalFilter(foldingFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.APPLIED_COMPOSITE_FILTERS: {
             AppliedCompositeFilters appliedCompositeFilters = (AppliedCompositeFilters) theEObject;
             T result = caseAppliedCompositeFilters(appliedCompositeFilters);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalFilter(appliedCompositeFilters);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.ABSOLUTE_BOUNDS_FILTER: {
             AbsoluteBoundsFilter absoluteBoundsFilter = (AbsoluteBoundsFilter) theEObject;
             T result = caseAbsoluteBoundsFilter(absoluteBoundsFilter);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalFilter(absoluteBoundsFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.ABSTRACT_DNODE: {
             AbstractDNode abstractDNode = (AbstractDNode) theEObject;
             T result = caseAbstractDNode(abstractDNode);
-            if (result == null)
+            if (result == null) {
                 result = caseDDiagramElement(abstractDNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(abstractDNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(abstractDNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(abstractDNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(abstractDNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(abstractDNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(abstractDNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DNODE: {
             DNode dNode = (DNode) theEObject;
             T result = caseDNode(dNode);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractDNode(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeTarget(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTarget(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDDiagramElement(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER: {
             DDiagramElementContainer dDiagramElementContainer = (DDiagramElementContainer) theEObject;
             T result = caseDDiagramElementContainer(dDiagramElementContainer);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractDNode(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeTarget(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTarget(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDContainer(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDDiagramElement(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dDiagramElementContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DNODE_CONTAINER: {
             DNodeContainer dNodeContainer = (DNodeContainer) theEObject;
             T result = caseDNodeContainer(dNodeContainer);
-            if (result == null)
+            if (result == null) {
                 result = caseDDiagramElementContainer(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractDNode(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeTarget(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTarget(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDContainer(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDDiagramElement(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dNodeContainer);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DNODE_LIST: {
             DNodeList dNodeList = (DNodeList) theEObject;
             T result = caseDNodeList(dNodeList);
-            if (result == null)
+            if (result == null) {
                 result = caseDDiagramElementContainer(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractDNode(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeTarget(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDragAndDropTarget(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDContainer(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDDiagramElement(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dNodeList);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DNODE_LIST_ELEMENT: {
             DNodeListElement dNodeListElement = (DNodeListElement) theEObject;
             T result = caseDNodeListElement(dNodeListElement);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractDNode(dNodeListElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDDiagramElement(dNodeListElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dNodeListElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dNodeListElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dNodeListElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dNodeListElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dNodeListElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dNodeListElement);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DEDGE: {
             DEdge dEdge = (DEdge) theEObject;
             T result = caseDEdge(dEdge);
-            if (result == null)
+            if (result == null) {
                 result = caseDDiagramElement(dEdge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseEdgeTarget(dEdge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRepresentationElement(dEdge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDLabelled(dEdge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDMappingBased(dEdge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDStylizable(dEdge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dEdge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDSemanticDecorator(dEdge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.NODE_STYLE: {
             NodeStyle nodeStyle = (NodeStyle) theEObject;
             T result = caseNodeStyle(nodeStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseLabelStyle(nodeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(nodeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(nodeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(nodeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(nodeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(nodeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DOT: {
             Dot dot = (Dot) theEObject;
             T result = caseDot(dot);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.GAUGE_SECTION: {
             GaugeSection gaugeSection = (GaugeSection) theEObject;
             T result = caseGaugeSection(gaugeSection);
-            if (result == null)
+            if (result == null) {
                 result = caseCustomizable(gaugeSection);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.CONTAINER_STYLE: {
             ContainerStyle containerStyle = (ContainerStyle) theEObject;
             T result = caseContainerStyle(containerStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseLabelStyle(containerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(containerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(containerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(containerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(containerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(containerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.FLAT_CONTAINER_STYLE: {
             FlatContainerStyle flatContainerStyle = (FlatContainerStyle) theEObject;
             T result = caseFlatContainerStyle(flatContainerStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerStyle(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.SHAPE_CONTAINER_STYLE: {
             ShapeContainerStyle shapeContainerStyle = (ShapeContainerStyle) theEObject;
             T result = caseShapeContainerStyle(shapeContainerStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerStyle(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.SQUARE: {
             Square square = (Square) theEObject;
             T result = caseSquare(square);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.ELLIPSE: {
             Ellipse ellipse = (Ellipse) theEObject;
             T result = caseEllipse(ellipse);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.LOZENGE: {
             Lozenge lozenge = (Lozenge) theEObject;
             T result = caseLozenge(lozenge);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.BUNDLED_IMAGE: {
             BundledImage bundledImage = (BundledImage) theEObject;
             T result = caseBundledImage(bundledImage);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.WORKSPACE_IMAGE: {
             WorkspaceImage workspaceImage = (WorkspaceImage) theEObject;
             T result = caseWorkspaceImage(workspaceImage);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseContainerStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.CUSTOM_STYLE: {
             CustomStyle customStyle = (CustomStyle) theEObject;
             T result = caseCustomStyle(customStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(customStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(customStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(customStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(customStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(customStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(customStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(customStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.EDGE_TARGET: {
             EdgeTarget edgeTarget = (EdgeTarget) theEObject;
             T result = caseEdgeTarget(edgeTarget);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.EDGE_STYLE: {
             EdgeStyle edgeStyle = (EdgeStyle) theEObject;
             T result = caseEdgeStyle(edgeStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseStyle(edgeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(edgeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(edgeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.GAUGE_COMPOSITE_STYLE: {
             GaugeCompositeStyle gaugeCompositeStyle = (GaugeCompositeStyle) theEObject;
             T result = caseGaugeCompositeStyle(gaugeCompositeStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.BORDERED_STYLE: {
             BorderedStyle borderedStyle = (BorderedStyle) theEObject;
             T result = caseBorderedStyle(borderedStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseStyle(borderedStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(borderedStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(borderedStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.NOTE: {
             Note note = (Note) theEObject;
             T result = caseNote(note);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.FILTER_VARIABLE_HISTORY: {
             FilterVariableHistory filterVariableHistory = (FilterVariableHistory) theEObject;
             T result = caseFilterVariableHistory(filterVariableHistory);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.FILTER_VARIABLE_VALUE: {
             FilterVariableValue filterVariableValue = (FilterVariableValue) theEObject;
             T result = caseFilterVariableValue(filterVariableValue);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.COLLAPSE_FILTER: {
             CollapseFilter collapseFilter = (CollapseFilter) theEObject;
             T result = caseCollapseFilter(collapseFilter);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalFilter(collapseFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.INDIRECTLY_COLLAPSE_FILTER: {
             IndirectlyCollapseFilter indirectlyCollapseFilter = (IndirectlyCollapseFilter) theEObject;
             T result = caseIndirectlyCollapseFilter(indirectlyCollapseFilter);
-            if (result == null)
+            if (result == null) {
                 result = caseCollapseFilter(indirectlyCollapseFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseGraphicalFilter(indirectlyCollapseFilter);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.BEGIN_LABEL_STYLE: {
             BeginLabelStyle beginLabelStyle = (BeginLabelStyle) theEObject;
             T result = caseBeginLabelStyle(beginLabelStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseBasicLabelStyle(beginLabelStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(beginLabelStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.CENTER_LABEL_STYLE: {
             CenterLabelStyle centerLabelStyle = (CenterLabelStyle) theEObject;
             T result = caseCenterLabelStyle(centerLabelStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseBasicLabelStyle(centerLabelStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(centerLabelStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.END_LABEL_STYLE: {
             EndLabelStyle endLabelStyle = (EndLabelStyle) theEObject;
             T result = caseEndLabelStyle(endLabelStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseBasicLabelStyle(endLabelStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(endLabelStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.BRACKET_EDGE_STYLE: {
             BracketEdgeStyle bracketEdgeStyle = (BracketEdgeStyle) theEObject;
             T result = caseBracketEdgeStyle(bracketEdgeStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseEdgeStyle(bracketEdgeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyle(bracketEdgeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseDRefreshable(bracketEdgeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseCustomizable(bracketEdgeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.COMPUTED_STYLE_DESCRIPTION_REGISTRY: {
             ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = (ComputedStyleDescriptionRegistry) theEObject;
             T result = caseComputedStyleDescriptionRegistry(computedStyleDescriptionRegistry);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DiagramPackage.DRAG_AND_DROP_TARGET: {
             DragAndDropTarget dragAndDropTarget = (DragAndDropTarget) theEObject;
             T result = caseDragAndDropTarget(dragAndDropTarget);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -1180,7 +1428,7 @@ public class DiagramSwitch<T> {
      * <em>Dot</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1435,7 +1683,7 @@ public class DiagramSwitch<T> {
      * <em>Note</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

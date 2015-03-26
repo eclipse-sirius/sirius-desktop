@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -38,7 +38,7 @@ public interface Dot extends NodeStyle {
      * Returns the value of the '<em><b>Background Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The background color. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' containment
      *         reference.
      * @see #setBackgroundColor(RGBValues)
@@ -67,7 +67,7 @@ public interface Dot extends NodeStyle {
      * default value is <code>"2"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> An expression computing the
      * size of a stroke. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Stroke Size Computation Expression</em>'
      *         attribute.
      * @see #setStrokeSizeComputationExpression(String)
@@ -85,7 +85,7 @@ public interface Dot extends NodeStyle {
      * {@link org.eclipse.sirius.diagram.Dot#getStrokeSizeComputationExpression
      * <em>Stroke Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Stroke Size Computation Expression</em>' attribute.

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.provider;
 
@@ -24,14 +24,14 @@ import org.eclipse.sirius.diagram.LineStyle;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.BracketEdgeStyle} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class BracketEdgeStyleItemProvider extends EdgeStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BracketEdgeStyleItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class BracketEdgeStyleItemProvider extends EdgeStyleItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class BracketEdgeStyleItemProvider extends EdgeStyleItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class BracketEdgeStyleItemProvider extends EdgeStyleItemProvider {
 
     /**
      * Overridden to not show routing style for bracket edge.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override

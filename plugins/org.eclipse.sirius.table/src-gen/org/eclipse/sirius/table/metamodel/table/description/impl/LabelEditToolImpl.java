@@ -68,6 +68,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
      * 
      * @generated
      */
+    @Override
     public EditMaskVariables getMask() {
         return mask;
     }
@@ -82,10 +83,11 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
         mask = newMask;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.LABEL_EDIT_TOOL__MASK, oldMask, newMask);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -95,18 +97,23 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
      * 
      * @generated
      */
+    @Override
     public void setMask(EditMaskVariables newMask) {
         if (newMask != mask) {
             NotificationChain msgs = null;
-            if (mask != null)
-                msgs = ((InternalEObject) mask).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LABEL_EDIT_TOOL__MASK, null, msgs);
-            if (newMask != null)
-                msgs = ((InternalEObject) newMask).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.LABEL_EDIT_TOOL__MASK, null, msgs);
+            if (mask != null) {
+                msgs = ((InternalEObject) mask).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LABEL_EDIT_TOOL__MASK, null, msgs);
+            }
+            if (newMask != null) {
+                msgs = ((InternalEObject) newMask).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.LABEL_EDIT_TOOL__MASK, null, msgs);
+            }
             msgs = basicSetMask(newMask, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LABEL_EDIT_TOOL__MASK, newMask, newMask));
+        }
     }
 
     /**

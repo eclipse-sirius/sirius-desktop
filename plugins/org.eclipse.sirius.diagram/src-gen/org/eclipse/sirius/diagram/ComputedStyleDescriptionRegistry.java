@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -21,12 +21,12 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry#getComputedStyleDescriptions
  * <em>Computed Style Descriptions</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getComputedStyleDescriptionRegistry()
  * @model

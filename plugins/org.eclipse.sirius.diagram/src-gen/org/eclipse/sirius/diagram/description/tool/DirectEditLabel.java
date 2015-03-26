@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.tool;
 
@@ -48,7 +48,7 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Mask</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The edit mask. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Mask</em>' containment reference.
      * @see #setMask(EditMaskVariables)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDirectEditLabel_Mask()
@@ -74,7 +74,7 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The first operation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -103,7 +103,7 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> Expression that computes the name of a diagramElement
      * to edit with direct edit tool. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Input Label Expression</em>' attribute.
      * @see #setInputLabelExpression(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDirectEditLabel_InputLabelExpression()
@@ -139,7 +139,7 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping#getLabelDirectEdit
      * <em>Label Direct Edit</em>}' <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @model kind="operation" required="true"
      * @generated
      */

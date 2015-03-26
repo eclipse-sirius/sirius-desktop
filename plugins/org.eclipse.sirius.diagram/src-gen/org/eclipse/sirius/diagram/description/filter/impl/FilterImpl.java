@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.filter.impl;
 
@@ -53,7 +53,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
      * @generated
      * @ordered
      */
-    protected FilterKind filterKind = FILTER_KIND_EDEFAULT;
+    protected FilterKind filterKind = FilterImpl.FILTER_KIND_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -79,6 +79,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public FilterKind getFilterKind() {
         return filterKind;
     }
@@ -88,11 +89,13 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public void setFilterKind(FilterKind newFilterKind) {
         FilterKind oldFilterKind = filterKind;
-        filterKind = newFilterKind == null ? FILTER_KIND_EDEFAULT : newFilterKind;
-        if (eNotificationRequired())
+        filterKind = newFilterKind == null ? FilterImpl.FILTER_KIND_EDEFAULT : newFilterKind;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER__FILTER_KIND, oldFilterKind, filterKind));
+        }
     }
 
     /**
@@ -100,6 +103,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public boolean isVisible(DDiagramElement element) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -144,7 +148,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
     public void eUnset(int featureID) {
         switch (featureID) {
         case FilterPackage.FILTER__FILTER_KIND:
-            setFilterKind(FILTER_KIND_EDEFAULT);
+            setFilterKind(FilterImpl.FILTER_KIND_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -159,7 +163,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case FilterPackage.FILTER__FILTER_KIND:
-            return filterKind != FILTER_KIND_EDEFAULT;
+            return filterKind != FilterImpl.FILTER_KIND_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -171,8 +175,9 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (filterKind: ");

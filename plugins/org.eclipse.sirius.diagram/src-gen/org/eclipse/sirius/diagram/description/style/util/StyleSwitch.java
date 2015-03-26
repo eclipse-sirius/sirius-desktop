@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.util;
 
@@ -69,8 +69,8 @@ public class StyleSwitch<T> {
      * @generated
      */
     public StyleSwitch() {
-        if (modelPackage == null) {
-            modelPackage = StylePackage.eINSTANCE;
+        if (StyleSwitch.modelPackage == null) {
+            StyleSwitch.modelPackage = StylePackage.eINSTANCE;
         }
     }
 
@@ -97,7 +97,7 @@ public class StyleSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == StyleSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -119,337 +119,450 @@ public class StyleSwitch<T> {
         case StylePackage.BORDERED_STYLE_DESCRIPTION: {
             BorderedStyleDescription borderedStyleDescription = (BorderedStyleDescription) theEObject;
             T result = caseBorderedStyleDescription(borderedStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseStyleDescription(borderedStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.NODE_STYLE_DESCRIPTION: {
             NodeStyleDescription nodeStyleDescription = (NodeStyleDescription) theEObject;
             T result = caseNodeStyleDescription(nodeStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseBorderedStyleDescription(nodeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(nodeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(nodeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(nodeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(nodeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.CUSTOM_STYLE_DESCRIPTION: {
             CustomStyleDescription customStyleDescription = (CustomStyleDescription) theEObject;
             T result = caseCustomStyleDescription(customStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyleDescription(customStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(customStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(customStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(customStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(customStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(customStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.SQUARE_DESCRIPTION: {
             SquareDescription squareDescription = (SquareDescription) theEObject;
             T result = caseSquareDescription(squareDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyleDescription(squareDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(squareDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(squareDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(squareDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(squareDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(squareDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.LOZENGE_NODE_DESCRIPTION: {
             LozengeNodeDescription lozengeNodeDescription = (LozengeNodeDescription) theEObject;
             T result = caseLozengeNodeDescription(lozengeNodeDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyleDescription(lozengeNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(lozengeNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(lozengeNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(lozengeNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(lozengeNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(lozengeNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.ELLIPSE_NODE_DESCRIPTION: {
             EllipseNodeDescription ellipseNodeDescription = (EllipseNodeDescription) theEObject;
             T result = caseEllipseNodeDescription(ellipseNodeDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyleDescription(ellipseNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(ellipseNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(ellipseNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(ellipseNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(ellipseNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(ellipseNodeDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION: {
             BundledImageDescription bundledImageDescription = (BundledImageDescription) theEObject;
             T result = caseBundledImageDescription(bundledImageDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyleDescription(bundledImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(bundledImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(bundledImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(bundledImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(bundledImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(bundledImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.NOTE_DESCRIPTION: {
             NoteDescription noteDescription = (NoteDescription) theEObject;
             T result = caseNoteDescription(noteDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyleDescription(noteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(noteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(noteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(noteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(noteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(noteDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.DOT_DESCRIPTION: {
             DotDescription dotDescription = (DotDescription) theEObject;
             T result = caseDotDescription(dotDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyleDescription(dotDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(dotDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(dotDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(dotDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(dotDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(dotDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.GAUGE_COMPOSITE_STYLE_DESCRIPTION: {
             GaugeCompositeStyleDescription gaugeCompositeStyleDescription = (GaugeCompositeStyleDescription) theEObject;
             T result = caseGaugeCompositeStyleDescription(gaugeCompositeStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyleDescription(gaugeCompositeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(gaugeCompositeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(gaugeCompositeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(gaugeCompositeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(gaugeCompositeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(gaugeCompositeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.GAUGE_SECTION_DESCRIPTION: {
             GaugeSectionDescription gaugeSectionDescription = (GaugeSectionDescription) theEObject;
             T result = caseGaugeSectionDescription(gaugeSectionDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION: {
             SizeComputationContainerStyleDescription sizeComputationContainerStyleDescription = (SizeComputationContainerStyleDescription) theEObject;
             T result = caseSizeComputationContainerStyleDescription(sizeComputationContainerStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION: {
             RoundedCornerStyleDescription roundedCornerStyleDescription = (RoundedCornerStyleDescription) theEObject;
             T result = caseRoundedCornerStyleDescription(roundedCornerStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseStyleDescription(roundedCornerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.CONTAINER_STYLE_DESCRIPTION: {
             ContainerStyleDescription containerStyleDescription = (ContainerStyleDescription) theEObject;
             T result = caseContainerStyleDescription(containerStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseRoundedCornerStyleDescription(containerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(containerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(containerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(containerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(containerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(containerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION: {
             FlatContainerStyleDescription flatContainerStyleDescription = (FlatContainerStyleDescription) theEObject;
             T result = caseFlatContainerStyleDescription(flatContainerStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerStyleDescription(flatContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSizeComputationContainerStyleDescription(flatContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRoundedCornerStyleDescription(flatContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(flatContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(flatContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(flatContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(flatContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(flatContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION: {
             ShapeContainerStyleDescription shapeContainerStyleDescription = (ShapeContainerStyleDescription) theEObject;
             T result = caseShapeContainerStyleDescription(shapeContainerStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerStyleDescription(shapeContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseSizeComputationContainerStyleDescription(shapeContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRoundedCornerStyleDescription(shapeContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(shapeContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(shapeContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(shapeContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(shapeContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(shapeContainerStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.WORKSPACE_IMAGE_DESCRIPTION: {
             WorkspaceImageDescription workspaceImageDescription = (WorkspaceImageDescription) theEObject;
             T result = caseWorkspaceImageDescription(workspaceImageDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyleDescription(workspaceImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseContainerStyleDescription(workspaceImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyleDescription(workspaceImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyleDescription(workspaceImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseTooltipStyleDescription(workspaceImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseRoundedCornerStyleDescription(workspaceImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(workspaceImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(workspaceImageDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.EDGE_STYLE_DESCRIPTION: {
             EdgeStyleDescription edgeStyleDescription = (EdgeStyleDescription) theEObject;
             T result = caseEdgeStyleDescription(edgeStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseStyleDescription(edgeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.BEGIN_LABEL_STYLE_DESCRIPTION: {
             BeginLabelStyleDescription beginLabelStyleDescription = (BeginLabelStyleDescription) theEObject;
             T result = caseBeginLabelStyleDescription(beginLabelStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(beginLabelStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.CENTER_LABEL_STYLE_DESCRIPTION: {
             CenterLabelStyleDescription centerLabelStyleDescription = (CenterLabelStyleDescription) theEObject;
             T result = caseCenterLabelStyleDescription(centerLabelStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(centerLabelStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.END_LABEL_STYLE_DESCRIPTION: {
             EndLabelStyleDescription endLabelStyleDescription = (EndLabelStyleDescription) theEObject;
             T result = caseEndLabelStyleDescription(endLabelStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseBasicLabelStyleDescription(endLabelStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case StylePackage.BRACKET_EDGE_STYLE_DESCRIPTION: {
             BracketEdgeStyleDescription bracketEdgeStyleDescription = (BracketEdgeStyleDescription) theEObject;
             T result = caseBracketEdgeStyleDescription(bracketEdgeStyleDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseEdgeStyleDescription(bracketEdgeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseStyleDescription(bracketEdgeStyleDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -649,7 +762,7 @@ public class StyleSwitch<T> {
      * <em>Size Computation Container Style Description</em>'. <!--
      * begin-user-doc --> This implementation returns null; returning a non-null
      * result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -887,7 +1000,7 @@ public class StyleSwitch<T> {
      * <em>Tooltip Style Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch.
-     * 
+     *
      * @since 0.9.0 <!-- end-user-doc -->
      * @param object
      *            the target of the switch.

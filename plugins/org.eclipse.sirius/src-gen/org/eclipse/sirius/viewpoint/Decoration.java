@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint;
 
@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
  *
  * <!-- begin-model-doc --> Represent a decoration of a diagram element with a
  * specific icon, based on its relationships with MetaElements of the MetaModel.
- * 
+ *
  * <!-- end-model-doc -->
  *
  * <p>
@@ -40,7 +40,7 @@ public interface Decoration extends EObject {
      * Returns the value of the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * referenced DecorationDescription. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(DecorationDescription)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDecoration_Description()
@@ -54,7 +54,7 @@ public interface Decoration extends EObject {
      * {@link org.eclipse.sirius.viewpoint.Decoration#getDescription
      * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

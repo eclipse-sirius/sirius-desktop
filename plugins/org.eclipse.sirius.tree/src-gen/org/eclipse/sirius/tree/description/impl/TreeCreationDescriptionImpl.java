@@ -69,13 +69,15 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
      * 
      * @generated
      */
+    @Override
     public TreeDescription getTreeDescription() {
         if (treeDescription != null && treeDescription.eIsProxy()) {
             InternalEObject oldTreeDescription = (InternalEObject) treeDescription;
             treeDescription = (TreeDescription) eResolveProxy(oldTreeDescription);
             if (treeDescription != oldTreeDescription) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.TREE_CREATION_DESCRIPTION__TREE_DESCRIPTION, oldTreeDescription, treeDescription));
+                }
             }
         }
         return treeDescription;
@@ -95,11 +97,13 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
      * 
      * @generated
      */
+    @Override
     public void setTreeDescription(TreeDescription newTreeDescription) {
         TreeDescription oldTreeDescription = treeDescription;
         treeDescription = newTreeDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.TREE_CREATION_DESCRIPTION__TREE_DESCRIPTION, oldTreeDescription, treeDescription));
+        }
     }
 
     /**
@@ -111,8 +115,9 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DescriptionPackage.TREE_CREATION_DESCRIPTION__TREE_DESCRIPTION:
-            if (resolve)
+            if (resolve) {
                 return getTreeDescription();
+            }
             return basicGetTreeDescription();
         }
         return super.eGet(featureID, resolve, coreType);

@@ -203,7 +203,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * {@link org.eclipse.sirius.diagram.sequence.template.ConditionalLifelineStyle}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All conditional styles. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Life Line Styles</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTLifelineMapping_ConditionalLifeLineStyles()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -44,7 +44,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * end-user-doc --> <!-- begin-model-doc --> The path of the icon to display
      * in the palette. If unset, the icon corresponding to the semantic element
      * associated with the mapping will be displayed. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolDescription_IconPath()
@@ -58,7 +58,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription#getIconPath
      * <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()
@@ -71,7 +71,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The variable container that represents the semantic element of the
      * clicked view. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolDescription_Element()
@@ -89,7 +89,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription#getElement
      * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -102,7 +102,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The variable that represents the clicked view. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Element View</em>' containment reference.
      * @see #setElementView(ElementViewVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolDescription_ElementView()
@@ -120,7 +120,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription#getElementView
      * <em>Element View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element View</em>' containment
      *            reference.
@@ -134,7 +134,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The first operation to execute. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -149,7 +149,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.

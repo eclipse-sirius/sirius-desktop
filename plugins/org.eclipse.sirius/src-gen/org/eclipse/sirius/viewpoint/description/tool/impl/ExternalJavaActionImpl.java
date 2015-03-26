@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
@@ -52,7 +52,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
      * The cached value of the '{@link #getSubModelOperations()
      * <em>Sub Model Operations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubModelOperations()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -72,17 +72,17 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = ExternalJavaActionImpl.ID_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getParameters()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExternalJavaActionImpl() {
@@ -100,7 +100,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,9 +110,10 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ModelOperation> getSubModelOperations() {
         if (subModelOperations == null) {
             subModelOperations = new EObjectContainmentEList.Resolving<ModelOperation>(ModelOperation.class, this, ToolPackage.EXTERNAL_JAVA_ACTION__SUB_MODEL_OPERATIONS);
@@ -122,30 +123,34 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.EXTERNAL_JAVA_ACTION__ID, oldId, id));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ExternalJavaActionParameter> getParameters() {
         if (parameters == null) {
             parameters = new EObjectContainmentEList.Resolving<ExternalJavaActionParameter>(ExternalJavaActionParameter.class, this, ToolPackage.EXTERNAL_JAVA_ACTION__PARAMETERS);
@@ -155,7 +160,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +176,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +194,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -213,7 +218,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +228,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
             getSubModelOperations().clear();
             return;
         case ToolPackage.EXTERNAL_JAVA_ACTION__ID:
-            setId(ID_EDEFAULT);
+            setId(ExternalJavaActionImpl.ID_EDEFAULT);
             return;
         case ToolPackage.EXTERNAL_JAVA_ACTION__PARAMETERS:
             getParameters().clear();
@@ -234,7 +239,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +248,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
         case ToolPackage.EXTERNAL_JAVA_ACTION__SUB_MODEL_OPERATIONS:
             return subModelOperations != null && !subModelOperations.isEmpty();
         case ToolPackage.EXTERNAL_JAVA_ACTION__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return ExternalJavaActionImpl.ID_EDEFAULT == null ? id != null : !ExternalJavaActionImpl.ID_EDEFAULT.equals(id);
         case ToolPackage.EXTERNAL_JAVA_ACTION__PARAMETERS:
             return parameters != null && !parameters.isEmpty();
         }
@@ -252,7 +257,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +281,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,13 +305,14 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");

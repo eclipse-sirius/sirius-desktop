@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -39,7 +39,7 @@ public class MetaModelExtensionImpl extends MinimalEObjectImpl.Container impleme
      * The cached value of the '{@link #getExtensionGroup()
      * <em>Extension Group</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getExtensionGroup()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class MetaModelExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MetaModelExtensionImpl() {
@@ -57,7 +57,7 @@ public class MetaModelExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,16 +67,18 @@ public class MetaModelExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObject getExtensionGroup() {
         if (extensionGroup != null && extensionGroup.eIsProxy()) {
             InternalEObject oldExtensionGroup = (InternalEObject) extensionGroup;
             extensionGroup = eResolveProxy(oldExtensionGroup);
             if (extensionGroup != oldExtensionGroup) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.META_MODEL_EXTENSION__EXTENSION_GROUP, oldExtensionGroup, extensionGroup));
+                }
             }
         }
         return extensionGroup;
@@ -84,7 +86,7 @@ public class MetaModelExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetExtensionGroup() {
@@ -93,27 +95,30 @@ public class MetaModelExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setExtensionGroup(EObject newExtensionGroup) {
         EObject oldExtensionGroup = extensionGroup;
         extensionGroup = newExtensionGroup;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.META_MODEL_EXTENSION__EXTENSION_GROUP, oldExtensionGroup, extensionGroup));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.META_MODEL_EXTENSION__EXTENSION_GROUP:
-            if (resolve)
+            if (resolve) {
                 return getExtensionGroup();
+            }
             return basicGetExtensionGroup();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -121,7 +126,7 @@ public class MetaModelExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +141,7 @@ public class MetaModelExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +156,7 @@ public class MetaModelExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

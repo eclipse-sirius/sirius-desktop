@@ -87,13 +87,15 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public SequenceDDiagram getSequenceDiagram() {
         if (sequenceDiagram != null && sequenceDiagram.eIsProxy()) {
             InternalEObject oldSequenceDiagram = (InternalEObject) sequenceDiagram;
             sequenceDiagram = (SequenceDDiagram) eResolveProxy(oldSequenceDiagram);
             if (sequenceDiagram != oldSequenceDiagram) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrderingPackage.EVENT_ENDS_ORDERING__SEQUENCE_DIAGRAM, oldSequenceDiagram, sequenceDiagram));
+                }
             }
         }
         return sequenceDiagram;
@@ -113,11 +115,13 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public void setSequenceDiagram(SequenceDDiagram newSequenceDiagram) {
         SequenceDDiagram oldSequenceDiagram = sequenceDiagram;
         sequenceDiagram = newSequenceDiagram;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, OrderingPackage.EVENT_ENDS_ORDERING__SEQUENCE_DIAGRAM, oldSequenceDiagram, sequenceDiagram));
+        }
     }
 
     /**
@@ -125,6 +129,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public EList<EventEnd> getEventEnds() {
         if (eventEnds == null) {
             eventEnds = new EObjectResolvingEList<EventEnd>(EventEnd.class, this, OrderingPackage.EVENT_ENDS_ORDERING__EVENT_ENDS);
@@ -141,8 +146,9 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case OrderingPackage.EVENT_ENDS_ORDERING__SEQUENCE_DIAGRAM:
-            if (resolve)
+            if (resolve) {
                 return getSequenceDiagram();
+            }
             return basicGetSequenceDiagram();
         case OrderingPackage.EVENT_ENDS_ORDERING__EVENT_ENDS:
             return getEventEnds();

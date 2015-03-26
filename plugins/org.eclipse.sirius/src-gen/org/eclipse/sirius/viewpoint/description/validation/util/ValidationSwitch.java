@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.validation.util;
 
@@ -31,14 +31,14 @@ import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage
  * @generated
  */
 public class ValidationSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static ValidationPackage modelPackage;
@@ -46,12 +46,12 @@ public class ValidationSwitch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ValidationSwitch() {
-        if (modelPackage == null) {
-            modelPackage = ValidationPackage.eINSTANCE;
+        if (ValidationSwitch.modelPackage == null) {
+            ValidationSwitch.modelPackage = ValidationPackage.eINSTANCE;
         }
     }
 
@@ -59,7 +59,7 @@ public class ValidationSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -72,13 +72,13 @@ public class ValidationSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == ValidationSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -90,7 +90,7 @@ public class ValidationSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -100,49 +100,58 @@ public class ValidationSwitch<T> {
         case ValidationPackage.VALIDATION_SET: {
             ValidationSet validationSet = (ValidationSet) theEObject;
             T result = caseValidationSet(validationSet);
-            if (result == null)
+            if (result == null) {
                 result = caseDocumentedElement(validationSet);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ValidationPackage.VALIDATION_RULE: {
             ValidationRule validationRule = (ValidationRule) theEObject;
             T result = caseValidationRule(validationRule);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ValidationPackage.SEMANTIC_VALIDATION_RULE: {
             SemanticValidationRule semanticValidationRule = (SemanticValidationRule) theEObject;
             T result = caseSemanticValidationRule(semanticValidationRule);
-            if (result == null)
+            if (result == null) {
                 result = caseValidationRule(semanticValidationRule);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ValidationPackage.VIEW_VALIDATION_RULE: {
             ViewValidationRule viewValidationRule = (ViewValidationRule) theEObject;
             T result = caseViewValidationRule(viewValidationRule);
-            if (result == null)
+            if (result == null) {
                 result = caseValidationRule(viewValidationRule);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ValidationPackage.RULE_AUDIT: {
             RuleAudit ruleAudit = (RuleAudit) theEObject;
             T result = caseRuleAudit(ruleAudit);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ValidationPackage.VALIDATION_FIX: {
             ValidationFix validationFix = (ValidationFix) theEObject;
             T result = caseValidationFix(validationFix);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -155,7 +164,7 @@ public class ValidationSwitch<T> {
      * <em>Set</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -172,7 +181,7 @@ public class ValidationSwitch<T> {
      * <em>Rule</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -189,7 +198,7 @@ public class ValidationSwitch<T> {
      * <em>Semantic Validation Rule</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -206,7 +215,7 @@ public class ValidationSwitch<T> {
      * <em>View Validation Rule</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -223,7 +232,7 @@ public class ValidationSwitch<T> {
      * <em>Rule Audit</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -240,7 +249,7 @@ public class ValidationSwitch<T> {
      * <em>Fix</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -257,7 +266,7 @@ public class ValidationSwitch<T> {
      * <em>Documented Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -274,7 +283,7 @@ public class ValidationSwitch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

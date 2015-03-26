@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -41,7 +41,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DSemantic Diagram</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DSemantic Diagram</em>'.
      * @generated
      */
@@ -59,7 +59,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Hide Label Filter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Hide Label Filter</em>'.
      * @generated
      */
@@ -68,7 +68,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Folding Point Filter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Folding Point Filter</em>'.
      * @generated
      */
@@ -77,7 +77,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Folding Filter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Folding Filter</em>'.
      * @generated
      */
@@ -86,7 +86,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Applied Composite Filters</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Applied Composite Filters</em>'.
      * @generated
      */
@@ -95,7 +95,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Absolute Bounds Filter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Absolute Bounds Filter</em>'.
      * @generated
      */
@@ -113,7 +113,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DNode Container</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DNode Container</em>'.
      * @generated
      */
@@ -131,7 +131,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DNode List Element</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DNode List Element</em>'.
      * @generated
      */
@@ -158,7 +158,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Gauge Section</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Gauge Section</em>'.
      * @generated
      */
@@ -167,7 +167,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Flat Container Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Flat Container Style</em>'.
      * @generated
      */
@@ -176,7 +176,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Shape Container Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Shape Container Style</em>'.
      * @generated
      */
@@ -212,7 +212,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Bundled Image</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Bundled Image</em>'.
      * @generated
      */
@@ -221,7 +221,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Workspace Image</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Workspace Image</em>'.
      * @generated
      */
@@ -230,7 +230,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Custom Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Custom Style</em>'.
      * @generated
      */
@@ -248,7 +248,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Gauge Composite Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Gauge Composite Style</em>'.
      * @generated
      */
@@ -257,7 +257,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Bordered Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Bordered Style</em>'.
      * @generated
      */
@@ -275,7 +275,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Filter Variable History</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Filter Variable History</em>'.
      * @generated
      */
@@ -284,7 +284,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Filter Variable Value</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Filter Variable Value</em>'.
      * @generated
      */
@@ -293,7 +293,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Collapse Filter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Collapse Filter</em>'.
      * @generated
      */
@@ -302,7 +302,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Indirectly Collapse Filter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Indirectly Collapse Filter</em>'.
      * @generated
      */
@@ -311,7 +311,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Begin Label Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Begin Label Style</em>'.
      * @generated
      */
@@ -320,7 +320,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Center Label Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Center Label Style</em>'.
      * @generated
      */
@@ -329,7 +329,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>End Label Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>End Label Style</em>'.
      * @generated
      */
@@ -338,7 +338,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Bracket Edge Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Bracket Edge Style</em>'.
      * @generated
      */
@@ -358,7 +358,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Drag And Drop Target</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Drag And Drop Target</em>'.
      * @generated
      */

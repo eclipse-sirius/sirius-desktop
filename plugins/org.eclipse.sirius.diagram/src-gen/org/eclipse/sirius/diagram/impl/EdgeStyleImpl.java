@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -83,7 +83,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      * @ordered
      */
-    protected LineStyle lineStyle = LINE_STYLE_EDEFAULT;
+    protected LineStyle lineStyle = EdgeStyleImpl.LINE_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSourceArrow() <em>Source Arrow</em>}
@@ -103,7 +103,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      * @ordered
      */
-    protected EdgeArrows sourceArrow = SOURCE_ARROW_EDEFAULT;
+    protected EdgeArrows sourceArrow = EdgeStyleImpl.SOURCE_ARROW_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTargetArrow() <em>Target Arrow</em>}
@@ -123,7 +123,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      * @ordered
      */
-    protected EdgeArrows targetArrow = TARGET_ARROW_EDEFAULT;
+    protected EdgeArrows targetArrow = EdgeStyleImpl.TARGET_ARROW_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFoldingStyle()
@@ -145,7 +145,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      * @ordered
      */
-    protected FoldingStyle foldingStyle = FOLDING_STYLE_EDEFAULT;
+    protected FoldingStyle foldingStyle = EdgeStyleImpl.FOLDING_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
@@ -165,7 +165,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      * @ordered
      */
-    protected Integer size = SIZE_EDEFAULT;
+    protected Integer size = EdgeStyleImpl.SIZE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRoutingStyle()
@@ -187,7 +187,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      * @ordered
      */
-    protected EdgeRouting routingStyle = ROUTING_STYLE_EDEFAULT;
+    protected EdgeRouting routingStyle = EdgeStyleImpl.ROUTING_STYLE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBeginLabelStyle()
@@ -240,7 +240,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      * @ordered
      */
-    protected CenteringStyle centered = CENTERED_EDEFAULT;
+    protected CenteringStyle centered = EdgeStyleImpl.CENTERED_EDEFAULT;
 
     /**
      * The default value of the '{@link #getStrokeColor() <em>Stroke Color</em>}
@@ -260,7 +260,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      * @ordered
      */
-    protected RGBValues strokeColor = STROKE_COLOR_EDEFAULT;
+    protected RGBValues strokeColor = EdgeStyleImpl.STROKE_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -286,6 +286,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public RGBValues getStrokeColor() {
         return strokeColor;
     }
@@ -295,11 +296,13 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setStrokeColor(RGBValues newStrokeColor) {
         RGBValues oldStrokeColor = strokeColor;
         strokeColor = newStrokeColor;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__STROKE_COLOR, oldStrokeColor, strokeColor));
+        }
     }
 
     /**
@@ -307,6 +310,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public LineStyle getLineStyle() {
         return lineStyle;
     }
@@ -316,11 +320,13 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setLineStyle(LineStyle newLineStyle) {
         LineStyle oldLineStyle = lineStyle;
-        lineStyle = newLineStyle == null ? LINE_STYLE_EDEFAULT : newLineStyle;
-        if (eNotificationRequired())
+        lineStyle = newLineStyle == null ? EdgeStyleImpl.LINE_STYLE_EDEFAULT : newLineStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__LINE_STYLE, oldLineStyle, lineStyle));
+        }
     }
 
     /**
@@ -328,6 +334,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public EdgeArrows getSourceArrow() {
         return sourceArrow;
     }
@@ -337,11 +344,13 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setSourceArrow(EdgeArrows newSourceArrow) {
         EdgeArrows oldSourceArrow = sourceArrow;
-        sourceArrow = newSourceArrow == null ? SOURCE_ARROW_EDEFAULT : newSourceArrow;
-        if (eNotificationRequired())
+        sourceArrow = newSourceArrow == null ? EdgeStyleImpl.SOURCE_ARROW_EDEFAULT : newSourceArrow;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__SOURCE_ARROW, oldSourceArrow, sourceArrow));
+        }
     }
 
     /**
@@ -349,6 +358,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public EdgeArrows getTargetArrow() {
         return targetArrow;
     }
@@ -358,11 +368,13 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setTargetArrow(EdgeArrows newTargetArrow) {
         EdgeArrows oldTargetArrow = targetArrow;
-        targetArrow = newTargetArrow == null ? TARGET_ARROW_EDEFAULT : newTargetArrow;
-        if (eNotificationRequired())
+        targetArrow = newTargetArrow == null ? EdgeStyleImpl.TARGET_ARROW_EDEFAULT : newTargetArrow;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__TARGET_ARROW, oldTargetArrow, targetArrow));
+        }
     }
 
     /**
@@ -370,6 +382,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public FoldingStyle getFoldingStyle() {
         return foldingStyle;
     }
@@ -379,11 +392,13 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setFoldingStyle(FoldingStyle newFoldingStyle) {
         FoldingStyle oldFoldingStyle = foldingStyle;
-        foldingStyle = newFoldingStyle == null ? FOLDING_STYLE_EDEFAULT : newFoldingStyle;
-        if (eNotificationRequired())
+        foldingStyle = newFoldingStyle == null ? EdgeStyleImpl.FOLDING_STYLE_EDEFAULT : newFoldingStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__FOLDING_STYLE, oldFoldingStyle, foldingStyle));
+        }
     }
 
     /**
@@ -391,6 +406,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public Integer getSize() {
         return size;
     }
@@ -400,11 +416,13 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setSize(Integer newSize) {
         Integer oldSize = size;
         size = newSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__SIZE, oldSize, size));
+        }
     }
 
     /**
@@ -412,6 +430,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public EdgeRouting getRoutingStyle() {
         return routingStyle;
     }
@@ -421,11 +440,13 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setRoutingStyle(EdgeRouting newRoutingStyle) {
         EdgeRouting oldRoutingStyle = routingStyle;
-        routingStyle = newRoutingStyle == null ? ROUTING_STYLE_EDEFAULT : newRoutingStyle;
-        if (eNotificationRequired())
+        routingStyle = newRoutingStyle == null ? EdgeStyleImpl.ROUTING_STYLE_EDEFAULT : newRoutingStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__ROUTING_STYLE, oldRoutingStyle, routingStyle));
+        }
     }
 
     /**
@@ -433,20 +454,23 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public BeginLabelStyle getBeginLabelStyle() {
         if (beginLabelStyle != null && beginLabelStyle.eIsProxy()) {
             InternalEObject oldBeginLabelStyle = (InternalEObject) beginLabelStyle;
             beginLabelStyle = (BeginLabelStyle) eResolveProxy(oldBeginLabelStyle);
             if (beginLabelStyle != oldBeginLabelStyle) {
                 InternalEObject newBeginLabelStyle = (InternalEObject) beginLabelStyle;
-                NotificationChain msgs = oldBeginLabelStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, null);
+                NotificationChain msgs = oldBeginLabelStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, null);
                 if (newBeginLabelStyle.eInternalContainer() == null) {
-                    msgs = newBeginLabelStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
+                    msgs = newBeginLabelStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, oldBeginLabelStyle, beginLabelStyle));
+                }
             }
         }
         return beginLabelStyle;
@@ -471,10 +495,11 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         beginLabelStyle = newBeginLabelStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, oldBeginLabelStyle, newBeginLabelStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -484,18 +509,23 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setBeginLabelStyle(BeginLabelStyle newBeginLabelStyle) {
         if (newBeginLabelStyle != beginLabelStyle) {
             NotificationChain msgs = null;
-            if (beginLabelStyle != null)
-                msgs = ((InternalEObject) beginLabelStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
-            if (newBeginLabelStyle != null)
-                msgs = ((InternalEObject) newBeginLabelStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
+            if (beginLabelStyle != null) {
+                msgs = ((InternalEObject) beginLabelStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
+            }
+            if (newBeginLabelStyle != null) {
+                msgs = ((InternalEObject) newBeginLabelStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
+            }
             msgs = basicSetBeginLabelStyle(newBeginLabelStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, newBeginLabelStyle, newBeginLabelStyle));
+        }
     }
 
     /**
@@ -503,20 +533,23 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public CenterLabelStyle getCenterLabelStyle() {
         if (centerLabelStyle != null && centerLabelStyle.eIsProxy()) {
             InternalEObject oldCenterLabelStyle = (InternalEObject) centerLabelStyle;
             centerLabelStyle = (CenterLabelStyle) eResolveProxy(oldCenterLabelStyle);
             if (centerLabelStyle != oldCenterLabelStyle) {
                 InternalEObject newCenterLabelStyle = (InternalEObject) centerLabelStyle;
-                NotificationChain msgs = oldCenterLabelStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, null);
+                NotificationChain msgs = oldCenterLabelStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, null);
                 if (newCenterLabelStyle.eInternalContainer() == null) {
-                    msgs = newCenterLabelStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
+                    msgs = newCenterLabelStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, oldCenterLabelStyle, centerLabelStyle));
+                }
             }
         }
         return centerLabelStyle;
@@ -541,10 +574,11 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         centerLabelStyle = newCenterLabelStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, oldCenterLabelStyle, newCenterLabelStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -554,18 +588,23 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setCenterLabelStyle(CenterLabelStyle newCenterLabelStyle) {
         if (newCenterLabelStyle != centerLabelStyle) {
             NotificationChain msgs = null;
-            if (centerLabelStyle != null)
-                msgs = ((InternalEObject) centerLabelStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
-            if (newCenterLabelStyle != null)
-                msgs = ((InternalEObject) newCenterLabelStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
+            if (centerLabelStyle != null) {
+                msgs = ((InternalEObject) centerLabelStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
+            }
+            if (newCenterLabelStyle != null) {
+                msgs = ((InternalEObject) newCenterLabelStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
+            }
             msgs = basicSetCenterLabelStyle(newCenterLabelStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE, newCenterLabelStyle, newCenterLabelStyle));
+        }
     }
 
     /**
@@ -573,20 +612,23 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public EndLabelStyle getEndLabelStyle() {
         if (endLabelStyle != null && endLabelStyle.eIsProxy()) {
             InternalEObject oldEndLabelStyle = (InternalEObject) endLabelStyle;
             endLabelStyle = (EndLabelStyle) eResolveProxy(oldEndLabelStyle);
             if (endLabelStyle != oldEndLabelStyle) {
                 InternalEObject newEndLabelStyle = (InternalEObject) endLabelStyle;
-                NotificationChain msgs = oldEndLabelStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, null, null);
+                NotificationChain msgs = oldEndLabelStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, null, null);
                 if (newEndLabelStyle.eInternalContainer() == null) {
-                    msgs = newEndLabelStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
+                    msgs = newEndLabelStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, oldEndLabelStyle, endLabelStyle));
+                }
             }
         }
         return endLabelStyle;
@@ -611,10 +653,11 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         endLabelStyle = newEndLabelStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, oldEndLabelStyle, newEndLabelStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -624,18 +667,23 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setEndLabelStyle(EndLabelStyle newEndLabelStyle) {
         if (newEndLabelStyle != endLabelStyle) {
             NotificationChain msgs = null;
-            if (endLabelStyle != null)
-                msgs = ((InternalEObject) endLabelStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
-            if (newEndLabelStyle != null)
-                msgs = ((InternalEObject) newEndLabelStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
+            if (endLabelStyle != null) {
+                msgs = ((InternalEObject) endLabelStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
+            }
+            if (newEndLabelStyle != null) {
+                msgs = ((InternalEObject) newEndLabelStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
+            }
             msgs = basicSetEndLabelStyle(newEndLabelStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__END_LABEL_STYLE, newEndLabelStyle, newEndLabelStyle));
+        }
     }
 
     /**
@@ -643,6 +691,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public CenteringStyle getCentered() {
         return centered;
     }
@@ -652,11 +701,13 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    @Override
     public void setCentered(CenteringStyle newCentered) {
         CenteringStyle oldCentered = centered;
-        centered = newCentered == null ? CENTERED_EDEFAULT : newCentered;
-        if (eNotificationRequired())
+        centered = newCentered == null ? EdgeStyleImpl.CENTERED_EDEFAULT : newCentered;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__CENTERED, oldCentered, centered));
+        }
     }
 
     /**
@@ -698,16 +749,19 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         case DiagramPackage.EDGE_STYLE__ROUTING_STYLE:
             return getRoutingStyle();
         case DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getBeginLabelStyle();
+            }
             return basicGetBeginLabelStyle();
         case DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getCenterLabelStyle();
+            }
             return basicGetCenterLabelStyle();
         case DiagramPackage.EDGE_STYLE__END_LABEL_STYLE:
-            if (resolve)
+            if (resolve) {
                 return getEndLabelStyle();
+            }
             return basicGetEndLabelStyle();
         case DiagramPackage.EDGE_STYLE__CENTERED:
             return getCentered();
@@ -771,22 +825,22 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     public void eUnset(int featureID) {
         switch (featureID) {
         case DiagramPackage.EDGE_STYLE__LINE_STYLE:
-            setLineStyle(LINE_STYLE_EDEFAULT);
+            setLineStyle(EdgeStyleImpl.LINE_STYLE_EDEFAULT);
             return;
         case DiagramPackage.EDGE_STYLE__SOURCE_ARROW:
-            setSourceArrow(SOURCE_ARROW_EDEFAULT);
+            setSourceArrow(EdgeStyleImpl.SOURCE_ARROW_EDEFAULT);
             return;
         case DiagramPackage.EDGE_STYLE__TARGET_ARROW:
-            setTargetArrow(TARGET_ARROW_EDEFAULT);
+            setTargetArrow(EdgeStyleImpl.TARGET_ARROW_EDEFAULT);
             return;
         case DiagramPackage.EDGE_STYLE__FOLDING_STYLE:
-            setFoldingStyle(FOLDING_STYLE_EDEFAULT);
+            setFoldingStyle(EdgeStyleImpl.FOLDING_STYLE_EDEFAULT);
             return;
         case DiagramPackage.EDGE_STYLE__SIZE:
-            setSize(SIZE_EDEFAULT);
+            setSize(EdgeStyleImpl.SIZE_EDEFAULT);
             return;
         case DiagramPackage.EDGE_STYLE__ROUTING_STYLE:
-            setRoutingStyle(ROUTING_STYLE_EDEFAULT);
+            setRoutingStyle(EdgeStyleImpl.ROUTING_STYLE_EDEFAULT);
             return;
         case DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE:
             setBeginLabelStyle((BeginLabelStyle) null);
@@ -798,10 +852,10 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
             setEndLabelStyle((EndLabelStyle) null);
             return;
         case DiagramPackage.EDGE_STYLE__CENTERED:
-            setCentered(CENTERED_EDEFAULT);
+            setCentered(EdgeStyleImpl.CENTERED_EDEFAULT);
             return;
         case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
-            setStrokeColor(STROKE_COLOR_EDEFAULT);
+            setStrokeColor(EdgeStyleImpl.STROKE_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -816,17 +870,17 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.EDGE_STYLE__LINE_STYLE:
-            return lineStyle != LINE_STYLE_EDEFAULT;
+            return lineStyle != EdgeStyleImpl.LINE_STYLE_EDEFAULT;
         case DiagramPackage.EDGE_STYLE__SOURCE_ARROW:
-            return sourceArrow != SOURCE_ARROW_EDEFAULT;
+            return sourceArrow != EdgeStyleImpl.SOURCE_ARROW_EDEFAULT;
         case DiagramPackage.EDGE_STYLE__TARGET_ARROW:
-            return targetArrow != TARGET_ARROW_EDEFAULT;
+            return targetArrow != EdgeStyleImpl.TARGET_ARROW_EDEFAULT;
         case DiagramPackage.EDGE_STYLE__FOLDING_STYLE:
-            return foldingStyle != FOLDING_STYLE_EDEFAULT;
+            return foldingStyle != EdgeStyleImpl.FOLDING_STYLE_EDEFAULT;
         case DiagramPackage.EDGE_STYLE__SIZE:
-            return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
+            return EdgeStyleImpl.SIZE_EDEFAULT == null ? size != null : !EdgeStyleImpl.SIZE_EDEFAULT.equals(size);
         case DiagramPackage.EDGE_STYLE__ROUTING_STYLE:
-            return routingStyle != ROUTING_STYLE_EDEFAULT;
+            return routingStyle != EdgeStyleImpl.ROUTING_STYLE_EDEFAULT;
         case DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE:
             return beginLabelStyle != null;
         case DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE:
@@ -834,9 +888,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         case DiagramPackage.EDGE_STYLE__END_LABEL_STYLE:
             return endLabelStyle != null;
         case DiagramPackage.EDGE_STYLE__CENTERED:
-            return centered != CENTERED_EDEFAULT;
+            return centered != EdgeStyleImpl.CENTERED_EDEFAULT;
         case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
-            return STROKE_COLOR_EDEFAULT == null ? strokeColor != null : !STROKE_COLOR_EDEFAULT.equals(strokeColor);
+            return EdgeStyleImpl.STROKE_COLOR_EDEFAULT == null ? strokeColor != null : !EdgeStyleImpl.STROKE_COLOR_EDEFAULT.equals(strokeColor);
         }
         return super.eIsSet(featureID);
     }
@@ -848,8 +902,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (lineStyle: ");

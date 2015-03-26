@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -43,7 +43,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
     /**
      * The default value of the '{@link #getSource() <em>Source</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
@@ -53,17 +53,17 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
     /**
      * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
      */
-    protected String source = SOURCE_EDEFAULT;
+    protected String source = DAnnotationEntryImpl.SOURCE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getDetails() <em>Details</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDetails()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnnotationEntryImpl() {
@@ -81,7 +81,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,30 +91,34 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getSource() {
         return source;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSource(String newSource) {
         String oldSource = source;
         source = newSource;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DANNOTATION_ENTRY__SOURCE, oldSource, source));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<String> getDetails() {
         if (details == null) {
             details = new EDataTypeUniqueEList<String>(String.class, this, DescriptionPackage.DANNOTATION_ENTRY__DETAILS);
@@ -124,7 +128,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +144,7 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -160,14 +164,14 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DANNOTATION_ENTRY__SOURCE:
-            setSource(SOURCE_EDEFAULT);
+            setSource(DAnnotationEntryImpl.SOURCE_EDEFAULT);
             return;
         case DescriptionPackage.DANNOTATION_ENTRY__DETAILS:
             getDetails().clear();
@@ -178,14 +182,14 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DANNOTATION_ENTRY__SOURCE:
-            return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
+            return DAnnotationEntryImpl.SOURCE_EDEFAULT == null ? source != null : !DAnnotationEntryImpl.SOURCE_EDEFAULT.equals(source);
         case DescriptionPackage.DANNOTATION_ENTRY__DETAILS:
             return details != null && !details.isEmpty();
         }
@@ -194,13 +198,14 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (source: ");

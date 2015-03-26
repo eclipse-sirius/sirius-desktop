@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -42,7 +42,7 @@ public interface CreateInstance extends ContainerModelOperation {
      * Returns the value of the '<em><b>Type Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * type of the new instance. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Type Name</em>' attribute.
      * @see #setTypeName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getCreateInstance_TypeName()
@@ -56,7 +56,7 @@ public interface CreateInstance extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance#getTypeName
      * <em>Type Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Type Name</em>' attribute.
      * @see #getTypeName()
@@ -69,7 +69,7 @@ public interface CreateInstance extends ContainerModelOperation {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * name of the reference that contained the new instance. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Reference Name</em>' attribute.
      * @see #setReferenceName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getCreateInstance_ReferenceName()
@@ -84,7 +84,7 @@ public interface CreateInstance extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance#getReferenceName
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Reference Name</em>' attribute.
      * @see #getReferenceName()
@@ -98,7 +98,7 @@ public interface CreateInstance extends ContainerModelOperation {
      * end-user-doc --> <!-- begin-model-doc --> Once the instance is created, a
      * new variable will be bound with the name given here and will be available
      * to any contained operation. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Variable Name</em>' attribute.
      * @see #setVariableName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getCreateInstance_VariableName()
@@ -112,7 +112,7 @@ public interface CreateInstance extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance#getVariableName
      * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Variable Name</em>' attribute.
      * @see #getVariableName()

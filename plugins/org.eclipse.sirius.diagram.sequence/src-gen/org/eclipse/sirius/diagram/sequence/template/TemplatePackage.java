@@ -102,7 +102,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.impl.TTransformerImpl
      * <em>TTransformer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TTransformerImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTTransformer()
      * @generated
@@ -112,7 +112,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -142,29 +142,29 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TABSTRACT_MAPPING__OUTPUTS = TTRANSFORMER__OUTPUTS;
+    int TABSTRACT_MAPPING__OUTPUTS = TemplatePackage.TTRANSFORMER__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TABSTRACT_MAPPING__NAME = TTRANSFORMER_FEATURE_COUNT + 0;
+    int TABSTRACT_MAPPING__NAME = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TABSTRACT_MAPPING__DOMAIN_CLASS = TTRANSFORMER_FEATURE_COUNT + 1;
+    int TABSTRACT_MAPPING__DOMAIN_CLASS = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -173,7 +173,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TTRANSFORMER_FEATURE_COUNT + 2;
+    int TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>TAbstract Mapping</em>'
@@ -182,12 +182,12 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABSTRACT_MAPPING_FEATURE_COUNT = TTRANSFORMER_FEATURE_COUNT + 3;
+    int TABSTRACT_MAPPING_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -205,7 +205,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -214,7 +214,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -223,7 +223,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ends Ordering</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -268,29 +268,29 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__OUTPUTS = TABSTRACT_MAPPING__OUTPUTS;
+    int TLIFELINE_MAPPING__OUTPUTS = TemplatePackage.TABSTRACT_MAPPING__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__NAME = TABSTRACT_MAPPING__NAME;
+    int TLIFELINE_MAPPING__NAME = TemplatePackage.TABSTRACT_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__DOMAIN_CLASS = TABSTRACT_MAPPING__DOMAIN_CLASS;
+    int TLIFELINE_MAPPING__DOMAIN_CLASS = TemplatePackage.TABSTRACT_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -299,7 +299,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int TLIFELINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Eol Visible Expression</b></em>'
@@ -308,7 +308,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION = TABSTRACT_MAPPING_FEATURE_COUNT + 0;
+    int TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Execution Mappings</b></em>' containment
@@ -317,7 +317,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__EXECUTION_MAPPINGS = TABSTRACT_MAPPING_FEATURE_COUNT + 1;
+    int TLIFELINE_MAPPING__EXECUTION_MAPPINGS = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Instance Role Style</b></em>' containment
@@ -326,7 +326,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE = TABSTRACT_MAPPING_FEATURE_COUNT + 2;
+    int TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Lifeline Style</b></em>' containment
@@ -335,7 +335,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__LIFELINE_STYLE = TABSTRACT_MAPPING_FEATURE_COUNT + 3;
+    int TLIFELINE_MAPPING__LIFELINE_STYLE = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>End Of Life Style</b></em>' containment
@@ -344,7 +344,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__END_OF_LIFE_STYLE = TABSTRACT_MAPPING_FEATURE_COUNT + 4;
+    int TLIFELINE_MAPPING__END_OF_LIFE_STYLE = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Conditional Life Line Styles</b></em>'
@@ -353,7 +353,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING__CONDITIONAL_LIFE_LINE_STYLES = TABSTRACT_MAPPING_FEATURE_COUNT + 5;
+    int TLIFELINE_MAPPING__CONDITIONAL_LIFE_LINE_STYLES = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>TLifeline Mapping</em>'
@@ -362,7 +362,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TLIFELINE_MAPPING_FEATURE_COUNT = TABSTRACT_MAPPING_FEATURE_COUNT + 6;
+    int TLIFELINE_MAPPING_FEATURE_COUNT = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '
@@ -379,30 +379,30 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TLIFELINE_STYLE__OUTPUTS = TTRANSFORMER__OUTPUTS;
+    int TLIFELINE_STYLE__OUTPUTS = TemplatePackage.TTRANSFORMER__OUTPUTS;
 
     /**
      * The feature id for the '
      * <em><b>Lifeline Width Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION = TTRANSFORMER_FEATURE_COUNT + 0;
+    int TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Lifeline Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TLIFELINE_STYLE__LIFELINE_COLOR = TTRANSFORMER_FEATURE_COUNT + 1;
+    int TLIFELINE_STYLE__LIFELINE_COLOR = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>TLifeline Style</em>'
@@ -411,7 +411,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TLIFELINE_STYLE_FEATURE_COUNT = TTRANSFORMER_FEATURE_COUNT + 2;
+    int TLIFELINE_STYLE_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -428,11 +428,11 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_LIFELINE_STYLE__OUTPUTS = TTRANSFORMER__OUTPUTS;
+    int TCONDITIONAL_LIFELINE_STYLE__OUTPUTS = TemplatePackage.TTRANSFORMER__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute.
@@ -441,7 +441,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_LIFELINE_STYLE__PREDICATE_EXPRESSION = TTRANSFORMER_FEATURE_COUNT + 0;
+    int TCONDITIONAL_LIFELINE_STYLE__PREDICATE_EXPRESSION = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -450,7 +450,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_LIFELINE_STYLE__STYLE = TTRANSFORMER_FEATURE_COUNT + 1;
+    int TCONDITIONAL_LIFELINE_STYLE__STYLE = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -460,7 +460,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_LIFELINE_STYLE_FEATURE_COUNT = TTRANSFORMER_FEATURE_COUNT + 2;
+    int TCONDITIONAL_LIFELINE_STYLE_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -477,29 +477,29 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__OUTPUTS = TABSTRACT_MAPPING__OUTPUTS;
+    int TEXECUTION_MAPPING__OUTPUTS = TemplatePackage.TABSTRACT_MAPPING__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__NAME = TABSTRACT_MAPPING__NAME;
+    int TEXECUTION_MAPPING__NAME = TemplatePackage.TABSTRACT_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__DOMAIN_CLASS = TABSTRACT_MAPPING__DOMAIN_CLASS;
+    int TEXECUTION_MAPPING__DOMAIN_CLASS = TemplatePackage.TABSTRACT_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -508,7 +508,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int TEXECUTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>'
@@ -517,7 +517,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION = TABSTRACT_MAPPING_FEATURE_COUNT + 0;
+    int TEXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>'
@@ -526,16 +526,16 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION = TABSTRACT_MAPPING_FEATURE_COUNT + 1;
+    int TEXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Recursive</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__RECURSIVE = TABSTRACT_MAPPING_FEATURE_COUNT + 2;
+    int TEXECUTION_MAPPING__RECURSIVE = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Execution Mappings</b></em>' containment
@@ -544,7 +544,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__EXECUTION_MAPPINGS = TABSTRACT_MAPPING_FEATURE_COUNT + 3;
+    int TEXECUTION_MAPPING__EXECUTION_MAPPINGS = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -553,7 +553,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__STYLE = TABSTRACT_MAPPING_FEATURE_COUNT + 4;
+    int TEXECUTION_MAPPING__STYLE = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
@@ -562,7 +562,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING__CONDITIONAL_STYLES = TABSTRACT_MAPPING_FEATURE_COUNT + 5;
+    int TEXECUTION_MAPPING__CONDITIONAL_STYLES = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>TExecution Mapping</em>'
@@ -571,7 +571,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXECUTION_MAPPING_FEATURE_COUNT = TABSTRACT_MAPPING_FEATURE_COUNT + 6;
+    int TEXECUTION_MAPPING_FEATURE_COUNT = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '
@@ -588,39 +588,39 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXECUTION_STYLE__OUTPUTS = TTRANSFORMER__OUTPUTS;
+    int TEXECUTION_STYLE__OUTPUTS = TemplatePackage.TTRANSFORMER__OUTPUTS;
 
     /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = TTRANSFORMER_FEATURE_COUNT + 0;
+    int TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXECUTION_STYLE__BORDER_COLOR = TTRANSFORMER_FEATURE_COUNT + 1;
+    int TEXECUTION_STYLE__BORDER_COLOR = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXECUTION_STYLE__BACKGROUND_COLOR = TTRANSFORMER_FEATURE_COUNT + 2;
+    int TEXECUTION_STYLE__BACKGROUND_COLOR = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>TExecution Style</em>'
@@ -629,7 +629,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXECUTION_STYLE_FEATURE_COUNT = TTRANSFORMER_FEATURE_COUNT + 3;
+    int TEXECUTION_STYLE_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -646,11 +646,11 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_EXECUTION_STYLE__OUTPUTS = TTRANSFORMER__OUTPUTS;
+    int TCONDITIONAL_EXECUTION_STYLE__OUTPUTS = TemplatePackage.TTRANSFORMER__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute.
@@ -659,7 +659,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_EXECUTION_STYLE__PREDICATE_EXPRESSION = TTRANSFORMER_FEATURE_COUNT + 0;
+    int TCONDITIONAL_EXECUTION_STYLE__PREDICATE_EXPRESSION = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -668,7 +668,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_EXECUTION_STYLE__STYLE = TTRANSFORMER_FEATURE_COUNT + 1;
+    int TCONDITIONAL_EXECUTION_STYLE__STYLE = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -678,7 +678,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_EXECUTION_STYLE_FEATURE_COUNT = TTRANSFORMER_FEATURE_COUNT + 2;
+    int TCONDITIONAL_EXECUTION_STYLE_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -695,29 +695,29 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TMESSAGE_MAPPING__OUTPUTS = TABSTRACT_MAPPING__OUTPUTS;
+    int TMESSAGE_MAPPING__OUTPUTS = TemplatePackage.TABSTRACT_MAPPING__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TMESSAGE_MAPPING__NAME = TABSTRACT_MAPPING__NAME;
+    int TMESSAGE_MAPPING__NAME = TemplatePackage.TABSTRACT_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TMESSAGE_MAPPING__DOMAIN_CLASS = TABSTRACT_MAPPING__DOMAIN_CLASS;
+    int TMESSAGE_MAPPING__DOMAIN_CLASS = TemplatePackage.TABSTRACT_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -726,7 +726,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TMESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int TMESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -735,7 +735,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TABSTRACT_MAPPING_FEATURE_COUNT + 0;
+    int TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -744,7 +744,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TABSTRACT_MAPPING_FEATURE_COUNT + 1;
+    int TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -753,7 +753,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TMESSAGE_MAPPING__STYLE = TABSTRACT_MAPPING_FEATURE_COUNT + 2;
+    int TMESSAGE_MAPPING__STYLE = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment
@@ -762,7 +762,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TMESSAGE_MAPPING__CONDITIONAL_STYLE = TABSTRACT_MAPPING_FEATURE_COUNT + 3;
+    int TMESSAGE_MAPPING__CONDITIONAL_STYLE = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>TMessage Mapping</em>'
@@ -771,7 +771,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TMESSAGE_MAPPING_FEATURE_COUNT = TABSTRACT_MAPPING_FEATURE_COUNT + 4;
+    int TMESSAGE_MAPPING_FEATURE_COUNT = TemplatePackage.TABSTRACT_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -788,56 +788,56 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TMESSAGE_STYLE__OUTPUTS = TTRANSFORMER__OUTPUTS;
+    int TMESSAGE_STYLE__OUTPUTS = TemplatePackage.TTRANSFORMER__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Stroke Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TMESSAGE_STYLE__STROKE_COLOR = TTRANSFORMER_FEATURE_COUNT + 0;
+    int TMESSAGE_STYLE__STROKE_COLOR = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Line Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TMESSAGE_STYLE__LINE_STYLE = TTRANSFORMER_FEATURE_COUNT + 1;
+    int TMESSAGE_STYLE__LINE_STYLE = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Source Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TMESSAGE_STYLE__SOURCE_ARROW = TTRANSFORMER_FEATURE_COUNT + 2;
+    int TMESSAGE_STYLE__SOURCE_ARROW = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Target Arrow</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TMESSAGE_STYLE__TARGET_ARROW = TTRANSFORMER_FEATURE_COUNT + 3;
+    int TMESSAGE_STYLE__TARGET_ARROW = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TMESSAGE_STYLE__LABEL_EXPRESSION = TTRANSFORMER_FEATURE_COUNT + 4;
+    int TMESSAGE_STYLE__LABEL_EXPRESSION = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 4;
 
     /**
      * The number of structural features of the '<em>TMessage Style</em>' class.
@@ -846,7 +846,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TMESSAGE_STYLE_FEATURE_COUNT = TTRANSFORMER_FEATURE_COUNT + 5;
+    int TMESSAGE_STYLE_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '
@@ -863,11 +863,11 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_MESSAGE_STYLE__OUTPUTS = TTRANSFORMER__OUTPUTS;
+    int TCONDITIONAL_MESSAGE_STYLE__OUTPUTS = TemplatePackage.TTRANSFORMER__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute.
@@ -876,7 +876,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_MESSAGE_STYLE__PREDICATE_EXPRESSION = TTRANSFORMER_FEATURE_COUNT + 0;
+    int TCONDITIONAL_MESSAGE_STYLE__PREDICATE_EXPRESSION = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -885,7 +885,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_MESSAGE_STYLE__STYLE = TTRANSFORMER_FEATURE_COUNT + 1;
+    int TCONDITIONAL_MESSAGE_STYLE__STYLE = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -895,7 +895,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCONDITIONAL_MESSAGE_STYLE_FEATURE_COUNT = TTRANSFORMER_FEATURE_COUNT + 2;
+    int TCONDITIONAL_MESSAGE_STYLE_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -912,29 +912,29 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__OUTPUTS = TMESSAGE_MAPPING__OUTPUTS;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__OUTPUTS = TemplatePackage.TMESSAGE_MAPPING__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__NAME = TMESSAGE_MAPPING__NAME;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__NAME = TemplatePackage.TMESSAGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__DOMAIN_CLASS = TMESSAGE_MAPPING__DOMAIN_CLASS;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__DOMAIN_CLASS = TemplatePackage.TMESSAGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -943,7 +943,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TMESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.TMESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -952,7 +952,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TemplatePackage.TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -961,7 +961,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TemplatePackage.TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -970,7 +970,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__STYLE = TMESSAGE_MAPPING__STYLE;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__STYLE = TemplatePackage.TMESSAGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment
@@ -979,16 +979,16 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__CONDITIONAL_STYLE = TMESSAGE_MAPPING__CONDITIONAL_STYLE;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__CONDITIONAL_STYLE = TemplatePackage.TMESSAGE_MAPPING__CONDITIONAL_STYLE;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE = TMESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE = TemplatePackage.TMESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -997,7 +997,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = TMESSAGE_MAPPING_FEATURE_COUNT + 1;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = TemplatePackage.TMESSAGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -1006,7 +1006,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = TMESSAGE_MAPPING_FEATURE_COUNT + 2;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = TemplatePackage.TMESSAGE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -1015,7 +1015,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TMESSAGE_MAPPING_FEATURE_COUNT + 3;
+    int TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TemplatePackage.TMESSAGE_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '
@@ -1025,7 +1025,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT = TMESSAGE_MAPPING_FEATURE_COUNT + 4;
+    int TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT = TemplatePackage.TMESSAGE_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -1042,29 +1042,29 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__OUTPUTS = TSOURCE_TARGET_MESSAGE_MAPPING__OUTPUTS;
+    int TBASIC_MESSAGE_MAPPING__OUTPUTS = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__NAME = TSOURCE_TARGET_MESSAGE_MAPPING__NAME;
+    int TBASIC_MESSAGE_MAPPING__NAME = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__DOMAIN_CLASS = TSOURCE_TARGET_MESSAGE_MAPPING__DOMAIN_CLASS;
+    int TBASIC_MESSAGE_MAPPING__DOMAIN_CLASS = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1073,7 +1073,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int TBASIC_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -1082,7 +1082,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
+    int TBASIC_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -1091,7 +1091,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
+    int TBASIC_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1100,7 +1100,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__STYLE = TSOURCE_TARGET_MESSAGE_MAPPING__STYLE;
+    int TBASIC_MESSAGE_MAPPING__STYLE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment
@@ -1109,16 +1109,16 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__CONDITIONAL_STYLE = TSOURCE_TARGET_MESSAGE_MAPPING__CONDITIONAL_STYLE;
+    int TBASIC_MESSAGE_MAPPING__CONDITIONAL_STYLE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__CONDITIONAL_STYLE;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__SOURCE = TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE;
+    int TBASIC_MESSAGE_MAPPING__SOURCE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -1127,7 +1127,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
+    int TBASIC_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -1136,7 +1136,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
+    int TBASIC_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -1145,16 +1145,16 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
+    int TBASIC_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING__TARGET = TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int TBASIC_MESSAGE_MAPPING__TARGET = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>TBasic Message Mapping</em>
@@ -1163,7 +1163,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING_FEATURE_COUNT = TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 1;
+    int TBASIC_MESSAGE_MAPPING_FEATURE_COUNT = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1180,29 +1180,29 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__OUTPUTS = TMESSAGE_MAPPING__OUTPUTS;
+    int TRETURN_MESSAGE_MAPPING__OUTPUTS = TemplatePackage.TMESSAGE_MAPPING__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__NAME = TMESSAGE_MAPPING__NAME;
+    int TRETURN_MESSAGE_MAPPING__NAME = TemplatePackage.TMESSAGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__DOMAIN_CLASS = TMESSAGE_MAPPING__DOMAIN_CLASS;
+    int TRETURN_MESSAGE_MAPPING__DOMAIN_CLASS = TemplatePackage.TMESSAGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1211,7 +1211,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TMESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int TRETURN_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.TMESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -1220,7 +1220,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
+    int TRETURN_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TemplatePackage.TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -1229,7 +1229,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
+    int TRETURN_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TemplatePackage.TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1238,7 +1238,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__STYLE = TMESSAGE_MAPPING__STYLE;
+    int TRETURN_MESSAGE_MAPPING__STYLE = TemplatePackage.TMESSAGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment
@@ -1247,7 +1247,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__CONDITIONAL_STYLE = TMESSAGE_MAPPING__CONDITIONAL_STYLE;
+    int TRETURN_MESSAGE_MAPPING__CONDITIONAL_STYLE = TemplatePackage.TMESSAGE_MAPPING__CONDITIONAL_STYLE;
 
     /**
      * The feature id for the '<em><b>Invocation Mapping</b></em>' reference.
@@ -1256,17 +1256,17 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING = TMESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING = TemplatePackage.TMESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '
      * <em><b>Invocation Message Finder Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = TMESSAGE_MAPPING_FEATURE_COUNT + 1;
+    int TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = TemplatePackage.TMESSAGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -1276,7 +1276,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TRETURN_MESSAGE_MAPPING_FEATURE_COUNT = TMESSAGE_MAPPING_FEATURE_COUNT + 2;
+    int TRETURN_MESSAGE_MAPPING_FEATURE_COUNT = TemplatePackage.TMESSAGE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -1293,29 +1293,29 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__OUTPUTS = TSOURCE_TARGET_MESSAGE_MAPPING__OUTPUTS;
+    int TCREATION_MESSAGE_MAPPING__OUTPUTS = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__NAME = TSOURCE_TARGET_MESSAGE_MAPPING__NAME;
+    int TCREATION_MESSAGE_MAPPING__NAME = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__DOMAIN_CLASS = TSOURCE_TARGET_MESSAGE_MAPPING__DOMAIN_CLASS;
+    int TCREATION_MESSAGE_MAPPING__DOMAIN_CLASS = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1324,7 +1324,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int TCREATION_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -1333,7 +1333,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
+    int TCREATION_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -1342,7 +1342,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
+    int TCREATION_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1351,7 +1351,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__STYLE = TSOURCE_TARGET_MESSAGE_MAPPING__STYLE;
+    int TCREATION_MESSAGE_MAPPING__STYLE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment
@@ -1360,16 +1360,16 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__CONDITIONAL_STYLE = TSOURCE_TARGET_MESSAGE_MAPPING__CONDITIONAL_STYLE;
+    int TCREATION_MESSAGE_MAPPING__CONDITIONAL_STYLE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__CONDITIONAL_STYLE;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__SOURCE = TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE;
+    int TCREATION_MESSAGE_MAPPING__SOURCE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -1378,7 +1378,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
+    int TCREATION_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -1387,7 +1387,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
+    int TCREATION_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -1396,16 +1396,16 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
+    int TCREATION_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING__TARGET = TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int TCREATION_MESSAGE_MAPPING__TARGET = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -1415,7 +1415,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TCREATION_MESSAGE_MAPPING_FEATURE_COUNT = TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 1;
+    int TCREATION_MESSAGE_MAPPING_FEATURE_COUNT = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1432,29 +1432,29 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__OUTPUTS = TSOURCE_TARGET_MESSAGE_MAPPING__OUTPUTS;
+    int TDESTRUCTION_MESSAGE_MAPPING__OUTPUTS = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__OUTPUTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__NAME = TSOURCE_TARGET_MESSAGE_MAPPING__NAME;
+    int TDESTRUCTION_MESSAGE_MAPPING__NAME = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__DOMAIN_CLASS = TSOURCE_TARGET_MESSAGE_MAPPING__DOMAIN_CLASS;
+    int TDESTRUCTION_MESSAGE_MAPPING__DOMAIN_CLASS = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1463,7 +1463,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int TDESTRUCTION_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -1472,7 +1472,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
+    int TDESTRUCTION_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -1481,7 +1481,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
+    int TDESTRUCTION_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1490,7 +1490,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__STYLE = TSOURCE_TARGET_MESSAGE_MAPPING__STYLE;
+    int TDESTRUCTION_MESSAGE_MAPPING__STYLE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment
@@ -1499,16 +1499,16 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__CONDITIONAL_STYLE = TSOURCE_TARGET_MESSAGE_MAPPING__CONDITIONAL_STYLE;
+    int TDESTRUCTION_MESSAGE_MAPPING__CONDITIONAL_STYLE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__CONDITIONAL_STYLE;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__SOURCE = TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE;
+    int TDESTRUCTION_MESSAGE_MAPPING__SOURCE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -1517,7 +1517,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
+    int TDESTRUCTION_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -1526,7 +1526,7 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
+    int TDESTRUCTION_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -1535,16 +1535,16 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
+    int TDESTRUCTION_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING__TARGET = TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int TDESTRUCTION_MESSAGE_MAPPING__TARGET = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -1554,14 +1554,14 @@ public interface TemplatePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TDESTRUCTION_MESSAGE_MAPPING_FEATURE_COUNT = TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 1;
+    int TDESTRUCTION_MESSAGE_MAPPING_FEATURE_COUNT = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram
      * <em>TSequence Diagram</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>TSequence Diagram</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram
      * @generated
@@ -1585,7 +1585,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getLifelineMappings
      * <em>Lifeline Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Lifeline Mappings</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getLifelineMappings()
@@ -1599,7 +1599,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getMessageMappings
      * <em>Message Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Message Mappings</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getMessageMappings()
@@ -1613,7 +1613,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TMessageExtremity
      * <em>TMessage Extremity</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>TMessage Extremity</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageExtremity
      * @generated
@@ -1625,7 +1625,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping
      * <em>TLifeline Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>TLifeline Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping
      * @generated
@@ -1651,7 +1651,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getExecutionMappings
      * <em>Execution Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Execution Mappings</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getExecutionMappings()
@@ -1665,7 +1665,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getInstanceRoleStyle
      * <em>Instance Role Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Instance Role Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getInstanceRoleStyle()
@@ -1692,7 +1692,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEndOfLifeStyle
      * <em>End Of Life Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>End Of Life Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEndOfLifeStyle()
@@ -1830,7 +1830,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping
      * <em>TExecution Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>TExecution Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionMapping
      * @generated
@@ -1882,7 +1882,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getExecutionMappings
      * <em>Execution Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Execution Mappings</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getExecutionMappings()
@@ -1908,7 +1908,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getConditionalStyles
      * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Conditional Styles</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getConditionalStyles()
@@ -1922,7 +1922,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle
      * <em>TExecution Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>TExecution Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionStyle
      * @generated
@@ -1960,7 +1960,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor()
      * @see #getTExecutionStyle()
@@ -2089,7 +2089,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement
      * <em>Use Domain Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Use Domain Element</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement()
      * @see #getTSourceTargetMessageMapping()
@@ -2114,7 +2114,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping#getInvocationMapping
      * <em>Invocation Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Invocation Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping#getInvocationMapping()
      * @see #getTReturnMessageMapping()
@@ -2190,7 +2190,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping
      * <em>TAbstract Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>TAbstract Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TAbstractMapping
      * @generated
@@ -2240,7 +2240,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping
      * <em>TMessage Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>TMessage Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageMapping
      * @generated
@@ -2292,7 +2292,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getConditionalStyle
      * <em>Conditional Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Conditional Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getConditionalStyle()
@@ -2365,7 +2365,7 @@ public interface TemplatePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLabelExpression
      * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLabelExpression()
      * @see #getTMessageStyle()
@@ -2414,7 +2414,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -2444,7 +2444,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTSequenceDiagram()
          * @generated
          */
-        EClass TSEQUENCE_DIAGRAM = eINSTANCE.getTSequenceDiagram();
+        EClass TSEQUENCE_DIAGRAM = TemplatePackage.eINSTANCE.getTSequenceDiagram();
 
         /**
          * The meta object literal for the '<em><b>Ends Ordering</b></em>'
@@ -2452,7 +2452,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TSEQUENCE_DIAGRAM__ENDS_ORDERING = eINSTANCE.getTSequenceDiagram_EndsOrdering();
+        EAttribute TSEQUENCE_DIAGRAM__ENDS_ORDERING = TemplatePackage.eINSTANCE.getTSequenceDiagram_EndsOrdering();
 
         /**
          * The meta object literal for the '<em><b>Lifeline Mappings</b></em>'
@@ -2461,7 +2461,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TSEQUENCE_DIAGRAM__LIFELINE_MAPPINGS = eINSTANCE.getTSequenceDiagram_LifelineMappings();
+        EReference TSEQUENCE_DIAGRAM__LIFELINE_MAPPINGS = TemplatePackage.eINSTANCE.getTSequenceDiagram_LifelineMappings();
 
         /**
          * The meta object literal for the '<em><b>Message Mappings</b></em>'
@@ -2470,7 +2470,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TSEQUENCE_DIAGRAM__MESSAGE_MAPPINGS = eINSTANCE.getTSequenceDiagram_MessageMappings();
+        EReference TSEQUENCE_DIAGRAM__MESSAGE_MAPPINGS = TemplatePackage.eINSTANCE.getTSequenceDiagram_MessageMappings();
 
         /**
          * The meta object literal for the '
@@ -2482,7 +2482,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTMessageExtremity()
          * @generated
          */
-        EClass TMESSAGE_EXTREMITY = eINSTANCE.getTMessageExtremity();
+        EClass TMESSAGE_EXTREMITY = TemplatePackage.eINSTANCE.getTMessageExtremity();
 
         /**
          * The meta object literal for the '
@@ -2494,16 +2494,16 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTLifelineMapping()
          * @generated
          */
-        EClass TLIFELINE_MAPPING = eINSTANCE.getTLifelineMapping();
+        EClass TLIFELINE_MAPPING = TemplatePackage.eINSTANCE.getTLifelineMapping();
 
         /**
          * The meta object literal for the '
          * <em><b>Eol Visible Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION = eINSTANCE.getTLifelineMapping_EolVisibleExpression();
+        EAttribute TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION = TemplatePackage.eINSTANCE.getTLifelineMapping_EolVisibleExpression();
 
         /**
          * The meta object literal for the '<em><b>Execution Mappings</b></em>'
@@ -2512,7 +2512,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TLIFELINE_MAPPING__EXECUTION_MAPPINGS = eINSTANCE.getTLifelineMapping_ExecutionMappings();
+        EReference TLIFELINE_MAPPING__EXECUTION_MAPPINGS = TemplatePackage.eINSTANCE.getTLifelineMapping_ExecutionMappings();
 
         /**
          * The meta object literal for the '<em><b>Instance Role Style</b></em>'
@@ -2521,7 +2521,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE = eINSTANCE.getTLifelineMapping_InstanceRoleStyle();
+        EReference TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE = TemplatePackage.eINSTANCE.getTLifelineMapping_InstanceRoleStyle();
 
         /**
          * The meta object literal for the '<em><b>Lifeline Style</b></em>'
@@ -2530,7 +2530,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TLIFELINE_MAPPING__LIFELINE_STYLE = eINSTANCE.getTLifelineMapping_LifelineStyle();
+        EReference TLIFELINE_MAPPING__LIFELINE_STYLE = TemplatePackage.eINSTANCE.getTLifelineMapping_LifelineStyle();
 
         /**
          * The meta object literal for the '<em><b>End Of Life Style</b></em>'
@@ -2539,7 +2539,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TLIFELINE_MAPPING__END_OF_LIFE_STYLE = eINSTANCE.getTLifelineMapping_EndOfLifeStyle();
+        EReference TLIFELINE_MAPPING__END_OF_LIFE_STYLE = TemplatePackage.eINSTANCE.getTLifelineMapping_EndOfLifeStyle();
 
         /**
          * The meta object literal for the '
@@ -2548,7 +2548,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TLIFELINE_MAPPING__CONDITIONAL_LIFE_LINE_STYLES = eINSTANCE.getTLifelineMapping_ConditionalLifeLineStyles();
+        EReference TLIFELINE_MAPPING__CONDITIONAL_LIFE_LINE_STYLES = TemplatePackage.eINSTANCE.getTLifelineMapping_ConditionalLifeLineStyles();
 
         /**
          * The meta object literal for the '
@@ -2560,7 +2560,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTLifelineStyle()
          * @generated
          */
-        EClass TLIFELINE_STYLE = eINSTANCE.getTLifelineStyle();
+        EClass TLIFELINE_STYLE = TemplatePackage.eINSTANCE.getTLifelineStyle();
 
         /**
          * The meta object literal for the '
@@ -2569,7 +2569,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getTLifelineStyle_LifelineWidthComputationExpression();
+        EAttribute TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION = TemplatePackage.eINSTANCE.getTLifelineStyle_LifelineWidthComputationExpression();
 
         /**
          * The meta object literal for the '<em><b>Lifeline Color</b></em>'
@@ -2577,7 +2577,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TLIFELINE_STYLE__LIFELINE_COLOR = eINSTANCE.getTLifelineStyle_LifelineColor();
+        EReference TLIFELINE_STYLE__LIFELINE_COLOR = TemplatePackage.eINSTANCE.getTLifelineStyle_LifelineColor();
 
         /**
          * The meta object literal for the '
@@ -2589,7 +2589,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTConditionalLifelineStyle()
          * @generated
          */
-        EClass TCONDITIONAL_LIFELINE_STYLE = eINSTANCE.getTConditionalLifelineStyle();
+        EClass TCONDITIONAL_LIFELINE_STYLE = TemplatePackage.eINSTANCE.getTConditionalLifelineStyle();
 
         /**
          * The meta object literal for the '<em><b>Predicate Expression</b></em>
@@ -2597,7 +2597,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TCONDITIONAL_LIFELINE_STYLE__PREDICATE_EXPRESSION = eINSTANCE.getTConditionalLifelineStyle_PredicateExpression();
+        EAttribute TCONDITIONAL_LIFELINE_STYLE__PREDICATE_EXPRESSION = TemplatePackage.eINSTANCE.getTConditionalLifelineStyle_PredicateExpression();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -2605,7 +2605,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TCONDITIONAL_LIFELINE_STYLE__STYLE = eINSTANCE.getTConditionalLifelineStyle_Style();
+        EReference TCONDITIONAL_LIFELINE_STYLE__STYLE = TemplatePackage.eINSTANCE.getTConditionalLifelineStyle_Style();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -2613,7 +2613,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TSEQUENCE_DIAGRAM__DOMAIN_CLASS = eINSTANCE.getTSequenceDiagram_DomainClass();
+        EAttribute TSEQUENCE_DIAGRAM__DOMAIN_CLASS = TemplatePackage.eINSTANCE.getTSequenceDiagram_DomainClass();
 
         /**
          * The meta object literal for the '
@@ -2625,7 +2625,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTTransformer()
          * @generated
          */
-        EClass TTRANSFORMER = eINSTANCE.getTTransformer();
+        EClass TTRANSFORMER = TemplatePackage.eINSTANCE.getTTransformer();
 
         /**
          * The meta object literal for the '<em><b>Outputs</b></em>' reference
@@ -2633,7 +2633,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TTRANSFORMER__OUTPUTS = eINSTANCE.getTTransformer_Outputs();
+        EReference TTRANSFORMER__OUTPUTS = TemplatePackage.eINSTANCE.getTTransformer_Outputs();
 
         /**
          * The meta object literal for the '
@@ -2645,7 +2645,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTExecutionMapping()
          * @generated
          */
-        EClass TEXECUTION_MAPPING = eINSTANCE.getTExecutionMapping();
+        EClass TEXECUTION_MAPPING = TemplatePackage.eINSTANCE.getTExecutionMapping();
 
         /**
          * The meta object literal for the '
@@ -2654,7 +2654,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TEXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION = eINSTANCE.getTExecutionMapping_StartingEndFinderExpression();
+        EAttribute TEXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION = TemplatePackage.eINSTANCE.getTExecutionMapping_StartingEndFinderExpression();
 
         /**
          * The meta object literal for the '
@@ -2663,7 +2663,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TEXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION = eINSTANCE.getTExecutionMapping_FinishingEndFinderExpression();
+        EAttribute TEXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION = TemplatePackage.eINSTANCE.getTExecutionMapping_FinishingEndFinderExpression();
 
         /**
          * The meta object literal for the '<em><b>Recursive</b></em>' attribute
@@ -2671,7 +2671,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TEXECUTION_MAPPING__RECURSIVE = eINSTANCE.getTExecutionMapping_Recursive();
+        EAttribute TEXECUTION_MAPPING__RECURSIVE = TemplatePackage.eINSTANCE.getTExecutionMapping_Recursive();
 
         /**
          * The meta object literal for the '<em><b>Execution Mappings</b></em>'
@@ -2680,7 +2680,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TEXECUTION_MAPPING__EXECUTION_MAPPINGS = eINSTANCE.getTExecutionMapping_ExecutionMappings();
+        EReference TEXECUTION_MAPPING__EXECUTION_MAPPINGS = TemplatePackage.eINSTANCE.getTExecutionMapping_ExecutionMappings();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -2688,7 +2688,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TEXECUTION_MAPPING__STYLE = eINSTANCE.getTExecutionMapping_Style();
+        EReference TEXECUTION_MAPPING__STYLE = TemplatePackage.eINSTANCE.getTExecutionMapping_Style();
 
         /**
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
@@ -2697,7 +2697,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TEXECUTION_MAPPING__CONDITIONAL_STYLES = eINSTANCE.getTExecutionMapping_ConditionalStyles();
+        EReference TEXECUTION_MAPPING__CONDITIONAL_STYLES = TemplatePackage.eINSTANCE.getTExecutionMapping_ConditionalStyles();
 
         /**
          * The meta object literal for the '
@@ -2709,7 +2709,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTExecutionStyle()
          * @generated
          */
-        EClass TEXECUTION_STYLE = eINSTANCE.getTExecutionStyle();
+        EClass TEXECUTION_STYLE = TemplatePackage.eINSTANCE.getTExecutionStyle();
 
         /**
          * The meta object literal for the '
@@ -2718,7 +2718,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = eINSTANCE.getTExecutionStyle_BorderSizeComputationExpression();
+        EAttribute TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = TemplatePackage.eINSTANCE.getTExecutionStyle_BorderSizeComputationExpression();
 
         /**
          * The meta object literal for the '<em><b>Border Color</b></em>'
@@ -2726,7 +2726,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TEXECUTION_STYLE__BORDER_COLOR = eINSTANCE.getTExecutionStyle_BorderColor();
+        EReference TEXECUTION_STYLE__BORDER_COLOR = TemplatePackage.eINSTANCE.getTExecutionStyle_BorderColor();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -2734,7 +2734,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TEXECUTION_STYLE__BACKGROUND_COLOR = eINSTANCE.getTExecutionStyle_BackgroundColor();
+        EReference TEXECUTION_STYLE__BACKGROUND_COLOR = TemplatePackage.eINSTANCE.getTExecutionStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '
@@ -2746,7 +2746,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTConditionalExecutionStyle()
          * @generated
          */
-        EClass TCONDITIONAL_EXECUTION_STYLE = eINSTANCE.getTConditionalExecutionStyle();
+        EClass TCONDITIONAL_EXECUTION_STYLE = TemplatePackage.eINSTANCE.getTConditionalExecutionStyle();
 
         /**
          * The meta object literal for the '<em><b>Predicate Expression</b></em>
@@ -2754,7 +2754,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TCONDITIONAL_EXECUTION_STYLE__PREDICATE_EXPRESSION = eINSTANCE.getTConditionalExecutionStyle_PredicateExpression();
+        EAttribute TCONDITIONAL_EXECUTION_STYLE__PREDICATE_EXPRESSION = TemplatePackage.eINSTANCE.getTConditionalExecutionStyle_PredicateExpression();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -2762,7 +2762,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TCONDITIONAL_EXECUTION_STYLE__STYLE = eINSTANCE.getTConditionalExecutionStyle_Style();
+        EReference TCONDITIONAL_EXECUTION_STYLE__STYLE = TemplatePackage.eINSTANCE.getTConditionalExecutionStyle_Style();
 
         /**
          * The meta object literal for the '
@@ -2774,7 +2774,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTBasicMessageMapping()
          * @generated
          */
-        EClass TBASIC_MESSAGE_MAPPING = eINSTANCE.getTBasicMessageMapping();
+        EClass TBASIC_MESSAGE_MAPPING = TemplatePackage.eINSTANCE.getTBasicMessageMapping();
 
         /**
          * The meta object literal for the '<em><b>Target</b></em>' reference
@@ -2782,7 +2782,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TBASIC_MESSAGE_MAPPING__TARGET = eINSTANCE.getTBasicMessageMapping_Target();
+        EReference TBASIC_MESSAGE_MAPPING__TARGET = TemplatePackage.eINSTANCE.getTBasicMessageMapping_Target();
 
         /**
          * The meta object literal for the '
@@ -2794,7 +2794,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTSourceTargetMessageMapping()
          * @generated
          */
-        EClass TSOURCE_TARGET_MESSAGE_MAPPING = eINSTANCE.getTSourceTargetMessageMapping();
+        EClass TSOURCE_TARGET_MESSAGE_MAPPING = TemplatePackage.eINSTANCE.getTSourceTargetMessageMapping();
 
         /**
          * The meta object literal for the '<em><b>Source</b></em>' reference
@@ -2802,25 +2802,25 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE = eINSTANCE.getTSourceTargetMessageMapping_Source();
+        EReference TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE = TemplatePackage.eINSTANCE.getTSourceTargetMessageMapping_Source();
 
         /**
          * The meta object literal for the '
          * <em><b>Source Finder Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = eINSTANCE.getTSourceTargetMessageMapping_SourceFinderExpression();
+        EAttribute TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = TemplatePackage.eINSTANCE.getTSourceTargetMessageMapping_SourceFinderExpression();
 
         /**
          * The meta object literal for the '
          * <em><b>Target Finder Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = eINSTANCE.getTSourceTargetMessageMapping_TargetFinderExpression();
+        EAttribute TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = TemplatePackage.eINSTANCE.getTSourceTargetMessageMapping_TargetFinderExpression();
 
         /**
          * The meta object literal for the '<em><b>Use Domain Element</b></em>'
@@ -2828,7 +2828,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = eINSTANCE.getTSourceTargetMessageMapping_UseDomainElement();
+        EAttribute TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TemplatePackage.eINSTANCE.getTSourceTargetMessageMapping_UseDomainElement();
 
         /**
          * The meta object literal for the '
@@ -2840,7 +2840,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTReturnMessageMapping()
          * @generated
          */
-        EClass TRETURN_MESSAGE_MAPPING = eINSTANCE.getTReturnMessageMapping();
+        EClass TRETURN_MESSAGE_MAPPING = TemplatePackage.eINSTANCE.getTReturnMessageMapping();
 
         /**
          * The meta object literal for the '<em><b>Invocation Mapping</b></em>'
@@ -2848,7 +2848,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING = eINSTANCE.getTReturnMessageMapping_InvocationMapping();
+        EReference TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING = TemplatePackage.eINSTANCE.getTReturnMessageMapping_InvocationMapping();
 
         /**
          * The meta object literal for the '
@@ -2857,7 +2857,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = eINSTANCE.getTReturnMessageMapping_InvocationMessageFinderExpression();
+        EAttribute TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = TemplatePackage.eINSTANCE.getTReturnMessageMapping_InvocationMessageFinderExpression();
 
         /**
          * The meta object literal for the '
@@ -2869,7 +2869,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTCreationMessageMapping()
          * @generated
          */
-        EClass TCREATION_MESSAGE_MAPPING = eINSTANCE.getTCreationMessageMapping();
+        EClass TCREATION_MESSAGE_MAPPING = TemplatePackage.eINSTANCE.getTCreationMessageMapping();
 
         /**
          * The meta object literal for the '<em><b>Target</b></em>' reference
@@ -2877,7 +2877,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TCREATION_MESSAGE_MAPPING__TARGET = eINSTANCE.getTCreationMessageMapping_Target();
+        EReference TCREATION_MESSAGE_MAPPING__TARGET = TemplatePackage.eINSTANCE.getTCreationMessageMapping_Target();
 
         /**
          * The meta object literal for the '
@@ -2889,7 +2889,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTDestructionMessageMapping()
          * @generated
          */
-        EClass TDESTRUCTION_MESSAGE_MAPPING = eINSTANCE.getTDestructionMessageMapping();
+        EClass TDESTRUCTION_MESSAGE_MAPPING = TemplatePackage.eINSTANCE.getTDestructionMessageMapping();
 
         /**
          * The meta object literal for the '<em><b>Target</b></em>' reference
@@ -2897,7 +2897,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TDESTRUCTION_MESSAGE_MAPPING__TARGET = eINSTANCE.getTDestructionMessageMapping_Target();
+        EReference TDESTRUCTION_MESSAGE_MAPPING__TARGET = TemplatePackage.eINSTANCE.getTDestructionMessageMapping_Target();
 
         /**
          * The meta object literal for the '
@@ -2909,7 +2909,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTAbstractMapping()
          * @generated
          */
-        EClass TABSTRACT_MAPPING = eINSTANCE.getTAbstractMapping();
+        EClass TABSTRACT_MAPPING = TemplatePackage.eINSTANCE.getTAbstractMapping();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
@@ -2917,7 +2917,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TABSTRACT_MAPPING__NAME = eINSTANCE.getTAbstractMapping_Name();
+        EAttribute TABSTRACT_MAPPING__NAME = TemplatePackage.eINSTANCE.getTAbstractMapping_Name();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -2925,7 +2925,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TABSTRACT_MAPPING__DOMAIN_CLASS = eINSTANCE.getTAbstractMapping_DomainClass();
+        EAttribute TABSTRACT_MAPPING__DOMAIN_CLASS = TemplatePackage.eINSTANCE.getTAbstractMapping_DomainClass();
 
         /**
          * The meta object literal for the '
@@ -2934,7 +2934,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = eINSTANCE.getTAbstractMapping_SemanticCandidatesExpression();
+        EAttribute TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = TemplatePackage.eINSTANCE.getTAbstractMapping_SemanticCandidatesExpression();
 
         /**
          * The meta object literal for the '
@@ -2946,7 +2946,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTMessageMapping()
          * @generated
          */
-        EClass TMESSAGE_MAPPING = eINSTANCE.getTMessageMapping();
+        EClass TMESSAGE_MAPPING = TemplatePackage.eINSTANCE.getTMessageMapping();
 
         /**
          * The meta object literal for the '
@@ -2955,7 +2955,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = eINSTANCE.getTMessageMapping_SendingEndFinderExpression();
+        EAttribute TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = TemplatePackage.eINSTANCE.getTMessageMapping_SendingEndFinderExpression();
 
         /**
          * The meta object literal for the '
@@ -2964,7 +2964,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = eINSTANCE.getTMessageMapping_ReceivingEndFinderExpression();
+        EAttribute TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = TemplatePackage.eINSTANCE.getTMessageMapping_ReceivingEndFinderExpression();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -2972,7 +2972,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TMESSAGE_MAPPING__STYLE = eINSTANCE.getTMessageMapping_Style();
+        EReference TMESSAGE_MAPPING__STYLE = TemplatePackage.eINSTANCE.getTMessageMapping_Style();
 
         /**
          * The meta object literal for the '<em><b>Conditional Style</b></em>'
@@ -2981,7 +2981,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TMESSAGE_MAPPING__CONDITIONAL_STYLE = eINSTANCE.getTMessageMapping_ConditionalStyle();
+        EReference TMESSAGE_MAPPING__CONDITIONAL_STYLE = TemplatePackage.eINSTANCE.getTMessageMapping_ConditionalStyle();
 
         /**
          * The meta object literal for the '
@@ -2993,7 +2993,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTMessageStyle()
          * @generated
          */
-        EClass TMESSAGE_STYLE = eINSTANCE.getTMessageStyle();
+        EClass TMESSAGE_STYLE = TemplatePackage.eINSTANCE.getTMessageStyle();
 
         /**
          * The meta object literal for the '<em><b>Stroke Color</b></em>'
@@ -3001,7 +3001,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TMESSAGE_STYLE__STROKE_COLOR = eINSTANCE.getTMessageStyle_StrokeColor();
+        EReference TMESSAGE_STYLE__STROKE_COLOR = TemplatePackage.eINSTANCE.getTMessageStyle_StrokeColor();
 
         /**
          * The meta object literal for the '<em><b>Line Style</b></em>'
@@ -3009,7 +3009,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TMESSAGE_STYLE__LINE_STYLE = eINSTANCE.getTMessageStyle_LineStyle();
+        EAttribute TMESSAGE_STYLE__LINE_STYLE = TemplatePackage.eINSTANCE.getTMessageStyle_LineStyle();
 
         /**
          * The meta object literal for the '<em><b>Source Arrow</b></em>'
@@ -3017,7 +3017,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TMESSAGE_STYLE__SOURCE_ARROW = eINSTANCE.getTMessageStyle_SourceArrow();
+        EAttribute TMESSAGE_STYLE__SOURCE_ARROW = TemplatePackage.eINSTANCE.getTMessageStyle_SourceArrow();
 
         /**
          * The meta object literal for the '<em><b>Target Arrow</b></em>'
@@ -3025,7 +3025,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TMESSAGE_STYLE__TARGET_ARROW = eINSTANCE.getTMessageStyle_TargetArrow();
+        EAttribute TMESSAGE_STYLE__TARGET_ARROW = TemplatePackage.eINSTANCE.getTMessageStyle_TargetArrow();
 
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
@@ -3033,7 +3033,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TMESSAGE_STYLE__LABEL_EXPRESSION = eINSTANCE.getTMessageStyle_LabelExpression();
+        EAttribute TMESSAGE_STYLE__LABEL_EXPRESSION = TemplatePackage.eINSTANCE.getTMessageStyle_LabelExpression();
 
         /**
          * The meta object literal for the '
@@ -3045,7 +3045,7 @@ public interface TemplatePackage extends EPackage {
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTConditionalMessageStyle()
          * @generated
          */
-        EClass TCONDITIONAL_MESSAGE_STYLE = eINSTANCE.getTConditionalMessageStyle();
+        EClass TCONDITIONAL_MESSAGE_STYLE = TemplatePackage.eINSTANCE.getTConditionalMessageStyle();
 
         /**
          * The meta object literal for the '<em><b>Predicate Expression</b></em>
@@ -3053,7 +3053,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TCONDITIONAL_MESSAGE_STYLE__PREDICATE_EXPRESSION = eINSTANCE.getTConditionalMessageStyle_PredicateExpression();
+        EAttribute TCONDITIONAL_MESSAGE_STYLE__PREDICATE_EXPRESSION = TemplatePackage.eINSTANCE.getTConditionalMessageStyle_PredicateExpression();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
@@ -3061,7 +3061,7 @@ public interface TemplatePackage extends EPackage {
          * 
          * @generated
          */
-        EReference TCONDITIONAL_MESSAGE_STYLE__STYLE = eINSTANCE.getTConditionalMessageStyle_Style();
+        EReference TCONDITIONAL_MESSAGE_STYLE__STYLE = TemplatePackage.eINSTANCE.getTConditionalMessageStyle_Style();
 
     }
 

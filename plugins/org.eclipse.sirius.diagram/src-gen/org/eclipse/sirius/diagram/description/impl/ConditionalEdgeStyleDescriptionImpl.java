@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -70,20 +70,23 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
      * 
      * @generated
      */
+    @Override
     public EdgeStyleDescription getStyle() {
         if (style != null && style.eIsProxy()) {
             InternalEObject oldStyle = (InternalEObject) style;
             style = (EdgeStyleDescription) eResolveProxy(oldStyle);
             if (style != oldStyle) {
                 InternalEObject newStyle = (InternalEObject) style;
-                NotificationChain msgs = oldStyle.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, null, null);
+                NotificationChain msgs = oldStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, null, null);
                 if (newStyle.eInternalContainer() == null) {
-                    msgs = newStyle.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, null, msgs);
+                    msgs = newStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, oldStyle, style));
+                }
             }
         }
         return style;
@@ -108,10 +111,11 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
         style = newStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, oldStyle, newStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -121,18 +125,23 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
      * 
      * @generated
      */
+    @Override
     public void setStyle(EdgeStyleDescription newStyle) {
         if (newStyle != style) {
             NotificationChain msgs = null;
-            if (style != null)
-                msgs = ((InternalEObject) style).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, null, msgs);
-            if (newStyle != null)
-                msgs = ((InternalEObject) newStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, null, msgs);
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, null, msgs);
+            }
             msgs = basicSetStyle(newStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, newStyle, newStyle));
+        }
     }
 
     /**
@@ -158,8 +167,9 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DescriptionPackage.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE:
-            if (resolve)
+            if (resolve) {
                 return getStyle();
+            }
             return basicGetStyle();
         }
         return super.eGet(featureID, resolve, coreType);

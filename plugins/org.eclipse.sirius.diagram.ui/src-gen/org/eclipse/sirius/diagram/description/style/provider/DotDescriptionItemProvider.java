@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style.provider;
 
@@ -35,7 +35,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DotDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
     /**
      * This adds a property descriptor for the Background Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -99,7 +99,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -108,10 +108,11 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
         String color = new ColorQuery(((DotDescription) object).getBackgroundColor()).getLabel();
         String label = getString("_UI_DotDescription_type");
 
-        if (color != null)
+        if (color != null) {
             return label + " " + color;
-        else
+        } else {
             return label;
+        }
     }
 
     /**
@@ -139,7 +140,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

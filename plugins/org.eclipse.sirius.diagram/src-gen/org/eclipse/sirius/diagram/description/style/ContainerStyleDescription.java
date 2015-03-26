@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -37,9 +37,9 @@ public interface ContainerStyleDescription extends RoundedCornerStyleDescription
     /**
      * Returns the value of the '<em><b>Rounded Corner</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * 
+     *
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Rounded Corner</em>' attribute.
      * @see #setRoundedCorner(boolean)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getContainerStyleDescription_RoundedCorner()

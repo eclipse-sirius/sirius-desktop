@@ -35,7 +35,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TConditionalLifelineStyleItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -154,7 +154,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

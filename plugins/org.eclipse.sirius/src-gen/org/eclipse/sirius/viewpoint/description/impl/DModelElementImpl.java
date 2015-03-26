@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -50,7 +50,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
      * The cached value of the '{@link #getEAnnotations() <em>EAnnotations</em>}
      * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getEAnnotations()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DModelElementImpl() {
@@ -68,7 +68,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -78,9 +78,10 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<DAnnotation> getEAnnotations() {
         if (eAnnotations == null) {
             eAnnotations = new EObjectContainmentEList<DAnnotation>(DAnnotation.class, this, DescriptionPackage.DMODEL_ELEMENT__EANNOTATIONS);
@@ -90,16 +91,17 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DAnnotation getDAnnotation(String source) {
         return new DModelElementInternalQuery(this).getDAnnotation(source);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +115,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +129,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -144,7 +146,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +161,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +191,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
                         }
                     }
                 }
-                name = eEncodeValue(name);
+                name = DModelElementImpl.eEncodeValue(name);
                 return count > 0 ? name + "." + count : name;
             }
         } else if (eObject instanceof DAnnotation) {
@@ -308,7 +310,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * Returns the encoded value or the original, if no encoding was needed.
-     * 
+     *
      * @see EModelElementImpl#eURIFragmentSegment(EStructuralFeature, EObject)
      * @param value
      *            the value to be encoded.
@@ -319,8 +321,8 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
         StringBuilder result = null;
         for (int i = 0; i < length; ++i) {
             char character = value.charAt(i);
-            if (character < ESCAPE.length) {
-                String escape = ESCAPE[character];
+            if (character < DModelElementImpl.ESCAPE.length) {
+                String escape = DModelElementImpl.ESCAPE[character];
                 if (escape != null) {
                     if (result == null) {
                         result = new StringBuilder(length + 2);

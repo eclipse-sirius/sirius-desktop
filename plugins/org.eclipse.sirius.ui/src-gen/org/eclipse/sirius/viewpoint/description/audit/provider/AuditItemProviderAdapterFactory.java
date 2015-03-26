@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.audit.provider;
 
@@ -60,7 +60,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -85,7 +85,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public AuditItemProviderAdapterFactory() {
@@ -124,9 +124,10 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -134,9 +135,10 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -193,6 +195,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
         return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
     }
@@ -202,6 +205,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public ResourceLocator getResourceLocator() {
         return childCreationExtenderManager;
     }
@@ -211,6 +215,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -220,6 +225,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -228,9 +234,10 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -242,12 +249,14 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (templateInformationSectionItemProvider != null)
+        if (templateInformationSectionItemProvider != null) {
             templateInformationSectionItemProvider.dispose();
+        }
     }
 
 }

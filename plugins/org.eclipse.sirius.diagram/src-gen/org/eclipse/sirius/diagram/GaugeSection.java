@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -44,7 +44,7 @@ public interface GaugeSection extends Customizable {
      * Returns the value of the '<em><b>Min</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The min
      * value of the gauge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Min</em>' attribute.
      * @see #setMin(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getGaugeSection_Min()
@@ -69,7 +69,7 @@ public interface GaugeSection extends Customizable {
      * Returns the value of the '<em><b>Max</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The max
      * value of the gauge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Max</em>' attribute.
      * @see #setMax(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getGaugeSection_Max()
@@ -94,7 +94,7 @@ public interface GaugeSection extends Customizable {
      * Returns the value of the '<em><b>Value</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * current value. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getGaugeSection_Value()
@@ -119,7 +119,7 @@ public interface GaugeSection extends Customizable {
      * Returns the value of the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * label of the gauge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getGaugeSection_Label()
@@ -144,7 +144,7 @@ public interface GaugeSection extends Customizable {
      * Returns the value of the '<em><b>Background Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The background color. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' containment
      *         reference.
      * @see #setBackgroundColor(RGBValues)
@@ -171,7 +171,7 @@ public interface GaugeSection extends Customizable {
      * Returns the value of the '<em><b>Foreground Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The foreground color. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreground Color</em>' containment
      *         reference.
      * @see #setForegroundColor(RGBValues)

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.provider;
 
@@ -29,14 +29,14 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.DDiagramElementContainer} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DDiagramElementContainerItemProvider extends DDiagramElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DDiagramElementContainerItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Arrange Constraints feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addArrangeConstraintsPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Outgoing Edges feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
@@ -96,7 +96,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Incoming Edges feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
@@ -108,7 +108,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Nodes feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNodesPropertyDescriptor(Object object) {
@@ -121,7 +121,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Containers feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addContainersPropertyDescriptor(Object object) {
@@ -134,7 +134,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Elements feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addElementsPropertyDescriptor(Object object) {
@@ -147,7 +147,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Original Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
@@ -160,7 +160,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Actual Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
@@ -173,7 +173,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Candidates Mapping feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidatesMappingPropertyDescriptor(Object object) {
@@ -186,7 +186,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Width feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
@@ -199,7 +199,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds a property descriptor for the Height feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeightPropertyDescriptor(Object object) {
@@ -285,7 +285,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

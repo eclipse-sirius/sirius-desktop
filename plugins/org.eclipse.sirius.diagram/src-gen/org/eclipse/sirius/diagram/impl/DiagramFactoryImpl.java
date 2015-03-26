@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.impl;
 
@@ -281,9 +281,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DDiagram createDDiagram() {
         DDiagramImpl dDiagram = new DDiagramSpec();
         return dDiagram;
@@ -291,9 +292,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DSemanticDiagram createDSemanticDiagram() {
         DSemanticDiagramImpl dSemanticDiagram = new DSemanticDiagramSpec();
         return dSemanticDiagram;
@@ -304,6 +306,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public HideFilter createHideFilter() {
         HideFilterImpl hideFilter = new HideFilterImpl();
         return hideFilter;
@@ -314,6 +317,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public HideLabelFilter createHideLabelFilter() {
         HideLabelFilterImpl hideLabelFilter = new HideLabelFilterImpl();
         return hideLabelFilter;
@@ -324,6 +328,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public FoldingPointFilter createFoldingPointFilter() {
         FoldingPointFilterImpl foldingPointFilter = new FoldingPointFilterImpl();
         return foldingPointFilter;
@@ -334,6 +339,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public FoldingFilter createFoldingFilter() {
         FoldingFilterImpl foldingFilter = new FoldingFilterImpl();
         return foldingFilter;
@@ -344,6 +350,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public AppliedCompositeFilters createAppliedCompositeFilters() {
         AppliedCompositeFiltersImpl appliedCompositeFilters = new AppliedCompositeFiltersImpl();
         return appliedCompositeFilters;
@@ -354,6 +361,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public AbsoluteBoundsFilter createAbsoluteBoundsFilter() {
         AbsoluteBoundsFilterImpl absoluteBoundsFilter = new AbsoluteBoundsFilterImpl();
         return absoluteBoundsFilter;
@@ -361,9 +369,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DNode createDNode() {
         DNodeImpl dNode = new DNodeSpec();
         return dNode;
@@ -371,9 +380,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DNodeContainer createDNodeContainer() {
         DNodeContainerImpl dNodeContainer = new DNodeContainerSpec();
         return dNodeContainer;
@@ -381,9 +391,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DNodeList createDNodeList() {
         DNodeListImpl dNodeList = new DNodeListSpec();
         return dNodeList;
@@ -391,9 +402,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DNodeListElement createDNodeListElement() {
         DNodeListElementImpl dNodeListElement = new DNodeListElementSpec();
         return dNodeListElement;
@@ -401,9 +413,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public DEdge createDEdge() {
         DEdgeImpl dEdge = new DEdgeSpec();
         return dEdge;
@@ -411,9 +424,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public Dot createDot() {
         DotImpl dot = new DotSpec();
         return dot;
@@ -424,6 +438,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public GaugeSection createGaugeSection() {
         GaugeSectionImpl gaugeSection = new GaugeSectionImpl();
         return gaugeSection;
@@ -431,9 +446,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public FlatContainerStyle createFlatContainerStyle() {
         FlatContainerStyleImpl flatContainerStyle = new FlatContainerStyleSpec();
         return flatContainerStyle;
@@ -441,9 +457,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public ShapeContainerStyle createShapeContainerStyle() {
         ShapeContainerStyleImpl shapeContainerStyle = new ShapeContainerStyleSpec();
         return shapeContainerStyle;
@@ -451,9 +468,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public Square createSquare() {
         SquareImpl square = new SquareSpec();
         return square;
@@ -461,9 +479,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public Ellipse createEllipse() {
         EllipseImpl ellipse = new EllipseSpec();
         return ellipse;
@@ -471,9 +490,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public Lozenge createLozenge() {
         LozengeImpl lozenge = new LozengeSpec();
         return lozenge;
@@ -481,9 +501,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public BundledImage createBundledImage() {
         BundledImageImpl bundledImage = new BundledImageSpec();
         return bundledImage;
@@ -491,9 +512,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public WorkspaceImage createWorkspaceImage() {
         WorkspaceImageImpl workspaceImage = new WorkspaceImageSpec();
         return workspaceImage;
@@ -501,9 +523,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public CustomStyle createCustomStyle() {
         CustomStyleImpl customStyle = new CustomStyleSpec();
         return customStyle;
@@ -511,9 +534,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public EdgeStyle createEdgeStyle() {
         EdgeStyleImpl edgeStyle = new EdgeStyleSpec();
         return edgeStyle;
@@ -521,9 +545,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public GaugeCompositeStyle createGaugeCompositeStyle() {
         GaugeCompositeStyleImpl gaugeCompositeStyle = new GaugeCompositeStyleSpec();
         return gaugeCompositeStyle;
@@ -534,6 +559,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public BorderedStyle createBorderedStyle() {
         BorderedStyleImpl borderedStyle = new BorderedStyleImpl();
         return borderedStyle;
@@ -541,9 +567,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
+    @Override
     public Note createNote() {
         NoteImpl note = new NoteSpec();
         return note;
@@ -554,6 +581,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public FilterVariableHistory createFilterVariableHistory() {
         FilterVariableHistoryImpl filterVariableHistory = new FilterVariableHistoryImpl();
         return filterVariableHistory;
@@ -564,6 +592,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public FilterVariableValue createFilterVariableValue() {
         FilterVariableValueImpl filterVariableValue = new FilterVariableValueImpl();
         return filterVariableValue;
@@ -574,6 +603,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public CollapseFilter createCollapseFilter() {
         CollapseFilterImpl collapseFilter = new CollapseFilterImpl();
         return collapseFilter;
@@ -584,6 +614,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public IndirectlyCollapseFilter createIndirectlyCollapseFilter() {
         IndirectlyCollapseFilterImpl indirectlyCollapseFilter = new IndirectlyCollapseFilterImpl();
         return indirectlyCollapseFilter;
@@ -594,6 +625,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public BeginLabelStyle createBeginLabelStyle() {
         BeginLabelStyleImpl beginLabelStyle = new BeginLabelStyleImpl();
         return beginLabelStyle;
@@ -604,6 +636,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public CenterLabelStyle createCenterLabelStyle() {
         CenterLabelStyleImpl centerLabelStyle = new CenterLabelStyleImpl();
         return centerLabelStyle;
@@ -614,6 +647,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public EndLabelStyle createEndLabelStyle() {
         EndLabelStyleImpl endLabelStyle = new EndLabelStyleImpl();
         return endLabelStyle;
@@ -624,6 +658,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public BracketEdgeStyle createBracketEdgeStyle() {
         BracketEdgeStyleImpl bracketEdgeStyle = new BracketEdgeStyleImpl();
         return bracketEdgeStyle;
@@ -634,6 +669,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public ComputedStyleDescriptionRegistry createComputedStyleDescriptionRegistry() {
         ComputedStyleDescriptionRegistryImpl computedStyleDescriptionRegistry = new ComputedStyleDescriptionRegistryImpl();
         return computedStyleDescriptionRegistry;
@@ -644,6 +680,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public DragAndDropTarget createDragAndDropTarget() {
         DragAndDropTargetImpl dragAndDropTarget = new DragAndDropTargetImpl();
         return dragAndDropTarget;
@@ -656,8 +693,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public ContainerLayout createContainerLayoutFromString(EDataType eDataType, String initialValue) {
         ContainerLayout result = ContainerLayout.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -677,8 +715,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public LabelPosition createLabelPositionFromString(EDataType eDataType, String initialValue) {
         LabelPosition result = LabelPosition.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -698,8 +737,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public ContainerShape createContainerShapeFromString(EDataType eDataType, String initialValue) {
         ContainerShape result = ContainerShape.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -719,8 +759,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public BackgroundStyle createBackgroundStyleFromString(EDataType eDataType, String initialValue) {
         BackgroundStyle result = BackgroundStyle.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -740,8 +781,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public BundledImageShape createBundledImageShapeFromString(EDataType eDataType, String initialValue) {
         BundledImageShape result = BundledImageShape.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -761,8 +803,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public LineStyle createLineStyleFromString(EDataType eDataType, String initialValue) {
         LineStyle result = LineStyle.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -782,8 +825,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public EdgeArrows createEdgeArrowsFromString(EDataType eDataType, String initialValue) {
         EdgeArrows result = EdgeArrows.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -803,8 +847,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public EdgeRouting createEdgeRoutingFromString(EDataType eDataType, String initialValue) {
         EdgeRouting result = EdgeRouting.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -824,8 +869,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public AlignmentKind createAlignmentKindFromString(EDataType eDataType, String initialValue) {
         AlignmentKind result = AlignmentKind.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -845,8 +891,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public ResizeKind createResizeKindFromString(EDataType eDataType, String initialValue) {
         ResizeKind result = ResizeKind.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -866,8 +913,9 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      */
     public ArrangeConstraint createArrangeConstraintFromString(EDataType eDataType, String initialValue) {
         ArrangeConstraint result = ArrangeConstraint.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
@@ -885,6 +933,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * 
      * @generated
      */
+    @Override
     public DiagramPackage getDiagramPackage() {
         return (DiagramPackage) getEPackage();
     }

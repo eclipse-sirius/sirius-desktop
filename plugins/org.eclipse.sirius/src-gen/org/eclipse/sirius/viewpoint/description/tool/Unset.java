@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -37,7 +37,7 @@ public interface Unset extends ContainerModelOperation {
      * default value is <code>""</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> Name of the feature to unset.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getUnset_FeatureName()
@@ -53,7 +53,7 @@ public interface Unset extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.Unset#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()
@@ -66,7 +66,7 @@ public interface Unset extends ContainerModelOperation {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Expression returning the elements to unset from the feature. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Element Expression</em>' attribute.
      * @see #setElementExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getUnset_ElementExpression()
@@ -83,7 +83,7 @@ public interface Unset extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.Unset#getElementExpression
      * <em>Element Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element Expression</em>' attribute.
      * @see #getElementExpression()

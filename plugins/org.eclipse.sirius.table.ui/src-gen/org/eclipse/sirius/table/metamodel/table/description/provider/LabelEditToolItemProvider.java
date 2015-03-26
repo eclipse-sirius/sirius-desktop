@@ -33,7 +33,7 @@ public class LabelEditToolItemProvider extends TableToolItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LabelEditToolItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class LabelEditToolItemProvider extends TableToolItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class LabelEditToolItemProvider extends TableToolItemProvider {
     /**
      * This returns LabelEditTool.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class LabelEditToolItemProvider extends TableToolItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -85,7 +85,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.DDiagramElement}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> The DDiagramElements
      * directly owned by this diagram. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Diagram Elements</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_OwnedDiagramElements()
@@ -100,7 +100,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.DDiagramElement}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> The diagram elements
      * directly and indirectly owned by this diagram. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Diagram Elements</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_DiagramElements()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -112,7 +112,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * description of the diagram. It may be null. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(DiagramDescription)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_Description()
@@ -140,7 +140,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * edges of the diagram. It is a subset of diagramElements <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Edges</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_Edges()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -154,7 +154,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * nodes of the diagram. It is a subset of diagramElements <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Nodes</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_Nodes()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -168,7 +168,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.DNodeListElement}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> All node list elements
      * of the diagram. It is a subset of diagramElements <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Node List Elements</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_NodeListElements()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -183,7 +183,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * containers of the diagram. It is a subset of diagramElements <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Containers</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_Containers()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -195,7 +195,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Current Concern</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The current selected concer. It may be null <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Current Concern</em>' reference.
      * @see #setCurrentConcern(ConcernDescription)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_CurrentConcern()
@@ -224,7 +224,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Filters that are currently activated for this viewpoint. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Activated Filters</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_ActivatedFilters()
      * @model
@@ -238,7 +238,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.description.filter.FilterDescription}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Filters that can be activated for this viewpoint. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>All Filters</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_AllFilters()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -253,7 +253,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Validation rules that are currently activated for this viewpoint. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Activated Rules</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_ActivatedRules()
      * @model
@@ -268,7 +268,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Behaviors that are currently activated for this viewpoint. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Activate Behaviors</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_ActivateBehaviors()
      * @model
@@ -300,7 +300,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.DDiagram#getFilterVariableHistory
      * <em>Filter Variable History</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Variable History</em>'
      *            containment reference.
@@ -364,7 +364,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> List of
      * DDiagramElement : Either the DDiagramElement is hidden or its label is
      * hidden. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Hidden Elements</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_HiddenElements()
      * @model transient="true"
@@ -410,7 +410,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * the header labels (1 by default). This field is used only if the
      * IDiagramDescriptionProvider.supportHeader() return true for this
      * DDiagram. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Header Height</em>' attribute.
      * @see #setHeaderHeight(int)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_HeaderHeight()
@@ -436,7 +436,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Returns all nodes owned (directly or not) by this viewpoint that have
      * been created from the specified mapping.
-     * 
+     *
      * @param mapping
      *            The mapping that has created the returned ViewNodes <!--
      *            end-model-doc -->
@@ -449,7 +449,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Returns all edges owned (directly or not) by this viewpoint that have
      * been created from the specified mapping.
-     * 
+     *
      * @param mapping
      *            The mapping that has created the returned ViewEdges <!--
      *            end-model-doc -->
@@ -462,7 +462,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Returns all containers owned (directly or not) by this viewpoint that
      * have been created from the specified mapping.
-     * 
+     *
      * @param mapping
      *            The mapping that has created the returned
      *            ViewPointElementContainers <!-- end-model-doc -->

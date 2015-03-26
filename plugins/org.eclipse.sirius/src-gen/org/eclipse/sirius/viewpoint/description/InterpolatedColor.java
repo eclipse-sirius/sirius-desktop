@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc --> Describes a color which varies between two level
  * color depending on the values of dynamically computed expressions.
- * 
+ *
  * @Deprecated : Describes a color which varies between two extremes (red and
  *             green) depending on the values of dynamically computed
  *             expressions. <!-- end-model-doc -->
@@ -54,7 +54,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * end-user-doc --> <!-- begin-model-doc --> An expression computing the
      * value of the color. The value of the color must be include in the scale
      * bounds <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Color Value Computation Expression</em>'
      *         attribute.
      * @see #setColorValueComputationExpression(String)
@@ -72,7 +72,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * {@link org.eclipse.sirius.viewpoint.description.InterpolatedColor#getColorValueComputationExpression
      * <em>Color Value Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Color Value Computation Expression</em>' attribute.
@@ -91,7 +91,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Min Value Computation Expression</em>'
      *         attribute.
      * @see #setMinValueComputationExpression(String)
@@ -109,7 +109,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * {@link org.eclipse.sirius.viewpoint.description.InterpolatedColor#getMinValueComputationExpression
      * <em>Min Value Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Min Value Computation Expression</em>' attribute.
@@ -128,7 +128,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Max Value Computation Expression</em>'
      *         attribute.
      * @see #setMaxValueComputationExpression(String)
@@ -146,7 +146,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * {@link org.eclipse.sirius.viewpoint.description.InterpolatedColor#getMaxValueComputationExpression
      * <em>Max Value Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Max Value Computation Expression</em>' attribute.
@@ -165,7 +165,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color Steps</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getInterpolatedColor_ColorSteps()

@@ -48,7 +48,7 @@ public class TableToolItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableToolItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +58,7 @@ public class TableToolItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,20 +150,20 @@ public class TableToolItemProvider extends ItemProviderAdapter implements IEditi
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         collectNewChildDescriptorsGen(newChildDescriptors, object);
-        ItemProviderHelper.filterChildDescriptorsByType(newChildDescriptors, TYPES_TO_HIDE);
+        ItemProviderHelper.filterChildDescriptorsByType(newChildDescriptors, TableToolItemProvider.TYPES_TO_HIDE);
     }
 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -199,7 +199,7 @@ public class TableToolItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -67,7 +67,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      * @generated
      * @ordered
      */
-    protected String canEdit = CAN_EDIT_EDEFAULT;
+    protected String canEdit = CellUpdaterImpl.CAN_EDIT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -93,6 +93,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      * 
      * @generated
      */
+    @Override
     public LabelEditTool getDirectEdit() {
         return directEdit;
     }
@@ -107,10 +108,11 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
         directEdit = newDirectEdit;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.CELL_UPDATER__DIRECT_EDIT, oldDirectEdit, newDirectEdit);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -120,18 +122,23 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      * 
      * @generated
      */
+    @Override
     public void setDirectEdit(LabelEditTool newDirectEdit) {
         if (newDirectEdit != directEdit) {
             NotificationChain msgs = null;
-            if (directEdit != null)
-                msgs = ((InternalEObject) directEdit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CELL_UPDATER__DIRECT_EDIT, null, msgs);
-            if (newDirectEdit != null)
-                msgs = ((InternalEObject) newDirectEdit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.CELL_UPDATER__DIRECT_EDIT, null, msgs);
+            if (directEdit != null) {
+                msgs = ((InternalEObject) directEdit).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CELL_UPDATER__DIRECT_EDIT, null, msgs);
+            }
+            if (newDirectEdit != null) {
+                msgs = ((InternalEObject) newDirectEdit).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CELL_UPDATER__DIRECT_EDIT, null, msgs);
+            }
             msgs = basicSetDirectEdit(newDirectEdit, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CELL_UPDATER__DIRECT_EDIT, newDirectEdit, newDirectEdit));
+        }
     }
 
     /**
@@ -139,6 +146,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      * 
      * @generated
      */
+    @Override
     public String getCanEdit() {
         return canEdit;
     }
@@ -148,11 +156,13 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      * 
      * @generated
      */
+    @Override
     public void setCanEdit(String newCanEdit) {
         String oldCanEdit = canEdit;
         canEdit = newCanEdit;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CELL_UPDATER__CAN_EDIT, oldCanEdit, canEdit));
+        }
     }
 
     /**
@@ -160,6 +170,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      * 
      * @generated
      */
+    @Override
     public String getLabelComputationExpression() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -171,6 +182,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      * 
      * @generated
      */
+    @Override
     public CreateCellTool getCreateCell() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -237,7 +249,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
             setDirectEdit((LabelEditTool) null);
             return;
         case DescriptionPackage.CELL_UPDATER__CAN_EDIT:
-            setCanEdit(CAN_EDIT_EDEFAULT);
+            setCanEdit(CellUpdaterImpl.CAN_EDIT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -254,7 +266,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
         case DescriptionPackage.CELL_UPDATER__DIRECT_EDIT:
             return directEdit != null;
         case DescriptionPackage.CELL_UPDATER__CAN_EDIT:
-            return CAN_EDIT_EDEFAULT == null ? canEdit != null : !CAN_EDIT_EDEFAULT.equals(canEdit);
+            return CellUpdaterImpl.CAN_EDIT_EDEFAULT == null ? canEdit != null : !CellUpdaterImpl.CAN_EDIT_EDEFAULT.equals(canEdit);
         }
         return super.eIsSet(featureID);
     }
@@ -266,8 +278,9 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (canEdit: ");

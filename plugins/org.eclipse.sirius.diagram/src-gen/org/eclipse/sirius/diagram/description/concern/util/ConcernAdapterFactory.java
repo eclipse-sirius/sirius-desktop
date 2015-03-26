@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.concern.util;
 
@@ -44,8 +44,8 @@ public class ConcernAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public ConcernAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = ConcernPackage.eINSTANCE;
+        if (ConcernAdapterFactory.modelPackage == null) {
+            ConcernAdapterFactory.modelPackage = ConcernPackage.eINSTANCE;
         }
     }
 
@@ -60,11 +60,11 @@ public class ConcernAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == ConcernAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == ConcernAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -72,7 +72,7 @@ public class ConcernAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConcernSwitch<Adapter> modelSwitch = new ConcernSwitch<Adapter>() {
@@ -123,7 +123,7 @@ public class ConcernAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernSet
      * @generated

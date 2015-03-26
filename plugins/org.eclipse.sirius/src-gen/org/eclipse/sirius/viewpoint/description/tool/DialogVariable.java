@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
@@ -37,7 +37,7 @@ public interface DialogVariable extends AbstractVariable {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Dialog Prompt</em>' attribute.
      * @see #setDialogPrompt(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getDialogVariable_DialogPrompt()
@@ -51,7 +51,7 @@ public interface DialogVariable extends AbstractVariable {
      * {@link org.eclipse.sirius.viewpoint.description.tool.DialogVariable#getDialogPrompt
      * <em>Dialog Prompt</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Dialog Prompt</em>' attribute.
      * @see #getDialogPrompt()

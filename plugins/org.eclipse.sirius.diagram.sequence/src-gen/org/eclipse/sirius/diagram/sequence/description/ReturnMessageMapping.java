@@ -38,7 +38,7 @@ public interface ReturnMessageMapping extends MessageMapping {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Invocation Message Finder Expression</em>'
      *         attribute.
      * @see #setInvocationMessageFinderExpression(String)
@@ -54,7 +54,7 @@ public interface ReturnMessageMapping extends MessageMapping {
      * {@link org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping#getInvocationMessageFinderExpression
      * <em>Invocation Message Finder Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '
      *            <em>Invocation Message Finder Expression</em>' attribute.

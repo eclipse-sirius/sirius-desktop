@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -54,7 +54,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -74,18 +74,18 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = DRepresentationElementImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSemanticElements()
      * <em>Semantic Elements</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSemanticElements()
      * @generated
      * @ordered
@@ -94,7 +94,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DRepresentationElementImpl() {
@@ -103,7 +103,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,16 +113,18 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObject getTarget() {
         if (target != null && target.eIsProxy()) {
             InternalEObject oldTarget = (InternalEObject) target;
             target = eResolveProxy(oldTarget);
             if (target != oldTarget) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DREPRESENTATION_ELEMENT__TARGET, oldTarget, target));
+                }
             }
         }
         return target;
@@ -130,7 +132,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetTarget() {
@@ -139,42 +141,48 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTarget(EObject newTarget) {
         EObject oldTarget = target;
         target = newTarget;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION_ELEMENT__TARGET, oldTarget, target));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION_ELEMENT__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
             semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS);
@@ -184,9 +192,10 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -195,9 +204,10 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Style getStyle() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -206,9 +216,10 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public RepresentationElementMapping getMapping() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -217,15 +228,16 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.DREPRESENTATION_ELEMENT__TARGET:
-            if (resolve)
+            if (resolve) {
                 return getTarget();
+            }
             return basicGetTarget();
         case ViewpointPackage.DREPRESENTATION_ELEMENT__NAME:
             return getName();
@@ -237,7 +249,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -260,7 +272,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +282,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
             setTarget((EObject) null);
             return;
         case ViewpointPackage.DREPRESENTATION_ELEMENT__NAME:
-            setName(NAME_EDEFAULT);
+            setName(DRepresentationElementImpl.NAME_EDEFAULT);
             return;
         case ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
             getSemanticElements().clear();
@@ -281,7 +293,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -290,7 +302,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
         case ViewpointPackage.DREPRESENTATION_ELEMENT__TARGET:
             return target != null;
         case ViewpointPackage.DREPRESENTATION_ELEMENT__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return DRepresentationElementImpl.NAME_EDEFAULT == null ? name != null : !DRepresentationElementImpl.NAME_EDEFAULT.equals(name);
         case ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
             return semanticElements != null && !semanticElements.isEmpty();
         }
@@ -299,7 +311,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -335,7 +347,7 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -371,13 +383,14 @@ public abstract class DRepresentationElementImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

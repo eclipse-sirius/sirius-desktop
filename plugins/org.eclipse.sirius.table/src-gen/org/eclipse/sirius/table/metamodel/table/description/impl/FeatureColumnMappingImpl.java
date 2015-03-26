@@ -98,7 +98,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * @generated
      * @ordered
      */
-    protected String canEdit = CAN_EDIT_EDEFAULT;
+    protected String canEdit = FeatureColumnMappingImpl.CAN_EDIT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getDefaultForeground()
@@ -115,7 +115,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * The cached value of the '{@link #getForegroundConditionalStyle()
      * <em>Foreground Conditional Style</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundConditionalStyle()
      * @generated
      * @ordered
@@ -137,7 +137,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * The cached value of the '{@link #getBackgroundConditionalStyle()
      * <em>Background Conditional Style</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundConditionalStyle()
      * @generated
      * @ordered
@@ -162,7 +162,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * @generated
      * @ordered
      */
-    protected String featureName = FEATURE_NAME_EDEFAULT;
+    protected String featureName = FeatureColumnMappingImpl.FEATURE_NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelExpression()
@@ -184,7 +184,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * @generated
      * @ordered
      */
-    protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
+    protected String labelExpression = FeatureColumnMappingImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFeatureParentExpression()
@@ -206,7 +206,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * @generated
      * @ordered
      */
-    protected String featureParentExpression = FEATURE_PARENT_EXPRESSION_EDEFAULT;
+    protected String featureParentExpression = FeatureColumnMappingImpl.FEATURE_PARENT_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -232,6 +232,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public LabelEditTool getDirectEdit() {
         return directEdit;
     }
@@ -246,10 +247,11 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
         directEdit = newDirectEdit;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT, oldDirectEdit, newDirectEdit);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -259,18 +261,23 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public void setDirectEdit(LabelEditTool newDirectEdit) {
         if (newDirectEdit != directEdit) {
             NotificationChain msgs = null;
-            if (directEdit != null)
-                msgs = ((InternalEObject) directEdit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT, null, msgs);
-            if (newDirectEdit != null)
-                msgs = ((InternalEObject) newDirectEdit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT, null, msgs);
+            if (directEdit != null) {
+                msgs = ((InternalEObject) directEdit).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT, null, msgs);
+            }
+            if (newDirectEdit != null) {
+                msgs = ((InternalEObject) newDirectEdit).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT, null, msgs);
+            }
             msgs = basicSetDirectEdit(newDirectEdit, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT, newDirectEdit, newDirectEdit));
+        }
     }
 
     /**
@@ -278,6 +285,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public String getCanEdit() {
         return canEdit;
     }
@@ -287,11 +295,13 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public void setCanEdit(String newCanEdit) {
         String oldCanEdit = canEdit;
         canEdit = newCanEdit;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT, oldCanEdit, canEdit));
+        }
     }
 
     /**
@@ -299,6 +309,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public ForegroundStyleDescription getDefaultForeground() {
         return defaultForeground;
     }
@@ -313,10 +324,11 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
         defaultForeground = newDefaultForeground;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND, oldDefaultForeground, newDefaultForeground);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -326,18 +338,23 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public void setDefaultForeground(ForegroundStyleDescription newDefaultForeground) {
         if (newDefaultForeground != defaultForeground) {
             NotificationChain msgs = null;
-            if (defaultForeground != null)
-                msgs = ((InternalEObject) defaultForeground).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND, null, msgs);
-            if (newDefaultForeground != null)
-                msgs = ((InternalEObject) newDefaultForeground).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND, null, msgs);
+            if (defaultForeground != null) {
+                msgs = ((InternalEObject) defaultForeground).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND, null, msgs);
+            }
+            if (newDefaultForeground != null) {
+                msgs = ((InternalEObject) newDefaultForeground).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND, null, msgs);
+            }
             msgs = basicSetDefaultForeground(newDefaultForeground, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND, newDefaultForeground, newDefaultForeground));
+        }
     }
 
     /**
@@ -345,6 +362,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
             foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this,
@@ -358,6 +376,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public BackgroundStyleDescription getDefaultBackground() {
         return defaultBackground;
     }
@@ -372,10 +391,11 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
         defaultBackground = newDefaultBackground;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND, oldDefaultBackground, newDefaultBackground);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -385,18 +405,23 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public void setDefaultBackground(BackgroundStyleDescription newDefaultBackground) {
         if (newDefaultBackground != defaultBackground) {
             NotificationChain msgs = null;
-            if (defaultBackground != null)
-                msgs = ((InternalEObject) defaultBackground).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND, null, msgs);
-            if (newDefaultBackground != null)
-                msgs = ((InternalEObject) newDefaultBackground).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND, null, msgs);
+            if (defaultBackground != null) {
+                msgs = ((InternalEObject) defaultBackground).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND, null, msgs);
+            }
+            if (newDefaultBackground != null) {
+                msgs = ((InternalEObject) newDefaultBackground).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND, null, msgs);
+            }
             msgs = basicSetDefaultBackground(newDefaultBackground, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND, newDefaultBackground, newDefaultBackground));
+        }
     }
 
     /**
@@ -404,6 +429,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
             backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this,
@@ -417,6 +443,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public String getFeatureName() {
         return featureName;
     }
@@ -426,11 +453,13 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public void setFeatureName(String newFeatureName) {
         String oldFeatureName = featureName;
         featureName = newFeatureName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__FEATURE_NAME, oldFeatureName, featureName));
+        }
     }
 
     /**
@@ -438,6 +467,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
@@ -447,11 +477,13 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public void setLabelExpression(String newLabelExpression) {
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
     }
 
     /**
@@ -459,6 +491,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public String getFeatureParentExpression() {
         return featureParentExpression;
     }
@@ -468,11 +501,13 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public void setFeatureParentExpression(String newFeatureParentExpression) {
         String oldFeatureParentExpression = featureParentExpression;
         featureParentExpression = newFeatureParentExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION, oldFeatureParentExpression, featureParentExpression));
+        }
     }
 
     /**
@@ -480,6 +515,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public String getLabelComputationExpression() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -491,6 +527,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * 
      * @generated
      */
+    @Override
     public CreateCellTool getCreateCell() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -603,7 +640,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
             setDirectEdit((LabelEditTool) null);
             return;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT:
-            setCanEdit(CAN_EDIT_EDEFAULT);
+            setCanEdit(FeatureColumnMappingImpl.CAN_EDIT_EDEFAULT);
             return;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND:
             setDefaultForeground((ForegroundStyleDescription) null);
@@ -618,13 +655,13 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
             getBackgroundConditionalStyle().clear();
             return;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FEATURE_NAME:
-            setFeatureName(FEATURE_NAME_EDEFAULT);
+            setFeatureName(FeatureColumnMappingImpl.FEATURE_NAME_EDEFAULT);
             return;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION:
-            setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
+            setLabelExpression(FeatureColumnMappingImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION:
-            setFeatureParentExpression(FEATURE_PARENT_EXPRESSION_EDEFAULT);
+            setFeatureParentExpression(FeatureColumnMappingImpl.FEATURE_PARENT_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -641,7 +678,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT:
             return directEdit != null;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT:
-            return CAN_EDIT_EDEFAULT == null ? canEdit != null : !CAN_EDIT_EDEFAULT.equals(canEdit);
+            return FeatureColumnMappingImpl.CAN_EDIT_EDEFAULT == null ? canEdit != null : !FeatureColumnMappingImpl.CAN_EDIT_EDEFAULT.equals(canEdit);
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND:
             return defaultForeground != null;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE:
@@ -651,11 +688,12 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE:
             return backgroundConditionalStyle != null && !backgroundConditionalStyle.isEmpty();
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FEATURE_NAME:
-            return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
+            return FeatureColumnMappingImpl.FEATURE_NAME_EDEFAULT == null ? featureName != null : !FeatureColumnMappingImpl.FEATURE_NAME_EDEFAULT.equals(featureName);
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION:
-            return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+            return FeatureColumnMappingImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !FeatureColumnMappingImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION:
-            return FEATURE_PARENT_EXPRESSION_EDEFAULT == null ? featureParentExpression != null : !FEATURE_PARENT_EXPRESSION_EDEFAULT.equals(featureParentExpression);
+            return FeatureColumnMappingImpl.FEATURE_PARENT_EXPRESSION_EDEFAULT == null ? featureParentExpression != null : !FeatureColumnMappingImpl.FEATURE_PARENT_EXPRESSION_EDEFAULT
+                    .equals(featureParentExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -735,8 +773,9 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (canEdit: ");

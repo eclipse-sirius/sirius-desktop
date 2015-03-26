@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
@@ -47,7 +47,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -57,17 +57,17 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = UserColorsPaletteImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getEntries() <em>Entries</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEntries()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected UserColorsPaletteImpl() {
@@ -85,7 +85,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,30 +95,34 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.USER_COLORS_PALETTE__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<UserColor> getEntries() {
         if (entries == null) {
             entries = new EObjectContainmentEList.Resolving<UserColor>(UserColor.class, this, DescriptionPackage.USER_COLORS_PALETTE__ENTRIES);
@@ -128,7 +132,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +146,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +162,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -178,14 +182,14 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.USER_COLORS_PALETTE__NAME:
-            setName(NAME_EDEFAULT);
+            setName(UserColorsPaletteImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.USER_COLORS_PALETTE__ENTRIES:
             getEntries().clear();
@@ -196,14 +200,14 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.USER_COLORS_PALETTE__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return UserColorsPaletteImpl.NAME_EDEFAULT == null ? name != null : !UserColorsPaletteImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.USER_COLORS_PALETTE__ENTRIES:
             return entries != null && !entries.isEmpty();
         }
@@ -212,13 +216,14 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

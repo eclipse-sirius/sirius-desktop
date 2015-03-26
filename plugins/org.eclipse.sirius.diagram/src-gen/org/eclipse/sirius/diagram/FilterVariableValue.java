@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram;
 
@@ -72,7 +72,7 @@ public interface FilterVariableValue extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Model Element</em>' reference.
      * @see #setModelElement(EObject)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getFilterVariableValue_ModelElement()

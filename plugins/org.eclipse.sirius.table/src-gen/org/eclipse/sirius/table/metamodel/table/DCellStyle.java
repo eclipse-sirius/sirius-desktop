@@ -40,7 +40,7 @@ public interface DCellStyle extends DTableElementStyle {
      * this DCellStyle to respect the style priority rules between Cell, Line
      * and Column. This TableMapping can be only an IntersectionMapping or a
      * ColumnMapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreground Style Origin</em>' reference.
      * @see #setForegroundStyleOrigin(TableMapping)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCellStyle_ForegroundStyleOrigin()
@@ -70,7 +70,7 @@ public interface DCellStyle extends DTableElementStyle {
      * this DCellStyle to respect the style priority rules between Cell, Line
      * and Column. This TableMapping can be only an IntersectionMapping or a
      * ColumnMapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Style Origin</em>' reference.
      * @see #setBackgroundStyleOrigin(TableMapping)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCellStyle_BackgroundStyleOrigin()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.style;
 
@@ -155,7 +155,7 @@ public interface GaugeSectionDescription extends EObject {
      * Returns the value of the '<em><b>Background Color</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The background color. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_BackgroundColor()
@@ -181,7 +181,7 @@ public interface GaugeSectionDescription extends EObject {
      * Returns the value of the '<em><b>Foreground Color</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The foreground color. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreground Color</em>' reference.
      * @see #setForegroundColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_ForegroundColor()
@@ -207,7 +207,7 @@ public interface GaugeSectionDescription extends EObject {
      * Returns the value of the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * label of the gauge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_Label()

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.audit.impl;
 
@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.audit.InformationSection;
 public abstract class InformationSectionImpl extends MinimalEObjectImpl.Container implements InformationSection {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InformationSectionImpl() {
@@ -37,7 +37,7 @@ public abstract class InformationSectionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -47,9 +47,10 @@ public abstract class InformationSectionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getContent(EObject eObj) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT

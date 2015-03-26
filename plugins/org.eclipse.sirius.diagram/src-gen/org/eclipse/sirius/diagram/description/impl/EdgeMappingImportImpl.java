@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.diagram.description.impl;
 
@@ -75,7 +75,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = EdgeMappingImportImpl.NAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -95,7 +95,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = EdgeMappingImportImpl.LABEL_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getImportedMapping()
@@ -112,7 +112,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * The cached value of the '{@link #getConditionnalStyles()
      * <em>Conditionnal Styles</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionnalStyles()
      * @generated
      * @ordered
@@ -139,7 +139,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * @generated
      * @ordered
      */
-    protected boolean inheritsAncestorFilters = INHERITS_ANCESTOR_FILTERS_EDEFAULT;
+    protected boolean inheritsAncestorFilters = EdgeMappingImportImpl.INHERITS_ANCESTOR_FILTERS_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -165,6 +165,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -174,11 +175,13 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING_IMPORT__NAME, oldName, name));
+        }
     }
 
     /**
@@ -186,6 +189,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -195,11 +199,13 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING_IMPORT__LABEL, oldLabel, label));
+        }
     }
 
     /**
@@ -207,13 +213,15 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public IEdgeMapping getImportedMapping() {
         if (importedMapping != null && importedMapping.eIsProxy()) {
             InternalEObject oldImportedMapping = (InternalEObject) importedMapping;
             importedMapping = (IEdgeMapping) eResolveProxy(oldImportedMapping);
             if (importedMapping != oldImportedMapping) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.EDGE_MAPPING_IMPORT__IMPORTED_MAPPING, oldImportedMapping, importedMapping));
+                }
             }
         }
         return importedMapping;
@@ -233,11 +241,13 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public void setImportedMapping(IEdgeMapping newImportedMapping) {
         IEdgeMapping oldImportedMapping = importedMapping;
         importedMapping = newImportedMapping;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING_IMPORT__IMPORTED_MAPPING, oldImportedMapping, importedMapping));
+        }
     }
 
     /**
@@ -245,6 +255,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public EList<ConditionalEdgeStyleDescription> getConditionnalStyles() {
         if (conditionnalStyles == null) {
             conditionnalStyles = new EObjectContainmentEList.Resolving<ConditionalEdgeStyleDescription>(ConditionalEdgeStyleDescription.class, this,
@@ -258,6 +269,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public boolean isInheritsAncestorFilters() {
         return inheritsAncestorFilters;
     }
@@ -267,11 +279,13 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public void setInheritsAncestorFilters(boolean newInheritsAncestorFilters) {
         boolean oldInheritsAncestorFilters = inheritsAncestorFilters;
         inheritsAncestorFilters = newInheritsAncestorFilters;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.EDGE_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS, oldInheritsAncestorFilters, inheritsAncestorFilters));
+        }
     }
 
     /**
@@ -279,6 +293,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * 
      * @generated
      */
+    @Override
     public EdgeStyle getBestStyle(EObject modelElement, EObject viewVariable, EObject containerVariable) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -312,8 +327,9 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
         case DescriptionPackage.EDGE_MAPPING_IMPORT__LABEL:
             return getLabel();
         case DescriptionPackage.EDGE_MAPPING_IMPORT__IMPORTED_MAPPING:
-            if (resolve)
+            if (resolve) {
                 return getImportedMapping();
+            }
             return basicGetImportedMapping();
         case DescriptionPackage.EDGE_MAPPING_IMPORT__CONDITIONNAL_STYLES:
             return getConditionnalStyles();
@@ -361,10 +377,10 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
     public void eUnset(int featureID) {
         switch (featureID) {
         case DescriptionPackage.EDGE_MAPPING_IMPORT__NAME:
-            setName(NAME_EDEFAULT);
+            setName(EdgeMappingImportImpl.NAME_EDEFAULT);
             return;
         case DescriptionPackage.EDGE_MAPPING_IMPORT__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(EdgeMappingImportImpl.LABEL_EDEFAULT);
             return;
         case DescriptionPackage.EDGE_MAPPING_IMPORT__IMPORTED_MAPPING:
             setImportedMapping((IEdgeMapping) null);
@@ -373,7 +389,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
             getConditionnalStyles().clear();
             return;
         case DescriptionPackage.EDGE_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
-            setInheritsAncestorFilters(INHERITS_ANCESTOR_FILTERS_EDEFAULT);
+            setInheritsAncestorFilters(EdgeMappingImportImpl.INHERITS_ANCESTOR_FILTERS_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -388,15 +404,15 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.EDGE_MAPPING_IMPORT__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return EdgeMappingImportImpl.NAME_EDEFAULT == null ? name != null : !EdgeMappingImportImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.EDGE_MAPPING_IMPORT__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return EdgeMappingImportImpl.LABEL_EDEFAULT == null ? label != null : !EdgeMappingImportImpl.LABEL_EDEFAULT.equals(label);
         case DescriptionPackage.EDGE_MAPPING_IMPORT__IMPORTED_MAPPING:
             return importedMapping != null;
         case DescriptionPackage.EDGE_MAPPING_IMPORT__CONDITIONNAL_STYLES:
             return conditionnalStyles != null && !conditionnalStyles.isEmpty();
         case DescriptionPackage.EDGE_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
-            return inheritsAncestorFilters != INHERITS_ANCESTOR_FILTERS_EDEFAULT;
+            return inheritsAncestorFilters != EdgeMappingImportImpl.INHERITS_ANCESTOR_FILTERS_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -460,8 +476,9 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");
