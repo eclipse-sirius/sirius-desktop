@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,6 +44,7 @@ import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayService;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
@@ -72,8 +72,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
-import com.google.common.collect.Iterators;
-
 /**
  * Create a view according to a specific CreateView model element.
  * 
@@ -100,23 +98,12 @@ public class CreateViewTask extends AbstractOperationTask {
         this.createViewOp = createViewOp;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
-     */
+    @Override
     public String getLabel() {
         return "create a view";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws FeatureNotFoundException
-     * @throws MetaClassNotFoundException
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
+    @Override
     public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
         DSemanticDecorator containerView = evaluateContainerViewExpression();
         DSemanticDiagram parentDDiagram = getDSemanticDiagram(containerView);
@@ -318,9 +305,7 @@ public class CreateViewTask extends AbstractOperationTask {
     private Collection<DDiagramElement> getNodes(final EObject semanticElement, final DSemanticDiagram dSemanticDiagram, final Collection<DiagramElementMapping> mappings) {
         Set<DDiagramElement> result = new HashSet<DDiagramElement>();
         if (semanticElement != null) {
-            Iterator<DDiagramElement> dDiagramElements = Iterators.filter(dSemanticDiagram.eAllContents(), DDiagramElement.class);
-            while (dDiagramElements.hasNext()) {
-                DDiagramElement dDiagramElement = dDiagramElements.next();
+            for (DDiagramElement dDiagramElement : new DDiagramQuery(dSemanticDiagram).getAllDiagramElements()) {
                 if (mappings.contains(dDiagramElement.getMapping()) && semanticElement.equals(dDiagramElement.getTarget())) {
                     result.add(dDiagramElement);
                 }
