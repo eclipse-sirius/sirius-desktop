@@ -13,9 +13,11 @@ package org.eclipse.sirius.diagram.ui.edit.internal.part;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -32,6 +34,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignme
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
@@ -45,6 +48,8 @@ import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Common operations for container and list edit parts.
@@ -138,28 +143,9 @@ public final class DiagramContainerEditPartOperation {
             if (DiagramContainerEditPartOperation.isPrimaryShapeChanging(self, style)) {
                 self.reInitFigure();
             }
-            int borderSize = 0;
-            if (style != null && style.getBorderSize() != null) {
-                borderSize = style.getBorderSize().intValue();
-            }
-            if (borderSize == 0) {
-                borderSize = 1;
-            }
-
             ViewNodeContainerFigureDesc primaryShape = self.getPrimaryShape();
-            if (borderSize > 0) {
-                if (primaryShape instanceof Shape) {
-                    ((Shape) primaryShape).setLineWidth(borderSize);
-                } else if (primaryShape instanceof NodeFigure) {
-                    ((NodeFigure) primaryShape).setLineWidth(borderSize);
-                }
-                if (primaryShape != null && primaryShape.getBorder() instanceof LineBorder) {
-                    ((LineBorder) primaryShape.getBorder()).setWidth(borderSize);
-                } else if (primaryShape != null && primaryShape.getBorder() instanceof MarginBorder) {
-                    // Keep the old behavior : min margin size= 5
-                    primaryShape.setBorder(new MarginBorder(borderSize + IContainerLabelOffsets.LABEL_OFFSET - 1, borderSize, borderSize, borderSize));
-                }
-            }
+
+            refreshBorder(self, primaryShape, style);
 
             if (style instanceof FlatContainerStyle) {
                 // The gradient style
@@ -175,6 +161,57 @@ public final class DiagramContainerEditPartOperation {
             self.setTooltipText(diagElement.getTooltipText());
             DiagramContainerEditPartOperation.refreshLabelAlignment(self, diagElement);
         }
+    }
+
+    private static ViewNodeContainerFigureDesc refreshBorder(final AbstractDiagramElementContainerEditPart self, final ViewNodeContainerFigureDesc primaryShape, final ContainerStyle style) {
+        int borderSize = 0;
+        if (style != null && style.getBorderSize() != null) {
+            borderSize = style.getBorderSize().intValue();
+        }
+        if (borderSize == 0) {
+            borderSize = 1;
+        }
+
+        if (borderSize > 0) {
+            if (primaryShape instanceof Shape) {
+                ((Shape) primaryShape).setLineWidth(borderSize);
+            } else if (primaryShape instanceof NodeFigure) {
+                ((NodeFigure) primaryShape).setLineWidth(borderSize);
+            }
+            if (primaryShape != null && primaryShape.getBorder() instanceof LineBorder) {
+                ((LineBorder) primaryShape.getBorder()).setWidth(borderSize);
+            } else if (primaryShape != null && primaryShape.getBorder() instanceof MarginBorder) {
+                MarginBorder margin = null;
+                int borderMagin = borderSize;
+                switch (self.getParentStackDirection()) {
+                case PositionConstants.NORTH_SOUTH:
+                    borderMagin = isFirstRegionPart(self) ? 0 : borderSize - 1;
+                    margin = new MarginBorder(borderMagin + IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0);
+                    break;
+                case PositionConstants.EAST_WEST:
+                    borderMagin = isFirstRegionPart(self) ? 0 : borderSize;
+                    margin = new MarginBorder(IContainerLabelOffsets.LABEL_OFFSET, borderMagin, 0, 0);
+                    break;
+                case PositionConstants.NONE:
+                default:
+                    // Keep the old behavior : min margin size= 5
+                    // The current container is not a region, the figure has
+                    // been added to the content pane.
+                    margin = new MarginBorder(borderMagin + IContainerLabelOffsets.LABEL_OFFSET - 1, borderMagin, borderMagin, borderMagin);
+                }
+                primaryShape.setBorder(margin);
+            }
+        }
+        return primaryShape;
+    }
+
+    private static boolean isFirstRegionPart(AbstractDiagramElementContainerEditPart self) {
+        EditPart parent = self.getParent();
+        if (parent instanceof AbstractDNodeContainerCompartmentEditPart) {
+            Iterable<AbstractDiagramElementContainerEditPart> regionParts = Iterables.filter(parent.getChildren(), AbstractDiagramElementContainerEditPart.class);
+            return !Iterables.isEmpty(regionParts) && regionParts.iterator().next() == self;
+        }
+        return false;
     }
 
     /**

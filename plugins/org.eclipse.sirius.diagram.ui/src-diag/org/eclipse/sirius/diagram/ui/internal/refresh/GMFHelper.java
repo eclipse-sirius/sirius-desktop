@@ -19,6 +19,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
@@ -36,21 +37,27 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.ui.IEditorPart;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
@@ -67,7 +74,7 @@ public final class GMFHelper {
      * the DEFAULT_MARGIN + the InvisibleResizableCompartmentFigure top Inset
      * (1px)
      */
-    private static Point CONTAINER_INSETS = new Point(4, 5);
+    private static Point CONTAINER_INSETS = new Point(AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN, IContainerLabelOffsets.LABEL_OFFSET);
 
     private GMFHelper() {
         // Helper to not instantiate
@@ -109,7 +116,6 @@ public final class GMFHelper {
             absoluteNodeLocation.translate(parentNodeLocation);
             if (insetsAware) {
                 translateWithInsets(absoluteNodeLocation, node);
-
             }
         }
         return absoluteNodeLocation;
@@ -135,15 +141,60 @@ public final class GMFHelper {
         if (!nodeQuery.isBorderedNode() && parentNodeQuery.isContainer()) {
             EObject element = parentNode.getElement();
             if (element instanceof DDiagramElementContainer) {
-                ContainerStyle containerStyle = ((DDiagramElementContainer) element).getOwnedStyle();
+                DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+                ContainerStyle containerStyle = ddec.getOwnedStyle();
                 int borderSize = containerStyle.getBorderSize().intValue();
                 if (borderSize == 0) {
                     borderSize = 1;
                 }
-                locationToTranslate.translate(CONTAINER_INSETS).translate(borderSize, borderSize);
+
+                // RegionContainer do not have containers insets
+                if (ddec instanceof DNodeContainer) {
+                    if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer()) {
+                        locationToTranslate.translate(0, CONTAINER_INSETS.y);
+                        locationToTranslate.translate(0, getLabelSize(parentNode)).translate(0, AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
+                    } else {
+                        locationToTranslate.translate(CONTAINER_INSETS);
+                    }
+                }
+
+                DDiagramElementContainerExperimentalQuery regionQuery = new DDiagramElementContainerExperimentalQuery(ddec);
+                if (regionQuery.isRegionInHorizontalStack()) {
+                    locationToTranslate.translate((isFirstRegion(ddec) ? 0 : borderSize), 1);
+                } else if (regionQuery.isRegionInVerticalStack()) {
+                    locationToTranslate.translate(1, (isFirstRegion(ddec) ? 1 : borderSize));
+                } else {
+                    locationToTranslate.translate(borderSize, borderSize);
+                }
             }
         }
 
+    }
+
+    private static int getLabelSize(Node parentNode) {
+        int labelSize = 0;
+        for (Node child : Iterables.filter(parentNode.getVisibleChildren(), Node.class)) {
+            if (new ViewQuery(child).isForNameEditPart()) {
+                // TODO Compute the real label height
+                // It depends on the font size
+                // It might require to set the layout constraint of the label
+                // GMF node which will not be used by the
+                // ConstrainedToolbarLayout to locate the label but might be
+                // usefull to store the value in the model.
+                labelSize = 16;
+                break;
+            }
+        }
+        return labelSize;
+    }
+
+    private static boolean isFirstRegion(DDiagramElementContainer ddec) {
+        EObject potentialRegionContainer = ddec.eContainer();
+        if (potentialRegionContainer instanceof DNodeContainer) {
+            EList<DDiagramElement> regions = ((DNodeContainer) potentialRegionContainer).getOwnedDiagramElements();
+            return !regions.isEmpty() && ddec == regions.get(0);
+        }
+        return false;
     }
 
     /**

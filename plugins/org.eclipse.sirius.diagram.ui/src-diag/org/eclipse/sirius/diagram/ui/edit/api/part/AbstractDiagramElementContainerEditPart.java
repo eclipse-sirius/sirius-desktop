@@ -66,7 +66,6 @@ import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -99,6 +98,14 @@ import com.google.common.collect.Lists;
  * @author ymortier
  */
 public abstract class AbstractDiagramElementContainerEditPart extends AbstractBorderedDiagramElementEditPart implements IAbstractDiagramNodeEditPart {
+
+    /**
+     * Default spacing used for the layout manager of the content pane.
+     * 
+     * Will be used to locate the compartment edit part (for region container,
+     * list) after the label.
+     */
+    public static final int DEFAULT_SPACING = 5;
 
     /** The content pane. */
     protected IFigure contentPane;
@@ -199,7 +206,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     protected IFigure setupContentPane(IFigure nodeShape) {
         if (nodeShape.getLayoutManager() == null) {
             ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
-            layout.setSpacing(getMapMode().DPtoLP(5));
+            layout.setSpacing(getMapMode().DPtoLP(DEFAULT_SPACING));
             nodeShape.setLayoutManager(layout);
         }
         return nodeShape; // use nodeShape itself as contentPane
@@ -362,20 +369,24 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         return false;
     }
 
-    private int getParentStackDirection() {
+    /**
+     * Return the direction of the parent stack. The method will return
+     * {@link PositionConstants.None} if the parent is not a Region Container.
+     * 
+     * None if the parent is a FreeForm container.
+     * 
+     * @return the direction of the parent stack.
+     */
+    public int getParentStackDirection() {
         int direction = PositionConstants.NONE;
-        EditPart parent = getParent();
-        if (parent instanceof AbstractDNodeContainerCompartmentEditPart) {
-            EObject element = ((AbstractDNodeContainerCompartmentEditPart) parent).resolveSemanticElement();
-            if (element instanceof DNodeContainer) {
-                DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery((DNodeContainer) element);
-                if (query.isVerticalStackContainer()) {
-                    direction = PositionConstants.NORTH_SOUTH;
-                } else if (query.isHorizontaltackContainer()) {
-                    direction = PositionConstants.EAST_WEST;
-                }
+        DDiagramElement dde = resolveDiagramElement();
+        if (dde instanceof DDiagramElementContainer) {
+            DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde);
+            if (query.isRegionInVerticalStack()) {
+                direction = PositionConstants.NORTH_SOUTH;
+            } else if (query.isRegionInHorizontalStack()) {
+                direction = PositionConstants.EAST_WEST;
             }
-
         }
         return direction;
     }
@@ -397,9 +408,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     @Override
     protected void refreshVisuals() {
         if (primaryShape != null) {
-            final boolean firstRegion = isFirstRegionPart();
-            if (firstRegion && primaryShape.getBorder() instanceof LineBorder || !firstRegion && primaryShape.getBorder() instanceof MarginBorder) {
-                configureBorder(primaryShape);
+            if (isRegion()) {
+                final boolean firstRegion = isFirstRegionPart();
+                if (firstRegion && primaryShape.getBorder() instanceof LineBorder || !firstRegion && primaryShape.getBorder() instanceof MarginBorder) {
+                    configureBorder(primaryShape);
+                }
             }
             /* Update background for containers */
             final DDiagramElement diagElement = this.resolveDiagramElement();

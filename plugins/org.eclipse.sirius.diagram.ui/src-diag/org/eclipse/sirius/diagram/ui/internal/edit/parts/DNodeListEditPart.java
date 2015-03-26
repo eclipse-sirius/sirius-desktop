@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -72,5 +73,25 @@ public class DNodeListEditPart extends AbstractDiagramListEditPart {
      */
     public EditPart getPrimaryChildEditPart() {
         return getChildBySemanticHint(SiriusVisualIDRegistry.getType(DNodeListNameEditPart.VISUAL_ID));
+    }
+
+    /**
+     * DNodeListEditPart is used for DNodeList directly contained by the
+     * DDiagram, it can not be a region.
+     */
+    @Override
+    public boolean isRegion() {
+        return false;
+    }
+    
+    /**
+     * DNodeListEditPart is used for DNodeList directly contained by the
+     * DDiagram, it can not be a region.
+     * 
+     * {@inheritDoc}
+     */
+    @Override
+    public int getParentStackDirection() {
+       return PositionConstants.NONE;
     }
 }

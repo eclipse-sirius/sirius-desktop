@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -84,7 +85,11 @@ import com.google.common.collect.Maps;
  */
 public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCompartmentEditPart implements INotableEditPart, ISiriusEditPart {
 
-    private static final int DEFAULT_MARGIN = 4;
+    /**
+     * Default margin. Added to the border size to set the border insets of
+     * FreeForm containers.
+     */
+    public static final int DEFAULT_MARGIN = 4;
 
     /**
      * Creates a new AbstractDNodeContainerCompartmentEditPart.
@@ -170,14 +175,16 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 if (getFigure() instanceof ResizableCompartmentFigure) {
                     ResizableCompartmentFigure rcf = (ResizableCompartmentFigure) getFigure();
                     if (rcf.getScrollPane() != null) {
-                        // We should not have to report the border size here,
-                        // but the compartment is not a child of the View
+
                         Border border;
-                        int margin = borderSize + DEFAULT_MARGIN;
                         if (isRegionContainerCompartment()) {
-                            // Keep the defaut beahavior
-                            border = new MarginBorder(margin, borderSize, borderSize, borderSize);
+                            // scroll pane / layout compensation
+                            border = new MarginBorder(0, 0, -1, -1);
                         } else {
+                            // We should not have to report the border size
+                            // here, but the content pane of the figure will be
+                            // the main figure for FreeForm containers.
+                            int margin = borderSize + DEFAULT_MARGIN;
                             border = new MarginBorder(margin, margin, margin, margin);
                         }
                         rcf.getScrollPane().setBorder(border);
@@ -197,13 +204,13 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         IMapMode mapMode = getMapMode();
         ShapeCompartmentFigure scf = new ShapeCompartmentFigure(getCompartmentName(), mapMode);
         if (!isRegionContainerCompartment()) {
+            // Do not draw the top line border for free form containers.
             scf.setBorder(new MarginBorder(mapMode.DPtoLP(1), 0, 0, 0));
         }
         scf.getContentPane().setLayoutManager(getLayoutManager());
         scf.getContentPane().addLayoutListener(LayoutAnimator.getDefault());
         scf.setTitleVisibility(false);
         scf.setToolTip((IFigure) null);
-
         return scf;
     }
 
@@ -408,7 +415,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
          */
         @Override
         public void layout(IFigure parent) {
-            Iterator children = parent.getChildren().iterator();
+            Collection<IFigure> children = Lists.newArrayList(Iterables.filter(parent.getChildren(), IFigure.class));
             Point offset = getOrigin(parent);
 
             int maxWidth = 0;
@@ -416,12 +423,10 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
             int minY = Integer.MAX_VALUE;
             Map<IFigure, Rectangle> regionsBounds = Maps.newHashMap();
 
-            IFigure f;
             Rectangle bounds;
             // First step : compute freeform layout bounds and keep the common
             // known max width and minimum y.
-            while (children.hasNext()) {
-                f = (IFigure) children.next();
+            for (IFigure f : children) {
                 bounds = (Rectangle) getConstraint(f);
                 if (bounds == null)
                     continue;
@@ -436,11 +441,11 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
 
             int y = minY;
             int x = 0;
-            children = parent.getChildren().iterator();
-            // Second step : layout the regions : same width and keep their
-            // order.
-            while (children.hasNext()) {
-                f = (IFigure) children.next();
+
+            // Second step : layout the regions, keep their order but use the
+            // same width for vertical stacks and the same height for horizontal
+            // stacks.
+            for (IFigure f : children) {
                 bounds = regionsBounds.get(f);
 
                 bounds.x = x;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,6 +45,40 @@ public class DDiagramElementContainerExperimentalQuery {
             EObject parentContainer = container.eContainer();
             if (parentContainer instanceof DNodeContainer) {
                 return new DNodeContainerExperimentalQuery((DNodeContainer) parentContainer).isRegionContainer();
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Tests whether or not the {@link DNodeContainer} is a region (e.g. child
+     * of an horizontal stack region container, see
+     * {@link DNodeContainerExperimentalQuery#isHorizontaltackContainer()}).
+     * 
+     * @return <code>true</code> if the {@link DNodeContainer} is a region.
+     */
+    public boolean isRegionInHorizontalStack() {
+        if (container != null) {
+            EObject parentContainer = container.eContainer();
+            if (parentContainer instanceof DNodeContainer) {
+                return new DNodeContainerExperimentalQuery((DNodeContainer) parentContainer).isHorizontaltackContainer();
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Tests whether or not the {@link DNodeContainer} is a region (e.g. child
+     * of a vertical stack region container, see
+     * {@link DNodeContainerExperimentalQuery#isVerticalStackContainer()}).
+     * 
+     * @return <code>true</code> if the {@link DNodeContainer} is a region.
+     */
+    public boolean isRegionInVerticalStack() {
+        if (container != null) {
+            EObject parentContainer = container.eContainer();
+            if (parentContainer instanceof DNodeContainer) {
+                return new DNodeContainerExperimentalQuery((DNodeContainer) parentContainer).isVerticalStackContainer();
             }
         }
         return false;
