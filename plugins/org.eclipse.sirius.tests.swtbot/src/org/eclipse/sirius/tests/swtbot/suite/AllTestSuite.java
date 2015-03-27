@@ -100,7 +100,6 @@ public class AllTestSuite extends TestCase {
      */
     public static void addGerritPart1(TestSuite suite) {
         suite.addTestSuite(ContentAssistTest.class);
-        suite.addTestSuite(CustomizationPropertySectionsTests.class);
         suite.addTestSuite(MetamodelPropertyTabTests.class);
         suite.addTestSuite(ResizeKindEditorTest.class);
         suite.addTestSuite(CenteredEdgesRepairTest.class);
@@ -162,7 +161,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(GroupElementsInOneOtherTests.class);
         suite.addTestSuite(GroupElementsInOneOtherTestsWith200PercentOfZoomTests.class);
         suite.addTestSuite(GroupElementsInOneOtherTestsWith50PercentOfZoomTests.class);
-        suite.addTestSuite(GoToMarkerTraceabilityWithUserInteractionTest.class);
         suite.addTestSuite(ExtraMappingEdgeCreationTest.class);
         suite.addTestSuite(ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest.class);
         suite.addTestSuite(EdgeCreationTest.class);
@@ -192,6 +190,7 @@ public class AllTestSuite extends TestCase {
 
         addGerritPart1(suite);
 
+        suite.addTestSuite(CustomizationPropertySectionsTests.class);
         // TheViepointProjectCreationTest should be done before the others ones:
         // to verify the behavior when a specifier first launches the product.
         suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
@@ -272,6 +271,7 @@ public class AllTestSuite extends TestCase {
     public static void addPart2(TestSuite suite) {
 
         addGerritPart2(suite);
+        suite.addTestSuite(GoToMarkerTraceabilityWithUserInteractionTest.class);
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);
         suite.addTestSuite(ContainerCreationTest.class);
         suite.addTestSuite(ContainerCreationWithSnapToGridTest.class);

@@ -114,7 +114,6 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(FrameMoveWithExpansionTest.class);
         suite.addTestSuite(SequenceLifelineTest.class);
         suite.addTestSuite(SequenceBasicMessageTest.class);
-        suite.addTestSuite(SequenceReturnMessageTest.class);
         suite.addTestSuite(MessageExtensionTest.class);
         suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
         suite.addTestSuite(SequenceMessageToSelfTest.class);
@@ -142,6 +141,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
 
         addGerritPart(suite);
 
+        suite.addTestSuite(SequenceReturnMessageTest.class);
         suite.addTestSuite(SyncCallTest.class);
         suite.addTestSuite(SyncCallMoveTest.class);
         suite.addTestSuite(SyncCall2Test.class);

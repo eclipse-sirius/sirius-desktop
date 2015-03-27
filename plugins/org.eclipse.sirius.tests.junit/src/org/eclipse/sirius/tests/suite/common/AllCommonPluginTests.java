@@ -166,7 +166,6 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(RepairMigrateLostDiagramElementsTC1Test.class);
         suite.addTestSuite(RepairMigrateLostDiagramElementsTC2Test.class);
         suite.addTestSuite(RepairMigratePinStatusTest.class);
-        suite.addTestSuite(RepairWithActivatedFiltersTest.class);
         // suite.addTestSuite(EdgeStyleDescriptionAndEdgeStyleMigrationTests.class);
         suite.addTestSuite(FragmentedFilesMigrationTest.class);
         suite.addTestSuite(MigrationOfCollapsedBorderedNodeTest.class);
@@ -289,7 +288,7 @@ public class AllCommonPluginTests extends TestCase {
         // The ones below are "blacklisted" for now because they caused at least
         // one false-negative Gerrit Verification job
         suite.addTestSuite(SessionManagerListener2Tests.class);
-
+        suite.addTestSuite(RepairWithActivatedFiltersTest.class);
     }
 
     /**
