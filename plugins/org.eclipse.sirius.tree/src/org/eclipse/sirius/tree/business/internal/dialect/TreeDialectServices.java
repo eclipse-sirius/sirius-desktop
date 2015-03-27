@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -20,7 +18,6 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -29,6 +26,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
@@ -54,7 +52,6 @@ import org.eclipse.sirius.tree.tools.internal.command.TreeCommandFactory;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -281,46 +278,60 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
 
     @Override
     public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
-        DTree tree = (DTree) representation;
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(tree.getTarget());
-        ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
+        try {
+            monitor.beginTask("Refresh tree", 10);
+            DTree tree = (DTree) representation;
+            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(tree.getTarget());
+            ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
 
-        List<DTreeElement> dTreeElements = getTreeElementsToRefresh(notifications, tree);
-        DTreeElementSynchronizer synchronizer = new DTreeElementSynchronizerSpec(interpreter, accessor);
-        for (DTreeElement dTreeElement : dTreeElements) {
-            if (dTreeElement instanceof DTreeItem) {
-                synchronizer.refresh((DTreeItem) dTreeElement);
+            Set<DTreeElement> dTreeElements = getTreeElementsToRefresh(notifications, tree);
+            monitor.worked(2);
+            DTreeElementSynchronizer synchronizer = new DTreeElementSynchronizerSpec(interpreter, accessor);
+            IProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
+            try {
+                subMonitor.beginTask("Refresh impacted elements", dTreeElements.size());
+                for (DTreeElement dTreeElement : dTreeElements) {
+                    if (dTreeElement instanceof DTreeItem) {
+                        synchronizer.refresh((DTreeItem) dTreeElement);
+                    }
+                    subMonitor.worked(1);
+                }
+            } finally {
+                subMonitor.done();
             }
+        } finally {
+            monitor.done();
         }
     }
 
-    private List<DTreeElement> getTreeElementsToRefresh(Collection<Notification> notifications, DTree tree) {
-        ECrossReferenceAdapter xref = ECrossReferenceAdapter.getCrossReferenceAdapter(tree.getTarget());
-        List<DTreeElement> treeElementsToRefresh = new ArrayList<DTreeElement>();
-        // Get all unique notifiers.
-        Set<EObject> notifiers = Sets.newHashSet();
-        for (Notification notification : notifications) {
-            Object notifier = notification.getNotifier();
-            if (notifier instanceof EObject) {
-                notifiers.add((EObject) notifier);
+    private Set<DTreeElement> getTreeElementsToRefresh(Collection<Notification> notifications, DTree tree) {
+        Set<DTreeElement> treeElementsToRefresh = Sets.newHashSet();
+        Session session = new org.eclipse.sirius.business.api.query.EObjectQuery(tree.getTarget()).getSession();
+        if (session != null) {
+            ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
+            // Deal with each notifier only one time.
+            Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
+            for (Notification notification : notifications) {
+                Object notifier = notification.getNotifier();
+                if (notifier instanceof EObject) {
+                    EObject eObjectNotifier = (EObject) notifier;
+                    if (alreadyDoneNotifiers.add(eObjectNotifier)) {
+                        treeElementsToRefresh.addAll(getTreeElementsToRefresh(eObjectNotifier, tree, xref));
+                    }
+                }
             }
-        }
-        // Get corresponding tree elements
-        for (EObject notifier : notifiers) {
-            Collection<Setting> inverseReferences = xref.getInverseReferences(notifier, false);
-            treeElementsToRefresh.addAll(getTreeElementsFromInverseReferences(inverseReferences, tree));
         }
         return treeElementsToRefresh;
     }
 
-    private Collection<DTreeElement> getTreeElementsFromInverseReferences(Collection<Setting> inverseReferences, DTree tree) {
+    private Set<DTreeElement> getTreeElementsToRefresh(EObject notifier, DTree tree, ECrossReferenceAdapter xref) {
         Set<DTreeElement> treeElementsToRefresh = Sets.newHashSet();
-        for (Setting ref : inverseReferences) {
-            if (ref.getEStructuralFeature() == ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target()
-                    || ref.getEStructuralFeature() == ViewpointPackage.eINSTANCE.getDRepresentationElement_SemanticElements()) {
-                EObject eObject = ref.getEObject();
-                if (eObject instanceof DTreeElement && isContainedWithinCurrentTree((DTreeElement) eObject, tree)) {
-                    treeElementsToRefresh.add((DTreeElement) eObject);
+        Collection<EObject> inverseReferencers = new EObjectQuery(notifier, xref).getInverseReferences(REPRESENTATION_ELEMENTS_INVERSE_REFERENCES);
+        for (EObject inverseReferencer : inverseReferencers) {
+            if (inverseReferencer instanceof DTreeElement) {
+                DTreeElement treeElement = (DTreeElement) inverseReferencer;
+                if (isContainedWithinCurrentTree(treeElement, tree)) {
+                    treeElementsToRefresh.add(treeElement);
                 }
             }
         }

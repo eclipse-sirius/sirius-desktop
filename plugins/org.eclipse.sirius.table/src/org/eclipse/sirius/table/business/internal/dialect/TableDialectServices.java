@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.dialect;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -66,7 +64,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -265,58 +262,70 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
 
     @Override
     public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
-        DTable table = (DTable) representation;
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(table.getTarget());
-        ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
+        try {
+            monitor.beginTask("Refresh table", 10);
+            DTable table = (DTable) representation;
+            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(table.getTarget());
+            ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
 
-        List<DTableElement> dTableElements = getTableElementsToRefresh(notifications, table);
-        DTableElementSynchronizerSpec synchronizer = new DTableElementSynchronizerSpec(accessor, interpreter);
-        for (DTableElement dTableElement : dTableElements) {
-            if (dTableElement instanceof DCell) {
-                synchronizer.refresh((DCell) dTableElement);
-            } else if (dTableElement instanceof DLine) {
-                synchronizer.refresh((DLine) dTableElement);
-                synchronizer.refreshSemanticElements(dTableElement, ((DLine) dTableElement).getOriginMapping());
-            } else if (dTableElement instanceof DColumn) {
-                synchronizer.refresh((DColumn) dTableElement);
-                synchronizer.refreshSemanticElements(dTableElement, ((DColumn) dTableElement).getOriginMapping());
+            Set<DTableElement> dTableElements = getTableElementsToRefresh(notifications, table);
+            monitor.worked(2);
+            DTableElementSynchronizerSpec synchronizer = new DTableElementSynchronizerSpec(accessor, interpreter);
+            IProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
+            try {
+                subMonitor.beginTask("Refresh impacted elements", dTableElements.size());
+                for (DTableElement dTableElement : dTableElements) {
+                    if (dTableElement instanceof DCell) {
+                        synchronizer.refresh((DCell) dTableElement);
+                    } else if (dTableElement instanceof DLine) {
+                        synchronizer.refresh((DLine) dTableElement);
+                        synchronizer.refreshSemanticElements(dTableElement, ((DLine) dTableElement).getOriginMapping());
+                    } else if (dTableElement instanceof DColumn) {
+                        synchronizer.refresh((DColumn) dTableElement);
+                        synchronizer.refreshSemanticElements(dTableElement, ((DColumn) dTableElement).getOriginMapping());
+                    }
+                    subMonitor.worked(1);
+                }
+            } finally {
+                subMonitor.done();
             }
+        } finally {
+            monitor.done();
         }
-
     }
 
-    private List<DTableElement> getTableElementsToRefresh(Collection<Notification> notifications, DTable table) {
-        ECrossReferenceAdapter xref = ECrossReferenceAdapter.getCrossReferenceAdapter(table.getTarget());
-        List<DTableElement> tableElementsToRefresh = new ArrayList<DTableElement>();
-        // Get all unique notifiers.
-        Set<EObject> notifiers = Sets.newHashSet();
-        for (Notification notification : notifications) {
-            Object notifier = notification.getNotifier();
-            if (notifier instanceof EObject) {
-                notifiers.add((EObject) notifier);
-            }
-        }
-        // Get corresponding table elements
-        for (EObject notifier : notifiers) {
-            Collection<Setting> inverseReferences = xref.getInverseReferences(notifier, false);
-            tableElementsToRefresh.addAll(getTableElementsFromInverseReferences(inverseReferences, table));
-        }
-        return tableElementsToRefresh;
-    }
-
-    private Collection<DTableElement> getTableElementsFromInverseReferences(Collection<Setting> inverseReferences, DTable table) {
+    private Set<DTableElement> getTableElementsToRefresh(Collection<Notification> notifications, DTable table) {
         Set<DTableElement> tableElementsToRefresh = Sets.newHashSet();
-        for (Setting ref : inverseReferences) {
-            if (ref.getEStructuralFeature() == ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target()
-                    || ref.getEStructuralFeature() == ViewpointPackage.eINSTANCE.getDRepresentationElement_SemanticElements()) {
-                EObject eObject = ref.getEObject();
-                if (eObject instanceof DTableElement && isContainedWithinCurrentTable((DTableElement) eObject, table)) {
-                    tableElementsToRefresh.add((DTableElement) eObject);
+        Session session = new org.eclipse.sirius.business.api.query.EObjectQuery(table.getTarget()).getSession();
+        if (session != null) {
+            ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
+            // Deal with each notifier only one time.
+            Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
+            for (Notification notification : notifications) {
+                Object notifier = notification.getNotifier();
+                if (notifier instanceof EObject) {
+                    EObject eObjectNotifier = (EObject) notifier;
+                    if (alreadyDoneNotifiers.add(eObjectNotifier)) {
+                        tableElementsToRefresh.addAll(getTableElementsToRefresh(eObjectNotifier, table, xref));
+                    }
                 }
             }
         }
         return tableElementsToRefresh;
+    }
 
+    private Set<DTableElement> getTableElementsToRefresh(EObject notifier, DTable table, ECrossReferenceAdapter xref) {
+        Set<DTableElement> tableElementsToRefresh = Sets.newHashSet();
+        Collection<EObject> inverseReferencers = new org.eclipse.sirius.business.api.query.EObjectQuery(notifier, xref).getInverseReferences(REPRESENTATION_ELEMENTS_INVERSE_REFERENCES);
+        for (EObject inverseReferencer : inverseReferencers) {
+            if (inverseReferencer instanceof DTableElement) {
+                DTableElement tableElement = (DTableElement) inverseReferencer;
+                if (isContainedWithinCurrentTable(tableElement, table)) {
+                    tableElementsToRefresh.add(tableElement);
+                }
+            }
+        }
+        return tableElementsToRefresh;
     }
 
     private boolean isContainedWithinCurrentTable(DTableElement tableElement, DTable table) {

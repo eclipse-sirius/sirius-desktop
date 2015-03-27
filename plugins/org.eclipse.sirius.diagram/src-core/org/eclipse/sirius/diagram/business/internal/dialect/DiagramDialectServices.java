@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -82,7 +81,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -97,16 +95,6 @@ import com.google.common.collect.Sets;
  * @author cbrun
  */
 public class DiagramDialectServices extends AbstractRepresentationDialectServices {
-    /**
-     * All references to find {@link DDiagramElement} from corresponding
-     * semantic elements.
-     */
-    private static final Set<EReference> DIAGRAM_ELEMENTS_INVERSE_REFERENCES = Sets.newHashSet();
-
-    static {
-        DIAGRAM_ELEMENTS_INVERSE_REFERENCES.add(ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target());
-        DIAGRAM_ELEMENTS_INVERSE_REFERENCES.add(ViewpointPackage.eINSTANCE.getDRepresentationElement_SemanticElements());
-    }
 
     /**
      * {@inheritDoc}
@@ -570,7 +558,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
 
     private Set<DDiagramElement> getDiagramElementsToRefresh(EObject notifier, DSemanticDiagram diagram, ECrossReferenceAdapter xref) {
         Set<DDiagramElement> diagramElementsToRefresh = Sets.newHashSet();
-        Collection<EObject> inverseReferencers = new EObjectQuery(notifier, xref).getInverseReferences(DIAGRAM_ELEMENTS_INVERSE_REFERENCES);
+        Collection<EObject> inverseReferencers = new EObjectQuery(notifier, xref).getInverseReferences(REPRESENTATION_ELEMENTS_INVERSE_REFERENCES);
         for (EObject inverseReferencer : inverseReferencers) {
             if (inverseReferencer instanceof DDiagramElement) {
                 DDiagramElement diagramElement = (DDiagramElement) inverseReferencer;

@@ -14,12 +14,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -37,6 +39,7 @@ import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
@@ -44,6 +47,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Basic class to extend for each dialect services implementation.
@@ -52,6 +56,18 @@ import com.google.common.collect.Lists;
  * @since 0.9.0
  */
 public abstract class AbstractRepresentationDialectServices implements DialectServices {
+
+    /**
+     * All standard references to find
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationElement} from
+     * corresponding semantic elements by cross reference.
+     */
+    protected static final Set<EReference> REPRESENTATION_ELEMENTS_INVERSE_REFERENCES = Sets.newHashSet();
+
+    static {
+        REPRESENTATION_ELEMENTS_INVERSE_REFERENCES.add(ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target());
+        REPRESENTATION_ELEMENTS_INVERSE_REFERENCES.add(ViewpointPackage.eINSTANCE.getDRepresentationElement_SemanticElements());
+    }
 
     /**
      * Checks whether a specific representation is supported by this dialect,
