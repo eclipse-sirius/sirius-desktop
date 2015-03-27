@@ -57,7 +57,7 @@ public final class TypesUtil {
 
         }
         if (selfTyping.size() == 0) {
-            selfTyping.add(new ClassType(EObject.class));
+            selfTyping.add(new ClassType(queryEnvironment, EObject.class));
         }
         variableTypes.put("self", selfTyping);
         for (Entry<String, String> varDef : context.getVariables().entrySet()) {
@@ -85,7 +85,7 @@ public final class TypesUtil {
             found = queryEnvironment.getEPackageProvider().getType(targetTypeName);
         }
         if (found != null) {
-            return new EClassifierType(found);
+            return new EClassifierType(queryEnvironment, found);
         }
         return null;
     }

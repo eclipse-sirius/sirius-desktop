@@ -125,7 +125,7 @@ public class AQLProposalProvider implements IProposalProvider {
             if (context.getCurrentSelected() != null) {
                 queryEnvironment.registerEPackage(context.getCurrentSelected().eClass().getEPackage());
                 final Set<IType> potentialTypes = new LinkedHashSet<IType>(1);
-                potentialTypes.add(new EClassifierType(context.getCurrentSelected().eClass()));
+                potentialTypes.add(new EClassifierType(queryEnvironment, context.getCurrentSelected().eClass()));
                 variableTypes.put("self", potentialTypes);
             }
 

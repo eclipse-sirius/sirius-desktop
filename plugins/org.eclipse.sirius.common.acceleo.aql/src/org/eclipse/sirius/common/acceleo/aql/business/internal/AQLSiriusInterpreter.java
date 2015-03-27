@@ -53,6 +53,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.acceleo.aql.business.AQLSiriusPlugin;
 import org.eclipse.sirius.common.acceleo.aql.business.api.AQLConstants;
@@ -112,6 +113,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
         });
         this.queryEnvironment.registerEPackage(EcorePackage.eINSTANCE);
+        this.queryEnvironment.registerCustomClassMapping(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class);
         registerEcoreModels(EPackage.Registry.INSTANCE);
 
     }
@@ -128,7 +130,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             }
         }
         for (EPackage ePackage : additionalEPackages) {
-            this.queryEnvironment.getEPackageProvider().registerPackage(ePackage);
+            this.queryEnvironment.registerEPackage(ePackage);
         }
     }
 
@@ -157,7 +159,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         }
         for (Class found : classesToLoad) {
             try {
-                queryEnvironment.getLookupEngine().addServices(found);
+                queryEnvironment.registerServicePackage(found);
             } catch (InvalidAcceleoPackageException e) {
                 AQLSiriusPlugin.getPlugin().log(new Status(IStatus.WARNING, AQLSiriusPlugin.getPlugin().getSymbolicName(), e.getMessage(), e));
             }
@@ -227,7 +229,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         for (String nsURI : packageRegistry.keySet()) {
             EPackage pak = packageRegistry.getEPackage(nsURI);
             if (pak != null && this.queryEnvironment.getEPackageProvider().getEPackage(pak.getNsPrefix()) == null) {
-                this.queryEnvironment.getEPackageProvider().registerPackage(pak);
+                this.queryEnvironment.registerEPackage(pak);
             }
         }
     }
