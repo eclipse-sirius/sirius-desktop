@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,14 +30,19 @@ import com.google.common.collect.Iterables;
 public class SequenceReturnMessageTest extends AbstractDefaultModelSequenceTests {
 
     @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         bot.viewById("org.eclipse.ui.views.ContentOutline").close();
         SWTBotUtils.waitAllUiEvents();
+        super.onSetUpAfterOpeningDesignerPerspective();
     }
 
     @Override
     protected void tearDown() throws Exception {
+        // Close the editor before opening the outline
+        if (editor != null) {
+            editor.close();
+            SWTBotUtils.waitAllUiEvents();
+        }
         // Reopen outline
         new DesignerViews(bot).openOutlineView();
         SWTBotUtils.waitAllUiEvents();
