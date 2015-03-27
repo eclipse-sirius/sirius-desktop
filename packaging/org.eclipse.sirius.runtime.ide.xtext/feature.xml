@@ -19,7 +19,7 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Sirius support for XText models. Install this if you want to use Sirius-based modelers (or create new ones) on XText-based domain models.
+      Sirius support for Xtext models. Install this if you want to use Sirius-based modelers (or create new ones) on Xtext-based domain models.
    </description>
 
    <copyright>
