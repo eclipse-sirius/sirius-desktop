@@ -840,10 +840,11 @@ public class DDiagramSynchronizer {
                         elementsCreated.clear();
                     }
 
-                    for (final NodeMapping child : childNodeMappings) {
-                        refreshNodeMapping(mappingsToEdgeTargets, newNode, child, elementsCreated, new SubProgressMonitor(monitor, 1));
+                    if (!stackContainer) {
+                        for (final NodeMapping child : childNodeMappings) {
+                            refreshNodeMapping(mappingsToEdgeTargets, newNode, child, elementsCreated, new SubProgressMonitor(monitor, 1));
+                        }
                     }
-
                 } else if (newNode instanceof DNodeList) {
                     final List<NodeMapping> childNodeMappings = diagramMappingsManager.getNodeMappings((DNodeList) newNode);
                     final Set<AbstractDNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<AbstractDNodeCandidate>();
