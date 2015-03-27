@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,11 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -27,8 +24,8 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.AbstractDNodeSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -68,29 +65,11 @@ public class DNodeContainerSpec extends DNodeContainerImpl {
 
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(this);
         new ContainerMappingHelper(interpreter).updateContainer((IContainerMappingExt) getActualMapping(), this);
-        final Iterator<DDiagramElement> iterElements = this.getOwnedDiagramElements().iterator();
-        while (iterElements.hasNext()) {
-            iterElements.next().refresh();
+        for (DDiagramElement iterElement : this.getOwnedDiagramElements()) {
+            iterElement.refresh();
         }
 
-        /*
-         * Update bordering nodes
-         */
-        final Iterator<DNode> iter = this.getOwnedBorderedNodes().iterator();
-        final Collection<EObjectCouple> managedBorderingNodes = new HashSet<EObjectCouple>();
-        while (iter.hasNext()) {
-            final DNode n = iter.next();
-
-            n.refresh();
-
-            managedBorderingNodes.add(new EObjectCouple(n.getTarget(), n.getActualMapping()));
-        }
-        /*
-         * create the non managed bordering nodes
-         */
-        if (getActualMapping() != null) {
-            AbstractNodeMappingSpecOperations.createBorderingNodes(this.getActualMapping(), this.getTarget(), this, managedBorderingNodes, this.getParentDiagram());
-        }
+        AbstractDNodeSpecOperations.refreshBorderNodes(this);
     }
 
     /**

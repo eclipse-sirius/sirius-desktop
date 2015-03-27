@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -23,9 +22,11 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.AbstractDNodeSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -52,6 +53,7 @@ public class DNodeListSpec extends DNodeListImpl {
     @Override
     public EList<DDiagramElement> getElements() {
         final EList<DDiagramElement> result = new BasicEList<DDiagramElement>();
+        result.addAll(getOwnedBorderedNodes());
         result.addAll(getOwnedElements());
         return new EcoreEList.UnmodifiableEList<DDiagramElement>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagramElementContainer_Elements(), result.size(), result.toArray());
     }
@@ -65,11 +67,11 @@ public class DNodeListSpec extends DNodeListImpl {
     public void refresh() {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(this);
         new ContainerMappingHelper(interpreter).updateContainer((IContainerMappingExt) getActualMapping(), this);
-        final Iterator<DDiagramElement> iterElements = this.getElements().iterator();
-        while (iterElements.hasNext()) {
-            iterElements.next().refresh();
+        for (DNodeListElement iterElement : this.getOwnedElements()) {
+            iterElement.refresh();
         }
 
+        AbstractDNodeSpecOperations.refreshBorderNodes(this);
     }
 
     /**

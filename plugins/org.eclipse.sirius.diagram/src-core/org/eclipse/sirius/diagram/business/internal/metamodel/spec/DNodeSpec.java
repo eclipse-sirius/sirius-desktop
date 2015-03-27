@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,15 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.AbstractDNodeSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
@@ -53,25 +47,7 @@ public class DNodeSpec extends DNodeImpl {
         if (this.getActualMapping() != null) {
             this.getActualMapping().updateNode(this);
 
-            /*
-             * Update bordering nodes
-             */
-            final Iterator<DNode> iter = this.getOwnedBorderedNodes().iterator();
-            final Collection<EObjectCouple> managedBorderingNodes = new HashSet<EObjectCouple>();
-            while (iter.hasNext()) {
-                final DNode n = iter.next();
-
-                // n.getOriginMapping().updateNode(n);
-
-                n.refresh();
-
-                managedBorderingNodes.add(new EObjectCouple(n.getTarget(), n.getActualMapping()));
-            }
-            /*
-             * create the non managed bordering nodes
-             */
-
-            AbstractNodeMappingSpecOperations.createBorderingNodes(this.getActualMapping(), this.getTarget(), this, managedBorderingNodes, this.getParentDiagram());
+            AbstractDNodeSpecOperations.refreshBorderNodes(this);
         }
     }
 
