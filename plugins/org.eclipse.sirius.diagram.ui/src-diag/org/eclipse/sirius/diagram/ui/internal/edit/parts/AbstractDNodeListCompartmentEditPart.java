@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,6 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -121,14 +120,12 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
              * each comparison.
              */
             final Map<DNodeListElement, Integer> indices = Maps.newHashMap();
-            EList<DNode> nodes = self.getNodes();
+            EList<DNodeListElement> listElements = self.getOwnedElements();
             int i = 0;
-            for (DNode current : nodes) {
-                if (current instanceof DNodeListElement) {
-                    indices.put((DNodeListElement) current, i);
-                }
+            for (DNodeListElement current : listElements) {
+                indices.put(current, i);
                 i++;
-            } 
+            }
             Function<View, Integer> nodeIndex = new Function<View, Integer>() {
                 @Override
                 public Integer apply(View view) {
