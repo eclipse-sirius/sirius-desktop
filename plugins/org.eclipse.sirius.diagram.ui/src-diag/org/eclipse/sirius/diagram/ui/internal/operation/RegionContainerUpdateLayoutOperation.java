@@ -10,37 +10,30 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.operation;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
 
 /**
  * Update and keep consistent the GMF Bounds of a Region Container and its
@@ -179,70 +172,21 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
         new RegionComparisonHelper(dNodeContainer).sort(modelChildren);
     }
 
-    private static class RegionComparisonHelper {
+    private static class RegionComparisonHelper extends ComparisonHelper {
         private DNodeContainer self;
 
         public RegionComparisonHelper(DNodeContainer self) {
             this.self = self;
         }
 
-        public void sort(List<? extends View> views) {
-            /*
-             * The main sort criterion is based on the elements' mapping's
-             * position in the VSM, so that all instances of the same mapping
-             * are grouped together, and if a mapping M1 appears before another
-             * M2 in the specification, all instances of M1 appear before those
-             * of M2.
-             */
-            final EList<ContainerMapping> allMappings = self.getActualMapping().getAllContainerMappings();
-            Function<View, Integer> mappingIndex = new Function<View, Integer>() {
-                @Override
-                public Integer apply(View view) {
-                    if (view != null) {
-                        EObject element = view.getElement();
-                        if (element instanceof DMappingBased) {
-                            RepresentationElementMapping mapping = ((DMappingBased) element).getMapping();
-                            /*
-                             * Use a plain indexOf search here, assuming that in
-                             * practice there are never more than a handful of
-                             * mappings inside a list container.
-                             */
-                            return allMappings.indexOf(mapping);
-                        }
-                    }
-                    return Integer.MAX_VALUE;
-                }
-            };
-            /*
-             * Inside a group of elements from the same mapping, use the
-             * DNodeListItem order. As opposed to the mappings, the number of
-             * actual items can grow very large, so we pre-compute the elements'
-             * indices with a linear scan to avoid repeated calls to indexOf for
-             * each comparison.
-             */
-            final Map<DDiagramElement, Integer> indices = Maps.newHashMap();
-            EList<DDiagramElement> containers = self.getOwnedDiagramElements();
-            int i = 0;
-            for (DDiagramElement current : containers) {
-                indices.put(current, i);
-                i++;
-            }
-            Function<View, Integer> nodeIndex = new Function<View, Integer>() {
-                @Override
-                public Integer apply(View view) {
-                    if (view != null) {
-                        EObject sem = ViewUtil.resolveSemanticElement(view);
-                        if (sem != null && indices.containsKey(sem)) {
-                            return indices.get(sem);
-                        }
-                    }
-                    return Integer.MAX_VALUE;
-                }
-            };
-            /*
-             * Perform the actual sort, combining the two criteria above.
-             */
-            Collections.sort(views, Ordering.natural().onResultOf(mappingIndex).compound(Ordering.natural().onResultOf(nodeIndex)));
+        @Override
+        protected List<? extends DRepresentationElement> getDElementsToSort() {
+            return self.getOwnedDiagramElements();
+        }
+
+        @Override
+        protected List<? extends RepresentationElementMapping> getMappingsToSort() {
+            return self.getActualMapping().getAllContainerMappings();
         }
     }
 }

@@ -15,15 +15,12 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
@@ -31,7 +28,6 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.INotableEditPart;
@@ -43,8 +39,6 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -53,15 +47,13 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPol
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListViewNodeListCompartmentItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.operation.ComparisonHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
-import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
 
 /**
  * <p>
@@ -78,70 +70,21 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
      */
     private boolean isSupportingViewActions = false;
 
-    private static class ComparisonHelper {
+    private static class DNodeListElementComparisonHelper extends ComparisonHelper {
         private DNodeList self;
 
-        public ComparisonHelper(DNodeList self) {
+        public DNodeListElementComparisonHelper(DNodeList self) {
             this.self = self;
         }
 
-        public void sort(List<View> views) {
-            /*
-             * The main sort criterion is based on the elements' mapping's
-             * position in the VSM, so that all instances of the same mapping
-             * are grouped together, and if a mapping M1 appears before another
-             * M2 in the specification, all instances of M1 appear before those
-             * of M2.
-             */
-            final EList<NodeMapping> allMappings = self.getActualMapping().getAllNodeMappings();
-            Function<View, Integer> mappingIndex = new Function<View, Integer>() {
-                @Override
-                public Integer apply(View view) {
-                    if (view != null) {
-                        EObject element = view.getElement();
-                        if (element instanceof DMappingBased) {
-                            RepresentationElementMapping mapping = ((DMappingBased) element).getMapping();
-                            /*
-                             * Use a plain indexOf search here, assuming that in
-                             * practice there are never more than a handful of
-                             * mappings inside a list container.
-                             */
-                            return allMappings.indexOf(mapping);
-                        }
-                    }
-                    return Integer.MAX_VALUE;
-                }
-            };
-            /*
-             * Inside a group of elements from the same mapping, use the
-             * DNodeListItem order. As opposed to the mappings, the number of
-             * actual items can grow very large, so we pre-compute the elements'
-             * indices with a linear scan to avoid repeated calls to indexOf for
-             * each comparison.
-             */
-            final Map<DNodeListElement, Integer> indices = Maps.newHashMap();
-            EList<DNodeListElement> listElements = self.getOwnedElements();
-            int i = 0;
-            for (DNodeListElement current : listElements) {
-                indices.put(current, i);
-                i++;
-            }
-            Function<View, Integer> nodeIndex = new Function<View, Integer>() {
-                @Override
-                public Integer apply(View view) {
-                    if (view != null) {
-                        EObject sem = ViewUtil.resolveSemanticElement(view);
-                        if (sem != null && indices.containsKey(sem)) {
-                            return indices.get(sem);
-                        }
-                    }
-                    return Integer.MAX_VALUE;
-                }
-            };
-            /*
-             * Perform the actual sort, combining the two criteria above.
-             */
-            Collections.sort(views, Ordering.natural().onResultOf(mappingIndex).compound(Ordering.natural().onResultOf(nodeIndex)));
+        @Override
+        protected List<? extends DRepresentationElement> getDElementsToSort() {
+            return self.getOwnedElements();
+        }
+
+        @Override
+        protected List<? extends RepresentationElementMapping> getMappingsToSort() {
+            return self.getActualMapping().getAllNodeMappings();
         }
     }
 
@@ -228,7 +171,7 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         @SuppressWarnings("unchecked")
         List<View> modelChildren = Lists.newArrayList(super.getModelChildren());
         DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        new ComparisonHelper((DNodeList) resolveSemanticElement()).sort(modelChildren);
+        new DNodeListElementComparisonHelper((DNodeList) resolveSemanticElement()).sort(modelChildren);
         return modelChildren;
     }
 
