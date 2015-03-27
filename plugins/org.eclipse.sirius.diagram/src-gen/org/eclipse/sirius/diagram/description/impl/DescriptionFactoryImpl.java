@@ -341,7 +341,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     public Layer createLayer() {
         LayerImpl layer = new LayerSpec();
-        layer.setName("Default");
         return layer;
     }
 

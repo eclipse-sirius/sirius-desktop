@@ -73,6 +73,7 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptor
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -553,8 +554,13 @@ public class DiagramDialectUIServices implements DialectUIServices {
     private Collection<CommandParameter> getDiagramTypesCreation() {
         final Collection<CommandParameter> result = new HashSet<CommandParameter>();
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
-            final CommandParameter typeCommandParameter = new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, diagramTypeDescriptor
-                    .getDiagramDescriptionProvider().createDiagramDescription());
+            DiagramDescription specificDiagramDescription = diagramTypeDescriptor.getDiagramDescriptionProvider().createDiagramDescription();
+            if (specificDiagramDescription.getDefaultLayer() == null) {
+                Layer layer = DescriptionFactory.eINSTANCE.createLayer();
+                layer.setName("Default");
+                specificDiagramDescription.setDefaultLayer(layer);
+            }
+            final CommandParameter typeCommandParameter = new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, specificDiagramDescription);
             result.add(typeCommandParameter);
         }
         return result;

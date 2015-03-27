@@ -35,6 +35,8 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.util.DescriptionAdapterFactory;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
@@ -696,10 +698,29 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
              * 
-             * @generated
+             * @not-generated
              */
             @Override
             public Object caseViewpoint(Viewpoint object) {
+                DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
+                Layer layer = DescriptionFactory.eINSTANCE.createLayer();
+                layer.setName("Default");
+                diagramDescription.setDefaultLayer(layer);
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, diagramDescription));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createDiagramImportDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS, DescriptionFactory.eINSTANCE.createDiagramExtensionDescription()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            public Object caseViewpointGen(Viewpoint object) {
                 newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createDiagramDescription()));
 
                 newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createDiagramImportDescription()));
