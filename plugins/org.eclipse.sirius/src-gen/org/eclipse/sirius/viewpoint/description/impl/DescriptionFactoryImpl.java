@@ -45,7 +45,6 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
-import org.eclipse.sirius.viewpoint.description.NavigationTargetType;
 import org.eclipse.sirius.viewpoint.description.Position;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
@@ -161,8 +160,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     @Override
     public Object createFromString(EDataType eDataType, String initialValue) {
         switch (eDataType.getClassifierID()) {
-        case DescriptionPackage.NAVIGATION_TARGET_TYPE:
-            return createNavigationTargetTypeFromString(eDataType, initialValue);
         case DescriptionPackage.POSITION:
             return createPositionFromString(eDataType, initialValue);
         case DescriptionPackage.SYSTEM_COLORS:
@@ -188,8 +185,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
         switch (eDataType.getClassifierID()) {
-        case DescriptionPackage.NAVIGATION_TARGET_TYPE:
-            return convertNavigationTargetTypeToString(eDataType, instanceValue);
         case DescriptionPackage.POSITION:
             return convertPositionToString(eDataType, instanceValue);
         case DescriptionPackage.SYSTEM_COLORS:
@@ -479,28 +474,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public DAnnotationEntry createDAnnotationEntry() {
         DAnnotationEntryImpl dAnnotationEntry = new DAnnotationEntryImpl();
         return dAnnotationEntry;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NavigationTargetType createNavigationTargetTypeFromString(EDataType eDataType, String initialValue) {
-        NavigationTargetType result = NavigationTargetType.get(initialValue);
-        if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-        }
-        return result;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public String convertNavigationTargetTypeToString(EDataType eDataType, Object instanceValue) {
-        return instanceValue == null ? null : instanceValue.toString();
     }
 
     /**

@@ -484,10 +484,6 @@
     <eClassifiers xsi:type="ecore:EDataType" name="TypeName" instanceClassName="java.lang.String"/>
     <eClassifiers xsi:type="ecore:EDataType" name="InterpretedExpression" instanceClassName="java.lang.String"/>
     <eClassifiers xsi:type="ecore:EDataType" name="FeatureName" instanceClassName="java.lang.String"/>
-    <eClassifiers xsi:type="ecore:EEnum" name="NavigationTargetType">
-      <eLiterals name="model"/>
-      <eLiterals name="file" value="1"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PasteTargetDescription" abstract="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A PasteTargetDescription is a Description or Mapping that can have many PasteTools."/>

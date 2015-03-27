@@ -50,7 +50,6 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
-import org.eclipse.sirius.viewpoint.description.NavigationTargetType;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.Position;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -386,13 +385,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass dAnnotationEntryEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EEnum navigationTargetTypeEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1853,16 +1845,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EEnum getNavigationTargetType() {
-        return navigationTargetTypeEEnum;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EEnum getPosition() {
         return positionEEnum;
     }
@@ -2124,7 +2106,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEAttribute(dAnnotationEntryEClass, DescriptionPackage.DANNOTATION_ENTRY__DETAILS);
 
         // Create enums
-        navigationTargetTypeEEnum = createEEnum(DescriptionPackage.NAVIGATION_TARGET_TYPE);
         positionEEnum = createEEnum(DescriptionPackage.POSITION);
         systemColorsEEnum = createEEnum(DescriptionPackage.SYSTEM_COLORS);
 
@@ -2547,10 +2528,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
-        initEEnum(navigationTargetTypeEEnum, NavigationTargetType.class, "NavigationTargetType");
-        addEEnumLiteral(navigationTargetTypeEEnum, NavigationTargetType.MODEL_LITERAL);
-        addEEnumLiteral(navigationTargetTypeEEnum, NavigationTargetType.FILE_LITERAL);
-
         initEEnum(positionEEnum, Position.class, "Position");
         addEEnumLiteral(positionEEnum, Position.NORTH_LITERAL);
         addEEnumLiteral(positionEEnum, Position.WEST_LITERAL);

@@ -2121,18 +2121,6 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.NavigationTargetType
-     * <em>Navigation Target Type</em>}' enum. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.NavigationTargetType
-     * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getNavigationTargetType()
-     * @generated
-     */
-    int NAVIGATION_TARGET_TYPE = 43;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.description.Position
      * <em>Position</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2140,7 +2128,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getPosition()
      * @generated
      */
-    int POSITION = 44;
+    int POSITION = 43;
 
     /**
      * The meta object id for the '
@@ -2152,7 +2140,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getSystemColors()
      * @generated
      */
-    int SYSTEM_COLORS = 45;
+    int SYSTEM_COLORS = 44;
 
     /**
      * The meta object id for the '<em>Type Name</em>' data type. <!--
@@ -2162,7 +2150,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getTypeName()
      * @generated
      */
-    int TYPE_NAME = 46;
+    int TYPE_NAME = 45;
 
     /**
      * The meta object id for the '<em>Interpreted Expression</em>' data type.
@@ -2172,7 +2160,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getInterpretedExpression()
      * @generated
      */
-    int INTERPRETED_EXPRESSION = 47;
+    int INTERPRETED_EXPRESSION = 46;
 
     /**
      * The meta object id for the '<em>Feature Name</em>' data type. <!--
@@ -2182,7 +2170,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getFeatureName()
      * @generated
      */
-    int FEATURE_NAME = 48;
+    int FEATURE_NAME = 47;
 
     /**
      * The meta object id for the '<em>URI</em>' data type. <!-- begin-user-doc
@@ -2192,7 +2180,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getURI()
      * @generated
      */
-    int URI = 49;
+    int URI = 48;
 
     /**
      * Returns the meta object for class '
@@ -3842,18 +3830,6 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * Returns the meta object for enum '
-     * {@link org.eclipse.sirius.viewpoint.description.NavigationTargetType
-     * <em>Navigation Target Type</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for enum '<em>Navigation Target Type</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.NavigationTargetType
-     * @generated
-     */
-    EEnum getNavigationTargetType();
-
-    /**
-     * Returns the meta object for enum '
      * {@link org.eclipse.sirius.viewpoint.description.Position
      * <em>Position</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -5196,18 +5172,6 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EAttribute DANNOTATION_ENTRY__DETAILS = DescriptionPackage.eINSTANCE.getDAnnotationEntry_Details();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.NavigationTargetType
-         * <em>Navigation Target Type</em>}' enum. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.viewpoint.description.NavigationTargetType
-         * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getNavigationTargetType()
-         * @generated
-         */
-        EEnum NAVIGATION_TARGET_TYPE = DescriptionPackage.eINSTANCE.getNavigationTargetType();
 
         /**
          * The meta object literal for the '
