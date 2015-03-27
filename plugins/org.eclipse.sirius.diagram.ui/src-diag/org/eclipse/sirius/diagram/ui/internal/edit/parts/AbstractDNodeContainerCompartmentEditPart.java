@@ -258,21 +258,16 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getModelChildren()
-     */
     /*
      * Hide non-visible elements
      */
+    @Override
     protected List getModelChildren() {
         // create a new view to avoid to change the super.getModelChildren list.
         List<View> modelChildren = Lists.newArrayList(Iterables.filter(super.getModelChildren(), View.class));
         DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-
         if (isRegionContainerCompartment() && getModel() instanceof View) {
-            RegionContainerUpdateLayoutOperation.sortRegions((View) getModel(), modelChildren);
+            RegionContainerUpdateLayoutOperation.sortRegions((DNodeContainer)resolveSemanticElement(), modelChildren);
         }
         return modelChildren;
     }
