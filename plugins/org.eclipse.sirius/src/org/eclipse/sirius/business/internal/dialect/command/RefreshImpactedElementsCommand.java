@@ -45,7 +45,8 @@ public class RefreshImpactedElementsCommand extends RecordingCommand {
      * @param representationsToRefresh
      *            the representations to refresh.
      * @param notifications
-     *            the notifications that concern this refresh.
+     *            the notifications that concern this refresh. This list does
+     *            not contain touch notifications.
      */
     public RefreshImpactedElementsCommand(TransactionalEditingDomain domain, IProgressMonitor monitor, Collection<DRepresentation> representationsToRefresh, Collection<Notification> notifications) {
         super(domain, "Refresh impacted representation elements");

@@ -32,7 +32,8 @@ public interface DialectServices2 extends DialectServices {
      * @param representation
      *            representation to refresh.
      * @param notifications
-     *            the notifications that triggered this refresh.
+     *            the notifications that triggered this refresh. This list does
+     *            not contain touch notifications.
      * @param monitor
      *            to monitor the refresh operation.
      */

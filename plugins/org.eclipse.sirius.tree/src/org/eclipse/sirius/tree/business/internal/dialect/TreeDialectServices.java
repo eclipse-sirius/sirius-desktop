@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -302,7 +302,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices i
         Set<EObject> notifiers = Sets.newHashSet();
         for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
-            if (!notification.isTouch() && notifier instanceof EObject) {
+            if (notifier instanceof EObject) {
                 notifiers.add((EObject) notifier);
             }
         }

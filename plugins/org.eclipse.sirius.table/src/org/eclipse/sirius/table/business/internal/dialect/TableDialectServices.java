@@ -293,7 +293,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         Set<EObject> notifiers = Sets.newHashSet();
         for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
-            if (!notification.isTouch() && notifier instanceof EObject) {
+            if (notifier instanceof EObject) {
                 notifiers.add((EObject) notifier);
             }
         }

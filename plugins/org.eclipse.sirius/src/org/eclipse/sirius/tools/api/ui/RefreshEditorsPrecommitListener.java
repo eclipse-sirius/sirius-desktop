@@ -154,7 +154,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
         Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
         for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
-            if (!notification.isTouch() && notifier instanceof EObject) {
+            if (notifier instanceof EObject) {
                 EObject eObjectNotifier = (EObject) notifier;
                 if (!alreadyDoneNotifiers.contains(eObjectNotifier)) {
                     alreadyDoneNotifiers.add(eObjectNotifier);
