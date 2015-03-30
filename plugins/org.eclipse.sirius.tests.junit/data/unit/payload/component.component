@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<component:Component xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:component="http://www.eclipse.org/sirius/sample/component" name="c">
+  <children name="c.1">
+    <children name="c.1.1">
+      <children name="c.1.1.1" payload="true">
+        <children name="c.1.1.1.1" payload="true">
+          <children name="c.1.1.1.1.1" payload="true"/>
+        </children>
+      </children>
+    </children>
+  </children>
+</component:Component>

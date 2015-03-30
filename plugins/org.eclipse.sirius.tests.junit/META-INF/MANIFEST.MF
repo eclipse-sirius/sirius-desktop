@@ -65,7 +65,8 @@ Require-Bundle: org.eclipse.sirius.tests.sample.benchmark,
  org.eclipse.sdk,
  org.eclipse.platform,
  org.eclipse.sirius.tests.sample.component,
- org.eclipse.sirius.tests.sample.scxml
+ org.eclipse.sirius.tests.sample.scxml,
+ org.eclipse.sirius.tests.sample.component.design
 Bundle-Activator: org.eclipse.sirius.tests.SiriusTestsPlugin
 Eclipse-LazyStart: true
 Bundle-Localization: plugin

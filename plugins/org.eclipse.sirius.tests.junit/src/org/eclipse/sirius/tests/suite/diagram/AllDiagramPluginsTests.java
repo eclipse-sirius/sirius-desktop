@@ -89,6 +89,7 @@ import org.eclipse.sirius.tests.unit.diagram.action.DeleteWithoutToolFromModelAc
 import org.eclipse.sirius.tests.unit.diagram.action.EdgeOnEdgeHideRevealTest;
 import org.eclipse.sirius.tests.unit.diagram.action.EntitiesDiagramHideRevealTests;
 import org.eclipse.sirius.tests.unit.diagram.action.LabelHideRevealTests;
+import org.eclipse.sirius.tests.unit.diagram.command.BuildDeleteCommandTest;
 import org.eclipse.sirius.tests.unit.diagram.command.DeleteViewCommandTest;
 import org.eclipse.sirius.tests.unit.diagram.compute.variable.ComputeAvailableVariableLabelTest;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlDetectorTest;
@@ -337,6 +338,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(DiagramUnsynchronizedRefreshTest.class);
         suite.addTestSuite(UnsynchronizedMappingAndDeleteFromOutsideEditorTests.class);
         suite.addTestSuite(DeleteViewCommandTest.class);
+        suite.addTestSuite(BuildDeleteCommandTest.class);
         suite.addTestSuite(FileModificationValidationTest.class);
         suite.addTestSuite(GMFCrossReferenceAdapterTest.class);
         suite.addTestSuite(EdgeStabilityOnPortCollapsingTest.class);
