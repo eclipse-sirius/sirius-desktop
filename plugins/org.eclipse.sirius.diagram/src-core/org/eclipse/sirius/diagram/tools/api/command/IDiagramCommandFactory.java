@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 20015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,8 @@ import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
@@ -344,7 +344,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * Build a direct edit label command using the corresponding tool
      * description.
      * 
-     * @param labelled
+     * @param repElement
      *            : the element on which the label should be changed.
      * @param directEditTool
      *            : the tool description.
@@ -353,7 +353,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * @return : a command which prepare the model request interpreter and set
      *         the new label.
      */
-    Command buildDirectEditLabelFromTool(DLabelled labelled, DirectEditLabel directEditTool, String newValue);
+    Command buildDirectEditLabelFromTool(DRepresentationElement repElement, DirectEditLabel directEditTool, String newValue);
 
     /**
      * Build a command that is able to refresh a refreshable element.

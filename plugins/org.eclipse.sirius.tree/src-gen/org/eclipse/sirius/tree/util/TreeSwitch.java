@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -141,9 +140,6 @@ public class TreeSwitch<T> {
                 result = caseDRepresentationElement(dTreeElement);
             }
             if (result == null) {
-                result = caseDLabelled(dTreeElement);
-            }
-            if (result == null) {
                 result = caseDMappingBased(dTreeElement);
             }
             if (result == null) {
@@ -185,9 +181,6 @@ public class TreeSwitch<T> {
             }
             if (result == null) {
                 result = caseDSemanticDecorator(dTreeItem);
-            }
-            if (result == null) {
-                result = caseDLabelled(dTreeItem);
             }
             if (result == null) {
                 result = caseDMappingBased(dTreeItem);
@@ -423,23 +416,6 @@ public class TreeSwitch<T> {
      * @generated
      */
     public T caseDSemanticDecorator(DSemanticDecorator object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DLabelled</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DLabelled</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDLabelled(DLabelled object) {
         return null;
     }
 

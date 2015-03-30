@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,6 @@ import org.eclipse.sirius.tree.description.StyleUpdater;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeItemUpdater;
 import org.eclipse.sirius.tree.description.TreeMapping;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -677,12 +676,6 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == DLabelled.class) {
-            switch (derivedFeatureID) {
-            default:
-                return -1;
-            }
-        }
         if (baseClass == DMappingBased.class) {
             switch (derivedFeatureID) {
             default:
@@ -729,12 +722,6 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == DLabelled.class) {
-            switch (baseFeatureID) {
-            default:
-                return -1;
-            }
-        }
         if (baseClass == DMappingBased.class) {
             switch (baseFeatureID) {
             default:

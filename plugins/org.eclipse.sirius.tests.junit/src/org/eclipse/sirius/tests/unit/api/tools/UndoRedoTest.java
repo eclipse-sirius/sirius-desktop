@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 import org.eclipse.sirius.tools.api.command.DCommand;
-import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 public class UndoRedoTest extends DocbookTestCase {
 
@@ -158,7 +158,7 @@ public class UndoRedoTest extends DocbookTestCase {
 
     public void testUndoRedoDirectEdit() throws Exception {
         final Command command;
-        final DLabelled labelled = createBigSection();
+        final DRepresentationElement repElement = createBigSection();
 
         // check that in the initial state, there is no "Sect1" element with the
         // label "new label".
@@ -166,7 +166,7 @@ public class UndoRedoTest extends DocbookTestCase {
         String failureMessage = "Wrong container count having the right label name.";
         check(obviousDiagram, expression, 0, failureMessage);
 
-        command = directEditNodeAndContainerLabel(obviousDiagram, labelled, "new label");
+        command = directEditNodeAndContainerLabel(obviousDiagram, repElement, "new label");
         assertTrue("Could not edit the label of a container", execute(command));
 
         // check that the container label has changed to the new one.

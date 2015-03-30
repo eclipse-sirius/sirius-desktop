@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,9 +60,9 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
@@ -703,16 +703,16 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      * 
      * @param diagram
      *            where the tool is defined.
-     * @param labelled
+     * @param repElement
      *            the element on which the label should be changed.
      * @param newValue
      *            the new label value.
      * @return the direct edit tool.
      */
-    protected Command directEditNodeAndContainerLabel(final DDiagram diagram, final DLabelled labelled, final String newValue) {
+    protected Command directEditNodeAndContainerLabel(final DDiagram diagram, final DRepresentationElement repElement, final String newValue) {
         final DirectEditLabel directEditTool = (DirectEditLabel) getTool(diagram, "direct edit node and container");
         assertNotNull("Could not find the direct edit tool for node and container", directEditTool);
-        return getCommandFactory().buildDirectEditLabelFromTool(labelled, directEditTool, newValue);
+        return getCommandFactory().buildDirectEditLabelFromTool(repElement, directEditTool, newValue);
     }
 
     /**
@@ -720,16 +720,16 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      * 
      * @param diagram
      *            where the tool is defined.
-     * @param labelled
+     * @param repElement
      *            the element on which the label should be changed.
      * @param newValue
      *            the new label value.
      * @return the direct edit tool.
      */
-    protected Command directEditBorderedNodeLabel(final DDiagram diagram, final DLabelled labelled, final String newValue) {
+    protected Command directEditBorderedNodeLabel(final DDiagram diagram, final DRepresentationElement repElement, final String newValue) {
         final DirectEditLabel directEditTool = (DirectEditLabel) getTool(diagram, "direct edit bordered node");
         assertNotNull("Could not find the direct edit tool for node and container", directEditTool);
-        return getCommandFactory().buildDirectEditLabelFromTool(labelled, directEditTool, newValue);
+        return getCommandFactory().buildDirectEditLabelFromTool(repElement, directEditTool, newValue);
     }
 
     /**
@@ -737,16 +737,16 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      * 
      * @param diagram
      *            where the tool is defined.
-     * @param labelled
+     * @param repElement
      *            the element on which the label should be changed.
      * @param newValue
      *            the new label value.
      * @return the direct edit tool.
      */
-    protected Command directEditEdgeLabel(final DDiagram diagram, final DLabelled labelled, final String newValue) {
+    protected Command directEditEdgeLabel(final DDiagram diagram, final DRepresentationElement repElement, final String newValue) {
         final DirectEditLabel directEditTool = (DirectEditLabel) getTool(diagram, "direct edit note");
         assertNotNull("Could not find the direct edit tool for edges", directEditTool);
-        return getCommandFactory().buildDirectEditLabelFromTool(labelled, directEditTool, newValue);
+        return getCommandFactory().buildDirectEditLabelFromTool(repElement, directEditTool, newValue);
     }
 
     protected Command getSingleSelectionWizardCommand(final DDiagram diagram, final DSemanticDecorator container, final Collection<EObject> selectedElement) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,6 @@ import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -784,12 +783,6 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == DLabelled.class) {
-            switch (derivedFeatureID) {
-            default:
-                return -1;
-            }
-        }
         if (baseClass == DMappingBased.class) {
             switch (derivedFeatureID) {
             default:
@@ -858,12 +851,6 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == DLabelled.class) {
-            switch (baseFeatureID) {
-            default:
-                return -1;
-            }
-        }
         if (baseClass == DMappingBased.class) {
             switch (baseFeatureID) {
             default:

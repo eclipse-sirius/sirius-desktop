@@ -44,11 +44,6 @@
       </eAnnotations>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DLabelled" abstract="true" interface="true">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An element that has a label."/>
-    </eAnnotations>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DMappingBased" abstract="true" interface="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An element that has a mapping."/>
@@ -105,7 +100,7 @@
         upperBound="-1" eType="#//description/AnnotationEntry" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DRepresentationElement" abstract="true"
-      eSuperTypes="#//DLabelled #//DMappingBased #//DStylizable #//DRefreshable #//DSemanticDecorator">
+      eSuperTypes="#//DMappingBased #//DStylizable #//DRefreshable #//DSemanticDecorator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

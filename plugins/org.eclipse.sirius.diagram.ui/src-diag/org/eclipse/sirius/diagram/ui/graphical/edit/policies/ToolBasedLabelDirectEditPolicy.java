@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 
 /**
@@ -71,15 +71,15 @@ public class ToolBasedLabelDirectEditPolicy extends LabelDirectEditPolicy {
         if (labelText != null) {
             if (getHost() instanceof GraphicalEditPart) {
                 final EObject element = ((GraphicalEditPart) getHost()).resolveSemanticElement();
-                if (element instanceof DLabelled && element instanceof DMappingBased) {
+                if (element instanceof DRepresentationElement && element instanceof DMappingBased) {
                     if (getDirectEditTool((DMappingBased) element) != null) {
-                        final DLabelled labeled = (DLabelled) element;
+                        final DRepresentationElement repElement = (DRepresentationElement) element;
                         final DDiagramEditor diagramEditor = (DDiagramEditor) this.getHost().getViewer().getProperty(DDiagramEditor.EDITOR_ID);
                         final Object adapter = diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);
                         final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
                         final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(element);
                         final IDiagramCommandFactory diagramCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
-                        final org.eclipse.emf.common.command.Command command = diagramCommandFactory.buildDirectEditLabelFromTool(labeled, getDirectEditTool((DMappingBased) labeled), labelText);
+                        final org.eclipse.emf.common.command.Command command = diagramCommandFactory.buildDirectEditLabelFromTool(repElement, getDirectEditTool((DMappingBased) repElement), labelText);
                         final CompoundCommand cc = new CompoundCommand();
                         cc.add(new ICommandProxy(new GMFCommandWrapper(domain, command)));
                         cmd = cc;

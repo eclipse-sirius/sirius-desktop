@@ -28,7 +28,6 @@ import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
@@ -97,13 +96,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass dRefreshableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dLabelledEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -496,16 +488,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     @Override
     public EClass getDRefreshable() {
         return dRefreshableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EClass getDLabelled() {
-        return dLabelledEClass;
     }
 
     /**
@@ -1155,8 +1137,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         dRefreshableEClass = createEClass(ViewpointPackage.DREFRESHABLE);
 
-        dLabelledEClass = createEClass(ViewpointPackage.DLABELLED);
-
         dMappingBasedEClass = createEClass(ViewpointPackage.DMAPPING_BASED);
 
         dContainerEClass = createEClass(ViewpointPackage.DCONTAINER);
@@ -1286,7 +1266,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dRepresentationEClass.getESuperTypes().add(theDescriptionPackage.getDocumentedElement());
         dRepresentationEClass.getESuperTypes().add(this.getDRefreshable());
         dRepresentationEClass.getESuperTypes().add(theDescriptionPackage.getDModelElement());
-        dRepresentationElementEClass.getESuperTypes().add(this.getDLabelled());
         dRepresentationElementEClass.getESuperTypes().add(this.getDMappingBased());
         dRepresentationElementEClass.getESuperTypes().add(this.getDStylizable());
         dRepresentationElementEClass.getESuperTypes().add(this.getDRefreshable());
@@ -1336,8 +1315,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEClass(dRefreshableEClass, DRefreshable.class, "DRefreshable", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         addEOperation(dRefreshableEClass, null, "refresh", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
-
-        initEClass(dLabelledEClass, DLabelled.class, "DLabelled", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(dMappingBasedEClass, DMappingBased.class, "DMappingBased", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 

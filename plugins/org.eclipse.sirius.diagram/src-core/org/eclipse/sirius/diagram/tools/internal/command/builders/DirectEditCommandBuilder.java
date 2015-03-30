@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,14 +22,14 @@ import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
 
     private static final String EDIT_LABEL = "Edit label";
 
-    private DLabelled labeled;
+    private DRepresentationElement repElement;
 
     private DirectEditLabel directEditTool;
 
@@ -38,15 +38,15 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
     /**
      * Constructor.
      * 
-     * @param labeled
+     * @param repElement
      *            : the element on which the label should be changed.
      * @param directEditTool
      *            : the tool description.
      * @param newValue
      *            : the new label value
      */
-    public DirectEditCommandBuilder(DLabelled labeled, DirectEditLabel directEditTool, String newValue) {
-        this.labeled = labeled;
+    public DirectEditCommandBuilder(DRepresentationElement repElement, DirectEditLabel directEditTool, String newValue) {
+        this.repElement = repElement;
         this.directEditTool = directEditTool;
         this.newValue = newValue;
     }
@@ -57,8 +57,9 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
      * 
      * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
      */
+    @Override
     public Command buildCommand() {
-        if (this.permissionAuthority.canEditInstance(labeled) && canDirectEdit()) {
+        if (this.permissionAuthority.canEditInstance(repElement) && canDirectEdit()) {
             final DCommand result = createEnclosingCommand();
             /*
              * First we need to init the mask variables.
@@ -67,12 +68,12 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
             if (directEditTool.getMask() != null) {
                 messageFormat = directEditTool.getMask().getMask();
             }
-            IInterpreter interpreter = InterpreterUtil.getInterpreter(labeled);
+            IInterpreter interpreter = InterpreterUtil.getInterpreter(repElement);
             result.getTasks().add(new InitInterpreterFromParsedVariableTask(interpreter, messageFormat, newValue));
 
             Option<DDiagram> parentDiagram = getDDiagram();
-            if (parentDiagram.some() && labeled instanceof DSemanticDecorator && ((DSemanticDecorator) labeled).getTarget() != null && directEditTool.getInitialOperation() != null) {
-                final ICommandTask operations = taskHelper.buildTaskFromModelOperation(parentDiagram.get(), ((DSemanticDecorator) labeled).getTarget(), directEditTool.getInitialOperation()
+            if (parentDiagram.some() && repElement instanceof DSemanticDecorator && ((DSemanticDecorator) repElement).getTarget() != null && directEditTool.getInitialOperation() != null) {
+                final ICommandTask operations = taskHelper.buildTaskFromModelOperation(parentDiagram.get(), ((DSemanticDecorator) repElement).getTarget(), directEditTool.getInitialOperation()
                         .getFirstModelOperations());
                 result.getTasks().add(operations);
             }
@@ -90,8 +91,8 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
     public boolean canDirectEdit() {
         // Layouting mode on diagrams, if the diagram is in
         // LayoutingMode, we do not allow direct edit.
-        boolean valid = !isInLayoutingModeDiagram(labeled);
-        valid = valid && checkPrecondition((DDiagramElement) labeled, directEditTool);
+        boolean valid = !isInLayoutingModeDiagram(repElement);
+        valid = valid && checkPrecondition((DDiagramElement) repElement, directEditTool);
         return valid;
     }
 
@@ -104,14 +105,15 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
      *            the current interpreter.
      */
     protected void addPostOperationTasks(final DCommand command, IInterpreter interpreter) {
-        if (labeled instanceof DDiagramElement) {
-            addRefreshTask((DDiagramElement) labeled, command, directEditTool);
+        if (repElement instanceof DDiagramElement) {
+            addRefreshTask((DDiagramElement) repElement, command, directEditTool);
         }
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getEnclosingCommandLabel() {
         return EDIT_LABEL;
     }
@@ -121,6 +123,6 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     @Override
     protected Option<DDiagram> getDDiagram() {
-        return new EObjectQuery(labeled).getParentDiagram();
+        return new EObjectQuery(repElement).getParentDiagram();
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.unit.api.tools;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
-import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 public class DirectEditTest extends DocbookTestCase {
 
@@ -23,7 +23,7 @@ public class DirectEditTest extends DocbookTestCase {
     public void testDirectEditContainerLabel() {
         int targetCount = -1;
         final Command command;
-        final DLabelled labelled = createBigSection();
+        final DRepresentationElement repElement = createBigSection();
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Sect1\" && target.id == \"new label\"].nSize()%>").intValue();
@@ -33,7 +33,7 @@ public class DirectEditTest extends DocbookTestCase {
         }
         assertEquals("Wrong container count having the right label name.", 0, targetCount);
 
-        command = directEditNodeAndContainerLabel(obviousDiagram, labelled, "new label");
+        command = directEditNodeAndContainerLabel(obviousDiagram, repElement, "new label");
         assertTrue("Could not edit the label of a container", command.canExecute());
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
@@ -54,7 +54,7 @@ public class DirectEditTest extends DocbookTestCase {
     public void testDirectEditNodeLabel() {
         int targetCount = -1;
         Command command = null;
-        final DLabelled labelled = createMediumSection();
+        final DRepresentationElement repElement = createMediumSection();
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name == \"Sect2\" && target.id == \"new label\"].nSize()%>").intValue();
@@ -64,7 +64,7 @@ public class DirectEditTest extends DocbookTestCase {
         }
         assertEquals("Wrong node count having the right label name.", 0, targetCount);
 
-        command = directEditNodeAndContainerLabel(obviousDiagram, labelled, "new label");
+        command = directEditNodeAndContainerLabel(obviousDiagram, repElement, "new label");
         assertTrue("Could not edit the label of a container", command.canExecute());
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
@@ -85,7 +85,7 @@ public class DirectEditTest extends DocbookTestCase {
     public void testDirectEditBorderedNodeLabel() {
         int targetCount = -1;
         Command command = null;
-        final DLabelled labelled = createChapterReturnTitle();
+        final DRepresentationElement repElement = createChapterReturnTitle();
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name == \"Title\" && target.data == \"new label\"].nSize()%>").intValue();
@@ -95,7 +95,7 @@ public class DirectEditTest extends DocbookTestCase {
         }
         assertEquals("Wrong node count having the right label name.", 0, targetCount);
 
-        command = directEditBorderedNodeLabel(obviousDiagram, labelled, "new label");
+        command = directEditBorderedNodeLabel(obviousDiagram, repElement, "new label");
         assertTrue("Could not edit the label of a container", command.canExecute());
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
@@ -116,7 +116,7 @@ public class DirectEditTest extends DocbookTestCase {
     public void testDirectEditEdgeLabel() {
         final Command command;
         int targetCount = -1;
-        DLabelled labelled = (DLabelled) createNoteInEvoluateView().get(1);
+        DRepresentationElement repElement = (DRepresentationElement) createNoteInEvoluateView().get(1);
 
         try {
             targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eAllContents(\"DEdge\")[target.eClass.name == \"Para\" && target.data == \"new label\"].nSize()%>").intValue();
@@ -126,7 +126,7 @@ public class DirectEditTest extends DocbookTestCase {
         }
         assertEquals("Wrong node count having the right label name.", 0, targetCount);
 
-        command = directEditEdgeLabel(evoluateDiagram, labelled, "new label");
+        command = directEditEdgeLabel(evoluateDiagram, repElement, "new label");
         assertTrue("Could not edit the label of an edge", command.canExecute());
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 

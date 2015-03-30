@@ -24,7 +24,6 @@ import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
@@ -119,11 +118,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDRefreshable(DRefreshable object) {
             return createDRefreshableAdapter();
-        }
-
-        @Override
-        public Adapter caseDLabelled(DLabelled object) {
-            return createDLabelledAdapter();
         }
 
         @Override
@@ -324,21 +318,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDRefreshableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DLabelled <em>DLabelled</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     *
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DLabelled
-     * @generated
-     */
-    public Adapter createDLabelledAdapter() {
         return null;
     }
 

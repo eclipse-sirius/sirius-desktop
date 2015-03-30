@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,7 +72,7 @@ public interface ITreeCommandFactory extends ICommandFactory {
      * Build a direct edit label command using the corresponding tool
      * description.
      * 
-     * @param labelled
+     * @param repElement
      *            : the element on which the label should be changed.
      * @param directEditTool
      *            : the tool description.
@@ -81,7 +81,7 @@ public interface ITreeCommandFactory extends ICommandFactory {
      * @return : a command which prepare the model request interpreter and set
      *         the new label.
      */
-    Command buildDirectEditLabelFromTool(DTreeItem labelled, TreeItemEditionTool directEditTool, String newValue);
+    Command buildDirectEditLabelFromTool(DTreeItem repElement, TreeItemEditionTool directEditTool, String newValue);
 
     /**
      * Build a command that will execute all semantic operations related to the

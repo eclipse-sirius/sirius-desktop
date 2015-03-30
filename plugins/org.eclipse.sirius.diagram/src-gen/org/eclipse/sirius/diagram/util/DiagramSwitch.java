@@ -63,7 +63,6 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -213,9 +212,6 @@ public class DiagramSwitch<T> {
                 result = caseDRepresentationElement(dDiagramElement);
             }
             if (result == null) {
-                result = caseDLabelled(dDiagramElement);
-            }
-            if (result == null) {
                 result = caseDMappingBased(dDiagramElement);
             }
             if (result == null) {
@@ -316,9 +312,6 @@ public class DiagramSwitch<T> {
                 result = caseDRepresentationElement(abstractDNode);
             }
             if (result == null) {
-                result = caseDLabelled(abstractDNode);
-            }
-            if (result == null) {
                 result = caseDMappingBased(abstractDNode);
             }
             if (result == null) {
@@ -352,9 +345,6 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseDRepresentationElement(dNode);
-            }
-            if (result == null) {
-                result = caseDLabelled(dNode);
             }
             if (result == null) {
                 result = caseDMappingBased(dNode);
@@ -393,9 +383,6 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseDRepresentationElement(dDiagramElementContainer);
-            }
-            if (result == null) {
-                result = caseDLabelled(dDiagramElementContainer);
             }
             if (result == null) {
                 result = caseDMappingBased(dDiagramElementContainer);
@@ -439,9 +426,6 @@ public class DiagramSwitch<T> {
                 result = caseDRepresentationElement(dNodeContainer);
             }
             if (result == null) {
-                result = caseDLabelled(dNodeContainer);
-            }
-            if (result == null) {
                 result = caseDMappingBased(dNodeContainer);
             }
             if (result == null) {
@@ -483,9 +467,6 @@ public class DiagramSwitch<T> {
                 result = caseDRepresentationElement(dNodeList);
             }
             if (result == null) {
-                result = caseDLabelled(dNodeList);
-            }
-            if (result == null) {
                 result = caseDMappingBased(dNodeList);
             }
             if (result == null) {
@@ -515,9 +496,6 @@ public class DiagramSwitch<T> {
                 result = caseDRepresentationElement(dNodeListElement);
             }
             if (result == null) {
-                result = caseDLabelled(dNodeListElement);
-            }
-            if (result == null) {
                 result = caseDMappingBased(dNodeListElement);
             }
             if (result == null) {
@@ -545,9 +523,6 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseDRepresentationElement(dEdge);
-            }
-            if (result == null) {
-                result = caseDLabelled(dEdge);
             }
             if (result == null) {
                 result = caseDMappingBased(dEdge);
@@ -1964,23 +1939,6 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseDSemanticDecorator(DSemanticDecorator object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DLabelled</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DLabelled</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDLabelled(DLabelled object) {
         return null;
     }
 

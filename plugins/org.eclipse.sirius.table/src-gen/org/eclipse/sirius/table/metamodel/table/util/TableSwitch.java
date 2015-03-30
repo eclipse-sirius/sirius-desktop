@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,6 @@ import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -142,9 +141,6 @@ public class TableSwitch<T> {
                 result = caseDRepresentationElement(dTableElement);
             }
             if (result == null) {
-                result = caseDLabelled(dTableElement);
-            }
-            if (result == null) {
                 result = caseDMappingBased(dTableElement);
             }
             if (result == null) {
@@ -188,9 +184,6 @@ public class TableSwitch<T> {
                 result = caseDSemanticDecorator(dLine);
             }
             if (result == null) {
-                result = caseDLabelled(dLine);
-            }
-            if (result == null) {
                 result = caseDMappingBased(dLine);
             }
             if (result == null) {
@@ -215,9 +208,6 @@ public class TableSwitch<T> {
             }
             if (result == null) {
                 result = caseDSemanticDecorator(dCell);
-            }
-            if (result == null) {
-                result = caseDLabelled(dCell);
             }
             if (result == null) {
                 result = caseDMappingBased(dCell);
@@ -254,9 +244,6 @@ public class TableSwitch<T> {
                 result = caseDRepresentationElement(dColumn);
             }
             if (result == null) {
-                result = caseDLabelled(dColumn);
-            }
-            if (result == null) {
                 result = caseDMappingBased(dColumn);
             }
             if (result == null) {
@@ -289,9 +276,6 @@ public class TableSwitch<T> {
                 result = caseDSemanticDecorator(dTargetColumn);
             }
             if (result == null) {
-                result = caseDLabelled(dTargetColumn);
-            }
-            if (result == null) {
                 result = caseDMappingBased(dTargetColumn);
             }
             if (result == null) {
@@ -316,9 +300,6 @@ public class TableSwitch<T> {
             }
             if (result == null) {
                 result = caseDRepresentationElement(dFeatureColumn);
-            }
-            if (result == null) {
-                result = caseDLabelled(dFeatureColumn);
             }
             if (result == null) {
                 result = caseDMappingBased(dFeatureColumn);
@@ -627,23 +608,6 @@ public class TableSwitch<T> {
      * @generated
      */
     public T caseDSemanticDecorator(DSemanticDecorator object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DLabelled</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DLabelled</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDLabelled(DLabelled object) {
         return null;
     }
 

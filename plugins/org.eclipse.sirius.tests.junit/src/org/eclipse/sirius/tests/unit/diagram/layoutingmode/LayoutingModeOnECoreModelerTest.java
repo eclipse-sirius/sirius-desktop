@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 import com.google.common.collect.Iterables;
 
@@ -116,7 +116,7 @@ public class LayoutingModeOnECoreModelerTest extends AbstractLayoutingModeTest i
     public void testLayoutingModeOnDirectEdit() {
         // Step 1 : getting tool and diagram elements
         DirectEditLabel editTool = (DirectEditLabel) getTool(diagram, "Edit Name");
-        DLabelled eClass = getDiagramElementsFromLabel(diagram, "new EClass").iterator().next();
+        DRepresentationElement eClass = getDiagramElementsFromLabel(diagram, "new EClass").iterator().next();
 
         // Step 2 : applying tool
         Command command = getCommandFactory().buildDirectEditLabelFromTool(eClass, editTool, "newValue");

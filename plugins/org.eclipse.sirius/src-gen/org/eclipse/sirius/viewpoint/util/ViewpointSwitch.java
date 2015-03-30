@@ -24,7 +24,6 @@ import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
@@ -151,14 +150,6 @@ public class ViewpointSwitch<T> {
             }
             return result;
         }
-        case ViewpointPackage.DLABELLED: {
-            DLabelled dLabelled = (DLabelled) theEObject;
-            T result = caseDLabelled(dLabelled);
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
         case ViewpointPackage.DMAPPING_BASED: {
             DMappingBased dMappingBased = (DMappingBased) theEObject;
             T result = caseDMappingBased(dMappingBased);
@@ -217,9 +208,6 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DREPRESENTATION_ELEMENT: {
             DRepresentationElement dRepresentationElement = (DRepresentationElement) theEObject;
             T result = caseDRepresentationElement(dRepresentationElement);
-            if (result == null) {
-                result = caseDLabelled(dRepresentationElement);
-            }
             if (result == null) {
                 result = caseDMappingBased(dRepresentationElement);
             }
@@ -477,23 +465,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseDRefreshable(DRefreshable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DLabelled</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DLabelled</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDLabelled(DLabelled object) {
         return null;
     }
 

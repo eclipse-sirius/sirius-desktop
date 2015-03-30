@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,6 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
-import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -75,6 +74,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildCreateNodeCommandFromTool(DNode node, NodeCreationDescription tool) {
         return baseFactory.buildCreateNodeCommandFromTool(node, tool);
     }
@@ -82,6 +82,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildCreateContainerCommandFromTool(DDiagram diagram, ContainerCreationDescription tool) {
         return baseFactory.buildCreateContainerCommandFromTool(diagram, tool);
     }
@@ -89,6 +90,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildCreateContainerCommandFromTool(DDiagramElementContainer nodeContainer, ContainerCreationDescription tool) {
         return baseFactory.buildCreateContainerCommandFromTool(nodeContainer, tool);
     }
@@ -96,6 +98,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public DCommand buildCreateDiagramFromDescription(DiagramDescription description, EObject semanticElement, IProgressMonitor monitor) {
         return baseFactory.buildCreateDiagramFromDescription(description, semanticElement, monitor);
     }
@@ -103,6 +106,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildCreateEdgeCommandFromTool(EdgeTarget source, EdgeTarget target, EdgeCreationDescription tool) {
         return baseFactory.buildCreateEdgeCommandFromTool(source, target, tool);
     }
@@ -110,6 +114,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildCreateNodeCommandFromTool(DDiagram diagram, NodeCreationDescription tool) {
         return baseFactory.buildCreateNodeCommandFromTool(diagram, tool);
     }
@@ -117,6 +122,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildCreateNodeCommandFromTool(DDiagramElementContainer container, NodeCreationDescription tool) {
         return baseFactory.buildCreateNodeCommandFromTool(container, tool);
     }
@@ -124,6 +130,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public CreateRepresentationCommand buildCreateRepresentationFromDescription(RepresentationCreationDescription desc, DRepresentationElement element, String newRepresentationName) {
         return baseFactory.buildCreateRepresentationFromDescription(desc, element, newRepresentationName);
     }
@@ -131,6 +138,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildDeleteDiagram(DDiagram vp) {
         return baseFactory.buildDeleteDiagram(vp);
     }
@@ -138,6 +146,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildDeleteDiagramElement(DDiagramElement element) {
         return baseFactory.buildDeleteDiagramElement(element);
     }
@@ -145,6 +154,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildDeleteFromDiagramCommand(DDiagramElement element) {
         return baseFactory.buildDeleteFromDiagramCommand(element);
     }
@@ -152,13 +162,15 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
-    public org.eclipse.emf.common.command.Command buildDirectEditLabelFromTool(DLabelled labelled, DirectEditLabel directEditTool, String newValue) {
-        return baseFactory.buildDirectEditLabelFromTool(labelled, directEditTool, newValue);
+    @Override
+    public org.eclipse.emf.common.command.Command buildDirectEditLabelFromTool(DRepresentationElement repElement, DirectEditLabel directEditTool, String newValue) {
+        return baseFactory.buildDirectEditLabelFromTool(repElement, directEditTool, newValue);
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildDoExecuteDetailsOperation(DSemanticDecorator target, RepresentationCreationDescription desc, String newRepresentationName) {
         return baseFactory.buildDoExecuteDetailsOperation(target, desc, newRepresentationName);
     }
@@ -166,6 +178,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildDoubleClickOnElementCommandFromTool(DDiagramElement dDiagramElement, DoubleClickDescription tool) {
         return baseFactory.buildDoubleClickOnElementCommandFromTool(dDiagramElement, tool);
     }
@@ -173,6 +186,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildDropInContainerCommandFromTool(DragAndDropTarget dContainer, DDiagramElement element, ContainerDropDescription tool) {
         return baseFactory.buildDropInContainerCommandFromTool(dContainer, element, tool);
     }
@@ -180,6 +194,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildDropInContainerCommandFromTool(DragAndDropTarget dContainer, EObject droppedElement, ContainerDropDescription tool) {
         return baseFactory.buildDropInContainerCommandFromTool(dContainer, droppedElement, tool);
     }
@@ -187,6 +202,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildGenericToolCommandFromTool(EObject containerView, ToolDescription toolDesc) {
         return baseFactory.buildGenericToolCommandFromTool(containerView, toolDesc);
     }
@@ -194,6 +210,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildHideCommand(Set<EObject> elementsToHide) {
         return baseFactory.buildHideCommand(elementsToHide);
     }
@@ -202,6 +219,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
      * {@inheritDoc}
      * 
      */
+    @Override
     public Command buildHideLabelCommand(Set<EObject> elementsToHide) {
         return baseFactory.buildHideLabelCommand(elementsToHide);
     }
@@ -209,6 +227,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildJavaActionFromTool(ExternalJavaAction tool, Collection<DSemanticDecorator> selectedViews, IExternalJavaAction javaAction) {
         return baseFactory.buildJavaActionFromTool(tool, selectedViews, javaAction);
     }
@@ -216,6 +235,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildLaunchRuleCommandFromTool(DSemanticDecorator rootObject, BehaviorTool tool, boolean executeFromRootContainer, boolean deepProcess) {
         return baseFactory.buildLaunchRuleCommandFromTool(rootObject, tool, executeFromRootContainer, deepProcess);
     }
@@ -223,6 +243,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildOperationActionFromTool(OperationAction tool, Collection<DSemanticDecorator> selectedViews) {
         return baseFactory.buildOperationActionFromTool(tool, selectedViews);
     }
@@ -230,6 +251,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildPaneBasedSelectionWizardCommandFromTool(PaneBasedSelectionWizardDescription tool, DSemanticDecorator dContainer,
             Collection<EObject> selectedElement) {
         return baseFactory.buildPaneBasedSelectionWizardCommandFromTool(tool, dContainer, selectedElement);
@@ -238,6 +260,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildQuickFixOperation(ValidationFix fix, EObject fixTarget, DDiagram diagram) {
         return baseFactory.buildQuickFixOperation(fix, fixTarget, diagram);
     }
@@ -245,6 +268,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildReconnectEdgeCommandFromTool(ReconnectEdgeDescription tool, DEdge edge, EdgeTarget source, EdgeTarget target) {
         return baseFactory.buildReconnectEdgeCommandFromTool(tool, edge, source, target);
     }
@@ -252,6 +276,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildRefreshCommand(DRefreshable refreshableElement) {
         return baseFactory.buildRefreshCommand(refreshableElement);
     }
@@ -259,6 +284,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildRevealCommand(DDiagramElement diagramElement) {
         return baseFactory.buildRevealCommand(diagramElement);
     }
@@ -266,6 +292,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildRevealElementsCommand(DDiagram diagram) {
         return baseFactory.buildRevealElementsCommand(diagram);
     }
@@ -273,6 +300,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Command buildRevealLabelCommand(DDiagramElement diagramElement) {
         return baseFactory.buildRevealLabelCommand(diagramElement);
     }
@@ -280,6 +308,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildRevealElementsCommand(Set<DDiagramElement> elementsToReveal) {
         return baseFactory.buildRevealElementsCommand(elementsToReveal);
     }
@@ -287,6 +316,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public org.eclipse.emf.common.command.Command buildSelectionWizardCommandFromTool(SelectionWizardDescription tool, DSemanticDecorator dContainer, Collection<EObject> selectedElement) {
         return baseFactory.buildSelectionWizardCommandFromTool(tool, dContainer, selectedElement);
     }
@@ -294,6 +324,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setUserInterfaceCallBack(UICallBack newCB) {
         baseFactory.setUserInterfaceCallBack(newCB);
     }
@@ -301,6 +332,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Command buildPasteCommandFromTool(DSemanticDecorator dContainer, DSemanticDecorator element, PasteDescription tool) {
         return baseFactory.buildPasteCommandFromTool(dContainer, element, tool);
     }
@@ -308,6 +340,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Command buildPasteCommandFromTool(DSemanticDecorator dContainer, EObject droppedElement, PasteDescription tool) {
         return baseFactory.buildPasteCommandFromTool(dContainer, droppedElement, tool);
     }
@@ -317,6 +350,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
      * 
      * @see org.eclipse.sirius.tools.api.command.ICommandFactory#getUserInterfaceCallBack()
      */
+    @Override
     public UICallBack getUserInterfaceCallBack() {
         return baseFactory.getUserInterfaceCallBack();
     }
