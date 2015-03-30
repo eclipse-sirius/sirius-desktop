@@ -11,9 +11,12 @@
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.util.Iterator;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -27,6 +30,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * A specialized interpreter which only supports direct access to a named
@@ -116,26 +120,35 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
             String featureName = expression.substring(PREFIX.length());
             VariableType targetType = context.getTargetType();
             if (!isDefaultFeatureName(featureName)) {
+                Set<EClassifier> possibleReturnTypes = Sets.newLinkedHashSet();
                 for (TypeName typeName : targetType.getPossibleTypes()) {
                     Iterator<EClass> possibleEClasses = Iterators.filter(typeName.search(context.getAvailableEPackages()).iterator(), EClass.class);
                     boolean foundAtLeastOneValid = false;
                     while (!foundAtLeastOneValid && possibleEClasses.hasNext()) {
                         EClass cur = possibleEClasses.next();
-                        foundAtLeastOneValid = hasFeatureName(cur, featureName);
+                        foundAtLeastOneValid = hasFeatureNameAndCollectReturnTypes(cur, featureName, possibleReturnTypes);
                     }
                     if (!foundAtLeastOneValid) {
                         interpreterStatus.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, "The current element " + typeName.getCompleteName("::")
                                 + " does not have the feature named : " + featureName));
                     }
                 }
+                if (possibleReturnTypes.size() > 0) {
+                    interpreterStatus.setReturnType(VariableType.fromEClassifiers(possibleReturnTypes));
+                }
             }
         }
         return interpreterStatus;
     }
 
-    private boolean hasFeatureName(EClass currentElementType, String featureName) {
-        boolean hasFeatureName = currentElementType.getEStructuralFeature(featureName) != null;
-        return hasFeatureName;
+    private boolean hasFeatureNameAndCollectReturnTypes(EClass currentElementType, String featureName, Set<EClassifier> possibleTargetTypes) {
+        EStructuralFeature feature = currentElementType.getEStructuralFeature(featureName);
+        if (feature instanceof EReference) {
+            if (feature.getEType() != null) {
+                possibleTargetTypes.add(feature.getEType());
+            }
+        }
+        return feature != null;
     }
 
     private boolean isDefaultFeatureName(String featureName) {

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 
 import com.google.common.base.Joiner;
@@ -69,6 +70,21 @@ public final class VariableType {
         VariableType result = new VariableType();
         for (String domainClass : typeNames) {
             result.types.add(TypeName.fromString(domainClass));
+        }
+        return result;
+    }
+
+    /**
+     * Create a new {@link VariableType} from a collection of EClassifiers.
+     * 
+     * @param types
+     *            a collection of EClassifiers
+     * @return the newly created instance.
+     */
+    public static VariableType fromEClassifiers(Collection<EClassifier> types) {
+        VariableType result = new VariableType();
+        for (EClassifier domainClass : types) {
+            result.types.add(TypeName.fromEClassifier(domainClass));
         }
         return result;
     }
