@@ -48,6 +48,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 import com.google.common.collect.Sets;
 
@@ -181,7 +182,8 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         boolean descCanChange = element instanceof RepresentationDescription || element instanceof RepresentationElementMapping;
         boolean operationCanChange = element instanceof CreateInstance || element instanceof ChangeContext || element instanceof For;
         boolean toolCanChange = element instanceof AbstractToolDescription;
-        return descCanChange || operationCanChange || toolCanChange;
+        boolean validationRulecanChange = element instanceof ValidationRule;
+        return descCanChange || operationCanChange || toolCanChange || validationRulecanChange;
     }
 
     @Override
