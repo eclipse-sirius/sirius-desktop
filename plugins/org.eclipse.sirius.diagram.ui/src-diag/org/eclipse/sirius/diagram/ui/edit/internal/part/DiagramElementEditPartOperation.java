@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.Label;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -31,7 +30,6 @@ import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -39,19 +37,14 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -59,15 +52,12 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.graphics.Color;
@@ -154,93 +144,6 @@ public final class DiagramElementEditPartOperation {
             return ((DSemanticDecorator) semanticHost).getTarget();
         }
         return null;
-    }
-
-    /**
-     * This method is invoked when one of the semantic elements of a Diagram
-     * elements throws a notification.
-     * 
-     * @param self
-     *            the edit part.
-     * @param message
-     *            the notification.
-     */
-    public static void semanticChanged(final IDiagramElementEditPart self, final Notification message) {
-        final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(self.getEditingDomain().getResourceSet());
-        if (auth.canEditInstance(self.resolveSemanticElement())) {
-            switch (message.getEventType()) {
-            /*
-             * PLEASE do not tell to refresh the diagrams on a remove event or
-             * the element deletion will fail when another diagram is opened.
-             */
-            case Notification.SET:
-            case Notification.UNSET:
-            case Notification.ADD:
-            case Notification.ADD_MANY:
-            case Notification.MOVE:
-                DiagramElementEditPartOperation.refreshSemantic(self);
-                DiagramElementEditPartOperation.refreshLabelIcon(self);
-                break;
-            case Notification.REMOVE:
-            case Notification.REMOVE_MANY:
-            default:
-                break;
-            }
-        }
-    }
-
-    private static void refreshLabelIcon(IDiagramElementEditPart self) {
-        if (self instanceof IDiagramNodeEditPart && ((IDiagramNodeEditPart) self).getNodeLabel() != null && ((IDiagramNodeEditPart) self).getNodeLabel().getParent() != null) {
-            DiagramElementEditPartOperation.refreshIcon(((IDiagramNodeEditPart) self).getNodeLabel(), self.getLabelIcon());
-        } else if (self instanceof IDiagramBorderNodeEditPart && ((IDiagramBorderNodeEditPart) self).getNodeLabel() != null && ((IDiagramBorderNodeEditPart) self).getNodeLabel().getParent() != null) {
-            DiagramElementEditPartOperation.refreshIcon(((IDiagramBorderNodeEditPart) self).getNodeLabel(), self.getLabelIcon());
-        } else if (self instanceof IDiagramNameEditPart) {
-            DiagramElementEditPartOperation.refreshIcon((IDiagramNameEditPart) self);
-        } else {
-            for (IDiagramNameEditPart nameEditPart : Iterables.filter(self.getChildren(), IDiagramNameEditPart.class)) {
-                DiagramElementEditPartOperation.refreshIcon(nameEditPart);
-            }
-        }
-    }
-
-    private static void refreshIcon(SiriusWrapLabel figure, Image icon) {
-        if (figure != null) {
-            figure.setIcon(icon);
-        }
-    }
-
-    private static void refreshIcon(IDiagramNameEditPart self) {
-        IFigure figure = self.getFigure();
-
-        if (figure != null) {
-            if (figure instanceof SiriusWrapLabel) {
-                ((SiriusWrapLabel) figure).setIcon(self.getLabelIcon());
-            } else {
-                ((Label) figure).setIcon(self.getLabelIcon());
-            }
-        }
-    }
-
-    private static void refreshSemantic(final IDiagramElementEditPart self) {
-        // Step 1: get the DDiagramElement corresponding to this editpart
-        final DDiagramElement dde = self.resolveDiagramElement();
-
-        // Step 2: refresh the corresponding DDiagramElement using the
-        // DDiagramElementSynchronizer
-        DDiagram diagram = dde == null ? null : dde.getParentDiagram();
-        if (dde != null && diagram instanceof DSemanticDiagram) {
-            DSemanticDiagram semDiag = (DSemanticDiagram) diagram;
-            // If the diagram has no target, this means that it will be deleted.
-            // There is no need to refresh
-            if (semDiag.getTarget() != null) {
-                Session session = SessionManager.INSTANCE.getSession(semDiag.getTarget());
-                final DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(semDiag, session.getInterpreter(), SiriusPlugin.getDefault().getModelAccessorRegistry()
-                        .getModelAccessor(semDiag.getTarget()));
-
-                // refresh diagram element.
-                sync.refresh(dde);
-            }
-        }
     }
 
     /**
