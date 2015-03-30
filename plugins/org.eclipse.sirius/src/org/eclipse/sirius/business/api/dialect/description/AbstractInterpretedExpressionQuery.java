@@ -366,13 +366,29 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
 
         while (context != null && context != top.eContainer()) {
             appendAllLocalVariableDefinitions(definitions, context);
-            if (context instanceof ChangeContext && context != bottom) {
-                ChangeContext f = (ChangeContext) context;
-                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
-                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, f.getBrowseExpression());
-                VariableType returnTypes = res.getReturnTypes();
-                changeSelfType(definitions, returnTypes);
+            /*
+             * Any ModelOperation which require to call IInterpreter to get more
+             * typing information should not create a new context at the
+             * ModelOperation leaf or we'll end up with an inifite loop.
+             */
+            if (context != bottom) {
+                if (context instanceof ChangeContext) {
+                    ChangeContext f = (ChangeContext) context;
+                    IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
+                    ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, f.getBrowseExpression());
+                    VariableType returnTypes = res.getReturnTypes();
+                    changeSelfType(definitions, returnTypes);
 
+                }
+                if (context instanceof For) {
+                    For f = (For) context;
+                    IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.FOR__EXPRESSION);
+                    ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, f.getExpression());
+                    VariableType returnTypes = res.getReturnTypes();
+                    changeSelfType(definitions, returnTypes);
+                    addDefinition(definitions, f.getIteratorName(), returnTypes);
+
+                }
             }
             if (context instanceof CreateInstance) {
                 CreateInstance f = (CreateInstance) context;
@@ -495,12 +511,6 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         if (context instanceof CreateInstance) {
             CreateInstance ci = (CreateInstance) context;
             addDefinition(definitions, ci.getVariableName(), ci.getTypeName());
-        }
-        // The CreateInstance model operation implicitly defines a variable to
-        // reference the newly created instance.
-        if (context instanceof For) {
-            For f = (For) context;
-            addDefinition(definitions, f.getIteratorName(), VariableType.ANY_EOBJECT);
         }
 
     }

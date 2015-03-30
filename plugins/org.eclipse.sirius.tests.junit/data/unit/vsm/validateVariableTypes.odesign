@@ -187,6 +187,22 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="nonExistent">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:abstract"/>
+                  <subModelOperations xsi:type="tool:For" expression="feature:eOperations" iteratorName="op">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:op">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eParameters"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eParameters"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="feature:eTypeParameters" iteratorName="op">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:op">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eBounds"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eBounds"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

@@ -33,6 +33,7 @@ import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
+import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
@@ -178,7 +179,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
 
     private boolean isChangingContextElement(EObject element) {
         boolean descCanChange = element instanceof RepresentationDescription || element instanceof RepresentationElementMapping;
-        boolean operationCanChange = element instanceof CreateInstance || element instanceof ChangeContext;
+        boolean operationCanChange = element instanceof CreateInstance || element instanceof ChangeContext || element instanceof For;
         boolean toolCanChange = element instanceof AbstractToolDescription;
         return descCanChange || operationCanChange || toolCanChange;
     }
@@ -459,6 +460,23 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         Option<Collection<String>> result = null;
         switch (getFeatureId(object.eClass())) {
         case ToolPackage.CHANGE_CONTEXT__BROWSE_EXPRESSION:
+            return globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
+        case DO_NOT_CONSIDER_FEATURE:
+            // Compile expression and ask for return type.
+            // EObject other wise.
+            result = Options.newNone();
+            break;
+        default:
+            break;
+        }
+        return result;
+    }
+    
+    @Override
+    public Option<Collection<String>> caseFor(For object) {
+        Option<Collection<String>> result = null;
+        switch (getFeatureId(object.eClass())) {
+        case ToolPackage.FOR__EXPRESSION:
             return globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
         case DO_NOT_CONSIDER_FEATURE:
             // Compile expression and ask for return type.
