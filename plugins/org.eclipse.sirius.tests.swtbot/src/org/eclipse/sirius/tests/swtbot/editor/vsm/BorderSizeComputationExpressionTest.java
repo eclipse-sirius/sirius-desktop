@@ -61,7 +61,7 @@ public class BorderSizeComputationExpressionTest extends AbstractSiriusSwtBotGef
         // expands the tree
         SWTBotTreeItem tree = odesignEditor.bot().tree().expandNode(ODESIGN).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(DIAGRAM);
         testBorderSizeComputationExpression(tree, "BasicShape", "Basic Shape black square");
-        testBorderSizeComputationExpression(tree, "Diamond", "Lozenge gray");
+        testBorderSizeComputationExpression(tree, "Diamond", "Diamond gray");
         testBorderSizeComputationExpression(tree, "Dot", "Dot gray");
         testBorderSizeComputationExpression(tree, "Ellipse", "Ellipse gray");
         testBorderSizeComputationExpression(tree, "Gauge", "Gauge");
