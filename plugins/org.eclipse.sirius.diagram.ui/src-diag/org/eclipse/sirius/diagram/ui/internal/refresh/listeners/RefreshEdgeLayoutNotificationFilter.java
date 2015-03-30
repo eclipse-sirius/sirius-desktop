@@ -70,16 +70,16 @@ public class RefreshEdgeLayoutNotificationFilter extends DRepresentationNotifica
      *         induced by the first one.
      */
     public boolean otherNotificationsAreIndirectlyConcerned(Notification notification, Collection<Notification> notifications) {
+        boolean otherNotificationsAreIndirectlyConcerned = false;
         if (NotationPackage.Literals.ROUTING_STYLE__ROUTING == notification.getFeature() || DiagramPackage.Literals.EDGE_STYLE__CENTERED == notification.getFeature()) {
             for (Notification currentNotification : notifications) {
                 if (currentNotification != notification && !INDIRECT_INTERESTING_FEATURES.contains(currentNotification.getFeature())) {
-                    return false;
+                    otherNotificationsAreIndirectlyConcerned = true;
+                    break;
                 }
             }
-            return true;
-        } else {
-            return notifications.size() == 1;
         }
+        return otherNotificationsAreIndirectlyConcerned;
     }
 
 }

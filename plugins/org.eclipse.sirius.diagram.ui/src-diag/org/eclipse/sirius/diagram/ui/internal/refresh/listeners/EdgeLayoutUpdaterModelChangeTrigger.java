@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
@@ -72,11 +73,11 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
         Command command = null;
 
-        // this list contains gmf edges for which we already created a
+        // this collection contains gmf edges for which we already created a
         // CenterEdgeEndModelChangeOperation. This list aims to avoid creating
         // multi operation for a same gmfEdge in the case we are several
         // notification for it.
-        Collection<Edge> edgesWithCreatedCommand = new ArrayList<Edge>();
+        Collection<Edge> edgesWithCreatedCommand = new HashSet<Edge>();
         Collection<AbstractModelChangeOperation<Void>> operations = new ArrayList<AbstractModelChangeOperation<Void>>();
         for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
@@ -96,7 +97,7 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
             } else if (notifier instanceof Diagram && notification.getNewValue() instanceof Edge) {
                 gmfEdge = (Edge) notification.getNewValue();
             }
-            if (gmfEdge != null && !edgesWithCreatedCommand.contains(gmfEdge)) {
+            if (gmfEdge != null && edgesWithCreatedCommand.add(gmfEdge)) {
                 // if there are several notifications, we do not try to
                 // retrieve draw2D informations since they could be out of
                 // date.
