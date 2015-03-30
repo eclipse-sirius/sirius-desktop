@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDia
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DiagramActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
 import org.eclipse.ui.menus.IContributionRoot;
@@ -53,7 +54,7 @@ public class DiagramElementHideDeleteExtensionContributionFactory extends Sirius
         final DeleteFromModelWithHookAction deleteFromModelAction = new DeleteFromModelWithHookAction(getPage(), getPart());
         deleteFromModelAction.init();
 
-        additions.addContributionItem(new ActionContributionItem(deleteFromModelAction), new DDiagramElementTabbarExpression());
+        additions.addContributionItem(new DiagramActionContributionItem(deleteFromModelAction), new DDiagramElementTabbarExpression());
 
     }
 

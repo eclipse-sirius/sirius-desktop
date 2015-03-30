@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -86,6 +86,8 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String HIDE_ELEMENT = "Hide element";
 
     private static final String SET_STYLE_TO_WORKSPACE_IMAGE = "Set style to workspace image";
+
+    private static final String DELETE_FROM_MODEL = "Delete from Model";
 
     private static final String SELECTED_PACKAGE = "0";
 
@@ -243,6 +245,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
         assertEnabled(bot.toolbarButtonWithTooltip(PIN_SELECTION), enabled);
         assertEnabled(bot.toolbarButtonWithTooltip(HIDE_ELEMENT), enabled);
+        assertEnabled(bot.toolbarButtonWithTooltip(DELETE_FROM_MODEL), enabled);
         assertEnabled(bot.toolbarButtonWithTooltip(SET_STYLE_TO_WORKSPACE_IMAGE), enabled);
 
         // "Arrange Selection" drop down button
