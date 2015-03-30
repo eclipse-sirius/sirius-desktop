@@ -24,7 +24,6 @@ import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
@@ -103,13 +102,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass dMappingBasedEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -498,16 +490,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     @Override
     public EClass getDMappingBased() {
         return dMappingBasedEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EClass getDContainer() {
-        return dContainerEClass;
     }
 
     /**
@@ -1139,8 +1121,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         dMappingBasedEClass = createEClass(ViewpointPackage.DMAPPING_BASED);
 
-        dContainerEClass = createEClass(ViewpointPackage.DCONTAINER);
-
         dRepresentationContainerEClass = createEClass(ViewpointPackage.DREPRESENTATION_CONTAINER);
         createEReference(dRepresentationContainerEClass, ViewpointPackage.DREPRESENTATION_CONTAINER__MODELS);
 
@@ -1319,8 +1299,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEClass(dMappingBasedEClass, DMappingBased.class, "DMappingBased", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         addEOperation(dMappingBasedEClass, theDescriptionPackage.getRepresentationElementMapping(), "getMapping", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
-
-        initEClass(dContainerEClass, DContainer.class, "DContainer", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(dRepresentationContainerEClass, DRepresentationContainer.class, "DRepresentationContainer", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);

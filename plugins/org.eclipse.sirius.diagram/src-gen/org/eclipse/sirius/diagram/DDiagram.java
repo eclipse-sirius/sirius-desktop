@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
@@ -78,7 +77,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * @model
  * @generated
  */
-public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDropTarget, DContainer {
+public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDropTarget {
     /**
      * Returns the value of the '<em><b>Owned Diagram Elements</b></em>'
      * containment reference list. The list contents are of type

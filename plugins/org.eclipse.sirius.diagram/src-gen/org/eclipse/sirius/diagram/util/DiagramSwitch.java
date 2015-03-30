@@ -62,7 +62,6 @@ import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -157,9 +156,6 @@ public class DiagramSwitch<T> {
                 result = caseDragAndDropTarget(dDiagram);
             }
             if (result == null) {
-                result = caseDContainer(dDiagram);
-            }
-            if (result == null) {
                 result = caseDocumentedElement(dDiagram);
             }
             if (result == null) {
@@ -187,9 +183,6 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseDragAndDropTarget(dSemanticDiagram);
-            }
-            if (result == null) {
-                result = caseDContainer(dSemanticDiagram);
             }
             if (result == null) {
                 result = caseDocumentedElement(dSemanticDiagram);
@@ -376,9 +369,6 @@ public class DiagramSwitch<T> {
                 result = caseDragAndDropTarget(dDiagramElementContainer);
             }
             if (result == null) {
-                result = caseDContainer(dDiagramElementContainer);
-            }
-            if (result == null) {
                 result = caseDDiagramElement(dDiagramElementContainer);
             }
             if (result == null) {
@@ -417,9 +407,6 @@ public class DiagramSwitch<T> {
                 result = caseDragAndDropTarget(dNodeContainer);
             }
             if (result == null) {
-                result = caseDContainer(dNodeContainer);
-            }
-            if (result == null) {
                 result = caseDDiagramElement(dNodeContainer);
             }
             if (result == null) {
@@ -456,9 +443,6 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseDragAndDropTarget(dNodeList);
-            }
-            if (result == null) {
-                result = caseDContainer(dNodeList);
             }
             if (result == null) {
                 result = caseDDiagramElement(dNodeList);
@@ -1905,23 +1889,6 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseDRepresentation(DRepresentation object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DContainer</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DContainer</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDContainer(DContainer object) {
         return null;
     }
 

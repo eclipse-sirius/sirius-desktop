@@ -20,7 +20,6 @@ import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
@@ -153,14 +152,6 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DMAPPING_BASED: {
             DMappingBased dMappingBased = (DMappingBased) theEObject;
             T result = caseDMappingBased(dMappingBased);
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
-        case ViewpointPackage.DCONTAINER: {
-            DContainer dContainer = (DContainer) theEObject;
-            T result = caseDContainer(dContainer);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -482,23 +473,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseDMappingBased(DMappingBased object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DContainer</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DContainer</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDContainer(DContainer object) {
         return null;
     }
 

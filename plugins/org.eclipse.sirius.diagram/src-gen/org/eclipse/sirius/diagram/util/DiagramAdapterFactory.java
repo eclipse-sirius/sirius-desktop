@@ -62,7 +62,6 @@ import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -367,11 +366,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDRepresentation(DRepresentation object) {
             return createDRepresentationAdapter();
-        }
-
-        @Override
-        public Adapter caseDContainer(DContainer object) {
-            return createDContainerAdapter();
         }
 
         @Override
@@ -1178,21 +1172,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDRepresentationAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DContainer <em>DContainer</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DContainer
-     * @generated
-     */
-    public Adapter createDContainerAdapter() {
         return null;
     }
 

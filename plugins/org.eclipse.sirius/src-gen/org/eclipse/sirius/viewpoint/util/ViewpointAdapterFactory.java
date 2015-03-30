@@ -20,7 +20,6 @@ import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
@@ -123,11 +122,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDMappingBased(DMappingBased object) {
             return createDMappingBasedAdapter();
-        }
-
-        @Override
-        public Adapter caseDContainer(DContainer object) {
-            return createDContainerAdapter();
         }
 
         @Override
@@ -334,21 +328,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDMappingBasedAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DContainer <em>DContainer</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DContainer
-     * @generated
-     */
-    public Adapter createDContainerAdapter() {
         return null;
     }
 

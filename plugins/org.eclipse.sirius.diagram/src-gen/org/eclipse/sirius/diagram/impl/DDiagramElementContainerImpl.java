@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,6 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
@@ -834,12 +833,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
                 return -1;
             }
         }
-        if (baseClass == DContainer.class) {
-            switch (derivedFeatureID) {
-            default:
-                return -1;
-            }
-        }
         return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
     }
 
@@ -861,12 +854,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
             }
         }
         if (baseClass == DragAndDropTarget.class) {
-            switch (baseFeatureID) {
-            default:
-                return -1;
-            }
-        }
-        if (baseClass == DContainer.class) {
             switch (baseFeatureID) {
             default:
                 return -1;

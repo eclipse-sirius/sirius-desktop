@@ -47,6 +47,7 @@ h4. Changes in @org.eclipse.sirius@
 * The API @org.eclipse.sirius.viewpoint.DValidable@ has been removed.
 * The enum @org.eclipse.sirius.viewpoint.NavigationTargetType@ has been removed.
 * The API @org.eclipse.sirius.viewpoint.DLabelled@ has been removed.
+* The API @org.eclipse.sirius.viewpoint.DContainer@ has been removed.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

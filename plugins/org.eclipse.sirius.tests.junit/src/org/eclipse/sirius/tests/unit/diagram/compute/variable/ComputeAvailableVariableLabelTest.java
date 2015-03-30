@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,14 +19,13 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
@@ -78,7 +77,7 @@ public class ComputeAvailableVariableLabelTest extends SiriusDiagramTestCase {
                     assertTrue("The end label does not contains the representation name", ((DEdge) diagramElement).getEndLabel().contains(representationName));
                 }
             }
-            if (diagramElement instanceof DContainer) {
+            if (diagramElement instanceof DDiagramElementContainer) {
                 nbContainer++;
             }
         }
@@ -92,7 +91,7 @@ public class ComputeAvailableVariableLabelTest extends SiriusDiagramTestCase {
         List<DDiagramElement> diagramElements = diagram.getDiagramElements();
         int nbContainer = 0;
         for (DDiagramElement diagramElement : diagramElements) {
-            if (diagramElement instanceof DContainer) {
+            if (diagramElement instanceof DDiagramElementContainer) {
                 nbContainer++;
             }
         }
@@ -101,7 +100,7 @@ public class ComputeAvailableVariableLabelTest extends SiriusDiagramTestCase {
         nbContainer = 0;
         for (DDiagramElement elements : diagram.getDiagramElements()) {
             assertTrue("The diagram element does not contain label in the name of the representation", elements.getName().contains(representationName));
-            if (elements instanceof DContainer) {
+            if (elements instanceof DDiagramElementContainer) {
                 nbContainer++;
             }
         }
@@ -113,10 +112,10 @@ public class ComputeAvailableVariableLabelTest extends SiriusDiagramTestCase {
      */
     public void testComputeVariableDiagramForLabelFromCreationNodeTool() {
         List<DDiagramElement> diagramElements = diagram.getDiagramElements();
-        DContainer containerSC1 = null;
+        DDiagramElementContainer containerSC1 = null;
         for (DDiagramElement diagramElement : diagramElements) {
             if ((representationName + "SC1").equals(diagramElement.getName())) {
-                containerSC1 = (DContainer) diagramElement;
+                containerSC1 = (DDiagramElementContainer) diagramElement;
             }
         }
         assertTrue("Creation node tool fail", applyNodeCreationTool("Attribute", diagram, containerSC1));
@@ -144,7 +143,7 @@ public class ComputeAvailableVariableLabelTest extends SiriusDiagramTestCase {
         }
         assertTrue("Creation node tool fail", applyNodeCreationTool("Package", diagram, nodePackage));
         int nbNode = 0;
-        for (EObject dNode : ((DNode) nodePackage).getOwnedBorderedNodes()) {
+        for (EObject dNode : nodePackage.getOwnedBorderedNodes()) {
             if (dNode instanceof DNode) {
                 assertTrue("The node name don't contains the representation name", ((DNode) dNode).getName().contains(representationName));
                 nbNode++;
@@ -158,18 +157,18 @@ public class ComputeAvailableVariableLabelTest extends SiriusDiagramTestCase {
      */
     public void testComputeVariableDiagramForLabelFromCreationEdgeTool() {
         List<DDiagramElement> diagramElements = diagram.getDiagramElements();
-        DContainer containerSC1 = null;
-        DContainer containerC2 = null;
+        DDiagramElementContainer containerSC1 = null;
+        DDiagramElementContainer containerC2 = null;
         for (DDiagramElement diagramElement : diagramElements) {
             if ((representationName + "SC1").equals(diagramElement.getName())) {
-                containerSC1 = (DContainer) diagramElement;
+                containerSC1 = (DDiagramElementContainer) diagramElement;
             }
             if ((representationName + "C2").equals(diagramElement.getName())) {
-                containerC2 = (DContainer) diagramElement;
+                containerC2 = (DDiagramElementContainer) diagramElement;
             }
         }
         assertEquals("Test data have changed", 1, diagram.getEdges().size());
-        assertTrue("Creation edge tool fail", applyEdgeCreationTool("Reference", diagram, (EdgeTarget) containerSC1, (EdgeTarget) containerC2));
+        assertTrue("Creation edge tool fail", applyEdgeCreationTool("Reference", diagram, containerSC1, containerC2));
         assertEquals("The edge creation tool does not create new edge", 2, diagram.getEdges().size());
         for (DEdge dEdge : diagram.getEdges()) {
             assertTrue("The edge label don't contains the representation name", dEdge.getName().contains(representationName));

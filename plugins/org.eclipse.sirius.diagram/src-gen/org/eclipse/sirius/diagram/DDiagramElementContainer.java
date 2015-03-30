@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
@@ -54,7 +53,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * @model abstract="true"
  * @generated
  */
-public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, DragAndDropTarget, DContainer {
+public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, DragAndDropTarget {
     /**
      * Returns the value of the '<em><b>Nodes</b></em>' reference list. The list
      * contents are of type {@link org.eclipse.sirius.diagram.DNode}. <!--

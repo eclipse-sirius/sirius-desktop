@@ -49,7 +49,6 @@
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DMappingBased">
       <genOperations ecoreOperation="viewpoint.ecore#//DMappingBased/getMapping"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="viewpoint.ecore#//DContainer"/>
     <genClasses ecoreClass="viewpoint.ecore#//DRepresentationContainer">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentationContainer/models"/>
     </genClasses>

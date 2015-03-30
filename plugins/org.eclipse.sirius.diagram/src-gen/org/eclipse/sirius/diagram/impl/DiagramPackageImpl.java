@@ -2635,7 +2635,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDRepresentation());
         dDiagramEClass.getESuperTypes().add(theDescriptionPackage_1.getDocumentedElement());
         dDiagramEClass.getESuperTypes().add(this.getDragAndDropTarget());
-        dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDContainer());
         dSemanticDiagramEClass.getESuperTypes().add(this.getDDiagram());
         dSemanticDiagramEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dDiagramElementEClass.getESuperTypes().add(theViewpointPackage.getDRepresentationElement());
@@ -2652,7 +2651,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         dDiagramElementContainerEClass.getESuperTypes().add(this.getAbstractDNode());
         dDiagramElementContainerEClass.getESuperTypes().add(this.getEdgeTarget());
         dDiagramElementContainerEClass.getESuperTypes().add(this.getDragAndDropTarget());
-        dDiagramElementContainerEClass.getESuperTypes().add(theViewpointPackage.getDContainer());
         dNodeContainerEClass.getESuperTypes().add(this.getDDiagramElementContainer());
         dNodeListEClass.getESuperTypes().add(this.getDDiagramElementContainer());
         dNodeListElementEClass.getESuperTypes().add(this.getAbstractDNode());

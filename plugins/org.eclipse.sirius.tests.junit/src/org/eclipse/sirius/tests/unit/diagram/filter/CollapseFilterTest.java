@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
@@ -35,7 +36,6 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DContainer;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -331,10 +331,10 @@ public class CollapseFilterTest extends SiriusDiagramTestCase {
 
                 Node gmfNode = getGmfNode(element);
                 Size sizeGmfNode = (Size) gmfNode.getLayoutConstraint();
-                IFigure figure = getEditPart((DDiagramElement) element).getFigure();
+                IFigure figure = getEditPart(element).getFigure();
 
                 if (filters.length == 0) {
-                    if (!(element instanceof DContainer)) {
+                    if (!(element instanceof DDiagramElementContainer)) {
                         // Check that the GMF bounds and figure bounds are
                         // correct
                         assertEquals("The figure Draw2D should be have the same size", figure.getBounds().height, sizeGmfNode.getHeight());
@@ -465,6 +465,7 @@ public class CollapseFilterTest extends SiriusDiagramTestCase {
 
     private List<DDiagramElement> getDiagramElements(final EClass type) {
         Predicate<DDiagramElement> expectedType = new Predicate<DDiagramElement>() {
+            @Override
             public boolean apply(DDiagramElement input) {
                 return type.isInstance(input.getTarget());
             }

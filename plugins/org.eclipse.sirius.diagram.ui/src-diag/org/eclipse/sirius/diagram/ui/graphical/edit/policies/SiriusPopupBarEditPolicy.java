@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,6 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
@@ -184,7 +183,7 @@ public class SiriusPopupBarEditPolicy extends PopupBarEditPolicy {
         if (desc instanceof NodeCreationDescription) {
             klass = DiagramPackage.eINSTANCE.getDNode();
         } else if (desc instanceof ContainerCreationDescription) {
-            klass = ViewpointPackage.eINSTANCE.getDContainer();
+            klass = DiagramPackage.eINSTANCE.getDDiagramElementContainer();
         } else if (desc instanceof SelectionWizardDescription || desc instanceof PaneBasedSelectionWizardDescription) {
             /*
              * return a fake class as element type is not used by popup bar

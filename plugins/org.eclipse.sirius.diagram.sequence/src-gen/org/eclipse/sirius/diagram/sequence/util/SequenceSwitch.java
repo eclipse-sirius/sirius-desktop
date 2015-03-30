@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -116,9 +115,6 @@ public class SequenceSwitch<T> {
             }
             if (result == null) {
                 result = caseDragAndDropTarget(sequenceDDiagram);
-            }
-            if (result == null) {
-                result = caseDContainer(sequenceDDiagram);
             }
             if (result == null) {
                 result = caseDocumentedElement(sequenceDDiagram);
@@ -238,23 +234,6 @@ public class SequenceSwitch<T> {
      * @generated
      */
     public T caseDragAndDropTarget(DragAndDropTarget object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DContainer</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DContainer</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDContainer(DContainer object) {
         return null;
     }
 
