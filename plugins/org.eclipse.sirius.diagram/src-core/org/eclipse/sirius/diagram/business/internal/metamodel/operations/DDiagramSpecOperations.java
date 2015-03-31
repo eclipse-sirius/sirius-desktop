@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -147,16 +147,5 @@ public final class DDiagramSpecOperations {
             }
         }
         return result;
-    }
-
-    /**
-     * Validates the specified diagram.
-     * 
-     * @param diagram
-     *            the diagram to validate.
-     * @return <code>true</code> if the diagram is valid.
-     */
-    public static boolean validate(final DDiagram diagram) {
-        throw new UnsupportedOperationException("Should no more be called");
     }
 }
