@@ -23,6 +23,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNoOpenedSessionIn
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
  * Tests for the "pin elements" feature.
@@ -31,7 +32,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
  */
 public class PinnedElementsTest extends AbstractPinnedElementsTest {
 
-    protected static final String VIEWPOINT_NAME = "Tests Cases for ticket #1825 (partial layout)";
+    private static final String VIEWPOINT_NAME = "Tests Cases for ticket #1825 (partial layout)";
 
     private static final String MODEL = "model/tc1825.ecore";
 
@@ -110,6 +111,28 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
         editor.clickContextMenu("Pin selected elements");
         bot.waitUntil(waitForPinned(class1));
         assertThat(class1, isPinnedMatcher());
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurred.
+     */
+    public void testPinUnpinElementFromPalette() throws Exception {
+        openDiagram(VIEWPOINT_NAME, "Nodes, Containers and Lists (flat)", "Flat_All_Unpinned");
+        IDiagramElementEditPart class1 = (IDiagramElementEditPart) editor.getEditPart("Class1").part();
+        assertThat(class1, not(isPinnedMatcher()));
+        SWTBotGefEditPart class1EditPartBot = editor.getSelectableEditPart("Class1");
+        // Test Pin
+        editor.activateTool("Pin");
+        class1EditPartBot.click();
+        bot.waitUntil(waitForPinned(class1));
+        assertThat(class1, isPinnedMatcher());
+
+        // Test Unpin
+        editor.activateTool("Unpin");
+        class1EditPartBot.click();
+        bot.waitUntil(waitForNotPinned(class1));
+        assertThat(class1, not(isPinnedMatcher()));
     }
 
     /**

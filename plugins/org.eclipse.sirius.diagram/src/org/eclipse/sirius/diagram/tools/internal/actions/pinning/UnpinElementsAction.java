@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.pinning.actions;
+package org.eclipse.sirius.diagram.tools.internal.actions.pinning;
 
 import java.util.Collection;
 import java.util.Map;
