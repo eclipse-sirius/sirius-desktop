@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,9 +90,6 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Command transactionAboutToCommit(final ResourceSetChangeEvent event) throws RollbackException {
         Command cmd = null;
@@ -261,29 +258,21 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
             while (result.isEmpty() && it.hasNext()) {
                 final EStructuralFeature.Setting setting = it.next();
                 if (setting.getEObject() instanceof View) {
+                    @SuppressWarnings("unchecked")
                     EList<View> children = ((View) setting.getEObject()).getChildren();
                     for (View view : children) {
                         // CHECKSTYLE:OFF
                         if (SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_EDIT_PART_VISUAL_ID).equals(view.getType())
                                 || SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID).equals(view.getType())
                                 || SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_3_EDIT_PART_VISUAL_ID).equals(view.getType())
-                                || SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID).equals(view.getType())) {
-                            result.add(view);
-                        } else if (SiriusVisualIDRegistry.getType(DEdgeNameEditPart.VISUAL_ID).equals(view.getType())
+                                || SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID).equals(view.getType())
+                                || SiriusVisualIDRegistry.getType(DEdgeNameEditPart.VISUAL_ID).equals(view.getType())
                                 || SiriusVisualIDRegistry.getType(DEdgeBeginNameEditPart.VISUAL_ID).equals(view.getType())
                                 || SiriusVisualIDRegistry.getType(DEdgeEndNameEditPart.VISUAL_ID).equals(view.getType())) {
-                            for (View view2 : children) {
-                                if (SiriusVisualIDRegistry.getType(DEdgeNameEditPart.VISUAL_ID).equals(view.getType())
-                                        || SiriusVisualIDRegistry.getType(DEdgeBeginNameEditPart.VISUAL_ID).equals(view.getType())
-                                        || SiriusVisualIDRegistry.getType(DEdgeEndNameEditPart.VISUAL_ID).equals(view.getType())) {
-                                    result.add(view);
-                                }
-                            }
-
+                            result.add(view);
                         }
                         // CHECKSTYLE:ON
                     }
-                    // result.add((View) setting.getEObject());
                 }
             }
         }
