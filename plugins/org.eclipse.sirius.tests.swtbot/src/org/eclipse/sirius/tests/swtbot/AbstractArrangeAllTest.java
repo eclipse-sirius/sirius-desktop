@@ -18,7 +18,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.PinElementsCommand;
+import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 
 /**

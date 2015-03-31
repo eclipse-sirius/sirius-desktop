@@ -16,9 +16,9 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.PinElementsCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 
 /**

@@ -21,10 +21,10 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.PinElementsCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 
 /**
