@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
+
+import java.util.List;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -325,12 +327,16 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     /**
-     * {@inheritDoc}.
+     * Operand can only be vertically resized.
      * 
-     * Overridden to cancel feedback move because operand move is forbidden.
+     * {@inheritDoc}
      */
     @Override
-    public void showSourceFeedback(Request request) {
-
+    protected void createResizeHandle(List handles, int direction) {
+        // Move is not allowed. Do not display corner drag handles.
+        if ((PositionConstants.NORTH_SOUTH & direction) == direction) {
+            super.createResizeHandle(handles, direction);
+        }
     }
+
 }

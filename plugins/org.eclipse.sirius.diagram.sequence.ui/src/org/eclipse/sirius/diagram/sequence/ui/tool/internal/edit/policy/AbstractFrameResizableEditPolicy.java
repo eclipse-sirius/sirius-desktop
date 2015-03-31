@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
@@ -68,11 +69,15 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
     }
 
     /**
+     * Frames can only be vertically resized.
+     * 
      * {@inheritDoc}
      */
     @Override
-    public int getResizeDirections() {
-        return super.getResizeDirections();
+    protected void createResizeHandle(List handles, int direction) {
+        if ((PositionConstants.NORTH & direction) == PositionConstants.NORTH || (PositionConstants.SOUTH & direction) == PositionConstants.SOUTH) {
+            super.createResizeHandle(handles, direction);
+        }
     }
 
     /**

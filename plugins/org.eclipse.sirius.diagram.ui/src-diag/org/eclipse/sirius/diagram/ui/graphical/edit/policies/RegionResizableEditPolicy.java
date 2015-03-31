@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,19 +65,17 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         }
     }
 
-    // 3.7 method.
-    // /**
-    // * For regions, only put resize handles on authorized directions.
-    // *
-    // * {@inheritDoc}
-    // */
-    // @Override
-    // protected void createResizeHandle(List handles, int direction) {
-    // if (!concernRegion() || (getResizeDirections() & direction) == direction)
-    // {
-    // super.createResizeHandle(handles, direction);
-    // }
-    // }
+    /**
+     * For regions, only put resize handles on authorized directions.
+     *
+     * {@inheritDoc}
+     */
+    @Override
+    protected void createResizeHandle(List handles, int direction) {
+        if (!concernRegion() || (getResizeDirections() & direction) == direction) {
+            super.createResizeHandle(handles, direction);
+        }
+    }
 
     /**
      * {@inheritDoc}
