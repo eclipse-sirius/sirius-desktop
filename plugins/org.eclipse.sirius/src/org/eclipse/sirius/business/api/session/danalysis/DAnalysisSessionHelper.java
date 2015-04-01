@@ -447,7 +447,6 @@ public final class DAnalysisSessionHelper {
     private static DRepresentationContainer createContainer(DAnalysis analysis, Viewpoint viewpoint) {
         DRepresentationContainer newContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
         newContainer.setViewpoint(viewpoint);
-        newContainer.setInitialized(true);
         analysis.getOwnedViews().add(newContainer);
         analysis.getSelectedViews().add(newContainer);
         return newContainer;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.viewpoint.DView;
@@ -61,22 +60,9 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addInitializedPropertyDescriptor(object);
             addViewpointPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
-    }
-
-    /**
-     * This adds a property descriptor for the Initialized feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addInitializedPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DView_initialized_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DView_initialized_feature", "_UI_DView_type"),
-                ViewpointPackage.Literals.DVIEW__INITIALIZED, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -142,8 +128,7 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
      */
     @Override
     public String getText(Object object) {
-        DView dView = (DView) object;
-        return getString("_UI_DView_type") + " " + dView.isInitialized();
+        return getString("_UI_DView_type");
     }
 
     /**
@@ -159,9 +144,6 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
         updateChildren(notification);
 
         switch (notification.getFeatureID(DView.class)) {
-        case ViewpointPackage.DVIEW__INITIALIZED:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

@@ -112,7 +112,6 @@ final class DViewOperations {
                 if (!hasAlreadyDViewForViewpoint(analysis, viewpoint)) {
                     DView view = getOrCreateFreshDView(analysis);
                     view.setViewpoint(viewpoint);
-                    view.setInitialized(true);
                     analysis.getOwnedViews().add(view);
                     analysis.getSelectedViews().add(view);
                     intializedDViews.add(view);

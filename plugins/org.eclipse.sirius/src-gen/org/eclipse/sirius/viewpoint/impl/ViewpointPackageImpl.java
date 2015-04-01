@@ -648,18 +648,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EAttribute getDView_Initialized() {
-        return (EAttribute) dViewEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EReference getDView_Viewpoint() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(3);
+        return (EReference) dViewEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1140,7 +1130,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dViewEClass = createEClass(ViewpointPackage.DVIEW);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_EXTENSIONS);
-        createEAttribute(dViewEClass, ViewpointPackage.DVIEW__INITIALIZED);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__VIEWPOINT);
 
         metaModelExtensionEClass = createEClass(ViewpointPackage.META_MODEL_EXTENSION);
@@ -1338,8 +1327,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEReference(getDView_OwnedExtensions(), this.getMetaModelExtension(), null, "ownedExtensions", null, 0, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-        initEAttribute(getDView_Initialized(), theEcorePackage.getEBoolean(), "initialized", null, 1, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDView_Viewpoint(), theDescriptionPackage.getViewpoint(), null, "viewpoint", null, 1, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);

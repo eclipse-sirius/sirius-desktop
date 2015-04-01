@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
@@ -87,8 +86,7 @@ public class DRepresentationContainerItemProvider extends DViewItemProvider {
      */
     @Override
     public String getText(Object object) {
-        DRepresentationContainer dRepresentationContainer = (DRepresentationContainer) object;
-        return getString("_UI_DRepresentationContainer_type") + " " + dRepresentationContainer.isInitialized();
+        return getString("_UI_DRepresentationContainer_type");
     }
 
     /**

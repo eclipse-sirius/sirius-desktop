@@ -269,22 +269,13 @@ public interface ViewpointPackage extends EPackage {
     int DVIEW__OWNED_EXTENSIONS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DVIEW__INITIALIZED = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 2;
-
-    /**
      * The feature id for the '<em><b>Viewpoint</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DVIEW__VIEWPOINT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 3;
+    int DVIEW__VIEWPOINT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>DView</em>' class. <!--
@@ -293,7 +284,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DVIEW_FEATURE_COUNT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 4;
+    int DVIEW_FEATURE_COUNT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -324,15 +315,6 @@ public interface ViewpointPackage extends EPackage {
      * @ordered
      */
     int DREPRESENTATION_CONTAINER__OWNED_EXTENSIONS = ViewpointPackage.DVIEW__OWNED_EXTENSIONS;
-
-    /**
-     * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DREPRESENTATION_CONTAINER__INITIALIZED = ViewpointPackage.DVIEW__INITIALIZED;
 
     /**
      * The feature id for the '<em><b>Viewpoint</b></em>' reference. <!--
@@ -1600,18 +1582,6 @@ public interface ViewpointPackage extends EPackage {
     EReference getDView_OwnedExtensions();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.DView#isInitialized
-     * <em>Initialized</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Initialized</em>'.
-     * @see org.eclipse.sirius.viewpoint.DView#isInitialized()
-     * @see #getDView()
-     * @generated
-     */
-    EAttribute getDView_Initialized();
-
-    /**
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.viewpoint.DView#getViewpoint
      * <em>Viewpoint</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2403,14 +2373,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference DVIEW__OWNED_EXTENSIONS = ViewpointPackage.eINSTANCE.getDView_OwnedExtensions();
-
-        /**
-         * The meta object literal for the '<em><b>Initialized</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute DVIEW__INITIALIZED = ViewpointPackage.eINSTANCE.getDView_Initialized();
 
         /**
          * The meta object literal for the '<em><b>Viewpoint</b></em>' reference

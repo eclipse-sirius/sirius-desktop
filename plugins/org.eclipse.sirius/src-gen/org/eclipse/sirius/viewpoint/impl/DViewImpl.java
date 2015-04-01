@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,8 +39,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <em>Owned Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedExtensions
  * <em>Owned Extensions</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#isInitialized <em>
- * Initialized</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getViewpoint <em>
  * Viewpoint</em>}</li>
  * </ul>
@@ -70,26 +68,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
      * @ordered
      */
     protected MetaModelExtension ownedExtensions;
-
-    /**
-     * The default value of the '{@link #isInitialized() <em>Initialized</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #isInitialized()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean INITIALIZED_EDEFAULT = false;
-
-    /**
-     * The cached value of the '{@link #isInitialized() <em>Initialized</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #isInitialized()
-     * @generated
-     * @ordered
-     */
-    protected boolean initialized = DViewImpl.INITIALIZED_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}'
@@ -218,30 +196,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
      * @generated
      */
     @Override
-    public boolean isInitialized() {
-        return initialized;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setInitialized(boolean newInitialized) {
-        boolean oldInitialized = initialized;
-        initialized = newInitialized;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DVIEW__INITIALIZED, oldInitialized, initialized));
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public Viewpoint getViewpoint() {
         if (viewpoint != null && viewpoint.eIsProxy()) {
             InternalEObject oldViewpoint = (InternalEObject) viewpoint;
@@ -321,8 +275,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
                 return getOwnedExtensions();
             }
             return basicGetOwnedExtensions();
-        case ViewpointPackage.DVIEW__INITIALIZED:
-            return isInitialized();
         case ViewpointPackage.DVIEW__VIEWPOINT:
             if (resolve) {
                 return getViewpoint();
@@ -348,9 +300,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             setOwnedExtensions((MetaModelExtension) newValue);
             return;
-        case ViewpointPackage.DVIEW__INITIALIZED:
-            setInitialized((Boolean) newValue);
-            return;
         case ViewpointPackage.DVIEW__VIEWPOINT:
             setViewpoint((Viewpoint) newValue);
             return;
@@ -372,9 +321,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             setOwnedExtensions((MetaModelExtension) null);
             return;
-        case ViewpointPackage.DVIEW__INITIALIZED:
-            setInitialized(DViewImpl.INITIALIZED_EDEFAULT);
-            return;
         case ViewpointPackage.DVIEW__VIEWPOINT:
             setViewpoint((Viewpoint) null);
             return;
@@ -394,30 +340,10 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
             return ownedRepresentations != null && !ownedRepresentations.isEmpty();
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             return ownedExtensions != null;
-        case ViewpointPackage.DVIEW__INITIALIZED:
-            return initialized != DViewImpl.INITIALIZED_EDEFAULT;
         case ViewpointPackage.DVIEW__VIEWPOINT:
             return viewpoint != null;
         }
         return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (eIsProxy()) {
-            return super.toString();
-        }
-
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (initialized: ");
-        result.append(initialized);
-        result.append(')');
-        return result.toString();
     }
 
 } // DViewImpl

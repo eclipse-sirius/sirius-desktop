@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * Owned Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions <em>Owned
  * Extensions</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#isInitialized <em>Initialized
- * </em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint
  * </em>}</li>
  * </ul>
@@ -89,36 +87,6 @@ public interface DView extends DRefreshable {
      * @generated
      */
     void setOwnedExtensions(MetaModelExtension value);
-
-    /**
-     * Returns the value of the '<em><b>Initialized</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Initialized</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Initialized</em>' attribute.
-     * @see #setInitialized(boolean)
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_Initialized()
-     * @model required="true"
-     * @generated
-     */
-    boolean isInitialized();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DView#isInitialized
-     * <em>Initialized</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Initialized</em>' attribute.
-     * @see #isInitialized()
-     * @generated
-     */
-    void setInitialized(boolean value);
 
     /**
      * Returns the value of the '<em><b>Viewpoint</b></em>' reference. <!--

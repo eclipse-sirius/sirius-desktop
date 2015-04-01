@@ -359,7 +359,6 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
             activateViewpoint(vp.getName());
         }
         for (final DView dView : session.getOwnedViews()) {
-            Assert.assertTrue("DView should be initialized", dView.isInitialized());
             Assert.assertNotNull("Sirius should not be null", dView.getViewpoint());
             Assert.assertEquals("We should have 10 representations", 10, dView.getOwnedRepresentations().size());
         }
