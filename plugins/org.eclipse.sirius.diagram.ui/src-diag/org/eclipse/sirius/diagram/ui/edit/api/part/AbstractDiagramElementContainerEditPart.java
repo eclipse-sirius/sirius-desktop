@@ -66,6 +66,8 @@ import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -88,6 +90,11 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelo
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -452,7 +459,38 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * 
      * @return a figure for this edit part.
      */
-    protected abstract NodeFigure createNodePlate();
+    protected NodeFigure createNodePlate() {
+        Dimension defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
+        final EObject eObj = resolveSemanticElement();
+        if (eObj instanceof DNodeContainer) {
+            defaultSize = new DNodeContainerQuery((DNodeContainer) eObj).getDefaultDimension();
+        }
+
+        NodeFigure result;
+        if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
+            final DStylizable viewNode = (DStylizable) eObj;
+            Option<LabelBorderStyleDescription> hasLabelBorderStyle = hasLabelBorderStyle(viewNode);
+            if (hasLabelBorderStyle.some()) {
+                result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), viewNode, hasLabelBorderStyle.get());
+            } else {
+                result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
+            }
+        } else {
+            result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
+        }
+
+        return result;
+    }
+
+    private Option<LabelBorderStyleDescription> hasLabelBorderStyle(DStylizable viewNode) {
+        if (viewNode.getStyle() instanceof FlatContainerStyle && viewNode.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
+            FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) viewNode.getStyle().getDescription();
+            if (fcsd.getLabelBorderStyle() != null) {
+                return Options.newSome(fcsd.getLabelBorderStyle());
+            }
+        }
+        return Options.newNone();
+    }
 
     /**
      * Creates the shape figure for this edit part, depending on the style :

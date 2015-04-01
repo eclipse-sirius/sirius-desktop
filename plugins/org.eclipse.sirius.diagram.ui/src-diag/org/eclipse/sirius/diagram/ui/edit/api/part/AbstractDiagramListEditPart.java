@@ -21,15 +21,12 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ListCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
-import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 
 import com.google.common.collect.Iterables;
@@ -115,16 +112,6 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
          * remove the connection items display
          */
         removeEditPolicy(EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @was-generated
-     */
-    @Override
-    protected NodeFigure createNodePlate() {
-        return new DefaultSizeNodeFigure(getMapMode().DPtoLP(LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width), getMapMode().DPtoLP(LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.height));
     }
 
     /**

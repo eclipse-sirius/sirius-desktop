@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,7 +68,7 @@ public class ContainerWithTitleBlockFigure extends DefaultSizeNodeFigure {
     protected void paintBorder(Graphics graphics) {
         super.paintBorder(graphics);
         graphics.setLineStyle(Graphics.LINE_SOLID);
-        graphics.setLineWidth(getBorderWidth());
+        graphics.setLineWidth(1);
         graphics.setForegroundColor(geBorderColor());
 
         Iterable<ViewNodeContainerFigureDesc> filter = Iterables.filter(getChildren(), ViewNodeContainerFigureDesc.class);
@@ -92,10 +92,10 @@ public class ContainerWithTitleBlockFigure extends DefaultSizeNodeFigure {
      * @param label
      *            the label to draw a border around
      */
-        private void paintTitleBlockOnLabel(Graphics graphics, Rectangle label) {
-            PointList pointList = getTitleBlockPointLists(label);
-            if (pointList != null && pointList.size() != 0) {
-                graphics.drawPolyline(pointList);
+    private void paintTitleBlockOnLabel(Graphics graphics, Rectangle label) {
+        PointList pointList = getTitleBlockPointLists(label);
+        if (pointList != null && pointList.size() != 0) {
+            graphics.drawPolyline(pointList);
         }
     }
 
@@ -125,7 +125,7 @@ public class ContainerWithTitleBlockFigure extends DefaultSizeNodeFigure {
     }
 
     private PointList getWestSide(Rectangle label) {
-                int cornerHeight = labelBorderStyleDescription.getCornerHeight();
+        int cornerHeight = labelBorderStyleDescription.getCornerHeight();
         int cornerWidth = labelBorderStyleDescription.getCornerWidth();
         PointList pointList = new PointList();
         // Draw west vertical line
@@ -213,5 +213,5 @@ public class ContainerWithTitleBlockFigure extends DefaultSizeNodeFigure {
         }
         return alignment;
     }
-    
+
 }

@@ -14,7 +14,6 @@ import java.util.Iterator;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.DragTracker;
@@ -37,18 +36,13 @@ import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
-import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResetOriginEditPolicy;
@@ -56,12 +50,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementC
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 import com.google.common.collect.Iterables;
 
@@ -192,16 +181,6 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
         }
     }
 
-    private Option<LabelBorderStyleDescription> hasLabelBorderStyle(DStylizable viewNode) {
-        if (viewNode.getStyle() instanceof FlatContainerStyle && ((FlatContainerStyle) viewNode.getStyle()).getDescription() instanceof FlatContainerStyleDescription) {
-            FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) ((FlatContainerStyle) viewNode.getStyle()).getDescription();
-            if (fcsd.getLabelBorderStyle() != null) {
-                return Options.newSome(fcsd.getLabelBorderStyle());
-            }
-        }
-        return Options.newNone();
-    }
-
     /**
      * {@inheritDoc}
      * 
@@ -225,31 +204,6 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
             compoundEditPolicy.addEditPolicy(new ResetOriginEditPolicy());
             installEditPolicy(EditPolicy.COMPONENT_ROLE, compoundEditPolicy);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected NodeFigure createNodePlate() {
-        Dimension defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
-        final EObject eObj = resolveSemanticElement();
-        if (eObj instanceof DNodeContainer) {
-            defaultSize = new DNodeContainerQuery((DNodeContainer) eObj).getDefaultDimension();
-        }
-        NodeFigure result;
-        if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
-            final DStylizable viewNode = (DStylizable) eObj;
-            Option<LabelBorderStyleDescription> hasLabelBorderStyle = hasLabelBorderStyle(viewNode);
-            if (hasLabelBorderStyle.some()) {
-                result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), viewNode, hasLabelBorderStyle.get());
-            } else {
-                result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
-            }
-        } else {
-            result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
-        }
-
-        return result;
     }
 
     @Override

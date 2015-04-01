@@ -21,6 +21,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
@@ -38,7 +39,10 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
+import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -141,6 +145,11 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         result.setTitleVisibility(false);
         result.setToolTip((IFigure) null);
 
+        if (hasLabelBorderStyle()) {
+            // Do not draw the top line border for free form containers.
+            result.setBorder(new MarginBorder(getMapMode().DPtoLP(1), 0, 0, 0));
+        }
+
         // Now that the border size is taken into account to calculate border
         // margin; reduce the scroll pane insets to retrieve the previous
         // minimum/preferred size, scroll-bar visibility condition for one pixel
@@ -152,6 +161,18 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
             contentPane.setBorder(new MarginBorder(insets.getAdded(legacyBorderCompensation)));
         }
         return result;
+    }
+
+    private boolean hasLabelBorderStyle() {
+        EObject element = resolveSemanticElement();
+        if (element instanceof DDiagramElementContainer) {
+            DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+            if (ddec.getStyle() instanceof FlatContainerStyle && ddec.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
+                FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) ddec.getStyle().getDescription();
+                return fcsd.getLabelBorderStyle() != null;
+            }
+        }
+        return false;
     }
 
     /**

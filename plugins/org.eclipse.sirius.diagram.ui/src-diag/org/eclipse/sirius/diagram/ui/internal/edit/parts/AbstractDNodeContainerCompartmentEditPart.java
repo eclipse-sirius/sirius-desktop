@@ -48,9 +48,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DCompartmentConnectionRefreshMgr;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -203,7 +205,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
     public IFigure createFigure() {
         IMapMode mapMode = getMapMode();
         ShapeCompartmentFigure scf = new ShapeCompartmentFigure(getCompartmentName(), mapMode);
-        if (!isRegionContainerCompartment()) {
+        if (!isRegionContainerCompartment() || hasLabelBorderStyle()) {
             // Do not draw the top line border for free form containers.
             scf.setBorder(new MarginBorder(mapMode.DPtoLP(1), 0, 0, 0));
         }
@@ -212,6 +214,18 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         scf.setTitleVisibility(false);
         scf.setToolTip((IFigure) null);
         return scf;
+    }
+
+    private boolean hasLabelBorderStyle() {
+        EObject element = resolveSemanticElement();
+        if (element instanceof DDiagramElementContainer) {
+            DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+            if (ddec.getStyle() instanceof FlatContainerStyle && ddec.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
+                FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) ddec.getStyle().getDescription();
+                return fcsd.getLabelBorderStyle() != null;
+            }
+        }
+        return false;
     }
 
     /**
@@ -267,7 +281,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         List<View> modelChildren = Lists.newArrayList(Iterables.filter(super.getModelChildren(), View.class));
         DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
         if (isRegionContainerCompartment() && getModel() instanceof View) {
-            RegionContainerUpdateLayoutOperation.sortRegions((DNodeContainer)resolveSemanticElement(), modelChildren);
+            RegionContainerUpdateLayoutOperation.sortRegions((DNodeContainer) resolveSemanticElement(), modelChildren);
         }
         return modelChildren;
     }
