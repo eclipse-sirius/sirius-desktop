@@ -135,9 +135,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         super(view);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void handleNotificationEvent(final Notification notification) {
         final EditPart styleEditPart = getStyleEditPart();
@@ -171,11 +168,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart#createDefaultEditPolicies()
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
@@ -193,6 +185,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * 
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;
@@ -219,28 +212,19 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         return nodeShape; // use nodeShape itself as contentPane
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void refresh() {
         final EObject element = resolveSemanticElement();
         if (element != null && this.getMetamodelType().isInstance(element)) {
             super.refresh();
 
-            List<?> children = getChildren();
-            for (int i = 0; i < children.size(); i++) {
-                EditPart editPart = (EditPart) children.get(i);
-                editPart.refresh();
+            Iterable<EditPart> children = Iterables.filter(getChildren(), EditPart.class);
+            for (EditPart childEditPart : children) {
+                childEditPart.refresh();
             }
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getModelChildren()
-     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     protected List getModelChildren() {
@@ -280,6 +264,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * 
      * @was-generated
      */
+    @Override
     protected NodeFigure createMainFigure() {
         final NodeFigure figure = createNodePlate();
 
@@ -427,11 +412,12 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                 final DNodeContainer container = (DNodeContainer) diagElement;
                 if (primaryShape instanceof GradientRoundedRectangle && container.getOwnedStyle() instanceof FlatContainerStyle) {
                     if (((GradientRoundedRectangle) primaryShape).getBackgroundStyle() != ((FlatContainerStyle) container.getOwnedStyle()).getBackgroundStyle()) {
-                        ((AbstractDiagramContainerEditPart) this).reInitFigure();
+                        reInitFigure();
                     }
                 }
             }
         }
+
         super.refreshVisuals();
         DiagramContainerEditPartOperation.refreshVisuals(this);
     }
@@ -499,10 +485,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * @return a shape figure for this edit part.
      */
     protected IFigure createNodeShape() {
-        final EObject eObj = resolveSemanticElement();
-        IFigure shapeFigure = null;
-        if (eObj instanceof DDiagramElementContainer) {
-            final DDiagramElementContainer container = (DDiagramElementContainer) eObj;
+        DDiagramElement diagramElement = resolveDiagramElement();
+
+        ViewNodeContainerFigureDesc shapeFigure = null;
+        if (diagramElement instanceof DDiagramElementContainer) {
+            final DDiagramElementContainer container = (DDiagramElementContainer) diagramElement;
             ContainerStyle ownedStyle = container.getOwnedStyle();
             if (ownedStyle instanceof ShapeContainerStyle) {
                 shapeFigure = new ViewNodeContainerParallelogram();
@@ -514,6 +501,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         }
         if (shapeFigure == null) {
             shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+        }
+
+        // Compute label visibility
+        if (diagramElement != null) {
+            shapeFigure.getLabelFigure().setVisible(!(new DDiagramElementQuery(diagramElement).isLabelHidden()));
         }
 
         return shapeFigure;
@@ -617,9 +609,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         return super.getTargetConnectionAnchor(request);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setLayoutConstraint(EditPart child, IFigure childFigure, Object constraint) {
         // FIX to prevent exception when hiding a port.
@@ -631,13 +620,10 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
     @Override
     protected void removeChildVisual(EditPart childEditPart) {
-        /* workaround, we don't want the view node container to remove it's name */
-        if (!(childEditPart instanceof AbstractDiagramElementContainerNameEditPart)) {
-            if (removeFixedChild(childEditPart)) {
-                return;
-            }
-            super.removeChildVisual(childEditPart);
+        if (removeFixedChild(childEditPart)) {
+            return;
         }
+        super.removeChildVisual(childEditPart);
     }
 
     /**
@@ -650,11 +636,16 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * @was-generated
      */
     protected boolean removeFixedChild(EditPart childEditPart) {
-        if (childEditPart instanceof DNode4EditPart) {
+        boolean removed = false;
+        if (childEditPart instanceof AbstractDiagramElementContainerNameEditPart) {
+            SiriusWrapLabel labelFigure = getPrimaryShape().getLabelFigure();
+            labelFigure.setVisible(false);
+            removed = true;
+        } else if (childEditPart instanceof DNode4EditPart) {
             getBorderedFigure().getBorderItemContainer().remove(((DNode4EditPart) childEditPart).getFigure());
-            return true;
+            removed = true;
         }
-        return false;
+        return removed;
     }
 
     /**
@@ -682,7 +673,9 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     protected boolean addFixedChild(EditPart childEditPart) {
         boolean added = false;
         if (childEditPart instanceof AbstractDiagramElementContainerNameEditPart) {
-            ((AbstractDiagramElementContainerNameEditPart) childEditPart).setLabel(getPrimaryShape().getLabelFigure());
+            SiriusWrapLabel labelFigure = getPrimaryShape().getLabelFigure();
+            labelFigure.setVisible(true);
+            ((AbstractDiagramElementContainerNameEditPart) childEditPart).setLabel(labelFigure);
             added = true;
         } else if (childEditPart instanceof DNode4EditPart && ((DNode4EditPart) childEditPart).resolveSemanticElement() instanceof DDiagramElement) {
             IBorderItemLocator locator = createBorderItemLocator(getMainFigure(), (DDiagramElement) ((DNode4EditPart) childEditPart).resolveSemanticElement());
@@ -729,6 +722,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     protected LayoutEditPolicy createLayoutEditPolicy() {
         LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
 
+            @Override
             protected EditPolicy createChildEditPolicy(EditPart child) {
                 if (child instanceof AbstractBorderItemEditPart) {
                     return ((AbstractBorderItemEditPart) child).getPrimaryDragEditPolicy();
@@ -740,10 +734,12 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                 return result;
             }
 
+            @Override
             protected Command getMoveChildrenCommand(Request request) {
                 return null;
             }
 
+            @Override
             protected Command getCreateCommand(CreateRequest request) {
                 return null;
             }
@@ -753,6 +749,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
              * 
              * @see org.eclipse.gef.editpolicies.LayoutEditPolicy#getCommand(org.eclipse.gef.Request)
              */
+            @Override
             public Command getCommand(final Request request) {
                 if (REQ_RESIZE_CHILDREN.equals(request.getType()) && request instanceof ChangeBoundsRequest) {
                     final Command command = AbstractDiagramElementContainerEditPart.this.getResizeBorderItemCommand((ChangeBoundsRequest) request);
@@ -857,9 +854,10 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * (created with a previous style) and replace them with those created with
      * the current style.
      */
+    @SuppressWarnings("unchecked")
     public void reInitFigure() {
         final IFigure mainFigure = ((BorderedNodeFigure) getFigure()).getMainFigure();
-        final List<IFigure> prevChildren = new ArrayList(mainFigure.getChildren());
+        final List<IFigure> prevChildren = new ArrayList<IFigure>(mainFigure.getChildren());
         ShapeCompartmentFigure containerCompartment = null;
         ResizableCompartmentFigure listCompartment = null;
         SiriusWrapLabel wrapLabel = null;
