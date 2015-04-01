@@ -236,7 +236,7 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private void appendBoundsDetails(IGraphicalEditPart part, StringBuilder sb) {
-        Node node = (Node) ((IGraphicalEditPart) part).getNotationView();
+        Node node = (Node) part.getNotationView();
         LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         if (layoutConstraint instanceof Bounds) {
             Bounds bounds = (Bounds) layoutConstraint;
@@ -256,9 +256,9 @@ public class SiriusDebugView extends AbstractDebugView {
         if (elt.some()) {
             sb.append("Bounds (logical):              " + elt.get().getProperLogicalBounds()).append("\n");
         }
-        Rectangle bounds = ((IGraphicalEditPart) part).getFigure().getBounds().getCopy();
+        Rectangle bounds = part.getFigure().getBounds().getCopy();
         sb.append("Bounds (Draw2D):                   " + bounds.toString() + "\n");
-        ((IGraphicalEditPart) part).getFigure().translateToAbsolute(bounds);
+        part.getFigure().translateToAbsolute(bounds);
         sb.append("Bounds (Draw2D absolute):          " + bounds.toString() + "\n");
         sb.append("\n");
     }
@@ -286,6 +286,7 @@ public class SiriusDebugView extends AbstractDebugView {
         Connection connFigure = conn.getConnectionFigure();
 
         sb.append("  . routing constraint:\n");
+        @SuppressWarnings("unchecked")
         List<Bendpoint> bendpoints = (List<Bendpoint>) connFigure.getRoutingConstraint();
         if (bendpoints != null) {
             for (int i = 0; i < bendpoints.size(); i++) {
@@ -391,9 +392,10 @@ public class SiriusDebugView extends AbstractDebugView {
     protected void createActionButtons() {
         // addFoldingToggleAction();
         // addShowOrderingsAction();
-        addStorePositionsAction();
-        addShowPositionChangesAction();
+        // addStorePositionsAction();
+        // addShowPositionChangesAction();
         addShowFiguresHierarchyAction();
+        addShowEditPartsHierarchyAction();
         // addRefreshBenpointsAction();
         // addResetBendpointsAction();
         // addExpandAction();
@@ -1064,6 +1066,13 @@ public class SiriusDebugView extends AbstractDebugView {
                 }
             }
         });
+    }
+
+    /**
+     * Show details about each edit part
+     */
+    private void addShowEditPartsHierarchyAction() {
+        addAction("Show Edit Parts", new ShowEditPartsHierarchy(this));
     }
 
     /**
