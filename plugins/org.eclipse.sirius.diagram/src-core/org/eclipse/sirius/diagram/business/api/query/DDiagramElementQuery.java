@@ -140,8 +140,22 @@ public class DDiagramElementQuery {
      *         otherwise.
      */
     public boolean canHideLabel() {
+        boolean canHideLabel = false;
 
-        return !isLabelEmpty() && ((element instanceof DNode && LabelPosition.BORDER_LITERAL.equals(((DNode) element).getOwnedStyle().getLabelPosition())) || element instanceof DEdge);
+        if (!isLabelEmpty()) {
+            if (element instanceof DEdge) {
+                canHideLabel = true;
+            } else if (element instanceof DNode) {
+                if (LabelPosition.BORDER_LITERAL.equals(((DNode) element).getOwnedStyle().getLabelPosition())) {
+                    canHideLabel = true;
+                }
+            } else if (element instanceof DDiagramElementContainer) {
+                // DNodeContainer & DNodeList
+                canHideLabel = true;
+            }
+        }
+
+        return canHideLabel;
     }
 
     private boolean isLabelEmpty() {
