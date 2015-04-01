@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 
 /**
  * A test for https://bugs.eclipse.org/bugs/show_bug.cgi?id=447242, i.e. test
@@ -62,8 +61,7 @@ public class DiagramPrintTest extends AbstractSiriusSwtBotGefTestCase {
         String expectedPrintDialogTitle = "Print Diagram";
         SWTBotUtils.waitAllUiEvents();
         editor.setFocus();
-        SWTBotToolbarButton printButton = bot.toolbarButtonWithTooltip("Print (Ctrl+P)");
-        printButton.click();
+        bot.menu("File").menu("Print...").click();
         bot.waitUntil(Conditions.shellIsActive(expectedPrintDialogTitle));
         SWTBotShell printShell = bot.activeShell();
         assertEquals(expectedPrintDialogTitle, printShell.getText());
