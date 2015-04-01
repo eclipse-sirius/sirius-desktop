@@ -12,6 +12,8 @@ package org.eclipse.sirius.editor.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -76,7 +78,7 @@ import com.google.common.collect.Sets;
  * <li>if you have in your workspace some projects which are actually used by
  * Sirius and which might pass instances to the query implementation, things
  * *will* go wrong as this utility will search first in the workspace.</li>
- * <li>you  can't use the generated model interfaces</li>
+ * <li>you can't use the generated model interfaces</li>
  * </ul>
  * 
  * @author cedric
@@ -130,11 +132,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                 for (String projectName : changed) {
                     URLClassLoader old = projectsToClassLoader.get(projectName);
                     if (old != null) {
-                        try {
-                            old.close();
-                        } catch (IOException e) {
-                            SiriusEditorPlugin.INSTANCE.log(e);
-                        }
+                        closeClassLoader(old);
                     }
                     projectsToClassLoader.remove(projectName);
                 }
@@ -530,13 +528,31 @@ public class WorkspaceClassLoading extends BundleClassLoading {
             ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
         }
         for (URLClassLoader loader : projectsToClassLoader.values()) {
-            try {
-                loader.close();
-            } catch (IOException e) {
-                SiriusEditorPlugin.INSTANCE.log(e);
-            }
+            closeClassLoader(loader);
         }
         projectsToClassLoader.clear();
+    }
+
+    private void closeClassLoader(URLClassLoader old) {
+        /*
+         * we invoke the "URLClassLoader.close()" method reflectively as it has
+         * only been introduced with Java 7.
+         */
+        try {
+            Method closeMethod = URLClassLoader.class.getMethod("close", new Class<?>[0]);
+            closeMethod.invoke(old, new Object[0]);
+        } catch (NoSuchMethodException e) {
+            /*
+             * Java pre-7
+             */
+        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
+        } catch (InvocationTargetException e) {
+            /*
+             * the close() call triggered an exception
+             */
+            SiriusEditorPlugin.INSTANCE.log(e.getCause());
+        }
     }
 
     @Override
