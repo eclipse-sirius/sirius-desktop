@@ -41,11 +41,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
-import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
@@ -63,7 +59,6 @@ import com.google.common.collect.Sets;
  * @author cbrun
  */
 public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
-
     private Session session;
 
     /**
@@ -261,17 +256,10 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
                     @SuppressWarnings("unchecked")
                     EList<View> children = ((View) setting.getEObject()).getChildren();
                     for (View view : children) {
-                        // CHECKSTYLE:OFF
-                        if (SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_EDIT_PART_VISUAL_ID).equals(view.getType())
-                                || SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID).equals(view.getType())
-                                || SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_3_EDIT_PART_VISUAL_ID).equals(view.getType())
-                                || SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID).equals(view.getType())
-                                || SiriusVisualIDRegistry.getType(DEdgeNameEditPart.VISUAL_ID).equals(view.getType())
-                                || SiriusVisualIDRegistry.getType(DEdgeBeginNameEditPart.VISUAL_ID).equals(view.getType())
-                                || SiriusVisualIDRegistry.getType(DEdgeEndNameEditPart.VISUAL_ID).equals(view.getType())) {
+                        ViewQuery query = new ViewQuery(view);
+                        if (query.isForNameEditPart()) {
                             result.add(view);
                         }
-                        // CHECKSTYLE:ON
                     }
                 }
             }
