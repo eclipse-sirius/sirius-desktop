@@ -21,7 +21,9 @@ import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LayoutAnimator;
 import org.eclipse.draw2d.LayoutManager;
+import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -43,14 +45,17 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.layout.FreeFormLayoutEx;
 import org.eclipse.gmf.runtime.diagram.ui.requests.EditCommandRequestWrapper;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.OneLineBorder;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
@@ -118,11 +123,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getCommand(org.eclipse.gef.Request)
-     */
+    @Override
     public Command getCommand(Request _request) {
         // We consider that for the following types of request,
         // it's the DNodeContainer containing this Compartment which should
@@ -142,20 +143,12 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         return super.getCommand(_request);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart#getDragTracker(org.eclipse.gef.Request)
-     */
+    @Override
     public DragTracker getDragTracker(Request request) {
         return getParent().getDragTracker(request);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart#refreshVisuals()
-     */
+    @Override
     protected void refreshVisuals() {
         EObject eObj = resolveSemanticElement();
         if (eObj instanceof DNodeContainer) {
@@ -174,10 +167,11 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 if (borderSize == 0) {
                     borderSize = 1;
                 }
+
                 if (getFigure() instanceof ResizableCompartmentFigure) {
                     ResizableCompartmentFigure rcf = (ResizableCompartmentFigure) getFigure();
+                    configureBorder(rcf);
                     if (rcf.getScrollPane() != null) {
-
                         Border border;
                         if (isRegionContainerCompartment()) {
                             // scroll pane / layout compensation
@@ -197,23 +191,37 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         super.refreshVisuals();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart#createFigure()
-     */
+    @Override
     public IFigure createFigure() {
         IMapMode mapMode = getMapMode();
         ShapeCompartmentFigure scf = new ShapeCompartmentFigure(getCompartmentName(), mapMode);
-        if (!isRegionContainerCompartment() || hasLabelBorderStyle()) {
-            // Do not draw the top line border for free form containers.
-            scf.setBorder(new MarginBorder(mapMode.DPtoLP(1), 0, 0, 0));
-        }
+
+        configureBorder(scf);
+
         scf.getContentPane().setLayoutManager(getLayoutManager());
         scf.getContentPane().addLayoutListener(LayoutAnimator.getDefault());
         scf.setTitleVisibility(false);
         scf.setToolTip((IFigure) null);
         return scf;
+    }
+
+    private void configureBorder(ResizableCompartmentFigure rcf) {
+        if (!isRegionContainerCompartment() || hasLabelBorderStyle() || isLabelHidden()) {
+            if (rcf.getBorder() instanceof LineBorder) {
+                // Do not draw the top line border for free form containers.
+                rcf.setBorder(new MarginBorder(getMapMode().DPtoLP(1), 0, 0, 0));
+            }
+        } else if (rcf.getBorder() instanceof MarginBorder) {
+            rcf.setBorder(new OneLineBorder(getMapMode().DPtoLP(1), PositionConstants.TOP));
+        }
+    }
+
+    private boolean isLabelHidden() {
+        EObject element = resolveSemanticElement();
+        if (element instanceof DDiagramElement) {
+            return new DDiagramElementQuery((DDiagramElement) element).isLabelHidden();
+        }
+        return false;
     }
 
     private boolean hasLabelBorderStyle() {
@@ -228,12 +236,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         return false;
     }
 
-    /**
-     * Sets up a specific edit policy to handle drop requests. <br/>
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart#createDefaultEditPolicies()
-     */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DNodeContainerViewNodeContainerCompartmentItemSemanticEditPolicy());
@@ -261,11 +264,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart#setRatio(java.lang.Double)
-     */
+    @Override
     protected void setRatio(Double ratio) {
         if (getFigure().getParent() != null && getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
             super.setRatio(ratio);
@@ -363,11 +362,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         return walker != null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.INotableEditPart#canAttachNote()
-     */
+    @Override
     public boolean canAttachNote() {
         return true;
     }

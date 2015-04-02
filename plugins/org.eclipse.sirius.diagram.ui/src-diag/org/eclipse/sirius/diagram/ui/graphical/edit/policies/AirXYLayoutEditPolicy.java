@@ -22,6 +22,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -280,6 +281,7 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.XYLayoutEditPolicy#getConstraintFor(org.eclipse.gef.requests.CreateRequest)
      */
+    @Override
     protected Object getConstraintFor(CreateRequest request) {
 
         Object constraint = super.getConstraintFor(request);
@@ -292,6 +294,17 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
             return rect;
         }
         return constraint;
+    }
+
+    @Override
+    protected Object getConstraintFor(Request request, GraphicalEditPart child, Rectangle rect) {
+        Object constraintFor = super.getConstraintFor(request, child, rect);
+        if (constraintFor instanceof Rectangle && isRegionContainer(child)) {
+            Rectangle rectangle = (Rectangle) constraintFor;
+            rectangle.setHeight(-1);
+        }
+        return constraintFor;
+
     }
 
     /**

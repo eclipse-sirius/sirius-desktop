@@ -18,7 +18,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -38,10 +40,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.OneLineBorder;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
@@ -102,9 +107,7 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         super(view);
     }
 
-    /**
-     * @not-generated :drag/drop
-     */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DNodeListViewNodeListCompartmentItemSemanticEditPolicy());
@@ -115,40 +118,29 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         installEditPolicy(RequestConstants.REQ_LAUNCH_TOOL, new LaunchToolEditPolicy());
     }
 
+    @Override
     public boolean isSupportingViewActions() {
         return this.isSupportingViewActions;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @not-generated : need for copy/paste support
-     * @see org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart#setIsSupportingViewActions(boolean)
-     */
+    @Override
     public void setIsSupportingViewActions(boolean supportsViewActions) {
         this.isSupportingViewActions = supportsViewActions;
 
     }
 
-    /**
-     * @was-generated
-     */
+    @Override
     protected boolean hasModelChildrenChanged(Notification evt) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public IFigure createFigure() {
         ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
         result.setTitleVisibility(false);
         result.setToolTip((IFigure) null);
 
-        if (hasLabelBorderStyle()) {
-            // Do not draw the top line border for free form containers.
-            result.setBorder(new MarginBorder(getMapMode().DPtoLP(1), 0, 0, 0));
-        }
+        configureBorder(result);
 
         // Now that the border size is taken into account to calculate border
         // margin; reduce the scroll pane insets to retrieve the previous
@@ -163,6 +155,25 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         return result;
     }
 
+    private void configureBorder(ResizableCompartmentFigure rcf) {
+        if (hasLabelBorderStyle() || isLabelHidden()) {
+            if (rcf.getBorder() instanceof LineBorder) {
+                // Do not draw the top line border for free form containers.
+                rcf.setBorder(new MarginBorder(getMapMode().DPtoLP(1), 0, 0, 0));
+            }
+        } else if (rcf.getBorder() instanceof MarginBorder) {
+            rcf.setBorder(new OneLineBorder(getMapMode().DPtoLP(1), PositionConstants.TOP));
+        }
+    }
+
+    private boolean isLabelHidden() {
+        EObject element = resolveSemanticElement();
+        if (element instanceof DDiagramElement) {
+            return new DDiagramElementQuery((DDiagramElement) element).isLabelHidden();
+        }
+        return false;
+    }
+
     private boolean hasLabelBorderStyle() {
         EObject element = resolveSemanticElement();
         if (element instanceof DDiagramElementContainer) {
@@ -175,9 +186,16 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
+    protected void refreshVisuals() {
+        if (getFigure() instanceof ResizableCompartmentFigure) {
+            ResizableCompartmentFigure rcf = (ResizableCompartmentFigure) getFigure();
+            configureBorder(rcf);
+        }
+        super.refreshVisuals();
+    }
+
+    @Override
     protected void setRatio(Double ratio) {
         if (getFigure().getParent() != null && getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
             super.setRatio(ratio);
@@ -196,33 +214,17 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         return modelChildren;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.INotableEditPart#canAttachNote()
-     */
+    @Override
     public boolean canAttachNote() {
         return true;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @not-generated : need for copy/paste support
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart#getDragTracker(org.eclipse.gef.Request)
-     */
+    @Override
     public DragTracker getDragTracker(Request request) {
         return getParent().getDragTracker(request);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @not-generated : need for copy/paste support
-     * @see org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart#getPrimaryEditParts()
-     */
+    @Override
     public List getPrimaryEditParts() {
         List connections = new ArrayList();
 
@@ -291,11 +293,7 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         }
     }
 
-    /**
-     * @not-generated : need for selection support {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getCommand(org.eclipse.gef.Request)
-     */
+    @Override
     public Command getCommand(Request _request) {
         RequestQuery requestQuery = new RequestQuery(_request);
         if (requestQuery.isNoteCreationRequest() || requestQuery.isTextCreationRequest() || requestQuery.isNoteDropRequest() || requestQuery.isTextDropRequest()) {
