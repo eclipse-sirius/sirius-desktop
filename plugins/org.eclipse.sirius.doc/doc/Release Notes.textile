@@ -83,6 +83,10 @@ h4. Changes in @org.eclipse.sirius.ecore.extender@
 * The method @org.eclipse.sirius.ecore.extender.business.api.accessor.CompositeMetamodelExtender.eRemoveInverseCrossReferences()@ has been changed to return the list of changed objects by the inverse cross references removal.
 * The exception @org.eclipse.sirius.ecore.extender.IllegalURIException@ has been removed. It was not actually thrown anywhere in the code.
 
+h4. Changes in @org.eclipse.sirius.editor@
+
+* The static method @org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider.bindPluginsCompletionProcessors(AbstractPropertySection, Text)@ has been added. This method is very similar to @org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider.bindCompletionProcessor(AbstractPropertySection, Text)@, the difference is that it binds the completion processors available in plugins to the text.
+
 h4. Changes in @org.eclipse.sirius.table@
 
 * The methods @org.eclipse.sirius.table.business.api.helper.TableHelper.getColumn()@ have been removed because they are not useful, @TableHelper.getColumn(DLine, int)@ can be replaced by @DTable.getColumns().get(int)@ and @TableHelper.getColumn(DTable, String)@ should not be used as we can have several columns with a same featureName.

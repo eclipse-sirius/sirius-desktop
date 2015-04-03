@@ -21,10 +21,13 @@ import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener2;
 import org.eclipse.jface.fieldassist.IContentProposalProvider;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.sections.common.ModelViewBinding;
 import org.eclipse.sirius.editor.tools.internal.assist.TypeAssistant;
 import org.eclipse.sirius.editor.tools.internal.assist.TypeContentProposal;
+import org.eclipse.sirius.ui.tools.api.assist.IAssistContentProvider;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.keys.IBindingService;
@@ -101,6 +104,42 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
                 }
 
             }); // close popup
+        }
+    }
+
+    /**
+     * Bind the completion processors available in plugins to a given text
+     * element.
+     * 
+     * @param section
+     *            the property section where the text element come from.
+     * @param text
+     *            text to bind a completion processors to.
+     */
+    public static void bindPluginsCompletionProcessors(final AbstractPropertySection section, final Text text) {
+        List<IAssistContentProvider> extension = EclipseUtil.getExtensionPlugins(IAssistContentProvider.class, IAssistContentProvider.ID, IAssistContentProvider.CLASS_ATTRIBUTE);
+        if (!(extension.size() == 0)) {
+            IAssistContentProvider contentProposalAdapter = extension.get(0);
+            contentProposalAdapter.setView(section);
+            IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class); // gives
+                                                                                                                            // the
+                                                                                                                            // user
+                                                                                                                            // content
+                                                                                                                            // assist
+                                                                                                                            // binding
+            TriggerSequence[] activeBindinds = bindingService.getActiveBindingsFor(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
+            if (activeBindinds != null && activeBindinds.length > 0) {
+                TriggerSequence sequence = activeBindinds[0];
+                KeyStroke keyStroke = getKeyStroke(sequence);
+
+                TextContentAdapter textContentAdapter = new TextContentAdapter();
+                ContentProposalAdapter adapter = new ContentProposalAdapter(text, textContentAdapter, contentProposalAdapter, keyStroke, IAssistContentProvider.AUTO_ACTIVATION_CHARACTERS);
+                adapter.setPopupSize(new Point(300, 100)); // set content
+                                                           // proposal popup
+                                                           // size
+                adapter.addContentProposalListener(contentProposalAdapter); // close
+                                                                            // popup
+            }
         }
     }
 
