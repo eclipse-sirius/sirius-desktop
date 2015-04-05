@@ -43,13 +43,13 @@ location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/
 }
 
 // EEF 2
-location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
+location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2" {
 	with source, requirements
 	org.eclipse.emf.eef.runtime;version="[1.0.0,2.0.0)"
 }
 
 // Guava
-location "http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/" {
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
 	with source, requirements
 	com.google.guava;version="[11.0.2,12.0.0)"
 }

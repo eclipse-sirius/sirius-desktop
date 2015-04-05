@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="sirius_luna" sequenceNumber="0">
-<locations>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="com.ibm.icu" version="50.1.1.v201304230130"/>
-<unit id="org.eclipse.platform.feature.group" version="4.4.0.v20131030-2000"/>
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.10.0.v20131028-0959"/>
-<unit id="org.eclipse.sdk.feature.group" version="4.4.0.v20131030-2000"/>
-<unit id="org.eclipse.draw2d.sdk.feature.group" version="3.10.0.201309301555"/>
-<unit id="org.eclipse.emf.feature.group" version="2.10.0.v20131111-0356"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.10.0.v20131111-0356"/>
-<unit id="org.eclipse.emf.edit.feature.group" version="2.10.0.v20131111-0356"/>
-<unit id="org.eclipse.emf.common.feature.group" version="2.10.0.v20131028-0429"/>
-<unit id="org.eclipse.emf.ecore.feature.group" version="2.10.0.v20131028-0429"/>
-<unit id="org.eclipse.emf.workspace.feature.group" version="1.7.0.201306111400"/>
-<unit id="org.eclipse.emf.transaction.feature.group" version="1.7.0.201306111400"/>
-<unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.7.0.201306111400"/>
-<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.7.0.201306111341"/>
-<unit id="org.eclipse.ocl.all.feature.group" version="4.2.0.v20130921-0708"/>
-<unit id="org.eclipse.ocl.core.sdk.feature.group" version="4.2.0.v20130921-0708"/>
-<unit id="org.eclipse.gef.feature.group" version="3.10.0.201309301555"/>
-<unit id="org.eclipse.gef.sdk.feature.group" version="3.10.0.201309301555"/>
-<unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.7.0.201306101425"/>
-<unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.7.0.201306111432"/>
-<unit id="org.eclipse.xtext.sdk.feature.group" version="2.5.0.v201311121244"/>
-<unit id="com.google.guava" version="11.0.2.v201303041551"/>
-<unit id="org.eclipse.emf.compare.feature.group" version="2.2.0.201310020659"/>
-<unit id="org.eclipse.acceleo.feature.group" version="3.4.2.201310011247"/>
-<unit id="org.eclipse.acceleo.ide.ui" version="3.4.2.201310011247"/>
-<repository location="http://download.eclipse.org/releases/luna"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.eef.runtime" version="1.2.0.201301031409"/>
-<repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
-</location>
-</locations>
+<?pde?>
+<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
+<target name="sirius_luna" sequenceNumber="1428241165">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.ibm.icu" version="0.0.0"/>
+      <unit id="org.eclipse.platform.feature.group" version="4.4.2.v20150204-1700"/>
+      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.10.2.v20150204-1316"/>
+      <unit id="org.eclipse.sdk.feature.group" version="4.4.2.v20150204-1700"/>
+      <unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.101.201408150207"/>
+      <unit id="org.eclipse.emf.feature.group" version="2.10.2.v20150123-0452"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.10.2.v20150123-0452"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.10.1.v20150123-0452"/>
+      <unit id="org.eclipse.emf.common.feature.group" version="2.10.1.v20150123-0348"/>
+      <unit id="org.eclipse.emf.ecore.feature.group" version="2.10.2.v20150123-0348"/>
+      <unit id="org.eclipse.emf.workspace.feature.group" version="1.8.0.201405281451"/>
+      <unit id="org.eclipse.emf.transaction.feature.group" version="1.8.0.201405281451"/>
+      <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.8.0.201405281451"/>
+      <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.8.0.201405281429"/>
+      <unit id="org.eclipse.ocl.all.feature.group" version="5.0.0.v20140528-1458"/>
+      <unit id="org.eclipse.ocl.core.sdk.feature.group" version="5.0.0.v20140528-1458"/>
+      <unit id="org.eclipse.gef.feature.group" version="3.9.101.201408150207"/>
+      <unit id="org.eclipse.gef.sdk.feature.group" version="3.9.101.201408150207"/>
+      <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.8.0.201405281433"/>
+      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.8.0.201406111639"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.6.0.v201405210727"/>
+      <unit id="org.eclipse.emf.compare.feature.group" version="3.0.0.201406111328"/>
+      <unit id="org.eclipse.acceleo.feature.group" version="3.5.1.201409021433"/>
+      <unit id="org.eclipse.acceleo.ide.ui" version="3.5.1.201409021433"/>
+      <repository location="http://download.eclipse.org/releases/luna"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.eef.runtime" version="1.2.2.201309121245"/>
+      <repository location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.google.guava" version="11.0.2.v201303041551"/>
+      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
+    </location>
+  </locations>
 </target>

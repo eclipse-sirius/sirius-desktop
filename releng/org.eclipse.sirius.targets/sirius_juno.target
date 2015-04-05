@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="sirius_juno" sequenceNumber="0">
-<locations>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="com.ibm.icu" version="4.4.2.v20110823"/>
-<unit id="org.eclipse.jdt" version="3.8.1.v201302041200"/>
-<unit id="org.eclipse.pde" version="3.8.0.v201302041200"/>
-<unit id="org.eclipse.platform" version="4.2.2.v201302041200"/>
-<unit id="org.eclipse.rcp" version="4.2.1.v201302041200"/>
-<unit id="org.eclipse.sdk" version="4.2.2.v201302041200"/>
-<unit id="org.eclipse.draw2d.feature.group" version="3.9.0.201212170307"/>
-<unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.0.201212170307"/>
-<unit id="org.eclipse.emf.feature.group" version="2.8.3.v20130125-0826"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.8.3.v20130125-0826"/>
-<unit id="org.eclipse.emf.edit.feature.group" version="2.8.0.v20130125-0826"/>
-<unit id="org.eclipse.emf.common.feature.group" version="2.8.0.v20130125-0546"/>
-<unit id="org.eclipse.emf.ecore.feature.group" version="2.8.3.v20130125-0546"/>
-<unit id="org.eclipse.emf.workspace.feature.group" version="1.6.0.v20120328-0001-37708s734E377I3B4C2"/>
-<unit id="org.eclipse.emf.transaction.feature.group" version="1.6.0.v20120328-0001-377-8s734C3E7D15D6B"/>
-<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.6.0.v20120328-0001-67T-96SGR75UNqZNTdeQnghI6uFA"/>
-<unit id="org.eclipse.ocl.all.feature.group" version="4.0.2.v20130128-1158"/>
-<unit id="org.eclipse.gef.feature.group" version="3.9.0.201212170307"/>
-<unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.6.0.v20120327-2213-47F08xGD6FxMBN7CJFV3CIKK9t84"/>
-<unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.6.2.201302122140"/>
-<repository location="http://download.eclipse.org/releases/juno"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.compare.feature.group" version="2.1.2.201310031412"/>
-<repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.acceleo.feature.group" version="3.4.1.201309031307"/>
-<unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.1.201309031307"/>
-<unit id="org.eclipse.acceleo.examples.feature.group" version="3.4.1.201309031307"/>
-<unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.1.201309031307"/>
-<unit id="org.eclipse.acceleo.sdk.feature.group" version="3.4.1.201309031307"/>
-<unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.1.201309031307"/>
-<repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.eef.runtime" version="1.2.0.201301031409"/>
-<repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="com.google.guava" version="11.0.2.v201303041551"/>
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.1.v201208210947"/>
-<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
-</location>
-</locations>
+<?pde?>
+<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
+<target name="sirius_juno" sequenceNumber="1428238995">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.ibm.icu" version="4.4.2.v20110823"/>
+      <unit id="org.eclipse.jdt" version="3.8.1.v201302041200"/>
+      <unit id="org.eclipse.pde" version="3.8.0.v201302041200"/>
+      <unit id="org.eclipse.platform" version="4.2.2.v201302041200"/>
+      <unit id="org.eclipse.rcp" version="4.2.1.v201302041200"/>
+      <unit id="org.eclipse.sdk" version="4.2.2.v201302041200"/>
+      <unit id="org.eclipse.draw2d.feature.group" version="3.9.0.201212170307"/>
+      <unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.0.201212170307"/>
+      <unit id="org.eclipse.emf.feature.group" version="2.8.3.v20130125-0826"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.8.3.v20130125-0826"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.8.0.v20130125-0826"/>
+      <unit id="org.eclipse.emf.common.feature.group" version="2.8.0.v20130125-0546"/>
+      <unit id="org.eclipse.emf.ecore.feature.group" version="2.8.3.v20130125-0546"/>
+      <unit id="org.eclipse.emf.workspace.feature.group" version="1.6.0.v20120328-0001-37708s734E377I3B4C2"/>
+      <unit id="org.eclipse.emf.transaction.feature.group" version="1.6.0.v20120328-0001-377-8s734C3E7D15D6B"/>
+      <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.6.0.v20120328-0001-67T-96SGR75UNqZNTdeQnghI6uFA"/>
+      <unit id="org.eclipse.ocl.all.feature.group" version="4.0.2.v20130128-1158"/>
+      <unit id="org.eclipse.gef.feature.group" version="3.9.0.201212170307"/>
+      <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.6.0.v20120327-2213-47F08xGD6FxMBN7CJFV3CIKK9t84"/>
+      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.6.2.201302122140"/>
+      <repository location="http://download.eclipse.org/releases/juno"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.compare.feature.group" version="2.1.2.201310031412"/>
+      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.acceleo.feature.group" version="3.4.1.201309031307"/>
+      <unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.1.201309031307"/>
+      <unit id="org.eclipse.acceleo.examples.feature.group" version="3.4.1.201309031307"/>
+      <unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.1.201309031307"/>
+      <unit id="org.eclipse.acceleo.sdk.feature.group" version="3.4.1.201309031307"/>
+      <unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.1.201309031307"/>
+      <repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.eef.runtime" version="1.2.2.201309121245"/>
+      <repository location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.google.guava" version="11.0.2.v201303041551"/>
+      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.1.v201208210947"/>
+      <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
+    </location>
+  </locations>
 </target>
