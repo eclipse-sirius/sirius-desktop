@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <!-- Start of user code plugin.xml start specifics  -->
 <!--
-   Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+   Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
    All rights reserved. This program and the accompanying materials
    are made available under the terms of the Eclipse Public License v1.0
    which accompanies this distribution, and is available at
@@ -724,12 +724,12 @@
         <input type="org.eclipse.sirius.diagram.description.style.CustomStyleDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionHideLabelByDefaultPropertySectionSpec"
-               id="style.section.nodeStyleDescription.HideLabelByDefault"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionHideLabelByDefaultFilter"
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.hidelabelcapabilitystyledescription.HideLabelCapabilityStyleDescriptionHideLabelByDefaultPropertySectionSpec"
+               id="style.section.hideLabelCapabilityStyleDescription.HideLabelByDefault"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.hidelabelcapabilitystyledescription.HideLabelCapabilityStyleDescriptionHideLabelByDefaultFilter"
                afterSection="style.section.nodeStyleDescription.LabelPosition"
                 tab="viewpoint.tab.label">
-        <input type="org.eclipse.sirius.diagram.description.style.NodeStyleDescription"/>
+        <input type="org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionLabelPositionPropertySection"

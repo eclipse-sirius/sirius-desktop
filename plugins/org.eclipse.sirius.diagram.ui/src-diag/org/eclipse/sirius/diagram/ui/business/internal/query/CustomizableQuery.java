@@ -76,7 +76,7 @@ public class CustomizableQuery {
 
     private boolean isUselessFeature(EStructuralFeature feature) {
         // CHECKSTYLE:OFF
-        return DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE.equals(feature) || DiagramPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.equals(feature)
+        return DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE.equals(feature) || DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT.equals(feature)
                 || DiagramPackage.Literals.SQUARE__WIDTH.equals(feature) || DiagramPackage.Literals.SQUARE__HEIGHT.equals(feature) || DiagramPackage.Literals.LOZENGE__WIDTH.equals(feature)
                 || DiagramPackage.Literals.LOZENGE__HEIGHT.equals(feature) || DiagramPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.equals(feature)
                 || DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.equals(feature)

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
+import org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -65,14 +66,14 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getTooltipExpression
  * <em>Tooltip Expression</em>}</li>
  * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#isHideLabelByDefault
+ * <em>Hide Label By Default</em>}</li>
+ * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getSizeComputationExpression
  * <em>Size Computation Expression</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelPosition
  * <em>Label Position</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#isHideLabelByDefault
- * <em>Hide Label By Default</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getResizeKind
  * <em>Resize Kind</em>}</li>
@@ -271,6 +272,28 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected String tooltipExpression = NodeStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT;
 
     /**
+     * The default value of the '{@link #isHideLabelByDefault()
+     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #isHideLabelByDefault()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean HIDE_LABEL_BY_DEFAULT_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isHideLabelByDefault()
+     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #isHideLabelByDefault()
+     * @generated
+     * @ordered
+     */
+    protected boolean hideLabelByDefault = NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
+
+    /**
      * The default value of the '{@link #getSizeComputationExpression()
      * <em>Size Computation Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -313,28 +336,6 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @ordered
      */
     protected LabelPosition labelPosition = NodeStyleDescriptionImpl.LABEL_POSITION_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #isHideLabelByDefault()
-     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see #isHideLabelByDefault()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean HIDE_LABEL_BY_DEFAULT_EDEFAULT = false;
-
-    /**
-     * The cached value of the '{@link #isHideLabelByDefault()
-     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see #isHideLabelByDefault()
-     * @generated
-     * @ordered
-     */
-    protected boolean hideLabelByDefault = NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
 
     /**
      * The default value of the '{@link #getResizeKind() <em>Resize Kind</em>}'
@@ -782,12 +783,12 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
             return getLabelAlignment();
         case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             return getTooltipExpression();
+        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+            return isHideLabelByDefault();
         case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
             return getSizeComputationExpression();
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
             return getLabelPosition();
-        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
-            return isHideLabelByDefault();
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             return getResizeKind();
         }
@@ -832,14 +833,14 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
         case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             setTooltipExpression((String) newValue);
             return;
+        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+            setHideLabelByDefault((Boolean) newValue);
+            return;
         case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
             setSizeComputationExpression((String) newValue);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
             setLabelPosition((LabelPosition) newValue);
-            return;
-        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
-            setHideLabelByDefault((Boolean) newValue);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             setResizeKind((ResizeKind) newValue);
@@ -886,14 +887,14 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
         case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             setTooltipExpression(NodeStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT);
             return;
+        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+            setHideLabelByDefault(NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
+            return;
         case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
             setSizeComputationExpression(NodeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
             setLabelPosition(NodeStyleDescriptionImpl.LABEL_POSITION_EDEFAULT);
-            return;
-        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
-            setHideLabelByDefault(NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
             return;
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             setResizeKind(NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT);
@@ -931,13 +932,13 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
             return labelAlignment != NodeStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             return NodeStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !NodeStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
+        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+            return hideLabelByDefault != NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
             return NodeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? sizeComputationExpression != null : !NodeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT
                     .equals(sizeComputationExpression);
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
             return labelPosition != NodeStyleDescriptionImpl.LABEL_POSITION_EDEFAULT;
-        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
-            return hideLabelByDefault != NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             return resizeKind != NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT;
         }
@@ -991,6 +992,14 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
             switch (derivedFeatureID) {
             case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
                 return org.eclipse.sirius.viewpoint.description.style.StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == HideLabelCapabilityStyleDescription.class) {
+            switch (derivedFeatureID) {
+            case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+                return StylePackage.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
             default:
                 return -1;
             }
@@ -1049,6 +1058,14 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
                 return -1;
             }
         }
+        if (baseClass == HideLabelCapabilityStyleDescription.class) {
+            switch (baseFeatureID) {
+            case StylePackage.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+                return StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+            default:
+                return -1;
+            }
+        }
         return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
@@ -1080,12 +1097,12 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
         result.append(labelAlignment);
         result.append(", tooltipExpression: ");
         result.append(tooltipExpression);
+        result.append(", hideLabelByDefault: ");
+        result.append(hideLabelByDefault);
         result.append(", sizeComputationExpression: ");
         result.append(sizeComputationExpression);
         result.append(", labelPosition: ");
         result.append(labelPosition);
-        result.append(", hideLabelByDefault: ");
-        result.append(hideLabelByDefault);
         result.append(", resizeKind: ");
         result.append(resizeKind);
         result.append(')');

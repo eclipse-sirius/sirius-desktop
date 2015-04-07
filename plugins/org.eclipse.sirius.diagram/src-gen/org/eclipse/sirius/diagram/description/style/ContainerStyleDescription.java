@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * @model abstract="true"
  * @generated
  */
-public interface ContainerStyleDescription extends RoundedCornerStyleDescription, BorderedStyleDescription, LabelStyleDescription, TooltipStyleDescription {
+public interface ContainerStyleDescription extends RoundedCornerStyleDescription, BorderedStyleDescription, LabelStyleDescription, TooltipStyleDescription, HideLabelCapabilityStyleDescription {
     /**
      * Returns the value of the '<em><b>Rounded Corner</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->

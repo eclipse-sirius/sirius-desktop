@@ -52,6 +52,7 @@ import org.eclipse.sirius.diagram.GaugeCompositeStyle;
 import org.eclipse.sirius.diagram.GaugeSection;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.HideFilter;
+import org.eclipse.sirius.diagram.HideLabelCapabilityStyle;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 import org.eclipse.sirius.diagram.Lozenge;
@@ -346,6 +347,11 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDragAndDropTarget(DragAndDropTarget object) {
             return createDragAndDropTargetAdapter();
+        }
+
+        @Override
+        public Adapter caseHideLabelCapabilityStyle(HideLabelCapabilityStyle object) {
+            return createHideLabelCapabilityStyleAdapter();
         }
 
         @Override
@@ -1109,6 +1115,22 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDragAndDropTargetAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle
+     * <em>Hide Label Capability Style</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.HideLabelCapabilityStyle
+     * @generated
+     */
+    public Adapter createHideLabelCapabilityStyleAdapter() {
         return null;
     }
 

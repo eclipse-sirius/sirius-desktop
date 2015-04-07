@@ -345,7 +345,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -354,7 +354,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, StyleFactory.eINSTANCE.createEdgeStyleDescription()));
 
         newChildDescriptors
-                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
+        .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__CONDITIONNAL_STYLES,
                 DescriptionFactory.eINSTANCE.createConditionalEdgeStyleDescription()));
@@ -363,7 +363,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
     /**
      * Add a center label style and set the size computation expression of the
      * given edge style.
-     * 
+     *
      * @param edgeStyle
      *            the edge style.
      */

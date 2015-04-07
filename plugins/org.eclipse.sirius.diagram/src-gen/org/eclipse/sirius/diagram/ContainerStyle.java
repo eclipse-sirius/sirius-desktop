@@ -25,5 +25,5 @@ import org.eclipse.sirius.viewpoint.Style;
  * @model abstract="true"
  * @generated
  */
-public interface ContainerStyle extends LabelStyle, Style, BorderedStyle {
+public interface ContainerStyle extends LabelStyle, Style, BorderedStyle, HideLabelCapabilityStyle {
 } // ContainerStyle

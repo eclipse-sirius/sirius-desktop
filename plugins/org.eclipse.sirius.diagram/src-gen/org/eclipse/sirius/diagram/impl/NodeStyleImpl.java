@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.HideLabelCapabilityStyle;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.viewpoint.DRefreshable;
@@ -42,11 +43,11 @@ import org.eclipse.sirius.viewpoint.impl.LabelStyleImpl;
  * <em>Border Size Computation Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getBorderColor <em>
  * Border Color</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getLabelPosition
- * <em>Label Position</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#isHideLabelByDefault
  * <em>Hide Label By Default</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getLabelPosition
+ * <em>Label Position</em>}</li>
  * </ul>
  * </p>
  *
@@ -126,28 +127,6 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
     protected RGBValues borderColor = NodeStyleImpl.BORDER_COLOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelPosition()
-     * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see #getLabelPosition()
-     * @generated
-     * @ordered
-     */
-    protected static final LabelPosition LABEL_POSITION_EDEFAULT = LabelPosition.BORDER_LITERAL;
-
-    /**
-     * The cached value of the '{@link #getLabelPosition()
-     * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see #getLabelPosition()
-     * @generated
-     * @ordered
-     */
-    protected LabelPosition labelPosition = NodeStyleImpl.LABEL_POSITION_EDEFAULT;
-
-    /**
      * The default value of the '{@link #isHideLabelByDefault()
      * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -168,6 +147,28 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @ordered
      */
     protected boolean hideLabelByDefault = NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getLabelPosition()
+     * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getLabelPosition()
+     * @generated
+     * @ordered
+     */
+    protected static final LabelPosition LABEL_POSITION_EDEFAULT = LabelPosition.BORDER_LITERAL;
+
+    /**
+     * The cached value of the '{@link #getLabelPosition()
+     * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getLabelPosition()
+     * @generated
+     * @ordered
+     */
+    protected LabelPosition labelPosition = NodeStyleImpl.LABEL_POSITION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -381,10 +382,10 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
             return getBorderSizeComputationExpression();
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
             return getBorderColor();
-        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
-            return getLabelPosition();
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
             return isHideLabelByDefault();
+        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
+            return getLabelPosition();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -409,11 +410,11 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
             setBorderColor((RGBValues) newValue);
             return;
-        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
-            setLabelPosition((LabelPosition) newValue);
-            return;
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
             setHideLabelByDefault((Boolean) newValue);
+            return;
+        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
+            setLabelPosition((LabelPosition) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -439,11 +440,11 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
             setBorderColor(NodeStyleImpl.BORDER_COLOR_EDEFAULT);
             return;
-        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
-            setLabelPosition(NodeStyleImpl.LABEL_POSITION_EDEFAULT);
-            return;
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
             setHideLabelByDefault(NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
+            return;
+        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
+            setLabelPosition(NodeStyleImpl.LABEL_POSITION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -466,10 +467,10 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
                     .equals(borderSizeComputationExpression);
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
             return NodeStyleImpl.BORDER_COLOR_EDEFAULT == null ? borderColor != null : !NodeStyleImpl.BORDER_COLOR_EDEFAULT.equals(borderColor);
-        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
-            return labelPosition != NodeStyleImpl.LABEL_POSITION_EDEFAULT;
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
             return hideLabelByDefault != NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
+        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
+            return labelPosition != NodeStyleImpl.LABEL_POSITION_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -503,6 +504,14 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
                 return DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
             case DiagramPackage.NODE_STYLE__BORDER_COLOR:
                 return DiagramPackage.BORDERED_STYLE__BORDER_COLOR;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == HideLabelCapabilityStyle.class) {
+            switch (derivedFeatureID) {
+            case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
+                return DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT;
             default:
                 return -1;
             }
@@ -543,6 +552,14 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
                 return -1;
             }
         }
+        if (baseClass == HideLabelCapabilityStyle.class) {
+            switch (baseFeatureID) {
+            case DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT:
+                return DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+            default:
+                return -1;
+            }
+        }
         return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
@@ -564,10 +581,10 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
         result.append(borderSizeComputationExpression);
         result.append(", borderColor: ");
         result.append(borderColor);
-        result.append(", labelPosition: ");
-        result.append(labelPosition);
         result.append(", hideLabelByDefault: ");
         result.append(hideLabelByDefault);
+        result.append(", labelPosition: ");
+        result.append(labelPosition);
         result.append(')');
         return result.toString();
     }

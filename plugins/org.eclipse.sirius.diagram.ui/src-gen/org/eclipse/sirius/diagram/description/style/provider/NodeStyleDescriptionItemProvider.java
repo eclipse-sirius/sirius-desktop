@@ -71,9 +71,9 @@ IItemPropertySource {
             addIconPathPropertyDescriptor(object);
             addLabelAlignmentPropertyDescriptor(object);
             addTooltipExpressionPropertyDescriptor(object);
+            addHideLabelByDefaultPropertyDescriptor(object);
             addSizeComputationExpressionPropertyDescriptor(object);
             addLabelPositionPropertyDescriptor(object);
-            addHideLabelByDefaultPropertyDescriptor(object);
             addResizeKindPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
@@ -251,8 +251,9 @@ IItemPropertySource {
      */
     protected void addHideLabelByDefaultPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NodeStyleDescription_hideLabelByDefault_feature"), getString("_UI_NodeStyleDescription_hideLabelByDefault_description"),
-                StylePackage.Literals.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                getString("_UI_HideLabelCapabilityStyleDescription_hideLabelByDefault_feature"), getString("_UI_HideLabelCapabilityStyleDescription_hideLabelByDefault_description"),
+                StylePackage.Literals.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                getString("_UI_LabelPropertyCategory"), null));
     }
 
     /**
@@ -301,9 +302,9 @@ IItemPropertySource {
         case StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
         case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
         case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
-        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

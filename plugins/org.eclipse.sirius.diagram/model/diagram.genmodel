@@ -192,7 +192,6 @@
     </genClasses>
     <genClasses image="false" ecoreClass="diagram.ecore#//NodeStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//NodeStyle/labelPosition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//NodeStyle/hideLabelByDefault"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//Dot">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//Dot/strokeSizeComputationExpression"/>
@@ -312,6 +311,9 @@
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//DragAndDropTarget">
       <genOperations ecoreOperation="diagram.ecore#//DragAndDropTarget/getDragAndDropDescription"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="diagram.ecore#//HideLabelCapabilityStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//HideLabelCapabilityStyle/hideLabelByDefault"/>
     </genClasses>
     <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.diagram"
         disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="diagram.ecore#//description">
@@ -621,8 +623,6 @@
           <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/sizeComputationExpression"/>
           <genFeatures createChild="false" propertyCategory="Label" propertyDescription="Pick either 'node' position which mean 'inside the node' or 'border' to put the label around the node."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/labelPosition"/>
-          <genFeatures createChild="false" propertyCategory="Label" propertyDescription="Define the default visibility status of this label (available only if label position is \&quot;border\&quot;). A change of this option does not affect already existing elements."
-              ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/hideLabelByDefault"/>
           <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Authorized resize directions for the node."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/resizeKind"/>
         </genClasses>
@@ -725,6 +725,10 @@
         <genClasses ecoreClass="diagram.ecore#//description/style/CenterLabelStyleDescription"/>
         <genClasses ecoreClass="diagram.ecore#//description/style/EndLabelStyleDescription"/>
         <genClasses ecoreClass="diagram.ecore#//description/style/BracketEdgeStyleDescription"/>
+        <genClasses image="false" ecoreClass="diagram.ecore#//description/style/HideLabelCapabilityStyleDescription">
+          <genFeatures createChild="false" propertyCategory="Label" propertyDescription="Define the default visibility status of this label. A change of this option does not affect already existing elements."
+              ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/HideLabelCapabilityStyleDescription/hideLabelByDefault"/>
+        </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.diagram.description"
           disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="diagram.ecore#//description/tool">

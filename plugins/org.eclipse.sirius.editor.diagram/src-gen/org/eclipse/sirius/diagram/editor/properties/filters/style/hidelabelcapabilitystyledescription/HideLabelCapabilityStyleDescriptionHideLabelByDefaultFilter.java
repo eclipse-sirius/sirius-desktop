@@ -7,12 +7,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.editor.properties.filters.style.nodestyledescription;
+package org.eclipse.sirius.diagram.editor.properties.filters.style.hidelabelcapabilitystyledescription;
 
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
@@ -23,29 +24,26 @@ import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 /**
  * A filter for the hideLabelByDefault property section.
  */
-public class NodeStyleDescriptionHideLabelByDefaultFilter extends ViewpointPropertyFilter {
+public class HideLabelCapabilityStyleDescriptionHideLabelByDefaultFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     protected EStructuralFeature getFeature() {
-        return StylePackage.eINSTANCE.getNodeStyleDescription_HideLabelByDefault();
+        return StylePackage.eINSTANCE.getHideLabelCapabilityStyleDescription_HideLabelByDefault();
     }
 
     /**
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
+        return arg0 instanceof org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
     }
 
     // Start of user code user methods
 
-    /**
-     * {@inheritDoc}
-     */
     public boolean select(Object arg0) {
-        if (isRightInputType(arg0) && isStyleInNodeMapping((org.eclipse.sirius.diagram.description.style.NodeStyleDescription) arg0)) {
+        if (isRightInputType(arg0) && isStyleInNodeMapping((org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription) arg0)) {
             EStructuralFeature feature = getFeature();
             if (feature != null && isVisible(feature)) {
                 return true;
@@ -58,16 +56,16 @@ public class NodeStyleDescriptionHideLabelByDefaultFilter extends ViewpointPrope
      * Check if a style is contained in a node mapping.
      * 
      * @param styleDescription
-     *            Node Style description
+     *            Style description
      * @return <code>true</code> if the style is contained in a node mapping,
      *         <code>false</code> otherwise
      */
-    private boolean isStyleInNodeMapping(org.eclipse.sirius.diagram.description.style.NodeStyleDescription styleDescription) {
+    private boolean isStyleInNodeMapping(org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription styleDescription) {
         EObject container = styleDescription.eContainer();
         while (container instanceof ConditionalStyleDescription) {
             container = container.eContainer();
         }
-        return container instanceof NodeMapping;
+        return container instanceof NodeMapping || container instanceof ContainerMapping;
     }
 
     // End of user code user methods

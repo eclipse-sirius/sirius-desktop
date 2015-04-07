@@ -59,6 +59,7 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
             addDescriptionPropertyDescriptor(object);
             addBorderSizeComputationExpressionPropertyDescriptor(object);
             addBorderColorPropertyDescriptor(object);
+            addHideLabelByDefaultPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -102,6 +103,19 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Hide Label By Default feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addHideLabelByDefaultPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature", "_UI_HideLabelCapabilityStyle_type"),
+                DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
@@ -129,6 +143,7 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE:
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
+        case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

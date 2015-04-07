@@ -50,6 +50,7 @@ import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.GaugeCompositeStyle;
 import org.eclipse.sirius.diagram.GaugeSection;
+import org.eclipse.sirius.diagram.HideLabelCapabilityStyle;
 import org.eclipse.sirius.diagram.Lozenge;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.Note;
@@ -74,6 +75,7 @@ import org.eclipse.sirius.diagram.description.style.EndLabelStyleDescription;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
+import org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
 import org.eclipse.sirius.diagram.description.style.LozengeNodeDescription;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.NoteDescription;
@@ -87,6 +89,7 @@ import org.eclipse.sirius.diagram.util.DiagramSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
@@ -574,9 +577,11 @@ public final class StyleHelper {
             style = createWorkspaceImage((WorkspaceImageDescription) description);
         }
         if (style != null) {
+            style.setHideLabelByDefault(description.isHideLabelByDefault());
             Option<Style> noPreviousStyle = Options.newNone();
             refreshColors(style, noPreviousStyle);
         }
+
         return style;
     }
 
@@ -628,6 +633,32 @@ public final class StyleHelper {
         } else {
             Option<BorderedStyle> noPreviousBorderedStyle = Options.newNone();
             updateBorderedStyleFeatures(description, style, noPreviousBorderedStyle);
+        }
+
+        updateHideLabelCapabilityFeature(description, style, previousStyle);
+    }
+
+    /**
+     * Update the "Hide Label Capability" feature of the style.
+     * 
+     * @param description
+     *            the style description
+     * @param style
+     *            the current style to update
+     * @param previousStyle
+     *            the previous style
+     */
+    private void updateHideLabelCapabilityFeature(final HideLabelCapabilityStyleDescription description, final HideLabelCapabilityStyle style, Option<? extends Style> previousStyle) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
+            if (previousStyle.get() instanceof HideLabelCapabilityStyle) {
+                style.setHideLabelByDefault(((HideLabelCapabilityStyle) previousStyle.get()).isHideLabelByDefault());
+            }
+
+            if (style instanceof Customizable) {
+                ((Customizable) style).getCustomFeatures().add(DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT.getName());
+            }
+        } else if (style instanceof Customizable && !((Customizable) style).getCustomFeatures().contains(DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
+            style.setHideLabelByDefault(description.isHideLabelByDefault());
         }
     }
 
@@ -772,16 +803,7 @@ public final class StyleHelper {
             }
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
-            if (previousStyle.get() instanceof NodeStyle) {
-                style.setHideLabelByDefault(((NodeStyle) previousStyle.get()).isHideLabelByDefault());
-            }
-            style.getCustomFeatures().add(DiagramPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.getName());
-        } else {
-            if (!style.getCustomFeatures().contains(DiagramPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
-                style.setHideLabelByDefault(description.isHideLabelByDefault());
-            }
-        }
+        updateHideLabelCapabilityFeature(description, style, previousStyle);
     }
 
     /**

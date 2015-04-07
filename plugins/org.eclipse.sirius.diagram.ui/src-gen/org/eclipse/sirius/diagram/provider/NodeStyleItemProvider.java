@@ -59,8 +59,8 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
             addDescriptionPropertyDescriptor(object);
             addBorderSizeComputationExpressionPropertyDescriptor(object);
             addBorderColorPropertyDescriptor(object);
-            addLabelPositionPropertyDescriptor(object);
             addHideLabelByDefaultPropertyDescriptor(object);
+            addLabelPositionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -123,8 +123,9 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
      */
     protected void addHideLabelByDefaultPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NodeStyle_hideLabelByDefault_feature"), getString("_UI_PropertyDescriptor_description", "_UI_NodeStyle_hideLabelByDefault_feature", "_UI_NodeStyle_type"),
-                DiagramPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+                getString("_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature", "_UI_HideLabelCapabilityStyle_type"),
+                DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -155,8 +156,8 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
         case DiagramPackage.NODE_STYLE__BORDER_SIZE:
         case DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
-        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
+        case DiagramPackage.NODE_STYLE__LABEL_POSITION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

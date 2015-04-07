@@ -65,6 +65,7 @@ import org.eclipse.sirius.diagram.GaugeCompositeStyle;
 import org.eclipse.sirius.diagram.GaugeSection;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.HideFilter;
+import org.eclipse.sirius.diagram.HideLabelCapabilityStyle;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 import org.eclipse.sirius.diagram.LabelPosition;
@@ -403,6 +404,13 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     private EClass dragAndDropTargetEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass hideLabelCapabilityStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1448,16 +1456,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EAttribute getNodeStyle_HideLabelByDefault() {
-        return (EAttribute) nodeStyleEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EClass getDot() {
         return dotEClass;
     }
@@ -2228,6 +2226,26 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
+    public EClass getHideLabelCapabilityStyle() {
+        return hideLabelCapabilityStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getHideLabelCapabilityStyle_HideLabelByDefault() {
+        return (EAttribute) hideLabelCapabilityStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EEnum getContainerLayout() {
         return containerLayoutEEnum;
     }
@@ -2467,7 +2485,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
         nodeStyleEClass = createEClass(DiagramPackage.NODE_STYLE);
         createEAttribute(nodeStyleEClass, DiagramPackage.NODE_STYLE__LABEL_POSITION);
-        createEAttribute(nodeStyleEClass, DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT);
 
         dotEClass = createEClass(DiagramPackage.DOT);
         createEAttribute(dotEClass, DiagramPackage.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION);
@@ -2572,6 +2589,9 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
         dragAndDropTargetEClass = createEClass(DiagramPackage.DRAG_AND_DROP_TARGET);
 
+        hideLabelCapabilityStyleEClass = createEClass(DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE);
+        createEAttribute(hideLabelCapabilityStyleEClass, DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT);
+
         // Create enums
         containerLayoutEEnum = createEEnum(DiagramPackage.CONTAINER_LAYOUT);
         labelPositionEEnum = createEEnum(DiagramPackage.LABEL_POSITION);
@@ -2659,11 +2679,13 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         nodeStyleEClass.getESuperTypes().add(theViewpointPackage.getLabelStyle());
         nodeStyleEClass.getESuperTypes().add(theViewpointPackage.getStyle());
         nodeStyleEClass.getESuperTypes().add(this.getBorderedStyle());
+        nodeStyleEClass.getESuperTypes().add(this.getHideLabelCapabilityStyle());
         dotEClass.getESuperTypes().add(this.getNodeStyle());
         gaugeSectionEClass.getESuperTypes().add(theViewpointPackage.getCustomizable());
         containerStyleEClass.getESuperTypes().add(theViewpointPackage.getLabelStyle());
         containerStyleEClass.getESuperTypes().add(theViewpointPackage.getStyle());
         containerStyleEClass.getESuperTypes().add(this.getBorderedStyle());
+        containerStyleEClass.getESuperTypes().add(this.getHideLabelCapabilityStyle());
         flatContainerStyleEClass.getESuperTypes().add(this.getContainerStyle());
         shapeContainerStyleEClass.getESuperTypes().add(this.getContainerStyle());
         squareEClass.getESuperTypes().add(this.getNodeStyle());
@@ -2918,8 +2940,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEClass(nodeStyleEClass, NodeStyle.class, "NodeStyle", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getNodeStyle_LabelPosition(), this.getLabelPosition(), "labelPosition", null, 0, 1, NodeStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getNodeStyle_HideLabelByDefault(), ecorePackage.getEBoolean(), "hideLabelByDefault", "false", 0, 1, NodeStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dotEClass, Dot.class, "Dot", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDot_StrokeSizeComputationExpression(), theDescriptionPackage_1.getInterpretedExpression(), "strokeSizeComputationExpression", "2", 0, 1, Dot.class,
@@ -3105,6 +3125,11 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEClass(dragAndDropTargetEClass, DragAndDropTarget.class, "DragAndDropTarget", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         addEOperation(dragAndDropTargetEClass, theDescriptionPackage.getDragAndDropTargetDescription(), "getDragAndDropDescription", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
+
+        initEClass(hideLabelCapabilityStyleEClass, HideLabelCapabilityStyle.class, "HideLabelCapabilityStyle", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getHideLabelCapabilityStyle_HideLabelByDefault(), ecorePackage.getEBoolean(), "hideLabelByDefault", "false", 0, 1, HideLabelCapabilityStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(containerLayoutEEnum, ContainerLayout.class, "ContainerLayout");

@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.description.style.EndLabelStyleDescription;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
+import org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
 import org.eclipse.sirius.diagram.description.style.LozengeNodeDescription;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.NoteDescription;
@@ -206,6 +207,11 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseBracketEdgeStyleDescription(BracketEdgeStyleDescription object) {
             return createBracketEdgeStyleDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseHideLabelCapabilityStyleDescription(HideLabelCapabilityStyleDescription object) {
+            return createHideLabelCapabilityStyleDescriptionAdapter();
         }
 
         @Override
@@ -597,6 +603,22 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createBracketEdgeStyleDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+     * <em>Hide Label Capability Style Description</em>}'. <!-- begin-user-doc
+     * --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the
+     * cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+     * @generated
+     */
+    public Adapter createHideLabelCapabilityStyleDescriptionAdapter() {
         return null;
     }
 

@@ -7,9 +7,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.style.hidelabelcapabilitystyledescription;
 
 // Start of user code imports
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxPropertySection;
@@ -23,10 +24,10 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the hideLabelByDefault property of a NodeStyleDescription
- * object.
+ * A section for the hideLabelByDefault property of a
+ * HideLabelCapabilityStyleDescription object.
  */
-public class NodeStyleDescriptionHideLabelByDefaultPropertySection extends AbstractCheckBoxPropertySection {
+public class HideLabelCapabilityStyleDescriptionHideLabelByDefaultPropertySection extends AbstractCheckBoxPropertySection {
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractCheckBoxPropertySection#getDefaultLabelText()
      */
@@ -50,7 +51,7 @@ public class NodeStyleDescriptionHideLabelByDefaultPropertySection extends Abstr
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractCheckBoxPropertySection#getFeature()
      */
     protected EAttribute getFeature() {
-        return StylePackage.eINSTANCE.getNodeStyleDescription_HideLabelByDefault();
+        return StylePackage.eINSTANCE.getHideLabelCapabilityStyleDescription_HideLabelByDefault();
     }
 
     /**
@@ -100,7 +101,7 @@ public class NodeStyleDescriptionHideLabelByDefaultPropertySection extends Abstr
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
-        checkbox.setToolTipText("Define the default visibility status of this label (available only if label position is \"border\"). A change of this option does not affect already existing elements.");
+        checkbox.setToolTipText("Define the default visibility status of this label. A change of this option does not affect already existing elements.");
 
         CLabel help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -108,6 +109,6 @@ public class NodeStyleDescriptionHideLabelByDefaultPropertySection extends Abstr
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
         help.setImage(getHelpIcon());
-        help.setToolTipText("Define the default visibility status of this label (available only if label position is \"border\"). A change of this option does not affect already existing elements.");
+        help.setToolTipText("Define the default visibility status of this label. A change of this option does not affect already existing elements.");
     }
 }

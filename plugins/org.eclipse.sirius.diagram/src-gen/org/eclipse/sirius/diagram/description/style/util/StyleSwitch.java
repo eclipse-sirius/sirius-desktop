@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.description.style.EndLabelStyleDescription;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
+import org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
 import org.eclipse.sirius.diagram.description.style.LozengeNodeDescription;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.NoteDescription;
@@ -140,6 +141,9 @@ public class StyleSwitch<T> {
                 result = caseTooltipStyleDescription(nodeStyleDescription);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(nodeStyleDescription);
+            }
+            if (result == null) {
                 result = caseStyleDescription(nodeStyleDescription);
             }
             if (result == null) {
@@ -164,6 +168,9 @@ public class StyleSwitch<T> {
             }
             if (result == null) {
                 result = caseTooltipStyleDescription(customStyleDescription);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(customStyleDescription);
             }
             if (result == null) {
                 result = caseStyleDescription(customStyleDescription);
@@ -192,6 +199,9 @@ public class StyleSwitch<T> {
                 result = caseTooltipStyleDescription(squareDescription);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(squareDescription);
+            }
+            if (result == null) {
                 result = caseStyleDescription(squareDescription);
             }
             if (result == null) {
@@ -216,6 +226,9 @@ public class StyleSwitch<T> {
             }
             if (result == null) {
                 result = caseTooltipStyleDescription(lozengeNodeDescription);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(lozengeNodeDescription);
             }
             if (result == null) {
                 result = caseStyleDescription(lozengeNodeDescription);
@@ -244,6 +257,9 @@ public class StyleSwitch<T> {
                 result = caseTooltipStyleDescription(ellipseNodeDescription);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(ellipseNodeDescription);
+            }
+            if (result == null) {
                 result = caseStyleDescription(ellipseNodeDescription);
             }
             if (result == null) {
@@ -268,6 +284,9 @@ public class StyleSwitch<T> {
             }
             if (result == null) {
                 result = caseTooltipStyleDescription(bundledImageDescription);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(bundledImageDescription);
             }
             if (result == null) {
                 result = caseStyleDescription(bundledImageDescription);
@@ -296,6 +315,9 @@ public class StyleSwitch<T> {
                 result = caseTooltipStyleDescription(noteDescription);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(noteDescription);
+            }
+            if (result == null) {
                 result = caseStyleDescription(noteDescription);
             }
             if (result == null) {
@@ -322,6 +344,9 @@ public class StyleSwitch<T> {
                 result = caseTooltipStyleDescription(dotDescription);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(dotDescription);
+            }
+            if (result == null) {
                 result = caseStyleDescription(dotDescription);
             }
             if (result == null) {
@@ -346,6 +371,9 @@ public class StyleSwitch<T> {
             }
             if (result == null) {
                 result = caseTooltipStyleDescription(gaugeCompositeStyleDescription);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(gaugeCompositeStyleDescription);
             }
             if (result == null) {
                 result = caseStyleDescription(gaugeCompositeStyleDescription);
@@ -401,6 +429,9 @@ public class StyleSwitch<T> {
                 result = caseTooltipStyleDescription(containerStyleDescription);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(containerStyleDescription);
+            }
+            if (result == null) {
                 result = caseStyleDescription(containerStyleDescription);
             }
             if (result == null) {
@@ -431,6 +462,9 @@ public class StyleSwitch<T> {
             }
             if (result == null) {
                 result = caseTooltipStyleDescription(flatContainerStyleDescription);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(flatContainerStyleDescription);
             }
             if (result == null) {
                 result = caseStyleDescription(flatContainerStyleDescription);
@@ -465,6 +499,9 @@ public class StyleSwitch<T> {
                 result = caseTooltipStyleDescription(shapeContainerStyleDescription);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(shapeContainerStyleDescription);
+            }
+            if (result == null) {
                 result = caseStyleDescription(shapeContainerStyleDescription);
             }
             if (result == null) {
@@ -492,6 +529,9 @@ public class StyleSwitch<T> {
             }
             if (result == null) {
                 result = caseTooltipStyleDescription(workspaceImageDescription);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyleDescription(workspaceImageDescription);
             }
             if (result == null) {
                 result = caseRoundedCornerStyleDescription(workspaceImageDescription);
@@ -560,6 +600,14 @@ public class StyleSwitch<T> {
             if (result == null) {
                 result = caseStyleDescription(bracketEdgeStyleDescription);
             }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case StylePackage.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION: {
+            HideLabelCapabilityStyleDescription hideLabelCapabilityStyleDescription = (HideLabelCapabilityStyleDescription) theEObject;
+            T result = caseHideLabelCapabilityStyleDescription(hideLabelCapabilityStyleDescription);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -941,6 +989,23 @@ public class StyleSwitch<T> {
      * @generated
      */
     public T caseBracketEdgeStyleDescription(BracketEdgeStyleDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Hide Label Capability Style Description</em>'. <!-- begin-user-doc
+     * --> This implementation returns null; returning a non-null result will
+     * terminate the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Hide Label Capability Style Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseHideLabelCapabilityStyleDescription(HideLabelCapabilityStyleDescription object) {
         return null;
     }
 

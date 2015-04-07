@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.description.style.EndLabelStyleDescription;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
+import org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
 import org.eclipse.sirius.diagram.description.style.LozengeNodeDescription;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.NoteDescription;
@@ -215,6 +216,13 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
     private EClass bracketEdgeStyleDescriptionEClass = null;
 
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass hideLabelCapabilityStyleDescriptionEClass = null;
+
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
      * package package URI value.
@@ -371,18 +379,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * @generated
      */
     @Override
-    public EAttribute getNodeStyleDescription_HideLabelByDefault() {
-        return (EAttribute) nodeStyleDescriptionEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EAttribute getNodeStyleDescription_ResizeKind() {
-        return (EAttribute) nodeStyleDescriptionEClass.getEStructuralFeatures().get(3);
+        return (EAttribute) nodeStyleDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1071,6 +1069,26 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * @generated
      */
     @Override
+    public EClass getHideLabelCapabilityStyleDescription() {
+        return hideLabelCapabilityStyleDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getHideLabelCapabilityStyleDescription_HideLabelByDefault() {
+        return (EAttribute) hideLabelCapabilityStyleDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public StyleFactory getStyleFactory() {
         return (StyleFactory) getEFactoryInstance();
     }
@@ -1103,7 +1121,6 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         nodeStyleDescriptionEClass = createEClass(StylePackage.NODE_STYLE_DESCRIPTION);
         createEAttribute(nodeStyleDescriptionEClass, StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION);
         createEAttribute(nodeStyleDescriptionEClass, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION);
-        createEAttribute(nodeStyleDescriptionEClass, StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT);
         createEAttribute(nodeStyleDescriptionEClass, StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND);
 
         customStyleDescriptionEClass = createEClass(StylePackage.CUSTOM_STYLE_DESCRIPTION);
@@ -1193,6 +1210,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         endLabelStyleDescriptionEClass = createEClass(StylePackage.END_LABEL_STYLE_DESCRIPTION);
 
         bracketEdgeStyleDescriptionEClass = createEClass(StylePackage.BRACKET_EDGE_STYLE_DESCRIPTION);
+
+        hideLabelCapabilityStyleDescriptionEClass = createEClass(StylePackage.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION);
+        createEAttribute(hideLabelCapabilityStyleDescriptionEClass, StylePackage.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT);
     }
 
     /**
@@ -1239,6 +1259,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         nodeStyleDescriptionEClass.getESuperTypes().add(this.getBorderedStyleDescription());
         nodeStyleDescriptionEClass.getESuperTypes().add(theStylePackage_1.getLabelStyleDescription());
         nodeStyleDescriptionEClass.getESuperTypes().add(theStylePackage_1.getTooltipStyleDescription());
+        nodeStyleDescriptionEClass.getESuperTypes().add(this.getHideLabelCapabilityStyleDescription());
         customStyleDescriptionEClass.getESuperTypes().add(this.getNodeStyleDescription());
         squareDescriptionEClass.getESuperTypes().add(this.getNodeStyleDescription());
         lozengeNodeDescriptionEClass.getESuperTypes().add(this.getNodeStyleDescription());
@@ -1252,6 +1273,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         containerStyleDescriptionEClass.getESuperTypes().add(this.getBorderedStyleDescription());
         containerStyleDescriptionEClass.getESuperTypes().add(theStylePackage_1.getLabelStyleDescription());
         containerStyleDescriptionEClass.getESuperTypes().add(theStylePackage_1.getTooltipStyleDescription());
+        containerStyleDescriptionEClass.getESuperTypes().add(this.getHideLabelCapabilityStyleDescription());
         flatContainerStyleDescriptionEClass.getESuperTypes().add(this.getContainerStyleDescription());
         flatContainerStyleDescriptionEClass.getESuperTypes().add(this.getSizeComputationContainerStyleDescription());
         shapeContainerStyleDescriptionEClass.getESuperTypes().add(this.getContainerStyleDescription());
@@ -1279,8 +1301,6 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEAttribute(getNodeStyleDescription_LabelPosition(), theDiagramPackage.getLabelPosition(), "labelPosition", "border", 0, 1, NodeStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getNodeStyleDescription_HideLabelByDefault(), ecorePackage.getEBoolean(), "hideLabelByDefault", "false", 0, 1, NodeStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getNodeStyleDescription_ResizeKind(), theDiagramPackage.getResizeKind(), "resizeKind", "NONE", 1, 1, NodeStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -1469,6 +1489,12 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         initEClass(bracketEdgeStyleDescriptionEClass, BracketEdgeStyleDescription.class, "BracketEdgeStyleDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
+        initEClass(hideLabelCapabilityStyleDescriptionEClass, HideLabelCapabilityStyleDescription.class, "HideLabelCapabilityStyleDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getHideLabelCapabilityStyleDescription_HideLabelByDefault(), ecorePackage.getEBoolean(), "hideLabelByDefault", "false", 0, 1, HideLabelCapabilityStyleDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType
         createReturnTypeAnnotations();
@@ -1524,8 +1550,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         addAnnotation(getSizeComputationContainerStyleDescription_WidthComputationExpression(), source, new String[] {});
         addAnnotation(getSizeComputationContainerStyleDescription_HeightComputationExpression(), source, new String[] {});
         addAnnotation(getEdgeStyleDescription_SizeComputationExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", "view",
-                "diagram.DEdge | the current edge view for which the size is calculated.", "sourceView", "diagram.EdgeTarget | the source view of the current edge.", "targetView",
-                "diagram.EdgeTarget | the target view of the current edge." });
+            "diagram.DEdge | the current edge view for which the size is calculated.", "sourceView", "diagram.EdgeTarget | the source view of the current edge.", "targetView",
+        "diagram.EdgeTarget | the target view of the current edge." });
     }
 
     /**

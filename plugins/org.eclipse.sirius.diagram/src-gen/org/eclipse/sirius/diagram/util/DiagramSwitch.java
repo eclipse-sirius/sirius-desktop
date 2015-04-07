@@ -52,6 +52,7 @@ import org.eclipse.sirius.diagram.GaugeCompositeStyle;
 import org.eclipse.sirius.diagram.GaugeSection;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.HideFilter;
+import org.eclipse.sirius.diagram.HideLabelCapabilityStyle;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 import org.eclipse.sirius.diagram.Lozenge;
@@ -535,6 +536,9 @@ public class DiagramSwitch<T> {
                 result = caseBorderedStyle(nodeStyle);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyle(nodeStyle);
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(nodeStyle);
             }
             if (result == null) {
@@ -562,6 +566,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseBorderedStyle(dot);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyle(dot);
             }
             if (result == null) {
                 result = caseBasicLabelStyle(dot);
@@ -601,6 +608,9 @@ public class DiagramSwitch<T> {
                 result = caseBorderedStyle(containerStyle);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyle(containerStyle);
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(containerStyle);
             }
             if (result == null) {
@@ -628,6 +638,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseBorderedStyle(flatContainerStyle);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyle(flatContainerStyle);
             }
             if (result == null) {
                 result = caseBasicLabelStyle(flatContainerStyle);
@@ -659,6 +672,9 @@ public class DiagramSwitch<T> {
                 result = caseBorderedStyle(shapeContainerStyle);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyle(shapeContainerStyle);
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(shapeContainerStyle);
             }
             if (result == null) {
@@ -686,6 +702,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseBorderedStyle(square);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyle(square);
             }
             if (result == null) {
                 result = caseBasicLabelStyle(square);
@@ -717,6 +736,9 @@ public class DiagramSwitch<T> {
                 result = caseBorderedStyle(ellipse);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyle(ellipse);
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(ellipse);
             }
             if (result == null) {
@@ -746,6 +768,9 @@ public class DiagramSwitch<T> {
                 result = caseBorderedStyle(lozenge);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyle(lozenge);
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(lozenge);
             }
             if (result == null) {
@@ -773,6 +798,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseBorderedStyle(bundledImage);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyle(bundledImage);
             }
             if (result == null) {
                 result = caseBasicLabelStyle(bundledImage);
@@ -807,6 +835,9 @@ public class DiagramSwitch<T> {
                 result = caseBorderedStyle(workspaceImage);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyle(workspaceImage);
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(workspaceImage);
             }
             if (result == null) {
@@ -834,6 +865,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseBorderedStyle(customStyle);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyle(customStyle);
             }
             if (result == null) {
                 result = caseBasicLabelStyle(customStyle);
@@ -890,6 +924,9 @@ public class DiagramSwitch<T> {
                 result = caseBorderedStyle(gaugeCompositeStyle);
             }
             if (result == null) {
+                result = caseHideLabelCapabilityStyle(gaugeCompositeStyle);
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(gaugeCompositeStyle);
             }
             if (result == null) {
@@ -934,6 +971,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseBorderedStyle(note);
+            }
+            if (result == null) {
+                result = caseHideLabelCapabilityStyle(note);
             }
             if (result == null) {
                 result = caseBasicLabelStyle(note);
@@ -1066,6 +1106,14 @@ public class DiagramSwitch<T> {
         case DiagramPackage.DRAG_AND_DROP_TARGET: {
             DragAndDropTarget dragAndDropTarget = (DragAndDropTarget) theEObject;
             T result = caseDragAndDropTarget(dragAndDropTarget);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE: {
+            HideLabelCapabilityStyle hideLabelCapabilityStyle = (HideLabelCapabilityStyle) theEObject;
+            T result = caseHideLabelCapabilityStyle(hideLabelCapabilityStyle);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -1821,6 +1869,23 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseDragAndDropTarget(DragAndDropTarget object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Hide Label Capability Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Hide Label Capability Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseHideLabelCapabilityStyle(HideLabelCapabilityStyle object) {
         return null;
     }
 

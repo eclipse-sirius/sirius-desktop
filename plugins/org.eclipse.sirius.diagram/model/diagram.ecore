@@ -485,19 +485,13 @@
       </eAnnotations>
     </eLiterals>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NodeStyle" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//LabelStyle ../../org.eclipse.sirius/model/viewpoint.ecore#//Style #//BorderedStyle">
+  <eClassifiers xsi:type="ecore:EClass" name="NodeStyle" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//LabelStyle ../../org.eclipse.sirius/model/viewpoint.ecore#//Style #//BorderedStyle #//HideLabelCapabilityStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Style of a node."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelPosition" eType="#//LabelPosition">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The position of the label :&#xD;&#xA;BORDER : The label is around the node, on the border.&#xD;&#xA;NODE : the label is in the node."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideLabelByDefault" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The default visibility of the label (available only if labelPosition equals BORDER).&#xA;A change of this option does not affect already existing elements."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -560,7 +554,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ContainerStyle" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//LabelStyle ../../org.eclipse.sirius/model/viewpoint.ecore#//Style #//BorderedStyle">
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerStyle" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//LabelStyle ../../org.eclipse.sirius/model/viewpoint.ecore#//Style #//BorderedStyle #//HideLabelCapabilityStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The style of a container."/>
     </eAnnotations>
@@ -969,6 +963,15 @@
         <details key="documentation" value="Return the description of this Drag&amp;Drop Target."/>
       </eAnnotations>
     </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HideLabelCapabilityStyle" abstract="true"
+      interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideLabelByDefault" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The default visibility of the label (available only if labelPosition equals BORDER).&#xA;A change of this option does not affect already existing elements."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eSubpackages name="description" nsURI="http://www.eclipse.org/sirius/diagram/description/1.1.0"
       nsPrefix="description">
@@ -1778,7 +1781,7 @@
             eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="NodeStyleDescription" abstract="true"
-          eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/StyleDescription #//description/style/BorderedStyleDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/LabelStyleDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/TooltipStyleDescription">
+          eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/StyleDescription #//description/style/BorderedStyleDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/LabelStyleDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/TooltipStyleDescription #//description/style/HideLabelCapabilityStyleDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Style of a node."/>
         </eAnnotations>
@@ -1797,13 +1800,6 @@
             defaultValueLiteral="border">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="The relative position of the label to the node."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideLabelByDefault"
-            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-            defaultValueLiteral="false">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The default visibility of the label (available only if labelPosition equals BORDER).&#xA;A change of this option does not affect already existing elements."/>
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="resizeKind" lowerBound="1"
@@ -2055,7 +2051,7 @@
         </eStructuralFeatures>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ContainerStyleDescription" abstract="true"
-          eSuperTypes="#//description/style/RoundedCornerStyleDescription #//description/style/BorderedStyleDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/LabelStyleDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/TooltipStyleDescription">
+          eSuperTypes="#//description/style/RoundedCornerStyleDescription #//description/style/BorderedStyleDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/LabelStyleDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/TooltipStyleDescription #//description/style/HideLabelCapabilityStyleDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The style of a container."/>
         </eAnnotations>
@@ -2203,6 +2199,16 @@
         </eAnnotations>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="BracketEdgeStyleDescription" eSuperTypes="#//description/style/EdgeStyleDescription"/>
+      <eClassifiers xsi:type="ecore:EClass" name="HideLabelCapabilityStyleDescription"
+          abstract="true" interface="true">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideLabelByDefault"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+            defaultValueLiteral="false">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The default visibility of the label (available only if labelPosition equals BORDER).&#xA;A change of this option does not affect already existing elements."/>
+          </eAnnotations>
+        </eStructuralFeatures>
+      </eClassifiers>
     </eSubpackages>
     <eSubpackages name="tool" nsURI="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"
         nsPrefix="tool">

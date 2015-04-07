@@ -208,13 +208,22 @@ public interface StylePackage extends EPackage {
     int NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+    int NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
@@ -223,16 +232,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_POSITION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 11;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 12;
+    int NODE_STYLE_DESCRIPTION__LABEL_POSITION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -358,6 +358,15 @@ public interface StylePackage extends EPackage {
     int CUSTOM_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -374,15 +383,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int CUSTOM_STYLE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CUSTOM_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -518,6 +518,15 @@ public interface StylePackage extends EPackage {
     int SQUARE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SQUARE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -534,15 +543,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int SQUARE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int SQUARE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -694,6 +694,15 @@ public interface StylePackage extends EPackage {
     int LOZENGE_NODE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int LOZENGE_NODE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -710,15 +719,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int LOZENGE_NODE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int LOZENGE_NODE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -870,6 +870,15 @@ public interface StylePackage extends EPackage {
     int ELLIPSE_NODE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ELLIPSE_NODE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -886,15 +895,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int ELLIPSE_NODE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int ELLIPSE_NODE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -1048,6 +1048,15 @@ public interface StylePackage extends EPackage {
     int BUNDLED_IMAGE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BUNDLED_IMAGE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1064,15 +1073,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int BUNDLED_IMAGE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int BUNDLED_IMAGE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -1215,6 +1215,15 @@ public interface StylePackage extends EPackage {
     int NOTE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NOTE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1231,15 +1240,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int NOTE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int NOTE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -1374,6 +1374,15 @@ public interface StylePackage extends EPackage {
     int DOT_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DOT_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1390,15 +1399,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int DOT_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DOT_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -1543,6 +1543,15 @@ public interface StylePackage extends EPackage {
     int GAUGE_COMPOSITE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1559,15 +1568,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int GAUGE_COMPOSITE_STYLE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -1885,13 +1885,22 @@ public interface StylePackage extends EPackage {
     int CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+
+    /**
      * The feature id for the '<em><b>Rounded Corner</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+    int CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The number of structural features of the '
@@ -1901,7 +1910,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
+    int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The meta object id for the '
@@ -2025,6 +2034,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int FLAT_CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Rounded Corner</b></em>' attribute. <!--
@@ -2223,6 +2241,15 @@ public interface StylePackage extends EPackage {
     int SHAPE_CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Rounded Corner</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -2383,6 +2410,15 @@ public interface StylePackage extends EPackage {
     int WORKSPACE_IMAGE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int WORKSPACE_IMAGE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2399,15 +2435,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int WORKSPACE_IMAGE_DESCRIPTION__LABEL_POSITION = StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION;
-
-    /**
-     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int WORKSPACE_IMAGE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -2970,6 +2997,37 @@ public interface StylePackage extends EPackage {
     int BRACKET_EDGE_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.EDGE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+     * <em>Hide Label Capability Style Description</em>}' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getHideLabelCapabilityStyleDescription()
+     * @generated
+     */
+    int HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION = 22;
+
+    /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Hide Label Capability Style Description</em>' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION_FEATURE_COUNT = 1;
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription
      * <em>Bordered Style Description</em>}'. <!-- begin-user-doc --> <!--
@@ -3044,20 +3102,6 @@ public interface StylePackage extends EPackage {
      * @generated
      */
     EAttribute getNodeStyleDescription_LabelPosition();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#isHideLabelByDefault
-     * <em>Hide Label By Default</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Hide Label By Default</em>
-     *         '.
-     * @see org.eclipse.sirius.diagram.description.style.NodeStyleDescription#isHideLabelByDefault()
-     * @see #getNodeStyleDescription()
-     * @generated
-     */
-    EAttribute getNodeStyleDescription_HideLabelByDefault();
 
     /**
      * Returns the meta object for the attribute '
@@ -3935,6 +3979,33 @@ public interface StylePackage extends EPackage {
     EClass getBracketEdgeStyleDescription();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+     * <em>Hide Label Capability Style Description</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '
+     *         <em>Hide Label Capability Style Description</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+     * @generated
+     */
+    EClass getHideLabelCapabilityStyleDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription#isHideLabelByDefault
+     * <em>Hide Label By Default</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Hide Label By Default</em>
+     *         '.
+     * @see org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription#isHideLabelByDefault()
+     * @see #getHideLabelCapabilityStyleDescription()
+     * @generated
+     */
+    EAttribute getHideLabelCapabilityStyleDescription_HideLabelByDefault();
+
+    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -4014,15 +4085,6 @@ public interface StylePackage extends EPackage {
          * @generated
          */
         EAttribute NODE_STYLE_DESCRIPTION__LABEL_POSITION = StylePackage.eINSTANCE.getNodeStyleDescription_LabelPosition();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Hide Label By Default</b></em>' attribute feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EAttribute NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.eINSTANCE.getNodeStyleDescription_HideLabelByDefault();
 
         /**
          * The meta object literal for the '<em><b>Resize Kind</b></em>'
@@ -4669,6 +4731,27 @@ public interface StylePackage extends EPackage {
          * @generated
          */
         EClass BRACKET_EDGE_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getBracketEdgeStyleDescription();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+         * <em>Hide Label Capability Style Description</em>}' class. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+         * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getHideLabelCapabilityStyleDescription()
+         * @generated
+         */
+        EClass HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getHideLabelCapabilityStyleDescription();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Hide Label By Default</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.eINSTANCE.getHideLabelCapabilityStyleDescription_HideLabelByDefault();
 
     }
 

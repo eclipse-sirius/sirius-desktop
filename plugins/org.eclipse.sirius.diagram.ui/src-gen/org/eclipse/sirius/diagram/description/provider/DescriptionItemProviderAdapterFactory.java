@@ -720,7 +720,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @not-generated
              */
             @Override

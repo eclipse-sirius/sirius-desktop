@@ -22,10 +22,10 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.FoldingFilter;
 import org.eclipse.sirius.diagram.FoldingPointFilter;
 import org.eclipse.sirius.diagram.HideFilter;
+import org.eclipse.sirius.diagram.HideLabelCapabilityStyle;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 import org.eclipse.sirius.diagram.LabelPosition;
-import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.util.DiagramSwitch;
@@ -355,8 +355,8 @@ public class DDiagramElementQuery {
      */
     public boolean isLabelVisibleByDefault() {
         boolean result = true;
-        if (element.getStyle() instanceof NodeStyle) {
-            result = !((NodeStyle) element.getStyle()).isHideLabelByDefault();
+        if (element.getStyle() instanceof HideLabelCapabilityStyle) {
+            result = !((HideLabelCapabilityStyle) element.getStyle()).isHideLabelByDefault();
         }
         return result;
     }

@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
@@ -61,6 +62,9 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getTooltipExpression
  * <em>Tooltip Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#isHideLabelByDefault
+ * <em>Hide Label By Default</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#isRoundedCorner
  * <em>Rounded Corner</em>}</li>
@@ -257,6 +261,28 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @ordered
      */
     protected String tooltipExpression = ContainerStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isHideLabelByDefault()
+     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #isHideLabelByDefault()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean HIDE_LABEL_BY_DEFAULT_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isHideLabelByDefault()
+     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #isHideLabelByDefault()
+     * @generated
+     * @ordered
+     */
+    protected boolean hideLabelByDefault = ContainerStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
 
     /**
      * The default value of the '{@link #isRoundedCorner()
@@ -582,6 +608,30 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      */
     @Override
+    public boolean isHideLabelByDefault() {
+        return hideLabelByDefault;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setHideLabelByDefault(boolean newHideLabelByDefault) {
+        boolean oldHideLabelByDefault = hideLabelByDefault;
+        hideLabelByDefault = newHideLabelByDefault;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT, oldHideLabelByDefault, hideLabelByDefault));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public boolean isRoundedCorner() {
         return roundedCorner;
     }
@@ -634,6 +684,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
             return getLabelAlignment();
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             return getTooltipExpression();
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+            return isHideLabelByDefault();
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             return isRoundedCorner();
         }
@@ -677,6 +729,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             setTooltipExpression((String) newValue);
+            return;
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+            setHideLabelByDefault((Boolean) newValue);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             setRoundedCorner((Boolean) newValue);
@@ -723,6 +778,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             setTooltipExpression(ContainerStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT);
             return;
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+            setHideLabelByDefault(ContainerStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
+            return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             setRoundedCorner(ContainerStyleDescriptionImpl.ROUNDED_CORNER_EDEFAULT);
             return;
@@ -759,6 +817,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
             return labelAlignment != ContainerStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             return ContainerStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !ContainerStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+            return hideLabelByDefault != ContainerStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             return roundedCorner != ContainerStyleDescriptionImpl.ROUNDED_CORNER_EDEFAULT;
         }
@@ -812,6 +872,14 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
             switch (derivedFeatureID) {
             case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
                 return org.eclipse.sirius.viewpoint.description.style.StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == HideLabelCapabilityStyleDescription.class) {
+            switch (derivedFeatureID) {
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+                return StylePackage.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
             default:
                 return -1;
             }
@@ -870,6 +938,14 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
                 return -1;
             }
         }
+        if (baseClass == HideLabelCapabilityStyleDescription.class) {
+            switch (baseFeatureID) {
+            case StylePackage.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT;
+            default:
+                return -1;
+            }
+        }
         return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
@@ -901,6 +977,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         result.append(labelAlignment);
         result.append(", tooltipExpression: ");
         result.append(tooltipExpression);
+        result.append(", hideLabelByDefault: ");
+        result.append(hideLabelByDefault);
         result.append(", roundedCorner: ");
         result.append(roundedCorner);
         result.append(')');

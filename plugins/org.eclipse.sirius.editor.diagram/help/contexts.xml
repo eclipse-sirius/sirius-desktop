@@ -321,7 +321,7 @@
    </context>
    <context id="Lozenge">
      <description>
-       The lozenge style to display a node as a lozenge.
+       The diamond style to display a node as a diamond.
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
@@ -662,7 +662,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -696,7 +696,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -730,7 +730,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -764,7 +764,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -798,7 +798,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -832,7 +832,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -866,7 +866,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -1064,6 +1064,17 @@
    
       </description>
    </context>
+   <context id="HideLabelCapabilityStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code HideLabelCapabilityStyle description -->
+   
+   <!-- End of user code HideLabelCapabilityStyle description -->
+   
+      </description>
+   </context>
    <context id="DragAndDropTargetDescription">
      <description>
        A DragAndDropTargetDescription is a Description or Mapping that can have many DropTools
@@ -1163,7 +1174,7 @@
    </context>
    <context id="LozengeNodeDescription">
      <description>
-       The lozenge style to display a node as a lozenge.
+       The diamond style to display a node as a diamond.
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
@@ -1541,6 +1552,17 @@
    <!-- Start of user code BracketEdgeStyleDescription description -->
    
    <!-- End of user code BracketEdgeStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="HideLabelCapabilityStyleDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code HideLabelCapabilityStyleDescription description -->
+   
+   <!-- End of user code HideLabelCapabilityStyleDescription description -->
    
       </description>
    </context>

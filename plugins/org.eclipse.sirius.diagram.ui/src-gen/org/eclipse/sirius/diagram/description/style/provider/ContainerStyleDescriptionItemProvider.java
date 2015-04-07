@@ -62,6 +62,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
             addIconPathPropertyDescriptor(object);
             addLabelAlignmentPropertyDescriptor(object);
             addTooltipExpressionPropertyDescriptor(object);
+            addHideLabelByDefaultPropertyDescriptor(object);
             addRoundedCornerPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
@@ -206,6 +207,19 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
     }
 
     /**
+     * This adds a property descriptor for the Hide Label By Default feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addHideLabelByDefaultPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_HideLabelCapabilityStyleDescription_hideLabelByDefault_feature"), getString("_UI_HideLabelCapabilityStyleDescription_hideLabelByDefault_description"),
+                StylePackage.Literals.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                getString("_UI_LabelPropertyCategory"), null));
+    }
+
+    /**
      * This adds a property descriptor for the Rounded Corner feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -253,6 +267,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

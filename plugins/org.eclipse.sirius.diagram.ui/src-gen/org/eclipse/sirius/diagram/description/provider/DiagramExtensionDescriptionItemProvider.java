@@ -44,7 +44,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
  * @generated
  */
 public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -82,11 +82,11 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_RepresentationExtensionDescription_name_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RepresentationExtensionDescription_name_feature", "_UI_RepresentationExtensionDescription_type"),
-                        DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RepresentationExtensionDescription_name_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_RepresentationExtensionDescription_name_feature", "_UI_RepresentationExtensionDescription_type"),
+                DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -216,7 +216,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -238,7 +238,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

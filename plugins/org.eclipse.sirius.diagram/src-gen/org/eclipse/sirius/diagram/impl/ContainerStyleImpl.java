@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.HideLabelCapabilityStyle;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
@@ -41,6 +42,9 @@ import org.eclipse.sirius.viewpoint.impl.LabelStyleImpl;
  * <em>Border Size Computation Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#getBorderColor
  * <em>Border Color</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#isHideLabelByDefault
+ * <em>Hide Label By Default</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,6 +122,28 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * @ordered
      */
     protected RGBValues borderColor = ContainerStyleImpl.BORDER_COLOR_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isHideLabelByDefault()
+     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #isHideLabelByDefault()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean HIDE_LABEL_BY_DEFAULT_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isHideLabelByDefault()
+     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #isHideLabelByDefault()
+     * @generated
+     * @ordered
+     */
+    protected boolean hideLabelByDefault = ContainerStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -259,6 +285,30 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * @generated
      */
     @Override
+    public boolean isHideLabelByDefault() {
+        return hideLabelByDefault;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setHideLabelByDefault(boolean newHideLabelByDefault) {
+        boolean oldHideLabelByDefault = hideLabelByDefault;
+        hideLabelByDefault = newHideLabelByDefault;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT, oldHideLabelByDefault, hideLabelByDefault));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -284,6 +334,8 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
             return getBorderSizeComputationExpression();
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
             return getBorderColor();
+        case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
+            return isHideLabelByDefault();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -307,6 +359,9 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
             return;
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
             setBorderColor((RGBValues) newValue);
+            return;
+        case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
+            setHideLabelByDefault((Boolean) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -332,6 +387,9 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
             setBorderColor(ContainerStyleImpl.BORDER_COLOR_EDEFAULT);
             return;
+        case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
+            setHideLabelByDefault(ContainerStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -353,6 +411,8 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
                     .equals(borderSizeComputationExpression);
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
             return ContainerStyleImpl.BORDER_COLOR_EDEFAULT == null ? borderColor != null : !ContainerStyleImpl.BORDER_COLOR_EDEFAULT.equals(borderColor);
+        case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
+            return hideLabelByDefault != ContainerStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -386,6 +446,14 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
                 return DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
             case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
                 return DiagramPackage.BORDERED_STYLE__BORDER_COLOR;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == HideLabelCapabilityStyle.class) {
+            switch (derivedFeatureID) {
+            case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
+                return DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT;
             default:
                 return -1;
             }
@@ -426,6 +494,14 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
                 return -1;
             }
         }
+        if (baseClass == HideLabelCapabilityStyle.class) {
+            switch (baseFeatureID) {
+            case DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT:
+                return DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT;
+            default:
+                return -1;
+            }
+        }
         return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
@@ -447,6 +523,8 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
         result.append(borderSizeComputationExpression);
         result.append(", borderColor: ");
         result.append(borderColor);
+        result.append(", hideLabelByDefault: ");
+        result.append(hideLabelByDefault);
         result.append(')');
         return result.toString();
     }

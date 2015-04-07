@@ -2356,22 +2356,22 @@ public interface DiagramPackage extends EPackage {
     int NODE_STYLE__BORDER_COLOR = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int NODE_STYLE__LABEL_POSITION = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 4;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int NODE_STYLE__HIDE_LABEL_BY_DEFAULT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 5;
+    int NODE_STYLE__HIDE_LABEL_BY_DEFAULT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 4;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int NODE_STYLE__LABEL_POSITION = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>Node Style</em>' class.
@@ -2494,15 +2494,6 @@ public interface DiagramPackage extends EPackage {
     int DOT__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DOT__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2510,6 +2501,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DOT__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DOT__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '
@@ -2736,13 +2736,22 @@ public interface DiagramPackage extends EPackage {
     int CONTAINER_STYLE__BORDER_COLOR = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 3;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 4;
+
+    /**
      * The number of structural features of the '<em>Container Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_FEATURE_COUNT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 4;
+    int CONTAINER_STYLE_FEATURE_COUNT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '
@@ -2855,6 +2864,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int FLAT_CONTAINER_STYLE__BORDER_COLOR = DiagramPackage.CONTAINER_STYLE__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int FLAT_CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Background Style</b></em>' attribute. <!--
@@ -3005,6 +3023,15 @@ public interface DiagramPackage extends EPackage {
     int SHAPE_CONTAINER_STYLE__BORDER_COLOR = DiagramPackage.CONTAINER_STYLE__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SHAPE_CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3143,15 +3170,6 @@ public interface DiagramPackage extends EPackage {
     int SQUARE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SQUARE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3159,6 +3177,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int SQUARE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SQUARE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -3308,15 +3335,6 @@ public interface DiagramPackage extends EPackage {
     int ELLIPSE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int ELLIPSE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3324,6 +3342,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int ELLIPSE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ELLIPSE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Horizontal Diameter</b></em>' attribute.
@@ -3473,15 +3500,6 @@ public interface DiagramPackage extends EPackage {
     int LOZENGE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int LOZENGE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3489,6 +3507,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int LOZENGE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LOZENGE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -3639,15 +3666,6 @@ public interface DiagramPackage extends EPackage {
     int BUNDLED_IMAGE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int BUNDLED_IMAGE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3655,6 +3673,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int BUNDLED_IMAGE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUNDLED_IMAGE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
@@ -3796,15 +3823,6 @@ public interface DiagramPackage extends EPackage {
     int WORKSPACE_IMAGE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int WORKSPACE_IMAGE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3812,6 +3830,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int WORKSPACE_IMAGE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WORKSPACE_IMAGE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Workspace Path</b></em>' attribute. <!--
@@ -3944,15 +3971,6 @@ public interface DiagramPackage extends EPackage {
     int CUSTOM_STYLE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int CUSTOM_STYLE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3960,6 +3978,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int CUSTOM_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_STYLE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
@@ -4268,15 +4295,6 @@ public interface DiagramPackage extends EPackage {
     int GAUGE_COMPOSITE_STYLE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int GAUGE_COMPOSITE_STYLE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4284,6 +4302,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int GAUGE_COMPOSITE_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GAUGE_COMPOSITE_STYLE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Alignment</b></em>' attribute. <!--
@@ -4491,15 +4518,6 @@ public interface DiagramPackage extends EPackage {
     int NOTE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
-     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int NOTE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
-
-    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4507,6 +4525,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int NOTE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+
+    /**
+     * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int NOTE__LABEL_POSITION = DiagramPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' attribute. <!--
@@ -5092,6 +5119,37 @@ public interface DiagramPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle
+     * <em>Hide Label Capability Style</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.HideLabelCapabilityStyle
+     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getHideLabelCapabilityStyle()
+     * @generated
+     */
+    int HIDE_LABEL_CAPABILITY_STYLE = 44;
+
+    /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT = 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Hide Label Capability Style</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int HIDE_LABEL_CAPABILITY_STYLE_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.ContainerLayout
      * <em>Container Layout</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -5100,7 +5158,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerLayout()
      * @generated
      */
-    int CONTAINER_LAYOUT = 44;
+    int CONTAINER_LAYOUT = 45;
 
     /**
      * The meta object id for the '
@@ -5111,7 +5169,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLabelPosition()
      * @generated
      */
-    int LABEL_POSITION = 45;
+    int LABEL_POSITION = 46;
 
     /**
      * The meta object id for the '
@@ -5123,7 +5181,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerShape()
      * @generated
      */
-    int CONTAINER_SHAPE = 46;
+    int CONTAINER_SHAPE = 47;
 
     /**
      * The meta object id for the '
@@ -5135,7 +5193,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBackgroundStyle()
      * @generated
      */
-    int BACKGROUND_STYLE = 47;
+    int BACKGROUND_STYLE = 48;
 
     /**
      * The meta object id for the '
@@ -5147,7 +5205,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBundledImageShape()
      * @generated
      */
-    int BUNDLED_IMAGE_SHAPE = 48;
+    int BUNDLED_IMAGE_SHAPE = 49;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.LineStyle
@@ -5157,7 +5215,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLineStyle()
      * @generated
      */
-    int LINE_STYLE = 49;
+    int LINE_STYLE = 50;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.EdgeArrows
@@ -5168,7 +5226,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeArrows()
      * @generated
      */
-    int EDGE_ARROWS = 50;
+    int EDGE_ARROWS = 51;
 
     /**
      * The meta object id for the '
@@ -5179,7 +5237,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeRouting()
      * @generated
      */
-    int EDGE_ROUTING = 51;
+    int EDGE_ROUTING = 52;
 
     /**
      * The meta object id for the '
@@ -5190,7 +5248,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAlignmentKind()
      * @generated
      */
-    int ALIGNMENT_KIND = 52;
+    int ALIGNMENT_KIND = 53;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.ResizeKind
@@ -5201,7 +5259,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getResizeKind()
      * @generated
      */
-    int RESIZE_KIND = 53;
+    int RESIZE_KIND = 54;
 
     /**
      * The meta object id for the '
@@ -5213,7 +5271,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getArrangeConstraint()
      * @generated
      */
-    int ARRANGE_CONSTRAINT = 54;
+    int ARRANGE_CONSTRAINT = 55;
 
     /**
      * Returns the meta object for class '
@@ -6297,20 +6355,6 @@ public interface DiagramPackage extends EPackage {
     EAttribute getNodeStyle_LabelPosition();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.NodeStyle#isHideLabelByDefault
-     * <em>Hide Label By Default</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Hide Label By Default</em>
-     *         '.
-     * @see org.eclipse.sirius.diagram.NodeStyle#isHideLabelByDefault()
-     * @see #getNodeStyle()
-     * @generated
-     */
-    EAttribute getNodeStyle_HideLabelByDefault();
-
-    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.Dot
      * <em>Dot</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -7249,6 +7293,32 @@ public interface DiagramPackage extends EPackage {
     EClass getDragAndDropTarget();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle
+     * <em>Hide Label Capability Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Hide Label Capability Style</em>'.
+     * @see org.eclipse.sirius.diagram.HideLabelCapabilityStyle
+     * @generated
+     */
+    EClass getHideLabelCapabilityStyle();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle#isHideLabelByDefault
+     * <em>Hide Label By Default</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Hide Label By Default</em>
+     *         '.
+     * @see org.eclipse.sirius.diagram.HideLabelCapabilityStyle#isHideLabelByDefault()
+     * @see #getHideLabelCapabilityStyle()
+     * @generated
+     */
+    EAttribute getHideLabelCapabilityStyle_HideLabelByDefault();
+
+    /**
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.diagram.ContainerLayout
      * <em>Container Layout</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -8178,15 +8248,6 @@ public interface DiagramPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * <em><b>Hide Label By Default</b></em>' attribute feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EAttribute NODE_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.eINSTANCE.getNodeStyle_HideLabelByDefault();
-
-        /**
-         * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.impl.DotImpl <em>Dot</em>}' class.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
@@ -8907,6 +8968,27 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EClass DRAG_AND_DROP_TARGET = DiagramPackage.eINSTANCE.getDragAndDropTarget();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle
+         * <em>Hide Label Capability Style</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.HideLabelCapabilityStyle
+         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getHideLabelCapabilityStyle()
+         * @generated
+         */
+        EClass HIDE_LABEL_CAPABILITY_STYLE = DiagramPackage.eINSTANCE.getHideLabelCapabilityStyle();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Hide Label By Default</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.eINSTANCE.getHideLabelCapabilityStyle_HideLabelByDefault();
 
         /**
          * The meta object literal for the '

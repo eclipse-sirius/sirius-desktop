@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.style.hidelabelcapabilitystyledescription;
 
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
@@ -21,12 +21,8 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
  */
-public class NodeStyleDescriptionHideLabelByDefaultPropertySectionSpec extends NodeStyleDescriptionHideLabelByDefaultPropertySection {
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxPropertySection#refresh()
-     */
+public class HideLabelCapabilityStyleDescriptionHideLabelByDefaultPropertySectionSpec extends HideLabelCapabilityStyleDescriptionHideLabelByDefaultPropertySection {
+
     @Override
     public void refresh() {
         super.refresh();
@@ -34,11 +30,6 @@ public class NodeStyleDescriptionHideLabelByDefaultPropertySectionSpec extends N
         updateReadOnlyStatus();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection#shouldBeReadOnly()
-     */
     @Override
     protected boolean shouldBeReadOnly() {
         boolean result = super.shouldBeReadOnly();
@@ -49,21 +40,11 @@ public class NodeStyleDescriptionHideLabelByDefaultPropertySectionSpec extends N
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection#makeReadonly()
-     */
     @Override
     protected void makeReadonly() {
         super.makeReadonly();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection#makeWrittable()
-     */
     @Override
     protected void makeWrittable() {
         super.makeWrittable();

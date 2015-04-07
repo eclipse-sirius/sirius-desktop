@@ -33,9 +33,6 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getLabelPosition
  * <em>Label Position</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#isHideLabelByDefault
- * <em>Hide Label By Default</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getResizeKind
  * <em>Resize Kind</em>}</li>
  * </ul>
@@ -45,7 +42,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * @model abstract="true"
  * @generated
  */
-public interface NodeStyleDescription extends StyleDescription, BorderedStyleDescription, LabelStyleDescription, TooltipStyleDescription {
+public interface NodeStyleDescription extends StyleDescription, BorderedStyleDescription, LabelStyleDescription, TooltipStyleDescription, HideLabelCapabilityStyleDescription {
     /**
      * Returns the value of the '<em><b>Size Computation Expression</b></em>'
      * attribute. The default value is <code>"3"</code>. <!-- begin-user-doc -->
@@ -107,36 +104,6 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * @generated
      */
     void setLabelPosition(LabelPosition value);
-
-    /**
-     * Returns the value of the '<em><b>Hide Label By Default</b></em>'
-     * attribute. The default value is <code>"false"</code>. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The default visibility
-     * of the label (available only if labelPosition equals BORDER). A change of
-     * this option does not affect already existing elements. <!-- end-model-doc
-     * -->
-     *
-     * @return the value of the '<em>Hide Label By Default</em>' attribute.
-     * @see #setHideLabelByDefault(boolean)
-     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription_HideLabelByDefault()
-     * @model default="false"
-     * @generated
-     */
-    boolean isHideLabelByDefault();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#isHideLabelByDefault
-     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Hide Label By Default</em>'
-     *            attribute.
-     * @see #isHideLabelByDefault()
-     * @generated
-     */
-    void setHideLabelByDefault(boolean value);
 
     /**
      * Returns the value of the '<em><b>Resize Kind</b></em>' attribute. The

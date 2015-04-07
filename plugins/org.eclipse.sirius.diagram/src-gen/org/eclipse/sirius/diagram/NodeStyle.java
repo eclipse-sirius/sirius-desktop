@@ -25,8 +25,6 @@ import org.eclipse.sirius.viewpoint.Style;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.NodeStyle#getLabelPosition <em>Label
  * Position</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.NodeStyle#isHideLabelByDefault <em>Hide
- * Label By Default</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,7 +32,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * @model abstract="true"
  * @generated
  */
-public interface NodeStyle extends LabelStyle, Style, BorderedStyle {
+public interface NodeStyle extends LabelStyle, Style, BorderedStyle, HideLabelCapabilityStyle {
     /**
      * Returns the value of the '<em><b>Label Position</b></em>' attribute. The
      * literals are from the enumeration
@@ -65,35 +63,5 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle {
      * @generated
      */
     void setLabelPosition(LabelPosition value);
-
-    /**
-     * Returns the value of the '<em><b>Hide Label By Default</b></em>'
-     * attribute. The default value is <code>"false"</code>. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The default visibility
-     * of the label (available only if labelPosition equals BORDER). A change of
-     * this option does not affect already existing elements. <!-- end-model-doc
-     * -->
-     *
-     * @return the value of the '<em>Hide Label By Default</em>' attribute.
-     * @see #setHideLabelByDefault(boolean)
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getNodeStyle_HideLabelByDefault()
-     * @model default="false"
-     * @generated
-     */
-    boolean isHideLabelByDefault();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.NodeStyle#isHideLabelByDefault
-     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Hide Label By Default</em>'
-     *            attribute.
-     * @see #isHideLabelByDefault()
-     * @generated
-     */
-    void setHideLabelByDefault(boolean value);
 
 } // NodeStyle
