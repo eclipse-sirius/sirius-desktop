@@ -71,12 +71,9 @@ export TARGET_DIR="$TARGET_ROOT/$FULL_VERSION/$PLATFORM"
 mkdir -p "$TARGET_DIR"
 # The actual publication of the p2 repo produced by the build
 cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
-cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$TARGET_DIR"
-
 # Also publish the tests repo right under the main one
 mkdir -p "$TARGET_DIR/tests"
 cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.tests.update/target/repository/* "$TARGET_DIR/tests"
-cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_DIR/tests"
 # Publish the target platform definitions used, so that dowstream projects can reference them
 mkdir -p "$TARGET_DIR/targets"
 cp -a "$WORKSPACE"/releng/org.eclipse.sirius.targets/* "$TARGET_DIR/targets"
