@@ -10,8 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -23,17 +31,22 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
-import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.swtbot.support.utils.tree.TreeUtils;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
+import org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler;
+import org.eclipse.sirius.ui.tools.api.control.SiriusUncontrolHandler;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
+import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.junit.Assert;
 
 /**
@@ -157,18 +170,15 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     private void processCheckOpenedDiagramBehaviourOnControlUncontrol(String diagramName, String packageName) {
         final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "460351Diagram", diagramName, DDiagram.class);
 
-        SWTBotTreeItem packageNodeToControl = localSession.getRootSessionTreeItem().expandNode(MODEL).expandNode("460351").expandNode("p1").select();
-
         // Execute control
-        SWTBotUtils.clickContextMenu(packageNodeToControl, "Control...");
+        launchControlUncontrolUsingHandler(true);
         checkDiagramIsEditable(editor, true, packageName);
 
         // Save session to be sync again
         localSession.getOpenedSession().save(new NullProgressMonitor());
 
         // Execute uncontrol
-        packageNodeToControl = localSession.getRootSessionTreeItem().expandNode(MODEL).expandNode("460351").expandNode("p1").select();
-        SWTBotUtils.clickContextMenu(packageNodeToControl, "Uncontrol");
+        launchControlUncontrolUsingHandler(false);
         checkDiagramIsEditable(editor, false, packageName);
 
         // Save session to be sync again
@@ -178,18 +188,15 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     private void processCheckOpenedTableBehaviourOnControlUncontrol(String tableName) {
         final SWTBotEditor tableEditorBot = openRepresentation(localSession.getOpenedSession(), "460351Table", tableName, DTable.class);
 
-        SWTBotTreeItem packageNodeToControl = localSession.getRootSessionTreeItem().expandNode(MODEL).expandNode("460351").expandNode("p1").select();
-
         // Execute control
-        SWTBotUtils.clickContextMenu(packageNodeToControl, "Control...");
+        launchControlUncontrolUsingHandler(true);
         checkTableIsEditable(tableEditorBot, true);
 
         // Save session to be sync again
         localSession.getOpenedSession().save(new NullProgressMonitor());
 
         // Execute uncontrol
-        packageNodeToControl = localSession.getRootSessionTreeItem().expandNode(MODEL).expandNode("460351").expandNode("p1").select();
-        SWTBotUtils.clickContextMenu(packageNodeToControl, "Uncontrol");
+        launchControlUncontrolUsingHandler(false);
         checkTableIsEditable(tableEditorBot, false);
 
         // Save session to be sync again
@@ -199,22 +206,69 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     private void processCheckOpenedTreeBehaviourOnControlUncontrol(String treeName) {
         final SWTBotEditor treeEditorBot = openRepresentation(localSession.getOpenedSession(), "460351Tree", treeName, DTree.class);
 
-        SWTBotTreeItem packageNodeToControl = localSession.getRootSessionTreeItem().expandNode(MODEL).expandNode("460351").expandNode("p1").select();
-
         // Execute control
-        SWTBotUtils.clickContextMenu(packageNodeToControl, "Control...");
+        launchControlUncontrolUsingHandler(true);
         checkTreeIsEditable(treeEditorBot, true);
 
         // Save session to be sync again
         localSession.getOpenedSession().save(new NullProgressMonitor());
 
         // Execute uncontrol
-        packageNodeToControl = localSession.getRootSessionTreeItem().expandNode(MODEL).expandNode("460351").expandNode("p1").select();
-        SWTBotUtils.clickContextMenu(packageNodeToControl, "Uncontrol");
+        launchControlUncontrolUsingHandler(false);
         checkTreeIsEditable(treeEditorBot, false);
 
         // Save session to be sync again
         localSession.getOpenedSession().save(new NullProgressMonitor());
+    }
+
+    /**
+     * This method is used to bypass a current issue where the "Control" or
+     * "Uncontrol" actions are unexpectedly disabled. Therefore
+     * SWTBotUtils.clickContextMenu can't be used. <br/>
+     * Note that the first step is to access the package p1 and then to
+     * control/uncontrol it.
+     * 
+     * @param shouldControl
+     *            true if we should control, false if we should uncontrol
+     */
+    private void launchControlUncontrolUsingHandler(final boolean shouldControl) {
+        // Explore the semantic model to find the package "p1" that will be
+        // control/uncontrol
+        Resource semanticResource = localSession.getOpenedSession().getSemanticResources().iterator().next();
+        Assert.assertTrue("The semantic resource is not the expected one", semanticResource.getURI().toString().endsWith(MODEL));
+        EObject rootPackage = semanticResource.getContents().iterator().next();
+        Assert.assertTrue("The element is not an EPackage as expected", rootPackage instanceof EPackage);
+        Assert.assertEquals("The element is not the EPackage expected", "460351", ((EPackage) rootPackage).getName());
+        final EObject eObject = rootPackage.eContents().iterator().next();
+        Assert.assertTrue("The element is not an EPackage as expected", eObject instanceof EPackage);
+        Assert.assertEquals("The element is not the EPackage expected", "p1", ((EPackage) eObject).getName());
+        final EPackage p1 = (EPackage) eObject;
+
+        UIThreadRunnable.asyncExec(new VoidResult() {
+
+            @Override
+            public void run() {
+                try {
+                    final Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+                    new ProgressMonitorDialog(activeShell).run(false, false, new WorkspaceModifyOperation() {
+
+                        @Override
+                        protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
+                            if (shouldControl) {
+                                new SiriusControlHandler().performControl(activeShell, p1, new NullProgressMonitor());
+                            } else {
+                                new SiriusUncontrolHandler().performUncontrol(activeShell, p1, new NullProgressMonitor());
+                            }
+                        }
+                    });
+                } catch (InvocationTargetException e) {
+                    fail("Cannot launch control/uncontrol");
+                } catch (InterruptedException e) {
+                    fail("Cannot launch control/uncontrol");
+                }
+
+            }
+        });
     }
 
     private void checkDiagramIsEditable(final SWTBotSiriusDiagramEditor editor, boolean isControlling, String elementToMoveName) {
