@@ -11,29 +11,20 @@ package org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.
 
 // Start of user code imports
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.jface.bindings.Trigger;
-import org.eclipse.jface.bindings.TriggerSequence;
-import org.eclipse.jface.bindings.keys.KeyStroke;
-import org.eclipse.jface.fieldassist.ContentProposalAdapter;
-import org.eclipse.jface.fieldassist.TextContentAdapter;
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
-import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
-import org.eclipse.sirius.ui.tools.api.assist.IAssistContentProvider;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
+import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
+import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
-import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.keys.IBindingService;
-import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 // End of user code imports
@@ -42,7 +33,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * A section for the invocationMessageFinderExpression property of a
  * TReturnMessageMapping object.
  */
-public class TReturnMessageMappingInvocationMessageFinderExpressionPropertySection extends AbstractTextPropertySection implements ContentProposalClient {
+public class TReturnMessageMappingInvocationMessageFinderExpressionPropertySection extends AbstractTextWithButtonPropertySection {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -60,14 +51,14 @@ public class TReturnMessageMappingInvocationMessageFinderExpressionPropertySecti
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "InvocationMessageFinderExpression"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -79,21 +70,21 @@ public class TReturnMessageMappingInvocationMessageFinderExpressionPropertySecti
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
     public EAttribute getFeature() {
         return TemplatePackage.eINSTANCE.getTReturnMessageMapping_InvocationMessageFinderExpression();
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
+     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
     protected Object getFeatureValue(String newText) {
         return newText;
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
+     * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
@@ -120,30 +111,7 @@ public class TReturnMessageMappingInvocationMessageFinderExpressionPropertySecti
         help.setToolTipText(getToolTipText());
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
-        List<IAssistContentProvider> extension = EclipseUtil.getExtensionPlugins(IAssistContentProvider.class, IAssistContentProvider.ID, IAssistContentProvider.CLASS_ATTRIBUTE);
-        if (!(extension.size() == 0)) {
-            IAssistContentProvider contentProposalAdapter = extension.get(0);
-            contentProposalAdapter.setView(this);
-            IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class); // gives
-                                                                                                                            // the
-                                                                                                                            // user
-                                                                                                                            // content
-                                                                                                                            // assist
-                                                                                                                            // binding
-            TriggerSequence[] activeBindinds = bindingService.getActiveBindingsFor(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
-            if (activeBindinds != null && activeBindinds.length > 0) {
-                TriggerSequence sequence = activeBindinds[0];
-                KeyStroke keyStroke = getKeyStroke(sequence);
-
-                TextContentAdapter textContentAdapter = new TextContentAdapter();
-                ContentProposalAdapter adapter = new ContentProposalAdapter(text, textContentAdapter, contentProposalAdapter, keyStroke, IAssistContentProvider.AUTO_ACTIVATION_CHARACTERS);
-                adapter.setPopupSize(new Point(300, 100)); // set content
-                                                           // proposal popup
-                                                           // size
-                adapter.addContentProposalListener(contentProposalAdapter); // close
-                                                                            // popup
-            }
-        }
+        TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
 
         // Start of user code create controls
 
@@ -151,13 +119,16 @@ public class TReturnMessageMappingInvocationMessageFinderExpressionPropertySecti
 
     }
 
-    private KeyStroke getKeyStroke(TriggerSequence sequence) {
-        for (Trigger trigger : sequence.getTriggers()) {
-            if (trigger instanceof KeyStroke) {
-                return (KeyStroke) trigger;
+    @Override
+    protected SelectionListener createButtonListener() {
+        return new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), TReturnMessageMappingInvocationMessageFinderExpressionPropertySection.this,
+                        text.getText());
+                dialog.open();
+                text.setText(dialog.getResult());
             }
-        }
-        return null;
+        };
     }
 
     /**

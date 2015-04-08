@@ -110,6 +110,10 @@ You can easily identify _Interpreted Expressions_ by their yellow background in 
 
 !images/interpreted_expressions.png!
 
+Also, by clicking on the button next to the text field, you can open a dialog with a bigger text area (providing auto-completion too) to type your expression more comfortably. Note that you can add line feeds or tabulations if you want, since they are removed when clicking on the "OK" button.
+
+!images/textAreaDialog.png!
+
 h3(#model_operations). Model Operations
 
 Whenever a _VSM_ requires you to specify a behavior, for example inside any _Tool_ definition, you can use any of the available _Model Operations_ to do so. Refer to the "Model Operations documentation":Model_Operations.html for more details.
