@@ -2042,13 +2042,13 @@
       <eClassifiers xsi:type="ecore:EClass" name="RoundedCornerStyleDescription" abstract="true"
           eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/StyleDescription">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="arcWidth" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"
-            defaultValueLiteral="1">
+            defaultValueLiteral="10">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="The width of the ellipse used to draw the corners."/>
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="arcHeight" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"
-            defaultValueLiteral="1">
+            defaultValueLiteral="10">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="The height of the ellipse used to draw the corners."/>
           </eAnnotations>

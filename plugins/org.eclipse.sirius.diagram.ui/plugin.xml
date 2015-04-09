@@ -1857,6 +1857,10 @@
              class="org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramSplitMigrationParticipant"
              kind="VSM">
        </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.description.RoundedCornerDefaultValuesMigrationParticipant"
+            kind="VSM">
+      </participant>
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">

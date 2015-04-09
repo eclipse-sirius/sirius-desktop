@@ -44,7 +44,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
      * @generated
      * @ordered
      */
-    protected static final Integer ARC_WIDTH_EDEFAULT = new Integer(1);
+    protected static final Integer ARC_WIDTH_EDEFAULT = new Integer(10);
 
     /**
      * The cached value of the '{@link #getArcWidth() <em>Arc Width</em>}'
@@ -64,7 +64,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
      * @generated
      * @ordered
      */
-    protected static final Integer ARC_HEIGHT_EDEFAULT = new Integer(1);
+    protected static final Integer ARC_HEIGHT_EDEFAULT = new Integer(10);
 
     /**
      * The cached value of the '{@link #getArcHeight() <em>Arc Height</em>}'

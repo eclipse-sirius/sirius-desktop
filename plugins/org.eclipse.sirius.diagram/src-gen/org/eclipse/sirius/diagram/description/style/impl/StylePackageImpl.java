@@ -1384,9 +1384,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
         initEClass(roundedCornerStyleDescriptionEClass, RoundedCornerStyleDescription.class, "RoundedCornerStyleDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getRoundedCornerStyleDescription_ArcWidth(), theEcorePackage.getEIntegerObject(), "arcWidth", "1", 0, 1, RoundedCornerStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
+        initEAttribute(getRoundedCornerStyleDescription_ArcWidth(), theEcorePackage.getEIntegerObject(), "arcWidth", "10", 0, 1, RoundedCornerStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getRoundedCornerStyleDescription_ArcHeight(), theEcorePackage.getEIntegerObject(), "arcHeight", "1", 0, 1, RoundedCornerStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
+        initEAttribute(getRoundedCornerStyleDescription_ArcHeight(), theEcorePackage.getEIntegerObject(), "arcHeight", "10", 0, 1, RoundedCornerStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(containerStyleDescriptionEClass, ContainerStyleDescription.class, "ContainerStyleDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
@@ -1524,8 +1524,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         addAnnotation(getSizeComputationContainerStyleDescription_WidthComputationExpression(), source, new String[] {});
         addAnnotation(getSizeComputationContainerStyleDescription_HeightComputationExpression(), source, new String[] {});
         addAnnotation(getEdgeStyleDescription_SizeComputationExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", "view",
-            "diagram.DEdge | the current edge view for which the size is calculated.", "sourceView", "diagram.EdgeTarget | the source view of the current edge.", "targetView",
-        "diagram.EdgeTarget | the target view of the current edge." });
+                "diagram.DEdge | the current edge view for which the size is calculated.", "sourceView", "diagram.EdgeTarget | the source view of the current edge.", "targetView",
+                "diagram.EdgeTarget | the target view of the current edge." });
     }
 
     /**
