@@ -17,12 +17,12 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.SessionListener;
 
 import com.google.common.base.Preconditions;
@@ -69,7 +69,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      */
     public void initialize() {
         // Detect controlled resources for future resource add.
-        detectControlledResources();
+        refreshControlledResources(session);
         session.getTransactionalEditingDomain().addResourceSetListener(this);
     }
 
@@ -80,7 +80,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
             int change = notif.getEventType();
             boolean resourcesWereAdded = change == Notification.ADD || change == Notification.SET || change == Notification.ADD_MANY;
             if (resourcesWereAdded) {
-                return new ControlledResourcesDetectionCommand(session.getTransactionalEditingDomain());
+                return new RefreshControlledResourcesCommand(session);
             }
         }
         return null;
@@ -101,23 +101,30 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      * Detects controlled resources and update controlledResourcesList in
      * {@link DAnalysisSessionImpl}.
      */
-    void detectControlledResources() {
+    static void refreshControlledResources(DAnalysisSessionImpl session) {
         Collection<Resource> semantics = session.getSemanticResources();
         Collection<Resource> allResources = Lists.newArrayList(session.getTransactionalEditingDomain().getResourceSet().getResources());
         Collection<Resource> controlledResources = session.getControlledResources();
 
-        // Add controlled resources which are in the ResourceSet but not yet known as such.
+        // Add controlled resources which are in the ResourceSet but not yet
+        // known as such.
         boolean addedControlledResources = false;
         for (Resource resource : allResources) {
-            // FIXME This does not consider resources which are in controlledResources but not actually controlled anymore.
+            // FIXME This does not consider resources which are in
+            // controlledResources but not actually controlled anymore.
             if (!controlledResources.contains(resource) && hasControlledRootIn(resource, semantics)) {
-                controlledResources.add(resource);
+                // Use addUnique if possible, we already checks for containment just above. 
+                if (controlledResources instanceof InternalEList<?>) {
+                    ((InternalEList<Resource>) controlledResources).addUnique(resource);
+                } else {
+                    controlledResources.add(resource);
+                }
                 addedControlledResources = true;
                 session.registerResourceInCrossReferencer(resource);
             }
         }
 
-        // Remove controlled resources which are not in the ResourceSet anymore.
+        // Only keep controlled resources which are still in the ResourceSet.
         boolean removedControlledResources = controlledResources.retainAll(allResources);
 
         if (addedControlledResources || removedControlledResources) {
@@ -138,17 +145,20 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     }
 
     /**
-     * Simply wraps a call to {@link #detectControlledResources()} into a
+     * Simply wraps a call to {@link #refreshControlledResources()} into a
      * {@link RecordingCommand}.
      */
-    private class ControlledResourcesDetectionCommand extends RecordingCommand {
-        public ControlledResourcesDetectionCommand(TransactionalEditingDomain domain) {
-            super(domain, "Controlled resource detection");
+    private static class RefreshControlledResourcesCommand extends RecordingCommand {
+        private final DAnalysisSessionImpl session;
+
+        public RefreshControlledResourcesCommand(DAnalysisSessionImpl session) {
+            super(session.getTransactionalEditingDomain(), "Controlled resource detection");
+            this.session = session;
         }
 
         @Override
         protected void doExecute() {
-            detectControlledResources();
+            refreshControlledResources(session);
         }
     }
 }

@@ -610,7 +610,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
         }
 
-        tracker.detectControlledResources();
+        ControlledResourcesDetector.refreshControlledResources(this);
 
         registerResourceInCrossReferencer(newResource);
     }
@@ -746,7 +746,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             enableCrossReferencerResolve(res);
         }
 
-        tracker.detectControlledResources();
+        ControlledResourcesDetector.refreshControlledResources(this);
     }
 
     void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {

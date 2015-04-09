@@ -192,6 +192,6 @@ class SessionResourcesTracker {
     }
 
     void detectControlledResources() {
-        controlledResourcesDetector.detectControlledResources();
+        ControlledResourcesDetector.refreshControlledResources(session);
     }
 }
