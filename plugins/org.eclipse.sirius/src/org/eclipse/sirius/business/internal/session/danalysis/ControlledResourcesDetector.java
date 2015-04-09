@@ -47,6 +47,16 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     public ControlledResourcesDetector(DAnalysisSessionImpl session) {
         this.session = Preconditions.checkNotNull(session);
     }
+    
+    /**
+     * Looks for already loaded resources and then add this listener to the
+     * session's transactional editing domain.
+     */
+    public void initialize() {
+        // Detect controlled resources for future resource add.
+        refreshControlledResources(session);
+        session.getTransactionalEditingDomain().addResourceSetListener(this);
+    }
 
     @Override
     public NotificationFilter getFilter() {
@@ -61,16 +71,6 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     @Override
     public boolean isAggregatePrecommitListener() {
         return true;
-    }
-
-    /**
-     * Looks for already loaded resources and then add this listener to the
-     * session's transactional editing domain.
-     */
-    public void initialize() {
-        // Detect controlled resources for future resource add.
-        refreshControlledResources(session);
-        session.getTransactionalEditingDomain().addResourceSetListener(this);
     }
 
     @Override

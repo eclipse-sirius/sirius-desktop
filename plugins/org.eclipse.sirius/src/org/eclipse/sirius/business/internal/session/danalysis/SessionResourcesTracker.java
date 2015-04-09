@@ -96,7 +96,7 @@ class SessionResourcesTracker {
         // resources.
         handlePossibleControlledResources();
         monitor.worked(1);
-        dAnalysisRefresher.init();
+        dAnalysisRefresher.initialize();
     }
 
     void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
