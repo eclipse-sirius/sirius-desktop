@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -34,6 +35,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Pre-commit listener to handle controlled resources.
@@ -108,47 +110,36 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      * {@link DAnalysisSessionImpl}.
      */
     void detectControlledResources() {
-        final Collection<Resource> semantics = session.getSemanticResources();
-        final Collection<Resource> resourcesToCheck = new ArrayList<Resource>(session.getTransactionalEditingDomain().getResourceSet().getResources());
-        List<Resource> controlledResources = session.getControlledResources();
-        List<Resource> controlledResourcesBefore = new ArrayList<Resource>(session.getControlledResources());
+        Collection<Resource> semantics = session.getSemanticResources();
+        Collection<Resource> allResources = Lists.newArrayList(session.getTransactionalEditingDomain().getResourceSet().getResources());
+        Collection<Resource> controlledResources = session.getControlledResources();
 
-        // add controlled resource
-        for (final Resource resource : Iterables.filter(resourcesToCheck, Predicates.not(Predicates.in(controlledResources)))) {
-            if (hasControlledRootInSemantics(resource, semantics)) {
+        // Add controlled resources which are in the ResourceSet but not yet known as such.
+        boolean addedControlledResources = false;
+        for (Resource resource : allResources) {
+            // FIXME This does not consider resources which are in controlledResources but not actually controlled anymore.
+            if (!controlledResources.contains(resource) && hasControlledRootIn(resource, semantics)) {
                 controlledResources.add(resource);
+                addedControlledResources = true;
                 session.registerResourceInCrossReferencer(resource);
             }
         }
 
-        // remove controlled resource if it is not in the resourceSet anymore
-        ListIterator<Resource> listIterator = controlledResources.listIterator();
-        while (listIterator.hasNext()) {
-            Resource resource = listIterator.next();
-            if (!resourcesToCheck.contains(resource))
-                listIterator.remove();
-        }
-        if (!controlledResourcesBefore.equals(controlledResources)) {
+        // Remove controlled resources which are not in the ResourceSet anymore.
+        boolean removedControlledResources = controlledResources.retainAll(allResources);
+
+        if (addedControlledResources || removedControlledResources) {
             session.notifyListeners(SessionListener.SEMANTIC_CHANGE);
             session.setSemanticResourcesNotUptodate();
         }
     }
 
-    private boolean hasControlledRootInSemantics(Resource resource, Collection<Resource> semantics) {
-        Predicate<EObject> isControlled = new Predicate<EObject>() {
-            @Override
-            public boolean apply(EObject input) {
-                return AdapterFactoryEditingDomain.isControlled(input);
-            }
-        };
-
-        for (EObject root : Iterables.filter(resource.getContents(), isControlled)) {
-            EObject rootContainer = EcoreUtil.getRootContainer(root);
-            if (rootContainer != null && rootContainer != root) {
-                Resource rootResource = rootContainer.eResource();
-                if (semantics.contains(rootResource)) {
-                    return true;
-                }
+    private static boolean hasControlledRootIn(Resource resource, Collection<Resource> scope) {
+        for (EObject root : resource.getContents()) {
+            EObject container = root.eContainer();
+            Resource containerResource = container != null ? container.eResource() : null;
+            if (containerResource != resource && scope.contains(containerResource)) {
+                return true;
             }
         }
         return false;
