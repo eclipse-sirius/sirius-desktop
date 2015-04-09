@@ -57,6 +57,7 @@ public class TextWithContentProposalDialog extends Dialog {
      */
     public TextWithContentProposalDialog(Shell parentShell, AbstractPropertySection propertySection, String initialText) {
         super(parentShell);
+        setShellStyle(getShellStyle() | SWT.RESIZE);
         resultText = initialText;
         section = propertySection;
     }
@@ -74,7 +75,7 @@ public class TextWithContentProposalDialog extends Dialog {
     @Override
     protected Control createDialogArea(Composite parent) {
         final Composite contents = (Composite) super.createDialogArea(parent);
-        textArea = new Text(contents, SWT.MULTI | SWT.V_SCROLL | SWT.WRAP);
+        textArea = new Text(contents, SWT.MULTI | SWT.V_SCROLL | SWT.WRAP | SWT.BORDER);
         final GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
         data.heightHint = 200;
         data.widthHint = 600;
