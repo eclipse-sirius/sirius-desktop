@@ -74,6 +74,7 @@ class SessionResourcesTracker {
     SessionResourcesTracker(DAnalysisSessionImpl session) {
         this.session = Preconditions.checkNotNull(session);
         this.controlledResourcesDetector = new ControlledResourcesDetector(session);
+        dAnalysisRefresher = new DAnalysisRefresher(session);
     }
 
     void initialize(IProgressMonitor monitor) {
@@ -82,7 +83,6 @@ class SessionResourcesTracker {
          * CrossReferencerAdapter that resolves the resource set.
          */
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.RESOLVE_ALL_KEY);
-        dAnalysisRefresher = new DAnalysisRefresher(session);
         Collection<DAnalysis> analyses = session.allAnalyses();
         // First resolve all VSM resources used for Sirius to ignore VSM
         // resources and VSM linked resources (as viewpoint:/environment
@@ -106,7 +106,17 @@ class SessionResourcesTracker {
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.RESOLVE_ALL_KEY);
         // Look for controlled resources after load of every linked
         // resources.
-        handlePossibleControlledResources();
+        // Detect actual controlled resources.
+        if (controlledResourcesDetector != null) {
+            controlledResourcesDetector.initialize();
+        }
+        // Reset semanticResources to have getSemanticResources() ignores
+        // controlledResources which are computed only at this step
+        if (semanticResourcesUpdater != null) {
+            semanticResourcesUpdater.dispose();
+            semanticResourcesUpdater = null;
+        }
+        semanticResources = null;
         monitor.worked(1);
         dAnalysisRefresher.initialize();
     }
@@ -163,21 +173,6 @@ class SessionResourcesTracker {
         return semanticResourcesUpdater.getRootObjectFromResourceURI(resourceURI);
     }
 
-    private void handlePossibleControlledResources() {
-        // Detect actual controlled resources.
-        if (controlledResourcesDetector != null) {
-            controlledResourcesDetector.initialize();
-        }
-        // Reset semanticResources to have getSemanticResources() ignores
-        // controlledResources which are computed only at this step
-        if (semanticResourcesUpdater != null) {
-            semanticResourcesUpdater.dispose();
-            semanticResourcesUpdater = null;
-        }
-        semanticResources = null;
-    }
-    
-
     /**
      * Resolve all resources of the resource set of this session. Some
      * references are ignored (derived features, containment/container
@@ -232,7 +227,6 @@ class SessionResourcesTracker {
             }
         }
     }
-    
 
     /**
      * Check the resources in the resourceSet and add all new resources as
