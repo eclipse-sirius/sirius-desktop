@@ -112,8 +112,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
         @Override
         public void unloaded(String qualifiedName, Class<?> clazz) {
-            // TODO implement the un-register once it is available in AQL.
-            // see Bug 461072
+            queryEnvironment.removeServicePackage(clazz);
 
         }
     };

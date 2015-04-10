@@ -15,7 +15,6 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -90,9 +89,8 @@ public final class JavaExtensionsManager {
              * we get a notification if something in the classpath we used so
              * far has changed.
              */
-            if (viewpointPlugins.size() > 0 && viewpointProjects.size() > 0) {
-                reloadEPackages();
-                reloadJavaExtensions();
+            if (viewpointPlugins.size() > 0 || viewpointProjects.size() > 0) {
+                reload();
             }
         }
     };
@@ -180,7 +178,6 @@ public final class JavaExtensionsManager {
         clearImports();
         this.viewpointPlugins.clear();
         this.viewpointProjects.clear();
-        this.couldNotBeLoaded.clear();
     }
 
     /**
@@ -204,12 +201,22 @@ public final class JavaExtensionsManager {
          * extensions.
          */
         if (couldNotBeLoaded.size() > 0 || removedAddedAtLeastOnePlugin || removedAddedAtLeastOnProject) {
-            if (this.viewpointPlugins.size() > 0 && this.viewpointProjects.size() > 0) {
-                reloadEPackages();
-                reloadJavaExtensions();
+            if (this.viewpointPlugins.size() > 0 || this.viewpointProjects.size() > 0) {
+                reload();
             }
         }
 
+    }
+
+    /*
+     * This method is synchronized as we expect the workspace listener to call
+     * it when an event requires a reload. There is no guarantee this call is
+     * made from the same thread as the others and we don't want several reloads
+     * being done concurrently.
+     */
+    private synchronized void reload() {
+        reloadEPackages();
+        reloadJavaExtensions();
     }
 
     private void reloadEPackages() {
@@ -417,12 +424,9 @@ public final class JavaExtensionsManager {
      *            Extension.
      */
     public void addImport(String classQualifiedName) {
-        if (couldNotBeLoaded.contains(classQualifiedName)) {
+        if (classQualifiedName != null && classQualifiedName.contains(".")) {
+            this.imports.add(classQualifiedName);
             loadJavaExtensions(Sets.newHashSet(classQualifiedName));
-        }
-        if (classQualifiedName != null && classQualifiedName.contains(".") && !imports.contains(classQualifiedName)) {
-            imports.add(classQualifiedName);
-            loadJavaExtensions(Collections.singleton(classQualifiedName));
         }
     }
 
@@ -435,9 +439,7 @@ public final class JavaExtensionsManager {
      */
     public void removeImport(String classQualifiedName) {
         if (this.imports.contains(classQualifiedName)) {
-            if (couldNotBeLoaded.contains(classQualifiedName)) {
-                couldNotBeLoaded.remove(classQualifiedName);
-            }
+            couldNotBeLoaded.remove(classQualifiedName);
             Set<String> removedImport = Sets.newLinkedHashSet();
             removedImport.add(classQualifiedName);
             this.imports.remove(classQualifiedName);
@@ -464,29 +466,42 @@ public final class JavaExtensionsManager {
     }
 
     private void reloadJavaExtensions() {
-        unloadJavaExtensions(this.imports);
         loadJavaExtensions(this.imports);
     }
 
     private void loadJavaExtensions(Set<String> addedImports) {
+        Map<String, Class> toUnload = Maps.newLinkedHashMap();
+        Map<String, Class> toLoad = Maps.newLinkedHashMap();
+        Set<String> notFound = Sets.newLinkedHashSet();
         for (String qualifiedName : addedImports) {
             Class<?> found = classLoading.findClass(viewpointProjects, viewpointPlugins, qualifiedName);
-            processResult(qualifiedName, found);
-        }
-    }
-
-    private void processResult(String qualifiedName, Class<?> found) {
-        if (found != null) {
-            this.couldNotBeLoaded.remove(qualifiedName);
-            Class<?> alreadyHere = loadedClasses.get(qualifiedName);
-            if (alreadyHere != null) {
-                unloaded(qualifiedName, alreadyHere);
+            if (found != null) {
+                this.couldNotBeLoaded.remove(qualifiedName);
+                Class<?> alreadyHere = loadedClasses.get(qualifiedName);
+                if (alreadyHere != null) {
+                    toUnload.put(qualifiedName, alreadyHere);
+                }
+                loadedClasses.put(qualifiedName, found);
+                toLoad.put(qualifiedName, found);
+            } else {
+                notFound.add(qualifiedName);
+                this.couldNotBeLoaded.add(qualifiedName);
             }
-            loadedClasses.put(qualifiedName, found);
-
-            loaded(qualifiedName, found);
-        } else {
-            this.couldNotBeLoaded.add(qualifiedName);
+        }
+        /*
+         * We make sure we notify the callbacks with the following orders :
+         * always notify an unload first, then the loaded classes, then the
+         * qualified names which were not found. This makes it easier for the
+         * callbacks to maintain their own data structures in sync regarding the
+         * latest versions of the classes.
+         */
+        for (Map.Entry<String, Class> classToUnload : toUnload.entrySet()) {
+            unloaded(classToUnload.getKey(), classToUnload.getValue());
+        }
+        for (Map.Entry<String, Class> classToLoad : toLoad.entrySet()) {
+            loaded(classToLoad.getKey(), classToLoad.getValue());
+        }
+        for (String qualifiedName : notFound) {
             notFound(qualifiedName);
         }
     }
