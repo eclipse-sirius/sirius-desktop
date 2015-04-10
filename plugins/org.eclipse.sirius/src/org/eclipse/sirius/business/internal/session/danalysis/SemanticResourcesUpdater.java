@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -89,9 +88,7 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
                 }
             }
 
-            RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(dAnalysisSessionImpl);
-            semanticResourcesGetter.run();
-            Collection<Resource> updatedSemanticResources = semanticResourcesGetter.getResult();
+            Collection<Resource> updatedSemanticResources = SemanticResourceGetter.collectTopLevelSemanticResources(dAnalysisSessionImpl);
 
             boolean newSemanticResourceAdded = false;
             for (Resource semanticResource : updatedSemanticResources) {

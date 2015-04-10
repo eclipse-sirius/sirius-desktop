@@ -142,7 +142,12 @@ class SessionResourcesTracker {
             }
             semanticResourcesUpdater.setSemanticResources(semanticResources);
 
-            RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(session);
+            RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new RunnableWithResult.Impl<Collection<Resource>>() {
+                @Override
+                public void run() {
+                    setResult(SemanticResourceGetter.collectTopLevelSemanticResources(session));
+                }
+            };
             try {
                 TransactionUtil.runExclusive(session.getTransactionalEditingDomain(), semanticResourcesGetter);
             } catch (InterruptedException e) {

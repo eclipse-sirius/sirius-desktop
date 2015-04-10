@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,36 +18,18 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
-import com.google.common.base.Preconditions;
-
 /**
- * A {@link RunnableWithResult} to get semantic resources in a read transaction.
+ * Helper to collect top-level semantic resources.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class SemanticResourceGetter extends RunnableWithResult.Impl<Collection<Resource>> {
-
-    private final DAnalysisSessionImpl session;
-
-    /**
-     * Default constructor.
-     * 
-     * @param session
-     *            the {@link DAnalysisSessionImpl} referencing the semantic
-     *            resources
-     */
-    public SemanticResourceGetter(DAnalysisSessionImpl session) {
-        this.session = Preconditions.checkNotNull(session);
-    }
-
-    @Override
-    public void run() {
-        setResult(collectTopLevelSemanticResources());
+public final class SemanticResourceGetter {
+    private SemanticResourceGetter() {
+        // Prevent instanciation.
     }
 
     /**
@@ -60,8 +42,12 @@ public class SemanticResourceGetter extends RunnableWithResult.Impl<Collection<R
      * <p>
      * Performs a full walk on all referenced DAnalysis to identify their
      * models. Will load the analysis if needed, but not the semantic models.
+     * 
+     * @param session
+     *            the session.
+     * @return all the registered top-level semantic resources in the session.
      */
-    private Collection<Resource> collectTopLevelSemanticResources() {
+    public static Collection<Resource> collectTopLevelSemanticResources(DAnalysisSessionImpl session) {
         Collection<Resource> semanticResources = new LinkedHashSet<Resource>();
         for (DAnalysis analysis : session.allAnalyses()) {
             @SuppressWarnings("unchecked")
