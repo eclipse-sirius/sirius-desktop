@@ -77,6 +77,10 @@ h4. Changes in @org.eclipse.sirius.common@
 * A new interface @org.eclipse.sirius.common.tools.api.interpreter.TypedValidation@ has been introduced for @IInterpreter@ implementations able to provide richer information when validating an expression. This information is captured through a @org.eclipse.sirius.common.tools.api.interpreter.ValidationResult@ instance.
 * The class @org.eclipse.sirius.common.tools.api.interpreter.VariableType@ has been introduced to represent the possible types a variable can have in a Viewpoint specification model.
 
+h4. Changes in @org.eclipse.sirius.common.ui@
+
+* Classes from @org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline@ packages are available in API to allow editor to provide quick outline feature easily.
+
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 
 * The method @org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor.eRemoveInverseCrossReferences()@ has been changed to return the list of changed objects by the inverse cross references removal.

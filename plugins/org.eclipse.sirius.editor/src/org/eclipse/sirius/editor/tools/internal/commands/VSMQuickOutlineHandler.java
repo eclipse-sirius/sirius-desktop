@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.sirius.editor.tools.internal.outline.QuickOutlineAdapterFactoryLabelProvider;
-import org.eclipse.sirius.editor.tools.internal.outline.QuickOutlineDescriptor;
-import org.eclipse.sirius.editor.tools.internal.outline.QuickOutlinePageDescriptor;
-import org.eclipse.sirius.editor.tools.internal.outline.SiriusInformationPresenter;
-import org.eclipse.sirius.editor.tools.internal.outline.SiriusInformationPresenterFactory;
+import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.QuickOutlineAdapterFactoryLabelProvider;
+import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.QuickOutlineDescriptor;
+import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.QuickOutlinePageDescriptor;
+import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.SiriusInformationPresenter;
+import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.SiriusInformationPresenterFactory;
 import org.eclipse.sirius.editor.tools.internal.outline.VSMOutlineCallback;
 import org.eclipse.sirius.editor.tools.internal.presentation.CustomSiriusEditor;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -48,6 +48,7 @@ public class VSMQuickOutlineHandler extends AbstractHandler {
      *             an execution exception.
      * @return <code>null</code>.
      */
+    @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
         CustomSiriusEditor editor = getCurrentEditor();
         Object root = getRoot(editor);
@@ -59,9 +60,9 @@ public class VSMQuickOutlineHandler extends AbstractHandler {
     }
 
     /**
-     * Returns the currently active editor if it's an AcceleoEditor.
+     * Returns the currently active editor if it's a VSM editor.
      * 
-     * @return The currently active editor if it's an AcceleoEditor,
+     * @return The currently active editor if it's a VSM editor,
      *         <code>null</code> otherwise.
      */
     protected CustomSiriusEditor getCurrentEditor() {

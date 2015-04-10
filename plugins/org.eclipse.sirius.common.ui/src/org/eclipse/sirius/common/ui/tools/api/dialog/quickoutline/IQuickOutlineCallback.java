@@ -9,7 +9,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.tools.internal.outline;
+package org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline;
 
 /**
  * Callback for quick outline.

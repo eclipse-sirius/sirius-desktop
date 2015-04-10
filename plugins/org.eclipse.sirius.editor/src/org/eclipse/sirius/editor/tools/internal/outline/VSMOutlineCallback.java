@@ -13,6 +13,7 @@ package org.eclipse.sirius.editor.tools.internal.outline;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.IQuickOutlineCallback;
 import org.eclipse.sirius.editor.tools.internal.presentation.CustomSiriusEditor;
 
 /**
