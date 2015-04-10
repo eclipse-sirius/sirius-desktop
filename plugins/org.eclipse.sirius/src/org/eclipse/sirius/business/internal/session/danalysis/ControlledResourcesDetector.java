@@ -34,6 +34,11 @@ import com.google.common.collect.Lists;
  * @author mporhel
  */
 public class ControlledResourcesDetector extends ResourceSetListenerImpl {
+    /**
+     * The events of interest for {@link ControlledResourcesDetector}.
+     */
+    private static final NotificationFilter CONTROLLED_RESOURCES_EVENTS = NotificationFilter.createFeatureFilter(ResourceSet.class, ResourceSet.RESOURCE_SET__RESOURCES).and(
+            NotificationFilter.NOT_TOUCH);
 
     private DAnalysisSessionImpl session;
 
@@ -46,20 +51,17 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     public ControlledResourcesDetector(DAnalysisSessionImpl session) {
         this.session = Preconditions.checkNotNull(session);
     }
-    
+
     /**
-     * Looks for already loaded resources and then add this listener to the
-     * session's transactional editing domain.
+     * Add this listener on the editingDomain.
      */
     public void initialize() {
-        // Detect controlled resources for future resource add.
-        refreshControlledResources(session);
         session.getTransactionalEditingDomain().addResourceSetListener(this);
     }
 
     @Override
     public NotificationFilter getFilter() {
-        return NotificationFilter.createFeatureFilter(ResourceSet.class, ResourceSet.RESOURCE_SET__RESOURCES).and(NotificationFilter.NOT_TOUCH);
+        return ControlledResourcesDetector.CONTROLLED_RESOURCES_EVENTS;
     }
 
     @Override
@@ -97,8 +99,9 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     }
 
     /**
-     * Detects controlled resources and update controlledResourcesList in
-     * {@link DAnalysisSessionImpl}.
+     * Refresh a session's {@link DAnalysisSession.getControlledResources()}
+     * list, adding newly controlled semantic resources and removing obsolete
+     * ones which are not in the ResourceSet anymore.
      */
     static void refreshControlledResources(DAnalysisSessionImpl session) {
         Collection<Resource> semantics = session.getSemanticResources();
@@ -112,7 +115,8 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
             // FIXME This does not consider resources which are in
             // controlledResources but not actually controlled anymore.
             if (!controlledResources.contains(resource) && hasControlledRootIn(resource, semantics)) {
-                // Use addUnique if possible, we already checks for containment just above. 
+                // Use addUnique if possible, we already checks for containment
+                // just above.
                 if (controlledResources instanceof InternalEList<?>) {
                     ((InternalEList<Resource>) controlledResources).addUnique(resource);
                 } else {

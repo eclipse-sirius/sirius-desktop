@@ -21,10 +21,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -34,24 +32,28 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 /**
- * A {@link ResourceSetListener} to update the
+ * A {@code ResourceSetListener} to update the
  * {@link ViewpointPackage#DANALYSIS__MODELS} feature according changes in
  * representations resources. This class also contains some methods to load + *
  * resources and detects new semantic resources.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class DAnalysisRefresher extends ResourceSetListenerImpl implements ResourceSetListener {
+public class DAnalysisRefresher extends ResourceSetListenerImpl {
+    /**
+     * The events of interest for {@link DAnalysisRefresher}.
+     */
+    private static final NotificationFilter DANALYSIS_REFRESHER_EVENTS = NotificationFilter.createEventTypeFilter(Notification.ADD);
 
-    private Session session;
+    private DAnalysisSessionImpl session;
 
     /**
      * Default constructor.
      * 
      * @param session
-     *            the {@link Session} on which listens model changes.
+     *            the session on which listens model changes.
      */
-    public DAnalysisRefresher(Session session) {
+    public DAnalysisRefresher(DAnalysisSessionImpl session) {
         this.session = Preconditions.checkNotNull(session);
     }
 
@@ -62,14 +64,9 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
         session.getTransactionalEditingDomain().addResourceSetListener(this);
     }
 
-    /**
-     * Overridden to say that we are interested only in added elements.
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public NotificationFilter getFilter() {
-        return NotificationFilter.createEventTypeFilter(Notification.ADD);
+        return DAnalysisRefresher.DANALYSIS_REFRESHER_EVENTS;
     }
 
     @Override
@@ -107,7 +104,9 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
      * Remove this listener from the editingDomain.
      */
     public void dispose() {
-        session.getTransactionalEditingDomain().removeResourceSetListener(this);
+        if (session != null) {
+            session.getTransactionalEditingDomain().removeResourceSetListener(this);
+        }
         session = null;
     }
 

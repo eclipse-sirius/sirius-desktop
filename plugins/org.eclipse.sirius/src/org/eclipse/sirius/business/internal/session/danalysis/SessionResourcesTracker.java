@@ -107,6 +107,7 @@ class SessionResourcesTracker {
         // Look for controlled resources after load of every linked
         // resources.
         // Detect actual controlled resources.
+        ControlledResourcesDetector.refreshControlledResources(session);
         if (controlledResourcesDetector != null) {
             controlledResourcesDetector.initialize();
         }
