@@ -26,7 +26,6 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.business.api.session.SessionListener;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
@@ -76,7 +75,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
         // No check on notifier and feature : already done by filter.
-        for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
+        for (Notification notif : event.getNotifications()) {
             int change = notif.getEventType();
             boolean resourcesWereAdded = change == Notification.ADD || change == Notification.SET || change == Notification.ADD_MANY;
             if (resourcesWereAdded) {
