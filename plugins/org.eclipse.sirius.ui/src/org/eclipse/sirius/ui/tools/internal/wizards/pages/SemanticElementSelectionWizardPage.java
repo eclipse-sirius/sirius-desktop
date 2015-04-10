@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
-import java.util.Iterator;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -22,10 +20,10 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -60,6 +58,8 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
     /** The representation. */
     private RepresentationDescription representationDescription;
 
+    private FilteredTree tree;
+
     /**
      * Create a new <code>SemanticElementSelectionWizardPage</code>.
      * 
@@ -92,10 +92,8 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
                 setPageComplete(isPageComplete());
             }
         });
-        treeViewer.addFilter(new EObjectFilter());
+
         treeViewer.setInput(root);
-        treeViewer.expandAll();
-        treeViewer.collapseAll();
         setControl(pageComposite);
     }
 
@@ -108,7 +106,14 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
      */
     private TreeViewer createTreeViewer(final Composite parent) {
         final int style = SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER;
-        final FilteredTree tree = SWTUtil.createFilteredTree(parent, style, new PatternFilter());
+        tree = SWTUtil.createFilteredTree(parent, style, new EObjectFilter());
+        /*
+         * If there is a problem accessing/enabling the quick selection mode the
+         * best course of action is to fail silently, this mode only provides a
+         * slightly improved user experience by automatically selecting the
+         * first element which matches the filter and is selectable.
+         */
+        ReflectionHelper.invokeMethodWithoutException(tree, "setQuickSelectionMode", new Class[] { Boolean.TYPE }, new Object[] { true });
         final TreeViewer viewer = tree.getViewer();
 
         final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
@@ -232,7 +237,15 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
      */
     public void update() {
         treeViewer.refresh();
-
+        if (tree.getFilterControl() != null) {
+            /*
+             * By setting the text to 'wilcard' ourselves we make sure to
+             * trigger the filtering. As the tree has "QuickSelectionMode"
+             * enabled it also makes the tree pre-select the first matching
+             * node, saving the user a manual selection in many cases.
+             */
+            tree.getFilterControl().setText("*");
+        }
     }
 
     /**
@@ -241,57 +254,15 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
      * @author nlepine
      * 
      */
-    private class EObjectFilter extends ViewerFilter {
+    private class EObjectFilter extends PatternFilter {
 
-        /**
-         * @{inheritDoc
-         * 
-         * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
-         */
-        // CHECKSTYLE:OFF
-        public boolean select(Viewer viewer, Object parentElement, Object element) {
-            if (representationDescription == null) {
-                return false;
-            }
-            if (element instanceof Resource) {
-                return true;
-            }
-            if (element instanceof EObject && canCreateRepresentation((EObject) element)) {
-                return true;
+        @Override
+        protected boolean isLeafMatch(Viewer viewer, Object element) {
+            if (representationDescription != null && element instanceof EObject && DialectManager.INSTANCE.canCreate((EObject) element, representationDescription)) {
+                return super.isLeafMatch(viewer, element);
             }
             return false;
         }
 
-        /**
-         * Return if the representation can be created on the element or its
-         * content.
-         * 
-         * @param element
-         *            EObject
-         * @return if the representation can be created on the element or its
-         *         content.
-         */
-        protected boolean canCreateRepresentation(EObject element) {
-            if (DialectManager.INSTANCE.canCreate(element, representationDescription)) {
-                return true;
-            }
-            return canCreateRepresentationOnContents(element);
-        }
-
-        /**
-         * @param element
-         * @return if the representation can be created on the element contents.
-         */
-        private boolean canCreateRepresentationOnContents(EObject element) {
-            for (Iterator<EObject> iterator = element.eAllContents(); iterator.hasNext();) {
-                EObject type = iterator.next();
-                if (DialectManager.INSTANCE.canCreate(type, representationDescription)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        // CHECKSTYLE:ON
     }
 }
