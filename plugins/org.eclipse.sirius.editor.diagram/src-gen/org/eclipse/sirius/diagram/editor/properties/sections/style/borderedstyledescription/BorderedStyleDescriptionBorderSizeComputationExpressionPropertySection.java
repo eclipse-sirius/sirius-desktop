@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.editor.properties.sections.style.borderedstyl
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
@@ -77,10 +78,16 @@ public class BorderedStyleDescriptionBorderSizeComputationExpressionPropertySect
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
+     * 
+     * @generated NOT
      */
     protected Object getFeatureValue(String newText) {
-        return newText;
+        if (StringUtil.isEmpty(newText)) {
+            return getDefaultFeatureAsText();
+        } else {
+            return newText;
+        }
     }
 
     /**
