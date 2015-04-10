@@ -249,4 +249,31 @@
      </command>
    </extension>
    
+   <!-- Support for Quick Outline (Ctrl+O) in table editor -->
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.eclipse.sirius.table.ui.quickoutline"
+            name="%TableEditorQuickOutlineCommand">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.sirius.table.ui.tools.internal.quickoutline.TableQuickOutlineHandler"
+            commandId="org.eclipse.sirius.table.ui.quickoutline">
+      </handler>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.eclipse.sirius.table.ui.quickoutline"
+            contextId="org.eclipse.sirius.table.ui.EditorID.tableContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+O">
+      </key>
+   </extension>
+   
 </plugin>
