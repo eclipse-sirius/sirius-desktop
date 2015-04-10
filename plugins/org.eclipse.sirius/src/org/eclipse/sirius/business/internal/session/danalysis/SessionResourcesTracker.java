@@ -98,7 +98,7 @@ class SessionResourcesTracker {
 
         // Add the unknown resources to the semantic resources of this
         // session.
-        addAutomaticallyLoadedResourcesToSemanticResources(resourcesBeforeLoadOfSession);
+        addAutomaticallyLoadedResourcesToSemanticResources(session, resourcesBeforeLoadOfSession);
         monitor.worked(1);
         session.setSynchronizeStatusofEveryResource();
         monitor.worked(1);
@@ -109,11 +109,6 @@ class SessionResourcesTracker {
         handlePossibleControlledResources();
         monitor.worked(1);
         dAnalysisRefresher.initialize();
-    }
-
-    void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
-        // Add the unknown resources to the semantic resources of this session.
-        addAutomaticallyLoadedResourcesToSemanticResources(allResources);
     }
 
     void addAdaptersOnAnalysis(final DAnalysis analysis) {
@@ -254,7 +249,7 @@ class SessionResourcesTracker {
      *            List of resources that is already loaded before the resolveAll
      *            of the representations file load.
      */
-    private void addAutomaticallyLoadedResourcesToSemanticResources(List<Resource> knownResources) {
+    static void addAutomaticallyLoadedResourcesToSemanticResources(final DAnalysisSessionImpl session, List<Resource> knownResources) {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         List<Resource> resourcesAfterLoadOfSession = Lists.newArrayList(domain.getResourceSet().getResources());
         // Remove the known resources

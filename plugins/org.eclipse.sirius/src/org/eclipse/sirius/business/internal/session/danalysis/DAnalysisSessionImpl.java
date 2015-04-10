@@ -750,9 +750,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
-        if (tracker != null) {
-            tracker.discoverAutomaticallyLoadedSemanticResources(allResources);
-        }
+        SessionResourcesTracker.addAutomaticallyLoadedResourcesToSemanticResources(this, allResources);
     }
 
     // *******************
