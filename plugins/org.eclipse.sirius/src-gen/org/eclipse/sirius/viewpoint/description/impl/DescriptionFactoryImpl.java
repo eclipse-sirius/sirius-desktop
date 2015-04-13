@@ -170,6 +170,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createInterpretedExpressionFromString(eDataType, initialValue);
         case DescriptionPackage.FEATURE_NAME:
             return createFeatureNameFromString(eDataType, initialValue);
+        case DescriptionPackage.IMAGE_PATH:
+            return createImagePathFromString(eDataType, initialValue);
         case DescriptionPackage.URI:
             return createURIFromString(eDataType, initialValue);
         default:
@@ -195,6 +197,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return convertInterpretedExpressionToString(eDataType, instanceValue);
         case DescriptionPackage.FEATURE_NAME:
             return convertFeatureNameToString(eDataType, instanceValue);
+        case DescriptionPackage.IMAGE_PATH:
+            return convertImagePathToString(eDataType, instanceValue);
         case DescriptionPackage.URI:
             return convertURIToString(eDataType, instanceValue);
         default:
@@ -571,6 +575,24 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * @generated
      */
     public String convertFeatureNameToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String createImagePathFromString(EDataType eDataType, String initialValue) {
+        return (String) super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String convertImagePathToString(EDataType eDataType, Object instanceValue) {
         return super.convertToString(eDataType, instanceValue);
     }
 

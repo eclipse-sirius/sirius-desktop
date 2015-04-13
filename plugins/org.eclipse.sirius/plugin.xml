@@ -140,7 +140,7 @@
                </message>
             </constraint>
             <constraint
-                  class="org.eclipse.sirius.tools.internal.validation.description.constraints.ValidImagePathConstraint"
+                  class="org.eclipse.sirius.tools.internal.validation.description.constraints.ValidImageConstraint"
                   id="org.eclipse.sirius.constraints.ValidImagePathConstraint"
                   lang="Java"
                   mode="Batch"

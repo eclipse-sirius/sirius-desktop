@@ -417,21 +417,6 @@
                </message>
             </constraint>
             <constraint
-                  lang="Java"
-                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ValidDiagramImageConstraint"
-                  severity="ERROR"
-                  mode="Batch"
-                  name="Valid Diagram Images"
-                  id="org.eclipse.sirius.diagram.constraints.ValidDiagramImage"
-                  statusCode="1">
-               <description>
-                  Invalid Diagram Image
-               </description>
-               <message>
-                  {0}
-               </message>
-            </constraint>
-            <constraint
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.BlankCandidatesExpressionWithRecursiveMappingConstraint"
                   id="org.eclipse.sirius.diagram.constraints.BlankCandidatesExpressionWithRecursiveMapping"
                   lang="Java"

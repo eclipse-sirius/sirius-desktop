@@ -2173,6 +2173,16 @@ public interface DescriptionPackage extends EPackage {
     int FEATURE_NAME = 47;
 
     /**
+     * The meta object id for the '<em>Image Path</em>' data type. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see java.lang.String
+     * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getImagePath()
+     * @generated
+     */
+    int IMAGE_PATH = 48;
+
+    /**
      * The meta object id for the '<em>URI</em>' data type. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
@@ -2180,7 +2190,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getURI()
      * @generated
      */
-    int URI = 48;
+    int URI = 49;
 
     /**
      * Returns the meta object for class '
@@ -3885,6 +3895,17 @@ public interface DescriptionPackage extends EPackage {
     EDataType getFeatureName();
 
     /**
+     * Returns the meta object for data type '{@link java.lang.String
+     * <em>Image Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for data type '<em>Image Path</em>'.
+     * @see java.lang.String
+     * @model instanceClass="java.lang.String"
+     * @generated
+     */
+    EDataType getImagePath();
+
+    /**
      * Returns the meta object for data type '
      * {@link org.eclipse.emf.common.util.URI <em>URI</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -5226,6 +5247,16 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EDataType FEATURE_NAME = DescriptionPackage.eINSTANCE.getFeatureName();
+
+        /**
+         * The meta object literal for the '<em>Image Path</em>' data type. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see java.lang.String
+         * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getImagePath()
+         * @generated
+         */
+        EDataType IMAGE_PATH = DescriptionPackage.eINSTANCE.getImagePath();
 
         /**
          * The meta object literal for the '<em>URI</em>' data type. <!--

@@ -477,7 +477,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         initEReference(getBasicLabelStyleDescription_LabelColor(), theDescriptionPackage.getColorDescription(), null, "labelColor", null, 1, 1, BasicLabelStyleDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getBasicLabelStyleDescription_IconPath(), theEcorePackage.getEString(), "iconPath", "", 0, 1, BasicLabelStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
+        initEAttribute(getBasicLabelStyleDescription_IconPath(), theDescriptionPackage.getImagePath(), "iconPath", "", 0, 1, BasicLabelStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(labelStyleDescriptionEClass, LabelStyleDescription.class, "LabelStyleDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);

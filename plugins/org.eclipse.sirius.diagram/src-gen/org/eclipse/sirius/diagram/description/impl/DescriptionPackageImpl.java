@@ -2151,7 +2151,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEReference(getLayer_DecorationDescriptionsSet(), theDescriptionPackage_1.getDecorationDescriptionsSet(), null, "decorationDescriptionsSet", null, 0, 1, Layer.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getLayer_Icon(), theEcorePackage.getEString(), "icon", null, 0, 1, Layer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+        initEAttribute(getLayer_Icon(), theDescriptionPackage_1.getImagePath(), "icon", null, 0, 1, Layer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getLayer_AllEdgeMappings(), this.getEdgeMapping(), null, "allEdgeMappings", null, 0, -1, Layer.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE,
                 !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,

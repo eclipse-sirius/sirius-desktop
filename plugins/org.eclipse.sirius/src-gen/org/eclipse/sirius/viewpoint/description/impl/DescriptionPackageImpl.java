@@ -426,6 +426,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    private EDataType imagePathEDataType = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     private EDataType uriEDataType = null;
 
     /**
@@ -1895,6 +1902,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EDataType getImagePath() {
+        return imagePathEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EDataType getURI() {
         return uriEDataType;
     }
@@ -2113,6 +2130,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         typeNameEDataType = createEDataType(DescriptionPackage.TYPE_NAME);
         interpretedExpressionEDataType = createEDataType(DescriptionPackage.INTERPRETED_EXPRESSION);
         featureNameEDataType = createEDataType(DescriptionPackage.FEATURE_NAME);
+        imagePathEDataType = createEDataType(DescriptionPackage.IMAGE_PATH);
         uriEDataType = createEDataType(DescriptionPackage.URI);
     }
 
@@ -2228,7 +2246,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEReference(getViewpoint_OwnedFeatureExtensions(), this.getFeatureExtensionDescription(), null, "ownedFeatureExtensions", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getViewpoint_Icon(), theEcorePackage.getEString(), "icon", null, 0, 1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+        initEAttribute(getViewpoint_Icon(), this.getImagePath(), "icon", null, 0, 1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getViewpoint_OwnedTemplates(), this.getRepresentationTemplate(), null, "ownedTemplates", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
@@ -2356,8 +2374,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getDecorationDescription_Position(), this.getPosition(), "position", "SOUTH_WEST", 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getDecorationDescription_DecoratorPath(), theEcorePackage.getEString(), "decoratorPath", null, 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT,
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDecorationDescription_DecoratorPath(), this.getImagePath(), "decoratorPath", null, 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getDecorationDescription_PreconditionExpression(), this.getInterpretedExpression(), "preconditionExpression", null, 0, 1, DecorationDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
@@ -2571,6 +2589,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEDataType(typeNameEDataType, String.class, "TypeName", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEDataType(interpretedExpressionEDataType, String.class, "InterpretedExpression", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEDataType(featureNameEDataType, String.class, "FeatureName", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(imagePathEDataType, String.class, "ImagePath", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEDataType(uriEDataType, org.eclipse.emf.common.util.URI.class, "URI", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         // Create annotations

@@ -2381,7 +2381,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(toolDescriptionEClass, ToolDescription.class, "ToolDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getToolDescription_IconPath(), theEcorePackage.getEString(), "iconPath", "", 0, 1, ToolDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+        initEAttribute(getToolDescription_IconPath(), theDescriptionPackage.getImagePath(), "iconPath", "", 0, 1, ToolDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getToolDescription_Element(), this.getElementVariable(), null, "element", null, 1, 1, ToolDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
@@ -2426,14 +2426,15 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEReference(getSelectionWizardDescription_InitialOperation(), this.getInitialOperation(), null, "initialOperation", null, 1, 1, SelectionWizardDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getSelectionWizardDescription_IconPath(), theEcorePackage.getEString(), "iconPath", "/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif", 1, 1,
+        initEAttribute(getSelectionWizardDescription_IconPath(), theDescriptionPackage.getImagePath(), "iconPath", "/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif", 1, 1,
                 SelectionWizardDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getSelectionWizardDescription_WindowTitle(), theEcorePackage.getEString(), "windowTitle", "Selection Wizard", 1, 1, SelectionWizardDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-        initEAttribute(getSelectionWizardDescription_WindowImagePath(), theEcorePackage.getEString(), "windowImagePath", null, 0, 1, SelectionWizardDescription.class, !EPackageImpl.IS_TRANSIENT,
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getSelectionWizardDescription_WindowImagePath(), theDescriptionPackage.getImagePath(), "windowImagePath", null, 0, 1, SelectionWizardDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(paneBasedSelectionWizardDescriptionEClass, PaneBasedSelectionWizardDescription.class, "PaneBasedSelectionWizardDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
@@ -2449,13 +2450,13 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEReference(getPaneBasedSelectionWizardDescription_InitialOperation(), this.getInitialOperation(), null, "initialOperation", null, 1, 1, PaneBasedSelectionWizardDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getPaneBasedSelectionWizardDescription_IconPath(), theEcorePackage.getEString(), "iconPath", "/org.eclipse.sirius.ui/icons/full/obj16/PaneBasedSelectionWizardDescription.gif",
-                1, 1, PaneBasedSelectionWizardDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getPaneBasedSelectionWizardDescription_IconPath(), theDescriptionPackage.getImagePath(), "iconPath",
+                "/org.eclipse.sirius.ui/icons/full/obj16/PaneBasedSelectionWizardDescription.gif", 1, 1, PaneBasedSelectionWizardDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getPaneBasedSelectionWizardDescription_WindowTitle(), theEcorePackage.getEString(), "windowTitle", "Selection Wizard", 1, 1, PaneBasedSelectionWizardDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-        initEAttribute(getPaneBasedSelectionWizardDescription_WindowImagePath(), theEcorePackage.getEString(), "windowImagePath", null, 0, 1, PaneBasedSelectionWizardDescription.class,
+        initEAttribute(getPaneBasedSelectionWizardDescription_WindowImagePath(), theDescriptionPackage.getImagePath(), "windowImagePath", null, 0, 1, PaneBasedSelectionWizardDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEAttribute(getPaneBasedSelectionWizardDescription_Message(), theEcorePackage.getEString(), "message", null, 0, 1, PaneBasedSelectionWizardDescription.class, !EPackageImpl.IS_TRANSIENT,
@@ -2530,7 +2531,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEClass(menuItemOrRefEClass, MenuItemOrRef.class, "MenuItemOrRef", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(menuItemDescriptionEClass, MenuItemDescription.class, "MenuItemDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getMenuItemDescription_Icon(), theEcorePackage.getEString(), "icon", null, 0, 1, MenuItemDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+        initEAttribute(getMenuItemDescription_Icon(), theDescriptionPackage.getImagePath(), "icon", null, 0, 1, MenuItemDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(menuItemDescriptionReferenceEClass, MenuItemDescriptionReference.class, "MenuItemDescriptionReference", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,

@@ -189,6 +189,7 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_IconPath()
      * @model default=
      *        "/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif"
+     *        dataType="org.eclipse.sirius.viewpoint.description.ImagePath"
      *        required="true"
      * @generated
      */
@@ -246,7 +247,7 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
      * @return the value of the '<em>Window Image Path</em>' attribute.
      * @see #setWindowImagePath(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_WindowImagePath()
-     * @model
+     * @model dataType="org.eclipse.sirius.viewpoint.description.ImagePath"
      * @generated
      */
     String getWindowImagePath();
