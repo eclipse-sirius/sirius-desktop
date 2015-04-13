@@ -143,8 +143,14 @@ public class WorkspaceClassLoading extends BundleClassLoading {
 
     };
 
-    public WorkspaceClassLoading() {
+    private Set<String> doNotLoadFromWorkspace;
 
+    public WorkspaceClassLoading() {
+        doNotLoadFromWorkspace = Sets.newLinkedHashSet();
+        for (String siriusBundle : SiriusEditorPlugin.getSiriusRuntimeBundles()) {
+            doNotLoadFromWorkspace.add(siriusBundle);
+            doNotLoadFromWorkspace.addAll(super.getBundleDependencies(siriusBundle));
+        }
     }
 
     protected Collection<Object> findCallees(IPluginModelBase model) {
@@ -484,7 +490,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
             Collection<String> symbolicNames = getDependenciesFromPDE(pdeModel);
             for (String requirementSymbolicName : symbolicNames) {
                 IPluginModelBase requiredDep = symbolicNamestoModels.get(requirementSymbolicName);
-                if (requiredDep != null) {
+                if (requiredDep != null && !doNotLoadFromWorkspace.contains(requirementSymbolicName)) {
                     workspaceDependencies.add(requiredDep);
                 } else {
                     Bundle bnd = Platform.getBundle(requirementSymbolicName);
@@ -497,7 +503,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
             }
         }
         IPluginModelBase currentProject = symbolicNamestoModels.get(projectName);
-        if (currentProject != null) {
+        if (currentProject != null && !doNotLoadFromWorkspace.contains(projectName)) {
             workspaceDependencies.add(currentProject);
         } else {
             Bundle bnd = Platform.getBundle(projectName);

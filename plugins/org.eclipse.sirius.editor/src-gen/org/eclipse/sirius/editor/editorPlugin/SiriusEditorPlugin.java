@@ -11,6 +11,8 @@ package org.eclipse.sirius.editor.editorPlugin;
 
 // Start of user code imports
 
+import java.util.Set;
+
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
@@ -25,7 +27,10 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+
+import com.google.common.collect.Sets;
 
 // End of user code imports
 
@@ -58,6 +63,8 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     // Start of user code fields
 
     private static WorkspaceEPackageRegistry workspaceEPackageRegistry;
+
+    private static Set<String> siriusRuntimeBundles = Sets.newLinkedHashSet();
 
     // End of user code fields
 
@@ -169,6 +176,18 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     }
 
     /**
+     * return a set containing all the symbolic names of bundles which are part
+     * of the Sirius runtime and are currently installed in the platform.
+     * 
+     * @return a set containing all the symbolic names of bundles which are part
+     *         of the Sirius runtime and are currently installed in the
+     *         platform.
+     */
+    public static Set<String> getSiriusRuntimeBundles() {
+        return siriusRuntimeBundles;
+    }
+
+    /**
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipseUIPlugin {
@@ -188,6 +207,14 @@ public final class SiriusEditorPlugin extends EMFPlugin {
         public void start(BundleContext context) throws Exception {
             super.start(context);
             workspaceEPackageRegistry = new WorkspaceEPackageRegistry(true);
+            for (Bundle bnd : context.getBundles()) {
+                String name = bnd.getSymbolicName();
+                if (name != null && name.startsWith("org.eclipse.sirius")) {
+                    if (name.indexOf("sample") == -1 && name.indexOf("tests") == -1) {
+                        siriusRuntimeBundles.add(name);
+                    }
+                }
+            }
         }
 
         @Override
