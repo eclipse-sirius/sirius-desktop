@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="border_node" version="10.0.0.201504091800">
+  <ownedViewpoints name="Border Node" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Border Node" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="EPackage" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage">
+          <borderedNodeMappings semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" borderColor="//@userColorsPalettes[name='Blues']/@entries[name='Deep%20Blue']" labelFormat="bold" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Blues']/@entries[name='Blue']">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderColor="//@userColorsPalettes[name='Blues']/@entries[name='Deep%20Blue']" labelFormat="bold" showIcon="false" widthComputationExpression="28" heightComputationExpression="10" backgroundColor="//@userColorsPalettes[name='Blues']/@entries[name='Blue']" foregroundColor="//@userColorsPalettes[name='Blues']/@entries[name='Deep%20Blue']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="Blues">
+    <entries xsi:type="description:UserFixedColor" red="38" green="173" blue="228" name="Blue"/>
+    <entries xsi:type="description:UserFixedColor" red="8" green="0" blue="133" name="Deep Blue"/>
+  </userColorsPalettes>
+</description:Group>
