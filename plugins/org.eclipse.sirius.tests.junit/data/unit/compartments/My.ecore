@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="P0">
+  <eSubpackages name="P1">
+    <eClassifiers xsi:type="ecore:EClass" name="LeftClass1">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr1"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CenterClass2">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr1"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr2"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr3"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr4"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RightClass3">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Centerattr1"/>
+    </eClassifiers>
+    <eSubpackages name="P2"/>
+    <eSubpackages name="P3"/>
+    <eSubpackages name="P4">
+      <eClassifiers xsi:type="ecore:EClass" name="class1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="class3"/>
+      <eClassifiers xsi:type="ecore:EClass" name="class2"/>
+      <eClassifiers xsi:type="ecore:EClass" name="class4"/>
+    </eSubpackages>
+    <eSubpackages name="P5"/>
+  </eSubpackages>
+</ecore:EPackage>

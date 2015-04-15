@@ -31,6 +31,7 @@ import org.eclipse.sirius.tests.unit.api.initialization.InitOperationForDiagrams
 import org.eclipse.sirius.tests.unit.api.layers.MultipleMappingImportTests;
 import org.eclipse.sirius.tests.unit.api.layers.MultipleMappingImportTests2;
 import org.eclipse.sirius.tests.unit.api.layers.OptionalLayersActivationTests;
+import org.eclipse.sirius.tests.unit.api.mappings.CompartmentsTests;
 import org.eclipse.sirius.tests.unit.api.mappings.ContainerMappingImportTests;
 import org.eclipse.sirius.tests.unit.api.mappings.EdgeMappingTest;
 import org.eclipse.sirius.tests.unit.api.mappings.MappingImportAndFiltersTests;
@@ -413,6 +414,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(NodeMappingTest.class);
         suite.addTestSuite(EdgeMappingTest.class);
         suite.addTestSuite(ContainerMappingImportTests.class);
+        suite.addTestSuite(CompartmentsTests.class);
         suite.addTestSuite(NodeMappingImportTests.class);
         suite.addTestSuite(MappingImportChainsTest.class);
         suite.addTest(new JUnit4TestAdapter(MultiMappingImportChainsWithSameSemanticTest.class));
