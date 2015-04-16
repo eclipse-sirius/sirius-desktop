@@ -11,21 +11,13 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
@@ -34,7 +26,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEd
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -186,51 +177,6 @@ public final class EditPartsHelper {
         }
         for (IGraphicalEditPart child : Iterables.filter(element.getChildren(), IGraphicalEditPart.class)) {
             EditPartsHelper.addAllMessagesTo(child, messages);
-        }
-    }
-
-    /**
-     * Finds all the events in the specified diagram which have a specific
-     * semantic target.
-     * 
-     * @param diagram
-     *            the sequence diagram.
-     * @param semanticElement
-     *            the semantic element.
-     * @return all the events in the diagram which have the specified semantic
-     *         element as target.
-     */
-    public static Collection<ISequenceEventEditPart> getEventsForSemanticElement(SequenceDiagramEditPart diagram, EObject semanticElement) {
-        ECrossReferenceAdapter xref = EditPartsHelper.getCrossReferencer(semanticElement);
-        if (xref == null) {
-            return Collections.emptySet();
-        } else {
-            Map<?, ?> registry = diagram.getViewer().getEditPartRegistry();
-            Collection<ISequenceEventEditPart> result = Lists.newArrayList();
-            for (Setting setting : xref.getInverseReferences(semanticElement)) {
-                if (EditPartsHelper.isDiagramElementTargetReference(setting)) {
-                    DDiagramElement dde = (DDiagramElement) setting.getEObject();
-                    Object registered = registry.get(dde);
-                    if (registered instanceof ISequenceEventEditPart && EditPartsHelper.isValid().apply((ISequenceEventEditPart) registered)) {
-                        result.add((ISequenceEventEditPart) registry.get(dde));
-                    }
-                }
-            }
-            return result;
-        }
-    }
-
-    private static boolean isDiagramElementTargetReference(Setting setting) {
-        EReference targetReference = ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target();
-        return setting.getEObject() instanceof DDiagramElement && setting.getEStructuralFeature().equals(targetReference);
-    }
-
-    private static ECrossReferenceAdapter getCrossReferencer(EObject semanticElement) {
-        Session session = SessionManager.INSTANCE.getSession(semanticElement);
-        if (session != null) {
-            return session.getSemanticCrossReferencer();
-        } else {
-            return null;
         }
     }
 
