@@ -463,6 +463,12 @@ Elements matching the regular expression _"my*a*2" are the following elements :
 * myAttribute2
 Here you can notice that for _myAttribute2_ the first _'*'_ represents no character.
 
+h3(#quick_outline). Quick Outline
+
+A quick outline is available with the shortcut @Ctrl@ + @O@. This allows you to rapidly search text in the displayed name or the contained String attributes of your diagram elements elements.
+
+The star, @*@, is a joker character, allowing you to search with more complicated patterns. Regarding this, an element is found if there is a word in its name or one of its attributes that match with the text in the filter, so if you want to search within words too, add @*@ at the start of your pattern. Also, you can navigate along the matching elements with @↑@ and @↓@, and go to the selected element in your editor with @Enter@.
+
 h3(#styleCustomizations). Style customizations 
 
 Although the style of the diagram elements is defined in the VSM, it can be customized for each diagram elements. This customization can be applied from the tool bar, from the "Style" and "Appearance" tab of the property view, from the "Diagram" menu or from the contextual menu Format.

@@ -10,6 +10,7 @@ h3. User-Visible Changes
 
 * In the Viewpoint Selection Dialog and ViewpointsSelectionWizardPage, the "plug-in" decorator for viewpoints loaded from plug-ins is removed, and a "Folder" decorator for viewpoints loaded from the current workspace has been added on the top of the default viewpoint icon.
 * The ability to print table representations has been re-introduced.
+* The quick outline feature has been added for tree and table editors, see documentation for details.
 
 h3. Specifier-Visible Changes
 
