@@ -1445,26 +1445,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public String getID() {
-        String id = Session.INVALID_SESSION;
-        final StringBuilder builder = new StringBuilder();
-        final Collection<DAnalysis> allAnalyses = allAnalyses();
-        if (!allAnalyses.isEmpty()) {
-            for (final DAnalysis analysis : allAnalyses) {
-                Resource analysisResource = analysis.eResource();
-                if (analysisResource != null && analysisResource.getURI() != null) {
-                    builder.append(analysisResource.getURI().toString()).append(' ');
-                } else {
-                    return Session.INVALID_SESSION;
-                }
-            }
-            id = builder.toString();
-        }
-        return id;
+        return sessionResource.getURI().toString();
     }
 
     @Override
     public String toString() {
-        return "Local Session: " + sessionResource.getURI().toString();
+        return "Local Session: " + getID();
     }
 
     /**
