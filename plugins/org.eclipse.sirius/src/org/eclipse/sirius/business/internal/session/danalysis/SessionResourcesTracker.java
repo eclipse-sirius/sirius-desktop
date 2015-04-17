@@ -100,8 +100,6 @@ class SessionResourcesTracker {
         // session.
         addAutomaticallyLoadedResourcesToSemanticResources(session, resourcesBeforeLoadOfSession);
         monitor.worked(1);
-        session.setSynchronizeStatusofEveryResource();
-        monitor.worked(1);
 
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.RESOLVE_ALL_KEY);
         // Look for controlled resources after load of every linked

@@ -1219,6 +1219,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
             tracker.initialize(monitor);
             monitor.worked(1);
+            
+            setSynchronizeStatusofEveryResource();
+            monitor.worked(1);
             if (!getSemanticResources().isEmpty()) {
                 configureInterpreter();
             }
