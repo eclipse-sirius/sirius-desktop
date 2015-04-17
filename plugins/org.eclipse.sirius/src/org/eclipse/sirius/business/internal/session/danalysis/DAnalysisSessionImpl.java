@@ -1220,10 +1220,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             this.representationNameListener = new RepresentationNameListener(this);
             monitor.worked(1);
 
-            final Collection<DAnalysis> allAnalyses = allAnalyses();
-            if (allAnalyses.isEmpty()) {
-                throw new RuntimeException("A analysis session could not be opened without at least a valid analyis");
-            }
             tracker.initialize(monitor);
             monitor.worked(1);
             if (!getSemanticResources().isEmpty()) {
