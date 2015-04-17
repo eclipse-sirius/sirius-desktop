@@ -78,10 +78,6 @@ class SessionResourcesTracker {
     }
 
     void initialize(IProgressMonitor monitor) {
-        /*
-         * Resolves all models needed by the session because GMF installs a
-         * CrossReferencerAdapter that resolves the resource set.
-         */
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.RESOLVE_ALL_KEY);
         Collection<DAnalysis> analyses = session.allAnalyses();
         // First resolve all VSM resources used for Sirius to ignore VSM

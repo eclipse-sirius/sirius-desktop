@@ -24,7 +24,6 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -52,9 +51,9 @@ import com.google.common.collect.Sets;
 
 /**
  * Default implementation for a session manager.
- * 
+ *
  * @author cbrun
- * 
+ *
  */
 public class SessionManagerImpl extends SessionManagerEObjectImpl implements SessionManager {
 
@@ -76,27 +75,19 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     /**
      * Default initialization of a {@link SessionManagerImpl}.
-     * 
+     *
      * @return a new instance of {@link SessionManager}.
      */
     public static SessionManagerImpl init() {
         return new SessionManagerImpl();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#addSessionsListener(org.eclipse.sirius.business.api.session.SessionManagerListener)
-     */
+    @Override
     public void addSessionsListener(final SessionManagerListener listener) {
         programmaticListeners.add(listener);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#getSessions()
-     */
+    @Override
     public Collection<Session> getSessions() {
         return Collections.unmodifiableCollection(doGetSessions());
     }
@@ -105,21 +96,13 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
         return sessionsToListeners.keySet();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#removeSessionsListener(org.eclipse.sirius.business.api.session.SessionManagerListener)
-     */
+    @Override
     public void removeSessionsListener(final SessionManagerListener listener) {
         programmaticListeners.remove(listener);
         getExtensionPointListeners().remove(listener);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#add(org.eclipse.sirius.business.api.session.Session)
-     */
+    @Override
     public void add(final Session newSession) {
         Assert.isNotNull(newSession, "SessionManager can't add a null Session");
         if (!doGetSessions().contains(newSession)) {
@@ -128,8 +111,9 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             }
             final SessionListener sessListener = new SessionListener() {
 
+                @Override
                 public void notify(final int changeKind) {
-                    if (changeKind == SELECTED_VIEWS_CHANGE_KIND) {
+                    if (changeKind == SessionListener.SELECTED_VIEWS_CHANGE_KIND) {
                         fireVPSelectionDeselectionEvents();
                     }
                     notifyUpdatedSession(newSession, changeKind);
@@ -159,11 +143,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#remove(org.eclipse.sirius.business.api.session.Session)
-     */
+    @Override
     public void remove(final Session removedSession) {
         if (doGetSessions().contains(removedSession)) {
             getOwnedSessions().remove(removedSession);
@@ -194,9 +174,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Session getSession(final EObject any) {
         Session found = null;
         // CDO Bridge for Sirius
@@ -240,10 +218,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
         return found;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public Session getSession(final Resource semanticResource) {
         Session found = null;
         Option<SessionTransientAttachment> attachment = SessionTransientAttachment.getSessionTransientAttachement(semanticResource);
@@ -265,16 +240,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
         return found;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public Session getSession(URI sessionResourceURI) {
-        return getSession(sessionResourceURI, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Session getSession(URI sessionModelURI, IProgressMonitor monitor) {
         Option<IResource> optionalResource = new URIQuery(sessionModelURI).getCorrespondingResource();
         if (optionalResource.some()) {
@@ -300,11 +266,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
         return session;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#getExistingSession(org.eclipse.emf.common.util.URI)
-     */
+    @Override
     public Session getExistingSession(URI sessionResourceURI) {
         return lookForAlreadyLoadedSession(sessionResourceURI);
     }
@@ -319,33 +281,21 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
         return alreadyLoadedSession;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#notifyRepresentationCreated(org.eclipse.sirius.business.api.session.Session)
-     */
+    @Override
     public void notifyRepresentationCreated(final Session session) {
         if (doGetSessions().contains(session)) {
             notifyUpdatedSession(session, SessionListener.REPRESENTATION_CHANGE);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#notifyRepresentationDeleted(org.eclipse.sirius.business.api.session.Session)
-     */
+    @Override
     public void notifyRepresentationDeleted(final Session session) {
         if (doGetSessions().contains(session)) {
             notifyUpdatedSession(session, SessionListener.REPRESENTATION_CHANGE);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#notifyRepresentationRenamed(org.eclipse.sirius.business.api.session.Session)
-     */
+    @Override
     public void notifyRepresentationRenamed(Session session) {
         if (doGetSessions().contains(session)) {
             notifyUpdatedSession(session, SessionListener.REPRESENTATION_CHANGE);
@@ -354,7 +304,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     /**
      * Fires viewpoints selection deselection events.
-     * 
+     *
      */
     private void fireVPSelectionDeselectionEvents() {
         final Set<Viewpoint> newSelectedViewpoints = this.collectSelectedViewpoints();
@@ -381,7 +331,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     /**
      * Collects all selected viewpoints.
-     * 
+     *
      * @return all selected viewpoints.
      */
     private Set<Viewpoint> collectSelectedViewpoints() {
@@ -416,7 +366,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     /**
      * Get the list of listeners provide by the extension point
      * org.eclipse.sirius.SessionManagerListener2.
-     * 
+     *
      * @return the listeners provide by the extension point
      *         org.eclipse.sirius.SessionManagerListener2
      */
