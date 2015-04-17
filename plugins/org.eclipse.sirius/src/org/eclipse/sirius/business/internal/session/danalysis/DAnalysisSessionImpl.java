@@ -1228,8 +1228,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.worked(1);
             initializeAccessor();
             monitor.worked(1);
-            ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain);
-            monitor.worked(1);
 
             ViewpointRegistry.getInstance().addListener(this.vsmUpdater);
             // Setup ResourceModifiedFieldUpdater
