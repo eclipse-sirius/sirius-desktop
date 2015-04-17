@@ -1230,7 +1230,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.worked(1);
             ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain);
             monitor.worked(1);
-            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
 
             ViewpointRegistry.getInstance().addListener(this.vsmUpdater);
             // Setup ResourceModifiedFieldUpdater
@@ -1247,11 +1246,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 }
             }
 
-            super.setOpen(true);
-            notifyListeners(SessionListener.OPENED);
-            monitor.worked(1);
             DViewOperations.on(this).updateSelectedViewpointsData(new SubProgressMonitor(monitor, 10));
             initLocalTriggers();
+
+            super.setOpen(true);
+            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
+            notifyListeners(SessionListener.OPENED);
+            monitor.worked(1);
         } catch (OperationCanceledException e) {
             close(new SubProgressMonitor(monitor, 10));
             throw e;
