@@ -1254,6 +1254,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             notifyListeners(SessionListener.OPENED);
             monitor.worked(1);
         } catch (OperationCanceledException e) {
+            super.setOpen(true);
             close(new SubProgressMonitor(monitor, 10));
             throw e;
         } finally {
