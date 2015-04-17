@@ -74,7 +74,20 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
         } else if (raw instanceof Boolean) {
             result = ((Boolean) raw).booleanValue();
         } else {
-            result = Boolean.valueOf(raw.toString());
+            String toString = raw.toString();
+            if ("true".equalsIgnoreCase(toString)) {
+                result = true;
+            } else if ("false".equalsIgnoreCase(toString)) {
+                result = false;
+            } else {
+                /*
+                 * raw is != null and its toString is neither true or false,
+                 * this happens when the user expect the condition to check that
+                 * a value is existing, then we consider any non null value
+                 * returns true and null returns false.
+                 */
+                result = true;
+            }
         }
         return result;
     }
