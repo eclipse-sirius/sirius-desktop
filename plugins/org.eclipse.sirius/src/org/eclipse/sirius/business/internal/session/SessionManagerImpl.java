@@ -122,7 +122,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
      */
     public void add(final Session newSession) {
         Assert.isNotNull(newSession, "SessionManager can't add a null Session");
-        if (!Session.INVALID_SESSION.equals(newSession.getID()) && !doGetSessions().contains(newSession)) {
+        if (!doGetSessions().contains(newSession)) {
             if (newSession instanceof DAnalysisSessionEObject) {
                 getOwnedSessions().add((DAnalysisSessionEObject) newSession);
             }
