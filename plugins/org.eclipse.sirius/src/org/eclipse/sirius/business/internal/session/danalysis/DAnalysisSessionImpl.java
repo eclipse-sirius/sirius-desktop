@@ -55,7 +55,6 @@ import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
-import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy;
 import org.eclipse.sirius.business.api.session.SavingPolicy;
@@ -1467,28 +1466,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public String toString() {
-        String prefix = "Local Session: ";
-        final StringBuilder builder = new StringBuilder();
-        for (final DAnalysis analysis : allAnalyses()) {
-            final Resource resource = analysis.eResource();
-            if (resource != null && resource.getURI() != null) {
-                URI uri = resource.getURI();
-                if (new URIQuery(uri).isInMemoryURI()) {
-                    prefix = "Transient Session: ";
-                }
-                if (uri.segments().length > 0) {
-                    builder.append(URI.decode(uri.lastSegment())).append("  ");
-                } else {
-                    builder.append(uri.opaquePart()).append(" ");
-                }
-            }
-        }
-        // Remove the last two spaces if needed
-        builder.insert(0, prefix);
-        if (builder.length() > 2 && "  ".equals(builder.substring(builder.length() - 2, builder.length()))) {
-            builder.delete(builder.length() - 2, builder.length());
-        }
-        return builder.toString();
+        return "Local Session: " + sessionResource.getURI().toString();
     }
 
     /**
