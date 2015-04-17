@@ -1206,9 +1206,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public void open(IProgressMonitor monitor) {
         try {
             monitor.beginTask("Open session", 33);
-            if (!SessionManager.INSTANCE.getSessions().contains(this)) {
-                SessionManager.INSTANCE.add(this);
-            }
+            SessionManager.INSTANCE.add(this);
             monitor.worked(1);
             notifyListeners(SessionListener.OPENING);
             monitor.worked(1);
