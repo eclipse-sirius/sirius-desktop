@@ -364,7 +364,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
         final Set<Viewpoint> selectingViewpoints = new HashSet<Viewpoint>(newSelectedViewpoints);
         selectingViewpoints.removeAll(this.selectedViewpoints);
         for (final Viewpoint viewpoint : selectingViewpoints) {
-            fireSelectedSiriusEvent(viewpoint);
+            fireSelectedViewpointEvent(viewpoint);
         }
 
         //
@@ -372,7 +372,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
         final Set<Viewpoint> deselectingViewpoints = new HashSet<Viewpoint>(this.selectedViewpoints);
         deselectingViewpoints.removeAll(newSelectedViewpoints);
         for (final Viewpoint viewpoint : deselectingViewpoints) {
-            fireDeselectedSiriusEvent(viewpoint);
+            fireDeselectedViewpointEvent(viewpoint);
         }
 
         this.selectedViewpoints = newSelectedViewpoints;
@@ -392,13 +392,13 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
         return result;
     }
 
-    private void fireSelectedSiriusEvent(final Viewpoint viewpoint) {
+    private void fireSelectedViewpointEvent(final Viewpoint viewpoint) {
         for (final SessionManagerListener listener : getAllListeners()) {
             listener.viewpointSelected(viewpoint);
         }
     }
 
-    private void fireDeselectedSiriusEvent(final Viewpoint viewpoint) {
+    private void fireDeselectedViewpointEvent(final Viewpoint viewpoint) {
         for (final SessionManagerListener listener : getAllListeners()) {
             listener.viewpointDeselected(viewpoint);
         }
