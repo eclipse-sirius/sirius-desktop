@@ -133,7 +133,7 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="participants"/>
                   <parameters name="element" value="var:instance"/>
-                  <parameters name="predecessor" value="&lt;%if ($predecessor){%>&lt;%$predecessor%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:predecessor"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -151,7 +151,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$target.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant.type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -160,13 +160,13 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="service:target.currentParticipant"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newExecution">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="e&lt;%eContainer(&quot;Interaction&quot;).executions.nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'e' + self.eContainerOrSelf(interactions::Interaction).executions->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.ReturnMessage" referenceName="messages" variableName="returnMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="invocationMessage" valueExpression="var:callMsg"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:returnMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="m_return&lt;%eContainer(&quot;Interaction&quot;).messages.nSize %>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m_return' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="service:source.currentParticipant"/>
@@ -206,13 +206,13 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:startExec"/>
-                  <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sendingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:sendingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move endExec" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
@@ -252,7 +252,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$target.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant.type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -261,7 +261,7 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="service:target.currentParticipant"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newExecution">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="e&lt;%eContainer(&quot;Interaction&quot;).executions.nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'e' + self.eContainerOrSelf(interactions::Interaction).executions->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="service:source.currentParticipant"/>
@@ -290,13 +290,13 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:startExec"/>
-                  <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sendingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:sendingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move endExec" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
@@ -343,7 +343,7 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:sendingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move receivingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
@@ -395,7 +395,7 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:sendingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move receivingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
@@ -405,7 +405,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                   <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new call message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="m_destroy&lt;%eContainer(&quot;Interaction&quot;).messages.nSize %>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m_destroy'+ self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sendingEnd">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['send_' + message.name/]"/>
@@ -428,7 +428,7 @@
                     <parameters name="title" value="Execution creation"/>
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%eContainer(&quot;interactions.Interaction&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.State" referenceName="states" variableName="newState">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="service:container.currentParticipant"/>
                     </subModelOperations>
@@ -448,17 +448,17 @@
                       <parameters name="referenceOwner" value="var:self"/>
                       <parameters name="referenceName" value="ends"/>
                       <parameters name="element" value="var:finishingEnd"/>
-                      <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                      <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move startingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                       <parameters name="referenceOwner" value="var:self"/>
                       <parameters name="referenceName" value="ends"/>
                       <parameters name="element" value="var:startingEnd"/>
-                      <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                      <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newState">
                       <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new state position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.2/@subModelOperations.2"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="s&lt;%eContainer(&quot;Interaction&quot;).states.nSize%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'s' + self.eContainerOrSelf(interactions::Interaction).states->size()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:startingEnd">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'start_' + self.state.name"/>
@@ -481,7 +481,7 @@
                     <parameters name="title" value="Execution creation"/>
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%eContainer(&quot;interactions.Interaction&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.State" referenceName="states" variableName="newState">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="service:container.currentParticipant"/>
                     </subModelOperations>
@@ -497,14 +497,14 @@
                       <parameters name="referenceOwner" value="var:self"/>
                       <parameters name="referenceName" value="ends"/>
                       <parameters name="element" value="var:startingEnd"/>
-                      <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                      <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newState">
                       <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new state position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.2/@subModelOperations.2"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ps&lt;%eContainer(&quot;Interaction&quot;).states.nSize%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'ps' + self.eContainerOrSelf(interactions::Interaction).states->size()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:startingEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="middle_&lt;%state.name%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'middle_' + self.state.name"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -526,7 +526,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="&lt;%$target.currentParticipant.type.eStructuralFeatures.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant.type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -544,13 +544,13 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:receivingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sendingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:sendingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new read message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -579,7 +579,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="&lt;%$target.currentParticipant.type.eStructuralFeatures.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant.type.eStructuralFeatures->first()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
@@ -598,13 +598,13 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:receivingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sendingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:sendingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new write message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -633,7 +633,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$target.currentParticipant.type.eOperations.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant.type.eOperations->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -651,13 +651,13 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:receivingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sendingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:sendingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new call message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -686,7 +686,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.ReturnMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="&lt;%$target.currentParticipant.type.eStructuralFeatures.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant.type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -704,17 +704,17 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:receivingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sendingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:sendingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new return message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="m_return&lt;%eContainer(&quot;Interaction&quot;).messages.nSize %>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m_return' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['send_' + message.name/]"/>
@@ -737,7 +737,7 @@
                   <parameters name="title" value="Execution creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%eContainer(&quot;interactions.Interaction&quot;)%>">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Execution" referenceName="executions" variableName="newExecution">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="service:container.currentParticipant"/>
                   </subModelOperations>
@@ -757,17 +757,17 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:finishingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move startingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:startingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newExecution">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new execution position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.2"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="e&lt;%eContainer(&quot;Interaction&quot;).executions.nSize%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'e' + self.eContainerOrSelf(interactions::Interaction).executions->size()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:startingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['start_' + execution.name/]"/>
@@ -793,7 +793,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.InteractionUse" referenceName="interactionUses" variableName="newIU">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="ref.&lt;%eContainer.eContents.filter(&quot;InteractionUse&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:'ref.' + self.eContainer().eContents()->filter(interactions::InteractionUse)->size()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredParticipants" valueExpression="var:coverage"/>
                 </subModelOperations>
@@ -802,7 +802,7 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="var:newIU"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.InteractionUseEnd" referenceName="ends" variableName="finishingEnd">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="finish_&lt;%$instance.name%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'finish_' + instance.name"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="var:newIU"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newIU">
@@ -813,13 +813,13 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:finishingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move startingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:startingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newIU">
                   <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust interaction use position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.4/@subModelOperations.2"/>
@@ -840,22 +840,22 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CombinedFragment" referenceName="combinedFragments" variableName="newCF">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operator" valueExpression="alt.&lt;%eContainer.eContents.filter(&quot;CombinedFragment&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operator" valueExpression="aql:'alt.' + self.eContainer().eContents()->filter(interactions::CombinedFragment)->size()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredParticipants" valueExpression="var:coverage"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Operand" referenceName="ownedOperands" variableName="newOperand">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="condition1"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CombinedFragmentEnd" referenceName="ends" variableName="startCF">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="start_&lt;%$newCF.operator%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'start_'+ newCF.operator"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="var:newCF"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CombinedFragmentEnd" referenceName="ends" variableName="finishCF">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="finish_&lt;%$newCF.operator%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'finish_' + newCF.operator"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="var:newCF"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.OperandEnd" referenceName="ends" variableName="newOpEnd">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="start_&lt;%$newOperand.name%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'start_' + newOperand.name"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="var:newOperand"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newCF">
@@ -869,19 +869,19 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:finishCF"/>
-                  <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessor){%>&lt;%$finishingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move newOpEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:newOpEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move startCF" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:startCF"/>
-                  <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -898,13 +898,13 @@
                   <parameters name="title" value="Operand Creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;CombinedFragment&quot;)%>">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interactions::CombinedFragment)">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Operand" referenceName="ownedOperands" variableName="newOperand">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="condition.&lt;%eContainer.ownedOperands.nSize%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'condition.' + self.eContainer().ownedOperands->size()"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.OperandEnd" referenceName="ends" variableName="newOpEnd">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="start_&lt;%$newOperand.name%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'start_' + newOperand.name"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="var:newOperand"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newOperand">
@@ -914,10 +914,10 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:newOpEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($startingEndPredecessor){%>&lt;%$startingEndPredecessor.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move operand" id="org.eclipse.sirius.business.api.action.moveElement">
-                  <parameters name="referenceOwner" value="&lt;%$newOperand.eContainer%>"/>
+                  <parameters name="referenceOwner" value="aql:newOperand.eContainer()"/>
                   <parameters name="referenceName" value="ownedOperands"/>
                   <parameters name="element" value="var:newOperand"/>
                   <parameters name="predecessor" value="&lt;%(($newOperand.start.precedingSibling.nReverse.filter(&quot;OperandEnd&quot;) &amp;&amp; $newOperand.eContainer.ownedOperands.start).nFirst).owner%>"/>
@@ -949,7 +949,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:For" expression="&lt;%$element.~context[eContainer != null]%>" iteratorName="end">
+                <subModelOperations xsi:type="tool_1:For" expression="aql:self.eInverse('context')->select( c | c.eContainer()->size() > 0)" iteratorName="end">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;$end.filter(&quot;ExecutionEnd&quot;)%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:end.execution">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
@@ -957,10 +957,10 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;$end.filter(&quot;MessageEnd&quot;)%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:end.message">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%current.sendingEnd == $end &amp;&amp; !current.receivingEnd%>">
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.sendingEnd = end and self.receivingEnd = null">
                         <subModelOperations xsi:type="tool_1:RemoveElement"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!current.sendingEnd  &amp;&amp; current.receivingEnd == $end%>">
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.sendingEnd = null and self.receivingEnd = end">
                         <subModelOperations xsi:type="tool_1:RemoveElement"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -999,12 +999,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:sendingEnd">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.execution == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.execution = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:receivingEnd">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.execution == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.execution = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -1021,12 +1021,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:start">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.message == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.message = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:end">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.message == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.message = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -1048,7 +1048,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%start != end%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.start &lt;> self.end">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:start">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
@@ -1071,18 +1071,18 @@
                   <parameters name="title" value="Event reordering"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%self.filter(&quot;Execution&quot;)%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::Execution)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="feature:start"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="feature:end"/>
-                    <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessorAfter){%>&lt;%$finishingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust execution position 2" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
@@ -1091,18 +1091,18 @@
                     <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.ExecutionEnd&quot;)[current.execution.start == current].nLast.execution%>"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%self.filter(&quot;State&quot;)%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::State)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="feature:start"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="feature:end"/>
-                    <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessorAfter){%>&lt;%$finishingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust state position" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
@@ -1111,21 +1111,21 @@
                     <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.StateEnd&quot;)[current.state.start == current].nLast.state%>"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%self.filter(&quot;Message&quot;)%>">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%self.sendingEnd%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::Message)">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.sendingEnd">
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sending end" id="org.eclipse.sirius.business.api.action.moveElement">
                       <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                       <parameters name="referenceName" value="ends"/>
-                      <parameters name="element" value="&lt;%self.sendingEnd%>"/>
-                      <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                      <parameters name="element" value="aql:self.sendingEnd"/>
+                      <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%self.receivingEnd%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.receivingEnd">
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move receiving end" id="org.eclipse.sirius.business.api.action.moveElement">
                       <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                       <parameters name="referenceName" value="ends"/>
-                      <parameters name="element" value="&lt;%self.receivingEnd%>"/>
-                      <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessorAfter){%>&lt;%$finishingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                      <parameters name="element" value="aql:self.receivingEnd"/>
+                      <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust message position 2" id="org.eclipse.sirius.business.api.action.moveElement">
@@ -1135,18 +1135,18 @@
                     <parameters name="predecessor" value="&lt;%self.sendingEnd.precedingSibling.filter(&quot;interactions.MessageEnd&quot;)[current.message.receivingEnd == current].nLast.message%>"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%self.filter(&quot;InteractionUse&quot;)%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::InteractionUse)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="feature:start"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="feature:finish"/>
-                    <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessorAfter){%>&lt;%$finishingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust Interaction Use position" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
@@ -1155,18 +1155,18 @@
                     <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.InteractionUseEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%self.filter(&quot;CombinedFragment&quot;)%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::CombinedFragment)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="feature:start"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="feature:finish"/>
-                    <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessorAfter){%>&lt;%$finishingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust CombinedFragment position" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
@@ -1175,15 +1175,15 @@
                     <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.CombinedFragmentEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%self.filter(&quot;Operand&quot;)%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::Operand)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="feature:start"/>
-                    <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust Operand position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="&lt;%eContainer(&quot;CombinedFragment&quot;)%>"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::CombinedFragment)"/>
                     <parameters name="referenceName" value="ownedOperands"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.OperandEnd&quot;)[current.owner.start == current &amp;&amp; current(1).eContainer(&quot;interactions.CombinedFragment&quot;) == current().owner.eContainer(&quot;interactions.CombinedFragment&quot;)].nLast.owner%>"/>
@@ -1201,12 +1201,12 @@
                   <parameters name="title" value="Event reordering"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%self.filter(&quot;Participant&quot;)%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::Participant)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="participants"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%if ($predecessorAfter){%>&lt;%$predecessorAfter%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:predecessorAfter"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -1253,7 +1253,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.deleteCombinedFragment()%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.deleteCombinedFragment()"/>
             </initialOperation>
           </ownedTools>
           <subSections name="Operands">
@@ -1278,7 +1278,7 @@
       </defaultLayer>
       <additionalLayers name="Lost Found" label="Lost and found messages creation">
         <toolSections name="Lost Messages">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1288,7 +1288,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$element.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant.type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1305,7 +1305,7 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:sendingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new call message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -1313,7 +1313,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1334,11 +1334,11 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:sendingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                   <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new call message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="m_create&lt;%eContainer(&quot;Interaction&quot;).messages.nSize %>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m_create' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sendingEnd">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['send_' + message.name/]"/>
@@ -1346,7 +1346,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1367,11 +1367,11 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:sendingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                   <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new call message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="m_destroy&lt;%eContainer(&quot;Interaction&quot;).messages.nSize %>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m_destroy'+ self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sendingEnd">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['send_' + message.name/]"/>
@@ -1380,7 +1380,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Lost Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1390,7 +1390,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="&lt;%$element.currentParticipant.type.eStructuralFeatures.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1403,7 +1403,7 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:sendingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new read message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -1415,7 +1415,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1425,7 +1425,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="&lt;%$element.currentParticipant.type.eStructuralFeatures.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
@@ -1439,7 +1439,7 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:sendingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new write message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -1451,7 +1451,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1461,7 +1461,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$element.currentParticipant.type.eOperations.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant.type.eOperations->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1474,7 +1474,7 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:sendingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new call message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -1489,17 +1489,17 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Found Messages">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Sync Call" precondition="&lt;%$container.filter(&quot;interactions.Participant&quot;)[$containerView.eContainer.filter(&quot;DNode&quot;)]  + $container.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Sync Call" precondition="aql:(container.oclIsKindOf(interactions::Participant) and containerView.eContainer().oclIsKindOf(diagram::DNode)) or container.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="container"/>
             <elementView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;Interaction&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="Call Message Creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$container.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant.type.eOperation->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1508,13 +1508,13 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="service:container.currentParticipant"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newExecution">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="e&lt;%eContainer(&quot;Interaction&quot;).executions.nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'e' + self.eContainerOrSelf(interactions::Interaction).executions->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.ReturnMessage" referenceName="messages" variableName="returnMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="invocationMessage" valueExpression="var:callMsg"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:returnMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="m_return&lt;%eContainer(&quot;Interaction&quot;).messages.nSize %>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m_return' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MixEnd" referenceName="ends" variableName="startExec">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="service:container.currentParticipant"/>
@@ -1542,7 +1542,7 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:startExec"/>
-                  <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move endExec" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
@@ -1562,17 +1562,17 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found ASync Call" precondition="&lt;%$container.filter(&quot;interactions.Participant&quot;)[$containerView.eContainer.filter(&quot;DNode&quot;)]  + $container.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found ASync Call" precondition="aql:(container.oclIsKindOf(interactions::Participant) and containerView.eContainer().oclIsKindOf(diagram::DNode)) or container.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="container"/>
             <elementView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;Interaction&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="Call Message Creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$container.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant.type.eOperation->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1581,7 +1581,7 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="service:container.currentParticipant"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newExecution">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="e&lt;%eContainer(&quot;Interaction&quot;).executions.nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'e' + self.eContainerOrSelf(interactions::Interaction).executions->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MixEnd" referenceName="ends" variableName="startExec">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="service:container.currentParticipant"/>
@@ -1605,7 +1605,7 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:startExec"/>
-                  <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move endExec" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
                   <parameters name="referenceOwner" value="var:self"/>
@@ -1622,7 +1622,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Create" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;) &amp;&amp; $elementView.eContainer.filter(&quot;DNode&quot;) &amp;&amp; $elementView.eContainer.eContainer.filter(&quot;DDiagram&quot;) &amp;&amp; $element.canCreate($endBefore)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Create" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementview.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContainer().eContainer().oclIsKindOf(diagram::DDiagram) and element.canCreate(endBefore)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1643,11 +1643,11 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:receivingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                   <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new call message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="m_create&lt;%eContainer(&quot;Interaction&quot;).messages.nSize %>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m_create' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:receivingEnd">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['receive_' + message.name/]"/>
@@ -1655,7 +1655,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;) &amp;&amp; $elementView.eContainer.filter(&quot;DNode&quot;) &amp;&amp; $elementView.eContainer.eContainer.filter(&quot;DDiagram&quot;) &amp;&amp; $element.canDestroy($endBefore)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContaienr().eContainer().oclIsKindOf(diagram::DDiagram) and element.canDestroy(endBefore)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1676,11 +1676,11 @@
                   <parameters name="referenceOwner" value="var:self"/>
                   <parameters name="referenceName" value="ends"/>
                   <parameters name="element" value="var:receivingEnd"/>
-                  <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                  <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                   <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new call message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="m_destroy&lt;%eContainer(&quot;Interaction&quot;).messages.nSize %>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m_destroy'+ self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:receivingEnd">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['receive_' + message.name/]"/>
@@ -1689,7 +1689,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Found Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1699,7 +1699,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="&lt;%$element.currentParticipant.type.eStructuralFeatures.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1712,7 +1712,7 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:receivingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new read message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -1724,7 +1724,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1734,7 +1734,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="&lt;%$element.currentParticipant.type.eStructuralFeatures.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
@@ -1748,7 +1748,7 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:receivingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new write message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -1760,7 +1760,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1770,7 +1770,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$element.currentParticipant.type.eOperations.nFirst%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant.type.eOperations->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1783,7 +1783,7 @@
                     <parameters name="referenceOwner" value="var:self"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="var:receivingEnd"/>
-                    <parameters name="predecessor" value="&lt;%if ($endBefore){%>&lt;%$endBefore.semanticEnd%>&lt;%}%>"/>
+                    <parameters name="predecessor" value="aql:endBefore.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new call message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
@@ -1805,7 +1805,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="constraint" preconditionExpression="&lt;%constrainedEnds.nSize == 2%>" semanticCandidatesExpression="aql:self.constraints" sourceMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']" targetMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']" targetFinderExpression="&lt;%constrainedEnds.nGet(1)%>" sourceFinderExpression="&lt;%constrainedEnds.nGet(0)%>" domainClass="Constraint" useDomainElement="true">
+        <edgeMappings name="constraint" preconditionExpression="aql:self.constrainedEnds->size() = 2" semanticCandidatesExpression="aql:self.constraints" sourceMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']" targetMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']" targetFinderExpression="aql:self.constrainedEnds->at(2)" sourceFinderExpression="aql:self.constrainedEnds->at(1)" domainClass="Constraint" useDomainElement="true">
           <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.expression">
@@ -1822,7 +1822,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:EdgeCreationDescription" name="Constraint" precondition="&lt;%$preSource != $preTarget &amp;&amp; $preTarget.isValidTargetForConstraintCreation()%>" edgeMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']" extraSourceMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Return%20Message']" extraTargetMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Return%20Message']" connectionStartPrecondition="&lt;%$preSource.isValidSourceForConstraintCreation()%>">
+          <ownedTools xsi:type="tool_2:EdgeCreationDescription" name="Constraint" precondition="aql:preSource &lt;> preTarget and preTarget.isValidTargetForConstraintCreation()" edgeMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']" extraSourceMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Return%20Message']" extraTargetMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Return%20Message']" connectionStartPrecondition="aql:preSource.isValidSourceForConstraintCreation()">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1830,24 +1830,24 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer(interactions::Interaction)/]">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Constraint" referenceName="constraints" variableName="ct">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="expression" valueExpression="constraint&lt;%eContainer.eContents.filter(&quot;Constraint&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="expression" valueExpression="aql:'constraint' + self.eContainer().eContents()->filter(interactions::Constraint)->size()"/>
                   <subModelOperations xsi:type="tool_1:Switch">
-                    <cases conditionExpression="&lt;%$source.filter(&quot;CallMessage&quot;) &amp;&amp; $source.filter(&quot;CallMessage&quot;).receivingEnd.filter(&quot;MixEnd&quot;)%>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="&lt;%$source.receivingEnd%>"/>
+                    <cases conditionExpression="aql:source.oclIsKindOf(interactions::CallMessage) and source.receivingEnd.oclIsKindOf(interactions::MixEnd)">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="aql:source.receivingEnd"/>
                     </cases>
-                    <cases conditionExpression="&lt;%$source.filter(&quot;ReturnMessage&quot;) &amp;&amp; $source.filter(&quot;ReturnMessage&quot;).sendingEnd.filter(&quot;MixEnd&quot;)%>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="&lt;%$source.sendingEnd%>"/>
+                    <cases conditionExpression="aql:source.oclIsKindOf(interactions::ReturnMessage) and source.sendingEnd.oclIsKindOf(interactions::MixEnd)">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="aql:source.sendingEnd"/>
                     </cases>
                     <default>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="var:source"/>
                     </default>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:Switch">
-                    <cases conditionExpression="&lt;%$target.filter(&quot;ReturnMessage&quot;) &amp;&amp; $target.filter(&quot;ReturnMessage&quot;).sendingEnd.filter(&quot;MixEnd&quot;)%>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="&lt;%$target.sendingEnd%>"/>
+                    <cases conditionExpression="aql:target.oclIsKindOf(interactions::ReturnMessage) and target.sendingEnd.oclIsKindOf(interactions::MixEnd)">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="aql:target.sendingEnd"/>
                     </cases>
-                    <cases conditionExpression="&lt;%$target.filter(&quot;CallMessage&quot;) &amp;&amp; $target.filter(&quot;CallMessage&quot;).receivingEnd.filter(&quot;MixEnd&quot;)%>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="&lt;%$target.receivingEnd%>"/>
+                    <cases conditionExpression="aql:target.oclIsKindOf(interactions::CallMessage) and target.receivingEnd.oclIsKindOf(interactions::MixEnd)">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="aql:target.receivingEnd"/>
                     </cases>
                     <default>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="constrainedEnds" valueExpression="var:target"/>
