@@ -17,7 +17,9 @@ Require-Bundle: org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.300",
  org.eclipse.ui.workbench.texteditor;bundle-version="3.8.0",
  org.eclipse.emf.validation;bundle-version="1.4.0",
  org.eclipse.ui.navigator;bundle-version="3.5.200",
- org.eclipse.jface.text;bundle-version="3.8.2"
+ org.eclipse.jface.text;bundle-version="3.8.2",
+ org.eclipse.pde.core;bundle-version="3.8.1",
+ org.eclipse.equinox.frameworkadmin;bundle-version="2.0.100"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-LazyStart: true
 Export-Package: org.eclipse.sirius.editor.assist.content;version="2.0.4",
