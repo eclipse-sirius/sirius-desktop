@@ -18,6 +18,7 @@ import java.util.Map;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
@@ -25,6 +26,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.diagram.ContainerLayout;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 
 import com.google.common.base.Preconditions;
@@ -193,6 +197,28 @@ public class EditPartQuery {
             }
         }
         return result;
+    }
+
+    /**
+     * Check that the container of the <code>part</code> is layouted with
+     * "FreeForm" style.
+     * 
+     * @return true if the the container of the <code>part</code> is layouted
+     *         with "FreeForm" style, false otherwise.
+     */
+    public boolean isFreeFormContainerChildrenPresentation() {
+        boolean isFreeForm = true;
+        EObject eContainer = part.resolveSemanticElement().eContainer();
+        if (eContainer instanceof DNodeList) {
+            isFreeForm = false;
+        } else if (eContainer instanceof DNodeContainer) {
+            DNodeContainer container = (DNodeContainer) eContainer;
+            ContainerLayout childrenPresentation = container.getChildrenPresentation();
+            if (!childrenPresentation.equals(ContainerLayout.FREE_FORM)) {
+                isFreeForm = false;
+            }
+        }
+        return isFreeForm;
     }
 
     /**

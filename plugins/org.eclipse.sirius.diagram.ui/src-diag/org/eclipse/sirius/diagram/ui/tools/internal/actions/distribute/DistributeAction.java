@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.ui.IWorkbenchPage;
 
 import com.google.common.base.Predicates;
@@ -327,6 +328,14 @@ public class DistributeAction extends DiagramAction {
                         // axis.
                         selection = Collections.EMPTY_LIST;
                         break;
+                    } else if (part instanceof IGraphicalEditPart) {
+                        EditPartQuery containerLayoutQuery = new EditPartQuery((IGraphicalEditPart) part);
+                        if (!containerLayoutQuery.isFreeFormContainerChildrenPresentation()) {
+                            // List item and elements inside compartment can not
+                            // be distribute
+                            selection = Collections.EMPTY_LIST;
+                            break;
+                        }
                     }
                 }
             }
@@ -388,4 +397,5 @@ public class DistributeAction extends DiagramAction {
         return parent;
 
     }
+
 }
