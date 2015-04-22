@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -709,7 +709,7 @@ public class SiriusControlTest extends AbstractControlTest {
 
             assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_6, File.separator + SEMANTIC_MODEL_FILENAME_6_1, File.separator + SESSION_MODEL_FILENAME_6, File.separator
                     + SESSION_MODEL_FILENAME_6_1);
-            assertEquals("The resourceSet should be contains only 4 resources typed Aird and Ecore", 4, getResourceTypeAirdOrEcore(rs).size());
+            assertEquals("The resourceSet should be contains only 4 resources typed Aird and Ecore", 5, getResourceTypeAirdOrEcore(rs).size());
             assertTrue(fileDoesNotExist(File.separator + SEMANTIC_MODEL_FILENAME_6_2, File.separator + SESSION_MODEL_FILENAME_6_2));
         } finally {
             session.close(new NullProgressMonitor());
