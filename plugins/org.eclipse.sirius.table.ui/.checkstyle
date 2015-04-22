@@ -9,6 +9,6 @@
   </fileset>
   <filter name="FilesFromPackage" enabled="true">
     <filter-data value="src-gen"/>
-    <filter-data value="src/org/eclipse/sirius/table/ui/tools/internal/paperclips"/>
+    <filter-data value="src-paperclips"/>
   </filter>
 </fileset-config>
