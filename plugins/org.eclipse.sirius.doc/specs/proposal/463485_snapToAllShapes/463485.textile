@@ -1,4 +1,4 @@
-h1. Snap to all shapes
+h1. Sirius Evolution Specification: Snap to all shapes
 
 h2. Preamble
 
@@ -6,6 +6,7 @@ _Summary_: Add capability to snap to all shapes when moving or resizing a node o
 
 |_. Version |_. Status |_. Date        |_. Authors |_. Changes |
 | v0.1        | DRAFT    | 2015-04-08 | lredor    | Initial version. |
+| v0.2        | PROPOSAL    | 2015-04-08 | lredor    | Reviewed version. |
 
 _Relevant tickets_:
 * "Bug 463485 - Snap to all shapes":https://bugs.eclipse.org/bugs/show_bug.cgi?id=463485
