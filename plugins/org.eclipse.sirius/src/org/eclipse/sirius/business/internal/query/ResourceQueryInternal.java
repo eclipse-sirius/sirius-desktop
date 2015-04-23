@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.sirius.business.internal.helper.model;
+package org.eclipse.sirius.business.internal.query;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;

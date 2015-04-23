@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
-import org.eclipse.sirius.business.internal.helper.model.ResourceQueryInternal;
+import org.eclipse.sirius.business.internal.query.ResourceQueryInternal;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
