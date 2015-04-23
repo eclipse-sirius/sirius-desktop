@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eSubpackages name="rectilinear">
+    <eSubpackages name="before">
+      <eClassifiers xsi:type="ecore:EClass" name="NewEClass1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="NewEClass2">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="referenceNewClass1ToNewClass2"
+            eType="#//rectilinear/before/NewEClass1"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="after (expected result)">
+      <eClassifiers xsi:type="ecore:EClass" name="NewEClass1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="NewEClass2">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="referenceNewClass1ToNewClass2"
+            eType="#//rectilinear/after%20(expected%20result)/NewEClass1"/>
+      </eClassifiers>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>
