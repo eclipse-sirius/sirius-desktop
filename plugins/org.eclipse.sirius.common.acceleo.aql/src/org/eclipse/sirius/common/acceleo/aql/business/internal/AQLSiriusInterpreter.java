@@ -48,6 +48,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.acceleo.aql.business.AQLSiriusPlugin;
 import org.eclipse.sirius.common.acceleo.aql.business.api.AQLConstants;
@@ -149,7 +150,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
         });
         this.queryEnvironment.registerEPackage(EcorePackage.eINSTANCE);
-
+        this.queryEnvironment.registerCustomClassMapping(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class);
     }
 
     @Override
