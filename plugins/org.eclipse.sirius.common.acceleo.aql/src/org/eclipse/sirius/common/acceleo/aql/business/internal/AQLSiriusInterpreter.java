@@ -24,22 +24,21 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
-import org.eclipse.acceleo.query.ast.Expression;
-import org.eclipse.acceleo.query.parser.AstEvaluator;
 import org.eclipse.acceleo.query.runtime.AcceleoQueryEvaluationException;
 import org.eclipse.acceleo.query.runtime.AcceleoQueryValidationException;
 import org.eclipse.acceleo.query.runtime.CrossReferenceProvider;
 import org.eclipse.acceleo.query.runtime.IQueryBuilderEngine;
 import org.eclipse.acceleo.query.runtime.IQueryBuilderEngine.AstResult;
 import org.eclipse.acceleo.query.runtime.IQueryEnvironment;
+import org.eclipse.acceleo.query.runtime.IQueryEvaluationEngine;
+import org.eclipse.acceleo.query.runtime.IQueryValidationEngine;
 import org.eclipse.acceleo.query.runtime.IValidationMessage;
 import org.eclipse.acceleo.query.runtime.IValidationResult;
 import org.eclipse.acceleo.query.runtime.InvalidAcceleoPackageException;
-import org.eclipse.acceleo.query.runtime.impl.EvaluationServices;
-import org.eclipse.acceleo.query.runtime.impl.Nothing;
-import org.eclipse.acceleo.query.runtime.impl.QueryBuilderEngine;
-import org.eclipse.acceleo.query.runtime.impl.QueryEnvironment;
-import org.eclipse.acceleo.query.runtime.impl.QueryValidationEngine;
+import org.eclipse.acceleo.query.runtime.Query;
+import org.eclipse.acceleo.query.runtime.QueryEvaluation;
+import org.eclipse.acceleo.query.runtime.QueryParsing;
+import org.eclipse.acceleo.query.runtime.QueryValidation;
 import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.IType;
 import org.eclipse.core.runtime.IStatus;
@@ -114,7 +113,6 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         @Override
         public void unloaded(String qualifiedName, Class<?> clazz) {
             queryEnvironment.removeServicePackage(clazz);
-
         }
     };
 
@@ -125,7 +123,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
      */
     public AQLSiriusInterpreter() {
         super();
-        this.queryEnvironment = new QueryEnvironment(xRef);
+        this.queryEnvironment = Query.newEnvironmentWithDefaultServices(xRef);
         this.ePackageCallBack = new EPackageLoadingCallback() {
 
             @Override
@@ -140,7 +138,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         };
         this.javaExtensions.addClassLoadingCallBack(callback);
         this.javaExtensions.addEPackageCallBack(ePackageCallBack);
-        final IQueryBuilderEngine builder = new QueryBuilderEngine(queryEnvironment);
+        final IQueryBuilderEngine builder = QueryParsing.newBuilder(queryEnvironment);
         this.parsedExpressions = CacheBuilder.newBuilder().maximumSize(500).build(new CacheLoader<String, AstResult>() {
 
             @Override
@@ -184,13 +182,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         AstResult build;
         try {
             build = parsedExpressions.get(expression);
-            Expression ast = build.getAst();
-            AstEvaluator evaluator = new AstEvaluator(new EvaluationServices(queryEnvironment, false));
-            Object result = evaluator.eval(variables, ast);
-            if (result instanceof Nothing) {
-                result = null;
-            }
-            return result;
+            IQueryEvaluationEngine evaluationEngine = QueryEvaluation.newEngine(queryEnvironment);
+            return evaluationEngine.eval(build, variables);
         } catch (ExecutionException e) {
             throw new EvaluationException(e.getCause());
         }
@@ -229,7 +222,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
         Map<String, Set<IType>> variableTypes = TypesUtil.createAQLVariableTypesFromInterpreterContext(context, queryEnvironment);
 
-        QueryValidationEngine validator = new QueryValidationEngine(this.queryEnvironment);
+        IQueryValidationEngine validator = QueryValidation.newEngine(this.queryEnvironment);
         try {
             IValidationResult validationResult = validator.validate(trimmedExpression, variableTypes);
             for (IValidationMessage message : validationResult.getMessages()) {

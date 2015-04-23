@@ -20,9 +20,9 @@ import java.util.Set;
 
 import org.eclipse.acceleo.query.runtime.ICompletionProposal;
 import org.eclipse.acceleo.query.runtime.ICompletionResult;
+import org.eclipse.acceleo.query.runtime.IQueryCompletionEngine;
 import org.eclipse.acceleo.query.runtime.IQueryEnvironment;
-import org.eclipse.acceleo.query.runtime.impl.BasicFilter;
-import org.eclipse.acceleo.query.runtime.impl.QueryCompletionEngine;
+import org.eclipse.acceleo.query.runtime.QueryCompletion;
 import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.IType;
 import org.eclipse.emf.ecore.EPackage;
@@ -99,12 +99,12 @@ public class AQLProposalProvider implements IProposalProvider {
     }
 
     private void addProposals(List<ContentProposal> proposals, ExpressionTrimmer trimmer, int position, IQueryEnvironment queryEnvironment, Map<String, Set<IType>> variableTypes) {
-        QueryCompletionEngine engine = new QueryCompletionEngine(queryEnvironment);
+        IQueryCompletionEngine engine = QueryCompletion.newEngine(queryEnvironment);
         final ICompletionResult completionResult = engine.getCompletion(trimmer.getExpression(), trimmer.getPositionWithinAQL(position), variableTypes);
         /*
          * completionResult.sort(new ProposalComparator());
          */
-        final List<ICompletionProposal> proposal = completionResult.getProposals(new BasicFilter(completionResult));
+        final List<ICompletionProposal> proposal = completionResult.getProposals(QueryCompletion.createBasicFilter(completionResult));
 
         for (ICompletionProposal propFromAQL : proposal) {
             ContentProposal propForSirius = new ContentProposal(propFromAQL.getProposal(), propFromAQL.getProposal(), propFromAQL.getClass().getSimpleName(), propFromAQL.getCursorOffset());
