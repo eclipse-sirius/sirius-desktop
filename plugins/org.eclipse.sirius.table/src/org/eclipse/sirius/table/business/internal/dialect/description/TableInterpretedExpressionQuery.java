@@ -21,12 +21,19 @@ import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExp
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
+import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
+import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
+import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
+import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
+import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
@@ -86,6 +93,66 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
         }
         if (emv != null) {
             appendEditMaskVariables(emv, definitions);
+        }
+    }
+
+    @Override
+    public Map<String, VariableType> getAvailableVariables() {
+        Map<String, VariableType> availableVariables = super.getAvailableVariables();
+
+        if (getToolContext().some()) {
+            EObject operationContext = getToolContext().get();
+            if (operationContext instanceof CreateCellTool) {
+                CreateCellTool tool = (CreateCellTool) operationContext;
+                IntersectionMapping interMapping = tool.getMapping();
+                if (interMapping != null) {
+                    declareLineAndColumnSemantic(availableVariables, interMapping);
+                }
+            } else if (operationContext instanceof LabelEditTool) {
+                LabelEditTool tool = (LabelEditTool) operationContext;
+                if (tool.eContainer() instanceof IntersectionMapping) {
+                    IntersectionMapping interMapping = (IntersectionMapping) tool.eContainer();
+                    declareLineAndColumnSemantic(availableVariables, interMapping);
+                }
+            }
+
+        }
+        return availableVariables;
+    }
+
+    private void declareLineAndColumnSemantic(Map<String, VariableType> availableVariables, IntersectionMapping interMapping) {
+        ColumnMapping cMapping = interMapping.getColumnMapping();
+        Collection<String> possibleLineTypes = Sets.newLinkedHashSet();
+
+        for (LineMapping lineMapping : interMapping.getLineMapping()) {
+            if (!StringUtil.isEmpty(lineMapping.getDomainClass())) {
+                possibleLineTypes.add(lineMapping.getDomainClass());
+            }
+        }
+
+        Collection<String> possibleColumnTypes = Sets.newLinkedHashSet();
+        if (cMapping instanceof ElementColumnMapping) {
+            String columnDomain = ((ElementColumnMapping) cMapping).getDomainClass();
+            if (!StringUtil.isEmpty(columnDomain)) {
+                possibleColumnTypes.add(columnDomain);
+            }
+        } else if (cMapping instanceof FeatureColumnMapping) {
+            /*
+             * if the column mapping is a feature column, then the possible
+             * types for columnSemantic are actually the possible types for the
+             * lines.
+             */
+            possibleColumnTypes.addAll(possibleLineTypes);
+        }
+        if (possibleLineTypes.size() > 0) {
+            availableVariables.put(IInterpreterSiriusTableVariables.LINE_SEMANTIC, VariableType.fromStrings(possibleLineTypes));
+        } else {
+            availableVariables.put(IInterpreterSiriusTableVariables.LINE_SEMANTIC, VariableType.ANY_EOBJECT);
+        }
+        if (possibleColumnTypes.size() > 0) {
+            availableVariables.put(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, VariableType.fromStrings(possibleColumnTypes));
+        } else {
+            availableVariables.put(IInterpreterSiriusTableVariables.LINE_SEMANTIC, VariableType.ANY_EOBJECT);
         }
     }
 
