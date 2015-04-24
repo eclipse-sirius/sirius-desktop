@@ -371,29 +371,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
              * typing information should not create a new context at the
              * ModelOperation leaf or we'll end up with an inifite loop.
              */
-            if (context != bottom) {
-                if (context instanceof ChangeContext) {
-                    ChangeContext f = (ChangeContext) context;
-                    IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
-                    ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, f.getBrowseExpression());
-                    VariableType returnTypes = res.getReturnTypes();
-                    changeSelfType(definitions, returnTypes);
-
-                }
-                if (context instanceof For) {
-                    For f = (For) context;
-                    IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.FOR__EXPRESSION);
-                    ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, f.getExpression());
-                    VariableType returnTypes = res.getReturnTypes();
-                    changeSelfType(definitions, returnTypes);
-                    addDefinition(definitions, f.getIteratorName(), returnTypes);
-
-                }
-            }
-            if (context instanceof CreateInstance) {
-                CreateInstance f = (CreateInstance) context;
-                changeSelfType(definitions, VariableType.fromString(f.getTypeName()));
-            }
+            collectContextualVariableForOperation(context, definitions, bottom);
             if (context != top) {
                 EObject sibling = precedingSibling(context);
                 while (sibling != null) {
@@ -412,14 +390,60 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         }
     }
 
-    private void changeSelfType(Map<String, Collection<VariableType>> definitions, VariableType returnTypes) {
+    /**
+     * Collect the contextual variable for a given operation.
+     * 
+     * @param current
+     *            the current model operation while going from the leaf to the
+     *            top.
+     * @param definitions
+     *            the current state of variable definitions to be updated when
+     *            needed.
+     * @param leaf
+     *            the leaf operation.
+     */
+    protected void collectContextualVariableForOperation(EObject current, Map<String, Collection<VariableType>> definitions, EObject leaf) {
+        if (current != leaf) {
+            if (current instanceof ChangeContext) {
+                ChangeContext f = (ChangeContext) current;
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, f.getBrowseExpression());
+                VariableType returnTypes = res.getReturnTypes();
+                changeSelfType(returnTypes);
+
+            }
+            if (current instanceof For) {
+                For f = (For) current;
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.FOR__EXPRESSION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, f.getExpression());
+                VariableType returnTypes = res.getReturnTypes();
+                changeSelfType(returnTypes);
+                addDefinition(definitions, f.getIteratorName(), returnTypes);
+            }
+        }
+        if (current instanceof CreateInstance) {
+            CreateInstance f = (CreateInstance) current;
+            changeSelfType(VariableType.fromString(f.getTypeName()));
+        }
+    }
+
+    /**
+     * Change the type of the "self" context. This method should be called while
+     * the model operation structure is being browsed from the leaf to the top.
+     * Only the most specific definition of the type of "self" will be kept,
+     * further assignations should not be considered.
+     * 
+     * @param newSelfType
+     *            the new type definition for the current "self" context.
+     */
+    protected void changeSelfType(VariableType newSelfType) {
         /*
          * We only set the self type once as we are browsing the model from most
          * to less specific. The first assignation will be the most specific,
          * further assignations should not be considered.
          */
         if (selfType == null) {
-            selfType = returnTypes;
+            selfType = newSelfType;
         }
     }
 

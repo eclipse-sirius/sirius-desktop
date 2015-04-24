@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
@@ -38,6 +39,7 @@ import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
@@ -67,6 +69,12 @@ import com.google.common.collect.Sets;
  * 
  */
 public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpressionQuery implements IInterpretedExpressionQuery {
+
+    private static final String DIAGRAM_D_NODE = "diagram.DNode";
+
+    private static final String DIAGRAM_D_NODE_LIST = "diagram.DNodeList";
+
+    private static final String DIAGRAM_D_NODE_CONTAINER = "diagram.DNodeContainer";
 
     private static final String DIAGRAM_D_EDGE_TYPE = "diagram.DEdge";
 
@@ -126,6 +134,26 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             availableVariables.put(((CreateView) context).getVariableName(), VariableType.ANY_EOBJECT);
         }
 
+    }
+
+    @Override
+    protected void collectContextualVariableForOperation(EObject current, Map<String, Collection<VariableType>> definitions, EObject leaf) {
+        super.collectContextualVariableForOperation(current, definitions, leaf);
+        if (current instanceof CreateView) {
+            CreateView op = (CreateView) current;
+            DiagramElementMapping mapping = op.getMapping();
+            if (mapping instanceof NodeMapping) {
+                changeSelfType(VariableType.fromString(DIAGRAM_D_NODE));
+            } else if (mapping instanceof ContainerMapping) {
+                if (((ContainerMapping) mapping).getChildrenPresentation() == ContainerLayout.LIST) {
+                    changeSelfType(VariableType.fromString(DIAGRAM_D_NODE_LIST));
+                } else {
+                    changeSelfType(VariableType.fromString(DIAGRAM_D_NODE_CONTAINER));
+                }
+            } else if (mapping instanceof EdgeMapping) {
+                changeSelfType(VariableType.fromString(DIAGRAM_D_EDGE_TYPE));
+            }
+        }
     }
 
     @Override

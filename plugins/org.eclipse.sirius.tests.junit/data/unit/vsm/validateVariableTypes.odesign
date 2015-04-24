@@ -234,6 +234,20 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CreateViews" nodeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']" containerViewExpression="var:containerView" variableName="createdNode">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer']" containerViewExpression="var:containerView" variableName="createdContainer">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:childrenPresentation"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <subSections name="Ignored">
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">
               <mask mask="{0}"/>
@@ -293,20 +307,6 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sourceView">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CreateViews" nodeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']" containerViewExpression="var:containerView" variableName="createdNode">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer']" containerViewExpression="var:containerView" variableName="createdContainer">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:childrenPresentation"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
