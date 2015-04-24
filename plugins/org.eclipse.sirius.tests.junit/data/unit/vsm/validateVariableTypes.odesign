@@ -248,6 +248,56 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain ParticipantNode to Interaction Node" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='ParticipantNode%20to%20InteractionNode%20through%20Message']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:participants"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:targetView">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sourceView">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain ParticipantNode to Interaction Node two Edge Mappings" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='ParticipantNode%20to%20InteractionNode%20through%20Message'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='Dupplicate%20ParticipantNode%20to%20InteractionNode%20through%20Message']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:participants"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:targetView">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sourceView">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <subSections name="Ignored">
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">
               <mask mask="{0}"/>
@@ -257,56 +307,6 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:name"/>
                     </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain ParticipantNode to Interaction Node" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='ParticipantNode%20to%20InteractionNode%20through%20Message']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:participants"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:targetView">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sourceView">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain ParticipantNode to Interaction Node two Edge Mappings" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='ParticipantNode%20to%20InteractionNode%20through%20Message'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='Dupplicate%20ParticipantNode%20to%20InteractionNode%20through%20Message']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:participants"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:targetView">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sourceView">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:resizeKind"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>

@@ -297,43 +297,61 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
 
     private void declareEdgeSourceTargets(Map<String, VariableType> availableVariables, Collection<EdgeMapping> eMappings, Collection<DiagramElementMapping> extraSourceMappings,
             Collection<DiagramElementMapping> extraTargetMappings) {
-        Collection<String> possibleSources = Sets.newLinkedHashSet();
-        Collection<String> possibleTargets = Sets.newLinkedHashSet();
+        Collection<String> possibleSemanticSources = Sets.newLinkedHashSet();
+        Collection<String> possibleViewSources = Sets.newLinkedHashSet();
+        Collection<String> possibleSemanticTargets = Sets.newLinkedHashSet();
+        Collection<String> possibleViewTargets = Sets.newLinkedHashSet();
         for (EdgeMapping eMapping : eMappings) {
             for (DiagramElementMapping endMapping : eMapping.getSourceMapping()) {
-                collectTypes(possibleSources, endMapping);
+                collectTypes(possibleSemanticSources, possibleViewSources, endMapping);
             }
             for (DiagramElementMapping endMapping : eMapping.getTargetMapping()) {
-                collectTypes(possibleTargets, endMapping);
+                collectTypes(possibleSemanticTargets, possibleViewTargets, endMapping);
             }
         }
         for (DiagramElementMapping extraSource : extraSourceMappings) {
-            collectTypes(possibleSources, extraSource);
+            collectTypes(possibleSemanticSources, possibleViewSources, extraSource);
         }
         for (DiagramElementMapping extraTarget : extraTargetMappings) {
-            collectTypes(possibleTargets, extraTarget);
+            collectTypes(possibleSemanticTargets, possibleViewTargets, extraTarget);
         }
-        if (possibleSources.size() > 0) {
-            VariableType sourceTypes = VariableType.fromStrings(possibleSources);
+        if (possibleViewSources.size() > 0) {
+            availableVariables.put(IInterpreterSiriusVariables.SOURCE_VIEW, VariableType.fromStrings(possibleViewSources));
+        }
+        if (possibleViewTargets.size() > 0) {
+            availableVariables.put(IInterpreterSiriusVariables.TARGET_VIEW, VariableType.fromStrings(possibleViewTargets));
+        }
+        if (possibleSemanticSources.size() > 0) {
+            VariableType sourceTypes = VariableType.fromStrings(possibleSemanticSources);
             availableVariables.put(IInterpreterSiriusVariables.SOURCE_PRE, sourceTypes);
             availableVariables.put(IInterpreterSiriusVariables.SOURCE, sourceTypes);
         }
-        if (possibleTargets.size() > 0 && feature != org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION) {
-            VariableType targetTypes = VariableType.fromStrings(possibleTargets);
+        if (possibleSemanticTargets.size() > 0 && feature != org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION) {
+            VariableType targetTypes = VariableType.fromStrings(possibleSemanticTargets);
             availableVariables.put(IInterpreterSiriusVariables.TARGET_PRE, targetTypes);
             availableVariables.put(IInterpreterSiriusVariables.TARGET, targetTypes);
         }
     }
 
-    private void collectTypes(Collection<String> possibleSources, DiagramElementMapping endMapping) {
+    private void collectTypes(Collection<String> possibleSemanticTypes, Collection<String> possibleViewTypes, DiagramElementMapping endMapping) {
         if (endMapping instanceof AbstractNodeMapping) {
             String domainClass = ((AbstractNodeMapping) endMapping).getDomainClass();
             if (!StringUtil.isEmpty(domainClass)) {
-                possibleSources.add(domainClass);
+                possibleSemanticTypes.add(domainClass);
+            }
+            if (endMapping instanceof ContainerMapping) {
+                if (((ContainerMapping) endMapping).getChildrenPresentation() == ContainerLayout.LIST) {
+                    possibleViewTypes.add(DIAGRAM_D_NODE_LIST);
+                } else {
+                    possibleViewTypes.add(DIAGRAM_D_NODE_CONTAINER);
+                }
+            } else if (endMapping instanceof NodeMapping) {
+                possibleViewTypes.add(DIAGRAM_D_NODE);
             }
         } else if (endMapping instanceof EdgeMapping) {
             EdgeMapping edgeMapping = (EdgeMapping) endMapping;
-            collectSemanticElementType(possibleSources, edgeMapping);
+            collectSemanticElementType(possibleSemanticTypes, edgeMapping);
+            possibleViewTypes.add(DIAGRAM_D_EDGE_TYPE);
         }
     }
 
