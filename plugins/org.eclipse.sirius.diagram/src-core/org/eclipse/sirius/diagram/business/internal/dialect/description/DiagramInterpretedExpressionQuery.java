@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -54,6 +55,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.collect.Iterables;
@@ -215,6 +217,13 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 collectPotentialContainerTypes(possibleTypes, tool.getContainerMappings());
 
                 availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleTypes));
+            }
+
+            if (operationContext instanceof OperationAction) {
+                OperationAction tool = (OperationAction) operationContext;
+                if (new EObjectQuery(tool).getFirstAncestorOfType(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION).some()) {
+                    availableVariables.put("diagram", VariableType.fromString("diagram.DSemanticDiagram"));
+                }
             }
 
         }
