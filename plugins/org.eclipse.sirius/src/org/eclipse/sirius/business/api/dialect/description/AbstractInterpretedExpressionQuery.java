@@ -46,6 +46,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
@@ -272,8 +273,22 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         if (toolContext.some()) {
             EObject operationContext = toolContext.get();
             collectContextualVariableDefinitions(availableVariables, operationContext, target);
+            if (operationContext instanceof ToolDescription) {
+                /*
+                 * the containerView variable is accessible in any Model
+                 * operation which is a child of the ToolDescription.
+                 */
+                availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator"));
+            }
         }
         collectLocalVariablesDefinitions();
+        if (this.target instanceof ToolDescription && feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
+            /*
+             * the containerView variable is accessible in the "precondition"
+             * feature of the ToolDescription. See GenericToolCommandBuilder.
+             */
+            availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator"));
+        }
         return availableVariables;
     }
 
