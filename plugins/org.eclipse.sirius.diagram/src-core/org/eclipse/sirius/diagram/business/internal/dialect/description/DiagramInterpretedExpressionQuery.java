@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
@@ -28,11 +30,14 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
@@ -162,6 +167,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                         possibleTypes.add(domainClass);
                     }
                 }
+                collectPotentialContainerTypes(possibleTypes, tool.getNodeMappings());
+
                 availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleTypes));
             }
 
@@ -177,6 +184,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                         possibleTypes.add(domainClass);
                     }
                 }
+                collectPotentialContainerTypes(possibleTypes, tool.getContainerMappings());
+
                 availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleTypes));
             }
 
@@ -199,6 +208,63 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         }
 
         return availableVariables;
+    }
+
+    private void collectPotentialContainerTypes(Collection<String> possibleTypes, Collection<? extends AbstractNodeMapping> toolMappings) {
+
+        for (AbstractNodeMapping nodeMapping : toolMappings) {
+            /*
+             * A mapping is "used" by its container.
+             */
+            EObject container = nodeMapping.eContainer();
+            if (container instanceof Layer) {
+                /*
+                 * Layer is a no-op from a type perspective.
+                 */
+                container = container.eContainer();
+            }
+            if (container instanceof AbstractNodeMapping) {
+                String domainClass = ((AbstractNodeMapping) container).getDomainClass();
+                if (!StringUtil.isEmpty(domainClass)) {
+                    possibleTypes.add(domainClass);
+                }
+            } else if (container instanceof DiagramDescription) {
+                String domainClass = ((DiagramDescription) container).getDomainClass();
+                if (!StringUtil.isEmpty(domainClass)) {
+                    possibleTypes.add(domainClass);
+                }
+            }
+            /*
+             * besides the container a mapping can be re-used by another one or
+             * by a diagram description.
+             */
+            ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(nodeMapping);
+            if (crossReferencer != null) {
+                for (Setting xRef : crossReferencer.getInverseReferences(nodeMapping)) {
+                    EStructuralFeature eStructuralFeature = xRef.getEStructuralFeature();
+                    EObject referencingObject = xRef.getEObject();
+                    if (eStructuralFeature == DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__REUSED_MAPPINGS && referencingObject instanceof DiagramDescription) {
+                        String domainClass = ((DiagramDescription) referencingObject).getDomainClass();
+                        if (!StringUtil.isEmpty(domainClass)) {
+                            possibleTypes.add(domainClass);
+                        }
+                    } else if (eStructuralFeature == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS && referencingObject instanceof AbstractNodeMapping) {
+                        String domainClass = ((AbstractNodeMapping) referencingObject).getDomainClass();
+                        if (!StringUtil.isEmpty(domainClass)) {
+                            possibleTypes.add(domainClass);
+                        }
+
+                    } else if ((eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS || eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS)
+                            && referencingObject instanceof ContainerMapping) {
+                        String domainClass = ((ContainerMapping) referencingObject).getDomainClass();
+                        if (!StringUtil.isEmpty(domainClass)) {
+                            possibleTypes.add(domainClass);
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
     private void declareEdgeSourceTargets(Map<String, VariableType> availableVariables, Collection<EdgeMapping> eMappings, Collection<DiagramElementMapping> extraSourceMappings,
