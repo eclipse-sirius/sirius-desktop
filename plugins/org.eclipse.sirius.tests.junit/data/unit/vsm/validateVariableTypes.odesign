@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="vsmtypes" version="10.0.0.201411061000">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="vsmtypes" version="10.0.0.201504091800">
   <ownedViewpoints name="VSMTypes">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SelfTypeInference" domainClass="interactions.Model">
       <metamodel href="http://www.eclipse.org/sirius/sample/interactions#/"/>
@@ -76,14 +76,14 @@
           </style>
         </edgeMappings>
         <containerMappings name="ParticipantContainer" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@subSections[name='Ignored']/@ownedTools[name='ElementType']" domainClass="interactions.Participant">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:nonExistent">
-            <style xsi:type="style:ShapeContainerStyleDescription">
+            <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -91,13 +91,13 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="InteractionContainer" domainClass="interactions.Interaction">
-          <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
+          <style xsi:type="style:WorkspaceImageDescription" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
         <containerMappings name="StateContainer" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" domainClass="interactions.State">
-          <style xsi:type="style:ShapeContainerStyleDescription">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -369,6 +369,41 @@
           </subSections>
         </toolSections>
       </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="XTable" domainClass="interactions.Model">
+      <ownedLineMappings name="Message Line" domainClass="interactions.Message"/>
+      <ownedColumnMappings name="Participant Column" domainClass="interactions.Participant"/>
+      <intersection name="Intersection Message Participant" lineMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='XTable']/@ownedLineMappings[name='Message%20Line']" columnMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='XTable']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="aql:self.sendingEnd.context">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:columnSemantic">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="Create Cell">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:columnSemantic">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
     </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>
