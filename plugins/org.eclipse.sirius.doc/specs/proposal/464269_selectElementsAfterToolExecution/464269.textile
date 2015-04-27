@@ -8,6 +8,7 @@ _Summary_: Allow specifier to choose the selected elements after tool execution.
 | v0.1        | DRAFT    | 2015-04-15 | lredor    | Initial version. |
 | v0.2        | DRAFT    | 2015-04-21 | lredor    | Consider team review. |
 | v0.3        | PROPOSAL    | 2015-04-22 | lredor    | Consider team review. |
+| v0.4        | PROPOSAL    | 2015-04-27 | lredor    | Clarify variables evaluations. |
 
 _Relevant tickets_:
 * "Bug 464269 - Allow specifier to choose the selected elements after tool execution":https://bugs.eclipse.org/bugs/show_bug.cgi?id=464269
@@ -60,12 +61,12 @@ List of variables that should be proposed in the completion:
 
 Technically, the entry point to changes this is in @org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory.createInterpreterContext(EObject, EStructuralFeature)@ and depending classes, for example in @org.eclipse.sirius.diagram.business.internal.dialect.description.DiagramInterpretedExpressionQuery.getAvailableVariables()@.
 
-h3. Runtime 
+h3. Runtime
 
 All above changes, on the VSM side, allow the specifier to configure the expected list of elements to select. Then, new fields are needed in representations file to store this result, used later in a post commit listener (a @ResourceSetListenerImpl@). Indeed, the tool is not accessible in the post commit listener so these data must be stored in the current modified representation.
 A new class @UIState@ will be added in the meta-model to store this computed expression (and also the current @inverseSelectionOrder@). A new reference, @uiState@ to this @UIState@ will be added in @DRepresentation@. This reference is a containment reference and is transient. The class @UIState@ allows to store several transient data in @DRepresentation@. It will be currently used only for this feature but we can imagine to use it in the future instead of specific singleton (@ViewLocationHint@, @ViewSizeHint@) or for copy/paste layout capability for example.
 This new class has 2 fields:
-* @List<EObject> elementsToSelect@: The result of the computation of @elementsToSelect@ interpreted expression of the tool. The expression  @elementsToSelect@ is evaluated after the execution of the tool (technically as the current refresh task: @org.eclipse.sirius.tools.api.command.AbstractCommandFactory.addRefreshTask(DSemanticDecorator, DCommand, AbstractToolDescription)@ or @org.eclipse.sirius.diagram.tools.internal.command.builders.AbstractDiagramCommandBuilder.addRefreshTask(DDiagram, DCommand, AbstractToolDescription)@). The context of evaluation should "be the same as completion": every variable proposed in the completion should be available and valued in the context of the interpreter during evaluation of the expression.
+* @List<EObject> elementsToSelect@: The result of the computation of @elementsToSelect@ interpreted expression of the tool. The expression  @elementsToSelect@ is evaluated after the execution of the tool (technically as the current refresh task: @org.eclipse.sirius.tools.api.command.AbstractCommandFactory.addRefreshTask(DSemanticDecorator, DCommand, AbstractToolDescription)@ or @org.eclipse.sirius.diagram.tools.internal.command.builders.AbstractDiagramCommandBuilder.addRefreshTask(DDiagram, DCommand, AbstractToolDescription)@). The context of evaluation should "be the same as completion": every variable proposed in the completion should be available and valued in the context of the interpreter during evaluation of the expression. If the existing variables correspond to an expression, they are not evaluated a second time, the values of these variables are already available in the interpreter.
 * @EBoolean inverseSelectionOrder@: The value of the @inverseSelectionOrder@ of the tool.
 
 The @uiState@ will be cleaned just before the next use of it. This leads to a temporary memory leak:
