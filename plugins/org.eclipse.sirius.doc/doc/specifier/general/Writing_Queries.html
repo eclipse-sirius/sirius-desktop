@@ -154,28 +154,13 @@
 				<code>getEClasses</code> on the current element if it is an instance of 
 				<code>EPackage</code>.
 				<ul>
-					<li>
-						<em>Note 1</em>: The service interpreter supports parameters, but only variables can be used as parameter (no literals or complex expressions), for example: 
+					<li>The service interpreter supports parameters, but only variables can be used as parameter (no literals or complex expressions), for example: 
 						<code>service:serviceName(view, diagram)</code>.
 					</li>
-					<li>
-						<em>Note 2</em>: You can use the service interpreter not only on the current context by using a variable name before calling the service, for example: 
+					<li>You can use the service interpreter not only on the current context by using a variable name before calling the service, for example: 
 						<code>service:myVariableName.serviceName</code>.
 					</li>
-					<li>Intended limitations exist to be more efficient:
-						<ul>
-							<li>The services should be in the same 
-								<code>bundle</code> as the VSM and should be deployed. If the services already exist in another 
-								<code>bundle</code>, you must declare a &#171;proxy&#187; in the 
-								<code>bundle</code> of the 
-								<em>VSM</em>.
-							</li>
-							<li>If multiple services match the expression, the first one found is used. There is no real polymorphism management.</li>
-						</ul>
-					</li>
-					<li>
-						<em>Tips</em>: You could put your bundle in workspace and runtime to have completion enabled on the service interpreter. 
-					</li>
+					<li>For efficiency reasons, if multiple services match the expression, the first one found is used. There is no real polymorphism management.</li>
 				</ul>
 			</li>
 		</ul>
@@ -223,6 +208,9 @@
 			<code>target</code> variable exist, the value of the expression will be the value of the variable, 
 			<em>not</em> the value of the object&#8217;s property. To avoid ambiguity, always use expressions of the form 
 			<code>"[self.target/]"</code> in such cases.
+		</p>
+		<p>
+			<em>Note:</em> Due to internal changes in the Eclipse Equinox runtime, starting with Eclipse Luna (4.4) it is impossible to evaluate Java services from an Acceleo 3 expression if the Java service is defined directly in the workspace. This only affect specifiers (not end-users). When developing modelers which use Acceleo expressions and rely on Java services, you must launch an Eclipse runtime from your development environement to test the resulting modeler in a context where the service is available as part of a deployed plug-in. Starting with Sirius 3.0 you can also use the AQL language instead, which has a syntax very similar to Acceleo 3/MTL, but does not have this limitation regarding services in the workspace.
 		</p>
 		<h2 id="ocl">Using Raw OCL</h2>
 		<p>Sirius also supports raw OCL expressions, but this support is deprecated and will be removed in future versions. OCL expressions must be prefixed with 

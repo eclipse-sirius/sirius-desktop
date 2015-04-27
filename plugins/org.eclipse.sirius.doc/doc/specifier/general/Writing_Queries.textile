@@ -52,12 +52,9 @@ Sirius provides several specialized interpreters to handle more efficiently some
 ** @feature:eAllContents@ returns all the elements directly and indirectly contained inside the current element (or an empty collection if there is none). This is equivalent to <code>[self.eAllContents()/]</code>.
 ** @feature:eCrossReferences@ returns all the model elements which are directly referenced by the current element (or an empty collection if there is none). This is equivalent to <code>[self.eCrossReferences()/]</code>.
 * *@service:@* This interpreter can be used to directly invoke a service method (i.e. a Java method that follows conventions for "service methods":#service_methods ) on the current element. For example, assuming the service class "@EcoreServices@":#ecore_services has been correctly registered in the VSM, the expression @service:getEClasses@ (note the absence of parenthesis) will invoke the @getEClasses@ on the current element if it is an instance of @EPackage@.
-** _Note 1_: The service interpreter supports parameters, but only variables can be used as parameter (no literals or complex expressions), for example: @service:serviceName(view, diagram)@.
-** _Note 2_: You can use the service interpreter not only on the current context by using a variable name before calling the service, for example: @service:myVariableName.serviceName@.
-** Intended limitations exist to be more efficient:
-*** The services should be in the same @bundle@ as the VSM and should be deployed. If the services already exist in another @bundle@, you must declare a "proxy" in the @bundle@ of the _VSM_.
-*** If multiple services match the expression, the first one found is used. There is no real polymorphism management.
-** _Tips_: You could put your bundle in workspace and runtime to have completion enabled on the service interpreter. 
+** The service interpreter supports parameters, but only variables can be used as parameter (no literals or complex expressions), for example: @service:serviceName(view, diagram)@.
+** You can use the service interpreter not only on the current context by using a variable name before calling the service, for example: @service:myVariableName.serviceName@.
+** For efficiency reasons, if multiple services match the expression, the first one found is used. There is no real polymorphism management.
 
 h2(#acceleo). Using Acceleo
 
@@ -76,6 +73,8 @@ Acceleo is very precise (and  very demanding) about the types of elements your q
 In the context of Sirius, you have access to a special feature which can be used to follow "back-links" or "cross-references". From a given model element, this allows you to easily (and efficiently) find all the elements which refer to it in the scope of the models and representations in the same modeling project. This feature is available through the @eInverse()@ method, which can be used on any model element inside an Acceleo expression.
 
 Note that in most cases, expressions in Sirius are evaluated in a context where _variables_ are defined. For example, most expressions inside tool definitions have access to variables telling them which elements the tool has been applied on. In some cases, the names of these variable can conflict with names of features in your meta-model. The evaluation rules of Acceleo (OCL actually) give precedence to variables, so it is recommended to always prefix accesses to your meta-model features with @self@ (or another expression) to avoid ambiguity. As a concrete example, say you have an expression @"[target/]"@ that you expect to access the @target@ feature of one of your object. If evaluated in a context where a @target@ variable exist, the value of the expression will be the value of the variable, _not_ the value of the object's property. To avoid ambiguity, always use expressions of the form @"[self.target/]"@ in such cases.
+
+_Note:_ Due to internal changes in the Eclipse Equinox runtime, starting with Eclipse Luna (4.4) it is impossible to evaluate Java services from an Acceleo 3 expression if the Java service is defined directly in the workspace. This only affect specifiers (not end-users). When developing modelers which use Acceleo expressions and rely on Java services, you must launch an Eclipse runtime from your development environement to test the resulting modeler in a context where the service is available as part of a deployed plug-in. Starting with Sirius 3.0 you can also use the AQL language instead, which has a syntax very similar to Acceleo 3/MTL, but does not have this limitation regarding services in the workspace.
 
 h2(#ocl). Using Raw OCL
 
