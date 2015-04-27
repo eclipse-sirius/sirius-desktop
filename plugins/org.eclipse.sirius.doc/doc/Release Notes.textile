@@ -22,6 +22,7 @@ h3. Specifier-Visible Changes
 * A quick outline is now accessible in the VSM editor by using the shortcut "Ctrl" + "O".
 * Property sections for interpreted expressions (yellow background) now have a button next to the text field to open a dialog with a bigger text area (also providing auto-completion).
 * The hide label per default capability has been added to the container styles.
+* Property sections for image paths now have a button next to the text field to open a dialog browsing for images.
 
 h3. API Changes
 

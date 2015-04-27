@@ -12,8 +12,12 @@ package org.eclipse.sirius.editor.properties.sections.tool.tooldescription;
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
+import org.eclipse.sirius.editor.tools.internal.presentation.WorkspaceAndPluginsResourceDialog;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
@@ -22,17 +26,17 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * A section for the iconPath property of a ToolDescription object.
  */
-public class ToolDescriptionIconPathPropertySection extends AbstractTextPropertySection {
+public class ToolDescriptionIconPathPropertySection extends AbstractTextWithButtonPropertySection {
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "IconPath"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getLabelText()
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -44,21 +48,21 @@ public class ToolDescriptionIconPathPropertySection extends AbstractTextProperty
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeature()
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
     public EAttribute getFeature() {
         return ToolPackage.eINSTANCE.getToolDescription_IconPath();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
     protected Object getFeatureValue(String newText) {
         return newText;
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
@@ -74,6 +78,19 @@ public class ToolDescriptionIconPathPropertySection extends AbstractTextProperty
 
         // End of user code create controls
 
+    }
+
+    @Override
+    protected SelectionListener createButtonListener() {
+        return new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(composite.getShell());
+                if (imagePath != null) {
+                    text.setText(imagePath);
+                    handleTextModified();
+                }
+            }
+        };
     }
 
     /**

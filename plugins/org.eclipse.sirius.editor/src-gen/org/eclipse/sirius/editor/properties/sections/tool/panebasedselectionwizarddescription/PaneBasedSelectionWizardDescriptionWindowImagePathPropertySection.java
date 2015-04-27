@@ -12,8 +12,12 @@ package org.eclipse.sirius.editor.properties.sections.tool.panebasedselectionwiz
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
+import org.eclipse.sirius.editor.tools.internal.presentation.WorkspaceAndPluginsResourceDialog;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
@@ -23,17 +27,17 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * A section for the windowImagePath property of a
  * PaneBasedSelectionWizardDescription object.
  */
-public class PaneBasedSelectionWizardDescriptionWindowImagePathPropertySection extends AbstractTextPropertySection {
+public class PaneBasedSelectionWizardDescriptionWindowImagePathPropertySection extends AbstractTextWithButtonPropertySection {
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "WindowImagePath"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getLabelText()
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -45,21 +49,21 @@ public class PaneBasedSelectionWizardDescriptionWindowImagePathPropertySection e
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeature()
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
     public EAttribute getFeature() {
         return ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription_WindowImagePath();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
     protected Object getFeatureValue(String newText) {
         return newText;
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
@@ -75,6 +79,19 @@ public class PaneBasedSelectionWizardDescriptionWindowImagePathPropertySection e
 
         // End of user code create controls
 
+    }
+
+    @Override
+    protected SelectionListener createButtonListener() {
+        return new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(composite.getShell());
+                if (imagePath != null) {
+                    text.setText(imagePath);
+                    handleTextModified();
+                }
+            }
+        };
     }
 
     /**
