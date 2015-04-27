@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
+import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
@@ -71,6 +72,8 @@ import com.google.common.collect.Sets;
  * 
  */
 public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpressionQuery implements IInterpretedExpressionQuery {
+
+    private static final String DIAGRAM_D_SEMANTIC_DIAGRAM = "diagram.DSemanticDiagram";
 
     private static final String DIAGRAM_D_NODE = "diagram.DNode";
 
@@ -179,27 +182,26 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 for (EdgeMapping eMapping : tool.getMappings()) {
                     collectSemanticElementType(possibleSources, eMapping);
                 }
-                if (possibleSources.size() > 0) {
-                    VariableType sourceTypes = VariableType.fromStrings(possibleSources);
-                    availableVariables.put(IInterpreterSiriusVariables.ELEMENT, sourceTypes);
-                }
+                refineVariableType(availableVariables, IInterpreterSiriusVariables.ELEMENT, possibleSources);
 
             }
             if (operationContext instanceof NodeCreationDescription) {
                 NodeCreationDescription tool = (NodeCreationDescription) operationContext;
-                Collection<String> possibleTypes = Sets.newLinkedHashSet();
+                Collection<String> possibleSemanticTypes = Sets.newLinkedHashSet();
                 /*
                  * gather types for the "container" variable.
                  */
                 for (AbstractNodeMapping np : tool.getExtraMappings()) {
                     String domainClass = np.getDomainClass();
                     if (!StringUtil.isEmpty(domainClass)) {
-                        possibleTypes.add(domainClass);
+                        possibleSemanticTypes.add(domainClass);
                     }
                 }
-                collectPotentialContainerTypes(possibleTypes, tool.getNodeMappings());
+                Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
+                collectPotentialContainerTypes(possibleSemanticTypes, possibleViewTypes, tool.getNodeMappings());
 
-                availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleTypes));
+                refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleSemanticTypes);
+                refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER_VIEW, possibleViewTypes);
             }
 
             if (operationContext instanceof ContainerCreationDescription) {
@@ -214,15 +216,29 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                         possibleTypes.add(domainClass);
                     }
                 }
-                collectPotentialContainerTypes(possibleTypes, tool.getContainerMappings());
+                collectPotentialContainerTypes(possibleTypes, Sets.<String> newLinkedHashSet(), tool.getContainerMappings());
 
-                availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleTypes));
+                refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleTypes);
+            }
+
+            if (operationContext instanceof DeleteElementDescription) {
+                DeleteElementDescription tool = (DeleteElementDescription) operationContext;
+                Collection<String> possibleSemanticTypes = Sets.newLinkedHashSet();
+                Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
+                Collection<String> possibleContainerViewTypes = Sets.newLinkedHashSet();
+                for (DiagramElementMapping mapping : tool.getMappings()) {
+                    collectTypes(possibleSemanticTypes, possibleViewTypes, mapping);
+                    collectPotentialContainerTypes(Sets.<String> newLinkedHashSet(), possibleContainerViewTypes, mapping);
+                }
+                refineVariableType(availableVariables, IInterpreterSiriusVariables.ELEMENT, possibleSemanticTypes);
+                refineVariableType(availableVariables, "elementView", possibleViewTypes);
+                refineVariableType(availableVariables, "containerView", possibleContainerViewTypes);
             }
 
             if (operationContext instanceof OperationAction) {
                 OperationAction tool = (OperationAction) operationContext;
                 if (new EObjectQuery(tool).getFirstAncestorOfType(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION).some()) {
-                    availableVariables.put("diagram", VariableType.fromString("diagram.DSemanticDiagram"));
+                    availableVariables.put("diagram", VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
                 }
             }
 
@@ -247,60 +263,72 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         return availableVariables;
     }
 
-    private void collectPotentialContainerTypes(Collection<String> possibleTypes, Collection<? extends AbstractNodeMapping> toolMappings) {
+    private void refineVariableType(Map<String, VariableType> availableVariables, String variableName, Collection<String> foundTypes) {
+        if (foundTypes.size() > 0) {
+            availableVariables.put(variableName, VariableType.fromStrings(foundTypes));
+        }
 
+    }
+
+    private void collectPotentialContainerTypes(Collection<String> possibleSemanticTypes, Collection<String> possibleViewTypes, Collection<? extends AbstractNodeMapping> toolMappings) {
         for (AbstractNodeMapping nodeMapping : toolMappings) {
-            /*
-             * A mapping is "used" by its container.
-             */
-            EObject container = nodeMapping.eContainer();
-            if (container instanceof Layer) {
-                /*
-                 * Layer is a no-op from a type perspective.
-                 */
-                container = container.eContainer();
-            }
-            if (container instanceof AbstractNodeMapping) {
-                String domainClass = ((AbstractNodeMapping) container).getDomainClass();
-                if (!StringUtil.isEmpty(domainClass)) {
-                    possibleTypes.add(domainClass);
-                }
-            } else if (container instanceof DiagramDescription) {
-                String domainClass = ((DiagramDescription) container).getDomainClass();
-                if (!StringUtil.isEmpty(domainClass)) {
-                    possibleTypes.add(domainClass);
-                }
-            }
-            /*
-             * besides the container a mapping can be re-used by another one or
-             * by a diagram description.
-             */
-            ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(nodeMapping);
-            if (crossReferencer != null) {
-                for (Setting xRef : crossReferencer.getInverseReferences(nodeMapping)) {
-                    EStructuralFeature eStructuralFeature = xRef.getEStructuralFeature();
-                    EObject referencingObject = xRef.getEObject();
-                    if (eStructuralFeature == DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__REUSED_MAPPINGS && referencingObject instanceof DiagramDescription) {
-                        String domainClass = ((DiagramDescription) referencingObject).getDomainClass();
-                        if (!StringUtil.isEmpty(domainClass)) {
-                            possibleTypes.add(domainClass);
-                        }
-                    } else if (eStructuralFeature == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS && referencingObject instanceof AbstractNodeMapping) {
-                        String domainClass = ((AbstractNodeMapping) referencingObject).getDomainClass();
-                        if (!StringUtil.isEmpty(domainClass)) {
-                            possibleTypes.add(domainClass);
-                        }
+            collectPotentialContainerTypes(possibleSemanticTypes, possibleViewTypes, nodeMapping);
 
-                    } else if ((eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS || eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS)
-                            && referencingObject instanceof ContainerMapping) {
-                        String domainClass = ((ContainerMapping) referencingObject).getDomainClass();
-                        if (!StringUtil.isEmpty(domainClass)) {
-                            possibleTypes.add(domainClass);
-                        }
+        }
+    }
+
+    private void collectPotentialContainerTypes(Collection<String> possibleSemanticTypes, Collection<String> possibleViewTypes, DiagramElementMapping mapping) {
+        /*
+         * A mapping is "used" by its container.
+         */
+        EObject container = mapping.eContainer();
+        if (container instanceof Layer) {
+            /*
+             * Layer is a no-op from a type perspective.
+             */
+            container = container.eContainer();
+        }
+        if (container instanceof AbstractNodeMapping) {
+            String domainClass = ((AbstractNodeMapping) container).getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                possibleSemanticTypes.add(domainClass);
+            }
+            collectViewTypes(possibleViewTypes, (AbstractNodeMapping) container);
+        } else if (container instanceof DiagramDescription) {
+            String domainClass = ((DiagramDescription) container).getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                possibleSemanticTypes.add(domainClass);
+            }
+            possibleViewTypes.add(DIAGRAM_D_SEMANTIC_DIAGRAM);
+        }
+        /*
+         * besides the container a mapping can be re-used by another one or by a
+         * diagram description.
+         */
+        ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(mapping);
+        if (crossReferencer != null) {
+            for (Setting xRef : crossReferencer.getInverseReferences(mapping)) {
+                EStructuralFeature eStructuralFeature = xRef.getEStructuralFeature();
+                EObject referencingObject = xRef.getEObject();
+                if (eStructuralFeature == DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__REUSED_MAPPINGS && referencingObject instanceof DiagramDescription) {
+                    String domainClass = ((DiagramDescription) referencingObject).getDomainClass();
+                    if (!StringUtil.isEmpty(domainClass)) {
+                        possibleSemanticTypes.add(domainClass);
+                    }
+                } else if (eStructuralFeature == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS && referencingObject instanceof AbstractNodeMapping) {
+                    String domainClass = ((AbstractNodeMapping) referencingObject).getDomainClass();
+                    if (!StringUtil.isEmpty(domainClass)) {
+                        possibleSemanticTypes.add(domainClass);
+                    }
+
+                } else if ((eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS || eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS)
+                        && referencingObject instanceof ContainerMapping) {
+                    String domainClass = ((ContainerMapping) referencingObject).getDomainClass();
+                    if (!StringUtil.isEmpty(domainClass)) {
+                        possibleSemanticTypes.add(domainClass);
                     }
                 }
             }
-
         }
     }
 
@@ -324,42 +352,40 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         for (DiagramElementMapping extraTarget : extraTargetMappings) {
             collectTypes(possibleSemanticTargets, possibleViewTargets, extraTarget);
         }
-        if (possibleViewSources.size() > 0) {
-            availableVariables.put(IInterpreterSiriusVariables.SOURCE_VIEW, VariableType.fromStrings(possibleViewSources));
-        }
-        if (possibleViewTargets.size() > 0) {
-            availableVariables.put(IInterpreterSiriusVariables.TARGET_VIEW, VariableType.fromStrings(possibleViewTargets));
-        }
-        if (possibleSemanticSources.size() > 0) {
-            VariableType sourceTypes = VariableType.fromStrings(possibleSemanticSources);
-            availableVariables.put(IInterpreterSiriusVariables.SOURCE_PRE, sourceTypes);
-            availableVariables.put(IInterpreterSiriusVariables.SOURCE, sourceTypes);
-        }
-        if (possibleSemanticTargets.size() > 0 && feature != org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION) {
-            VariableType targetTypes = VariableType.fromStrings(possibleSemanticTargets);
-            availableVariables.put(IInterpreterSiriusVariables.TARGET_PRE, targetTypes);
-            availableVariables.put(IInterpreterSiriusVariables.TARGET, targetTypes);
+        refineVariableType(availableVariables, IInterpreterSiriusVariables.SOURCE_VIEW, possibleViewSources);
+        refineVariableType(availableVariables, IInterpreterSiriusVariables.TARGET_VIEW, possibleViewTargets);
+        refineVariableType(availableVariables, IInterpreterSiriusVariables.SOURCE_PRE, possibleSemanticSources);
+        refineVariableType(availableVariables, IInterpreterSiriusVariables.SOURCE, possibleSemanticSources);
+
+        if (feature != org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION) {
+            refineVariableType(availableVariables, IInterpreterSiriusVariables.TARGET_PRE, possibleSemanticTargets);
+            refineVariableType(availableVariables, IInterpreterSiriusVariables.TARGET, possibleSemanticTargets);
         }
     }
 
     private void collectTypes(Collection<String> possibleSemanticTypes, Collection<String> possibleViewTypes, DiagramElementMapping endMapping) {
+        collectViewTypes(possibleViewTypes, endMapping);
         if (endMapping instanceof AbstractNodeMapping) {
             String domainClass = ((AbstractNodeMapping) endMapping).getDomainClass();
             if (!StringUtil.isEmpty(domainClass)) {
                 possibleSemanticTypes.add(domainClass);
             }
-            if (endMapping instanceof ContainerMapping) {
-                if (((ContainerMapping) endMapping).getChildrenPresentation() == ContainerLayout.LIST) {
-                    possibleViewTypes.add(DIAGRAM_D_NODE_LIST);
-                } else {
-                    possibleViewTypes.add(DIAGRAM_D_NODE_CONTAINER);
-                }
-            } else if (endMapping instanceof NodeMapping) {
-                possibleViewTypes.add(DIAGRAM_D_NODE);
-            }
         } else if (endMapping instanceof EdgeMapping) {
             EdgeMapping edgeMapping = (EdgeMapping) endMapping;
             collectSemanticElementType(possibleSemanticTypes, edgeMapping);
+        }
+    }
+
+    private void collectViewTypes(Collection<String> possibleViewTypes, DiagramElementMapping endMapping) {
+        if (endMapping instanceof ContainerMapping) {
+            if (((ContainerMapping) endMapping).getChildrenPresentation() == ContainerLayout.LIST) {
+                possibleViewTypes.add(DIAGRAM_D_NODE_LIST);
+            } else {
+                possibleViewTypes.add(DIAGRAM_D_NODE_CONTAINER);
+            }
+        } else if (endMapping instanceof NodeMapping) {
+            possibleViewTypes.add(DIAGRAM_D_NODE);
+        } else if (endMapping instanceof EdgeMapping) {
             possibleViewTypes.add(DIAGRAM_D_EDGE_TYPE);
         }
     }
