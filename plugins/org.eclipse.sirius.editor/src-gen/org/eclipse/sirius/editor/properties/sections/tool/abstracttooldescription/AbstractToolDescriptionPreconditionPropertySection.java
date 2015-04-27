@@ -18,6 +18,7 @@ import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButt
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
@@ -35,7 +36,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * A section for the precondition property of a AbstractToolDescription object.
  */
-public class AbstractToolDescriptionPreconditionPropertySection extends AbstractTextWithButtonPropertySection {
+public class AbstractToolDescriptionPreconditionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -127,6 +128,7 @@ public class AbstractToolDescriptionPreconditionPropertySection extends Abstract
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), AbstractToolDescriptionPreconditionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
+                handleTextModified();
             }
         };
     }

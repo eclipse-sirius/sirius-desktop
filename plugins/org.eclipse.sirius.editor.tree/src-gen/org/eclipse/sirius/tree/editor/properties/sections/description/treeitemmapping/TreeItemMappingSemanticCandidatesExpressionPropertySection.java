@@ -17,6 +17,7 @@ import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButt
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -33,7 +34,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * A section for the semanticCandidatesExpression property of a TreeItemMapping
  * object.
  */
-public class TreeItemMappingSemanticCandidatesExpressionPropertySection extends AbstractTextWithButtonPropertySection {
+public class TreeItemMappingSemanticCandidatesExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -125,6 +126,7 @@ public class TreeItemMappingSemanticCandidatesExpressionPropertySection extends 
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), TreeItemMappingSemanticCandidatesExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
+                handleTextModified();
             }
         };
     }

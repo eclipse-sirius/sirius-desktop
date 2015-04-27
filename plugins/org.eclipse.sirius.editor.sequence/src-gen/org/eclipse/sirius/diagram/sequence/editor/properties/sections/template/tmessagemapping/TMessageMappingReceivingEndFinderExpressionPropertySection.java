@@ -17,6 +17,7 @@ import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -33,7 +34,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * A section for the receivingEndFinderExpression property of a TMessageMapping
  * object.
  */
-public class TMessageMappingReceivingEndFinderExpressionPropertySection extends AbstractTextWithButtonPropertySection {
+public class TMessageMappingReceivingEndFinderExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -126,6 +127,7 @@ public class TMessageMappingReceivingEndFinderExpressionPropertySection extends 
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), TMessageMappingReceivingEndFinderExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
+                handleTextModified();
             }
         };
     }

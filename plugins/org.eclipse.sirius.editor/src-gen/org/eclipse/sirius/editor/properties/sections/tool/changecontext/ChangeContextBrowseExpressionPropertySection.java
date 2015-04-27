@@ -16,6 +16,7 @@ import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -32,7 +33,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * A section for the browseExpression property of a ChangeContext object.
  */
-public class ChangeContextBrowseExpressionPropertySection extends AbstractTextWithButtonPropertySection {
+public class ChangeContextBrowseExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -124,6 +125,7 @@ public class ChangeContextBrowseExpressionPropertySection extends AbstractTextWi
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), ChangeContextBrowseExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
+                handleTextModified();
             }
         };
     }

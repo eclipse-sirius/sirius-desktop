@@ -16,6 +16,7 @@ import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -33,7 +34,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * A section for the candidatesExpression property of a SelectionDescription
  * object.
  */
-public class SelectionDescriptionCandidatesExpressionPropertySection extends AbstractTextWithButtonPropertySection {
+public class SelectionDescriptionCandidatesExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -126,6 +127,7 @@ public class SelectionDescriptionCandidatesExpressionPropertySection extends Abs
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), SelectionDescriptionCandidatesExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
+                handleTextModified();
             }
         };
     }
