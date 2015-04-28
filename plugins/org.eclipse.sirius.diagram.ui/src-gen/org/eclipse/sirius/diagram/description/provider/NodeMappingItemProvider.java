@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -185,34 +186,36 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createCustomStyleDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createCustomStyleDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createSquareDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createSquareDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createLozengeNodeDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createLozengeNodeDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createEllipseNodeDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createEllipseNodeDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createBundledImageDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createBundledImageDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createNoteDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createNoteDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createDotDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createDotDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE,
-                StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
 
         WorkspaceImageDescription wkpImageDescription = StyleFactory.eINSTANCE.createWorkspaceImageDescription();
         wkpImageDescription.setSizeComputationExpression("-1");
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, wkpImageDescription));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, wkpImageDescription));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__CONDITIONNAL_STYLES,
-                DescriptionFactory.eINSTANCE.createConditionalNodeStyleDescription()));
-        // Set by default all elements resizable by default.
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__CONDITIONNAL_STYLES, DescriptionFactory.eINSTANCE.createConditionalNodeStyleDescription()));
+
+        // Set by default all elements resizable and their label position on
+        // "node".
         for (Object obj : newChildDescriptors) {
             if (obj instanceof CommandParameter) {
                 if (((CommandParameter) obj).getValue() instanceof NodeStyleDescription) {
-                    ((NodeStyleDescription) ((CommandParameter) obj).getValue()).setResizeKind(ResizeKind.NSEW_LITERAL);
+                    NodeStyleDescription nodeStyle = (NodeStyleDescription) ((CommandParameter) obj).getValue();
+                    nodeStyle.setResizeKind(ResizeKind.NSEW_LITERAL);
+                    nodeStyle.setLabelPosition(LabelPosition.NODE_LITERAL);
                 }
             }
         }

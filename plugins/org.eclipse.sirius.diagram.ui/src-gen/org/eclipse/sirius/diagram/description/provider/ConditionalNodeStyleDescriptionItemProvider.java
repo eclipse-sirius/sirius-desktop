@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -168,14 +169,16 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
 
         WorkspaceImageDescription wkpImageDescription = StyleFactory.eINSTANCE.createWorkspaceImageDescription();
         wkpImageDescription.setSizeComputationExpression("-1");
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_NODE_STYLE_DESCRIPTION__STYLE, wkpImageDescription));
 
-        // Set by default all elements resizable by default.
+        // Set by default all elements resizable and their label position on
+        // "node".
         for (Object obj : newChildDescriptors) {
             if (obj instanceof CommandParameter) {
                 if (((CommandParameter) obj).getValue() instanceof NodeStyleDescription) {
-                    ((NodeStyleDescription) ((CommandParameter) obj).getValue()).setResizeKind(ResizeKind.NSEW_LITERAL);
+                    NodeStyleDescription nodeStyle = (NodeStyleDescription) ((CommandParameter) obj).getValue();
+                    nodeStyle.setResizeKind(ResizeKind.NSEW_LITERAL);
+                    nodeStyle.setLabelPosition(LabelPosition.NODE_LITERAL);
                 }
             }
         }
