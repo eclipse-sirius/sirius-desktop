@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -28,6 +27,7 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.business.internal.query.ResourceQueryInternal;
 
 import com.google.common.base.Preconditions;
 
@@ -117,7 +117,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
         for (Resource resource : allResources) {
             // FIXME This does not consider resources which are in
             // controlledResources but not actually controlled anymore.
-            if (!controlledResources.contains(resource) && hasControlledRootIn(resource, semantics)) {
+            if (!controlledResources.contains(resource) && new ResourceQueryInternal(resource).hasControlledRootIn(semantics)) {
                 // Use addUnique if possible, we already checks for containment
                 // just above.
                 if (controlledResources instanceof InternalEList<?>) {
@@ -137,17 +137,6 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
             session.notifyListeners(SessionListener.SEMANTIC_CHANGE);
             session.setSemanticResourcesNotUptodate();
         }
-    }
-
-    private static boolean hasControlledRootIn(Resource resource, Collection<Resource> scope) {
-        for (EObject root : resource.getContents()) {
-            EObject container = root.eContainer();
-            Resource containerResource = container != null ? container.eResource() : null;
-            if (containerResource != resource && scope.contains(containerResource)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**

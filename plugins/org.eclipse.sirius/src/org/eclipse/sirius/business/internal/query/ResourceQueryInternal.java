@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 OBEO.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@
  *******************************************************************************/
 
 package org.eclipse.sirius.business.internal.query;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
@@ -44,6 +46,26 @@ public class ResourceQueryInternal {
      */
     public ResourceQueryInternal(Resource resource) {
         this.resource = resource;
+    }
+
+    /**
+     * Checks if the current resource has any of its root controlled by one of
+     * the specified resources.
+     * 
+     * @param scope
+     *            the potential controlling resources.
+     * @return <code>true</code> if at least one of this resource's root
+     *         elements is actually controlled by one of the specified resource.
+     */
+    public boolean hasControlledRootIn(Collection<Resource> scope) {
+        for (EObject root : resource.getContents()) {
+            EObject container = root.eContainer();
+            Resource containerResource = container != null ? container.eResource() : null;
+            if (containerResource != resource && scope.contains(containerResource)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
