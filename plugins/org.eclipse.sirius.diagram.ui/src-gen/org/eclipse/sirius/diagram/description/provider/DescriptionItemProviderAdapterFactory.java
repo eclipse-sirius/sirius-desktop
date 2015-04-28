@@ -726,6 +726,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
             @Override
             public Object caseViewpoint(Viewpoint object) {
                 DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
+                diagramDescription.setEnablePopupBars(true);
                 Layer layer = DescriptionFactory.eINSTANCE.createLayer();
                 layer.setName("Default");
                 diagramDescription.setDefaultLayer(layer);

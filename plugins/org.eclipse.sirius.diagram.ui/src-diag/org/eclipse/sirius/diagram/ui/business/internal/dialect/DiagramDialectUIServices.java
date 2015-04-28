@@ -555,6 +555,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
         final Collection<CommandParameter> result = new HashSet<CommandParameter>();
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
             DiagramDescription specificDiagramDescription = diagramTypeDescriptor.getDiagramDescriptionProvider().createDiagramDescription();
+            specificDiagramDescription.setEnablePopupBars(true);
             if (specificDiagramDescription.getDefaultLayer() == null) {
                 Layer layer = DescriptionFactory.eINSTANCE.createLayer();
                 layer.setName("Default");
