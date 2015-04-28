@@ -43,6 +43,7 @@ import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEndUserOverride
 import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleTests;
 import org.eclipse.sirius.tests.unit.api.semantic.XSDSemanticResourceTests;
 import org.eclipse.sirius.tests.unit.api.session.DAnalysisSessionTests;
+import org.eclipse.sirius.tests.unit.api.session.OpenSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.ReloadSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.SampleSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.SessionManagerListener2Tests;
@@ -272,6 +273,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(XSDSemanticResourceTests.class);
         suite.addTestSuite(SiriusControlAndCrossReferenceInMultiSessionTest.class);
         suite.addTestSuite(ModelsToSemanticResourcesMigrationTest.class);
+        suite.addTestSuite(OpenSessionTest.class);
     }
 
     /**
