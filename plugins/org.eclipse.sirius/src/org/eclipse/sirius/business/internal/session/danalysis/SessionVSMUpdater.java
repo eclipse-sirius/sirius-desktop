@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and Obeo.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,11 +14,12 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
@@ -30,7 +31,6 @@ import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Iterables;
 
 /**
  * Reload the VSMs used inside a session when the global registry detects their
@@ -53,8 +53,7 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
 
     @Override
     public void modelerDesciptionFilesLoaded() {
-        Collection<Resource> allResources = new ArrayList<Resource>(session.getTransactionalEditingDomain().getResourceSet().getResources());
-        for (Resource res : Iterables.filter(allResources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, false))) {
+        for (Resource res : findAllVSMResources(session)) {
             // Unload emtpy odesign.
             if (!res.isModified() && res.isLoaded() && res.getContents().isEmpty()) {
                 session.unregisterResourceInCrossReferencer(res);
@@ -92,5 +91,17 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
             }
         }
         session.notifyListeners(SessionListener.VSM_UPDATED);
+    }
+
+    /**
+     * Dumb implementation based on exhaustive search in the ResourceSet and file extension matching.
+     */
+    private static List<Resource> findAllVSMResources(DAnalysisSessionImpl session) {
+        // @formatter:off
+        EList<Resource> resources = session.getTransactionalEditingDomain().getResourceSet().getResources();
+        return resources.stream()
+                .filter(new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, true))
+                .collect(Collectors.toList());
+        // @formatter:on
     }
 }
