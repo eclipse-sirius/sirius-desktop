@@ -14,7 +14,6 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -22,7 +21,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -47,12 +45,6 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
     private DAnalysisSessionImpl session;
 
     private Collection<Resource> semanticResources;
-
-    /**
-     * This map allows to retrieve the eObject of the {@link DAnalysis.getModels} from its resource. This is useful in
-     * the event of the resource has been unloaded and eObject.eResource()==null
-     */
-    private Map<String, EObject> resourceToRootEObjectMap = new HashMap<>();
 
     /**
      * Default constructor.
@@ -146,6 +138,5 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
         }
         session = null;
         semanticResources = null;
-        resourceToRootEObjectMap.clear();
     }
 }
