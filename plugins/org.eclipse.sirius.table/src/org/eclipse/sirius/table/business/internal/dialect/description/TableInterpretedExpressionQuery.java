@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.business.internal.dialect.description;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -27,12 +28,17 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
+import org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool;
+import org.eclipse.sirius.table.metamodel.table.description.CreateLineTool;
+import org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool;
+import org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
+import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
@@ -114,10 +120,92 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
                     IntersectionMapping interMapping = (IntersectionMapping) tool.eContainer();
                     declareLineAndColumnSemantic(availableVariables, interMapping);
                 }
+            } else if (operationContext instanceof CreateLineTool) {
+                CreateLineTool tool = (CreateLineTool) operationContext;
+
+                Set<String> possibleTypes = collectTypes(tool.eContainer());
+
+                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.ELEMENT, possibleTypes);
+                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.CONTAINER, possibleTypes);
+
+                declareRootTableType(availableVariables, operationContext);
+
+            } else if (operationContext instanceof CreateColumnTool) {
+
+                CreateColumnTool tool = (CreateColumnTool) operationContext;
+                Set<String> possibleTypes = collectTypes(tool.eContainer());
+                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.ELEMENT, possibleTypes);
+                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.CONTAINER, possibleTypes);
+                declareRootTableType(availableVariables, operationContext);
+
+            } else if (operationContext instanceof DeleteLineTool) {
+                DeleteLineTool tool = (DeleteLineTool) operationContext;
+                LineMapping mapping = tool.getMapping();
+                String domainClass = mapping.getDomainClass();
+                if (!StringUtil.isEmpty(domainClass)) {
+                    availableVariables.put(IInterpreterSiriusTableVariables.ELEMENT, VariableType.fromString(domainClass));
+                }
+                declareRootTableType(availableVariables, operationContext);
+
+            } else if (operationContext instanceof DeleteColumnTool) {
+                DeleteColumnTool tool = (DeleteColumnTool) operationContext;
+                ColumnMapping mapping = tool.getMapping();
+                Set<String> possibleTypes = collectTypes(mapping);
+                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.ELEMENT, possibleTypes);
+                declareRootTableType(availableVariables, operationContext);
             }
 
         }
         return availableVariables;
+    }
+
+    private void refineVariableType(Map<String, VariableType> availableVariables, String variableName, Collection<String> foundTypes) {
+        if (foundTypes.size() > 0) {
+            availableVariables.put(variableName, VariableType.fromStrings(foundTypes));
+        }
+    }
+
+    private Set<String> collectTypes(EObject container) {
+        Set<String> possibleTypes = Sets.newLinkedHashSet();
+        if (container instanceof TableDescription) {
+            String domainClass = ((TableDescription) container).getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                possibleTypes.add(domainClass);
+            }
+        } else if (container instanceof LineMapping) {
+            String domainClass = ((LineMapping) container).getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                possibleTypes.add(domainClass);
+            }
+        } else if (container instanceof ElementColumnMapping) {
+            String domainClass = ((ElementColumnMapping) container).getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                possibleTypes.add(domainClass);
+            }
+        } else if (container instanceof FeatureColumnMapping) {
+            Option<EObject> tableDef = new EObjectQuery(container).getFirstAncestorOfType(DescriptionPackage.Literals.TABLE_DESCRIPTION);
+            if (tableDef.some() && tableDef.get() instanceof TableDescription) {
+                TableDescription table = (TableDescription) tableDef.get();
+                for (LineMapping lMapping : table.getAllLineMappings()) {
+                    String domainClass = lMapping.getDomainClass();
+                    if (!StringUtil.isEmpty(domainClass)) {
+                        possibleTypes.add(domainClass);
+                    }
+                }
+            }
+        }
+        return possibleTypes;
+    }
+
+    private void declareRootTableType(Map<String, VariableType> availableVariables, EObject operationContext) {
+        Option<EObject> tableDef = new EObjectQuery(operationContext).getFirstAncestorOfType(DescriptionPackage.Literals.TABLE_DESCRIPTION);
+        if (tableDef.some() && tableDef.get() instanceof TableDescription) {
+            TableDescription table = (TableDescription) tableDef.get();
+            String domainClass = table.getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                availableVariables.put(IInterpreterSiriusTableVariables.ROOT, VariableType.fromString(domainClass));
+            }
+        }
     }
 
     private void declareLineAndColumnSemantic(Map<String, VariableType> availableVariables, IntersectionMapping interMapping) {

@@ -76,12 +76,20 @@
         <edgeMappings name="Dupplicate ParticipantNode to InteractionNode through Message" sourceMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']" targetMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode']" targetFinderExpression="feature:nonExistent" sourceFinderExpression="feature:nonExistent" domainClass="interactions.Message" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription>
+            <centerLabelStyleDescription labelExpression="feature:sendingEnd">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <edgeMappings name="(Participant/Interaction)Container to (Participant/Interaction)Container through Message" sourceMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='InteractionContainer']" targetMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='InteractionContainer'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='ParticipantContainer']" targetFinderExpression="feature:nonExistent" sourceFinderExpression="feature:nonExistent" domainClass="interactions.Message" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="RelationBasedEdge Interaction Container to Interaction Node" sourceMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='InteractionContainer']" targetMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode']" targetFinderExpression="var:">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -435,8 +443,95 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="XTable" domainClass="interactions.Model">
-      <ownedLineMappings name="Message Line" domainClass="interactions.Message"/>
-      <ownedColumnMappings name="Participant Column" domainClass="interactions.Participant"/>
+      <metamodel href="http://www.eclipse.org/sirius/sample/interactions#/"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <ownedLineMappings name="Message Line" domainClass="interactions.Message" headerLabelExpression="feature:sendingEnd">
+        <foregroundConditionalStyle predicateExpression="feature:sendingEnd">
+          <style>
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </foregroundConditionalStyle>
+        <foregroundConditionalStyle predicateExpression="feature:nonExistent">
+          <style>
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </foregroundConditionalStyle>
+        <backgroundConditionalStyle predicateExpression="feature:sendingEnd">
+          <style>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </backgroundConditionalStyle>
+        <backgroundConditionalStyle predicateExpression="feature:nonExistent">
+          <style>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </backgroundConditionalStyle>
+        <ownedSubLines name="MessageEnd subline" domainClass="interactions.MessageEnd" semanticCandidatesExpression="feature:sendingEnd" headerLabelExpression="feature:context"/>
+        <create name="Create MessageEnd" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='XTable']/@ownedLineMappings[name='Message%20Line']/@ownedSubLines[name='MessageEnd%20subline']">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:root">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+        <delete name="Delete Message">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:root">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:sendingEnd"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </delete>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Participant Column" headerLabelExpression="feature:type" domainClass="interactions.Participant">
+        <defaultForeground>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </defaultForeground>
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultBackground>
+        <create name="Create Participant">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:root">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+        <delete name="Delete Participant">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:root">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </delete>
+      </ownedColumnMappings>
       <intersection name="Intersection Message Participant" lineMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='XTable']/@ownedLineMappings[name='Message%20Line']" columnMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='XTable']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="aql:self.sendingEnd.context">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
@@ -468,6 +563,44 @@
           <mask mask="{0}"/>
         </create>
       </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="EditionTable" domainClass="interactions.Model">
+      <ownedLineMappings name="Participants" domainClass="interactions.Participant">
+        <ownedSubLines name="Message Subline" domainClass="interactions.Message"/>
+        <create name="create message" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='EditionTable']/@ownedLineMappings[name='Participants']/@ownedSubLines[name='Message%20Subline']">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:root">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+      </ownedLineMappings>
+      <ownedCreateLine name="Create new Participant" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='EditionTable']/@ownedLineMappings[name='Participants']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
+          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:root">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+          </subModelOperations>
+          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+          </subModelOperations>
+          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="name" featureName="name" labelExpression="feature:name"/>
     </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>
