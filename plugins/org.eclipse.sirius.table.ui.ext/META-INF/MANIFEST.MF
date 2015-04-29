@@ -10,3 +10,4 @@ Require-Bundle: org.eclipse.sirius.table.ui;bundle-version="3.0.0",
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sirius.table.ui.ext.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipse.sirius.table.ui.ext;version="3.0.0"
