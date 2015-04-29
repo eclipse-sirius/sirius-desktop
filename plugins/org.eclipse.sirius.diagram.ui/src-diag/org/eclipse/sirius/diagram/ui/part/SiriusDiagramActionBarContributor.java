@@ -165,7 +165,6 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             toolBarManager.add(getActionRegistry().getAction(HIDE_ELEMENT));
             toolBarManager.add(getActionRegistry().getAction(HIDE_LABEL));
             toolBarManager.add(getActionRegistry().getAction(REVEAL_ELEMENTS));
-            toolBarManager.add(new SiriusActionBarActionContributionItem(getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_DIAGRAM), getPage()));
             toolBarManager.add(getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.COPY_LAYOUT));
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.PASTE_LAYOUT));

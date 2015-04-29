@@ -97,17 +97,23 @@ public class EntitiesDiagramDeleteFromDiagramTests extends SiriusDiagramTestCase
         TestsUtil.synchronizationWithUIThread();
         diagramEditor.getDiagramGraphicalViewer().select(getEditPart(getFirstDiagramElement(diagram, source)));
         TestsUtil.synchronizationWithUIThread();
+        IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        if (!prefs.getBoolean(SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name())) {
+            /*
+             * DeleteFromDiagramAction has been removed from the old-ui mode.
+             * See Bug: 465836
+             */
+            assertTrue("The action should be enabled", isDeleteFromDiagramActionEnabled(diagramEditor));
 
-        assertTrue("The action should be enabled", isDeleteFromDiagramActionEnabled(diagramEditor));
+            diagramEditor.getDiagramGraphicalViewer().deselectAll();
+            TestsUtil.synchronizationWithUIThread();
 
-        diagramEditor.getDiagramGraphicalViewer().deselectAll();
-        TestsUtil.synchronizationWithUIThread();
+            diagramEditor.getDiagramGraphicalViewer().select(getEditPart(getFirstDiagramElement(diagram, eReference)));
+            TestsUtil.synchronizationWithUIThread();
 
-        diagramEditor.getDiagramGraphicalViewer().select(getEditPart(getFirstDiagramElement(diagram, eReference)));
-        TestsUtil.synchronizationWithUIThread();
-
-        assertFalse("The action should be disabled", isDeleteFromDiagramActionEnabled(diagramEditor));
-        DialectUIManager.INSTANCE.closeEditor(diagramEditor, false);
+            assertFalse("The action should be disabled", isDeleteFromDiagramActionEnabled(diagramEditor));
+            DialectUIManager.INSTANCE.closeEditor(diagramEditor, false);
+        }
     }
 
     public void testDeleteNoteFromDiagram() {
