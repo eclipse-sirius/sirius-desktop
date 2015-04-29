@@ -27,6 +27,7 @@ import java.util.concurrent.ExecutionException;
 import org.eclipse.acceleo.query.runtime.AcceleoQueryEvaluationException;
 import org.eclipse.acceleo.query.runtime.AcceleoQueryValidationException;
 import org.eclipse.acceleo.query.runtime.CrossReferenceProvider;
+import org.eclipse.acceleo.query.runtime.EvaluationResult;
 import org.eclipse.acceleo.query.runtime.IQueryBuilderEngine;
 import org.eclipse.acceleo.query.runtime.IQueryBuilderEngine.AstResult;
 import org.eclipse.acceleo.query.runtime.IQueryEnvironment;
@@ -183,7 +184,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         try {
             build = parsedExpressions.get(expression);
             IQueryEvaluationEngine evaluationEngine = QueryEvaluation.newEngine(queryEnvironment);
-            return evaluationEngine.eval(build, variables);
+            EvaluationResult evalResult = evaluationEngine.eval(build, variables);
+            return evalResult.getResult();
         } catch (ExecutionException e) {
             throw new EvaluationException(e.getCause());
         }
