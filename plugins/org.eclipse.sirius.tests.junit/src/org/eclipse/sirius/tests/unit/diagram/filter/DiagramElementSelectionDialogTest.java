@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -25,7 +26,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.ui.business.api.provider.DNodeLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.DiagramElementsSelectionDialog;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.DiagramElementsSelectionDialogPatternMatcher;
 import org.eclipse.sirius.ext.base.Option;
@@ -45,6 +46,7 @@ import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
@@ -61,13 +63,15 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
 
     private static final String SESSION_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/filter/vp-1191/vp-1191.aird";
 
+    private static final String[] allElements = { "p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY" };
+
     private final Predicate<Object> isVisible = new Predicate<Object>() {
         public boolean apply(Object input) {
             boolean result = false;
             if (input instanceof DDiagramElement) {
                 result = !(new DDiagramElementQuery((DDiagramElement) input).isHidden());
-            } else if (input instanceof DNodeLabelItemProvider) {
-                Option<DDiagramElement> optionTarget = ((DNodeLabelItemProvider) input).getDiagramElementTarget();
+            } else if (input instanceof AbstractDDiagramElementLabelItemProvider) {
+                Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) input).getDiagramElementTarget();
                 if (optionTarget.some()) {
                     result = !(new DDiagramElementQuery(optionTarget.get()).isLabelHidden());
                 }
@@ -80,8 +84,8 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
                 HideFilterHelper.INSTANCE.hide((DDiagramElement) from);
-            } else if (from instanceof DNodeLabelItemProvider) {
-                Option<DDiagramElement> optionTarget = ((DNodeLabelItemProvider) from).getDiagramElementTarget();
+            } else if (from instanceof AbstractDDiagramElementLabelItemProvider) {
+                Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) from).getDiagramElementTarget();
                 if (optionTarget.some()) {
                     HideFilterHelper.INSTANCE.hideLabel(optionTarget.get());
                 }
@@ -94,8 +98,8 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
                 HideFilterHelper.INSTANCE.reveal((DDiagramElement) from);
-            } else if (from instanceof DNodeLabelItemProvider) {
-                HideFilterHelper.INSTANCE.revealLabel((DNode) ((DNodeLabelItemProvider) from).getTarget());
+            } else if (from instanceof AbstractDDiagramElementLabelItemProvider) {
+                HideFilterHelper.INSTANCE.revealLabel((DNode) ((AbstractDDiagramElementLabelItemProvider) from).getTarget());
             }
             return null;
         }
@@ -132,8 +136,8 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
      */
     public void testInitialRegExp() {
         // We ensure that all elements are visible and checked
-        dialogTester.checkVisibleElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkVisibleElementByNames(getElementNamesAndLabels(allElements));
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels(allElements));
     }
 
     /**
@@ -143,12 +147,12 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
     public void testComplexRegExp() {
 
         dialogTester.setRegExp("E*y");
-        dialogTester.checkVisibleElementByNames("p2", "Eddy");
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkVisibleElementByNames("p2", "Eddy", "Eddy label");
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels(allElements));
 
         dialogTester.setRegExp("M?m");
-        dialogTester.checkVisibleElementByNames("p3", "4", "Mum", "Mom", "Mummy", "mummY");
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkVisibleElementByNames("p3", "4", "Mum", "Mom", "Mummy", "mummY", "Mum label", "Mom label", "Mummy label", "mummY label");
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels(allElements));
     }
 
     /**
@@ -158,15 +162,15 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
     public void testRegExpWithSpaces() {
         dialogTester.setRegExp("E*d ");
         dialogTester.checkVisibleElementByNames("p1", "Ed");
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels(allElements));
 
         dialogTester.setRegExp("E ");
         dialogTester.checkVisibleElementByNames();
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels(allElements));
 
         dialogTester.setRegExp("M?m ");
         dialogTester.checkVisibleElementByNames("p3", "Mum", "Mom");
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels(allElements));
     }
 
     /**
@@ -198,17 +202,26 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
 
         // Case 1 : all items are checked
         dialogTester.setFilteringMode(0);
-        dialogTester.checkVisibleElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkVisibleElementByNames(getElementNamesAndLabels(allElements));
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels(allElements));
 
         dialogTester.setFilteringMode(1);
-        dialogTester.checkVisibleElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkVisibleElementByNames(getElementNamesAndLabels(allElements));
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels(allElements));
 
         dialogTester.setFilteringMode(2);
         dialogTester.checkVisibleElementByNames();
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels(allElements));
 
+    }
+
+    private String[] getElementNamesAndLabels(String... elementNames) {
+        List<String> namesAndLabels = Lists.newArrayList();
+        for (int i = 0; i < elementNames.length; i++) {
+            namesAndLabels.add(elementNames[i]);
+            namesAndLabels.add(elementNames[i] + " label");
+        }
+        return namesAndLabels.toArray(new String[0]);
     }
 
     /**
@@ -218,10 +231,11 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
     public void testFilteringModeWithUncheckedElementOnRoot() {
         // unchecking a top element ('p1')
         dialogTester.setChecked(false, "p1");
+        dialogTester.setChecked(false, "p1 label");
 
         dialogTester.setFilteringMode(1);
-        dialogTester.checkVisibleElementByNames("p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
-        dialogTester.checkCheckedElementByNames("p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkVisibleElementByNames(getElementNamesAndLabels("p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels("p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
     }
 
     /**
@@ -229,12 +243,13 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
      * a Leaf.
      */
     public void testFilteringModeWithUncheckedElementOnLeaf() {
-        // unchecking a leaf element ('mum')
+        // unchecking a leaf element ('mum' and its label)
         dialogTester.setChecked(false, "Mum");
-
+        dialogTester.setChecked(false, "Mum label");
+        
         dialogTester.setFilteringMode(1);
-        dialogTester.checkVisibleElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkVisibleElementByNames(getElementNamesAndLabels("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
     }
 
     /**
@@ -243,11 +258,12 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
      */
     public void testFilteringModeWithUncheckedElementAndRegExpOnRoot() {
         dialogTester.setChecked(false, "p1");
+        dialogTester.setChecked(false, "p1 label");
 
         dialogTester.setFilteringMode(1);
         dialogTester.setRegExp("p");
-        dialogTester.checkVisibleElementByNames("p2", "p3");
-        dialogTester.checkCheckedElementByNames("p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkVisibleElementByNames("p2", "p2 label", "p3", "p3 label");
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels("p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
     }
 
     /**
@@ -255,12 +271,13 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
      * together correctly.
      */
     public void testFilteringModeWithUncheckedElementAndRegExpOnLeaf() {
-
         dialogTester.setChecked(false, "Mum");
-
+        dialogTester.setChecked(false, "Mum label");
+        
+        dialogTester.setFilteringMode(1);
         dialogTester.setRegExp("M?m");
-        dialogTester.checkVisibleElementByNames("p3", "4", "Mom", "Mummy", "mummY");
-        dialogTester.checkCheckedElementByNames("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY");
+        dialogTester.checkVisibleElementByNames("p3", "4", "Mom", "Mom label", "Mummy", "Mummy label", "mummY", "mummY label");
+        dialogTester.checkCheckedElementByNames(getElementNamesAndLabels("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
     }
 
     /**
@@ -357,7 +374,11 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
                 expectedVisibleNames.add(elementNames[i]);
             }
             for (int i = 0; i < visibleElements.length; i++) {
-                actualNames.add(((DDiagramElement) visibleElements[i]).getName());
+                if (visibleElements[i] instanceof DDiagramElement) {
+                    actualNames.add(((DDiagramElement) visibleElements[i]).getName());
+                } else if (visibleElements[i] instanceof AbstractDDiagramElementLabelItemProvider) {
+                    actualNames.add(getLabelName((AbstractDDiagramElementLabelItemProvider) visibleElements[i]));
+                }
             }
 
             SetView<String> elementsThatShouldBeVisibleButArent = Sets.difference(expectedVisibleNames, actualNames);
@@ -384,11 +405,8 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
             for (Object checkDiagramElement : checkedElements) {
                 if (checkDiagramElement instanceof DDiagramElement) {
                     actualNames.add(((DDiagramElement) checkDiagramElement).getName());
-                } else if (checkDiagramElement instanceof DNodeLabelItemProvider) {
-                    Option<DDiagramElement> optionTarget = ((DNodeLabelItemProvider) checkDiagramElement).getDiagramElementTarget();
-                    if (optionTarget.some()) {
-                        actualNames.add(optionTarget.get().getName() + " label");
-                    }
+                } else if (checkDiagramElement instanceof AbstractDDiagramElementLabelItemProvider) {
+                    actualNames.add(getLabelName((AbstractDDiagramElementLabelItemProvider) checkDiagramElement));
                 }
             }
 
@@ -396,6 +414,15 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
             SetView<String> elementsThatShouldNotBeCheckedButAre = Sets.difference(actualNames, expectedCheckedNames);
             assertTrue("Elements " + elementsThatShouldBeCheckedButArent + " should be checked", elementsThatShouldBeCheckedButArent.isEmpty());
             assertTrue("Elements " + elementsThatShouldNotBeCheckedButAre + " should not be checked", elementsThatShouldNotBeCheckedButAre.isEmpty());
+        }
+
+        private String getLabelName(AbstractDDiagramElementLabelItemProvider checkDiagramElement) {
+            Option<DDiagramElement> optionTarget = checkDiagramElement.getDiagramElementTarget();
+            if (optionTarget.some()) {
+                return optionTarget.get().getName() + " label";
+            }
+            fail("It should not be possible to have a label wrapper with no DDiagramElement.");
+            return "Unknown";
         }
 
         /**
@@ -503,11 +530,11 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
                     getVisibleChildren(result, item);
                 }
             } catch (IllegalArgumentException e) {
-                assertFalse(e.getMessage(), true);
+                fail(e.getMessage());
             } catch (IllegalAccessException e) {
-                assertFalse(e.getMessage(), true);
+                fail(e.getMessage());
             } catch (InvocationTargetException e) {
-                assertFalse(e.getMessage(), true);
+                fail(e.getMessage());
             }
         }
 
@@ -525,7 +552,13 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
                 Object[] elementsSelectedAfter = getVisibleElements();
 
                 for (int j = 0; j < elementsSelectedAfter.length; j++) {
-                    if (((DDiagramElement) elementsSelectedAfter[j]).getName().equals(elementsToCheckNames[i])) {
+                    String name = "";
+                    if (elementsSelectedAfter[j] instanceof DDiagramElement) {
+                        name = ((DDiagramElement) elementsSelectedAfter[j]).getName();
+                    } else if (elementsSelectedAfter[j] instanceof AbstractDDiagramElementLabelItemProvider) {
+                        name = getLabelName((AbstractDDiagramElementLabelItemProvider) elementsSelectedAfter[j]);
+                    }
+                    if (name.equals(elementsToCheckNames[i])) {
                         getDialogTreeViewer().setChecked(elementsSelectedAfter[j], newCheckedValue);
                         if (newCheckedValue) {
                             dialog.getCheckedElements().add(elementsSelectedAfter[j]);
@@ -537,7 +570,6 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
                 }
             }
         }
-
     }
 
     /**

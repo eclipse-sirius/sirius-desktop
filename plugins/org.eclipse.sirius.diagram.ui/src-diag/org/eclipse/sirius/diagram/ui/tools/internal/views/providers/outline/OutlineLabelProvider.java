@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
@@ -84,12 +85,16 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
 
         Option<DDiagramElement> optionTarget = element.getDiagramElementTarget();
         if (optionTarget.some() && new DDiagramElementQuery(optionTarget.get()).isLabelHidden()) {
-            final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(DiagramUIPlugin.INSTANCE.getImage(DiagramImagesPath.HIDDEN_DECORATOR));
-            final DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(result, decoratorDescriptor, IDecoration.TOP_LEFT);
-            result = DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
+            result = getDecoratedImage(result, DiagramImagesPath.HIDDEN_DECORATOR, IDecoration.TOP_LEFT);
         }
 
         return result;
+    }
+
+    private Image getDecoratedImage(Image baseImage, String decoratorPath, int decoratorPosition) {
+        ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(DiagramUIPlugin.INSTANCE.getImage(decoratorPath));
+        DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(baseImage, decoratorDescriptor, decoratorPosition);
+        return DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
     }
 
     /**
@@ -113,18 +118,18 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
                 result = DiagramUIPlugin.getPlugin().getImage(descriptor);
 
                 if (element instanceof DEdge) {
-                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(DiagramUIPlugin.INSTANCE.getImage(DiagramImagesPath.VIEW_EDGE_DECORATOR));
-                    final DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(result, decoratorDescriptor, IDecoration.BOTTOM_LEFT);
-                    result = DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
-
+                    result = getDecoratedImage(result, DiagramImagesPath.VIEW_EDGE_DECORATOR, IDecoration.BOTTOM_LEFT);
                     result = computeFoldDecorator(result, (DEdge) element);
                 }
 
-                if (element instanceof DDiagramElement && new DDiagramElementQuery((DDiagramElement) element).isHidden()) {
-                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(DiagramUIPlugin.INSTANCE.getImage(DiagramImagesPath.HIDDEN_DECORATOR));
-                    final DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(result, decoratorDescriptor, IDecoration.TOP_LEFT);
-                    result = DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
-
+                if (element instanceof DDiagramElement) {
+                    DDiagramElementQuery query = new DDiagramElementQuery((DDiagramElement) element);
+                    if (query.isHidden()) {
+                        result = getDecoratedImage(result, DiagramImagesPath.HIDDEN_DECORATOR, IDecoration.TOP_LEFT);
+                    }
+                    if (element instanceof DDiagramElementContainer && query.isLabelHidden()) {
+                        result = getDecoratedImage(result, DiagramImagesPath.HIDDEN_LABEL_DECORATOR, IDecoration.BOTTOM_RIGHT);
+                    }
                 }
             }
         }
@@ -133,9 +138,7 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
 
     private Image computeFoldDecorator(final Image baseImage, final DEdge edge) {
         if (new DDiagramElementQuery(edge).isFolded()) {
-            final ImageDescriptor foldDescription = ExtendedImageRegistry.getInstance().getImageDescriptor(DiagramUIPlugin.INSTANCE.getImage(DiagramImagesPath.FOLD_DECORATOR));
-            final DecorationOverlayIcon finalFoldDescriptor = new DecorationOverlayIcon(baseImage, foldDescription, IDecoration.TOP_RIGHT);
-            return DiagramUIPlugin.getPlugin().getImage(finalFoldDescriptor);
+            return getDecoratedImage(baseImage, DiagramImagesPath.FOLD_DECORATOR, IDecoration.TOP_RIGHT);
         }
         return baseImage;
     }
@@ -171,7 +174,7 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
         Font result = JFaceResources.getDefaultFont();
         if (element instanceof DDiagramElement) {
             final DDiagramElement vpe = (DDiagramElement) element;
-            if (!vpe.isVisible()) {
+            if (!vpe.isVisible() || (vpe instanceof DDiagramElementContainer && new DDiagramElementQuery(vpe).isLabelHidden())) {
                 result = JFaceResources.getFontRegistry().getItalic(JFaceResources.DEFAULT_FONT);
             }
         } else if (element instanceof AbstractDDiagramElementLabelItemProvider) {

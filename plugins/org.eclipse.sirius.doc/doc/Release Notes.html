@@ -46,6 +46,7 @@
 			<li>In the Viewpoint Selection Dialog and ViewpointsSelectionWizardPage, the &#171;plug-in&#187; decorator for viewpoints loaded from plug-ins is removed, and a &#171;Folder&#187; decorator for viewpoints loaded from the current workspace has been added on the top of the default viewpoint icon.</li>
 			<li>The ability to print table representations has been re-introduced.</li>
 			<li>The quick outline feature has been added for tree and table editors, see documentation for details.</li>
+			<li>The label of a list or container can now be hidden by the user from the outline, the tabbar or the contextual menu.</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -57,6 +58,7 @@
 			<li>&#171;*&#187; can now be used as feature name of a FeatureColumn to skip the feature name validation during the cell creation. This allow to compute the label of cells for lines whose semantic element types have no common EStructuralFeatures (inherited or with same name).</li>
 			<li>A quick outline is now accessible in the VSM editor by using the shortcut &#171;Ctrl&#187; + &#171;O&#187;.</li>
 			<li>Property sections for interpreted expressions (yellow background) now have a button next to the text field to open a dialog with a bigger text area (also providing auto-completion).</li>
+			<li>The hide label per default capability has been added to the container styles.</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
@@ -568,7 +570,7 @@
 			</li>
 			<li>The method 
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart.getEAdapterSemanticElements()</code> has been removed (and all its implementations). For manual refresh, this adapter has been replaced with the 
-				<code>RefreshEditorsPrecommitListener</code>. 
+				<code>RefreshEditorsPrecommitListener</code>.
 			</li>
 			<li>Extensions in plugin.xml that provides UI functionalities have been moved to org.eclipse.sirius.diagram.ui.ext.</li>
 			<li>The method 
@@ -576,6 +578,12 @@
 				<code>borderItemHasMoved</code>. This method must be used carefully only in case where 
 				<code>setConstraint(Rectangle)</code> is called to compute temporary a 
 				<code>getValidLocation(Rectangle, IFigure, Collection, List)</code>, one time with a new value and just after with the old value.
+			</li>
+			<li>The constant 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath.HIDDEN_LABEL_DECORATOR</code> has been added to represent the path of hidden label decorator used in the outline.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.business.api.provider.DDiagramElementContainerLabelItemProvider</code> has been added to represent container and list labels as virtual nodes in the Show/Hide wizards.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -133,6 +133,9 @@ public interface DiagramImagesPath {
 
     /** The hidden decorator path. */
     String HIDDEN_DECORATOR = DEFAULT_DECORATOR_PATH + "hidden"; //$NON-NLS-1$
+
+    /** The hidden decorator path. */
+    String HIDDEN_LABEL_DECORATOR = DEFAULT_DECORATOR_PATH + "hiddenLabel"; //$NON-NLS-1$
 
     /** The fold decorator path. */
     String FOLD_DECORATOR = DEFAULT_DECORATOR_PATH + "fold"; //$NON-NLS-1$

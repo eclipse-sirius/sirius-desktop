@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,14 @@ package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -33,8 +36,12 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.provider.DNodeContainerItemProvider;
+import org.eclipse.sirius.diagram.provider.DNodeListItemProvider;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DDiagramElementContainerLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.providers.FilteredTreeContentProvider;
@@ -70,6 +77,7 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -702,14 +710,14 @@ public class DiagramElementsSelectionDialog {
     /**
      * Init the content provider.
      * 
-     * @param includeNodeLabel
-     *            include node label (if there are on border) in the tree
-     *            content
+     * @param includeLabel
+     *            include label (containers, lists, edges and nodes if there are
+     *            on border for nodes) in the tree content
      */
-    protected void initContentProvider(boolean includeNodeLabel) {
-        AdapterFactory adapterFactory = getAdapterFactory();
+    protected void initContentProvider(boolean includeLabel) {
+        AdapterFactory adapterFactory = getAdapterFactory(includeLabel);
         Predicate<Object> predicate = Predicates.instanceOf(DDiagramElement.class);
-        if (includeNodeLabel) {
+        if (includeLabel) {
             predicate = Predicates.or(predicate, Predicates.instanceOf(AbstractDDiagramElementLabelItemProvider.class));
         }
         contentProvider = new FilteredTreeContentProvider(adapterFactory, predicate);
@@ -815,16 +823,84 @@ public class DiagramElementsSelectionDialog {
     /**
      * Returns the adapter factory used by this viewer.
      * 
+     * @param includeLabel
+     *            include label (containers, lists) in the tree content
+     * 
      * @return The adapter factory used by this viewer.
      */
-    private AdapterFactory getAdapterFactory() {
+    private AdapterFactory getAdapterFactory(final boolean includeLabel) {
         List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
         factories.add(new ViewpointItemProviderAdapterFactory());
-        factories.add(new DiagramItemProviderAdapterFactory());
+        factories.add(new DiagramItemProviderWithLabelAdapterFactory(includeLabel));
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new EcoreItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());
         return new ComposedAdapterFactory(factories);
+    }
+
+    /**
+     * Specific diagram item provider adapter factory to create item provider
+     * for DNodeContainer and DNodelist able to display their label as virtual
+     * children.
+     */
+    private class DiagramItemProviderWithLabelAdapterFactory extends DiagramItemProviderAdapterFactory {
+
+        /**
+         * The item provider used to simulate another child for Container and
+         * List regarding the node label configuration.
+         */
+        private final HashMap<Object, DDiagramElementContainerLabelItemProvider> labelItemProviders = Maps.newHashMap();
+
+        private boolean includeLabel;
+
+        public DiagramItemProviderWithLabelAdapterFactory(boolean includeLabel) {
+            this.includeLabel = includeLabel;
+        }
+
+        private Collection<Object> completeChildren(Object object, Collection<Object> children, AdapterFactory adapterFactory) {
+            Collection<Object> result = children;
+            if (includeLabel && object instanceof DDiagramElementContainer) {
+                Collection<Object> resultTemp = new ArrayList<Object>();
+                if (labelItemProviders.get(object) == null) {
+                    labelItemProviders.put(object, new DDiagramElementContainerLabelItemProvider(adapterFactory, (DDiagramElementContainer) object));
+                }
+                resultTemp.add(labelItemProviders.get(object));
+                resultTemp.addAll(children);
+                result = resultTemp;
+            } else if (labelItemProviders.get(object) != null) {
+                labelItemProviders.remove(object).dispose();
+            }
+            return result;
+        }
+
+        @Override
+        public Adapter createDNodeContainerAdapter() {
+            if (dNodeContainerItemProvider == null) {
+                dNodeContainerItemProvider = new DNodeContainerItemProvider(this) {
+
+                    @Override
+                    public Collection<?> getChildren(Object object) {
+                        Collection<Object> result = (Collection<Object>) super.getChildren(object);
+                        return completeChildren(object, result, adapterFactory);
+                    }
+                };
+            }
+            return dNodeContainerItemProvider;
+        }
+
+        @Override
+        public Adapter createDNodeListAdapter() {
+            if (dNodeListItemProvider == null) {
+                dNodeListItemProvider = new DNodeListItemProvider(this) {
+                    @Override
+                    public Collection<?> getChildren(Object object) {
+                        Collection<Object> result = (Collection<Object>) super.getChildren(object);
+                        return completeChildren(object, result, adapterFactory);
+                    }
+                };
+            }
+            return dNodeListItemProvider;
+        }
     }
 
     private class ModeFilter extends ViewerFilter {

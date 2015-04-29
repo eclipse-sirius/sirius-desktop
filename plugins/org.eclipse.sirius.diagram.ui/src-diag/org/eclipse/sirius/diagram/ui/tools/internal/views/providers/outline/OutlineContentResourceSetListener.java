@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -214,6 +214,16 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
     }
 
     private void caseDEdge(final Notification n, final DEdge edge) {
+        final int featureID = n.getFeatureID(AbstractDNode.class);
+
+        switch (featureID) {
+        case DiagramPackage.DEDGE__GRAPHICAL_FILTERS:
+            addOptionalParentDiagramRefresh(edge);
+            break;
+        default:
+            break;
+        }
+        
         if (DEdgeLabelItemProvider.hasRelevantLabelItem(edge)) {
             addToUpdate(new DEdgeLabelItemProvider(getAdapterFactoryForNodeLabelItems(), edge));
         }

@@ -11,6 +11,7 @@ h3. User-Visible Changes
 * In the Viewpoint Selection Dialog and ViewpointsSelectionWizardPage, the "plug-in" decorator for viewpoints loaded from plug-ins is removed, and a "Folder" decorator for viewpoints loaded from the current workspace has been added on the top of the default viewpoint icon.
 * The ability to print table representations has been re-introduced.
 * The quick outline feature has been added for tree and table editors, see documentation for details.
+* The label of a list or container can now be hidden by the user from the outline, the tabbar or the contextual menu.
 
 h3. Specifier-Visible Changes
 
@@ -20,6 +21,7 @@ h3. Specifier-Visible Changes
 * "*" can now be used as feature name of a FeatureColumn to skip the feature name validation during the cell creation. This allow to compute the label of cells for lines whose semantic element types have no common EStructuralFeatures (inherited or with same name).
 * A quick outline is now accessible in the VSM editor by using the shortcut "Ctrl" + "O".
 * Property sections for interpreted expressions (yellow background) now have a button next to the text field to open a dialog with a bigger text area (also providing auto-completion).
+* The hide label per default capability has been added to the container styles.
 
 h3. API Changes
 
@@ -162,9 +164,11 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * The @org.eclipse.sirius.diagram.ui.tools.api.figure.ImageFigureWithAlpha@ interface has been added to identify Figures having the capability to return an alpha value from a coordinate.
 ** @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractCachedSVGFigure@ and @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentImage@  now implement this new interface.
 * @org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure@ class has been removed, use a @org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure@ with a @org.eclipse.draw2d.MarginBorder@ or a null border instead.
-* The method @org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart.getEAdapterSemanticElements()@ has been removed (and all its implementations). For manual refresh, this adapter has been replaced with the @RefreshEditorsPrecommitListener@. 
+* The method @org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart.getEAdapterSemanticElements()@ has been removed (and all its implementations). For manual refresh, this adapter has been replaced with the @RefreshEditorsPrecommitListener@.
 * Extensions in plugin.xml that provides UI functionalities have been moved to org.eclipse.sirius.diagram.ui.ext.
 * The method @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator.resetBorderItemMovedState()@ has been added to allow to reset the state of @borderItemHasMoved@. This method must be used carefully only in case where @setConstraint(Rectangle)@ is called to compute temporary a @getValidLocation(Rectangle, IFigure, Collection, List)@, one time with a new value and just after with the old value.
+* The constant @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath.HIDDEN_LABEL_DECORATOR@ has been added to represent the path of hidden label decorator used in the outline.
+* @org.eclipse.sirius.diagram.ui.business.api.provider.DDiagramElementContainerLabelItemProvider@ has been added to represent container and list labels as virtual nodes in the Show/Hide wizards.
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
