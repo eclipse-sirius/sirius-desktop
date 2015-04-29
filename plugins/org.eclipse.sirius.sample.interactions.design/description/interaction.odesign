@@ -922,7 +922,7 @@
                   <parameters name="referenceOwner" value="aql:newOperand.eContainer()"/>
                   <parameters name="referenceName" value="ownedOperands"/>
                   <parameters name="element" value="var:newOperand"/>
-                  <parameters name="predecessor" value="&lt;%(($newOperand.start.precedingSibling.nReverse.filter(&quot;OperandEnd&quot;) &amp;&amp; $newOperand.eContainer.ownedOperands.start).nFirst).owner%>"/>
+                  <parameters name="predecessor" value="aql:newOperand.start.precedingSiblings()->reverse()->filter(interactions::OperandEnd)->asSet()->intersection(newOperand.eContainer().ownedOperands.start->asSet())->first().owner"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1090,7 +1090,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="executions"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.ExecutionEnd&quot;)[current.execution.start == current].nLast.execution%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::ExecutionEnd)->select(current | current.execution.start = current)->last().execution"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::State)">
@@ -1110,7 +1110,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="states"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.StateEnd&quot;)[current.state.start == current].nLast.state%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::StateEnd)->select(current | current.state.start = current)->last().state"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::Message)">
@@ -1134,7 +1134,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="messages"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.sendingEnd.precedingSibling.filter(&quot;interactions.MessageEnd&quot;)[current.message.receivingEnd == current].nLast.message%>"/>
+                    <parameters name="predecessor" value="aql:self.sendingEnd.precedingSiblings()->filter(interactions::MessageEnd)->select(current | current.message.receivingEnd = current)->last().message"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::InteractionUse)">
@@ -1154,7 +1154,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="interactionUses"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.InteractionUseEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::InteractionUseEnd)->select(current| current.owner.start = current)->last().owner"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::CombinedFragment)">
@@ -1174,7 +1174,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="combinedFragments"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.CombinedFragmentEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::CombinedFragmentEnd)->select(current | current.owner.start = current)->last().owner"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(interactions::Operand)">
@@ -1188,7 +1188,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::CombinedFragment)"/>
                     <parameters name="referenceName" value="ownedOperands"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.OperandEnd&quot;)[current.owner.start == current &amp;&amp; current(1).eContainer(&quot;interactions.CombinedFragment&quot;) == current().owner.eContainer(&quot;interactions.CombinedFragment&quot;)].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::OperandEnd)->select(op | op.owner.start = op and self.eContainerOrSelf(interactions::CombinedFragment) = op.owner.eContainerOrSelf(interactions::CombinedFragment))->last().owner)"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -1877,7 +1877,7 @@
     <entries xsi:type="description:UserFixedColor" red="126" green="206" blue="202" name="Seabluff"/>
     <entries xsi:type="description:UserFixedColor" red="160" green="222" blue="214" name="Paleolitico"/>
     <entries xsi:type="description:UserFixedColor" red="199" green="237" blue="232" name="Glint on the ocean"/>
-    <entries xsi:type="description:InterpolatedColor" name="Interpolated blue for Executions" colorValueComputationExpression="&lt;%computeExecutionDepth()%>">
+    <entries xsi:type="description:InterpolatedColor" name="Interpolated blue for Executions" colorValueComputationExpression="aql:self.computeExecutionDepth()">
       <colorSteps associatedValue="0" associatedColor="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Glint%20on%20the%20ocean']"/>
       <colorSteps associatedValue="10" associatedColor="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Dutch%20teal']"/>
     </entries>
@@ -1887,7 +1887,7 @@
     <entries xsi:type="description:UserFixedColor" red="166" green="227" blue="187" name="Watery Green"/>
     <entries xsi:type="description:UserFixedColor" red="186" green="250" blue="158" name="Gentler Spring"/>
     <entries xsi:type="description:UserFixedColor" red="16" green="120" blue="103" name="Flabber Green"/>
-    <entries xsi:type="description:InterpolatedColor" name="Interpolated green for Combined Fragments" colorValueComputationExpression="&lt;%computeCombinedFragmentDepth()%>">
+    <entries xsi:type="description:InterpolatedColor" name="Interpolated green for Combined Fragments" colorValueComputationExpression="aql:self.computeCombinedFragmentDepth()">
       <colorSteps associatedValue="0" associatedColor="//@userColorsPalettes[name='Greens']/@entries[name='Watery%20Green']"/>
       <colorSteps associatedValue="5" associatedColor="//@userColorsPalettes[name='Greens']/@entries[name='Flabber%20Green']"/>
     </entries>
