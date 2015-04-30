@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.MissingResourceException;
 
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -31,6 +33,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.SubContributionItem;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.tools.internal.editor.EditorCustomizationManager;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -41,26 +44,186 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Abstract class to dynamicaly build treeview menus.
+ * Abstract class to dynamically build treeview menus.
  * 
  * @author cbrun
  * 
  */
 public abstract class AbstractMenuBuilder {
-    private static final String EDIT = "edit";
+    /**
+     * The priority of the New Conditionnal Style menu.
+     */
+    protected static final int CONDITIONAL_STYLE;
 
     /**
-     * child action for the advanced menu.
+     * The priority of the New Customization menu.
+     */
+    protected static final int CUSTOMIZATION;
+
+    /**
+     * The priority of the New Diagram Element menu.
+     */
+    protected static final int DIAGRAM_ELEMENT;
+
+    /**
+     * The priority of the New Element Creation menu.
+     */
+    protected static final int ELEMENT_CREATION;
+
+    /**
+     * The priority of the New Element Edition menu.
+     */
+    protected static final int ELEMENT_EDITION;
+
+    /**
+     * The priority of the New Extension menu.
+     */
+    protected static final int EXTENSION;
+
+    /**
+     * The priority of the New Filter menu.
+     */
+    protected static final int FILTER;
+
+    /**
+     * The priority of the New Import menu.
+     */
+    protected static final int IMPORT;
+
+    /**
+     * The priority of the New Layout menu.
+     */
+    protected static final int LAYOUT;
+
+    /**
+     * The priority of the New Menu menu.
+     */
+    protected static final int MENU;
+
+    /**
+     * The priority of the New Navigation menu.
+     */
+    protected static final int NAVIGATION;
+
+    /**
+     * The priority of the New Operation menu.
+     */
+    protected static final int OPERATION;
+
+    /**
+     * The priority of the New Reorder menu.
+     */
+    protected static final int REORDER;
+
+    /**
+     * The priority of the New Representation menu.
+     */
+    protected static final int REPRESENTATION;
+
+    /**
+     * The priority of the New Representation Creation menu.
+     */
+    protected static final int REPRESENTATION_CREATION;
+
+    /**
+     * The priority of the New Simulation menu.
+     */
+    protected static final int SIMULATION;
+
+    /**
+     * The priority of the New Style menu.
+     */
+    protected static final int STYLE;
+
+    /**
+     * The priority of the New Table Element menu.
+     */
+    protected static final int TABLE_ELEMENT;
+
+    /**
+     * The priority of the New Template menu.
+     */
+    protected static final int TEMPLATE;
+
+    /**
+     * The priority of the New Tool menu.
+     */
+    protected static final int TOOL;
+
+    /**
+     * The priority of the New Tree Element menu.
+     */
+    protected static final int TREE_ELEMENT;
+
+    /**
+     * The priority of the New Validation menu.
+     */
+    protected static final int VALIDATION;
+
+    /**
+     * The priority of the New Variable menu.
+     */
+    protected static final int VARIABLE;
+
+    /**
+     * The priority of the New (Others) menu.
+     */
+    protected static final int OTHERS;
+
+    /**
+     * The priority of the Initialize menu.
+     */
+    protected static final int INITIALIZE;
+
+    /**
+     * The priority of the Refactor menu.
+     */
+    protected static final int REFACTOR;
+
+    private static final String EDIT = "edit";
+
+    static {
+        ResourceLocator rl = SiriusEditorPlugin.INSTANCE;
+        CONDITIONAL_STYLE = getPriority(rl, "ConditionalStylePriority");
+        CUSTOMIZATION = getPriority(rl, "CustomizationPriority");
+        DIAGRAM_ELEMENT = getPriority(rl, "DiagramElementPriority");
+        ELEMENT_CREATION = getPriority(rl, "ElementCreationPriority");
+        ELEMENT_EDITION = getPriority(rl, "ElementEditionPriority");
+        EXTENSION = getPriority(rl, "ExtensionPriority");
+        FILTER = getPriority(rl, "FilterPriority");
+        IMPORT = getPriority(rl, "ImportPriority");
+        LAYOUT = getPriority(rl, "LayoutPriority");
+        MENU = getPriority(rl, "MenuPriority");
+        NAVIGATION = getPriority(rl, "NavigationPriority");
+        OPERATION = getPriority(rl, "OperationPriority");
+        REORDER = getPriority(rl, "ReorderPriority");
+        REPRESENTATION = getPriority(rl, "RepresentationPriority");
+        REPRESENTATION_CREATION = getPriority(rl, "RepresentationCreationPriority");
+        SIMULATION = getPriority(rl, "SimulationPriority");
+        STYLE = getPriority(rl, "StylePriority");
+        TABLE_ELEMENT = getPriority(rl, "TableElementPriority");
+        TEMPLATE = getPriority(rl, "TemplatePriority");
+        TOOL = getPriority(rl, "ToolPriority");
+        TREE_ELEMENT = getPriority(rl, "TreeElementPriority");
+        VALIDATION = getPriority(rl, "ValidationPriority");
+        VARIABLE = getPriority(rl, "VariablePriority");
+        OTHERS = getPriority(rl, "OthersPriority");
+        INITIALIZE = getPriority(rl, "InitializePriority");
+        REFACTOR = getPriority(rl, "RefactorPriority");
+    }
+
+    /**
+     * Child actions for the advanced menu.
      */
     protected Collection advancedChildActions;
 
     /**
-     * descriptors for the menu action.
+     * Descriptors for the menu action.
      */
     protected Collection descriptors;
 
     /**
-     * menu manager for the advanced menu.
+     * Menu manager for the advanced menu.
      */
     protected IMenuManager myMenuManager;
 
@@ -73,8 +236,17 @@ public abstract class AbstractMenuBuilder {
         getMenu();
     }
 
+    private static int getPriority(ResourceLocator rl, String id) {
+        try {
+            return Integer.parseInt(rl.getString(id));
+        } catch (NumberFormatException nfe) {
+        } catch (MissingResourceException mre) {
+        }
+        return 100000;
+    }
+
     /**
-     * return the menu child descriptors.
+     * Return the menu child descriptors.
      * 
      * @return the menu child descriptors
      */
@@ -83,7 +255,7 @@ public abstract class AbstractMenuBuilder {
     }
 
     /**
-     * return the menu manager.
+     * Return the menu manager.
      * 
      * @return the menu manager.
      */
@@ -103,14 +275,21 @@ public abstract class AbstractMenuBuilder {
     }
 
     /**
-     * return the menu label.
+     * Return the menu label.
      * 
      * @return the menu label.
      */
     public abstract String getLabel();
 
     /**
-     * Attache the menu to its parent.
+     * Return the priority of the menu.
+     * 
+     * @return the priority.
+     */
+    public abstract int getPriority();
+
+    /**
+     * Attach the menu to its parent.
      * 
      * @param parent
      *            parent to attach to.
@@ -148,7 +327,7 @@ public abstract class AbstractMenuBuilder {
     }
 
     /**
-     * return true if the command parameter is valid for the current builder.
+     * Return true if the command parameter is valid for the current builder.
      * 
      * @param object
      *            a command parameter to create new childs.
@@ -157,7 +336,7 @@ public abstract class AbstractMenuBuilder {
     protected abstract boolean isMine(CommandParameter object);
 
     /**
-     * return true if the command parameter is deprecated and should be hidden.
+     * Return true if the command parameter is deprecated and should be hidden.
      * 
      * @param param
      *            a command parameter
@@ -176,7 +355,7 @@ public abstract class AbstractMenuBuilder {
     }
 
     /**
-     * depopulate the menu.
+     * Depopulate the menu.
      */
     protected void depopulate() {
         descriptors = new LinkedHashSet();
@@ -241,7 +420,7 @@ public abstract class AbstractMenuBuilder {
     }
 
     /**
-     * populate the menu.
+     * Populate the menu.
      */
     public void populateMenu() {
         if (getMenu().some()) {
@@ -259,7 +438,7 @@ public abstract class AbstractMenuBuilder {
     }
 
     /**
-     * populate the menumanager with the given actions.
+     * Populate the menumanager with the given actions.
      * 
      * @param manager
      *            manager to populate.

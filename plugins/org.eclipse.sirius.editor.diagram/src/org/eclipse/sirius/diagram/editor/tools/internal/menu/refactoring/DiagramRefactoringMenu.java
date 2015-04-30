@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,17 +31,16 @@ import com.google.common.collect.Sets;
  * 
  */
 public class DiagramRefactoringMenu extends AbstractMenuBuilder {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getLabel() {
         return RefactoringMenu.REFACTORING_MENU_LABEL;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
+    public int getPriority() {
+        return AbstractMenuBuilder.REFACTOR;
+    }
+
     @Override
     public void update(final Collection newChildDescriptors, final ISelection selection, final IEditorPart editor) {
         depopulate();
@@ -64,13 +63,9 @@ public class DiagramRefactoringMenu extends AbstractMenuBuilder {
         });
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean isMine(final CommandParameter object) {
         // not relevant here
         return false;
     }
-
 }

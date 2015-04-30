@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.menu.child;
 
+import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
@@ -23,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class ExtensionsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
     /**
-     * build the menu.
+     * Build the menu.
      */
     public ExtensionsMenuBuilder() {
         super();
@@ -35,12 +36,13 @@ public class ExtensionsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
         addValidType(ToolPackage.eINSTANCE.getExternalJavaAction());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getLabel() {
         return "New Extension";
     }
 
+    @Override
+    public int getPriority() {
+        return AbstractMenuBuilder.EXTENSION;
+    }
 }

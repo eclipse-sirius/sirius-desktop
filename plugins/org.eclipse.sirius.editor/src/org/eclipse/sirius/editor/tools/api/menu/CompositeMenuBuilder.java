@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,8 @@ public class CompositeMenuBuilder extends AbstractMenuBuilder {
 
     private String label;
 
+    private int priority;
+
     /**
      * Create a new builder.
      * 
@@ -38,14 +40,20 @@ public class CompositeMenuBuilder extends AbstractMenuBuilder {
     public CompositeMenuBuilder(final String label, final Collection<AbstractMenuBuilder> menus) {
         this.label = label;
         this.menus = menus;
+        if (menus != null && menus.toArray().length > 0) {
+            AbstractMenuBuilder firstMenu = (AbstractMenuBuilder) menus.toArray()[0];
+            priority = firstMenu.getPriority();
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getLabel() {
         return label;
+    }
+
+    @Override
+    public int getPriority() {
+        return priority;
     }
 
     @Override
