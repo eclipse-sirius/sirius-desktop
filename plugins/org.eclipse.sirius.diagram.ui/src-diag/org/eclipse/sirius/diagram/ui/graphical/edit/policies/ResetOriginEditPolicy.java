@@ -45,7 +45,11 @@ public class ResetOriginEditPolicy extends AbstractEditPolicy {
             if (editPart instanceof DiagramEditPart) {
                 operation = new ResetOriginChangeModelOperation((DiagramEditPart) editPart);
             } else if (editPart instanceof AbstractDiagramContainerEditPart) {
-                operation = new ResetOriginChangeModelOperation((AbstractDiagramContainerEditPart) editPart);
+
+                AbstractDiagramContainerEditPart adcp = (AbstractDiagramContainerEditPart) editPart;
+                if (!adcp.isRegionContainer()) {
+                    operation = new ResetOriginChangeModelOperation((AbstractDiagramContainerEditPart) editPart);
+                }
             }
             if (operation != null) {
                 ICommand command = CommandFactory.createICommand(((IGraphicalEditPart) editPart).getEditingDomain(), operation);

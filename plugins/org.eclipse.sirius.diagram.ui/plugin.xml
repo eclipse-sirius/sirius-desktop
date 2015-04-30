@@ -1059,6 +1059,13 @@
               properties="canRemoveBendpoints"
               type="org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart">
         </propertyTester>
+        <propertyTester
+              class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanResetOrigin"
+              id="org.eclipse.sirius.diagram.ui.CanResetOrigin"
+              namespace="org.eclipse.sirius.diagram.ui"
+              properties="canResetOrigin"
+              type="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart">
+        </propertyTester>
        
    </extension>
    <extension
@@ -1342,9 +1349,14 @@
                      <instanceof
                            value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
                      </instanceof>
-                     <instanceof
-                           value="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart">
-                     </instanceof>
+                     <and>
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart">
+                        </instanceof>
+                        <test
+                              property="org.eclipse.sirius.diagram.ui.canResetOrigin">
+                        </test>
+                     </and>
                   </or>
                </iterate>
             </with>
@@ -1715,9 +1727,14 @@
                      <instanceof
                            value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
                      </instanceof>
-                     <instanceof
+                     <and>
+                       <instanceof
                            value="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart">
-                     </instanceof>
+                       </instanceof>
+                       <test
+                           property="org.eclipse.sirius.diagram.ui.canResetOrigin">
+                       </test>
+                     </and>
                   </or>
               </iterate>
            </with>

@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
@@ -50,8 +51,16 @@ public class ResetOriginHandler extends AbstractHandler {
             if (structuredSelection.getFirstElement() instanceof DiagramEditPart) {
                 getAndExecuteCmd(workbenchPart, (DiagramEditPart) structuredSelection.getFirstElement());
             } else {
-                List<AbstractDiagramContainerEditPart> selectedAbstractDiagramContainerEditParts = Lists.newArrayList(Iterators.filter(structuredSelection.iterator(),
-                        AbstractDiagramContainerEditPart.class));
+                Predicate<AbstractDiagramContainerEditPart> noRegionContainer = new Predicate<AbstractDiagramContainerEditPart>() {
+                    @Override
+                    public boolean apply(AbstractDiagramContainerEditPart input) {
+                        return !input.isRegionContainer();
+                    }
+                };
+                
+                List<AbstractDiagramContainerEditPart> selectedAbstractDiagramContainerEditParts = Lists.newArrayList(Iterators.filter(
+                        Iterators.filter(structuredSelection.iterator(), AbstractDiagramContainerEditPart.class), noRegionContainer));
+               
                 if (!selectedAbstractDiagramContainerEditParts.isEmpty()) {
                     getAndExecuteCmd(workbenchPart, selectedAbstractDiagramContainerEditParts.toArray(new AbstractDiagramContainerEditPart[0]));
                 }
