@@ -47,9 +47,6 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
 
     private ModelAccessor modelAccessor;
 
-    /** List of executed task, useful for undo * */
-    private List<ICommandTask> executedTask;
-
     private TaskHelper taskHelper;
 
     /**
@@ -76,6 +73,7 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     protected List<ICommandTask> prepareSubTasks() {
         /*
          * Now delete all the DSemanticDecorators corresponding to the semantic
@@ -107,7 +105,7 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
         }
         return tasks;
     }
-    
+
     /**
      * This method can be overridden to add Dialect specific additional delete
      * tasks. A DeleteEObjectTask for the given decorator has already been added
@@ -127,6 +125,7 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
         return "Delete representation elements task";
     }
