@@ -78,6 +78,21 @@
 				<code>org.eclipse.sirius.ext.gef.query.EditPartQuery</code> has been added. It allows to retrieve all children of the current part.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()</code> methods removed because they are useless since undo/redo is managed by EMF Transaction.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tools.api.command.DCommand</code> no more inherits of 
+				<code>IUndoableCommand</code> because useless since undo/redo is managed by EMF Transaction.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
@@ -405,7 +420,7 @@
 				<code>org.eclipse.sirius.common.ui.ext</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1116,7 +1131,7 @@
 			<li>&#171;Lozenge&#187; is replaced by &#171;Diamond&#187; in diagram style.</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

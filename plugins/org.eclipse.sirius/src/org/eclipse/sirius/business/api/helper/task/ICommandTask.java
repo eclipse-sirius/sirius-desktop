@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,21 +62,4 @@ public interface ICommandTask {
      */
     boolean canExecute();
 
-    /**
-     * Undo the task. By default it will not undo the children tasks.
-     * 
-     * @deprecated is no more useful since undo/redo is managed by EMF
-     *             Transaction.
-     */
-    @Deprecated
-    void undo();
-
-    /**
-     * Redo the task. By default it will not redo the children tasks.
-     * 
-     * @deprecated is no more useful since undo/redo is managed by EMF
-     *             Transaction.
-     */
-    @Deprecated
-    void redo();
 }

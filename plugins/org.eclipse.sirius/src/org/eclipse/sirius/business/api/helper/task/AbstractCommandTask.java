@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ public abstract class AbstractCommandTask implements ICommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getChildrenTasks()
      */
+    @Override
     public List<ICommandTask> getChildrenTasks() {
         return childrenTasks;
     }
@@ -37,26 +38,9 @@ public abstract class AbstractCommandTask implements ICommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#canExecute()
      */
+    @Override
     public boolean canExecute() {
         return true;
-    }
-
-    /**
-     * {@inheritDoc} Do nothing as it should be done by emft.
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#undo()
-     */
-    public void undo() {
-        // do nothing
-    }
-
-    /**
-     * {@inheritDoc} Do nothing as it should be done by emft.
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#redo()
-     */
-    public void redo() {
-        // do nothing
     }
 
     /**
@@ -65,6 +49,7 @@ public abstract class AbstractCommandTask implements ICommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#executeMyselfChildrenTasks()
      */
+    @Override
     public boolean executeMyselfChildrenTasks() {
         return false;
     }

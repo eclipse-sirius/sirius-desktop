@@ -17,6 +17,12 @@ h4. Changes in @org.eclipse.sirius.ext.gef@
 
 * <span class="label label-success">Added</span> The new class @org.eclipse.sirius.ext.gef.query.EditPartQuery@ has been added. It allows to retrieve all children of the current part.
 
+h4. Changes in @org.eclipse.sirius@
+
+* @org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()@ methods removed because they are useless since undo/redo is managed by EMF Transaction.
+* @org.eclipse.sirius.tools.api.command.IUndoableCommand@ interface removed because it is useless since undo/redo is managed by EMF Transaction.
+* @org.eclipse.sirius.tools.api.command.DCommand@ no more inherits of @IUndoableCommand@ because useless since undo/redo is managed by EMF Transaction.
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The methods @closePerspective(String)@, @closeSiriusPerspective()@ and @closeModelingPerspective()@ have been added in class @org.eclipse.sirius.tests.swtbot.support.api.perspective.DesignerPerspectives@ to allow the closing of perspectives.

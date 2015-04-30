@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -112,6 +112,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      *            {@link DTargetColumn}).
      * @return a command that can delete the specified element.
      */
+    @Override
     public Command buildDeleteTableElement(final DTableElement element) {
         Command cmd = UnexecutableCommand.INSTANCE;
         if (element instanceof DLine || element instanceof DTargetColumn) {
@@ -153,6 +154,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @return a command able to create the line and putting it in the
      *         container, corresponding to the {@link CreateTool}.
      */
+    @Override
     public Command buildCreateLineCommandFromTool(final LineContainer lineContainer, final EObject semanticCurrentElement, final CreateTool tool) {
         Command result = UnexecutableCommand.INSTANCE;
         if (!getPermissionAuthority().canEditInstance(lineContainer)) {
@@ -180,6 +182,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @return a command able to create the line and putting it in the
      *         container, corresponding to the {@link CreateTool}.
      */
+    @Override
     public Command buildCreateColumnCommandFromTool(final DTable containerView, final EObject semanticCurrentElement, final CreateTool tool) {
         Command result = UnexecutableCommand.INSTANCE;
         if (!getPermissionAuthority().canEditInstance(containerView)) {
@@ -433,6 +436,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @param modelAccessor
      *            the modelAccessor to set
      */
+    @Override
     public void setModelAccessor(final ModelAccessor modelAccessor) {
         this.modelAccessor = modelAccessor;
         commandTaskHelper = new TaskHelper(modelAccessor, uiCallBack);
@@ -451,6 +455,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      *         {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
      *         CreateCellTool}.
      */
+    @Override
     public Command buildSetCellValueFromTool(final DCell editedCell, final Object newValue) {
         Command result = UnexecutableCommand.INSTANCE;
         if (!getPermissionAuthority().canEditInstance(editedCell)) {
@@ -473,6 +478,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      *      org.eclipse.sirius.table.metamodel.table.DTargetColumn,
      *      java.lang.Object)
      */
+    @Override
     public Command buildCreateCellFromTool(DLine line, DTargetColumn column, Object newValue) {
         Command result = UnexecutableCommand.INSTANCE;
         if (!getPermissionAuthority().canEditInstance(line)) {
@@ -528,52 +534,32 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildSetValue(org.eclipse.emf.ecore.EObject,
      *      java.lang.String, java.lang.Object)
      */
+    @Override
     public Command buildSetValue(final EObject instance, final String name, final Object value) {
         if (getPermissionAuthority().canEditInstance(instance)) {
             final SiriusCommand result = new SiriusCommand(domain);
-            try {
-                result.getTasks().add(new AbstractCommandTask() {
-                    private final Object oldValue = getModelAccessor().eGet(instance, name);
+            result.getTasks().add(new AbstractCommandTask() {
 
-                    private final Object newValue = value;
+                private final Object newValue = value;
 
-                    @Override
-                    public void undo() {
-                        try {
-                            if (!getModelAccessor().eGet(instance, name).equals(oldValue)) {
-                                getModelAccessor().eSet(instance, name, oldValue);
-                            }
-                        } catch (final LockedInstanceException e) {
-                            SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-                        } catch (final FeatureNotFoundException e) {
-                            SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
+                @Override
+                public String getLabel() {
+                    return "Set " + name + " value";
+                }
+
+                @Override
+                public void execute() {
+                    try {
+                        if (!getModelAccessor().eGet(instance, name).equals(newValue)) {
+                            getModelAccessor().eSet(instance, name, newValue);
                         }
+                    } catch (final LockedInstanceException e) {
+                        SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
+                    } catch (final FeatureNotFoundException e) {
+                        SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
                     }
-
-                    @Override
-                    public void redo() {
-                        try {
-                            if (!getModelAccessor().eGet(instance, name).equals(newValue)) {
-                                getModelAccessor().eSet(instance, name, newValue);
-                            }
-                        } catch (final LockedInstanceException e) {
-                            SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-                        } catch (final FeatureNotFoundException e) {
-                            SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-                        }
-                    }
-
-                    public String getLabel() {
-                        return "Set " + name + " value";
-                    }
-
-                    public void execute() {
-                        redo();
-                    }
-                });
-            } catch (final FeatureNotFoundException e1) {
-                SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e1);
-            }
+                }
+            });
             return result;
         } else {
             return new InvalidPermissionCommand(domain, instance);
@@ -587,38 +573,26 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildAddValue(org.eclipse.emf.ecore.EObject,
      *      java.lang.String, java.lang.Object)
      */
+    @Override
     public Command buildAddValue(final EObject instance, final String name, final Object value) {
         if (getPermissionAuthority().canEditInstance(instance)) {
             final SiriusCommand result = new SiriusCommand(domain);
             result.getTasks().add(new AbstractCommandTask() {
-                private final Object addedValue = value;
 
                 @Override
-                public void undo() {
-                    try {
-                        getModelAccessor().eRemove(instance, name, addedValue);
-                    } catch (final LockedInstanceException e) {
-                        SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-                    }
+                public String getLabel() {
+                    return "Add " + name + " value";
                 }
 
                 @Override
-                public void redo() {
+                public void execute() {
                     try {
-                        getModelAccessor().eAdd(instance, name, addedValue);
+                        getModelAccessor().eAdd(instance, name, value);
                     } catch (final LockedInstanceException e) {
                         SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
                     } catch (final FeatureNotFoundException e) {
                         SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
                     }
-                }
-
-                public String getLabel() {
-                    return "Add " + name + " value";
-                }
-
-                public void execute() {
-                    redo();
                 }
             });
             return result;
@@ -633,45 +607,27 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildClearValue(org.eclipse.emf.ecore.EObject,
      *      java.lang.String, java.lang.Object)
      */
+    @Override
     public Command buildClearValue(final EObject instance, final String name) {
         if (getPermissionAuthority().canEditInstance(instance)) {
 
             final SiriusCommand result = new SiriusCommand(domain);
-            try {
-                result.getTasks().add(new AbstractCommandTask() {
-                    private final Object oldValues = getModelAccessor().eGet(instance, name);
+            result.getTasks().add(new AbstractCommandTask() {
 
-                    @Override
-                    public void undo() {
-                        try {
-                            getModelAccessor().eSet(instance, name, oldValues);
-                        } catch (final LockedInstanceException e) {
-                            SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-                        } catch (final FeatureNotFoundException e) {
-                            SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-                        }
-                    }
+                @Override
+                public String getLabel() {
+                    return "Clear " + name;
+                }
 
-                    @Override
-                    public void redo() {
-                        try {
-                            getModelAccessor().eClear(instance, name);
-                        } catch (final LockedInstanceException e) {
-                            SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-                        }
+                @Override
+                public void execute() {
+                    try {
+                        getModelAccessor().eClear(instance, name);
+                    } catch (final LockedInstanceException e) {
+                        SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
                     }
-
-                    public String getLabel() {
-                        return "Clear " + name;
-                    }
-
-                    public void execute() {
-                        redo();
-                    }
-                });
-            } catch (final FeatureNotFoundException e1) {
-                SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e1);
-            }
+                }
+            });
             return result;
         } else {
             return new InvalidPermissionCommand(domain, instance);
@@ -685,6 +641,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      *      org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
      *      java.lang.String)
      */
+    @Override
     public AbstractCommand buildDoExecuteDetailsOperation(final DSemanticDecorator target, final RepresentationCreationDescription desc, final String newRepresentationName) {
         final SiriusCommand cmd = new SiriusCommand(domain);
         final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
  * 
  * @author mchauvin
  */
-public class SiriusCommand extends RecordingCommand implements DCommand, IUndoableCommand {
+public class SiriusCommand extends RecordingCommand implements DCommand {
 
     private static final int CREATED_OBJECTS = 0;
 
@@ -91,28 +91,11 @@ public class SiriusCommand extends RecordingCommand implements DCommand, IUndoab
     }
 
     /**
-     * Undo some task not related to transactional. {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.common.ui.tool.api.graphical.command.IUndoableCommand#doUndo()
-     */
-    public void doUndo() {
-        TaskExecutor.undo(this.tasks);
-    }
-
-    /**
-     * Redo some task not related to transactional. {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.common.ui.tool.api.graphical.command.IUndoableCommand#doRedo()
-     */
-    public void doRedo() {
-        TaskExecutor.redo(this.tasks);
-    }
-
-    /**
      * Get the tasks list.
      * 
      * @return the tasks list
      */
+    @Override
     public List<ICommandTask> getTasks() {
         return this.tasks;
     }
@@ -172,6 +155,7 @@ public class SiriusCommand extends RecordingCommand implements DCommand, IUndoab
      * 
      * @see org.eclipse.sirius.tools.api.command.DCommand#getCreatedObjects()
      */
+    @Override
     public Collection<EObject> getCreatedObjects() {
         return getOperationsObject(CREATED_OBJECTS);
     }
@@ -181,6 +165,7 @@ public class SiriusCommand extends RecordingCommand implements DCommand, IUndoab
      * 
      * @see org.eclipse.sirius.tools.api.command.DCommand#getCreatedRepresentationElements()
      */
+    @Override
     public Collection<DRepresentationElement> getCreatedRepresentationElements() {
         final Collection<EObject> objects = getOperationsObject(CREATED_VIEWS);
         final Collection<DRepresentationElement> elements = new ArrayList<DRepresentationElement>(objects.size());
@@ -198,6 +183,7 @@ public class SiriusCommand extends RecordingCommand implements DCommand, IUndoab
      * 
      * @see org.eclipse.sirius.tools.api.command.DCommand#getDeletedObjects()
      */
+    @Override
     public Collection<EObject> getDeletedObjects() {
         return getOperationsObject(DELETED_OBJECTS);
     }
@@ -207,6 +193,7 @@ public class SiriusCommand extends RecordingCommand implements DCommand, IUndoab
      * 
      * @see org.eclipse.sirius.tools.api.command.DCommand#getCreatedReferences()
      */
+    @Override
     public Collection<EObject> getCreatedReferences() {
         return getOperationsObject(CREATED_REFERENCES);
     }
@@ -216,6 +203,7 @@ public class SiriusCommand extends RecordingCommand implements DCommand, IUndoab
      * 
      * @see org.eclipse.sirius.tools.api.command.DCommand#getAffectedElements()
      */
+    @Override
     public Collection<EObject> getAffectedElements() {
         return getOperationsObject(AFFECTED_ELEMENTS);
     }
@@ -225,6 +213,7 @@ public class SiriusCommand extends RecordingCommand implements DCommand, IUndoab
      * 
      * @see org.eclipse.sirius.tools.api.command.DCommand#getCreatedElement()
      */
+    @Override
     public EObject getCreatedElement() {
         return getCreatedRepresentationElements().isEmpty() ? null : (EObject) getCreatedRepresentationElements().iterator().next();
     }
