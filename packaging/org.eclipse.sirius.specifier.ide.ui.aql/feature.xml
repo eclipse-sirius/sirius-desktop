@@ -19,8 +19,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Provides completion and validation for Acceleo Query Language expressions in the VSM editor using the experimental light interpreter.
-       Install this if you want to try the light interpreter.
+Provides completion and validation for Acceleo Query Language expressions in the VSM editor using the experimental light interpreter.
+Install this if you want to try the light interpreter.
    </description>
 
    <copyright>

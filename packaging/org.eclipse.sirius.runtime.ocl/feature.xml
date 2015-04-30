@@ -19,8 +19,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Sirius runtime support for interpreting OCL queries used in Viewpoint
-Specification Models. Install this if you want to use Sirius-based modelers which use raw OCL expressions in their definitions.
+Sirius runtime support for interpreting OCL queries used in Viewpoint Specification Models.
+Install this if you want to use Sirius-based modelers which use raw OCL expressions in their definitions.
    </description>
 
    <copyright>

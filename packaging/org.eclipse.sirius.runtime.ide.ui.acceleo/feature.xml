@@ -19,7 +19,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Sirius IDE integration with Acceleo 3. Provides Sirius-specific extensions to the Acceleo &quot;Interpreter&quot; view. Install this if you want to create Sirius-based modelers which use Acceleo expression and want to easily test your expressions.
+Sirius IDE integration with Acceleo 3. Provides Sirius-specific extensions to the Acceleo &quot;Interpreter&quot; view.
+Install this if you want to create Sirius-based modelers which use Acceleo expression and want to easily test your expressions.
    </description>
 
    <copyright>

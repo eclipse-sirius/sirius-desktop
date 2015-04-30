@@ -18,8 +18,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      APIs and runtime to write and run automated tests on Sirius-based
-modelers, using JUnit or SWTbot. Install this if you want to write automated tests for your own Sirius-based modelers.
+Automated tests of Sirius, using JUnit and SWTbot.
+Install this if you want to launch automated tests for Sirius-based modelers.
    </description>
 
    <copyright>

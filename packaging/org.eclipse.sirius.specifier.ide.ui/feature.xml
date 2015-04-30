@@ -19,7 +19,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Sirius Specification Environment. Provides wizards and editors to create Viewpoint Specification Projects and Models. Install this if you want to create your own Sirius-based modelers.
+Sirius Specification Environment. Provides wizards and editors to create Viewpoint Specification Projects and Models.
+Install this if you want to create your own Sirius-based modelers.
    </description>
 
    <copyright>

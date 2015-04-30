@@ -19,7 +19,7 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Sirius documentation. Includes information on how to use Sirius-based modelers (for end-users), how to create new graphical modelers using Sirius (for specifiers/architects) and how to extend the Sirius platform (for developers and advanced specifiers).
+Sirius documentation. Includes information on how to use Sirius-based modelers (for end-users), how to create new graphical modelers using Sirius (for specifiers/architects) and how to extend the Sirius platform (for developers and advanced specifiers).
    </description>
 
    <copyright>

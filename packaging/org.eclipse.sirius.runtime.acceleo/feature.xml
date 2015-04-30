@@ -19,8 +19,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Sirius runtime support for interpreting Acceleo 3.x queries used
-in Viewpoint Specification Models. Install this if you want to use Sirius-based modelers which use Acceleo in their definition.
+Sirius runtime support for interpreting Acceleo 3.x queries used in Viewpoint Specification Models.
+Install this if you want to use Sirius-based modelers which use Acceleo in their definition.
    </description>
 
    <copyright>

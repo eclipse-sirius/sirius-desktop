@@ -19,8 +19,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Sirius runtime support for interpreting Acceleo expression in Viewpoint Specification Models using the AQL light interpreter.
-      Install this if you want to use the AQL light interpreter.
+Sirius runtime support for interpreting Acceleo expression in Viewpoint Specification Models using the AQL light interpreter.
+Install this if you want to use the AQL light interpreter.
    </description>
 
    <copyright>

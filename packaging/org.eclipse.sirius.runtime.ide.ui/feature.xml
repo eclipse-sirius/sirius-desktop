@@ -19,7 +19,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Sirius UI and workbench integration, including graphical editors for all types of Sirius representations, and support for Modeling projects with streamlined workflow. Install this if you need to use Sirius-based modelers or create new ones.
+Sirius UI and workbench integration, including graphical editors for all types of Sirius representations, and support for Modeling projects with streamlined workflow.
+Install this if you need to use Sirius-based modelers or create new ones.
    </description>
 
    <copyright>

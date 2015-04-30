@@ -19,7 +19,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Provides completion and validation for Acceleo 3 expressions in the VSM editor. Install this if you want to create Sirius-based modelers which use Acceleo expressions in their definitions.
+Provides completion and validation for Acceleo 3 expressions in the VSM editor.
+Install this if you want to create Sirius-based modelers which use Acceleo expressions in their definitions.
    </description>
 
    <copyright>
