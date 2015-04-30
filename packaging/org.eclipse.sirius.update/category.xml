@@ -3,6 +3,10 @@
    <description url="http://www.eclipse.org/sirius">
       Sirius
    </description>
+   <feature id="org.eclipse.sirius.aql" version="0.0.0">
+   </feature>
+   <feature id="org.eclipse.sirius.aql.source" version="0.0.0">
+   </feature>
    <feature id="org.eclipse.sirius.runtime" version="0.0.0">
       <category name="Sirius"/>
    </feature>
@@ -12,11 +16,11 @@
    <feature id="org.eclipse.sirius.runtime.acceleo" version="0.0.0">
       <category name="Sirius"/>
    </feature>
-   <feature id="org.eclipse.sirius.runtime.aql" version="0.0.0">
-      <category name="Sirius"/>
-   </feature>
    <feature id="org.eclipse.sirius.runtime.acceleo.source" version="0.0.0">
       <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.aql" version="0.0.0">
+      <category name="Sirius"/>
    </feature>
    <feature id="org.eclipse.sirius.runtime.aql.source" version="0.0.0">
       <category name="Sirius.SDK"/>
@@ -32,6 +36,10 @@
    </feature>
    <feature id="org.eclipse.sirius.runtime.ide.ui.source" version="0.0.0">
       <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier" version="0.0.0">
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.source" version="0.0.0">
    </feature>
    <feature id="org.eclipse.sirius.specifier.ide.ui" version="0.0.0">
       <category name="Sirius"/>
