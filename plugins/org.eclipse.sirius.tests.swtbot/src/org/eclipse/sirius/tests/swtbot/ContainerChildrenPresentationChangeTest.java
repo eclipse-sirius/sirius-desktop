@@ -10,22 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
-import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
-import org.eclipse.swtbot.swt.finder.SWTBot;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 
 /**
  * In a diagram representation, ensure that when we change container children
@@ -54,14 +52,6 @@ public class ContainerChildrenPresentationChangeTest extends AbstractSiriusSwtBo
     private static final String DATA_UNIT_DIR = "data/unit/containerChildrenPresentationChange/";
 
     private static final String CONTAINER_NAME = "c";
-
-    private static final String DEFAULT = "Default";
-
-    private static final String CONTAINER = "462927";
-
-    private static final String PROPERTIES = "Properties";
-
-    private static final String GENERAL = "General";
 
     private DDiagram dDiagram;
 
@@ -129,26 +119,25 @@ public class ContainerChildrenPresentationChangeTest extends AbstractSiriusSwtBo
      * Test container children presentation change with opened/closed diagram.
      */
     private void testContainerChildrenPresentation(boolean openedDiagram, boolean isSynchronized) {
+        // get the container mapping
+        ContainerMapping containerMapping = getContainerMapping(dDiagram);
+
         // Change children presentation change from list to freeform
-        changeChildrenPresentation(ContainerLayout.FREE_FORM);
+        changeChildrenPresentation(containerMapping, ContainerLayout.FREE_FORM);
         String representationName;
         if (isSynchronized) {
             representationName = SYNCHRONIZED_REPRESENTATION_INSTANCE_NAME;
         } else {
             representationName = UNSYNCHRONIZED_REPRESENTATION_INSTANCE_NAME;
         }
-        if (openedDiagram) {
-            bot.editorByTitle(representationName).show();
-        } else {
+        if (!openedDiagram) {
             openDiagramRepresentation(representationName);
         }
         checkContainerPresentationInDiagram(ContainerLayout.FREE_FORM);
 
         // Change children presentation change from freeform to list
-        changeChildrenPresentation(ContainerLayout.LIST);
-        if (openedDiagram) {
-            bot.editorByTitle(representationName).show();
-        } else {
+        changeChildrenPresentation(containerMapping, ContainerLayout.LIST);
+        if (!openedDiagram) {
             openDiagramRepresentation(representationName);
         }
         checkContainerPresentationInDiagram(ContainerLayout.LIST);
@@ -179,41 +168,16 @@ public class ContainerChildrenPresentationChangeTest extends AbstractSiriusSwtBo
     }
 
     /**
-     * Change container children presentation from FreeForm to List or from List
-     * to FreeForm.
+     * Change container children presentation mapping.
      */
-    private void changeChildrenPresentation(ContainerLayout childrenPresentation) {
-        openVSM();
-        SWTBotEditor vsmEditor = selectContainerNodeMapping();
-        modifyVSM(childrenPresentation);
-        // save the VSM
-        vsmEditor.setFocus();
-        vsmEditor.save();
-    }
-
-    /**
-     * Select the container node mapping.
-     * 
-     * @return the VSM editor
-     */
-    private SWTBotEditor selectContainerNodeMapping() {
-        SWTBotEditor activeEditor = bot.activeEditor();
-        activeEditor.setFocus();
-        activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(REPRESENTATION_NAME).expandNode(REPRESENTATION_NAME).expandNode(REPRESENTATION_NAME)
-                .expandNode(DEFAULT).select(CONTAINER);
-        return activeEditor;
-    }
-
-    /**
-     * Modify children presentation in the VSM.
-     */
-    private void modifyVSM(ContainerLayout childrenPresentation) {
-        SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
-        propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
-        SWTBotUtils.waitAllUiEvents();
-        SWTBotRadio radioBox = propertiesBot.bot().radio(childrenPresentation.getName());
-        radioBox.click().setFocus();
+    private void changeChildrenPresentation(final ContainerMapping containerMapping, final ContainerLayout containerLayout) {
+        TransactionalEditingDomain domain = localSession.getOpenedSession().getTransactionalEditingDomain();
+        domain.getCommandStack().execute(new RecordingCommand(domain) {
+            @Override
+            protected void doExecute() {
+                containerMapping.setChildrenPresentation(containerLayout);
+            }
+        });
     }
 
     /**
@@ -229,13 +193,19 @@ public class ContainerChildrenPresentationChangeTest extends AbstractSiriusSwtBo
     }
 
     /**
-     * Open the VSM.
+     * Get the container mapping.
+     * 
+     * @param representation
+     *            the given diagram representation
+     * @return a container mapping
      */
-    private void openVSM() {
-        SWTBotView projectExplorer = bot.viewByTitle("Model Explorer");
-        projectExplorer.setFocus();
-        SWTBot projectExplorerBot = projectExplorer.bot();
-        projectExplorerBot.tree().expandNode(getProjectName()).expandNode(VSM_FILE).doubleClick();
+    private ContainerMapping getContainerMapping(DDiagram representation) {
+        DDiagramElement dDiagramElement = representation.getContainers().get(0);
+        DiagramElementMapping diagramElementMapping = dDiagramElement.getDiagramElementMapping();
+
+        assertTrue("The '" + diagramElementMapping.getLabel() + "' mapping should be a ContainerMapping", diagramElementMapping instanceof ContainerMapping);
+        ContainerMapping containerMapping = (ContainerMapping) diagramElementMapping;
+        return containerMapping;
     }
 
     /**
