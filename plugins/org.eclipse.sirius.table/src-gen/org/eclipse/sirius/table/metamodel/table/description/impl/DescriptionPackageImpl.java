@@ -1680,7 +1680,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_ORDERED);
         initEAttribute(getTableDescription_InitialHeaderColumnWidth(), theEcorePackage.getEInt(), "initialHeaderColumnWidth", null, 0, 1, TableDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getTableDescription_ImportedElements(), ecorePackage.getEObject(), null, "importedElements", null, 0, -1, TableDescription.class, !EPackageImpl.IS_TRANSIENT,
+        initEReference(getTableDescription_ImportedElements(), theEcorePackage.getEObject(), null, "importedElements", null, 0, -1, TableDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 

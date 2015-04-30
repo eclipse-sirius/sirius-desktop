@@ -20,7 +20,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComputedEObjectReference" eSuperTypes="#//EObjectReference">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Contribution">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
@@ -31,7 +31,7 @@
         lowerBound="1" upperBound="-1" eType="#//FeatureContribution" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subContributions" upperBound="-1"
         eType="#//Contribution" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContributionProvider" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contributions" upperBound="-1"
@@ -39,7 +39,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContributionPoint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="origin" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contributed" lowerBound="1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
   </eClassifiers>
