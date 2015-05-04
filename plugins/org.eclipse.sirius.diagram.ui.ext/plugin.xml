@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+  Copyright (c) 2014 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+
+<plugin>
+   <extension point="org.eclipse.ui.editors">
+      <?gmfgen generated="true"?>
+      <editor
+         id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID"
+         name="%editorName"
+         icon="icons/DDiagram.gif"
+         extensions="ddiagram"
+         default="true"
+         class="org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl"
+         matchingStrategy="org.eclipse.sirius.diagram.ui.part.SiriusMatchingStrategy"
+         contributorClass="org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor">
+      </editor>
+   </extension>
+
+
+
+   <extension point="org.eclipse.ui.preferencePages">
+      <?gmfgen generated="true"?>
+      <page
+            id="org.eclipse.sirius.diagram.ui.general"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramGeneralPreferencePage"
+            category="org.eclipse.sirius.ui.page">
+      </page>
+      <page
+            id="org.eclipse.sirius.diagram.ui.appearance"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.appearance"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="org.eclipse.sirius.diagram.ui.connections"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.connections"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="org.eclipse.sirius.diagram.ui.printing"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.printing"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="org.eclipse.sirius.diagram.ui.rulersAndGrid"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.rulersAndGrid"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+      <!--
+      <page
+            id="org.eclipse.sirius.diagram.ui.pathmaps"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.pathmaps"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.gmf.runtime.emf.ui.preferences.PathmapsPreferencePage">
+      </page>
+      -->
+   </extension>
+</plugin>

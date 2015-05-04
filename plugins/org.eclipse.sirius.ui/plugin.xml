@@ -24,25 +24,6 @@
    <extension-point id="modelingprojectresourcelistener" name="org.eclipse.sirius.ui.resourcelistener" schema="schema/modelingprojectresourcelistener.exsd"/>
    <extension-point id="siriuspropertiescelleditor" name="org.eclipse.sirius.ui.siriuspropertiescelleditor" schema="schema/siriuspropertiescelleditor.exsd"/>
 
-    <extension
-         point="org.eclipse.ui.views">
-      <category
-            id="org.eclipse.sirius.category"
-            name="Sirius"/>
-      <view
-            category="org.eclipse.sirius.category"
-            class="org.eclipse.sirius.ui.tools.internal.views.interpreterview.DesignerInterpreterView"
-            icon="icons/full/others/information.gif"
-            id="org.eclipse.sirius.ui.tools.views.interpreterview"
-            name="Model requests interpreter"/>
-      <view
-            category="org.eclipse.sirius.category"
-            class="org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView"
-            icon="icons/full/others/ModelExplorer.gif"
-            id="org.eclipse.sirius.ui.tools.views.model.explorer"
-            name="Model Explorer">
-      </view>
-   </extension>
    
    <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -84,15 +65,6 @@
       </propertySections>
    </extension>
    
-    <extension
-          point="org.eclipse.ui.perspectives">
-       <perspective
-             class="org.eclipse.sirius.ui.tools.internal.perspectives.DesignerModelingPerspective"
-             icon="icons/full/others/ModelingPerspective.gif"
-             id="org.eclipse.sirius.ui.tools.perspective.modeling"
-             name="Modeling">
-       </perspective>
-    </extension>
 
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
     <factory
@@ -178,62 +150,8 @@
            class="org.eclipse.sirius.ui.business.internal.preference.GenericPreferencesInitializer">
      </initializer>
   </extension>
-  <extension
-        point="org.eclipse.ui.preferencePages">
-     <page
-           class="org.eclipse.sirius.ui.tools.internal.preference.SiriusPreferencePage"
-           id="org.eclipse.sirius.ui.page"
-           name="Sirius">
-     </page>
-  </extension>
 
-  <extension
-        point="org.eclipse.ui.popupMenus">
-     <objectContribution
-            id="org.eclipse.sirius.ui.action.migration.representationFiles"
-            objectClass="org.eclipse.core.resources.IFile"
-            nameFilter="*.aird">
-         <action
-               class="org.eclipse.sirius.ui.tools.internal.actions.repair.RepresentationFilesRepairAction"
-               enablesFor="1"
-               icon="icons/full/others/repair.gif"
-               id="org.eclipse.sirius.ui.action.migration.representationFiles"
-               label="%repairActionLabel"
-               menubarPath="additions">
-         </action>
-      </objectContribution>
-  </extension>
 
-   <extension point="org.eclipse.ui.newWizards">
-	   <category id="org.eclipse.sirius.category" name="Sirius"/>
-		<wizard
-        category="org.eclipse.sirius.category"
-        class="org.eclipse.sirius.ui.tools.internal.wizards.ModelingProjectWizard"
-        finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
-        icon="icons/obj16/ModelingProject.gif"
-        id="org.eclipse.sirius.ui.modelingproject.wizard"
-        name="Modeling Project"
-        preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.design"
-        project="true">
-     <description>
-        %_UI_ModelingProjectWizard_label
-     </description>
-		</wizard>
-  		   <!-- Session creation keeped for legacy mode -->
-  		<wizard
-          category="org.eclipse.sirius.category"
-          class="org.eclipse.sirius.ui.tools.internal.wizards.NewSessionWizard"
-          finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
-          icon="icons/obj16/SiriusFile.gif"
-          id="org.eclipse.sirius.ui.session.creation"
-          name="Representations File"
-          preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.design"
-          project="false">
-        <description>
-        %_UI_RepresentationsFileWizard_description
-     	</description>
-		</wizard>
-  </extension>
 
 
   <!-- Project creation -->
@@ -635,16 +553,6 @@
      </image>
   </extension>
   
-       <extension point="org.eclipse.ui.editors">
-      <editor
-            class="org.eclipse.ui.editors.text.TextEditor"
-            default="true"
-            extensions="aird"
-            icon="icons/obj16/SiriusFile.gif"
-            id="org.eclipse.sirius.ui.fakeeditoronlyforicon"
-            name="Text editor">
-      </editor>
-   </extension>
   
     <!-- Model content tab wrapper
   <extension
@@ -691,65 +599,6 @@
 	</command>		
 	</extension>
 	
-  <extension point="org.eclipse.ui.menus">
-	<menuContribution
-           locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
-		<command
-	    	commandId="org.eclipse.sirius.ui.tools.internal.actions.nature.addRemoveNatureCommand"
-	        icon="icons/obj16/ModelingProject.gif"
-	        label="Convert to Modeling Project"
-	        style="push">
-	        <visibleWhen
-            	checkEnabled="false">
-				<iterate
-                	ifEmpty="false"
-                    operator="and">
-					<adapt
-                    	type="org.eclipse.core.resources.IProject">
-						<and>
-						<not>
-							<test
-	                            property="org.eclipse.core.resources.projectNature"
-	                                value="org.eclipse.sirius.nature.modelingproject">
-							</test>
-						</not>
-							<test
-                              property="org.eclipse.core.resources.open"
-                              value="true">
-							</test>
-						</and>
-					</adapt>
-				</iterate>
-			</visibleWhen> 
-		</command>
-		<command
-	    	commandId="org.eclipse.sirius.ui.tools.internal.actions.nature.addRemoveNatureCommand"
-	    	icon="icons/obj16/ModelingProject.gif"
-	        label="Remove Modeling Project Nature"
-	        style="push">
-	        <visibleWhen
-            	checkEnabled="false">
-				<iterate
-                	ifEmpty="false"
-                    operator="and">
-					<adapt
-                    	type="org.eclipse.core.resources.IProject">
-						<and>						
-							<test
-	                            property="org.eclipse.core.resources.projectNature"
-	                                value="org.eclipse.sirius.nature.modelingproject">
-							</test>						
-							<test
-                              property="org.eclipse.core.resources.open"
-                              value="true">
-							</test>
-						</and>
-					</adapt>
-				</iterate>
-			</visibleWhen> 
-		</command>
-	</menuContribution>
-  </extension> 
 		
    <extension
          id="modelProvider"
@@ -763,22 +612,6 @@
       </enablement>
    </extension>
 
-  <extension
-        point="org.eclipse.ui.popupMenus">
-     <objectContribution
-           id="org.eclipse.sirius.ui.action.exportRepresentationsAsImages"
-           nameFilter="*.aird"
-           objectClass="org.eclipse.core.resources.IFile">
-        <action
-              class="org.eclipse.sirius.ui.tools.internal.actions.export.ExportRepresentationsFromFileAction"
-              enablesFor="1"
-              icon="icons/full/others/image.gif"
-              id="org.eclipse.sirius.diagram.ui.action.exportRepresentationsAsImages"
-              label="%exportRepresentationsAsImagesActionLabel"
-              menubarPath="group.port">
-        </action>
-     </objectContribution>
-  </extension>
    
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated contribution -->

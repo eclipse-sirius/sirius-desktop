@@ -60,6 +60,7 @@ h4. Changes in @org.eclipse.sirius.ui@
 * The class @org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource@ has been added. It allows developers to make their properties views CellEditor customizable by using the new extension point @org.eclipse.sirius.ui.siriuspropertiescelleditor@
 * The interface @org.eclipse.sirius.ext.emf.ui.ICellEditorProvider@ has been added to allow clients to provide their own @CellEditor@ - in the Sirius semantic properties views - through the new extension point @org.eclipse.sirius.ui.siriuspropertiescelleditor@.
 * The method @org.eclipse.sirius.ui.business.api.session.IEditingSession.detachEditor(DialectEditor, boolean)@ has been added to choose whether we should revert the user changes when detaching the editor.
+* Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.ui.ext.
 
 h4. Changes in @org.eclipse.sirius.common@
 
@@ -86,6 +87,7 @@ h4. Changes in @org.eclipse.sirius.common@
 h4. Changes in @org.eclipse.sirius.common.ui@
 
 * Classes from @org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline@ packages are available in API to allow editor to provide quick outline feature easily.
+* Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.common.ui.ext.
 
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 
@@ -109,6 +111,10 @@ h4. Changes in @org.eclipse.sirius.table@
 * The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getCellDefaultForegroundColor()@ has been removed because it is not useful, use @EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("gray")@ instead.
 * The interface @DTableElementUpdater@ has been removed from metamodel. It is now unnecessary. This interface was here to provide operations to activate and deactivate the listeners, that have been replaced by the @RefreshImpactedElementsCommand@ launched from @RefreshEditorsPrecommitListener@.
 
+h4. Changes in @org.eclipse.sirius.table.ui@
+
+* Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.table.ui.ext.
+
 h4. Changes in @org.eclipse.sirius.tree@
 
 * The method @org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction.refreshContent(boolean fullRefresh)@ has been added to allow full refresh from a specified @DTreeItem@.
@@ -127,6 +133,7 @@ h4. Changes in @org.eclipse.sirius.tree.ui@
 * The method @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(final TransactionalEditingDomain domain, final Notification notification)@ has been replaced by @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.update(ResourceSetChangeEvent)@ to allow to update only once per ResourceSetChangeEvent and let subclasses make additional filtering on the notifications.
 * The return type of the method @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.getEventListener()@ has been changed from @DemultiplexingListener@ to @ResourceSetListener@.
 * The type of @org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection.eventListener@ has been changed from @DemultiplexingListener@ to @ResourceSetListener@.
+* Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.tree.ui.ext.
 
 h4. Changes in @org.eclipse.sirius.synchronizer@
 
@@ -156,6 +163,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 ** @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractCachedSVGFigure@ and @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentImage@  now implement this new interface.
 * @org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure@ class has been removed, use a @org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure@ with a @org.eclipse.draw2d.MarginBorder@ or a null border instead.
 * The method @org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart.getEAdapterSemanticElements()@ has been removed (and all its implementations). For manual refresh, this adapter has been replaced with the @RefreshEditorsPrecommitListener@. 
+* Extensions in plugin.xml that provides UI functionalities have been moved to org.eclipse.sirius.diagram.ui.ext.
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
@@ -193,6 +201,18 @@ h4. Changes in @org.eclipse.sirius.ext.e3.ui@
 h4. Changes in @org.eclipse.sirius.ext.emf.tx@
 
 * The class @org.eclipse.sirius.ext.emf.tx.DelegatingValidateEditSupport@ has been added to be able to have a @ValidateEditSupport@ which delegate to an existing @ValidateEditSupport@.
+
+h4. New plug-ins
+
+The following UI plug-ins has been added.
+* org.eclipse.sirius.ui.ext
+* org.eclipse.sirius.common.ui.ext
+* org.eclipse.sirius.diagram.ui.ext
+* org.eclipse.sirius.table.ui.ext
+* org.eclipse.sirius.tree.ui.ext
+
+These plug-ins own the extension definitions related to perspective, views, newWizard, menus, contextual menus, editors and preference pages that were previously in org.eclipse.sirius.xxx.ui plug-ins.
+Now, customers can define feature that does not contain org.eclipse.sirius.xxx.ui.ext, allowing them not have all that functionalities they may not want.
 
 h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
 

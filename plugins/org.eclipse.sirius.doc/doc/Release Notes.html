@@ -202,6 +202,7 @@
 			<li>The method 
 				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession.detachEditor(DialectEditor, boolean)</code> has been added to choose whether we should revert the user changes when detaching the editor.
 			</li>
+			<li>Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.ui.ext.</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>
@@ -302,6 +303,7 @@
 			<li>Classes from 
 				<code>org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline</code> packages are available in API to allow editor to provide quick outline feature easily.
 			</li>
+			<li>Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.common.ui.ext.</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
@@ -371,6 +373,12 @@
 				<code>RefreshImpactedElementsCommand</code> launched from 
 				<code>RefreshEditorsPrecommitListener</code>.
 			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.table.ui">Changes in 
+			<code>org.eclipse.sirius.table.ui</code>
+		</h4>
+		<ul>
+			<li>Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.table.ui.ext.</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
 			<code>org.eclipse.sirius.tree</code>
@@ -448,6 +456,7 @@
 				<code>DemultiplexingListener</code> to 
 				<code>ResourceSetListener</code>.
 			</li>
+			<li>Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.tree.ui.ext.</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
 			<code>org.eclipse.sirius.synchronizer</code>
@@ -561,6 +570,7 @@
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart.getEAdapterSemanticElements()</code> has been removed (and all its implementations). For manual refresh, this adapter has been replaced with the 
 				<code>RefreshEditorsPrecommitListener</code>. 
 			</li>
+			<li>Extensions in plugin.xml that provides UI functionalities have been moved to org.eclipse.sirius.diagram.ui.ext.</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
@@ -674,6 +684,18 @@
 				<code>ValidateEditSupport</code>.
 			</li>
 		</ul>
+		<h4 id="Newplugins">New plug-ins</h4>
+		<p>The following UI plug-ins has been added.</p>
+		<ul>
+			<li>org.eclipse.sirius.ui.ext</li>
+			<li>org.eclipse.sirius.common.ui.ext</li>
+			<li>org.eclipse.sirius.diagram.ui.ext</li>
+			<li>org.eclipse.sirius.table.ui.ext</li>
+			<li>org.eclipse.sirius.tree.ui.ext</li>
+		</ul>
+		<p>These plug-ins own the extension definitions related to perspective, views, newWizard, menus, contextual menus, editors and preference pages that were previously in org.eclipse.sirius.xxx.ui plug-ins.
+			<br/>Now, customers can define feature that does not contain org.eclipse.sirius.xxx.ui.ext, allowing them not have all that functionalities they may not want.
+		</p>
 		<h2 id="sirius2.0.0">Changes in Sirius 2.0.0 (from Sirius 1.0.0)</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -1986,7 +2008,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.emf.edit.provider.ItemPropertyDescriptor.ItemDelegator</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.table.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.table.ui2">Changes in 
 			<code>org.eclipse.sirius.table.ui</code>
 		</h4>
 		<ul>

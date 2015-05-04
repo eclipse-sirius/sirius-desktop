@@ -16,19 +16,6 @@
    <extension-point id="propertyContributorLabelProviderDelegate" name="org.eclipse.sirius.common.ui.views.properties.tabbed.propertyContributorLabelProviderDelegate" schema="schema/propertyContributorLabelProviderDelegate.exsd"/>
    
    <extension
-         point="org.eclipse.ui.views">
-      <category
-            id="org.eclipse.sirius.common.ui.profiling"
-            name="Sirius Profiler">
-      </category>
-      <view
-            category="org.eclipse.sirius.common.ui.profiling"
-            class="org.eclipse.sirius.common.ui.tools.api.profiler.view.TimeProfilerView"
-            id="org.eclipse.sirius.common.ui.view.timeProfiler"
-            name="Time Profiler View">
-      </view>
-   </extension>
-   <extension
        point="org.eclipse.sirius.common.fileModificationValidator">
     <fileModificationValidator
           validationClass="org.eclipse.sirius.common.ui.tools.internal.resource.FileModificationValidator">
