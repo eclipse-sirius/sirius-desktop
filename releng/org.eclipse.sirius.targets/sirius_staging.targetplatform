@@ -6,12 +6,15 @@ include "modules/shared-license.tpd"
 
 with source, requirements
 
-location Eclipse-Staging "http://download.eclipse.org/releases/staging" {
-        com.google.guava lazy
-        com.ibm.icu lazy
+location Acceleo-3.6M7 "http://download.eclipse.org/acceleo/updates/milestones/3.6/S201505040910" {
         org.eclipse.acceleo.feature.group lazy
         org.eclipse.acceleo.ide.ui lazy
         org.eclipse.acceleo.query.feature.group lazy
+}
+
+location Eclipse-Staging "http://download.eclipse.org/releases/staging" {
+        com.google.guava lazy
+        com.ibm.icu lazy
         org.eclipse.draw2d.sdk.feature.group lazy
         org.eclipse.emf.common.feature.group lazy
         org.eclipse.emf.compare.feature.group lazy
