@@ -84,14 +84,12 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
             // requires logging, opening a pop-up
             // Notice that we do not display such pop-ups while eclipse is
             // starting (can be confusing for end-user)
-            if (!hasBeenLoggedThroughDialect && !PlatformUI.getWorkbench().isStarting()) {
-                if (shouldBeLoggedThroughPopup(exception)) {
-                    Display.getDefault().asyncExec(new Runnable() {
-                        public void run() {
-                            MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Permission Issue", getErrorMessage(exception));
-                        }
-                    });
-                }
+            if (!hasBeenLoggedThroughDialect && shouldBeLoggedThroughPopup(exception) && PlatformUI.isWorkbenchRunning() && !PlatformUI.getWorkbench().isStarting()) {
+                Display.getDefault().asyncExec(new Runnable() {
+                    public void run() {
+                        MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Permission Issue", getErrorMessage(exception));
+                    }
+                });
             }
         }
     }
