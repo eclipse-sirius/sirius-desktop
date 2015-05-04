@@ -174,6 +174,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * The method @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator.resetBorderItemMovedState()@ has been added to allow to reset the state of @borderItemHasMoved@. This method must be used carefully only in case where @setConstraint(Rectangle)@ is called to compute temporary a @getValidLocation(Rectangle, IFigure, Collection, List)@, one time with a new value and just after with the old value.
 * The constant @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath.HIDDEN_LABEL_DECORATOR@ has been added to represent the path of hidden label decorator used in the outline.
 * @org.eclipse.sirius.diagram.ui.business.api.provider.DDiagramElementContainerLabelItemProvider@ has been added to represent container and list labels as virtual nodes in the Show/Hide wizards.
+* The method @org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil.findView()@ has been deleted in flavor of @SiriusGMFHelper.getGmfView()@. If you was using @SiriusDiagramEditorUtil.findView()@ with a semantic element in parameter, retrieve before the corresponding @DDiagram@ or @DDiagramElement@ and use @SiriusGMFHelper.getGmfView(DSemanticDecorator)@ from this last to get the corresponding GMF View. To get a @DDiagram@ or @DDiagramElement@ from a semantic element, you can use @EObjectQuery.getInverseReferences(EReference)@ API, see @org.eclipse.sirius.diagram.ui.business.api.view.ValidateAction.getDSemanticDecorator()@ for an example. 
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 

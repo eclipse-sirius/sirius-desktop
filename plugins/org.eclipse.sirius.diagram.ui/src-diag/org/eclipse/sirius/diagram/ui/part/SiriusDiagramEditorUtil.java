@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.ui.part;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,45 +33,30 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.GMFEditingDomainFactory;
-import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
-import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -180,6 +164,7 @@ public class SiriusDiagramEditorUtil {
         final Resource modelResource = editingDomain.getResourceSet().createResource(modelURI);
         final String diagramName = diagramURI.lastSegment();
         AbstractTransactionalCommand command = new AbstractTransactionalCommand(editingDomain, Messages.SiriusDiagramEditorUtil_CreateDiagramCommandLabel, Collections.EMPTY_LIST) {
+            @Override
             protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
                 DDiagram model = createInitialModel();
                 attachModelToResource(model, modelResource);
@@ -234,7 +219,7 @@ public class SiriusDiagramEditorUtil {
     /**
      * @was-generated
      */
-    public static void selectElementsInDiagram(IDiagramWorkbenchPart diagramPart, List/* EditPart */editParts) {
+    public static void selectElementsInDiagram(IDiagramWorkbenchPart diagramPart, List/* EditPart */ editParts) {
         diagramPart.getDiagramGraphicalViewer().deselectAll();
 
         EditPart firstPrimary = null;
@@ -265,102 +250,6 @@ public class SiriusDiagramEditorUtil {
             EditPart nextPart = it.next();
             diagramPart.getDiagramGraphicalViewer().appendSelection(nextPart);
         }
-    }
-
-    /**
-     * @was-generated
-     */
-    private static int findElementsInDiagramByID(DiagramEditPart diagramPart, EObject element, List editPartCollector) {
-        IDiagramGraphicalViewer viewer = (IDiagramGraphicalViewer) diagramPart.getViewer();
-        final int intialNumOfEditParts = editPartCollector.size();
-
-        if (element instanceof View) { // support notation element lookup
-            EditPart editPart = (EditPart) viewer.getEditPartRegistry().get(element);
-            if (editPart != null) {
-                editPartCollector.add(editPart);
-                return 1;
-            }
-        }
-
-        String elementID = EMFCoreUtil.getProxyID(element);
-        List associatedParts = viewer.findEditPartsForElement(elementID, IGraphicalEditPart.class);
-        // perform the possible hierarchy disjoint -> take the top-most parts
-        // only
-        for (Iterator editPartIt = associatedParts.iterator(); editPartIt.hasNext();) {
-            EditPart nextPart = (EditPart) editPartIt.next();
-            EditPart parentPart = nextPart.getParent();
-            while (parentPart != null && !associatedParts.contains(parentPart)) {
-                parentPart = parentPart.getParent();
-            }
-            if (parentPart == null) {
-                editPartCollector.add(nextPart);
-            }
-        }
-
-        if (intialNumOfEditParts == editPartCollector.size()) {
-            if (!associatedParts.isEmpty()) {
-                editPartCollector.add(associatedParts.iterator().next());
-            } else {
-                if (element.eContainer() != null) {
-                    return findElementsInDiagramByID(diagramPart, element.eContainer(), editPartCollector);
-                }
-            }
-        }
-        return editPartCollector.size() - intialNumOfEditParts;
-    }
-
-    /**
-     * @not-generated: sets marker for real semantic elements.
-     */
-    public static View findView(DiagramEditPart diagramEditPart, EObject targetElement, LazyElement2ViewMap lazyElement2ViewMap) {
-        boolean hasStructuralURI = false;
-        Resource targetElementResource = targetElement.eResource();
-        if (targetElementResource instanceof XMLResource) {
-            hasStructuralURI = ((XMLResource) targetElementResource).getID(targetElement) == null;
-        }
-
-        final EPackage rootPackage = (EPackage) EcoreUtil.getRootContainer(targetElement.eClass());
-        if (rootPackage == null
-                || (!rootPackage.getNsURI().equals(NotationPackage.eINSTANCE.getNsURI()) && !(rootPackage.getNsURI().equals(ViewpointPackage.eINSTANCE.getNsURI()) || rootPackage.getNsURI().equals(
-                        DiagramPackage.eINSTANCE.getNsURI())))) {
-            ECrossReferenceAdapter eCrossReferenceAdapter = null;
-            if (targetElement instanceof DSemanticDecorator) {
-                EObject semanticTarget = ((DSemanticDecorator) targetElement).getTarget();
-                if (semanticTarget != null) {
-                    Session session = SessionManager.INSTANCE.getSession(semanticTarget);
-                    if (session != null) {
-                        eCrossReferenceAdapter = session.getSemanticCrossReferencer();
-                    }
-                }
-            } else if (targetElement != null) {
-                Session session = SessionManager.INSTANCE.getSession(targetElement);
-                if (session != null) {
-                    eCrossReferenceAdapter = session.getSemanticCrossReferencer();
-                }
-            }
-            if (eCrossReferenceAdapter == null) {
-                eCrossReferenceAdapter = ECrossReferenceAdapter.getCrossReferenceAdapter(targetElement);
-            }
-            if (eCrossReferenceAdapter != null) {
-                Collection<Setting> settings = eCrossReferenceAdapter.getInverseReferences(targetElement);
-                for (final Setting setting : settings) {
-                    if (setting.getEObject() instanceof DDiagramElement) {
-                        return findView(diagramEditPart, setting.getEObject(), lazyElement2ViewMap);
-                    }
-                }
-            }
-        }
-
-        View view = null;
-        if (hasStructuralURI && !lazyElement2ViewMap.getElement2ViewMap().isEmpty()) {
-            view = (View) lazyElement2ViewMap.getElement2ViewMap().get(targetElement);
-        } else if (findElementsInDiagramByID(diagramEditPart, targetElement, lazyElement2ViewMap.editPartTmpHolder) > 0) {
-            EditPart editPart = (EditPart) lazyElement2ViewMap.editPartTmpHolder.get(0);
-            lazyElement2ViewMap.editPartTmpHolder.clear();
-            view = editPart.getModel() instanceof View ? (View) editPart.getModel() : null;
-        }
-
-        return (view == null) ? diagramEditPart.getDiagramView() : view;
     }
 
     /**

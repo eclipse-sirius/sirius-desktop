@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -51,7 +50,6 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -85,6 +83,7 @@ import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.command.CreateAndStoreGMFDiagramCommand;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -139,6 +138,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public IEditorPart openEditor(Session session, DRepresentation dRepresentation, IProgressMonitor monitor) {
         DialectEditor result = null;
         try {
@@ -198,6 +198,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
         monitor.subTask("diagram editor opening : " + dRepresentation.getName());
         RunnableWithResult<DialectEditor> runnable = new RunnableWithResult.Impl<DialectEditor>() {
 
+            @Override
             public void run() {
                 final IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
@@ -253,9 +254,10 @@ public class DiagramDialectUIServices implements DialectUIServices {
         final String description = viewpointsName;
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 
+            @Override
             public void run() {
-                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Viewpoints selection", "The current diagram requires some viewpoints selected (" + description
-                        + "), because some activated layers are contributed by these viewpoints");
+                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Viewpoints selection",
+                        "The current diagram requires some viewpoints selected (" + description + "), because some activated layers are contributed by these viewpoints");
             }
 
         });
@@ -279,6 +281,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandleEditor(org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean canHandleEditor(final IEditorPart editorPart) {
         return editorPart instanceof DiagramDocumentEditor;
     }
@@ -289,6 +292,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#closeEditor(org.eclipse.ui.IEditorPart,
      *      boolean)
      */
+    @Override
     public boolean closeEditor(final IEditorPart editorPart, final boolean save) {
         boolean result = false;
         if (editorPart instanceof DiagramDocumentEditor) {
@@ -320,6 +324,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideNewChildDescriptors() {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
         newChilds.addAll(this.getDiagramTypesCreation());
@@ -330,6 +335,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideRepresentationCreationToolDescriptors(final Object feature) {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
         newChilds.add(new CommandParameter(null, feature, ToolFactory.eINSTANCE.createDiagramCreationDescription()));
@@ -340,6 +346,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideRepresentationNavigationToolDescriptors(final Object feature) {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
         newChilds.add(new CommandParameter(null, feature, ToolFactory.eINSTANCE.createDiagramNavigationDescription()));
@@ -350,6 +357,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * 
      * {@inheritDoc}
      */
+    @Override
     public AdapterFactory createAdapterFactory() {
         final ComposedAdapterFactory factory = new ComposedAdapterFactory();
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
@@ -373,6 +381,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean isRepresentationManagedByEditor(final DRepresentation representation, final IEditorPart editorPart) {
         boolean isRepresentationManagedByEditor = false;
         if (editorPart instanceof DiagramDocumentEditor) {
@@ -395,6 +404,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean isRepresentationDescriptionManagedByEditor(final RepresentationDescription representationDescription, final IEditorPart editor) {
         if (editor instanceof DiagramDocumentEditor) {
             final DiagramDocumentEditor diagramDocumentEditor = (DiagramDocumentEditor) editor;
@@ -413,6 +423,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
      */
+    @Override
     public boolean canHandle(final DRepresentation representation) {
         return representation instanceof DSemanticDiagram;
     }
@@ -422,6 +433,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      */
+    @Override
     public boolean canHandle(final RepresentationDescription description) {
         return description instanceof DiagramDescription;
     }
@@ -432,6 +444,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
      *      )
      */
+    @Override
     public boolean canHandle(final RepresentationExtensionDescription description) {
         return description instanceof DiagramExtensionDescription;
     }
@@ -439,6 +452,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean canExport(ExportFormat format) {
         if (format.getDocumentFormat().equals(ExportDocumentFormat.NONE) || (format.getDocumentFormat().equals(ExportDocumentFormat.HTML) && DiagramEditPartService.canExportToHtml())) {
             return true;
@@ -452,6 +466,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session)
      */
+    @Override
     public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
 
         final boolean exportToHtml = exportToHtml(format);
@@ -524,6 +539,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     private void disposeShell(final Shell shell) {
         Display.getCurrent().asyncExec(new Runnable() {
+            @Override
             public void run() {
                 shell.dispose();
             }
@@ -572,6 +588,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.viewpoint.DRepresentation)
      */
+    @Override
     public String getEditorName(final DRepresentation representation) {
         String editorName = representation.getName();
         if (StringUtil.isEmpty(editorName)) {
@@ -583,6 +600,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideTools(EObject context) {
         Collection<CommandParameter> toolsParameters = Lists.newArrayList();
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
@@ -597,6 +615,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideAdditionalMappings(EObject context) {
         Collection<CommandParameter> mappings = Lists.newArrayList();
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
@@ -614,6 +633,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getHierarchyLabelProvider(ILabelProvider)
      * 
      */
+    @Override
     public ILabelProvider getHierarchyLabelProvider(ILabelProvider currentLabelProvider) {
         return new HierarchyLabelProvider(currentLabelProvider);
     }
@@ -621,6 +641,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
         if (dialectEditor instanceof DiagramEditor && selection != null && !selection.isEmpty()) {
             DiagramEditor diagramEditor = (DiagramEditor) dialectEditor;
@@ -648,6 +669,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getSelection(org.eclipse.sirius.ui.business.api.dialect.DialectEditor)
      */
+    @Override
     public Collection<DSemanticDecorator> getSelection(DialectEditor editor) {
         Collection<DSemanticDecorator> selection = Sets.newLinkedHashSet();
         if (editor instanceof DiagramEditor) {
@@ -682,7 +704,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      */
     protected IGraphicalEditPart getEditPart(final DDiagramElement diagramElement, final EditPartViewer graphicalViewer, Session session) {
         IGraphicalEditPart result = null;
-        final View gmfView = getGmfView(diagramElement, session);
+        final View gmfView = SiriusGMFHelper.getGmfView(diagramElement, session);
         final Map<?, ?> editPartRegistry = graphicalViewer.getEditPartRegistry();
         if (editPartRegistry != null) {
             final Object editPart = editPartRegistry.get(gmfView);
@@ -691,51 +713,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
             }
         }
         return result;
-    }
-
-    /**
-     * Get the GMF view from the diagram element.
-     * 
-     * @param diagramElement
-     *            the diagram element
-     * @param session
-     *            the current session
-     * @return the view which has as element the diagram element given as
-     *         parameter or null if any
-     */
-    protected View getGmfView(final DDiagramElement diagramElement, Session session) {
-        return getGmfView(diagramElement, View.class, session);
-    }
-
-    /**
-     * Get the GMF view from the diagram element.
-     * 
-     * @param <T>
-     *            generic type
-     * @param diagramElement
-     *            the diagram element
-     * @param clazz
-     *            The type of the desired view
-     * @param session
-     *            the current session
-     * @return the view which has as element the diagram element given as
-     *         parameter or null if any
-     */
-    @SuppressWarnings("unchecked")
-    private <T> T getGmfView(final EObject diagramElement, final Class<T> clazz, Session session) {
-        if (session != null) {
-            ECrossReferenceAdapter crossReference = session.getSemanticCrossReferencer();
-            if (crossReference == null) {
-                crossReference = new ECrossReferenceAdapter();
-                diagramElement.eResource().eAdapters().add(crossReference);
-            }
-            for (org.eclipse.emf.ecore.EStructuralFeature.Setting setting : crossReference.getInverseReferences(diagramElement)) {
-                if (clazz.isInstance(setting.getEObject()) && setting.getEStructuralFeature() == NotationPackage.eINSTANCE.getView_Element()) {
-                    return (T) setting.getEObject();
-                }
-            }
-        }
-        return null;
     }
 
     private boolean hasParentOfType(EObject element, EClass eClass) {
@@ -754,6 +731,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
      *      EObject, EStructuralFeature)
      */
+    @Override
     public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
         String toolTip = toolTipText;
         if (eObject instanceof EdgeCreationDescription) {
@@ -774,8 +752,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
         if (parentDiagramDescription.some()) {
             parentPackage = parentDiagramDescription.get().eClass().getEPackage();
         } else {
-            Option<EObject> parentDiagramExtensionDescription = new EObjectQuery(eObject).getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
-                    .getDiagramExtensionDescription());
+            Option<EObject> parentDiagramExtensionDescription = new EObjectQuery(eObject)
+                    .getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramExtensionDescription());
             if (parentDiagramExtensionDescription.some()) {
                 parentPackage = parentDiagramExtensionDescription.get().eClass().getEPackage();
             }
@@ -802,6 +780,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
      *             .DiagramDialectUIServices.completeToolTipText(String,
      *             EObject, EStructuralFeature)
      */
+    @Deprecated
+    @Override
     public String completeToolTipText(String toolTipText, EObject eObject) {
         return completeToolTipText(toolTipText, eObject, null);
     }

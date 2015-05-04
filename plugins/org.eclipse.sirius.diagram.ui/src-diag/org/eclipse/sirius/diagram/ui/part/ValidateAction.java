@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.part;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -49,6 +50,8 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationProvider;
@@ -92,6 +95,7 @@ public class ValidateAction extends Action {
     /**
      * @was-generated
      */
+    @Override
     public void run() {
         IWorkbenchPart workbenchPart = workbenchPartDescriptor.getPartPage().getActivePart();
         if (workbenchPart instanceof IDiagramWorkbenchPart) {
@@ -99,6 +103,7 @@ public class ValidateAction extends Action {
             try {
                 new WorkspaceModifyDelegatingOperation(new IRunnableWithProgress() {
 
+                    @Override
                     public void run(IProgressMonitor monitor) throws InterruptedException, InvocationTargetException {
                         runValidation(part.getDiagramEditPart(), part.getDiagram());
                     }
@@ -143,6 +148,7 @@ public class ValidateAction extends Action {
         final View fview = view;
         SiriusValidationProvider.runWithConstraints(view, new Runnable() {
 
+            @Override
             public void run() {
                 validate(fpart, fview);
             }
@@ -152,6 +158,7 @@ public class ValidateAction extends Action {
     private static Diagnostic runEMFValidator(final EObject eObject) {
         return new Diagnostician() {
 
+            @Override
             public String getObjectLabel(EObject eObject) {
                 return EMFCoreUtil.getQualifiedName(eObject, true);
             }
@@ -234,16 +241,18 @@ public class ValidateAction extends Action {
         }
         final IStatus rootStatus = validationStatus;
         List allStatuses = new ArrayList();
-        SiriusDiagramEditorUtil.LazyElement2ViewMap element2ViewMap = new SiriusDiagramEditorUtil.LazyElement2ViewMap(diagramEditPart.getDiagramView(), collectTargetElements(rootStatus,
-                new HashSet(), allStatuses));
+        collectTargetElements(rootStatus, new HashSet(), allStatuses);
         for (Iterator it = allStatuses.iterator(); it.hasNext();) {
             IConstraintStatus nextStatus = (IConstraintStatus) it.next();
-            View view = SiriusDiagramEditorUtil.findView(diagramEditPart, nextStatus.getTarget(), element2ViewMap);
-            String qualifiedName = EMFCoreUtil.getQualifiedName(nextStatus.getTarget(), true);
-            if (nextStatus instanceof RuleWrappingStatus) {
-                createValidationRuleMarker((RuleWrappingStatus) nextStatus, diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
-            } else {
-                addMarker(diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
+            DSemanticDecorator dSemanticDecorator = getDSemanticDecorator(nextStatus.getTarget(), diagramEditPart);
+            if (dSemanticDecorator != null) {
+                View view = SiriusGMFHelper.getGmfView(dSemanticDecorator);
+                String qualifiedName = EMFCoreUtil.getQualifiedName(nextStatus.getTarget(), true);
+                if (nextStatus instanceof RuleWrappingStatus) {
+                    createValidationRuleMarker((RuleWrappingStatus) nextStatus, diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
+                } else {
+                    addMarker(diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
+                }
             }
         }
     }
@@ -279,17 +288,38 @@ public class ValidateAction extends Action {
         }
         final Diagnostic rootStatus = emfValidationStatus;
         List allDiagnostics = new ArrayList();
-        SiriusDiagramEditorUtil.LazyElement2ViewMap element2ViewMap = new SiriusDiagramEditorUtil.LazyElement2ViewMap(diagramEditPart.getDiagramView(), collectTargetElements(rootStatus,
-                new HashSet(), allDiagnostics));
+        collectTargetElements(rootStatus, new HashSet(), allDiagnostics);
         for (Iterator it = emfValidationStatus.getChildren().iterator(); it.hasNext();) {
             Diagnostic nextDiagnostic = (Diagnostic) it.next();
             List data = nextDiagnostic.getData();
             if (data != null && !data.isEmpty() && data.get(0) instanceof EObject) {
                 EObject element = (EObject) data.get(0);
-                View view = SiriusDiagramEditorUtil.findView(diagramEditPart, element, element2ViewMap);
-                addMarker(diagramEditPart.getViewer(), target, view, EMFCoreUtil.getQualifiedName(element, true), nextDiagnostic.getMessage(), diagnosticToStatusSeverity(nextDiagnostic.getSeverity()));
+                DSemanticDecorator dSemanticDecorator = getDSemanticDecorator(element, diagramEditPart);
+                if (dSemanticDecorator != null) {
+                    View view = SiriusGMFHelper.getGmfView(dSemanticDecorator);
+                    addMarker(diagramEditPart.getViewer(), target, view, EMFCoreUtil.getQualifiedName(element, true), nextDiagnostic.getMessage(),
+                            diagnosticToStatusSeverity(nextDiagnostic.getSeverity()));
+                }
+
             }
         }
+    }
+
+    private static DSemanticDecorator getDSemanticDecorator(EObject element, DiagramEditPart diagramEditPart) {
+        DSemanticDecorator dSemanticDecorator = null;
+        if (!(element instanceof DSemanticDecorator)) {
+            Collection<EObject> xrefs = new EObjectQuery(element).getInverseReferences(ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET);
+            DDiagram dDiagram = (DDiagram) diagramEditPart.getDiagramView().getElement();
+            for (EObject eObject : xrefs) {
+                if (eObject == dDiagram || eObject instanceof DSemanticDecorator && EcoreUtil.isAncestor(dDiagram, eObject)) {
+                    dSemanticDecorator = (DSemanticDecorator) eObject;
+                    break;
+                }
+            }
+        } else {
+            dSemanticDecorator = (DSemanticDecorator) element;
+        }
+        return dSemanticDecorator;
     }
 
     private static void addMarker(EditPartViewer viewer, IFile target, View view, String location, String message, int statusSeverity) {

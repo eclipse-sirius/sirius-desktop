@@ -608,6 +608,18 @@
 			<li>
 				<code>org.eclipse.sirius.diagram.ui.business.api.provider.DDiagramElementContainerLabelItemProvider</code> has been added to represent container and list labels as virtual nodes in the Show/Hide wizards.
 			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil.findView()</code> has been deleted in flavor of 
+				<code>SiriusGMFHelper.getGmfView()</code>. If you was using 
+				<code>SiriusDiagramEditorUtil.findView()</code> with a semantic element in parameter, retrieve before the corresponding 
+				<code>DDiagram</code> or 
+				<code>DDiagramElement</code> and use 
+				<code>SiriusGMFHelper.getGmfView(DSemanticDecorator)</code> from this last to get the corresponding GMF View. To get a 
+				<code>DDiagram</code> or 
+				<code>DDiagramElement</code> from a semantic element, you can use 
+				<code>EObjectQuery.getInverseReferences(EReference)</code> API, see 
+				<code>org.eclipse.sirius.diagram.ui.business.api.view.ValidateAction.getDSemanticDecorator()</code> for an example. 
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
