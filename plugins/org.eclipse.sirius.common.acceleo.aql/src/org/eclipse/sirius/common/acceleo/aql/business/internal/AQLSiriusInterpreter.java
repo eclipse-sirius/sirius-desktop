@@ -10,13 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -65,6 +58,12 @@ import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * A Sirius interpreter using the Acceleo Query Language. It only supports
@@ -178,7 +177,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     @Override
     public Object evaluate(EObject target, String fullExpression) throws EvaluationException {
         String expression = new ExpressionTrimmer(fullExpression).getExpression();
-        Map<String, Object> variables = Maps.newLinkedHashMap(getVariables());
+        Map<String, Object> variables = getVariables();
         variables.put("self", target);
         AstResult build;
         try {

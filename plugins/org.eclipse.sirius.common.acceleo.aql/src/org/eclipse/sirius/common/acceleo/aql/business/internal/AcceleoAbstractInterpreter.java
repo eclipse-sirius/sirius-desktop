@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 import java.util.Collection;
@@ -24,6 +21,7 @@ import java.util.Set;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.common.tools.internal.interpreter.AbstractInterpreter;
 
 /**
@@ -45,7 +43,7 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
      * consider the value to be a Collection, but setting/unsetting will only
      * work one object by one object.
      */
-    private ListMultimap<String, Object> variables = ArrayListMultimap.create();
+    private VariableManager variables;
 
     /** This will contain the listeners interested in our variables' status. */
     private final Set<IVariableStatusListener> variableStatusListeners = Sets.newHashSet();
@@ -55,6 +53,7 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
      */
     public AcceleoAbstractInterpreter() {
         javaExtensions = JavaExtensionsManager.createManagerWithOverride();
+        variables = new VariableManager();
     }
 
     /**
@@ -91,7 +90,7 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
      */
     @Override
     public void clearVariables() {
-        variables.clear();
+        variables.clearVariables();
         notifyVariableListeners();
     }
 
@@ -102,7 +101,7 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
      */
     @Override
     public void dispose() {
-        variables.clear();
+        variables.clearVariables();
         variableStatusListeners.clear();
         this.javaExtensions.dispose();
 
@@ -115,13 +114,7 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
      */
     @Override
     public Object getVariable(String name) {
-        if (variables.containsKey(name)) {
-            final List<Object> values = variables.get(name);
-            if (!values.isEmpty()) {
-                return AcceleoAbstractInterpreter.getLast(values);
-            }
-        }
-        return null;
+        return variables.getVariable(name);
     }
 
     /**
@@ -130,12 +123,8 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariables()
      */
     @Override
-    public Map<String, ?> getVariables() {
-        Map<String, Object> topMostValues = Maps.newHashMap();
-        for (String varName : variables.keySet()) {
-            topMostValues.put(varName, getVariable(varName));
-        }
-        return topMostValues;
+    public Map<String, Object> getVariables() {
+        return variables.getVariables();
     }
 
     /**
@@ -184,7 +173,7 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
      */
     @Override
     public void setVariable(String name, Object value) {
-        variables.put(name, value);
+        variables.setVariable(name, value);
     }
 
     /**
@@ -194,15 +183,8 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
      */
     @Override
     public void unSetVariable(String name) {
-        if (variables.containsKey(name)) {
-            final List<Object> values = variables.get(name);
-            if (!values.isEmpty()) {
-                final ListIterator<?> iterator = values.listIterator(values.size());
-                iterator.previous();
-                iterator.remove();
-                notifyVariableListeners();
-            }
-        }
+        variables.unSetVariable(name);
+        notifyVariableListeners();
     }
 
     @Override
