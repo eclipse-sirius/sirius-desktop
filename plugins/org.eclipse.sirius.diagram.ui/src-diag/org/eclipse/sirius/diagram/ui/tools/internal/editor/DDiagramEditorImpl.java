@@ -524,6 +524,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * {@inheritDoc}
      */
+    @Override
     protected PaletteViewer constructPaletteViewer() {
         // return new ViewpointPaletteViewer();
         PaletteViewer pv = new SiriusPaletteViewer();
@@ -580,6 +581,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * {@inheritDoc}
      */
+    @Override
     public IDiagramCommandFactoryProvider getEmfCommandFactoryProvider() {
         return emfCommandFactoryProvider;
     }
@@ -587,6 +589,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setEmfCommandFactoryProvider(IDiagramCommandFactoryProvider emfCommandFactoryProvider) {
         this.emfCommandFactoryProvider = emfCommandFactoryProvider;
         configureCommandFactoryProviders();
@@ -615,7 +618,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             keyHandler.put(KeyStroke.getPressed(SWT.DEL, 127, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 
             keyHandler.put(/* CTRL + D */
-            KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
+                    KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
         }
         return keyHandler;
     }
@@ -984,17 +987,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             }
         }
 
-        // if (isAutoRefresh()) {
-        // final Diagram gmfDiagram = this.getDiagram();
-        // final EObject resolvedSemanticElement =
-        // ViewUtil.resolveSemanticElement(gmfDiagram);
-        // if (resolvedSemanticElement instanceof DRepresentation) {
-        // getEditingDomain().getCommandStack().execute(new
-        // RefreshRepresentationCommand(getEditingDomain(), (DRepresentation)
-        // resolvedSemanticElement));
-        // }
-        // }
-
         if (getGraphicalViewer() != null) {
             if (getGraphicalViewer().getRootEditPart() != null) {
                 /* Let's refresh the edit parts */
@@ -1130,6 +1122,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * {@inheritDoc}
      */
+    @Override
     public Session getSession() {
         if (session == null) {
             session = getSessionFromDiagramInstance();
@@ -1184,6 +1177,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor#getPermissionAuthority()
      */
+    @Override
     public IPermissionAuthority getPermissionAuthority() {
         if (authority == null) {
             authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getEditingDomain().getResourceSet());
@@ -1196,6 +1190,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#needsRefresh(int)
      */
+    @Override
     public boolean needsRefresh(int propId) {
         boolean result = false;
         if (propId == DialectEditor.PROP_REFRESH) {
@@ -1211,6 +1206,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * {@inheritDoc}
      */
+    @Override
     public void validateRepresentation() {
         ValidateAction.runValidation(getDiagramEditPart(), getDiagram());
     }
@@ -1223,6 +1219,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @since 0.9.0
      */
+    @Override
     public void notify(final int changeKind) {
         DDiagramEditorSessionListenerDelegate dDiagramEditorSessionListenerDelegate = new DDiagramEditorSessionListenerDelegate(this, toolFilterWhenRepresentationIsLocked, changeKind);
         if (Display.getCurrent() == null) {
@@ -1248,6 +1245,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      */
     public void firePropertyChangeInUIThread(final int notificationKind) {
         Runnable runnable = new Runnable() {
+            @Override
             public void run() {
                 if (notificationKind == PROP_TITLE) {
                     if ((getDiagram() != null) && (getDiagram().getElement() != null) && (getDiagram().getElement() instanceof DSemanticDiagram)) {
@@ -1567,6 +1565,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#getRepresentation()
      */
+    @Override
     public DRepresentation getRepresentation() {
         if (getDiagram() != null && getDiagram().eResource() != null && getDiagram().getElement() instanceof DRepresentation) {
             return (DRepresentation) getDiagram().getElement();
@@ -1647,6 +1646,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
              * 
              * @see org.eclipse.jface.text.IInformationControlCreator#createInformationControl(org.eclipse.swt.widgets.Shell)
              */
+            @Override
             public IInformationControl createInformationControl(Shell parent) {
                 return new QuickOutlineControl(parent, SWT.RESIZE, DDiagramEditorImpl.this);
             }
@@ -1667,6 +1667,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#setDialogFactory(org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory)
      */
+    @Override
     public void setDialogFactory(DialectEditorDialogFactory dialogFactory) {
         myDialogFactory = dialogFactory;
     }
@@ -1676,6 +1677,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor#getPaletteManager()
      */
+    @Override
     public PaletteManager getPaletteManager() {
         return paletteManager;
     }
@@ -1685,6 +1687,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor#getTabBarManager()
      */
+    @Override
     public IToolBarManager getTabBarManager() {
         if (getTabbar() != null) {
             return getTabbar().getToolBarManager();
@@ -1791,6 +1794,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor#getAdapterFactory()
      */
+    @Override
     public AdapterFactory getAdapterFactory() {
         if (adapterFactory == null) {
             // Create an adapter factory that yields item providers.
@@ -1868,6 +1872,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#getDialogFactory()
      */
+    @Override
     public DialectEditorDialogFactory getDialogFactory() {
         return myDialogFactory;
     }
@@ -1877,6 +1882,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.ui.ISaveablesSource#getSaveables()
      */
+    @Override
     public Saveable[] getSaveables() {
         if (session != null && session.isOpen()) {
             IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
@@ -1893,6 +1899,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see org.eclipse.ui.ISaveablesSource#getActiveSaveables()
      */
+    @Override
     public Saveable[] getActiveSaveables() {
         return getSaveables();
     }
@@ -1902,6 +1909,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * @see ISaveablePart2#promptToSaveOnClose()
      */
+    @Override
     public int promptToSaveOnClose() {
         choice = ISaveablePart2.DEFAULT;
         if (session != null && session.isOpen()) {
