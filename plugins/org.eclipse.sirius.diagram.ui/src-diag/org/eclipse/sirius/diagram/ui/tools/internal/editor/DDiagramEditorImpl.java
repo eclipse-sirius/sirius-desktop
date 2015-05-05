@@ -95,7 +95,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
@@ -154,7 +153,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.outline.SiriusQuickOutlineIn
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.SiriusPaletteViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
-import org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.SubDiagramDecoratorProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.CustomSiriusDocumentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.outlineview.DiagramOutlineWithBookPages;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineComparator;
@@ -171,7 +169,6 @@ import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusListener;
 import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusQuery;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory;
@@ -984,15 +981,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     }
                     return;
                 }
-            }
-        }
-
-        if (getGraphicalViewer() != null) {
-            if (getGraphicalViewer().getRootEditPart() != null) {
-                /* Let's refresh the edit parts */
-                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_GEF_KEY);
-                SubDiagramDecoratorProvider.refreshEditParts(getGraphicalViewer().getRootEditPart());
-                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_GEF_KEY);
             }
         }
 
