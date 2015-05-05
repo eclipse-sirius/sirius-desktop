@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -48,10 +49,41 @@ import com.google.common.collect.Iterables;
  */
 public class ShiftEdgeIdentityAnchorOperation extends AbstractModelChangeOperation<Void> {
 
+    /** The request to compute the new anchor. */
     private ChangeBoundsRequest request;
 
+    /** The future size of the border node. */
+    private Dimension futureSize;
+
+    /** The real delta whose the border node will be shift. */
+    private PrecisionPoint delta;
+
+    /**
+     * Default constructor.
+     * 
+     * @param request
+     *            Request to compute the new anchor location.
+     */
     public ShiftEdgeIdentityAnchorOperation(ChangeBoundsRequest request) {
         this.request = request;
+    }
+
+    /**
+     * Constructor to use for border node. The request is not enough in case of
+     * border node because its real location, depends on other border nodes and
+     * not only on the request data.
+     * 
+     * @param request
+     *            Request to compute the new anchor location.
+     * @param futureSize
+     *            The future size of the border node.
+     * @param delta
+     *            The delta whose the border node will be shift
+     */
+    public ShiftEdgeIdentityAnchorOperation(ChangeBoundsRequest request, Dimension futureSize, PrecisionPoint delta) {
+        this(request);
+        this.futureSize = futureSize;
+        this.delta = delta;
     }
 
     @Override
@@ -127,15 +159,23 @@ public class ShiftEdgeIdentityAnchorOperation extends AbstractModelChangeOperati
 
         Point currentRelativePoint = getAnchorRelativePoint(currentAnchorPoint, bounds);
 
-        double logicalWidthDelta = request.getSizeDelta().width / scale;
-        double logicalHeightDelta = request.getSizeDelta().height / scale;
+        if (futureSize != null && delta != null) {
+            // In case of border node, the real location is computed earlier
+            // (according to BorderItemLocator). The corresponding futureSize
+            // and delta are used instead of the request data.
+            return new PrecisionPoint(((double) (currentRelativePoint.x - delta.x)) / futureSize.width, ((double) (currentRelativePoint.y - delta.y)) / futureSize.height);
+        } else {
 
-        int direction = request.getResizeDirection();
+            double logicalWidthDelta = request.getSizeDelta().width / scale;
+            double logicalHeightDelta = request.getSizeDelta().height / scale;
 
-        double newRelativeX = computeNewXRelativeLocation(direction, currentRelativePoint, logicalWidthDelta);
-        double newRelativeY = computeNewYRelativeLocation(direction, currentRelativePoint, logicalHeightDelta);
+            int direction = request.getResizeDirection();
 
-        return new PrecisionPoint(newRelativeX / (bounds.width() + logicalWidthDelta), newRelativeY / (bounds.height() + logicalHeightDelta));
+            double newRelativeX = computeNewXRelativeLocation(direction, currentRelativePoint, logicalWidthDelta);
+            double newRelativeY = computeNewYRelativeLocation(direction, currentRelativePoint, logicalHeightDelta);
+
+            return new PrecisionPoint(newRelativeX / (bounds.width() + logicalWidthDelta), newRelativeY / (bounds.height() + logicalHeightDelta));
+        }
     }
 
     private Point getAnchorRelativePoint(PrecisionPoint currentAnchorPoint, Rectangle bounds) {

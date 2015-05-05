@@ -642,7 +642,17 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, setBoundsCommand.getLabel());
             ctc.add(setBoundsCommand);
 
-            ShiftEdgeIdentityAnchorOperation operation = new ShiftEdgeIdentityAnchorOperation(request);
+            // Compute the shift delta according to the real future bounds.
+            PrecisionPoint delta = new PrecisionPoint();
+            if (newBounds != null) {
+                if (getHost() instanceof IGraphicalEditPart) {
+                    final Point parentOrigin = borderItemEP.getFigure().getParent().getBounds().getTopLeft();
+                    Point oldRelativeBounds = borderItemEP.getFigure().getBounds().getTopLeft().translate(parentOrigin.getNegated());
+                    delta = new PrecisionPoint(newBounds.getLocation().translate(oldRelativeBounds.getNegated()));
+                }
+            }
+
+            ShiftEdgeIdentityAnchorOperation operation = new ShiftEdgeIdentityAnchorOperation(request, newBounds.getSize(), delta);
             ICommand command = CommandFactory.createICommand(editingDomain, operation);
             ctc.add(command);
 

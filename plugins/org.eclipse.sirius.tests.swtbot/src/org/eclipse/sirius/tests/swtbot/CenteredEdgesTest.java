@@ -531,6 +531,35 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that when resizing a border node over another border node, the
+     * bendpoints of the centered edge are fix and the edge is still centered.
+     * See <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=466422">Bug
+     * 466422</a>.
+     */
+    public void testResizingCenteredTargetBorderNodeOverAnotherNode() {
+        openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
+        SWTBotGefEditPart border1NodeBotGefEditPart = editor.getEditPart("border1", AbstractDiagramBorderNodeEditPart.class);
+        border1NodeBotGefEditPart.select();
+
+        SWTBotGefConnectionEditPart edgeSwtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
+        PointList edge2PointListBefore = getEdgePointList(edgeSwtBotGefEditPart);
+
+        IFigure figure = ((GraphicalEditPart) border1NodeBotGefEditPart.part()).getFigure();
+        Rectangle boundsBefore = figure.getBounds().getCopy();
+        // Resize border1 over border2
+        border1NodeBotGefEditPart.resize(PositionConstants.NORTH, 0, 160);
+
+        // we make sure the figure has been resized (and moved)
+        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+
+        assertEdgeHasExpectedTgtAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+
+        // Bendpoints of edges must no be changed (bug 441424), except the
+        // last point as it is centered.
+        checkPointsListAfterResizing(edgeSwtBotGefEditPart, edge2PointListBefore, true);
+    }
+
+    /**
      * Test that when resizing a shape over edge bendpoints, the edge is still
      * centered. See <a
      * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c8">Bug
