@@ -69,7 +69,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListe
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.InitializeHiddenElementsCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ordering.ViewOrderingProviderRegistry;
-import org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.SubDiagramDecoratorProvider;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
@@ -101,9 +100,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         super(diagramView);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public final Option<DDiagram> resolveDDiagram() {
         final EObject resolveSemanticElement = resolveSemanticElement();
 
@@ -113,12 +110,6 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         return Options.newNone();
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart#createDefaultEditPolicies()
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
@@ -127,25 +118,17 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getModelChildren()
-     */
     @Override
     protected List<?> getModelChildren() {
-        /* create a new view to avoid to change the super.getModelChildren list. */
+        /*
+         * create a new view to avoid to change the super.getModelChildren list.
+         */
         @SuppressWarnings("unchecked")
         final List<?> modelChildren = new ArrayList<Object>(super.getModelChildren());
         DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
         return modelChildren;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#handleNotificationEvent(org.eclipse.emf.common.notify.Notification)
-     */
     @Override
     protected void handleNotificationEvent(final Notification notification) {
         /*
@@ -186,7 +169,6 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         if (DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters().equals(notification.getFeature())) {
             refresh();
             refreshSourceAndTargetOfRevealedEdges(notification);
-            SubDiagramDecoratorProvider.refreshEditParts(getRoot());
         } else {
             /**
              * If the notification is an ADD we want to refresh the editpart as
@@ -316,19 +298,10 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public EditPartAuthorityListener getEditPartAuthorityListener() {
         return this.authListener;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart#activate()
-     */
     @Override
     public void activate() {
         super.activate();
@@ -374,9 +347,6 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void deactivate() {
         if (!isActive()) {
