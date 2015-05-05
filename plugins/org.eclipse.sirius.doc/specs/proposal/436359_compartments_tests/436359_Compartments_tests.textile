@@ -1,0 +1,222 @@
+h1. Compartments tests scenarios description
+
+h2. Preamble
+
+_Summary_: describe the compartments tests scenarios to be automated.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | PROPOSAL    | 2015-05-05 | bdjafer    | Initial version. |
+
+_Relevant tickets_:
+* "Bug 436359 - Support Compartments in Sirius diagrams":https://bugs.eclipse.org/bugs/show_bug.cgi?id=436359
+
+h2. Add BorderNode on Regions
+
+Ensure that BorderNodes are not supported on Regions.
+To reproduce:
+* Import the Compartments use case.
+* Open the "compartments.odesign" file.
+* Expand and select the FreeFormRegions mapping in "Compartments -> Diag with VStack -> Default -> Compartment" 
+* Create a new Bordered Node diagram element with Domain Class: EClass and Semantic Candidates Expression: feature:eContents.
+* Add a new Style for the created Bordered Node and save the VSM.
+* Validate the VSM -> The VSM is not valid, it should have popup error message.
+* Repeat the same steps with adding the new Border Nodes mapping on "new Diag with HStack" -> ... -> FreeFormRegions.
+
+h2. Add Sub Nodes on Compartments
+
+Ensure that BorderNodes are not supported on Regions.
+To reproduce:
+* Import the Compartments use case.
+* Open the "compartments.odesign" file.
+* Expand and select the Compartment mapping in "Compartments -> Diag with VStack -> Default -> Compartment" 
+* Create a new Sub Node diagram element with Domain Class: EClass and Semantic Candidates Expression: feature:eContents.
+* Add a new Style for the created Node and save the VSM.
+* Validate the VSM -> The VSM is not valid, it should have popup error message.
+* Repeat the same steps with adding the new Border Nodes mapping on "new Diag with HStack" -> ... -> FreeFormRegions.
+
+h2. Reset diagram test
+
+Ensure that the Reset Diagram action work on Regions.
+To reproduce:
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Select "P4" container and press Ctrl+&.
+* Ensure that container elements are moved toward the top-left origin location.
+* Repeat the same steps with "new Diag with HStack" representation.
+
+h2. Arrange actions test
+
+Ensure that the Reset Diagram action work on Regions.
+To reproduce:
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Select the "P4" container and launch the ArrangeSelection action.
+* Ensure that container elements are arranged and the "P1" compartment not move.
+* Repeat the same steps with "new Diag with HStack" representation.
+
+h2. Direct Edit
+
+Ensure that the direct edit label tool change correctly the label of the selected element.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Test the direct edit label (by pressing F2) for each diagram element.
+* Ensure that labels are correctly edited.
+* Repeat the same steps with "new Diag with HStack" representation.
+
+h2. Distribute actions
+
+Ensure that distribute actions are disabled for list item elements and Regions.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Select "LeftClass1", "CenterClass2" and "RightClass3" elements.
+* Ensure that distribute actions are disabled.
+* Deselect all elements.
+* Select "Leftattr1", "Leftattr2" and "Leftattr3" elements.
+* Ensure that distribute actions are disabled.
+* Deselect all elements.
+* Select "class1", "class2" and "class3" elements.
+* Ensure that distribute actions are enabled and distribute shapes correctly.
+* Repeat the same steps with "new Diag with HStack" representation.
+
+h2. Drag & Drop
+
+Ensure that the Drag&Drop action is applied on Region elements.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Drag and drop "class1", "class2", "class3" and "class4" elements from "P4" to "P3" element.
+* Ensure that the selected elements are correctly moved to "P3".
+* Repeat the same steps with "new Diag with HStack" representation.
+
+h2. Regions order
+
+Check order on compartments.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Ensure that reverse ordre between "P2" and "P3" is not possible.
+* Open the semantic element "My.ecore" and reverse order between "P2" and "P3".
+* On "new Diag with VStack" representation, ensure that the ordre is changed as expected (between "P2" and "P3").
+* Check the order also on "new Diag with HStack" representation.
+
+
+h2. Regions order on creation
+
+Ensure that the Regions are created in the correct order.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Create a new container on "P1" compartment by using the "newPackage" tool.
+* Ensure that the new element "new P5" is automatically placed at the end.
+
+h2. Resize on compartments
+
+Ensure that Regions are resizable only in North or South direction on Vertical compartment. And in East or West direction on Horizontal compartment.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Ensure that all elements are resizable in North and South direction.
+* Ensure that all elements are not resizable in East and West direction.
+* Open the "new Diag with HStack" representation.
+* Ensure that all elements are resizable in East and West direction.
+* Ensure that all elements are not resizable in North and South direction.
+* After each resize, ensure that the width (or height) of the parent compartment "P1" is equal to the width (or height) of all of its + the size of their borders.
+
+h2. Border Color
+
+Ensure that Regions border color are customizable.
+* Import the Compartments use case.
+* Open the "compartments.odesign" file.
+* In "Diag with VStack", change the Border Color of the compartment "Diag with VStack -> Default -> Compartment -> Gradient white to light_gray" and save the VSM.
+* Open the "new Diag with VStack" representation and ensure that the "P1" border color has been changed as excepted. 
+* Repeat the same steps with "FreeFormRegions" and "ListRegions" mappings.
+
+h2. Pin/Unpin
+
+Ensure that the "pin/Unpin" actions are disabled on Regions.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Ensure that Pin/Unpin buttons are disabled on all diagram elements except "P1", "class1", "class2", "class3" and "class4" elements.
+* Open the "new Diag with HStack" representation.
+* Ensure that Pin/Unpin buttons are disabled on all diagram elements except "P1", "class1", "class2", "class3" and "class4" elements.
+
+h2. Hide/Show
+
+Ensure that the "Hide/Show" actions are disabled on Regions.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Click on Show/Hide button in the tabbar.
+* Deselect "Leftattr1", "Leftattr2", "Leftattr3", "Leftattr4", "class1", "class2", "class3" and "class4" elements.
+* Ensure that the unselected elements are not visible on the diagram representation.
+* Reselect them and ensure that they reappear.
+* Repeat the same steps with "new Diag with HStack" representation.
+
+h2. Auto-size
+
+Ensure that the "auto-size" action works correctly on Regions.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Select "P1" and launch the auto size action.
+* Ensure that all "P1" children have the same size.
+* Make undo.
+* Select "P5" element and launch the auto size action.
+* Ensure that "P5" have the same size as "P4".
+* Repeat the same steps with "new Diag with HStack" representation.
+
+h2. Make height and width same size
+
+Ensure that "Make height and width same size" action is disabled on Regions.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Select "P1", "LeftClass1" and "P5".
+* Ensure that the "Make height and width same size" button is grayed in the tabbar.
+* Select "P2", "P3" and "P4".
+* Ensure that the "Make height and width same size" button is grayed in the tabbar.
+* Repeat the same steps with "new Diag with HStack" representation.
+
+h2. Background and Foreground color
+
+Ensure that "Make height and width same size" action is disabled on Regions.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Rename "LeftClass1" to "LeftClass12" and ensure that its color change.
+* Rename "CenterClass2" to "CenterClass23" and ensure that its color change.
+* Rename "P5" to "P1" and ensure that its color change.
+* Rename "P5" to "P1" and ensure that its color change.
+* Repeat the same steps with "new Diag with HStack" representation.
+
+h2. Label border style
+
+Ensure that the change of the label border style works correctly on Regions.
+* Import the Compartments use case.
+* Open the "compartments.odesign" file.
+* In "Diag with VStack", change the label border style of the compartment "Diag with VStack -> Default -> Compartment -> Gradient white to light_gray" to Label Border Style With Beveled Corner and save the VSM.
+* Open the "new Diag with VStack" representation.
+* Ensure that "P1" have a label with Beveled Corner.
+* Close the "new Diag with VStack" representation.
+* Set the Label Border Style to null and save the VSM.
+* Open the "new Diag with VStack" representation.
+* Ensure that "P1" have an ordinary label without Beveled Corner.
+* Repeat the same steps with another Region, for example "LeftClass1" element.
+
+h2. Hide Label By Default 1/2
+
+Ensure that the hide label by default feature works correctly on Regions.
+* Import the Compartments use case.
+* Open the "compartments.odesign" file.
+* In "Diag with VStack", check the hide label by default of the compartment "Diag with VStack -> Default -> Compartment -> Gradient white to light_gray" and save the VSM.
+* Create a "new Diag with VStack" representation.
+* Ensure that the parent Region label is hidden.
+* Repeat the same steps with another Region, for example "P2" element.
+
+h2. Hide Label By Default 2/2
+
+Ensure that the hide label by default feature works correctly on Regions.
+* Import the Compartments use case.
+* Open the "new Diag with VStack" representation.
+* Click on Show/Hide button in the tabbar.
+* Under "P1" item, deselect "P1 Label".
+* Ensure that the parent Region label "P1" is hidden.
+* Click on Show/Hide button in the tabbar.
+* Under "LeftClass1" item, deselect "LeftClass1" label.
+* Ensure that the "LeftClass1" label is hidden.
+* Click on Show/Hide button in the tabbar.
+* Select all items.
+* Ensure that all labels are visible.
+* Repeat the same steps with "new Diag with HStack" representation.
