@@ -15,6 +15,7 @@ import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -49,6 +50,8 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     public static final String RECEIVER_SEPARATOR = ".";
 
     private static final String EOBJECT_CLASS_NAME = EObject.class.getCanonicalName();
+    
+    private static final Pattern SPLIT_PATTERN = Pattern.compile("[(,)]");
 
     private final Map<Object, Object> properties = Maps.newHashMap();
 
@@ -139,7 +142,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
             Object[] parameters = new Object[] { receiver };
 
             if (indexOfParenthesis != -1) {
-                String[] values = serviceCall.split("[(,)]");
+                String[] values = SPLIT_PATTERN.split(serviceCall);
                 parameters = new Object[values.length];
                 parameters[0] = receiver;
                 for (int i = 1; i < values.length; i++) {
