@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
@@ -81,6 +82,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_NAME_RESIZE = "resizeTest";
 
     private static final String REPRESENTATION_NAME_RESIZE_2 = "resizeTest2";
+
+    private static final String REPRESENTATION_NAME_RESIZE_BORDER_NODE = "resizeBorderNode";
 
     private static final String REPRESENTATION_NAME_AUTO_SIZE = "auto-size";
 
@@ -470,6 +473,30 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that when resizing a border node, the bendpoints of the not centered
+     * edge, with a null anchor, are not moved. See <a
+     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=466384">Bug 466384</a>.
+     */
+    public void testResizingNullAnchorSourceBorderNode() {
+        openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
+        SWTBotGefEditPart borderNodeBotGefEditPart = editor.getEditPart("border3", AbstractDiagramBorderNodeEditPart.class);
+        borderNodeBotGefEditPart.select();
+
+        SWTBotGefConnectionEditPart edgeSwtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
+        PointList edge2PointListBefore = getEdgePointList(edgeSwtBotGefEditPart);
+
+        IFigure figure = ((GraphicalEditPart) borderNodeBotGefEditPart.part()).getFigure();
+        Rectangle boundsBefore = figure.getBounds().getCopy();
+        borderNodeBotGefEditPart.resize(PositionConstants.SOUTH, 0, 200);
+
+        // we make sure the figure has been resized
+        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+        // The source is no longer centered, and the bendpoints of edges must no
+        // be changed (bug 441424)
+        checkPointsListAfterResizing(edgeSwtBotGefEditPart, edge2PointListBefore, false);
+    }
+
+    /**
      * Test that when resizing a shape over edge bendpoints, the edge is still
      * centered. See <a
      * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c8">Bug
@@ -786,7 +813,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
      * Condition to wait until a figure bounds are changed.
      * 
      * @author fbarbin
-     *
+     * 
      */
     private class WaitFigureResizedCondition extends DefaultCondition {
 
@@ -833,7 +860,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
      * Condition to wait until an edge is centered on both ends.
      * 
      * @author fbarbin
-     *
+     * 
      */
     private class WaitEdgeCenteringCondition extends DefaultCondition {
 
@@ -870,4 +897,45 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     }
 
+    private PointList getEdgePointList(SWTBotGefConnectionEditPart edgeEditPart) {
+        return ((Connection) edgeEditPart.part().getFigure()).getPoints().getCopy();
+    }
+
+    // /**
+    // * Check that the given edge didn't move during the shape resizing.
+    // *
+    // * @param string
+    // * the edge label id.
+    // * @param edge1PointListBefore
+    // * the edge point list before resizing.
+    // */
+    // private void checkPointsListAfterResizing(String edgeId, PointList
+    // edgePointListBefore, boolean ignoreLast) {
+    // checkPointsListAfterResizing(edgeId, edgePointListBefore, ignoreLast);
+    // }
+
+    /**
+     * Check that the given edge didn't move during the shape resizing.
+     * 
+     * @param string
+     *            the edge label id.
+     * @param edge1PointListBefore
+     *            the edge point list before resizing.
+     * @param delta
+     *            In some conditions, zoom for example, the points list can be
+     *            slightly different. This parameter allows to use a delta when
+     *            comparing point.
+     */
+    private void checkPointsListAfterResizing(SWTBotGefConnectionEditPart edgeEditPart, PointList edgePointListBefore, boolean ignoreLast) {
+        PointList afterPointList = getEdgePointList(edgeEditPart);
+        assertEquals("The edge point list size is different", edgePointListBefore.size(), afterPointList.size());
+        for (int i = 0; i < edgePointListBefore.size(); i++) {
+            if (!ignoreLast || (ignoreLast && i != (edgePointListBefore.size() - 1))) {
+                Point pointBefore = edgePointListBefore.getPoint(i);
+                Point pointAfter = afterPointList.getPoint(i);
+                assertEquals("The x coordinate of point #" + i + " is different after resizing: ", pointBefore.x, pointAfter.x);
+                assertEquals("The y coordinate of point #" + i + " is different after resizing: ", pointBefore.y, pointAfter.y);
+            }
+        }
+    }
 }

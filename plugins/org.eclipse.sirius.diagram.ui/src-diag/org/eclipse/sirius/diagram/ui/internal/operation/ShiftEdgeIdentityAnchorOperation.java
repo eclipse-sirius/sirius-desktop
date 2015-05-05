@@ -28,10 +28,11 @@ import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
+import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -72,7 +73,7 @@ public class ShiftEdgeIdentityAnchorOperation extends AbstractModelChangeOperati
         for (Edge edge : Iterables.filter(sourceEdges, Edge.class)) {
             EObject eObj = edge.getElement();
             if (eObj instanceof DEdge) {
-                handleEdge((DEdge) eObj, edge.getSourceAnchor(), editPart, CenteringStyle.SOURCE);
+                handleEdge(edge, editPart, true);
             }
         }
     }
@@ -82,16 +83,36 @@ public class ShiftEdgeIdentityAnchorOperation extends AbstractModelChangeOperati
         for (Edge edge : Iterables.filter(targetEdges, Edge.class)) {
             EObject eObj = edge.getElement();
             if (eObj instanceof DEdge) {
-                handleEdge((DEdge) eObj, edge.getTargetAnchor(), editPart, CenteringStyle.TARGET);
+                handleEdge(edge, editPart, false);
             }
         }
     }
 
-    private void handleEdge(DEdge dEdge, Anchor anchorToModify, EditPart editPart, CenteringStyle forbiddenCenteringStyle) {
+    private void handleEdge(Edge edge, EditPart editPart, boolean sourceAnchor) {
+        Anchor anchorToModify;
+        if (sourceAnchor) {
+            anchorToModify = edge.getSourceAnchor();
+        } else {
+            anchorToModify = edge.getTargetAnchor();
+        }
+        String terminalString = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
         if (anchorToModify instanceof IdentityAnchor) {
-            PrecisionPoint anchorPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchorToModify).getId());
-            PrecisionPoint newPoint = computeNewAnchor(anchorPoint, editPart);
-            ((IdentityAnchor) anchorToModify).setId(new SlidableAnchor(null, newPoint).getTerminal());
+            terminalString = ((IdentityAnchor) anchorToModify).getId();
+        }
+        PrecisionPoint anchorPoint = BaseSlidableAnchor.parseTerminalString(terminalString);
+        PrecisionPoint newPoint = computeNewAnchor(anchorPoint, editPart);
+        String newTerminalString = new SlidableAnchor(null, newPoint).getTerminal();
+        if (anchorToModify instanceof IdentityAnchor) {
+            ((IdentityAnchor) anchorToModify).setId(newTerminalString);
+        } else if (anchorToModify == null) {
+            // Create a new one
+            IdentityAnchor newAnchor = NotationFactory.eINSTANCE.createIdentityAnchor();
+            newAnchor.setId(newTerminalString);
+            if (sourceAnchor) {
+                edge.setSourceAnchor(newAnchor);
+            } else {
+                edge.setTargetAnchor(newAnchor);
+            }
         }
     }
 
