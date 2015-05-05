@@ -37,7 +37,7 @@ import com.google.common.collect.Iterables;
  * given graphicalEditPart.
  * 
  * @author Florian Barbin
- *
+ * 
  */
 public class CenterEditPartEdgesCommand extends AbstractTransactionalCommand {
 
@@ -93,13 +93,15 @@ public class CenterEditPartEdgesCommand extends AbstractTransactionalCommand {
     private Dimension getNewSize(EditPart edgeEnd) {
         if (edgeEnd instanceof GraphicalEditPart) {
             IFigure figure = ((GraphicalEditPart) edgeEnd).getFigure();
-            Dimension newSize = figure.getSize().getCopy();
+            Rectangle newBounds = figure.getBounds().getCopy();
+            figure.translateToAbsolute(newBounds);
+
             List editPartRequesting = request.getEditParts();
             if (editPartRequesting.contains(edgeEnd)) {
-                Rectangle newBounds = request.getTransformedRectangle(figure.getBounds());
-                newSize = newBounds.getSize();
+                newBounds = request.getTransformedRectangle(newBounds);
             }
-            return newSize;
+            figure.translateToRelative(newBounds);
+            return newBounds.getSize();
         }
         return null;
     }

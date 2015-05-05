@@ -41,6 +41,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -497,6 +498,39 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that when resizing a border node, the bendpoints of the centered
+     * edge are fix and the edge is still centered. See <a
+     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c18">Bug
+     * 448739#c18</a>.
+     */
+    public void testResizingCenteredTargetBorderNodeWithZoom() {
+        openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
+        editor.zoom(ZoomLevel.ZOOM_200);
+        try {
+            SWTBotGefEditPart borderNodeBotGefEditPart = editor.getEditPart("border1", AbstractDiagramBorderNodeEditPart.class);
+            borderNodeBotGefEditPart.select();
+
+            SWTBotGefConnectionEditPart edgeSwtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
+            PointList edge2PointListBefore = getEdgePointList(edgeSwtBotGefEditPart);
+
+            IFigure figure = ((GraphicalEditPart) borderNodeBotGefEditPart.part()).getFigure();
+            Rectangle boundsBefore = figure.getBounds().getCopy();
+            borderNodeBotGefEditPart.resize(PositionConstants.SOUTH, 0, 400);
+
+            // we make sure the figure has been resized
+            bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+
+            assertEdgeHasExpectedTgtAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+
+            // Bendpoints of edges must no be changed (bug 441424), except the
+            // last point as it is centered.
+            checkPointsListAfterResizing(edgeSwtBotGefEditPart, edge2PointListBefore, true);
+        } finally {
+            editor.zoom(ZoomLevel.ZOOM_100);
+        }
+    }
+
+    /**
      * Test that when resizing a shape over edge bendpoints, the edge is still
      * centered. See <a
      * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c8">Bug
@@ -704,6 +738,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         Point realTargetConnection = pointList.getPoint(pointList.size() - 1);
 
         Point expectedLineTerminus = getProportionalPoint(getAbsoluteBounds((IGraphicalEditPart) targetSwtBotGefEditPart.part()), expectedAnchor);
+        connection.translateToRelative(expectedLineTerminus);
 
         Option<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) targetSwtBotGefEditPart.part(), false);
         if (option.some()) {
