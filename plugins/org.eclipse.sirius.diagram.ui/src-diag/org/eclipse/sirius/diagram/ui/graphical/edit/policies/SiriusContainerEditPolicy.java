@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2002, 2009 IBM Corporation and others.
+ * Copyright (c) 2002, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.GroupRequest;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.util.ObjectAdapter;
@@ -47,11 +48,15 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.CenterEdgeLayoutCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.DistributeCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SnapCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.GMFRuntimeCompatibility;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * A specific class to override the arrangeCommand for the GMF runtime version
@@ -62,6 +67,13 @@ import org.eclipse.sirius.diagram.ui.tools.internal.ui.GMFRuntimeCompatibility;
  * 
  */
 public class SiriusContainerEditPolicy extends ContainerEditPolicy {
+
+    private final Predicate<Object> isRegionEditPart = new Predicate<Object>() {
+        @Override
+        public boolean apply(Object input) {
+            return input instanceof AbstractDiagramElementContainerEditPart && ((AbstractDiagramElementContainerEditPart) input).isRegion();
+        }
+    };
 
     @Override
     public Command getCommand(Request request) {
@@ -175,6 +187,12 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
             commandToReturn = new ICommandProxy(ctc);
         } else {
             commandToReturn = super.getArrangeCommand(request);
+        }
+
+        if ((ActionIds.ACTION_ARRANGE_SELECTION.equals(request.getType())) || (ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION.equals(request.getType()))) {
+            if (Iterables.any(request.getPartsToArrange(), isRegionEditPart)) {
+                return UnexecutableCommand.INSTANCE;
+            }
         }
 
         // We add a Command to center edges that need to be at the end of the
