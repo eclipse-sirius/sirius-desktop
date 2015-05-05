@@ -560,6 +560,30 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that when resizing a border node over another border node, the
+     * overlapped border node is not moved. See <a
+     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=466456">Bug 466456</a>.
+     */
+    public void testResizingTargetBorderNodeOverAnotherNode() {
+        openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
+        SWTBotGefEditPart border1NodeBotGefEditPart = editor.getEditPart("border1", AbstractDiagramBorderNodeEditPart.class);
+        Rectangle border1BoundsBefore = ((GraphicalEditPart) border1NodeBotGefEditPart.part()).getFigure().getBounds().getCopy();
+
+        SWTBotGefEditPart border2NodeBotGefEditPart = editor.getEditPart("border2", AbstractDiagramBorderNodeEditPart.class);
+        border2NodeBotGefEditPart.select();
+
+        IFigure figure = ((GraphicalEditPart) border2NodeBotGefEditPart.part()).getFigure();
+        Rectangle boundsBefore = figure.getBounds().getCopy();
+        // Resize border2 over border1
+        border2NodeBotGefEditPart.resize(PositionConstants.SOUTH, 0, 125);
+
+        // we make sure the figure has been resized (and moved)
+        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+
+        assertEquals("The overlapped border node should not be moved.", border1BoundsBefore, ((GraphicalEditPart) border1NodeBotGefEditPart.part()).getFigure().getBounds().getCopy());
+    }
+
+    /**
      * Test that when resizing a shape over edge bendpoints, the edge is still
      * centered. See <a
      * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c8">Bug

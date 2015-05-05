@@ -736,7 +736,7 @@ public class DBorderItemLocator extends BorderItemLocator {
                     }
                 } else if (borderItem.getParent().getLayoutManager().getConstraint(borderItem) instanceof DBorderItemLocator) {
                     final DBorderItemLocator airBorderItemLocator = (DBorderItemLocator) borderItem.getParent().getLayoutManager().getConstraint(borderItem);
-                    takeIntoAccount = airBorderItemLocator.located;
+                    takeIntoAccount = airBorderItemLocator.located && !airBorderItemLocator.borderItemHasMoved;
                 }
                 if (borderItem.isVisible() && takeIntoAccount) {
                     final Rectangle rect = new Rectangle(borderItem.getBounds());
@@ -895,5 +895,16 @@ public class DBorderItemLocator extends BorderItemLocator {
      */
     public void setFiguresToIgnoresDuringNextRelocate(List<IFigure> figuresToIgnore) {
         this.figuresToIgnoreDuringNextRelocate = figuresToIgnore;
+    }
+
+    /**
+     * This method set to false the borderItemHasMoved field. It must be used
+     * carefully only in case where {@link #setConstraint(Rectangle)} is called
+     * to compute temporary a
+     * {@link #getValidLocation(Rectangle, IFigure, Collection, List)}, one time
+     * with a new value and just after with the old value.
+     */
+    public void resetBorderItemMovedState() {
+        this.borderItemHasMoved = false;
     }
 }

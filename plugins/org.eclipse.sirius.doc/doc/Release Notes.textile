@@ -164,6 +164,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * @org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure@ class has been removed, use a @org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure@ with a @org.eclipse.draw2d.MarginBorder@ or a null border instead.
 * The method @org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart.getEAdapterSemanticElements()@ has been removed (and all its implementations). For manual refresh, this adapter has been replaced with the @RefreshEditorsPrecommitListener@. 
 * Extensions in plugin.xml that provides UI functionalities have been moved to org.eclipse.sirius.diagram.ui.ext.
+* The method @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator.resetBorderItemMovedState()@ has been added to allow to reset the state of @borderItemHasMoved@. This method must be used carefully only in case where @setConstraint(Rectangle)@ is called to compute temporary a @getValidLocation(Rectangle, IFigure, Collection, List)@, one time with a new value and just after with the old value.
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 

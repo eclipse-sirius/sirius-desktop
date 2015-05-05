@@ -579,6 +579,10 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
             ((DBorderItemLocator) borderItemLocator).setBorderItemOffset(oldOffset);
             borderItemLocator.setConstraint(oldConstraint);
+            // The setConstraint has been reset to old value. The
+            // borderItemMovedState must be reset to avoid that
+            // borderItemLocator considers it as a real change.
+            ((DBorderItemLocator) borderItemLocator).resetBorderItemMovedState();
 
         }
         return realNewBounds;

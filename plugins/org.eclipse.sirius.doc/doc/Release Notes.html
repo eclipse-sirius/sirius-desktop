@@ -571,6 +571,12 @@
 				<code>RefreshEditorsPrecommitListener</code>. 
 			</li>
 			<li>Extensions in plugin.xml that provides UI functionalities have been moved to org.eclipse.sirius.diagram.ui.ext.</li>
+			<li>The method 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator.resetBorderItemMovedState()</code> has been added to allow to reset the state of 
+				<code>borderItemHasMoved</code>. This method must be used carefully only in case where 
+				<code>setConstraint(Rectangle)</code> is called to compute temporary a 
+				<code>getValidLocation(Rectangle, IFigure, Collection, List)</code>, one time with a new value and just after with the old value.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
