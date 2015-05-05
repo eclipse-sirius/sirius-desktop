@@ -174,7 +174,7 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
 
             EObject target = prevDEdge.getTarget();
             if (edgeMappingQuery.evaluatePrecondition(diagram, diagram, interpreter, target, (DSemanticDecorator) sourceView, (DSemanticDecorator) targetView)) {
-                result.add(new DEdgeCandidate(mapping, target, sourceView, targetView));
+                result.add(new DEdgeCandidate(mapping, target, sourceView, targetView, sync.getFactory()));
             }
         }
     }
@@ -194,19 +194,19 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
         Collection<EObject> edgeSourceSemantics = edgeMappingQuery.evaluateSourceFinderExpression(diagram, interpreter, target);
         Collection<EObject> edgeTargetSemantics = edgeMappingQuery.evaluateTargetFinderExpression(diagram, interpreter, target);
 
-        for (final EObjectCouple couple : new CartesianProduct(edgeSourceSemantics, edgeTargetSemantics)) {
+        for (final EObjectCouple couple : new CartesianProduct(edgeSourceSemantics, edgeTargetSemantics, sync.getFactory())) {
             final Collection<EdgeTarget> sourceViews = sourceViewsSemantics.get(couple.getObj1());
             if (sourceViews != null) {
                 final Collection<EdgeTarget> targetViews = targetViewsSemantics.get(couple.getObj2());
                 if (targetViews != null) {
 
-                    for (final EObjectCouple viewsCouple : new CartesianProduct(sourceViews, targetViews)) {
+                    for (final EObjectCouple viewsCouple : new CartesianProduct(sourceViews, targetViews, sync.getFactory())) {
 
                         final EdgeTarget sourceView = (EdgeTarget) viewsCouple.getObj1();
                         final EdgeTarget targetView = (EdgeTarget) viewsCouple.getObj2();
 
                         if (edgeMappingQuery.evaluatePrecondition(diagram, diagram, interpreter, target, (DSemanticDecorator) sourceView, (DSemanticDecorator) targetView)) {
-                            result.add(new DEdgeCandidate(mapping, target, sourceView, targetView));
+                            result.add(new DEdgeCandidate(mapping, target, sourceView, targetView, sync.getFactory()));
                         }
                     }
                 }
@@ -271,7 +271,7 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
                 minimize.add(potentialTargetSemantic);
                 for (final EdgeTarget targetView : targetEdgeTarget) {
                     if (edgeMappingQuery.evaluatePrecondition(diagram, diagram, interpreter, sourceSemantic, (DSemanticDecorator) sourceView, (DSemanticDecorator) targetView)) {
-                        result.add(new DEdgeCandidate(mapping, sourceSemantic, sourceView, targetView));
+                        result.add(new DEdgeCandidate(mapping, sourceSemantic, sourceView, targetView, sync.getFactory()));
                     }
                 }
             }

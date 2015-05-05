@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
@@ -42,6 +42,8 @@ public class AbstractDNodeCandidate {
      */
     private AbstractDNode element;
 
+    private RefreshIdsHolder ids;
+
     /**
      * Create a new candidate.
      * 
@@ -51,9 +53,12 @@ public class AbstractDNodeCandidate {
      *            the target semantic element.
      * @param viewContainer
      *            the view container.
+     * @param ids
+     *            the refresh ids holder.
      */
-    public AbstractDNodeCandidate(final AbstractNodeMapping mapping, final EObject semanticElement, final DragAndDropTarget viewContainer) {
+    public AbstractDNodeCandidate(final AbstractNodeMapping mapping, final EObject semanticElement, final DragAndDropTarget viewContainer, RefreshIdsHolder ids) {
         super();
+        this.ids = ids;
         this.mapping = mapping;
         this.semantic = semanticElement;
         this.viewContainer = viewContainer;
@@ -65,8 +70,11 @@ public class AbstractDNodeCandidate {
      * 
      * @param diagElement
      *            an existing diagram element.
+     * @param ids
+     *            the refresh ids holder.
      */
-    public AbstractDNodeCandidate(final AbstractDNode diagElement) {
+    public AbstractDNodeCandidate(final AbstractDNode diagElement, RefreshIdsHolder ids) {
+        this.ids = ids;
         this.mapping = (AbstractNodeMapping) diagElement.getMapping();
         this.semantic = diagElement.getTarget();
         this.viewContainer = (DragAndDropTarget) diagElement.eContainer();
@@ -117,7 +125,7 @@ public class AbstractDNodeCandidate {
         if (semantic == null) {
             return Id.invalid();
         }
-        return new Id(RefreshIDFactory.getOrCreateID(viewContainer));
+        return new Id(this.ids.getOrCreateID(viewContainer));
     }
 
     /**
@@ -129,7 +137,7 @@ public class AbstractDNodeCandidate {
         if (semantic == null) {
             return Id.invalid();
         }
-        return new Id(RefreshIDFactory.getOrCreateID(semantic));
+        return new Id(this.ids.getOrCreateID(semantic));
     }
 
     /**

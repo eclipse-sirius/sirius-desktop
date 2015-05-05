@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.business.api.query;
 
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -33,27 +32,6 @@ public class AbstractDNodeQuery {
      */
     public AbstractDNodeQuery(AbstractDNode node) {
         this.node = node;
-    }
-
-    /**
-     * Check if two AbstractDNode are the same.
-     * 
-     * @param eObj
-     *            the second AbstractDNode to compare
-     * @return <code>true</code> if they are equals, <code>false</code>
-     *         otherwise. If the two objects are both <code>null</code> return
-     *         <code>true</code>, otherwise if only one of them is null, return
-     *         <code>false</code>
-     */
-    public boolean equalsTo(final AbstractDNode eObj) {
-        boolean result = false;
-
-        if (node == eObj) {
-            result = true;
-        } else if (node != null && eObj != null) {
-            result = new AbstractDNodeCandidate(node).equals(new AbstractDNodeCandidate(eObj));
-        }
-        return result;
     }
 
     /**

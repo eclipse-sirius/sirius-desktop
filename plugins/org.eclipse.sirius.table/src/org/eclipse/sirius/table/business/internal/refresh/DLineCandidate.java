@@ -11,7 +11,7 @@
 package org.eclipse.sirius.table.business.internal.refresh;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
@@ -38,6 +38,8 @@ public class DLineCandidate {
 
     private int hashcode;
 
+    private RefreshIdsHolder ids;
+
     /**
      * Create a new candidate.
      * 
@@ -47,11 +49,14 @@ public class DLineCandidate {
      *            the target semantic element.
      * @param viewContainer
      *            the view container.
+     * @param ids
+     *            the holder of the refresh ids.
      */
-    public DLineCandidate(final LineMapping mapping, final EObject semanticElement, final LineContainer viewContainer) {
+    public DLineCandidate(final LineMapping mapping, final EObject semanticElement, final LineContainer viewContainer, RefreshIdsHolder ids) {
         this.mapping = mapping;
         this.semantic = semanticElement;
         this.viewContainer = viewContainer;
+        this.ids = ids;
         this.hashcode = computeHashCode();
     }
 
@@ -60,9 +65,11 @@ public class DLineCandidate {
      * 
      * @param tableElement
      *            an existing diagram element.
+     * @param ids
+     *            the holder of the refresh ids.
      */
-    public DLineCandidate(final DLine tableElement) {
-        this(tableElement.getOriginMapping(), tableElement.getTarget(), (LineContainer) tableElement.eContainer());
+    public DLineCandidate(final DLine tableElement, RefreshIdsHolder ids) {
+        this(tableElement.getOriginMapping(), tableElement.getTarget(), (LineContainer) tableElement.eContainer(), ids);
         this.element = tableElement;
     }
 
@@ -160,7 +167,7 @@ public class DLineCandidate {
         if (viewContainer == null) {
             return -1;
         }
-        return RefreshIDFactory.getOrCreateID(viewContainer);
+        return this.ids.getOrCreateID(viewContainer);
     }
 
     /**
@@ -172,11 +179,11 @@ public class DLineCandidate {
         if (semantic == null) {
             return -1;
         }
-        return RefreshIDFactory.getOrCreateID(semantic);
+        return this.ids.getOrCreateID(semantic);
     }
-    
+
     private Integer getMappingID() {
-        return RefreshIDFactory.getOrCreateID(mapping);
+        return this.ids.getOrCreateID(mapping);
     }
 
     public LineMapping getMapping() {

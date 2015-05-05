@@ -24,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -172,7 +173,7 @@ public final class ContainerMappingHelper {
         } else {
             safeContainer = container;
         }
-        final EObjectCouple couple = new EObjectCouple(semanticOrigin, safeContainer);
+        final EObjectCouple couple = new EObjectCouple(semanticOrigin, safeContainer, RefreshIdsHolder.getOrCreateHolder(parentVp));
         EList<EObject> result = self.getCandidatesCache().get(couple);
         if (result == null) {
             result = new UniqueEList<EObject>();

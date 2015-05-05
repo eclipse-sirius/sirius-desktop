@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.sirius.common.tools.api.util.CartesianProduct;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 
 /**
  * Cartesian product test case.
@@ -52,14 +53,16 @@ public class CartesianProductTestCase extends TestCase {
         collection2.add(C);
         collection2.add(D);
 
-        CartesianProduct cartesianProduct = new CartesianProduct(collection1, collection2);
+        RefreshIdsHolder ids = new RefreshIdsHolder();
+
+        CartesianProduct cartesianProduct = new CartesianProduct(collection1, collection2, ids);
 
         // the result should be the following
         List<EObjectCouple> expectedResult = new ArrayList<EObjectCouple>();
-        expectedResult.add(new EObjectCouple(A, C));
-        expectedResult.add(new EObjectCouple(A, D));
-        expectedResult.add(new EObjectCouple(B, C));
-        expectedResult.add(new EObjectCouple(B, D));
+        expectedResult.add(new EObjectCouple(A, C, ids));
+        expectedResult.add(new EObjectCouple(A, D, ids));
+        expectedResult.add(new EObjectCouple(B, C, ids));
+        expectedResult.add(new EObjectCouple(B, D, ids));
 
         List<EObjectCouple> result = new ArrayList<EObjectCouple>();
 

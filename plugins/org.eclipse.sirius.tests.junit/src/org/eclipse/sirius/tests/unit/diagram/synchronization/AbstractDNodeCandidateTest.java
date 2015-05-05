@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.synchronization;
 
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramFactory;
@@ -33,6 +34,8 @@ public class AbstractDNodeCandidateTest extends EqualsHashCodeTestCase {
 
     private NodeMapping nodeMapping = DDF.createNodeMapping();
 
+    private RefreshIdsHolder ids = new RefreshIdsHolder();
+
     /**
      * Constructor.
      */
@@ -51,7 +54,7 @@ public class AbstractDNodeCandidateTest extends EqualsHashCodeTestCase {
         dNode.setActualMapping(nodeMapping);
         dNodeContainer.getOwnedDiagramElements().add(dNode);
 
-        return new AbstractDNodeCandidate(dNode);
+        return new AbstractDNodeCandidate(dNode, ids);
     }
 
     /**
@@ -59,7 +62,7 @@ public class AbstractDNodeCandidateTest extends EqualsHashCodeTestCase {
      */
     @Override
     protected Object createNotEqualInstance() throws Exception {
-        return new AbstractDNodeCandidate(null, null, null);
+        return new AbstractDNodeCandidate(null, null, null, ids);
     }
 
     /**
@@ -75,11 +78,11 @@ public class AbstractDNodeCandidateTest extends EqualsHashCodeTestCase {
         dNodeContainer.getOwnedDiagramElements().add(node);
         node.setTarget(null);
 
-        AbstractDNodeCandidate candidate1 = new AbstractDNodeCandidate(node);
+        AbstractDNodeCandidate candidate1 = new AbstractDNodeCandidate(node, ids);
 
         node.setTarget(dNodeContainer);
 
-        AbstractDNodeCandidate candidate2 = new AbstractDNodeCandidate(node);
+        AbstractDNodeCandidate candidate2 = new AbstractDNodeCandidate(node, ids);
 
         assertFalse(candidate1.equals(candidate2));
     }
@@ -96,11 +99,11 @@ public class AbstractDNodeCandidateTest extends EqualsHashCodeTestCase {
         node.setActualMapping(nodeMapping);
         node.setTarget(dNodeContainer);
 
-        AbstractDNodeCandidate candidate1 = new AbstractDNodeCandidate(node);
+        AbstractDNodeCandidate candidate1 = new AbstractDNodeCandidate(node, ids);
 
         dNodeContainer.getOwnedDiagramElements().add(node);
 
-        AbstractDNodeCandidate candidate2 = new AbstractDNodeCandidate(node);
+        AbstractDNodeCandidate candidate2 = new AbstractDNodeCandidate(node, ids);
 
         assertFalse(candidate1.equals(candidate2));
     }

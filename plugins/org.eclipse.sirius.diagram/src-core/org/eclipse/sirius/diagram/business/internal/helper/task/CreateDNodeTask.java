@@ -20,6 +20,7 @@ import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICreationTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ArrangeConstraint;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -108,7 +109,7 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
             BestMappingGetter bestMappingGetter = new BestMappingGetter(containerViewDSemanticDecorator, semanticElt);
             NodeMapping bestMapping = bestMappingGetter.getBestNodeMapping(tool.getNodeMappings());
             if (bestMapping != null) {
-                AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(bestMapping, semanticElt, containerView);
+                AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(bestMapping, semanticElt, containerView, RefreshIdsHolder.getOrCreateHolder(dSemanticDiagram));
                 AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate,
                         bestMapping.eContainingFeature() == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS);
                 if (createdAbstractDNode != null) {

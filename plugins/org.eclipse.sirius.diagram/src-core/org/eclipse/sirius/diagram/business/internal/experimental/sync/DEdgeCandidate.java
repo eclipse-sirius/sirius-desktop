@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
@@ -46,19 +46,24 @@ public class DEdgeCandidate {
 
     private final int hashCode;
 
+    private RefreshIdsHolder factory;
+
     /**
      * Create a new EdgeCandidate from an existing element.
      * 
      * @param element
      *            a DEdge.
+     * @param factory
+     *            the factory.
      */
-    public DEdgeCandidate(final DEdge element) {
+    public DEdgeCandidate(final DEdge element, RefreshIdsHolder factory) {
         this.element = element;
         this.semantic = element.getTarget();
         this.mapping = element.getActualMapping();
         this.sourceView = element.getSourceNode();
         this.targetView = element.getTargetNode();
         this.rootMapping = getRootMapping(this.mapping);
+        this.factory = factory;
         this.hashCode = computeHashCode();
     }
 
@@ -73,8 +78,10 @@ public class DEdgeCandidate {
      *            the source view.
      * @param targetView
      *            the target view.
+     * @param factory
+     *            the factory.
      */
-    public DEdgeCandidate(final EdgeMapping mapping, final EObject semantic, final EdgeTarget sourceView, final EdgeTarget targetView) {
+    public DEdgeCandidate(final EdgeMapping mapping, final EObject semantic, final EdgeTarget sourceView, final EdgeTarget targetView, RefreshIdsHolder factory) {
         if (mapping instanceof EdgeMappingImportWrapper) {
             this.mapping = ((EdgeMappingImportWrapper) mapping).getWrappedEdgeMappingImport();
         } else {
@@ -84,6 +91,7 @@ public class DEdgeCandidate {
         this.sourceView = sourceView;
         this.targetView = targetView;
         this.rootMapping = getRootMapping(this.mapping);
+        this.factory = factory;
         this.hashCode = computeHashCode();
     }
 
@@ -164,15 +172,15 @@ public class DEdgeCandidate {
     }
 
     private Integer getTargetViewURI() {
-        return RefreshIDFactory.getOrCreateID(targetView);
+        return this.factory.getOrCreateID(targetView);
     }
 
     private Integer getSourceViewURI() {
-        return RefreshIDFactory.getOrCreateID(sourceView);
+        return this.factory.getOrCreateID(sourceView);
     }
 
     private Integer getSemanticURI() {
-        return RefreshIDFactory.getOrCreateID(semantic);
+        return this.factory.getOrCreateID(semantic);
     }
 
     /**

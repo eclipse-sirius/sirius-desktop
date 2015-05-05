@@ -33,6 +33,8 @@ public class CartesianProduct implements Iterable<EObjectCouple>, Iterator<EObje
 
     private Object obj1;
 
+    private RefreshIdsHolder ids;
+
     /**
      * Build an iterator providing a cartesian product of two collections.
      * 
@@ -40,10 +42,13 @@ public class CartesianProduct implements Iterable<EObjectCouple>, Iterator<EObje
      *            first set
      * @param set2
      *            second set
+     * @param ids
+     *            the holder of refresh ids.
      */
-    public CartesianProduct(final Collection<?> set1, final Collection<?> set2) {
+    public CartesianProduct(final Collection<?> set1, final Collection<?> set2, RefreshIdsHolder ids) {
         this.set2 = set2;
         it1 = set1.iterator();
+        this.ids = ids;
     }
 
     /**
@@ -69,7 +74,7 @@ public class CartesianProduct implements Iterable<EObjectCouple>, Iterator<EObje
                 it2 = set2.iterator();
             }
             obj2 = it2.next();
-            final EObjectCouple couple = new EObjectCouple((EObject) obj1, (EObject) obj2);
+            final EObjectCouple couple = new EObjectCouple((EObject) obj1, (EObject) obj2, ids);
             if (!it2.hasNext()) {
                 obj1 = null;
                 it2 = null;

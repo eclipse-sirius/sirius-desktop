@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.synchronization;
 
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
@@ -39,6 +40,8 @@ public class DEdgeCandidateTest extends EqualsHashCodeTestCase {
 
     private DDiagram dDiagram = DF.createDDiagram();
 
+    private RefreshIdsHolder ids = new RefreshIdsHolder();
+
     public DEdgeCandidateTest() {
         super();
         edgeMapping.setName("dfgsdf");
@@ -59,7 +62,7 @@ public class DEdgeCandidateTest extends EqualsHashCodeTestCase {
         dEdge.setSourceNode(sourceEdgeTarget);
         dEdge.setTargetNode(targetEdgeTarget);
 
-        return new DEdgeCandidate(dEdge);
+        return new DEdgeCandidate(dEdge, ids);
     }
 
     /**
@@ -67,7 +70,7 @@ public class DEdgeCandidateTest extends EqualsHashCodeTestCase {
      */
     @Override
     protected Object createNotEqualInstance() throws Exception {
-        return new DEdgeCandidate(null, null, null, null);
+        return new DEdgeCandidate(null, null, null, null, ids);
     }
 
     /**
@@ -83,7 +86,7 @@ public class DEdgeCandidateTest extends EqualsHashCodeTestCase {
         dEdge.setSourceNode(sourceEdgeTarget);
         dEdge.setTargetNode(targetEdgeTarget);
 
-        DEdgeCandidate instance = new DEdgeCandidate(dEdge);
+        DEdgeCandidate instance = new DEdgeCandidate(dEdge, ids);
         assertTrue(instance.isInvalid());
     }
 
@@ -100,7 +103,7 @@ public class DEdgeCandidateTest extends EqualsHashCodeTestCase {
         dEdge.setSourceNode(sourceEdgeTarget);
         dEdge.setTargetNode(targetEdgeTarget);
 
-        DEdgeCandidate instance = new DEdgeCandidate(dEdge);
+        DEdgeCandidate instance = new DEdgeCandidate(dEdge, ids);
 
         dDiagram.getOwnedDiagramElements().add(sourceEdgeTarget);
         assertTrue(instance.isInvalid());
@@ -119,7 +122,7 @@ public class DEdgeCandidateTest extends EqualsHashCodeTestCase {
         dEdge.setSourceNode(sourceEdgeTarget);
         dEdge.setTargetNode(targetEdgeTarget);
 
-        DEdgeCandidate instance = new DEdgeCandidate(dEdge);
+        DEdgeCandidate instance = new DEdgeCandidate(dEdge, ids);
 
         dDiagram.getOwnedDiagramElements().add(targetEdgeTarget);
         assertTrue(instance.isInvalid());
@@ -138,7 +141,7 @@ public class DEdgeCandidateTest extends EqualsHashCodeTestCase {
         dEdge.setSourceNode(sourceEdgeTarget);
         dEdge.setTargetNode(targetEdgeTarget);
 
-        DEdgeCandidate instance = new DEdgeCandidate(dEdge);
+        DEdgeCandidate instance = new DEdgeCandidate(dEdge, ids);
 
         dDiagram.getOwnedDiagramElements().add(sourceEdgeTarget);
         dDiagram.getOwnedDiagramElements().add(targetEdgeTarget);

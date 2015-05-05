@@ -26,6 +26,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -134,7 +135,7 @@ public final class AbstractNodeMappingSpecOperations {
                 while (it2.hasNext()) {
                     final EObject eObj = it2.next();
                     if (eObj != null) {
-                        final EObjectCouple couple = new EObjectCouple(eObj, borderMapping);
+                        final EObjectCouple couple = new EObjectCouple(eObj, borderMapping, RefreshIdsHolder.getOrCreateHolder(diagram));
                         if (AbstractNodeMappingSpecOperations.isInstanceOf(mapping, eObj, borderMapping.getDomainClass())
                                 && SiriusElementMappingSpecOperations.checkPrecondition(borderMapping, eObj, modelElement, dDiagramElement) && !filterSemantic.contains(couple)) {
                             final DNode newBorderNode = borderMapping.createNode(eObj, containerVariable, diagram);

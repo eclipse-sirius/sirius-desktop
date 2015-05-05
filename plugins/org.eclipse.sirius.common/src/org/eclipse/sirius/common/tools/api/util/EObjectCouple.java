@@ -40,8 +40,10 @@ public class EObjectCouple {
      *            the first {@link EObject}.
      * @param obj2
      *            the second {@link EObject}.
+     * @param ids
+     *            the holder of refresh ids.
      */
-    public EObjectCouple(final EObject obj1, final EObject obj2) {
+    public EObjectCouple(final EObject obj1, final EObject obj2, RefreshIdsHolder ids) {
         if (obj1 == null) {
             throw new IllegalArgumentException("the first eObject is null");
         }
@@ -50,8 +52,8 @@ public class EObjectCouple {
         }
         this.obj1 = obj1;
         this.obj2 = obj2;
-        this.int1 = RefreshIDFactory.getOrCreateID(obj1);
-        this.int2 = RefreshIDFactory.getOrCreateID(obj2);
+        this.int1 = ids.getOrCreateID(obj1);
+        this.int2 = ids.getOrCreateID(obj2);
     }
 
     /**

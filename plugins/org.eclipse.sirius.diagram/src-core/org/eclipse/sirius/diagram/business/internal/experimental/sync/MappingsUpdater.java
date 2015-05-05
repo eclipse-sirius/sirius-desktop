@@ -18,6 +18,7 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.internal.query.DSemanticDecoratorQuery;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
@@ -48,6 +49,8 @@ public class MappingsUpdater {
 
     private DDiagramSynchronizer synchronizer;
 
+    private RefreshIdsHolder ids;
+
     /**
      * .
      * 
@@ -56,12 +59,15 @@ public class MappingsUpdater {
      * @param mappingsManager
      *            .
      * @param synchronizer
-     *            .
+     *            the synchronizer.
+     * @param ids
+     *            the refresh ids holder.
      */
-    public MappingsUpdater(final DDiagram diagram, final DiagramMappingsManager mappingsManager, final DDiagramSynchronizer synchronizer) {
+    public MappingsUpdater(final DDiagram diagram, final DiagramMappingsManager mappingsManager, final DDiagramSynchronizer synchronizer, RefreshIdsHolder ids) {
         this.diagram = diagram;
         this.mappingsManager = mappingsManager;
         this.synchronizer = synchronizer;
+        this.ids = ids;
     }
 
     /**
@@ -89,7 +95,7 @@ public class MappingsUpdater {
     }
 
     private void safeUpdateMappings(DragAndDropTarget container) {
-        mappingsManager.iterate(new MappingUpdateVisitor(container), container);
+        mappingsManager.iterate(new MappingUpdateVisitor(container, ids), container);
         for (final DDiagramElement child : DiagramElementsHierarchyVisitor.INSTANCE.getChildren(container)) {
             if (child instanceof DragAndDropTarget) {
                 updateMappings((DragAndDropTarget) child);
@@ -106,14 +112,17 @@ public class MappingsUpdater {
 
         private DragAndDropTarget container;
 
+        private RefreshIdsHolder factory;
+
         /**
          * Create a new instance
          * 
          * @param container
          *            the container
          */
-        public MappingUpdateVisitor(final DragAndDropTarget container) {
+        public MappingUpdateVisitor(final DragAndDropTarget container, RefreshIdsHolder factory) {
             this.container = container;
+            this.factory = factory;
         }
 
         /**
@@ -151,7 +160,7 @@ public class MappingsUpdater {
 
                 result = Sets.newHashSet(Collections2.transform(semanticElementsDone, new Function<EObject, AbstractDNodeCandidate>() {
                     public AbstractDNodeCandidate apply(final EObject from) {
-                        return new AbstractDNodeCandidate(mapping, from, container);
+                        return new AbstractDNodeCandidate(mapping, from, container, factory);
                     }
                 }));
             } else {
@@ -183,7 +192,7 @@ public class MappingsUpdater {
                     }
 
                     if (areInSameHiearchy) {
-                        result = new AbstractDNodeCandidate(mapping, from.getSemantic(), container);
+                        result = new AbstractDNodeCandidate(mapping, from.getSemantic(), container, factory);
                     }
 
                     return result;

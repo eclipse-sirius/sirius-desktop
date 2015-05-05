@@ -12,26 +12,29 @@ package org.eclipse.sirius.tests.unit.diagram.synchronization;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.tests.support.api.EqualsHashCodeTestCase;
 
 /**
- * Test class for {@link RefreshIDFactory}.
+ * Test class for {@link RefreshIdsHolder}.
  * 
  * @author dlecan
  */
-public class RefreshIDFactoryTest extends EqualsHashCodeTestCase {
+public class RefreshIdsHolderTest extends EqualsHashCodeTestCase {
 
     private static final EcoreFactory EF = EcoreFactory.eINSTANCE;
 
     private final EObject eObject;
 
+    private RefreshIdsHolder ids;
+    
     /**
      * Constructor.
      */
-    public RefreshIDFactoryTest() {
+    public RefreshIdsHolderTest() {
         super();
         eObject = EF.createEObject();
+        ids = new RefreshIdsHolder();
     }
 
     /**
@@ -40,7 +43,7 @@ public class RefreshIDFactoryTest extends EqualsHashCodeTestCase {
     @Override
     protected Object createInstance() throws Exception {
         // Instanciate a new Integer in order to have a different instance
-        return new Integer(RefreshIDFactory.getOrCreateID(eObject));
+        return new Integer(ids.getOrCreateID(eObject));
     }
 
     /**
@@ -48,7 +51,7 @@ public class RefreshIDFactoryTest extends EqualsHashCodeTestCase {
      */
     @Override
     protected Object createNotEqualInstance() throws Exception {
-        return RefreshIDFactory.getOrCreateID(EF.createEObject());
+        return ids.getOrCreateID(EF.createEObject());
     }
 
     /**
@@ -58,7 +61,7 @@ public class RefreshIDFactoryTest extends EqualsHashCodeTestCase {
      *             Test error.
      */
     public void testCheckSameInstance() throws Exception {
-        assertSame(RefreshIDFactory.getOrCreateID(eObject), RefreshIDFactory.getOrCreateID(eObject));
+        assertSame(ids.getOrCreateID(eObject), ids.getOrCreateID(eObject));
     }
 
     /**
@@ -68,7 +71,7 @@ public class RefreshIDFactoryTest extends EqualsHashCodeTestCase {
      *             Test error.
      */
     public void testCheckNotSameInstance() throws Exception {
-        assertNotSame(RefreshIDFactory.getOrCreateID(EF.createEObject()), RefreshIDFactory.getOrCreateID(eObject));
+        assertNotSame(ids.getOrCreateID(EF.createEObject()), ids.getOrCreateID(eObject));
     }
 
 }

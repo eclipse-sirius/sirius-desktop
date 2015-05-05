@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
@@ -48,7 +49,7 @@ public final class AbstractDNodeSpecOperations {
         final Collection<EObjectCouple> managedBorderingNodes = new HashSet<EObjectCouple>();
         for (DNode n : adn.getOwnedBorderedNodes()) {
             n.refresh();
-            managedBorderingNodes.add(new EObjectCouple(n.getTarget(), n.getActualMapping()));
+            managedBorderingNodes.add(new EObjectCouple(n.getTarget(), n.getActualMapping(), RefreshIdsHolder.getOrCreateHolder(adn.getParentDiagram())));
         }
         /*
          * create the non managed bordering nodes

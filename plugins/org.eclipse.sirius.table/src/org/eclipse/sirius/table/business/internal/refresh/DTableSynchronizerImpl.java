@@ -29,6 +29,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.CartesianProduct;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
@@ -84,6 +85,8 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     private DTable table;
 
     private final DTableElementSynchronizerSpec sync;
+
+    private RefreshIdsHolder ids;
 
     /**
      * Create a new {@link DTableSynchronizer} for an EditionTable.
@@ -263,7 +266,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
          * let's keep the "now" status.
          */
         for (final DCell cell : line.getCells()) {
-            status.addInOld(new DCellCandidate(cell));
+            status.addInOld(new DCellCandidate(cell, this.ids));
         }
 
         for (final DColumn column : table.getColumns()) {
@@ -275,7 +278,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             } else {
                 target = line.getTarget();
             }
-            status.addInNew(new DCellCandidate(mapping, target, line, column));
+            status.addInNew(new DCellCandidate(mapping, target, line, column, this.ids));
         }
 
         /*
@@ -480,7 +483,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         for (final DColumn column : table.getColumns()) {
             if (column.getOriginMapping() == mapping) {
                 if (column instanceof DTargetColumn) {
-                    status.addInOld(new DTargetColumnCandidate((DTargetColumn) column));
+                    status.addInOld(new DTargetColumnCandidate((DTargetColumn) column, this.ids));
                 }
             }
         }
@@ -511,7 +514,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
          */
         for (final EObject semantic : semantics) {
             if (this.accessor.eInstanceOf(semantic, mapping.getDomainClass())) {
-                status.addInNew(new DTargetColumnCandidate(mapping, semantic));
+                status.addInNew(new DTargetColumnCandidate(mapping, semantic, this.ids));
             }
         }
         return status;
@@ -563,10 +566,10 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         for (final DColumn column : table.getColumns()) {
             boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (column.getOriginMapping().eResource() == null || column.getOriginMapping().eIsProxy());
             if (mappingIsObsolete || (column.getOriginMapping() == mapping && column instanceof DFeatureColumn)) {
-                status.addInOld(new DFeatureColumnCandidate((DFeatureColumn) column));
+                status.addInOld(new DFeatureColumnCandidate((DFeatureColumn) column, this.ids));
             }
         }
-        status.addInNew(new DFeatureColumnCandidate(mapping, mapping.getFeatureName()));
+        status.addInNew(new DFeatureColumnCandidate(mapping, mapping.getFeatureName(), this.ids));
         return status;
     }
 
@@ -693,7 +696,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         for (final DCell cell : new DTableQuery(table).getCells()) {
             boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (cell.getIntersectionMapping() == null || cell.getIntersectionMapping().eResource() == null);
             if (iMapping.equals(cell.getIntersectionMapping()) || mappingIsObsolete) {
-                status.addInOld(new DCellCandidate(cell));
+                status.addInOld(new DCellCandidate(cell, this.ids));
             }
         }
 
@@ -745,13 +748,13 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                             final Collection<DColumn> targetViews = columnSemantics.get(columnSemantic);
                             if (targetViews != null) {
 
-                                for (final EObjectCouple viewsCouple : new CartesianProduct(sourceViews, targetViews)) {
+                                for (final EObjectCouple viewsCouple : new CartesianProduct(sourceViews, targetViews, ids)) {
 
                                     final DLine line = (DLine) viewsCouple.getObj1();
                                     final DColumn column = (DColumn) viewsCouple.getObj2();
 
                                     if (checkIntersectionPrecondition(column.getTarget(), line, column, iMapping.getPreconditionExpression())) {
-                                        status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), target, line, column));
+                                        status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), target, line, column, this.ids));
                                     }
 
                                 }
@@ -853,7 +856,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         for (final DCell cell : new DTableQuery(table).getCells()) {
             boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (cell.getIntersectionMapping() == null || cell.getIntersectionMapping().eResource() == null);
             if (iMapping.equals(cell.getIntersectionMapping()) || mappingIsObsolete) {
-                status.addInOld(new DCellCandidate(cell));
+                status.addInOld(new DCellCandidate(cell, this.ids));
             }
         }
 
@@ -882,7 +885,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                                 linesToColumnSemantics.put(line, columnSemantics);
                             }
                             if (columnSemantics.contains(column.getTarget()) && checkIntersectionPrecondition(column.getTarget(), line, column, iMapping.getPreconditionExpression())) {
-                                status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), line.getTarget(), line, column));
+                                status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), line.getTarget(), line, column, this.ids));
                             }
                         }
                     }
@@ -1081,7 +1084,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         for (final DLine line : container.getLines()) {
             boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (line.getOriginMapping().eResource() == null);
             if (line.getOriginMapping() == mapping || mappingIsObsolete) {
-                status.addInOld(new DLineCandidate(line));
+                status.addInOld(new DLineCandidate(line, this.ids));
             }
         }
         final MultipleCollection<EObject> semantics = new MultipleCollection<EObject>();
@@ -1110,7 +1113,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
          */
         for (final EObject semantic : semantics) {
             if (this.accessor.eInstanceOf(semantic, mapping.getDomainClass())) {
-                status.addInNew(new DLineCandidate(mapping, semantic, container));
+                status.addInNew(new DLineCandidate(mapping, semantic, container, this.ids));
             }
         }
         return status;
@@ -1122,6 +1125,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      */
     public void setTable(final DTable newTable) {
         this.table = newTable;
+        this.ids = RefreshIdsHolder.getOrCreateHolder(table);
     }
 
     /**

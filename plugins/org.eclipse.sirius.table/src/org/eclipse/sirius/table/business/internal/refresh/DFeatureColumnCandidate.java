@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.refresh;
 
-import com.google.common.base.Objects;
-
-import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
+
+import com.google.common.base.Objects;
 
 /**
  * This class represents a candidate for a DColumn, a candidate is a "possible"
@@ -37,6 +37,8 @@ public class DFeatureColumnCandidate {
 
     private final int hashCode;
 
+    private RefreshIdsHolder ids;
+
     /**
      * Create a new candidate.
      * 
@@ -44,10 +46,13 @@ public class DFeatureColumnCandidate {
      *            the column mapping.
      * @param featureName
      *            the target feature name.
+     * @param ids
+     *            the holder of refresh ids.
      */
-    public DFeatureColumnCandidate(final ColumnMapping mapping, final String featureName) {
+    public DFeatureColumnCandidate(final ColumnMapping mapping, final String featureName, RefreshIdsHolder ids) {
         this.mapping = mapping;
         this.featureName = featureName;
+        this.ids = ids;
         this.hashCode = computeHashCode();
     }
 
@@ -56,8 +61,11 @@ public class DFeatureColumnCandidate {
      * 
      * @param tableElement
      *            an existing diagram element.
+     * @param ids
+     *            the holder of refresh ids.
      */
-    public DFeatureColumnCandidate(final DFeatureColumn tableElement) {
+    public DFeatureColumnCandidate(final DFeatureColumn tableElement, RefreshIdsHolder ids) {
+        this.ids = ids;
         this.mapping = tableElement.getOriginMapping();
         this.featureName = tableElement.getFeatureName();
         this.element = tableElement;
@@ -102,7 +110,7 @@ public class DFeatureColumnCandidate {
     }
 
     private Integer getMappingID() {
-        return RefreshIDFactory.getOrCreateID(mapping);
+        return ids.getOrCreateID(mapping);
     }
 
     /**

@@ -11,7 +11,7 @@
 package org.eclipse.sirius.table.business.internal.refresh;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -42,6 +42,8 @@ public class DCellCandidate {
 
     private int hashcode;
 
+    private RefreshIdsHolder ids;
+
     /**
      * Create a new candidate.
      * 
@@ -53,12 +55,15 @@ public class DCellCandidate {
      *            the cell line.
      * @param column
      *            the cell column.
+     * @param ids
+     *            the holder of refresh ids.
      */
-    public DCellCandidate(final ColumnMapping mapping, final EObject semanticElement, final DLine line, final DColumn column) {
+    public DCellCandidate(final ColumnMapping mapping, final EObject semanticElement, final DLine line, final DColumn column, RefreshIdsHolder ids) {
         this.mapping = mapping;
         this.semantic = semanticElement;
         this.line = line;
         this.column = column;
+        this.ids = ids;
         this.hashcode = computeHashCode();
     }
 
@@ -67,9 +72,12 @@ public class DCellCandidate {
      * 
      * @param tableElement
      *            an existing diagram element.
+     * 
+     * @param ids
+     *            the holder of refresh ids.
      */
-    public DCellCandidate(final DCell tableElement) {
-        this((tableElement.getColumn() != null) ? tableElement.getColumn().getOriginMapping() : null, tableElement.getTarget(), tableElement.getLine(), tableElement.getColumn());
+    public DCellCandidate(final DCell tableElement, RefreshIdsHolder ids) {
+        this((tableElement.getColumn() != null) ? tableElement.getColumn().getOriginMapping() : null, tableElement.getTarget(), tableElement.getLine(), tableElement.getColumn(), ids);
         this.element = tableElement;
     }
 
@@ -155,19 +163,19 @@ public class DCellCandidate {
     }
 
     private Integer getColumnID() {
-        return RefreshIDFactory.getOrCreateID(column);
+        return this.ids.getOrCreateID(column);
     }
 
     private Integer getLineID() {
-        return RefreshIDFactory.getOrCreateID(line);
+        return this.ids.getOrCreateID(line);
     }
 
     private Integer getSemanticID() {
-        return RefreshIDFactory.getOrCreateID(semantic);
+        return this.ids.getOrCreateID(semantic);
     }
 
     private Integer getMappingID() {
-        return RefreshIDFactory.getOrCreateID(mapping);
+        return this.ids.getOrCreateID(mapping);
     }
 
     public ColumnMapping getMapping() {

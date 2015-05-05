@@ -12,6 +12,8 @@ package org.eclipse.sirius.tests.unit.api.mappings;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -44,9 +46,10 @@ public class NodeMappingTest extends SiriusDiagramTestCase implements MappingsRe
         RepresentationDescription representationDesc = viewpoints.iterator().next().getOwnedRepresentations().get(0);
         assertTrue("Bad type for representation", representationDesc instanceof DiagramDescription);
         DiagramDescription diagDesc = (DiagramDescription) representationDesc;
+        DDiagram diag = DiagramFactory.eINSTANCE.createDDiagram();
         for (NodeMapping nodeMapping : diagDesc.getAllNodeMappings()) {
             if (COMMON_NODE_MAPPING_ON_ECLASS.equals(nodeMapping.getName())) {
-                EList<EObject> nodesCandidates = nodeMapping.getNodesCandidates(semanticModel, semanticModel);
+                EList<EObject> nodesCandidates = nodeMapping.getNodesCandidates(semanticModel, semanticModel, diag);
                 assertEquals("Bad number of nodes candidates for mapping \"" + COMMON_NODE_MAPPING_ON_ECLASS + "\"", 1, nodesCandidates.size());
             }
         }

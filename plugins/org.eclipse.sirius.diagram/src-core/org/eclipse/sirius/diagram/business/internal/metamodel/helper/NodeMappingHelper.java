@@ -23,6 +23,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -107,18 +108,18 @@ public final class NodeMappingHelper {
             safeContainer = container;
         }
 
-        final EObjectCouple couple = new EObjectCouple(semanticOrigin, safeContainer);
+        DDiagram diagram = null;
+        if (containerView instanceof DDiagramElement) {
+            diagram = ((DDiagramElement) containerView).getParentDiagram();
+        } else if (containerView instanceof DDiagram) {
+            diagram = (DDiagram) containerView;
+        }
+        final EObjectCouple couple = new EObjectCouple(semanticOrigin, safeContainer, RefreshIdsHolder.getOrCreateHolder(diagram));
         EList<EObject> result = self.getCandidatesCache().get(couple);
         if (result == null) {
             result = new UniqueEList<EObject>();
             Iterator<EObject> it;
-            DDiagram viewPoint = null;
-            if (containerView instanceof DDiagramElement) {
-                viewPoint = ((DDiagramElement) containerView).getParentDiagram();
-            } else if (containerView instanceof DDiagram) {
-                viewPoint = (DDiagram) containerView;
-            }
-            it = DiagramElementMappingHelper.getSemanticIterator(self, semanticOrigin, viewPoint);
+            it = DiagramElementMappingHelper.getSemanticIterator(self, semanticOrigin, diagram);
             if (self.getDomainClass() != null) {
                 while (it.hasNext()) {
                     final EObject eObj = it.next();

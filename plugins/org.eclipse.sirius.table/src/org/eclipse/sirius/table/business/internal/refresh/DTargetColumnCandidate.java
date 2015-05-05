@@ -11,7 +11,7 @@
 package org.eclipse.sirius.table.business.internal.refresh;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 
@@ -36,6 +36,8 @@ public class DTargetColumnCandidate {
 
     private final int hashCode;
 
+    private RefreshIdsHolder ids;
+
     /**
      * Create a new candidate.
      * 
@@ -43,10 +45,13 @@ public class DTargetColumnCandidate {
      *            the column mapping.
      * @param semanticElement
      *            the target semantic element.
+     * @param ids
+     *            the holder of the refresh ids.
      */
-    public DTargetColumnCandidate(final ColumnMapping mapping, final EObject semanticElement) {
+    public DTargetColumnCandidate(final ColumnMapping mapping, final EObject semanticElement, RefreshIdsHolder ids) {
         this.mapping = mapping;
         this.semantic = semanticElement;
+        this.ids = ids;
         this.hashCode = computeHashCode();
     }
 
@@ -55,11 +60,14 @@ public class DTargetColumnCandidate {
      * 
      * @param tableElement
      *            an existing diagram element.
+     * @param ids
+     *            the holder of the refresh ids.
      */
-    public DTargetColumnCandidate(final DTargetColumn tableElement) {
+    public DTargetColumnCandidate(final DTargetColumn tableElement, RefreshIdsHolder ids) {
         this.mapping = tableElement.getOriginMapping();
         this.semantic = tableElement.getTarget();
         this.element = tableElement;
+        this.ids = ids;
         this.hashCode = computeHashCode();
     }
 
@@ -134,13 +142,12 @@ public class DTargetColumnCandidate {
      * @return the semantic ID
      */
     private Integer getSemanticID() {
-        return RefreshIDFactory.getOrCreateID(semantic);
-    }
-    
-    private Integer getMappingID() {
-        return RefreshIDFactory.getOrCreateID(mapping);
+        return this.ids.getOrCreateID(semantic);
     }
 
+    private Integer getMappingID() {
+        return this.ids.getOrCreateID(mapping);
+    }
 
     public ColumnMapping getMapping() {
         return this.mapping;

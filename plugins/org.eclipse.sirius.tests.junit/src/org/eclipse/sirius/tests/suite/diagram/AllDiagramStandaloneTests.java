@@ -33,7 +33,7 @@ import org.eclipse.sirius.tests.unit.diagram.refresh.DDiagramElementSynchronizer
 import org.eclipse.sirius.tests.unit.diagram.refresh.StyleHelperTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.AbstractDNodeCandidateTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.DEdgeCandidateTest;
-import org.eclipse.sirius.tests.unit.diagram.synchronization.RefreshIDFactoryTest;
+import org.eclipse.sirius.tests.unit.diagram.synchronization.RefreshIdsHolderTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.RepresentationDescriptionItemTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.ResourceFolderItemTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.ResourceItemTest;
@@ -63,7 +63,7 @@ public class AllDiagramStandaloneTests {
         suite.addTestSuite(EdgeMappingImportTests.class);
         suite.addTestSuite(DEdgeCandidateTest.class);
         suite.addTestSuite(AbstractDNodeCandidateTest.class);
-        suite.addTestSuite(RefreshIDFactoryTest.class);
+        suite.addTestSuite(RefreshIdsHolderTest.class);
         suite.addTestSuite(StyleHelperTest.class);
         suite.addTestSuite(RepresentationDescriptionItemTest.class);
         suite.addTestSuite(ResourceFolderItemTest.class);

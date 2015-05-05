@@ -39,6 +39,7 @@ import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -159,6 +160,8 @@ public class DDiagramSynchronizer {
 
     private boolean forceRetrieve;
 
+    private RefreshIdsHolder ids;
+
     /**
      * Create a new synchronizer.
      * 
@@ -182,6 +185,10 @@ public class DDiagramSynchronizer {
      */
     public DSemanticDiagram getDiagram() {
         return this.diagram;
+    }
+
+    public RefreshIdsHolder getFactory() {
+        return this.ids;
     }
 
     /**
@@ -263,10 +270,12 @@ public class DDiagramSynchronizer {
     }
 
     private void initDiagramRelatedFields() {
+        this.ids = RefreshIdsHolder.getOrCreateHolder(diagram);
         this.edgeHelper = new DEdgeSynchronizerHelper(this, diagram, accessor);
         this.nodHelper = new DNodeSynchronizerHelper(this, diagram, accessor);
         this.diagramMappingsManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
-        this.mappingsUpdater = new MappingsUpdater(diagram, diagramMappingsManager, this);
+        this.mappingsUpdater = new MappingsUpdater(diagram, diagramMappingsManager, this, ids);
+
     }
 
     private void activateInitialLayers() {
@@ -545,7 +554,7 @@ public class DDiagramSynchronizer {
 
     private void handleImportersIssues() {
         for (final DiagramElementMapping mapping : this.diagramMappingsManager.getOtherImportersMappings()) {
-            EObjectCouple key = new EObjectCouple(this.diagram, mapping);
+            EObjectCouple key = new EObjectCouple(this.diagram, mapping, ids);
             this.ignoredDuringRefreshProcess.remove(key);
             final Collection<DDiagramElement> elements = previousCandidatesCache.get(key);
 
@@ -555,7 +564,7 @@ public class DDiagramSynchronizer {
 
             for (final DiagramElementMapping subMapping : mapping.getAllMappings()) {
                 for (final DDiagramElement element : elements) {
-                    key = new EObjectCouple(element, subMapping);
+                    key = new EObjectCouple(element, subMapping, ids);
                     this.ignoredDuringRefreshProcess.remove(key);
                 }
             }
@@ -680,7 +689,7 @@ public class DDiagramSynchronizer {
     private AbstractDNode handleListAttributeChangeOnMapping(final AbstractDNode node, final ContainerMapping containerMapping, final DragAndDropTarget viewContainer, IProgressMonitor monitor) {
         final boolean isListContainer = new ContainerMappingQuery(containerMapping).isListContainer();
         if ((node instanceof DNodeContainer && isListContainer) || (node instanceof DNodeList && !isListContainer)) {
-            final AbstractDNodeCandidate newCandidate = new AbstractDNodeCandidate(containerMapping, node.getTarget(), viewContainer);
+            final AbstractDNodeCandidate newCandidate = new AbstractDNodeCandidate(containerMapping, node.getTarget(), viewContainer, ids);
 
             final Set<AbstractDNodeCandidate> newCandidates = new HashSet<AbstractDNodeCandidate>(1);
             newCandidates.add(newCandidate);
@@ -736,7 +745,7 @@ public class DDiagramSynchronizer {
         final ContainerMapping containerMapping = diagramElementContainer.getActualMapping();
         final boolean isListContainer = new ContainerMappingQuery(containerMapping).isListContainer();
         if ((node instanceof DNode && isListContainer) || (node instanceof DNodeListElement && !isListContainer)) {
-            final AbstractDNodeCandidate newCandidate = new AbstractDNodeCandidate(nodeMapping, node.getTarget(), diagramElementContainer);
+            final AbstractDNodeCandidate newCandidate = new AbstractDNodeCandidate(nodeMapping, node.getTarget(), diagramElementContainer, ids);
             final Set<AbstractDNodeCandidate> newCandidates = new HashSet<AbstractDNodeCandidate>(1);
             newCandidates.add(newCandidate);
 
@@ -1099,7 +1108,7 @@ public class DDiagramSynchronizer {
             }
             return previousDiagramElements;
         } else {
-            final EObjectCouple key = new EObjectCouple(container, mapping);
+            final EObjectCouple key = new EObjectCouple(container, mapping, ids);
             // when Unsynchronized mode is active, NPE occurs because
             // previousCandidatesCache is null
             if (previousCandidatesCache == null) {
@@ -1146,7 +1155,7 @@ public class DDiagramSynchronizer {
      * @return all node candidates
      */
     public Collection<AbstractDNodeCandidate> computeNodeCandidates(final DragAndDropTarget container, final AbstractNodeMapping mapping, final Set<AbstractDNodeCandidate> semanticFilter) {
-        return nodHelper.computeNodeCandidates(container, mapping, semanticFilter);
+        return nodHelper.computeNodeCandidates(container, mapping, semanticFilter, ids);
     }
 
     /**
@@ -1165,9 +1174,9 @@ public class DDiagramSynchronizer {
                 // We need a non-null argument to create the EObjectCouple, as
                 // the element needs to be registered as a "previous candidate"
                 // or it will not be removed from the diagram.
-                key = new EObjectCouple(container, DDiagramSynchronizer.FAKE_MAPPING);
+                key = new EObjectCouple(container, DDiagramSynchronizer.FAKE_MAPPING, ids);
             } else {
-                key = new EObjectCouple(container, child.getMapping());
+                key = new EObjectCouple(container, child.getMapping(), ids);
             }
             candidates.put(key, child);
             /*
@@ -1191,7 +1200,7 @@ public class DDiagramSynchronizer {
      *            mapping of the elements to add in the status.
      */
     private void addPreviousCandidates(final SetIntersection<AbstractDNodeCandidate> biSet, final DragAndDropTarget container, final AbstractNodeMapping mapping) {
-        final EObjectCouple key = new EObjectCouple(container, mapping);
+        final EObjectCouple key = new EObjectCouple(container, mapping, ids);
         this.ignoredDuringRefreshProcess.remove(key);
         Collection<DDiagramElement> candidates = previousCandidatesCache.get(key);
         if (candidates == null) {
@@ -1206,7 +1215,7 @@ public class DDiagramSynchronizer {
             final DDiagramElement element = it.next();
             final DiagramElementMapping elementMapping = element.getDiagramElementMapping();
             if (EqualityHelper.areEquals(elementMapping, mapping) || mapping.eResource() == null) {
-                final AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate((AbstractDNode) element);
+                final AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate((AbstractDNode) element, ids);
                 biSet.addInOld(abstractDNodeCandidate);
             }
         }
@@ -1327,7 +1336,7 @@ public class DDiagramSynchronizer {
     private SetIntersection<DEdgeCandidate> createEdgeCandidates(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final EdgeMapping mapping,
             final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration) {
         final SetIntersection<DEdgeCandidate> status = new GSetIntersection<DEdgeCandidate>();
-        final EObjectCouple key = new EObjectCouple(diagram, mapping);
+        final EObjectCouple key = new EObjectCouple(diagram, mapping, ids);
         this.ignoredDuringRefreshProcess.remove(key);
         // Remove also the sub mapping if mapping is ImportedMapping and the
         // superMapping
@@ -1340,7 +1349,7 @@ public class DDiagramSynchronizer {
          * Collect existing edges.
          */
         for (final DEdge edge : this.diagram.getEdgesFromMapping(mapping)) {
-            final DEdgeCandidate edgeCandidate = new DEdgeCandidate(edge);
+            final DEdgeCandidate edgeCandidate = new DEdgeCandidate(edge, ids);
             if (edgeCandidate.isInvalid()) {
                 invalidCandidates.add(edgeCandidate);
             } else {
@@ -1400,7 +1409,7 @@ public class DDiagramSynchronizer {
     private void handleSubMappings(final IEdgeMapping mapping) {
         if (mapping instanceof EdgeMappingImport) {
             final IEdgeMapping importedEdgeMaping = ((EdgeMappingImport) mapping).getImportedMapping();
-            final EObjectCouple key = new EObjectCouple(diagram, importedEdgeMaping);
+            final EObjectCouple key = new EObjectCouple(diagram, importedEdgeMaping, ids);
             this.ignoredDuringRefreshProcess.remove(key);
             handleSubMappings(importedEdgeMaping);
         }

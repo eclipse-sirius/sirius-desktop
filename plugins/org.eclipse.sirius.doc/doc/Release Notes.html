@@ -306,6 +306,14 @@
 				<code>org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator</code> has been introduced to provide a safe and more efficient way to switch to the proper 
 				<code>IInterpreter</code> instance when validating expressions.
 			</li>
+			<li>The class 
+				<code>org.eclipse.sirius.common.tools.api.util.RefreshIdFactory</code> has been replaced with 
+				<code>org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder</code> which no longer rely on a global singleton but attach information to an EObject representing the current scope. This impacts 
+				<code>org.eclipse.sirius.diagram.business.api.query.AbstractDNodeQuery</code> , 
+				<code>org.eclipse.sirius.common.tools.api.util.CartesianProduct</code> and 
+				<code>org.eclipse.sirius.common.tools.api.util.EObjectCouple</code> which are now requiring now a 
+				<code>RefreshIdsHolder</code> instance.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common.ui">Changes in 
 			<code>org.eclipse.sirius.common.ui</code>
@@ -507,6 +515,12 @@
 			<code>StyleDescription</code> we directly look for them in the 
 			<code>ComputedStyleDescriptionRegistry.computedStyleDescriptions</code> list.
 		</p>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.diagram.business.api.query.AbstractDNodeQuery</code> now requires a 
+				<code>org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder</code> to check for equality in the context of a refresh operation.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>

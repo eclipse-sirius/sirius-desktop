@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.query.AbstractNodeMappingQuery;
@@ -53,9 +54,12 @@ public class DNodeSynchronizerHelper extends AbstractSynchronizerHelper {
      * @param candidateFilter
      *            the filter which contains candidates to not add in the
      *            returned collection
+     * @param ids
+     *            the refresh ids holder.
      * @return all node candidates
      */
-    public Collection<AbstractDNodeCandidate> computeNodeCandidates(final DragAndDropTarget container, final AbstractNodeMapping mapping, final Collection<AbstractDNodeCandidate> candidateFilter) {
+    public Collection<AbstractDNodeCandidate> computeNodeCandidates(final DragAndDropTarget container, final AbstractNodeMapping mapping, final Collection<AbstractDNodeCandidate> candidateFilter,
+            RefreshIdsHolder ids) {
 
         final Collection<AbstractDNodeCandidate> nowCandidates = Lists.newArrayList();
         final Iterable<EObject> semantics = getSemanticCandidates(container, mapping);
@@ -64,7 +68,7 @@ public class DNodeSynchronizerHelper extends AbstractSynchronizerHelper {
          * produce the candidates states if the precondition is valid.
          */
         for (final EObject semantic : semantics) {
-            final AbstractDNodeCandidate candidate = new AbstractDNodeCandidate(mapping, semantic, container);
+            final AbstractDNodeCandidate candidate = new AbstractDNodeCandidate(mapping, semantic, container, ids);
             if (candidateFilter == null || !candidateFilter.contains(candidate)) {
                 AbstractNodeMappingQuery abstractNodeMappingQuery = new AbstractNodeMappingQuery(mapping);
                 if (abstractNodeMappingQuery.evaluatePrecondition(diagram, container, interpreter, semantic)) {

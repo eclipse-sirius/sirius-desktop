@@ -20,6 +20,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -70,8 +71,8 @@ public class CreateDDiagramElementCommand extends RecordingCommand {
      */
     public CreateDDiagramElementCommand(final TransactionalEditingDomain domain, final EObject semantic, final AbstractNodeMapping mapping, final DragAndDropTarget container) {
         this(domain, semantic);
-        nodeCandidate = new AbstractDNodeCandidate(mapping, semantic, container);
         this.container = container;
+        nodeCandidate = new AbstractDNodeCandidate(mapping, semantic, container, RefreshIdsHolder.getOrCreateHolder(getParentDiagram()));
     }
 
     /**
@@ -90,9 +91,9 @@ public class CreateDDiagramElementCommand extends RecordingCommand {
      */
     public CreateDDiagramElementCommand(final TransactionalEditingDomain domain, final EObject semantic, final EdgeMapping mapping, final EdgeTarget source, final EdgeTarget target) {
         this(domain, semantic);
-        edgeCandidate = new DEdgeCandidate(mapping, semantic, source, target);
         /* store source as container to retrieve later parent diagram */
         this.container = (DragAndDropTarget) source;
+        edgeCandidate = new DEdgeCandidate(mapping, semantic, source, target, RefreshIdsHolder.getOrCreateHolder(getParentDiagram()));
     }
 
     private CreateDDiagramElementCommand(final TransactionalEditingDomain domain, final EObject semantic) {

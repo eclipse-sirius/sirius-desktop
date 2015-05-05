@@ -28,6 +28,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.helper.task.operations.AbstractOperationTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.InterpretedExpressionVariableTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ArrangeConstraint;
@@ -160,7 +161,8 @@ public class CreateViewTask extends AbstractOperationTask {
             if (bestMapping instanceof AbstractNodeMapping) {
                 AbstractNodeMapping abstractNodeMapping = (AbstractNodeMapping) bestMapping;
                 if (extPackage.eInstanceOf(semanticElt, abstractNodeMapping.getDomainClass())) {
-                    AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(abstractNodeMapping, semanticElt, (DragAndDropTarget) containerView);
+                    AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(abstractNodeMapping, semanticElt, (DragAndDropTarget) containerView,
+                            RefreshIdsHolder.getOrCreateHolder(parentDDiagram));
                     DDiagramElementSynchronizer dDiagramElementSynchronizer = new DDiagramElementSynchronizer(parentDDiagram, interpreter, extPackage);
                     DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, parentDDiagram);
                     AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate,
@@ -252,7 +254,8 @@ public class CreateViewTask extends AbstractOperationTask {
                         if (edgeMapping == null && createEdgeView.getMapping() instanceof EdgeMapping) {
                             edgeMapping = (EdgeMapping) createEdgeView.getMapping();
                         }
-                        DEdgeCandidate dEdgeCandidate = new DEdgeCandidate(edgeMapping, context.getCurrentTarget(), sourceEdgeTarget, targetEdgeTarget);
+                        DEdgeCandidate dEdgeCandidate = new DEdgeCandidate(edgeMapping, context.getCurrentTarget(), sourceEdgeTarget, targetEdgeTarget,
+                                RefreshIdsHolder.getOrCreateHolder(parentDDiagram));
                         DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, parentDDiagram);
                         createdDEdge = dDiagramElementSynchronizer.createNewEdge(mappingManager, dEdgeCandidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
                         if (needsPathUpdate) {
