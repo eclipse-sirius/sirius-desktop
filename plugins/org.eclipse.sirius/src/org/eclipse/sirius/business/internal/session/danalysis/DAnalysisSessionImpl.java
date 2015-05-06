@@ -1140,10 +1140,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
             setSynchronizeStatusofEveryResource();
             monitor.worked(1);
-            if (!getSemanticResources().isEmpty()) {
-                configureInterpreter();
-            }
+
+            configureInterpreter();
             monitor.worked(1);
+
             initializeAccessor();
             monitor.worked(1);
 
