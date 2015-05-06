@@ -15,6 +15,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import com.google.common.base.Objects;
@@ -85,20 +86,39 @@ public final class EqualityHelper {
         if (Objects.equal(eObj1, eObj2)) {
             return true;
         }
+        return haveSameURIFragment(eObj1, eObj2);
+    }
+
+    private static boolean haveSameURIFragment(EObject eObj1, EObject eObj2) {
         boolean result = false;
         if (sameType(eObj1, eObj2)) {
-            Resource res1 = eObj1.eResource();
-            Resource res2 = eObj2.eResource();
-            if (res1 != null && res2 != null) {
-                URI uriRes1 = res1.getURI();
-                URI uriRes2 = res2.getURI();
-                if ((uriRes1.isPlatformPlugin() && uriRes2.isPlatformPlugin()) || (uriRes1.isPlatformResource() && uriRes2.isPlatformResource())) {
-                    /*
-                     * Short-circuit costly getURIFragment() if the resources' URIS are not the same.
-                     */
-                    result = uriRes1.equals(uriRes2) && res1.getURIFragment(eObj1).equals(res2.getURIFragment(eObj2));
+
+            EObject container1 = eObj1.eContainer();
+            EObject container2 = eObj2.eContainer();
+            if (container1 instanceof InternalEObject && container2 instanceof InternalEObject) {
+                String eObj1Frag = ((InternalEObject) container1).eURIFragmentSegment(eObj1.eContainingFeature(), eObj1);
+                String eObj2Frag = ((InternalEObject) container2).eURIFragmentSegment(eObj2.eContainingFeature(), eObj2);
+
+                if (eObj1Frag != null && eObj2Frag != null && eObj1Frag.equals(eObj2Frag)) {
+                    result = haveSameURIFragment(container1, container2);
                 }
+            } else if (container1 == null && container2 == null) {
+                Resource res1 = eObj1.eResource();
+                Resource res2 = eObj2.eResource();
+                if (res1 != null && res2 != null) {
+                    URI uriRes1 = res1.getURI();
+                    URI uriRes2 = res2.getURI();
+                    if ((uriRes1.isPlatformPlugin() && uriRes2.isPlatformPlugin()) || (uriRes1.isPlatformResource() && uriRes2.isPlatformResource())) {
+                        result = uriRes1.equals(uriRes2);
+                    }
+                }
+            } else {
+                /*
+                 * one of the containers is null.. no chance both objects are
+                 * sharing the same URI.
+                 */
             }
+
         }
         return result;
     }
