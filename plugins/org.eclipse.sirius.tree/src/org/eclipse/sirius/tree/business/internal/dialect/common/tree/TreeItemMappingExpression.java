@@ -67,7 +67,7 @@ public class TreeItemMappingExpression {
         if (!StringUtil.isEmpty(mapping.getPreconditionExpression())) {
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, containerView);
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, containerView.getTarget());
-            interpreter.setVariable(TREE, TreeHelper.getTree(semantic));
+            interpreter.setVariable(TREE, TreeHelper.getTree(containerView));
 
             try {
                 result = interpreter.evaluateBoolean(semantic, mapping.getPreconditionExpression());

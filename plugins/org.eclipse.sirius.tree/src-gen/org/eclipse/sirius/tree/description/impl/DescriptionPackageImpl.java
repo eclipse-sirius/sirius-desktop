@@ -1362,10 +1362,10 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables";
         addAnnotation(getTreeDescription_PreconditionExpression(), source, new String[] {});
-        addAnnotation(getTreeItemMapping_PreconditionExpression(), source, new String[] { "view", "tree.DTreeElement | current DTreeElement.", "containerView",
+        addAnnotation(getTreeItemMapping_PreconditionExpression(), source, new String[] { "tree", "tree.DTree | current DTree.", "containerView",
             "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", "container",
         "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." });
-        addAnnotation(getTreeItemMapping_SemanticCandidatesExpression(), source, new String[] { "view", "tree.DTreeElement | current DTreeElement.", "containerView",
+        addAnnotation(getTreeItemMapping_SemanticCandidatesExpression(), source, new String[] { "tree", "tree.DTree | current DTree.", "containerView",
             "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", "container",
         "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." });
         addAnnotation(getTreeMapping_SemanticElements(), source, new String[] { "view", "tree.DTreeElement | current DTreeElement.", "containerView",

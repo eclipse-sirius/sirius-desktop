@@ -90,7 +90,7 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="view" value="tree.DTreeElement | current DTreeElement."/>
+          <details key="tree" value="tree.DTree | current DTree."/>
           <details key="containerView" value="ecore.EObject | container of the current DTreeElement (variable is available if container is not null)."/>
           <details key="container" value="ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)."/>
         </eAnnotations>
@@ -107,7 +107,7 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="view" value="tree.DTreeElement | current DTreeElement."/>
+          <details key="tree" value="tree.DTree | current DTree."/>
           <details key="containerView" value="ecore.EObject | container of the current DTreeElement (variable is available if container is not null)."/>
           <details key="container" value="ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)."/>
         </eAnnotations>
