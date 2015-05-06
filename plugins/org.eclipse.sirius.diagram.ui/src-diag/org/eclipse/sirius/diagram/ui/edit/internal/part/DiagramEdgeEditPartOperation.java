@@ -63,6 +63,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.PolygoneAndPolylineDecoraction;
+import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.EdgeRoutingStyleChangedCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -318,7 +319,7 @@ public final class DiagramEdgeEditPartOperation {
     public static void refreshLineStyle(final IDiagramEdgeEditPart self) {
         final EObject semanticElement = self.resolveSemanticElement();
         PolylineConnectionEx polylineConnectionFigure = self.getPolylineConnectionFigure();
-        
+
         if (semanticElement instanceof DEdge && polylineConnectionFigure != null) {
             final DEdge edge = (DEdge) semanticElement;
             if (edge.getOwnedStyle() != null) {
@@ -335,7 +336,7 @@ public final class DiagramEdgeEditPartOperation {
             }
         }
     }
-    
+
     /**
      * Return the computed line width.
      * 
@@ -433,8 +434,9 @@ public final class DiagramEdgeEditPartOperation {
         final RoutingStyle rstyle = (RoutingStyle) self.getNotationView().getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
         broker.addNotificationListener(rstyle, self.getEAdapterRoutingStyle());
         final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(self.getEditingDomain().getResourceSet());
-        auth.addAuthorityListener(self.getEditPartAuthorityListener());
-        self.getEditPartAuthorityListener().refreshEditMode();
+        EditPartAuthorityListener editPartAuthorityListener = self.getEditPartAuthorityListener();
+        auth.addAuthorityListener(editPartAuthorityListener);
+        editPartAuthorityListener.refreshEditMode();
     }
 
     /**

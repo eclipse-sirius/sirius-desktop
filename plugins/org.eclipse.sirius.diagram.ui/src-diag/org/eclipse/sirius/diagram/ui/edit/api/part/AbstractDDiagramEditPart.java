@@ -343,7 +343,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
 
         final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getEditingDomain().getResourceSet());
         auth.addAuthorityListener(this.getEditPartAuthorityListener());
-        this.getEditPartAuthorityListener().refreshEditMode();
+        getEditPartAuthorityListener().refreshEditMode();
 
     }
 

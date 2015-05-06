@@ -181,7 +181,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
             super.activate();
             DiagramElementEditPartOperation.activate(this);
         }
-        this.getEditPartAuthorityListener().refreshEditMode();
     }
 
     @Override

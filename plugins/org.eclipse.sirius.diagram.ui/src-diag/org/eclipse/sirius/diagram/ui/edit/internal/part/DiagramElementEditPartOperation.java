@@ -58,6 +58,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
+import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -327,6 +328,8 @@ public final class DiagramElementEditPartOperation {
                 broker.addNotificationListener(dNodeListElement.getOwnedStyle(), (NotificationListener) self);
             }
         }
+        EditPartAuthorityListener editModeUpdater = self.getEditPartAuthorityListener();
+        editModeUpdater.refreshEditMode();
     }
 
     private static void addNavigateDecoratorRefresher(IDiagramElementEditPart self, DiagramEventBroker broker) {
