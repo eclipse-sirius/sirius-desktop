@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
@@ -137,14 +137,14 @@ public class MappingsUpdater {
             if (pMapping instanceof AbstractNodeMapping) {
                 final AbstractNodeMapping mapping = (AbstractNodeMapping) pMapping;
                 final Collection<AbstractDNodeCandidate> validCandidates = getNodeCandidates(mapping, candidateFilter);
-                final Collection<EObject> validSemantics = Collections2.transform(validCandidates, new Function<AbstractDNodeCandidate, EObject>() {
-                    public EObject apply(final AbstractDNodeCandidate from) {
-                        return from.getSemantic();
-                    }
-                });
 
                 final Set<EObject> semanticElementsDone = new HashSet<EObject>();
-                if (!validSemantics.isEmpty()) {
+                if (!validCandidates.isEmpty()) {
+                    final Set<EObject> validSemantics = Sets.newHashSet(Iterables.transform(validCandidates, new Function<AbstractDNodeCandidate, EObject>() {
+                        public EObject apply(final AbstractDNodeCandidate from) {
+                            return from.getSemantic();
+                        }
+                    }));
                     for (final DDiagramElement element : DiagramElementsHierarchyVisitor.INSTANCE.getChildren(container)) {
                         final DiagramElementMapping elementMapping = element.getDiagramElementMapping();
                         final EObject semanticElement = element.getTarget();
@@ -158,7 +158,7 @@ public class MappingsUpdater {
                     }
                 }
 
-                result = Sets.newHashSet(Collections2.transform(semanticElementsDone, new Function<EObject, AbstractDNodeCandidate>() {
+                result = Sets.newHashSet(Iterables.transform(semanticElementsDone, new Function<EObject, AbstractDNodeCandidate>() {
                     public AbstractDNodeCandidate apply(final EObject from) {
                         return new AbstractDNodeCandidate(mapping, from, container, factory);
                     }
@@ -176,7 +176,7 @@ public class MappingsUpdater {
             final DiagramElementMappingQuery diagramElementMappingQuery = new DiagramElementMappingQuery(mapping);
             final Map<AbstractNodeMapping, Boolean> knownMappingHierarchy = Maps.newHashMap();
 
-            return Sets.newHashSet(Collections2.transform(semanticFilter, new Function<AbstractDNodeCandidate, AbstractDNodeCandidate>() {
+            return Sets.newLinkedHashSet(Iterables.transform(semanticFilter, new Function<AbstractDNodeCandidate, AbstractDNodeCandidate>() {
                 public AbstractDNodeCandidate apply(final AbstractDNodeCandidate from) {
                     AbstractDNodeCandidate result = from;
                     AbstractNodeMapping fromMapping = from.getMapping();
