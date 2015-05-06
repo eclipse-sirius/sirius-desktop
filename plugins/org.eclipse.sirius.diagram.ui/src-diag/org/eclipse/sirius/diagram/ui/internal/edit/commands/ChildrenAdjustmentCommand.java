@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
@@ -218,16 +219,21 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
             // the bottom side.
             List<Node> childrenToMove = resizedPartQuery.getBorderedNodes(PositionConstants.SOUTH);
             if (!childrenToMove.isEmpty()) {
-                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(childrenToMove, verticalSizeDelta, PositionConstants.VERTICAL)));
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(childrenToMove, new Dimension(0, verticalSizeDelta))));
             }
 
             // The border nodes of the east and west side must eventually be
             // shift to stay in the parent bounds.
-            Map<Node, Integer> childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.EAST, verticalSizeDelta);
-            childrenToMoveWithDelta.putAll(resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.WEST, verticalSizeDelta));
-            for (Entry<Node, Integer> entry : childrenToMoveWithDelta.entrySet()) {
-                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue().intValue(),
-                        PositionConstants.VERTICAL)));
+            Map<Node, Dimension> childrenToMoveWithDelta;
+            if (rq.isResizeFromTop()) {
+                childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.EAST, PositionConstants.NORTH, verticalSizeDelta);
+                childrenToMoveWithDelta.putAll(resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.WEST, PositionConstants.NORTH, verticalSizeDelta));
+            } else {
+                childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.EAST, PositionConstants.SOUTH, verticalSizeDelta);
+                childrenToMoveWithDelta.putAll(resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.WEST, PositionConstants.SOUTH, verticalSizeDelta));
+            }
+            for (Entry<Node, Dimension> entry : childrenToMoveWithDelta.entrySet()) {
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue())));
             }
 
             if (rq.isResizeFromTop() || cbr.isCenteredResize()) {
@@ -254,7 +260,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
                     List<Node> borderNodes = resizedPartQuery.getBorderedNodes(PositionConstants.WEST);
                     borderNodes.addAll(resizedPartQuery.getBorderedNodes(PositionConstants.EAST));
                     borderNodes.removeAll(childrenToMoveWithDelta.keySet());
-                    cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, verticalSizeDelta, PositionConstants.VERTICAL)));
+                    cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, new Dimension(0, verticalSizeDelta))));
                 } else {
                     // The edges linked to border nodes of the west and east
                     // sides must be adapted to only move the last segment.
@@ -278,15 +284,21 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
             // east side.
             List<Node> childrenToMove = resizedPartQuery.getBorderedNodes(PositionConstants.EAST);
             if (!childrenToMove.isEmpty()) {
-                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(childrenToMove, horizontalSizeDelta, PositionConstants.HORIZONTAL)));
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(childrenToMove, new Dimension(horizontalSizeDelta, 0))));
             }
             // The border nodes of the north or south side must eventually be
             // shift to stay in the parent bounds.
-            Map<Node, Integer> childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.NORTH, horizontalSizeDelta);
-            childrenToMoveWithDelta.putAll(resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.SOUTH, horizontalSizeDelta));
-            for (Entry<Node, Integer> entry : childrenToMoveWithDelta.entrySet()) {
-                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue().intValue(),
-                        PositionConstants.HORIZONTAL)));
+            Map<Node, Dimension> childrenToMoveWithDelta;
+            if (rq.isResizeFromRight()) {
+                childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.NORTH, PositionConstants.EAST, horizontalSizeDelta);
+                childrenToMoveWithDelta.putAll(resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.SOUTH, PositionConstants.EAST, horizontalSizeDelta));
+            } else {
+                childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.NORTH, PositionConstants.WEST, horizontalSizeDelta);
+                childrenToMoveWithDelta.putAll(resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.SOUTH, PositionConstants.WEST, horizontalSizeDelta));
+
+            }
+            for (Entry<Node, Dimension> entry : childrenToMoveWithDelta.entrySet()) {
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue())));
             }
             if (rq.isResizeFromLeft() || cbr.isCenteredResize()) {
                 // The edges linked to border node of the west side must adapted
@@ -312,7 +324,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
                     List<Node> borderNodes = resizedPartQuery.getBorderedNodes(PositionConstants.NORTH);
                     borderNodes.addAll(resizedPartQuery.getBorderedNodes(PositionConstants.SOUTH));
                     borderNodes.removeAll(childrenToMoveWithDelta.keySet());
-                    cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, horizontalSizeDelta, PositionConstants.HORIZONTAL)));
+                    cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, new Dimension(horizontalSizeDelta, 0))));
                 } else {
                     // The edges linked border nodes of the north and south
                     // sides must be adapted to only move the last segment.

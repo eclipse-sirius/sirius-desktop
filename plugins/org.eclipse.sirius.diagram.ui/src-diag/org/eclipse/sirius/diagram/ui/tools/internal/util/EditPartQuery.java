@@ -12,30 +12,39 @@ package org.eclipse.sirius.diagram.ui.tools.internal.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 
+import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 
 /**
  * Queries on GMF edit parts.
@@ -150,7 +159,8 @@ public class EditPartQuery {
 
     /**
      * Return a Map with a move delta for each nodes that must be moved
-     * following the resize of the parent.
+     * following the resize of the parent. The delta is to applied on GMF
+     * location of border nodes (relative to container).
      * 
      * @param expectedSide
      *            the side on which the border item appears as defined in
@@ -165,36 +175,52 @@ public class EditPartQuery {
      *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if
      *            parent is resized from East or West</li>
      *            </ul>
+     * @param resizedSide
+     *            the side that is moved as defined in {@link PositionConstants}
+     *            . Possible values are
+     *            <ul>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if
+     *            parent is resized from East</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if
+     *            parent is resized from West</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if
+     *            parent is resized from North</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if
+     *            parent is resized from South</li>
+     *            </ul>
      * @param parentResizeSize
      *            the resize size of the parent
      * @return A Map with a move delta for each nodes that must be moved
      */
-    public Map<Node, Integer> getBorderedNodesToMoveWithDelta(int expectedSide, int parentResizeSize) {
-        Map<Node, Integer> result = new HashMap<Node, Integer>();
-        if (part instanceof IBorderedShapeEditPart) {
-            // calculate the parent bounds with consideration for the handle
-            // bounds inset.
-            IFigure parentFigure = ((IBorderedShapeEditPart) part).getMainFigure();
-            Rectangle parentBounds = parentFigure.getBounds();
-            if (parentFigure instanceof NodeFigure) {
-                parentBounds = ((NodeFigure) parentFigure).getHandleBounds().getCopy();
-            }
-
-            List<Node> expectedSideNodes = getBorderedNodes(expectedSide);
-            if (parentResizeSize < 0) {
-                // The container is reduced
+    public Map<Node, Dimension> getBorderedNodesToMoveWithDelta(int expectedSide, int resizedSide, int parentResizeSize) {
+        Map<Node, Dimension> result = new HashMap<Node, Dimension>();
+        if (parentResizeSize < 0 && part instanceof IBorderedShapeEditPart) {
+            // The container is reduced
+            List<IBorderItemEditPart> expectedSideEditParts = getBorderNodeEditParts(expectedSide);
+            if (expectedSideEditParts.size() > 0) {
+                // Calculate the parent bounds with consideration for the handle
+                // bounds insets.
+                IFigure parentFigure = ((IBorderedShapeEditPart) part).getBorderedFigure();
+                Rectangle parentBounds = parentFigure.getBounds();
+                if (parentFigure instanceof NodeFigure) {
+                    parentBounds = ((NodeFigure) parentFigure).getHandleBounds().getCopy();
+                }
+                // Sort edit parts according to the resized side (the shortest
+                // border nodes should be in first).
+                Set<IBorderItemEditPart> sortedEditParts = sortEditParts(expectedSideEditParts, resizedSide);
                 if (expectedSide == PositionConstants.EAST || expectedSide == PositionConstants.WEST) {
                     // If the parent is reduced from the north (or from the
                     // south and the new height is too small, the bordered node
                     // must be moved to be near the bottom of parent.
-                    result = getBorderedNodesToMoveVerticallyWithDelta(expectedSideNodes, parentBounds, parentResizeSize);
+                    result = getBorderedNodesToMoveVerticallyWithDelta(sortedEditParts, parentBounds, resizedSide, parentResizeSize);
                 } else if (expectedSide == PositionConstants.NORTH || expectedSide == PositionConstants.SOUTH) {
                     // If the parent is reduced from the east (or from the west
                     // and the new width is too small, the bordered node must be
                     // moved to be near the right of parent.
-                    result = getBorderedNodesToMoveHorizontallyWithDelta(expectedSideNodes, parentBounds, parentResizeSize);
+                    result = getBorderedNodesToMoveHorizontallyWithDelta(sortedEditParts, parentBounds, resizedSide, parentResizeSize);
                 }
             }
+
         }
         return result;
     }
@@ -222,54 +248,274 @@ public class EditPartQuery {
     }
 
     /**
-     * @param nodes
-     *            Nodes potentially concerned by this resize.
+     * @param editParts
+     *            Edit parts potentially concerned by this resize.
      * @param parentBounds
      *            The available bounds to consider for the parent
+     * @param resizedSide
+     *            the side that is moved as defined in {@link PositionConstants}
+     *            . Possible values are
+     *            <ul>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if
+     *            parent is resized from North</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if
+     *            parent is resized from South</li>
+     *            </ul>
      * @param parentResizeSize
      *            the resize size of the parent
      */
-    private Map<Node, Integer> getBorderedNodesToMoveVerticallyWithDelta(List<Node> nodes, Rectangle parentBounds, int parentResizeSize) {
-        Map<Node, Integer> result = new HashMap<Node, Integer>();
-        for (Node node : nodes) {
+    private Map<Node, Dimension> getBorderedNodesToMoveVerticallyWithDelta(Set<IBorderItemEditPart> editParts, Rectangle parentBounds, int resizedSide, int parentResizeSize) {
+        Map<IBorderItemEditPart, Dimension> defaultComputedShifting = new LinkedHashMap<IBorderItemEditPart, Dimension>();
+        Map<Node, Dimension> shiftingAccordingToBorderItemLocator = new LinkedHashMap<Node, Dimension>();
+        for (IBorderItemEditPart editPart : editParts) {
+            Node node = (Node) editPart.getModel();
             if (node.getLayoutConstraint() instanceof Bounds) {
                 Bounds borderedNodeBounds = (Bounds) node.getLayoutConstraint();
-                // Compute the distance between the bottom of the
-                // container and the bottom of the bordered node (we
-                // add the default_offset because it is used for
-                // our DBorderItemLocator).
-                int distanceFromBottom = parentBounds.height - IBorderItemOffsets.DEFAULT_OFFSET.height - (borderedNodeBounds.getY() + borderedNodeBounds.getHeight());
-                if (distanceFromBottom < -parentResizeSize) {
-                    result.put(node, distanceFromBottom + parentResizeSize);
+                if (PositionConstants.NORTH == resizedSide) {
+                    // Check if the distance from top will be enough after
+                    // resize. If not, this border node must be shift to 0 for y
+                    // axis. If there are several nodes at 0, they will be fixed
+                    // just after with the BorderItemLocator.
+                    if (borderedNodeBounds.getY() < -parentResizeSize) {
+                        defaultComputedShifting.put(editPart, new Dimension(0, -borderedNodeBounds.getY()));
+                    }
+                } else {
+                    // Compute the distance between the bottom of the
+                    // container and the bottom of the bordered node (we
+                    // add the default_offset because it is used for
+                    // our DBorderItemLocator).
+                    int distanceFromBottom = parentBounds.height - IBorderItemOffsets.DEFAULT_OFFSET.height - (borderedNodeBounds.getY() + borderedNodeBounds.getHeight());
+                    // Check if the distance from bottom will be enough after
+                    // resize. If not, this border node must be shift to the
+                    // bottom of the parent. If there are several nodes at the
+                    // bottom of the parent, they will be fixed just after with
+                    // the BorderItemLocator.
+                    if (distanceFromBottom < -parentResizeSize) {
+                        defaultComputedShifting.put(editPart, new Dimension(0, distanceFromBottom + parentResizeSize));
+                    }
                 }
             }
         }
-        return result;
+        // Fix the expected shifting according to the BorderItemLocator (to
+        // avoid conflicts)
+        HashMap<IGraphicalEditPart, IFigure> partToFigureToIgnore = Maps.newHashMap();
+        for (IBorderItemEditPart editPart : defaultComputedShifting.keySet()) {
+            partToFigureToIgnore.put(editPart, editPart.getFigure());
+        }
+        for (IBorderItemEditPart borderItemEditPart : defaultComputedShifting.keySet()) {
+            // We must check that there is no conflicts with
+            // existing border nodes
+            Rectangle currentBounds = borderItemEditPart.getFigure().getBounds();
+            Rectangle expectedNewBounds = currentBounds.getCopy();
+            expectedNewBounds.setX(expectedNewBounds.x + defaultComputedShifting.get(borderItemEditPart).width);
+            expectedNewBounds.setY(expectedNewBounds.y + defaultComputedShifting.get(borderItemEditPart).height);
+            IBorderItemLocator borderItemLocator = borderItemEditPart.getBorderItemLocator();
+            if (borderItemLocator instanceof DBorderItemLocator) {
+                // Temporary resize the parent figure for valid location
+                // computation
+                Rectangle borderItemLocatorParentBounds = ((DBorderItemLocator) borderItemLocator).getParentFigure().getBounds();
+                if (PositionConstants.NORTH == resizedSide) {
+                    borderItemLocatorParentBounds.y = borderItemLocatorParentBounds.y - parentResizeSize;
+                    expectedNewBounds.y = expectedNewBounds.y - parentResizeSize;
+                }
+                borderItemLocatorParentBounds.height = borderItemLocatorParentBounds.height + parentResizeSize;
+                expectedNewBounds = ((DBorderItemLocator) borderItemLocator).getValidLocation(expectedNewBounds, borderItemEditPart.getFigure(), partToFigureToIgnore.values(),
+                        new ArrayList<IFigure>());
+                // Reset the temporary size of the parent figure
+                if (PositionConstants.NORTH == resizedSide) {
+                    borderItemLocatorParentBounds.y = borderItemLocatorParentBounds.y + parentResizeSize;
+                }
+                borderItemLocatorParentBounds.height = borderItemLocatorParentBounds.height - parentResizeSize;
+
+            } else {
+                expectedNewBounds = borderItemLocator.getValidLocation(expectedNewBounds, borderItemEditPart.getFigure());
+            }
+            if (PositionConstants.NORTH == resizedSide) {
+                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y
+                        + parentResizeSize));
+            } else {
+                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y));
+            }
+            // Directly set the figure to be considered by next border item edit
+            // part (if any)
+            borderItemEditPart.getFigure().getBounds().x = expectedNewBounds.x;
+            borderItemEditPart.getFigure().getBounds().y = expectedNewBounds.y;
+            // Remove the located figure
+            partToFigureToIgnore.remove(borderItemEditPart);
+        }
+        return shiftingAccordingToBorderItemLocator;
     }
 
     /**
-     * @param nodes
-     *            Nodes potentially concerned by this resize.
+     * @param editParts
+     *            Edit parts potentially concerned by this resize.
      * @param parentBounds
      *            The available bounds to consider for the parent
+     * @param resizedSide
+     *            the side that is moved as defined in {@link PositionConstants}
+     *            . Possible values are
+     *            <ul>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if
+     *            parent is resized from East</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if
+     *            parent is resized from West</li>
+     *            </ul>
      * @param parentResizeSize
      *            the resize size of the parent
      */
-    private Map<Node, Integer> getBorderedNodesToMoveHorizontallyWithDelta(List<Node> nodes, Rectangle parentBounds, int parentResizeSize) {
-        Map<Node, Integer> result = new HashMap<Node, Integer>();
-        for (Node node : nodes) {
+    private Map<Node, Dimension> getBorderedNodesToMoveHorizontallyWithDelta(Set<IBorderItemEditPart> editParts, Rectangle parentBounds, int resizedSide, int parentResizeSize) {
+        Map<IBorderItemEditPart, Dimension> defaultComputedShifting = new LinkedHashMap<IBorderItemEditPart, Dimension>();
+        Map<Node, Dimension> shiftingAccordingToBorderItemLocator = new LinkedHashMap<Node, Dimension>();
+        for (IBorderItemEditPart editPart : editParts) {
+            Node node = (Node) editPart.getModel();
             if (node.getLayoutConstraint() instanceof Bounds) {
                 Bounds borderedNodeBounds = (Bounds) node.getLayoutConstraint();
-                // Compute the distance between the right of the
-                // container and the right of the bordered node (we
-                // add the default_offset because it is used for
-                // our DBorderItemLocator).
-                int distanceFromRight = parentBounds.width - IBorderItemOffsets.DEFAULT_OFFSET.height - (borderedNodeBounds.getX() + borderedNodeBounds.getWidth());
-                if (distanceFromRight < -parentResizeSize) {
-                    result.put(node, distanceFromRight + parentResizeSize);
+                if (PositionConstants.WEST == resizedSide) {
+                    // Check if the distance from left will be enough after
+                    // resize. If not, this border node must be shift to 0 for x
+                    // axis. If there are several nodes at 0, they will be fixed
+                    // just after with the BorderItemLocator.
+                    if (borderedNodeBounds.getX() < -parentResizeSize) {
+                        defaultComputedShifting.put(editPart, new Dimension(-borderedNodeBounds.getX(), 0));
+                    }
+                } else {
+                    // Compute the distance between the right of the
+                    // container and the right of the bordered node (we
+                    // add the default_offset because it is used for
+                    // our DBorderItemLocator).
+                    int distanceFromRight = parentBounds.width - IBorderItemOffsets.DEFAULT_OFFSET.height - (borderedNodeBounds.getX() + borderedNodeBounds.getWidth());
+                    // Check if the distance from right will be enough after
+                    // resize. If not, this border node must be shift to the
+                    // right of the parent. If there are several nodes at the
+                    // right of the parent, they will be fixed just after with
+                    // the BorderItemLocator.
+                    if (distanceFromRight < -parentResizeSize) {
+                        defaultComputedShifting.put(editPart, new Dimension(distanceFromRight + parentResizeSize, 0));
+                    }
                 }
             }
         }
-        return result;
+        // Fix the expected shifting according to the borderItemLocator (to
+        // avoid conflicts)
+        HashMap<IGraphicalEditPart, IFigure> partToFigureToIgnore = Maps.newHashMap();
+        for (IBorderItemEditPart editPart : defaultComputedShifting.keySet()) {
+            partToFigureToIgnore.put(editPart, editPart.getFigure());
+        }
+        for (IBorderItemEditPart borderItemEditPart : defaultComputedShifting.keySet()) {
+            // We must check that there is no conflicts with
+            // existing border nodes
+            Rectangle currentBounds = borderItemEditPart.getFigure().getBounds();
+            Rectangle expectedNewBounds = currentBounds.getCopy();
+            expectedNewBounds.setX(expectedNewBounds.x + defaultComputedShifting.get(borderItemEditPart).width);
+            expectedNewBounds.setY(expectedNewBounds.y + defaultComputedShifting.get(borderItemEditPart).height);
+            IBorderItemLocator borderItemLocator = borderItemEditPart.getBorderItemLocator();
+            if (borderItemLocator instanceof DBorderItemLocator) {
+                // Temporary resize the parent figure for valid location
+                // computation
+                Rectangle borderItemLocatorParentBounds = ((DBorderItemLocator) borderItemLocator).getParentFigure().getBounds();
+                if (PositionConstants.WEST == resizedSide) {
+                    borderItemLocatorParentBounds.x = borderItemLocatorParentBounds.x - parentResizeSize;
+                    expectedNewBounds.x = expectedNewBounds.x - parentResizeSize;
+                }
+                borderItemLocatorParentBounds.width = borderItemLocatorParentBounds.width + parentResizeSize;
+                expectedNewBounds = ((DBorderItemLocator) borderItemLocator).getValidLocation(expectedNewBounds, borderItemEditPart.getFigure(), partToFigureToIgnore.values(),
+                        new ArrayList<IFigure>());
+                // Reset the temporary size of the parent figure
+                if (PositionConstants.WEST == resizedSide) {
+                    borderItemLocatorParentBounds.x = borderItemLocatorParentBounds.x + parentResizeSize;
+                }
+                borderItemLocatorParentBounds.width = borderItemLocatorParentBounds.width - parentResizeSize;
+            } else {
+                expectedNewBounds = borderItemLocator.getValidLocation(expectedNewBounds, borderItemEditPart.getFigure());
+            }
+            if (PositionConstants.WEST == resizedSide) {
+                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x + parentResizeSize, expectedNewBounds.y
+                        - currentBounds.y));
+            } else {
+                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y));
+            }
+            // Directly set the figure to be considered by next border item edit
+            // part (if any)
+            borderItemEditPart.getFigure().getBounds().x = expectedNewBounds.x;
+            borderItemEditPart.getFigure().getBounds().y = expectedNewBounds.y;
+            // Remove the located figure
+            partToFigureToIgnore.remove(borderItemEditPart);
+        }
+        return shiftingAccordingToBorderItemLocator;
+    }
+
+    /**
+     * Sort the {@link IBorderItemEditPart} according to the resized side.
+     * 
+     * @param nodes
+     *            List of {@link IBorderItemEditPart} to sort
+     * @param resizedSide
+     *            the side that is moved as defined in {@link PositionConstants}
+     *            . Possible values are
+     *            <ul>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if
+     *            parent is resized from East</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if
+     *            parent is resized from West</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if
+     *            parent is resized from North</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if
+     *            parent is resized from South</li>
+     *            </ul>
+     * @return A new sorted list
+     */
+    private Set<IBorderItemEditPart> sortEditParts(List<IBorderItemEditPart> nodes, int resizedSide) {
+        Function<IBorderItemEditPart, Integer> getValueToCompareFunction;
+        if (PositionConstants.NORTH == resizedSide) {
+            // Smaller y in first
+            getValueToCompareFunction = new Function<IBorderItemEditPart, Integer>() {
+                public Integer apply(IBorderItemEditPart from) {
+                    Node node = (Node) from.getModel();
+                    if (node.getLayoutConstraint() instanceof Bounds) {
+                        Bounds nodeBounds = (Bounds) node.getLayoutConstraint();
+                        return nodeBounds.getY();
+                    }
+                    return 0;
+                }
+            };
+        } else if (PositionConstants.SOUTH == resizedSide) {
+            // Greater (y+height) in first
+            getValueToCompareFunction = new Function<IBorderItemEditPart, Integer>() {
+                public Integer apply(IBorderItemEditPart from) {
+                    Node node = (Node) from.getModel();
+                    if (node.getLayoutConstraint() instanceof Bounds) {
+                        Bounds nodeBounds = (Bounds) node.getLayoutConstraint();
+                        return -(nodeBounds.getY() + nodeBounds.getHeight());
+                    }
+                    return 0;
+                }
+            };
+        } else if (PositionConstants.EAST == resizedSide) {
+            // Greater (x+width) in first
+            getValueToCompareFunction = new Function<IBorderItemEditPart, Integer>() {
+                public Integer apply(IBorderItemEditPart from) {
+                    Node node = (Node) from.getModel();
+                    if (node.getLayoutConstraint() instanceof Bounds) {
+                        Bounds nodeBounds = (Bounds) node.getLayoutConstraint();
+                        return -(nodeBounds.getX() + nodeBounds.getWidth());
+                    }
+                    return 0;
+                }
+            };
+        } else {
+            // Smaller x in first
+            getValueToCompareFunction = new Function<IBorderItemEditPart, Integer>() {
+                public Integer apply(IBorderItemEditPart from) {
+                    Node node = (Node) from.getModel();
+                    if (node.getLayoutConstraint() instanceof Bounds) {
+                        Bounds nodeBounds = (Bounds) node.getLayoutConstraint();
+                        return nodeBounds.getX();
+                    }
+                    return 0;
+                }
+            };
+        }
+        Ordering<IBorderItemEditPart> ordering = Ordering.natural().onResultOf(getValueToCompareFunction);
+        return ImmutableSortedSet.orderedBy(ordering).addAll(nodes).build();
     }
 }

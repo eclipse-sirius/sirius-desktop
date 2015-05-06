@@ -12,29 +12,24 @@ package org.eclipse.sirius.diagram.ui.business.internal.operation;
 
 import java.util.List;
 
-import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 
 /**
  * This command moves the specified bordered nodes of a given EditPart
- * vertically or horizontally. It is used when an AbstractDNode is resized to
- * ensure the bordered nodes stay at the same side.
+ * vertically or horizontally. The GMF location constraint is updated according
+ * to the passed delta. It is used when an AbstractDNode is resized to ensure
+ * the bordered nodes stay at the same side.
  * 
  * @author lredor
  */
 public class ShiftDirectBorderedNodesOperation extends AbstractModelChangeOperation<Void> {
     /**
-     * The direction is one of {@link PositionConstants#HORIZONTAL} or
-     * {@link PositionConstants#VERTICAL}
-     */
-    private final int direction;
-
-    /**
      * The delta
      */
-    private final int delta;
+    private Dimension delta;
 
     /**
      * The Node to move
@@ -47,18 +42,13 @@ public class ShiftDirectBorderedNodesOperation extends AbstractModelChangeOperat
      * @param children
      *            the bordered nodes that must be shifted.
      * @param delta
-     *            the vertical or horizontal amount to shift the bordered nodes
+     *            the vertical and horizontal amount to shift the bordered nodes
      *            (in logical space).
-     * @param direction
-     *            the direction, vertical or horizontal to shift the bordered
-     *            nodes (one of {@link PositionConstants#HORIZONTAL} or
-     *            {@link PositionConstants#VERTICAL})
      */
-    public ShiftDirectBorderedNodesOperation(List<Node> children, int delta, int direction) {
+    public ShiftDirectBorderedNodesOperation(List<Node> children, Dimension delta) {
         super("Shift bordered nodes' positions by " + delta);
         this.children = children;
         this.delta = delta;
-        this.direction = direction;
     }
 
     /**
@@ -68,13 +58,10 @@ public class ShiftDirectBorderedNodesOperation extends AbstractModelChangeOperat
     public Void execute() {
         for (Node child : children) {
             LayoutConstraint layoutConstraint = child.getLayoutConstraint();
-            if (layoutConstraint instanceof Location && delta != 0) {
+            if (layoutConstraint instanceof Location && delta != null && (delta.width != 0 || delta.height != 0)) {
                 Location location = (Location) layoutConstraint;
-                if (PositionConstants.HORIZONTAL == direction) {
-                    location.setX(location.getX() + delta);
-                } else {
-                    location.setY(location.getY() + delta);
-                }
+                location.setX(location.getX() + delta.width);
+                location.setY(location.getY() + delta.height);
             }
         }
         return null;

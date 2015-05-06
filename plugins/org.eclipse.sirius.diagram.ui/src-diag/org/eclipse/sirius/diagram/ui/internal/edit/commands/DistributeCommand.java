@@ -22,7 +22,6 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -588,10 +587,10 @@ public class DistributeCommand extends AbstractTransactionalCommand {
                 Dimension delta = newBounds.getLocation().getDifference(getBoundsFunction.apply(editPart).getLocation());
                 if (delta.width != 0) {
                     wrappedCommand.compose(CommandFactory.createICommand(wrappedCommand.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList((Node) editPart.getModel()),
-                            delta.width, PositionConstants.HORIZONTAL)));
+                            new Dimension(delta.width, 0))));
                 } else {
                     wrappedCommand.compose(CommandFactory.createICommand(wrappedCommand.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList((Node) editPart.getModel()),
-                            delta.height, PositionConstants.VERTICAL)));
+                            new Dimension(0, delta.height))));
                 }
                 previousPartBounds = expectedNewBounds;
             }
