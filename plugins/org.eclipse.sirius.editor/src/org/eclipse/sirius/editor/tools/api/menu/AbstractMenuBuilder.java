@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.MissingResourceException;
 
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -33,6 +35,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.SubContributionItem;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.internal.metamodel.helper.EClassHelper;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.tools.internal.editor.EditorCustomizationManager;
 import org.eclipse.sirius.ext.base.Option;
@@ -228,6 +231,12 @@ public abstract class AbstractMenuBuilder {
     protected IMenuManager myMenuManager;
 
     /**
+     * Map associating CreateChildAction objects with the priority of their
+     * corresponding CommandParameter object.
+     */
+    private Map<CreateChildAction, Integer> priorityMap = new HashMap<CreateChildAction, Integer>();
+
+    /**
      * Create a new builder.
      */
     public AbstractMenuBuilder() {
@@ -412,8 +421,21 @@ public abstract class AbstractMenuBuilder {
     protected Collection generateCreateChildActions(final Collection actionDescriptors, final ISelection selection, final IEditorPart editor) {
         final Collection actions = new ArrayList();
         if (actionDescriptors != null) {
+            ResourceLocator rl = SiriusEditorPlugin.INSTANCE;
             for (final Object actionDescriptor : actionDescriptors) {
-                actions.add(new CreateChildAction(editor, selection, actionDescriptor));
+                CreateChildAction cca = new CreateChildAction(editor, selection, actionDescriptor);
+                if (actionDescriptor instanceof CommandParameter) {
+                    Object value = ((CommandParameter) actionDescriptor).getValue();
+                    String key = EClassHelper.getPath(((EObject) value).eClass());
+                    int priority = 1000000000;
+                    try {
+                        priority = Integer.parseInt(rl.getString(key));
+                    } catch (MissingResourceException mre) {
+                    } catch (NumberFormatException nfe) {
+                    }
+                    priorityMap.put(cca, priority);
+                }
+                actions.add(cca);
             }
         }
         return actions;
@@ -429,7 +451,7 @@ public abstract class AbstractMenuBuilder {
     }
 
     /**
-     * depopulate the menu.
+     * Depopulate the menu.
      */
     public void depopulateMenu() {
         if (getMenu().some()) {
@@ -453,10 +475,26 @@ public abstract class AbstractMenuBuilder {
             Comparator<IAction> comparator = new Comparator<IAction>() {
                 @Override
                 public int compare(IAction a1, IAction a2) {
-                    return Collator.getInstance().compare(a1.getText(), a2.getText());
+                    int returnedInt;
+                    if (!priorityMap.containsKey(a1) && !priorityMap.containsKey(a2)) {
+                        returnedInt = 0;
+                    } else if (!priorityMap.containsKey(a1)) {
+                        returnedInt = 1;
+                    } else if (!priorityMap.containsKey(a2)) {
+                        returnedInt = -1;
+                    } else {
+                        returnedInt = priorityMap.get(a1) - priorityMap.get(a2);
+                    }
+                    if (returnedInt == 0) {
+                        // if both actions have no priority associated, or if
+                        // they have the same priority, we compare the text
+                        returnedInt = Collator.getInstance().compare(a1.getText(), a2.getText());
+                    }
+                    return returnedInt;
                 }
             };
             Collections.sort(sortedActions, comparator);
+            priorityMap.clear();
 
             for (final IAction action : sortedActions) {
                 if (contributionID != null) {

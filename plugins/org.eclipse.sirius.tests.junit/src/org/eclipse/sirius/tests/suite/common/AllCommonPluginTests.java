@@ -64,6 +64,7 @@ import org.eclipse.sirius.tests.unit.common.RefreshEditorsPrecommitListenerTests
 import org.eclipse.sirius.tests.unit.common.RestoreSessionFromEditorInputTests;
 import org.eclipse.sirius.tests.unit.common.SaverTest;
 import org.eclipse.sirius.tests.unit.common.SiriusCrossReferenceAdapterTests;
+import org.eclipse.sirius.tests.unit.common.SubMenusPrioritiesTest;
 import org.eclipse.sirius.tests.unit.common.TransientSessionTests;
 import org.eclipse.sirius.tests.unit.common.WorkspaceResourceSyncTestCase;
 import org.eclipse.sirius.tests.unit.common.interpreter.CompoundInterpreterTestCase;
@@ -274,6 +275,8 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(SiriusControlAndCrossReferenceInMultiSessionTest.class);
         suite.addTestSuite(ModelsToSemanticResourcesMigrationTest.class);
         suite.addTestSuite(OpenSessionTest.class);
+
+        suite.addTestSuite(SubMenusPrioritiesTest.class);
     }
 
     /**
