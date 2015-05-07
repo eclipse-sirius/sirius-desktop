@@ -30,5 +30,7 @@
   </systemColors>
   <labelBorderStyles>
     <labelBorderStyleDescriptions id="labelBorderStyleWithBeveledCorner" name="Label Border Style With Beveled Corner" cornerHeight="5" cornerWidth="5"/>
+    <labelBorderStyleDescriptions id="labelBorderForContainer" name="Label Border For Container"/>
+    <labelBorderStyleDescriptions id="nolabelBorderForList" name="No Label Border For List"/>
   </labelBorderStyles>
 </description:Environment>

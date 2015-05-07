@@ -77,7 +77,7 @@ public class ContainerWithTitleBlockFigure extends DefaultSizeNodeFigure {
             SiriusWrapLabel containerLabelFigure = child.getLabelFigure();
 
             // Only LabelBorderStyleWithBeveledCorner is supported.
-            if (containerLabelFigure != null && containerLabelFigure.isVisible() && LabelBorderStyleIds.getLabelBorderStyleWithBeveledCornersIds().equals(labelBorderStyleDescription.getId())) {
+            if (containerLabelFigure != null && containerLabelFigure.isVisible() && LabelBorderStyleIds.LABEL_BORDER_STYLE_WITH_BEVELED_CORNERS_ID.equals(labelBorderStyleDescription.getId())) {
                 Rectangle containerLabelFigureBounds = containerLabelFigure.getBounds();
                 paintTitleBlockOnLabel(graphics, containerLabelFigureBounds);
             }

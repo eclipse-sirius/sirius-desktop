@@ -58,6 +58,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListViewNodeLis
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.ComparisonHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
@@ -180,7 +181,7 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
             DDiagramElementContainer ddec = (DDiagramElementContainer) element;
             if (ddec.getStyle() instanceof FlatContainerStyle && ddec.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
                 FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) ddec.getStyle().getDescription();
-                return fcsd.getLabelBorderStyle() != null;
+                return fcsd.getLabelBorderStyle() != null && !LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(fcsd.getLabelBorderStyle().getId());
             }
         }
         return false;

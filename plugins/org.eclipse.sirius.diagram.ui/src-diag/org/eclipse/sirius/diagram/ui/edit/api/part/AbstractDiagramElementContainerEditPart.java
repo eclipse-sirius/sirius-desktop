@@ -455,9 +455,9 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         NodeFigure result;
         if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
             final DStylizable viewNode = (DStylizable) eObj;
-            Option<LabelBorderStyleDescription> hasLabelBorderStyle = hasLabelBorderStyle(viewNode);
-            if (hasLabelBorderStyle.some()) {
-                result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), viewNode, hasLabelBorderStyle.get());
+            Option<LabelBorderStyleDescription> getLabelBorderStyle = getLabelBorderStyle(viewNode);
+            if (getLabelBorderStyle.some()) {
+                result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), viewNode, getLabelBorderStyle.get());
             } else {
                 result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
             }
@@ -468,7 +468,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         return result;
     }
 
-    private Option<LabelBorderStyleDescription> hasLabelBorderStyle(DStylizable viewNode) {
+    private Option<LabelBorderStyleDescription> getLabelBorderStyle(DStylizable viewNode) {
         if (viewNode.getStyle() instanceof FlatContainerStyle && viewNode.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
             FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) viewNode.getStyle().getDescription();
             if (fcsd.getLabelBorderStyle() != null) {

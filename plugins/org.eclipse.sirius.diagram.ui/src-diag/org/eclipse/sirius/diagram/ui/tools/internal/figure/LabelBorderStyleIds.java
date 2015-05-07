@@ -16,34 +16,27 @@ package org.eclipse.sirius.diagram.ui.tools.internal.figure;
  * @author smonnier
  */
 public final class LabelBorderStyleIds {
+    /**
+     * Returns the identifier used for beveled corners.
+     */
+    public static final String LABEL_BORDER_STYLE_WITH_BEVELED_CORNERS_ID = "labelBorderStyleWithBeveledCorner";
 
-    private static LabelBorderStyleIds instance;
+    /**
+     * Returns the identifier used for border style description for container.
+     * This impacts the container content pane: it starts after the label.
+     */
+    public static final String LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID = "labelBorderForContainer";
+
+    /**
+     * Returns the identifier used for the no label border style for lists. No
+     * impact on content panes.
+     */
+    public static final String NO_LABEL_BORDER_STYLE_FOR_LISTS_ID = "nolabelBorderForList";
 
     /**
      * Avoid instantiation from external.
      */
     private LabelBorderStyleIds() {
         // empty.
-    }
-
-    /**
-     * Returns the shared instance.
-     * 
-     * @return the shared instance.
-     */
-    public static LabelBorderStyleIds getInstance() {
-        if (instance == null) {
-            instance = new LabelBorderStyleIds();
-        }
-        return instance;
-    }
-
-    /**
-     * Returns the identifier used for beveled corners.
-     * 
-     * @return the identifier used for beveled corners.
-     */
-    public static String getLabelBorderStyleWithBeveledCornersIds() {
-        return "labelBorderStyleWithBeveledCorner";
     }
 }

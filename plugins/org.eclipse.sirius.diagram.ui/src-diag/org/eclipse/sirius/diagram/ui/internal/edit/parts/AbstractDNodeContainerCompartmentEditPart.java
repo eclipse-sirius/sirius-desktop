@@ -70,12 +70,14 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerViewNo
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ContainerCompartmentNodeEditPolicy;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gef.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -206,7 +208,13 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
     }
 
     private void configureBorder(ResizableCompartmentFigure rcf) {
-        if (!isRegionContainerCompartment() || hasLabelBorderStyle() || isLabelHidden()) {
+        boolean shouldHaveBorder = isRegionContainerCompartment();
+        Option<LabelBorderStyleDescription> labelBorderStyle = getLabelBorderStyle();
+        if (labelBorderStyle.some()) {
+            shouldHaveBorder = shouldHaveBorder || LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
+        }
+
+        if (!shouldHaveBorder || isLabelHidden()) {
             if (rcf.getBorder() instanceof LineBorder) {
                 // Do not draw the top line border for free form containers.
                 rcf.setBorder(new MarginBorder(getMapMode().DPtoLP(1), 0, 0, 0));
@@ -224,16 +232,16 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         return false;
     }
 
-    private boolean hasLabelBorderStyle() {
+    private Option<LabelBorderStyleDescription> getLabelBorderStyle() {
         EObject element = resolveSemanticElement();
         if (element instanceof DDiagramElementContainer) {
             DDiagramElementContainer ddec = (DDiagramElementContainer) element;
             if (ddec.getStyle() instanceof FlatContainerStyle && ddec.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
                 FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) ddec.getStyle().getDescription();
-                return fcsd.getLabelBorderStyle() != null;
+                return Options.newSome(fcsd.getLabelBorderStyle());
             }
         }
-        return false;
+        return Options.newNone();
     }
 
     @Override

@@ -41,7 +41,9 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
@@ -50,6 +52,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementC
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 
 import com.google.common.collect.Iterables;
@@ -211,18 +214,31 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
         IFigure pane = null;
         if (editPart instanceof IBorderItemEditPart) {
             pane = getBorderedFigure().getBorderItemContainer();
-        } else if (editPart instanceof AbstractDiagramElementContainerNameEditPart || isRegionContainer()) {
+        } else if (editPart instanceof AbstractDiagramElementContainerNameEditPart || isRegionContainer() || hasFullLabelBorder()) {
             // Add the name edit part to the content pane figure which is
             // currently the primary shape, see
             // AbstractDiagramElementContainerEditPart.createMainFigure().
             //
             // Also add all non border parts to the content pane if the current
-            // part is a region container. This is done to retrieve the "list"
+            // part is a region container of define a full label border. This is
+            // done to retrieve the "list"
             // behavior and layout.
             pane = getContentPane();
         } else {
             pane = super.getContentPaneFor(editPart);
         }
         return pane;
+    }
+
+    private boolean hasFullLabelBorder() {
+        EObject element = resolveSemanticElement();
+        if (element instanceof DDiagramElementContainer) {
+            DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+            if (ddec.getStyle() instanceof FlatContainerStyle && ddec.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
+                FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) ddec.getStyle().getDescription();
+                return fcsd.getLabelBorderStyle() != null && LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(fcsd.getLabelBorderStyle().getId());
+            }
+        }
+        return false;
     }
 }
