@@ -371,7 +371,7 @@
          <package namespaceUri="http://www.eclipse.org/sirius/diagram/description/1.1.0"/>
          <package namespaceUri="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"/>
          <constraints categories="org.eclipse.sirius.diagram.constraints">
-               <constraint
+            <constraint
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.DiagramMandatoryDomainClassConstraint"
                   id="org.eclipse.sirius.diagram.constraints.MandatoryDomainClass"
                   lang="Java"
@@ -429,6 +429,156 @@
                </message>
                <description>
                   Validates that there is no blank SemanticCandidatesExpression for a recursive ContainerMapping
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.RegionMappingCardinalityConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="Region mapping cardinality constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Mapping {0} is defined as a Region Container, it should have at least one Container mapping as child or reused mapping.
+               </message>
+               <description>
+                  Validates that Region Container Mapping should not be a Region (contained by another RegionContainer)
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.CompartmentContainmentConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="Compartment recursivity constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Mapping {0} should not be defined as a Region Container (ie children presentation set to horizontal stack or vertical stack) as it is itself defined as a Region (ie contained in a Region Container).
+               </message>
+               <description>
+                  Validates that Region Container Mapping should not be a Region (contained by another RegionContainer)
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.ReuseContainersInContainerListConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="Reused Containers in Container List constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Container List Mapping {0} should not reuse a container mappings.
+               </message>
+               <description>
+                  Validates that List mappings does not reuse container mappings.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.ContainersInContainerListConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="Containers in Container List constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Mapping {0} should not be defined as a container mapping as it is contained in a Container List.
+               </message>
+               <description>
+                  Validates that Container mapping should not be contained by a List mapping.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.NoReusedNodesInRegionContainerConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="No reused nodes in region container constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Region Container mapping {0} should not reuse nodes as sub node mappings.
+               </message>
+               <description>
+                  Validates that a Region Container mapping does not reuse children node mapping.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.NoReusedBorderedNodesInRegion"
+                  lang="Java"
+                  mode="Batch"
+                  name="No reused bordered nodes in region constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Region mapping {0} should not reuse Bordered Node mappings. However, they can be placed as bordered node mappings of the parent RegionContainer mapping.
+               </message>
+               <description>
+                  Validates that a Region does not reuse Bordered Nodes.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.NoMappingFilterOnRegionsConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="No mapping filter on regions constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Filter {0} is not supported on Region mapping.
+               </message>
+               <description>
+                  Validates that filtering nodes is not supported on Region mapping.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.RegionStyleConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="RegionContainer and Region style constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+            The style {0} is not valid for its parent mapping {1}. Only the gradient style is supported for RegionContainer and Region mappings.
+               </message>
+               <description>
+            Validates that only Gradient is used as style of RegionContainer and Region mappings.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.NoSubNodesInRegionContainerConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="No sub nodes in region container constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Node mapping {0} should not be placed in a RegionContainer mapping as a sub node mapping. However, they can be placed in one of the Region mapping.
+               </message>
+               <description>
+                  Validates that Node mappings are not contained in a RegionContainer mapping.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ContainerMappingChildrenPresentationConstraints"
+                  id="org.eclipse.sirius.diagram.constraints.NoBorderedNodesInRegion"
+                  lang="Java"
+                  mode="Batch"
+                  name="No bordered nodes in region constraint"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  BorderedNodes are not supported for Regions. However, they can be placed in the parent RegionContainer.
+               </message>
+               <description>
+                  Validates that BorderNode mapping are not contained in a Region mapping.
                </description>
             </constraint>
             <constraint

@@ -19,7 +19,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EPackageMapping" preconditionExpression="&lt;%eContainer != null%>" semanticCandidatesExpression="[eSubpackages/]" createElements="false" domainClass="ecore.EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@nodeMappings[name='EClassMappingBis']" reusedContainerMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']" childrenPresentation="List">
+        <containerMappings name="EPackageMapping" preconditionExpression="&lt;%eContainer != null%>" semanticCandidatesExpression="[eSubpackages/]" createElements="false" domainClass="ecore.EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@nodeMappings[name='EClassMappingBis']" reusedContainerMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']">
           <style xsi:type="style:FlatContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
