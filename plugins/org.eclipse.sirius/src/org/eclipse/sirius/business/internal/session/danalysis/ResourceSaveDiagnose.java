@@ -18,9 +18,9 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 
 /**
  * Class able to tell whether a save operation on a resource can succeed or not,
@@ -51,9 +51,7 @@ public class ResourceSaveDiagnose {
      * @return true if the resource might be saved, false otherwise.
      */
     public boolean isSaveable() {
-        boolean isSaveable = false;
-        ResourceSet resourceSet = resourcetoSave.getResourceSet();
-        isSaveable = resourceSet != null && !Boolean.TRUE.equals(resourceSet.getURIConverter().getAttributes(resourcetoSave.getURI(), null).get(URIConverter.ATTRIBUTE_READ_ONLY));
+        boolean isSaveable = !ResourceSetSync.isReadOnly(resourcetoSave);
         return isSaveable;
     }
 
@@ -110,8 +108,8 @@ public class ResourceSaveDiagnose {
                     final InputStream newContents = uriConverter.createInputStream(temporaryFileURI);
                     try {
                         final byte[] oldContentBuffer = new byte[4000];
-                        LOOP: for (int oldLength = oldContents.read(oldContentBuffer), newLength = newContents.read(newContentBuffer); (equal = oldLength == newLength) && oldLength > 0; oldLength = oldContents
-                                .read(oldContentBuffer), newLength = newContents.read(newContentBuffer)) {
+                        LOOP: for (int oldLength = oldContents.read(oldContentBuffer), newLength = newContents.read(newContentBuffer); (equal = oldLength == newLength)
+                                && oldLength > 0; oldLength = oldContents.read(oldContentBuffer), newLength = newContents.read(newContentBuffer)) {
                             for (int i = 0; i < oldLength; ++i) {
                                 if (oldContentBuffer[i] != newContentBuffer[i]) {
                                     equal = false;

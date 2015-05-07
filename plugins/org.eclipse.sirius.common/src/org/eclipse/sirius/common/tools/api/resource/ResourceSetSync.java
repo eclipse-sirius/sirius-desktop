@@ -218,12 +218,28 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
         boolean readonly = false;
         URI resourceURI = resource.getURI();
         ResourceSet resourceSet = resource.getResourceSet();
-        if (resourceURI != null
-                && (EPackage.Registry.INSTANCE.containsKey(resourceURI.toString()) || (resourceSet != null && Boolean.TRUE.equals(resourceSet.getURIConverter().getAttributes(resourceURI, null)
-                        .get(URIConverter.ATTRIBUTE_READ_ONLY))))) {
+        if (resourceURI != null && isMetamodel(resource)
+                || (resourceSet != null && Boolean.TRUE.equals(resourceSet.getURIConverter().getAttributes(resourceURI, null).get(URIConverter.ATTRIBUTE_READ_ONLY)))) {
             readonly = true;
         }
         return readonly;
+    }
+
+    /**
+     * Test if the specified resource corresponds to a {@link EPackage} from
+     * central {@link EPackage.Registry} or one from {@link ResourceSet}.
+     * 
+     * @param resource
+     *            the {@link Resource} to test
+     * @return true if the resource corresponds to a {@link EPackage}, false
+     *         otherwise
+     */
+    private static boolean isMetamodel(Resource resource) {
+        boolean isMetamodel = false;
+        URI resourceURI = resource.getURI();
+        ResourceSet resourceSet = resource.getResourceSet();
+        isMetamodel = EPackage.Registry.INSTANCE.containsKey(resourceURI.toString()) || resourceSet != null && resourceSet.getPackageRegistry().containsKey(resourceURI.toString());
+        return isMetamodel;
     }
 
     /**
@@ -389,6 +405,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     /**
      * {@inheritDoc}
      */
+    @Override
     public void statusChanged(final Resource resource, final ResourceStatus oldStatus, final ResourceStatus newStatus) {
         /*
          * we're handling the changes from the workspace backend in batch in the
@@ -404,6 +421,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
      * You should not need to call this method, it's called by the synchronizer
      * backends to give updates to the synchronizer.
      */
+    @Override
     public void statusesChanged(Collection<ResourceStatusChange> changesFromBackend) {
         Collection<ResourceStatusChange> changesToTransmit = Sets.newLinkedHashSet();
         for (ResourceStatusChange changeFromWorkspace : changesFromBackend) {
