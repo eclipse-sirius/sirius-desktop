@@ -1,0 +1,7 @@
+target "eef-1.5"
+
+with source, requirements
+
+location EEF-1_5 "http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201412231052" {
+        org.eclipse.emf.eef.runtime-feature.feature.group [1.5.0,2.0.0)
+}

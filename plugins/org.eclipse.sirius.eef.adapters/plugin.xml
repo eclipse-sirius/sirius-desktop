@@ -41,4 +41,10 @@
          <adapter type="org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter" />
       </factory>
    </extension>
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.eclipse.sirius.eef.listeners.EEFSessionManagerListener">
+      </listener>
+   </extension>
 </plugin>

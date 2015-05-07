@@ -185,6 +185,13 @@ h4. Changes in @org.eclipse.sirius.synchronizer@
 * The method @org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator.hasFastResult(EObject, SemanticPartition, CreatedOutput)@ now takes a @CreatedOutput@ as additional parameter element to allow to have the parent output element.
 * The method @org.eclipse.sirius.synchronizer.SemanticPartition.evaluate(EObject, CreatedOutput)@ now takes a @CreatedOutput@ as additional parameter. This @CreatedOutput@ represents the output model element which will become the parent of the elements created from the evaluation result.
 
+h4. Changes in @org.eclipse.sirius.eef.adapters@
+
+* This plug-in now requires the version 1.5.0 of @org.eclipse.emf.eef.runtime@ bundle. This plug-in *optimizes EEF performance with Sirius* using *org.eclipse.sirius.eef.components.SiriusAwarePropertiesEditingComponent* as root class of the generated EEF components. Refer to *Using the Extended Editing Framework with Sirius* documentation.
+* The following packages are set to x-internal:=true
+** org.eclipse.sirius.eef.actions
+** org.eclipse.sirius.eef.adapters
+
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * The method @org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)@ has been added to change the read only status of the given resources.

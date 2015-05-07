@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_kepler" sequenceNumber="1430754481">
+<target name="sirius_kepler" sequenceNumber="1431013424">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.1.201309031307"/>
@@ -13,8 +13,8 @@
       <repository id="Acceleo-3_4" location="http://download.eclipse.org/acceleo/updates/releases/3.4/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.2.2.201309121245"/>
-      <repository id="EEF-1_2" location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2"/>
+      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.0.201412231052"/>
+      <repository id="EEF-1_5" location="http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201412231052"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.feature.group" version="2.1.2.201310031412"/>

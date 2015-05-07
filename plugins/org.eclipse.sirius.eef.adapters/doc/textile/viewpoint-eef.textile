@@ -21,6 +21,10 @@ If you plan to use EEF properties only in a designer  (for diagrams, tables, ...
 
 !(shadow)../images/2 - VP Contributor ID.png!
 
+In order to *optimize EEF performance with Sirius*, change the root class of the generated EEF components to a dedicated Sirius aware components. This can be done by defining the value of the _Leaf Components Super Class_ to *org.eclipse.sirius.eef.components.SiriusAwarePropertiesEditingComponent*.
+
+!(shadow)../images/2-1 - Leaf Components.png!
+
 Another interesting properties can be changed in this model, the generation directory. Default initialization set this value to the folder _src-gen_  of the plug-in containing the EEF models.
 
 h3. Generating EEF code

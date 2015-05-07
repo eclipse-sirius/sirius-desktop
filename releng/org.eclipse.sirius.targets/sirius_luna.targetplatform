@@ -1,5 +1,6 @@
 target "sirius_luna"
 
+include "modules/eef-1.5.tpd"
 include "modules/orbit.tpd"
 include "modules/swtbot-2.1.tpd"
 include "modules/shared-license.tpd"
@@ -17,7 +18,6 @@ location Eclipse-Luna "http://download.eclipse.org/releases/luna" {
         org.eclipse.emf.compare.feature.group [3.0.0,4.0.0)
         org.eclipse.emf.ecore.feature.group [2.10.0,2.11.0)
         org.eclipse.emf.edit.feature.group [2.10.0,2.11.0)
-        org.eclipse.emf.eef.runtime [1.2.0,2.0.0)
         org.eclipse.emf.feature.group [2.10.0,2.11.0)
         org.eclipse.emf.sdk.feature.group [2.10.0,2.11.0)
         org.eclipse.emf.transaction.feature.group [1.8.0,1.9.0)
