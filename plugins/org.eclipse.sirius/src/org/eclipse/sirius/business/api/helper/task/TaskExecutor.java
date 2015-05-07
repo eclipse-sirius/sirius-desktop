@@ -70,7 +70,11 @@ public final class TaskExecutor {
      * 
      * @param tasks
      *            the tasks list to undo
+     * 
+     * @deprecated is no more useful since undo/redo is managed by EMF
+     *             Transaction.
      */
+    @Deprecated
     public static void undo(final List<ICommandTask> tasks) {
         TaskExecutor.operation(tasks, KIND_UNDO);
     }
@@ -80,7 +84,11 @@ public final class TaskExecutor {
      * 
      * @param tasks
      *            the tasks list to redo
+     * 
+     * @deprecated is no more useful since undo/redo is managed by EMF
+     *             Transaction.
      */
+    @Deprecated
     public static void redo(final List<ICommandTask> tasks) {
         TaskExecutor.operation(tasks, KIND_REDO);
     }

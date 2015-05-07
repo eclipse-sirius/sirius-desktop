@@ -64,11 +64,19 @@ public interface ICommandTask {
 
     /**
      * Undo the task. By default it will not undo the children tasks.
+     * 
+     * @deprecated is no more useful since undo/redo is managed by EMF
+     *             Transaction.
      */
+    @Deprecated
     void undo();
 
     /**
      * Redo the task. By default it will not redo the children tasks.
+     * 
+     * @deprecated is no more useful since undo/redo is managed by EMF
+     *             Transaction.
      */
+    @Deprecated
     void redo();
 }

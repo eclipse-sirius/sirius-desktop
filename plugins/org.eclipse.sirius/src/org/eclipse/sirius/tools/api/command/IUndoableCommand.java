@@ -13,8 +13,10 @@ package org.eclipse.sirius.tools.api.command;
 /**
  * An Undoable command.
  * 
+ * @deprecated is no more useful since undo/redo is managed by EMF Transaction.
  * @author mchauvin
  */
+@Deprecated
 public interface IUndoableCommand {
 
     /**

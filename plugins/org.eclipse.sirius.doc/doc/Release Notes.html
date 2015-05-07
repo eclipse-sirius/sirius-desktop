@@ -183,6 +183,15 @@
 				<code>org.eclipse.sirius.viewpoint.DAnalysis</code> returns a non-modifiable list. Use 
 				<code>getSemanticResources()</code> instead.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()</code> methods are deprecated because they are useless since undo/redo is managed by EMF Transaction.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface are deprecated because it is useless since undo/redo is managed by EMF Transaction.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.helper.task.TaskExecutor.undo()/redo()</code> methods are deprecated because they are useless since undo/redo is managed by EMF Transaction.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
