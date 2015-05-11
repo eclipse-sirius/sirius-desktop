@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -96,14 +96,14 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Activate Layouting Mode" };
 
-    private static final String[] NODE_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Font Color",
+    private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Font Color",
             "Fill &Color", "Li&ne Color", "Line Style" };
 
-    private static final String[] NODE_TOOLBARBUTTONS_TOOLTIPS = { "Pin selected elements", "Unpin selected elements", "Copy the layout of the selected diagram elements", "Hide element",
-            "Delete from Diagram", "Delete from Model", "Font", "Set style to workspace image", ResetStylePropertiesToDefaultValuesAction.ACTION_NAME,
+    private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { "Pin selected elements", "Unpin selected elements", "Copy the layout of the selected diagram elements", "Hide element",
+            "Hide label", "Delete from Diagram", "Delete from Model", "Font", "Set style to workspace image", ResetStylePropertiesToDefaultValuesAction.ACTION_NAME,
             "Apply the applicable appearance properties of the first selected shape to the other selected shapes.", "Make height and width same size", "Auto Size" };
 
-    private static final String[] NODE_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Bold Font Style", "Italic Font Style" };
+    private static final String[] CONTAINER_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Bold Font Style", "Italic Font Style" };
 
     private static final String TABBAR_EXTENSION_ON_DIAGRAM_ELEMENT = "Action on DDiagramElement (F5)";
 
@@ -272,14 +272,14 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     // (can be found in the toolbar) and
     // at the expected place.
     private void checkDiagramElementTabbarButtons(boolean activeExtensions) {
-        List<String> elementSelectedTabbarButtons = Lists.newArrayList(NODE_TOOLBARBUTTONS_TOOLTIPS);
+        List<String> elementSelectedTabbarButtons = Lists.newArrayList(CONTAINER_TOOLBARBUTTONS_TOOLTIPS);
         if (activeExtensions) {
             elementSelectedTabbarButtons.add(TABBAR_EXTENSION_ON_DIAGRAM_ELEMENT);
         }
 
         // Validate tools of the tab bar with a diagram element selected
-        for (int i = 0; i < NODE_TOOLBARDROPDOWNBUTTONS_TOOLTIPS.length; i++) {
-            String expectedTooltip = NODE_TOOLBARDROPDOWNBUTTONS_TOOLTIPS[i];
+        for (int i = 0; i < CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS.length; i++) {
+            String expectedTooltip = CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS[i];
             SWTBotToolbarDropDownButton button = editor.bot().toolbarDropDownButton(i);
             assertEquals("The toolbarDropDownButton index " + i + " does not have the expected tooltip", expectedTooltip, button.getToolTipText());
         }
@@ -288,8 +288,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBotToolbarButton button = editor.bot().toolbarButton(i);
             assertEquals("The toolbarButton index " + i + " does not have the expected tooltip", expectedTooltip, button.getToolTipText());
         }
-        for (int i = 0; i < NODE_TOOLBARTOGGLEBUTTONS_TOOLTIPS.length; i++) {
-            String expectedTooltip = NODE_TOOLBARTOGGLEBUTTONS_TOOLTIPS[i];
+        for (int i = 0; i < CONTAINER_TOOLBARTOGGLEBUTTONS_TOOLTIPS.length; i++) {
+            String expectedTooltip = CONTAINER_TOOLBARTOGGLEBUTTONS_TOOLTIPS[i];
             SWTBotToolbarToggleButton button = editor.bot().toolbarToggleButton(i);
             assertEquals("The toolbarToggleButton index " + i + " does not have the expected tooltip", expectedTooltip, button.getToolTipText());
         }

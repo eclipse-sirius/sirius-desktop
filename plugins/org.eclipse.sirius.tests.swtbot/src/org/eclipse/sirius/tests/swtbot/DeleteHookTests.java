@@ -305,7 +305,7 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
      * Delete from model.
      */
     private void deleteFromModelWithTabbarButton() {
-        SWTBotToolbarButton deleteFromModelButtonBot = editor.bot().toolbarButton(5);
+        SWTBotToolbarButton deleteFromModelButtonBot = editor.bot().toolbarButton(6);
         deleteFromModelButtonBot.click();
     }
 
