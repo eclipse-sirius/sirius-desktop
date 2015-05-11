@@ -60,6 +60,10 @@
 			<li>Property sections for interpreted expressions (yellow background) now have a button next to the text field to open a dialog with a bigger text area (also providing auto-completion).</li>
 			<li>The hide label per default capability has been added to the container styles.</li>
 			<li>Property sections for image paths now have a button next to the text field to open a dialog browsing for images.</li>
+			<li>The children presentation property of a ContainerMapping has two new values 
+				<code>Vertical Stack</code> and 
+				<code>Horizontal Stack</code>. They indicates that a container will present its children containers as a vertical/horizontal stack of compartments. These two stack values are experimental.
+			</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
@@ -622,7 +626,7 @@
 				<code>org.eclipse.sirius.diagram.ui.business.api.view.ValidateAction.getDSemanticDecorator()</code> for an example. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer2">Changes in 
 			<code>org.eclipse.sirius.synchronizer</code>
 		</h4>
 		<ul>
@@ -1068,7 +1072,7 @@
 				<code>DTreeItem</code>. On expansion a refresh of children is done.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.synchronizer2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer3">Changes in 
 			<code>org.eclipse.sirius.synchronizer</code>
 		</h4>
 		<ul>
@@ -1748,7 +1752,7 @@
 				<code>com.google.common.base.Function</code>, but keeps the same API otherwise.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.synchronizer3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer4">Changes in 
 			<code>org.eclipse.sirius.synchronizer</code>
 		</h4>
 		<ul>

@@ -23,6 +23,7 @@ h3. Specifier-Visible Changes
 * Property sections for interpreted expressions (yellow background) now have a button next to the text field to open a dialog with a bigger text area (also providing auto-completion).
 * The hide label per default capability has been added to the container styles.
 * Property sections for image paths now have a button next to the text field to open a dialog browsing for images.
+* The children presentation property of a ContainerMapping has two new values @Vertical Stack@ and @Horizontal Stack@. They indicates that a container will present its children containers as a vertical/horizontal stack of compartments. These two stack values are experimental.
 
 h3. API Changes
 

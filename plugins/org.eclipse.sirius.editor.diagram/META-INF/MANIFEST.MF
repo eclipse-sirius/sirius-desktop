@@ -77,7 +77,7 @@ Export-Package: org.eclipse.sirius.diagram.editor.properties.filters.concern.con
  org.eclipse.sirius.diagram.editor.properties.filters.tool.requestdescription;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.filters.tool.toolgroupextension;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.filters.tool.toolsection;version="2.0.4",
- org.eclipse.sirius.diagram.editor.properties.section.description.containermapping;version="2.0.4",
+ org.eclipse.sirius.diagram.editor.properties.section.description.containermapping;version="2.1.0",
  org.eclipse.sirius.diagram.editor.properties.section.description.diagramelementmapping;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.sections.concern.concerndescription;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.sections.description.abstractnodemapping;version="2.0.4",
