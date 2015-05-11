@@ -11,13 +11,12 @@
 package org.eclipse.sirius.tests.unit.api.session;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -27,7 +26,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.session.SavingPolicy;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -147,11 +145,15 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
     public void testSaveSessionWithErrorDuringSave() {
         // Open session
         doOpenSession();
-        session.setSavingPolicy(new SavingPolicy() {
+        session.getSessionResource().eAdapters().add(new AdapterImpl() {
+
             @Override
-            public Collection<Resource> save(Iterable<Resource> resourcesToSave, Map<?, ?> options, IProgressMonitor monitor) {
-                throw new RuntimeException("This is a SavingPolicy that always fails.");
+            public void notifyChanged(Notification msg) {
+                if (msg.getNotifier() == session.getSessionResource() && msg.getFeatureID(null) == Resource.RESOURCE__IS_MODIFIED) {
+                    throw new RuntimeException("An adapter to have save fails.");
+                }
             }
+
         });
         // Enable viewpoint
         doCreateViews();
