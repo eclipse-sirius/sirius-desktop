@@ -14,8 +14,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IResource;
+import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.view.IExpandSelectionTarget;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.ISelectionListener;
@@ -47,9 +49,22 @@ public final class EclipseUIUtil {
     }
 
     private static IWorkbenchWindow getActiveWindow() {
-        IWorkbench workbench = PlatformUI.getWorkbench();
+        final IWorkbench workbench = PlatformUI.getWorkbench();
         if (workbench != null) {
-            return workbench.getActiveWorkbenchWindow();
+            final RunnableWithResult<IWorkbenchWindow> getActiveWorkbenchWindowRunnable = new RunnableWithResult.Impl<IWorkbenchWindow>() {
+                @Override
+                public void run() {
+                    setResult(workbench.getActiveWorkbenchWindow());
+                }
+            };
+            if (null == Display.getCurrent()) {
+                // Getting the active workbench window through UI thread
+                workbench.getDisplay().syncExec(getActiveWorkbenchWindowRunnable);
+            } else {
+                // Already in the UI thread.
+                getActiveWorkbenchWindowRunnable.run();
+            }
+            return getActiveWorkbenchWindowRunnable.getResult();
         }
         return null;
     }
@@ -241,8 +256,8 @@ public final class EclipseUIUtil {
 
     /**
      * Add a selection listener to the site for the workbench part. Looks for a
-     * {@link ISelectionService} by calling {@link IServiceLocator#getService}
-     * on the site.
+     * {@link ISelectionService} by calling
+     * {@link org.eclipse.ui.services.IServiceLocator#getService} on the site.
      * 
      * @param part
      *            the workbench part
@@ -262,7 +277,7 @@ public final class EclipseUIUtil {
     /**
      * Remove a selection listener from the site for the workbench part. Looks
      * for a {@link ISelectionService} by calling
-     * {@link IServiceLocator#getService} on the site.
+     * {@link org.eclipse.ui.services.IServiceLocator#getService} on the site.
      * 
      * @param part
      *            the workbench part
