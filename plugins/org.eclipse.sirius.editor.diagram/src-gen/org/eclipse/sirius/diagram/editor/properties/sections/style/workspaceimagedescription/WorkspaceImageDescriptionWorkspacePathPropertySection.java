@@ -14,9 +14,13 @@ package org.eclipse.sirius.diagram.editor.properties.sections.style.workspaceima
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
+import org.eclipse.sirius.editor.tools.internal.presentation.WorkspaceAndPluginsResourceDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
@@ -28,7 +32,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * A section for the workspacePath property of a WorkspaceImageDescription
  * object.
  */
-public class WorkspaceImageDescriptionWorkspacePathPropertySection extends AbstractTextPropertySection {
+public class WorkspaceImageDescriptionWorkspacePathPropertySection extends AbstractTextWithButtonPropertySection {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -46,14 +50,14 @@ public class WorkspaceImageDescriptionWorkspacePathPropertySection extends Abstr
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "WorkspacePath"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -65,21 +69,21 @@ public class WorkspaceImageDescriptionWorkspacePathPropertySection extends Abstr
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
     public EAttribute getFeature() {
         return StylePackage.eINSTANCE.getWorkspaceImageDescription_WorkspacePath();
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
     protected Object getFeatureValue(String newText) {
         return newText;
     }
 
     /**
-     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
@@ -106,6 +110,19 @@ public class WorkspaceImageDescriptionWorkspacePathPropertySection extends Abstr
 
         // End of user code create controls
 
+    }
+
+    @Override
+    protected SelectionListener createButtonListener() {
+        return new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(composite.getShell());
+                if (imagePath != null) {
+                    text.setText(imagePath);
+                    handleTextModified();
+                }
+            }
+        };
     }
 
     /**

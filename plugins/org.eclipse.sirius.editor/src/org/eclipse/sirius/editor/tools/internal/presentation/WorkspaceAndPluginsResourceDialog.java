@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.common.ui.tools.api.resource;
+package org.eclipse.sirius.editor.tools.internal.presentation;
 
 import java.io.File;
 import java.io.IOException;
@@ -248,9 +248,11 @@ public class WorkspaceAndPluginsResourceDialog extends ElementTreeSelectionDialo
                 // the workspace root
                 ITargetPlatformService service = (ITargetPlatformService) PlatformUI.getWorkbench().getService(ITargetPlatformService.class);
                 ITargetDefinition td = null;
-                try {
-                    td = service.getWorkspaceTargetHandle().getTargetDefinition();
-                } catch (CoreException e) {
+                if (service != null) {
+                    try {
+                        td = service.getWorkspaceTargetHandle().getTargetDefinition();
+                    } catch (CoreException e) {
+                    }
                 }
                 if (td != null) {
                     WorkbenchProxyObject wpoTargetDefinition = new WorkbenchProxyObject(td, null);
