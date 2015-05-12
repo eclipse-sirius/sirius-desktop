@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Ordered List</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Numeration</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getOrderedList()
  * @model
  * @generated
@@ -37,7 +37,7 @@ public interface OrderedList extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Numeration</em>' attribute.
      * @see #setNumeration(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getOrderedList_Numeration()
@@ -51,7 +51,7 @@ public interface OrderedList extends EObject {
      * {@link org.eclipse.sirius.tests.sample.docbook.OrderedList#getNumeration
      * <em>Numeration</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Numeration</em>' attribute.
      * @see #getNumeration()

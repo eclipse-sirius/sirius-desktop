@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Abstract Sect</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * Para</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getAbstractSect()
  * @model abstract="true"
  * @generated
@@ -40,7 +40,7 @@ public interface AbstractSect extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Title</em>' containment reference.
      * @see #setTitle(Title)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getAbstractSect_Title()
@@ -54,7 +54,7 @@ public interface AbstractSect extends EObject {
      * {@link org.eclipse.sirius.tests.sample.docbook.AbstractSect#getTitle
      * <em>Title</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Title</em>' containment reference.
      * @see #getTitle()
@@ -72,7 +72,7 @@ public interface AbstractSect extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Para</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getAbstractSect_Para()
      * @model containment="true"

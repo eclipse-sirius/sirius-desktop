@@ -33,14 +33,14 @@ import org.eclipse.sirius.tests.sample.docbook.DocbookPackage;
  * <em>Address</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AuthorImpl extends EObjectImpl implements Author {
     /**
      * The default value of the '{@link #getEmail() <em>Email</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEmail()
      * @generated
      * @ordered
@@ -50,17 +50,17 @@ public class AuthorImpl extends EObjectImpl implements Author {
     /**
      * The cached value of the '{@link #getEmail() <em>Email</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEmail()
      * @generated
      * @ordered
      */
-    protected String email = EMAIL_EDEFAULT;
+    protected String email = AuthorImpl.EMAIL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPersonname() <em>Personname</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPersonname()
      * @generated
      * @ordered
@@ -70,17 +70,17 @@ public class AuthorImpl extends EObjectImpl implements Author {
     /**
      * The cached value of the '{@link #getPersonname() <em>Personname</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPersonname()
      * @generated
      * @ordered
      */
-    protected String personname = PERSONNAME_EDEFAULT;
+    protected String personname = AuthorImpl.PERSONNAME_EDEFAULT;
 
     /**
      * The default value of the '{@link #getAddress() <em>Address</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAddress()
      * @generated
      * @ordered
@@ -90,16 +90,16 @@ public class AuthorImpl extends EObjectImpl implements Author {
     /**
      * The cached value of the '{@link #getAddress() <em>Address</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAddress()
      * @generated
      * @ordered
      */
-    protected String address = ADDRESS_EDEFAULT;
+    protected String address = AuthorImpl.ADDRESS_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AuthorImpl() {
@@ -108,7 +108,7 @@ public class AuthorImpl extends EObjectImpl implements Author {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,70 +118,79 @@ public class AuthorImpl extends EObjectImpl implements Author {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getEmail() {
         return email;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setEmail(String newEmail) {
         String oldEmail = email;
         email = newEmail;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.AUTHOR__EMAIL, oldEmail, email));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getPersonname() {
         return personname;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setPersonname(String newPersonname) {
         String oldPersonname = personname;
         personname = newPersonname;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.AUTHOR__PERSONNAME, oldPersonname, personname));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getAddress() {
         return address;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setAddress(String newAddress) {
         String oldAddress = address;
         address = newAddress;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.AUTHOR__ADDRESS, oldAddress, address));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -199,7 +208,7 @@ public class AuthorImpl extends EObjectImpl implements Author {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,20 +229,20 @@ public class AuthorImpl extends EObjectImpl implements Author {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DocbookPackage.AUTHOR__EMAIL:
-            setEmail(EMAIL_EDEFAULT);
+            setEmail(AuthorImpl.EMAIL_EDEFAULT);
             return;
         case DocbookPackage.AUTHOR__PERSONNAME:
-            setPersonname(PERSONNAME_EDEFAULT);
+            setPersonname(AuthorImpl.PERSONNAME_EDEFAULT);
             return;
         case DocbookPackage.AUTHOR__ADDRESS:
-            setAddress(ADDRESS_EDEFAULT);
+            setAddress(AuthorImpl.ADDRESS_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -241,31 +250,32 @@ public class AuthorImpl extends EObjectImpl implements Author {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DocbookPackage.AUTHOR__EMAIL:
-            return EMAIL_EDEFAULT == null ? email != null : !EMAIL_EDEFAULT.equals(email);
+            return AuthorImpl.EMAIL_EDEFAULT == null ? email != null : !AuthorImpl.EMAIL_EDEFAULT.equals(email);
         case DocbookPackage.AUTHOR__PERSONNAME:
-            return PERSONNAME_EDEFAULT == null ? personname != null : !PERSONNAME_EDEFAULT.equals(personname);
+            return AuthorImpl.PERSONNAME_EDEFAULT == null ? personname != null : !AuthorImpl.PERSONNAME_EDEFAULT.equals(personname);
         case DocbookPackage.AUTHOR__ADDRESS:
-            return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
+            return AuthorImpl.ADDRESS_EDEFAULT == null ? address != null : !AuthorImpl.ADDRESS_EDEFAULT.equals(address);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (email: ");

@@ -41,14 +41,14 @@ import org.eclipse.sirius.tests.sample.docbook.XRef;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage
  * @generated
  */
 public class DocbookSwitch<T> extends Switch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static DocbookPackage modelPackage;
@@ -56,33 +56,33 @@ public class DocbookSwitch<T> extends Switch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DocbookSwitch() {
-        if (modelPackage == null) {
-            modelPackage = DocbookPackage.eINSTANCE;
+        if (DocbookSwitch.modelPackage == null) {
+            DocbookSwitch.modelPackage = DocbookPackage.eINSTANCE;
         }
     }
 
     /**
      * Checks whether this is a switch for the given package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @parameter ePackage the package in question.
      * @return whether this is a switch for the given package.
      * @generated
      */
     @Override
     protected boolean isSwitchFor(EPackage ePackage) {
-        return ePackage == modelPackage;
+        return ePackage == DocbookSwitch.modelPackage;
     }
 
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -93,142 +93,165 @@ public class DocbookSwitch<T> extends Switch<T> {
         case DocbookPackage.BOOK: {
             Book book = (Book) theEObject;
             T result = caseBook(book);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.INFO: {
             Info info = (Info) theEObject;
             T result = caseInfo(info);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.AUTHOR: {
             Author author = (Author) theEObject;
             T result = caseAuthor(author);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.CHAPTER: {
             Chapter chapter = (Chapter) theEObject;
             T result = caseChapter(chapter);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.TITLE: {
             Title title = (Title) theEObject;
             T result = caseTitle(title);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.PARA: {
             Para para = (Para) theEObject;
             T result = casePara(para);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.SIMPLE_LIST: {
             SimpleList simpleList = (SimpleList) theEObject;
             T result = caseSimpleList(simpleList);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.ITEMIZED_LIST: {
             ItemizedList itemizedList = (ItemizedList) theEObject;
             T result = caseItemizedList(itemizedList);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.ORDERED_LIST: {
             OrderedList orderedList = (OrderedList) theEObject;
             T result = caseOrderedList(orderedList);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.SECT1: {
             Sect1 sect1 = (Sect1) theEObject;
             T result = caseSect1(sect1);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractSect(sect1);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.ABSTRACT_SECT: {
             AbstractSect abstractSect = (AbstractSect) theEObject;
             T result = caseAbstractSect(abstractSect);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.SECT2: {
             Sect2 sect2 = (Sect2) theEObject;
             T result = caseSect2(sect2);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractSect(sect2);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.EMPHASIS: {
             Emphasis emphasis = (Emphasis) theEObject;
             T result = caseEmphasis(emphasis);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.ULINK: {
             ULink uLink = (ULink) theEObject;
             T result = caseULink(uLink);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.LINK: {
             Link link = (Link) theEObject;
             T result = caseLink(link);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.XREF: {
             XRef xRef = (XRef) theEObject;
             T result = caseXRef(xRef);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.EXAMPLE: {
             Example example = (Example) theEObject;
             T result = caseExample(example);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractSect(example);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.SECT3: {
             Sect3 sect3 = (Sect3) theEObject;
             T result = caseSect3(sect3);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractSect(sect3);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case DocbookPackage.LIST_ITEM: {
             ListItem listItem = (ListItem) theEObject;
             T result = caseListItem(listItem);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -241,7 +264,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Book</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -258,7 +281,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Info</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -275,7 +298,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Author</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -292,7 +315,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Chapter</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -309,7 +332,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Title</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -326,7 +349,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Para</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -343,7 +366,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Simple List</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -360,7 +383,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Itemized List</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -377,7 +400,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Ordered List</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -394,7 +417,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Sect1</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -411,7 +434,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Abstract Sect</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -428,7 +451,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Sect2</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -445,7 +468,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Emphasis</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -462,7 +485,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>ULink</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -479,7 +502,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Link</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -496,7 +519,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>XRef</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -513,7 +536,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Example</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -530,7 +553,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>Sect3</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -547,7 +570,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>List Item</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -564,7 +587,7 @@ public class DocbookSwitch<T> extends Switch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

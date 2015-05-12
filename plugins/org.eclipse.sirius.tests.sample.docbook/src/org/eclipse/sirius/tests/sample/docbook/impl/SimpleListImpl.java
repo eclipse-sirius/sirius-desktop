@@ -20,13 +20,13 @@ import org.eclipse.sirius.tests.sample.docbook.SimpleList;
  * <em><b>Simple List</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class SimpleListImpl extends EObjectImpl implements SimpleList {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SimpleListImpl() {
@@ -35,7 +35,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

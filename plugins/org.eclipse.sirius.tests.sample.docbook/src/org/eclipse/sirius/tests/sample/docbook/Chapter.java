@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Chapter</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * </li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getChapter()
  * @model
  * @generated
@@ -44,7 +44,7 @@ public interface Chapter extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Title</em>' containment reference.
      * @see #setTitle(Title)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getChapter_Title()
@@ -58,7 +58,7 @@ public interface Chapter extends EObject {
      * {@link org.eclipse.sirius.tests.sample.docbook.Chapter#getTitle
      * <em>Title</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Title</em>' containment reference.
      * @see #getTitle()
@@ -76,7 +76,7 @@ public interface Chapter extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Para</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getChapter_Para()
      * @model containment="true"
@@ -94,7 +94,7 @@ public interface Chapter extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sect1</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getChapter_Sect1()
      * @model containment="true"
@@ -110,7 +110,7 @@ public interface Chapter extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getChapter_Id()
@@ -123,7 +123,7 @@ public interface Chapter extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.Chapter#getId <em>Id</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()

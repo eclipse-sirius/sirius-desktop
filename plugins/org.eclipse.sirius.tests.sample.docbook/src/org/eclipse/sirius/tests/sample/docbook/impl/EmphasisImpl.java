@@ -28,14 +28,14 @@ import org.eclipse.sirius.tests.sample.docbook.Emphasis;
  * <em>Remap</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EmphasisImpl extends EObjectImpl implements Emphasis {
     /**
      * The default value of the '{@link #getRemap() <em>Remap</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRemap()
      * @generated
      * @ordered
@@ -45,16 +45,16 @@ public class EmphasisImpl extends EObjectImpl implements Emphasis {
     /**
      * The cached value of the '{@link #getRemap() <em>Remap</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRemap()
      * @generated
      * @ordered
      */
-    protected String remap = REMAP_EDEFAULT;
+    protected String remap = EmphasisImpl.REMAP_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EmphasisImpl() {
@@ -63,7 +63,7 @@ public class EmphasisImpl extends EObjectImpl implements Emphasis {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,28 +73,31 @@ public class EmphasisImpl extends EObjectImpl implements Emphasis {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getRemap() {
         return remap;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setRemap(String newRemap) {
         String oldRemap = remap;
         remap = newRemap;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.EMPHASIS__REMAP, oldRemap, remap));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +111,7 @@ public class EmphasisImpl extends EObjectImpl implements Emphasis {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,14 +126,14 @@ public class EmphasisImpl extends EObjectImpl implements Emphasis {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DocbookPackage.EMPHASIS__REMAP:
-            setRemap(REMAP_EDEFAULT);
+            setRemap(EmphasisImpl.REMAP_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -138,27 +141,28 @@ public class EmphasisImpl extends EObjectImpl implements Emphasis {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DocbookPackage.EMPHASIS__REMAP:
-            return REMAP_EDEFAULT == null ? remap != null : !REMAP_EDEFAULT.equals(remap);
+            return EmphasisImpl.REMAP_EDEFAULT == null ? remap != null : !EmphasisImpl.REMAP_EDEFAULT.equals(remap);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (remap: ");

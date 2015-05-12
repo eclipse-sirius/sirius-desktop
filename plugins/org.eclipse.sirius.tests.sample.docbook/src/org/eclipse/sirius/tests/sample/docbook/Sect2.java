@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Sect2</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getSect2()
  * @model
  * @generated
@@ -38,7 +38,7 @@ public interface Sect2 extends AbstractSect {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getSect2_Id()
@@ -51,7 +51,7 @@ public interface Sect2 extends AbstractSect {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.Sect2#getId <em>Id</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -69,7 +69,7 @@ public interface Sect2 extends AbstractSect {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sect3</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getSect2_Sect3()
      * @model containment="true"

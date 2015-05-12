@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>XRef</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * Linkend</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getXRef()
  * @model
  * @generated
@@ -37,7 +37,7 @@ public interface XRef extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Linkend</em>' attribute.
      * @see #setLinkend(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getXRef_Linkend()
@@ -51,7 +51,7 @@ public interface XRef extends EObject {
      * {@link org.eclipse.sirius.tests.sample.docbook.XRef#getLinkend
      * <em>Linkend</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Linkend</em>' attribute.
      * @see #getLinkend()

@@ -20,13 +20,13 @@ import org.eclipse.sirius.tests.sample.docbook.Link;
  * <em><b>Link</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class LinkImpl extends EObjectImpl implements Link {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LinkImpl() {
@@ -35,7 +35,7 @@ public class LinkImpl extends EObjectImpl implements Link {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

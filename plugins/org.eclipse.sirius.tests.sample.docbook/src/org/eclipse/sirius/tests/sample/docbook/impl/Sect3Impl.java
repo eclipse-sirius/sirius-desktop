@@ -26,14 +26,14 @@ import org.eclipse.sirius.tests.sample.docbook.Sect3;
  * Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class Sect3Impl extends AbstractSectImpl implements Sect3 {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -43,16 +43,16 @@ public class Sect3Impl extends AbstractSectImpl implements Sect3 {
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = Sect3Impl.ID_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Sect3Impl() {
@@ -61,7 +61,7 @@ public class Sect3Impl extends AbstractSectImpl implements Sect3 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,28 +71,31 @@ public class Sect3Impl extends AbstractSectImpl implements Sect3 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.SECT3__ID, oldId, id));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +109,7 @@ public class Sect3Impl extends AbstractSectImpl implements Sect3 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,14 +124,14 @@ public class Sect3Impl extends AbstractSectImpl implements Sect3 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DocbookPackage.SECT3__ID:
-            setId(ID_EDEFAULT);
+            setId(Sect3Impl.ID_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -136,27 +139,28 @@ public class Sect3Impl extends AbstractSectImpl implements Sect3 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DocbookPackage.SECT3__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return Sect3Impl.ID_EDEFAULT == null ? id != null : !Sect3Impl.ID_EDEFAULT.equals(id);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");

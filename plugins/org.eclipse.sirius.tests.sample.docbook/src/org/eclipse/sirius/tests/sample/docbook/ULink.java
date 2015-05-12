@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>ULink</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getULink()
  * @model extendedMetaData="kind='simple'"
  * @generated
@@ -39,7 +39,7 @@ public interface ULink extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Url</em>' attribute.
      * @see #setUrl(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getULink_Url()
@@ -52,7 +52,7 @@ public interface ULink extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.ULink#getUrl <em>Url</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Url</em>' attribute.
      * @see #getUrl()
@@ -68,7 +68,7 @@ public interface ULink extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Data</em>' attribute.
      * @see #setData(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getULink_Data()
@@ -81,7 +81,7 @@ public interface ULink extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.ULink#getData
      * <em>Data</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Data</em>' attribute.
      * @see #getData()

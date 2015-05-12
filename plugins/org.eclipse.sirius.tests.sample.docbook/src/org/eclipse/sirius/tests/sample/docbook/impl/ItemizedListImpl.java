@@ -39,14 +39,14 @@ import org.eclipse.sirius.tests.sample.docbook.ListItem;
  * <em>Listitem</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
     /**
      * The default value of the '{@link #getMark() <em>Mark</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMark()
      * @generated
      * @ordered
@@ -56,17 +56,17 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
     /**
      * The cached value of the '{@link #getMark() <em>Mark</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMark()
      * @generated
      * @ordered
      */
-    protected String mark = MARK_EDEFAULT;
+    protected String mark = ItemizedListImpl.MARK_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getListitem() <em>Listitem</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getListitem()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ItemizedListImpl() {
@@ -84,7 +84,7 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,30 +94,34 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getMark() {
         return mark;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setMark(String newMark) {
         String oldMark = mark;
         mark = newMark;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.ITEMIZED_LIST__MARK, oldMark, mark));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ListItem> getListitem() {
         if (listitem == null) {
             listitem = new EObjectContainmentEList<ListItem>(ListItem.class, this, DocbookPackage.ITEMIZED_LIST__LISTITEM);
@@ -127,7 +131,7 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +145,7 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +161,7 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -177,14 +181,14 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DocbookPackage.ITEMIZED_LIST__MARK:
-            setMark(MARK_EDEFAULT);
+            setMark(ItemizedListImpl.MARK_EDEFAULT);
             return;
         case DocbookPackage.ITEMIZED_LIST__LISTITEM:
             getListitem().clear();
@@ -195,14 +199,14 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DocbookPackage.ITEMIZED_LIST__MARK:
-            return MARK_EDEFAULT == null ? mark != null : !MARK_EDEFAULT.equals(mark);
+            return ItemizedListImpl.MARK_EDEFAULT == null ? mark != null : !ItemizedListImpl.MARK_EDEFAULT.equals(mark);
         case DocbookPackage.ITEMIZED_LIST__LISTITEM:
             return listitem != null && !listitem.isEmpty();
         }
@@ -211,13 +215,14 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (mark: ");

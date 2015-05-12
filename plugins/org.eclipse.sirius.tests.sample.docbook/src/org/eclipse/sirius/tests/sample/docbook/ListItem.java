@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>List Item</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getListItem()
  * @model
  * @generated

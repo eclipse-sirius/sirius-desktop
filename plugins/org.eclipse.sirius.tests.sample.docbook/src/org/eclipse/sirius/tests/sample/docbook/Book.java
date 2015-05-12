@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Book</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getBook()
  * @model
  * @generated
@@ -45,7 +45,7 @@ public interface Book extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Bookinfo</em>' containment reference.
      * @see #setBookinfo(Info)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getBook_Bookinfo()
@@ -59,7 +59,7 @@ public interface Book extends EObject {
      * {@link org.eclipse.sirius.tests.sample.docbook.Book#getBookinfo
      * <em>Bookinfo</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Bookinfo</em>' containment
      *            reference.
@@ -78,7 +78,7 @@ public interface Book extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Chapter</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getBook_Chapter()
      * @model containment="true"
@@ -94,7 +94,7 @@ public interface Book extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getBook_Id()
@@ -107,7 +107,7 @@ public interface Book extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.Book#getId <em>Id</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -123,7 +123,7 @@ public interface Book extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Lang</em>' attribute.
      * @see #setLang(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getBook_Lang()
@@ -136,7 +136,7 @@ public interface Book extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.Book#getLang
      * <em>Lang</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Lang</em>' attribute.
      * @see #getLang()
@@ -152,7 +152,7 @@ public interface Book extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Version</em>' attribute.
      * @see #setVersion(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getBook_Version()
@@ -166,7 +166,7 @@ public interface Book extends EObject {
      * {@link org.eclipse.sirius.tests.sample.docbook.Book#getVersion
      * <em>Version</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Version</em>' attribute.
      * @see #getVersion()

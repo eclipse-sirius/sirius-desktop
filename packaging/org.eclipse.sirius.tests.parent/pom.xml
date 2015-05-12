@@ -69,6 +69,8 @@
     <module>../../plugins/org.eclipse.sirius.tests.sample.benchmark</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.docbook</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.design</module>
+    <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.edit</module>
+    <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.editor</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.migration</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.migration.design</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.component</module>

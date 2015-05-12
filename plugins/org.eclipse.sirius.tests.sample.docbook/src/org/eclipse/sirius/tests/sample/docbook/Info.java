@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Info</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * Pubdate</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getInfo()
  * @model
  * @generated
@@ -44,7 +44,7 @@ public interface Info extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Author</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getInfo_Author()
      * @model containment="true"
@@ -60,7 +60,7 @@ public interface Info extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Date</em>' attribute.
      * @see #setDate(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getInfo_Date()
@@ -73,7 +73,7 @@ public interface Info extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.Info#getDate
      * <em>Date</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Date</em>' attribute.
      * @see #getDate()
@@ -89,7 +89,7 @@ public interface Info extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Pubdate</em>' attribute.
      * @see #setPubdate(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getInfo_Pubdate()
@@ -103,7 +103,7 @@ public interface Info extends EObject {
      * {@link org.eclipse.sirius.tests.sample.docbook.Info#getPubdate
      * <em>Pubdate</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Pubdate</em>' attribute.
      * @see #getPubdate()

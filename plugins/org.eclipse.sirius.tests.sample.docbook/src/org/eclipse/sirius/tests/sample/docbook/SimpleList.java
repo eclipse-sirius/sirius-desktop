@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Simple List</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getSimpleList()
  * @model
  * @generated

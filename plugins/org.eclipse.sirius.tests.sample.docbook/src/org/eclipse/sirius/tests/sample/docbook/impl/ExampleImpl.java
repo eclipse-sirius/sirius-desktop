@@ -19,13 +19,13 @@ import org.eclipse.sirius.tests.sample.docbook.Example;
  * <em><b>Example</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ExampleImpl extends AbstractSectImpl implements Example {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExampleImpl() {
@@ -34,7 +34,7 @@ public class ExampleImpl extends AbstractSectImpl implements Example {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

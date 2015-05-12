@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Author</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * Address</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getAuthor()
  * @model
  * @generated
@@ -41,7 +41,7 @@ public interface Author extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Email</em>' attribute.
      * @see #setEmail(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getAuthor_Email()
@@ -54,7 +54,7 @@ public interface Author extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.Author#getEmail
      * <em>Email</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Email</em>' attribute.
      * @see #getEmail()
@@ -70,7 +70,7 @@ public interface Author extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Personname</em>' attribute.
      * @see #setPersonname(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getAuthor_Personname()
@@ -84,7 +84,7 @@ public interface Author extends EObject {
      * {@link org.eclipse.sirius.tests.sample.docbook.Author#getPersonname
      * <em>Personname</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Personname</em>' attribute.
      * @see #getPersonname()
@@ -100,7 +100,7 @@ public interface Author extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Address</em>' attribute.
      * @see #setAddress(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getAuthor_Address()
@@ -114,7 +114,7 @@ public interface Author extends EObject {
      * {@link org.eclipse.sirius.tests.sample.docbook.Author#getAddress
      * <em>Address</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Address</em>' attribute.
      * @see #getAddress()

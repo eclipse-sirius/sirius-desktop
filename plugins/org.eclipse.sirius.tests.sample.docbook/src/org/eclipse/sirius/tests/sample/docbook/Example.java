@@ -13,8 +13,8 @@ package org.eclipse.sirius.tests.sample.docbook;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Example</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getExample()
  * @model
  * @generated

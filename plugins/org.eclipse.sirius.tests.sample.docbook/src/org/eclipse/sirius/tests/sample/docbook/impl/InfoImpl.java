@@ -39,14 +39,14 @@ import org.eclipse.sirius.tests.sample.docbook.Info;
  * <em>Pubdate</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InfoImpl extends EObjectImpl implements Info {
     /**
      * The cached value of the '{@link #getAuthor() <em>Author</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAuthor()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class InfoImpl extends EObjectImpl implements Info {
     /**
      * The default value of the '{@link #getDate() <em>Date</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDate()
      * @generated
      * @ordered
@@ -66,17 +66,17 @@ public class InfoImpl extends EObjectImpl implements Info {
     /**
      * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDate()
      * @generated
      * @ordered
      */
-    protected String date = DATE_EDEFAULT;
+    protected String date = InfoImpl.DATE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPubdate() <em>Pubdate</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPubdate()
      * @generated
      * @ordered
@@ -86,16 +86,16 @@ public class InfoImpl extends EObjectImpl implements Info {
     /**
      * The cached value of the '{@link #getPubdate() <em>Pubdate</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPubdate()
      * @generated
      * @ordered
      */
-    protected String pubdate = PUBDATE_EDEFAULT;
+    protected String pubdate = InfoImpl.PUBDATE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InfoImpl() {
@@ -104,7 +104,7 @@ public class InfoImpl extends EObjectImpl implements Info {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,9 +114,10 @@ public class InfoImpl extends EObjectImpl implements Info {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Author> getAuthor() {
         if (author == null) {
             author = new EObjectContainmentEList<Author>(Author.class, this, DocbookPackage.INFO__AUTHOR);
@@ -126,49 +127,55 @@ public class InfoImpl extends EObjectImpl implements Info {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getDate() {
         return date;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDate(String newDate) {
         String oldDate = date;
         date = newDate;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.INFO__DATE, oldDate, date));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getPubdate() {
         return pubdate;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setPubdate(String newPubdate) {
         String oldPubdate = pubdate;
         pubdate = newPubdate;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.INFO__PUBDATE, oldPubdate, pubdate));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +189,7 @@ public class InfoImpl extends EObjectImpl implements Info {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +207,7 @@ public class InfoImpl extends EObjectImpl implements Info {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -223,7 +230,7 @@ public class InfoImpl extends EObjectImpl implements Info {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,10 +240,10 @@ public class InfoImpl extends EObjectImpl implements Info {
             getAuthor().clear();
             return;
         case DocbookPackage.INFO__DATE:
-            setDate(DATE_EDEFAULT);
+            setDate(InfoImpl.DATE_EDEFAULT);
             return;
         case DocbookPackage.INFO__PUBDATE:
-            setPubdate(PUBDATE_EDEFAULT);
+            setPubdate(InfoImpl.PUBDATE_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -244,7 +251,7 @@ public class InfoImpl extends EObjectImpl implements Info {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -253,22 +260,23 @@ public class InfoImpl extends EObjectImpl implements Info {
         case DocbookPackage.INFO__AUTHOR:
             return author != null && !author.isEmpty();
         case DocbookPackage.INFO__DATE:
-            return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
+            return InfoImpl.DATE_EDEFAULT == null ? date != null : !InfoImpl.DATE_EDEFAULT.equals(date);
         case DocbookPackage.INFO__PUBDATE:
-            return PUBDATE_EDEFAULT == null ? pubdate != null : !PUBDATE_EDEFAULT.equals(pubdate);
+            return InfoImpl.PUBDATE_EDEFAULT == null ? pubdate != null : !InfoImpl.PUBDATE_EDEFAULT.equals(pubdate);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (date: ");

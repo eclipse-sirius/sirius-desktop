@@ -27,14 +27,14 @@ import org.eclipse.sirius.tests.sample.docbook.XRef;
  * <em>Linkend</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class XRefImpl extends EObjectImpl implements XRef {
     /**
      * The default value of the '{@link #getLinkend() <em>Linkend</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLinkend()
      * @generated
      * @ordered
@@ -44,16 +44,16 @@ public class XRefImpl extends EObjectImpl implements XRef {
     /**
      * The cached value of the '{@link #getLinkend() <em>Linkend</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLinkend()
      * @generated
      * @ordered
      */
-    protected String linkend = LINKEND_EDEFAULT;
+    protected String linkend = XRefImpl.LINKEND_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected XRefImpl() {
@@ -62,7 +62,7 @@ public class XRefImpl extends EObjectImpl implements XRef {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,28 +72,31 @@ public class XRefImpl extends EObjectImpl implements XRef {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLinkend() {
         return linkend;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLinkend(String newLinkend) {
         String oldLinkend = linkend;
         linkend = newLinkend;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.XREF__LINKEND, oldLinkend, linkend));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +110,7 @@ public class XRefImpl extends EObjectImpl implements XRef {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,14 +125,14 @@ public class XRefImpl extends EObjectImpl implements XRef {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DocbookPackage.XREF__LINKEND:
-            setLinkend(LINKEND_EDEFAULT);
+            setLinkend(XRefImpl.LINKEND_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -137,27 +140,28 @@ public class XRefImpl extends EObjectImpl implements XRef {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DocbookPackage.XREF__LINKEND:
-            return LINKEND_EDEFAULT == null ? linkend != null : !LINKEND_EDEFAULT.equals(linkend);
+            return XRefImpl.LINKEND_EDEFAULT == null ? linkend != null : !XRefImpl.LINKEND_EDEFAULT.equals(linkend);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (linkend: ");

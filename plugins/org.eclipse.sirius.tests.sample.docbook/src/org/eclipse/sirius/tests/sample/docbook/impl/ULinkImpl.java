@@ -29,14 +29,14 @@ import org.eclipse.sirius.tests.sample.docbook.ULink;
  * <em>Data</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ULinkImpl extends EObjectImpl implements ULink {
     /**
      * The default value of the '{@link #getUrl() <em>Url</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getUrl()
      * @generated
      * @ordered
@@ -46,17 +46,17 @@ public class ULinkImpl extends EObjectImpl implements ULink {
     /**
      * The cached value of the '{@link #getUrl() <em>Url</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getUrl()
      * @generated
      * @ordered
      */
-    protected String url = URL_EDEFAULT;
+    protected String url = ULinkImpl.URL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getData() <em>Data</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getData()
      * @generated
      * @ordered
@@ -66,16 +66,16 @@ public class ULinkImpl extends EObjectImpl implements ULink {
     /**
      * The cached value of the '{@link #getData() <em>Data</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getData()
      * @generated
      * @ordered
      */
-    protected String data = DATA_EDEFAULT;
+    protected String data = ULinkImpl.DATA_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ULinkImpl() {
@@ -84,7 +84,7 @@ public class ULinkImpl extends EObjectImpl implements ULink {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,49 +94,55 @@ public class ULinkImpl extends EObjectImpl implements ULink {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getUrl() {
         return url;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setUrl(String newUrl) {
         String oldUrl = url;
         url = newUrl;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.ULINK__URL, oldUrl, url));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getData() {
         return data;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setData(String newData) {
         String oldData = data;
         data = newData;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.ULINK__DATA, oldData, data));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +158,7 @@ public class ULinkImpl extends EObjectImpl implements ULink {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,17 +176,17 @@ public class ULinkImpl extends EObjectImpl implements ULink {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DocbookPackage.ULINK__URL:
-            setUrl(URL_EDEFAULT);
+            setUrl(ULinkImpl.URL_EDEFAULT);
             return;
         case DocbookPackage.ULINK__DATA:
-            setData(DATA_EDEFAULT);
+            setData(ULinkImpl.DATA_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -188,29 +194,30 @@ public class ULinkImpl extends EObjectImpl implements ULink {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DocbookPackage.ULINK__URL:
-            return URL_EDEFAULT == null ? url != null : !URL_EDEFAULT.equals(url);
+            return ULinkImpl.URL_EDEFAULT == null ? url != null : !ULinkImpl.URL_EDEFAULT.equals(url);
         case DocbookPackage.ULINK__DATA:
-            return DATA_EDEFAULT == null ? data != null : !DATA_EDEFAULT.equals(data);
+            return ULinkImpl.DATA_EDEFAULT == null ? data != null : !ULinkImpl.DATA_EDEFAULT.equals(data);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (url: ");

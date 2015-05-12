@@ -36,14 +36,14 @@ import org.eclipse.sirius.tests.sample.docbook.Sect2;
  * <em>Sect2</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class Sect1Impl extends AbstractSectImpl implements Sect1 {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -53,17 +53,17 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = Sect1Impl.ID_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSect2() <em>Sect2</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSect2()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Sect1Impl() {
@@ -81,7 +81,7 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,30 +91,34 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.SECT1__ID, oldId, id));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Sect2> getSect2() {
         if (sect2 == null) {
             sect2 = new EObjectContainmentEList<Sect2>(Sect2.class, this, DocbookPackage.SECT1__SECT2);
@@ -124,7 +128,7 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +142,7 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +158,7 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -174,14 +178,14 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DocbookPackage.SECT1__ID:
-            setId(ID_EDEFAULT);
+            setId(Sect1Impl.ID_EDEFAULT);
             return;
         case DocbookPackage.SECT1__SECT2:
             getSect2().clear();
@@ -192,14 +196,14 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DocbookPackage.SECT1__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return Sect1Impl.ID_EDEFAULT == null ? id != null : !Sect1Impl.ID_EDEFAULT.equals(id);
         case DocbookPackage.SECT1__SECT2:
             return sect2 != null && !sect2.isEmpty();
         }
@@ -208,13 +212,14 @@ public class Sect1Impl extends AbstractSectImpl implements Sect1 {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");

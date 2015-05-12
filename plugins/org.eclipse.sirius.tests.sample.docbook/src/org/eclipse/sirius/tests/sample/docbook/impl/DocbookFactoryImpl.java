@@ -39,14 +39,14 @@ import org.eclipse.sirius.tests.sample.docbook.XRef;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static DocbookFactory init() {
@@ -64,7 +64,7 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DocbookFactoryImpl() {
@@ -73,7 +73,7 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,9 +122,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Book createBook() {
         BookImpl book = new BookImpl();
         return book;
@@ -132,9 +133,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Info createInfo() {
         InfoImpl info = new InfoImpl();
         return info;
@@ -142,9 +144,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Author createAuthor() {
         AuthorImpl author = new AuthorImpl();
         return author;
@@ -152,9 +155,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Chapter createChapter() {
         ChapterImpl chapter = new ChapterImpl();
         return chapter;
@@ -162,9 +166,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Title createTitle() {
         TitleImpl title = new TitleImpl();
         return title;
@@ -172,9 +177,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Para createPara() {
         ParaImpl para = new ParaImpl();
         return para;
@@ -182,9 +188,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SimpleList createSimpleList() {
         SimpleListImpl simpleList = new SimpleListImpl();
         return simpleList;
@@ -192,9 +199,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ItemizedList createItemizedList() {
         ItemizedListImpl itemizedList = new ItemizedListImpl();
         return itemizedList;
@@ -202,9 +210,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public OrderedList createOrderedList() {
         OrderedListImpl orderedList = new OrderedListImpl();
         return orderedList;
@@ -212,9 +221,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Sect1 createSect1() {
         Sect1Impl sect1 = new Sect1Impl();
         return sect1;
@@ -222,9 +232,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Sect2 createSect2() {
         Sect2Impl sect2 = new Sect2Impl();
         return sect2;
@@ -232,9 +243,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Emphasis createEmphasis() {
         EmphasisImpl emphasis = new EmphasisImpl();
         return emphasis;
@@ -242,9 +254,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ULink createULink() {
         ULinkImpl uLink = new ULinkImpl();
         return uLink;
@@ -252,9 +265,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Link createLink() {
         LinkImpl link = new LinkImpl();
         return link;
@@ -262,9 +276,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public XRef createXRef() {
         XRefImpl xRef = new XRefImpl();
         return xRef;
@@ -272,9 +287,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Example createExample() {
         ExampleImpl example = new ExampleImpl();
         return example;
@@ -282,9 +298,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Sect3 createSect3() {
         Sect3Impl sect3 = new Sect3Impl();
         return sect3;
@@ -292,9 +309,10 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ListItem createListItem() {
         ListItemImpl listItem = new ListItemImpl();
         return listItem;
@@ -302,16 +320,17 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DocbookPackage getDocbookPackage() {
         return (DocbookPackage) getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

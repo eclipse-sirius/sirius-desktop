@@ -28,14 +28,14 @@ import org.eclipse.sirius.tests.sample.docbook.OrderedList;
  * <em>Numeration</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class OrderedListImpl extends EObjectImpl implements OrderedList {
     /**
      * The default value of the '{@link #getNumeration() <em>Numeration</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getNumeration()
      * @generated
      * @ordered
@@ -45,16 +45,16 @@ public class OrderedListImpl extends EObjectImpl implements OrderedList {
     /**
      * The cached value of the '{@link #getNumeration() <em>Numeration</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getNumeration()
      * @generated
      * @ordered
      */
-    protected String numeration = NUMERATION_EDEFAULT;
+    protected String numeration = OrderedListImpl.NUMERATION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OrderedListImpl() {
@@ -63,7 +63,7 @@ public class OrderedListImpl extends EObjectImpl implements OrderedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,28 +73,31 @@ public class OrderedListImpl extends EObjectImpl implements OrderedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getNumeration() {
         return numeration;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setNumeration(String newNumeration) {
         String oldNumeration = numeration;
         numeration = newNumeration;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.ORDERED_LIST__NUMERATION, oldNumeration, numeration));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +111,7 @@ public class OrderedListImpl extends EObjectImpl implements OrderedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,14 +126,14 @@ public class OrderedListImpl extends EObjectImpl implements OrderedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DocbookPackage.ORDERED_LIST__NUMERATION:
-            setNumeration(NUMERATION_EDEFAULT);
+            setNumeration(OrderedListImpl.NUMERATION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -138,27 +141,28 @@ public class OrderedListImpl extends EObjectImpl implements OrderedList {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DocbookPackage.ORDERED_LIST__NUMERATION:
-            return NUMERATION_EDEFAULT == null ? numeration != null : !NUMERATION_EDEFAULT.equals(numeration);
+            return OrderedListImpl.NUMERATION_EDEFAULT == null ? numeration != null : !OrderedListImpl.NUMERATION_EDEFAULT.equals(numeration);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (numeration: ");

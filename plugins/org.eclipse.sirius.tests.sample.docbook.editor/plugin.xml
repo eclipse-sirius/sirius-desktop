@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2015 Obeo
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+    Obeo - initial API and implementation
+ 
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated docbook -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.sirius.tests.sample.docbook.presentation.DocbookModelWizardID"
+            name="%_UI_DocbookModelWizard_label"
+            class="org.eclipse.sirius.tests.sample.docbook.presentation.DocbookModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DocbookModelFile.gif">
+         <description>%_UI_DocbookModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated docbook -->
+      <editor
+            id="org.eclipse.sirius.tests.sample.docbook.presentation.DocbookEditorID"
+            name="%_UI_DocbookEditor_label"
+            icon="icons/full/obj16/DocbookModelFile.gif"
+            extensions="docbook"
+            class="org.eclipse.sirius.tests.sample.docbook.presentation.DocbookEditor"
+            contributorClass="org.eclipse.sirius.tests.sample.docbook.presentation.DocbookActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

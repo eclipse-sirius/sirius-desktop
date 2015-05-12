@@ -13,14 +13,14 @@ package org.eclipse.sirius.tests.sample.docbook;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Sect3</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
  * <li>{@link org.eclipse.sirius.tests.sample.docbook.Sect3#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getSect3()
  * @model
  * @generated
@@ -34,7 +34,7 @@ public interface Sect3 extends AbstractSect {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getSect3_Id()
@@ -47,7 +47,7 @@ public interface Sect3 extends AbstractSect {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.Sect3#getId <em>Id</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()

@@ -20,13 +20,13 @@ import org.eclipse.sirius.tests.sample.docbook.ListItem;
  * <em><b>List Item</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ListItemImpl extends EObjectImpl implements ListItem {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ListItemImpl() {
@@ -35,7 +35,7 @@ public class ListItemImpl extends EObjectImpl implements ListItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

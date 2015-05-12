@@ -44,14 +44,14 @@ import org.eclipse.sirius.tests.sample.docbook.Info;
  * <em>Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BookImpl extends EObjectImpl implements Book {
     /**
      * The cached value of the '{@link #getBookinfo() <em>Bookinfo</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBookinfo()
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public class BookImpl extends EObjectImpl implements Book {
     /**
      * The cached value of the '{@link #getChapter() <em>Chapter</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getChapter()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class BookImpl extends EObjectImpl implements Book {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -81,17 +81,17 @@ public class BookImpl extends EObjectImpl implements Book {
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = BookImpl.ID_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLang() <em>Lang</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLang()
      * @generated
      * @ordered
@@ -101,17 +101,17 @@ public class BookImpl extends EObjectImpl implements Book {
     /**
      * The cached value of the '{@link #getLang() <em>Lang</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLang()
      * @generated
      * @ordered
      */
-    protected String lang = LANG_EDEFAULT;
+    protected String lang = BookImpl.LANG_EDEFAULT;
 
     /**
      * The default value of the '{@link #getVersion() <em>Version</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
@@ -121,16 +121,16 @@ public class BookImpl extends EObjectImpl implements Book {
     /**
      * The cached value of the '{@link #getVersion() <em>Version</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
      */
-    protected String version = VERSION_EDEFAULT;
+    protected String version = BookImpl.VERSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BookImpl() {
@@ -139,7 +139,7 @@ public class BookImpl extends EObjectImpl implements Book {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,16 +149,17 @@ public class BookImpl extends EObjectImpl implements Book {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Info getBookinfo() {
         return bookinfo;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetBookinfo(Info newBookinfo, NotificationChain msgs) {
@@ -166,38 +167,45 @@ public class BookImpl extends EObjectImpl implements Book {
         bookinfo = newBookinfo;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DocbookPackage.BOOK__BOOKINFO, oldBookinfo, newBookinfo);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBookinfo(Info newBookinfo) {
         if (newBookinfo != bookinfo) {
             NotificationChain msgs = null;
-            if (bookinfo != null)
-                msgs = ((InternalEObject) bookinfo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DocbookPackage.BOOK__BOOKINFO, null, msgs);
-            if (newBookinfo != null)
-                msgs = ((InternalEObject) newBookinfo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DocbookPackage.BOOK__BOOKINFO, null, msgs);
+            if (bookinfo != null) {
+                msgs = ((InternalEObject) bookinfo).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DocbookPackage.BOOK__BOOKINFO, null, msgs);
+            }
+            if (newBookinfo != null) {
+                msgs = ((InternalEObject) newBookinfo).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DocbookPackage.BOOK__BOOKINFO, null, msgs);
+            }
             msgs = basicSetBookinfo(newBookinfo, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.BOOK__BOOKINFO, newBookinfo, newBookinfo));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Chapter> getChapter() {
         if (chapter == null) {
             chapter = new EObjectContainmentEList<Chapter>(Chapter.class, this, DocbookPackage.BOOK__CHAPTER);
@@ -207,70 +215,79 @@ public class BookImpl extends EObjectImpl implements Book {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.BOOK__ID, oldId, id));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLang() {
         return lang;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLang(String newLang) {
         String oldLang = lang;
         lang = newLang;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.BOOK__LANG, oldLang, lang));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getVersion() {
         return version;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setVersion(String newVersion) {
         String oldVersion = version;
         version = newVersion;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.BOOK__VERSION, oldVersion, version));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -286,7 +303,7 @@ public class BookImpl extends EObjectImpl implements Book {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -308,7 +325,7 @@ public class BookImpl extends EObjectImpl implements Book {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -337,7 +354,7 @@ public class BookImpl extends EObjectImpl implements Book {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -350,13 +367,13 @@ public class BookImpl extends EObjectImpl implements Book {
             getChapter().clear();
             return;
         case DocbookPackage.BOOK__ID:
-            setId(ID_EDEFAULT);
+            setId(BookImpl.ID_EDEFAULT);
             return;
         case DocbookPackage.BOOK__LANG:
-            setLang(LANG_EDEFAULT);
+            setLang(BookImpl.LANG_EDEFAULT);
             return;
         case DocbookPackage.BOOK__VERSION:
-            setVersion(VERSION_EDEFAULT);
+            setVersion(BookImpl.VERSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -364,7 +381,7 @@ public class BookImpl extends EObjectImpl implements Book {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -375,24 +392,25 @@ public class BookImpl extends EObjectImpl implements Book {
         case DocbookPackage.BOOK__CHAPTER:
             return chapter != null && !chapter.isEmpty();
         case DocbookPackage.BOOK__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return BookImpl.ID_EDEFAULT == null ? id != null : !BookImpl.ID_EDEFAULT.equals(id);
         case DocbookPackage.BOOK__LANG:
-            return LANG_EDEFAULT == null ? lang != null : !LANG_EDEFAULT.equals(lang);
+            return BookImpl.LANG_EDEFAULT == null ? lang != null : !BookImpl.LANG_EDEFAULT.equals(lang);
         case DocbookPackage.BOOK__VERSION:
-            return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
+            return BookImpl.VERSION_EDEFAULT == null ? version != null : !BookImpl.VERSION_EDEFAULT.equals(version);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");

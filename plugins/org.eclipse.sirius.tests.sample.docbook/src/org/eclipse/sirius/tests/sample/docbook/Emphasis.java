@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Emphasis</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * Remap</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getEmphasis()
  * @model
  * @generated
@@ -37,7 +37,7 @@ public interface Emphasis extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Remap</em>' attribute.
      * @see #setRemap(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getEmphasis_Remap()
@@ -50,7 +50,7 @@ public interface Emphasis extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.Emphasis#getRemap
      * <em>Remap</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Remap</em>' attribute.
      * @see #getRemap()

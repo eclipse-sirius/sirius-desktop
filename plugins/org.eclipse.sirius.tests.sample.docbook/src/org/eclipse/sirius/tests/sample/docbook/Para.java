@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Para</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getPara()
  * @model extendedMetaData="kind='simple'"
  * @generated
@@ -37,7 +37,7 @@ public interface Para extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Data</em>' attribute.
      * @see #setData(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getPara_Data()
@@ -50,7 +50,7 @@ public interface Para extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.Para#getData
      * <em>Data</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Data</em>' attribute.
      * @see #getData()

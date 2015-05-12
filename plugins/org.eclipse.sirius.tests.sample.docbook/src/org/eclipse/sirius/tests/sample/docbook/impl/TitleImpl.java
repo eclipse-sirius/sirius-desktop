@@ -27,14 +27,14 @@ import org.eclipse.sirius.tests.sample.docbook.Title;
  * <em>Data</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TitleImpl extends EObjectImpl implements Title {
     /**
      * The default value of the '{@link #getData() <em>Data</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getData()
      * @generated
      * @ordered
@@ -44,16 +44,16 @@ public class TitleImpl extends EObjectImpl implements Title {
     /**
      * The cached value of the '{@link #getData() <em>Data</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getData()
      * @generated
      * @ordered
      */
-    protected String data = DATA_EDEFAULT;
+    protected String data = TitleImpl.DATA_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TitleImpl() {
@@ -62,7 +62,7 @@ public class TitleImpl extends EObjectImpl implements Title {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,28 +72,31 @@ public class TitleImpl extends EObjectImpl implements Title {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getData() {
         return data;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setData(String newData) {
         String oldData = data;
         data = newData;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.TITLE__DATA, oldData, data));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +110,7 @@ public class TitleImpl extends EObjectImpl implements Title {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,14 +125,14 @@ public class TitleImpl extends EObjectImpl implements Title {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case DocbookPackage.TITLE__DATA:
-            setData(DATA_EDEFAULT);
+            setData(TitleImpl.DATA_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -137,27 +140,28 @@ public class TitleImpl extends EObjectImpl implements Title {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DocbookPackage.TITLE__DATA:
-            return DATA_EDEFAULT == null ? data != null : !DATA_EDEFAULT.equals(data);
+            return TitleImpl.DATA_EDEFAULT == null ? data != null : !TitleImpl.DATA_EDEFAULT.equals(data);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (data: ");

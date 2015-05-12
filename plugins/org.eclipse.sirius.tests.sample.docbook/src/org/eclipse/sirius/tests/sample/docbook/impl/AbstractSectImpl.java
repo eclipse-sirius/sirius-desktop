@@ -40,14 +40,14 @@ import org.eclipse.sirius.tests.sample.docbook.Title;
  * <em>Para</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSect {
     /**
      * The cached value of the '{@link #getTitle() <em>Title</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTitle()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
     /**
      * The cached value of the '{@link #getPara() <em>Para</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPara()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractSectImpl() {
@@ -75,7 +75,7 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,16 +85,17 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Title getTitle() {
         return title;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTitle(Title newTitle, NotificationChain msgs) {
@@ -102,38 +103,45 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
         title = newTitle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DocbookPackage.ABSTRACT_SECT__TITLE, oldTitle, newTitle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTitle(Title newTitle) {
         if (newTitle != title) {
             NotificationChain msgs = null;
-            if (title != null)
-                msgs = ((InternalEObject) title).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DocbookPackage.ABSTRACT_SECT__TITLE, null, msgs);
-            if (newTitle != null)
-                msgs = ((InternalEObject) newTitle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DocbookPackage.ABSTRACT_SECT__TITLE, null, msgs);
+            if (title != null) {
+                msgs = ((InternalEObject) title).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DocbookPackage.ABSTRACT_SECT__TITLE, null, msgs);
+            }
+            if (newTitle != null) {
+                msgs = ((InternalEObject) newTitle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DocbookPackage.ABSTRACT_SECT__TITLE, null, msgs);
+            }
             msgs = basicSetTitle(newTitle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.ABSTRACT_SECT__TITLE, newTitle, newTitle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Para> getPara() {
         if (para == null) {
             para = new EObjectContainmentEList<Para>(Para.class, this, DocbookPackage.ABSTRACT_SECT__PARA);
@@ -143,7 +151,7 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +167,7 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +183,7 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -195,7 +203,7 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +221,7 @@ public abstract class AbstractSectImpl extends EObjectImpl implements AbstractSe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

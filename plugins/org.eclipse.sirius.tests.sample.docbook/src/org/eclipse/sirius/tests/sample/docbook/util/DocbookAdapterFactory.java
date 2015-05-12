@@ -39,14 +39,14 @@ import org.eclipse.sirius.tests.sample.docbook.XRef;
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
  * an adapter <code>createXXX</code> method for each class of the model. <!--
  * end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage
  * @generated
  */
 public class DocbookAdapterFactory extends AdapterFactoryImpl {
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static DocbookPackage modelPackage;
@@ -54,12 +54,12 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DocbookAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = DocbookPackage.eINSTANCE;
+        if (DocbookAdapterFactory.modelPackage == null) {
+            DocbookAdapterFactory.modelPackage = DocbookPackage.eINSTANCE;
         }
     }
 
@@ -68,17 +68,17 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This implementation returns <code>true</code> if
      * the object is either the model's package or is an instance object of the
      * model. <!-- end-user-doc -->
-     * 
+     *
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == DocbookAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == DocbookAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -86,7 +86,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DocbookSwitch<Adapter> modelSwitch = new DocbookSwitch<Adapter>() {
@@ -194,7 +194,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param target
      *            the object to adapt.
      * @return the adapter for the <code>target</code>.
@@ -211,7 +211,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Book
      * @generated
@@ -226,7 +226,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Info
      * @generated
@@ -241,7 +241,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Author
      * @generated
@@ -256,7 +256,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * '. <!-- begin-user-doc --> This default implementation returns null so
      * that we can easily ignore cases; it's useful to ignore a case when
      * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Chapter
      * @generated
@@ -271,7 +271,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Title
      * @generated
@@ -286,7 +286,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Para
      * @generated
@@ -302,7 +302,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.SimpleList
      * @generated
@@ -318,7 +318,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.ItemizedList
      * @generated
@@ -334,7 +334,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.OrderedList
      * @generated
@@ -349,7 +349,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Sect1
      * @generated
@@ -365,7 +365,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.AbstractSect
      * @generated
@@ -380,7 +380,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Sect2
      * @generated
@@ -396,7 +396,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Emphasis
      * @generated
@@ -411,7 +411,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.ULink
      * @generated
@@ -426,7 +426,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Link
      * @generated
@@ -441,7 +441,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.XRef
      * @generated
@@ -456,7 +456,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * '. <!-- begin-user-doc --> This default implementation returns null so
      * that we can easily ignore cases; it's useful to ignore a case when
      * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Example
      * @generated
@@ -471,7 +471,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.Sect3
      * @generated
@@ -487,7 +487,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.docbook.ListItem
      * @generated
@@ -499,7 +499,7 @@ public class DocbookAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates a new adapter for the default case. <!-- begin-user-doc --> This
      * default implementation returns null. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @generated
      */

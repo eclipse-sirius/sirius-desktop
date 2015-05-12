@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage
  * @generated
  */
@@ -23,7 +23,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     DocbookFactory eINSTANCE = org.eclipse.sirius.tests.sample.docbook.impl.DocbookFactoryImpl.init();
@@ -31,7 +31,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Book</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Book</em>'.
      * @generated
      */
@@ -40,7 +40,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Info</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Info</em>'.
      * @generated
      */
@@ -49,7 +49,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Author</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Author</em>'.
      * @generated
      */
@@ -58,7 +58,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Chapter</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Chapter</em>'.
      * @generated
      */
@@ -67,7 +67,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Title</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Title</em>'.
      * @generated
      */
@@ -76,7 +76,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Para</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Para</em>'.
      * @generated
      */
@@ -85,7 +85,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Simple List</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Simple List</em>'.
      * @generated
      */
@@ -94,7 +94,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Itemized List</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Itemized List</em>'.
      * @generated
      */
@@ -103,7 +103,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Ordered List</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Ordered List</em>'.
      * @generated
      */
@@ -112,7 +112,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Sect1</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Sect1</em>'.
      * @generated
      */
@@ -121,7 +121,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Sect2</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Sect2</em>'.
      * @generated
      */
@@ -130,7 +130,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Emphasis</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Emphasis</em>'.
      * @generated
      */
@@ -139,7 +139,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>ULink</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>ULink</em>'.
      * @generated
      */
@@ -148,7 +148,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Link</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Link</em>'.
      * @generated
      */
@@ -157,7 +157,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>XRef</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>XRef</em>'.
      * @generated
      */
@@ -166,7 +166,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Example</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Example</em>'.
      * @generated
      */
@@ -175,7 +175,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Sect3</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Sect3</em>'.
      * @generated
      */
@@ -184,7 +184,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns a new object of class '<em>List Item</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>List Item</em>'.
      * @generated
      */
@@ -193,7 +193,7 @@ public interface DocbookFactory extends EFactory {
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the package supported by this factory.
      * @generated
      */

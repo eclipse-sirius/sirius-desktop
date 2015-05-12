@@ -43,14 +43,14 @@ import org.eclipse.sirius.tests.sample.docbook.Title;
  * <em>Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ChapterImpl extends EObjectImpl implements Chapter {
     /**
      * The cached value of the '{@link #getTitle() <em>Title</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTitle()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
     /**
      * The cached value of the '{@link #getPara() <em>Para</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPara()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
     /**
      * The cached value of the '{@link #getSect1() <em>Sect1</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSect1()
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -90,16 +90,16 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = ChapterImpl.ID_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChapterImpl() {
@@ -108,7 +108,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,16 +118,17 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Title getTitle() {
         return title;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTitle(Title newTitle, NotificationChain msgs) {
@@ -135,38 +136,45 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
         title = newTitle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DocbookPackage.CHAPTER__TITLE, oldTitle, newTitle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTitle(Title newTitle) {
         if (newTitle != title) {
             NotificationChain msgs = null;
-            if (title != null)
-                msgs = ((InternalEObject) title).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DocbookPackage.CHAPTER__TITLE, null, msgs);
-            if (newTitle != null)
-                msgs = ((InternalEObject) newTitle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DocbookPackage.CHAPTER__TITLE, null, msgs);
+            if (title != null) {
+                msgs = ((InternalEObject) title).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DocbookPackage.CHAPTER__TITLE, null, msgs);
+            }
+            if (newTitle != null) {
+                msgs = ((InternalEObject) newTitle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DocbookPackage.CHAPTER__TITLE, null, msgs);
+            }
             msgs = basicSetTitle(newTitle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.CHAPTER__TITLE, newTitle, newTitle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Para> getPara() {
         if (para == null) {
             para = new EObjectContainmentEList<Para>(Para.class, this, DocbookPackage.CHAPTER__PARA);
@@ -176,9 +184,10 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Sect1> getSect1() {
         if (sect1 == null) {
             sect1 = new EObjectContainmentEList<Sect1>(Sect1.class, this, DocbookPackage.CHAPTER__SECT1);
@@ -188,28 +197,31 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DocbookPackage.CHAPTER__ID, oldId, id));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +239,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +259,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -274,7 +286,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -290,7 +302,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
             getSect1().clear();
             return;
         case DocbookPackage.CHAPTER__ID:
-            setId(ID_EDEFAULT);
+            setId(ChapterImpl.ID_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -298,7 +310,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -311,20 +323,21 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
         case DocbookPackage.CHAPTER__SECT1:
             return sect1 != null && !sect1.isEmpty();
         case DocbookPackage.CHAPTER__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return ChapterImpl.ID_EDEFAULT == null ? id != null : !ChapterImpl.ID_EDEFAULT.equals(id);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");

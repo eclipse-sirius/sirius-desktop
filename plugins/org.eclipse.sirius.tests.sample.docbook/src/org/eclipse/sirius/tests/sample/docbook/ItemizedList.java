@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Itemized List</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Listitem</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getItemizedList()
  * @model
  * @generated
@@ -40,7 +40,7 @@ public interface ItemizedList extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mark</em>' attribute.
      * @see #setMark(String)
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getItemizedList_Mark()
@@ -53,7 +53,7 @@ public interface ItemizedList extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.docbook.ItemizedList#getMark
      * <em>Mark</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mark</em>' attribute.
      * @see #getMark()
@@ -71,7 +71,7 @@ public interface ItemizedList extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Listitem</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.docbook.DocbookPackage#getItemizedList_Listitem()
      * @model containment="true"
