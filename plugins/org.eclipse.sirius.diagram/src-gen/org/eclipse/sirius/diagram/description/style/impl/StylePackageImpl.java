@@ -1439,7 +1439,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
         initEClass(workspaceImageDescriptionEClass, WorkspaceImageDescription.class, "WorkspaceImageDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getWorkspaceImageDescription_WorkspacePath(), theEcorePackage.getEString(), "workspacePath", null, 1, 1, WorkspaceImageDescription.class, !EPackageImpl.IS_TRANSIENT,
+        initEAttribute(getWorkspaceImageDescription_WorkspacePath(), theDescriptionPackage_1.getImagePath(), "workspacePath", null, 1, 1, WorkspaceImageDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(edgeStyleDescriptionEClass, EdgeStyleDescription.class, "EdgeStyleDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);

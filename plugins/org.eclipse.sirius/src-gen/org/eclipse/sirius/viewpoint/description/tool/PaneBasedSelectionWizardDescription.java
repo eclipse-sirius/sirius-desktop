@@ -212,6 +212,7 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPaneBasedSelectionWizardDescription_IconPath()
      * @model default=
      *        "/org.eclipse.sirius.ui/icons/full/obj16/PaneBasedSelectionWizardDescription.gif"
+     *        dataType="org.eclipse.sirius.viewpoint.description.ImagePath"
      *        required="true"
      * @generated
      */
@@ -269,7 +270,7 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
      * @return the value of the '<em>Window Image Path</em>' attribute.
      * @see #setWindowImagePath(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPaneBasedSelectionWizardDescription_WindowImagePath()
-     * @model
+     * @model dataType="org.eclipse.sirius.viewpoint.description.ImagePath"
      * @generated
      */
     String getWindowImagePath();

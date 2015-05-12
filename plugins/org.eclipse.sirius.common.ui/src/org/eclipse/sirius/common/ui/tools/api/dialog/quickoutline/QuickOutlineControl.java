@@ -14,9 +14,7 @@ package org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline;
 import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.jface.bindings.Trigger;
 import org.eclipse.jface.bindings.keys.IKeyLookup;
 import org.eclipse.jface.bindings.keys.KeyLookupFactory;
@@ -133,9 +131,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
                 EObject eObj = (EObject) element;
                 boolean match;
                 for (EAttribute attribute : eObj.eClass().getEAllAttributes()) {
-                    EDataType dataType = attribute.getEAttributeType();
-                    if ((dataType == EcorePackage.eINSTANCE.getEString() || dataType.getName().equals("TypeName") || dataType.getName().equals("InterpretedExpression"))
-                            && eObj.eGet(attribute) != null) {
+                    if (attribute.getEAttributeType().getInstanceClass() == String.class && eObj.eGet(attribute) != null) {
                         match = wordMatches(eObj.eGet(attribute).toString());
                         if (match) {
                             // add match in the label provider so that the label

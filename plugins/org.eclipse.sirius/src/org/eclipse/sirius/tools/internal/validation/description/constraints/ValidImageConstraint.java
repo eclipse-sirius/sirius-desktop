@@ -15,6 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -26,15 +27,16 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 import com.google.common.collect.Lists;
 
 /**
- * Abstract Constraint to validate image references.
+ * Constraint to validate image references.
  * 
  * @author bgrouhan
  */
-public abstract class AbstractValidImageConstraint extends AbstractConstraint {
+public class ValidImageConstraint extends AbstractConstraint {
 
     @Override
     public IStatus validate(IValidationContext ctx) {
@@ -43,11 +45,11 @@ public abstract class AbstractValidImageConstraint extends AbstractConstraint {
         if (ctx.getEventType() == EMFEventType.NULL) {
             EObject eObj = ctx.getTarget();
             String path = "";
-            EAttribute[] attrs = getImagePathAttributes();
             ArrayList<IStatus> statuses = new ArrayList<IStatus>();
             ResourceSet rs = eObj.eResource().getResourceSet();
+            EList<EAttribute> attrs = eObj.eClass().getEAllAttributes();
             for (EAttribute attr : attrs) {
-                if (attr.getEContainingClass().isInstance(eObj)) {
+                if (attr.getEAttributeType() == DescriptionPackage.eINSTANCE.getImagePath()) {
                     path = (String) eObj.eGet(attr);
                     statuses.add(validateImagePath(ctx, rs, path));
                 }
@@ -58,14 +60,6 @@ public abstract class AbstractValidImageConstraint extends AbstractConstraint {
         }
         return status;
     }
-
-    /**
-     * Method to get all the EAttributes corresponding to image paths in the
-     * package.
-     * 
-     * @return An array of the EAttributes.
-     */
-    public abstract EAttribute[] getImagePathAttributes();
 
     private IStatus validateImagePath(IValidationContext ctx, ResourceSet rs, String path) {
         Collection<IStatus> failures = Lists.newArrayList();
