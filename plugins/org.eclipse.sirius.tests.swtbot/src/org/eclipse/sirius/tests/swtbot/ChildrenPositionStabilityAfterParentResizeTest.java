@@ -27,6 +27,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.hamcrest.Matcher;
+import org.junit.Assert;
 
 /**
  * Check the stability of children after the resize of their parent:
@@ -61,15 +62,35 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
 
     private static final Point EXPECTED_INITIAL_POSITION_NODE_D = new Point(29, 75);
 
+    private static final Point TRANSLATION_PLUS_60X = new Point(60, 0);
+
+    private static final Point TRANSLATION_PLUS_120X = new Point(120, 0);
+
     private static final Point TRANSLATION_PLUS_180X = new Point(180, 0);
+
+    private static final Point TRANSLATION_PLUS_200X = new Point(200, 0);
 
     private static final Point TRANSLATION_MINUS_100X = new Point(-100, 0);
 
+    private static final Point TRANSLATION_MINUS_140X = new Point(-140, 0);
+
     private static final Point TRANSLATION_PLUS_100X = new Point(100, 0);
+
+    private static final Point TRANSLATION_MINUS_80X = new Point(-80, 0);
+
+    private static final Point TRANSLATION_MINUS_60Y = new Point(0, -60);
 
     private static final Point TRANSLATION_MINUS_80Y = new Point(0, -80);
 
+    private static final Point TRANSLATION_PLUS_40Y = new Point(0, 40);
+
+    private static final Point TRANSLATION_PLUS_60Y = new Point(0, 60);
+
     private static final Point TRANSLATION_PLUS_80Y = new Point(0, 80);
+
+    private static final Point TRANSLATION_PLUS_100Y = new Point(0, 100);
+
+    private static final Point TRANSLATION_PLUS_140Y = new Point(0, 140);
 
     private static final String MODEL = "models/tc1479.ecore";
 
@@ -84,8 +105,6 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
     private UIResource sessionAirdResource;
 
     private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     private Rectangle aBefore;
 
@@ -122,6 +141,12 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, "tc1479.aird");
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+    }
+
+    /**
+     * Open the diagram TC1479 and initialize global variables.
+     */
+    protected void initializeTC1479Case() {
         openDiagram("TC1479", "TC1479");
         aBefore = getBounds("A");
         assertThat("Unexpected initial position for bordered node 'A'.", aBefore.getLocation(), equalTo(EXPECTED_INITIAL_POSITION_A));
@@ -150,6 +175,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_A_after_expand_P1_to_the_right() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p1");
         Rectangle bounds = editor.clickCentered("p1");
         bot.waitUntil(cS);
@@ -163,6 +189,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_C_after_expand_P1_to_the_right() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p1");
         Rectangle bounds = editor.clickCentered("p1");
         bot.waitUntil(cS);
@@ -175,6 +202,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_A_after_expand_P1_to_the_left() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p1");
         Rectangle bounds = editor.clickCentered("p1");
         bot.waitUntil(cS);
@@ -188,6 +216,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_C_after_expand_P1_to_the_left() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p1");
         Rectangle bounds = editor.clickCentered("p1");
         bot.waitUntil(cS);
@@ -201,6 +230,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_A_after_expand_P1_to_the_top() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p1");
         Rectangle bounds = editor.clickCentered("p1");
         bot.waitUntil(cS);
@@ -214,6 +244,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_C_after_expand_P1_to_the_top() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p1");
         Rectangle bounds = editor.clickCentered("p1");
         bot.waitUntil(cS);
@@ -227,6 +258,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_A_after_expand_P1_to_the_bottom() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p1");
         Rectangle bounds = editor.clickCentered("p1");
         bot.waitUntil(cS);
@@ -240,6 +272,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_C_after_expand_P1_to_the_bottom() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p1");
         Rectangle bounds = editor.clickCentered("p1");
         bot.waitUntil(cS);
@@ -252,6 +285,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_B_after_expand_P2_to_the_right() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
@@ -266,6 +300,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     protected void test_D_after_expand_P2_to_the_right(ZoomLevel zoomLevel) throws Exception {
+        initializeTC1479Case();
         editor.zoom(zoomLevel);
         try {
             CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
@@ -305,6 +340,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     protected void test_D_after_expand_P31_to_the_right(ZoomLevel zoomLevel) throws Exception {
+        initializeTC1479Case();
         editor.maximize();
         editor.zoom(zoomLevel);
         try {
@@ -346,6 +382,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     protected void test_D_after_expand_P31_to_the_left(ZoomLevel zoomLevel) throws Exception {
+        initializeTC1479Case();
         editor.maximize();
         editor.zoom(zoomLevel);
         try {
@@ -386,6 +423,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     protected void test_D_after_expand_P31_to_the_top(ZoomLevel zoomLevel) throws Exception {
+        initializeTC1479Case();
         editor.maximize();
         editor.zoom(zoomLevel);
         try {
@@ -426,6 +464,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     protected void test_D_after_expand_P31_to_the_bottom(ZoomLevel zoomLevel) throws Exception {
+        initializeTC1479Case();
         editor.maximize();
         editor.zoom(zoomLevel);
         try {
@@ -464,6 +503,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_B_after_expand_P2_to_the_left() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
@@ -478,6 +518,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     protected void test_D_after_expand_P2_to_the_left(ZoomLevel zoomLevel) throws Exception {
+        initializeTC1479Case();
         editor.zoom(zoomLevel);
         try {
             CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
@@ -514,6 +555,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_B_after_expand_P2_to_the_top() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
@@ -529,6 +571,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     protected void test_D_after_expand_P2_to_the_top(ZoomLevel zoomLevel) throws Exception {
+        initializeTC1479Case();
         editor.zoom(zoomLevel);
         try {
             CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
@@ -565,6 +608,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_B_after_expand_P2_to_the_bottom() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
@@ -580,6 +624,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     protected void test_D_after_expand_P2_to_the_bottom(ZoomLevel zoomLevel) throws Exception {
+        initializeTC1479Case();
         editor.zoom(zoomLevel);
         try {
             CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
@@ -616,22 +661,24 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_D_after_resizing_P2_from_north_to_south_on_two_drags() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
 
-        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_80Y));
+        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_60Y));
         final Rectangle boundsAfterFirstDrag = getBounds("D");
+        assertEquals("The port's position isn't the same before and after the first drag!", dBefore.y, boundsAfterFirstDrag.y);
 
         bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
         SWTBotUtils.waitAllUiEvents();
 
         // Second drag
-        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_MINUS_80Y));
+        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_MINUS_60Y));
         final Rectangle boundsAfterSecondDrag = getBounds("D");
 
-        assertEquals("The port's position isn't the same before and after the second drag!", boundsAfterSecondDrag.y, boundsAfterFirstDrag.y);
+        assertEquals("The port's position isn't the same before and after the second drag!", boundsAfterFirstDrag.y, boundsAfterSecondDrag.y);
     }
 
     /**
@@ -639,6 +686,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_D_after_resizing_P2_from_south_to_north_on_two_drags() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
@@ -663,6 +711,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_B_after_resizing_P2_from_east_to_west_on_two_drags() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
@@ -687,6 +736,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_B_after_resizing_P2_from_west_to_east_on_two_drags() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
@@ -711,20 +761,21 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_D_after_resizing_P2_from_north_to_south_on_close_reopen_diag() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
 
-        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_80Y));
-        Rectangle boundsAfterDrag = getBounds("D");
-        checkBoundsAfterDrag("D", equalTo(boundsAfterDrag));
+        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_60Y));
+        checkBoundsAfterDrag("D", equalTo(dBefore));
     }
 
     /**
      * @throws Exception
      *             if an error occurs
      */
-    public void test_D_after_resizing_P2_from_south_to_nort_on_close_reopen_diag() throws Exception {
+    public void test_D_after_resizing_P2_from_west_to_east_on_close_reopen_diag() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
@@ -739,13 +790,13 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_B_after_resizing_P2_from_east_to_west_on_close_reopen_diag() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
 
-        editor.drag(bounds.getRight(), bounds.getRight().getTranslated(TRANSLATION_MINUS_100X));
-        Rectangle boundsAfterDrag = getBounds("B");
-        checkBoundsAfterDrag("B", equalTo(boundsAfterDrag));
+        editor.drag(bounds.getRight(), bounds.getRight().getTranslated(TRANSLATION_MINUS_80X));
+        checkBoundsAfterDrag("B", equalTo(bBefore));
         checkBoundsAfterDrag("CB", equalTo(nodeBBefore));
     }
 
@@ -754,14 +805,326 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *             if an error occurs
      */
     public void test_B_after_resizing_P2_from_west_to_east_on_close_reopen_diag() throws Exception {
+        initializeTC1479Case();
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p2");
         Rectangle bounds = editor.clickCentered("p2");
         bot.waitUntil(cS);
 
         editor.drag(bounds.getLeft(), bounds.getLeft().getTranslated(TRANSLATION_MINUS_100X));
-        Rectangle boundsAfterDrag = getBounds("B");
-        checkBoundsAfterDrag("B", equalTo(boundsAfterDrag));
+        checkBoundsAfterDrag("B", equalTo(bBefore));
         checkBoundsAfterDrag("CB", equalTo(nodeBBefore.getTranslated(TRANSLATION_MINUS_100X.getNegated())));
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_resize_do_not_move_opposite_border_node_north() throws Exception {
+        openDiagram("DiagWithBorderNodeOnNode", "caseOneNorth");
+        // Check border node on west side
+        CheckSelectedCondition p31SelectedCondition = new CheckSelectedCondition(editor, "p31");
+        Rectangle bounds = editor.clickCentered("p31");
+        bot.waitUntil(p31SelectedCondition);
+
+        final Rectangle bBoundsBeforeDrag = getBounds("B");
+        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_80Y));
+        checkBoundsAfterDrag("B", equalTo(bBoundsBeforeDrag), "DiagWithBorderNodeOnNode", "caseOneNorth");
+
+        // Check border node on east side
+        CheckSelectedCondition p32SelectedCondition = new CheckSelectedCondition(editor, "p32");
+        bounds = editor.clickCentered("p32");
+        bot.waitUntil(p32SelectedCondition);
+
+        final Rectangle cBoundsBeforeDrag = getBounds("C");
+        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_80Y));
+        checkBoundsAfterDrag("C", equalTo(cBoundsBeforeDrag), "DiagWithBorderNodeOnNode", "caseOneNorth");
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_resize_do_not_move_opposite_border_node_west() throws Exception {
+        openDiagram("DiagWithBorderNodeOnNode", "caseOneWest");
+        // Check border node on north side
+        CheckSelectedCondition p31SelectedCondition = new CheckSelectedCondition(editor, "p31");
+        Rectangle bounds = editor.clickCentered("p31");
+        bot.waitUntil(p31SelectedCondition);
+
+        final Rectangle aBoundsBeforeDrag = getBounds("A");
+        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_100X));
+        checkBoundsAfterDrag("A", equalTo(aBoundsBeforeDrag), "DiagWithBorderNodeOnNode", "caseOneWest");
+
+        // Check border node on south side
+        CheckSelectedCondition p32SelectedCondition = new CheckSelectedCondition(editor, "p32");
+        bounds = editor.clickCentered("p32");
+        bot.waitUntil(p32SelectedCondition);
+
+        final Rectangle dBoundsBeforeDrag = getBounds("D");
+        editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_100X));
+        checkBoundsAfterDrag("D", equalTo(dBoundsBeforeDrag), "DiagWithBorderNodeOnNode", "caseOneWest");
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_resize_move_border_node_to_stay_in_parent_bounds_north() throws Exception {
+        openDiagram("DiagWithBorderNodeOnNode", "caseTwoNorth");
+        // Check border node on west side
+        CheckSelectedCondition p31SelectedCondition = new CheckSelectedCondition(editor, "p31");
+        Rectangle parentBounds = editor.clickCentered("p31");
+        bot.waitUntil(p31SelectedCondition);
+
+        // Moved at parent y axis
+        Point newParentTop = parentBounds.getTop().getTranslated(TRANSLATION_PLUS_60Y);
+        editor.drag(parentBounds.getTop(), newParentTop);
+        Rectangle bBoundsAfterDrag = getBounds("B");
+        assertEquals("B is not at the expected y location", newParentTop.y, bBoundsAfterDrag.y);
+        undo();
+
+        // Moved just under its brother
+        Rectangle aBoundsBeforeDrag = getBounds("A");
+        editor.drag(parentBounds.getTop(), parentBounds.getTop().getTranslated(TRANSLATION_PLUS_80Y));
+        bBoundsAfterDrag = getBounds("B");
+        assertEquals("B is not at the expected y location", aBoundsBeforeDrag.getBottom().y + 1, bBoundsAfterDrag.y);
+        undo();
+
+        // Moved at parent y axis and second border node changed of side
+        newParentTop = parentBounds.getTop().getTranslated(TRANSLATION_PLUS_140Y);
+        editor.drag(parentBounds.getTop(), newParentTop);
+        bBoundsAfterDrag = getBounds("B");
+        Rectangle aBoundsAfterDrag = getBounds("A");
+        assertEquals("B is not at the expected y location", newParentTop.y, bBoundsAfterDrag.y);
+        Assert.assertNotEquals("A is not at the expected x location", aBoundsBeforeDrag.x, aBoundsAfterDrag.x);
+
+        // Check border node on east side
+        CheckSelectedCondition p32SelectedCondition = new CheckSelectedCondition(editor, "p32");
+        parentBounds = editor.clickCentered("p32");
+        bot.waitUntil(p32SelectedCondition);
+
+        // Moved at parent y axis
+        newParentTop = parentBounds.getTop().getTranslated(TRANSLATION_PLUS_60Y);
+        editor.drag(parentBounds.getTop(), newParentTop);
+        Rectangle dBoundsAfterDrag = getBounds("D");
+        assertEquals("D is not at the expected y location", newParentTop.y, dBoundsAfterDrag.y);
+        undo();
+
+        // Moved just under its brother
+        Rectangle cBoundsBeforeDrag = getBounds("C");
+        editor.drag(parentBounds.getTop(), parentBounds.getTop().getTranslated(TRANSLATION_PLUS_80Y));
+        dBoundsAfterDrag = getBounds("D");
+        assertEquals("D is not at the expected y location", cBoundsBeforeDrag.getBottom().y + 1, dBoundsAfterDrag.y);
+        undo();
+
+        // Moved at parent y axis and second border node changed of side
+        newParentTop = parentBounds.getTop().getTranslated(TRANSLATION_PLUS_140Y);
+        editor.drag(parentBounds.getTop(), newParentTop);
+        dBoundsAfterDrag = getBounds("D");
+        Rectangle cBoundsAfterDrag = getBounds("C");
+        assertEquals("D is not at the expected y location", newParentTop.y, dBoundsAfterDrag.y);
+        Assert.assertNotEquals("C is not at the expected x location", cBoundsBeforeDrag.x, cBoundsAfterDrag.x);
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_resize_move_border_node_to_stay_in_parent_bounds_south() throws Exception {
+        openDiagram("DiagWithBorderNodeOnNode", "caseTwoSouth");
+        // Check border node on west side
+        CheckSelectedCondition p31SelectedCondition = new CheckSelectedCondition(editor, "p31");
+        Rectangle parentBounds = editor.clickCentered("p31");
+        bot.waitUntil(p31SelectedCondition);
+
+        // Moved at parent bottom y axis
+        Point newParentBottom = parentBounds.getBottom().getTranslated(TRANSLATION_PLUS_40Y.getNegated());
+        editor.drag(parentBounds.getBottom(), newParentBottom);
+        Rectangle bBoundsAfterDrag = getBounds("B");
+        assertEquals("B is not at the expected y location", newParentBottom.y - bBoundsAfterDrag.height - 10, bBoundsAfterDrag.y);
+        undo();
+
+        // Moved just above its brother
+        Rectangle aBoundsBeforeDrag = getBounds("A");
+        editor.drag(parentBounds.getBottom(), parentBounds.getBottom().getTranslated(TRANSLATION_PLUS_60Y.getNegated()));
+        bBoundsAfterDrag = getBounds("B");
+        assertEquals("B is not at the expected y location", aBoundsBeforeDrag.getTop().y - 1, bBoundsAfterDrag.getBottom().y);
+        undo();
+
+        // Moved at parent bottom y axis and second border node changed of side
+        newParentBottom = parentBounds.getBottom().getTranslated(TRANSLATION_PLUS_100Y.getNegated());
+        editor.drag(parentBounds.getBottom(), newParentBottom);
+        bBoundsAfterDrag = getBounds("B");
+        Rectangle aBoundsAfterDrag = getBounds("A");
+        assertEquals("B is not at the expected y location", newParentBottom.y - bBoundsAfterDrag.height - 10, bBoundsAfterDrag.y);
+        Assert.assertNotEquals("A is not at the expected x location", aBoundsBeforeDrag.x, aBoundsAfterDrag.x);
+
+        // Check border node on east side
+        CheckSelectedCondition p32SelectedCondition = new CheckSelectedCondition(editor, "p32");
+        parentBounds = editor.clickCentered("p32");
+        bot.waitUntil(p32SelectedCondition);
+
+        // Moved at 0 y axis
+        newParentBottom = parentBounds.getBottom().getTranslated(TRANSLATION_PLUS_40Y.getNegated());
+        editor.drag(parentBounds.getBottom(), newParentBottom);
+        Rectangle dBoundsAfterDrag = getBounds("D");
+        assertEquals("D is not at the expected y location", newParentBottom.y - dBoundsAfterDrag.height - 10, dBoundsAfterDrag.y);
+        undo();
+
+        // Moved just above its brother
+        Rectangle cBoundsBeforeDrag = getBounds("C");
+        editor.drag(parentBounds.getBottom(), parentBounds.getBottom().getTranslated(TRANSLATION_PLUS_60Y.getNegated()));
+        dBoundsAfterDrag = getBounds("D");
+        assertEquals("D is not at the expected y location", cBoundsBeforeDrag.getTop().y - 1, dBoundsAfterDrag.getBottom().y);
+        undo();
+
+        // Moved at parent bottom y axis and second border node changed of side
+        newParentBottom = parentBounds.getBottom().getTranslated(TRANSLATION_PLUS_100Y.getNegated());
+        editor.drag(parentBounds.getBottom(), newParentBottom);
+        dBoundsAfterDrag = getBounds("D");
+        Rectangle cBoundsAfterDrag = getBounds("C");
+        assertEquals("D is not at the expected y location", newParentBottom.y - dBoundsAfterDrag.height - 10, dBoundsAfterDrag.y);
+        Assert.assertNotEquals("C is not at the expected x location", cBoundsBeforeDrag.x, cBoundsAfterDrag.x);
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_resize_move_border_node_to_stay_in_parent_bounds_west() throws Exception {
+        openDiagram("DiagWithBorderNodeOnNode", "caseTwoWest");
+        // Check border node on north side
+        CheckSelectedCondition p31SelectedCondition = new CheckSelectedCondition(editor, "p31");
+        Rectangle parentBounds = editor.clickCentered("p31");
+        bot.waitUntil(p31SelectedCondition);
+
+        // Moved at parent x axis
+        Point newParentLeft = parentBounds.getLeft().getTranslated(TRANSLATION_PLUS_60X);
+        editor.drag(parentBounds.getLeft(), newParentLeft);
+        Rectangle bBoundsAfterDrag = getBounds("B");
+        assertEquals("B is not at the expected x location", newParentLeft.x, bBoundsAfterDrag.x);
+        undo();
+
+        // Moved just after its brother
+        Rectangle aBoundsBeforeDrag = getBounds("A");
+        editor.drag(parentBounds.getLeft(), parentBounds.getLeft().getTranslated(TRANSLATION_PLUS_120X));
+        bBoundsAfterDrag = getBounds("B");
+        assertEquals("B is not at the expected x location", aBoundsBeforeDrag.getRight().x + 1, bBoundsAfterDrag.x);
+        undo();
+
+        // Moved at parent x axis and second border node just after
+        newParentLeft = parentBounds.getLeft().getTranslated(TRANSLATION_PLUS_180X);
+        editor.drag(parentBounds.getLeft(), newParentLeft);
+        bBoundsAfterDrag = getBounds("B");
+        Rectangle aBoundsAfterDrag = getBounds("A");
+        assertEquals("B is not at the expected x location", newParentLeft.x, bBoundsAfterDrag.x);
+        assertEquals("A is not at the expected x location", bBoundsAfterDrag.getRight().x + 1, aBoundsAfterDrag.x);
+        undo();
+
+        // Moved at parent x axis and second border node changed of side
+        newParentLeft = parentBounds.getLeft().getTranslated(TRANSLATION_PLUS_200X);
+        editor.drag(parentBounds.getLeft(), newParentLeft);
+        bBoundsAfterDrag = getBounds("B");
+        aBoundsAfterDrag = getBounds("A");
+        assertEquals("B is not at the expected x location", newParentLeft.x, bBoundsAfterDrag.x);
+        Assert.assertNotEquals("A is not at the expected y location", aBoundsBeforeDrag.y, aBoundsAfterDrag.y);
+
+        // Check border node on south side
+        CheckSelectedCondition p32SelectedCondition = new CheckSelectedCondition(editor, "p32");
+        parentBounds = editor.clickCentered("p32");
+        bot.waitUntil(p32SelectedCondition);
+
+        // Moved at parent x axis
+        newParentLeft = parentBounds.getLeft().getTranslated(TRANSLATION_PLUS_60X);
+        editor.drag(parentBounds.getLeft(), newParentLeft);
+        Rectangle dBoundsAfterDrag = getBounds("D");
+        assertEquals("D is not at the expected x location", newParentLeft.x, dBoundsAfterDrag.x);
+        undo();
+
+        // Moved just after its brother
+        Rectangle cBoundsBeforeDrag = getBounds("C");
+        editor.drag(parentBounds.getLeft(), parentBounds.getLeft().getTranslated(TRANSLATION_PLUS_120X));
+        dBoundsAfterDrag = getBounds("D");
+        assertEquals("D is not at the expected x location", cBoundsBeforeDrag.getRight().x + 1, dBoundsAfterDrag.x);
+        undo();
+
+        // Moved at parent x axis and second border node just after
+        newParentLeft = parentBounds.getLeft().getTranslated(TRANSLATION_PLUS_180X);
+        editor.drag(parentBounds.getLeft(), newParentLeft);
+        dBoundsAfterDrag = getBounds("D");
+        Rectangle cBoundsAfterDrag = getBounds("C");
+        assertEquals("D is not at the expected x location", newParentLeft.x, dBoundsAfterDrag.x);
+        assertEquals("C is not at the expected x location", dBoundsAfterDrag.getRight().x + 1, cBoundsAfterDrag.x);
+        undo();
+
+        // Moved at parent x axis and second border node changed of side
+        newParentLeft = parentBounds.getLeft().getTranslated(TRANSLATION_PLUS_200X);
+        editor.drag(parentBounds.getLeft(), parentBounds.getLeft().getTranslated(TRANSLATION_PLUS_200X));
+        dBoundsAfterDrag = getBounds("D");
+        cBoundsAfterDrag = getBounds("C");
+        assertEquals("D is not at the expected x location", newParentLeft.x, dBoundsAfterDrag.x);
+        Assert.assertNotEquals("C is not at the expected y location", cBoundsBeforeDrag.y, cBoundsAfterDrag.y);
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_resize_move_border_node_to_stay_in_parent_bounds_east() throws Exception {
+        openDiagram("DiagWithBorderNodeOnNode", "caseTwoEast");
+        // Check border node on north side
+        CheckSelectedCondition p31SelectedCondition = new CheckSelectedCondition(editor, "p31");
+        Rectangle parentBounds = editor.clickCentered("p31");
+        bot.waitUntil(p31SelectedCondition);
+
+        // Moved at parent right axis
+        Point newParentRight = parentBounds.getRight().getTranslated(TRANSLATION_PLUS_60X.getNegated());
+        editor.drag(parentBounds.getRight(), newParentRight);
+        Rectangle bBoundsAfterDrag = getBounds("B");
+        assertEquals("B is not at the expected x location", newParentRight.x - bBoundsAfterDrag.width - 10, bBoundsAfterDrag.x);
+        undo();
+
+        // Moved just before its brother
+        Rectangle aBoundsBeforeDrag = getBounds("A");
+        editor.drag(parentBounds.getRight(), parentBounds.getRight().getTranslated(TRANSLATION_MINUS_140X));
+        bBoundsAfterDrag = getBounds("B");
+        assertEquals("B is not at the expected x location", aBoundsBeforeDrag.x - bBoundsAfterDrag.width - 1, bBoundsAfterDrag.x);
+        undo();
+
+        // Moved at parent right axis and second border node changed of side
+        newParentRight = parentBounds.getRight().getTranslated(TRANSLATION_PLUS_180X.getNegated());
+        editor.drag(parentBounds.getRight(), newParentRight);
+        bBoundsAfterDrag = getBounds("B");
+        Rectangle aBoundsAfterDrag = getBounds("A");
+        assertEquals("B is not at the expected x location", newParentRight.x - bBoundsAfterDrag.width - 10, bBoundsAfterDrag.x);
+        Assert.assertNotEquals("A is not at the expected y location", aBoundsBeforeDrag.y, aBoundsAfterDrag.y);
+
+        // Check border node on south side
+        CheckSelectedCondition p32SelectedCondition = new CheckSelectedCondition(editor, "p32");
+        parentBounds = editor.clickCentered("p32");
+        bot.waitUntil(p32SelectedCondition);
+
+        // Moved at parent right axis
+        newParentRight = parentBounds.getRight().getTranslated(TRANSLATION_PLUS_60X.getNegated());
+        editor.drag(parentBounds.getRight(), newParentRight);
+        Rectangle dBoundsAfterDrag = getBounds("D");
+        assertEquals("D is not at the expected x location", newParentRight.x - bBoundsAfterDrag.width - 10, dBoundsAfterDrag.x);
+        undo();
+
+        // Moved just before its brother
+        Rectangle cBoundsBeforeDrag = getBounds("C");
+        editor.drag(parentBounds.getRight(), parentBounds.getRight().getTranslated(TRANSLATION_MINUS_140X));
+        dBoundsAfterDrag = getBounds("D");
+        assertEquals("D is not at the expected x location", cBoundsBeforeDrag.x - dBoundsAfterDrag.width - 1, dBoundsAfterDrag.x);
+        undo();
+
+        // Moved at parent right axis and second border node changed of side
+        newParentRight = parentBounds.getRight().getTranslated(TRANSLATION_PLUS_180X.getNegated());
+        editor.drag(parentBounds.getRight(), newParentRight);
+        dBoundsAfterDrag = getBounds("D");
+        Rectangle cBoundsAfterDrag = getBounds("C");
+        assertEquals("D is not at the expected x location", newParentRight.x - dBoundsAfterDrag.width - 10, dBoundsAfterDrag.x);
+        Assert.assertNotEquals("C is not at the expected y location", cBoundsBeforeDrag.y, cBoundsAfterDrag.y);
     }
 
     private void openDiagram(final String representationName, final String diagramName) {
@@ -791,6 +1154,22 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
      *            The matcher to do the check
      */
     private void checkBoundsAfterDrag(String portName, Matcher<Rectangle> matcher) {
+        checkBoundsAfterDrag(portName, matcher, "TC1479", "TC1479");
+    }
+
+    /**
+     * Check that the bounds is OK :
+     * <UL>
+     * <LI>just after the drag,</LI>
+     * <LI>after a save, close and open of the editor.</LI>
+     * </UL>
+     * 
+     * @param portName
+     *            The name of the port to check.
+     * @param matcher
+     *            The matcher to do the check
+     */
+    private void checkBoundsAfterDrag(String portName, Matcher<Rectangle> matcher, String representationName, String diagramName) {
         // Check just after drag
         final Rectangle boundsAfterDrag = getBounds(portName);
         assertThat(boundsAfterDrag, matcher);
@@ -798,7 +1177,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
         editor.save();
         editor.close();
         SWTBotUtils.waitAllUiEvents();
-        openDiagram("TC1479", "TC1479");
+        openDiagram(representationName, diagramName);
         final Rectangle boundsAfterReopening = getBounds(portName);
         assertThat("The port's position isn't the same before and after reopening the representation!", boundsAfterReopening, matcher);
     }
