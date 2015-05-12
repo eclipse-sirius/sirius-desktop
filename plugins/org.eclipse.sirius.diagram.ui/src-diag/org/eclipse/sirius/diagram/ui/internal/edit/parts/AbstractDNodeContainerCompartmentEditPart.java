@@ -69,6 +69,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPopupBarEditP
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerViewNodeContainerCompartmentItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ContainerCompartmentNodeEditPolicy;
@@ -451,6 +452,18 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 minY = Math.min(minY, bounds.y);
             }
 
+            int labelWidth = 0;
+            IFigure parentLabelFigure = getParentLabelFigure(parent);
+            if (parentLabelFigure != null) {
+                labelWidth = parentLabelFigure.getSize().width;
+
+                // For vertical stacks, take label into account to compute the
+                // region common size.
+                if (isVertical) {
+                    maxWidth = Math.max(maxWidth, labelWidth);
+                }
+            }
+
             int y = minY;
             int x = 0;
 
@@ -474,6 +487,32 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 setConstraint(f, bounds);
                 f.setBounds(bounds.translate(offset));
             }
+
+            // For horizontal stacks, if label is longer than the regions
+            // cumulative width, increase the last region size.
+            int delta = labelWidth - x;
+            if (!isVertical && delta > 0 && !children.isEmpty()) {
+                IFigure last = Iterables.getLast(children);
+                bounds = regionsBounds.get(last);
+                bounds.setWidth(bounds.width + delta);
+                setConstraint(last, bounds);
+                last.setBounds(bounds.translate(offset));
+            }
+        }
+
+        private IFigure getParentLabelFigure(IFigure parent) {
+            IFigure tmp = parent;
+            ViewNodeContainerFigureDesc parentShape = null;
+            while (parentShape == null && tmp != null) {
+                if (tmp instanceof ViewNodeContainerFigureDesc) {
+                    parentShape = (ViewNodeContainerFigureDesc) tmp;
+                    tmp = null;
+                } else {
+                    tmp = tmp.getParent();
+                }
+            }
+
+            return parentShape != null ? parentShape.getLabelFigure() : null;
         }
 
         /*

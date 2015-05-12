@@ -268,14 +268,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     protected NodeFigure createMainFigure() {
         final NodeFigure figure = createNodePlate();
 
-        if (figure instanceof DefaultSizeNodeFigure && isRegion()) {
-            DefaultSizeNodeFigure dsnf = (DefaultSizeNodeFigure) figure;
-            Dimension d = new Dimension(100, 60);
-            dsnf.setDefaultSize(d);
-            dsnf.setMinimumSize(d);
-        } else if (figure instanceof DefaultSizeNodeFigure) {
+        if (figure instanceof DefaultSizeNodeFigure) {
             setFigureDefaultSize((DefaultSizeNodeFigure) figure);
-
         }
 
         figure.setLayoutManager(new StackLayout());
