@@ -219,6 +219,15 @@
 				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession.detachEditor(DialectEditor, boolean)</code> has been added to choose whether we should revert the user changes when detaching the editor.
 			</li>
 			<li>Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.ui.ext.</li>
+			<li>A 
+				<code>org.eclipse.sirius.ui.tools.api.views.LockDecorationUpdater</code> is now available to add it on a 
+				<code>org.eclipse.ui.navigator.CommonNavigator</code> to be refreshed when notifications are send to 
+				<code>org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener</code>. 
+			</li>
+			<li>A new job 
+				<code>org.eclipse.sirius.ui.tools.api.views.RefreshLabelImageJob</code> has been added to refresh the icon of specified elements on a 
+				<code>org.eclipse.ui.navigator.CommonNavigator</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>

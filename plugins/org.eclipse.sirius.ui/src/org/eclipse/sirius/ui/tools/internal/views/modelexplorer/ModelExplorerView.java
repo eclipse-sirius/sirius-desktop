@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.common.ui.tools.api.view.IExpandSelectionTarget;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.sirius.ui.tools.api.views.LockDecorationUpdater;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerTabExtension;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.FilteredCommonTree;
@@ -61,6 +62,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+
 /**
  * An Eclipse view to see the viewpoint resource set content.
  * 
@@ -77,6 +79,14 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
     private Action deleteActionHandler;
 
     private Action renameActionHandler;
+
+    /**
+     * The updater in charge of refresh this view according to lock
+     * notifications send to
+     * {@link org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener}
+     * .
+     */
+    private LockDecorationUpdater lockDecorationUpdater = new LockDecorationUpdater();
 
     /**
      * {@inheritDoc}
@@ -216,7 +226,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
                 tab.init(site);
             }
         }
-
+        lockDecorationUpdater.register(this);
     }
 
     /**
@@ -257,6 +267,9 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
                 tab.dispose();
             }
         }
+
+        lockDecorationUpdater.unregister();
+        lockDecorationUpdater = null;
     }
 
     /**

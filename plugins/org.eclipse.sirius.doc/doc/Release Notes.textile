@@ -68,6 +68,8 @@ h4. Changes in @org.eclipse.sirius.ui@
 * The interface @org.eclipse.sirius.ext.emf.ui.ICellEditorProvider@ has been added to allow clients to provide their own @CellEditor@ - in the Sirius semantic properties views - through the new extension point @org.eclipse.sirius.ui.siriuspropertiescelleditor@.
 * The method @org.eclipse.sirius.ui.business.api.session.IEditingSession.detachEditor(DialectEditor, boolean)@ has been added to choose whether we should revert the user changes when detaching the editor.
 * Extensions in plugin.xml that provide UI functionalities have been moved to org.eclipse.sirius.ui.ext.
+* A @org.eclipse.sirius.ui.tools.api.views.LockDecorationUpdater@ is now available to add it on a @org.eclipse.ui.navigator.CommonNavigator@ to be refreshed when notifications are send to @org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener@. 
+* A new job @org.eclipse.sirius.ui.tools.api.views.RefreshLabelImageJob@ has been added to refresh the icon of specified elements on a @org.eclipse.ui.navigator.CommonNavigator@.
 
 h4. Changes in @org.eclipse.sirius.common@
 
