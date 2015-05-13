@@ -56,7 +56,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DCompartmentConnectionRefreshMgr;
@@ -295,15 +295,15 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
     }
 
     private boolean isRegionContainerCompartment() {
-        Option<DNodeContainerExperimentalQuery> query = getDNodeContainerQuery();
+        Option<DNodeContainerQuery> query = getDNodeContainerQuery();
         return query.some() && query.get().isRegionContainer();
     }
 
-    private Option<DNodeContainerExperimentalQuery> getDNodeContainerQuery() {
-        DNodeContainerExperimentalQuery query = null;
+    private Option<DNodeContainerQuery> getDNodeContainerQuery() {
+        DNodeContainerQuery query = null;
         EObject eObject = resolveSemanticElement();
         if (eObject instanceof DNodeContainer) {
-            query = new DNodeContainerExperimentalQuery((DNodeContainer) eObject);
+            query = new DNodeContainerQuery((DNodeContainer) eObject);
         }
 
         return Options.newSome(query);
@@ -389,7 +389,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
     @Override
     protected LayoutManager getLayoutManager() {
         LayoutManager layoutManager = null;
-        Option<DNodeContainerExperimentalQuery> query = getDNodeContainerQuery();
+        Option<DNodeContainerQuery> query = getDNodeContainerQuery();
         if (query.some() && query.get().isRegionContainer()) {
             if (query.get().isVerticalStackContainer()) {
                 layoutManager = new RegionContainerLayoutManager(true);

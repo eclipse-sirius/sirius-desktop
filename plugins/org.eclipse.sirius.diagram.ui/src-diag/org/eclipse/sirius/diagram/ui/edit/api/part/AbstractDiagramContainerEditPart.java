@@ -42,7 +42,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
@@ -87,7 +87,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
         DDiagramElement ddiagramElement = resolveDiagramElement();
         if (ddiagramElement instanceof DNodeContainer) {
             DNodeContainer ddec = (DNodeContainer) ddiagramElement;
-            return new DNodeContainerExperimentalQuery(ddec).isRegionContainer();
+            return new DNodeContainerQuery(ddec).isRegionContainer();
         }
         return false;
     }

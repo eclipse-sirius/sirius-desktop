@@ -69,7 +69,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
@@ -593,7 +593,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
                     //Keep the GMF model consistent for pinned RegionContainer and Regions
                     if (graphicalEditPart instanceof IDiagramContainerEditPart && dDiagramElement instanceof DNodeContainer
-                            && new DNodeContainerExperimentalQuery((DNodeContainer) dDiagramElement).isRegionContainer()) {
+                            && new DNodeContainerQuery((DNodeContainer) dDiagramElement).isRegionContainer()) {
                         AbstractDNodeContainerCompartmentEditPart comp = Iterables.getFirst(Iterables.filter(graphicalEditPart.getChildren(), AbstractDNodeContainerCompartmentEditPart.class), null);
                         if (comp != null && comp.getNotationView() != null) {
                             for (Node region : Iterables.filter(comp.getChildren(), Node.class)) {

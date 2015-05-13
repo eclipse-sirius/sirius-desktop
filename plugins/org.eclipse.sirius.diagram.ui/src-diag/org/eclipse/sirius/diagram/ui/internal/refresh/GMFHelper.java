@@ -42,8 +42,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
@@ -150,7 +149,7 @@ public final class GMFHelper {
 
                 // RegionContainer do not have containers insets
                 if (ddec instanceof DNodeContainer) {
-                    if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer()) {
+                    if (new DNodeContainerQuery((DNodeContainer) ddec).isRegionContainer()) {
                         locationToTranslate.translate(0, CONTAINER_INSETS.y);
                         locationToTranslate.translate(0, getLabelSize(parentNode)).translate(0, AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
                     } else {
@@ -158,7 +157,7 @@ public final class GMFHelper {
                     }
                 }
 
-                DDiagramElementContainerExperimentalQuery regionQuery = new DDiagramElementContainerExperimentalQuery(ddec);
+                DDiagramElementContainerQuery regionQuery = new DDiagramElementContainerQuery(ddec);
                 if (regionQuery.isRegionInHorizontalStack()) {
                     locationToTranslate.translate((isFirstRegion(ddec) ? 0 : borderSize), 1);
                 } else if (regionQuery.isRegionInVerticalStack()) {

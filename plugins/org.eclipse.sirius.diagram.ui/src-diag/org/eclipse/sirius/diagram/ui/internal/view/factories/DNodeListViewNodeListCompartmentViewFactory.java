@@ -22,7 +22,7 @@ import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.TitleStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
@@ -79,7 +79,7 @@ public class DNodeListViewNodeListCompartmentViewFactory extends BasicNodeViewFa
         DrawerStyle drawerStyle = (DrawerStyle) view.getStyle(NotationPackage.eINSTANCE.getDrawerStyle());
         
         EObject element = view.getElement();
-        if (drawerStyle == null && element instanceof DNodeList && new DDiagramElementContainerExperimentalQuery((DNodeList) element).isRegion()) {
+        if (drawerStyle == null && element instanceof DNodeList && new DDiagramElementContainerQuery((DNodeList) element).isRegion()) {
             drawerStyle = NotationFactory.eINSTANCE.createDrawerStyle();
             view.getStyles().add(drawerStyle);
         }

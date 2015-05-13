@@ -24,7 +24,7 @@ import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigr
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
@@ -100,7 +100,7 @@ public class CollapseSupportOnRegionMigrationParticipant extends AbstractReprese
             int id = SiriusVisualIDRegistry.getVisualID(node.getType());
             if (id == DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID || id == DNodeListViewNodeListCompartmentEditPart.VISUAL_ID) {
                 EObject element = node.getElement();
-                return element instanceof DDiagramElementContainer && new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) element).isRegion();
+                return element instanceof DDiagramElementContainer && new DDiagramElementContainerQuery((DDiagramElementContainer) element).isRegion();
             }
             return false;
         }

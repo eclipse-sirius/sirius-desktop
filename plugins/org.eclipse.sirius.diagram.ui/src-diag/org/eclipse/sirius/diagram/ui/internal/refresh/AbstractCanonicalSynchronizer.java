@@ -53,8 +53,8 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
@@ -156,8 +156,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         // create a view for each remaining semantic element.
         Set<View> createdViews = createViews(semanticChildren, gmfView.getType(), gmfView);
 
-        boolean regionContainer = semanticView instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) semanticView).isRegionContainer();
-        boolean region = semanticView instanceof DDiagramElementContainer && new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) semanticView).isRegion();
+        boolean regionContainer = semanticView instanceof DNodeContainer && new DNodeContainerQuery((DNodeContainer) semanticView).isRegionContainer();
+        boolean region = semanticView instanceof DDiagramElementContainer && new DDiagramElementContainerQuery((DDiagramElementContainer) semanticView).isRegion();
         if (!orphaned.isEmpty() || !createdViews.isEmpty()) {
             if (regionContainer) {
                 regionsToLayout.add(gmfView);
@@ -589,7 +589,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         EObject parent = element.eContainer();
         boolean isAlreadylayouted = false;
         if (element instanceof AbstractDNode && parent instanceof DNodeContainer) {
-            if (new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer()) {
+            if (new DNodeContainerQuery((DNodeContainer) parent).isRegionContainer()) {
                 regionsToLayout.add(createdView.eContainer());
                 isAlreadylayouted = true;
             } else {

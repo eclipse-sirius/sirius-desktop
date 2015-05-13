@@ -18,7 +18,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
  * 
  * @author mporhel
  */
-public class DNodeContainerExperimentalQuery {
+public class DNodeContainerQuery {
     private final DNodeContainer container;
 
     /**
@@ -27,7 +27,7 @@ public class DNodeContainerExperimentalQuery {
      * @param container
      *            the DNodeContainer to query.
      */
-    public DNodeContainerExperimentalQuery(DNodeContainer container) {
+    public DNodeContainerQuery(DNodeContainer container) {
         this.container = container;
     }
 

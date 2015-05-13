@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -159,7 +159,7 @@ public final class PinHelper {
         Predicate<DDiagramElement> result = new Predicate<DDiagramElement>() {
             public boolean apply(DDiagramElement dde) {
                 if (dde instanceof DDiagramElementContainer) {
-                    DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde);
+                    DDiagramElementContainerQuery query = new DDiagramElementContainerQuery((DDiagramElementContainer) dde);
                     return !query.isRegion();
                 }
                 return true;

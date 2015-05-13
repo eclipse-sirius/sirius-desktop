@@ -29,7 +29,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
@@ -212,7 +212,7 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
         if (hostPart instanceof AbstractDiagramElementContainerEditPart) {
             IDiagramElementEditPart ideep = (IDiagramElementEditPart) hostPart;
             DDiagramElement dde = ideep.resolveDiagramElement();
-            regionImpacted = dde instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) dde).isRegionContainer();
+            regionImpacted = dde instanceof DNodeContainer && new DNodeContainerQuery((DNodeContainer) dde).isRegionContainer();
         }
         return regionImpacted;
     }
@@ -224,7 +224,7 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
             IDiagramElementEditPart ideep = (IDiagramElementEditPart) hostPart;
             DDiagramElement dde = ideep.resolveDiagramElement();
             if (dde instanceof DNodeContainer) {
-                DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery((DNodeContainer) dde);
+                DNodeContainerQuery query = new DNodeContainerQuery((DNodeContainer) dde);
                 if (query.isVerticalStackContainer()) {
                     direction = PositionConstants.NORTH_SOUTH;
                 } else if (query.isHorizontaltackContainer()) {

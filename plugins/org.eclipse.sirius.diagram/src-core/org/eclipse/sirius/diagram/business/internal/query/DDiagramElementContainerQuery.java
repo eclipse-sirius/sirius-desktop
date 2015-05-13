@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
  * 
  * @author mporhel
  */
-public class DDiagramElementContainerExperimentalQuery {
+public class DDiagramElementContainerQuery {
 
     private final DDiagramElementContainer container;
 
@@ -29,14 +29,14 @@ public class DDiagramElementContainerExperimentalQuery {
      * @param container
      *            the DDiagramElementContainer to query.
      */
-    public DDiagramElementContainerExperimentalQuery(DDiagramElementContainer container) {
+    public DDiagramElementContainerQuery(DDiagramElementContainer container) {
         this.container = container;
     }
 
     /**
      * Tests whether or not the {@link DNodeContainer} is a region (e.g. child
      * of a region container, see
-     * {@link DNodeContainerExperimentalQuery#isRegionContainer()}).
+     * {@link DNodeContainerQuery#isRegionContainer()}).
      * 
      * @return <code>true</code> if the {@link DNodeContainer} is a region.
      */
@@ -44,7 +44,7 @@ public class DDiagramElementContainerExperimentalQuery {
         if (container != null) {
             EObject parentContainer = container.eContainer();
             if (parentContainer instanceof DNodeContainer) {
-                return new DNodeContainerExperimentalQuery((DNodeContainer) parentContainer).isRegionContainer();
+                return new DNodeContainerQuery((DNodeContainer) parentContainer).isRegionContainer();
             }
         }
         return false;
@@ -53,7 +53,7 @@ public class DDiagramElementContainerExperimentalQuery {
     /**
      * Tests whether or not the {@link DNodeContainer} is a region (e.g. child
      * of an horizontal stack region container, see
-     * {@link DNodeContainerExperimentalQuery#isHorizontaltackContainer()}).
+     * {@link DNodeContainerQuery#isHorizontaltackContainer()}).
      * 
      * @return <code>true</code> if the {@link DNodeContainer} is a region.
      */
@@ -61,7 +61,7 @@ public class DDiagramElementContainerExperimentalQuery {
         if (container != null) {
             EObject parentContainer = container.eContainer();
             if (parentContainer instanceof DNodeContainer) {
-                return new DNodeContainerExperimentalQuery((DNodeContainer) parentContainer).isHorizontaltackContainer();
+                return new DNodeContainerQuery((DNodeContainer) parentContainer).isHorizontaltackContainer();
             }
         }
         return false;
@@ -70,7 +70,7 @@ public class DDiagramElementContainerExperimentalQuery {
     /**
      * Tests whether or not the {@link DNodeContainer} is a region (e.g. child
      * of a vertical stack region container, see
-     * {@link DNodeContainerExperimentalQuery#isVerticalStackContainer()}).
+     * {@link DNodeContainerQuery#isVerticalStackContainer()}).
      * 
      * @return <code>true</code> if the {@link DNodeContainer} is a region.
      */
@@ -78,7 +78,7 @@ public class DDiagramElementContainerExperimentalQuery {
         if (container != null) {
             EObject parentContainer = container.eContainer();
             if (parentContainer instanceof DNodeContainer) {
-                return new DNodeContainerExperimentalQuery((DNodeContainer) parentContainer).isVerticalStackContainer();
+                return new DNodeContainerQuery((DNodeContainer) parentContainer).isVerticalStackContainer();
             }
         }
         return false;

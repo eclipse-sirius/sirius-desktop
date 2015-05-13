@@ -43,7 +43,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
@@ -255,7 +255,7 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
     }
 
     private boolean isRegionContainer(EObject element) {
-        return element instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) element).isRegionContainer();
+        return element instanceof DNodeContainer && new DNodeContainerQuery((DNodeContainer) element).isRegionContainer();
     }
 
     /**

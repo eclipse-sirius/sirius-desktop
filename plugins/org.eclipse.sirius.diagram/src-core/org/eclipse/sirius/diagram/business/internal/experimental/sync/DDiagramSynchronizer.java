@@ -70,7 +70,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.description.operat
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
@@ -840,7 +840,7 @@ public class DDiagramSynchronizer {
 
                     final Set<AbstractDNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<AbstractDNodeCandidate>();
 
-                    boolean stackContainer = new DNodeContainerExperimentalQuery(newContainer).isRegionContainer();
+                    boolean stackContainer = new DNodeContainerQuery(newContainer).isRegionContainer();
                     for (final ContainerMapping child : childMappings) {
                         refreshContainerMapping(mappingsToEdgeTargets, newNode, child, elementsCreated, false, stackContainer, new SubProgressMonitor(monitor, 1));
                     }

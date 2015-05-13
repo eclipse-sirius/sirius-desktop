@@ -37,8 +37,8 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
@@ -333,7 +333,7 @@ public class ArrangeAllWithAutoSize {
         if (gep instanceof AbstractDiagramElementContainerEditPart) {
             DDiagramElement resolveDiagramElement = ((AbstractDiagramElementContainerEditPart) gep).resolveDiagramElement();
             if (resolveDiagramElement instanceof DDiagramElementContainer) {
-                return new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) resolveDiagramElement).isRegion();
+                return new DDiagramElementContainerQuery((DDiagramElementContainer) resolveDiagramElement).isRegion();
             }
         }
         return false;
@@ -343,7 +343,7 @@ public class ArrangeAllWithAutoSize {
         if (gep instanceof IDiagramContainerEditPart) {
             DDiagramElement resolveDiagramElement = ((IDiagramContainerEditPart) gep).resolveDiagramElement();
             if (resolveDiagramElement instanceof DNodeContainer) {
-                return new DNodeContainerExperimentalQuery((DNodeContainer) resolveDiagramElement).isRegionContainer();
+                return new DNodeContainerQuery((DNodeContainer) resolveDiagramElement).isRegionContainer();
             }
         }
         return false;
