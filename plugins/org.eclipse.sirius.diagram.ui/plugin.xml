@@ -1824,6 +1824,10 @@
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.description.RoundedCornerDefaultValuesMigrationParticipant"
             kind="VSM">
       </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.CollapseSupportOnRegionMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
