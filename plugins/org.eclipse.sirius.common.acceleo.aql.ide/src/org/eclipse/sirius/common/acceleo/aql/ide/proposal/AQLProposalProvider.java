@@ -110,7 +110,7 @@ public class AQLProposalProvider implements IProposalProvider {
         final Set<ICompletionProposal> proposal = Sets.newLinkedHashSet(completionResult.getProposals(QueryCompletion.createBasicFilter(completionResult)));
 
         for (ICompletionProposal propFromAQL : proposal) {
-            ContentProposal propForSirius = new ContentProposal(propFromAQL.getProposal(), propFromAQL.getProposal(), propFromAQL.getClass().getSimpleName(), propFromAQL.getCursorOffset());
+            ContentProposal propForSirius = new ContentProposal(propFromAQL.getProposal(), propFromAQL.getProposal(), propFromAQL.getDescription(), propFromAQL.getCursorOffset());
             proposals.add(propForSirius);
         }
         return proposals;
