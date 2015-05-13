@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.acceleo.aql.ide.proposal;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -39,7 +40,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * This implementation of the {@link IProposalProvider} interface will be used
@@ -62,7 +65,6 @@ public class AQLProposalProvider implements IProposalProvider {
      * 
      */
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
-        List<ContentProposal> proposals = new ArrayList();
         if (interpreter instanceof AQLSiriusInterpreter) {
             /*
              * the instance of interpreter has actually been created for the
@@ -75,10 +77,10 @@ public class AQLProposalProvider implements IProposalProvider {
                 setupInterpreter(context, aqlInterpreter);
                 Map<String, Set<IType>> variableTypes = TypesUtil.createAQLVariableTypesFromInterpreterContext(context.getInterpreterContext(), aqlInterpreter.getQueryEnvironment());
 
-                addProposals(proposals, trimer, context.getPosition(), aqlInterpreter.getQueryEnvironment(), variableTypes);
+                return ImmutableList.copyOf(getProposals(trimer, context.getPosition(), aqlInterpreter.getQueryEnvironment(), variableTypes));
             }
         }
-        return proposals;
+        return Collections.<ContentProposal> emptyList();
     }
 
     private void setupInterpreter(ContentContext context, AQLSiriusInterpreter interpreter) {
@@ -98,18 +100,20 @@ public class AQLProposalProvider implements IProposalProvider {
         }
     }
 
-    private void addProposals(List<ContentProposal> proposals, ExpressionTrimmer trimmer, int position, IQueryEnvironment queryEnvironment, Map<String, Set<IType>> variableTypes) {
+    private Set<ContentProposal> getProposals(ExpressionTrimmer trimmer, int position, IQueryEnvironment queryEnvironment, Map<String, Set<IType>> variableTypes) {
+        Set<ContentProposal> proposals = Sets.newLinkedHashSet();
         IQueryCompletionEngine engine = QueryCompletion.newEngine(queryEnvironment);
         final ICompletionResult completionResult = engine.getCompletion(trimmer.getExpression(), trimmer.getPositionWithinAQL(position), variableTypes);
         /*
          * completionResult.sort(new ProposalComparator());
          */
-        final List<ICompletionProposal> proposal = completionResult.getProposals(QueryCompletion.createBasicFilter(completionResult));
+        final Set<ICompletionProposal> proposal = Sets.newLinkedHashSet(completionResult.getProposals(QueryCompletion.createBasicFilter(completionResult)));
 
         for (ICompletionProposal propFromAQL : proposal) {
             ContentProposal propForSirius = new ContentProposal(propFromAQL.getProposal(), propFromAQL.getProposal(), propFromAQL.getClass().getSimpleName(), propFromAQL.getCursorOffset());
             proposals.add(propForSirius);
         }
+        return proposals;
     }
 
     /**
@@ -117,7 +121,6 @@ public class AQLProposalProvider implements IProposalProvider {
      * 
      */
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
-        List<ContentProposal> proposals = new ArrayList();
         if (interpreter instanceof AQLSiriusInterpreter) {
             IQueryEnvironment queryEnvironment = ((AQLSiriusInterpreter) interpreter).getQueryEnvironment();
 
@@ -131,10 +134,10 @@ public class AQLProposalProvider implements IProposalProvider {
 
             ExpressionTrimmer trimer = new ExpressionTrimmer(context.getTextSoFar());
             if (trimer.positionIsWithinAQL(context.getCursorPosition())) {
-                addProposals(proposals, trimer, context.getCursorPosition(), queryEnvironment, variableTypes);
+                return ImmutableList.copyOf(getProposals(trimer, context.getCursorPosition(), queryEnvironment, variableTypes));
             }
 
         }
-        return proposals;
+        return Collections.<ContentProposal> emptyList();
     }
 }
