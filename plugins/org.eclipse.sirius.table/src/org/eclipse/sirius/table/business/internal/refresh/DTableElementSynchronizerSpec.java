@@ -515,6 +515,12 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                     label = featureObject.toString();
                 }
                 init = true;
+            } else if (cell.getTarget().eClass().getEStructuralFeature(featureName) != null) {
+                // if the featureObject is null but the feature name exists, we
+                // consider blank string as text.
+                init = true;
+            }
+            if (init) {
                 // We change the value only if it's different
                 if (isDifferent(cell.getLabel(), label)) {
                     cell.setLabel(label);
@@ -1136,13 +1142,13 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     private String getText(final Object element) {
         String text = null;
         ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-        AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
         IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(element, IItemLabelProvider.class);
-        ReflectiveItemProvider reflectiveItemProvider = new ReflectiveItemProvider(adapterFactory);
         try {
             if (itemLabelProvider != null) {
+                AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
                 text = adapterFactoryItemDelegator.getText(element);
             } else {
+                ReflectiveItemProvider reflectiveItemProvider = new ReflectiveItemProvider(adapterFactory);
                 text = reflectiveItemProvider.getText(element);
             }
         } finally {
@@ -1156,5 +1162,4 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             target.eUnset(feature);
         }
     }
-
 }
