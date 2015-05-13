@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -244,17 +244,26 @@ public class ValidateAction extends Action {
         collectTargetElements(rootStatus, new HashSet(), allStatuses);
         for (Iterator it = allStatuses.iterator(); it.hasNext();) {
             IConstraintStatus nextStatus = (IConstraintStatus) it.next();
-            DSemanticDecorator dSemanticDecorator = getDSemanticDecorator(nextStatus.getTarget(), diagramEditPart);
-            if (dSemanticDecorator != null) {
-                View view = SiriusGMFHelper.getGmfView(dSemanticDecorator);
-                String qualifiedName = EMFCoreUtil.getQualifiedName(nextStatus.getTarget(), true);
-                if (nextStatus instanceof RuleWrappingStatus) {
-                    createValidationRuleMarker((RuleWrappingStatus) nextStatus, diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
-                } else {
-                    addMarker(diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
-                }
+            View view = getCorrespondingView(nextStatus.getTarget(), diagramEditPart);
+            String qualifiedName = EMFCoreUtil.getQualifiedName(nextStatus.getTarget(), true);
+            if (nextStatus instanceof RuleWrappingStatus) {
+                createValidationRuleMarker((RuleWrappingStatus) nextStatus, diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
+            } else {
+                addMarker(diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
             }
         }
+    }
+
+    private static View getCorrespondingView(EObject element, DiagramEditPart diagramEditPart) {
+        DSemanticDecorator dSemanticDecorator = getDSemanticDecorator(element, diagramEditPart);
+        View view = null;
+        if (dSemanticDecorator != null) {
+            view = SiriusGMFHelper.getGmfView(dSemanticDecorator);
+        }
+        if (view == null) {
+            view = diagramEditPart.getDiagramView();
+        }
+        return view;
     }
 
     private static void createValidationRuleMarker(RuleWrappingStatus nextStatus, EditPartViewer viewer, IFile target, View view, String location, String message, int statusSeverity) {
@@ -294,13 +303,8 @@ public class ValidateAction extends Action {
             List data = nextDiagnostic.getData();
             if (data != null && !data.isEmpty() && data.get(0) instanceof EObject) {
                 EObject element = (EObject) data.get(0);
-                DSemanticDecorator dSemanticDecorator = getDSemanticDecorator(element, diagramEditPart);
-                if (dSemanticDecorator != null) {
-                    View view = SiriusGMFHelper.getGmfView(dSemanticDecorator);
-                    addMarker(diagramEditPart.getViewer(), target, view, EMFCoreUtil.getQualifiedName(element, true), nextDiagnostic.getMessage(),
-                            diagnosticToStatusSeverity(nextDiagnostic.getSeverity()));
-                }
-
+                View view = getCorrespondingView(element, diagramEditPart);
+                addMarker(diagramEditPart.getViewer(), target, view, EMFCoreUtil.getQualifiedName(element, true), nextDiagnostic.getMessage(), diagnosticToStatusSeverity(nextDiagnostic.getSeverity()));
             }
         }
     }
