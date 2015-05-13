@@ -84,7 +84,7 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
-        nameLabel.setToolTipText("Tell whether the container will display it's children as list elements, as shapes or as regions.");
+        nameLabel.setToolTipText("Tell whether the container will display it's children as list elements, as shapes or as regions (experimental).");
 
         CLabel help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -92,7 +92,7 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
         help.setImage(getHelpIcon());
-        help.setToolTipText("Tell whether the container will display it's children as list elements, as shapes or as regions.");
+        help.setToolTipText("Tell whether the container will display it's children as list elements, as shapes or as regions (experimental).");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
     }
