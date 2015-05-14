@@ -43,8 +43,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.internal.graph.VirtualNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
@@ -171,7 +171,7 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
 
         DNodeContainer regionContainer = getRegionContainer(nodes, parent);
         if (regionContainer != null) {
-            DNodeContainerQuery query = new DNodeContainerQuery(regionContainer);
+            DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery(regionContainer);
             if (query.isVerticalStackContainer()) {
                 adjustRegionLayout(nodes, parent, true);
             } else if (query.isHorizontaltackContainer()) {
@@ -240,7 +240,7 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
             }
         }
 
-        if (dnc != null && new DNodeContainerQuery(dnc).isRegionContainer()) {
+        if (dnc != null && new DNodeContainerExperimentalQuery(dnc).isRegionContainer()) {
             return Options.newSome(dnc);
         }
         return Options.newNone();
@@ -249,7 +249,7 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
     private Option<DDiagramElementContainer> getRegion(Node node) {
         if (node.data instanceof IAbstractDiagramNodeEditPart) {
             DDiagramElement element = ((IAbstractDiagramNodeEditPart) node.data).resolveDiagramElement();
-            if (element instanceof DDiagramElementContainer && new DDiagramElementContainerQuery((DDiagramElementContainer) element).isRegion()) {
+            if (element instanceof DDiagramElementContainer && new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) element).isRegion()) {
                 return Options.newSome((DDiagramElementContainer) element);
             }
         }

@@ -65,7 +65,7 @@ import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
@@ -367,7 +367,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         int direction = PositionConstants.NONE;
         DDiagramElement dde = resolveDiagramElement();
         if (dde instanceof DDiagramElementContainer) {
-            DDiagramElementContainerQuery query = new DDiagramElementContainerQuery((DDiagramElementContainer) dde);
+            DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde);
             if (query.isRegionInVerticalStack()) {
                 direction = PositionConstants.NORTH_SOUTH;
             } else if (query.isRegionInHorizontalStack()) {
@@ -386,7 +386,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         DDiagramElement ddiagramElement = resolveDiagramElement();
         if (ddiagramElement instanceof DDiagramElementContainer) {
             DDiagramElementContainer ddec = (DDiagramElementContainer) ddiagramElement;
-            return new DDiagramElementContainerQuery(ddec).isRegion();
+            return new DDiagramElementContainerExperimentalQuery(ddec).isRegion();
         }
         return false;
     }
@@ -534,7 +534,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         boolean needShadowBorder = true;
         if (ddiagramElement instanceof DDiagramElementContainer) {
             DDiagramElementContainer ddec = (DDiagramElementContainer) ddiagramElement;
-            needShadowBorder = !(new DDiagramElementContainerQuery(ddec).isRegion() || ddec.getOwnedStyle() instanceof WorkspaceImage);
+            needShadowBorder = !(new DDiagramElementContainerExperimentalQuery(ddec).isRegion() || ddec.getOwnedStyle() instanceof WorkspaceImage);
         }
 
         if (needShadowBorder) {

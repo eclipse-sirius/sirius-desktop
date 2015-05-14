@@ -21,7 +21,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
@@ -91,7 +91,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             if (element instanceof DNodeContainer) {
                 DNodeContainer dnc = (DNodeContainer) element;
                 sortRegions(dnc, regionsToLayout);
-                DNodeContainerQuery query = new DNodeContainerQuery(dnc);
+                DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery(dnc);
                 if (query.isVerticalStackContainer()) {
                     updateRegionsLayoutContraints(regionsToLayout, true);
                 } else if (query.isHorizontaltackContainer()) {

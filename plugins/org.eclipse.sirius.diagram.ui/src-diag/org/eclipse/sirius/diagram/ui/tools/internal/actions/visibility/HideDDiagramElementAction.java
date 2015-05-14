@@ -38,7 +38,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
@@ -280,7 +280,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
         Predicate<DDiagramElement> result = new Predicate<DDiagramElement>() {
             public boolean apply(DDiagramElement dde) {
                 if (dde instanceof DDiagramElementContainer) {
-                    DDiagramElementContainerQuery query = new DDiagramElementContainerQuery((DDiagramElementContainer) dde);
+                    DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde);
                     return !query.isRegion();
                 }
                 return true;

@@ -31,8 +31,8 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
@@ -321,7 +321,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         if (hostPart instanceof AbstractDiagramElementContainerEditPart) {
             IDiagramElementEditPart ideep = (IDiagramElementEditPart) hostPart;
             DDiagramElement dde = ideep.resolveDiagramElement();
-            regionImpacted = dde instanceof DDiagramElementContainer && new DDiagramElementContainerQuery((DDiagramElementContainer) dde).isRegion();
+            regionImpacted = dde instanceof DDiagramElementContainer && new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde).isRegion();
         }
         return regionImpacted;
     }
@@ -333,7 +333,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
             IDiagramElementEditPart ideep = (IDiagramElementEditPart) hostPart;
             DDiagramElement dde = ideep.resolveDiagramElement();
             if (dde != null && dde.eContainer() instanceof DNodeContainer) {
-                DNodeContainerQuery query = new DNodeContainerQuery((DNodeContainer) dde.eContainer());
+                DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery((DNodeContainer) dde.eContainer());
                 if (query.isVerticalStackContainer()) {
                     direction = PositionConstants.NORTH_SOUTH;
                 } else if (query.isHorizontaltackContainer()) {
