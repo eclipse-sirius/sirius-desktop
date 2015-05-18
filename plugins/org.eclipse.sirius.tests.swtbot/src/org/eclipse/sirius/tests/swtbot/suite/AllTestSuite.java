@@ -351,6 +351,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(GroupingContentProviderTest.class);
         suite.addTestSuite(GroupingContentProviderByContainingTest.class);
         suite.addTestSuite(PaletteViewManagementTest.class);
+        suite.addTestSuite(PaletteManagerAfterVSMSelectionChange.class);
         suite.addTestSuite(CreateRepresentationFromSessionTest.class);
         suite.addTestSuite(ToolCreationPositionTest.class);
         suite.addTestSuite(LocalSessionViewTest.class);

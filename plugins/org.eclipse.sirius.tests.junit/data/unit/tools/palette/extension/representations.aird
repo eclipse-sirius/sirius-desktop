@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basicfamily="http://www.eclipse.org/sirius/sample/basicfamily" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_0AsdwB_WEeWIiat630Qqjg" selectedViews="_m3EnMB_5EeWIiat630Qqjg _m3PmUB_5EeWIiat630Qqjg" version="10.0.0.201505222000">
+  <semanticResources>My.basicfamily</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_3yzdcB_WEeWIiat630Qqjg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/DesignerTestProject/family.odesign#//@ownedViewpoints[name='persons']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_3y5kEB_WEeWIiat630Qqjg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/DesignerTestProject/extended.odesign#//@ownedViewpoints[name='others']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_m3EnMB_5EeWIiat630Qqjg">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_yzQ3sCCOEeWLIYOuPMQx9w" name="new personsDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_yzRewCCOEeWLIYOuPMQx9w" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_yzRewSCOEeWLIYOuPMQx9w"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_yzndACCOEeWLIYOuPMQx9w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_yzndASCOEeWLIYOuPMQx9w" type="Sirius" element="_yzQ3sCCOEeWLIYOuPMQx9w" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_yz2GgCCOEeWLIYOuPMQx9w" type="2001" element="_yzRewiCOEeWLIYOuPMQx9w">
+            <children xmi:type="notation:Node" xmi:id="_y0dxkCCOEeWLIYOuPMQx9w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_y0dxkSCOEeWLIYOuPMQx9w" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_y0u3UCCOEeWLIYOuPMQx9w" type="3003" element="_yzRewyCOEeWLIYOuPMQx9w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y0u3USCOEeWLIYOuPMQx9w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0u3UiCOEeWLIYOuPMQx9w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_yz2GgSCOEeWLIYOuPMQx9w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yz2GgiCOEeWLIYOuPMQx9w" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_y0rM8CCOEeWLIYOuPMQx9w" type="2001" element="_yzRexCCOEeWLIYOuPMQx9w">
+            <children xmi:type="notation:Node" xmi:id="_y0r0ACCOEeWLIYOuPMQx9w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_y0r0ASCOEeWLIYOuPMQx9w" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_y0veYCCOEeWLIYOuPMQx9w" type="3003" element="_yzRexSCOEeWLIYOuPMQx9w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y0veYSCOEeWLIYOuPMQx9w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0veYiCOEeWLIYOuPMQx9w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_y0rM8SCOEeWLIYOuPMQx9w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0rM8iCOEeWLIYOuPMQx9w" x="90" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_y0r0AiCOEeWLIYOuPMQx9w" type="2001" element="_yzRexiCOEeWLIYOuPMQx9w">
+            <children xmi:type="notation:Node" xmi:id="_y0sbECCOEeWLIYOuPMQx9w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_y0sbESCOEeWLIYOuPMQx9w" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_y0veYyCOEeWLIYOuPMQx9w" type="3003" element="_yzRexyCOEeWLIYOuPMQx9w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y0veZCCOEeWLIYOuPMQx9w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0veZSCOEeWLIYOuPMQx9w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_y0r0AyCOEeWLIYOuPMQx9w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0r0BCCOEeWLIYOuPMQx9w" x="180" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_y0sbEiCOEeWLIYOuPMQx9w" type="2001" element="_yzReyCCOEeWLIYOuPMQx9w">
+            <children xmi:type="notation:Node" xmi:id="_y0sbFSCOEeWLIYOuPMQx9w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_y0sbFiCOEeWLIYOuPMQx9w" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_y0wFcCCOEeWLIYOuPMQx9w" type="3003" element="_yzReySCOEeWLIYOuPMQx9w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y0wFcSCOEeWLIYOuPMQx9w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0wFciCOEeWLIYOuPMQx9w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_y0sbEyCOEeWLIYOuPMQx9w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0sbFCCOEeWLIYOuPMQx9w" x="270" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_y0tCICCOEeWLIYOuPMQx9w" type="2001" element="_yzReyiCOEeWLIYOuPMQx9w">
+            <children xmi:type="notation:Node" xmi:id="_y0tCIyCOEeWLIYOuPMQx9w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_y0tCJCCOEeWLIYOuPMQx9w" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_y0wFcyCOEeWLIYOuPMQx9w" type="3003" element="_yzReyyCOEeWLIYOuPMQx9w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y0wFdCCOEeWLIYOuPMQx9w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0wFdSCOEeWLIYOuPMQx9w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_y0tCISCOEeWLIYOuPMQx9w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0tCIiCOEeWLIYOuPMQx9w" x="360" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_y0tpMCCOEeWLIYOuPMQx9w" type="2001" element="_yzRezCCOEeWLIYOuPMQx9w">
+            <children xmi:type="notation:Node" xmi:id="_y0tpMyCOEeWLIYOuPMQx9w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_y0tpNCCOEeWLIYOuPMQx9w" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_y0wsgCCOEeWLIYOuPMQx9w" type="3003" element="_yzRezSCOEeWLIYOuPMQx9w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y0wsgSCOEeWLIYOuPMQx9w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0wsgiCOEeWLIYOuPMQx9w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_y0tpMSCOEeWLIYOuPMQx9w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y0tpMiCOEeWLIYOuPMQx9w" x="450" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_yzndAiCOEeWLIYOuPMQx9w"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yzRewiCOEeWLIYOuPMQx9w" name="Paul" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="basicfamily:Man" href="My.basicfamily#//@members.0"/>
+        <semanticElements xmi:type="basicfamily:Man" href="My.basicfamily#//@members.0"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_yzRewyCOEeWLIYOuPMQx9w" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yzRexCCOEeWLIYOuPMQx9w" name="Elias" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="basicfamily:Man" href="My.basicfamily#//@members.1"/>
+        <semanticElements xmi:type="basicfamily:Man" href="My.basicfamily#//@members.1"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_yzRexSCOEeWLIYOuPMQx9w" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yzRexiCOEeWLIYOuPMQx9w" name="Dave" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="basicfamily:Man" href="My.basicfamily#//@members.3"/>
+        <semanticElements xmi:type="basicfamily:Man" href="My.basicfamily#//@members.3"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_yzRexyCOEeWLIYOuPMQx9w" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yzReyCCOEeWLIYOuPMQx9w" name="Alain" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="basicfamily:Man" href="My.basicfamily#//@members.4"/>
+        <semanticElements xmi:type="basicfamily:Man" href="My.basicfamily#//@members.4"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_yzReySCOEeWLIYOuPMQx9w" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yzReyiCOEeWLIYOuPMQx9w" name="Bryan" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="basicfamily:Man" href="My.basicfamily#//@members.6"/>
+        <semanticElements xmi:type="basicfamily:Man" href="My.basicfamily#//@members.6"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_yzReyyCOEeWLIYOuPMQx9w" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yzRezCCOEeWLIYOuPMQx9w" name="Albert" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="basicfamily:Man" href="My.basicfamily#//@members.8"/>
+        <semanticElements xmi:type="basicfamily:Man" href="My.basicfamily#//@members.8"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_yzRezSCOEeWLIYOuPMQx9w" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer/@nodeMappings[name='Mannode']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_yzReziCOEeWLIYOuPMQx9w"/>
+      <activatedLayers xmi:type="description_1:Layer" href="family.odesign#//@ownedViewpoints[name='persons']/@ownedRepresentations[name='personsDiagram']/@defaultLayer"/>
+      <target xmi:type="basicfamily:Family" href="My.basicfamily#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="family.odesign#//@ownedViewpoints[name='persons']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_m3PmUB_5EeWIiat630Qqjg">
+    <viewpoint xmi:type="description:Viewpoint" href="extended.odesign#//@ownedViewpoints[name='others']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

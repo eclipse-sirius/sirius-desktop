@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="extended" version="10.1.0.201507101000">
+  <ownedViewpoints name="others">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="others" viewpointURI="viewpoint:/DesignerTestProject/classes" representationName="classDiagram">
+      <layers name="Others_Layer_1">
+        <nodeMappings name="EEnumNode" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EEnum">
+          <style xsi:type="style:SquareDescription" labelExpression="[name/]" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="OtherTools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createEEnum_1" nodeMappings="//@ownedViewpoints[name='others']/@ownedRepresentationExtensions[name='others']/@layers[name='Others_Layer_1']/@nodeMappings[name='EEnumNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+      <layers name="Others_Layer_2">
+        <nodeMappings name="EEnumNode2" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EEnum">
+          <style xsi:type="style:SquareDescription" labelExpression="[name/]" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createEEnum_2" nodeMappings="//@ownedViewpoints[name='others']/@ownedRepresentationExtensions[name='others']/@layers[name='Others_Layer_2']/@nodeMappings[name='EEnumNode2']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

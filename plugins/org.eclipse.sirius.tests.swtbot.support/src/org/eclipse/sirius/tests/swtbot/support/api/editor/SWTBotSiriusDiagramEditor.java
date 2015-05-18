@@ -44,6 +44,7 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
+import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -1748,6 +1749,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
             Matcher<MenuItem> withLayerName = WidgetMatcherFactory.withText(layerName);
             SWTBotMenu layerButton = button.menuItem(withLayerName);
             layerButton.click();
+            layerButton.pressShortcut(KeyStroke.getInstance(SWT.ESC));
         } else {
             DesignerViews designerViews = new DesignerViews(designerBot);
             final SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
