@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.sirius.editor;bundle-version="2.0.0",
  org.eclipse.sirius.table.ui;bundle-version="2.0.0",
  org.eclipse.ui.workbench.texteditor;bundle-version="3.8.0"
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.editor.table.tools.internal.menu;x-internal:=true;version="2.0.4",
+Export-Package: org.eclipse.sirius.editor.table.tools.internal.menu;x-internal:=true;version="2.1.0",
  org.eclipse.sirius.table.editor.properties.filters.description.backgroundconditionalstyle;version="2.0.4",
  org.eclipse.sirius.table.editor.properties.filters.description.backgroundstyledescription;version="2.0.4",
  org.eclipse.sirius.table.editor.properties.filters.description.cellupdater;version="2.0.4",

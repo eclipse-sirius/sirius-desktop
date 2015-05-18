@@ -18,7 +18,7 @@ Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.editor.tree;version="2.0.4",
- org.eclipse.sirius.editor.tree.tools.internal.menu;x-internal:=true;version="2.0.4",
+ org.eclipse.sirius.editor.tree.tools.internal.menu;x-internal:=true;version="2.1.0",
  org.eclipse.sirius.tree.editor.properties.filters.description.treecreationdescription;version="2.0.4",
  org.eclipse.sirius.tree.editor.properties.filters.description.treedescription;version="2.0.4",
  org.eclipse.sirius.tree.editor.properties.filters.description.treeitemcontainerdroptool;version="2.0.4",
