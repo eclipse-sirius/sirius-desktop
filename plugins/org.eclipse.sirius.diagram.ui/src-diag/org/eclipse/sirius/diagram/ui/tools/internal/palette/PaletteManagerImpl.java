@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -46,7 +47,6 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -81,6 +81,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.common.collect.UnmodifiableIterator;
 
 /**
@@ -317,9 +318,16 @@ public class PaletteManagerImpl implements PaletteManager {
      *            The {@session} containing the {@link DDiagram}.
      */
     private void updatePaletteForDiagramWithLayer(DiagramDescription description, Session session, DDiagram dDiagram) {
-        /* Get the list of activated layers */
-        final List<Layer> activatedLayers = dDiagram.getActivatedLayers();
-        final List<Layer> deactivatedLayers = PaletteManagerImpl.getDeactivatedLayers(dDiagram, session, description);
+        // Copy of all layers of selected viewpoints
+        HashSet<Layer> layersInActivatedViewpoints = new HashSet<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), description));
+        // Copy of diagram activated layers (in all Viewpoints: activated or
+        // not)
+        HashSet<Layer> activatedLayers = new HashSet<Layer>(dDiagram.getActivatedLayers());
+        // Get the list of activated layers (of selected viewpoints)
+        final List<Layer> activatedLayersOfSelectedViewpoints = Lists.newArrayList(Sets.intersection(layersInActivatedViewpoints, activatedLayers));
+        // Get the list of deactivated layers (deactivated layers of selected
+        // viewpoints and all layers of deselected viewpoints)
+        final List<Layer> deactivatedLayersAndAllLayersOfDeselectedViewpoints = Lists.newArrayList(Sets.symmetricDifference(layersInActivatedViewpoints, activatedLayers));
         // Update the filters
         for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), description)) {
             updateFilters(session, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
@@ -334,10 +342,10 @@ public class PaletteManagerImpl implements PaletteManager {
                 updateContainer(session, dDiagram, paletteEntry.get(), new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
             }
         }
-        for (final Layer layer : Lists.newArrayList(deactivatedLayers)) {
+        for (final Layer layer : Lists.newArrayList(deactivatedLayersAndAllLayersOfDeselectedViewpoints)) {
             setLayerVisibility(layer, false);
         }
-        for (final Layer layer : Lists.newArrayList(activatedLayers)) {
+        for (final Layer layer : Lists.newArrayList(activatedLayersOfSelectedViewpoints)) {
             setLayerVisibility(layer, true);
         }
     }
@@ -583,29 +591,6 @@ public class PaletteManagerImpl implements PaletteManager {
 
     private static String getToolEntryId(final ToolEntry entry) {
         return EcoreUtil.getURI(entry).toString();
-    }
-
-    // Browse list of all layers and remove from it all layers which are
-    // activated.
-    // all - activated = deactivated
-    private static List<Layer> getDeactivatedLayers(final DDiagram dDiagram, final Session session, final DiagramDescription description) {
-        // Copy of all layers
-        List<Layer> deactivatedLayers = Lists.newArrayList(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), description));
-        // Use a copy of activated layers to avoid a potential
-        // ConcurrentModificationException linked to async execution of this
-        // code during the activation of a Viewpoint.
-        List<Layer> activatedLayers = Lists.newArrayList(dDiagram.getActivatedLayers());
-        for (Layer layer : activatedLayers) {
-            Iterator<Layer> iterator = deactivatedLayers.iterator();
-            while (iterator.hasNext()) {
-                Layer allLayer = iterator.next();
-                // If layer is activated (= in list of activated layer)
-                if (EqualityHelper.areEquals(layer, allLayer)) {
-                    iterator.remove();
-                }
-            }
-        }
-        return deactivatedLayers;
     }
 
     /**
