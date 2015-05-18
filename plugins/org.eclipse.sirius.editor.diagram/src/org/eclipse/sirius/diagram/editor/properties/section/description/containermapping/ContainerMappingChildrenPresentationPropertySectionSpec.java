@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.editor.properties.section.description.containermapping;
 
 import org.eclipse.sirius.diagram.ContainerLayout;
-import org.eclipse.sirius.diagram.business.internal.query.ContainerMappingExperimentalQuery;
+import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -68,12 +68,12 @@ public class ContainerMappingChildrenPresentationPropertySectionSpec extends Con
     }
 
     private boolean shouldEnableCompartiments(ContainerMapping containerMapping) {
-        ContainerMappingExperimentalQuery query = new ContainerMappingExperimentalQuery(containerMapping);
+        ContainerMappingQuery query = new ContainerMappingQuery(containerMapping);
 
         boolean enableCompartiments = !query.isRegion();
         if (enableCompartiments) {
             for (ContainerMapping subContainer : containerMapping.getAllContainerMappings()) {
-                ContainerMappingExperimentalQuery subQuery = new ContainerMappingExperimentalQuery(subContainer);
+                ContainerMappingQuery subQuery = new ContainerMappingQuery(subContainer);
                 enableCompartiments = enableCompartiments && !subQuery.isRegionContainer();
             }
         }
