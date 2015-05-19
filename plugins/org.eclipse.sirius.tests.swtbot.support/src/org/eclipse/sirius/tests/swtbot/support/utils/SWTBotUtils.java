@@ -394,6 +394,10 @@ public final class SWTBotUtils {
                     case SWT.ITALIC:
                         FontFormatHelper.setFontFormat(result, FontFormat.ITALIC_LITERAL);
                         break;
+                    case SWT.BOLD | SWT.ITALIC:
+                        FontFormatHelper.setFontFormat(result, FontFormat.BOLD_LITERAL);
+                        FontFormatHelper.setFontFormat(result, FontFormat.ITALIC_LITERAL);
+                        break;
                     default:
                         break;
                     }

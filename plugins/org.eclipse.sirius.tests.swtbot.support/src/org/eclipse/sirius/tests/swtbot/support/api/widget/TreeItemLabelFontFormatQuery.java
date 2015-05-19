@@ -79,7 +79,12 @@ public class TreeItemLabelFontFormatQuery extends RunnableWithResult.Impl<List<F
             case SWT.ITALIC:
                 FontFormatHelper.setFontFormat(treeItemLabelFormat, FontFormat.ITALIC_LITERAL);
                 break;
+            case SWT.BOLD | SWT.ITALIC:
+                FontFormatHelper.setFontFormat(treeItemLabelFormat, FontFormat.BOLD_LITERAL);
+                FontFormatHelper.setFontFormat(treeItemLabelFormat, FontFormat.ITALIC_LITERAL);
+                break;
             default:
+                break;
             }
         }
         setResult(treeItemLabelFormat);

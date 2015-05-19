@@ -492,7 +492,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         assertThat(labelExpression, equalTo("Testnew EClass 1"));
         // assertThat(labelAlignment, equalTo("RIGHT"));
         List<String> actual = labelFormat;
-        List<String> expected = Arrays.asList("bold", "italic");
+        List<String> expected = Arrays.asList("italic", "bold");
         assertThat(actual, is(expected));
         assertThat(colorBackground, equalTo(black));
         assertThat(labelColor, equalTo(blue));
@@ -510,10 +510,10 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
      */
     private void changeAndTestPropertyTabLabel() {
         // Retrieve show icon check
-        assertFalse(bot.viewByTitle(PROPERTIES).bot().checkBox(2).isChecked());
+        assertFalse(bot.viewByTitle(PROPERTIES).bot().checkBox(4).isChecked());
         // Check show icon
-        bot.viewByTitle(PROPERTIES).bot().checkBox(2).click();
-        assertTrue(bot.viewByTitle(PROPERTIES).bot().checkBox(2).isChecked());
+        bot.viewByTitle(PROPERTIES).bot().checkBox(4).click();
+        assertTrue(bot.viewByTitle(PROPERTIES).bot().checkBox(4).isChecked());
     }
 
     /**
