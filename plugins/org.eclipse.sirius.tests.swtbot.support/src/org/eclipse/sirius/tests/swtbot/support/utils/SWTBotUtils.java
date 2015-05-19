@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.menu.SWTBotContextMenu;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
@@ -388,13 +389,12 @@ public final class SWTBotUtils {
                 if (font.getFontData().length > 0) {
                     switch (font.getFontData()[0].getStyle()) {
                     case SWT.BOLD:
-                        result.add(FontFormat.BOLD_LITERAL);
+                        FontFormatHelper.setFontFormat(result, FontFormat.BOLD_LITERAL);
                         break;
                     case SWT.ITALIC:
-                        result.add(FontFormat.ITALIC_LITERAL);
+                        FontFormatHelper.setFontFormat(result, FontFormat.ITALIC_LITERAL);
                         break;
                     default:
-                        result = null;
                         break;
                     }
                 }

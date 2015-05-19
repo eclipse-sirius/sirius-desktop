@@ -10,7 +10,11 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.widget;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.transaction.RunnableWithResult;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
@@ -23,7 +27,7 @@ import org.eclipse.swt.widgets.TreeItem;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class TreeItemLabelFontFormatQuery extends RunnableWithResult.Impl<FontFormat> {
+public class TreeItemLabelFontFormatQuery extends RunnableWithResult.Impl<List<FontFormat>> {
 
     private final TreeItem treeItem;
 
@@ -63,22 +67,21 @@ public class TreeItemLabelFontFormatQuery extends RunnableWithResult.Impl<FontFo
      */
     @Override
     public void run() {
+        List<FontFormat> treeItemLabelFormat = new ArrayList<FontFormat>();
         Font font = treeItem.getFont(index);
         FontData[] fontData = font.getFontData();
         if (fontData.length > 0) {
             int style = fontData[0].getStyle();
             switch (style) {
-            case SWT.NORMAL:
-                setResult(null);
-                break;
             case SWT.BOLD:
-                setResult(FontFormat.BOLD_LITERAL);
+                FontFormatHelper.setFontFormat(treeItemLabelFormat, FontFormat.BOLD_LITERAL);
                 break;
             case SWT.ITALIC:
-                setResult(FontFormat.ITALIC_LITERAL);
+                FontFormatHelper.setFontFormat(treeItemLabelFormat, FontFormat.ITALIC_LITERAL);
                 break;
             default:
             }
         }
+        setResult(treeItemLabelFormat);
     }
 }

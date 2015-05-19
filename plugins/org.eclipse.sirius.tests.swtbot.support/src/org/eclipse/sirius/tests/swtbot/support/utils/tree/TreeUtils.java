@@ -10,7 +10,6 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.utils.tree;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -731,11 +730,9 @@ public final class TreeUtils {
      *         {@link TreeItem}
      */
     private static List<FontFormat> getWidgetLabelFormat(TreeItem treeItem, int index) {
-        List<FontFormat> widgetLabelFormat = new ArrayList<FontFormat>();
         TreeItemLabelFontFormatQuery treeItemBackgroundColorQuery = new TreeItemLabelFontFormatQuery(treeItem, index);
         Display.getDefault().syncExec(treeItemBackgroundColorQuery);
-        widgetLabelFormat.add(treeItemBackgroundColorQuery.getResult());
-        return widgetLabelFormat;
+        return treeItemBackgroundColorQuery.getResult();
     }
 
     /**
@@ -750,7 +747,7 @@ public final class TreeUtils {
         boolean hasWidgetWithIcon = false;
         TreeItemImageQuery treeItemImageQuery = new TreeItemImageQuery(treeItem);
         Display.getDefault().syncExec(treeItemImageQuery);
-        Image result = (Image) treeItemImageQuery.getResult();
+        Image result = treeItemImageQuery.getResult();
         hasWidgetWithIcon = result != null;
         return hasWidgetWithIcon;
     }

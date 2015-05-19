@@ -19,6 +19,8 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
+import com.google.common.collect.Lists;
+
 /**
  * 
  * @author smonnier
@@ -45,7 +47,7 @@ public class CheckTreeItemFontFormat extends DefaultCondition {
      */
     public CheckTreeItemFontFormat(SWTBotTreeItem treeItem, List<FontFormat> expectedFontFormat) {
         this.treeItem = treeItem;
-        this.expectedFontFormat = expectedFontFormat;
+        this.expectedFontFormat = expectedFontFormat == null ? Lists.<FontFormat> newArrayList() : expectedFontFormat;
     }
 
     /**
@@ -63,7 +65,7 @@ public class CheckTreeItemFontFormat extends DefaultCondition {
             }
         };
         treeItem.widget.getDisplay().syncExec(runnable);
-        return ((Boolean) runnable.getResult()).booleanValue();
+        return runnable.getResult().booleanValue();
     }
 
     /**

@@ -10,11 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.table;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.metamodel.table.DCell;
@@ -249,7 +253,9 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         // Test a the bold font format
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(firstDCellOfSecondDLine);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, FontFormat.BOLD_LITERAL);
+        List<FontFormat> labelFormat = new ArrayList<FontFormat>();
+        FontFormatHelper.setFontFormat(labelFormat, FontFormat.BOLD_LITERAL);
+        Command changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, labelFormat);
         commandStack.execute(changeDTreeItemLabelStyleCmd);
 
         TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);
@@ -263,7 +269,9 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);
 
         // Test a the italic font format
-        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, FontFormat.ITALIC_LITERAL);
+        labelFormat = new ArrayList<FontFormat>();
+        FontFormatHelper.setFontFormat(labelFormat, FontFormat.ITALIC_LITERAL);
+        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, labelFormat);
         commandStack.execute(changeDTreeItemLabelStyleCmd);
 
         TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);

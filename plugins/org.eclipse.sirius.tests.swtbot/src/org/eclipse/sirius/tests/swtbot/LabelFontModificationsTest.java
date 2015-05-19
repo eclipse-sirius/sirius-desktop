@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -99,7 +101,9 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
-                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, true, false);
+                List<FontFormat> format = new ArrayList<FontFormat>();
+                FontFormatHelper.setFontFormat(format, FontFormat.UNDERLINE_LITERAL);
+                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, format, true, false);
                 return true;
             } catch (AssertionError e) {
                 return false;
@@ -114,7 +118,9 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
-                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, true);
+                List<FontFormat> format = new ArrayList<FontFormat>();
+                FontFormatHelper.setFontFormat(format, FontFormat.STRIKE_THROUGH_LITERAL);
+                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, format, false, true);
                 return true;
             } catch (AssertionError e) {
                 return false;
@@ -127,7 +133,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
-                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, false, null, -1, 10011046);
+                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, -1, 10011046);
                 return true;
             } catch (AssertionError e) {
                 return false;
@@ -260,7 +266,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
-                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, false, null, -1, 8905185);
+                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, -1, 8905185);
                     return true;
                 } catch (AssertionError e) {
                     return false;
@@ -425,7 +431,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestStrikeFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 3, NORMAL_FONT_STATE_PREDICATE, STRIKE_FONT_STATE_PREDICATE, true);
+        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 3, NORMAL_FONT_STATE_PREDICATE, STRIKE_FONT_STATE_PREDICATE, false);
     }
 
     /**
@@ -451,7 +457,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestUnderlineFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 2, NORMAL_FONT_STATE_PREDICATE, UNDERLINE_FONT_STATE_PREDICATE, true);
+        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 2, NORMAL_FONT_STATE_PREDICATE, UNDERLINE_FONT_STATE_PREDICATE, false);
     }
 
     /**
@@ -469,7 +475,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing a label as italic and bold from the appearance page
      * works as expected.
-     *
+     * 
      * @param name
      *            the edit part name
      * @param type
@@ -629,7 +635,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
-                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, false, null, 12, -1);
+                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, 12, -1);
                     return true;
                 } catch (AssertionError e) {
                     return false;
@@ -675,7 +681,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
-                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, false, modifiedFont, -1, -1);
+                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, modifiedFont, -1, -1);
                     return true;
                 } catch (AssertionError e) {
                     return false;

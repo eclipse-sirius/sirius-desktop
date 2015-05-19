@@ -10,11 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
@@ -132,7 +136,7 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR,
                 RGBValues.create(backgroundColor.getRed(), backgroundColor.getGreen(), 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
-        
+
         // Now that RGBValues is no more an EObject, the corresponding
         // GenFeature children properties are set to false. The
         // SetCommand.create creates a non wrapped SetCommand, during execution
@@ -220,7 +224,9 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         // Test a the bold font format
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(secondDTreeItem);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, FontFormat.ITALIC_LITERAL);
+        List<FontFormat> labelFormat = new ArrayList<FontFormat>();
+        FontFormatHelper.setFontFormat(labelFormat, FontFormat.ITALIC_LITERAL);
+        Command changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, labelFormat);
         commandStack.execute(changeDTreeItemLabelStyleCmd);
 
         TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
@@ -234,7 +240,9 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
 
         // Test a the italic font format
-        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, FontFormat.BOLD_LITERAL);
+        labelFormat = new ArrayList<FontFormat>();
+        FontFormatHelper.setFontFormat(labelFormat, FontFormat.BOLD_LITERAL);
+        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, labelFormat);
         commandStack.execute(changeDTreeItemLabelStyleCmd);
 
         TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
@@ -248,7 +256,8 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         TreeUtils.checkTreeItemLabelFormat(treeEditorBot, thirdDTreeItem);
 
         // Test a the normal font format
-        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, null);
+        labelFormat = new ArrayList<FontFormat>();
+        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, labelFormat);
         commandStack.execute(changeDTreeItemLabelStyleCmd);
 
         TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
@@ -313,7 +322,7 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR,
                 RGBValues.create(labelColor.getRed(), labelColor.getGreen(), 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
-        
+
         // Now that RGBValues is no more an EObject, the corresponding
         // GenFeature children properties are set to false. The
         // SetCommand.create creates a non wrapped SetCommand, during execution

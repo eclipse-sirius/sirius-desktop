@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
@@ -626,7 +627,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         item.contextMenu(REVEAL_ELEMENT_TOOLTIP).click();
         checkLabelIsHidden(NODE_WITH_LABEL_NAME);
         checkNodeIsVisible(nodeEditPart);
-        bot.waitUntil(new CheckTreeItemFontFormat(item, null));
+        bot.waitUntil(new CheckTreeItemFontFormat(item, new ArrayList<FontFormat>()));
 
         // Step 4 : reveal the label (using outline)
         item = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).click();
@@ -642,7 +643,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         assertEquals(FontFormat.ITALIC, widgetFormat.get(0).getValue());
         SWTBotUtils.clickContextMenu(item, REVEAL_LABEL_TOOLTIP);
 
-        bot.waitUntil(new CheckTreeItemFontFormat(item, null));
+        bot.waitUntil(new CheckTreeItemFontFormat(item, new ArrayList<FontFormat>()));
 
         checkLabelIsVisible(NODE_WITH_LABEL_NAME);
     }
