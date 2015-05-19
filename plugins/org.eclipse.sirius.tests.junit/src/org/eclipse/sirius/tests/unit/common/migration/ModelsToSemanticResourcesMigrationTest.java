@@ -8,11 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.unit.diagram.migration;
+package org.eclipse.sirius.tests.unit.common.migration;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
+import org.eclipse.sirius.tests.support.internal.helper.AirdFileParser;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.osgi.framework.Version;
 
@@ -48,9 +50,15 @@ public class ModelsToSemanticResourcesMigrationTest extends SiriusTestCase {
 
     private static final String MODEL_FILE_NAME = "consumer.ecore";
 
+    private static final String MODEL_FILE_NAME2 = "NonExistingConsumer.ecore";
+
     private static final String MODEL_FILE_NAME_LIB = "lib.ecore";
 
-    private static final String OTHER_FOLDER_IN_WS = "SiriusLibrary";
+    private static final String OTHER_PROJECT_IN_WS = "SiriusLibrary";
+
+    private static final String RESOURCE_URI_IN_OTHER_PROJECT = "platform:/resource/" + OTHER_PROJECT_IN_WS + "/lib.ecore";
+
+    private static final String RESOURCE_URI_IN_OTHER_PROJECT2 = "platform:/resource/" + OTHER_PROJECT_IN_WS + "/NonExistingLib.ecore";
 
     @Override
     protected IDiagramCommandFactory getCommandFactory() {
@@ -75,7 +83,7 @@ public class ModelsToSemanticResourcesMigrationTest extends SiriusTestCase {
      */
     public void testModelsToSemanticResourcesMigration() {
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, REPRESENTATIONS_FILE_PATH, REPRESENTATIONS_FILE_NAME, MODEL_FILE_NAME);
-        copyFiles(SiriusTestsPlugin.PLUGIN_ID, REPRESENTATIONS_FILE_PATH, OTHER_FOLDER_IN_WS + File.separator, MODEL_FILE_NAME_LIB);
+        copyFiles(SiriusTestsPlugin.PLUGIN_ID, REPRESENTATIONS_FILE_PATH, OTHER_PROJECT_IN_WS + File.separator, MODEL_FILE_NAME_LIB);
 
         ResourceSet set = new ResourceSetImpl();
         DAnalysis analysis = null;
@@ -107,6 +115,7 @@ public class ModelsToSemanticResourcesMigrationTest extends SiriusTestCase {
         // We can now check the migration effect to be sure that the migration
         // is effective.
         checkMigrationEffect(analysis);
+
     }
 
     private void checkMigrationEffect(DAnalysis analysis) {
@@ -125,6 +134,11 @@ public class ModelsToSemanticResourcesMigrationTest extends SiriusTestCase {
         assertEquals("Bad model", "ConsumerRoot", string);
         string = ((ENamedElement) models.get(1)).getName();
         assertEquals("Bad model", "P0", string);
+
+        // 3 - Check DAnalyis.semanticResources serialization
+        List<String> semanticResourcesTagContent = AirdFileParser.parseSemanticResourcesTag(TEMPORARY_PROJECT_NAME);
+        assertTrue("Bad semantic resource tag in aird file", semanticResourcesTagContent.contains(MODEL_FILE_NAME));
+        assertTrue("Bad semantic resource tag in aird file", semanticResourcesTagContent.contains(RESOURCE_URI_IN_OTHER_PROJECT));
     }
 
     /**
@@ -173,5 +187,11 @@ public class ModelsToSemanticResourcesMigrationTest extends SiriusTestCase {
         // 2 - Check getModels
         EList<EObject> models = analysis.getModels();
         assertEquals("DAnalysis.getModels size error", 0, models.size());
+
+        // 3 - Check DAnalyis.semanticResources serialization
+        List<String> semanticResourcesTagContent = AirdFileParser.parseSemanticResourcesTag(TEMPORARY_PROJECT_NAME);
+        assertTrue("Bad semantic resource tag in aird file", semanticResourcesTagContent.contains(MODEL_FILE_NAME2));
+        assertTrue("Bad semantic resource tag in aird file", semanticResourcesTagContent.contains(RESOURCE_URI_IN_OTHER_PROJECT2));
     }
+
 }

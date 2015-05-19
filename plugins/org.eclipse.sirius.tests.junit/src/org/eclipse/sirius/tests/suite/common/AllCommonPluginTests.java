@@ -37,6 +37,7 @@ import org.eclipse.sirius.tests.unit.api.modelingproject.SemanticResourcesManage
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderByContainingTest;
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderTest;
 import org.eclipse.sirius.tests.unit.api.refresh.ModifyHeaderLabelExpressionTest;
+import org.eclipse.sirius.tests.unit.api.resource.SemanticResourceURIInAirdTests;
 import org.eclipse.sirius.tests.unit.api.resource.WorkspaceDragAndDropSupportTests;
 import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEdgeConditionalStyleTest;
 import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEndUserOverrideTest;
@@ -97,6 +98,7 @@ import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampai
 import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampaign10;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius0_9Test;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius1_0_0_M5Test;
+import org.eclipse.sirius.tests.unit.common.migration.ModelsToSemanticResourcesMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.EObjectSelectionFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipantTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.CorruptedViewsMigrationTests;
@@ -112,7 +114,6 @@ import org.eclipse.sirius.tests.unit.diagram.migration.MigrationLabelBoundsToLoc
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfCollapsedBorderedNodeTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfHideLabelFilterInconsistencyTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationRoutingStyleEndUserOverrideTest;
-import org.eclipse.sirius.tests.unit.diagram.migration.ModelsToSemanticResourcesMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RemoveAcceleoReferencesMigrationTest;
@@ -274,6 +275,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(XSDSemanticResourceTests.class);
         suite.addTestSuite(SiriusControlAndCrossReferenceInMultiSessionTest.class);
         suite.addTestSuite(ModelsToSemanticResourcesMigrationTest.class);
+        suite.addTestSuite(SemanticResourceURIInAirdTests.class);
         suite.addTestSuite(OpenSessionTest.class);
 
         suite.addTestSuite(SubMenusPrioritiesTest.class);

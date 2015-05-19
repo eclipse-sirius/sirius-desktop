@@ -30,7 +30,7 @@ public class ReplaceModelsBySemanticResources extends AbstractRepresentationsFil
     /**
      * The VP version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("10.0.0.201504221300");
+    public static final Version MIGRATION_VERSION = new Version("10.0.0.201505191300");
 
     @Override
     public Version getMigrationVersion() {
@@ -41,6 +41,9 @@ public class ReplaceModelsBySemanticResources extends AbstractRepresentationsFil
     public Object getValue(EObject object, EStructuralFeature feature, Object value, String loadedVersion) {
         if (Version.parseVersion(loadedVersion).compareTo(ReplaceModelsBySemanticResources.MIGRATION_VERSION) < 0) {
             if (ViewpointPackage.eINSTANCE.getDAnalysis_Models().equals(feature)) {
+                // Thanks to the getAffiliation overload, the return value will
+                // be used to create a ResourceDescriptor.
+                // The models uri has already been resolved and is absolute.
                 if (value instanceof InternalEObject) {
                     String strvalue = ((InternalEObject) value).eProxyURI().trimFragment().toString();
                     return strvalue;

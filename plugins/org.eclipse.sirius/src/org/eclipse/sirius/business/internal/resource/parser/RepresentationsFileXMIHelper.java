@@ -15,13 +15,16 @@ package org.eclipse.sirius.business.internal.resource.parser;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIHelperImpl;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.osgi.framework.Version;
 
 /**
@@ -113,5 +116,29 @@ public class RepresentationsFileXMIHelper extends XMIHelperImpl {
             return uri;
         }
         return super.deresolve(uri);
+    }
+
+    @Override
+    public String convertToString(EFactory factory, EDataType dataType, Object value) {
+        String str = null;
+        if (dataType.equals(ViewpointPackage.eINSTANCE.getDAnalysis_SemanticResources().getEAttributeType())) {
+            URI deresolvedURI = this.deresolve(((ResourceDescriptor) value).getResourceURI());
+            if (deresolvedURI != null) {
+                str = deresolvedURI.toString();
+            }
+        }
+
+        return str != null ? str : super.convertToString(factory, dataType, value);
+    }
+
+    @Override
+    protected Object createFromString(EFactory eFactory, EDataType eDataType, String value) {
+        if (value != null && eDataType.equals(ViewpointPackage.eINSTANCE.getDAnalysis_SemanticResources().getEAttributeType())) {
+            // ResourceDescriptor(String) constructor converts string into URI
+            // That URI is used to get a relative URI
+            URI resolvedURI = new ResourceDescriptor(value).getResourceURI().resolve(resourceURI);
+            return new ResourceDescriptor(resolvedURI);
+        }
+        return super.createFromString(eFactory, eDataType, value);
     }
 }
