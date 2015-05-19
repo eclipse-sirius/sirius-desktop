@@ -12,7 +12,6 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.Path;
@@ -73,14 +72,8 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider im
         if (element instanceof DTreeItem) {
             final DTreeItem item = (DTreeItem) element;
             if (item.getOwnedStyle() != null) {
-                final int size = item.getOwnedStyle().getLabelSize();
-                List<FontFormat> labelFormat = new ArrayList<FontFormat>();
-                if (item.getOwnedStyle().getLabelFormat() != null) {
-                    labelFormat = item.getOwnedStyle().getLabelFormat();
-                } else {
-                    labelFormat.clear();
-                }
-                return VisualBindingManager.getDefault().getFontFromLabelFormatAndSize(labelFormat, size);
+                TreeItemStyle style = item.getOwnedStyle();
+                return VisualBindingManager.getDefault().getFontFromLabelFormatAndSize(style.getLabelFormat(), style.getLabelSize());
             }
         }
         return null;
