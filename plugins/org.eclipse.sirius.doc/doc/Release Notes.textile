@@ -216,7 +216,7 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 * The methods @org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.deleteProject(UIProject)@ and @org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.deleteProject(String)@ have been deprecated, @org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)@ can be used instead.
 
 * The @warnings@ member variable has been added to @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase@ to allow the recording of warning logs. Methods @doesAWarningOccurs()@, @setWarningCatchActive(boolean)@, @isWarningCatchActive()@ and @getWarningLoggersMessage()@ have also been added to manage the @warnings@ member variable in the same way as the existing @errors@ member variable.
-
+* The method @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.getSectionButton()@  now only takes the button's tooltip instead of a numerical position index and the tooltip.
 * The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.selectPropertyTabItem(String)@ now returns a @boolean@ that is true when the property tab item is found, false otherwise.
 
 h4. Changes in @org.eclipse.sirius.ext.swt@

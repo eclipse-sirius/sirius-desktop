@@ -48,8 +48,6 @@ import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
@@ -63,8 +61,6 @@ import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePrefere
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
@@ -1241,7 +1237,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     private SWTBotButton getSetStyleToWorkspaceImageButtonFromAppearanceTab() {
-        return getSectionButton(3, AbstractSiriusSwtBotGefTestCase.SET_STYLE_TO_WORKSPACE_IMAGE);
+        return getSectionButton(AbstractSiriusSwtBotGefTestCase.SET_STYLE_TO_WORKSPACE_IMAGE);
     }
 
     /**
@@ -1267,19 +1263,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected SWTBotButton getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab() {
         SWTBotButton resetStylePropertiesToDefaultValuesButtonFromAppearanceTab = null;
-        int buttonIndex = 4;
         editor.show();
         editor.setFocus();
-        ISelection selection = editor.getSelection();
-        if (!selection.isEmpty() && selection instanceof IStructuredSelection) {
-            IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-            Object firstElement = structuredSelection.getFirstElement();
-
-            if (firstElement instanceof AbstractDiagramEdgeEditPart || firstElement instanceof AbstractDiagramNameEditPart) {
-                buttonIndex = 3;
-            }
-        }
-        resetStylePropertiesToDefaultValuesButtonFromAppearanceTab = getSectionButton(buttonIndex, ResetStylePropertiesToDefaultValuesAction.ACTION_NAME);
+        resetStylePropertiesToDefaultValuesButtonFromAppearanceTab = getSectionButton(ResetStylePropertiesToDefaultValuesAction.ACTION_NAME);
         return resetStylePropertiesToDefaultValuesButtonFromAppearanceTab;
     }
 
@@ -1287,18 +1273,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * Returns the button from the 'Appearance' section at the given index, that
      * should have the given tooltip.
      * 
-     * @param index
-     *            the index of the button to get from the 'Appearance' section
      * @param tooltip
      *            the expected tooltip for this button
      * @return the button from the 'Appearance' section at the given index, that
      *         should have the given tooltip
      */
-    protected SWTBotButton getSectionButton(int index, String tooltip) {
+    protected SWTBotButton getSectionButton(String tooltip) {
         SWTBot propertiesBot = bot.viewByTitle("Properties").bot();
         bot.viewByTitle("Properties").setFocus();
         SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
-        SWTBotButton button = propertiesBot.buttonInGroup("Fonts and Colors:", index);
+        SWTBotButton button = propertiesBot.buttonWithTooltipInGroup(tooltip, "Fonts and Colors:");
 
         TestCase.assertNotNull(button);
         // get button from index and check requested tool-tip allows to check
