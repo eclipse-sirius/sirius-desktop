@@ -165,6 +165,7 @@
       <genDataTypes ecoreDataType="viewpoint.ecore#//description/TypeName"/>
       <genDataTypes ecoreDataType="viewpoint.ecore#//description/InterpretedExpression"/>
       <genDataTypes ecoreDataType="viewpoint.ecore#//description/FeatureName"/>
+      <genDataTypes ecoreDataType="viewpoint.ecore#//description/ImagePath"/>
       <genDataTypes ecoreDataType="viewpoint.ecore#//description/URI"/>
       <genClasses ecoreClass="viewpoint.ecore#//description/Group">
         <genFeatures createChild="false" propertyCategory="General" propertyDescription=""
