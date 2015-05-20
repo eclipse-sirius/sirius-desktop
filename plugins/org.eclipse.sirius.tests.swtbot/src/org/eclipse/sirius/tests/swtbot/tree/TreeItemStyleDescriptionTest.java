@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -132,12 +133,22 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
     /**
      * Blue color value RGB.
      */
-    private Color blue = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(2));
+    private final Color blue = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(2));
 
     /**
      * Light green color valur RGB.
      */
-    private Color lightGreen = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(13));
+    private final Color lightGreen = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(13));
+
+    /**
+     * Black color valur RGB.
+     */
+    private final Color black = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(1));
+
+    /**
+     * Light yellow color valur RGB.
+     */
+    private final Color lightYellow = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(17));
 
     /**
      * The label color value.
@@ -300,7 +311,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
 
         assertNotNull("The tree item for the class is null", widgetNewEclass1);
 
-        checkTreeItemStyle(widgetNewEclass1);
+        checkTreeItemStyle(widgetNewEclass1, false, 8, NEWECLASS1, lightGreen, lightYellow, "bold");
 
         // Manual refresh with click context menu
         editor.bot().tree().contextMenu(REFRESH_TREE).click();
@@ -353,50 +364,42 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
      * 
      * @param widgetNewEclass1
      */
-    private void checkTreeItemStyle(TreeItem widgetNewEclass1) {
-        boolean showIcon = false;
-        int labelSize = 0;
-        String labelExpression = null;
-        // String labelAlignment = null;
-        String iconPath = null;
-        List<String> labelFormat = null;
-        Color colorBackground = null;
-        Color labelColor = null;
+    private void checkTreeItemStyle(TreeItem widgetNewEclass1, boolean expectedShowIcon, int expectedFontSize, String expectedLabel, Color expectedLabelColor, Color expectedBackgroundColor,
+            String... expectedFontFormat) {
+        assertNotNull(widgetNewEclass1);
 
         // Retrieve show icon, label size, label expression, label alignment,
         // label format, color background, label color of 'new EClass 1'
-        if (widgetNewEclass1 != null) {
-            showIcon = isShowIcon(widgetNewEclass1);
-            labelSize = getLabelSize(widgetNewEclass1);
-            labelExpression = getWidgetLabelExpression(widgetNewEclass1);
-            iconPath = getIconPath(widgetNewEclass1);
-            // labelAlignment = getLabelAlignment(widgetNewEclass1);
-            labelFormat = getLabelFormat(widgetNewEclass1);
-            colorBackground = getLabelBackgroundColor(widgetNewEclass1);
-            labelColor = getLabelColor(widgetNewEclass1);
-        }
+        boolean showIcon = isShowIcon(widgetNewEclass1);
+        int labelSize = getLabelSize(widgetNewEclass1);
+        String labelExpression = getWidgetLabelExpression(widgetNewEclass1);
+        String iconPath = getIconPath(widgetNewEclass1);
+        // String labelAlignment = getLabelAlignment(widgetNewEclass1);
 
-        Color lightYellow = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(17));
-        Color lightGreen = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(13));
-
-        assertThat(showIcon, equalTo(false));
-        assertThat(labelSize, equalTo(8));
-        assertThat(labelExpression, equalTo(NEWECLASS1));
-        // assertThat(labelAlignment, equalTo("CENTER"));
-        List<String> actual = labelFormat;
-        List<String> expected = Arrays.asList("bold");
+        // Check the DTreeItem and its style
+        assertEquals(expectedShowIcon, showIcon);
+        assertEquals(expectedFontSize, labelSize);
+        assertEquals(expectedLabel, labelExpression);
+        // assertThat(labelAlignment, equalTo("RIGHT"));
+        List<String> actual = getLabelFormat(widgetNewEclass1);;
+        List<String> expected = Arrays.asList(expectedFontFormat);
         assertThat(actual, is(expected));
         assertThat(iconPath, anyOf(equalTo(""), nullValue()));
-        assertThat(colorBackground, equalTo(lightYellow));
-        assertThat(labelColor, equalTo(lightGreen));
+        assertEquals(expectedBackgroundColor, getLabelBackgroundColor(widgetNewEclass1));
+        assertEquals(expectedLabelColor, getLabelColor(widgetNewEclass1));
 
-        SWTBotUtils.getWidgetFormat(widgetNewEclass1);
+        // Check the widget
         actual = getFontFormatLiterals(SWTBotUtils.getWidgetFormat(widgetNewEclass1));
         assertThat(actual, is(expected));
-        assertThat(getWidgetBackgroundColor(widgetNewEclass1), equalTo(lightYellow));
-        assertThat(getWidgetLabelColor(widgetNewEclass1), equalTo(lightGreen));
-        assertNull(getWidgetImage(widgetNewEclass1));
-        assertThat(getWidgetSize(widgetNewEclass1), equalTo(8));
+        assertThat(getWidgetBackgroundColor(widgetNewEclass1), equalTo(expectedBackgroundColor));
+        assertThat(getWidgetLabelColor(widgetNewEclass1), equalTo(expectedLabelColor));
+        assertThat(getWidgetSize(widgetNewEclass1), equalTo(expectedFontSize));
+        Image widgetImage = getWidgetImage(widgetNewEclass1);
+        if (expectedShowIcon) {
+            assertNotNull(widgetImage);
+        } else {
+            assertNull(widgetImage);
+        }
     }
 
     private static List<String> getFontFormatLiterals(List<FontFormat> fontFormat) {
@@ -424,7 +427,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
 
         // accesses to tab Label
         SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
-        changeAndTestPropertyTabLabel();
+        changeShowIcon();
         changeAndTestPropertyTabLabel(8, 12, "feature:name", "Test<%name%>", 0, 1);
         SWTBotUtils.waitAllUiEvents();
         // Save odesign
@@ -445,9 +448,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
      * Verify that editor changes made in the odesign.
      */
     private void refreshEditorTest() {
-
         editor.show();
-
         editor.save();
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
 
@@ -461,54 +462,13 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
             widgetNewEclass1 = editor.bot().tree().getTreeItem(treeItemName).widget;
         }
 
-        boolean showIcon = false;
-        int labelSize = 0;
-        String labelExpression = null;
-        // String labelAlignment = null;
-        String iconPath = null;
-        List<String> labelFormat = null;
-        Color colorBackground = null;
-        Color labelColor = null;
-
-        // Retrieve show icon, label size, label expression, label alignment,
-        // label format, color background, label color of 'new EClass 1'
-        if (widgetNewEclass1 != null) {
-            showIcon = isShowIcon(widgetNewEclass1);
-            iconPath = getIconPath(widgetNewEclass1);
-            labelSize = getLabelSize(widgetNewEclass1);
-            labelExpression = getWidgetLabelExpression(widgetNewEclass1);
-            // labelAlignment = getLabelAlignment(widgetNewEclass1);
-            labelFormat = getLabelFormat(widgetNewEclass1);
-            colorBackground = getWidgetBackgroundColor(widgetNewEclass1);
-            labelColor = getWidgetLabelColor(widgetNewEclass1);
-        }
-
-        Color black = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(1));
-        Color blue = VisualBindingManager.getDefault().getColorFromName(MAPCOLORVALUE.get(2));
-
-        assertThat(showIcon, equalTo(true));
-        assertThat(iconPath, anyOf(equalTo(""), nullValue()));
-        assertThat(labelSize, equalTo(12));
-        assertThat(labelExpression, equalTo("Testnew EClass 1"));
-        // assertThat(labelAlignment, equalTo("RIGHT"));
-        List<String> actual = labelFormat;
-        List<String> expected = Arrays.asList("italic", "bold");
-        assertThat(actual, is(expected));
-        assertThat(colorBackground, equalTo(black));
-        assertThat(labelColor, equalTo(blue));
-        actual = getFontFormatLiterals(SWTBotUtils.getWidgetFormat(widgetNewEclass1));
-        assertThat(actual, is(expected));
-        assertThat(getWidgetSize(widgetNewEclass1), equalTo(12));
-        assertThat(getWidgetBackgroundColor(widgetNewEclass1), equalTo(black));
-        assertThat(getWidgetLabelColor(widgetNewEclass1), equalTo(blue));
-        assertNotNull(getWidgetImage(widgetNewEclass1));
-        assertThat(getWidgetSize(widgetNewEclass1), equalTo(12));
+        checkTreeItemStyle(widgetNewEclass1, true, 12, "Testnew EClass 1", blue, black, "italic", "bold");
     }
 
     /**
      * Retrieve, test, change and test all fields in General tab.
      */
-    private void changeAndTestPropertyTabLabel() {
+    private void changeShowIcon() {
         // Retrieve show icon check
         assertFalse(bot.viewByTitle(PROPERTIES).bot().checkBox(4).isChecked());
         // Check show icon
@@ -536,14 +496,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
      * @param newValueLabelFormat
      *            the index of radio button for new label format
      */
-    private void changeAndTestPropertyTabLabel(int valueLabelSize, int newValueLabelSize, String valueLabelExpression, String newValueLabelExpression, /*
-                                                                                                                                                        * int
-                                                                                                                                                        * valueLabelAlignement
-                                                                                                                                                        * ,
-                                                                                                                                                        * int
-                                                                                                                                                        * newValueLabelAlignement
-                                                                                                                                                        * ,
-                                                                                                                                                        */int valueLabelFormat, int newValueLabelFormat) {
+    private void changeAndTestPropertyTabLabel(int valueLabelSize, int newValueLabelSize, String valueLabelExpression, String newValueLabelExpression, int valueLabelFormat, int newValueLabelFormat) {
         // Retrieve label format
         assertTrue(bot.viewByTitle(PROPERTIES).bot().checkBox(valueLabelFormat).isChecked());
         // Change label format
