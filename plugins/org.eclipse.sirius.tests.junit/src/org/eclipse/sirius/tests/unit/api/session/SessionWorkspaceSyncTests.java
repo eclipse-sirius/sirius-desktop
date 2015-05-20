@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,19 +83,21 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         TestsUtil.emptyEventsFromUIThread();
     }
 
-    private void setNoSaveWhenNoEditorMode() throws Exception {
+    private void setSaveValueWhenNoEditorMode(boolean save) throws Exception {
         final IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
         saveMode = preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
-        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), save);
+        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), save);
     }
 
     private void resetSaveWhenNoEditorMode() {
         final IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
         preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), saveMode);
+        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), saveMode);
     }
 
     public void testCreateRepresentationMakesDirty() throws Exception {
-        setNoSaveWhenNoEditorMode();
+        setSaveValueWhenNoEditorMode(false);
         session.save(new NullProgressMonitor());
         assertEquals(SessionStatus.SYNC, session.getStatus());
         DDiagram diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
@@ -112,8 +114,7 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         // Restore the default preference values of Sirius (not a
         // customer specific one)
         changePlatformUIPreference(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, true);
-        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true);
-        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
+        setSaveValueWhenNoEditorMode(true);
 
         session.save(new NullProgressMonitor());
         assertEquals(SessionStatus.SYNC, session.getStatus());
@@ -124,6 +125,7 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         assertEquals(SessionStatus.SYNC, session.getStatus());
 
+        resetSaveWhenNoEditorMode();
     }
 
     /**
@@ -134,7 +136,7 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
      * @throws Exception
      */
     public void testDeleteAirdDirtySession() throws Exception {
-        setNoSaveWhenNoEditorMode();
+        setSaveValueWhenNoEditorMode(false);
         session.save(new NullProgressMonitor());
         assertEquals(SessionStatus.SYNC, session.getStatus());
         DDiagram diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
@@ -194,6 +196,7 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
 
         SessionListener testListener = new SessionListener() {
 
+            @Override
             public void notify(int changeKind) {
                 if (changeKind == SEMANTIC_CHANGE) {
                     fail("We should not have semantic notification as we only changed the diagrams !");
@@ -212,12 +215,13 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
     }
 
     public void testMultipleSameNotifications() throws Exception {
-        setNoSaveWhenNoEditorMode();
+        setSaveValueWhenNoEditorMode(false);
         TestsUtil.synchronizationWithUIThread();
 
         SessionListener testListener = new SessionListener() {
             int lastNotify = -1;
 
+            @Override
             public void notify(int changeKind) {
                 if (changeKind == lastNotify) {
                     fail("We should not have several identical notifications, notification kind:" + changeKind);
@@ -238,10 +242,11 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
     }
 
     public void testRepresentationsNotifications() throws Exception {
-        setNoSaveWhenNoEditorMode();
+        setSaveValueWhenNoEditorMode(false);
         TestsUtil.synchronizationWithUIThread();
 
         SessionListener testListener = new SessionListener() {
+            @Override
             public void notify(int changeKind) {
                 if (changeKind != SessionListener.DIRTY && changeKind != SessionListener.REPRESENTATION_CHANGE) {
                     fail("We should have had only a representation change notification, we had a :" + changeKind);
@@ -386,6 +391,7 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         analysisResource.setModified(true);
 
         IWorkspaceRunnable r = new IWorkspaceRunnable() {
+            @Override
             public void run(IProgressMonitor monitor) throws CoreException {
                 session.save(new NullProgressMonitor());
             }
