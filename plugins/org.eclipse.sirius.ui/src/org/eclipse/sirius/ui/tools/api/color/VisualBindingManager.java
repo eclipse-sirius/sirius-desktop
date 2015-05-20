@@ -11,10 +11,12 @@
 package org.eclipse.sirius.ui.tools.api.color;
 
 import java.util.Collection;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -707,12 +709,12 @@ public class VisualBindingManager {
     private static final class FontStyleDescriptor {
         final String name;
 
-        final List<FontFormat> format;
+        final Set<FontFormat> format;
 
         final int size;
 
         public FontStyleDescriptor(final List<FontFormat> format, final int size, final String name) {
-            this.format = format;
+            this.format = format.isEmpty() ? null : EnumSet.copyOf(format);
             this.size = size;
             this.name = name;
         }
