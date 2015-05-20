@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -43,8 +42,10 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.ui.IEditorPart;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * Abstract class to dynamically build treeview menus.
@@ -185,6 +186,8 @@ public abstract class AbstractMenuBuilder {
 
     private static final String EDIT = "edit";
 
+    private static final int DEFAULT_PRIORITY = 1000000000;
+
     static {
         ResourceLocator rl = SiriusEditorPlugin.INSTANCE;
         CONDITIONAL_STYLE = getPriority(rl, "ConditionalStylePriority");
@@ -231,10 +234,10 @@ public abstract class AbstractMenuBuilder {
     protected IMenuManager myMenuManager;
 
     /**
-     * Map associating CreateChildAction objects with the priority of their
-     * corresponding CommandParameter object.
+     * Map associating type keys (as computed by EClassHelper.getPath()), with
+     * the priority of the corresponding type.
      */
-    private Map<CreateChildAction, Integer> priorityMap = new HashMap<CreateChildAction, Integer>();
+    private Map<String, Integer> priorityMap = Maps.newHashMap();
 
     /**
      * Create a new builder.
@@ -421,19 +424,12 @@ public abstract class AbstractMenuBuilder {
     protected Collection generateCreateChildActions(final Collection actionDescriptors, final ISelection selection, final IEditorPart editor) {
         final Collection actions = new ArrayList();
         if (actionDescriptors != null) {
-            ResourceLocator rl = SiriusEditorPlugin.INSTANCE;
             for (final Object actionDescriptor : actionDescriptors) {
-                CreateChildAction cca = new CreateChildAction(editor, selection, actionDescriptor);
+                final CreateChildAction cca;
                 if (actionDescriptor instanceof CommandParameter) {
-                    Object value = ((CommandParameter) actionDescriptor).getValue();
-                    String key = EClassHelper.getPath(((EObject) value).eClass());
-                    int priority = 1000000000;
-                    try {
-                        priority = Integer.parseInt(rl.getString(key));
-                    } catch (MissingResourceException mre) {
-                    } catch (NumberFormatException nfe) {
-                    }
-                    priorityMap.put(cca, priority);
+                    cca = new CustomCreateChildAction(editor, selection, (CommandParameter) actionDescriptor);
+                } else {
+                    cca = new CreateChildAction(editor, selection, actionDescriptor);
                 }
                 actions.add(cca);
             }
@@ -475,26 +471,16 @@ public abstract class AbstractMenuBuilder {
             Comparator<IAction> comparator = new Comparator<IAction>() {
                 @Override
                 public int compare(IAction a1, IAction a2) {
-                    int returnedInt;
-                    if (!priorityMap.containsKey(a1) && !priorityMap.containsKey(a2)) {
-                        returnedInt = 0;
-                    } else if (!priorityMap.containsKey(a1)) {
-                        returnedInt = 1;
-                    } else if (!priorityMap.containsKey(a2)) {
-                        returnedInt = -1;
-                    } else {
-                        returnedInt = priorityMap.get(a1) - priorityMap.get(a2);
-                    }
-                    if (returnedInt == 0) {
+                    int diff = getPriority(a1) - getPriority(a2);
+                    if (diff == 0) {
                         // if both actions have no priority associated, or if
                         // they have the same priority, we compare the text
-                        returnedInt = Collator.getInstance().compare(a1.getText(), a2.getText());
+                        diff = Collator.getInstance().compare(a1.getText(), a2.getText());
                     }
-                    return returnedInt;
+                    return diff;
                 }
             };
             Collections.sort(sortedActions, comparator);
-            priorityMap.clear();
 
             for (final IAction action : sortedActions) {
                 if (contributionID != null) {
@@ -505,6 +491,27 @@ public abstract class AbstractMenuBuilder {
             }
         }
         manager.update(true);
+    }
+
+    private int getPriority(IAction action) {
+        if (action instanceof CustomCreateChildAction) {
+            return getPriority(((CustomCreateChildAction) action).getCreatedElementType());
+        } else {
+            return AbstractMenuBuilder.DEFAULT_PRIORITY;
+        }
+    }
+
+    private int getPriority(String key) {
+        if (key != null && !priorityMap.containsKey(key)) {
+            int priority = AbstractMenuBuilder.DEFAULT_PRIORITY;
+            try {
+                priority = Integer.parseInt(SiriusEditorPlugin.INSTANCE.getString(key));
+            } catch (MissingResourceException mre) {
+            } catch (NumberFormatException nfe) {
+            }
+            priorityMap.put(key, priority);
+        }
+        return Objects.firstNonNull(priorityMap.get(key), DEFAULT_PRIORITY);
     }
 
     /**
@@ -531,4 +538,29 @@ public abstract class AbstractMenuBuilder {
         parent.insertAfter(EDIT, myMenuManager);
     }
 
+    /**
+     * Custom sub-class of CreateChildAction which knows what kind of element it
+     * will create when the descriptor is a CommandParameter.
+     */
+    private final class CustomCreateChildAction extends CreateChildAction {
+        private final String key;
+
+        private CustomCreateChildAction(IEditorPart editorPart, ISelection selection, CommandParameter descriptor) {
+            super(editorPart, selection, descriptor);
+            if (descriptor.getValue() instanceof EObject) {
+                key = EClassHelper.getPath(((EObject) descriptor.getValue()).eClass());
+            } else {
+                key = null;
+            }
+        }
+
+        public String getCreatedElementType() {
+            return this.key;
+        }
+
+        @Override
+        public String toString() {
+            return "CustomCreateChildAction[key = " + key + "]";
+        }
+    }
 }
