@@ -267,7 +267,7 @@ public class SessionEditorInput extends URIEditorInput {
         if (IFile.class == adapter && a == null) {
             if (EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE) {
                 Session inputSession = getSession();
-                if (inputSession != null) {
+                if (inputSession != null && inputSession.isOpen()) {
                     a = EclipseUtil.getAdatper(adapter, inputSession.getSessionResource().getURI());
                 }
             }
