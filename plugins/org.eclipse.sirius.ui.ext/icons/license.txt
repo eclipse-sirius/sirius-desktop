@@ -1,0 +1,13 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/full/others/ModelExplorer.gif - org.eclipse.papyrus.modelexplorer - org.eclipse.papyrus.modelexplorer/icons/ModelExplorer.gif
+icons/full/others/ModelingPerspective.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/obj16/jmeth_obj.gif
+icons/full/others/image.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/obj16/image_obj.gif
+icons/full/others/information.gif- org.eclipse.ui.cheatsheets- org.eclipse.ui.cheatsheets/icons/obj16/information.gif
+icons/full/others/repair.gif - org.eclipse.team.cvs.ui -  org.eclipse.team.cvs.ui/icons/full/obj16/versions_rep.gif
+icons/obj16/ModelingProject.gif - org.eclipse.acceleo.ide.ui - org.eclipse.acceleo.ide.ui/icons/AcceleoNewProject.gif and  - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/Sirius.gif
+icons/obj16/SiriusFile.gif - org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif

@@ -162,7 +162,6 @@ icons/full/validation/warning_co_children_only.gif - org.eclipse.jdt.ui - icons/
 icons/full/validation/warning_co_children_only.png - org.eclipse.jdt.ui - icons/full/ovr16/warning_co.gif
 icons/obj16/BorderedNodeMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif
 icons/obj16/BorderedNodeMappingImport.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif and - org.eclipse.team.cvs.ui - org.eclipse.team.cvs.ui/icons/obj16/import_obj.gif
-icons/obj16/ModelingProject.gif - org.eclipse.acceleo.ide.ui - org.eclipse.acceleo.ide.ui/icons/AcceleoNewProject.gif and  - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/Sirius.gif
 icons/obj16/ProjectDependencies.gif - org.eclipse.jdt.ui - icons/full/obj16/library_obj.gif
 icons/obj16/SessionResourceFile.gif  org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif
 icons/obj16/SiriusFile.gif - org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif
