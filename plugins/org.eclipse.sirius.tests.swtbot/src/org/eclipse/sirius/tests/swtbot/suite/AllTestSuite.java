@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -50,6 +45,7 @@ import org.eclipse.sirius.tests.swtbot.layout.PackageLayoutStabilityOnManyViewsC
 import org.eclipse.sirius.tests.swtbot.layout.ResetOriginTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ContextualMenuTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.LinkWithEditorFeatureWithModelExplorerViewTest;
+import org.eclipse.sirius.tests.swtbot.modelexplorer.LockedModelExplorerTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ModelExplorerFilterTests;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectDependenciesTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectsConcurrentCloseTest;
@@ -63,6 +59,11 @@ import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWit
 import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropOnDiagramTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropTest;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * All SWTBot tests.
@@ -306,6 +307,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(NotInvisibleTabBarTest.class);
         suite.addTestSuite(LockedTabBarTest.class);
         suite.addTestSuite(LockedRepresentationContainerTest.class);
+        suite.addTestSuite(LockedModelExplorerTest.class);
         suite.addTestSuite(ArrangeSelectionOnBreakdownDiagramTest.class);
         suite.addTestSuite(RemovedDefaultColorMenuTest.class);
         suite.addTestSuite(DuplicationCausedBySelectionTest.class);
