@@ -283,6 +283,38 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         redo("Set Label Format");
 
         TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);
+
+        // Test a the underline font format
+        labelFormat = new ArrayList<FontFormat>();
+        FontFormatHelper.setFontFormat(labelFormat, FontFormat.UNDERLINE_LITERAL);
+        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, labelFormat);
+        commandStack.execute(changeDTreeItemLabelStyleCmd);
+
+        TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);
+
+        undo("Set Label Format");
+
+        TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);
+
+        redo("Set Label Format");
+
+        TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);
+
+        // Test a the strike through font format
+        labelFormat = new ArrayList<FontFormat>();
+        FontFormatHelper.setFontFormat(labelFormat, FontFormat.STRIKE_THROUGH_LITERAL);
+        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, labelFormat);
+        commandStack.execute(changeDTreeItemLabelStyleCmd);
+
+        TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);
+
+        undo("Set Label Format");
+
+        TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);
+
+        redo("Set Label Format");
+
+        TreeUtils.checkTreeItemLabelFormat(tableEditorBot, firstDCellOfSecondDLine);
     }
 
     /**

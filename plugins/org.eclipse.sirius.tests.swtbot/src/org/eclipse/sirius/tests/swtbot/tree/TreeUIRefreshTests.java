@@ -19,6 +19,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
+import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
@@ -269,6 +270,38 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         redo("Set Label Format");
 
         TreeUtils.checkTreeItemLabelFormat(treeEditorBot, thirdDTreeItem);
+
+        // Test a the underline font format
+        labelFormat = new ArrayList<FontFormat>();
+        FontFormatHelper.setFontFormat(labelFormat, FontFormat.UNDERLINE_LITERAL);
+        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, labelFormat);
+        commandStack.execute(changeDTreeItemLabelStyleCmd);
+
+        TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
+
+        undo("Set Label Format");
+
+        TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
+
+        redo("Set Label Format");
+
+        TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
+
+        // Test a the strike through font format
+        labelFormat = new ArrayList<FontFormat>();
+        FontFormatHelper.setFontFormat(labelFormat, FontFormat.STRIKE_THROUGH_LITERAL);
+        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, labelFormat);
+        commandStack.execute(changeDTreeItemLabelStyleCmd);
+
+        TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
+
+        undo("Set Label Format");
+
+        TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
+
+        redo("Set Label Format");
+
+        TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);
     }
 
     /**

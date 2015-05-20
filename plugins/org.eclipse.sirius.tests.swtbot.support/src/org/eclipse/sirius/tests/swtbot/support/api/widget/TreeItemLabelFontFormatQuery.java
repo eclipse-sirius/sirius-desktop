@@ -17,6 +17,7 @@ import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.widgets.TreeItem;
@@ -68,6 +69,7 @@ public class TreeItemLabelFontFormatQuery extends RunnableWithResult.Impl<List<F
     @Override
     public void run() {
         List<FontFormat> treeItemLabelFormat = new ArrayList<FontFormat>();
+        // Search italic and bold status in FontData
         Font font = treeItem.getFont(index);
         FontData[] fontData = font.getFontData();
         if (fontData.length > 0) {
@@ -87,6 +89,22 @@ public class TreeItemLabelFontFormatQuery extends RunnableWithResult.Impl<List<F
                 break;
             }
         }
+        // Search underline and strike through status in StyleRange
+        // Use a constant originally computed with private method
+        // org.eclipse.jface.viewers.ViewerRow.getStyleRangesDataKey(int)
+        String dataKey = "org.eclipse.jfacestyled_label_key_" + index;
+        Object styledData = treeItem.getData(dataKey);
+        if (styledData != null) {
+            StyleRange[] styledDataArray = (StyleRange[]) styledData;
+            StyleRange styleRange = styledDataArray[0];
+            if (styleRange.strikeout) {
+                FontFormatHelper.setFontFormat(treeItemLabelFormat, FontFormat.STRIKE_THROUGH_LITERAL);
+            }
+            if (styleRange.underline) {
+                FontFormatHelper.setFontFormat(treeItemLabelFormat, FontFormat.UNDERLINE_LITERAL);
+            }
+        }
+
         setResult(treeItemLabelFormat);
     }
 }
