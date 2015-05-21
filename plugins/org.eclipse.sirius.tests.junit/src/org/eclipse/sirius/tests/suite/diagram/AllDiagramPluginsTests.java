@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -230,6 +225,11 @@ import org.eclipse.sirius.tests.unit.diagram.vsm.VSMVariableTypesValidationTest;
 import org.eclipse.sirius.tests.unit.diagram.vsm.VSMWithCustomizationValidationTests;
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartmentConnectionRefreshMgrTest;
 
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 public class AllDiagramPluginsTests {
 
     /**
@@ -405,6 +405,7 @@ public class AllDiagramPluginsTests {
 
         suite.addTestSuite(ModelContentTest.class);
         suite.addTestSuite(BorderSizeAndColorTest.class);
+        suite.addTestSuite(BorderMarginTest.class);
         suite.addTestSuite(MappingsReuseTests.class);
         suite.addTestSuite(MappingImportAndFiltersTests.class);
         suite.addTestSuite(OptionalLayersActivationTests.class);
@@ -514,9 +515,6 @@ public class AllDiagramPluginsTests {
      *            the suite to add the tests into.
      */
     public static void addNonGerritPart(TestSuite suite) {
-        // This one fails systematially on the Eclipse Sirius HIPP and thus is
-        // not part of the Gerrit suite.
-        suite.addTestSuite(BorderMarginTest.class);
         String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
         if (!platformVersion.startsWith("3.5") && TestsUtil.shouldRunLongTests()) {
             // This one is long (~9 minutes), so it is ignored when running

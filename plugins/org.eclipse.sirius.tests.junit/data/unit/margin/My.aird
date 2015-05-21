@@ -107,7 +107,7 @@
           <styles xmi:type="notation:DiagramStyle" xmi:id="_ivsTYuS1EeKH-OJR8wbplA"/>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ivna4eS1EeKH-OJR8wbplA" name="border label VSM size: 0 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ivna4eS1EeKH-OJR8wbplA" name="The border label VSM size is 0 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -133,7 +133,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ivoB-eS1EeKH-OJR8wbplA" name="border label VSM size: 1 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ivoB-eS1EeKH-OJR8wbplA" name="The border label VSM size is 1 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -159,7 +159,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ivopBeS1EeKH-OJR8wbplA" name="border label VSM size: 10 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ivopBeS1EeKH-OJR8wbplA" name="The border label VSM size is 10 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -185,7 +185,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rHTekOS1EeKH-OJR8wbplA" name="border label VSM size: 0 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rHTekOS1EeKH-OJR8wbplA" name="The border label VSM size is 0 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -211,7 +211,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rHWh4OS1EeKH-OJR8wbplA" name="border label VSM size: 1 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rHWh4OS1EeKH-OJR8wbplA" name="The border label VSM size is 1 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -237,7 +237,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rHZlMOS1EeKH-OJR8wbplA" name="border label VSM size: 10 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rHZlMOS1EeKH-OJR8wbplA" name="The border label VSM size is 10 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -285,7 +285,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XDs_yT19EeO8172-f6hTJg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XDs_yj19EeO8172-f6hTJg" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_yz19EeO8172-f6hTJg" x="20" y="9" width="152" height="49"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_yz19EeO8172-f6hTJg" x="20" y="9" width="182" height="49"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XDs_zD19EeO8172-f6hTJg" type="2003" element="_XDtnAD19EeO8172-f6hTJg">
             <children xmi:type="notation:Node" xmi:id="_XDs_zT19EeO8172-f6hTJg" type="5007"/>
@@ -298,7 +298,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XDs_0j19EeO8172-f6hTJg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XDs_0z19EeO8172-f6hTJg" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_1D19EeO8172-f6hTJg" x="205" y="11" width="150" height="49"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_1D19EeO8172-f6hTJg" x="205" y="11" width="180" height="49"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XDs_1T19EeO8172-f6hTJg" type="2003" element="_XDtnCz19EeO8172-f6hTJg">
             <children xmi:type="notation:Node" xmi:id="_XDs_1j19EeO8172-f6hTJg" type="5007"/>
@@ -311,7 +311,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XDs_2z19EeO8172-f6hTJg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XDs_3D19EeO8172-f6hTJg" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_3T19EeO8172-f6hTJg" x="418" width="175" height="67"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_3T19EeO8172-f6hTJg" x="418" width="205" height="67"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XDs_3j19EeO8172-f6hTJg" type="2002" element="_XDtnFj19EeO8172-f6hTJg">
             <children xmi:type="notation:Node" xmi:id="_XDs_3z19EeO8172-f6hTJg" type="5006"/>
@@ -331,7 +331,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XDtm0z19EeO8172-f6hTJg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XDtm1D19EeO8172-f6hTJg" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDtm1T19EeO8172-f6hTJg" x="10" y="92" width="152" height="74"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDtm1T19EeO8172-f6hTJg" x="10" y="92" width="182" height="74"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XDtm1j19EeO8172-f6hTJg" type="2002" element="_XDtnIT19EeO8172-f6hTJg">
             <children xmi:type="notation:Node" xmi:id="_XDtm1z19EeO8172-f6hTJg" type="5006"/>
@@ -351,7 +351,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XDtm4j19EeO8172-f6hTJg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XDtm4z19EeO8172-f6hTJg" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDtm5D19EeO8172-f6hTJg" x="202" y="87" width="150" height="74"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDtm5D19EeO8172-f6hTJg" x="202" y="87" width="180" height="74"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XDtm5T19EeO8172-f6hTJg" type="2002" element="_XDuN4T19EeO8172-f6hTJg">
             <children xmi:type="notation:Node" xmi:id="_XDtm5j19EeO8172-f6hTJg" type="5006"/>
@@ -371,12 +371,12 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XDtm8T19EeO8172-f6hTJg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XDtm8j19EeO8172-f6hTJg" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDtm8z19EeO8172-f6hTJg" x="413" y="82" width="175" height="92"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDtm8z19EeO8172-f6hTJg" x="413" y="82" width="205" height="92"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_XDtm9D19EeO8172-f6hTJg"/>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_XDtm9T19EeO8172-f6hTJg" name="border label VSM size: 0 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_XDtm9T19EeO8172-f6hTJg" name="The border label VSM size is 0 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -402,7 +402,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_XDtnAD19EeO8172-f6hTJg" name="border label VSM size: 1 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_XDtnAD19EeO8172-f6hTJg" name="The border label VSM size is 1 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -428,7 +428,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_XDtnCz19EeO8172-f6hTJg" name="border label VSM size: 10 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_XDtnCz19EeO8172-f6hTJg" name="The border label VSM size is 10 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnDD19EeO8172-f6hTJg" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
@@ -451,7 +451,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_XDtnFj19EeO8172-f6hTJg" name="border label VSM size: 0 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_XDtnFj19EeO8172-f6hTJg" name="The border label VSM size is 0 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -477,7 +477,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_XDtnIT19EeO8172-f6hTJg" name="border label VSM size: 1 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_XDtnIT19EeO8172-f6hTJg" name="The border label VSM size is 1 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -503,7 +503,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_XDuN4T19EeO8172-f6hTJg" name="border label VSM size: 10 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_XDuN4T19EeO8172-f6hTJg" name="The border label VSM size is 10 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -548,7 +548,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_fqu3G0JLEeO5N5dgVuiiuA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_fqu3HEJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3HUJLEeO5N5dgVuiiuA" x="20" y="9" width="152" height="47"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3HUJLEeO5N5dgVuiiuA" x="20" y="9" width="182" height="47"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_fqu3HkJLEeO5N5dgVuiiuA" type="2003" element="_fqveUEJLEeO5N5dgVuiiuA">
             <children xmi:type="notation:Node" xmi:id="_fqu3H0JLEeO5N5dgVuiiuA" type="5007"/>
@@ -561,7 +561,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_fqu3JUJLEeO5N5dgVuiiuA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_fqu3JkJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3J0JLEeO5N5dgVuiiuA" x="205" y="11" width="150" height="47"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3J0JLEeO5N5dgVuiiuA" x="205" y="11" width="180" height="47"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_fqu3KEJLEeO5N5dgVuiiuA" type="2003" element="_fqveW0JLEeO5N5dgVuiiuA">
             <children xmi:type="notation:Node" xmi:id="_fqu3KUJLEeO5N5dgVuiiuA" type="5007"/>
@@ -574,7 +574,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_fqu3L0JLEeO5N5dgVuiiuA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_fqu3MEJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3MUJLEeO5N5dgVuiiuA" x="418" width="175" height="65"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3MUJLEeO5N5dgVuiiuA" x="418" width="205" height="65"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_fqu3MkJLEeO5N5dgVuiiuA" type="2002" element="_fqveZkJLEeO5N5dgVuiiuA">
             <children xmi:type="notation:Node" xmi:id="_fqu3M0JLEeO5N5dgVuiiuA" type="5006"/>
@@ -594,7 +594,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_fqveI0JLEeO5N5dgVuiiuA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_fqveJEJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveJUJLEeO5N5dgVuiiuA" x="10" y="92" width="152" height="74"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveJUJLEeO5N5dgVuiiuA" x="10" y="92" width="182" height="74"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_fqveJkJLEeO5N5dgVuiiuA" type="2002" element="_fqvecUJLEeO5N5dgVuiiuA">
             <children xmi:type="notation:Node" xmi:id="_fqveJ0JLEeO5N5dgVuiiuA" type="5006"/>
@@ -614,7 +614,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_fqveMkJLEeO5N5dgVuiiuA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_fqveM0JLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveNEJLEeO5N5dgVuiiuA" x="202" y="87" width="150" height="74"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveNEJLEeO5N5dgVuiiuA" x="202" y="87" width="180" height="74"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_fqveNUJLEeO5N5dgVuiiuA" type="2002" element="_fqvefEJLEeO5N5dgVuiiuA">
             <children xmi:type="notation:Node" xmi:id="_fqveNkJLEeO5N5dgVuiiuA" type="5006"/>
@@ -634,12 +634,12 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_fqveQUJLEeO5N5dgVuiiuA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_fqveQkJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveQ0JLEeO5N5dgVuiiuA" x="413" y="82" width="175" height="92"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveQ0JLEeO5N5dgVuiiuA" x="413" y="82" width="205" height="92"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_fqveREJLEeO5N5dgVuiiuA"/>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_fqveRUJLEeO5N5dgVuiiuA" name="border label VSM size: 0 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_fqveRUJLEeO5N5dgVuiiuA" name="The border label VSM size is 0 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -665,7 +665,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_fqveUEJLEeO5N5dgVuiiuA" name="border label VSM size: 1 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_fqveUEJLEeO5N5dgVuiiuA" name="The border label VSM size is 1 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -691,7 +691,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_fqveW0JLEeO5N5dgVuiiuA" name="border label VSM size: 10 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_fqveW0JLEeO5N5dgVuiiuA" name="The border label VSM size is 10 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fqveXEJLEeO5N5dgVuiiuA" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
@@ -714,7 +714,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fqveZkJLEeO5N5dgVuiiuA" name="border label VSM size: 0 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fqveZkJLEeO5N5dgVuiiuA" name="The border label VSM size is 0 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -740,7 +740,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fqvecUJLEeO5N5dgVuiiuA" name="border label VSM size: 1 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fqvecUJLEeO5N5dgVuiiuA" name="The border label VSM size is 1 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -766,7 +766,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fqvefEJLEeO5N5dgVuiiuA" name="border label VSM size: 10 ">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fqvefEJLEeO5N5dgVuiiuA" name="The border label VSM size is 10 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
