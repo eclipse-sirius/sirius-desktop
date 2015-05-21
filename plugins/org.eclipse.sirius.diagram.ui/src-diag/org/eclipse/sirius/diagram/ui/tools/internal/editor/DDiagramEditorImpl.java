@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -314,8 +314,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /** the emf command factory provider */
     private IDiagramCommandFactoryProvider emfCommandFactoryProvider;
 
-    private DiagramOutlinePage diagramOutline;
-
     private boolean isClosing;
 
     private IPermissionAuthority authority;
@@ -615,7 +613,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             keyHandler.put(KeyStroke.getPressed(SWT.DEL, 127, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 
             keyHandler.put(/* CTRL + D */
-                    KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
+            KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
         }
         return keyHandler;
     }
@@ -782,7 +780,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             }
             sGViewer = null;
         }
-        disposeOutline();
 
         // Dispose the session editor input to keep the minimum information to
         // be restore from the INavigationHistory and EditorHistory.
@@ -812,12 +809,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (gmfDiagramUpdater != null) {
             gmfDiagramUpdater.dispose();
             gmfDiagramUpdater = null;
-        }
-    }
-
-    private void disposeOutline() {
-        if (diagramOutline != null) {
-            this.diagramOutline = null;
         }
     }
 
@@ -855,7 +846,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         this.getGraphicalViewer().setProperty(MouseWheelHandler.KeyGenerator.getKey(SWT.CTRL), MouseWheelZoomHandler.SINGLETON);
     }
 
-    private void initOutline() {
+    private DiagramOutlinePage initOutline() {
         /** the outline popup menu items and associated actions */
         IObjectActionDelegateWrapper[] outlinePopupMenuActions = new IObjectActionDelegateWrapper[] {
                 new IObjectActionDelegateWrapper(new HideDDiagramElementAction(HideDDiagramElement.HIDE_ELEMENT_LABEL), HideDDiagramElement.HIDE_ELEMENT_LABEL) {
@@ -945,14 +936,15 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         return result;
                     }
                 }, };
-
+        DiagramOutlinePage outline;
         if (isOldUIEnabled()) {
-            diagramOutline = new DiagramOutlineWithBookPages(this.getDiagramEditPart().getModel(), getGraphicalViewer(), outlinePopupMenuActions);
+            outline = new DiagramOutlineWithBookPages(this.getDiagramEditPart().getModel(), getGraphicalViewer(), outlinePopupMenuActions);
         } else {
-            diagramOutline = new DiagramOutlinePage(this.getDiagramEditPart().getModel(), new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(), getGraphicalViewer(),
+            outline = new DiagramOutlinePage(this.getDiagramEditPart().getModel(), new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(), getGraphicalViewer(),
                     outlinePopupMenuActions);
         }
-
+        outline.setDiagramWorkbenchPart(this);
+        return outline;
     }
 
     /**
@@ -1323,11 +1315,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (type == IDiagramCommandFactoryProvider.class) {
             adapter = this.emfCommandFactoryProvider;
         } else if (type == IContentOutlinePage.class) {
-            if (diagramOutline == null) {
-                initOutline();
-            }
-            diagramOutline.setDiagramWorkbenchPart(this);
-            adapter = diagramOutline;
+            adapter = initOutline();
         } else if (type == EditingDomain.class || type == TransactionalEditingDomain.class) {
             adapter = this.getEditingDomain();
         } else if (type == IDiagramWorkbenchPart.class) {
