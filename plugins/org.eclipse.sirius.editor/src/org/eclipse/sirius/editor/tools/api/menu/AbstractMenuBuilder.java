@@ -250,7 +250,7 @@ public abstract class AbstractMenuBuilder {
 
     private static int getPriority(ResourceLocator rl, String id) {
         try {
-            return Integer.parseInt(rl.getString(id));
+            return Integer.parseInt(rl.getString(id).trim());
         } catch (NumberFormatException nfe) {
         } catch (MissingResourceException mre) {
         }
@@ -505,7 +505,7 @@ public abstract class AbstractMenuBuilder {
         if (key != null && !priorityMap.containsKey(key)) {
             int priority = AbstractMenuBuilder.DEFAULT_PRIORITY;
             try {
-                priority = Integer.parseInt(SiriusEditorPlugin.INSTANCE.getString(key));
+                priority = Integer.parseInt(SiriusEditorPlugin.INSTANCE.getString(key).trim());
             } catch (MissingResourceException mre) {
             } catch (NumberFormatException nfe) {
             }
