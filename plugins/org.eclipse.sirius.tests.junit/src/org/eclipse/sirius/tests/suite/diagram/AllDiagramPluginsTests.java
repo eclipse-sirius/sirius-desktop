@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -226,6 +221,11 @@ import org.eclipse.sirius.tests.unit.diagram.views.session.ModelContentTest;
 import org.eclipse.sirius.tests.unit.diagram.vsm.VSMValidationTest;
 import org.eclipse.sirius.tests.unit.diagram.vsm.VSMWithCustomizationValidationTests;
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartmentConnectionRefreshMgrTest;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 public class AllDiagramPluginsTests {
 

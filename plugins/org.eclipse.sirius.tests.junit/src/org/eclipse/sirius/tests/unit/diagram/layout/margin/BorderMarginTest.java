@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layout.margin;
 
-import java.awt.GraphicsEnvironment;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +36,9 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContain
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.FigureQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -89,21 +90,21 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
     {
         // Comic Sans MS has been used to create the test data, but there are
         // differences between linux and windows.
-        listAutoSizes.put(Integer.valueOf(0), new Dimension(152, 49));
-        listAutoSizes.put(Integer.valueOf(1), new Dimension(150, 49));
-        listAutoSizes.put(Integer.valueOf(10), new Dimension(175, 67));
+        listAutoSizes.put(Integer.valueOf(0), new Dimension(183, 49));
+        listAutoSizes.put(Integer.valueOf(1), new Dimension(181, 49));
+        listAutoSizes.put(Integer.valueOf(10), new Dimension(206, 67));
 
-        listAutoSizesWin.put(Integer.valueOf(0), new Dimension(152, 47));
-        listAutoSizesWin.put(Integer.valueOf(1), new Dimension(150, 47));
-        listAutoSizesWin.put(Integer.valueOf(10), new Dimension(175, 65));
+        listAutoSizesWin.put(Integer.valueOf(0), new Dimension(182, 47));
+        listAutoSizesWin.put(Integer.valueOf(1), new Dimension(180, 47));
+        listAutoSizesWin.put(Integer.valueOf(10), new Dimension(205, 65));
 
-        containerAutoSizes.put(Integer.valueOf(0), new Dimension(152, 74));
-        containerAutoSizes.put(Integer.valueOf(1), new Dimension(150, 74));
-        containerAutoSizes.put(Integer.valueOf(10), new Dimension(175, 92));
+        containerAutoSizes.put(Integer.valueOf(0), new Dimension(183, 74));
+        containerAutoSizes.put(Integer.valueOf(1), new Dimension(181, 74));
+        containerAutoSizes.put(Integer.valueOf(10), new Dimension(206, 92));
 
-        containerAutoSizesWin.put(Integer.valueOf(0), new Dimension(152, 74));
-        containerAutoSizesWin.put(Integer.valueOf(1), new Dimension(150, 74));
-        containerAutoSizesWin.put(Integer.valueOf(10), new Dimension(175, 92));
+        containerAutoSizesWin.put(Integer.valueOf(0), new Dimension(182, 74));
+        containerAutoSizesWin.put(Integer.valueOf(1), new Dimension(180, 74));
+        containerAutoSizesWin.put(Integer.valueOf(10), new Dimension(205, 92));
     }
 
     private DDiagramEditor diagramEditor;
@@ -205,7 +206,11 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
     /**
      * Test that auto-size did not change. It could allow to detect unwanted
      * figure/margin/... changes. Test that scrollbars are not displayed in list
-     * and containers in auto-size.
+     * and containers in auto-size.<BR>
+     * This test is based on the width of the label. Indeed, a font has not the
+     * same size according to the OS used to launch the test. So we can not use
+     * a stored value. Only the width is checked because the height is more
+     * complex.
      * 
      * @throws Exception
      */
@@ -229,15 +234,26 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
                 assertEquals("GMF Node should be in auto-size.", -1, ((Size) gmfNode.getLayoutConstraint()).getHeight());
                 assertEquals("GMF Node should be in auto-size.", -1, ((Size) gmfNode.getLayoutConstraint()).getWidth());
 
-                Dimension expected = getExpectedAutoSize(dde);
+                String borderSizeString = dde.getName().substring(29, dde.getName().length() - 1);
                 sb.append(" ." + dde.eClass().getName() + " " + dde.getName());
-                Dimension figureSize = part.getFigure().getBounds().getSize();
-                if (!expected.equals(figureSize)) {
-                    wrongSizes = true;
-                    sb.append(", expected: " + expected);
-                    sb.append(" but was: " + figureSize).append("\n");
-                } else {
-                    sb.append(" expected and observed: " + expected).append("\n");
+                Option<IFigure> labelFigure = new FigureQuery(part.getFigure()).getLabelFigure();
+                if (labelFigure.some()) {
+                    Dimension labelFigureSize = labelFigure.get().getBounds().getSize();
+                    int borderSize = Integer.valueOf(borderSizeString);
+                    if (borderSize == 0) {
+                        // There is a specific case for border size of 0 pixel.
+                        // It is currently considered as 1 pixel.
+                        borderSize = 1;
+                    }
+                    int expectedWidth = labelFigureSize.width + 2 + (borderSize * 2);
+                    Dimension figureSize = part.getFigure().getBounds().getSize();
+                    if (expectedWidth != figureSize.width) {
+                        wrongSizes = true;
+                        sb.append(", expected: " + expectedWidth);
+                        sb.append(" but was: " + figureSize.width).append("\n");
+                    } else {
+                        sb.append(" expected and observed: " + expectedWidth).append("\n");
+                    }
                 }
 
                 assertNoVisibleScrollBar(dde, part);
@@ -277,17 +293,6 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
 
                 assertNoVisibleScrollBar(dde, part);
             }
-        }
-    }
-
-    /**
-     * Temporary test to display fonts available on OS.
-     */
-    public void testFonts() {
-        String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-
-        for (int i = 0; i < fonts.length; i++) {
-            System.out.println(fonts[i]);
         }
     }
 
