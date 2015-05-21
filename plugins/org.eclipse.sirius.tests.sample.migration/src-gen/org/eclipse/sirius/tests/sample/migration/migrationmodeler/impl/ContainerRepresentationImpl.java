@@ -30,14 +30,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Owned Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContainerRepresentationImpl extends AbstractRepresentationImpl implements ContainerRepresentation {
     /**
      * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedStyle()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerRepresentationImpl() {
@@ -55,7 +55,7 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,16 +65,17 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ContainerStyle getOwnedStyle() {
         return ownedStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetOwnedStyle(ContainerStyle newOwnedStyle, NotificationChain msgs) {
@@ -82,36 +83,42 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
         ownedStyle = newOwnedStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE, oldOwnedStyle, newOwnedStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setOwnedStyle(ContainerStyle newOwnedStyle) {
         if (newOwnedStyle != ownedStyle) {
             NotificationChain msgs = null;
-            if (ownedStyle != null)
-                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE, null, msgs);
-            if (newOwnedStyle != null)
-                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE, null, msgs);
+            if (ownedStyle != null) {
+                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE, null, msgs);
+            }
+            if (newOwnedStyle != null) {
+                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE, null, msgs);
+            }
             msgs = basicSetOwnedStyle(newOwnedStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE, newOwnedStyle, newOwnedStyle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +132,7 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +146,7 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +161,7 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +176,7 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -19,13 +19,13 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeRepresenta
  * <em><b>Node Representation</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class NodeRepresentationImpl extends AbstractNodeRepresentationImpl implements NodeRepresentation {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NodeRepresentationImpl() {
@@ -34,7 +34,7 @@ public class NodeRepresentationImpl extends AbstractNodeRepresentationImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

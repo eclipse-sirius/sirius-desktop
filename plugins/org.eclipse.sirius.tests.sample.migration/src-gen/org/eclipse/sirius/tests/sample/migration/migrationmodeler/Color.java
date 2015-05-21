@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Color</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Blue</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getColor()
  * @model
  * @generated
@@ -44,7 +44,7 @@ public interface Color extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Red</em>' attribute.
      * @see #setRed(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getColor_Red()
@@ -57,7 +57,7 @@ public interface Color extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color#getRed
      * <em>Red</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Red</em>' attribute.
      * @see #getRed()
@@ -73,7 +73,7 @@ public interface Color extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Green</em>' attribute.
      * @see #setGreen(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getColor_Green()
@@ -86,7 +86,7 @@ public interface Color extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color#getGreen
      * <em>Green</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Green</em>' attribute.
      * @see #getGreen()
@@ -102,7 +102,7 @@ public interface Color extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Blue</em>' attribute.
      * @see #setBlue(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getColor_Blue()
@@ -115,7 +115,7 @@ public interface Color extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color#getBlue
      * <em>Blue</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Blue</em>' attribute.
      * @see #getBlue()

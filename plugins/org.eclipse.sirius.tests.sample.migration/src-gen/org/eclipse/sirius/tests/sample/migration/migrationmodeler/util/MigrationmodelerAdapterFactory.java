@@ -57,14 +57,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
  * an adapter <code>createXXX</code> method for each class of the model. <!--
  * end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage
  * @generated
  */
 public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static MigrationmodelerPackage modelPackage;
@@ -72,12 +72,12 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MigrationmodelerAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = MigrationmodelerPackage.eINSTANCE;
+        if (MigrationmodelerAdapterFactory.modelPackage == null) {
+            MigrationmodelerAdapterFactory.modelPackage = MigrationmodelerPackage.eINSTANCE;
         }
     }
 
@@ -86,17 +86,17 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This implementation returns <code>true</code> if
      * the object is either the model's package or is an instance object of the
      * model. <!-- end-user-doc -->
-     * 
+     *
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == MigrationmodelerAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == MigrationmodelerAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -104,7 +104,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MigrationmodelerSwitch<Adapter> modelSwitch = new MigrationmodelerSwitch<Adapter>() {
@@ -302,7 +302,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param target
      *            the object to adapt.
      * @return the adapter for the <code>target</code>.
@@ -320,7 +320,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Node
      * @generated
@@ -336,7 +336,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Bordered
      * @generated
@@ -352,7 +352,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container
      * @generated
@@ -368,7 +368,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GraphicalElement
      * @generated
@@ -384,7 +384,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Edge
      * @generated
@@ -400,7 +400,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation
      * @generated
@@ -416,7 +416,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation
      * @generated
@@ -432,7 +432,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNodeRepresentation
      * @generated
@@ -448,7 +448,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeRepresentation
      * @generated
@@ -464,7 +464,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedRepresentation
      * @generated
@@ -480,7 +480,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation
      * @generated
@@ -496,7 +496,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram
      * @generated
@@ -512,7 +512,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle
      * @generated
@@ -528,7 +528,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout
      * @generated
@@ -544,7 +544,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color
      * @generated
@@ -560,7 +560,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point
      * @generated
@@ -576,7 +576,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle
      * @generated
@@ -592,7 +592,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle
      * @generated
@@ -608,7 +608,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerStyle
      * @generated
@@ -624,7 +624,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelStyle
      * @generated
@@ -640,7 +640,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Dot
      * @generated
@@ -656,7 +656,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection
      * @generated
@@ -672,7 +672,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FlatContainerStyle
      * @generated
@@ -688,7 +688,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainerStyle
      * @generated
@@ -704,7 +704,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square
      * @generated
@@ -720,7 +720,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse
      * @generated
@@ -736,7 +736,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge
      * @generated
@@ -752,7 +752,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImage
      * @generated
@@ -768,7 +768,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage
      * @generated
@@ -784,7 +784,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeCompositeStyle
      * @generated
@@ -800,7 +800,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Note
      * @generated
@@ -816,7 +816,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNode
      * @generated
@@ -832,7 +832,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase
      * @generated
@@ -848,7 +848,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation
      * @generated
@@ -864,7 +864,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedStyle
      * @generated
@@ -880,7 +880,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Filter
      * @generated
@@ -896,7 +896,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layer
      * @generated
@@ -908,7 +908,7 @@ public class MigrationmodelerAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates a new adapter for the default case. <!-- begin-user-doc --> This
      * default implementation returns null. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @generated
      */

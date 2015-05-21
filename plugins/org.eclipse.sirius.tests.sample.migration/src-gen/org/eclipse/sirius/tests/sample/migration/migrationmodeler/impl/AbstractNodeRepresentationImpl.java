@@ -39,14 +39,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle;
  * <em>Owned Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentationImpl implements AbstractNodeRepresentation {
     /**
      * The cached value of the '{@link #getBordereds() <em>Bordereds</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBordereds()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
     /**
      * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedStyle()
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractNodeRepresentationImpl() {
@@ -74,7 +74,7 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,9 +84,10 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Bordered> getBordereds() {
         if (bordereds == null) {
             bordereds = new EObjectContainmentEList<Bordered>(Bordered.class, this, MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__BORDEREDS);
@@ -96,16 +97,17 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public NodeStyle getOwnedStyle() {
         return ownedStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetOwnedStyle(NodeStyle newOwnedStyle, NotificationChain msgs) {
@@ -113,36 +115,42 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
         ownedStyle = newOwnedStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE, oldOwnedStyle, newOwnedStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setOwnedStyle(NodeStyle newOwnedStyle) {
         if (newOwnedStyle != ownedStyle) {
             NotificationChain msgs = null;
-            if (ownedStyle != null)
-                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE, null, msgs);
-            if (newOwnedStyle != null)
-                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE, null, msgs);
+            if (ownedStyle != null) {
+                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE, null, msgs);
+            }
+            if (newOwnedStyle != null) {
+                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE, null, msgs);
+            }
             msgs = basicSetOwnedStyle(newOwnedStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE, newOwnedStyle, newOwnedStyle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +166,7 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +182,7 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -194,7 +202,7 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +220,7 @@ public abstract class AbstractNodeRepresentationImpl extends AbstractRepresentat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

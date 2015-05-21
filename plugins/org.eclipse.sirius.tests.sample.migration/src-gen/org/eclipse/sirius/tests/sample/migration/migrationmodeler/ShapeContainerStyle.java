@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Shape Container Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getShapeContainerStyle()
  * @model
  * @generated
@@ -41,7 +41,7 @@ public interface ShapeContainerStyle extends ContainerStyle {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerShape
      * @see #setShape(ContainerShape)
@@ -55,7 +55,7 @@ public interface ShapeContainerStyle extends ContainerStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainerStyle#getShape
      * <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerShape
@@ -72,7 +72,7 @@ public interface ShapeContainerStyle extends ContainerStyle {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' containment
      *         reference.
      * @see #setBackgroundColor(Color)
@@ -87,7 +87,7 @@ public interface ShapeContainerStyle extends ContainerStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainerStyle#getBackgroundColor
      * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' containment
      *            reference.

@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Label Alignment</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLabelAlignment()
  * @model
  * @generated
@@ -29,7 +29,7 @@ public enum LabelAlignment implements Enumerator {
     /**
      * The '<em><b>CENTER</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #CENTER_VALUE
      * @generated
      * @ordered
@@ -39,7 +39,7 @@ public enum LabelAlignment implements Enumerator {
     /**
      * The '<em><b>LEFT</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #LEFT_VALUE
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public enum LabelAlignment implements Enumerator {
     /**
      * The '<em><b>RIGHT</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #RIGHT_VALUE
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public enum LabelAlignment implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #CENTER
      * @model
      * @generated
@@ -78,7 +78,7 @@ public enum LabelAlignment implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #LEFT
      * @model
      * @generated
@@ -93,7 +93,7 @@ public enum LabelAlignment implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #RIGHT
      * @model
      * @generated
@@ -104,7 +104,7 @@ public enum LabelAlignment implements Enumerator {
     /**
      * An array of all the '<em><b>Label Alignment</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final LabelAlignment[] VALUES_ARRAY = new LabelAlignment[] { CENTER, LEFT, RIGHT, };
@@ -112,20 +112,19 @@ public enum LabelAlignment implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Label Alignment</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    public static final List<LabelAlignment> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<LabelAlignment> VALUES = Collections.unmodifiableList(Arrays.asList(LabelAlignment.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Label Alignment</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static LabelAlignment get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            LabelAlignment result = VALUES_ARRAY[i];
+        for (LabelAlignment result : LabelAlignment.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -136,12 +135,11 @@ public enum LabelAlignment implements Enumerator {
     /**
      * Returns the '<em><b>Label Alignment</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static LabelAlignment getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            LabelAlignment result = VALUES_ARRAY[i];
+        for (LabelAlignment result : LabelAlignment.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -152,7 +150,7 @@ public enum LabelAlignment implements Enumerator {
     /**
      * Returns the '<em><b>Label Alignment</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static LabelAlignment get(int value) {
@@ -169,21 +167,21 @@ public enum LabelAlignment implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -191,7 +189,7 @@ public enum LabelAlignment implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private LabelAlignment(int value, String name, String literal) {
@@ -202,27 +200,30 @@ public enum LabelAlignment implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }
@@ -230,7 +231,7 @@ public enum LabelAlignment implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

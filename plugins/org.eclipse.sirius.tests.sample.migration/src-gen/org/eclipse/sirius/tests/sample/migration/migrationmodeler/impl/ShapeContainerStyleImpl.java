@@ -34,14 +34,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainer
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ShapeContainerStyleImpl extends ContainerStyleImpl implements ShapeContainerStyle {
     /**
      * The default value of the '{@link #getShape() <em>Shape</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
@@ -51,18 +51,18 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
     /**
      * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
      */
-    protected ContainerShape shape = SHAPE_EDEFAULT;
+    protected ContainerShape shape = ShapeContainerStyleImpl.SHAPE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ShapeContainerStyleImpl() {
@@ -80,7 +80,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,37 +90,41 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ContainerShape getShape() {
         return shape;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setShape(ContainerShape newShape) {
         ContainerShape oldShape = shape;
-        shape = newShape == null ? SHAPE_EDEFAULT : newShape;
-        if (eNotificationRequired())
+        shape = newShape == null ? ShapeContainerStyleImpl.SHAPE_EDEFAULT : newShape;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__SHAPE, oldShape, shape));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getBackgroundColor() {
         return backgroundColor;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetBackgroundColor(Color newBackgroundColor, NotificationChain msgs) {
@@ -128,36 +132,42 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
         backgroundColor = newBackgroundColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, oldBackgroundColor, newBackgroundColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBackgroundColor(Color newBackgroundColor) {
         if (newBackgroundColor != backgroundColor) {
             NotificationChain msgs = null;
-            if (backgroundColor != null)
-                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
-            if (newBackgroundColor != null)
-                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
+            if (backgroundColor != null) {
+                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
+            }
+            if (newBackgroundColor != null) {
+                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
+            }
             msgs = basicSetBackgroundColor(newBackgroundColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, newBackgroundColor, newBackgroundColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +181,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,7 +197,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,14 +215,14 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__SHAPE:
-            setShape(SHAPE_EDEFAULT);
+            setShape(ShapeContainerStyleImpl.SHAPE_EDEFAULT);
             return;
         case MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((Color) null);
@@ -223,14 +233,14 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__SHAPE:
-            return shape != SHAPE_EDEFAULT;
+            return shape != ShapeContainerStyleImpl.SHAPE_EDEFAULT;
         case MigrationmodelerPackage.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR:
             return backgroundColor != null;
         }
@@ -239,13 +249,14 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (shape: ");

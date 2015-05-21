@@ -31,14 +31,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point;
  * <em>Y</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PointImpl extends EObjectImpl implements Point {
     /**
      * The default value of the '{@link #getX() <em>X</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getX()
      * @generated
      * @ordered
@@ -48,17 +48,17 @@ public class PointImpl extends EObjectImpl implements Point {
     /**
      * The cached value of the '{@link #getX() <em>X</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getX()
      * @generated
      * @ordered
      */
-    protected int x = X_EDEFAULT;
+    protected int x = PointImpl.X_EDEFAULT;
 
     /**
      * The default value of the '{@link #getY() <em>Y</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getY()
      * @generated
      * @ordered
@@ -68,16 +68,16 @@ public class PointImpl extends EObjectImpl implements Point {
     /**
      * The cached value of the '{@link #getY() <em>Y</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getY()
      * @generated
      * @ordered
      */
-    protected int y = Y_EDEFAULT;
+    protected int y = PointImpl.Y_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PointImpl() {
@@ -86,7 +86,7 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,49 +96,55 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getX() {
         return x;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setX(int newX) {
         int oldX = x;
         x = newX;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.POINT__X, oldX, x));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getY() {
         return y;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setY(int newY) {
         int oldY = y;
         y = newY;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.POINT__Y, oldY, y));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +160,7 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,17 +178,17 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.POINT__X:
-            setX(X_EDEFAULT);
+            setX(PointImpl.X_EDEFAULT);
             return;
         case MigrationmodelerPackage.POINT__Y:
-            setY(Y_EDEFAULT);
+            setY(PointImpl.Y_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -190,29 +196,30 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.POINT__X:
-            return x != X_EDEFAULT;
+            return x != PointImpl.X_EDEFAULT;
         case MigrationmodelerPackage.POINT__Y:
-            return y != Y_EDEFAULT;
+            return y != PointImpl.Y_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (x: ");

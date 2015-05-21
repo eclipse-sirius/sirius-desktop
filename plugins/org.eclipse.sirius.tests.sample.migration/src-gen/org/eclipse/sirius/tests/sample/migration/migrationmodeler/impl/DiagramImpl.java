@@ -49,14 +49,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Node;
  * <em>Layers</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DiagramImpl extends RepresentationImpl implements Diagram {
     /**
      * The cached value of the '{@link #getContainers() <em>Containers</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainers()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
     /**
      * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getNodes()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
     /**
      * The cached value of the '{@link #getEdges() <em>Edges</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEdges()
      * @generated
      * @ordered
@@ -86,7 +86,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilters()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
     /**
      * The cached value of the '{@link #getLayers() <em>Layers</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLayers()
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DiagramImpl() {
@@ -114,7 +114,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,9 +124,10 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Container> getContainers() {
         if (containers == null) {
             containers = new EObjectContainmentEList<Container>(Container.class, this, MigrationmodelerPackage.DIAGRAM__CONTAINERS);
@@ -136,9 +137,10 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Node> getNodes() {
         if (nodes == null) {
             nodes = new EObjectContainmentEList<Node>(Node.class, this, MigrationmodelerPackage.DIAGRAM__NODES);
@@ -148,9 +150,10 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Edge> getEdges() {
         if (edges == null) {
             edges = new EObjectContainmentEList<Edge>(Edge.class, this, MigrationmodelerPackage.DIAGRAM__EDGES);
@@ -160,9 +163,10 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Filter> getFilters() {
         if (filters == null) {
             filters = new EObjectContainmentEList<Filter>(Filter.class, this, MigrationmodelerPackage.DIAGRAM__FILTERS);
@@ -172,9 +176,10 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Layer> getLayers() {
         if (layers == null) {
             layers = new EObjectContainmentEList<Layer>(Layer.class, this, MigrationmodelerPackage.DIAGRAM__LAYERS);
@@ -184,7 +189,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +211,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -228,7 +233,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -261,7 +266,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -288,7 +293,7 @@ public class DiagramImpl extends RepresentationImpl implements Diagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

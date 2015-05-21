@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Representation</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getRepresentation()
  * @model abstract="true"
  * @generated
@@ -38,7 +38,7 @@ public interface Representation extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getRepresentation_Name()
@@ -51,7 +51,7 @@ public interface Representation extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()

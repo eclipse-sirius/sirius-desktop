@@ -13,8 +13,8 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Abstract Node</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractNode()
  * @model abstract="true"
  * @generated

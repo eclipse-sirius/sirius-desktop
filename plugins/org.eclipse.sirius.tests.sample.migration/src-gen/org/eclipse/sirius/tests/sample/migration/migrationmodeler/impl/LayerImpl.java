@@ -31,14 +31,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Activated</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LayerImpl extends EObjectImpl implements Layer {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -48,17 +48,17 @@ public class LayerImpl extends EObjectImpl implements Layer {
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = LayerImpl.ID_EDEFAULT;
 
     /**
      * The default value of the '{@link #isActivated() <em>Activated</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isActivated()
      * @generated
      * @ordered
@@ -68,16 +68,16 @@ public class LayerImpl extends EObjectImpl implements Layer {
     /**
      * The cached value of the '{@link #isActivated() <em>Activated</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isActivated()
      * @generated
      * @ordered
      */
-    protected boolean activated = ACTIVATED_EDEFAULT;
+    protected boolean activated = LayerImpl.ACTIVATED_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LayerImpl() {
@@ -86,7 +86,7 @@ public class LayerImpl extends EObjectImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,49 +96,55 @@ public class LayerImpl extends EObjectImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.LAYER__ID, oldId, id));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public boolean isActivated() {
         return activated;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setActivated(boolean newActivated) {
         boolean oldActivated = activated;
         activated = newActivated;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.LAYER__ACTIVATED, oldActivated, activated));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +160,7 @@ public class LayerImpl extends EObjectImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,17 +178,17 @@ public class LayerImpl extends EObjectImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.LAYER__ID:
-            setId(ID_EDEFAULT);
+            setId(LayerImpl.ID_EDEFAULT);
             return;
         case MigrationmodelerPackage.LAYER__ACTIVATED:
-            setActivated(ACTIVATED_EDEFAULT);
+            setActivated(LayerImpl.ACTIVATED_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -190,29 +196,30 @@ public class LayerImpl extends EObjectImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.LAYER__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return LayerImpl.ID_EDEFAULT == null ? id != null : !LayerImpl.ID_EDEFAULT.equals(id);
         case MigrationmodelerPackage.LAYER__ACTIVATED:
-            return activated != ACTIVATED_EDEFAULT;
+            return activated != LayerImpl.ACTIVATED_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");

@@ -36,7 +36,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EllipseImpl extends NodeStyleImpl implements Ellipse {
@@ -44,7 +44,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * The default value of the '{@link #getHorizontalDiameter()
      * <em>Horizontal Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHorizontalDiameter()
      * @generated
      * @ordered
@@ -55,18 +55,18 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * The cached value of the '{@link #getHorizontalDiameter()
      * <em>Horizontal Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHorizontalDiameter()
      * @generated
      * @ordered
      */
-    protected Integer horizontalDiameter = HORIZONTAL_DIAMETER_EDEFAULT;
+    protected Integer horizontalDiameter = EllipseImpl.HORIZONTAL_DIAMETER_EDEFAULT;
 
     /**
      * The default value of the '{@link #getVerticalDiameter()
      * <em>Vertical Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVerticalDiameter()
      * @generated
      * @ordered
@@ -77,17 +77,17 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * The cached value of the '{@link #getVerticalDiameter()
      * <em>Vertical Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVerticalDiameter()
      * @generated
      * @ordered
      */
-    protected Integer verticalDiameter = VERTICAL_DIAMETER_EDEFAULT;
+    protected Integer verticalDiameter = EllipseImpl.VERTICAL_DIAMETER_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EllipseImpl() {
@@ -105,7 +105,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,58 +115,65 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Integer getHorizontalDiameter() {
         return horizontalDiameter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setHorizontalDiameter(Integer newHorizontalDiameter) {
         Integer oldHorizontalDiameter = horizontalDiameter;
         horizontalDiameter = newHorizontalDiameter;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.ELLIPSE__HORIZONTAL_DIAMETER, oldHorizontalDiameter, horizontalDiameter));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Integer getVerticalDiameter() {
         return verticalDiameter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setVerticalDiameter(Integer newVerticalDiameter) {
         Integer oldVerticalDiameter = verticalDiameter;
         verticalDiameter = newVerticalDiameter;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.ELLIPSE__VERTICAL_DIAMETER, oldVerticalDiameter, verticalDiameter));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getColor() {
         return color;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetColor(Color newColor, NotificationChain msgs) {
@@ -174,36 +181,42 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
         color = newColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.ELLIPSE__COLOR, oldColor, newColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setColor(Color newColor) {
         if (newColor != color) {
             NotificationChain msgs = null;
-            if (color != null)
-                msgs = ((InternalEObject) color).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.ELLIPSE__COLOR, null, msgs);
-            if (newColor != null)
-                msgs = ((InternalEObject) newColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.ELLIPSE__COLOR, null, msgs);
+            if (color != null) {
+                msgs = ((InternalEObject) color).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.ELLIPSE__COLOR, null, msgs);
+            }
+            if (newColor != null) {
+                msgs = ((InternalEObject) newColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.ELLIPSE__COLOR, null, msgs);
+            }
             msgs = basicSetColor(newColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.ELLIPSE__COLOR, newColor, newColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +230,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -235,7 +248,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -256,17 +269,17 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.ELLIPSE__HORIZONTAL_DIAMETER:
-            setHorizontalDiameter(HORIZONTAL_DIAMETER_EDEFAULT);
+            setHorizontalDiameter(EllipseImpl.HORIZONTAL_DIAMETER_EDEFAULT);
             return;
         case MigrationmodelerPackage.ELLIPSE__VERTICAL_DIAMETER:
-            setVerticalDiameter(VERTICAL_DIAMETER_EDEFAULT);
+            setVerticalDiameter(EllipseImpl.VERTICAL_DIAMETER_EDEFAULT);
             return;
         case MigrationmodelerPackage.ELLIPSE__COLOR:
             setColor((Color) null);
@@ -277,16 +290,16 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.ELLIPSE__HORIZONTAL_DIAMETER:
-            return HORIZONTAL_DIAMETER_EDEFAULT == null ? horizontalDiameter != null : !HORIZONTAL_DIAMETER_EDEFAULT.equals(horizontalDiameter);
+            return EllipseImpl.HORIZONTAL_DIAMETER_EDEFAULT == null ? horizontalDiameter != null : !EllipseImpl.HORIZONTAL_DIAMETER_EDEFAULT.equals(horizontalDiameter);
         case MigrationmodelerPackage.ELLIPSE__VERTICAL_DIAMETER:
-            return VERTICAL_DIAMETER_EDEFAULT == null ? verticalDiameter != null : !VERTICAL_DIAMETER_EDEFAULT.equals(verticalDiameter);
+            return EllipseImpl.VERTICAL_DIAMETER_EDEFAULT == null ? verticalDiameter != null : !EllipseImpl.VERTICAL_DIAMETER_EDEFAULT.equals(verticalDiameter);
         case MigrationmodelerPackage.ELLIPSE__COLOR:
             return color != null;
         }
@@ -295,13 +308,14 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (horizontalDiameter: ");

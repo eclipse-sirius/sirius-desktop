@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Workspace Image</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <em>Workspace Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getWorkspaceImage()
  * @model
  * @generated
@@ -32,7 +32,7 @@ public interface WorkspaceImage extends NodeStyle, ContainerStyle {
      * Returns the value of the '<em><b>Workspace Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * path of the image to use. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Workspace Path</em>' attribute.
      * @see #setWorkspacePath(String)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getWorkspaceImage_WorkspacePath()
@@ -46,7 +46,7 @@ public interface WorkspaceImage extends NodeStyle, ContainerStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage#getWorkspacePath
      * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Workspace Path</em>' attribute.
      * @see #getWorkspacePath()

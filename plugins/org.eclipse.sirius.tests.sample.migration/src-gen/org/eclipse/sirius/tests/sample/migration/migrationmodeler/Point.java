@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Point</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Y</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getPoint()
  * @model
  * @generated
@@ -41,7 +41,7 @@ public interface Point extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>X</em>' attribute.
      * @see #setX(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getPoint_X()
@@ -54,7 +54,7 @@ public interface Point extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point#getX
      * <em>X</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>X</em>' attribute.
      * @see #getX()
@@ -70,7 +70,7 @@ public interface Point extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Y</em>' attribute.
      * @see #setY(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getPoint_Y()
@@ -83,7 +83,7 @@ public interface Point extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point#getY
      * <em>Y</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Y</em>' attribute.
      * @see #getY()

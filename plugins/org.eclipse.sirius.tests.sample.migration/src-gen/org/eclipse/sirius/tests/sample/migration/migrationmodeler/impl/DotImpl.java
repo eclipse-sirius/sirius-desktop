@@ -30,7 +30,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DotImpl extends NodeStyleImpl implements Dot {
@@ -38,7 +38,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DotImpl() {
@@ -56,7 +56,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,16 +66,17 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getBackgroundColor() {
         return backgroundColor;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetBackgroundColor(Color newBackgroundColor, NotificationChain msgs) {
@@ -83,36 +84,42 @@ public class DotImpl extends NodeStyleImpl implements Dot {
         backgroundColor = newBackgroundColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.DOT__BACKGROUND_COLOR, oldBackgroundColor, newBackgroundColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBackgroundColor(Color newBackgroundColor) {
         if (newBackgroundColor != backgroundColor) {
             NotificationChain msgs = null;
-            if (backgroundColor != null)
-                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.DOT__BACKGROUND_COLOR, null, msgs);
-            if (newBackgroundColor != null)
-                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.DOT__BACKGROUND_COLOR, null, msgs);
+            if (backgroundColor != null) {
+                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.DOT__BACKGROUND_COLOR, null, msgs);
+            }
+            if (newBackgroundColor != null) {
+                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.DOT__BACKGROUND_COLOR, null, msgs);
+            }
             msgs = basicSetBackgroundColor(newBackgroundColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.DOT__BACKGROUND_COLOR, newBackgroundColor, newBackgroundColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +133,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +147,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +162,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +177,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

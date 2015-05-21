@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Layout</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Height</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLayout()
  * @model
  * @generated
@@ -47,7 +47,7 @@ public interface Layout extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>X</em>' attribute.
      * @see #setX(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLayout_X()
@@ -60,7 +60,7 @@ public interface Layout extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getX
      * <em>X</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>X</em>' attribute.
      * @see #getX()
@@ -76,7 +76,7 @@ public interface Layout extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Y</em>' attribute.
      * @see #setY(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLayout_Y()
@@ -89,7 +89,7 @@ public interface Layout extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getY
      * <em>Y</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Y</em>' attribute.
      * @see #getY()
@@ -105,7 +105,7 @@ public interface Layout extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLayout_Width()
@@ -118,7 +118,7 @@ public interface Layout extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -134,7 +134,7 @@ public interface Layout extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLayout_Height()
@@ -148,7 +148,7 @@ public interface Layout extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getHeight
      * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()

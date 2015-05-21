@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Container Representation</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <em>Owned Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getContainerRepresentation()
  * @model
  * @generated
@@ -32,7 +32,7 @@ public interface ContainerRepresentation extends AbstractRepresentation {
      * Returns the value of the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The style of the container. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(ContainerStyle)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getContainerRepresentation_OwnedStyle()
@@ -46,7 +46,7 @@ public interface ContainerRepresentation extends AbstractRepresentation {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#getOwnedStyle
      * <em>Owned Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment
      *            reference.

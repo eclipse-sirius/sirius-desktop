@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Note</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getNote()
  * @model
  * @generated
@@ -36,7 +36,7 @@ public interface Note extends NodeStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' containment reference.
      * @see #setColor(Color)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getNote_Color()
@@ -50,7 +50,7 @@ public interface Note extends NodeStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Note#getColor
      * <em>Color</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' containment reference.
      * @see #getColor()

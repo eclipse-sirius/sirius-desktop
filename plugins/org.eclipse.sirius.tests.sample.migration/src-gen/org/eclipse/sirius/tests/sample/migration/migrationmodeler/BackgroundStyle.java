@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <em><b>Background Style</b></em>', and utility methods for working with them.
  * <!-- end-user-doc --> <!-- begin-model-doc --> Style of the background of a
  * container. <!-- end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getBackgroundStyle()
  * @model
  * @generated
@@ -30,7 +30,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * The '<em><b>Gradient Left To Right</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #GRADIENT_LEFT_TO_RIGHT_VALUE
      * @generated
      * @ordered
@@ -40,7 +40,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * The '<em><b>Liquid</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #LIQUID_VALUE
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public enum BackgroundStyle implements Enumerator {
      * The '
      * <em><b>Gradient Top To Bottom</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #GRADIENT_TOP_TO_BOTTOM_VALUE
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public enum BackgroundStyle implements Enumerator {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #GRADIENT_LEFT_TO_RIGHT
      * @model name="gradientLeftToRight"
      * @generated
@@ -76,7 +76,7 @@ public enum BackgroundStyle implements Enumerator {
      * The '<em><b>Liquid</b></em>' literal value. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> Liquid style. <!--
      * end-model-doc -->
-     * 
+     *
      * @see #LIQUID
      * @model name="Liquid"
      * @generated
@@ -92,7 +92,7 @@ public enum BackgroundStyle implements Enumerator {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #GRADIENT_TOP_TO_BOTTOM
      * @model name="gradientTopToBottom"
      * @generated
@@ -103,7 +103,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * An array of all the '<em><b>Background Style</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final BackgroundStyle[] VALUES_ARRAY = new BackgroundStyle[] { GRADIENT_LEFT_TO_RIGHT, LIQUID, GRADIENT_TOP_TO_BOTTOM, };
@@ -111,20 +111,19 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Background Style</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    public static final List<BackgroundStyle> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<BackgroundStyle> VALUES = Collections.unmodifiableList(Arrays.asList(BackgroundStyle.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Background Style</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static BackgroundStyle get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            BackgroundStyle result = VALUES_ARRAY[i];
+        for (BackgroundStyle result : BackgroundStyle.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -135,12 +134,11 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * Returns the '<em><b>Background Style</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static BackgroundStyle getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            BackgroundStyle result = VALUES_ARRAY[i];
+        for (BackgroundStyle result : BackgroundStyle.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -151,7 +149,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * Returns the '<em><b>Background Style</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static BackgroundStyle get(int value) {
@@ -168,21 +166,21 @@ public enum BackgroundStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -190,7 +188,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private BackgroundStyle(int value, String name, String literal) {
@@ -201,27 +199,30 @@ public enum BackgroundStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }
@@ -229,7 +230,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

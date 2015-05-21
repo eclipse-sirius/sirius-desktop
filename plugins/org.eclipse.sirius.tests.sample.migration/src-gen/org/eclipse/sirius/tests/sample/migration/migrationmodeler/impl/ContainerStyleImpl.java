@@ -34,14 +34,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Border Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle {
     /**
      * The default value of the '{@link #getBorderSize() <em>Border Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSize()
      * @generated
      * @ordered
@@ -51,17 +51,17 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
     /**
      * The cached value of the '{@link #getBorderSize() <em>Border Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSize()
      * @generated
      * @ordered
      */
-    protected int borderSize = BORDER_SIZE_EDEFAULT;
+    protected int borderSize = ContainerStyleImpl.BORDER_SIZE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerStyleImpl() {
@@ -79,7 +79,7 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,37 +89,41 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getBorderSize() {
         return borderSize;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBorderSize(int newBorderSize) {
         int oldBorderSize = borderSize;
         borderSize = newBorderSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.CONTAINER_STYLE__BORDER_SIZE, oldBorderSize, borderSize));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getBorderColor() {
         return borderColor;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetBorderColor(Color newBorderColor, NotificationChain msgs) {
@@ -127,36 +131,42 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
         borderColor = newBorderColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR, oldBorderColor, newBorderColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBorderColor(Color newBorderColor) {
         if (newBorderColor != borderColor) {
             NotificationChain msgs = null;
-            if (borderColor != null)
-                msgs = ((InternalEObject) borderColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR, null, msgs);
-            if (newBorderColor != null)
-                msgs = ((InternalEObject) newBorderColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR, null, msgs);
+            if (borderColor != null) {
+                msgs = ((InternalEObject) borderColor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR, null, msgs);
+            }
+            if (newBorderColor != null) {
+                msgs = ((InternalEObject) newBorderColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR, null, msgs);
+            }
             msgs = basicSetBorderColor(newBorderColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR, newBorderColor, newBorderColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +180,7 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +196,7 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,14 +214,14 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.CONTAINER_STYLE__BORDER_SIZE:
-            setBorderSize(BORDER_SIZE_EDEFAULT);
+            setBorderSize(ContainerStyleImpl.BORDER_SIZE_EDEFAULT);
             return;
         case MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR:
             setBorderColor((Color) null);
@@ -222,14 +232,14 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.CONTAINER_STYLE__BORDER_SIZE:
-            return borderSize != BORDER_SIZE_EDEFAULT;
+            return borderSize != ContainerStyleImpl.BORDER_SIZE_EDEFAULT;
         case MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR:
             return borderColor != null;
         }
@@ -238,7 +248,7 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -258,7 +268,7 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -278,13 +288,14 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSize: ");

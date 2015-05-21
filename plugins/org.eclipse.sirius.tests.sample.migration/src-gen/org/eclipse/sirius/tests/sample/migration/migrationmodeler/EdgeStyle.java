@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Edge Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>End Label Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEdgeStyle()
  * @model
  * @generated
@@ -52,7 +52,7 @@ public interface EdgeStyle extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle
      * @see #setRoutingStyle(RoutingStyle)
@@ -67,7 +67,7 @@ public interface EdgeStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getRoutingStyle
      * <em>Routing Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle
@@ -84,7 +84,7 @@ public interface EdgeStyle extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' containment reference.
      * @see #setColor(Color)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEdgeStyle_Color()
@@ -98,7 +98,7 @@ public interface EdgeStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getColor
      * <em>Color</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' containment reference.
      * @see #getColor()
@@ -114,7 +114,7 @@ public interface EdgeStyle extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Begin Label Style</em>' containment
      *         reference.
      * @see #setBeginLabelStyle(BasicLabelStyle)
@@ -129,7 +129,7 @@ public interface EdgeStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getBeginLabelStyle
      * <em>Begin Label Style</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Begin Label Style</em>' containment
      *            reference.
@@ -146,7 +146,7 @@ public interface EdgeStyle extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Center Label Style</em>' containment
      *         reference.
      * @see #setCenterLabelStyle(BasicLabelStyle)
@@ -161,7 +161,7 @@ public interface EdgeStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getCenterLabelStyle
      * <em>Center Label Style</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Center Label Style</em>' containment
      *            reference.
@@ -178,7 +178,7 @@ public interface EdgeStyle extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>End Label Style</em>' containment
      *         reference.
      * @see #setEndLabelStyle(BasicLabelStyle)
@@ -193,7 +193,7 @@ public interface EdgeStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getEndLabelStyle
      * <em>End Label Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>End Label Style</em>' containment
      *            reference.

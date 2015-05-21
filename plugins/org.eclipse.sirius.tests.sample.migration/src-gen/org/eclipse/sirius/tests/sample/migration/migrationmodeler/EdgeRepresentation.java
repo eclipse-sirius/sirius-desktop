@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Edge Representation</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -33,7 +33,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Owned Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEdgeRepresentation()
  * @model
  * @generated
@@ -47,7 +47,7 @@ public interface EdgeRepresentation extends AbstractRepresentation {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source</em>' reference.
      * @see #setSource(GraphicalElement)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEdgeRepresentation_Source()
@@ -61,7 +61,7 @@ public interface EdgeRepresentation extends AbstractRepresentation {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getSource
      * <em>Source</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source</em>' reference.
      * @see #getSource()
@@ -77,7 +77,7 @@ public interface EdgeRepresentation extends AbstractRepresentation {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Target</em>' reference.
      * @see #setTarget(GraphicalElement)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEdgeRepresentation_Target()
@@ -91,7 +91,7 @@ public interface EdgeRepresentation extends AbstractRepresentation {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getTarget
      * <em>Target</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target</em>' reference.
      * @see #getTarget()
@@ -109,7 +109,7 @@ public interface EdgeRepresentation extends AbstractRepresentation {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Bendpoints</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEdgeRepresentation_Bendpoints()
@@ -122,7 +122,7 @@ public interface EdgeRepresentation extends AbstractRepresentation {
      * Returns the value of the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The style of the connection. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(EdgeStyle)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEdgeRepresentation_OwnedStyle()
@@ -136,7 +136,7 @@ public interface EdgeRepresentation extends AbstractRepresentation {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getOwnedStyle
      * <em>Owned Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment
      *            reference.

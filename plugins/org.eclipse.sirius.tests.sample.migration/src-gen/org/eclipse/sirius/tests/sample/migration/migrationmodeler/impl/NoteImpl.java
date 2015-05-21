@@ -30,14 +30,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Note;
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class NoteImpl extends NodeStyleImpl implements Note {
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NoteImpl() {
@@ -55,7 +55,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,16 +65,17 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getColor() {
         return color;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetColor(Color newColor, NotificationChain msgs) {
@@ -82,36 +83,42 @@ public class NoteImpl extends NodeStyleImpl implements Note {
         color = newColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.NOTE__COLOR, oldColor, newColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setColor(Color newColor) {
         if (newColor != color) {
             NotificationChain msgs = null;
-            if (color != null)
-                msgs = ((InternalEObject) color).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.NOTE__COLOR, null, msgs);
-            if (newColor != null)
-                msgs = ((InternalEObject) newColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.NOTE__COLOR, null, msgs);
+            if (color != null) {
+                msgs = ((InternalEObject) color).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.NOTE__COLOR, null, msgs);
+            }
+            if (newColor != null) {
+                msgs = ((InternalEObject) newColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.NOTE__COLOR, null, msgs);
+            }
             msgs = basicSetColor(newColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.NOTE__COLOR, newColor, newColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +132,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +146,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +161,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +176,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

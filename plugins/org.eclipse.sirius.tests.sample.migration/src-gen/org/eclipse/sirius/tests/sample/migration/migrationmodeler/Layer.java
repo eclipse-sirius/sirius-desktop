@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Layer</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Activated</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLayer()
  * @model
  * @generated
@@ -33,7 +33,7 @@ public interface Layer extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLayer_Id()
@@ -46,7 +46,7 @@ public interface Layer extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layer#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -62,7 +62,7 @@ public interface Layer extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Activated</em>' attribute.
      * @see #setActivated(boolean)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLayer_Activated()
@@ -76,7 +76,7 @@ public interface Layer extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layer#isActivated
      * <em>Activated</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Activated</em>' attribute.
      * @see #isActivated()

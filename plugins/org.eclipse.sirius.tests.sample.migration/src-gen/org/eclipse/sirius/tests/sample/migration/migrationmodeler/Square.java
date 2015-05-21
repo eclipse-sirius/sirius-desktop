@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Square</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getSquare()
  * @model
  * @generated
@@ -39,7 +39,7 @@ public interface Square extends NodeStyle {
      * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> Return all nodes that have been created with the
      * specified mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getSquare_Width()
@@ -52,7 +52,7 @@ public interface Square extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -64,7 +64,7 @@ public interface Square extends NodeStyle {
      * Returns the value of the '<em><b>Height</b></em>' attribute. The default
      * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The height of the square. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getSquare_Height()
@@ -78,7 +78,7 @@ public interface Square extends NodeStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square#getHeight
      * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -94,7 +94,7 @@ public interface Square extends NodeStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' containment reference.
      * @see #setColor(Color)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getSquare_Color()
@@ -108,7 +108,7 @@ public interface Square extends NodeStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square#getColor
      * <em>Color</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' containment reference.
      * @see #getColor()

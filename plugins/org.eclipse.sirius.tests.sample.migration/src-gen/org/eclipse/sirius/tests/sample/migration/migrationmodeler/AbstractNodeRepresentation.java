@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Abstract Node Representation</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Owned Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractNodeRepresentation()
  * @model abstract="true"
  * @generated
@@ -43,7 +43,7 @@ public interface AbstractNodeRepresentation extends AbstractRepresentation {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Bordereds</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractNodeRepresentation_Bordereds()
      * @model containment="true"
@@ -55,7 +55,7 @@ public interface AbstractNodeRepresentation extends AbstractRepresentation {
      * Returns the value of the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The style of the node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(NodeStyle)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractNodeRepresentation_OwnedStyle()
@@ -69,7 +69,7 @@ public interface AbstractNodeRepresentation extends AbstractRepresentation {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNodeRepresentation#getOwnedStyle
      * <em>Owned Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment
      *            reference.

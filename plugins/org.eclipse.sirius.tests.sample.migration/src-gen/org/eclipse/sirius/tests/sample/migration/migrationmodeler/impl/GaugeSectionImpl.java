@@ -46,14 +46,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Foreground Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
     /**
      * The default value of the '{@link #getMin() <em>Min</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMin()
      * @generated
      * @ordered
@@ -63,17 +63,17 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
     /**
      * The cached value of the '{@link #getMin() <em>Min</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMin()
      * @generated
      * @ordered
      */
-    protected Integer min = MIN_EDEFAULT;
+    protected Integer min = GaugeSectionImpl.MIN_EDEFAULT;
 
     /**
      * The default value of the '{@link #getMax() <em>Max</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMax()
      * @generated
      * @ordered
@@ -83,17 +83,17 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
     /**
      * The cached value of the '{@link #getMax() <em>Max</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMax()
      * @generated
      * @ordered
      */
-    protected Integer max = MAX_EDEFAULT;
+    protected Integer max = GaugeSectionImpl.MAX_EDEFAULT;
 
     /**
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValue()
      * @generated
      * @ordered
@@ -103,17 +103,17 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
     /**
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValue()
      * @generated
      * @ordered
      */
-    protected Integer value = VALUE_EDEFAULT;
+    protected Integer value = GaugeSectionImpl.VALUE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -123,18 +123,18 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
      */
-    protected String label = LABEL_EDEFAULT;
+    protected String label = GaugeSectionImpl.LABEL_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -145,7 +145,7 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
      * The cached value of the '{@link #getForegroundColor()
      * <em>Foreground Color</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -154,7 +154,7 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GaugeSectionImpl() {
@@ -163,7 +163,7 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,100 +173,113 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Integer getMin() {
         return min;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setMin(Integer newMin) {
         Integer oldMin = min;
         min = newMin;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.GAUGE_SECTION__MIN, oldMin, min));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Integer getMax() {
         return max;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setMax(Integer newMax) {
         Integer oldMax = max;
         max = newMax;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.GAUGE_SECTION__MAX, oldMax, max));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Integer getValue() {
         return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setValue(Integer newValue) {
         Integer oldValue = value;
         value = newValue;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.GAUGE_SECTION__VALUE, oldValue, value));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.GAUGE_SECTION__LABEL, oldLabel, label));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getBackgroundColor() {
         return backgroundColor;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetBackgroundColor(Color newBackgroundColor, NotificationChain msgs) {
@@ -274,45 +287,52 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
         backgroundColor = newBackgroundColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.GAUGE_SECTION__BACKGROUND_COLOR, oldBackgroundColor, newBackgroundColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBackgroundColor(Color newBackgroundColor) {
         if (newBackgroundColor != backgroundColor) {
             NotificationChain msgs = null;
-            if (backgroundColor != null)
-                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.GAUGE_SECTION__BACKGROUND_COLOR, null, msgs);
-            if (newBackgroundColor != null)
-                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.GAUGE_SECTION__BACKGROUND_COLOR, null, msgs);
+            if (backgroundColor != null) {
+                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.GAUGE_SECTION__BACKGROUND_COLOR, null, msgs);
+            }
+            if (newBackgroundColor != null) {
+                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.GAUGE_SECTION__BACKGROUND_COLOR, null, msgs);
+            }
             msgs = basicSetBackgroundColor(newBackgroundColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.GAUGE_SECTION__BACKGROUND_COLOR, newBackgroundColor, newBackgroundColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getForegroundColor() {
         return foregroundColor;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetForegroundColor(Color newForegroundColor, NotificationChain msgs) {
@@ -320,36 +340,42 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
         foregroundColor = newForegroundColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.GAUGE_SECTION__FOREGROUND_COLOR, oldForegroundColor, newForegroundColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setForegroundColor(Color newForegroundColor) {
         if (newForegroundColor != foregroundColor) {
             NotificationChain msgs = null;
-            if (foregroundColor != null)
-                msgs = ((InternalEObject) foregroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.GAUGE_SECTION__FOREGROUND_COLOR, null, msgs);
-            if (newForegroundColor != null)
-                msgs = ((InternalEObject) newForegroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.GAUGE_SECTION__FOREGROUND_COLOR, null, msgs);
+            if (foregroundColor != null) {
+                msgs = ((InternalEObject) foregroundColor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.GAUGE_SECTION__FOREGROUND_COLOR, null, msgs);
+            }
+            if (newForegroundColor != null) {
+                msgs = ((InternalEObject) newForegroundColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.GAUGE_SECTION__FOREGROUND_COLOR, null, msgs);
+            }
             msgs = basicSetForegroundColor(newForegroundColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.GAUGE_SECTION__FOREGROUND_COLOR, newForegroundColor, newForegroundColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -365,7 +391,7 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -389,7 +415,7 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,23 +445,23 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.GAUGE_SECTION__MIN:
-            setMin(MIN_EDEFAULT);
+            setMin(GaugeSectionImpl.MIN_EDEFAULT);
             return;
         case MigrationmodelerPackage.GAUGE_SECTION__MAX:
-            setMax(MAX_EDEFAULT);
+            setMax(GaugeSectionImpl.MAX_EDEFAULT);
             return;
         case MigrationmodelerPackage.GAUGE_SECTION__VALUE:
-            setValue(VALUE_EDEFAULT);
+            setValue(GaugeSectionImpl.VALUE_EDEFAULT);
             return;
         case MigrationmodelerPackage.GAUGE_SECTION__LABEL:
-            setLabel(LABEL_EDEFAULT);
+            setLabel(GaugeSectionImpl.LABEL_EDEFAULT);
             return;
         case MigrationmodelerPackage.GAUGE_SECTION__BACKGROUND_COLOR:
             setBackgroundColor((Color) null);
@@ -449,20 +475,20 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.GAUGE_SECTION__MIN:
-            return MIN_EDEFAULT == null ? min != null : !MIN_EDEFAULT.equals(min);
+            return GaugeSectionImpl.MIN_EDEFAULT == null ? min != null : !GaugeSectionImpl.MIN_EDEFAULT.equals(min);
         case MigrationmodelerPackage.GAUGE_SECTION__MAX:
-            return MAX_EDEFAULT == null ? max != null : !MAX_EDEFAULT.equals(max);
+            return GaugeSectionImpl.MAX_EDEFAULT == null ? max != null : !GaugeSectionImpl.MAX_EDEFAULT.equals(max);
         case MigrationmodelerPackage.GAUGE_SECTION__VALUE:
-            return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+            return GaugeSectionImpl.VALUE_EDEFAULT == null ? value != null : !GaugeSectionImpl.VALUE_EDEFAULT.equals(value);
         case MigrationmodelerPackage.GAUGE_SECTION__LABEL:
-            return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            return GaugeSectionImpl.LABEL_EDEFAULT == null ? label != null : !GaugeSectionImpl.LABEL_EDEFAULT.equals(label);
         case MigrationmodelerPackage.GAUGE_SECTION__BACKGROUND_COLOR:
             return backgroundColor != null;
         case MigrationmodelerPackage.GAUGE_SECTION__FOREGROUND_COLOR:
@@ -473,13 +499,14 @@ public class GaugeSectionImpl extends EObjectImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (min: ");

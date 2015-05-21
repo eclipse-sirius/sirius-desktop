@@ -19,13 +19,13 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em><b>Bordered Representation</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class BorderedRepresentationImpl extends AbstractNodeRepresentationImpl implements BorderedRepresentation {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BorderedRepresentationImpl() {
@@ -34,7 +34,7 @@ public class BorderedRepresentationImpl extends AbstractNodeRepresentationImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

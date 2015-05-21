@@ -33,7 +33,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeRepresenta
  * <em>Node Representations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class NodeImpl extends AbstractNodeImpl implements Node {
@@ -41,7 +41,7 @@ public class NodeImpl extends AbstractNodeImpl implements Node {
      * The cached value of the '{@link #getNodeRepresentations()
      * <em>Node Representations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getNodeRepresentations()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class NodeImpl extends AbstractNodeImpl implements Node {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NodeImpl() {
@@ -59,7 +59,7 @@ public class NodeImpl extends AbstractNodeImpl implements Node {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,9 +69,10 @@ public class NodeImpl extends AbstractNodeImpl implements Node {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<NodeRepresentation> getNodeRepresentations() {
         if (nodeRepresentations == null) {
             nodeRepresentations = new EObjectContainmentEList<NodeRepresentation>(NodeRepresentation.class, this, MigrationmodelerPackage.NODE__NODE_REPRESENTATIONS);
@@ -81,7 +82,7 @@ public class NodeImpl extends AbstractNodeImpl implements Node {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +96,7 @@ public class NodeImpl extends AbstractNodeImpl implements Node {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +110,7 @@ public class NodeImpl extends AbstractNodeImpl implements Node {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -126,7 +127,7 @@ public class NodeImpl extends AbstractNodeImpl implements Node {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +142,7 @@ public class NodeImpl extends AbstractNodeImpl implements Node {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

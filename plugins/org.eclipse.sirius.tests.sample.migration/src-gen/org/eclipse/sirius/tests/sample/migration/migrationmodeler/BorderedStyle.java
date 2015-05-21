@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Bordered Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Border Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getBorderedStyle()
  * @model
  * @generated
@@ -41,7 +41,7 @@ public interface BorderedStyle extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Size</em>' attribute.
      * @see #setBorderSize(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getBorderedStyle_BorderSize()
@@ -55,7 +55,7 @@ public interface BorderedStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedStyle#getBorderSize
      * <em>Border Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Size</em>' attribute.
      * @see #getBorderSize()
@@ -71,7 +71,7 @@ public interface BorderedStyle extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Color</em>' containment reference.
      * @see #setBorderColor(Color)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getBorderedStyle_BorderColor()
@@ -85,7 +85,7 @@ public interface BorderedStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedStyle#getBorderColor
      * <em>Border Color</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Color</em>' containment
      *            reference.

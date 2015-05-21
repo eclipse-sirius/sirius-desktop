@@ -37,7 +37,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Foreground Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatContainerStyle {
@@ -45,7 +45,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * The default value of the '{@link #getBackgroundStyle()
      * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundStyle()
      * @generated
      * @ordered
@@ -56,18 +56,18 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * The cached value of the '{@link #getBackgroundStyle()
      * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundStyle()
      * @generated
      * @ordered
      */
-    protected BackgroundStyle backgroundStyle = BACKGROUND_STYLE_EDEFAULT;
+    protected BackgroundStyle backgroundStyle = FlatContainerStyleImpl.BACKGROUND_STYLE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * The cached value of the '{@link #getForegroundColor()
      * <em>Foreground Color</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -87,7 +87,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FlatContainerStyleImpl() {
@@ -96,7 +96,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,37 +106,41 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public BackgroundStyle getBackgroundStyle() {
         return backgroundStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBackgroundStyle(BackgroundStyle newBackgroundStyle) {
         BackgroundStyle oldBackgroundStyle = backgroundStyle;
-        backgroundStyle = newBackgroundStyle == null ? BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
-        if (eNotificationRequired())
+        backgroundStyle = newBackgroundStyle == null ? FlatContainerStyleImpl.BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE, oldBackgroundStyle, backgroundStyle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getBackgroundColor() {
         return backgroundColor;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetBackgroundColor(Color newBackgroundColor, NotificationChain msgs) {
@@ -144,45 +148,52 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
         backgroundColor = newBackgroundColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, oldBackgroundColor, newBackgroundColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBackgroundColor(Color newBackgroundColor) {
         if (newBackgroundColor != backgroundColor) {
             NotificationChain msgs = null;
-            if (backgroundColor != null)
-                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
-            if (newBackgroundColor != null)
-                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
+            if (backgroundColor != null) {
+                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
+            }
+            if (newBackgroundColor != null) {
+                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
+            }
             msgs = basicSetBackgroundColor(newBackgroundColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, newBackgroundColor, newBackgroundColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getForegroundColor() {
         return foregroundColor;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetForegroundColor(Color newForegroundColor, NotificationChain msgs) {
@@ -190,36 +201,42 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
         foregroundColor = newForegroundColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, oldForegroundColor, newForegroundColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setForegroundColor(Color newForegroundColor) {
         if (newForegroundColor != foregroundColor) {
             NotificationChain msgs = null;
-            if (foregroundColor != null)
-                msgs = ((InternalEObject) foregroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, null, msgs);
-            if (newForegroundColor != null)
-                msgs = ((InternalEObject) newForegroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, null, msgs);
+            if (foregroundColor != null) {
+                msgs = ((InternalEObject) foregroundColor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, null, msgs);
+            }
+            if (newForegroundColor != null) {
+                msgs = ((InternalEObject) newForegroundColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, null, msgs);
+            }
             msgs = basicSetForegroundColor(newForegroundColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, newForegroundColor, newForegroundColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -235,7 +252,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -253,7 +270,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,14 +291,14 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE:
-            setBackgroundStyle(BACKGROUND_STYLE_EDEFAULT);
+            setBackgroundStyle(FlatContainerStyleImpl.BACKGROUND_STYLE_EDEFAULT);
             return;
         case MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((Color) null);
@@ -295,14 +312,14 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE:
-            return backgroundStyle != BACKGROUND_STYLE_EDEFAULT;
+            return backgroundStyle != FlatContainerStyleImpl.BACKGROUND_STYLE_EDEFAULT;
         case MigrationmodelerPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR:
             return backgroundColor != null;
         case MigrationmodelerPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR:
@@ -313,13 +330,14 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (backgroundStyle: ");

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Basic Label Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Icon Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getBasicLabelStyle()
  * @model
  * @generated
@@ -47,7 +47,7 @@ public interface BasicLabelStyle extends EObject {
      * default value is <code>"8"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The font size. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Size</em>' attribute.
      * @see #setLabelSize(int)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getBasicLabelStyle_LabelSize()
@@ -61,7 +61,7 @@ public interface BasicLabelStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getLabelSize
      * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -76,7 +76,7 @@ public interface BasicLabelStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.FontFormat}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The font format. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FontFormat
      * @see #setLabelFormat(FontFormat)
@@ -91,7 +91,7 @@ public interface BasicLabelStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getLabelFormat
      * <em>Label Format</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FontFormat
@@ -105,7 +105,7 @@ public interface BasicLabelStyle extends EObject {
      * default value is <code>"true"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> True, if the icon shoud be
      * dispayed on the element. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Show Icon</em>' attribute.
      * @see #setShowIcon(boolean)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getBasicLabelStyle_ShowIcon()
@@ -119,7 +119,7 @@ public interface BasicLabelStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#isShowIcon
      * <em>Show Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Show Icon</em>' attribute.
      * @see #isShowIcon()
@@ -135,7 +135,7 @@ public interface BasicLabelStyle extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Color</em>' containment reference.
      * @see #setLabelColor(Color)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getBasicLabelStyle_LabelColor()
@@ -149,7 +149,7 @@ public interface BasicLabelStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getLabelColor
      * <em>Label Color</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Color</em>' containment
      *            reference.
@@ -164,7 +164,7 @@ public interface BasicLabelStyle extends EObject {
      * end-user-doc --> <!-- begin-model-doc --> The path of the icon to display
      * on the element. If unset, the icon corresponding to the semantic element
      * will be displayed. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getBasicLabelStyle_IconPath()
@@ -178,7 +178,7 @@ public interface BasicLabelStyle extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getIconPath
      * <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()

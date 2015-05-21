@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Dot</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getDot()
  * @model
  * @generated
@@ -32,7 +32,7 @@ public interface Dot extends NodeStyle {
      * Returns the value of the '<em><b>Background Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The background color. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' containment
      *         reference.
      * @see #setBackgroundColor(Color)
@@ -47,7 +47,7 @@ public interface Dot extends NodeStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Dot#getBackgroundColor
      * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' containment
      *            reference.

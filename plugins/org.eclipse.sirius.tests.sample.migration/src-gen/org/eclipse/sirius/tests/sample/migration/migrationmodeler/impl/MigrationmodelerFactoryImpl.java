@@ -61,14 +61,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MigrationmodelerFactoryImpl extends EFactoryImpl implements MigrationmodelerFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static MigrationmodelerFactory init() {
@@ -86,7 +86,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MigrationmodelerFactoryImpl() {
@@ -95,7 +95,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,9 +230,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Node createNode() {
         NodeImpl node = new NodeImpl();
         return node;
@@ -240,9 +241,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Bordered createBordered() {
         BorderedImpl bordered = new BorderedImpl();
         return bordered;
@@ -250,9 +252,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container createContainer() {
         ContainerImpl container = new ContainerImpl();
         return container;
@@ -260,9 +263,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Edge createEdge() {
         EdgeImpl edge = new EdgeImpl();
         return edge;
@@ -270,9 +274,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EdgeRepresentation createEdgeRepresentation() {
         EdgeRepresentationImpl edgeRepresentation = new EdgeRepresentationImpl();
         return edgeRepresentation;
@@ -280,9 +285,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public NodeRepresentation createNodeRepresentation() {
         NodeRepresentationImpl nodeRepresentation = new NodeRepresentationImpl();
         return nodeRepresentation;
@@ -290,9 +296,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public BorderedRepresentation createBorderedRepresentation() {
         BorderedRepresentationImpl borderedRepresentation = new BorderedRepresentationImpl();
         return borderedRepresentation;
@@ -300,9 +307,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ContainerRepresentation createContainerRepresentation() {
         ContainerRepresentationImpl containerRepresentation = new ContainerRepresentationImpl();
         return containerRepresentation;
@@ -310,9 +318,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Diagram createDiagram() {
         DiagramImpl diagram = new DiagramImpl();
         return diagram;
@@ -320,9 +329,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EdgeStyle createEdgeStyle() {
         EdgeStyleImpl edgeStyle = new EdgeStyleImpl();
         return edgeStyle;
@@ -330,9 +340,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Layout createLayout() {
         LayoutImpl layout = new LayoutImpl();
         return layout;
@@ -340,9 +351,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color createColor() {
         ColorImpl color = new ColorImpl();
         return color;
@@ -350,9 +362,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Point createPoint() {
         PointImpl point = new PointImpl();
         return point;
@@ -360,9 +373,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public NodeStyle createNodeStyle() {
         NodeStyleImpl nodeStyle = new NodeStyleImpl();
         return nodeStyle;
@@ -370,9 +384,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public BasicLabelStyle createBasicLabelStyle() {
         BasicLabelStyleImpl basicLabelStyle = new BasicLabelStyleImpl();
         return basicLabelStyle;
@@ -380,9 +395,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ContainerStyle createContainerStyle() {
         ContainerStyleImpl containerStyle = new ContainerStyleImpl();
         return containerStyle;
@@ -390,9 +406,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public LabelStyle createLabelStyle() {
         LabelStyleImpl labelStyle = new LabelStyleImpl();
         return labelStyle;
@@ -400,9 +417,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Dot createDot() {
         DotImpl dot = new DotImpl();
         return dot;
@@ -410,9 +428,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public GaugeSection createGaugeSection() {
         GaugeSectionImpl gaugeSection = new GaugeSectionImpl();
         return gaugeSection;
@@ -420,9 +439,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public FlatContainerStyle createFlatContainerStyle() {
         FlatContainerStyleImpl flatContainerStyle = new FlatContainerStyleImpl();
         return flatContainerStyle;
@@ -430,9 +450,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ShapeContainerStyle createShapeContainerStyle() {
         ShapeContainerStyleImpl shapeContainerStyle = new ShapeContainerStyleImpl();
         return shapeContainerStyle;
@@ -440,9 +461,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Square createSquare() {
         SquareImpl square = new SquareImpl();
         return square;
@@ -450,9 +472,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Ellipse createEllipse() {
         EllipseImpl ellipse = new EllipseImpl();
         return ellipse;
@@ -460,9 +483,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Lozenge createLozenge() {
         LozengeImpl lozenge = new LozengeImpl();
         return lozenge;
@@ -470,9 +494,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public BundledImage createBundledImage() {
         BundledImageImpl bundledImage = new BundledImageImpl();
         return bundledImage;
@@ -480,9 +505,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public WorkspaceImage createWorkspaceImage() {
         WorkspaceImageImpl workspaceImage = new WorkspaceImageImpl();
         return workspaceImage;
@@ -490,9 +516,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public GaugeCompositeStyle createGaugeCompositeStyle() {
         GaugeCompositeStyleImpl gaugeCompositeStyle = new GaugeCompositeStyleImpl();
         return gaugeCompositeStyle;
@@ -500,9 +527,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Note createNote() {
         NoteImpl note = new NoteImpl();
         return note;
@@ -510,9 +538,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public TestCase createTestCase() {
         TestCaseImpl testCase = new TestCaseImpl();
         return testCase;
@@ -520,9 +549,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public BorderedStyle createBorderedStyle() {
         BorderedStyleImpl borderedStyle = new BorderedStyleImpl();
         return borderedStyle;
@@ -530,9 +560,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Filter createFilter() {
         FilterImpl filter = new FilterImpl();
         return filter;
@@ -540,9 +571,10 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Layer createLayer() {
         LayerImpl layer = new LayerImpl();
         return layer;
@@ -550,19 +582,20 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RoutingStyle createRoutingStyleFromString(EDataType eDataType, String initialValue) {
         RoutingStyle result = RoutingStyle.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertRoutingStyleToString(EDataType eDataType, Object instanceValue) {
@@ -571,19 +604,20 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LabelPosition createLabelPositionFromString(EDataType eDataType, String initialValue) {
         LabelPosition result = LabelPosition.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertLabelPositionToString(EDataType eDataType, Object instanceValue) {
@@ -592,19 +626,20 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FontFormat createFontFormatFromString(EDataType eDataType, String initialValue) {
         FontFormat result = FontFormat.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertFontFormatToString(EDataType eDataType, Object instanceValue) {
@@ -613,19 +648,20 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LabelAlignment createLabelAlignmentFromString(EDataType eDataType, String initialValue) {
         LabelAlignment result = LabelAlignment.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertLabelAlignmentToString(EDataType eDataType, Object instanceValue) {
@@ -634,19 +670,20 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerShape createContainerShapeFromString(EDataType eDataType, String initialValue) {
         ContainerShape result = ContainerShape.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertContainerShapeToString(EDataType eDataType, Object instanceValue) {
@@ -655,19 +692,20 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BackgroundStyle createBackgroundStyleFromString(EDataType eDataType, String initialValue) {
         BackgroundStyle result = BackgroundStyle.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertBackgroundStyleToString(EDataType eDataType, Object instanceValue) {
@@ -676,19 +714,20 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AlignmentKind createAlignmentKindFromString(EDataType eDataType, String initialValue) {
         AlignmentKind result = AlignmentKind.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertAlignmentKindToString(EDataType eDataType, Object instanceValue) {
@@ -697,19 +736,20 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BundledImageShape createBundledImageShapeFromString(EDataType eDataType, String initialValue) {
         BundledImageShape result = BundledImageShape.get(initialValue);
-        if (result == null)
+        if (result == null) {
             throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertBundledImageShapeToString(EDataType eDataType, Object instanceValue) {
@@ -718,16 +758,17 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public MigrationmodelerPackage getMigrationmodelerPackage() {
         return (MigrationmodelerPackage) getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

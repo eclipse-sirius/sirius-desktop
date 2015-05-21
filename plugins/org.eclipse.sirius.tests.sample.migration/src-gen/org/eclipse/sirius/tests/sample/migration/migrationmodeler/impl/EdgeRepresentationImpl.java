@@ -46,14 +46,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point;
  * <em>Owned Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EdgeRepresentationImpl extends AbstractRepresentationImpl implements EdgeRepresentation {
     /**
      * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
     /**
      * The cached value of the '{@link #getBendpoints() <em>Bendpoints</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBendpoints()
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
     /**
      * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedStyle()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeRepresentationImpl() {
@@ -101,7 +101,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,16 +111,18 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public GraphicalElement getSource() {
         if (source != null && source.eIsProxy()) {
             InternalEObject oldSource = (InternalEObject) source;
             source = (GraphicalElement) eResolveProxy(oldSource);
             if (source != oldSource) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, MigrationmodelerPackage.EDGE_REPRESENTATION__SOURCE, oldSource, source));
+                }
             }
         }
         return source;
@@ -128,7 +130,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public GraphicalElement basicGetSource() {
@@ -137,28 +139,32 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSource(GraphicalElement newSource) {
         GraphicalElement oldSource = source;
         source = newSource;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_REPRESENTATION__SOURCE, oldSource, source));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public GraphicalElement getTarget() {
         if (target != null && target.eIsProxy()) {
             InternalEObject oldTarget = (InternalEObject) target;
             target = (GraphicalElement) eResolveProxy(oldTarget);
             if (target != oldTarget) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, MigrationmodelerPackage.EDGE_REPRESENTATION__TARGET, oldTarget, target));
+                }
             }
         }
         return target;
@@ -166,7 +172,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public GraphicalElement basicGetTarget() {
@@ -175,21 +181,24 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTarget(GraphicalElement newTarget) {
         GraphicalElement oldTarget = target;
         target = newTarget;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_REPRESENTATION__TARGET, oldTarget, target));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Point> getBendpoints() {
         if (bendpoints == null) {
             bendpoints = new EObjectContainmentEList<Point>(Point.class, this, MigrationmodelerPackage.EDGE_REPRESENTATION__BENDPOINTS);
@@ -199,16 +208,17 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EdgeStyle getOwnedStyle() {
         return ownedStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetOwnedStyle(EdgeStyle newOwnedStyle, NotificationChain msgs) {
@@ -216,36 +226,42 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
         ownedStyle = newOwnedStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_REPRESENTATION__OWNED_STYLE, oldOwnedStyle, newOwnedStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setOwnedStyle(EdgeStyle newOwnedStyle) {
         if (newOwnedStyle != ownedStyle) {
             NotificationChain msgs = null;
-            if (ownedStyle != null)
-                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_REPRESENTATION__OWNED_STYLE, null, msgs);
-            if (newOwnedStyle != null)
-                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_REPRESENTATION__OWNED_STYLE, null, msgs);
+            if (ownedStyle != null) {
+                msgs = ((InternalEObject) ownedStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_REPRESENTATION__OWNED_STYLE, null, msgs);
+            }
+            if (newOwnedStyle != null) {
+                msgs = ((InternalEObject) newOwnedStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_REPRESENTATION__OWNED_STYLE, null, msgs);
+            }
             msgs = basicSetOwnedStyle(newOwnedStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_REPRESENTATION__OWNED_STYLE, newOwnedStyle, newOwnedStyle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,19 +277,21 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case MigrationmodelerPackage.EDGE_REPRESENTATION__SOURCE:
-            if (resolve)
+            if (resolve) {
                 return getSource();
+            }
             return basicGetSource();
         case MigrationmodelerPackage.EDGE_REPRESENTATION__TARGET:
-            if (resolve)
+            if (resolve) {
                 return getTarget();
+            }
             return basicGetTarget();
         case MigrationmodelerPackage.EDGE_REPRESENTATION__BENDPOINTS:
             return getBendpoints();
@@ -285,7 +303,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -311,7 +329,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -335,7 +353,7 @@ public class EdgeRepresentationImpl extends AbstractRepresentationImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

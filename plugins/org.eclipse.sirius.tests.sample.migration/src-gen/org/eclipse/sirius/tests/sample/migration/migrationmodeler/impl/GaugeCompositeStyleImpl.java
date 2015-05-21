@@ -39,14 +39,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Sections</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompositeStyle {
     /**
      * The default value of the '{@link #getAlignment() <em>Alignment</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAlignment()
      * @generated
      * @ordered
@@ -56,17 +56,17 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
     /**
      * The cached value of the '{@link #getAlignment() <em>Alignment</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAlignment()
      * @generated
      * @ordered
      */
-    protected AlignmentKind alignment = ALIGNMENT_EDEFAULT;
+    protected AlignmentKind alignment = GaugeCompositeStyleImpl.ALIGNMENT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSections() <em>Sections</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSections()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GaugeCompositeStyleImpl() {
@@ -84,7 +84,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,30 +94,34 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public AlignmentKind getAlignment() {
         return alignment;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setAlignment(AlignmentKind newAlignment) {
         AlignmentKind oldAlignment = alignment;
-        alignment = newAlignment == null ? ALIGNMENT_EDEFAULT : newAlignment;
-        if (eNotificationRequired())
+        alignment = newAlignment == null ? GaugeCompositeStyleImpl.ALIGNMENT_EDEFAULT : newAlignment;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.GAUGE_COMPOSITE_STYLE__ALIGNMENT, oldAlignment, alignment));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<GaugeSection> getSections() {
         if (sections == null) {
             sections = new EObjectContainmentEList<GaugeSection>(GaugeSection.class, this, MigrationmodelerPackage.GAUGE_COMPOSITE_STYLE__SECTIONS);
@@ -127,7 +131,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +145,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +161,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -177,14 +181,14 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.GAUGE_COMPOSITE_STYLE__ALIGNMENT:
-            setAlignment(ALIGNMENT_EDEFAULT);
+            setAlignment(GaugeCompositeStyleImpl.ALIGNMENT_EDEFAULT);
             return;
         case MigrationmodelerPackage.GAUGE_COMPOSITE_STYLE__SECTIONS:
             getSections().clear();
@@ -195,14 +199,14 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.GAUGE_COMPOSITE_STYLE__ALIGNMENT:
-            return alignment != ALIGNMENT_EDEFAULT;
+            return alignment != GaugeCompositeStyleImpl.ALIGNMENT_EDEFAULT;
         case MigrationmodelerPackage.GAUGE_COMPOSITE_STYLE__SECTIONS:
             return sections != null && !sections.isEmpty();
         }
@@ -211,13 +215,14 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (alignment: ");

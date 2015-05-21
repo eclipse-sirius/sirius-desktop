@@ -36,14 +36,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
@@ -53,17 +53,17 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     /**
      * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
      */
-    protected Integer width = WIDTH_EDEFAULT;
+    protected Integer width = LozengeImpl.WIDTH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -73,17 +73,17 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     /**
      * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
      */
-    protected Integer height = HEIGHT_EDEFAULT;
+    protected Integer height = LozengeImpl.HEIGHT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LozengeImpl() {
@@ -101,7 +101,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,58 +111,65 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Integer getWidth() {
         return width;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setWidth(Integer newWidth) {
         Integer oldWidth = width;
         width = newWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.LOZENGE__WIDTH, oldWidth, width));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Integer getHeight() {
         return height;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setHeight(Integer newHeight) {
         Integer oldHeight = height;
         height = newHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.LOZENGE__HEIGHT, oldHeight, height));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getColor() {
         return color;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetColor(Color newColor, NotificationChain msgs) {
@@ -170,36 +177,42 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
         color = newColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.LOZENGE__COLOR, oldColor, newColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setColor(Color newColor) {
         if (newColor != color) {
             NotificationChain msgs = null;
-            if (color != null)
-                msgs = ((InternalEObject) color).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.LOZENGE__COLOR, null, msgs);
-            if (newColor != null)
-                msgs = ((InternalEObject) newColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.LOZENGE__COLOR, null, msgs);
+            if (color != null) {
+                msgs = ((InternalEObject) color).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.LOZENGE__COLOR, null, msgs);
+            }
+            if (newColor != null) {
+                msgs = ((InternalEObject) newColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.LOZENGE__COLOR, null, msgs);
+            }
             msgs = basicSetColor(newColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.LOZENGE__COLOR, newColor, newColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +226,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,7 +244,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -252,17 +265,17 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.LOZENGE__WIDTH:
-            setWidth(WIDTH_EDEFAULT);
+            setWidth(LozengeImpl.WIDTH_EDEFAULT);
             return;
         case MigrationmodelerPackage.LOZENGE__HEIGHT:
-            setHeight(HEIGHT_EDEFAULT);
+            setHeight(LozengeImpl.HEIGHT_EDEFAULT);
             return;
         case MigrationmodelerPackage.LOZENGE__COLOR:
             setColor((Color) null);
@@ -273,16 +286,16 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.LOZENGE__WIDTH:
-            return WIDTH_EDEFAULT == null ? width != null : !WIDTH_EDEFAULT.equals(width);
+            return LozengeImpl.WIDTH_EDEFAULT == null ? width != null : !LozengeImpl.WIDTH_EDEFAULT.equals(width);
         case MigrationmodelerPackage.LOZENGE__HEIGHT:
-            return HEIGHT_EDEFAULT == null ? height != null : !HEIGHT_EDEFAULT.equals(height);
+            return LozengeImpl.HEIGHT_EDEFAULT == null ? height != null : !LozengeImpl.HEIGHT_EDEFAULT.equals(height);
         case MigrationmodelerPackage.LOZENGE__COLOR:
             return color != null;
         }
@@ -291,13 +304,14 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (width: ");

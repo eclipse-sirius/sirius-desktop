@@ -34,14 +34,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     /**
      * The default value of the '{@link #getShape() <em>Shape</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
@@ -51,17 +51,17 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     /**
      * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
      */
-    protected BundledImageShape shape = SHAPE_EDEFAULT;
+    protected BundledImageShape shape = BundledImageImpl.SHAPE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BundledImageImpl() {
@@ -79,7 +79,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,37 +89,41 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public BundledImageShape getShape() {
         return shape;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setShape(BundledImageShape newShape) {
         BundledImageShape oldShape = shape;
-        shape = newShape == null ? SHAPE_EDEFAULT : newShape;
-        if (eNotificationRequired())
+        shape = newShape == null ? BundledImageImpl.SHAPE_EDEFAULT : newShape;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.BUNDLED_IMAGE__SHAPE, oldShape, shape));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getColor() {
         return color;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetColor(Color newColor, NotificationChain msgs) {
@@ -127,36 +131,42 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
         color = newColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.BUNDLED_IMAGE__COLOR, oldColor, newColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setColor(Color newColor) {
         if (newColor != color) {
             NotificationChain msgs = null;
-            if (color != null)
-                msgs = ((InternalEObject) color).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.BUNDLED_IMAGE__COLOR, null, msgs);
-            if (newColor != null)
-                msgs = ((InternalEObject) newColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.BUNDLED_IMAGE__COLOR, null, msgs);
+            if (color != null) {
+                msgs = ((InternalEObject) color).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.BUNDLED_IMAGE__COLOR, null, msgs);
+            }
+            if (newColor != null) {
+                msgs = ((InternalEObject) newColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.BUNDLED_IMAGE__COLOR, null, msgs);
+            }
             msgs = basicSetColor(newColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.BUNDLED_IMAGE__COLOR, newColor, newColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +180,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +196,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,14 +214,14 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.BUNDLED_IMAGE__SHAPE:
-            setShape(SHAPE_EDEFAULT);
+            setShape(BundledImageImpl.SHAPE_EDEFAULT);
             return;
         case MigrationmodelerPackage.BUNDLED_IMAGE__COLOR:
             setColor((Color) null);
@@ -222,14 +232,14 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.BUNDLED_IMAGE__SHAPE:
-            return shape != SHAPE_EDEFAULT;
+            return shape != BundledImageImpl.SHAPE_EDEFAULT;
         case MigrationmodelerPackage.BUNDLED_IMAGE__COLOR:
             return color != null;
         }
@@ -238,13 +248,14 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (shape: ");

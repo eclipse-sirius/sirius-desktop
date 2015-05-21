@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Ellipse</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEllipse()
  * @model
  * @generated
@@ -39,7 +39,7 @@ public interface Ellipse extends NodeStyle {
      * The default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The horizontal diameter size of
      * the ellipse. (Semimajor axis) <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Horizontal Diameter</em>' attribute.
      * @see #setHorizontalDiameter(Integer)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEllipse_HorizontalDiameter()
@@ -53,7 +53,7 @@ public interface Ellipse extends NodeStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse#getHorizontalDiameter
      * <em>Horizontal Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Horizontal Diameter</em>' attribute.
      * @see #getHorizontalDiameter()
@@ -66,7 +66,7 @@ public interface Ellipse extends NodeStyle {
      * The default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> The vertical diameter of the
      * ellipse. (Semiminor axis) <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Vertical Diameter</em>' attribute.
      * @see #setVerticalDiameter(Integer)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEllipse_VerticalDiameter()
@@ -80,7 +80,7 @@ public interface Ellipse extends NodeStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse#getVerticalDiameter
      * <em>Vertical Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Vertical Diameter</em>' attribute.
      * @see #getVerticalDiameter()
@@ -96,7 +96,7 @@ public interface Ellipse extends NodeStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' containment reference.
      * @see #setColor(Color)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getEllipse_Color()
@@ -110,7 +110,7 @@ public interface Ellipse extends NodeStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse#getColor
      * <em>Color</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' containment reference.
      * @see #getColor()

@@ -41,14 +41,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle;
  * <em>Hide Label By Default</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
     /**
      * The default value of the '{@link #getBorderSize() <em>Border Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSize()
      * @generated
      * @ordered
@@ -58,17 +58,17 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
     /**
      * The cached value of the '{@link #getBorderSize() <em>Border Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSize()
      * @generated
      * @ordered
      */
-    protected int borderSize = BORDER_SIZE_EDEFAULT;
+    protected int borderSize = NodeStyleImpl.BORDER_SIZE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
      * The default value of the '{@link #getLabelPosition()
      * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelPosition()
      * @generated
      * @ordered
@@ -90,18 +90,18 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
      * The cached value of the '{@link #getLabelPosition()
      * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelPosition()
      * @generated
      * @ordered
      */
-    protected LabelPosition labelPosition = LABEL_POSITION_EDEFAULT;
+    protected LabelPosition labelPosition = NodeStyleImpl.LABEL_POSITION_EDEFAULT;
 
     /**
      * The default value of the '{@link #isHideLabelByDefault()
      * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isHideLabelByDefault()
      * @generated
      * @ordered
@@ -112,16 +112,16 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
      * The cached value of the '{@link #isHideLabelByDefault()
      * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isHideLabelByDefault()
      * @generated
      * @ordered
      */
-    protected boolean hideLabelByDefault = HIDE_LABEL_BY_DEFAULT_EDEFAULT;
+    protected boolean hideLabelByDefault = NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NodeStyleImpl() {
@@ -130,7 +130,7 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,37 +140,41 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getBorderSize() {
         return borderSize;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBorderSize(int newBorderSize) {
         int oldBorderSize = borderSize;
         borderSize = newBorderSize;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE, oldBorderSize, borderSize));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getBorderColor() {
         return borderColor;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetBorderColor(Color newBorderColor, NotificationChain msgs) {
@@ -178,78 +182,90 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
         borderColor = newBorderColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR, oldBorderColor, newBorderColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBorderColor(Color newBorderColor) {
         if (newBorderColor != borderColor) {
             NotificationChain msgs = null;
-            if (borderColor != null)
-                msgs = ((InternalEObject) borderColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR, null, msgs);
-            if (newBorderColor != null)
-                msgs = ((InternalEObject) newBorderColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR, null, msgs);
+            if (borderColor != null) {
+                msgs = ((InternalEObject) borderColor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR, null, msgs);
+            }
+            if (newBorderColor != null) {
+                msgs = ((InternalEObject) newBorderColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR, null, msgs);
+            }
             msgs = basicSetBorderColor(newBorderColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR, newBorderColor, newBorderColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public LabelPosition getLabelPosition() {
         return labelPosition;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setLabelPosition(LabelPosition newLabelPosition) {
         LabelPosition oldLabelPosition = labelPosition;
-        labelPosition = newLabelPosition == null ? LABEL_POSITION_EDEFAULT : newLabelPosition;
-        if (eNotificationRequired())
+        labelPosition = newLabelPosition == null ? NodeStyleImpl.LABEL_POSITION_EDEFAULT : newLabelPosition;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION, oldLabelPosition, labelPosition));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public boolean isHideLabelByDefault() {
         return hideLabelByDefault;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setHideLabelByDefault(boolean newHideLabelByDefault) {
         boolean oldHideLabelByDefault = hideLabelByDefault;
         hideLabelByDefault = newHideLabelByDefault;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT, oldHideLabelByDefault, hideLabelByDefault));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +279,7 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -283,7 +299,7 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -307,23 +323,23 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE:
-            setBorderSize(BORDER_SIZE_EDEFAULT);
+            setBorderSize(NodeStyleImpl.BORDER_SIZE_EDEFAULT);
             return;
         case MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR:
             setBorderColor((Color) null);
             return;
         case MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION:
-            setLabelPosition(LABEL_POSITION_EDEFAULT);
+            setLabelPosition(NodeStyleImpl.LABEL_POSITION_EDEFAULT);
             return;
         case MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
-            setHideLabelByDefault(HIDE_LABEL_BY_DEFAULT_EDEFAULT);
+            setHideLabelByDefault(NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -331,27 +347,27 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE:
-            return borderSize != BORDER_SIZE_EDEFAULT;
+            return borderSize != NodeStyleImpl.BORDER_SIZE_EDEFAULT;
         case MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR:
             return borderColor != null;
         case MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION:
-            return labelPosition != LABEL_POSITION_EDEFAULT;
+            return labelPosition != NodeStyleImpl.LABEL_POSITION_EDEFAULT;
         case MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
-            return hideLabelByDefault != HIDE_LABEL_BY_DEFAULT_EDEFAULT;
+            return hideLabelByDefault != NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -371,7 +387,7 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -391,13 +407,14 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSize: ");

@@ -27,7 +27,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage
  * <em>Workspace Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage {
@@ -35,7 +35,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
      * The default value of the '{@link #getWorkspacePath()
      * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -46,16 +46,16 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
      * The cached value of the '{@link #getWorkspacePath()
      * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWorkspacePath()
      * @generated
      * @ordered
      */
-    protected String workspacePath = WORKSPACE_PATH_EDEFAULT;
+    protected String workspacePath = WorkspaceImageImpl.WORKSPACE_PATH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WorkspaceImageImpl() {
@@ -64,7 +64,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,28 +74,31 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getWorkspacePath() {
         return workspacePath;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setWorkspacePath(String newWorkspacePath) {
         String oldWorkspacePath = workspacePath;
         workspacePath = newWorkspacePath;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.WORKSPACE_IMAGE__WORKSPACE_PATH, oldWorkspacePath, workspacePath));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +112,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,14 +127,14 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.WORKSPACE_IMAGE__WORKSPACE_PATH:
-            setWorkspacePath(WORKSPACE_PATH_EDEFAULT);
+            setWorkspacePath(WorkspaceImageImpl.WORKSPACE_PATH_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -139,27 +142,28 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.WORKSPACE_IMAGE__WORKSPACE_PATH:
-            return WORKSPACE_PATH_EDEFAULT == null ? workspacePath != null : !WORKSPACE_PATH_EDEFAULT.equals(workspacePath);
+            return WorkspaceImageImpl.WORKSPACE_PATH_EDEFAULT == null ? workspacePath != null : !WorkspaceImageImpl.WORKSPACE_PATH_EDEFAULT.equals(workspacePath);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (workspacePath: ");

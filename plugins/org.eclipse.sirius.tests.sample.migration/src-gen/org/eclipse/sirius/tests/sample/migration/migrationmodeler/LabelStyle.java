@@ -13,9 +13,9 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Label Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The style of a label. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <em>Label Alignment</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLabelStyle()
  * @model
  * @generated
@@ -40,7 +40,7 @@ public interface LabelStyle extends BasicLabelStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Alignment</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelAlignment
      * @see #setLabelAlignment(LabelAlignment)
@@ -55,7 +55,7 @@ public interface LabelStyle extends BasicLabelStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelStyle#getLabelAlignment
      * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Alignment</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelAlignment

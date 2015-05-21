@@ -45,7 +45,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle;
  * <em>End Label Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
@@ -53,7 +53,7 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
      * The default value of the '{@link #getRoutingStyle()
      * <em>Routing Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRoutingStyle()
      * @generated
      * @ordered
@@ -64,17 +64,17 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
      * The cached value of the '{@link #getRoutingStyle()
      * <em>Routing Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRoutingStyle()
      * @generated
      * @ordered
      */
-    protected RoutingStyle routingStyle = ROUTING_STYLE_EDEFAULT;
+    protected RoutingStyle routingStyle = EdgeStyleImpl.ROUTING_STYLE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -85,7 +85,7 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
      * The cached value of the '{@link #getBeginLabelStyle()
      * <em>Begin Label Style</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBeginLabelStyle()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
      * The cached value of the '{@link #getCenterLabelStyle()
      * <em>Center Label Style</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCenterLabelStyle()
      * @generated
      * @ordered
@@ -107,7 +107,7 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
      * The cached value of the '{@link #getEndLabelStyle()
      * <em>End Label Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getEndLabelStyle()
      * @generated
      * @ordered
@@ -116,7 +116,7 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeStyleImpl() {
@@ -125,7 +125,7 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,37 +135,41 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public RoutingStyle getRoutingStyle() {
         return routingStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setRoutingStyle(RoutingStyle newRoutingStyle) {
         RoutingStyle oldRoutingStyle = routingStyle;
-        routingStyle = newRoutingStyle == null ? ROUTING_STYLE_EDEFAULT : newRoutingStyle;
-        if (eNotificationRequired())
+        routingStyle = newRoutingStyle == null ? EdgeStyleImpl.ROUTING_STYLE_EDEFAULT : newRoutingStyle;
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_STYLE__ROUTING_STYLE, oldRoutingStyle, routingStyle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Color getColor() {
         return color;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetColor(Color newColor, NotificationChain msgs) {
@@ -173,45 +177,52 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
         color = newColor;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_STYLE__COLOR, oldColor, newColor);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setColor(Color newColor) {
         if (newColor != color) {
             NotificationChain msgs = null;
-            if (color != null)
-                msgs = ((InternalEObject) color).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__COLOR, null, msgs);
-            if (newColor != null)
-                msgs = ((InternalEObject) newColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__COLOR, null, msgs);
+            if (color != null) {
+                msgs = ((InternalEObject) color).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__COLOR, null, msgs);
+            }
+            if (newColor != null) {
+                msgs = ((InternalEObject) newColor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__COLOR, null, msgs);
+            }
             msgs = basicSetColor(newColor, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_STYLE__COLOR, newColor, newColor));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public BasicLabelStyle getBeginLabelStyle() {
         return beginLabelStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetBeginLabelStyle(BasicLabelStyle newBeginLabelStyle, NotificationChain msgs) {
@@ -219,45 +230,52 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
         beginLabelStyle = newBeginLabelStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, oldBeginLabelStyle, newBeginLabelStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBeginLabelStyle(BasicLabelStyle newBeginLabelStyle) {
         if (newBeginLabelStyle != beginLabelStyle) {
             NotificationChain msgs = null;
-            if (beginLabelStyle != null)
-                msgs = ((InternalEObject) beginLabelStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
-            if (newBeginLabelStyle != null)
-                msgs = ((InternalEObject) newBeginLabelStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
+            if (beginLabelStyle != null) {
+                msgs = ((InternalEObject) beginLabelStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
+            }
+            if (newBeginLabelStyle != null) {
+                msgs = ((InternalEObject) newBeginLabelStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, null, msgs);
+            }
             msgs = basicSetBeginLabelStyle(newBeginLabelStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_STYLE__BEGIN_LABEL_STYLE, newBeginLabelStyle, newBeginLabelStyle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public BasicLabelStyle getCenterLabelStyle() {
         return centerLabelStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCenterLabelStyle(BasicLabelStyle newCenterLabelStyle, NotificationChain msgs) {
@@ -265,45 +283,52 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
         centerLabelStyle = newCenterLabelStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_STYLE__CENTER_LABEL_STYLE, oldCenterLabelStyle, newCenterLabelStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setCenterLabelStyle(BasicLabelStyle newCenterLabelStyle) {
         if (newCenterLabelStyle != centerLabelStyle) {
             NotificationChain msgs = null;
-            if (centerLabelStyle != null)
-                msgs = ((InternalEObject) centerLabelStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
-            if (newCenterLabelStyle != null)
-                msgs = ((InternalEObject) newCenterLabelStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
+            if (centerLabelStyle != null) {
+                msgs = ((InternalEObject) centerLabelStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
+            }
+            if (newCenterLabelStyle != null) {
+                msgs = ((InternalEObject) newCenterLabelStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__CENTER_LABEL_STYLE, null, msgs);
+            }
             msgs = basicSetCenterLabelStyle(newCenterLabelStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_STYLE__CENTER_LABEL_STYLE, newCenterLabelStyle, newCenterLabelStyle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public BasicLabelStyle getEndLabelStyle() {
         return endLabelStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetEndLabelStyle(BasicLabelStyle newEndLabelStyle, NotificationChain msgs) {
@@ -311,36 +336,42 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
         endLabelStyle = newEndLabelStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_STYLE__END_LABEL_STYLE, oldEndLabelStyle, newEndLabelStyle);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setEndLabelStyle(BasicLabelStyle newEndLabelStyle) {
         if (newEndLabelStyle != endLabelStyle) {
             NotificationChain msgs = null;
-            if (endLabelStyle != null)
-                msgs = ((InternalEObject) endLabelStyle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
-            if (newEndLabelStyle != null)
-                msgs = ((InternalEObject) newEndLabelStyle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
+            if (endLabelStyle != null) {
+                msgs = ((InternalEObject) endLabelStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
+            }
+            if (newEndLabelStyle != null) {
+                msgs = ((InternalEObject) newEndLabelStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - MigrationmodelerPackage.EDGE_STYLE__END_LABEL_STYLE, null, msgs);
+            }
             msgs = basicSetEndLabelStyle(newEndLabelStyle, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE_STYLE__END_LABEL_STYLE, newEndLabelStyle, newEndLabelStyle));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -360,7 +391,7 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -382,7 +413,7 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,14 +440,14 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.EDGE_STYLE__ROUTING_STYLE:
-            setRoutingStyle(ROUTING_STYLE_EDEFAULT);
+            setRoutingStyle(EdgeStyleImpl.ROUTING_STYLE_EDEFAULT);
             return;
         case MigrationmodelerPackage.EDGE_STYLE__COLOR:
             setColor((Color) null);
@@ -436,14 +467,14 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.EDGE_STYLE__ROUTING_STYLE:
-            return routingStyle != ROUTING_STYLE_EDEFAULT;
+            return routingStyle != EdgeStyleImpl.ROUTING_STYLE_EDEFAULT;
         case MigrationmodelerPackage.EDGE_STYLE__COLOR:
             return color != null;
         case MigrationmodelerPackage.EDGE_STYLE__BEGIN_LABEL_STYLE:
@@ -458,13 +489,14 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (routingStyle: ");

@@ -37,7 +37,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContainerImpl extends GraphicalElementImpl implements Container {
@@ -45,7 +45,7 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
      * The cached value of the '{@link #getContainerRepresentations()
      * <em>Container Representations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerRepresentations()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
     /**
      * The cached value of the '{@link #getElements() <em>Elements</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getElements()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerImpl() {
@@ -73,7 +73,7 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,9 +83,10 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<ContainerRepresentation> getContainerRepresentations() {
         if (containerRepresentations == null) {
             containerRepresentations = new EObjectContainmentEList<ContainerRepresentation>(ContainerRepresentation.class, this, MigrationmodelerPackage.CONTAINER__CONTAINER_REPRESENTATIONS);
@@ -95,9 +96,10 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<GraphicalElement> getElements() {
         if (elements == null) {
             elements = new EObjectContainmentEList<GraphicalElement>(GraphicalElement.class, this, MigrationmodelerPackage.CONTAINER__ELEMENTS);
@@ -107,7 +109,7 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +125,7 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +141,7 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -160,7 +162,7 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +180,7 @@ public class ContainerImpl extends GraphicalElementImpl implements Container {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

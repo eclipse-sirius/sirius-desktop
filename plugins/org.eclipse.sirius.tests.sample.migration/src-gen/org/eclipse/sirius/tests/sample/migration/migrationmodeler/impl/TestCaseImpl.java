@@ -34,7 +34,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase;
  * <em>Representations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TestCaseImpl extends EObjectImpl implements TestCase {
@@ -42,7 +42,7 @@ public class TestCaseImpl extends EObjectImpl implements TestCase {
      * The cached value of the '{@link #getRepresentations()
      * <em>Representations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRepresentations()
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public class TestCaseImpl extends EObjectImpl implements TestCase {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TestCaseImpl() {
@@ -60,7 +60,7 @@ public class TestCaseImpl extends EObjectImpl implements TestCase {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,9 +70,10 @@ public class TestCaseImpl extends EObjectImpl implements TestCase {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Representation> getRepresentations() {
         if (representations == null) {
             representations = new EObjectContainmentEList<Representation>(Representation.class, this, MigrationmodelerPackage.TEST_CASE__REPRESENTATIONS);
@@ -82,7 +83,7 @@ public class TestCaseImpl extends EObjectImpl implements TestCase {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +97,7 @@ public class TestCaseImpl extends EObjectImpl implements TestCase {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +111,7 @@ public class TestCaseImpl extends EObjectImpl implements TestCase {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -127,7 +128,7 @@ public class TestCaseImpl extends EObjectImpl implements TestCase {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +143,7 @@ public class TestCaseImpl extends EObjectImpl implements TestCase {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

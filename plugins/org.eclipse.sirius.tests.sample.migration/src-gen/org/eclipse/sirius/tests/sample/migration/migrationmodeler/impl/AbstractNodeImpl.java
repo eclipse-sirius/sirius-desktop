@@ -19,13 +19,13 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em><b>Abstract Node</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractNodeImpl extends GraphicalElementImpl implements AbstractNode {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractNodeImpl() {
@@ -34,7 +34,7 @@ public abstract class AbstractNodeImpl extends GraphicalElementImpl implements A
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

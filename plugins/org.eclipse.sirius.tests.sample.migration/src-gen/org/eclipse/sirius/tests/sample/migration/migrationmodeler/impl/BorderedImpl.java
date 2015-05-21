@@ -33,7 +33,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Bordered Representations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BorderedImpl extends AbstractNodeImpl implements Bordered {
@@ -41,7 +41,7 @@ public class BorderedImpl extends AbstractNodeImpl implements Bordered {
      * The cached value of the '{@link #getBorderedRepresentations()
      * <em>Bordered Representations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderedRepresentations()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class BorderedImpl extends AbstractNodeImpl implements Bordered {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BorderedImpl() {
@@ -59,7 +59,7 @@ public class BorderedImpl extends AbstractNodeImpl implements Bordered {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,9 +69,10 @@ public class BorderedImpl extends AbstractNodeImpl implements Bordered {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<BorderedRepresentation> getBorderedRepresentations() {
         if (borderedRepresentations == null) {
             borderedRepresentations = new EObjectContainmentEList<BorderedRepresentation>(BorderedRepresentation.class, this, MigrationmodelerPackage.BORDERED__BORDERED_REPRESENTATIONS);
@@ -81,7 +82,7 @@ public class BorderedImpl extends AbstractNodeImpl implements Bordered {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +96,7 @@ public class BorderedImpl extends AbstractNodeImpl implements Bordered {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +110,7 @@ public class BorderedImpl extends AbstractNodeImpl implements Bordered {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -126,7 +127,7 @@ public class BorderedImpl extends AbstractNodeImpl implements Bordered {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +142,7 @@ public class BorderedImpl extends AbstractNodeImpl implements Bordered {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

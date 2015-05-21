@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Abstract Representation</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Pinned</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractRepresentation()
  * @model abstract="true"
  * @generated
@@ -50,7 +50,7 @@ public interface AbstractRepresentation extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping Id</em>' attribute.
      * @see #setMappingId(String)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractRepresentation_MappingId()
@@ -64,7 +64,7 @@ public interface AbstractRepresentation extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#getMappingId
      * <em>Mapping Id</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping Id</em>' attribute.
      * @see #getMappingId()
@@ -80,7 +80,7 @@ public interface AbstractRepresentation extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Layout</em>' containment reference.
      * @see #setLayout(Layout)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractRepresentation_Layout()
@@ -94,7 +94,7 @@ public interface AbstractRepresentation extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#getLayout
      * <em>Layout</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Layout</em>' containment reference.
      * @see #getLayout()
@@ -110,7 +110,7 @@ public interface AbstractRepresentation extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Displayed</em>' attribute.
      * @see #setDisplayed(boolean)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractRepresentation_Displayed()
@@ -124,7 +124,7 @@ public interface AbstractRepresentation extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#isDisplayed
      * <em>Displayed</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Displayed</em>' attribute.
      * @see #isDisplayed()
@@ -140,7 +140,7 @@ public interface AbstractRepresentation extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Hidden</em>' attribute.
      * @see #setHidden(boolean)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractRepresentation_Hidden()
@@ -154,7 +154,7 @@ public interface AbstractRepresentation extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#isHidden
      * <em>Hidden</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Hidden</em>' attribute.
      * @see #isHidden()
@@ -170,7 +170,7 @@ public interface AbstractRepresentation extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Pinned</em>' attribute.
      * @see #setPinned(boolean)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getAbstractRepresentation_Pinned()
@@ -184,7 +184,7 @@ public interface AbstractRepresentation extends EObject {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#isPinned
      * <em>Pinned</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Pinned</em>' attribute.
      * @see #isPinned()

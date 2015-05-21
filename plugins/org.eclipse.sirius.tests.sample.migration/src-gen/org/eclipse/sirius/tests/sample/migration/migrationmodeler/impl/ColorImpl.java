@@ -34,14 +34,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Blue</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ColorImpl extends EObjectImpl implements Color {
     /**
      * The default value of the '{@link #getRed() <em>Red</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRed()
      * @generated
      * @ordered
@@ -51,17 +51,17 @@ public class ColorImpl extends EObjectImpl implements Color {
     /**
      * The cached value of the '{@link #getRed() <em>Red</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRed()
      * @generated
      * @ordered
      */
-    protected int red = RED_EDEFAULT;
+    protected int red = ColorImpl.RED_EDEFAULT;
 
     /**
      * The default value of the '{@link #getGreen() <em>Green</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGreen()
      * @generated
      * @ordered
@@ -71,17 +71,17 @@ public class ColorImpl extends EObjectImpl implements Color {
     /**
      * The cached value of the '{@link #getGreen() <em>Green</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGreen()
      * @generated
      * @ordered
      */
-    protected int green = GREEN_EDEFAULT;
+    protected int green = ColorImpl.GREEN_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBlue() <em>Blue</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBlue()
      * @generated
      * @ordered
@@ -91,16 +91,16 @@ public class ColorImpl extends EObjectImpl implements Color {
     /**
      * The cached value of the '{@link #getBlue() <em>Blue</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBlue()
      * @generated
      * @ordered
      */
-    protected int blue = BLUE_EDEFAULT;
+    protected int blue = ColorImpl.BLUE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ColorImpl() {
@@ -109,7 +109,7 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,70 +119,79 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getRed() {
         return red;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setRed(int newRed) {
         int oldRed = red;
         red = newRed;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.COLOR__RED, oldRed, red));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getGreen() {
         return green;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setGreen(int newGreen) {
         int oldGreen = green;
         green = newGreen;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.COLOR__GREEN, oldGreen, green));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getBlue() {
         return blue;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setBlue(int newBlue) {
         int oldBlue = blue;
         blue = newBlue;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.COLOR__BLUE, oldBlue, blue));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +209,7 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,20 +230,20 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.COLOR__RED:
-            setRed(RED_EDEFAULT);
+            setRed(ColorImpl.RED_EDEFAULT);
             return;
         case MigrationmodelerPackage.COLOR__GREEN:
-            setGreen(GREEN_EDEFAULT);
+            setGreen(ColorImpl.GREEN_EDEFAULT);
             return;
         case MigrationmodelerPackage.COLOR__BLUE:
-            setBlue(BLUE_EDEFAULT);
+            setBlue(ColorImpl.BLUE_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -242,31 +251,32 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case MigrationmodelerPackage.COLOR__RED:
-            return red != RED_EDEFAULT;
+            return red != ColorImpl.RED_EDEFAULT;
         case MigrationmodelerPackage.COLOR__GREEN:
-            return green != GREEN_EDEFAULT;
+            return green != ColorImpl.GREEN_EDEFAULT;
         case MigrationmodelerPackage.COLOR__BLUE:
-            return blue != BLUE_EDEFAULT;
+            return blue != ColorImpl.BLUE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (red: ");

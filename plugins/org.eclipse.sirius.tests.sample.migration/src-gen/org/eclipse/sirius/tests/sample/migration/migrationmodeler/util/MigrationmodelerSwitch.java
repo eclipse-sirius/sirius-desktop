@@ -60,14 +60,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage
  * @generated
  */
 public class MigrationmodelerSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static MigrationmodelerPackage modelPackage;
@@ -75,12 +75,12 @@ public class MigrationmodelerSwitch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MigrationmodelerSwitch() {
-        if (modelPackage == null) {
-            modelPackage = MigrationmodelerPackage.eINSTANCE;
+        if (MigrationmodelerSwitch.modelPackage == null) {
+            MigrationmodelerSwitch.modelPackage = MigrationmodelerPackage.eINSTANCE;
         }
     }
 
@@ -88,7 +88,7 @@ public class MigrationmodelerSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -101,13 +101,13 @@ public class MigrationmodelerSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == MigrationmodelerSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -119,7 +119,7 @@ public class MigrationmodelerSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -129,386 +129,486 @@ public class MigrationmodelerSwitch<T> {
         case MigrationmodelerPackage.DIAGRAM: {
             Diagram diagram = (Diagram) theEObject;
             T result = caseDiagram(diagram);
-            if (result == null)
+            if (result == null) {
                 result = caseRepresentation(diagram);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.GRAPHICAL_ELEMENT: {
             GraphicalElement graphicalElement = (GraphicalElement) theEObject;
             T result = caseGraphicalElement(graphicalElement);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.ABSTRACT_NODE: {
             AbstractNode abstractNode = (AbstractNode) theEObject;
             T result = caseAbstractNode(abstractNode);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalElement(abstractNode);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.NODE: {
             Node node = (Node) theEObject;
             T result = caseNode(node);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractNode(node);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseGraphicalElement(node);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.BORDERED: {
             Bordered bordered = (Bordered) theEObject;
             T result = caseBordered(bordered);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractNode(bordered);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseGraphicalElement(bordered);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.CONTAINER: {
             Container container = (Container) theEObject;
             T result = caseContainer(container);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalElement(container);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.EDGE: {
             Edge edge = (Edge) theEObject;
             T result = caseEdge(edge);
-            if (result == null)
+            if (result == null) {
                 result = caseGraphicalElement(edge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.ABSTRACT_REPRESENTATION: {
             AbstractRepresentation abstractRepresentation = (AbstractRepresentation) theEObject;
             T result = caseAbstractRepresentation(abstractRepresentation);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.EDGE_REPRESENTATION: {
             EdgeRepresentation edgeRepresentation = (EdgeRepresentation) theEObject;
             T result = caseEdgeRepresentation(edgeRepresentation);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractRepresentation(edgeRepresentation);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION: {
             AbstractNodeRepresentation abstractNodeRepresentation = (AbstractNodeRepresentation) theEObject;
             T result = caseAbstractNodeRepresentation(abstractNodeRepresentation);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractRepresentation(abstractNodeRepresentation);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.NODE_REPRESENTATION: {
             NodeRepresentation nodeRepresentation = (NodeRepresentation) theEObject;
             T result = caseNodeRepresentation(nodeRepresentation);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractNodeRepresentation(nodeRepresentation);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractRepresentation(nodeRepresentation);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.BORDERED_REPRESENTATION: {
             BorderedRepresentation borderedRepresentation = (BorderedRepresentation) theEObject;
             T result = caseBorderedRepresentation(borderedRepresentation);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractNodeRepresentation(borderedRepresentation);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseAbstractRepresentation(borderedRepresentation);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.CONTAINER_REPRESENTATION: {
             ContainerRepresentation containerRepresentation = (ContainerRepresentation) theEObject;
             T result = caseContainerRepresentation(containerRepresentation);
-            if (result == null)
+            if (result == null) {
                 result = caseAbstractRepresentation(containerRepresentation);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.EDGE_STYLE: {
             EdgeStyle edgeStyle = (EdgeStyle) theEObject;
             T result = caseEdgeStyle(edgeStyle);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.LAYOUT: {
             Layout layout = (Layout) theEObject;
             T result = caseLayout(layout);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.COLOR: {
             Color color = (Color) theEObject;
             T result = caseColor(color);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.POINT: {
             Point point = (Point) theEObject;
             T result = casePoint(point);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.TEST_CASE: {
             TestCase testCase = (TestCase) theEObject;
             T result = caseTestCase(testCase);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.REPRESENTATION: {
             Representation representation = (Representation) theEObject;
             T result = caseRepresentation(representation);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.BORDERED_STYLE: {
             BorderedStyle borderedStyle = (BorderedStyle) theEObject;
             T result = caseBorderedStyle(borderedStyle);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.FILTER: {
             Filter filter = (Filter) theEObject;
             T result = caseFilter(filter);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.LAYER: {
             Layer layer = (Layer) theEObject;
             T result = caseLayer(layer);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.NODE_STYLE: {
             NodeStyle nodeStyle = (NodeStyle) theEObject;
             T result = caseNodeStyle(nodeStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseLabelStyle(nodeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(nodeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(nodeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.BASIC_LABEL_STYLE: {
             BasicLabelStyle basicLabelStyle = (BasicLabelStyle) theEObject;
             T result = caseBasicLabelStyle(basicLabelStyle);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.CONTAINER_STYLE: {
             ContainerStyle containerStyle = (ContainerStyle) theEObject;
             T result = caseContainerStyle(containerStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseLabelStyle(containerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(containerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(containerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.LABEL_STYLE: {
             LabelStyle labelStyle = (LabelStyle) theEObject;
             T result = caseLabelStyle(labelStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseBasicLabelStyle(labelStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.DOT: {
             Dot dot = (Dot) theEObject;
             T result = caseDot(dot);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(dot);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.GAUGE_SECTION: {
             GaugeSection gaugeSection = (GaugeSection) theEObject;
             T result = caseGaugeSection(gaugeSection);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.FLAT_CONTAINER_STYLE: {
             FlatContainerStyle flatContainerStyle = (FlatContainerStyle) theEObject;
             T result = caseFlatContainerStyle(flatContainerStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerStyle(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(flatContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.SHAPE_CONTAINER_STYLE: {
             ShapeContainerStyle shapeContainerStyle = (ShapeContainerStyle) theEObject;
             T result = caseShapeContainerStyle(shapeContainerStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseContainerStyle(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(shapeContainerStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.SQUARE: {
             Square square = (Square) theEObject;
             T result = caseSquare(square);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(square);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.ELLIPSE: {
             Ellipse ellipse = (Ellipse) theEObject;
             T result = caseEllipse(ellipse);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(ellipse);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.LOZENGE: {
             Lozenge lozenge = (Lozenge) theEObject;
             T result = caseLozenge(lozenge);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(lozenge);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.BUNDLED_IMAGE: {
             BundledImage bundledImage = (BundledImage) theEObject;
             T result = caseBundledImage(bundledImage);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(bundledImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.WORKSPACE_IMAGE: {
             WorkspaceImage workspaceImage = (WorkspaceImage) theEObject;
             T result = caseWorkspaceImage(workspaceImage);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseContainerStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(workspaceImage);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.GAUGE_COMPOSITE_STYLE: {
             GaugeCompositeStyle gaugeCompositeStyle = (GaugeCompositeStyle) theEObject;
             T result = caseGaugeCompositeStyle(gaugeCompositeStyle);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(gaugeCompositeStyle);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case MigrationmodelerPackage.NOTE: {
             Note note = (Note) theEObject;
             T result = caseNote(note);
-            if (result == null)
+            if (result == null) {
                 result = caseNodeStyle(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseLabelStyle(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBorderedStyle(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseBasicLabelStyle(note);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -521,7 +621,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Node</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -538,7 +638,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Bordered</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -555,7 +655,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Container</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -572,7 +672,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Graphical Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -589,7 +689,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Edge</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -606,7 +706,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Abstract Representation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -623,7 +723,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Edge Representation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -640,7 +740,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Abstract Node Representation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -657,7 +757,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Node Representation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -674,7 +774,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Bordered Representation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -691,7 +791,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Container Representation</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -708,7 +808,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Diagram</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -725,7 +825,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Edge Style</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -742,7 +842,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Layout</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -759,7 +859,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Color</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -776,7 +876,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Point</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -793,7 +893,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Node Style</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -810,7 +910,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Basic Label Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -827,7 +927,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Container Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -844,7 +944,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Label Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -861,7 +961,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Dot</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -878,7 +978,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Gauge Section</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -895,7 +995,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Flat Container Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -912,7 +1012,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Shape Container Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -929,7 +1029,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Square</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -946,7 +1046,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Ellipse</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -963,7 +1063,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Lozenge</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -980,7 +1080,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Bundled Image</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -997,7 +1097,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Workspace Image</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1014,7 +1114,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Gauge Composite Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1031,7 +1131,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Note</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1048,7 +1148,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Abstract Node</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1065,7 +1165,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Test Case</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1082,7 +1182,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Representation</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1099,7 +1199,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Bordered Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1116,7 +1216,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Filter</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1133,7 +1233,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>Layer</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1150,7 +1250,7 @@ public class MigrationmodelerSwitch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

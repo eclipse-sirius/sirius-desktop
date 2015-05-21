@@ -42,7 +42,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <em>Target</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EdgeImpl extends GraphicalElementImpl implements Edge {
@@ -50,7 +50,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
      * The cached value of the '{@link #getEdgeRepresentations()
      * <em>Edge Representations</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEdgeRepresentations()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
     /**
      * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeImpl() {
@@ -88,7 +88,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,9 +98,10 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<EdgeRepresentation> getEdgeRepresentations() {
         if (edgeRepresentations == null) {
             edgeRepresentations = new EObjectContainmentEList<EdgeRepresentation>(EdgeRepresentation.class, this, MigrationmodelerPackage.EDGE__EDGE_REPRESENTATIONS);
@@ -110,16 +111,18 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public GraphicalElement getSource() {
         if (source != null && source.eIsProxy()) {
             InternalEObject oldSource = (InternalEObject) source;
             source = (GraphicalElement) eResolveProxy(oldSource);
             if (source != oldSource) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, MigrationmodelerPackage.EDGE__SOURCE, oldSource, source));
+                }
             }
         }
         return source;
@@ -127,7 +130,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public GraphicalElement basicGetSource() {
@@ -136,28 +139,32 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSource(GraphicalElement newSource) {
         GraphicalElement oldSource = source;
         source = newSource;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE__SOURCE, oldSource, source));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public GraphicalElement getTarget() {
         if (target != null && target.eIsProxy()) {
             InternalEObject oldTarget = (InternalEObject) target;
             target = (GraphicalElement) eResolveProxy(oldTarget);
             if (target != oldTarget) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, MigrationmodelerPackage.EDGE__TARGET, oldTarget, target));
+                }
             }
         }
         return target;
@@ -165,7 +172,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public GraphicalElement basicGetTarget() {
@@ -174,19 +181,21 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTarget(GraphicalElement newTarget) {
         GraphicalElement oldTarget = target;
         target = newTarget;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.EDGE__TARGET, oldTarget, target));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +209,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,12 +218,14 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
         case MigrationmodelerPackage.EDGE__EDGE_REPRESENTATIONS:
             return getEdgeRepresentations();
         case MigrationmodelerPackage.EDGE__SOURCE:
-            if (resolve)
+            if (resolve) {
                 return getSource();
+            }
             return basicGetSource();
         case MigrationmodelerPackage.EDGE__TARGET:
-            if (resolve)
+            if (resolve) {
                 return getTarget();
+            }
             return basicGetTarget();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -222,7 +233,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -245,7 +256,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +277,7 @@ public class EdgeImpl extends GraphicalElementImpl implements Edge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

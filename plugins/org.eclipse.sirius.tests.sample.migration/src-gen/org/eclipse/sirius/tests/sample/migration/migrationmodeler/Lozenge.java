@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Lozenge</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLozenge()
  * @model
  * @generated
@@ -38,7 +38,7 @@ public interface Lozenge extends NodeStyle {
      * Returns the value of the '<em><b>Width</b></em>' attribute. The default
      * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The width of the lozenge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLozenge_Width()
@@ -51,7 +51,7 @@ public interface Lozenge extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -64,7 +64,7 @@ public interface Lozenge extends NodeStyle {
      * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The height of the lozenge. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLozenge_Height()
@@ -78,7 +78,7 @@ public interface Lozenge extends NodeStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge#getHeight
      * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -94,7 +94,7 @@ public interface Lozenge extends NodeStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' containment reference.
      * @see #setColor(Color)
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getLozenge_Color()
@@ -108,7 +108,7 @@ public interface Lozenge extends NodeStyle {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge#getColor
      * <em>Color</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' containment reference.
      * @see #getColor()

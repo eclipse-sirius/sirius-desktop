@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Diagram</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -36,7 +36,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Layers</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getDiagram()
  * @model
  * @generated
@@ -52,7 +52,7 @@ public interface Diagram extends Representation {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Containers</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getDiagram_Containers()
@@ -71,7 +71,7 @@ public interface Diagram extends Representation {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Nodes</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getDiagram_Nodes()
      * @model containment="true"
@@ -89,7 +89,7 @@ public interface Diagram extends Representation {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Edges</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getDiagram_Edges()
      * @model containment="true"
@@ -107,7 +107,7 @@ public interface Diagram extends Representation {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filters</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getDiagram_Filters()
      * @model containment="true"
@@ -125,7 +125,7 @@ public interface Diagram extends Representation {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Layers</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getDiagram_Layers()
      * @model containment="true"
